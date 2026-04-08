@@ -4,10 +4,10 @@ import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 
 const areaRowClassName =
-  "group flex min-h-[2.75rem] items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground";
+  "group flex min-h-[2.75rem] items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-sm hover:shadow-primary/10";
 
 const areaIconWrapClassName =
-  "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-primary/50 group-hover:bg-white/15 group-hover:text-primary-foreground transition-colors";
+  "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-b from-muted to-muted/60 text-primary/50 group-hover:bg-white/15 group-hover:text-primary-foreground transition-all duration-200";
 
 const additionalAreas = [
   "Brisbane CBD", "Fortitude Valley", "West End", "Paddington",
@@ -57,8 +57,8 @@ export function ServiceAreas() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-border/40 bg-white p-5 sm:p-6 lg:p-8">
-          <h3 className="font-display text-sm font-bold text-primary mb-4">
+        <div className="rounded-2xl border border-border/40 bg-white p-5 sm:p-6 lg:p-8 shadow-sm shadow-black/[0.02]">
+          <h3 className="font-display text-sm font-bold text-primary mb-5 uppercase tracking-wider">
             Browse by area
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
@@ -91,11 +91,11 @@ export function ServiceAreas() {
           </ul>
         </div>
 
-        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-border/40 bg-white px-6 py-6 text-center sm:px-10">
-          <p className="font-display font-bold text-primary leading-snug">
+        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent px-6 py-8 text-center sm:px-10">
+          <p className="font-display font-bold text-lg text-primary leading-snug">
             Not in the list?
           </p>
-          <p className="mt-2 text-muted-foreground text-sm leading-relaxed">
+          <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
             <strong className="text-foreground font-semibold">We likely still service your area.</strong>{" "}
             Call{" "}
             <a
