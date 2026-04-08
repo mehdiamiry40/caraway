@@ -44,7 +44,7 @@ export function CarTypes() {
             {plainTypes.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-4 py-2.5 rounded-xl border border-white/8 text-sm text-primary-foreground/35 cursor-default"
+                className="inline-flex items-center px-4 py-2.5 rounded-xl border border-white/8 text-sm text-primary-foreground/60 cursor-default"
               >
                 {type}
               </span>

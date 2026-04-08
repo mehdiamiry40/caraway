@@ -93,7 +93,7 @@ export function Header() {
 
   return (
     <>
-      <div className={cn(
+      <header className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 pt-safe",
         isScrolled ? "shadow-md" : ""
       )}>
@@ -191,7 +191,7 @@ export function Header() {
             </nav>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Mobile drawer */}
       {isMobileMenuOpen && (

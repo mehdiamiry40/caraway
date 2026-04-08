@@ -20,7 +20,7 @@ export function JsonLd({
           <script
             key={key}
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(normalizeSchema(item)) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(normalizeSchema(item)).replace(/</g, "\\u003c") }}
           />
         );
       })}

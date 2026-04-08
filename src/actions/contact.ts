@@ -7,7 +7,7 @@ export async function submitContact(data: ContactFormValues) {
   return submitForm({
     schema: contactFormSchema,
     data,
-    endpointEnvVar: "NEXT_PUBLIC_CONTACT_ENDPOINT",
+    endpointEnvVar: "CONTACT_ENDPOINT",
     label: "Contact submission",
   });
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useId } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,13 +16,14 @@ interface AccordionProps {
 
 export function Accordion({ items, className }: AccordionProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const instanceId = useId();
 
   return (
     <div className={cn("w-full space-y-3", className)}>
       {items.map((item, index) => {
         const isActive = activeIndex === index;
-        const triggerId = `accordion-trigger-${index}`;
-        const panelId = `accordion-panel-${index}`;
+        const triggerId = `accordion-trigger-${instanceId}-${index}`;
+        const panelId = `accordion-panel-${instanceId}-${index}`;
         return (
           <div
             key={item.question}

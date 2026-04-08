@@ -3,10 +3,13 @@
 import type { ZodSchema } from "zod";
 import { BUSINESS } from "@/lib/site";
 
+const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
+type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
+
 interface SubmitFormOptions {
   schema: ZodSchema;
   data: unknown;
-  endpointEnvVar: string;
+  endpointEnvVar: AllowedEndpoint;
   label: string;
 }
 
@@ -14,6 +17,10 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
     return { success: false as const, message: "Invalid form data" };
+  }
+
+  if (!ALLOWED_ENDPOINTS.includes(endpointEnvVar)) {
+    return { success: false as const, message: "Invalid endpoint" };
   }
 
   const endpoint = process.env[endpointEnvVar]?.trim();
