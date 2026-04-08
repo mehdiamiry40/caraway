@@ -60,7 +60,7 @@ export default function FAQPage() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
+      <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -87,7 +87,7 @@ export default function FAQPage() {
             </div>
           ))}
 
-          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-8 sm:p-12 text-center">
+          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Our Brisbane team is happy to help. Call us or visit our contact page.

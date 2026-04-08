@@ -19,7 +19,7 @@ export default function Contact() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
+      <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -61,8 +61,8 @@ export default function Contact() {
                     sub: "We respond within 1 hour during business hours",
                   },
                 ].map((item) => (
-                  <a key={item.title} href={item.href} className="flex items-start gap-4 group p-4 -mx-4 rounded-xl hover:bg-muted/50 transition-colors">
-                    <div className="w-12 h-12 bg-gradient-to-br from-accent/15 to-accent/5 rounded-xl flex items-center justify-center shrink-0 group-hover:from-accent/20 group-hover:to-accent/10 transition-colors">
+                  <a key={item.title} href={item.href} className="flex items-start gap-3 sm:gap-4 group p-4 -mx-4 rounded-xl hover:bg-muted/50 transition-colors min-h-[44px] touch-manipulation">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 bg-gradient-to-br from-accent/15 to-accent/5 rounded-xl flex items-center justify-center shrink-0 group-hover:from-accent/20 group-hover:to-accent/10 transition-colors">
                       <item.icon className="h-5 w-5 text-accent" />
                     </div>
                     <div>
@@ -87,8 +87,8 @@ export default function Contact() {
                     sub: BUSINESS.hoursDetail,
                   },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4 p-4 -mx-4">
-                    <div className="w-12 h-12 bg-primary/[0.06] rounded-xl flex items-center justify-center shrink-0">
+                  <div key={item.title} className="flex items-start gap-3 sm:gap-4 p-4 -mx-4">
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 bg-primary/[0.06] rounded-xl flex items-center justify-center shrink-0">
                       <item.icon className="h-5 w-5 text-primary/60" />
                     </div>
                     <div>
@@ -104,7 +104,7 @@ export default function Contact() {
             <div className="space-y-8">
               <ContactForm />
 
-              <div className="bg-gradient-to-b from-muted/50 to-muted/20 rounded-2xl p-7 sm:p-8 border border-border/40">
+              <div className="bg-gradient-to-b from-muted/50 to-muted/20 rounded-2xl p-4 sm:p-7 md:p-8 border border-border/40">
                 <h2 className="text-lg font-display font-bold text-foreground mb-1">Quick Reference</h2>
                 <p className="text-sm text-muted-foreground mb-6">Everything you need to know before calling</p>
                 <div className="space-y-4 text-sm">

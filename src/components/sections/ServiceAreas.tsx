@@ -4,7 +4,7 @@ import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 
 const areaRowClassName =
-  "group flex min-h-[2.75rem] items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-sm hover:shadow-primary/10";
+  "group flex min-h-11 items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-sm hover:shadow-primary/10 touch-manipulation";
 
 const areaIconWrapClassName =
   "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-b from-muted to-muted/60 text-primary/50 group-hover:bg-white/15 group-hover:text-primary-foreground transition-all duration-200";
@@ -31,7 +31,7 @@ export function ServiceAreas() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-12">
           <div className="max-w-2xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary leading-tight text-balance">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-display font-bold text-primary leading-tight text-balance">
               Cash for Cars Brisbane Service Areas
             </h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
@@ -42,14 +42,14 @@ export function ServiceAreas() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <a
               href={BUSINESS.phoneHref}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary min-h-11 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 touch-manipulation"
             >
               <Phone className="h-4 w-4 shrink-0" />
               {BUSINESS.phoneFriendly}
             </a>
             <Link
               href="/locations"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-white px-5 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-white min-h-11 px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary touch-manipulation"
             >
               All locations
               <ArrowRight className="h-4 w-4" />
@@ -57,7 +57,7 @@ export function ServiceAreas() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-border/40 bg-white p-5 sm:p-6 lg:p-8 shadow-sm shadow-black/[0.02]">
+        <div className="rounded-2xl border border-border/40 bg-white p-4 sm:p-6 lg:p-8 shadow-sm shadow-black/[0.02]">
           <h3 className="font-display text-sm font-bold text-primary mb-5 uppercase tracking-wider">
             Browse by area
           </h3>
@@ -91,18 +91,18 @@ export function ServiceAreas() {
           </ul>
         </div>
 
-        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent px-6 py-8 text-center sm:px-10">
+        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent px-4 py-6 text-center sm:px-10 sm:py-8">
           <p className="font-display font-bold text-lg text-primary leading-snug">
             Not in the list?
           </p>
-          <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
+          <p className="mt-3 text-muted-foreground text-sm leading-relaxed break-words">
             <strong className="text-foreground font-semibold">We likely still service your area.</strong>{" "}
             Call{" "}
             <a
               href={BUSINESS.phoneHref}
-              className="font-semibold text-primary underline-offset-2 hover:underline"
+              className="font-semibold text-primary underline-offset-2 hover:underline whitespace-nowrap"
             >
-              {BUSINESS.phoneFriendly} ({BUSINESS.phone})
+              {BUSINESS.phoneFriendly}
             </a>{" "}
             to confirm same-day availability at your location.
           </p>

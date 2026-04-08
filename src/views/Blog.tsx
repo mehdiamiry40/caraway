@@ -16,7 +16,7 @@ export default function Blog() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
+      <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -37,7 +37,7 @@ export default function Blog() {
                 key={post.slug}
                 className={`group rounded-2xl border border-border/60 bg-white hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
               >
-                <div className={`p-6 sm:p-8 flex flex-col h-full ${idx === 0 ? "sm:p-10" : ""}`}>
+                <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
                       <Tag className="h-3 w-3" />
@@ -68,7 +68,7 @@ export default function Blog() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors group-hover:gap-2.5"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors group-hover:gap-2.5 min-h-[44px] touch-manipulation"
                   >
                     Read more
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />

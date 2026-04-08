@@ -22,9 +22,9 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="section-y bg-muted/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14 md:mb-18">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
           <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Simple process</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">
             How Cash for Cars Works in Brisbane
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -32,7 +32,7 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Connector line between steps (desktop only) */}
           <div className="hidden md:block absolute top-7 left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] h-px bg-gradient-to-r from-border via-primary/20 to-border z-0" aria-hidden />
 
@@ -40,7 +40,7 @@ export function HowItWorks() {
             <div key={step.title} className="relative flex flex-col items-center text-center group">
               {/* Mobile connector arrow between steps */}
               {index > 0 && (
-                <div className="md:hidden flex items-center justify-center -mt-5 mb-5 text-primary/30" aria-hidden>
+                <div className="md:hidden flex items-center justify-center -mt-2 mb-2 text-primary/30" aria-hidden>
                   <ArrowRight className="w-5 h-5 rotate-90" />
                 </div>
               )}
@@ -52,7 +52,7 @@ export function HowItWorks() {
                   {index + 1}
                 </span>
               </div>
-              <h3 className="text-xl font-display font-bold text-primary mb-3">{step.title}</h3>
+              <h3 className="text-lg sm:text-xl font-display font-bold text-primary mb-2 sm:mb-3">{step.title}</h3>
               <p className="text-muted-foreground leading-relaxed max-w-[300px] text-sm">{step.description}</p>
             </div>
           ))}

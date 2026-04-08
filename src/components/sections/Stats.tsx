@@ -13,8 +13,8 @@ export function Stats() {
     <section className="relative bg-white border-b border-border/40" aria-label="What to expect">
       {/* Subtle top accent line */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" aria-hidden />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 lg:gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -30,10 +30,10 @@ export function Stats() {
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-lg sm:text-xl font-display font-bold text-primary leading-tight">
+                  <p className="text-base sm:text-xl font-display font-bold text-primary leading-tight">
                     {stat.value}
                   </p>
-                  <p className="text-sm text-muted-foreground mt-1 leading-snug">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-snug">
                     {stat.label}
                   </p>
                 </div>

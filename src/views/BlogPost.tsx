@@ -19,7 +19,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
+      <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -41,14 +41,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 })}
               </time>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-[1.1] max-w-4xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-[1.1] max-w-4xl break-words">
               {post.title}
             </h1>
           </div>
         </section>
 
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-          <div className="max-w-none">
+          <div className="max-w-none break-words [overflow-wrap:anywhere]">
             {post.content.map((paragraph, i) => (
               <p
                 key={i}
@@ -60,7 +60,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-8 sm:p-12 text-center">
+          <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center">
             <p className="font-display font-bold text-xl sm:text-2xl text-primary mb-3">
               Ready to sell your car for cash?
             </p>
@@ -98,7 +98,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="group rounded-2xl border border-border/60 bg-white p-6 hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200"
+                    className="group rounded-2xl border border-border/60 bg-white p-4 sm:p-6 hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200"
                   >
                     <span className="inline-flex items-center gap-1.5 text-xs text-accent font-semibold rounded-full bg-accent/10 px-2.5 py-1">{related.category}</span>
                     <h3 className="font-display font-bold text-base text-foreground group-hover:text-primary transition-colors mt-3 leading-snug line-clamp-2">

@@ -8,8 +8,8 @@ export function FAQ() {
   return (
     <section id="faq" className="section-y bg-white" aria-label="Frequently asked questions">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary text-balance">Cash for Cars Brisbane FAQ</h2>
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">Cash for Cars Brisbane FAQ</h2>
           <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl mx-auto">
             Towing, rego, pricing — the stuff people actually ask before they book a pickup.
           </p>
@@ -17,9 +17,9 @@ export function FAQ() {
 
         <Accordion items={faqs} />
 
-        <div className="mt-10 text-center text-sm text-muted-foreground">
+        <div className="mt-8 sm:mt-10 text-center text-sm text-muted-foreground">
           Still have questions?{" "}
-          <a href={BUSINESS.phoneHref} className="text-primary font-semibold hover:underline">
+          <a href={BUSINESS.phoneHref} className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
             Call us on {BUSINESS.phoneFriendly}
           </a>{" "}
           — we&apos;re available 7 days a week.
