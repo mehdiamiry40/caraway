@@ -51,7 +51,7 @@ export default function Locations() {
               placeholder="Search your suburb..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full h-13 rounded-2xl border-2 border-border/60 bg-white pl-12 pr-5 text-base shadow-sm shadow-black/[0.03] ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-transparent hover:border-primary/40 hover:shadow-md"
+              className="w-full h-13 rounded-2xl border-2 border-border/60 bg-white pl-12 pr-5 text-base shadow-sm shadow-black/[0.03] ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-transparent hover:border-primary/40 hover:shadow-md touch-manipulation"
               aria-label="Search suburbs"
             />
           </div>
