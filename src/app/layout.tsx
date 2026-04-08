@@ -9,6 +9,7 @@ import {
 } from "@/lib/json-ld-schemas";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SITE_URL } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -27,7 +28,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://caraway.au"),
+  metadataBase: new URL(SITE_URL),
   title: "Cash for Cars Brisbane | Caraway — Same-Day Cash & Free Towing",
   description:
     "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup. Caraway buys any make or condition — up to $9,999. Greater Brisbane, 7 days. Call 1800 227 293 for a free quote.",
