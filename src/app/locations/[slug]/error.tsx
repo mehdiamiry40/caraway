@@ -12,6 +12,9 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  if (process.env.NODE_ENV === "development") {
+    console.error(error);
+  }
   return (
     <div className="flex flex-col min-h-screen">
       <Header />

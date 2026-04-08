@@ -84,13 +84,16 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
 
           {/* Related posts */}
-          {getRelatedPosts(post.slug).length > 0 && (
+          {(() => {
+            const relatedPosts = getRelatedPosts(post.slug);
+            if (relatedPosts.length === 0) return null;
+            return (
             <div className="mt-14 border-t border-border pt-10">
               <h2 className="font-display font-bold text-xl text-foreground mb-6">
                 Keep reading
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {getRelatedPosts(post.slug).map((related) => (
+                {relatedPosts.map((related) => (
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
@@ -107,7 +110,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 ))}
               </div>
             </div>
-          )}
+            );
+          })()}
 
           <div className="mt-10">
             <Link

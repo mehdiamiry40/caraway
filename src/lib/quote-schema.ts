@@ -25,21 +25,21 @@ const optionalPhone = z
   );
 
 export const quoteFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
+  name: z.string().min(2, "Name is required").max(200, "Name is too long"),
   phone: requiredPhone,
-  make: z.string().min(2, "Car make is required"),
+  make: z.string().min(2, "Car make is required").max(200, "Car make is too long"),
   year: z.coerce.number().min(1950, "Invalid year").max(new Date().getFullYear() + 1, "Invalid year"),
-  condition: z.string().min(2, "Please select a condition"),
+  condition: z.string().min(2, "Please select a condition").max(200, "Condition is too long"),
   honeypot: honeypotField,
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 
 export const contactFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Enter a valid email address"),
+  name: z.string().min(2, "Name is required").max(200, "Name is too long"),
+  email: z.string().email("Enter a valid email address").max(320, "Email is too long"),
   phone: optionalPhone,
-  message: z.string().min(10, "Please provide more detail (at least 10 characters)"),
+  message: z.string().min(10, "Please provide more detail (at least 10 characters)").max(5000, "Message is too long"),
   honeypot: honeypotField,
 });
 
