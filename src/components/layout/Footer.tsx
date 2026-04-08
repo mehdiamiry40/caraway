@@ -28,47 +28,47 @@ const companyLinks = [
   { label: "Get a Quote", href: "/#quote-section" },
 ];
 
-const linkClasses = "text-foreground/70 hover:text-white transition-colors text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none";
+const linkClasses = "text-white/55 hover:text-white hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-block";
 
 export function Footer() {
   return (
     <footer className="bg-primary text-white">
       {/* Main footer content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-18">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-8 lg:gap-12">
 
           <div className="lg:col-span-2">
-            <Link href="/" className="font-display font-bold text-2xl tracking-tight text-white mb-4 block lowercase">
-              caraway<span className="text-accent">.</span>
+            <Link href="/" className="font-display font-bold text-2xl tracking-tight text-white mb-4 block lowercase group">
+              <span className="transition-opacity duration-200 group-hover:opacity-90">caraway<span className="text-accent">.</span></span>
             </Link>
-            <p className="text-white/60 max-w-sm mt-3 leading-relaxed text-sm">
+            <p className="text-white/50 max-w-sm mt-3 leading-relaxed text-sm">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Call or send the form.
             </p>
-            <div className="mt-6 space-y-3">
-              <a href={BUSINESS.phoneHref} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group text-sm">
-                <span className="flex h-9 w-9 rounded-xl bg-white/[0.08] items-center justify-center group-hover:bg-accent/20 transition-colors">
+            <div className="mt-8 space-y-3.5">
+              <a href={BUSINESS.phoneHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-all duration-200 group text-sm">
+                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 group-hover:scale-105 transition-all duration-200">
                   <Phone className="h-4 w-4 text-accent" />
                 </span>
-                {BUSINESS.phone}
+                <span className="font-medium">{BUSINESS.phone}</span>
               </a>
-              <a href={BUSINESS.emailHref} className="flex items-center gap-3 text-white/70 hover:text-white transition-colors group text-sm">
-                <span className="flex h-9 w-9 rounded-xl bg-white/[0.08] items-center justify-center group-hover:bg-accent/20 transition-colors">
+              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-all duration-200 group text-sm">
+                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 group-hover:scale-105 transition-all duration-200">
                   <Mail className="h-4 w-4 text-accent" />
                 </span>
-                {BUSINESS.email}
+                <span>{BUSINESS.email}</span>
               </a>
-              <div className="flex items-center gap-3 text-white/60 text-sm">
-                <span className="flex h-9 w-9 rounded-xl bg-white/[0.08] items-center justify-center">
+              <div className="flex items-center gap-3.5 text-white/50 text-sm">
+                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center">
                   <MapPin className="h-4 w-4 text-white/40" />
                 </span>
-                {BUSINESS.location}
+                <span>{BUSINESS.location}</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-white/70 mb-5">Services</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Services</h4>
+            <ul className="space-y-2.5">
               {serviceLinks.map(link => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClasses}>
@@ -80,8 +80,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-white/70 mb-5">Locations</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Locations</h4>
+            <ul className="space-y-2.5">
               {locationLinks.map(link => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClasses}>
@@ -93,8 +93,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-white/70 mb-5">Company</h4>
-            <ul className="space-y-3">
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Company</h4>
+            <ul className="space-y-2.5">
               {companyLinks.map(link => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClasses}>
@@ -109,12 +109,13 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+      <div className="border-t border-white/[0.08]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>&copy; {new Date().getFullYear()} Caraway. All rights reserved.</p>
-          <div className="flex items-center gap-5">
-            <Link href="/privacy" className="hover:text-white/70 transition-colors rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white/70 transition-colors rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none">Terms of Service</Link>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-white/70 transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none">Privacy Policy</Link>
+            <span className="w-px h-3 bg-white/10" />
+            <Link href="/terms" className="hover:text-white/70 transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none">Terms of Service</Link>
           </div>
         </div>
       </div>

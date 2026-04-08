@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
-import { CheckCircle2, Send } from "lucide-react";
+import { CheckCircle2, Send, Shield } from "lucide-react";
 
 const fieldIds = {
   name: "contact-name",
@@ -48,16 +48,17 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/60 shadow-sm">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/40 shadow-lg shadow-primary/[0.03] relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" aria-hidden />
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10">
-          <div className="w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+          <div className="w-20 h-20 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full flex items-center justify-center mb-6 ring-4 ring-accent/10">
             <CheckCircle2 className="w-10 h-10 text-accent" aria-hidden />
           </div>
-          <h3 className="text-2xl font-display font-bold text-primary mb-2">Message sent</h3>
+          <h3 className="text-2xl font-display font-bold text-primary mb-3">Message sent</h3>
           <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
             We&apos;ll get back to you as soon as possible.
           </p>
-          <Button onClick={() => setIsSuccess(false)} variant="outline">
+          <Button onClick={() => setIsSuccess(false)} variant="outline" className="transition-all duration-200">
             Send another message
           </Button>
         </div>
@@ -66,8 +67,9 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/60 shadow-sm">
-      <h2 className="text-lg sm:text-xl font-display font-bold text-foreground mb-1">Send Us a Message</h2>
+    <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/40 shadow-lg shadow-primary/[0.03] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" aria-hidden />
+      <h2 className="text-lg sm:text-xl font-display font-bold text-foreground mb-1 pt-1">Send Us a Message</h2>
       <p className="text-sm text-muted-foreground mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
@@ -84,7 +86,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor={fieldIds.name} className="block text-sm font-medium text-foreground mb-1.5">
+          <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
             Your name
           </label>
           <Input
@@ -96,7 +98,8 @@ export function ContactForm() {
             id={fieldIds.name}
           />
           {errors.name && (
-            <p id={`${fieldIds.name}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+            <p id={`${fieldIds.name}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+              <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.name.message}
             </p>
           )}
@@ -104,7 +107,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor={fieldIds.email} className="block text-sm font-medium text-foreground mb-1.5">
+            <label htmlFor={fieldIds.email} className="block text-sm font-semibold text-foreground mb-2">
               Email
             </label>
             <Input
@@ -117,13 +120,14 @@ export function ContactForm() {
               id={fieldIds.email}
             />
             {errors.email && (
-              <p id={`${fieldIds.email}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+              <p id={`${fieldIds.email}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.email.message}
               </p>
             )}
           </div>
           <div>
-            <label htmlFor={fieldIds.phone} className="block text-sm font-medium text-foreground mb-1.5">
+            <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
               Phone <span className="text-muted-foreground font-normal">(optional)</span>
             </label>
             <Input
@@ -136,7 +140,8 @@ export function ContactForm() {
               id={fieldIds.phone}
             />
             {errors.phone && (
-              <p id={`${fieldIds.phone}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+              <p id={`${fieldIds.phone}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.phone.message}
               </p>
             )}
@@ -144,7 +149,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor={fieldIds.message} className="block text-sm font-medium text-foreground mb-1.5">
+          <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground mb-2">
             Message
           </label>
           <Textarea
@@ -156,26 +161,37 @@ export function ContactForm() {
             id={fieldIds.message}
           />
           {errors.message && (
-            <p id={`${fieldIds.message}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+            <p id={`${fieldIds.message}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+              <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.message.message}
             </p>
           )}
         </div>
 
-        <Button type="submit" size="lg" className="w-full h-14 text-base sm:text-lg mt-1" isLoading={isSubmitting}>
-          {isSubmitting ? (
-            "Sending…"
-          ) : (
-            <>
-              <Send className="h-4 w-4 mr-2" aria-hidden />
-              Send message
-            </>
-          )}
-        </Button>
+        <div className="pt-1">
+          <Button type="submit" size="lg" className="w-full h-14 text-base sm:text-lg font-bold" isLoading={isSubmitting}>
+            {isSubmitting ? (
+              "Sending..."
+            ) : (
+              <>
+                <Send className="h-4 w-4 mr-2" aria-hidden />
+                Send message
+              </>
+            )}
+          </Button>
+        </div>
+
+        {/* Trust line below CTA */}
+        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+          <Shield className="w-3.5 h-3.5 text-primary/40 shrink-0" aria-hidden />
+          <span>Your information is safe and never shared.</span>
+        </div>
+
         {errorMessage && (
-          <p className="text-sm text-destructive text-center" role="alert">
+          <div className="flex items-center gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3 text-sm text-destructive font-medium" role="alert">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
             {errorMessage}
-          </p>
+          </div>
         )}
       </form>
     </div>

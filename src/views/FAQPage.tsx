@@ -61,44 +61,48 @@ export default function FAQPage() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
-        <section className="bg-primary text-white py-16 lg:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold leading-tight mt-4 mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               Frequently Asked Questions
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed max-w-3xl">
+            <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
               Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? Call us on <a href={BUSINESS.phoneHref} className="text-accent hover:underline font-semibold">{BUSINESS.phone}</a>.
             </p>
           </div>
         </section>
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 space-y-12">
-          {faqCategories.map(category => (
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-14">
+          {faqCategories.map((category, idx) => (
             <div key={category.category}>
-              <h2 className="text-2xl font-display font-bold text-foreground mb-6">
-                {category.category}
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">{idx + 1}</span>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-snug">
+                  {category.category}
+                </h2>
+              </div>
               <Accordion items={category.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
             </div>
           ))}
 
-          <div className="rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent p-8 sm:p-10 text-center">
+          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-8 sm:p-12 text-center">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
-            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Our Brisbane team is happy to help. Call us or visit our contact page.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href={BUSINESS.phoneHref}
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3 px-6 font-semibold hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-7 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
               >
                 <Phone className="h-4 w-4" />
                 Call {BUSINESS.phone}
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary rounded-full py-3 px-6 font-semibold hover:bg-primary hover:text-white hover:border-primary transition-all"
+                className="inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white hover:border-primary transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
                 Contact Us

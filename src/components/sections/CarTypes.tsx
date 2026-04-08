@@ -30,21 +30,21 @@ export function CarTypes() {
             </p>
           </div>
 
-          <div className="w-full flex flex-wrap gap-2.5">
+          <div className="w-full flex flex-wrap gap-3">
             {linkedTypes.map((type) => (
               <Link
                 key={type.label}
                 href={type.href}
-                className="group inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.05] text-sm font-medium hover:bg-white hover:text-primary hover:border-white transition-colors touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="group inline-flex items-center gap-1.5 px-5 py-3 rounded-xl border border-white/15 bg-white/[0.06] text-sm font-medium hover:bg-white hover:text-primary hover:border-white hover:shadow-lg hover:shadow-white/10 transition-all duration-200 touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none backdrop-blur-sm"
               >
                 {type.label}
-                <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
+                <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" aria-hidden />
               </Link>
             ))}
             {plainTypes.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-4 py-2.5 rounded-xl border border-white/8 text-sm text-primary-foreground/60 cursor-default"
+                className="inline-flex items-center px-5 py-3 rounded-xl border border-white/[0.08] text-sm text-primary-foreground/50 cursor-default bg-white/[0.02]"
               >
                 {type}
               </span>

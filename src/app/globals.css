@@ -72,6 +72,36 @@
   }
 }
 
+/* Subtle pulse for primary CTA */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--accent) / 0.4); }
+  50% { box-shadow: 0 0 0 8px hsl(var(--accent) / 0); }
+}
+
+.cta-pulse {
+  animation: cta-pulse 2.5s ease-in-out infinite;
+}
+
+/* Counter-style number animation placeholder */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+/* Connector line for how-it-works steps */
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-draw-line {
+  animation: draw-line 1s ease-out both;
+}
+
 html {
   scroll-behavior: smooth;
 }

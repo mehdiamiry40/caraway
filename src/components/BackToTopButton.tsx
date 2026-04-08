@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function BackToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -21,16 +22,19 @@ export function BackToTopButton() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (!visible) return null;
-
   return (
     <button
       type="button"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-sm hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 animate-in fade-in slide-in-from-bottom-4 duration-300"
+      className={cn(
+        "fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/20 transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        visible
+          ? "translate-y-0 opacity-100 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 active:translate-y-0 active:shadow-lg"
+          : "translate-y-4 opacity-0 pointer-events-none"
+      )}
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-px" />
     </button>
   );
 }
