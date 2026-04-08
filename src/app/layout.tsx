@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, DM_Sans } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
@@ -12,14 +12,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
 import "./globals.css";
 
-const openSans = Open_Sans({
+const inter = Inter({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-sans-body",
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const dmSans = DM_Sans({
   weight: ["600", "700"],
   subsets: ["latin"],
   variable: "--font-display-heading",
@@ -87,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${openSans.variable} ${plusJakarta.variable}`}
+      className={`${inter.variable} ${dmSans.variable}`}
     >
       <body className="min-h-screen">
         <a
