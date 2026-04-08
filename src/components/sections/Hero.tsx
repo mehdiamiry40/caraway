@@ -21,15 +21,6 @@ export function Hero() {
             style={{ left: "calc(50% - 50vw)", right: 0 }}
           />
           <div className="relative z-10 w-full">
-            {/* Eyebrow badge for social proof */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-1.5 mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-accent/60 animate-ping" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-              </span>
-              <span className="text-xs sm:text-sm font-medium text-white/90">Brisbane&apos;s trusted car buyers</span>
-            </div>
-
             <h1
               id="hero-heading"
               className="text-3xl sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.08] tracking-tight text-white mb-5"
