@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, Phone } from "lucide-react";
+import { CheckCircle2, Shield, Clock, Phone, BadgeCheck, Sparkles } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
 const fieldIds = {
@@ -63,21 +63,25 @@ export function QuoteForm() {
   return (
     <section id="quote-section" className="section-y bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-muted/40 rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 border border-border/40">
+        <div className="bg-gradient-to-br from-primary/[0.04] via-muted/60 to-accent/[0.06] rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 border border-border/40 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-foreground border border-accent/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 w-fit shadow-sm">
+                <Sparkles className="w-4 h-4 text-accent" aria-hidden />
+                <span className="text-accent">Free instant quote</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary mb-4 md:mb-6 text-balance leading-tight">
                 Get Your Cash for Cars Brisbane Quote
               </h2>
-              <p className="text-muted-foreground mb-8 sm:mb-10 leading-relaxed">
+              <p className="text-muted-foreground mb-8 sm:mb-10 leading-relaxed text-base sm:text-lg">
                 Tell us about the car. We&apos;ll call or text back with a price range and next steps — usually within one business day. No obligation.
               </p>
 
               <div className="hidden lg:flex flex-col gap-6">
                 {benefits.map((b) => (
-                  <div key={b.title} className="flex gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-border/50 flex items-center justify-center shrink-0">
-                      <b.icon className="w-5 h-5 text-primary/60" />
+                  <div key={b.title} className="flex gap-4 group">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-border/50 flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary/30 transition-colors duration-200">
+                      <b.icon className="w-5 h-5 text-primary/70" />
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-foreground text-sm">{b.title}</h3>
@@ -88,26 +92,32 @@ export function QuoteForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/40">
+            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/30 shadow-lg shadow-primary/[0.04] relative overflow-hidden">
+              {/* Subtle top accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" aria-hidden />
+
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-10 sm:py-12">
-                  <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
-                    <CheckCircle2 className="w-8 h-8 text-accent" aria-hidden />
+                  <div className="w-20 h-20 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full flex items-center justify-center mb-6 ring-4 ring-accent/10">
+                    <CheckCircle2 className="w-10 h-10 text-accent" aria-hidden />
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-primary mb-2">Thanks — we&apos;ve got your details</h3>
+                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
+                  <p className="text-muted-foreground mb-4 max-w-sm leading-relaxed">
+                    Our team will contact you using the number you provided.
+                  </p>
                   <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
-                    Our team will contact you using the number you provided. If you need someone sooner, call{" "}
-                    <a href={BUSINESS.phoneHref} className="text-primary font-semibold underline underline-offset-2">
+                    If you need someone sooner, call{" "}
+                    <a href={BUSINESS.phoneHref} className="text-primary font-bold underline underline-offset-2 hover:text-primary/80 transition-colors">
                       {BUSINESS.phone}
                     </a>
                     .
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline">
+                  <Button onClick={() => resetMutation()} variant="outline" className="transition-all duration-200">
                     Submit another vehicle
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 pt-2" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -118,9 +128,23 @@ export function QuoteForm() {
                       {...register("honeypot")}
                     />
                   </div>
+
+                  {/* Trust badge row - mobile visible */}
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground pb-1 lg:hidden">
+                    <div className="flex items-center gap-1.5">
+                      <Shield className="w-4 h-4 text-primary/50" aria-hidden />
+                      <span>No obligation</span>
+                    </div>
+                    <span className="text-border">|</span>
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-primary/50" aria-hidden />
+                      <span>Same-day reply</span>
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm font-medium text-foreground mb-1.5">
+                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
                         Your name
                       </label>
                       <Input
@@ -132,13 +156,14 @@ export function QuoteForm() {
                         id={fieldIds.name}
                       />
                       {errors.name && (
-                        <p id={`${fieldIds.name}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+                        <p id={`${fieldIds.name}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.name.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm font-medium text-foreground mb-1.5">
+                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
                         Phone
                       </label>
                       <Input
@@ -151,7 +176,8 @@ export function QuoteForm() {
                         id={fieldIds.phone}
                       />
                       {errors.phone && (
-                        <p id={`${fieldIds.phone}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+                        <p id={`${fieldIds.phone}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.phone.message}
                         </p>
                       )}
@@ -159,7 +185,7 @@ export function QuoteForm() {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.make} className="block text-sm font-medium text-foreground mb-1.5">
+                    <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2">
                       Make &amp; model
                     </label>
                     <Input
@@ -171,7 +197,8 @@ export function QuoteForm() {
                       id={fieldIds.make}
                     />
                     {errors.make && (
-                      <p id={`${fieldIds.make}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+                      <p id={`${fieldIds.make}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                         {errors.make.message}
                       </p>
                     )}
@@ -179,7 +206,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label htmlFor={fieldIds.year} className="block text-sm font-medium text-foreground mb-1.5">
+                      <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2">
                         Year
                       </label>
                       <Input
@@ -191,13 +218,14 @@ export function QuoteForm() {
                         id={fieldIds.year}
                       />
                       {errors.year && (
-                        <p id={`${fieldIds.year}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+                        <p id={`${fieldIds.year}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.year.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.condition} className="block text-sm font-medium text-foreground mb-1.5">
+                      <label htmlFor={fieldIds.condition} className="block text-sm font-semibold text-foreground mb-2">
                         Condition
                       </label>
                       <Select
@@ -215,24 +243,35 @@ export function QuoteForm() {
                         id={fieldIds.condition}
                       />
                       {errors.condition && (
-                        <p id={`${fieldIds.condition}-error`} className="text-destructive text-sm mt-1.5" role="alert">
+                        <p id={`${fieldIds.condition}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.condition.message}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full h-14 text-base sm:text-lg mt-2" isLoading={isSubmitting}>
-                    {isSubmitting ? "Sending…" : "Get my free quote"}
-                  </Button>
+                  <div className="pt-1">
+                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide" isLoading={isSubmitting}>
+                      {isSubmitting ? "Sending your details..." : "Get my free quote"}
+                    </Button>
+                  </div>
+
+                  {/* Trust line below CTA */}
+                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
+                    <BadgeCheck className="w-4 h-4 text-primary/40 shrink-0" aria-hidden />
+                    <span>Free, no-obligation quote. We never share your info.</span>
+                  </div>
+
                   {errorMessage && (
-                    <p className="text-sm text-destructive text-center" role="alert">
+                    <div className="flex items-center gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3 text-sm text-destructive font-medium" role="alert">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                       {errorMessage}
-                    </p>
+                    </div>
                   )}
-                  <p className="text-xs text-center text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-center text-muted-foreground/80 leading-relaxed">
                     By submitting, you agree we may contact you about this enquiry. You can opt out anytime. See our{" "}
-                    <Link href="/privacy" className="text-primary underline underline-offset-2">
+                    <Link href="/privacy" className="text-primary/80 underline underline-offset-2 hover:text-primary transition-colors">
                       Privacy Policy
                     </Link>
                     .
