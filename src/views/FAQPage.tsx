@@ -87,7 +87,7 @@ export default function FAQPage() {
             </div>
           ))}
 
-          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-8 sm:p-12 text-center">
+          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Our Brisbane team is happy to help. Call us or visit our contact page.

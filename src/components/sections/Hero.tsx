@@ -14,7 +14,7 @@ export function Hero() {
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[560px]">
         {/* Text side */}
-        <div className="relative z-10 flex flex-col justify-center w-full lg:w-[46%] shrink-0 px-4 sm:px-6 lg:px-10 py-14 sm:py-18 lg:py-24 lg:pl-16 lg:pr-14">
+        <div className="relative z-10 flex flex-col justify-center w-full lg:w-[46%] shrink-0 px-4 sm:px-6 lg:px-10 py-10 sm:py-18 lg:py-24 lg:pl-16 lg:pr-14">
           <div
             aria-hidden
             className="absolute inset-y-0 z-0 bg-gradient-to-br from-primary via-primary to-primary/90"
@@ -23,13 +23,13 @@ export function Hero() {
           <div className="relative z-10 w-full">
             <h1
               id="hero-heading"
-              className="text-3xl sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.08] tracking-tight text-white mb-5"
+              className="text-[1.75rem] sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.08] tracking-tight text-white mb-5 break-words"
             >
               Cash for Cars<br />
               <span className="text-accent">Brisbane</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-white/85 mb-8 sm:mb-10 max-w-md leading-relaxed">
+            <p className="text-base sm:text-xl text-white/85 mb-6 sm:mb-10 max-w-md leading-relaxed">
               We buy unwanted cars for cash — pickup included. Running or not, with or without rego.
             </p>
 
@@ -52,9 +52,9 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-x-6 gap-y-2.5">
+            <div className="mt-6 sm:mt-10 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2.5">
               {["Paid on pickup", "Free towing", "No roadworthy needed"].map((text) => (
-                <div key={text} className="flex items-center gap-2 whitespace-nowrap">
+                <div key={text} className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
                   <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
                     <Check className="w-3 h-3 text-accent shrink-0" strokeWidth={3} aria-hidden />
                   </div>
@@ -88,12 +88,12 @@ export function Hero() {
           <div className="absolute inset-x-0 bottom-0 h-32 z-[2] bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 
           {/* Price badge */}
-          <div className="absolute bottom-5 left-4 right-4 sm:bottom-7 sm:left-auto sm:right-7 sm:max-w-sm z-[3] bg-white rounded-2xl px-5 py-4 flex items-center gap-4 shadow-lg shadow-black/10 border border-white/80 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-md shadow-accent/20" aria-hidden>
+          <div className="absolute bottom-5 left-4 right-4 sm:bottom-7 sm:left-auto sm:right-7 sm:max-w-sm z-[3] bg-white rounded-2xl px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 shadow-lg shadow-black/10 border border-white/80 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shrink-0 shadow-md shadow-accent/20" aria-hidden>
               $
             </div>
-            <div>
-              <div className="font-display font-bold text-foreground text-sm">Offers up to $9,999</div>
+            <div className="min-w-0">
+              <div className="font-display font-bold text-foreground text-sm truncate">Offers up to $9,999</div>
               <div className="text-xs text-muted-foreground mt-0.5">Depends on make, condition &amp; market</div>
             </div>
           </div>

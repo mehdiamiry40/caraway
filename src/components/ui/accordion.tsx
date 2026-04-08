@@ -36,16 +36,16 @@ export function Accordion({ items, className }: AccordionProps) {
               type="button"
               id={triggerId}
               onClick={() => setActiveIndex(isActive ? null : index)}
-              className="flex w-full min-h-[3.25rem] items-center justify-between gap-3 p-4 sm:p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+              className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
               aria-expanded={isActive}
               aria-controls={panelId}
             >
-              <span className="font-display text-base sm:text-lg font-medium text-foreground">
+              <span className="font-display text-base sm:text-lg font-medium text-foreground break-words [overflow-wrap:anywhere]">
                 {item.question}
               </span>
               <div
                 className={cn(
-                  "flex-shrink-0 ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-all duration-300",
+                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-all duration-300",
                   isActive && "rotate-180"
                 )}
               >
@@ -62,7 +62,7 @@ export function Accordion({ items, className }: AccordionProps) {
               )}
             >
               <div className="overflow-hidden">
-                <div className="px-4 pb-4 pt-0 sm:px-6 sm:pb-6 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                <div className="px-4 pb-4 pt-0 sm:px-6 sm:pb-6 text-muted-foreground text-sm sm:text-base leading-relaxed break-words [overflow-wrap:anywhere]">
                   {item.answer}
                 </div>
               </div>

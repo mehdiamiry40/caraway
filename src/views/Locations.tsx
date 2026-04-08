@@ -44,7 +44,7 @@ export default function Locations() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           {/* Search */}
-          <div className="relative max-w-lg mb-12">
+          <div className="relative max-w-full sm:max-w-lg mb-12">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-muted-foreground/60 pointer-events-none" />
             <input
               type="search"
@@ -78,7 +78,7 @@ export default function Locations() {
                 <Link
                   key={suburb.slug}
                   href={`/locations/${suburb.slug}`}
-                  className="group border border-border/60 rounded-2xl p-6 hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 bg-white"
+                  className="group border border-border/60 rounded-2xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 bg-white"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-accent/15 to-accent/5 flex items-center justify-center group-hover:from-accent/25 group-hover:to-accent/10 transition-colors">
@@ -99,7 +99,7 @@ export default function Locations() {
             </div>
           )}
 
-          <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-8 md:p-12 text-center max-w-2xl mx-auto">
+          <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Your Suburb Not Listed?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Call us to confirm availability and get a free quote.

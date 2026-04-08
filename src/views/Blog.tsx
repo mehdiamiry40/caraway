@@ -37,7 +37,7 @@ export default function Blog() {
                 key={post.slug}
                 className={`group rounded-2xl border border-border/60 bg-white hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
               >
-                <div className={`p-6 sm:p-8 flex flex-col h-full ${idx === 0 ? "sm:p-10" : ""}`}>
+                <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
                       <Tag className="h-3 w-3" />

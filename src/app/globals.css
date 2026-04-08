@@ -50,17 +50,24 @@
 
   body {
     @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/15 selection:text-primary;
+    overscroll-behavior-y: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply font-bold tracking-tight;
   }
+
+  /* Ensure inputs scroll above the mobile keyboard when focused */
+  input, select, textarea {
+    scroll-margin-top: 1rem;
+    scroll-margin-bottom: 4rem;
+  }
 }
 
 @layer utilities {
   .section-y {
-    @apply py-16 sm:py-20 md:py-28;
+    @apply py-12 sm:py-20 md:py-28;
   }
 
   .text-balance {
@@ -102,15 +109,20 @@
   animation: draw-line 1s ease-out both;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* iOS Safari smooth scroll workaround — use CSS scroll only when supported */
+  @supports (-webkit-overflow-scrolling: touch) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
@@ -127,4 +139,35 @@ html {
 
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@utility pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+@utility pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+@utility bottom-safe {
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Hide scrollbar for breadcrumbs and other horizontal scrollers */
+@utility scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Header-aware top margin that accounts for safe-area-inset on notched devices.
+   Mobile: brand strip only (3.5rem / 56px).
+   Desktop (lg+): brand strip + nav bar (56px + 48px = 104px). */
+@utility mt-header-safe {
+  margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  @media (min-width: 1024px) {
+    margin-top: calc(104px + env(safe-area-inset-top, 0px));
+  }
 }

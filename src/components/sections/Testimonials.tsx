@@ -18,9 +18,9 @@ export function Testimonials() {
   return (
     <section className="section-y bg-muted/40" aria-label="What sellers say">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14 md:mb-18">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
           <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Reviews</span>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary text-balance">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">
             Cash for Cars Brisbane Reviews
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -28,11 +28,11 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {testimonials.map((review, index) => (
             <article
               key={`${review.name}-${review.location}-${index}`}
-              className="group relative bg-white rounded-2xl p-6 sm:p-7 border border-border/50 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300"
+              className="group relative bg-white rounded-2xl p-5 sm:p-7 border border-border/50 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300"
             >
               {/* Decorative quote icon */}
               <Quote className="absolute top-5 right-5 w-8 h-8 text-muted/60 group-hover:text-primary/10 transition-colors duration-300 -scale-x-100" aria-hidden />

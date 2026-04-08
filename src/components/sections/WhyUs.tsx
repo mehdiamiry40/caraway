@@ -35,10 +35,10 @@ export function WhyUs() {
   return (
     <section id="why-us" className="section-y bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div className="lg:col-span-5">
             <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Why us</span>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-5 md:mb-6 leading-tight text-balance">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary mb-5 md:mb-6 leading-tight text-balance">
               Why Brisbane Sellers Choose Caraway
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -61,7 +61,7 @@ export function WhyUs() {
             {reasons.map((reason) => (
               <div
                 key={reason.title}
-                className="group relative bg-gradient-to-br from-muted/60 to-white p-6 rounded-2xl border border-border/40 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300"
+                className="group relative bg-gradient-to-br from-muted/60 to-white p-4 sm:p-6 rounded-2xl border border-border/40 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <div className={`w-10 h-10 rounded-xl border flex items-center justify-center mb-4 transition-colors duration-300 ${reason.iconBg}`}>
                   {reason.icon}

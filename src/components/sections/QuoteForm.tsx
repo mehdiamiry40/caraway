@@ -63,8 +63,8 @@ export function QuoteForm() {
   return (
     <section id="quote-section" className="section-y bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-primary/[0.04] via-muted/60 to-accent/[0.06] rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 border border-border/40 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="bg-gradient-to-br from-primary/[0.04] via-muted/60 to-accent/[0.06] rounded-2xl p-4 sm:p-8 md:p-12 lg:p-16 border border-border/40 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
             <div className="flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-foreground border border-accent/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 w-fit shadow-sm">
                 <Sparkles className="w-4 h-4 text-accent" aria-hidden />
@@ -92,32 +92,32 @@ export function QuoteForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-border/30 shadow-lg shadow-primary/[0.04] relative overflow-hidden">
+            <div className="bg-white rounded-2xl p-4 sm:p-8 border border-border/30 shadow-lg shadow-primary/[0.04] relative overflow-hidden">
               {/* Subtle top accent bar */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" aria-hidden />
 
               {isSuccess ? (
-                <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-10 sm:py-12">
-                  <div className="w-20 h-20 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full flex items-center justify-center mb-6 ring-4 ring-accent/10">
-                    <CheckCircle2 className="w-10 h-10 text-accent" aria-hidden />
+                <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full flex items-center justify-center mb-5 sm:mb-6 ring-4 ring-accent/10">
+                    <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
-                  <p className="text-muted-foreground mb-4 max-w-sm leading-relaxed">
+                  <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
+                  <p className="text-muted-foreground mb-4 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will contact you using the number you provided.
                   </p>
-                  <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
+                  <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     If you need someone sooner, call{" "}
                     <a href={BUSINESS.phoneHref} className="text-primary font-bold underline underline-offset-2 hover:text-primary/80 transition-colors">
                       {BUSINESS.phone}
                     </a>
                     .
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline" className="transition-all duration-200">
+                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto transition-all duration-200">
                     Submit another vehicle
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 pt-2" noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5 pt-2" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -142,7 +142,7 @@ export function QuoteForm() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
                         Your name
@@ -156,8 +156,8 @@ export function QuoteForm() {
                         id={fieldIds.name}
                       />
                       {errors.name && (
-                        <p id={`${fieldIds.name}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.name.message}
                         </p>
                       )}
@@ -176,8 +176,8 @@ export function QuoteForm() {
                         id={fieldIds.phone}
                       />
                       {errors.phone && (
-                        <p id={`${fieldIds.phone}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.phone.message}
                         </p>
                       )}
@@ -197,20 +197,21 @@ export function QuoteForm() {
                       id={fieldIds.make}
                     />
                     {errors.make && (
-                      <p id={`${fieldIds.make}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
+                      <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {errors.make.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2">
                         Year
                       </label>
                       <Input
                         inputMode="numeric"
+                        autoComplete="off"
                         placeholder="e.g. 2012"
                         aria-invalid={errors.year ? true : undefined}
                         aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
@@ -218,8 +219,8 @@ export function QuoteForm() {
                         id={fieldIds.year}
                       />
                       {errors.year && (
-                        <p id={`${fieldIds.year}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.year}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.year.message}
                         </p>
                       )}
@@ -243,8 +244,8 @@ export function QuoteForm() {
                         id={fieldIds.condition}
                       />
                       {errors.condition && (
-                        <p id={`${fieldIds.condition}-error`} className="flex items-center gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.condition}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.condition.message}
                         </p>
                       )}
@@ -264,8 +265,8 @@ export function QuoteForm() {
                   </div>
 
                   {errorMessage && (
-                    <div className="flex items-center gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3 text-sm text-destructive font-medium" role="alert">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                    <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
+                      <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                       {errorMessage}
                     </div>
                   )}

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-muted/50 to-white px-4">
-      <div className="w-full max-w-lg text-center py-20">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-muted/50 to-white px-4 sm:px-6">
+      <div className="w-full max-w-lg text-center py-16 sm:py-20">
         <div className="w-20 h-20 rounded-full bg-primary/[0.06] flex items-center justify-center mx-auto mb-8">
           <span className="text-4xl font-display font-bold text-primary/40">404</span>
         </div>
@@ -31,7 +31,7 @@ export default function NotFound() {
             href="/"
             className={cn(
               buttonVariants({ variant: "default" }),
-              "inline-flex items-center gap-2 justify-center",
+              "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
             )}
           >
             <Home className="h-4 w-4" />
@@ -41,7 +41,7 @@ export default function NotFound() {
             href="/locations"
             className={cn(
               buttonVariants({ variant: "outline" }),
-              "inline-flex items-center gap-2 justify-center",
+              "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
             )}
           >
             <Search className="h-4 w-4" />

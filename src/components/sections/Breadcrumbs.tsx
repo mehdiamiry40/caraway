@@ -14,10 +14,10 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
   return (
-    <nav aria-label="Breadcrumb" className="text-sm">
-      <ol className="flex items-center gap-1.5 flex-wrap">
+    <nav aria-label="Breadcrumb" className="text-sm overflow-x-auto scrollbar-none">
+      <ol className="flex items-center gap-1.5 flex-nowrap whitespace-nowrap">
         {items.map((item, i) => (
-          <li key={item.href || item.label} className="flex items-center gap-1.5">
+          <li key={item.href || item.label} className="flex items-center gap-1.5 min-w-0 shrink-0 last:shrink">
             {i > 0 && (
               <span aria-hidden="true" className={cn("text-xs select-none", light ? "text-white/30" : "text-muted-foreground/40")}>/</span>
             )}
@@ -25,7 +25,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
               <Link
                 href={item.href}
                 className={cn(
-                  "transition-all duration-200 rounded-md px-1.5 py-0.5 -mx-1.5 -my-0.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
+                  "transition-all duration-200 rounded-md px-1.5 py-1 -mx-1.5 -my-1 min-h-[44px] inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   light
                     ? "text-white/50 hover:text-white hover:bg-white/[0.08]"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
@@ -34,7 +34,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                 {item.label}
               </Link>
             ) : (
-              <span aria-current="page" className={cn("font-medium px-1.5 py-0.5 -mx-1.5 -my-0.5 rounded-md", light ? "text-white/90 bg-white/[0.06]" : "text-foreground bg-muted/40")}>
+              <span aria-current="page" className={cn("font-medium px-1.5 py-1 -mx-1.5 -my-1 rounded-md truncate max-w-[200px] sm:max-w-none", light ? "text-white/90 bg-white/[0.06]" : "text-foreground bg-muted/40")}>
                 {item.label}
               </span>
             )}

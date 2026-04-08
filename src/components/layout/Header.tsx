@@ -98,7 +98,7 @@ export function Header() {
         isScrolled ? "shadow-lg shadow-black/8" : "shadow-none"
       )}>
         {/* Top bar — brand strip */}
-        <div className="bg-primary border-b border-white/10">
+        <div className="bg-primary border-b border-white/10 pl-safe pr-safe">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14">
             <Link href="/" className="flex items-center gap-2 group">
               <span className="font-display font-bold text-2xl tracking-tight text-white lowercase transition-opacity duration-200 group-hover:opacity-90">
@@ -136,7 +136,7 @@ export function Header() {
 
         {/* Navigation bar — light clinical surface */}
         <div className={cn(
-          "border-b border-border hidden lg:block transition-all duration-500 ease-out",
+          "border-b border-border hidden lg:block transition-all duration-500 ease-out pl-safe pr-safe",
           isScrolled ? "bg-background/98 backdrop-blur-md" : "bg-background/95 backdrop-blur-sm"
         )}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -221,7 +221,7 @@ export function Header() {
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/20 animate-in fade-in duration-300" onClick={() => setIsMobileMenuOpen(false)} />
           {/* Drawer panel */}
-          <div className="relative bg-white flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out">
+          <div className="relative bg-white flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
             <div className="flex items-center justify-between min-h-14 px-4 border-b border-white/10 bg-primary shrink-0">
               <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-white lowercase">
                 caraway<span className="text-accent">.</span>
