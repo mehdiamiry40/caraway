@@ -8,7 +8,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full overflow-x-hidden mt-14 lg:mt-[104px]"
+      className="relative w-full overflow-x-hidden mt-header-safe"
       style={{ minHeight: "min(100svh, 560px)" }}
       aria-labelledby="hero-heading"
     >

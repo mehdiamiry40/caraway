@@ -6,7 +6,7 @@ export default function BlogPostLoading() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 mt-14 lg:mt-[104px]">
+      <main className="flex-1 mt-header-safe">
         <section className="bg-primary py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Skeleton className="h-4 w-40 bg-white/10 mb-4" />

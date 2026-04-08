@@ -15,7 +15,7 @@ export default function Terms() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-14 lg:mt-[104px]">
+      <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-primary text-white py-16 lg:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light />
