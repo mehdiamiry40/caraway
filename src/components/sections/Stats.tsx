@@ -11,8 +11,6 @@ const stats = [
 export function Stats() {
   return (
     <section className="relative bg-white border-b border-border/40" aria-label="What to expect">
-      {/* Subtle top accent line */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" aria-hidden />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 lg:gap-6">
           {stats.map((stat, index) => {
@@ -26,7 +24,7 @@ export function Stats() {
                 {index > 0 && (
                   <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border/60" aria-hidden />
                 )}
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/5 border border-primary/10 group-hover:bg-primary/10 group-hover:border-primary/20 transition-colors duration-300">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/5 border border-primary/10 transition-colors duration-200">
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="min-w-0">

@@ -31,7 +31,6 @@ export function ServiceAreas() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Greater Brisbane coverage</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
             Cash for Cars Brisbane Service Areas
           </h2>
@@ -47,9 +46,8 @@ export function ServiceAreas() {
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
               className={cn(
-                "group flex items-center gap-3 rounded-xl border border-border/50 bg-white p-3 sm:p-4",
-                "hover:border-primary hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5",
-                "transition-all duration-200 touch-manipulation min-h-[44px]"
+                "group flex items-center gap-3 rounded-xl border border-border/60 bg-white p-3 sm:p-4",
+                "hover:border-primary/30 transition-all duration-200 touch-manipulation min-h-[44px]"
               )}
             >
               <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/5 text-primary/60 group-hover:bg-primary group-hover:text-white transition-all duration-200 shrink-0">
@@ -97,13 +95,13 @@ export function ServiceAreas() {
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/#price-estimator"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-accent/90 transition-all shadow-md shadow-accent/20 hover:shadow-lg touch-manipulation"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-accent/90 transition-colors touch-manipulation"
           >
             Get an Instant Quote
           </Link>
           <Link
             href="/locations"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border min-h-12 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-all touch-manipulation"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-border min-h-12 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-colors touch-manipulation"
           >
             View all locations
             <ArrowRight className="h-4 w-4" />

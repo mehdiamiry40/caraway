@@ -20,11 +20,10 @@ const alsoAccepted = [
 
 export function CarTypes() {
   return (
-    <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
+    <section className="py-16 sm:py-24 bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">All makes & conditions</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
             What Cars We Buy in Brisbane
           </h2>
@@ -43,9 +42,9 @@ export function CarTypes() {
                 href={type.href}
                 className={cn(
                   "group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl",
-                  "bg-white/[0.05] border border-white/10 backdrop-blur-sm",
-                  "hover:bg-white hover:border-white hover:text-primary hover:shadow-xl hover:shadow-black/10",
-                  "hover:-translate-y-1 transition-all duration-300",
+                  "bg-white/[0.06] border border-white/10",
+                  "hover:bg-white/[0.12] hover:border-white/20",
+                  "transition-colors duration-200",
                   "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   "touch-manipulation min-h-[120px] sm:min-h-[140px]"
                 )}
@@ -53,15 +52,14 @@ export function CarTypes() {
                 <div className={cn(
                   "flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-xl mb-3",
                   "bg-accent/20 text-accent",
-                  "group-hover:bg-accent group-hover:text-white group-hover:shadow-md group-hover:shadow-accent/30",
-                  "transition-all duration-300"
+                  "transition-colors duration-200"
                 )}>
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/40 group-hover:text-muted-foreground leading-tight">
+                <span className="text-[11px] sm:text-xs text-primary-foreground/40 group-hover:text-primary-foreground/60 leading-tight">
                   {type.desc}
                 </span>
                 <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />
@@ -77,7 +75,7 @@ export function CarTypes() {
             {alsoAccepted.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/[0.08] text-xs sm:text-sm text-primary-foreground/50 bg-white/[0.02]"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/[0.08] text-xs sm:text-sm text-primary-foreground/50"
               >
                 {type}
               </span>

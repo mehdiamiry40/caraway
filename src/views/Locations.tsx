@@ -16,9 +16,8 @@ export default function Locations() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="bg-primary text-white py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               Cash for Cars — Brisbane Locations
@@ -32,14 +31,14 @@ export default function Locations() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <LocationsFilter />
 
-          <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
+          <div className="mt-16 rounded-2xl border border-border/60 bg-white p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Your Suburb Not Listed?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Use our price estimator for a free quote.
             </p>
             <Link
               href="/#price-estimator"
-              className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-8 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-lg py-3.5 px-8 font-semibold hover:bg-accent/90 transition-colors"
             >
               Get an Instant Quote
             </Link>

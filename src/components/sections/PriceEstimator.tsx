@@ -148,10 +148,10 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-gradient-to-b from-muted/40 via-background to-muted/30" aria-label="Quote submitted">
+      <section id="price-estimator" className="py-16 sm:py-24 bg-muted/30" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border border-border/60 shadow-lg shadow-primary/[0.03] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
-            <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-primary/10 mx-auto mb-5">
+          <div className="bg-white rounded-2xl border border-border/60 shadow-sm p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
+            <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
             </div>
             <h3 ref={successHeadingRef} tabIndex={-1} className="font-display font-bold text-xl sm:text-2xl text-foreground mb-2 focus:outline-none">
@@ -171,7 +171,7 @@ export function PriceEstimator() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl border-2 border-border text-foreground font-semibold hover:bg-muted transition-all touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl border border-border text-foreground font-semibold hover:bg-muted transition-colors touch-manipulation"
               >
                 <RotateCcw className="w-4 h-4" />
                 Estimate another
@@ -184,13 +184,12 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-gradient-to-b from-muted/40 via-background to-muted/30" aria-label="Instant price estimate">
+    <section id="price-estimator" className="py-16 sm:py-24 bg-muted/30" aria-label="Instant price estimate">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Instant quote</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground">
             How Much Is Your Car Worth?
           </h2>
@@ -205,9 +204,9 @@ export function PriceEstimator() {
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center gap-1.5 sm:gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-all duration-300",
+                  "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200",
                   step >= s
-                    ? "bg-primary text-white shadow-md shadow-primary/20"
+                    ? "bg-primary text-white"
                     : "bg-muted text-muted-foreground"
                 )}>
                   {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s}
@@ -223,7 +222,7 @@ export function PriceEstimator() {
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -231,7 +230,7 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl border border-border/60 shadow-lg shadow-primary/[0.03] overflow-hidden">
+          <div className="bg-white rounded-2xl border border-border/60 shadow-sm overflow-hidden">
 
             {/* Step 1: Vehicle Type & Make */}
             <div className={cn("transition-all duration-300", step === 1 ? "block" : "hidden")}>
@@ -277,7 +276,7 @@ export function PriceEstimator() {
                   <Button
                     onClick={() => canProceedStep1 && setStep(2)}
                     disabled={!canProceedStep1}
-                    className="h-12 px-8 bg-primary hover:bg-primary/90 text-white font-semibold group"
+                    className="h-12 px-8 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl group"
                   >
                     Next
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -333,7 +332,7 @@ export function PriceEstimator() {
                   <Button
                     onClick={handleEstimate}
                     disabled={!canProceedStep2}
-                    className="h-12 px-8 bg-accent hover:bg-accent/90 text-white font-bold group shadow-lg shadow-accent/20"
+                    className="h-12 px-8 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl group"
                   >
                     See My Quote
                     <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -394,7 +393,7 @@ export function PriceEstimator() {
                     </button>
                     <Button
                       onClick={() => setStep(4)}
-                      className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base group shadow-lg shadow-accent/25"
+                      className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base rounded-xl group"
                     >
                       Accept This Quote
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
@@ -409,7 +408,7 @@ export function PriceEstimator() {
               <div className="p-5 sm:p-8">
                 {/* Mini quote reminder */}
                 {result && (
-                  <div className="flex items-center justify-between bg-accent/5 border border-accent/15 rounded-xl px-4 py-3 mb-6">
+                  <div className="flex items-center justify-between bg-muted/40 border border-border/60 rounded-xl px-4 py-3 mb-6">
                     <div>
                       <p className="text-xs text-muted-foreground">Your quote</p>
                       <p className="font-display font-bold text-foreground">
@@ -477,7 +476,7 @@ export function PriceEstimator() {
                   <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit || isSubmitting}
-                    className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base shadow-lg shadow-accent/25"
+                    className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base rounded-xl"
                   >
                     {isSubmitting ? (
                       <>

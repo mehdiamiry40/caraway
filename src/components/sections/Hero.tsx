@@ -16,7 +16,7 @@ export function Hero() {
         <div className="relative z-10 flex flex-col justify-center w-full lg:w-[46%] shrink-0 px-4 sm:px-6 lg:px-10 py-10 sm:py-18 lg:py-24 lg:pl-16 lg:pr-14">
           <div
             aria-hidden
-            className="absolute inset-y-0 z-0 bg-gradient-to-br from-primary via-primary to-primary/90"
+            className="absolute inset-y-0 z-0 bg-primary"
             style={{ left: "calc(50% - 50vw)", right: 0 }}
           />
           <div className="relative z-10 w-full">
@@ -37,7 +37,7 @@ export function Hero() {
                 href="#price-estimator"
                 className={cn(
                   buttonVariants({ size: "lg" }),
-                  "bg-accent hover:bg-accent/90 text-white h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group border-0 shadow-lg shadow-accent/25 cta-pulse hover:shadow-xl hover:shadow-accent/30 transition-all duration-300"
+                  "bg-accent hover:bg-accent/90 text-white h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group border-0 rounded-xl transition-colors duration-200"
                 )}
               >
                 Get a free quote
@@ -48,9 +48,7 @@ export function Hero() {
             <div className="mt-6 sm:mt-10 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2.5">
               {["Paid on pickup", "Free towing", "No roadworthy needed"].map((text) => (
                 <div key={text} className="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
-                  <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                    <Check className="w-3 h-3 text-accent shrink-0" strokeWidth={3} aria-hidden />
-                  </div>
+                  <Check className="w-3.5 h-3.5 text-accent shrink-0" strokeWidth={2.5} aria-hidden />
                   <span className="text-xs sm:text-sm text-white/80 font-medium">{text}</span>
                 </div>
               ))}
@@ -76,13 +74,11 @@ export function Hero() {
               fetchPriority="high"
             />
           </div>
-          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-primary/30 via-primary/5 to-transparent pointer-events-none" />
-          {/* Subtle overlay for bottom badges readability */}
-          <div className="absolute inset-x-0 bottom-0 h-32 z-[2] bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 z-[2] bg-primary/10 pointer-events-none" />
 
           {/* Price badge */}
-          <div className="absolute bottom-5 left-4 right-4 sm:bottom-7 sm:left-auto sm:right-7 sm:max-w-sm z-[3] bg-white rounded-2xl px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 shadow-lg shadow-black/10 border border-white/80 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shrink-0 shadow-md shadow-accent/20" aria-hidden>
+          <div className="absolute bottom-5 left-4 right-4 sm:bottom-7 sm:left-auto sm:right-7 sm:max-w-sm z-[3] bg-white rounded-2xl px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 border border-border/60 shadow-sm">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shrink-0" aria-hidden>
               $
             </div>
             <div className="min-w-0">
@@ -92,10 +88,10 @@ export function Hero() {
           </div>
 
           {/* Rating badge */}
-          <div className="absolute top-5 right-4 sm:top-7 sm:right-7 z-[3] bg-white/95 backdrop-blur-sm rounded-xl px-3.5 py-2.5 flex items-center gap-2.5 shadow-lg shadow-black/10 border border-white/80">
+          <div className="absolute top-5 right-4 sm:top-7 sm:right-7 z-[3] bg-white rounded-xl px-3.5 py-2.5 flex items-center gap-2.5 border border-border/60 shadow-sm">
             <div className="flex gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent drop-shadow-sm" />
+                <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
               ))}
             </div>
             <div className="flex flex-col">

@@ -1,4 +1,4 @@
-import { MessageSquare, DollarSign, Truck, ArrowRight } from "lucide-react";
+import { MessageSquare, DollarSign, Truck } from "lucide-react";
 
 const steps = [
   {
@@ -20,10 +20,9 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-y bg-muted/40">
+    <section id="how-it-works" className="py-16 sm:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
-          <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Simple process</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">
             How Cash for Cars Works in Brisbane
           </h2>
@@ -34,21 +33,15 @@ export function HowItWorks() {
 
         <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Connector line between steps (desktop only) */}
-          <div className="hidden md:block absolute top-7 left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] h-px bg-gradient-to-r from-border via-primary/20 to-border z-0" aria-hidden />
+          <div className="hidden md:block absolute top-7 left-[calc(16.67%+28px)] right-[calc(16.67%+28px)] h-px bg-border z-0" aria-hidden />
 
           {steps.map((step, index) => (
-            <div key={step.title} className="relative flex flex-col items-center text-center group">
-              {/* Mobile connector arrow between steps */}
-              {index > 0 && (
-                <div className="md:hidden flex items-center justify-center -mt-2 mb-2 text-primary/30" aria-hidden>
-                  <ArrowRight className="w-5 h-5 rotate-90" />
-                </div>
-              )}
+            <div key={step.title} className="relative flex flex-col items-center text-center">
               <div className="relative mb-6 z-10">
-                <div className="w-14 h-14 rounded-2xl bg-white border border-border/50 flex items-center justify-center text-primary shadow-sm group-hover:shadow-md group-hover:border-primary/20 group-hover:text-primary transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white border border-border/60 flex items-center justify-center text-primary shadow-sm">
                   {step.icon}
                 </div>
-                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-gradient-to-br from-primary to-primary/80 text-white text-xs font-bold flex items-center justify-center shadow-md shadow-primary/20 ring-2 ring-white">
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center ring-2 ring-white">
                   {index + 1}
                 </span>
               </div>

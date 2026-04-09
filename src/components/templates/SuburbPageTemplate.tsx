@@ -10,7 +10,7 @@ import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
 import { services, type ServicePage } from "@/data/services";
-import { CheckCircle2, MapPin } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 
 
@@ -34,17 +34,10 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="bg-primary text-white py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light />
-            <div className="flex items-center gap-3 mt-6 mb-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/20">
-                <MapPin className="h-4 w-4 text-accent" />
-              </span>
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">Local Service</span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               {suburb.h1}
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
@@ -61,7 +54,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
                   Local Car Buying Service
                 </h2>
-                <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.localContent}
                 </p>
@@ -71,7 +63,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
                   What We Buy in {suburb.h1.replace("Cash for Cars ", "")}
                 </h2>
-                <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.serviceDetails}
                 </p>
@@ -81,13 +72,12 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
                   Why Choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
                 </h2>
-                <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.whyUs}
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-primary/[0.06] to-primary/[0.02] border border-primary/10 rounded-2xl p-5 sm:p-8 lg:p-10">
+              <div className="bg-white rounded-2xl border border-border/60 p-5 sm:p-8 lg:p-10">
                 <h2 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
                   How It Works
                 </h2>
@@ -99,7 +89,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     { step: "3", title: "Get Paid Today", desc: "We pick up your car free and pay you cash on the spot." }
                   ].map(item => (
                     <div key={item.step} className="text-center">
-                      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-accent/20">
+                      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
                         {item.step}
                       </div>
                       <h3 className="font-display font-bold text-foreground mb-2">{item.title}</h3>
@@ -111,7 +101,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
-              <div className="bg-gradient-to-b from-primary/[0.07] to-primary/[0.02] border border-primary/10 rounded-2xl p-4 sm:p-6">
+              <div className="bg-white rounded-2xl border border-border/60 p-4 sm:p-6">
                 <h3 className="font-display font-bold text-lg mb-1">Our Promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">

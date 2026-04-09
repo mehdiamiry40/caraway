@@ -38,9 +38,8 @@ export default function ServicePageTemplate({
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="bg-primary text-white py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               {service.h1}
@@ -60,7 +59,6 @@ export default function ServicePageTemplate({
                   <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
                     {section.heading}
                   </h2>
-                  <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                     {section.content}
                   </p>
@@ -79,7 +77,7 @@ export default function ServicePageTemplate({
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
-              <div className="bg-gradient-to-b from-primary/[0.07] to-primary/[0.02] border border-primary/10 rounded-2xl p-4 sm:p-6">
+              <div className="bg-white rounded-2xl border border-border/60 p-4 sm:p-6">
                 <h3 className="font-display font-bold text-lg mb-1">Why Caraway?</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s trusted cash-for-cars service</p>
                 <ul className="space-y-3.5">
