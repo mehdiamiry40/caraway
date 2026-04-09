@@ -25,16 +25,16 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
               <Link
                 href={item.href}
                 className={cn(
-                  "transition-all duration-200 rounded-md px-1.5 py-1 -mx-1.5 -my-1 min-h-[44px] inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
+                  "transition-colors duration-200 rounded-md px-1.5 py-1 -mx-1.5 -my-1 min-h-[44px] inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   light
-                    ? "text-white/50 hover:text-white hover:bg-white/[0.08]"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                    ? "text-white/50 hover:text-white"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {item.label}
               </Link>
             ) : (
-              <span aria-current="page" className={cn("font-medium px-1.5 py-1 -mx-1.5 -my-1 rounded-md truncate max-w-[200px] sm:max-w-none", light ? "text-white/90 bg-white/[0.06]" : "text-foreground bg-muted/40")}>
+              <span aria-current="page" className={cn("font-medium px-1.5 py-1 -mx-1.5 -my-1 rounded-md truncate max-w-[200px] sm:max-w-none", light ? "text-white/90" : "text-foreground")}>
                 {item.label}
               </span>
             )}

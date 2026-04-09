@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
+import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 
 const fieldIds = {
   name: "quote-name",
@@ -59,15 +59,11 @@ export function QuoteForm() {
   };
 
   return (
-    <section id="quote-section" className="section-y bg-white">
+    <section id="quote-section" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-primary/[0.04] via-muted/60 to-accent/[0.06] rounded-2xl p-4 sm:p-8 md:p-12 lg:p-16 border border-border/40 shadow-sm">
+        <div className="bg-muted/30 rounded-2xl p-4 sm:p-8 md:p-12 lg:p-16 border border-border/40">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
             <div className="flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent-foreground border border-accent/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 w-fit shadow-sm">
-                <Sparkles className="w-4 h-4 text-accent" aria-hidden />
-                <span className="text-accent">Free instant quote</span>
-              </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary mb-4 md:mb-6 text-balance leading-tight">
                 Get Your Cash for Cars Brisbane Quote
               </h2>
@@ -78,7 +74,7 @@ export function QuoteForm() {
               <div className="hidden lg:flex flex-col gap-6">
                 {benefits.map((b) => (
                   <div key={b.title} className="flex gap-4 group">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-border/50 flex items-center justify-center shrink-0 shadow-sm group-hover:border-primary/30 transition-colors duration-200">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-border/60 flex items-center justify-center shrink-0">
                       <b.icon className="w-5 h-5 text-primary/70" />
                     </div>
                     <div>
@@ -90,25 +86,22 @@ export function QuoteForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-4 sm:p-8 border border-border/30 shadow-lg shadow-primary/[0.04] relative overflow-hidden">
-              {/* Subtle top accent bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent" aria-hidden />
-
+            <div className="bg-white rounded-2xl p-4 sm:p-8 border border-border/60 shadow-sm relative">
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent/15 to-accent/5 rounded-full flex items-center justify-center mb-5 sm:mb-6 ring-4 ring-accent/10">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
                     <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will contact you using the number you provided — usually within one business day.
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto transition-all duration-200">
+                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto transition-colors duration-200">
                     Submit another vehicle
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5 pt-2" noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -244,7 +237,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide rounded-xl" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>

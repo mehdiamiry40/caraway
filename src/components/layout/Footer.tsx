@@ -31,7 +31,7 @@ const companyLinks = [
   { label: "Get a Quote", href: "/#price-estimator" },
 ];
 
-const linkClasses = "text-white/55 hover:text-white hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
+const linkClasses = "text-white/55 hover:text-white transition-colors duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
 
 export function Footer() {
   return (
@@ -48,14 +48,14 @@ export function Footer() {
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
             </p>
             <div className="mt-8 space-y-3.5">
-              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-all duration-200 group text-sm">
-                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 group-hover:scale-105 transition-all duration-200">
+              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-colors duration-200 group text-sm">
+                <span className="flex h-10 w-10 rounded-lg bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
                   <Mail className="h-4 w-4 text-accent" />
                 </span>
                 <span>{BUSINESS.email}</span>
               </a>
               <div className="flex items-center gap-3.5 text-white/50 text-sm">
-                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center">
+                <span className="flex h-10 w-10 rounded-lg bg-white/[0.06] items-center justify-center">
                   <MapPin className="h-4 w-4 text-white/40" />
                 </span>
                 <span>{BUSINESS.location}</span>
@@ -64,7 +64,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Services</h4>
+            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Services</h4>
             <ul className="space-y-1">
               {serviceLinks.map(link => (
                 <li key={link.href}>
@@ -77,7 +77,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Locations</h4>
+            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Locations</h4>
             <ul className="space-y-1">
               {locationLinks.map(link => (
                 <li key={link.href}>
@@ -90,7 +90,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-white/40 mb-5 pb-2 border-b border-white/[0.06]">Company</h4>
+            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Company</h4>
             <ul className="space-y-1">
               {companyLinks.map(link => (
                 <li key={link.href}>
@@ -106,7 +106,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/[0.08] pb-safe">
+      <div className="border-t border-white/10 pb-safe">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>&copy; {new Date().getFullYear()} Caraway. All rights reserved.</p>
           <div className="flex items-center gap-4 sm:gap-6">

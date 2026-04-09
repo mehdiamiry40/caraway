@@ -24,9 +24,8 @@ export default function About() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <section className="bg-primary text-white py-16 lg:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               About Caraway — Cash for Cars Brisbane
@@ -41,7 +40,6 @@ export default function About() {
           <div className="max-w-3xl space-y-14">
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Who We Are</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
                 Caraway is a Brisbane-based buyer — we pay cash for cars we want, and we organise pickup when we agree a price. No listings, no strangers at your door for test drives.
               </p>
@@ -52,7 +50,6 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">How we work</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we show up when we say we will, we pay what we agreed before the car leaves, and we use licensed recyclers when a car is at end of life.
               </p>
@@ -60,10 +57,9 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">What Sets Us Apart</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-6" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {features.map(item => (
-                  <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-muted/60 to-muted/30 border border-border/40 hover:border-border/60 hover:shadow-sm transition-all duration-200">
+                  <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-border/60 hover:border-border transition-all duration-200">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 shrink-0 mt-0.5">
                       <CheckCircle2 className="h-4 w-4 text-accent" />
                     </span>
@@ -78,7 +74,6 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Our Service Area</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 We service the entire Greater Brisbane region — from Caboolture in the north to Beenleigh in the south, from Ipswich in the west to Cleveland in the east. This includes all suburbs across Brisbane City, Logan City, Ipswich City, Moreton Bay, and Redland City council areas. If you&apos;re not sure whether we cover your area, just call — we almost certainly do.
               </p>

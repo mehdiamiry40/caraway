@@ -28,8 +28,8 @@ export function Accordion({ items, className }: AccordionProps) {
           <div
             key={item.question}
             className={cn(
-              "border bg-white rounded-xl overflow-hidden transition-colors",
-              isActive ? "border-border" : "border-border/50 hover:border-border"
+              "border bg-white rounded-xl overflow-hidden",
+              isActive ? "border-border" : "border-border/50"
             )}
           >
             <button
@@ -45,7 +45,7 @@ export function Accordion({ items, className }: AccordionProps) {
               </span>
               <div
                 className={cn(
-                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-all duration-300",
+                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-transform duration-300",
                   isActive && "rotate-180"
                 )}
               >
