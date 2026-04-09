@@ -11,6 +11,8 @@ export interface BlogPost {
   relatedServices: string[];
   /** Suburb page slugs to link to from blog posts for internal linking. */
   relatedSuburbs: string[];
+  /** Whether this post should be listed and indexed for organic search surfaces. */
+  isIndexable: boolean;
 }
 
 /** Calculate reading time from content paragraphs (~200 WPM average). */
@@ -26,15 +28,24 @@ export function getRelatedPosts(currentSlug: string, limit = 2): BlogPost[] {
   if (!current) return [];
 
   const sameCategory = blogPosts.filter(
-    (p) => p.slug !== currentSlug && p.category === current.category
+    (p) => p.slug !== currentSlug && p.isIndexable && p.category === current.category
   );
   const others = blogPosts.filter(
-    (p) => p.slug !== currentSlug && p.category !== current.category
+    (p) => p.slug !== currentSlug && p.isIndexable && p.category !== current.category
   );
   return [...sameCategory, ...others].slice(0, limit);
 }
 
-const rawPosts: Omit<BlogPost, "readTime">[] = [
+const noindexPostSlugs = new Set([
+  "cash-for-cars-sunshine-coast",
+  "cash-for-cars-toowoomba",
+  "cash-for-cars-gold-coast",
+  "cash-for-cars-redcliffe-brisbane",
+  "cash-for-cars-ipswich-brisbane",
+  "cash-for-cars-logan-brisbane",
+]);
+
+const rawPosts: Omit<BlogPost, "readTime" | "isIndexable">[] = [
   {
     slug: "cash-for-cars-sunshine-coast",
     title: "Cash for Cars Sunshine Coast: Top Deals 2026",
@@ -415,4 +426,7 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
 export const blogPosts: BlogPost[] = rawPosts.map((p) => ({
   ...p,
   readTime: calcReadTime(p.content),
+  isIndexable: !noindexPostSlugs.has(p.slug),
 }));
+
+export const indexableBlogPosts = blogPosts.filter((post) => post.isIndexable);

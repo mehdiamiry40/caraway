@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
-    { rel: "icon", url: "/favicon.ico", sizes: "32x32" },
     { rel: "apple-touch-icon", url: "/icon-192.png", sizes: "192x192" },
+    { rel: "icon", url: "/icon-512.png", sizes: "512x512", type: "image/png" },
   ],
   keywords: [
     "cash for cars Brisbane",

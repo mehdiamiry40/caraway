@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Blog from "@/views/Blog";
-import { blogPosts } from "@/data/blog-posts";
+import { indexableBlogPosts } from "@/data/blog-posts";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 
@@ -47,7 +47,7 @@ export default function BlogPage() {
               "Tips, guides, and insights about selling your car for cash in Brisbane.",
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
-            hasPart: blogPosts.map((post) => ({
+            hasPart: indexableBlogPosts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,
               url: `${SITE_URL}/blog/${post.slug}`,

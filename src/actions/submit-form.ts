@@ -37,6 +37,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
+        signal: AbortSignal.timeout(8000),
       });
 
       if (!response.ok) {
