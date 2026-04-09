@@ -31,7 +31,7 @@ const companyLinks = [
   { label: "Get a Quote", href: "/#quote-section" },
 ];
 
-const linkClasses = "text-white/55 hover:text-white hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-block py-1.5 min-h-[44px] flex items-center touch-manipulation";
+const linkClasses = "text-white/55 hover:text-white hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
 
 export function Footer() {
   return (
