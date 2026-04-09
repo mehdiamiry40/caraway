@@ -149,13 +149,5 @@ export const websiteSchema = {
   description:
     "Cash for cars Brisbane: free quotes, free removal, and cash paid on pickup. Servicing Greater Brisbane 7 days a week.",
   publisher: { "@id": `${SITE_URL}/#organization` },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/?s={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
   inLanguage: "en-AU",
 };

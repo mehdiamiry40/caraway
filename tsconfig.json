@@ -2,13 +2,21 @@
   "compilerOptions": {
     "noEmit": true,
     "jsx": "preserve",
-    "lib": ["esnext", "dom", "dom.iterable"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "plugins": [
       {
@@ -27,6 +35,9 @@
     "noImplicitReturns": true
   },
   "include": [
+    ".next/types/cache-life.d.ts",
+    ".next/types/routes.d.ts",
+    ".next/types/validator.ts",
     "next-env.d.ts",
     "src/**/*",
     ".next/types/**/*.ts"

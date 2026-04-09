@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,14 @@ const POPULAR_MAKES = [
 
 type Step = 1 | 2 | 3 | 4;
 
+const ESTIMATOR_TO_QUOTE_CONDITION: Record<string, "running" | "needs_work" | "not_running" | "damaged" | "scrap"> = {
+  excellent: "running",
+  good: "running",
+  fair: "needs_work",
+  poor: "damaged",
+  "not-running": "not_running",
+};
+
 export function PriceEstimator() {
   const [step, setStep] = useState<Step>(1);
   const [vehicleType, setVehicleType] = useState("");
@@ -55,6 +63,17 @@ export function PriceEstimator() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const liveMessage = isSuccess
+    ? "Your quote request was submitted successfully."
+    : step === 1
+      ? "Step 1 of 4. Tell us about your vehicle."
+      : step === 2
+        ? "Step 2 of 4. Enter the year and condition."
+        : step === 3
+          ? "Step 3 of 4. Your instant quote is ready."
+          : "Step 4 of 4. Enter your contact details to claim your quote.";
 
   const currentYear = new Date().getFullYear();
   const yearOptions = Array.from({ length: currentYear - 1949 }, (_, i) => {
@@ -83,15 +102,16 @@ export function PriceEstimator() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const conditionLabel = CONDITIONS.find((c) => c.value === condition)?.label ?? condition;
     const typeLabel = VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label ?? vehicleType;
+    const normalizedCondition = ESTIMATOR_TO_QUOTE_CONDITION[condition] ?? "needs_work";
 
     const res = await submitQuote({
       name: name.trim(),
       phone: phone.trim(),
-      make: `${make.trim()} (${typeLabel})`,
+      make: `${make.trim()} (${typeLabel}) — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
       year: Number(year),
-      condition: `${conditionLabel} — Estimate: $${result.low.toLocaleString()}–$${result.high.toLocaleString()}`,
+      condition: normalizedCondition,
+      honeypot: "",
     });
 
     setIsSubmitting(false);
@@ -118,15 +138,23 @@ export function PriceEstimator() {
   const totalSteps = 4;
   const progressPercent = step === 1 ? 0 : step === 2 ? 33 : step === 3 ? 66 : 100;
 
+  useEffect(() => {
+    if (isSuccess) {
+      successHeadingRef.current?.focus();
+      return;
+    }
+    stepHeadingRef.current?.focus();
+  }, [isSuccess, step]);
+
   if (isSuccess) {
     return (
       <section id="price-estimator" className="section-y bg-gradient-to-b from-muted/40 via-background to-muted/30" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border border-border/60 shadow-lg shadow-primary/[0.03] p-6 sm:p-10 text-center">
+          <div className="bg-white rounded-2xl border border-border/60 shadow-lg shadow-primary/[0.03] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/20 to-primary/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
             </div>
-            <h3 className="font-display font-bold text-xl sm:text-2xl text-foreground mb-2">
+            <h3 ref={successHeadingRef} tabIndex={-1} className="font-display font-bold text-xl sm:text-2xl text-foreground mb-2 focus:outline-none">
               Your quote is on its way!
             </h3>
             <p className="text-muted-foreground text-sm sm:text-base mb-2">
@@ -157,6 +185,9 @@ export function PriceEstimator() {
 
   return (
     <section id="price-estimator" className="section-y bg-gradient-to-b from-muted/40 via-background to-muted/30" aria-label="Instant price estimate">
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {liveMessage}
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Instant quote</p>
@@ -210,7 +241,7 @@ export function PriceEstimator() {
                     <Car className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-foreground">Tell us about your vehicle</h3>
+                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Tell us about your vehicle</h3>
                     <p className="text-xs text-muted-foreground">Step 1 of {totalSteps}</p>
                   </div>
                 </div>
@@ -263,7 +294,7 @@ export function PriceEstimator() {
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-foreground">Year and condition</h3>
+                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Year and condition</h3>
                     <p className="text-xs text-muted-foreground">Step 2 of {totalSteps} — {make} {vehicleType}</p>
                   </div>
                 </div>
@@ -316,14 +347,14 @@ export function PriceEstimator() {
               {result && (
                 <div className="p-5 sm:p-8">
                   {/* Quote display */}
-                  <div className="text-center mb-6">
+                  <div className="text-center mb-6" aria-live="polite" aria-atomic="true">
                     <div className="inline-flex items-center gap-1.5 bg-accent/10 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
                       <CheckCircle2 className="w-3.5 h-3.5" /> Your instant quote
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
                       {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {CONDITIONS.find((c) => c.value === condition)?.label?.split(" — ")[0]}
                     </p>
-                    <div className="flex items-baseline justify-center gap-2 sm:gap-3">
+                    <div ref={stepHeadingRef} tabIndex={-1} className="flex items-baseline justify-center gap-2 sm:gap-3 focus:outline-none">
                       <span className="text-4xl sm:text-6xl font-display font-bold text-primary">
                         ${result.low.toLocaleString()}
                       </span>
@@ -400,7 +431,7 @@ export function PriceEstimator() {
                     <Send className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-foreground">Claim your quote</h3>
+                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Claim your quote</h3>
                     <p className="text-xs text-muted-foreground">Step 4 of {totalSteps} — we&apos;ll call to confirm & arrange pickup</p>
                   </div>
                 </div>

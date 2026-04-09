@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
-import { blogPosts } from "@/data/blog-posts";
+import { indexableBlogPosts } from "@/data/blog-posts";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
 const breadcrumbs = [
@@ -32,7 +32,7 @@ export default function Blog() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {blogPosts.map((post, idx) => (
+            {indexableBlogPosts.map((post, idx) => (
               <article
                 key={post.slug}
                 className={`group rounded-2xl border border-border/60 bg-white hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
