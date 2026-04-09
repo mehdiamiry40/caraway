@@ -39,7 +39,7 @@ export const faqs = [
   {
     question: "Do you buy cars across all Brisbane suburbs?",
     answer:
-      "Yes. We cover all of Greater Brisbane including the inner city, north (Redcliffe, North Lakes, Strathpine), south (Logan, Beenleigh, Springwood), east (Capalaba, Cleveland, Wynnum), and west (Ipswich, Springfield, Forest Lake). If you're unsure, call us — we likely service your area.",
+      "Yes. We cover all of Greater Brisbane including the inner city, north (Redcliffe, North Lakes, Strathpine), south (Logan, Beenleigh, Springwood), east (Capalaba, Cleveland, Wynnum), and west (Ipswich, Springfield, Forest Lake). If you're unsure, contact us — we likely service your area.",
   },
   {
     question: "Can I sell a car that isn't registered or has no plates?",
