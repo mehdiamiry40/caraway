@@ -295,7 +295,7 @@ export const services: ServicePage[] = [
       { question: "What happens to junk cars after you buy them?", answer: "Usable parts are salvaged and resold. Remaining materials are recycled at licensed facilities. We dispose of all fluids and hazardous materials responsibly." }
     ],
     relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "car-removal-brisbane", "unwanted-cars-brisbane"],
-    relatedSuburbs: ["ipswich", "logan", "caboolture", "redcliffe", "browns-plains"]
+    relatedSuburbs: ["ipswich", "logan", "caboolture", "redcliffe", "beenleigh"]
   },
   {
     slug: "unregistered-cars-brisbane",
@@ -323,7 +323,7 @@ export const services: ServicePage[] = [
       { question: "How do you remove an unregistered car that can't be driven?", answer: "Our tow truck will come to your location and load the vehicle. Your car doesn't need to be roadworthy or driveable for us to remove it." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane", "scrap-car-removal-brisbane"],
-    relatedSuburbs: ["south-brisbane", "north-brisbane", "springwood", "toowong", "sunnybank"]
+    relatedSuburbs: ["south-brisbane", "north-brisbane", "springwood", "toowong", "north-lakes"]
   },
   {
     slug: "used-cars-brisbane",
@@ -351,7 +351,7 @@ export const services: ServicePage[] = [
       { question: "How long does the process take?", answer: "From quote to cash in hand, the entire process can be completed in under an hour. Most sellers have their used car sold and removed the same day they contact us." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
-    relatedSuburbs: ["indooroopilly", "carindale", "chermside", "toowong", "mount-gravatt"]
+    relatedSuburbs: ["indooroopilly", "carindale", "chermside", "toowong", "bayside-brisbane"]
   }
 ];
 

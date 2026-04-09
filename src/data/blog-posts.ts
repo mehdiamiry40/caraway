@@ -7,6 +7,10 @@ export interface BlogPost {
   date: string;
   readTime: string;
   category: string;
+  /** Service page slugs to link to from blog posts for internal linking. */
+  relatedServices: string[];
+  /** Suburb page slugs to link to from blog posts for internal linking. */
+  relatedSuburbs: string[];
 }
 
 /** Calculate reading time from content paragraphs (~200 WPM average). */
@@ -65,6 +69,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-08",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
+    relatedSuburbs: ["ipswich", "caboolture", "north-brisbane"],
   },
   {
     slug: "cash-for-cars-redcliffe-brisbane",
@@ -100,6 +106,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-07",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
+    relatedSuburbs: ["redcliffe", "north-brisbane", "bayside-brisbane"],
   },
   {
     slug: "cash-for-cars-gold-coast",
@@ -135,6 +143,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-06",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
+    relatedSuburbs: ["beenleigh", "logan", "south-brisbane"],
   },
   {
     slug: "cash-for-cars-caboolture-brisbane",
@@ -158,6 +168,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-05",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "junk-cars-brisbane"],
+    relatedSuburbs: ["caboolture", "redcliffe", "north-lakes"],
   },
   {
     slug: "cash-for-cars-ipswich-brisbane",
@@ -191,6 +203,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-04",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
+    relatedSuburbs: ["ipswich", "springwood", "browns-plains"],
   },
   {
     slug: "cash-for-cars-logan-brisbane",
@@ -224,6 +238,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-03",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "junk-cars-brisbane"],
+    relatedSuburbs: ["logan", "beenleigh", "springwood"],
   },
   {
     slug: "how-to-transfer-car-ownership-qld",
@@ -248,6 +264,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2026-04-02",
     category: "Guides",
+    relatedServices: ["sell-my-car-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
+    relatedSuburbs: ["south-brisbane", "logan", "north-brisbane"],
   },
   {
     slug: "how-much-is-my-car-worth-for-scrap-brisbane",
@@ -270,6 +288,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2025-04-01",
     category: "Guides",
+    relatedServices: ["scrap-car-removal-brisbane", "cash-for-cars-brisbane", "junk-cars-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "moorooka"],
   },
   {
     slug: "how-to-sell-your-car-for-cash-brisbane",
@@ -289,6 +309,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2025-03-15",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+    relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
   },
   {
     slug: "what-happens-to-your-car-after-selling",
@@ -307,6 +329,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2025-02-28",
     category: "Insights",
+    relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
+    relatedSuburbs: ["moorooka", "caboolture", "ipswich"],
   },
   {
     slug: "signs-your-car-is-worth-more-as-scrap",
@@ -325,6 +349,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2025-02-10",
     category: "Tips",
+    relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
+    relatedSuburbs: ["sunnybank", "chermside", "indooroopilly"],
   },
   {
     slug: "preparing-your-car-for-pickup",
@@ -344,6 +370,8 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
     ],
     date: "2025-01-20",
     category: "Guides",
+    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
+    relatedSuburbs: ["north-brisbane", "carindale", "toowong"],
   },
 ];
 

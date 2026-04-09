@@ -5,6 +5,8 @@ import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { getRelatedPosts } from "@/data/blog-posts";
+import { services } from "@/data/services";
+import { suburbs } from "@/data/suburbs";
 import { ArrowLeft, ArrowRight, Clock, Tag, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
