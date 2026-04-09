@@ -116,7 +116,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Call us on 1800 227 293 or submit our online form. Provide your car's details and we'll give you an instant offer. Accept, and we'll pick up your car and pay you cash — often the same day." },
+      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you an instant offer. Accept, and we'll pick up your car and pay you cash — often the same day." },
       { question: "Do I need a roadworthy to sell my car?", answer: "No. We buy cars as-is, without a Roadworthy Certificate. Your car can be in any condition — running, broken, damaged, or scrap." },
       { question: "How much can I get for my car?", answer: "Offers range from $150 for end-of-life scrap vehicles up to $9,999 for newer models in good condition. Contact us for a free, no-obligation quote specific to your vehicle." },
       { question: "Can I sell a car I still owe finance on?", answer: "In some cases, yes. Contact us to discuss your situation. We can sometimes arrange payout of the remaining finance as part of the sale." }
@@ -178,7 +178,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "What is an unwanted car worth in Brisbane?", answer: "Values range from $150 for end-of-life vehicles to several thousand dollars for newer unwanted cars in reasonable condition. Get a free quote by calling 1800 227 293." },
+      { question: "What is an unwanted car worth in Brisbane?", answer: "Values range from $150 for end-of-life vehicles to several thousand dollars for newer unwanted cars in reasonable condition. Get a free quote using our online price estimator." },
       { question: "Can you remove an unwanted car today?", answer: "In most cases, yes. Contact us in the morning and we can usually arrange same-day removal across Brisbane suburbs." },
       { question: "Do I need to be home for the pickup?", answer: "Ideally yes, as we pay cash in person and need your ID. However, we can make alternative arrangements if you're unable to be present — just ask." }
     ],
