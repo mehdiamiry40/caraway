@@ -13,21 +13,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
   },
-  redirects: async () => [
-    // www -> non-www (canonical domain)
-    {
-      source: "/:path*",
-      has: [{ type: "host", value: "www.caraway.au" }],
-      destination: "https://caraway.au/:path*",
-      permanent: true,
-    },
-    // Strip trailing slashes for URL consistency
-    {
-      source: "/:path+/",
-      destination: "/:path+",
-      permanent: true,
-    },
-  ],
   headers: async () => [
     {
       source: "/(.*)",
