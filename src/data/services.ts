@@ -56,7 +56,7 @@ export const services: ServicePage[] = [
       { question: "What areas of Brisbane do you cover?", answer: "We cover all of Greater Brisbane including North Brisbane, South Brisbane, East Brisbane, West Brisbane, Logan, Ipswich, Redland Bay, and Moreton Bay regions." }
     ],
     relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane"],
-    relatedSuburbs: ["north-brisbane", "south-brisbane", "logan", "ipswich", "redcliffe"]
+    relatedSuburbs: ["north-brisbane", "south-brisbane", "logan", "ipswich", "redcliffe", "bayside-brisbane"]
   },
   {
     slug: "car-removal-brisbane",
@@ -89,7 +89,7 @@ export const services: ServicePage[] = [
       { question: "Can you remove a car from a tight space?", answer: "Yes. Our experienced drivers can retrieve vehicles from garages, backyards, driveways, underground car parks, and other tight locations." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane", "junk-cars-brisbane"],
-    relatedSuburbs: ["chermside", "carindale", "sunnybank", "mount-gravatt", "toowong"]
+    relatedSuburbs: ["chermside", "carindale", "sunnybank", "mount-gravatt", "toowong", "north-lakes"]
   },
   {
     slug: "sell-my-car-brisbane",
@@ -155,7 +155,7 @@ export const services: ServicePage[] = [
       { question: "Is scrap car removal really free?", answer: "Yes. We never charge for towing or removal. You receive the full quoted cash amount with no deductions." }
     ],
     relatedServices: ["car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
-    relatedSuburbs: ["logan", "ipswich", "caboolture", "browns-plains", "springwood"]
+    relatedSuburbs: ["logan", "ipswich", "caboolture", "browns-plains", "beenleigh"]
   },
   {
     slug: "unwanted-cars-brisbane",
