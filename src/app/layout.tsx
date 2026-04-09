@@ -96,6 +96,10 @@ export default function RootLayout({
       lang="en-AU"
       className={`${inter.variable} ${dmSans.variable}`}
     >
+      <head>
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+      </head>
       <body className="min-h-screen">
         <a
           href="#main-content"
