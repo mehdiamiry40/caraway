@@ -1,12 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, ChevronDown } from "lucide-react";
 import { suburbs } from "@/data/suburbs";
-
-const areaRowClassName =
-  "group flex min-h-11 items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-sm hover:shadow-primary/10 touch-manipulation";
-
-const areaIconWrapClassName =
-  "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-b from-muted to-muted/60 text-primary/50 group-hover:bg-white/15 group-hover:text-primary-foreground transition-all duration-200";
+import { cn } from "@/lib/utils";
 
 const additionalAreas = [
   "Brisbane CBD", "Fortitude Valley", "West End", "Paddington",
@@ -14,8 +12,7 @@ const additionalAreas = [
   "Aspley", "Stafford", "Kedron", "Nundah", "Clayfield",
   "Sandgate", "Brighton", "Bracken Ridge",
   "Holland Park", "Calamvale", "Runcorn",
-  "Loganholme",
-  "Tingalpa",
+  "Loganholme", "Tingalpa",
   "Redland Bay", "Victoria Point",
   "Inala", "Forest Lake", "Richlands",
   "Oxley", "Darra", "Goodna", "Springfield",
@@ -24,87 +21,93 @@ const additionalAreas = [
 ];
 
 export function ServiceAreas() {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <section
       className="section-y bg-muted/40"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 lg:mb-12">
-          <div className="max-w-2xl">
-            <h2 className="text-xl sm:text-3xl md:text-4xl font-display font-bold text-primary leading-tight text-balance">
-              Cash for Cars Brisbane Service Areas
-            </h2>
-            <p className="mt-3 text-muted-foreground leading-relaxed">
-              We collect from Brisbane, Ipswich, Logan, Redland Bay, Moreton Bay, and nearby areas. Remote or unusual access? Mention it in your quote request — we&apos;ll be honest about trucks.
-            </p>
-          </div>
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-12">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Greater Brisbane coverage</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
+            Cash for Cars Brisbane Service Areas
+          </h2>
+          <p className="mt-3 text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
+            Free pickup across Brisbane, Ipswich, Logan, Redland Bay, Moreton Bay, and surrounding areas.
+          </p>
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+        {/* Key suburbs grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {suburbs.map((suburb) => (
             <Link
-              href="/#price-estimator"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary min-h-11 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 touch-manipulation"
+              key={suburb.slug}
+              href={`/locations/${suburb.slug}`}
+              className={cn(
+                "group flex items-center gap-3 rounded-xl border border-border/50 bg-white p-3 sm:p-4",
+                "hover:border-primary hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5",
+                "transition-all duration-200 touch-manipulation min-h-[44px]"
+              )}
             >
-              Get an Instant Quote
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/5 text-primary/60 group-hover:bg-primary group-hover:text-white transition-all duration-200 shrink-0">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
+                {suburb.h1.replace("Cash for Cars ", "")}
+              </span>
             </Link>
-            <Link
-              href="/locations"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-white min-h-11 px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary touch-manipulation"
-            >
-              All locations
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+          ))}
+        </div>
+
+        {/* Additional areas - collapsible */}
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={() => setShowMore(!showMore)}
+            className="mx-auto flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors min-h-[44px] touch-manipulation"
+            aria-expanded={showMore}
+          >
+            {showMore ? "Show fewer areas" : `+${additionalAreas.length} more suburbs we service`}
+            <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", showMore && "rotate-180")} />
+          </button>
+
+          <div className={cn(
+            "grid transition-all duration-500 ease-out overflow-hidden",
+            showMore ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0"
+          )}>
+            <div className="overflow-hidden">
+              <div className="flex flex-wrap justify-center gap-2">
+                {additionalAreas.map((area) => (
+                  <span
+                    key={area}
+                    className="inline-flex items-center px-3 py-1.5 rounded-full border border-border/40 bg-white text-xs sm:text-sm text-muted-foreground"
+                  >
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-border/40 bg-white p-4 sm:p-6 lg:p-8 shadow-sm shadow-black/[0.02]">
-          <h3 className="font-display text-sm font-bold text-primary mb-5 uppercase tracking-wider">
-            Browse by area
-          </h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-            {suburbs.map((suburb) => (
-              <li key={suburb.slug} className="min-w-0">
-                <Link href={`/locations/${suburb.slug}`} className={areaRowClassName}>
-                  <span className={areaIconWrapClassName} aria-hidden>
-                    <MapPin className="h-3 w-3" strokeWidth={2.5} />
-                  </span>
-                  <span className="leading-snug break-words">
-                    {suburb.h1.replace("Cash for Cars ", "")}
-                  </span>
-                </Link>
-              </li>
-            ))}
-            {additionalAreas.map((area) => (
-              <li key={`area-${area}`} className="min-w-0">
-                <Link
-                  href="/locations"
-                  className={areaRowClassName}
-                  title={`${area} — view all locations`}
-                >
-                  <span className={areaIconWrapClassName} aria-hidden>
-                    <MapPin className="h-3 w-3" strokeWidth={2.5} />
-                  </span>
-                  <span className="leading-snug break-words">{area}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-primary/10 bg-gradient-to-b from-primary/[0.04] to-transparent px-4 py-6 text-center sm:px-10 sm:py-8">
-          <p className="font-display font-bold text-lg text-primary leading-snug">
-            Not in the list?
-          </p>
-          <p className="mt-3 text-muted-foreground text-sm leading-relaxed break-words">
-            <strong className="text-foreground font-semibold">We likely still service your area.</strong>{" "}
-            <Link
-              href="/#price-estimator"
-              className="font-semibold text-primary underline-offset-2 hover:underline whitespace-nowrap"
-            >
-              Get an instant quote
-            </Link>{" "}
-            to confirm same-day availability at your location.
-          </p>
+        {/* CTAs */}
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <Link
+            href="/#price-estimator"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-accent/90 transition-all shadow-md shadow-accent/20 hover:shadow-lg touch-manipulation"
+          >
+            Get an Instant Quote
+          </Link>
+          <Link
+            href="/locations"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border min-h-12 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-all touch-manipulation"
+          >
+            View all locations
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
