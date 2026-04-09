@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { MapPin, ArrowRight, Phone } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { suburbs } from "@/data/suburbs";
-import { BUSINESS } from "@/lib/site";
 
 const areaRowClassName =
   "group flex min-h-11 items-center gap-2.5 rounded-xl border border-border/50 bg-white px-3.5 py-2.5 text-left text-xs sm:text-sm font-medium text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-sm hover:shadow-primary/10 touch-manipulation";
@@ -37,18 +36,17 @@ export function ServiceAreas() {
               Cash for Cars Brisbane Service Areas
             </h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              We collect from Brisbane, Ipswich, Logan, Redland Bay, Moreton Bay, and nearby areas. Remote or unusual access? Say so when you call — we&apos;ll be honest about trucks.
+              We collect from Brisbane, Ipswich, Logan, Redland Bay, Moreton Bay, and nearby areas. Remote or unusual access? Mention it in your quote request — we&apos;ll be honest about trucks.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <a
-              href={BUSINESS.phoneHref}
+            <Link
+              href="/#price-estimator"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary min-h-11 px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 touch-manipulation"
             >
-              <Phone className="h-4 w-4 shrink-0" />
-              {BUSINESS.phoneFriendly}
-            </a>
+              Get an Instant Quote
+            </Link>
             <Link
               href="/locations"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-white min-h-11 px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary touch-manipulation"
@@ -99,13 +97,12 @@ export function ServiceAreas() {
           </p>
           <p className="mt-3 text-muted-foreground text-sm leading-relaxed break-words">
             <strong className="text-foreground font-semibold">We likely still service your area.</strong>{" "}
-            Call{" "}
-            <a
-              href={BUSINESS.phoneHref}
+            <Link
+              href="/#price-estimator"
               className="font-semibold text-primary underline-offset-2 hover:underline whitespace-nowrap"
             >
-              {BUSINESS.phoneFriendly}
-            </a>{" "}
+              Get an instant quote
+            </Link>{" "}
             to confirm same-day availability at your location.
           </p>
         </div>

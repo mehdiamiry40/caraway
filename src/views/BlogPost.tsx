@@ -7,8 +7,7 @@ import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { getRelatedPosts } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { ArrowLeft, ArrowRight, Clock, Tag, Phone } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+import { ArrowLeft, ArrowRight, Clock, Tag } from "lucide-react";
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
   const breadcrumbs = [
@@ -70,16 +69,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               Get a free quote today -- same-day pickup across Brisbane.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={BUSINESS.phoneHref}
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
-              >
-                <Phone className="h-4 w-4" />
-                Call {BUSINESS.phone}
-              </a>
               <Link
-                href="/#quote-section"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-primary/20 px-7 py-3.5 text-sm font-semibold text-primary hover:bg-primary hover:text-white hover:border-primary transition-all"
+                href="/#price-estimator"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
               >
                 Get a Free Quote
               </Link>

@@ -3,10 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BUSINESS } from "@/lib/site";
+
+
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,9 +67,9 @@ export function Header() {
 
   const scrollToQuote = () => {
     if (isHome) {
-      document.getElementById("quote-section")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("price-estimator")?.scrollIntoView({ behavior: "smooth" });
     } else {
-      router.push("/#quote-section");
+      router.push("/#price-estimator");
     }
     setIsMobileMenuOpen(false);
   };
@@ -107,13 +108,6 @@ export function Header() {
             </Link>
 
             <div className="hidden lg:flex items-center gap-5">
-              <a
-                href={BUSINESS.phoneHref}
-                className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white transition-all duration-200 hover:gap-2.5"
-              >
-                <Phone className="h-3.5 w-3.5" />
-                {BUSINESS.phoneFriendly}
-              </a>
               <Button
                 onClick={scrollToQuote}
                 size="sm"
@@ -282,13 +276,6 @@ export function Header() {
                 );})}
               </nav>
               <div className="mt-auto flex flex-col gap-3 pt-4 pb-safe border-t border-border/30">
-                <a
-                  href={BUSINESS.phoneHref}
-                  className="flex items-center justify-center gap-2 min-h-14 rounded-xl bg-muted/70 text-foreground font-semibold text-base sm:text-lg hover:bg-muted transition-all duration-200 active:scale-[0.98] touch-manipulation"
-                >
-                  <Phone className="h-5 w-5 text-accent" />
-                  {BUSINESS.phone}
-                </a>
                 <Button
                   onClick={scrollToQuote}
                   size="lg"

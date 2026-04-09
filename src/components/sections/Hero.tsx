@@ -2,7 +2,6 @@ import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Check, Star } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
 
 export function Hero() {
 
@@ -35,7 +34,7 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
-                href="#quote-section"
+                href="#price-estimator"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "bg-accent hover:bg-accent/90 text-white h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group border-0 shadow-lg shadow-accent/25 cta-pulse hover:shadow-xl hover:shadow-accent/30 transition-all duration-300"
@@ -43,12 +42,6 @@ export function Hero() {
               >
                 Get a free quote
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden />
-              </a>
-              <a
-                href={BUSINESS.phoneHref}
-                className="inline-flex items-center justify-center rounded-xl h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold border-2 border-white/25 text-white hover:bg-white/10 hover:border-white/40 transition-all duration-200 backdrop-blur-sm"
-              >
-                {BUSINESS.phoneFriendly}
               </a>
             </div>
 

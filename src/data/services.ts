@@ -30,7 +30,7 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: "How Our Cash for Cars Service Works",
-        content: "Selling your car for cash in Brisbane couldn't be simpler. Call us on 1800 227 293 or fill out our online form with your car's details — make, model, year, and condition. We'll give you a no-obligation cash offer within minutes. If you accept, we'll arrange free pickup at a time that suits you — often the same day. Our driver arrives, pays you in cash on the spot, and tows your vehicle away at no cost. The entire process takes less than an hour from start to finish."
+        content: "Selling your car for cash in Brisbane couldn't be simpler. Use our online price estimator or fill out our quote form with your car's details — make, model, year, and condition. We'll give you a no-obligation cash offer within minutes. If you accept, we'll arrange free pickup at a time that suits you — often the same day. Our driver arrives, pays you in cash on the spot, and tows your vehicle away at no cost. The entire process takes less than an hour from start to finish."
       },
       {
         heading: "Why Brisbane Locals Choose Caraway",

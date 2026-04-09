@@ -11,7 +11,8 @@ import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
 import { services, type ServicePage } from "@/data/services";
 import { CheckCircle2, MapPin } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+
+
 
 export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const relatedServiceData = suburb.relatedServices
@@ -93,7 +94,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <p className="text-sm text-muted-foreground mb-8">Three simple steps to get cash for your car.</p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                   {[
-                    { step: "1", title: "Get Your Quote", desc: `Call ${BUSINESS.phone} or fill out our form with your car details.` },
+                    { step: "1", title: "Get Your Quote", desc: "Use our online price estimator or fill out our form with your car details." },
                     { step: "2", title: "Accept Your Offer", desc: "We'll make a fair cash offer. No obligation if you decline." },
                     { step: "3", title: "Get Paid Today", desc: "We pick up your car free and pay you cash on the spot." }
                   ].map(item => (
@@ -123,20 +124,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="bg-gradient-to-b from-accent/10 to-accent/[0.03] border border-accent/15 rounded-2xl p-4 sm:p-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
-                  <span className="text-accent text-xl" aria-hidden="true">&#9742;</span>
-                </div>
-                <h3 className="font-display font-bold text-lg mb-1">Call for an Instant Quote</h3>
-                <p className="text-sm text-muted-foreground mb-5">Speak to our Brisbane team now</p>
-                <a
-                  href={BUSINESS.phoneHref}
-                  className="flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-6 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
-                >
-                  {BUSINESS.phone}
-                </a>
               </div>
 
               {relatedServiceData.length > 0 && (

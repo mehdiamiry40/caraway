@@ -1,7 +1,6 @@
 "use server";
 
 import type { ZodSchema } from "zod";
-import { BUSINESS } from "@/lib/site";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
 type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
@@ -52,7 +51,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
     }
     return {
       success: false as const,
-      message: `We couldn't send your request right now. Please call ${BUSINESS.phone}.`,
+      message: `We couldn't send your request right now. Please try again later.`,
     };
   }
 }

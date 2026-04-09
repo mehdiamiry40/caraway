@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Home, Search, Phone } from "lucide-react";
+import { Home, Search } from "lucide-react";
 import Link from "next/link";
-import { BUSINESS } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Page not found | Caraway",
@@ -51,10 +50,9 @@ export default function NotFound() {
         <div className="mt-10 pt-8 border-t border-border/30">
           <p className="text-sm text-muted-foreground">
             Need help?{" "}
-            <a href={BUSINESS.phoneHref} className="text-primary font-semibold hover:text-accent transition-colors inline-flex items-center gap-1">
-              <Phone className="h-3 w-3" />
-              Call {BUSINESS.phoneFriendly} for a free quote
-            </a>
+            <Link href="/#price-estimator" className="text-primary font-semibold hover:text-accent transition-colors">
+              Get an instant quote
+            </Link>
           </p>
         </div>
       </div>

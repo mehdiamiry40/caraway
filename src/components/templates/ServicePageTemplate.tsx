@@ -12,7 +12,8 @@ import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { Accordion } from "@/components/ui/accordion";
 import { CheckCircle2 } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+
+
 
 export default function ServicePageTemplate({
   service,
@@ -91,20 +92,6 @@ export default function ServicePageTemplate({
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="bg-gradient-to-b from-accent/10 to-accent/[0.03] border border-accent/15 rounded-2xl p-4 sm:p-6 text-center">
-                <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
-                  <span className="text-accent text-xl" aria-hidden="true">&#9742;</span>
-                </div>
-                <h3 className="font-display font-bold text-lg mb-1">Call for an Instant Quote</h3>
-                <p className="text-sm text-muted-foreground mb-5">Speak to our Brisbane team now</p>
-                <a
-                  href={BUSINESS.phoneHref}
-                  className="flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-6 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
-                >
-                  {BUSINESS.phone}
-                </a>
               </div>
 
               {relatedServiceData.length > 0 && (

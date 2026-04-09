@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BUSINESS } from "@/lib/site";
 
 export default function Error({
   error,
@@ -24,15 +23,7 @@ export default function Error({
             Something went wrong
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
-            We hit an unexpected error loading this page. Please try again, or
-            call us at{" "}
-            <a
-              href={BUSINESS.phoneHref}
-              className="text-primary font-semibold underline underline-offset-2"
-            >
-              {BUSINESS.phone}
-            </a>{" "}
-            for immediate help.
+            We hit an unexpected error loading this page. Please try again.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button

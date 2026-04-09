@@ -3,8 +3,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
-import { BUSINESS } from "@/lib/site";
-
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Terms of Service" },
@@ -67,11 +65,7 @@ export default function Terms() {
                 Questions about these terms: see our{" "}
                 <Link href="/contact" className="text-primary underline underline-offset-2">
                   contact page
-                </Link>{" "}
-                or call{" "}
-                <a href={BUSINESS.phoneHref} className="text-primary underline underline-offset-2">
-                  {BUSINESS.phone}
-                </a>
+                </Link>
                 .
               </p>
             </section>

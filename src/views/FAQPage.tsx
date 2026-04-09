@@ -4,8 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import { Accordion } from "@/components/ui/accordion";
-import { BUSINESS } from "@/lib/site";
-import { Phone, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -69,7 +68,7 @@ export default function FAQPage() {
               Cash for Cars Brisbane — FAQ
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? Call us on <a href={BUSINESS.phoneHref} className="text-accent hover:underline font-semibold">{BUSINESS.phone}</a>.
+              Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? <Link href="/contact" className="text-accent hover:underline font-semibold">Contact us</Link>.
             </p>
           </div>
         </section>
@@ -93,13 +92,12 @@ export default function FAQPage() {
               Our Brisbane team is happy to help. Call us or visit our contact page.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href={BUSINESS.phoneHref}
+              <Link
+                href="/#price-estimator"
                 className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-7 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
               >
-                <Phone className="h-4 w-4" />
-                Call {BUSINESS.phone}
-              </a>
+                Get an Instant Quote
+              </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white hover:border-primary transition-all"

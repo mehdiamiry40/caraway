@@ -7,8 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import { suburbs } from "@/data/suburbs";
-import { MapPin, ArrowRight, Search, Phone } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+import { MapPin, ArrowRight, Search } from "lucide-react";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -37,7 +36,7 @@ export default function Locations() {
               Cash for Cars — Brisbane Locations
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              We buy cars for cash across all of Greater Brisbane. Find your local area below for suburb-specific service information, or call us on <a href={BUSINESS.phoneHref} className="text-accent hover:underline font-semibold">{BUSINESS.phone}</a> to get started.
+              We buy cars for cash across all of Greater Brisbane. Find your local area below for suburb-specific service information, or <Link href="/#price-estimator" className="text-accent hover:underline font-semibold">get an instant quote</Link> to get started.
             </p>
           </div>
         </section>
@@ -65,10 +64,10 @@ export default function Locations() {
                 No suburbs match &ldquo;{query}&rdquo;
               </p>
               <p className="text-muted-foreground text-sm">
-                We likely still service your area — call{" "}
-                <a href={BUSINESS.phoneHref} className="text-primary font-semibold underline underline-offset-2">
-                  {BUSINESS.phone}
-                </a>{" "}
+                We likely still service your area —{" "}
+                <Link href="/contact" className="text-primary font-semibold underline underline-offset-2">
+                  contact us
+                </Link>{" "}
                 to check.
               </p>
             </div>
@@ -102,15 +101,14 @@ export default function Locations() {
           <div className="mt-16 rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Your Suburb Not Listed?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Call us to confirm availability and get a free quote.
+              We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Use our price estimator for a free quote.
             </p>
-            <a
-              href={BUSINESS.phoneHref}
+            <Link
+              href="/#price-estimator"
               className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-8 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
             >
-              <Phone className="h-4 w-4" />
-              Call {BUSINESS.phone}
-            </a>
+              Get an Instant Quote
+            </Link>
           </div>
         </div>
 
