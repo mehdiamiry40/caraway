@@ -47,17 +47,32 @@ export default async function SuburbSlugPage({ params }: Props) {
     { label: suburb.h1 },
   ];
 
+  const areaName = suburb.h1.replace("Cash for Cars ", "");
   const pageStructuredData = [
     {
       "@type": "Service",
-      name: `Cash for Cars ${suburb.h1.replace("Cash for Cars ", "")}`,
+      name: `Cash for Cars ${areaName}`,
       description: suburb.metaDescription,
-      provider: { "@type": "LocalBusiness", name: "Caraway" },
+      provider: {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#business`,
+        name: "Caraway — Cash for Cars Brisbane",
+      },
       areaServed: {
         "@type": "Place",
-        name: suburb.h1.replace("Cash for Cars ", ""),
+        name: areaName,
+        containedInPlace: { "@type": "City", name: "Brisbane" },
       },
-      url: `https://caraway.au/locations/${suburb.slug}`,
+      serviceType: "Cash for Cars",
+      url: canonicalUrl,
+      image: `${SITE_URL}/images/tow-truck-hero.webp`,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "AUD",
+        price: "0",
+        description: "Free car removal and towing included",
+        availability: "https://schema.org/InStock",
+      },
     },
     breadcrumbListSchema(breadcrumbs, canonicalUrl),
   ];

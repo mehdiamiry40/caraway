@@ -10,15 +10,15 @@ const breadcrumbs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Contact Caraway | Cash for Cars Brisbane | 1800 227 293",
+  title: "Contact Us — Free Cash for Cars Quote Brisbane",
   description:
-    "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or fill out our form. Brisbane-wide service, 7 days a week, same-day pickup.",
+    "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or use our online form. Brisbane-wide service, 7 days a week, same-day pickup available.",
   alternates: { canonical: "/contact" },
   openGraph: {
     url: "/contact",
-    title: "Contact Caraway | Cash for Cars Brisbane | 1800 227 293",
+    title: "Contact Us — Free Cash for Cars Quote Brisbane | Caraway",
     description:
-      "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or fill out our form.",
+      "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or use our online form. Brisbane-wide, 7 days a week.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: { card: "summary_large_image" },
@@ -38,6 +38,7 @@ export default function ContactPage() {
             description:
               "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or fill out our form.",
             mainEntity: { "@id": `${SITE_URL}/#business` },
+            isPartOf: { "@id": `${SITE_URL}/#website` },
           },
           breadcrumbListSchema(breadcrumbs, canonical),
         ]}

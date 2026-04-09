@@ -11,15 +11,15 @@ const breadcrumbs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Blog | Caraway — Cash for Cars Brisbane",
+  title: "Cash for Cars Brisbane Blog — Tips & Guides",
   description:
-    "Tips, guides, and insights about selling your car for cash in Brisbane. Learn how to get the best price, prepare for pickup, and more.",
+    "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same-day pickup works. Read more now.",
   alternates: { canonical: "/blog" },
   openGraph: {
     url: "/blog",
-    title: "Blog | Caraway — Cash for Cars Brisbane",
+    title: "Cash for Cars Brisbane Blog — Tips & Guides",
     description:
-      "Tips, guides, and insights about selling your car for cash in Brisbane.",
+      "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same-day pickup works.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",

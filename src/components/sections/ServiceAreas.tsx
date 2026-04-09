@@ -13,13 +13,15 @@ const additionalAreas = [
   "Brisbane CBD", "Fortitude Valley", "West End", "Paddington",
   "Kelvin Grove", "Newstead", "New Farm", "Kangaroo Point",
   "Aspley", "Stafford", "Kedron", "Nundah", "Clayfield",
-  "Sandgate", "Brighton", "Bracken Ridge", "North Lakes",
+  "Sandgate", "Brighton", "Bracken Ridge",
   "Holland Park", "Calamvale", "Runcorn",
-  "Loganholme", "Beenleigh",
-  "Tingalpa", "Wynnum", "Manly", "Cleveland",
-  "Redland Bay", "Victoria Point", "Capalaba",
+  "Loganholme",
+  "Tingalpa",
+  "Redland Bay", "Victoria Point",
   "Inala", "Forest Lake", "Richlands",
   "Oxley", "Darra", "Goodna", "Springfield",
+  "Strathpine", "Kallangur", "Petrie",
+  "Eagleby", "Holmview", "Waterford",
 ];
 
 export function ServiceAreas() {

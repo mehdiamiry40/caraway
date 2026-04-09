@@ -25,10 +25,10 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
-              Contact Caraway
+              Contact Us — Get a Free Cash Quote
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              Ready to sell your car for cash? Get in touch for a free, no-obligation quote. We&apos;re available 7 days a week across Greater Brisbane.
+              Ready to sell your car for cash in Brisbane? Get in touch for a free, no-obligation quote. We&apos;re available 7 days a week across Greater Brisbane.
             </p>
           </div>
         </section>
