@@ -8,6 +8,7 @@ import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
+const PriceEstimator = dynamic(() => import("@/components/sections/PriceEstimator").then((mod) => mod.PriceEstimator));
 
 /**
  * Deferred chunk: below-the-fold sections + quote form + FAQ.
@@ -18,6 +19,7 @@ export default function HomeBelowFold() {
     <>
       <Stats />
       <HowItWorks />
+      <PriceEstimator />
       <WhyUs />
       <CarTypes />
       <Testimonials />
