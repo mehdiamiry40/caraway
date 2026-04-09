@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
 const serviceLinks = [
@@ -28,7 +28,7 @@ const companyLinks = [
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
-  { label: "Get a Quote", href: "/#quote-section" },
+  { label: "Get a Quote", href: "/#price-estimator" },
 ];
 
 const linkClasses = "text-white/55 hover:text-white hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
@@ -45,15 +45,9 @@ export function Footer() {
               <span className="transition-opacity duration-200 group-hover:opacity-90">caraway<span className="text-accent">.</span></span>
             </Link>
             <p className="text-white/50 max-w-sm mt-3 leading-relaxed text-sm">
-              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Call or send the form.
+              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
             </p>
             <div className="mt-8 space-y-3.5">
-              <a href={BUSINESS.phoneHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-all duration-200 group text-sm">
-                <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 group-hover:scale-105 transition-all duration-200">
-                  <Phone className="h-4 w-4 text-accent" />
-                </span>
-                <span className="font-medium">{BUSINESS.phone}</span>
-              </a>
               <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-all duration-200 group text-sm">
                 <span className="flex h-10 w-10 rounded-xl bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 group-hover:scale-105 transition-all duration-200">
                   <Mail className="h-4 w-4 text-accent" />

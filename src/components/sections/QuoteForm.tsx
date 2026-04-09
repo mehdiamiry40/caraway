@@ -9,8 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, Phone, BadgeCheck, Sparkles } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
 
 const fieldIds = {
   name: "quote-name",
@@ -22,7 +21,6 @@ const fieldIds = {
 
 const benefits = [
   { icon: Clock, title: "Same-day response", desc: "We usually reply within a few hours during business hours." },
-  { icon: Phone, title: "What happens next", desc: "We confirm details, agree a price before pickup, then pay when we collect." },
   { icon: Shield, title: "No obligation", desc: "Not happy with the offer? No worries — there's zero pressure to accept." },
 ];
 
@@ -102,15 +100,8 @@ export function QuoteForm() {
                     <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
-                  <p className="text-muted-foreground mb-4 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will contact you using the number you provided.
-                  </p>
                   <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    If you need someone sooner, call{" "}
-                    <a href={BUSINESS.phoneHref} className="text-primary font-bold underline underline-offset-2 hover:text-primary/80 transition-colors">
-                      {BUSINESS.phone}
-                    </a>
-                    .
+                    Our team will contact you using the number you provided — usually within one business day.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto transition-all duration-200">
                     Submit another vehicle

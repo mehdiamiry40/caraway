@@ -1,7 +1,6 @@
 "use client";
 
 import { Component, type ReactNode } from "react";
-import { BUSINESS } from "@/lib/site";
 
 interface Props {
   children: ReactNode;
@@ -36,15 +35,7 @@ export class ErrorBoundary extends Component<Props, State> {
               Something went wrong
             </h2>
             <p className="text-muted-foreground mb-6">
-              We hit an unexpected error. Please try refreshing the page, or
-              call us at{" "}
-              <a
-                href={BUSINESS.phoneHref}
-                className="text-primary font-semibold underline underline-offset-2"
-              >
-                {BUSINESS.phone}
-              </a>{" "}
-              for immediate help.
+              We hit an unexpected error. Please try refreshing the page.
             </p>
             <button
               onClick={() => this.setState({ hasError: false })}

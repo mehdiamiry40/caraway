@@ -6,10 +6,9 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
 import { submitQuote } from "@/actions/quote";
-import { BUSINESS } from "@/lib/site";
 import {
   Car, DollarSign, ArrowRight, ArrowLeft, RotateCcw,
-  TrendingUp, Phone, CheckCircle2, Send, Loader2, PartyPopper,
+  TrendingUp, CheckCircle2, Send, Loader2, PartyPopper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -138,16 +137,9 @@ export function PriceEstimator() {
               ${result?.low.toLocaleString()} – ${result?.high.toLocaleString()}
             </div>
             <p className="text-muted-foreground text-sm mb-6">
-              We&apos;ll call you shortly to confirm a final price. No obligation — if the offer doesn&apos;t work for you, no worries.
+              We&apos;ll contact you shortly to confirm a final price. No obligation — if the offer doesn&apos;t work for you, no worries.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href={BUSINESS.phoneHref}
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-primary text-white font-semibold hover:bg-primary/90 transition-all touch-manipulation"
-              >
-                <Phone className="w-4 h-4" />
-                Call us now
-              </a>
               <button
                 type="button"
                 onClick={handleReset}

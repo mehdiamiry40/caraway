@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Accordion } from "@/components/ui/accordion";
 import { faqs } from "@/data/home-faqs";
-import { BUSINESS } from "@/lib/site";
 
 export { faqs } from "@/data/home-faqs";
 
@@ -19,9 +19,13 @@ export function FAQ() {
 
         <div className="mt-8 sm:mt-10 text-center text-sm text-muted-foreground">
           Still have questions?{" "}
-          <a href={BUSINESS.phoneHref} className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
-            Call us on {BUSINESS.phoneFriendly}
-          </a>{" "}
+          <Link href="/#price-estimator" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+            Get an instant quote
+          </Link>{" "}
+          or{" "}
+          <Link href="/contact" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+            contact us
+          </Link>{" "}
           — we&apos;re available 7 days a week.
         </div>
       </div>
