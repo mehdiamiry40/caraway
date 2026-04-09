@@ -86,6 +86,50 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </div>
           </div>
 
+          {/* Internal links to services and suburbs */}
+          {(post.relatedServices.length > 0 || post.relatedSuburbs.length > 0) && (
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {post.relatedServices.length > 0 && (
+                <div className="rounded-xl border border-border/60 p-5 bg-white">
+                  <h3 className="font-display font-bold text-sm text-primary/70 uppercase tracking-wider mb-3">Related Services</h3>
+                  <ul className="space-y-1">
+                    {post.relatedServices.map(slug => {
+                      const svc = services.find(s => s.slug === slug);
+                      if (!svc) return null;
+                      return (
+                        <li key={slug}>
+                          <Link href={`/${slug}`} className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors py-1.5">
+                            <span className="w-1 h-1 rounded-full bg-accent/40 shrink-0" />
+                            {svc.h1}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+              {post.relatedSuburbs.length > 0 && (
+                <div className="rounded-xl border border-border/60 p-5 bg-white">
+                  <h3 className="font-display font-bold text-sm text-primary/70 uppercase tracking-wider mb-3">Areas We Service</h3>
+                  <ul className="space-y-1">
+                    {post.relatedSuburbs.map(slug => {
+                      const sub = suburbs.find(s => s.slug === slug);
+                      if (!sub) return null;
+                      return (
+                        <li key={slug}>
+                          <Link href={`/locations/${slug}`} className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors py-1.5">
+                            <span className="w-1 h-1 rounded-full bg-accent/40 shrink-0" />
+                            {sub.h1}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Related posts */}
           {(() => {
             const relatedPosts = getRelatedPosts(post.slug);
