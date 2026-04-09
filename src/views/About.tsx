@@ -29,10 +29,10 @@ export default function About() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
-              About Caraway
+              About Caraway — Cash for Cars Brisbane
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              We&apos;re a locally owned Brisbane business that makes selling your car simple. No auctions, no advertising, no time-wasters — just fair cash offers and same-day service.
+              We&apos;re a locally owned Brisbane business that makes selling your car for cash simple. No auctions, no advertising, no time-wasters — just fair cash offers and same-day service.
             </p>
           </div>
         </section>

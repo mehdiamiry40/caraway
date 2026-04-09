@@ -2,37 +2,59 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqs } from "@/data/home-faqs";
 import { reviews } from "@/data/reviews";
+import { SITE_URL } from "@/lib/site";
 import Home from "@/views/Home";
 
 export const metadata: Metadata = {
-  title:
-    "Cash for Cars Brisbane | Caraway — Same-Day Cash & Free Towing",
+  title: {
+    absolute: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
+  },
   description:
-    "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup. Caraway buys any make or condition — up to $9,999. Greater Brisbane, 7 days. Call 1800 227 293 for a free quote.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293 for a free quote.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
-    title:
-      "Cash for Cars Brisbane | Caraway — Same-Day Cash & Free Towing",
+    type: "website",
+    title: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
     description:
-      "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup. Caraway buys any make or condition — up to $9,999. Greater Brisbane, 7 days.",
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition.",
+    images: [
+      {
+        url: "/images/tow-truck-hero.webp",
+        width: 1200,
+        height: 800,
+        alt: "Caraway tow truck — cash for cars Brisbane",
+      },
+    ],
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function HomePage() {
   const homeStructuredData = [
     {
       "@type": "WebPage",
-      "@id": "https://caraway.au/#webpage",
-      url: "https://caraway.au/",
+      "@id": `${SITE_URL}/#webpage`,
+      url: `${SITE_URL}/`,
       name: "Cash for Cars Brisbane | Caraway",
       description:
         "Cash for cars Brisbane service: instant quotes, free towing, same-day cash payment. We buy damaged, old, scrap, and running vehicles across Greater Brisbane.",
-      isPartOf: { "@id": "https://caraway.au/#website" },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
       about: {
         "@type": "Service",
         name: "Cash for cars Brisbane",
         areaServed: { "@type": "City", name: "Brisbane" },
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+        ],
       },
     },
     {
@@ -50,11 +72,13 @@ export default function HomePage() {
         "@type": "Rating" as const,
         ratingValue: r.rating,
         bestRating: 5,
+        worstRating: 1,
       },
       reviewBody: r.text,
+      datePublished: "2025-01-15",
       itemReviewed: {
         "@type": "LocalBusiness" as const,
-        "@id": "https://caraway.au/#business",
+        "@id": `${SITE_URL}/#business`,
         name: "Caraway — Cash for Cars Brisbane",
       },
     })),

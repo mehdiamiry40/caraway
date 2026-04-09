@@ -10,15 +10,15 @@ const breadcrumbs = [
 ];
 
 export const metadata: Metadata = {
-  title: "FAQ | Cash for Cars Brisbane Questions Answered — Caraway",
+  title: "Cash for Cars Brisbane FAQ — Questions Answered",
   description:
-    "Frequently asked questions about selling your car for cash in Brisbane. Learn about our process, pricing, towing, paperwork, and service areas.",
+    "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup. Call 1800 227 293 for help.",
   alternates: { canonical: "/faq" },
   openGraph: {
     url: "/faq",
-    title: "FAQ | Cash for Cars Brisbane Questions Answered — Caraway",
+    title: "Cash for Cars Brisbane FAQ — Questions Answered | Caraway",
     description:
-      "Frequently asked questions about selling your car for cash in Brisbane.",
+      "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: { card: "summary_large_image" },
@@ -29,6 +29,11 @@ export default function FaqRoutePage() {
   const faqStructuredData = [
     {
       "@type": "FAQPage",
+      url: canonical,
+      name: "Cash for Cars Brisbane FAQ",
+      description:
+        "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup.",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
       mainEntity: allFaqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,

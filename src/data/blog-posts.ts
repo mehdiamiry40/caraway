@@ -251,9 +251,9 @@ const rawPosts: Omit<BlogPost, "readTime">[] = [
   },
   {
     slug: "how-much-is-my-car-worth-for-scrap-brisbane",
-    title: "How Much Is My Car Worth for Scrap in Brisbane? (2025 Guide)",
+    title: "How Much Is My Car Worth for Scrap in Brisbane? (2026 Guide)",
     metaDescription:
-      "Find out how much your scrap car is worth in Brisbane. We break down what affects scrap car prices in 2025, from metal weight to parts value, and how to get the best offer.",
+      "Find out how much your scrap car is worth in Brisbane. We break down what affects scrap car prices in 2026, from metal weight to parts value, and how to get the best offer.",
     excerpt:
       "Wondering what your old car is actually worth as scrap? Brisbane scrap prices depend on several factors most sellers overlook. Here's what determines your payout.",
     content: [

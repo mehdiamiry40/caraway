@@ -66,7 +66,7 @@ export default function FAQPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
-              Frequently Asked Questions
+              Cash for Cars Brisbane — FAQ
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
               Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? Call us on <a href={BUSINESS.phoneHref} className="text-accent hover:underline font-semibold">{BUSINESS.phone}</a>.

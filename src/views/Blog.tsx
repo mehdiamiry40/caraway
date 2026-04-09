@@ -22,10 +22,10 @@ export default function Blog() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
-              Blog
+              Cash for Cars Brisbane Blog
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              Tips, guides, and insights about selling your car for cash in Brisbane.
+              Expert tips, guides, and insights on selling your car for cash in Brisbane. Get the best price and learn how same-day pickup works.
             </p>
           </div>
         </section>

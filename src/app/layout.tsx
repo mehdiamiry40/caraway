@@ -29,13 +29,17 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Cash for Cars Brisbane | Caraway — Same-Day Cash & Free Towing",
+  title: {
+    default: "Caraway — Cash for Cars Brisbane",
+    template: "%s | Caraway",
+  },
   description:
-    "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup. Caraway buys any make or condition — up to $9,999. Greater Brisbane, 7 days. Call 1800 227 293 for a free quote.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
-    { rel: "apple-touch-icon", url: "/icon-192.png" },
+    { rel: "icon", url: "/favicon.ico", sizes: "32x32" },
+    { rel: "apple-touch-icon", url: "/icon-192.png", sizes: "192x192" },
   ],
   keywords: [
     "cash for cars Brisbane",
@@ -79,6 +83,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
+  themeColor: "#102452",
 };
 
 export default function RootLayout({
@@ -88,7 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-AU"
       className={`${inter.variable} ${dmSans.variable}`}
     >
       <body className="min-h-screen">

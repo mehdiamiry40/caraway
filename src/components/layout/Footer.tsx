@@ -17,6 +17,9 @@ const locationLinks = [
   { label: "Logan", href: "/locations/logan" },
   { label: "Ipswich", href: "/locations/ipswich" },
   { label: "Redcliffe", href: "/locations/redcliffe" },
+  { label: "Caboolture", href: "/locations/caboolture" },
+  { label: "Bayside Brisbane", href: "/locations/bayside-brisbane" },
+  { label: "North Lakes", href: "/locations/north-lakes" },
   { label: "All Locations", href: "/locations" },
 ];
 

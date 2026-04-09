@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import BlogPostView from "@/views/BlogPost";
 import { blogPosts } from "@/data/blog-posts";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
+import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} | Caraway Blog`,
+    title: post.title,
     description: post.metaDescription,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -65,16 +66,29 @@ export default async function BlogPostPage({ params }: Props) {
           {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": canonical,
+            },
             headline: post.title,
             description: post.metaDescription,
             datePublished: post.date,
+            dateModified: post.date,
             url: canonical,
+            image: {
+              "@type": "ImageObject",
+              url: `${SITE_URL}/images/tow-truck-hero.webp`,
+              width: 1200,
+              height: 800,
+            },
             author: {
               "@type": "Organization",
               name: "Caraway",
               url: SITE_URL,
+              logo: `${SITE_URL}/images/logo.png`,
             },
-            publisher: { "@id": `${SITE_URL}/#organization` },
+            publisher: publisherSchema,
+            inLanguage: "en-AU",
           },
         ]}
       />

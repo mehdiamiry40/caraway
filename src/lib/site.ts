@@ -10,7 +10,7 @@ export const BUSINESS = {
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
   location: "Brisbane, QLD",
-  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
+  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redland Bay",
   hours: "7:00 AM – 7:00 PM",
   hoursDetail: "Monday to Sunday, 7 days a week",
 } as const;
