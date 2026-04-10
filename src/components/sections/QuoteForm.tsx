@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
+import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
 
 const fieldIds = {
   name: "quote-name",

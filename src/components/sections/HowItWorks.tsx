@@ -1,4 +1,4 @@
-import { MessageSquare, DollarSign, Truck } from "lucide-react";
+import { MessageSquare, DollarSign, Truck, ArrowRight } from "lucide-react";
 
 const steps = [
   {

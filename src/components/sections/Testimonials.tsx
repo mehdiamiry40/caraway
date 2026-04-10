@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { reviews as testimonials } from "@/data/reviews";
 
 function Stars({ count }: { count: number }) {

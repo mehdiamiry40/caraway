@@ -31,12 +31,12 @@ export default function Blog() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {indexableBlogPosts.map((post) => (
+            {indexableBlogPosts.map((post, idx) => (
               <article
                 key={post.slug}
                 className={`group rounded-lg border border-border/60 bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
               >
-                <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
+                <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
                       <Tag className="h-3 w-3" />
