@@ -12,6 +12,7 @@ import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { Accordion } from "@/components/ui/accordion";
 import { CheckCircle2 } from "lucide-react";
+import { PROMISE_POINTS } from "@/lib/site";
 
 
 
@@ -81,7 +82,7 @@ export default function ServicePageTemplate({
                 <h3 className="font-display font-bold text-lg mb-1">Why Caraway?</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s trusted cash-for-cars service</p>
                 <ul className="space-y-3.5">
-                  {["Up to $9,999 cash", "Same-day pickup", "Free towing always", "No RWC needed", "All makes & models", "7 days a week"].map(item => (
+                  {PROMISE_POINTS.map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm text-foreground/80">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10">
                         <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
