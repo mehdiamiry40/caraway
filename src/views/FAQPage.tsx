@@ -60,8 +60,7 @@ export default function FAQPage() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
@@ -86,7 +85,7 @@ export default function FAQPage() {
             </div>
           ))}
 
-          <div className="rounded-2xl border border-primary/10 bg-gradient-to-br from-primary/[0.05] via-primary/[0.02] to-accent/[0.03] p-5 sm:p-8 md:p-12 text-center">
+          <div className="rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Our Brisbane team is happy to help. Call us or visit our contact page.
@@ -94,13 +93,13 @@ export default function FAQPage() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/#price-estimator"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-full py-3.5 px-7 font-semibold hover:bg-accent/90 shadow-md shadow-accent/20 hover:shadow-lg hover:shadow-accent/25 transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
               >
                 Get an Instant Quote
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white hover:border-primary transition-all"
+                className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
                 Contact Us

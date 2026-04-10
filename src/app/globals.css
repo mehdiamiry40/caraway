@@ -25,21 +25,21 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 213 30% 18%;
-  --primary: 213 48% 33%;
+  --foreground: 210 5% 8%;
+  --primary: 209 60% 30%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 213 20% 96%;
-  --secondary-foreground: 213 30% 18%;
-  --muted: 213 16% 96%;
-  --muted-foreground: 213 12% 46%;
-  --accent: 33 80% 53%;
+  --secondary: 180 3% 96%;
+  --secondary-foreground: 210 5% 8%;
+  --muted: 180 3% 96%;
+  --muted-foreground: 200 3% 27%;
+  --accent: 32 93% 54%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 213 14% 90%;
-  --ring: 213 48% 33%;
+  --border: 200 8% 88%;
+  --ring: 209 60% 30%;
   --card: 0 0% 100%;
-  --card-foreground: 213 30% 18%;
+  --card-foreground: 210 5% 8%;
 }
 
 @layer base {

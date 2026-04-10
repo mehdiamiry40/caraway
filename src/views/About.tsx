@@ -24,8 +24,7 @@ export default function About() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
@@ -63,7 +62,7 @@ export default function About() {
               <div className="w-12 h-1 bg-accent/60 rounded-full mb-6" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {features.map(item => (
-                  <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-muted/60 to-muted/30 border border-border/40 hover:border-border/60 hover:shadow-sm transition-all duration-200">
+                  <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-lg bg-muted border border-border/60 hover:border-primary/30 hover:shadow-sm transition-all duration-200">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 shrink-0 mt-0.5">
                       <CheckCircle2 className="h-4 w-4 text-accent" />
                     </span>

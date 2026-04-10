@@ -6,7 +6,7 @@ export { faqs } from "@/data/home-faqs";
 
 export function FAQ() {
   return (
-    <section id="faq" className="section-y bg-white" aria-label="Frequently asked questions">
+    <section id="faq" className="section-y bg-muted" aria-label="Frequently asked questions">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">Cash for Cars Brisbane FAQ</h2>

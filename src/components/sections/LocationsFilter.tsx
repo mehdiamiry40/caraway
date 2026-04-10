@@ -24,7 +24,7 @@ export function LocationsFilter() {
           placeholder="Search your suburb..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full h-13 rounded-2xl border-2 border-border/60 bg-white pl-12 pr-5 text-base shadow-sm shadow-black/[0.03] ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-transparent hover:border-primary/40 hover:shadow-md touch-manipulation"
+          className="w-full h-13 rounded-lg border border-border bg-white pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>
@@ -51,10 +51,10 @@ export function LocationsFilter() {
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group border border-border/60 rounded-2xl p-4 sm:p-6 hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 bg-white"
+              className="group border border-border/60 rounded-lg p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-200 bg-white"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-accent/15 to-accent/5 flex items-center justify-center group-hover:from-accent/25 group-hover:to-accent/10 transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
                   <MapPin className="h-4 w-4 text-accent" />
                 </div>
                 <h2 className="text-base font-display font-bold text-foreground group-hover:text-primary transition-colors">

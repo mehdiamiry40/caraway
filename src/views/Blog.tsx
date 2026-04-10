@@ -17,8 +17,7 @@ export default function Blog() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
@@ -35,7 +34,7 @@ export default function Blog() {
             {indexableBlogPosts.map((post, idx) => (
               <article
                 key={post.slug}
-                className={`group rounded-2xl border border-border/60 bg-white hover:border-primary/20 hover:shadow-lg hover:shadow-black/[0.06] transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
+                className={`group rounded-lg border border-border/60 bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
               >
                 <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">

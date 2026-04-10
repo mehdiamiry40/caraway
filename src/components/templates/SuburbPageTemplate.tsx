@@ -34,8 +34,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-gradient-to-br from-primary via-primary to-primary/90 text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/[0.08] via-transparent to-transparent pointer-events-none" />
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <div className="flex items-center gap-3 mt-6 mb-3">
@@ -87,7 +86,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-b from-primary/[0.06] to-primary/[0.02] border border-primary/10 rounded-2xl p-5 sm:p-8 lg:p-10">
+              <div className="bg-muted border border-border/60 rounded-lg p-5 sm:p-8 lg:p-10">
                 <h2 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
                   How It Works
                 </h2>
@@ -99,7 +98,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     { step: "3", title: "Get Paid Today", desc: "We pick up your car free and pay you cash on the spot." }
                   ].map(item => (
                     <div key={item.step} className="text-center">
-                      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-md shadow-accent/20">
+                      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-sm">
                         {item.step}
                       </div>
                       <h3 className="font-display font-bold text-foreground mb-2">{item.title}</h3>
@@ -111,7 +110,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
-              <div className="bg-gradient-to-b from-primary/[0.07] to-primary/[0.02] border border-primary/10 rounded-2xl p-4 sm:p-6">
+              <div className="bg-muted border border-border/60 rounded-lg p-4 sm:p-6">
                 <h3 className="font-display font-bold text-lg mb-1">Our Promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">
@@ -127,7 +126,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               {relatedServiceData.length > 0 && (
-                <div className="border border-border/60 rounded-2xl p-4 sm:p-6 bg-white">
+                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Our Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
@@ -146,7 +145,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {nearbySuburbData.length > 0 && (
-                <div className="border border-border/60 rounded-2xl p-4 sm:p-6 bg-white">
+                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Nearby Areas</h3>
                   <ul className="space-y-1">
                     {nearbySuburbData.map(s => (

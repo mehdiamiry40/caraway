@@ -22,7 +22,6 @@ export function CarTypes() {
   return (
     <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">All makes & conditions</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
@@ -33,7 +32,6 @@ export function CarTypes() {
           </p>
         </div>
 
-        {/* Card grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {carTypes.map((type) => {
             const Icon = type.icon;
@@ -42,18 +40,18 @@ export function CarTypes() {
                 key={type.label}
                 href={type.href}
                 className={cn(
-                  "group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-2xl",
-                  "bg-white/[0.05] border border-white/10 backdrop-blur-sm",
-                  "hover:bg-white hover:border-white hover:text-primary hover:shadow-xl hover:shadow-black/10",
-                  "hover:-translate-y-1 transition-all duration-300",
+                  "group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-lg",
+                  "bg-white/[0.06] border border-white/10",
+                  "hover:bg-white hover:border-white hover:text-primary hover:shadow-lg",
+                  "hover:-translate-y-0.5 transition-all duration-300",
                   "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   "touch-manipulation min-h-[120px] sm:min-h-[140px]"
                 )}
               >
                 <div className={cn(
-                  "flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-xl mb-3",
+                  "flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-lg mb-3",
                   "bg-accent/20 text-accent",
-                  "group-hover:bg-accent group-hover:text-white group-hover:shadow-md group-hover:shadow-accent/30",
+                  "group-hover:bg-accent group-hover:text-white",
                   "transition-all duration-300"
                 )}>
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -70,7 +68,6 @@ export function CarTypes() {
           })}
         </div>
 
-        {/* Also accepted */}
         <div className="mt-8 sm:mt-10 text-center">
           <p className="text-xs uppercase tracking-wider text-primary-foreground/30 mb-3">Also accepted</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
