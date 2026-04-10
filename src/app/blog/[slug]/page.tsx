@@ -83,10 +83,14 @@ export default async function BlogPostPage({ params }: Props) {
               height: 800,
             },
             author: {
-              "@type": "Organization",
-              name: "Caraway",
-              url: SITE_URL,
-              logo: `${SITE_URL}/images/logo.png`,
+              "@type": "Person",
+              name: "Sam Williams",
+              jobTitle: "Senior Buyer",
+              worksFor: {
+                "@type": "Organization",
+                name: "Caraway",
+                url: SITE_URL,
+              },
             },
             publisher: publisherSchema,
             inLanguage: "en-AU",

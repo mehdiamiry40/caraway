@@ -23,7 +23,7 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    title: "Cash for Cars Brisbane | Up to $9,999 — Same-Day Pickup",
+    title: "Cash for Cars Brisbane | Up to $9,999 Same-Day Pickup",
     metaDescription: "Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call 1800 227 293.",
     h1: "Cash for Cars Brisbane — Get Paid Today",
     intro: "Looking to sell your car fast in Brisbane? Caraway is Brisbane's leading cash for cars buyer, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same day, free of charge.",
@@ -175,6 +175,14 @@ export const services: ServicePage[] = [
       {
         heading: "Fast, Convenient Removal at Your Location",
         content: "We come to you anywhere in Greater Brisbane. You don't need to drive the car anywhere or arrange independent towing. Our team arrives at your location with a flatbed tow truck, pays you cash, loads the vehicle, and leaves. The whole process takes about 30 minutes. We can even remove cars from backyards, sheds, and properties where there's limited access."
+      },
+      {
+        heading: "Unwanted Car Removal Across Every Brisbane Suburb",
+        content: "Our unwanted car removal service covers every postcode across Greater Brisbane, from Bracken Ridge and Bald Hills in the north through to Beenleigh, Loganholme, and Mount Warren Park in the south. We regularly run to the western suburbs along the Ipswich Motorway — Jindalee, Darra, Wacol, Goodna, and out to Ipswich itself — and we cover the bayside and Redlands from Wynnum through Capalaba to Victoria Point and Redland Bay. Rural properties on the fringes of the city are no problem either: our flatbed trucks can reach acreages around Samford, Dayboro, and the outer Moreton Bay region. Wherever the unwanted car is sitting, we'll make the trip. Our drivers know the quirks of Brisbane's road network — the tight streets of Paddington, the steep driveways of Kenmore, the apartment complexes along Coronation Drive, the industrial estates of Geebung and Rocklea — and they come prepared with the right equipment for the job. We don't charge distance surcharges and we never reduce a quote because of the suburb you're in. Whether you're inside the CBD or on the edge of the Scenic Rim, the cash offer is the same fair number on the phone as at pickup."
+      },
+      {
+        heading: "Why Unwanted Cars Cost You Money Every Day You Wait",
+        content: "An unwanted car isn't a neutral thing — it quietly costs you money and space every day it sits. If it's still registered, you're paying registration and CTP insurance for a vehicle you're not using: in Queensland that's around $840 per year for a standard four-cylinder private car. If you're storing it in a garage or carport, you're losing usable space on your own property. If it's outside, it's weathering — paint oxidising, seals perishing, upholstery fading, tyres going flat and cracking. Mice and possums get into the engine bay and chew wiring looms. Brake discs rust onto calipers. Fuel turns to varnish in the lines. Every month the car sits, it loses value you'll never recover. On top of the financial cost, Brisbane City Council and surrounding councils can issue abandoned vehicle infringements for derelict cars visible from the street — fines start around $330 and can climb quickly if the problem isn't addressed. Selling to Caraway stops the bleed immediately. You get the money, you get the space back, and you stop worrying about fines, rust, and rodents. Most of our customers say the hardest part was picking up the phone; after that, the car was gone in hours."
       }
     ],
     faqs: [
