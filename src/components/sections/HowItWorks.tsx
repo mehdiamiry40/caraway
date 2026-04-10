@@ -4,12 +4,12 @@ const steps = [
   {
     icon: <MessageSquare className="w-6 h-6" />,
     title: "Tell us what it is",
-    description: "Call or use the form — make, model, year, condition, suburb. Photos help if you have them.",
+    description: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
   },
   {
     icon: <DollarSign className="w-6 h-6" />,
     title: "Get a number",
-    description: "We give a ballpark on the phone or after a quick call-back. Final figure is locked in before we send a truck.",
+    description: "We send a ballpark straight back, usually within the hour. The final figure is locked in before we send a truck.",
   },
   {
     icon: <Truck className="w-6 h-6" />,

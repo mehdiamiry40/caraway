@@ -22,6 +22,13 @@ const nextConfig: NextConfig = {
       headers: [
         {
           key: "Content-Security-Policy",
+          // NOTE: script-src intentionally keeps 'unsafe-inline' because
+          // Next.js App Router hydration injects inline bootstrap scripts
+          // and we do not currently emit per-request nonces. Revisit once
+          // we adopt nonce-based CSP (requires a custom middleware/layout
+          // integration). object-src 'none' is added as defence in depth
+          // so plugins/applets cannot be embedded even if an injection
+          // were to occur.
           value: [
             "default-src 'self'",
             "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
@@ -29,6 +36,7 @@ const nextConfig: NextConfig = {
             "font-src 'self'",
             "img-src 'self' data: blob:",
             "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+            "object-src 'none'",
             "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",
