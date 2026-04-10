@@ -1,4 +1,4 @@
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import { reviews as testimonials } from "@/data/reviews";
 
 function Stars({ count }: { count: number }) {
@@ -19,7 +19,6 @@ export function Testimonials() {
     <section className="section-y bg-white" aria-label="What sellers say">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
-          <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Reviews</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">
             Cash for Cars Brisbane Reviews
           </h2>
@@ -45,7 +44,7 @@ export function Testimonials() {
                   {review.car}
                 </span>
               </div>
-              <blockquote className="text-foreground/80 text-sm leading-relaxed mb-6 relative z-10">
+              <blockquote className="text-foreground/80 text-sm leading-relaxed mb-6">
                 &ldquo;{review.text}&rdquo;
               </blockquote>
               <div className="flex items-center gap-3 pt-4 border-t border-border/40">

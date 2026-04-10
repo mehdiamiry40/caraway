@@ -141,8 +141,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <h3 className="font-display font-bold text-base text-foreground group-hover:text-primary transition-colors mt-3 leading-snug line-clamp-2">
                       {related.title}
                     </h3>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary group-hover:gap-2.5 transition-all">
-                      Read article <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors">
+                      Read article <ArrowRight className="h-3 w-3" />
                     </span>
                   </Link>
                 ))}

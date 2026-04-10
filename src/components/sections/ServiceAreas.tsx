@@ -30,7 +30,6 @@ export function ServiceAreas() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-12">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Greater Brisbane coverage</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
             Cash for Cars Brisbane Service Areas
           </h2>

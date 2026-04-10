@@ -189,7 +189,6 @@ export function PriceEstimator() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">Instant quote</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground">
             How Much Is Your Car Worth?
           </h2>
@@ -204,7 +203,7 @@ export function PriceEstimator() {
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center gap-1.5 sm:gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-all duration-300",
+                  "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200",
                   step >= s
                     ? "bg-primary text-white"
                     : "bg-white border border-border text-muted-foreground"

@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
+import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 
 const fieldIds = {
   name: "quote-name",
@@ -59,7 +59,7 @@ export function QuoteForm() {
   };
 
   return (
-    <section id="quote-section" className="section-y bg-white">
+    <section id="quote-section" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-muted rounded-lg p-4 sm:p-8 md:p-12 lg:p-16 border border-border/60">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
@@ -107,7 +107,7 @@ export function QuoteForm() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5 pt-2" noValidate>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -242,7 +242,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide rounded-xl" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>

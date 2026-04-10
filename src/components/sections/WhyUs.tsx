@@ -33,7 +33,6 @@ export function WhyUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           <div className="lg:col-span-5">
-            <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Why us</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary mb-5 md:mb-6 leading-tight text-balance">
               Why Brisbane Sellers Choose Caraway
             </h2>

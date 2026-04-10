@@ -34,7 +34,7 @@ export function BackToTopButton() {
           : "translate-y-4 opacity-0 pointer-events-none"
       )}
     >
-      <ArrowUp className="h-5 w-5 transition-transform duration-200 group-hover:-translate-y-px" />
+      <ArrowUp className="h-5 w-5" />
     </button>
   );
 }

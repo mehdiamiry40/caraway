@@ -37,7 +37,6 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Get in Touch</h2>
-                <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   The fastest way to get a cash offer is to use our online price estimator. Our Brisbane team will follow up with a confirmed quote and arrange same-day pickup in most areas.
                 </p>

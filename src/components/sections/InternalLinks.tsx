@@ -21,9 +21,8 @@ export function InternalLinks({ currentSlug }: InternalLinksProps) {
                 <li key={s.slug}>
                   <Link
                     href={`/${s.slug}`}
-                    className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none group break-words"
+                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
-                    <span className="w-1 h-1 rounded-full bg-accent/40 group-hover:bg-accent transition-colors shrink-0" />
                     {s.h1}
                   </Link>
                 </li>
@@ -37,9 +36,8 @@ export function InternalLinks({ currentSlug }: InternalLinksProps) {
                 <li key={s.slug}>
                   <Link
                     href={`/locations/${s.slug}`}
-                    className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none group break-words"
+                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
-                    <span className="w-1 h-1 rounded-full bg-accent/40 group-hover:bg-accent transition-colors shrink-0" />
                     {s.h1}
                   </Link>
                 </li>

@@ -20,10 +20,9 @@ const alsoAccepted = [
 
 export function CarTypes() {
   return (
-    <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
+    <section className="py-16 sm:py-24 bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
-          <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-accent mb-2">All makes & conditions</p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
             What Cars We Buy in Brisbane
           </h2>
@@ -59,7 +58,7 @@ export function CarTypes() {
                 <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/40 group-hover:text-muted-foreground leading-tight">
+                <span className="text-[11px] sm:text-xs text-primary-foreground/40 group-hover:text-primary-foreground/60 leading-tight">
                   {type.desc}
                 </span>
                 <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />
@@ -74,7 +73,7 @@ export function CarTypes() {
             {alsoAccepted.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/[0.08] text-xs sm:text-sm text-primary-foreground/50 bg-white/[0.02]"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/[0.08] text-xs sm:text-sm text-primary-foreground/50"
               >
                 {type}
               </span>

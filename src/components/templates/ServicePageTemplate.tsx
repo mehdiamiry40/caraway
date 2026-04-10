@@ -59,7 +59,6 @@ export default function ServicePageTemplate({
                   <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
                     {section.heading}
                   </h2>
-                  <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                     {section.content}
                   </p>

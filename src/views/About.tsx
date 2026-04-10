@@ -40,7 +40,6 @@ export default function About() {
           <div className="max-w-3xl space-y-14">
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Who We Are</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
                 Caraway is a Brisbane-based buyer — we pay cash for cars we want, and we organise pickup when we agree a price. No listings, no strangers at your door for test drives.
               </p>
@@ -51,7 +50,6 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">How we work</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we show up when we say we will, we pay what we agreed before the car leaves, and we use licensed recyclers when a car is at end of life.
               </p>
@@ -59,7 +57,6 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">What Sets Us Apart</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-6" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {features.map(item => (
                   <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-lg bg-muted border border-border/60 hover:border-primary/30 hover:shadow-sm transition-all duration-200">
@@ -77,7 +74,6 @@ export default function About() {
 
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Our Service Area</h2>
-              <div className="w-12 h-1 bg-accent/60 rounded-full mb-5" />
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 We service the entire Greater Brisbane region — from Caboolture in the north to Beenleigh in the south, from Ipswich in the west to Cleveland in the east. This includes all suburbs across Brisbane City, Logan City, Ipswich City, Moreton Bay, and Redland City council areas. If you&apos;re not sure whether we cover your area, just call — we almost certainly do.
               </p>

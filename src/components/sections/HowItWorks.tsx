@@ -1,4 +1,4 @@
-import { MessageSquare, DollarSign, Truck, ArrowRight } from "lucide-react";
+import { MessageSquare, DollarSign, Truck } from "lucide-react";
 
 const steps = [
   {
@@ -23,7 +23,6 @@ export function HowItWorks() {
     <section id="how-it-works" className="section-y bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
-          <span className="inline-block text-accent font-semibold text-sm tracking-wide uppercase mb-3">Simple process</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">
             How Cash for Cars Works in Brisbane
           </h2>
