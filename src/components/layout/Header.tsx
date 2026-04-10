@@ -20,7 +20,12 @@ export function Header() {
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          // Only trigger a state update when the boolean actually flips,
+          // so we avoid re-rendering the whole header on every scroll frame.
+          setIsScrolled((prev) => {
+            const next = window.scrollY > 20;
+            return prev === next ? prev : next;
+          });
           ticking = false;
         });
         ticking = true;

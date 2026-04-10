@@ -2,13 +2,25 @@ import { z } from "zod";
 
 /** Matches Australian phone formats: 04xx, +614xx, landlines, 1800/1300 numbers */
 const auPhoneRegex = /^(?:\+?61|0)[2-478]\d{8}$|^1[38]00\d{6}$/;
-const quoteConditionValues = [
+
+export const quoteConditionValues = [
   "running",
   "needs_work",
   "not_running",
   "damaged",
   "scrap",
 ] as const;
+
+export type QuoteCondition = (typeof quoteConditionValues)[number];
+
+/** Friendly labels for the condition enum — used by UI forms/selects. */
+export const CONDITION_LABELS: Record<QuoteCondition, string> = {
+  running: "Running — drives well, no major issues",
+  needs_work: "Needs work — runs but has issues",
+  not_running: "Not running — won't start or drive",
+  damaged: "Damaged — accident, flood, or major fault",
+  scrap: "Scrap — written off or end of life",
+};
 
 const stripPhone = (v: string) => v.replace(/[\s\-()]/g, "");
 const trimText = (v: string) => v.trim();

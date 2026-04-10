@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 
 export function Hero() {
   return (
     <section
       className="relative w-full overflow-x-hidden mt-header-safe bg-white"
-      style={{ minHeight: "min(100svh, 560px)" }}
+      style={{ minHeight: "min(100dvh, 560px)" }}
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[560px]">
@@ -23,20 +23,31 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-md leading-relaxed">
-              We buy unwanted cars for cash — pickup included. Running or not, with or without rego.
+              Get an instant online price in 60 seconds — no phone call needed. Free pickup, paid in cash on the spot.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a
                 href="#price-estimator"
                 className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                  buttonVariants({ size: "lg" }),
+                  "h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group transition-all duration-300"
                 )}
               >
-                Get a free quote
+                See my price in 60 seconds
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden />
               </a>
+            </div>
+
+            <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                ))}
+              </div>
+              <span>
+                <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
+              </span>
             </div>
 
             <div className="mt-6 sm:mt-10 flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2.5">

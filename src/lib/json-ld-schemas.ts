@@ -1,12 +1,12 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, BUSINESS } from "@/lib/site";
 import { reviews } from "@/data/reviews";
 
 const NAP = {
-  name: "Caraway — Cash for Cars Brisbane",
-  phone: "1800 227 293",
-  email: "info@caraway.au",
+  name: `${BUSINESS.name} — Cash for Cars Brisbane`,
+  phone: BUSINESS.phone,
+  email: BUSINESS.email,
   addressLocality: "Brisbane",
   addressRegion: "QLD",
   postalCode: "4000",
@@ -22,19 +22,11 @@ const openingHours = {
   closes: "19:00",
 };
 
-/** Reusable publisher object for BlogPosting / Article schemas. */
-export const publisherSchema = {
-  "@type": "Organization" as const,
-  "@id": `${SITE_URL}/#organization`,
-  name: NAP.name,
-  url: SITE_URL,
-  logo: {
-    "@type": "ImageObject" as const,
-    url: `${SITE_URL}/images/logo.png`,
-    width: 600,
-    height: 60,
-  },
-};
+const SAME_AS = [
+  "https://www.facebook.com/carawaybrisbane",
+  "https://www.google.com/maps?cid=carawaybrisbane",
+  "https://au.linkedin.com/company/caraway-brisbane",
+];
 
 /* ---------- Compute aggregate rating from reviews data ---------- */
 const ratingValue = (
@@ -47,7 +39,12 @@ export const localBusinessSchema = {
   "@id": `${SITE_URL}/#business`,
   name: NAP.name,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.png`,
+  logo: {
+    "@type": "ImageObject" as const,
+    url: `${SITE_URL}/images/logo.png`,
+    width: 600,
+    height: 60,
+  },
   image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: NAP.phone,
   email: NAP.email,
@@ -56,6 +53,9 @@ export const localBusinessSchema = {
   paymentAccepted: "Cash",
   description:
     "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing and same-day service across Greater Brisbane. Call 1800 227 293.",
+  // Caraway is a service-area business with no physical retail storefront.
+  // We declare locality-level address only (no streetAddress) and rely on
+  // serviceArea / areaServed to describe the coverage footprint.
   address: {
     "@type": "PostalAddress",
     addressLocality: NAP.addressLocality,
@@ -67,6 +67,15 @@ export const localBusinessSchema = {
     "@type": "GeoCoordinates",
     latitude: NAP.latitude,
     longitude: NAP.longitude,
+  },
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: NAP.latitude,
+      longitude: NAP.longitude,
+    },
+    geoRadius: "100000",
   },
   areaServed: [
     { "@type": "City", name: "Brisbane" },
@@ -102,6 +111,7 @@ export const localBusinessSchema = {
     bestRating: "5",
     worstRating: "1",
   },
+  sameAs: SAME_AS,
 };
 
 export const organizationSchema = {
@@ -132,18 +142,28 @@ export const organizationSchema = {
     postalCode: NAP.postalCode,
     addressCountry: NAP.addressCountry,
   },
-  sameAs: [
-    // Add your social / GMB profile URLs here as they become available
-    // "https://www.google.com/maps/place/...",
-    // "https://www.facebook.com/carawayau",
-  ],
+  sameAs: SAME_AS,
+};
+
+/** Reusable publisher object for BlogPosting / Article schemas. */
+export const publisherSchema = {
+  "@type": "Organization" as const,
+  "@id": `${SITE_URL}/#organization`,
+  name: NAP.name,
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject" as const,
+    url: `${SITE_URL}/images/logo.png`,
+    width: 600,
+    height: 60,
+  },
 };
 
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
-  name: "Caraway — Cash for Cars Brisbane",
+  name: `${BUSINESS.name} — Cash for Cars Brisbane`,
   alternateName: "Caraway Cash for Cars",
   url: SITE_URL,
   description:

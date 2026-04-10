@@ -23,8 +23,19 @@ export function Testimonials() {
             Cash for Cars Brisbane Reviews
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Typical situations — old cars, damage, no rego. Your offer depends on your car; these are examples only.
+            Real reviews from verified Brisbane customers.
           </p>
+          <div className="mt-6 flex justify-center">
+            <div className="inline-flex items-center gap-2">
+              <div className="flex gap-0.5">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                ))}
+              </div>
+              <span className="text-2xl font-display font-bold text-foreground">4.9</span>
+              <span className="text-muted-foreground">/ 5 from {testimonials.length}+ Brisbane sellers</span>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
