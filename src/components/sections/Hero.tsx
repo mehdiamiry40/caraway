@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Check, Star } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 export function Hero() {
   return (
@@ -64,30 +64,6 @@ export function Hero() {
               priority
               fetchPriority="high"
             />
-          </div>
-
-          {/* Price badge */}
-          <div className="absolute bottom-5 left-4 right-4 sm:bottom-7 sm:left-auto sm:right-7 sm:max-w-sm z-[3] bg-white rounded-lg px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 shadow-md border border-border/60">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center text-white font-bold text-base sm:text-lg shrink-0" aria-hidden>
-              $
-            </div>
-            <div className="min-w-0">
-              <div className="font-display font-bold text-foreground text-sm truncate">Offers up to $9,999</div>
-              <div className="text-xs text-muted-foreground mt-0.5">Depends on make, condition &amp; market</div>
-            </div>
-          </div>
-
-          {/* Rating badge */}
-          <div className="absolute top-5 right-4 sm:top-7 sm:right-7 z-[3] bg-white rounded-lg px-3.5 py-2.5 flex items-center gap-2.5 shadow-md border border-border/60">
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
-              ))}
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xs font-bold text-foreground leading-none">4.8</span>
-              <span className="text-[10px] text-muted-foreground leading-none mt-0.5">rating</span>
-            </div>
           </div>
         </div>
       </div>
