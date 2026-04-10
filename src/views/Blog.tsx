@@ -17,8 +17,8 @@ export default function Blog() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               Cash for Cars Brisbane Blog
@@ -31,12 +31,12 @@ export default function Blog() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {indexableBlogPosts.map((post) => (
+            {indexableBlogPosts.map((post, idx) => (
               <article
                 key={post.slug}
-                className="group rounded-2xl border border-border/60 bg-white hover:border-primary/30 transition-all duration-200 overflow-hidden"
+                className={`group rounded-lg border border-border/60 bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
               >
-                <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
+                <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
                       <Tag className="h-3 w-3" />

@@ -60,8 +60,8 @@ export default function FAQPage() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               Cash for Cars Brisbane — FAQ
@@ -85,7 +85,7 @@ export default function FAQPage() {
             </div>
           ))}
 
-          <div className="rounded-2xl border border-border/60 bg-white p-5 sm:p-8 md:p-12 text-center">
+          <div className="rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               Our Brisbane team is happy to help. Call us or visit our contact page.
@@ -93,13 +93,13 @@ export default function FAQPage() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/#price-estimator"
-                className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-lg py-3.5 px-7 font-semibold hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
               >
                 Get an Instant Quote
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary/20 text-primary rounded-lg py-3.5 px-7 font-semibold hover:bg-primary hover:text-white hover:border-primary transition-colors"
+                className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
                 Contact Us

@@ -28,8 +28,8 @@ export function Accordion({ items, className }: AccordionProps) {
           <div
             key={item.question}
             className={cn(
-              "border bg-white rounded-xl overflow-hidden",
-              isActive ? "border-border" : "border-border/50"
+              "border bg-white rounded-lg overflow-hidden transition-colors",
+              isActive ? "border-border" : "border-border/60 hover:border-border"
             )}
           >
             <button

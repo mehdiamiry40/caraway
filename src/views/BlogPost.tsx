@@ -21,8 +21,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <div className="flex flex-wrap items-center gap-3 text-sm text-white/60 mt-6 mb-5">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-white/90 text-xs">
@@ -60,7 +60,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
 
           {/* CTA */}
-          <div className="mt-16 rounded-2xl border border-border/60 bg-white p-5 sm:p-8 md:p-12 text-center">
+          <div className="mt-16 rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
             <p className="font-display font-bold text-xl sm:text-2xl text-primary mb-3">
               Ready to sell your car for cash?
             </p>
@@ -70,7 +70,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/#price-estimator"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
               >
                 Get a Free Quote
               </Link>
@@ -135,7 +135,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="group rounded-2xl border border-border/60 bg-white p-4 sm:p-6 hover:border-primary/30 transition-all duration-200"
+                    className="group rounded-lg border border-border/60 bg-white p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-200"
                   >
                     <span className="inline-flex items-center gap-1.5 text-xs text-accent font-semibold rounded-full bg-accent/10 px-2.5 py-1">{related.category}</span>
                     <h3 className="font-display font-bold text-base text-foreground group-hover:text-primary transition-colors mt-3 leading-snug line-clamp-2">

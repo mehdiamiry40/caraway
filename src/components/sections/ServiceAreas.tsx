@@ -25,11 +25,10 @@ export function ServiceAreas() {
 
   return (
     <section
-      className="section-y bg-muted/40"
+      className="section-y bg-muted"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground leading-tight">
             Cash for Cars Brisbane Service Areas
@@ -39,18 +38,18 @@ export function ServiceAreas() {
           </p>
         </div>
 
-        {/* Key suburbs grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {suburbs.map((suburb) => (
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
               className={cn(
-                "group flex items-center gap-3 rounded-xl border border-border/60 bg-white p-3 sm:p-4",
-                "hover:border-primary/30 transition-all duration-200 touch-manipulation min-h-[44px]"
+                "group flex items-center gap-3 rounded-lg border border-border/60 bg-white p-3 sm:p-4",
+                "hover:border-primary hover:shadow-md hover:-translate-y-0.5",
+                "transition-all duration-200 touch-manipulation min-h-[44px]"
               )}
             >
-              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/5 text-primary/60 group-hover:bg-primary group-hover:text-white transition-all duration-200 shrink-0">
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-muted text-primary/60 group-hover:bg-primary group-hover:text-white transition-all duration-200 shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
               <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-tight">
@@ -60,7 +59,6 @@ export function ServiceAreas() {
           ))}
         </div>
 
-        {/* Additional areas - collapsible */}
         <div className="mt-6">
           <button
             type="button"
@@ -91,17 +89,16 @@ export function ServiceAreas() {
           </div>
         </div>
 
-        {/* CTAs */}
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/#price-estimator"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-accent/90 transition-colors touch-manipulation"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-all shadow-sm hover:shadow-md touch-manipulation"
           >
             Get an Instant Quote
           </Link>
           <Link
             href="/locations"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-border min-h-12 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition-colors touch-manipulation"
+            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary min-h-12 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all touch-manipulation"
           >
             View all locations
             <ArrowRight className="h-4 w-4" />

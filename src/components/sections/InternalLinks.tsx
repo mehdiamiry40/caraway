@@ -11,7 +11,7 @@ export function InternalLinks({ currentSlug }: InternalLinksProps) {
   const topSuburbs = suburbs.filter(s => s.slug !== currentSlug).slice(0, 8);
 
   return (
-    <section className="section-y bg-muted/30 border-t border-border/40">
+    <section className="section-y bg-muted border-t border-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           <div>

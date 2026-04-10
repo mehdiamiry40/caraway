@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
-import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
+import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
 
 const fieldIds = {
   name: "quote-name",
@@ -61,9 +61,13 @@ export function QuoteForm() {
   return (
     <section id="quote-section" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-muted/30 rounded-2xl p-4 sm:p-8 md:p-12 lg:p-16 border border-border/40">
+        <div className="bg-muted rounded-lg p-4 sm:p-8 md:p-12 lg:p-16 border border-border/60">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
             <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent border border-accent/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 w-fit">
+                <Sparkles className="w-4 h-4 text-accent" aria-hidden />
+                <span className="text-accent">Free instant quote</span>
+              </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary mb-4 md:mb-6 text-balance leading-tight">
                 Get Your Cash for Cars Brisbane Quote
               </h2>
@@ -74,7 +78,7 @@ export function QuoteForm() {
               <div className="hidden lg:flex flex-col gap-6">
                 {benefits.map((b) => (
                   <div key={b.title} className="flex gap-4 group">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-border/60 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-lg bg-white border border-border/60 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-200">
                       <b.icon className="w-5 h-5 text-primary/70" />
                     </div>
                     <div>
@@ -86,7 +90,9 @@ export function QuoteForm() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-4 sm:p-8 border border-border/60 shadow-sm relative">
+            <div className="bg-white rounded-lg p-4 sm:p-8 border border-border/40 shadow-md relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-primary" aria-hidden />
+
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
@@ -96,7 +102,7 @@ export function QuoteForm() {
                   <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will contact you using the number you provided — usually within one business day.
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto transition-colors duration-200">
+                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
                   </Button>
                 </div>
@@ -113,7 +119,6 @@ export function QuoteForm() {
                     />
                   </div>
 
-                  {/* Trust badge row - mobile visible */}
                   <div className="flex items-center gap-3 text-sm text-muted-foreground pb-1 lg:hidden">
                     <div className="flex items-center gap-1.5">
                       <Shield className="w-4 h-4 text-primary/50" aria-hidden />
@@ -242,14 +247,13 @@ export function QuoteForm() {
                     </Button>
                   </div>
 
-                  {/* Trust line below CTA */}
                   <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
                     <BadgeCheck className="w-4 h-4 text-primary/40 shrink-0" aria-hidden />
                     <span>Free, no-obligation quote. We never share your info.</span>
                   </div>
 
                   {errorMessage && (
-                    <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
+                    <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
                       <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                       {errorMessage}
                     </div>

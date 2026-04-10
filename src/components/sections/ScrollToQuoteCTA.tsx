@@ -27,7 +27,7 @@ export function ScrollToQuoteCTA() {
       <Button
         size="lg"
         onClick={scrollToQuote}
-        className="w-full bg-accent hover:bg-accent/90 text-white h-14 px-8 text-base font-semibold group border-0 transition-colors duration-200 touch-manipulation"
+        className="w-full bg-primary hover:bg-primary/90 text-white h-14 px-8 text-base font-semibold group border-0 shadow-sm hover:shadow-md transition-all duration-200 touch-manipulation"
       >
         Get My Free Quote
         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-200" />

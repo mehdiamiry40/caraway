@@ -31,32 +31,31 @@ const companyLinks = [
   { label: "Get a Quote", href: "/#price-estimator" },
 ];
 
-const linkClasses = "text-white/55 hover:text-white transition-colors duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
+const linkClasses = "text-muted-foreground hover:text-primary transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white pl-safe pr-safe">
-      {/* Main footer content */}
+    <footer className="bg-muted text-foreground pl-safe pr-safe border-t border-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
 
           <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" className="font-display font-bold text-2xl tracking-tight text-white mb-4 block lowercase group">
-              <span className="transition-opacity duration-200 group-hover:opacity-90">caraway<span className="text-accent">.</span></span>
+            <Link href="/" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
+              <span className="transition-opacity duration-200 group-hover:opacity-80">caraway<span className="text-accent">.</span></span>
             </Link>
-            <p className="text-white/50 max-w-sm mt-3 leading-relaxed text-sm">
+            <p className="text-muted-foreground max-w-sm mt-3 leading-relaxed text-sm">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
             </p>
             <div className="mt-8 space-y-3.5">
-              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-white/70 hover:text-white transition-colors duration-200 group text-sm">
-                <span className="flex h-10 w-10 rounded-lg bg-white/[0.06] items-center justify-center group-hover:bg-accent/20 transition-colors duration-200">
-                  <Mail className="h-4 w-4 text-accent" />
+              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 group text-sm">
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center group-hover:border-primary/30 transition-all duration-200">
+                  <Mail className="h-4 w-4 text-primary" />
                 </span>
                 <span>{BUSINESS.email}</span>
               </a>
-              <div className="flex items-center gap-3.5 text-white/50 text-sm">
-                <span className="flex h-10 w-10 rounded-lg bg-white/[0.06] items-center justify-center">
-                  <MapPin className="h-4 w-4 text-white/40" />
+              <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
+                  <MapPin className="h-4 w-4 text-primary/60" />
                 </span>
                 <span>{BUSINESS.location}</span>
               </div>
@@ -64,7 +63,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Services</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Services</h4>
             <ul className="space-y-1">
               {serviceLinks.map(link => (
                 <li key={link.href}>
@@ -77,7 +76,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Locations</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Locations</h4>
             <ul className="space-y-1">
               {locationLinks.map(link => (
                 <li key={link.href}>
@@ -90,7 +89,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-medium text-sm text-white/50 mb-5 pb-2 border-b border-white/[0.06]">Company</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Company</h4>
             <ul className="space-y-1">
               {companyLinks.map(link => (
                 <li key={link.href}>
@@ -105,14 +104,13 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10 pb-safe">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/40">
+      <div className="border-t border-border/60 pb-safe">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Caraway. All rights reserved.</p>
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/privacy" className="hover:text-white/70 transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Privacy Policy</Link>
-            <span className="w-px h-3 bg-white/10" />
-            <Link href="/terms" className="hover:text-white/70 transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Privacy Policy</Link>
+            <span className="w-px h-3 bg-border" />
+            <Link href="/terms" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Terms of Service</Link>
           </div>
         </div>
       </div>

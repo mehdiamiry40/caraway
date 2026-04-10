@@ -1,6 +1,5 @@
 import { CalendarDays, MapPin, Truck, Banknote } from "lucide-react";
 
-/** Service promises — not audited financial or volume statistics. */
 const stats = [
   { value: "7 days", label: "Phone & online quotes", icon: CalendarDays },
   { value: "Greater Brisbane", label: "Pickup arranged with you", icon: MapPin },
@@ -10,7 +9,7 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="relative bg-white border-b border-border/40" aria-label="What to expect">
+    <section className="relative bg-muted border-b border-border/40" aria-label="What to expect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 lg:gap-6">
           {stats.map((stat, index) => {
@@ -20,11 +19,10 @@ export function Stats() {
                 key={stat.label}
                 className="group relative flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-4"
               >
-                {/* Vertical divider between items (hidden on first, hidden on mobile for odd items) */}
                 {index > 0 && (
-                  <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border/60" aria-hidden />
+                  <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
                 )}
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/5 border border-primary/10 transition-colors duration-200">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
                   <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="min-w-0">

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, DM_Sans } from "next/font/google";
+import { Ubuntu, Exo } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
@@ -13,14 +13,14 @@ import { SITE_URL } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
 
-const inter = Inter({
-  weight: ["400", "500", "600", "700"],
+const ubuntu = Ubuntu({
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   variable: "--font-sans-body",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const exo = Exo({
   weight: ["600", "700"],
   subsets: ["latin"],
   variable: "--font-display-heading",
@@ -83,7 +83,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#102452",
+  themeColor: "#1F4E7B",
 };
 
 export default function RootLayout({
@@ -94,7 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${inter.variable} ${dmSans.variable}`}
+      className={`${ubuntu.variable} ${exo.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />

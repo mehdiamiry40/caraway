@@ -16,8 +16,8 @@ export default function Locations() {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
               Cash for Cars — Brisbane Locations
@@ -31,14 +31,14 @@ export default function Locations() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <LocationsFilter />
 
-          <div className="mt-16 rounded-2xl border border-border/60 bg-white p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
+          <div className="mt-16 rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
             <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Your Suburb Not Listed?</h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
               We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Use our price estimator for a free quote.
             </p>
             <Link
               href="/#price-estimator"
-              className="inline-flex items-center justify-center gap-2 bg-accent text-white rounded-lg py-3.5 px-8 font-semibold hover:bg-accent/90 transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-8 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
             >
               Get an Instant Quote
             </Link>

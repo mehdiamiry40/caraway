@@ -57,7 +57,6 @@ export function PriceEstimator() {
   const [condition, setCondition] = useState("");
   const [result, setResult] = useState<EstimateResult | null>(null);
 
-  // Step 4: contact details
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -148,9 +147,9 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="py-16 sm:py-24 bg-muted/30" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y bg-muted" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border border-border/60 shadow-sm p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
+          <div className="bg-white rounded-lg border border-border/60 shadow-md p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
             </div>
@@ -171,7 +170,7 @@ export function PriceEstimator() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl border border-border text-foreground font-semibold hover:bg-muted transition-colors touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all touch-manipulation"
               >
                 <RotateCcw className="w-4 h-4" />
                 Estimate another
@@ -184,7 +183,7 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="py-16 sm:py-24 bg-muted/30" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y bg-muted" aria-label="Instant price estimate">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
@@ -207,7 +206,7 @@ export function PriceEstimator() {
                   "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200",
                   step >= s
                     ? "bg-primary text-white"
-                    : "bg-muted text-muted-foreground"
+                    : "bg-white border border-border text-muted-foreground"
                 )}>
                   {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s}
                 </div>
@@ -220,7 +219,7 @@ export function PriceEstimator() {
               </div>
             ))}
           </div>
-          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+          <div className="h-1.5 bg-white rounded-full overflow-hidden border border-border/40">
             <div
               className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercent}%` }}
@@ -230,13 +229,13 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-2xl border border-border/60 shadow-sm overflow-hidden">
+          <div className="bg-white rounded-lg border border-border/60 shadow-md overflow-hidden">
 
-            {/* Step 1: Vehicle Type & Make */}
+            {/* Step 1 */}
             <div className={cn("transition-all duration-300", step === 1 ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
                     <Car className="w-5 h-5" />
                   </div>
                   <div>
@@ -276,7 +275,7 @@ export function PriceEstimator() {
                   <Button
                     onClick={() => canProceedStep1 && setStep(2)}
                     disabled={!canProceedStep1}
-                    className="h-12 px-8 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl group"
+                    className="h-12 px-8 group"
                   >
                     Next
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -285,11 +284,11 @@ export function PriceEstimator() {
               </div>
             </div>
 
-            {/* Step 2: Year & Condition */}
+            {/* Step 2 */}
             <div className={cn("transition-all duration-300", step === 2 ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
@@ -332,7 +331,8 @@ export function PriceEstimator() {
                   <Button
                     onClick={handleEstimate}
                     disabled={!canProceedStep2}
-                    className="h-12 px-8 bg-accent hover:bg-accent/90 text-white font-bold rounded-xl group"
+                    variant="secondary"
+                    className="h-12 px-8 font-bold group"
                   >
                     See My Quote
                     <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -341,11 +341,10 @@ export function PriceEstimator() {
               </div>
             </div>
 
-            {/* Step 3: Instant Quote */}
+            {/* Step 3 */}
             <div className={cn("transition-all duration-300", step === 3 ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
-                  {/* Quote display */}
                   <div className="text-center mb-6" aria-live="polite" aria-atomic="true">
                     <div className="inline-flex items-center gap-1.5 bg-accent/10 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
                       <CheckCircle2 className="w-3.5 h-3.5" /> Your instant quote
@@ -367,9 +366,8 @@ export function PriceEstimator() {
                     </p>
                   </div>
 
-                  {/* Factors */}
                   {result.factors.length > 0 && (
-                    <div className="bg-muted/50 rounded-xl p-4 mb-6">
+                    <div className="bg-muted rounded-lg p-4 mb-6">
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
@@ -382,7 +380,6 @@ export function PriceEstimator() {
                     </div>
                   )}
 
-                  {/* Accept CTA */}
                   <div className="flex items-center justify-between">
                     <button
                       type="button"
@@ -393,7 +390,8 @@ export function PriceEstimator() {
                     </button>
                     <Button
                       onClick={() => setStep(4)}
-                      className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base rounded-xl group"
+                      variant="secondary"
+                      className="h-14 px-10 font-bold text-base group"
                     >
                       Accept This Quote
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
@@ -403,12 +401,11 @@ export function PriceEstimator() {
               )}
             </div>
 
-            {/* Step 4: Contact Details & Submit */}
+            {/* Step 4 */}
             <div className={cn("transition-all duration-300", step === 4 ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
-                {/* Mini quote reminder */}
                 {result && (
-                  <div className="flex items-center justify-between bg-muted/40 border border-border/60 rounded-xl px-4 py-3 mb-6">
+                  <div className="flex items-center justify-between bg-muted border border-border/40 rounded-lg px-4 py-3 mb-6">
                     <div>
                       <p className="text-xs text-muted-foreground">Your quote</p>
                       <p className="font-display font-bold text-foreground">
@@ -426,7 +423,7 @@ export function PriceEstimator() {
                 )}
 
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-accent/10 text-accent">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
                     <Send className="w-5 h-5" />
                   </div>
                   <div>
@@ -460,7 +457,7 @@ export function PriceEstimator() {
                 </div>
 
                 {submitError && (
-                  <div className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3">
+                  <div className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-4 py-3">
                     <p className="text-sm text-destructive">{submitError}</p>
                   </div>
                 )}
@@ -476,7 +473,8 @@ export function PriceEstimator() {
                   <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit || isSubmitting}
-                    className="h-14 px-10 bg-accent hover:bg-accent/90 text-white font-bold text-base rounded-xl"
+                    variant="secondary"
+                    className="h-14 px-10 font-bold text-base"
                   >
                     {isSubmitting ? (
                       <>
@@ -499,7 +497,6 @@ export function PriceEstimator() {
             </div>
           </div>
 
-          {/* Trust note */}
           {step < 4 && (
             <p className="text-center text-xs text-muted-foreground mt-4">
               {step < 3
