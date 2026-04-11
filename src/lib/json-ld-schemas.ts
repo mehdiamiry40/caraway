@@ -46,9 +46,9 @@ export const localBusinessSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject" as const,
-    url: `${SITE_URL}/images/logo.png`,
-    width: 600,
-    height: 60,
+    url: `${SITE_URL}/images/logo.webp`,
+    width: 512,
+    height: 279,
   },
   image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: NAP.phone,
@@ -134,9 +134,9 @@ export const organizationSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SITE_URL}/images/logo.png`,
-    width: 600,
-    height: 60,
+    url: `${SITE_URL}/images/logo.webp`,
+    width: 512,
+    height: 279,
   },
   telephone: NAP.phone,
   email: NAP.email,
@@ -165,9 +165,9 @@ export const publisherSchema = {
   url: SITE_URL,
   logo: {
     "@type": "ImageObject" as const,
-    url: `${SITE_URL}/images/logo.png`,
-    width: 600,
-    height: 60,
+    url: `${SITE_URL}/images/logo.webp`,
+    width: 512,
+    height: 279,
   },
 };
 

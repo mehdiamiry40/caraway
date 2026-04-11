@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { suburbs } from "@/data/suburbs";
 import { MapPin, ArrowRight, Search } from "lucide-react";
 
 export function LocationsFilter() {
+  const [inputValue, setInputValue] = useState("");
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const t = setTimeout(() => setQuery(inputValue), 150);
+    return () => clearTimeout(t);
+  }, [inputValue]);
 
   const filtered = query.trim()
     ? suburbs.filter((s) =>
@@ -22,8 +28,8 @@ export function LocationsFilter() {
         <input
           type="search"
           placeholder="Search your suburb..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           className="w-full h-13 rounded-lg border border-border bg-white pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
           aria-label="Search suburbs"
         />
