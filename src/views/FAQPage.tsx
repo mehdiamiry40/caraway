@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
+import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import { Accordion } from "@/components/ui/accordion";
 import { MessageCircle } from "lucide-react";
@@ -56,62 +54,52 @@ export const allFaqs = faqCategories.flatMap(c => c.faqs);
 
 export default function FAQPage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-
-      <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <Breadcrumbs items={breadcrumbs} light />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
-              Cash for Cars Brisbane — FAQ
-            </h1>
-            <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl">
-              Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? <Link href="/contact" className="text-accent hover:underline font-semibold">Contact us</Link>.
-            </p>
+    <PageShell
+      breadcrumbs={breadcrumbs}
+      title="Cash for Cars Brisbane — FAQ"
+      subtitle={
+        <p>
+          Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? <Link href="/contact" className="text-accent hover:underline font-semibold">Contact us</Link>.
+        </p>
+      }
+    >
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-14">
+        {faqCategories.map((category, idx) => (
+          <div key={category.category}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">{idx + 1}</span>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-snug">
+                {category.category}
+              </h2>
+            </div>
+            <Accordion items={category.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
           </div>
-        </section>
+        ))}
 
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-14">
-          {faqCategories.map((category, idx) => (
-            <div key={category.category}>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-sm">{idx + 1}</span>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-snug">
-                  {category.category}
-                </h2>
-              </div>
-              <Accordion items={category.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
-            </div>
-          ))}
-
-          <div className="rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
-            <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
-            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              Our Brisbane team is happy to help. Call us or visit our contact page.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href="/#price-estimator"
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
-              >
-                Get an Instant Quote
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
-              >
-                <MessageCircle className="h-4 w-4" />
-                Contact Us
-              </Link>
-            </div>
+        <div className="rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
+          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+            Our Brisbane team is happy to help. Call us or visit our contact page.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/#price-estimator"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+            >
+              Get an Instant Quote
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Contact Us
+            </Link>
           </div>
         </div>
+      </div>
 
-        <InternalLinks />
-      </main>
-
-      <Footer />
-    </div>
+      <InternalLinks />
+    </PageShell>
   );
 }

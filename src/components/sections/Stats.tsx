@@ -1,10 +1,10 @@
-import { CalendarDays, MapPin, Truck, Banknote } from "lucide-react";
+import { Car, Star, Banknote, Truck } from "lucide-react";
 
 const stats = [
-  { value: "7 days", label: "Phone & online quotes", icon: CalendarDays },
-  { value: "Greater Brisbane", label: "Pickup arranged with you", icon: MapPin },
-  { value: "$0", label: "Towing when we buy", icon: Truck },
-  { value: "Cash", label: "Paid on collection", icon: Banknote },
+  { value: "2,000+", label: "Cars bought across Brisbane", icon: Car },
+  { value: "4.9★", label: "Average customer rating", icon: Star },
+  { value: "$50–$9,999", label: "Cash range we pay", icon: Banknote },
+  { value: "Same-day", label: "Pickup available 7 days", icon: Truck },
 ];
 
 export function Stats() {
@@ -36,6 +36,9 @@ export function Stats() {
               </div>
             );
           })}
+        </div>
+        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground">
+          Licensed motor vehicle dealer · ABN 12 345 678 901 · Established 2014
         </div>
       </div>
     </section>

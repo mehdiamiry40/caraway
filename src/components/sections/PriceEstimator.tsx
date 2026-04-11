@@ -5,12 +5,19 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
+import {
+  CONDITION_LABELS,
+  quoteConditionValues,
+  type QuoteCondition,
+} from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
 import {
   Car, DollarSign, ArrowRight, ArrowLeft, RotateCcw,
   TrendingUp, CheckCircle2, Send, Loader2, PartyPopper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const VEHICLE_TYPES = [
   { value: "sedan", label: "Sedan" },
@@ -25,13 +32,8 @@ const VEHICLE_TYPES = [
   { value: "other", label: "Other" },
 ];
 
-const CONDITIONS = [
-  { value: "excellent", label: "Excellent — runs perfectly, no issues" },
-  { value: "good", label: "Good — runs well, minor wear" },
-  { value: "fair", label: "Fair — runs but needs some work" },
-  { value: "poor", label: "Poor — major issues, barely runs" },
-  { value: "not-running", label: "Not running / damaged / written off" },
-];
+const CONDITIONS: Array<{ value: QuoteCondition; label: string }> =
+  quoteConditionValues.map((value) => ({ value, label: CONDITION_LABELS[value] }));
 
 const POPULAR_MAKES = [
   "Toyota", "Mazda", "Hyundai", "Kia", "Honda", "Ford",
@@ -41,75 +43,75 @@ const POPULAR_MAKES = [
 
 type Step = 1 | 2 | 3 | 4;
 
-const ESTIMATOR_TO_QUOTE_CONDITION: Record<string, "running" | "needs_work" | "not_running" | "damaged" | "scrap"> = {
-  excellent: "running",
-  good: "running",
-  fair: "needs_work",
-  poor: "damaged",
-  "not-running": "not_running",
-};
-
 export function PriceEstimator() {
   const [step, setStep] = useState<Step>(1);
   const [vehicleType, setVehicleType] = useState("");
   const [make, setMake] = useState("");
   const [year, setYear] = useState("");
-  const [condition, setCondition] = useState("");
+  const [condition, setCondition] = useState<QuoteCondition | "">("");
   const [result, setResult] = useState<EstimateResult | null>(null);
+  const [isCalculating, setIsCalculating] = useState(false);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  const stepHeadingRefs = useRef<Array<HTMLElement | null>>([null, null, null, null]);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const liveMessage = isSuccess
     ? "Your quote request was submitted successfully."
-    : step === 1
-      ? "Step 1 of 4. Tell us about your vehicle."
-      : step === 2
-        ? "Step 2 of 4. Enter the year and condition."
-        : step === 3
-          ? "Step 3 of 4. Your instant quote is ready."
-          : "Step 4 of 4. Enter your contact details to claim your quote.";
+    : isCalculating
+      ? "Calculating your instant quote…"
+      : step === 1
+        ? "Step 1 of 4. Tell us about your vehicle."
+        : step === 2
+          ? "Step 2 of 4. Enter the year and condition."
+          : step === 3
+            ? "Step 3 of 4. Your instant quote is ready."
+            : "Step 4 of 4. Enter your contact details to claim your quote.";
 
-  const currentYear = new Date().getFullYear();
-  const yearOptions = Array.from({ length: currentYear - 1949 }, (_, i) => {
-    const y = currentYear + 1 - i;
-    return { value: String(y), label: String(y) };
-  });
+  const yearNumber = Number(year);
+  const yearIsValid =
+    year !== "" &&
+    Number.isFinite(yearNumber) &&
+    yearNumber >= 1950 &&
+    yearNumber <= CURRENT_YEAR + 1;
 
   const canProceedStep1 = vehicleType !== "" && make.trim() !== "";
-  const canProceedStep2 = year !== "" && condition !== "";
+  const canProceedStep2 = yearIsValid && condition !== "";
   const canSubmit = name.trim().length >= 2 && phone.trim().length >= 8;
 
   function handleEstimate() {
-    if (!canProceedStep2) return;
+    if (!canProceedStep2 || isCalculating) return;
     const est = estimatePrice({
       make,
-      year: Number(year),
+      year: yearNumber,
       condition,
       vehicleType,
     });
     setResult(est);
-    setStep(3);
+    setIsCalculating(true);
+    // Small artificial delay so the result feels deliberate, not random.
+    window.setTimeout(() => {
+      setIsCalculating(false);
+      setStep(3);
+    }, 600);
   }
 
   async function handleSubmit() {
-    if (!canSubmit || !result) return;
+    if (!canSubmit || !result || condition === "") return;
     setIsSubmitting(true);
     setSubmitError("");
 
     const typeLabel = VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label ?? vehicleType;
-    const normalizedCondition = ESTIMATOR_TO_QUOTE_CONDITION[condition] ?? "needs_work";
 
     const res = await submitQuote({
       name: name.trim(),
       phone: phone.trim(),
       make: `${make.trim()} (${typeLabel}) — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
-      year: Number(year),
-      condition: normalizedCondition,
+      year: yearNumber,
+      condition,
       honeypot: "",
     });
 
@@ -128,6 +130,7 @@ export function PriceEstimator() {
     setYear("");
     setCondition("");
     setResult(null);
+    setIsCalculating(false);
     setName("");
     setPhone("");
     setSubmitError("");
@@ -135,14 +138,14 @@ export function PriceEstimator() {
   }
 
   const totalSteps = 4;
-  const progressPercent = step === 1 ? 0 : step === 2 ? 33 : step === 3 ? 66 : 100;
+  const progressPercent = step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100;
 
   useEffect(() => {
     if (isSuccess) {
       successHeadingRef.current?.focus();
       return;
     }
-    stepHeadingRef.current?.focus();
+    stepHeadingRefs.current[step - 1]?.focus();
   }, [isSuccess, step]);
 
   if (isSuccess) {
@@ -211,10 +214,15 @@ export function PriceEstimator() {
                   {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s}
                 </div>
                 <span className={cn(
-                  "text-[10px] sm:text-xs font-medium hidden sm:inline transition-colors",
+                  "text-[10px] sm:text-xs font-medium transition-colors",
                   step >= s ? "text-foreground" : "text-muted-foreground"
                 )}>
-                  {s === 1 ? "Vehicle" : s === 2 ? "Details" : s === 3 ? "Your Quote" : "Claim It"}
+                  <span className="sm:hidden">
+                    {s === 1 ? "Vehicle" : s === 2 ? "Details" : s === 3 ? "Quote" : "Claim"}
+                  </span>
+                  <span className="hidden sm:inline">
+                    {s === 1 ? "Vehicle" : s === 2 ? "Details" : s === 3 ? "Your Quote" : "Claim It"}
+                  </span>
                 </span>
               </div>
             ))}
@@ -232,14 +240,22 @@ export function PriceEstimator() {
           <div className="bg-white rounded-lg border border-border/60 shadow-md overflow-hidden">
 
             {/* Step 1 */}
-            <div className={cn("transition-all duration-300", step === 1 ? "block" : "hidden")}>
+            <div className={cn("transition-all duration-300", step === 1 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
                     <Car className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Tell us about your vehicle</h3>
+                    <h3
+                      ref={(el) => {
+                        stepHeadingRefs.current[0] = el;
+                      }}
+                      tabIndex={-1}
+                      className="font-display font-bold text-foreground focus:outline-none"
+                    >
+                      Tell us about your vehicle
+                    </h3>
                     <p className="text-xs text-muted-foreground">Step 1 of {totalSteps}</p>
                   </div>
                 </div>
@@ -285,14 +301,22 @@ export function PriceEstimator() {
             </div>
 
             {/* Step 2 */}
-            <div className={cn("transition-all duration-300", step === 2 ? "block" : "hidden")}>
+            <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Year and condition</h3>
+                    <h3
+                      ref={(el) => {
+                        stepHeadingRefs.current[1] = el;
+                      }}
+                      tabIndex={-1}
+                      className="font-display font-bold text-foreground focus:outline-none"
+                    >
+                      Year and condition
+                    </h3>
                     <p className="text-xs text-muted-foreground">Step 2 of {totalSteps} — {make} {vehicleType}</p>
                   </div>
                 </div>
@@ -300,13 +324,21 @@ export function PriceEstimator() {
                 <div className="space-y-4 sm:space-y-5">
                   <div>
                     <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2">Year of manufacture</label>
-                    <Select
+                    <Input
                       id="est-year"
-                      options={yearOptions}
-                      placeholder="Select year..."
+                      type="number"
+                      inputMode="numeric"
+                      min="1950"
+                      max={CURRENT_YEAR + 1}
+                      placeholder="e.g. 2015"
                       value={year}
                       onChange={(e) => setYear(e.target.value)}
                     />
+                    {year !== "" && !yearIsValid && (
+                      <p className="mt-1 text-xs text-destructive">
+                        Enter a year between 1950 and {CURRENT_YEAR + 1}.
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="est-condition" className="block text-sm font-semibold text-foreground mb-2">Condition</label>
@@ -315,7 +347,7 @@ export function PriceEstimator() {
                       options={CONDITIONS}
                       placeholder="Select condition..."
                       value={condition}
-                      onChange={(e) => setCondition(e.target.value)}
+                      onChange={(e) => setCondition(e.target.value as QuoteCondition)}
                     />
                   </div>
                 </div>
@@ -330,19 +362,37 @@ export function PriceEstimator() {
                   </button>
                   <Button
                     onClick={handleEstimate}
-                    disabled={!canProceedStep2}
+                    disabled={!canProceedStep2 || isCalculating}
                     variant="secondary"
                     className="h-12 px-8 font-bold group"
                   >
-                    See My Quote
-                    <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" />
+                    {isCalculating ? (
+                      <>
+                        <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                        Calculating...
+                      </>
+                    ) : (
+                      <>
+                        See My Quote
+                        <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </div>
             </div>
 
+            {/* Calculating */}
+            {isCalculating && (
+              <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
+                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
+                <p className="font-display font-bold text-foreground">Calculating your quote…</p>
+                <p className="text-xs text-muted-foreground mt-1">Crunching market data for your {make}</p>
+              </div>
+            )}
+
             {/* Step 3 */}
-            <div className={cn("transition-all duration-300", step === 3 ? "block" : "hidden")}>
+            <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
                   <div className="text-center mb-6" aria-live="polite" aria-atomic="true">
@@ -350,9 +400,15 @@ export function PriceEstimator() {
                       <CheckCircle2 className="w-3.5 h-3.5" /> Your instant quote
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
-                      {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {CONDITIONS.find((c) => c.value === condition)?.label?.split(" — ")[0]}
+                      {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                     </p>
-                    <div ref={stepHeadingRef} tabIndex={-1} className="flex items-baseline justify-center gap-2 sm:gap-3 focus:outline-none">
+                    <div
+                      ref={(el) => {
+                        stepHeadingRefs.current[2] = el;
+                      }}
+                      tabIndex={-1}
+                      className="flex items-baseline justify-center gap-2 sm:gap-3 focus:outline-none"
+                    >
                       <span className="text-4xl sm:text-6xl font-display font-bold text-primary">
                         ${result.low.toLocaleString()}
                       </span>
@@ -393,7 +449,7 @@ export function PriceEstimator() {
                       variant="secondary"
                       className="h-14 px-10 font-bold text-base group"
                     >
-                      Accept This Quote
+                      Continue — get my price
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                     </Button>
                   </div>
@@ -402,7 +458,7 @@ export function PriceEstimator() {
             </div>
 
             {/* Step 4 */}
-            <div className={cn("transition-all duration-300", step === 4 ? "block" : "hidden")}>
+            <div className={cn("transition-all duration-300", step === 4 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
                   <div className="flex items-center justify-between bg-muted border border-border/40 rounded-lg px-4 py-3 mb-6">
@@ -427,7 +483,15 @@ export function PriceEstimator() {
                     <Send className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 ref={stepHeadingRef} tabIndex={-1} className="font-display font-bold text-foreground focus:outline-none">Claim your quote</h3>
+                    <h3
+                      ref={(el) => {
+                        stepHeadingRefs.current[3] = el;
+                      }}
+                      tabIndex={-1}
+                      className="font-display font-bold text-foreground focus:outline-none"
+                    >
+                      Where should we send it?
+                    </h3>
                     <p className="text-xs text-muted-foreground">Step 4 of {totalSteps} — we&apos;ll call to confirm & arrange pickup</p>
                   </div>
                 </div>

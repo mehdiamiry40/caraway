@@ -1,3 +1,5 @@
+import type { QuoteCondition } from "@/lib/quote-schema";
+
 /** Car makes grouped by demand tier — higher demand = higher price */
 const MAKE_TIERS: Record<string, string[]> = {
   high: [
@@ -15,21 +17,65 @@ const MAKE_TIERS: Record<string, string[]> = {
   ],
 };
 
-function getMakeTier(make: string): "high" | "medium" | "low" {
+type MakeTier = "high" | "medium" | "low";
+
+/**
+ * Central pricing configuration. Keep every magic number here so the
+ * tuning surface is discoverable and easy to test.
+ */
+const PRICE_TABLE = {
+  /** Base value brackets by vehicle age (years). First matching bracket wins. */
+  ageBaseValues: [
+    { maxAge: 3, base: 8000 },
+    { maxAge: 6, base: 5500 },
+    { maxAge: 10, base: 3500 },
+    { maxAge: 15, base: 2000 },
+    { maxAge: 20, base: 1200 },
+    { maxAge: Infinity, base: 600 },
+  ] as const,
+  /** Multiplier applied based on make-tier (demand). */
+  makeMultipliers: {
+    high: 1.2,
+    medium: 1.0,
+    low: 0.8,
+  } satisfies Record<MakeTier, number>,
+  /** Multiplier applied based on vehicle body type. */
+  vehicleTypeMultipliers: {
+    ute: 1.3,
+    "4wd": 1.3,
+    suv: 1.15,
+    van: 1.2,
+    truck: 1.2,
+    sedan: 1.0,
+    wagon: 1.0,
+    coupe: 1.0,
+    hatch: 0.95,
+    other: 1.0,
+  } as Record<string, number>,
+  /** Range spread — low = estimated * (1 - spread), high = estimated * (1 + spread). */
+  rangeSpread: 0.25,
+  /** Round low/high to nearest this many dollars. */
+  rangeRoundTo: 50,
+  /** Absolute floor/ceiling on the returned range. */
+  minLow: 100,
+  maxHigh: 9999,
+} as const;
+
+function getMakeTier(make: string): MakeTier {
   const lower = make.toLowerCase().trim();
   for (const [tier, makes] of Object.entries(MAKE_TIERS)) {
-    if (makes.some((m) => lower.includes(m))) return tier as "high" | "medium" | "low";
+    if (makes.some((m) => lower.includes(m))) return tier as MakeTier;
   }
   return "medium";
 }
 
-/** Condition multipliers */
-const CONDITION_MULTIPLIER: Record<string, number> = {
-  excellent: 1.0,
-  good: 0.75,
-  fair: 0.5,
-  poor: 0.3,
-  "not-running": 0.15,
+/** Condition multipliers — keys match the Zod quoteConditionValues enum. */
+export const CONDITION_MULTIPLIER: Record<QuoteCondition, number> = {
+  running: 1.0,
+  needs_work: 0.5,
+  damaged: 0.3,
+  not_running: 0.2,
+  scrap: 0.15,
 };
 
 export interface EstimateInput {
@@ -45,37 +91,35 @@ export interface EstimateResult {
   factors: string[];
 }
 
+function getBaseValueForAge(age: number): number {
+  for (const bracket of PRICE_TABLE.ageBaseValues) {
+    if (age <= bracket.maxAge) return bracket.base;
+  }
+  return PRICE_TABLE.ageBaseValues[PRICE_TABLE.ageBaseValues.length - 1].base;
+}
+
 export function estimatePrice(input: EstimateInput): EstimateResult {
   const currentYear = new Date().getFullYear();
-  const age = currentYear - input.year;
+  const age = Math.max(0, currentYear - input.year);
   const makeTier = getMakeTier(input.make);
-  const conditionMult = CONDITION_MULTIPLIER[input.condition] ?? 0.5;
+  const conditionMult =
+    CONDITION_MULTIPLIER[input.condition as QuoteCondition] ?? 0.5;
 
-  // Base value by age bracket
-  let baseValue: number;
-  if (age <= 3) baseValue = 8000;
-  else if (age <= 6) baseValue = 5500;
-  else if (age <= 10) baseValue = 3500;
-  else if (age <= 15) baseValue = 2000;
-  else if (age <= 20) baseValue = 1200;
-  else baseValue = 600;
-
-  // Make tier modifier
-  const makeMult = makeTier === "high" ? 1.2 : makeTier === "medium" ? 1.0 : 0.8;
-
-  // Vehicle type modifier
-  let typeMult = 1.0;
-  if (input.vehicleType === "ute" || input.vehicleType === "4wd") typeMult = 1.3;
-  else if (input.vehicleType === "suv") typeMult = 1.15;
-  else if (input.vehicleType === "van" || input.vehicleType === "truck") typeMult = 1.2;
-  else if (input.vehicleType === "sedan") typeMult = 1.0;
-  else if (input.vehicleType === "hatch") typeMult = 0.95;
+  const baseValue = getBaseValueForAge(age);
+  const makeMult = PRICE_TABLE.makeMultipliers[makeTier];
+  const typeMult = PRICE_TABLE.vehicleTypeMultipliers[input.vehicleType] ?? 1.0;
 
   const estimated = baseValue * makeMult * conditionMult * typeMult;
 
-  // Create a range (±25%)
-  const low = Math.max(100, Math.round(estimated * 0.75 / 50) * 50);
-  const high = Math.min(9999, Math.round(estimated * 1.25 / 50) * 50);
+  const { rangeSpread, rangeRoundTo, minLow, maxHigh } = PRICE_TABLE;
+  const low = Math.max(
+    minLow,
+    Math.round((estimated * (1 - rangeSpread)) / rangeRoundTo) * rangeRoundTo,
+  );
+  const high = Math.min(
+    maxHigh,
+    Math.round((estimated * (1 + rangeSpread)) / rangeRoundTo) * rangeRoundTo,
+  );
 
   // Build factors
   const factors: string[] = [];

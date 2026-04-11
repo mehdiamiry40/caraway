@@ -23,7 +23,7 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    title: "Cash for Cars Brisbane | Up to $9,999 — Same-Day Pickup",
+    title: "Cash for Cars Brisbane | Up to $9,999 Same-Day Pickup",
     metaDescription: "Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call 1800 227 293.",
     h1: "Cash for Cars Brisbane — Get Paid Today",
     intro: "Looking to sell your car fast in Brisbane? Caraway is Brisbane's leading cash for cars buyer, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same day, free of charge.",
@@ -175,6 +175,14 @@ export const services: ServicePage[] = [
       {
         heading: "Fast, Convenient Removal at Your Location",
         content: "We come to you anywhere in Greater Brisbane. You don't need to drive the car anywhere or arrange independent towing. Our team arrives at your location with a flatbed tow truck, pays you cash, loads the vehicle, and leaves. The whole process takes about 30 minutes. We can even remove cars from backyards, sheds, and properties where there's limited access."
+      },
+      {
+        heading: "Unwanted Car Removal Across Every Brisbane Suburb",
+        content: "Our unwanted car removal service covers every postcode across Greater Brisbane, from Bracken Ridge and Bald Hills in the north through to Beenleigh, Loganholme, and Mount Warren Park in the south. We regularly run to the western suburbs along the Ipswich Motorway — Jindalee, Darra, Wacol, Goodna, and out to Ipswich itself — and we cover the bayside and Redlands from Wynnum through Capalaba to Victoria Point and Redland Bay. Rural properties on the fringes of the city are no problem either: our flatbed trucks can reach acreages around Samford, Dayboro, and the outer Moreton Bay region. Wherever the unwanted car is sitting, we'll make the trip. Our drivers know the quirks of Brisbane's road network — the tight streets of Paddington, the steep driveways of Kenmore, the apartment complexes along Coronation Drive, the industrial estates of Geebung and Rocklea — and they come prepared with the right equipment for the job. We don't charge distance surcharges and we never reduce a quote because of the suburb you're in. Whether you're inside the CBD or on the edge of the Scenic Rim, the cash offer is the same fair number on the phone as at pickup."
+      },
+      {
+        heading: "Why Unwanted Cars Cost You Money Every Day You Wait",
+        content: "An unwanted car isn't a neutral thing — it quietly costs you money and space every day it sits. If it's still registered, you're paying registration and CTP insurance for a vehicle you're not using: in Queensland that's around $840 per year for a standard four-cylinder private car. If you're storing it in a garage or carport, you're losing usable space on your own property. If it's outside, it's weathering — paint oxidising, seals perishing, upholstery fading, tyres going flat and cracking. Mice and possums get into the engine bay and chew wiring looms. Brake discs rust onto calipers. Fuel turns to varnish in the lines. Every month the car sits, it loses value you'll never recover. On top of the financial cost, Brisbane City Council and surrounding councils can issue abandoned vehicle infringements for derelict cars visible from the street — fines start around $330 and can climb quickly if the problem isn't addressed. Selling to Caraway stops the bleed immediately. You get the money, you get the space back, and you stop worrying about fines, rust, and rodents. Most of our customers say the hardest part was picking up the phone; after that, the car was gone in hours."
       }
     ],
     faqs: [
@@ -203,6 +211,14 @@ export const services: ServicePage[] = [
       {
         heading: "Damaged Car Valuation in Brisbane",
         content: "We assess damaged cars based on the vehicle's pre-damage value, the extent of damage, salvageable components, and current parts market demand. Even heavily damaged cars contain valuable parts — engines, transmissions, alternators, starter motors, body panels, and interior components. These parts have real value, and that value goes straight into your cash offer."
+      },
+      {
+        heading: "Flood, Hail, and Storm Damage in South-East Queensland",
+        content: "Brisbane's weather is hard on cars. Summer hailstorms come through the north and western suburbs almost every year — we've bought hundreds of hail-dimpled cars from Chermside, The Gap, Ferny Grove, and Kenmore after major storms, and plenty more from Ipswich and Springfield. Flood damage is an even bigger issue for low-lying suburbs around Rocklea, Milton, West End, Fairfield, Oxley, and parts of Logan and Ipswich. Once a car has been through floodwater up to the dash, insurance companies will usually write it off because the wiring harness, ECUs, airbag modules, and interior trim are effectively ruined — even if the engine still runs on the day. Repairing a flood-damaged car is almost never economic; the car will develop electrical gremlins and mould problems for years. Selling it to a buyer who understands flood cars is almost always the right move. Caraway buys flood-affected vehicles as-is, no questions asked, and handles the disposal properly so the car doesn't end up being quietly on-sold to an unsuspecting buyer. The same applies to storm-damaged cars with fallen branches through the roof, vehicles caught in bushfires, and cars that have been broken into and stripped."
+      },
+      {
+        heading: "Insurance Write-Off vs Cash Sale: Which Makes Sense?",
+        content: "If you've been in a prang and your insurer is talking about a total loss payout, it's worth running the numbers before signing anything. Insurance write-off values are calculated from market guides minus the salvage value the insurer will recover by selling the wreck at auction — which means the payout you actually see can be surprisingly low, especially for older cars that fall outside the main valuation guides. For vehicles 10+ years old, a direct cash sale to Caraway often matches or beats the insurance offer, and you get the money in hours rather than weeks of claim processing. You also avoid the hit to your no-claim bonus if you're able to withdraw the claim before it's finalised. On newer cars with comprehensive cover and a recent market-value payout, the insurance route usually wins. We're happy to give you an honest quote to compare against your insurance offer — no pressure, no obligation. If the insurer's number is better, take it. If ours is better, or if you just want the car gone faster, we'll come and collect it the same day. Many Brisbane sellers also come to us after the insurance claim is finalised but the insurer has left them with the damaged vehicle to dispose of — that's an easy cash transaction too."
       }
     ],
     faqs: [
@@ -231,6 +247,14 @@ export const services: ServicePage[] = [
       {
         heading: "Quick Cash After Your Accident",
         content: "When you've been in an accident, the last thing you want is a drawn-out selling process. Contact Caraway and you could have cash in your hands within hours. We provide instant quotes over the phone, arrange same-day pickup, and pay you before we take the vehicle. It's the fastest way to move on from an accident."
+      },
+      {
+        heading: "Understanding Statutory vs Repairable Write-Offs in Queensland",
+        content: "If you've been in a serious accident in Brisbane, your insurer may have classified the vehicle as either a statutory write-off or a repairable write-off. The distinction matters a lot for what happens next. A statutory write-off is a vehicle Queensland Transport has determined can never be re-registered for road use — typically because the structural damage, fire damage, or flood exposure is so severe that the vehicle cannot be safely repaired to roadworthy standard. Statutory write-offs are flagged permanently on the Written-Off Vehicle Register and can only be sold for parts or scrap. A repairable write-off, on the other hand, can theoretically be fixed and re-registered, provided it passes a written-off vehicle inspection and meets all the compliance requirements. Caraway buys both categories. For statutory write-offs we value the vehicle based on salvageable parts and scrap metal weight. For repairable write-offs we often pay significantly more, because the car still has value as a rebuild project or as a donor for other cars of the same model. If you're not sure which category your vehicle falls into, call us with the claim number or the VIN and we'll talk you through it. Either way, the paperwork on our end is straightforward and you don't need a panel beater's quote, a police report, or an engineer's report to sell to us."
+      },
+      {
+        heading: "What Happens to Accident Cars After We Buy Them",
+        content: "Once we pay you and load the car onto our truck, the vehicle goes to one of our licensed wrecking and dismantling partners across South-East Queensland. From there, the process depends on the vehicle. Late-model cars with good running drivetrains but crashed bodies are often stripped for mechanical parts — engines, transmissions, diffs, ECUs, airbags, and suspension components — which go back into the used parts market to keep other cars on the road. Body panels, doors, bonnets, and interior trim are catalogued and listed for sale to panel beaters and DIY repairers. Cars that are too far gone mechanically get depolluted: fluids drained, batteries removed, tyres pulled off, refrigerant recovered from the air-con system, and any hazardous materials handled according to Queensland EPA regulations. The remaining shell is crushed and recycled into new steel. The whole process is documented, traceable, and compliant with the Written-Off Vehicle Register rules. You don't need to worry about the car turning up on Marketplace a month later being sold as a 'great little runner' to an unsuspecting buyer — it's gone for good, properly disposed of, and the paperwork is lodged with TMR on your behalf. That environmental and administrative peace of mind is part of what you're paying for when you sell to a licensed buyer instead of a backyard operator."
       }
     ],
     faqs: [

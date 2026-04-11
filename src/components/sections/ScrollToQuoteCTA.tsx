@@ -1,26 +1,11 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useScrollToQuote } from "@/hooks/use-scroll-to-quote";
 
 export function ScrollToQuoteCTA() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const isHome = pathname === "/" || pathname === "";
-
-  const scrollToQuote = () => {
-    if (isHome) {
-      document.getElementById("price-estimator")?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      const el = document.getElementById("price-estimator");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      } else {
-        router.push("/#price-estimator");
-      }
-    }
-  };
+  const scrollToQuote = useScrollToQuote();
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

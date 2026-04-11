@@ -20,7 +20,12 @@ export function Header() {
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          // Only trigger a state update when the boolean actually flips,
+          // so we avoid re-rendering the whole header on every scroll frame.
+          setIsScrolled((prev) => {
+            const next = window.scrollY > 20;
+            return prev === next ? prev : next;
+          });
           ticking = false;
         });
         ticking = true;
@@ -158,15 +163,24 @@ export function Header() {
               </Button>
             </div>
 
-            <button
-              type="button"
-              ref={mobileMenuTriggerRef}
-              className="lg:hidden min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-primary hover:bg-muted transition-all duration-200 active:scale-95 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              <Button
+                onClick={scrollToQuote}
+                size="sm"
+                className="bg-accent hover:bg-accent/90 text-white text-xs font-semibold px-3 h-9"
+              >
+                Quote
+              </Button>
+              <button
+                type="button"
+                ref={mobileMenuTriggerRef}
+                className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-primary hover:bg-muted transition-all duration-200 active:scale-95 touch-manipulation"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </div>
 

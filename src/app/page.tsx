@@ -75,7 +75,7 @@ export default function HomePage() {
         worstRating: 1,
       },
       reviewBody: r.text,
-      datePublished: "2025-01-15",
+      datePublished: r.date,
       itemReviewed: {
         "@type": "LocalBusiness" as const,
         "@id": `${SITE_URL}/#business`,

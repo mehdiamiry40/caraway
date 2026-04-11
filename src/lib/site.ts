@@ -14,3 +14,15 @@ export const BUSINESS = {
   hours: "7:00 AM – 7:00 PM",
   hoursDetail: "Monday to Sunday, 7 days a week",
 } as const;
+
+export const MAX_PRICE = 9999;
+export const MAX_PRICE_LABEL = "$9,999";
+
+export const PROMISE_POINTS = [
+  "Up to $9,999 cash",
+  "Same-day pickup",
+  "Free towing always",
+  "No RWC needed",
+  "All makes & models",
+  "7 days a week",
+] as const;
