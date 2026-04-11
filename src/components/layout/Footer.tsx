@@ -106,7 +106,7 @@ export function Footer() {
 
       <div className="border-t border-border/60 pb-safe">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Caraway. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center md:justify-end">
             <Link href="/privacy" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Privacy Policy</Link>
             <span aria-hidden="true" className="w-px h-3 bg-border" />
@@ -114,7 +114,7 @@ export function Footer() {
             <span aria-hidden="true" className="w-px h-3 bg-border" />
             <Link href="/accessibility" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Accessibility</Link>
             <span aria-hidden="true" className="w-px h-3 bg-border" />
-            <Link href="/sitemap" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Sitemap</Link>
+            <Link href="/site-map" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Sitemap</Link>
           </div>
         </div>
       </div>

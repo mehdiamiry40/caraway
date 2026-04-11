@@ -37,9 +37,8 @@ export function Stats() {
             );
           })}
         </div>
-        {/* TODO: replace with real ABN/LMD/founding year before launch */}
         <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
-          Licensed motor vehicle dealer · ABN 12 345 678 901 · Established 2014
+          Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD
         </div>
       </div>
     </section>
