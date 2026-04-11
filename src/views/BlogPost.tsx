@@ -5,7 +5,8 @@ import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { getRelatedPosts } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { ArrowLeft, ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Phone, Tag } from "lucide-react";
+import { BUSINESS } from "@/lib/site";
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
   const breadcrumbs = [
@@ -56,12 +57,20 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             Ready to sell your car for cash?
           </p>
           <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-md mx-auto">
-            Get a free quote today -- same-day pickup across Brisbane.
+            Call {BUSINESS.phoneFriendly} or get a free instant quote — same-day pickup available across Brisbane.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={BUSINESS.phoneHref}
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+              Call {BUSINESS.phoneFriendly}
+            </a>
             <Link
               href="/#price-estimator"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-white hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border-2 border-primary px-7 py-3.5 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all"
             >
               Get a Free Quote
             </Link>

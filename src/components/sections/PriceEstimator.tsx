@@ -132,8 +132,23 @@ export function PriceEstimator() {
       if (parsed.step === 2 && parsed.vehicleType && parsed.make) {
         setStep(2);
       }
-    } catch {
-      // ignore corrupt storage
+    } catch (error) {
+      // Corrupt/stale storage. Clear it so we don't get stuck on retry,
+      // and send a breadcrumb to Sentry for visibility without hard-failing.
+      try {
+        window.sessionStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // storage may be fully blocked — nothing we can do.
+      }
+      import("@sentry/nextjs")
+        .then((Sentry) => {
+          Sentry.captureException(error, {
+            tags: { component: "PriceEstimator", op: "hydrate" },
+          });
+        })
+        .catch(() => {
+          /* Sentry unavailable; swallow */
+        });
     }
   }, []);
 

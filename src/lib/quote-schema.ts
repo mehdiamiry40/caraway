@@ -75,7 +75,7 @@ export const contactFormSchema = z.object({
     .pipe(
       z
         .string()
-        .min(10, "Please provide more detail (at least 10 characters)")
+        .min(5, "Please add a short note (at least 5 characters)")
         .max(5000, "Message is too long")
     ),
   honeypot: honeypotField,

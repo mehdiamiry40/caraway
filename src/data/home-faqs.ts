@@ -9,7 +9,7 @@ export const faqs = [
   {
     question: "How much will I get for my car in Brisbane?",
     answer:
-      "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current scrap metal and spare parts market. Brisbane sellers typically receive between $150 and $9,999. Old, non-running cars can still fetch several hundred dollars. If you have another written quote, tell us — we’ll see what we can do.",
+      "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current scrap metal and spare parts market. Brisbane sellers typically receive between $300 and $9,999. Old, non-running cars can still fetch several hundred dollars. If you have another written quote, tell us — we’ll see what we can do.",
   },
   {
     question: "Do you really tow for free across Brisbane?",

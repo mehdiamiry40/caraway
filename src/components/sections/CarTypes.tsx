@@ -26,7 +26,7 @@ export function CarTypes() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
             What Cars We Buy in Brisbane
           </h2>
-          <p className="mt-3 text-primary-foreground/60 text-sm sm:text-base max-w-xl mx-auto">
+          <p className="mt-3 text-primary-foreground/80 text-sm sm:text-base max-w-xl mx-auto">
             We purchase all vehicle types across Greater Brisbane — regardless of age, condition, or registration status.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function CarTypes() {
                 <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/40 group-hover:text-primary-foreground/60 leading-tight">
+                <span className="text-[11px] sm:text-xs text-primary-foreground/75 group-hover:text-primary/70 leading-tight">
                   {type.desc}
                 </span>
                 <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />
@@ -68,12 +68,12 @@ export function CarTypes() {
         </div>
 
         <div className="mt-8 sm:mt-10 text-center">
-          <p className="text-xs uppercase tracking-wider text-primary-foreground/30 mb-3">Also accepted</p>
+          <p className="text-xs uppercase tracking-wider text-primary-foreground/70 mb-3">Also accepted</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {alsoAccepted.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/[0.08] text-xs sm:text-sm text-primary-foreground/50"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/15 text-xs sm:text-sm text-primary-foreground/80"
               >
                 {type}
               </span>

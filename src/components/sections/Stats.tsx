@@ -1,9 +1,10 @@
 import { Star, Banknote, Truck, Users } from "lucide-react";
+import { PRICE_RANGE_LABEL } from "@/lib/site";
 
 const stats = [
   { value: "4.9★", label: "From 200+ Brisbane reviews", icon: Star },
   { value: "200+", label: "Sellers served across Brisbane", icon: Users },
-  { value: "$50–$9,999", label: "Cash range we pay", icon: Banknote },
+  { value: PRICE_RANGE_LABEL, label: "Cash range we pay", icon: Banknote },
   { value: "Same-day", label: "Pickup available 7 days", icon: Truck },
 ];
 
@@ -38,7 +39,10 @@ export function Stats() {
           })}
         </div>
         <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
-          Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD
+          <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
+          <p className="mt-1 text-[11px] sm:text-xs text-muted-foreground/80">
+            Ratings and seller counts based on direct customer feedback.
+          </p>
         </div>
       </div>
     </section>

@@ -75,9 +75,9 @@ export function QuoteForm() {
                 Tell us about the car. We&apos;ll call or text back with a price range and next steps — usually within one business day. No obligation.
               </p>
 
-              <div className="hidden lg:flex flex-col gap-6">
+              <div className="flex flex-col gap-4 lg:gap-6">
                 {benefits.map((b) => (
-                  <div key={b.title} className="flex gap-4 group">
+                  <div key={b.title} className="flex gap-3 sm:gap-4 group">
                     <div className="w-10 h-10 rounded-lg bg-white border border-border/60 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-200">
                       <b.icon className="w-5 h-5 text-primary/70" />
                     </div>
@@ -100,7 +100,7 @@ export function QuoteForm() {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will contact you using the number you provided — usually within one business day.
+                    Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle

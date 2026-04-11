@@ -92,14 +92,14 @@ describe("estimatePrice", () => {
     expect(fourWd.high).toBeGreaterThan(sedan.high);
   });
 
-  it("enforces the absolute low floor ($150) and high ceiling ($9999)", () => {
+  it("enforces the absolute low floor ($300) and high ceiling ($9999)", () => {
     const worst = estimatePrice({
       make: "Fiat",
       year: 1985,
       condition: "scrap",
       vehicleType: "hatch",
     });
-    expect(worst.low).toBeGreaterThanOrEqual(150);
+    expect(worst.low).toBeGreaterThanOrEqual(300);
 
     const best = estimatePrice({
       make: "Toyota",
@@ -108,7 +108,7 @@ describe("estimatePrice", () => {
       vehicleType: "ute",
     });
     expect(best.high).toBeLessThanOrEqual(9999);
-    expect(best.low).toBeGreaterThanOrEqual(100);
+    expect(best.low).toBeGreaterThanOrEqual(300);
   });
 
   it("includes relevant factor explanations", () => {

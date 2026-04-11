@@ -1,4 +1,5 @@
 import type { QuoteCondition } from "@/lib/quote-schema";
+import { MAX_PRICE, MIN_PRICE } from "@/lib/site";
 
 /** Car makes grouped by demand tier — higher demand = higher price */
 const MAKE_TIERS: Record<string, string[]> = {
@@ -71,9 +72,9 @@ const PRICE_TABLE = {
   rangeSpread: 0.25,
   /** Round low/high to nearest this many dollars. */
   rangeRoundTo: 50,
-  /** Absolute floor/ceiling on the returned range. */
-  minLow: 150,
-  maxHigh: 9999,
+  /** Absolute floor/ceiling on the returned range. Sourced from site.ts. */
+  minLow: MIN_PRICE,
+  maxHigh: MAX_PRICE,
 } as const;
 
 function getMakeTier(make: string): MakeTier {
@@ -124,8 +125,8 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
     input.year > currentYear + 1
   ) {
     return {
-      low: 100,
-      high: 9999,
+      low: MIN_PRICE,
+      high: MAX_PRICE,
       factors: ["Confirm vehicle details — we'll quote on the call"],
     };
   }
@@ -168,7 +169,11 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
   );
 
   // Per-vehicle-type scrap floor — even a written-off sedan has hull value.
-  const scrapFloor = PRICE_TABLE.scrapFloors[input.vehicleType] ?? 300;
+  // Floors never go below the site-wide MIN_PRICE.
+  const scrapFloor = Math.max(
+    MIN_PRICE,
+    PRICE_TABLE.scrapFloors[input.vehicleType] ?? MIN_PRICE,
+  );
   low = Math.max(low, scrapFloor);
   high = Math.max(high, scrapFloor + 100);
 

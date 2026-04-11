@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Terms from "@/views/Terms";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -16,6 +19,31 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+const canonical = `${SITE_URL}/terms`;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Terms of Service" },
+];
+
 export default function TermsPage() {
-  return <Terms />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          breadcrumbListSchema(breadcrumbs, canonical),
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical,
+            url: canonical,
+            name: "Terms of Service | Caraway",
+            description:
+              "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
+            inLanguage: "en-AU",
+          },
+        ]}
+      />
+      <Terms />
+    </>
+  );
 }

@@ -5,6 +5,16 @@ function normalizeSchema(data: JsonRecord): JsonRecord {
   return hasContext ? data : { "@context": "https://schema.org", ...data };
 }
 
+/**
+ * Renders schema.org JSON-LD inside a `<script type="application/ld+json">`.
+ *
+ * SECURITY: This component serialises its `data` prop via `JSON.stringify`
+ * and injects the result with `dangerouslySetInnerHTML`. Callers MUST only
+ * pass trusted, build-time data — never user-generated content — otherwise
+ * an attacker-controlled string could escape the script tag. The `</` →
+ * `\u003c/` escape below defends against the `</script>` break-out case,
+ * but does NOT sanitize arbitrary HTML or script payloads.
+ */
 export function JsonLd({
   data,
 }: {

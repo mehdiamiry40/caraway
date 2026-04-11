@@ -4,9 +4,11 @@ import { suburbs } from "@/data/suburbs";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
 
-const SITE_LAST_MODIFIED = "2026-04-01";
-
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Dynamic: always advertise today as the site-wide last-modified baseline so
+  // crawlers re-check on each fetch. Per-page dates (blog posts) still win.
+  const SITE_LAST_MODIFIED = new Date().toISOString().split("T")[0];
+
   const latestBlogDate = indexableBlogPosts.reduce(
     (latest, post) => (post.date > latest ? post.date : latest),
     "2025-01-01"

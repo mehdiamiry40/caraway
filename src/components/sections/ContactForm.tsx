@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
+import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
 import { CheckCircle2, Send, Shield } from "lucide-react";
 
 const fieldIds = {
@@ -33,12 +34,10 @@ export function ContactForm() {
 
   const messageValue = useWatch({ control, name: "message" }) ?? "";
   const messageLength = messageValue.length;
-  const MESSAGE_MAX = 5000;
-  const MESSAGE_WARN = 4500;
   const counterClass =
-    messageLength >= MESSAGE_MAX
+    messageLength >= CONTACT_MESSAGE_MAX
       ? "text-destructive"
-      : messageLength > MESSAGE_WARN
+      : messageLength > CONTACT_MESSAGE_WARN
       ? "text-amber-600"
       : "text-muted-foreground";
 
@@ -66,9 +65,9 @@ export function ContactForm() {
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
-          <h3 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Message sent</h3>
+          <h3 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Message sent — thanks!</h3>
           <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-            We&apos;ll get back to you as soon as possible.
+            We&apos;ll reply within 1 business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
           <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
             Send another message
@@ -179,13 +178,13 @@ export function ContactForm() {
               aria-live="polite"
               id={`${fieldIds.message}-counter`}
             >
-              {messageLength}/{MESSAGE_MAX}
+              {messageLength}/{CONTACT_MESSAGE_MAX}
             </span>
           </div>
           <Textarea
             autoComplete="off"
             enterKeyHint="send"
-            maxLength={MESSAGE_MAX}
+            maxLength={CONTACT_MESSAGE_MAX}
             placeholder="Tell us how we can help..."
             rows={4}
             aria-invalid={errors.message ? true : undefined}

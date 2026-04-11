@@ -5,8 +5,8 @@ export default function Loading() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 mt-header-safe flex items-center justify-center">
-        <div className="animate-pulse text-muted-foreground text-sm">Loading articles…</div>
+      <main id="main-content" className="flex-1 mt-header-safe flex items-center justify-center">
+        <div className="animate-pulse motion-reduce:animate-none text-muted-foreground text-sm" role="status" aria-live="polite">Loading articles…</div>
       </main>
       <Footer />
     </div>

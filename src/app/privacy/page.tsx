@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Privacy from "@/views/Privacy";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -16,6 +19,31 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+const canonical = `${SITE_URL}/privacy`;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Privacy Policy" },
+];
+
 export default function PrivacyPage() {
-  return <Privacy />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          breadcrumbListSchema(breadcrumbs, canonical),
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical,
+            url: canonical,
+            name: "Privacy Policy | Caraway",
+            description:
+              "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
+            inLanguage: "en-AU",
+          },
+        ]}
+      />
+      <Privacy />
+    </>
+  );
 }

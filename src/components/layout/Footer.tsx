@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
 const serviceLinks = [
@@ -47,12 +47,28 @@ export function Footer() {
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
             </p>
             <div className="mt-8 space-y-3.5">
+              <a
+                href={BUSINESS.phoneHref}
+                className="flex items-center gap-3.5 text-foreground hover:text-primary transition-all duration-200 group text-sm font-semibold"
+                aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              >
+                <span className="flex h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 items-center justify-center group-hover:bg-primary/15 transition-all duration-200">
+                  <Phone className="h-4 w-4 text-primary" />
+                </span>
+                <span>{BUSINESS.phoneFriendly}</span>
+              </a>
               <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 group text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center group-hover:border-primary/30 transition-all duration-200">
                   <Mail className="h-4 w-4 text-primary" />
                 </span>
                 <span>{BUSINESS.email}</span>
               </a>
+              <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
+                  <Clock className="h-4 w-4 text-primary/60" />
+                </span>
+                <span>{BUSINESS.hours} · {BUSINESS.hoursDetail}</span>
+              </div>
               <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
                   <MapPin className="h-4 w-4 text-primary/60" />
