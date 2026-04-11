@@ -23,9 +23,7 @@ const openingHours = {
 };
 
 const SAME_AS = [
-  "https://www.facebook.com/carawaybrisbane",
-  "https://www.google.com/maps?cid=carawaybrisbane",
-  "https://au.linkedin.com/company/caraway-brisbane",
+  BUSINESS.googleBusinessUrl,
 ];
 
 /* ---------- Compute aggregate rating from reviews data ---------- */
@@ -38,6 +36,13 @@ export const localBusinessSchema = {
   "@type": ["LocalBusiness", "AutoDealer"],
   "@id": `${SITE_URL}/#business`,
   name: NAP.name,
+  legalName: BUSINESS.legalName,
+  taxID: BUSINESS.abn,
+  foundingDate: String(BUSINESS.foundingYear),
+  founder: {
+    "@type": "Person" as const,
+    name: BUSINESS.founder,
+  },
   url: SITE_URL,
   logo: {
     "@type": "ImageObject" as const,
@@ -50,7 +55,7 @@ export const localBusinessSchema = {
   email: NAP.email,
   priceRange: "$$",
   currenciesAccepted: "AUD",
-  paymentAccepted: "Cash",
+  paymentAccepted: "Cash, Bank Transfer",
   description:
     "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing and same-day service across Greater Brisbane. Call 1800 227 293.",
   // Caraway is a service-area business with no physical retail storefront.
@@ -119,6 +124,13 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: NAP.name,
+  legalName: BUSINESS.legalName,
+  taxID: BUSINESS.abn,
+  foundingDate: String(BUSINESS.foundingYear),
+  founder: {
+    "@type": "Person" as const,
+    name: BUSINESS.founder,
+  },
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",

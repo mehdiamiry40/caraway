@@ -28,7 +28,7 @@ export function Accordion({ items, className }: AccordionProps) {
           <div
             key={item.question}
             className={cn(
-              "border bg-white rounded-lg overflow-hidden transition-colors",
+              "border bg-card rounded-lg overflow-hidden transition-colors",
               isActive ? "border-border" : "border-border/60 hover:border-border"
             )}
           >
@@ -36,7 +36,7 @@ export function Accordion({ items, className }: AccordionProps) {
               type="button"
               id={triggerId}
               onClick={() => setActiveIndex(isActive ? null : index)}
-              className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+              className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
               aria-expanded={isActive}
               aria-controls={panelId}
             >
@@ -52,6 +52,8 @@ export function Accordion({ items, className }: AccordionProps) {
                 <ChevronDown className="h-5 w-5" aria-hidden="true" />
               </div>
             </button>
+            {/* Grid-rows [0fr]->[1fr] animation: Safari 16+ supports this;
+                older Safari will snap without animating (acceptable fallback). */}
             <div
               id={panelId}
               role="region"

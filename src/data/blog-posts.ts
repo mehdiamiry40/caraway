@@ -47,6 +47,80 @@ const noindexPostSlugs = new Set([
 
 const rawPosts: Omit<BlogPost, "readTime" | "isIndexable">[] = [
   {
+    slug: "wovr-written-off-vehicle-register-qld-guide",
+    title: "WOVR Written-Off Vehicle Register QLD Guide (2026)",
+    metaDescription:
+      "Everything Queensland drivers need to know about the Written-Off Vehicle Register (WOVR): statutory vs repairable write-offs, PPSR checks, and how to sell a WOVR car in Brisbane.",
+    excerpt:
+      "The Written-Off Vehicle Register trips up thousands of Queensland drivers every year. Here's what WOVR actually means, how it affects the sale price, and the easiest way to move a written-off car in Brisbane.",
+    content: [
+      "If your car has been in a serious prang, caught in a flood, or written off by the insurer, you've probably been told it's now on the WOVR — the Written-Off Vehicle Register. For most Brisbane drivers that's the first time they've heard the term, and it usually comes with more questions than answers. What does WOVR actually mean? Can you still sell the car? Is it worth anything? And what paperwork is involved? Here's the full picture for 2026, written for Queensland sellers rather than insurance lawyers.",
+
+      "The WOVR is a national database, managed state-by-state, that tracks every vehicle ever declared a total loss by an insurer or registration authority. In Queensland the register is maintained by the Department of Transport and Main Roads (TMR). When an insurer writes off a car — whether from collision damage, fire, flood, hail, or theft-related damage — the vehicle is flagged on the WOVR and the information stays on the register permanently. Anyone running a PPSR (Personal Property Securities Register) check on the VIN can see the write-off status before they buy.",
+
+      "The important split to understand is between a statutory write-off and a repairable write-off. A statutory write-off is a vehicle that Queensland law says cannot ever be re-registered for road use. This classification applies when the damage is so severe that the car cannot be safely repaired to roadworthy standard — think major structural collapse, full fire damage, or flood immersion above dashboard level. Statutory write-offs can only ever be sold for parts or scrap. A repairable write-off, by contrast, has been declared a total loss by the insurer on economic grounds — the repair bill exceeds the vehicle's market value — but the car can theoretically be rebuilt and re-registered if someone is willing to do the work and pass a written-off vehicle inspection.",
+
+      "The WOVR classification has a massive impact on what the car is worth at resale. A statutory write-off is worth what its parts and scrap metal weigh. A repairable write-off, on the other hand, retains significant value as a rebuild project or as a donor vehicle for other cars of the same make and model — and that value can be surprisingly good for popular models like Hilux, Ranger, Commodore, Camry, and Corolla where parts demand across Queensland never drops.",
+
+      "A PPSR check is the easiest way to find out whether a car is on the WOVR. It costs $2 through the Australian Government PPSR website and takes about 30 seconds. Punch in the VIN, pay the fee, and the report tells you the write-off status, any finance encumbrances, and whether the vehicle has been reported stolen. If you're buying a used car in Brisbane, a PPSR check is non-negotiable — we've seen plenty of cars advertised privately as clean that turn out to have a hidden WOVR flag from a storm event three owners ago.",
+
+      "For sellers, the key question is whether you can still move the car once it's been written off. The answer is yes — absolutely yes — but the process depends on the classification. Statutory write-offs must be sold to a licensed parts or scrap buyer; they cannot be sold as going concerns to another driver, and they cannot be re-registered. Repairable write-offs can be sold privately to a buyer who plans to rebuild them, sold to a rebuilder or mechanic, or sold to a licensed cash-for-cars buyer who will either rebuild the car, strip it for parts, or on-sell it to the trade.",
+
+      "The insurance cash-out decision is worth running carefully before you sign anything. When the insurer writes off a car, they'll usually offer you a payout based on the agreed or market value, minus any excess, minus the salvage value they expect to recover from selling the wreck at auction. For newer vehicles on comprehensive cover, the insurance route is usually the best outcome — the payout tends to reflect genuine market value. For older cars (10+ years), the numbers often work better if you retain salvage rights, accept a reduced insurance settlement, and sell the car directly to a cash buyer. The combined total can come out meaningfully higher than the straight insurance payout, and you dodge the hit to your no-claim bonus if you can withdraw the claim in time.",
+
+      "Paperwork for selling a WOVR car is simpler than most owners expect. You need current photo ID (Queensland driver's licence or passport), the vehicle's registration certificate if you still have it (not essential — the buyer can look up the VIN), and any letters from the insurer confirming the write-off classification and salvage status. You do not need a panel beater's quote, you do not need a police report, and you do not need an engineer's assessment. A licensed cash-for-cars buyer lodges the disposal notice with TMR on your behalf within the 14-day statutory window, which removes the vehicle from your name and ends your liability for tolls, fines, or any other notices tied to the plate.",
+
+      "Expect the cash-for-cars process for a WOVR vehicle to take a single phone call plus a pickup visit. You share the make, model, year, kilometres, and a description of the damage, and the buyer gives you a firm cash offer within minutes. Accept, book a pickup time, and the tow truck arrives — often the same day. Payment is in cash for amounts under $10,000 (the AUSTRAC cash reporting threshold) or bank transfer for larger sales, always before the vehicle is loaded onto the truck. Brisbane sellers in suburbs like Logan, Ipswich, and North Brisbane routinely have the whole transaction wrapped up within a few hours of their first call.",
+
+      "One thing to watch for: don't drive a written-off car on public roads unless you know for certain the rego is still valid and the vehicle is safe. Insurance companies sometimes cancel the policy the same day the write-off is declared, which leaves you driving uninsured if you have a prang on the way to the buyer. The safest approach is always to let the cash-for-cars buyer tow it away. Their tow truck means no road risk, no CTP exposure, and no second incident to worry about.",
+
+      "Finally, don't forget the number plates. In Queensland, plates belong to the registered owner rather than the vehicle, and you need to remove them before the tow truck leaves. You can return them to any TMR customer service centre or keep them for transfer to another car you own. Plates left on a scrapped vehicle create administrative headaches down the track, so take them off as part of the pickup routine.",
+
+      "The short version: the WOVR is not the end of the road for a written-off car. Whether your vehicle is a statutory write-off destined for parts and scrap, or a repairable write-off with rebuild value, a licensed cash-for-cars buyer will quote on it, collect it for free, pay you on the spot, and handle the paperwork with TMR. No repair quotes, no engineer's reports, and no uncertainty about what the car is really worth.",
+    ],
+    date: "2026-04-09",
+    category: "Guides",
+    relatedServices: ["insurance-write-off-cars-brisbane", "damaged-cars-brisbane", "cash-for-cars-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
+  },
+  {
+    slug: "scrap-metal-prices-brisbane-2026",
+    title: "Scrap Metal Prices Brisbane 2026 — What Your Car Is Really Worth",
+    metaDescription:
+      "How scrap metal prices shape cash-for-cars offers in Brisbane in 2026. Current steel, aluminium, and copper rates, monthly fluctuations, and why Japanese cars pay more.",
+    excerpt:
+      "Scrap metal prices drive a surprising amount of what your old car is worth at a cash buyer's gate. Here's what steel, aluminium, and copper are doing in Brisbane right now — and how that flows through to your quote.",
+    content: [
+      "If you've ever wondered why cash-for-cars offers seem to jump around from month to month, the answer is usually hiding in a commodities chart. Scrap metal prices — particularly for steel, aluminium, and copper — are the backbone of what any end-of-life vehicle is worth, and those prices shift weekly based on global demand, Chinese manufacturing activity, and the cost of shipping. For Brisbane sellers sitting on an old Commodore, a tired Camry, or a hail-dimpled hatchback, understanding the scrap market is the difference between accepting a lowball offer and getting a genuinely fair price.",
+
+      "Let's start with the basics. A typical passenger car in Australia weighs between 1,200 and 1,800 kilograms, with roughly 65-70% of that being steel, 8-10% aluminium, 1-2% copper, and the remainder plastic, glass, rubber, and other materials. The exact mix varies by make and model — European cars tend to use more aluminium in the bonnet, boot lid, and suspension components, while older Australian-built cars like Falcons and Commodores are heavier on steel. Japanese cars sit in the middle, with good copper content in the wiring harnesses and reasonable aluminium use in engine blocks and wheels.",
+
+      "Queensland scrap steel in early 2026 is sitting around $220 to $280 per tonne for standard mixed auto steel, delivered to licensed recyclers across South-East Queensland. That figure has been reasonably stable through the first quarter, which is good news for cash-for-cars sellers — when steel drops, offers drop with it. The steel price is driven mostly by Chinese construction demand, Australian export volumes out of Port Kembla and the Pilbara, and shipping container availability. When any of those shift, the local yard prices move within a week or two.",
+
+      "Aluminium is where the real money lives for cars that have a lot of it. Clean aluminium scrap in Brisbane is running between $1.80 and $2.40 per kilogram in early 2026, depending on grade. A modern SUV with an aluminium bonnet, tailgate, and engine block can easily contain 120 to 180 kilograms of aluminium, which adds a few hundred dollars to the car's base scrap value. Older Japanese cars like Pulsars, Lancers, and Corollas from the 90s and early 2000s carry less aluminium and tend to be valued lower on pure scrap grounds, though they make up for it in reusable parts demand.",
+
+      "Copper is the wildcard. Clean copper wiring is worth around $12 to $14 per kilogram at Brisbane yards right now, and a typical modern car contains 20 to 30 kilograms of it — in the wiring harness, the starter motor, the alternator, the radiator, and the air-con system. Cars with more electronics (newer SUVs, luxury models, European cars) carry more copper than older analogue vehicles. That's one reason why a wrecked 2018 Mazda CX-5 is often worth meaningfully more on scrap value alone than a 1998 Commodore of similar weight.",
+
+      "Monthly fluctuations are real and they're the main reason cash-for-cars quotes go up and down over the course of a year. In 2024 and 2025, Queensland scrap steel prices moved across a range of about 35% — roughly $180 per tonne at the low point to $260 at the peak — and aluminium moved by a similar percentage. When the scrap market is running hot, a typical end-of-life sedan might quote at $600 to $900. When the market is soft, the same car might only bring $350 to $550. If you're selling now and the market is reasonable, locking in today's price usually makes more sense than holding out for a rally that might not come.",
+
+      "Why do Japanese cars consistently get stronger offers than their scrap-value equivalents? The answer is parts demand. Toyota Hilux, Landcruiser, Prado, Hiace, Camry, and Corolla — along with Nissan Patrol, Navara, and Pathfinder — all have massive installed bases across Queensland and Australia, and the used-parts market for them is deep and liquid. A 20-year-old Hilux might only contain $500 of scrap metal, but the engine, gearbox, diffs, body panels, and interior components can easily add another $1,500 to $3,000 to the car's real value to a wrecker. Cash-for-cars buyers factor that parts demand straight into the quote, which is why Japanese utes and 4WDs always quote better than Korean or European equivalents of the same age and condition.",
+
+      "European cars are the opposite story. A wrecked BMW, Audi, or Mercedes might contain more aluminium and copper than a Japanese equivalent, but the parts market in Australia is much thinner — the cars are less common, the parts cost more to stock, and the demand is concentrated in specialist workshops rather than general mechanics. That translates to weaker cash-for-cars offers relative to scrap-only value. A 2010 BMW 3 Series with a blown engine might only quote at $600 to $1,200 despite containing several hundred dollars of aluminium.",
+
+      "Korean cars sit in the middle. Hyundai i30, Getz, Accent, and Elantra, along with Kia Rio, Cerato, and Sportage, have decent parts demand but nothing like the Toyota or Nissan standard. Expect offers on older Korean cars to track roughly 10-20% above pure scrap value, compared with 50%+ premiums for equivalent Japanese utes and 4WDs.",
+
+      "A few things you can do to maximise your payout. First, be realistic about the market — if you've been sitting on an old car for three years waiting for prices to rise, you've probably lost more to rust, weathering, and deteriorating rubber than you'd have ever gained from a commodities rally. Second, get at least two quotes before committing. Third, don't strip parts off the car before selling — unless you have a genuine specialist buyer lined up for specific components, removing parts almost always reduces the cash-for-cars offer by more than the parts are individually worth. Fourth, be honest about condition on the phone; hidden problems discovered at pickup lead to revised offers and wasted time.",
+
+      "For Brisbane sellers in suburbs like South Brisbane, Moorooka, and Ipswich where a lot of our end-of-life pickups happen, current market conditions in early 2026 are reasonable. Scrap steel is steady, aluminium has softened slightly from 2025 highs but is still solid, and copper remains strong. If you've got an old car sitting in the driveway that's no longer earning its keep, now is a fine time to convert it to cash. The longer you wait, the more the vehicle deteriorates, and the further today's quote drifts away from what the car might have brought six months ago.",
+
+      "The final word: scrap metal prices are only part of the story. The best cash-for-cars offers factor in scrap value, parts demand, and current market conditions for your specific make and model. A good buyer will explain how they arrived at the number and stand by the quote on pickup day. If an offer seems too low, ask why. If it seems too high, be cautious — some operators quote aggressively on the phone and then renegotiate when the driver arrives. A transparent, firm-quote operator is always worth more than the cheapest phone offer.",
+    ],
+    date: "2026-04-08",
+    category: "Insights",
+    relatedServices: ["scrap-car-removal-brisbane", "junk-cars-brisbane", "cash-for-cars-brisbane"],
+    relatedSuburbs: ["south-brisbane", "moorooka", "ipswich"],
+  },
+  {
     slug: "how-to-cancel-car-rego-qld",
     title: "How to Cancel Car Rego in QLD (2026 Guide)",
     metaDescription:

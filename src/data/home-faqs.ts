@@ -56,4 +56,29 @@ export const faqs = [
     answer:
       "Depending on the vehicle's condition, we either resell it, part it out as spare parts, or responsibly recycle and scrap it at a licensed facility. We comply with all Queensland environmental regulations for vehicle recycling.",
   },
+  {
+    question: "How will you pay me?",
+    answer:
+      "For amounts under $10,000 we pay cash on pickup — handed to you before the car is loaded onto the truck. This is the AUSTRAC cash reporting threshold, so for sales above $10,000 we arrange an immediate bank transfer and wait for it to show as cleared in your account before the vehicle is unloaded at our yard. Either way, you are never asked to release the car before you have the money.",
+  },
+  {
+    question: "Do I need to pay tax on the sale?",
+    answer:
+      "For most private sellers offloading a personal vehicle in Queensland, there's no income tax or GST payable — the ATO doesn't treat a used family car as an income-generating asset. GST may apply if you're selling the car as part of a registered business or ABN-holding enterprise. Either way, we provide a receipt for every sale so you've got a clean paper trail for your own records or your accountant.",
+  },
+  {
+    question: "Can you pick up on weekends?",
+    answer:
+      "Yes. We run same-day pickup seven days a week, including Saturdays and Sundays, across Greater Brisbane. Weekend bookings are subject to truck availability — during busy periods it's worth calling early in the day to lock in an afternoon slot, but most weekend jobs we quote we also collect the same day.",
+  },
+  {
+    question: "Can I change my mind after getting a quote?",
+    answer:
+      "Absolutely. There's no contract and no cancellation fee. You can walk away anytime before our driver loads the vehicle onto the truck — even if we're already parked in your driveway. Once the car is loaded and you've been paid, the sale is final and the vehicle belongs to us, so make the call before the winch starts. No pressure, no hard sell.",
+  },
+  {
+    question: "Do you buy multiple cars at once?",
+    answer:
+      "Yes — bulk pickups are one of our favourite jobs. Deceased estates, tradies clearing a yard, rural properties with a row of old utes, fleet disposals: we handle them all. Mention the number of vehicles when you request your quote and we'll usually improve the per-car price because collecting two or three cars on a single run is cheaper for us than making separate trips.",
+  },
 ];

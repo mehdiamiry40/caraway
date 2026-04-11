@@ -37,7 +37,7 @@ export function Footer() {
   return (
     <footer className="bg-muted text-foreground pl-safe pr-safe border-t border-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
+        <div aria-label="Footer navigation" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
 
           <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
@@ -106,11 +106,15 @@ export function Footer() {
 
       <div className="border-t border-border/60 pb-safe">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Caraway. All rights reserved.</p>
-          <div className="flex items-center gap-4 sm:gap-6">
+          <p>&copy; {new Date().getFullYear()} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
+          <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center md:justify-end">
             <Link href="/privacy" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Privacy Policy</Link>
-            <span className="w-px h-3 bg-border" />
+            <span aria-hidden="true" className="w-px h-3 bg-border" />
             <Link href="/terms" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Terms of Service</Link>
+            <span aria-hidden="true" className="w-px h-3 bg-border" />
+            <Link href="/accessibility" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Accessibility</Link>
+            <span aria-hidden="true" className="w-px h-3 bg-border" />
+            <Link href="/site-map" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-2 px-1">Sitemap</Link>
           </div>
         </div>
       </div>

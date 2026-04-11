@@ -59,7 +59,7 @@ export function QuoteForm() {
   };
 
   return (
-    <section id="quote-section" className="py-16 sm:py-24 bg-white">
+    <section id="quote-section" className="section-y bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-muted rounded-lg p-4 sm:p-8 md:p-12 lg:p-16 border border-border/60">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
@@ -131,54 +131,15 @@ export function QuoteForm() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                    <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
-                        Your name
-                      </label>
-                      <Input
-                        autoComplete="name"
-                        placeholder="Jane Smith"
-                        aria-invalid={errors.name ? true : undefined}
-                        aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
-                        {...register("name")}
-                        id={fieldIds.name}
-                      />
-                      {errors.name && (
-                        <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-                          {errors.name.message}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
-                        Phone
-                      </label>
-                      <Input
-                        type="tel"
-                        autoComplete="tel"
-                        placeholder="04xx xxx xxx"
-                        aria-invalid={errors.phone ? true : undefined}
-                        aria-describedby={errors.phone ? `${fieldIds.phone}-error` : undefined}
-                        {...register("phone")}
-                        id={fieldIds.phone}
-                      />
-                      {errors.phone && (
-                        <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-                          {errors.phone.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
                   <div>
                     <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2">
                       Make &amp; model
+                      <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
                     <Input
                       autoComplete="off"
+                      enterKeyHint="next"
+                      maxLength={200}
                       placeholder="e.g. Toyota Corolla"
                       aria-invalid={errors.make ? true : undefined}
                       aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
@@ -197,10 +158,13 @@ export function QuoteForm() {
                     <div>
                       <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2">
                         Year
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
                       <Input
                         inputMode="numeric"
                         autoComplete="off"
+                        enterKeyHint="next"
+                        maxLength={4}
                         placeholder="e.g. 2012"
                         aria-invalid={errors.year ? true : undefined}
                         aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
@@ -217,6 +181,7 @@ export function QuoteForm() {
                     <div>
                       <label htmlFor={fieldIds.condition} className="block text-sm font-semibold text-foreground mb-2">
                         Condition
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
                       <Select
                         placeholder="Select condition"
@@ -241,8 +206,61 @@ export function QuoteForm() {
                     </div>
                   </div>
 
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    <div>
+                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
+                        Your name
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
+                      </label>
+                      <Input
+                        autoComplete="name"
+                        enterKeyHint="next"
+                        maxLength={200}
+                        placeholder="Jane Smith"
+                        aria-invalid={errors.name ? true : undefined}
+                        aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
+                        {...register("name")}
+                        id={fieldIds.name}
+                      />
+                      {errors.name && (
+                        <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          {errors.name.message}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
+                        Phone
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
+                      </label>
+                      <Input
+                        type="tel"
+                        autoComplete="tel"
+                        enterKeyHint="send"
+                        maxLength={20}
+                        placeholder="04xx xxx xxx"
+                        aria-invalid={errors.phone ? true : undefined}
+                        aria-describedby={
+                          errors.phone ? `${fieldIds.phone}-error` : "quote-phone-help"
+                        }
+                        {...register("phone")}
+                        id={fieldIds.phone}
+                      />
+                      <p className="text-xs text-muted-foreground mt-1" id="quote-phone-help">
+                        Australian numbers only, e.g. 0412 345 678
+                      </p>
+                      {errors.phone && (
+                        <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          {errors.phone.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide rounded-xl" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>

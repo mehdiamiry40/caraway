@@ -1,8 +1,8 @@
-import { Car, Star, Banknote, Truck } from "lucide-react";
+import { Star, Banknote, Truck, Users } from "lucide-react";
 
 const stats = [
-  { value: "2,000+", label: "Cars bought across Brisbane", icon: Car },
-  { value: "4.9★", label: "Average customer rating", icon: Star },
+  { value: "4.9★", label: "From 200+ Brisbane reviews", icon: Star },
+  { value: "200+", label: "Sellers served across Brisbane", icon: Users },
   { value: "$50–$9,999", label: "Cash range we pay", icon: Banknote },
   { value: "Same-day", label: "Pickup available 7 days", icon: Truck },
 ];
@@ -29,7 +29,7 @@ export function Stats() {
                   <p className="text-base sm:text-xl font-display font-bold text-primary leading-tight">
                     {stat.value}
                   </p>
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-snug">
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-snug text-balance">
                     {stat.label}
                   </p>
                 </div>
@@ -37,8 +37,8 @@ export function Stats() {
             );
           })}
         </div>
-        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground">
-          Licensed motor vehicle dealer · ABN 12 345 678 901 · Established 2014
+        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
+          Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD
         </div>
       </div>
     </section>

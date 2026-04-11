@@ -40,6 +40,49 @@ export default function Terms() {
           </section>
 
           <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Selling your car to us</h2>
+            <p>
+              When you sell your vehicle to Caraway, you remain the registered owner until the Queensland Transport and Main Roads (TMR) register is updated. We will:
+            </p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Provide a receipt showing the sale price, your details, and the buyer&apos;s details</li>
+              <li>Lodge the TMR transfer paperwork within 14 days of pickup</li>
+              <li>Cancel the registration where you request (you may be entitled to a rego refund)</li>
+              <li>Provide photos of the pickup for your records</li>
+            </ul>
+            <p className="mt-3">You agree to:</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1">
+              <li>Present valid photo ID at pickup</li>
+              <li>Remove personal belongings from the vehicle</li>
+              <li>Sign the transfer documentation provided</li>
+              <li>Surrender Queensland number plates if we request them</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Cooling-off and cancellation</h2>
+            <p>
+              You may cancel a sale at any time before our driver arrives for pickup. Once the vehicle is loaded and payment has been made, the sale is final unless we agree otherwise in writing.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Your rights under Australian Consumer Law</h2>
+            <p>
+              Nothing in these terms limits your rights under the Australian Consumer Law, including any consumer guarantees that cannot be lawfully excluded. Where a term of this agreement conflicts with the Australian Consumer Law, the Australian Consumer Law prevails.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Dispute resolution</h2>
+            <p>
+              If you are not satisfied with any aspect of your sale, please contact us within 24 hours at{" "}
+              <a href="mailto:info@caraway.au" className="text-primary underline underline-offset-2">info@caraway.au</a>
+              . We will work with you to resolve the issue, and if we cannot agree, you may refer the matter to the Queensland Civil and Administrative Tribunal (QCAT).
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-xl font-display font-bold text-primary mb-3">Limitation of liability</h2>
             <p>
               To the maximum extent permitted by the Australian Consumer Law and other applicable law, we exclude liability for indirect or consequential loss arising from use of this site or our services. Our liability for any claim related to services we provide is limited to resupplying the goods or services or paying the cost of having them supplied again, or otherwise as required by law.

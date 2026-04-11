@@ -36,16 +36,26 @@
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 200 8% 88%;
+  /* Darker border for WCAG 1.4.11 (3:1 against white) */
+  --border: 200 10% 82%;
   --ring: 209 60% 30%;
   --card: 0 0% 100%;
   --card-foreground: 210 5% 8%;
 }
 
+/*
+ * Transition timing convention:
+ * - duration-200 (200ms): interactive state changes (hover, focus, press)
+ * - duration-300 (300ms): larger UI transitions (dropdowns, menus, shadows)
+ * - duration-500 (500ms): content expansion/collapse (accordions, progress bars)
+ */
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
   }
 
   body {
@@ -62,6 +72,38 @@
   input, select, textarea {
     scroll-margin-top: 1rem;
     scroll-margin-bottom: 4rem;
+  }
+
+  /* Global touch-action for interactive elements (removes 300ms tap delay) */
+  a, button, [role="button"], input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  /* Autofill styling override — keep card/foreground colors on autofilled inputs */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--card)) inset;
+    -webkit-text-fill-color: hsl(var(--foreground));
+    caret-color: hsl(var(--foreground));
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* Avoid iOS scroll jump under fixed header when focus moves to a heading */
+  h3[tabindex="-1"],
+  h2[tabindex="-1"],
+  h1[tabindex="-1"] {
+    scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px));
+  }
+
+  @media (min-width: 1024px) {
+    h3[tabindex="-1"],
+    h2[tabindex="-1"],
+    h1[tabindex="-1"] {
+      scroll-margin-top: calc(7rem + env(safe-area-inset-top, 0px));
+    }
   }
 }
 
@@ -113,13 +155,6 @@
   html {
     scroll-behavior: smooth;
   }
-
-  /* iOS Safari smooth scroll workaround — use CSS scroll only when supported */
-  @supports (-webkit-overflow-scrolling: touch) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -130,6 +165,53 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Windows High Contrast / forced-colors support */
+@media (forced-colors: active) {
+  button, a, [role="button"] {
+    forced-color-adjust: auto;
+  }
+  .bg-primary,
+  .bg-accent {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Print stylesheet */
+@media print {
+  header, footer, nav, [role="banner"], .no-print, button, a[href^="#"] {
+    display: none !important;
+  }
+  main, [role="main"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+  a[href^="/"]:after {
+    content: " (caraway.au" attr(href) ")";
+  }
+  img {
+    max-width: 100% !important;
   }
 }
 
@@ -170,4 +252,10 @@
   @media (min-width: 1024px) {
     margin-top: calc(104px + env(safe-area-inset-top, 0px));
   }
+}
+
+/* 100dvh fallback — uses static vh first, then overrides to dvh where supported */
+@utility min-h-screen-safe {
+  min-height: 100vh;
+  min-height: 100dvh;
 }

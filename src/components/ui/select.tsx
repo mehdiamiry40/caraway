@@ -19,7 +19,6 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             "aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/[0.03] aria-[invalid=true]:focus-visible:ring-destructive/40 aria-[invalid=true]:focus-visible:border-destructive",
             className
           )}
-          defaultValue=""
           ref={ref}
           {...props}
         >

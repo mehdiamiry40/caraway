@@ -1,22 +1,34 @@
-import { Zap, ShieldCheck, CarFront, FileText, Check } from "lucide-react";
+import { Zap, ShieldCheck, CarFront, FileText, Check, Shield } from "lucide-react";
 
 const reasons = [
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: "Quoted price guarantee",
+    description: "The number we quote is the number you're paid. No surprise deductions, in writing before pickup.",
+    iconColor: "text-accent",
+  },
+  {
+    icon: <ShieldCheck className="w-5 h-5" />,
+    title: "Fully insured pickups",
+    description: "Public liability and goods-in-transit cover. If we scratch it loading, we wear it.",
+    iconColor: "text-accent",
+  },
   {
     icon: <Zap className="w-5 h-5" />,
     title: "Paid when we pick up",
     description: "We don't drive away with your keys until you've been paid the agreed amount.",
-    iconColor: "text-accent",
+    iconColor: "text-primary",
   },
   {
     icon: <CarFront className="w-5 h-5" />,
     title: "Towing's on us",
-    description: "If we buy it, we bring the truck. No surprise deductions for collection in our service area.",
+    description: "If we buy it, we bring the truck. No surprise deductions. The quote is the cash.",
     iconColor: "text-primary",
   },
   {
-    icon: <ShieldCheck className="w-5 h-5" />,
+    icon: <FileText className="w-5 h-5" />,
     title: "Rough to written off",
-    description: "Old daily drivers, damaged, unregistered, scrap — we'll tell you straight if it's a fit.",
+    description: "Old daily drivers, damaged, unregistered, scrap, fleet — we'll tell you straight if it's a fit.",
     iconColor: "text-primary",
   },
   {

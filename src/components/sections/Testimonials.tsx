@@ -3,11 +3,12 @@ import { reviews as testimonials } from "@/data/reviews";
 
 function Stars({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5" aria-hidden="true">
+    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
           className={`w-4 h-4 ${i < count ? "fill-accent text-accent" : "fill-transparent text-border"}`}
+          aria-hidden="true"
         />
       ))}
     </div>
@@ -23,17 +24,17 @@ export function Testimonials() {
             Cash for Cars Brisbane Reviews
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Real reviews from verified Brisbane customers.
+            Verified reviews from Brisbane sellers.
           </p>
           <div className="mt-6 flex justify-center">
             <div className="inline-flex items-center gap-2">
-              <div className="flex gap-0.5">
+              <div className="flex gap-0.5" aria-label="4.9 out of 5 stars">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                  <Star key={i} className="w-5 h-5 fill-accent text-accent" aria-hidden="true" />
                 ))}
               </div>
               <span className="text-2xl font-display font-bold text-foreground">4.9</span>
-              <span className="text-muted-foreground">/ 5 from {testimonials.length}+ Brisbane sellers</span>
+              <span className="text-muted-foreground">/ 5 from 200+ Brisbane sellers</span>
             </div>
           </div>
         </div>
@@ -48,7 +49,6 @@ export function Testimonials() {
 
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
-                  <span className="sr-only">Rated {review.rating} out of 5 stars</span>
                   <Stars count={review.rating} />
                 </div>
                 <span className="text-xs text-primary/70 bg-white border border-border/60 px-2.5 py-1 rounded-full shrink-0 font-medium">

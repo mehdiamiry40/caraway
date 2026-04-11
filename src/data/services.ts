@@ -376,6 +376,62 @@ export const services: ServicePage[] = [
     ],
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
     relatedSuburbs: ["indooroopilly", "carindale", "chermside", "toowong", "bayside-brisbane"]
+  },
+  {
+    slug: "insurance-write-off-cars-brisbane",
+    title: "Insurance Write-Off Cars Brisbane | Caraway",
+    metaDescription: "Sold your car to the insurance company but kept the salvage rights? We buy statutory and repairable write-offs across Brisbane. Free pickup, cash on the spot.",
+    h1: "Insurance Write-Off Cars Brisbane",
+    intro: "If your insurer has declared your vehicle a total loss and left you with the wreck — or you've elected to retain salvage rights on an accident, flood, or fire claim — Caraway buys it directly for cash. We purchase both statutory and repairable write-offs across Greater Brisbane, handle all the paperwork with TMR, and come to you with free towing. Same-day pickup is available seven days a week.",
+    sections: [
+      {
+        heading: "Statutory vs Repairable Write-Offs Explained",
+        content: "When an insurer writes off a car in Queensland, the vehicle is flagged on the Written-Off Vehicle Register (WOVR) and classified into one of two categories. A statutory write-off is a vehicle TMR has determined can never be re-registered for road use — the damage is so severe that the car cannot be repaired to roadworthy standard. Typical causes include major structural collapse, full fire damage, or flood immersion above the dashboard. Statutory write-offs can only be sold for parts or scrap. A repairable write-off, on the other hand, has been deemed economically not worth repairing by the insurer, but can still be rebuilt, inspected, and re-registered if someone is prepared to do the work. Caraway buys both. Repairable write-offs often fetch significantly higher prices because the vehicle still has value as a rebuild project or as a mechanical donor for other cars of the same make and model. Statutory write-offs are valued on salvageable parts and scrap metal weight. If you're not sure which category applies to your vehicle, call us with the claim number or the VIN — we can usually tell you within a few minutes."
+      },
+      {
+        heading: "How to Sell a Write-Off Car to Caraway",
+        content: "The process is the same as any other cash-for-cars sale, with a few small extras to keep the WOVR paperwork clean. Step one: call or fill out our online quote form with the make, model, year, damage description, and — if you know it — the WOVR classification. We'll give you a firm cash offer on the phone, usually within a few minutes. Step two: accept the quote and book a pickup time that suits you. Step three: our driver arrives at your property with a flatbed tow truck, inspects the vehicle, pays you in cash (or bank transfer for amounts over $10,000), and loads the car. We lodge the disposal notice with TMR on your behalf within the 14-day statutory window, which removes the vehicle from your name and ends your liability for any future tolls, fines, or administrative notices attached to the plate. You do not need a panel beater's quote, a police report, or an engineer's assessment to sell to us — the insurer's write-off decision is enough."
+      },
+      {
+        heading: "What Paperwork You Need",
+        content: "The paperwork is minimal. Bring a current Queensland driver's licence or other government-issued photo ID. If you still have the registration certificate, that helps, but it's not essential — we can look the vehicle up by VIN if the papers are long gone. If the insurance claim has already been finalised and you've received a settlement letter or a notice from the insurer confirming you've retained salvage rights, hand that to the driver as well; it makes the WOVR paperwork faster to process. You do not need the written-off vehicle notice from TMR, and you do not need to have the car inspected before pickup. For vehicles with outstanding finance, let us know when you request the quote so we can discuss payout options — in many cases we can work directly with your lender to settle the loan as part of the sale. For deceased estate vehicles we'll ask for a copy of the death certificate and probate or letters of administration, but nothing more elaborate than that."
+      }
+    ],
+    faqs: [
+      { question: "Can I sell a car that's listed on the Written-Off Vehicle Register?", answer: "Yes. We buy both statutory and repairable write-offs listed on the WOVR. The WOVR flag doesn't prevent a sale to a licensed buyer — it just prevents the car from being re-registered in the case of a statutory write-off. Call us with the VIN and we'll give you a firm cash offer the same day." },
+      { question: "Will your offer beat the insurance payout?", answer: "For newer vehicles on comprehensive cover, the insurance payout usually wins. For older cars (10+ years), or cars where the insurer has quoted a low market value, our offer is often competitive or better — plus you get the money in hours instead of waiting weeks for claim finalisation. We're happy to quote against your insurer's number without obligation." },
+      { question: "Do I need to do anything before the pickup?", answer: "Just gather your photo ID, any paperwork from the insurer, and the vehicle's registration certificate if you still have it. Remove personal belongings and take the number plates off before the truck leaves — in Queensland, plates belong to the registered owner, not the car. Everything else we handle." }
+    ],
+    relatedServices: ["damaged-cars-brisbane", "accident-cars-brisbane", "cash-for-cars-brisbane", "scrap-car-removal-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "north-brisbane", "south-brisbane", "caboolture"]
+  },
+  {
+    slug: "hail-damaged-cars-brisbane",
+    title: "Hail Damaged Cars Brisbane | Caraway",
+    metaDescription: "Hail or storm damage turning your car into a write-off? We buy hail-damaged vehicles across Brisbane. Free pickup, honest quote, no repair quotes needed.",
+    h1: "Hail Damaged Cars Brisbane",
+    intro: "Brisbane storm season is brutal on cars, and every summer we buy hundreds of hail-dimpled vehicles across the western and northern suburbs. If your car has been through a hailstorm and you're staring at a panel beater's quote that's worth more than the car, Caraway will take it off your hands for cash. Free pickup, same-day service, no repair quotes or engineer's reports needed — we buy hail-damaged cars in any condition across Greater Brisbane.",
+    sections: [
+      {
+        heading: "Queensland Storm Season and Why Hail Is So Bad for Cars",
+        content: "Queensland's severe storm season runs from October through to March, and South-East Queensland consistently cops some of the worst hailstorms in Australia. Brisbane has taken direct hits from major hail events in 2014 (the Great Brisbane Hailstorm), 2020 (the Halloween storm through Rochedale and Springwood), and more recent cells that tracked across Chermside, The Gap, Kenmore, Ferny Grove, and out through Ipswich and Springfield. When a proper storm comes through — golf ball to cricket ball sized hail, driven by 80 km/h winds — a car parked in the open can be left with hundreds of dents across the bonnet, roof, and boot in the space of two or three minutes. The damage is almost always cosmetic rather than mechanical, but it's enough to write the car off for any buyer who cares about resale value. Insurers routinely declare hail-damaged cars total losses because the cost of traditional panel-beating and respraying runs into tens of thousands of dollars, and paintless dent repair (PDR) is impractical once there are more than a couple of hundred dents on a single panel. That's where Caraway comes in: we value hail-damaged cars on their mechanical and parts value, not on cosmetic condition, so dents don't cost you anything in the quote."
+      },
+      {
+        heading: "Insurance Cash-Out vs Repair: Which Makes Sense?",
+        content: "After a major hail event, most Brisbane drivers with comprehensive insurance have two broad options. The first is to let the insurer take the car, write it off, and pay out the agreed or market value minus the excess. The second is to elect to keep the car as a repairable write-off, accept a reduced cash settlement, and either drive the dimpled car as-is or try to on-sell it privately. Both paths end up at Caraway for a lot of sellers. If the insurer's settlement figure feels low — which is common on cars over 10 years old that sit outside the main valuation guides — we can quote directly against it. If you've already taken the cash settlement and retained salvage rights, we'll buy the car from you for a lump sum on top. If you're uninsured or were third-party only, we'll value the car as-is and give you a realistic figure within minutes. The quote is always free and obligation-free; if the insurer beats us, take their number. If we beat them or you just want the car gone today, we'll be at your address the same day."
+      },
+      {
+        heading: "Typical Hail-Damaged Car Prices in Brisbane",
+        content: "Offers on hail-damaged vehicles depend primarily on the car's mechanical condition, kilometres, make, and model — cosmetic hail dents barely move the needle. A 2015 Hyundai i30 with 150,000 kilometres and moderate hail damage that still runs well typically fetches between $2,500 and $5,500. A hail-damaged ute or 4WD from the last five years — HiLuxes, Rangers, Pajeros, Prados — can fetch $6,000 to $9,999+ depending on condition, because the underlying parts demand stays strong regardless of dented panels. Older vehicles (pre-2005) with heavy hail damage usually land between $400 and $1,500 based on salvage and scrap value. If your car is still mechanically sound and just looks like a golf ball, you'll be pleasantly surprised — we value it on the engine, drivetrain, and interior, not the roof. We also buy cars that were already write-offs before the hail hit, and storm-damaged vehicles with broken glass, water ingress, or fallen branches through the roof. No quotes required, no paperwork headaches, and free towing across Greater Brisbane."
+      }
+    ],
+    faqs: [
+      { question: "Do you buy hail-damaged cars even if they still drive?", answer: "Yes — in fact those are often our best-value pickups. A mechanically sound, hail-damaged car is worth significantly more than a non-runner because the drivetrain, electronics, and interior can all go back into the used parts market. Call us with the make, model, year, and kilometres and we'll quote on the spot." },
+      { question: "Do I need a repair quote or insurance assessment to sell?", answer: "No. We don't need a panel beater's quote, an engineer's report, or an insurance assessment to make an offer. All we need is a description of the car — make, model, year, kilometres, and a rough idea of the damage — and we can quote within minutes. Bring photo ID on pickup day and we handle the rest." },
+      { question: "What if my car is already a repairable write-off from the insurer?", answer: "No problem at all. We buy repairable write-offs every week, both from owners who've retained salvage rights after a claim and from sellers who'd rather cash the car out than try to drive it dimpled or list it privately. Mention the WOVR status when you request your quote and we'll factor it in." }
+    ],
+    relatedServices: ["damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "cash-for-cars-brisbane", "accident-cars-brisbane"],
+    relatedSuburbs: ["chermside", "indooroopilly", "north-brisbane", "ipswich", "toowong"]
   }
 ];
 

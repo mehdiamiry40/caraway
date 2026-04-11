@@ -4,7 +4,7 @@ import type { QuoteCondition } from "@/lib/quote-schema";
 const MAKE_TIERS: Record<string, string[]> = {
   high: [
     "toyota", "mazda", "hyundai", "kia", "honda", "mitsubishi",
-    "subaru", "suzuki", "nissan", "isuzu",
+    "subaru", "suzuki", "nissan", "isuzu", "gwm", "tesla", "ram",
   ],
   medium: [
     "ford", "holden", "volkswagen", "skoda", "mg",
@@ -14,6 +14,8 @@ const MAKE_TIERS: Record<string, string[]> = {
     "bmw", "mercedes", "audi", "volvo", "lexus", "peugeot",
     "citroen", "renault", "fiat", "alfa romeo", "jeep",
     "chrysler", "dodge", "saab", "daewoo", "proton",
+    "land rover", "range rover", "lotus", "mini", "byd",
+    "polestar", "cupra", "genesis",
   ],
 };
 
@@ -52,12 +54,25 @@ const PRICE_TABLE = {
     hatch: 0.95,
     other: 1.0,
   } as Record<string, number>,
+  /** Minimum scrap value floor per vehicle type. */
+  scrapFloors: {
+    sedan: 350,
+    hatch: 400,
+    wagon: 400,
+    suv: 450,
+    ute: 500,
+    "4wd": 500,
+    van: 500,
+    truck: 500,
+    coupe: 350,
+    other: 300,
+  } as Record<string, number>,
   /** Range spread — low = estimated * (1 - spread), high = estimated * (1 + spread). */
   rangeSpread: 0.25,
   /** Round low/high to nearest this many dollars. */
   rangeRoundTo: 50,
   /** Absolute floor/ceiling on the returned range. */
-  minLow: 100,
+  minLow: 150,
   maxHigh: 9999,
 } as const;
 
@@ -72,7 +87,7 @@ function getMakeTier(make: string): MakeTier {
 /** Condition multipliers — keys match the Zod quoteConditionValues enum. */
 export const CONDITION_MULTIPLIER: Record<QuoteCondition, number> = {
   running: 1.0,
-  needs_work: 0.5,
+  needs_work: 0.65,
   damaged: 0.3,
   not_running: 0.2,
   scrap: 0.15,
@@ -100,29 +115,68 @@ function getBaseValueForAge(age: number): number {
 
 export function estimatePrice(input: EstimateInput): EstimateResult {
   const currentYear = new Date().getFullYear();
+
+  // Input validation guard — bail out with a safe fallback when year is unusable.
+  if (
+    !Number.isFinite(input.year) ||
+    Number.isNaN(input.year) ||
+    input.year < 1950 ||
+    input.year > currentYear + 1
+  ) {
+    return {
+      low: 100,
+      high: 9999,
+      factors: ["Confirm vehicle details — we'll quote on the call"],
+    };
+  }
+
   const age = Math.max(0, currentYear - input.year);
-  const makeTier = getMakeTier(input.make);
+  const makeIsEmpty = !input.make || input.make.trim() === "";
+  const makeTier = makeIsEmpty ? "medium" : getMakeTier(input.make);
   const conditionMult =
     CONDITION_MULTIPLIER[input.condition as QuoteCondition] ?? 0.5;
 
   const baseValue = getBaseValueForAge(age);
   const makeMult = PRICE_TABLE.makeMultipliers[makeTier];
-  const typeMult = PRICE_TABLE.vehicleTypeMultipliers[input.vehicleType] ?? 1.0;
+  let typeMult = PRICE_TABLE.vehicleTypeMultipliers[input.vehicleType] ?? 1.0;
 
-  const estimated = baseValue * makeMult * conditionMult * typeMult;
+  // Ute/4WD popular-model boost — Ranger, Hilux and friends command a premium.
+  if (
+    (input.vehicleType === "ute" || input.vehicleType === "4wd") &&
+    /ranger|hilux|navara|triton|d-max|bt-50|colorado/i.test(input.make ?? "")
+  ) {
+    typeMult *= 1.15;
+  }
+
+  let estimated = baseValue * makeMult * conditionMult * typeMult;
 
   const { rangeSpread, rangeRoundTo, minLow, maxHigh } = PRICE_TABLE;
-  const low = Math.max(
+
+  // Symmetric ceiling clip: keep the ±rangeSpread window centered on `estimated`
+  // by capping the center before expanding, rather than lopping the high side off.
+  if (estimated * (1 + rangeSpread) > maxHigh) {
+    estimated = maxHigh / (1 + rangeSpread);
+  }
+
+  let low = Math.max(
     minLow,
     Math.round((estimated * (1 - rangeSpread)) / rangeRoundTo) * rangeRoundTo,
   );
-  const high = Math.min(
+  let high = Math.min(
     maxHigh,
     Math.round((estimated * (1 + rangeSpread)) / rangeRoundTo) * rangeRoundTo,
   );
 
+  // Per-vehicle-type scrap floor — even a written-off sedan has hull value.
+  const scrapFloor = PRICE_TABLE.scrapFloors[input.vehicleType] ?? 300;
+  low = Math.max(low, scrapFloor);
+  high = Math.max(high, scrapFloor + 100);
+
   // Build factors
   const factors: string[] = [];
+  if (makeIsEmpty) {
+    factors.push("Tell us the make on the call so we can sharpen this quote");
+  }
   if (makeTier === "high") factors.push("High-demand brand — parts are sought after in Brisbane");
   else if (makeTier === "low") factors.push("Specialty brand — limited local parts demand");
 
