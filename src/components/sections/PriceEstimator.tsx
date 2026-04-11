@@ -133,22 +133,13 @@ export function PriceEstimator() {
         setStep(2);
       }
     } catch (error) {
-      // Corrupt/stale storage. Clear it so we don't get stuck on retry,
-      // and send a breadcrumb to Sentry for visibility without hard-failing.
+      // Corrupt/stale storage. Clear it so we don't get stuck on retry.
       try {
         window.sessionStorage.removeItem(STORAGE_KEY);
       } catch {
         // storage may be fully blocked — nothing we can do.
       }
-      import("@sentry/nextjs")
-        .then((Sentry) => {
-          Sentry.captureException(error, {
-            tags: { component: "PriceEstimator", op: "hydrate" },
-          });
-        })
-        .catch(() => {
-          /* Sentry unavailable; swallow */
-        });
+      console.error("[PriceEstimator] hydrate failed:", error);
     }
   }, []);
 

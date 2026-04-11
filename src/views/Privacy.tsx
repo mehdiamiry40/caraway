@@ -104,9 +104,6 @@ export default function Privacy() {
               <li><strong>SMS and email providers</strong> — to deliver quotes, booking confirmations and follow-ups.</li>
               <li><strong>Google Fonts</strong> — our fonts are self-hosted via <code>next/font</code>, so no request is made to Google when you visit the site.</li>
             </ul>
-            <p className="mt-3">
-              We use Sentry (operated by Functional Software Inc., hosted in the United States) for error monitoring. When an error occurs on the site, Sentry receives technical details — error message, stack trace, browser, and URL — to help us fix problems. We do not include personal information from forms in these error reports.
-            </p>
           </section>
 
           <section>
