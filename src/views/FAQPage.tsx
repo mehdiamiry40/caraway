@@ -94,7 +94,7 @@ export default function FAQPage() {
               href="/#price-estimator"
               className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
             >
-              Get an Instant Quote
+              Get a free quote
             </Link>
             <Link
               href="/contact"

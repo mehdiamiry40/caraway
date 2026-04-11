@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import BlogPostView from "@/views/BlogPost";
-import { blogPosts } from "@/data/blog-posts";
+import { blogPosts, calcWordCount } from "@/data/blog-posts";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
@@ -56,6 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
+  const wordCount = calcWordCount(post.content.join(" "));
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
@@ -79,6 +80,8 @@ export default async function BlogPostPage({ params }: Props) {
             datePublished: post.date,
             dateModified: post.updatedAt,
             url: canonical,
+            wordCount,
+            articleSection: post.category,
             image: {
               "@type": "ImageObject",
               url: `${SITE_URL}/images/tow-truck-hero.webp`,

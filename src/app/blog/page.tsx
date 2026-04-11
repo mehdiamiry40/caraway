@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same-day pickup works. Read more now.",
   alternates: { canonical: "/blog" },
   openGraph: {
+    type: "website",
     url: "/blog",
     title: "Cash for Cars Brisbane Blog — Tips & Guides",
     description:

@@ -28,7 +28,7 @@ export function PageShell({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main id="main-content" className="flex-1 mt-header-safe">
+      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe">
         <section
           className={
             isPrimary
@@ -45,7 +45,7 @@ export function PageShell({
               <div
                 className={
                   isPrimary
-                    ? "text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl"
+                    ? "text-white/85 text-lg sm:text-xl leading-relaxed max-w-3xl"
                     : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl"
                 }
               >

@@ -64,7 +64,7 @@ export const faqs = [
   {
     question: "Do I need to pay tax on the sale?",
     answer:
-      "For most private sellers offloading a personal vehicle in Queensland, there's no income tax or GST payable — the ATO doesn't treat a used family car as an income-generating asset. GST may apply if you're selling the car as part of a registered business or ABN-holding enterprise. Either way, we provide a receipt for every sale so you've got a clean paper trail for your own records or your accountant.",
+      "For most private sellers offloading a personal vehicle in Queensland, there's no income tax or GST payable — the ATO doesn't treat a used family car as an income-generating asset. GST may apply if you're selling the car as part of a registered business or ABN-holding enterprise. Either way, we provide a receipt for every sale so you've got a clean paper trail for your own records or your accountant. For your specific situation, we recommend speaking to your accountant or checking the ATO website.",
   },
   {
     question: "Can you pick up on weekends?",

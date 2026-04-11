@@ -17,7 +17,7 @@ export default function Locations() {
       title="Cash for Cars — Brisbane Locations"
       subtitle={
         <p>
-          We buy cars for cash across all of Greater Brisbane. Find your local area below for suburb-specific service information, or <Link href="/#price-estimator" className="text-accent hover:underline font-semibold">get an instant quote</Link> to get started.
+          We buy cars for cash across all of Greater Brisbane. Find your local area below for suburb-specific service information, or <Link href="/#price-estimator" className="text-accent hover:underline font-semibold">get a free quote</Link> to get started.
         </p>
       }
     >
@@ -42,7 +42,7 @@ export default function Locations() {
               href="/#price-estimator"
               className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-8 font-semibold hover:bg-primary hover:text-white transition-all"
             >
-              Get an Instant Quote
+              Get a free quote
             </Link>
           </div>
         </div>

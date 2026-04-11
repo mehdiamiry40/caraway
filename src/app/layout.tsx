@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Ubuntu, Exo } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { ErrorInstrumentation } from "@/components/ErrorInstrumentation";
 import {
   localBusinessSchema,
   organizationSchema,
@@ -15,7 +16,7 @@ import "./globals.css";
 
 const ubuntu = Ubuntu({
   weight: ["400", "500", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-sans-body",
   display: "swap",
 });
@@ -24,7 +25,7 @@ const ubuntu = Ubuntu({
 // font-medium/font-semibold/font-bold used throughout the app.
 const exo = Exo({
   weight: ["500", "600", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   variable: "--font-display-heading",
   display: "swap",
 });
@@ -116,6 +117,7 @@ export default function RootLayout({
         <JsonLd
           data={[localBusinessSchema, organizationSchema, websiteSchema]}
         />
+        <ErrorInstrumentation />
         <ErrorBoundary>
           <Providers>{children}</Providers>
         </ErrorBoundary>

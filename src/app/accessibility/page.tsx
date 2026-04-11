@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Caraway's commitment to making our website accessible to everyone — WCAG 2.1 AA, keyboard navigation, screen-reader support, and how to report issues.",
   alternates: { canonical: "/accessibility" },
   openGraph: {
+    type: "website",
     url: "/accessibility",
     title: "Accessibility | Caraway",
     description:

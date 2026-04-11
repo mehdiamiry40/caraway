@@ -10,6 +10,19 @@ export const metadata: Metadata = {
   title: "Sitemap",
   description: "Browse every page on caraway.au — services, locations, guides, and company info.",
   alternates: { canonical: "/site-map" },
+  openGraph: {
+    type: "website",
+    url: "/site-map",
+    title: "Sitemap",
+    description: "Browse every page on caraway.au — services, locations, guides, and company info.",
+    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sitemap",
+    description: "Browse every page on caraway.au — services, locations, guides, and company info.",
+    images: ["/images/tow-truck-hero.webp"],
+  },
 };
 
 const breadcrumbs = [

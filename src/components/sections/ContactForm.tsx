@@ -8,8 +8,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
+import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
 import { CheckCircle2, Send, Shield } from "lucide-react";
+import type { FieldErrors } from "react-hook-form";
 
 const fieldIds = {
   name: "contact-name",
@@ -30,6 +32,7 @@ export function ContactForm() {
     reset,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
+    mode: "onBlur",
   });
 
   const messageValue = useWatch({ control, name: "message" }) ?? "";
@@ -50,10 +53,18 @@ export function ContactForm() {
     const result = await submitContact(data);
 
     if (result.success) {
+      trackEvent("contact_form_submitted");
       setIsSuccess(true);
       reset();
     } else {
       setErrorMessage(result.message || "An error occurred.");
+    }
+  };
+
+  const onError = (formErrors: FieldErrors<ContactFormValues>) => {
+    const firstErrorKey = Object.keys(formErrors)[0] as keyof typeof fieldIds | undefined;
+    if (firstErrorKey && fieldIds[firstErrorKey]) {
+      document.getElementById(fieldIds[firstErrorKey])?.focus();
     }
   };
 
@@ -84,7 +95,7 @@ export function ContactForm() {
       <p className="text-sm text-muted-foreground mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5" noValidate>
+      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4 sm:space-y-5" noValidate>
         {/* Honeypot — hidden from real users, traps bots */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
           <label htmlFor="contact-website">Website</label>
@@ -106,6 +117,7 @@ export function ContactForm() {
             enterKeyHint="next"
             maxLength={200}
             placeholder="Jane Smith"
+            aria-required="true"
             aria-invalid={errors.name ? true : undefined}
             aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
             {...register("name")}
@@ -131,6 +143,7 @@ export function ContactForm() {
               enterKeyHint="next"
               maxLength={320}
               placeholder="jane@example.com"
+              aria-required="true"
               aria-invalid={errors.email ? true : undefined}
               aria-describedby={errors.email ? `${fieldIds.email}-error` : undefined}
               {...register("email")}
@@ -187,6 +200,7 @@ export function ContactForm() {
             maxLength={CONTACT_MESSAGE_MAX}
             placeholder="Tell us how we can help..."
             rows={4}
+            aria-required="true"
             aria-invalid={errors.message ? true : undefined}
             aria-describedby={
               errors.message
@@ -219,7 +233,7 @@ export function ContactForm() {
 
         {/* Trust line below CTA */}
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <Shield className="w-3.5 h-3.5 text-primary/40 shrink-0" aria-hidden />
+          <Shield className="w-3.5 h-3.5 text-primary/70 shrink-0" aria-hidden />
           <span>Your information is safe and never shared.</span>
         </div>
 

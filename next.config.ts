@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",
             "img-src 'self' data: blob:",
-            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.sentry.io https://*.ingest.sentry.io",
             "object-src 'none'",
             "frame-ancestors 'none'",
             "base-uri 'self'",
@@ -49,6 +49,8 @@ const nextConfig: NextConfig = {
         { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
         { key: "X-DNS-Prefetch-Control", value: "on" },
+        { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+        { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
       ],
     },
     // Long-lived cache for immutable static assets

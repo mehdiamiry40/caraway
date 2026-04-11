@@ -37,6 +37,7 @@ export default function Terms() {
           <section>
             <h2 className="text-xl font-display font-bold text-primary mb-3">Your responsibilities</h2>
             <p>You must provide accurate information about the vehicle and ownership. You must have the right to sell the vehicle and cooperate with transfer paperwork as required by Queensland law.</p>
+            <p className="mt-3">You must be at least 18 years old and the legal owner of the vehicle (or authorised by the owner) to request a quote or sell a vehicle through our service.</p>
           </section>
 
           <section>
@@ -93,6 +94,13 @@ export default function Terms() {
             <h2 className="text-xl font-display font-bold text-primary mb-3">Website</h2>
             <p>
               Content on this site is for general information. We aim to keep information accurate but do not warrant that it is complete or current. Links to third-party sites are not endorsements.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Governing law</h2>
+            <p>
+              These terms are governed by the laws of Queensland, Australia. You consent to the exclusive jurisdiction of the Queensland courts and QCAT for any dispute.
             </p>
           </section>
 

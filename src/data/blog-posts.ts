@@ -18,9 +18,14 @@ export interface BlogPost {
   isIndexable: boolean;
 }
 
+/** Count words in a plain-text string by splitting on whitespace. */
+export function calcWordCount(content: string): number {
+  return content.split(/\s+/).filter(Boolean).length;
+}
+
 /** Calculate reading time from content paragraphs (~200 WPM average). */
 function calcReadTime(content: string[]): string {
-  const words = content.join(" ").split(/\s+/).filter(Boolean).length;
+  const words = calcWordCount(content.join(" "));
   const minutes = Math.max(1, Math.round(words / 200));
   return `${minutes} min read`;
 }

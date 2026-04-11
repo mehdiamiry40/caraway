@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more. Free removal, same-day pickup.",
   alternates: { canonical: "/locations" },
   openGraph: {
+    type: "website",
     url: "/locations",
     title: "Cash for Cars Brisbane — All Suburbs Serviced | Caraway",
     description:

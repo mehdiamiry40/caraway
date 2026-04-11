@@ -9,7 +9,9 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
+import { trackEvent } from "@/lib/analytics";
 import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
+import type { FieldErrors } from "react-hook-form";
 
 const fieldIds = {
   name: "quote-name",
@@ -35,6 +37,7 @@ export function QuoteForm() {
     reset,
   } = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
+    mode: "onBlur",
   });
 
   const onSubmit = async (data: QuoteFormValues) => {
@@ -46,10 +49,18 @@ export function QuoteForm() {
     const result = await submitQuote(data);
 
     if (result.success) {
+      trackEvent("quote_form_submitted");
       setIsSuccess(true);
       reset();
     } else {
       setErrorMessage(result.message || "An error occurred.");
+    }
+  };
+
+  const onError = (formErrors: FieldErrors<QuoteFormValues>) => {
+    const firstErrorKey = Object.keys(formErrors)[0] as keyof typeof fieldIds | undefined;
+    if (firstErrorKey && fieldIds[firstErrorKey]) {
+      document.getElementById(fieldIds[firstErrorKey])?.focus();
     }
   };
 
@@ -107,7 +118,7 @@ export function QuoteForm() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5" noValidate>
+                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4 sm:space-y-5" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -141,6 +152,7 @@ export function QuoteForm() {
                       enterKeyHint="next"
                       maxLength={200}
                       placeholder="e.g. Toyota Corolla"
+                      aria-required="true"
                       aria-invalid={errors.make ? true : undefined}
                       aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
                       {...register("make")}
@@ -166,6 +178,7 @@ export function QuoteForm() {
                         enterKeyHint="next"
                         maxLength={4}
                         placeholder="e.g. 2012"
+                        aria-required="true"
                         aria-invalid={errors.year ? true : undefined}
                         aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
                         {...register("year")}
@@ -192,6 +205,7 @@ export function QuoteForm() {
                           { value: "damaged", label: "Accident / damaged" },
                           { value: "scrap", label: "Scrap / junk" },
                         ]}
+                        aria-required="true"
                         aria-invalid={errors.condition ? true : undefined}
                         aria-describedby={errors.condition ? `${fieldIds.condition}-error` : undefined}
                         {...register("condition")}
@@ -217,6 +231,7 @@ export function QuoteForm() {
                         enterKeyHint="next"
                         maxLength={200}
                         placeholder="Jane Smith"
+                        aria-required="true"
                         aria-invalid={errors.name ? true : undefined}
                         aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
                         {...register("name")}
@@ -240,6 +255,7 @@ export function QuoteForm() {
                         enterKeyHint="send"
                         maxLength={20}
                         placeholder="04xx xxx xxx"
+                        aria-required="true"
                         aria-invalid={errors.phone ? true : undefined}
                         aria-describedby={
                           errors.phone ? `${fieldIds.phone}-error` : "quote-phone-help"
@@ -266,7 +282,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
-                    <BadgeCheck className="w-4 h-4 text-primary/40 shrink-0" aria-hidden />
+                    <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
                     <span>Free, no-obligation quote. We never share your info.</span>
                   </div>
 
