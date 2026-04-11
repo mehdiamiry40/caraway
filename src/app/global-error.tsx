@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
 
+/**
+ * Root-level error boundary rendered when even the root layout fails.
+ * Intentionally uses inline styles: globals.css / font variables from the
+ * layout are not guaranteed to have loaded at this point, so Tailwind
+ * utility classes may not resolve. Keep this file dependency-free.
+ */
 export default function GlobalError({
   error,
   reset,
@@ -10,9 +17,9 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Global error:", error);
-    }
+    Sentry.captureException(error, {
+      tags: { boundary: "global-error" },
+    });
   }, [error]);
 
   return (

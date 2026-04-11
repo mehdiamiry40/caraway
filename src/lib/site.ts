@@ -21,11 +21,14 @@ export const BUSINESS = {
   googleBusinessUrl: "https://share.google/GXr35RvJCZVi0B2mF",
 } as const;
 
+export const MIN_PRICE = 300;
+export const MIN_PRICE_LABEL = "$300";
 export const MAX_PRICE = 9999;
 export const MAX_PRICE_LABEL = "$9,999";
+export const PRICE_RANGE_LABEL = "$300–$9,999";
 
 export const PROMISE_POINTS = [
-  "Up to $9,999 cash",
+  "$300–$9,999 cash",
   "Same-day pickup",
   "Free towing always",
   "No RWC needed",

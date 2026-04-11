@@ -45,7 +45,7 @@ export function Accordion({ items, className }: AccordionProps) {
               </span>
               <div
                 className={cn(
-                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-transform duration-300",
+                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/60 transition-transform duration-300 motion-reduce:transition-none motion-reduce:duration-0",
                   isActive && "rotate-180"
                 )}
               >
@@ -59,7 +59,7 @@ export function Accordion({ items, className }: AccordionProps) {
               role="region"
               aria-labelledby={triggerId}
               className={cn(
-                "grid transition-all duration-300 ease-in-out",
+                "grid transition-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:duration-0",
                 isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               )}
             >

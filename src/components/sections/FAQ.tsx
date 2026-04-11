@@ -2,8 +2,6 @@ import Link from "next/link";
 import { Accordion } from "@/components/ui/accordion";
 import { faqs } from "@/data/home-faqs";
 
-export { faqs } from "@/data/home-faqs";
-
 export function FAQ() {
   return (
     <section id="faq" className="section-y bg-muted" aria-label="Frequently asked questions">

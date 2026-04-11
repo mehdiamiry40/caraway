@@ -36,7 +36,7 @@ export default function About() {
               Caraway is a Brisbane-based buyer — we pay cash for cars we want, and we organise pickup when we agree a price. No listings, no strangers at your door for test drives.
             </p>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We&apos;re not a faceless national franchise or an online broker who subcontracts the work. We&apos;re a local team who lives and works in Brisbane, knows the suburbs, and takes pride in providing a genuine, personal service to every customer.
+              We&apos;re not a faceless national franchise or an online broker who subcontracts the work. Caraway is founder-led and Brisbane-based — we know the suburbs, we answer our own phone, and we take pride in providing a genuine, personal service to every customer.
             </p>
           </div>
 

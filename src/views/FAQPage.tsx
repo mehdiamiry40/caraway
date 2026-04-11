@@ -2,7 +2,8 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import { Accordion } from "@/components/ui/accordion";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
+import { BUSINESS } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -13,7 +14,7 @@ const faqCategories = [
   {
     category: "Pricing & Payment",
     faqs: [
-      { question: "How much will I get for my car in Brisbane?", answer: "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current market. Brisbane sellers typically receive between $150 and $9,999. We always aim to beat competing offers." },
+      { question: "How much will I get for my car in Brisbane?", answer: "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current market. Brisbane sellers typically receive between $300 and $9,999. We always aim to beat competing offers." },
       { question: "How do you determine my car's value?", answer: "We use real-time market data including current scrap metal prices, parts demand, and recent comparable sales in Brisbane. Our valuations are transparent — we'll explain exactly how we arrived at your offer." },
       { question: "When and how do I get paid?", answer: "You're paid in cash on the spot when our driver arrives to collect your vehicle — before the car leaves your property. No bank transfers, no waiting periods, no cheques." },
       { question: "Can you match or beat a quote I've received elsewhere?", answer: "We'll certainly try. If you've received a competing offer, let us know the amount and we'll do our best to match or exceed it. We're competitive on pricing across Brisbane." }
@@ -79,18 +80,25 @@ export default function FAQPage() {
         <div className="rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center">
           <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Still Have Questions?</h2>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Our Brisbane team is happy to help. Call us or visit our contact page.
+            Our Brisbane team is happy to help. No obligation — just a quick chat.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={BUSINESS.phoneHref}
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+            >
+              <Phone className="h-4 w-4" />
+              Call {BUSINESS.phoneFriendly}
+            </a>
             <Link
               href="/#price-estimator"
-              className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-7 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
             >
               Get an Instant Quote
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-7 font-semibold hover:bg-primary hover:text-white transition-all"
             >
               <MessageCircle className="h-4 w-4" />
               Contact Us

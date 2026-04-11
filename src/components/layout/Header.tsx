@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef, useId } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { BUSINESS } from "@/lib/site";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,10 +45,19 @@ export function Header() {
 
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
-    requestAnimationFrame(() => {
-      mobileMenuTriggerRef.current?.focus();
-    });
   };
+
+  // Restore focus to the menu trigger whenever the drawer closes. Using a
+  // dedicated effect (rather than rAF inside the close handler) ensures the
+  // focus transfer happens after React has committed the unmount, which is
+  // more reliable with screen readers than rAF.
+  const wasMobileMenuOpen = useRef(false);
+  useEffect(() => {
+    if (wasMobileMenuOpen.current && !isMobileMenuOpen) {
+      mobileMenuTriggerRef.current?.focus();
+    }
+    wasMobileMenuOpen.current = isMobileMenuOpen;
+  }, [isMobileMenuOpen]);
 
   const openMobileMenu = () => {
     // Default Services section to expanded each time the drawer opens so
@@ -169,7 +179,15 @@ export function Header() {
               </span>
             </Link>
 
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href={BUSINESS.phoneHref}
+                className="inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                <span>{BUSINESS.phoneFriendly}</span>
+              </a>
               <Button
                 onClick={scrollToQuote}
                 size="sm"
@@ -180,6 +198,13 @@ export function Header() {
             </div>
 
             <div className="lg:hidden flex items-center gap-2">
+              <a
+                href={BUSINESS.phoneHref}
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+              </a>
               <Button
                 onClick={scrollToQuote}
                 size="sm"
@@ -408,6 +433,15 @@ export function Header() {
                 );})}
               </nav>
               <div className="mt-auto flex flex-col gap-3 pt-4 pb-safe border-t border-border/30">
+                <a
+                  href={BUSINESS.phoneHref}
+                  onClick={closeMobileMenu}
+                  className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-md border-2 border-primary text-primary font-bold text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  aria-label={`Call ${BUSINESS.phoneFriendly}`}
+                >
+                  <Phone className="h-5 w-5" aria-hidden="true" />
+                  Call {BUSINESS.phoneFriendly}
+                </a>
                 <Button
                   onClick={scrollToQuote}
                   size="lg"

@@ -20,8 +20,10 @@ const ubuntu = Ubuntu({
   display: "swap",
 });
 
+// Exo loads 500/600/700 to cover font-display paired with
+// font-medium/font-semibold/font-bold used throughout the app.
 const exo = Exo({
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-display-heading",
   display: "swap",

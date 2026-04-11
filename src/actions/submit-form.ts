@@ -1,6 +1,8 @@
 "use server";
 
 import type { ZodSchema } from "zod";
+import * as Sentry from "@sentry/nextjs";
+import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
 type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
@@ -76,7 +78,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
 
   try {
     if (isMockMode) {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, FORM_MOCK_DELAY_MS));
     } else {
       if (!endpoint) {
         throw new Error(`${label} endpoint is not configured`);
@@ -90,7 +92,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
-        signal: AbortSignal.timeout(8000),
+        signal: AbortSignal.timeout(FORM_FETCH_TIMEOUT_MS),
       });
 
       if (!response.ok) {
@@ -100,9 +102,9 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
 
     return { success: true as const };
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error(`${label} Error:`, error);
-    }
+    Sentry.captureException(error, {
+      tags: { action: "submit-form", label },
+    });
     return {
       success: false as const,
       message: `We couldn't send your request. Please try again or use the form below.`,

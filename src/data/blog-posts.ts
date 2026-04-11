@@ -4,7 +4,10 @@ export interface BlogPost {
   metaDescription: string;
   excerpt: string;
   content: string[];
+  /** Original publication date (ISO 8601). */
   date: string;
+  /** Last-updated date (ISO 8601). Defaults to `date` when not overridden. */
+  updatedAt: string;
   readTime: string;
   category: string;
   /** Service page slugs to link to from blog posts for internal linking. */
@@ -45,7 +48,11 @@ const noindexPostSlugs = new Set([
   "cash-for-cars-logan-brisbane",
 ]);
 
-const rawPosts: Omit<BlogPost, "readTime" | "isIndexable">[] = [
+type RawPost = Omit<BlogPost, "readTime" | "isIndexable" | "updatedAt"> & {
+  updatedAt?: string;
+};
+
+const rawPosts: RawPost[] = [
   {
     slug: "wovr-written-off-vehicle-register-qld-guide",
     title: "WOVR Written-Off Vehicle Register QLD Guide (2026)",
@@ -571,6 +578,7 @@ const rawPosts: Omit<BlogPost, "readTime" | "isIndexable">[] = [
 
 export const blogPosts: BlogPost[] = rawPosts.map((p) => ({
   ...p,
+  updatedAt: p.updatedAt ?? p.date,
   readTime: calcReadTime(p.content),
   isIndexable: !noindexPostSlugs.has(p.slug),
 }));

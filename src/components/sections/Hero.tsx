@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Check, Star } from "lucide-react";
+import { ArrowRight, Check, Phone, Star } from "lucide-react";
+import { BUSINESS } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -23,7 +24,7 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-md leading-relaxed">
-              Get an instant online price in 60 seconds — no phone call needed. Free pickup, paid in cash on the spot.
+              Get an instant online quote in 60 seconds, or call for a cash offer. Free pickup. Paid on the spot. $300–$9,999.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -34,19 +35,35 @@ export function Hero() {
                   "h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group transition-all duration-300"
                 )}
               >
-                See my price in 60 seconds
+                Get my instant quote
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" aria-hidden />
+              </a>
+              <a
+                href={BUSINESS.phoneHref}
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" }),
+                  "h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group transition-all duration-300"
+                )}
+                aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              >
+                <Phone className="mr-2 h-5 w-5" aria-hidden />
+                Call {BUSINESS.phoneFriendly}
               </a>
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
-                ))}
+            <div className="mt-4 flex flex-col gap-1 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+                  ))}
+                </div>
+                <span>
+                  <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
+                </span>
               </div>
-              <span>
-                <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
+              <span className="text-[11px] sm:text-xs text-muted-foreground/80">
+                Based on direct customer feedback.
               </span>
             </div>
 

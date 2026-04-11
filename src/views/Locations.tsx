@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { Phone } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
+import { BUSINESS } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -25,14 +27,24 @@ export default function Locations() {
         <div className="mt-16 rounded-lg border border-border/60 bg-muted p-5 sm:p-8 md:p-12 text-center max-w-2xl mx-auto">
           <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Your Suburb Not Listed?</h2>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Use our price estimator for a free quote.
+            We service all of Greater Brisbane — even if your specific suburb isn&apos;t shown above. Questions about pickup from your area? Call {BUSINESS.phoneFriendly} for local details, or use our price estimator for a free quote.
           </p>
-          <Link
-            href="/#price-estimator"
-            className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-8 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
-          >
-            Get an Instant Quote
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={BUSINESS.phoneHref}
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-8 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+              Call {BUSINESS.phoneFriendly}
+            </a>
+            <Link
+              href="/#price-estimator"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-8 font-semibold hover:bg-primary hover:text-white transition-all"
+            >
+              Get an Instant Quote
+            </Link>
+          </div>
         </div>
       </div>
 

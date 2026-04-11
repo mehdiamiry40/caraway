@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.metaDescription,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: post.updatedAt,
+      authors: ["Sam Williams"],
+      tags: [post.category],
       images: [
         {
           url: "/images/tow-truck-hero.webp",
@@ -74,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
             headline: post.title,
             description: post.metaDescription,
             datePublished: post.date,
-            dateModified: post.date,
+            dateModified: post.updatedAt,
             url: canonical,
             image: {
               "@type": "ImageObject",

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BUSINESS } from "@/lib/site";
 
 export default function Error({
   error,
