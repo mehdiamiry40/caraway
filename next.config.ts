@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",
             "img-src 'self' data: blob:",
-            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://*.sentry.io https://*.ingest.sentry.io",
+            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
             "object-src 'none'",
             "frame-ancestors 'none'",
             "base-uri 'self'",
@@ -75,26 +75,4 @@ const nextConfig: NextConfig = {
   ],
 };
 
-// Conditionally wrap with Sentry config when the package is installed.
-// If @sentry/nextjs is not yet installed this falls through to exporting the
-// base Next config so the build is not blocked.
-// TODO: configure SENTRY_DSN / SENTRY_AUTH_TOKEN secrets in Vercel before enabling upload.
-let exported: NextConfig = nextConfig;
-try {
-  // Use dynamic resolution so eslint doesn't flag require() — this file is CJS-safe for next.
-  const sentryModule = eval("require")("@sentry/nextjs") as {
-    withSentryConfig: (cfg: NextConfig, opts: Record<string, unknown>) => NextConfig;
-  };
-  exported = sentryModule.withSentryConfig(nextConfig, {
-    org: "caraway",
-    project: "caraway-web",
-    silent: !process.env.CI,
-    widenClientFileUpload: true,
-    hideSourceMaps: true,
-    tunnelRoute: "/monitoring",
-  });
-} catch {
-  // @sentry/nextjs not installed — fall back to the base config.
-}
-
-export default exported;
+export default nextConfig;

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Ubuntu, Exo } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { ErrorInstrumentation } from "@/components/ErrorInstrumentation";
 import {
   localBusinessSchema,
   organizationSchema,
@@ -119,7 +118,6 @@ export default function RootLayout({
         <JsonLd
           data={[localBusinessSchema, organizationSchema, websiteSchema]}
         />
-        <ErrorInstrumentation />
         <ErrorBoundary>
           <Providers>{children}</Providers>
         </ErrorBoundary>

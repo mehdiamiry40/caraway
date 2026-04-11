@@ -13,7 +13,7 @@ Built with Next.js 15 (App Router) and deployed on Vercel.
 - **Testing:** Vitest 3
 - **Linting:** ESLint 9 (`eslint-config-next`)
 - **Hosting:** Vercel (auto-deploy from `main`, PR previews)
-- **Monitoring:** Sentry (`@sentry/nextjs`), Vercel Analytics, Speed Insights
+- **Monitoring:** Vercel Analytics, Speed Insights
 
 ## Prerequisites
 
@@ -41,9 +41,6 @@ The dev server starts on <http://localhost:3000>.
 | `QUOTE_ENDPOINT`           | yes             | HTTPS webhook URL the quote server action POSTs to.                         |
 | `CONTACT_ENDPOINT`         | yes             | HTTPS webhook URL the contact server action POSTs to.                       |
 | `ALLOWED_ENDPOINT_HOSTS`   | yes             | Comma-separated allowlist of hostnames the server actions may call (SSRF). |
-| `SENTRY_DSN`               | optional        | Server/edge Sentry DSN. When unset, Sentry is disabled.                     |
-| `NEXT_PUBLIC_SENTRY_DSN`   | optional        | Client-side Sentry DSN.                                                     |
-| `SENTRY_AUTH_TOKEN`        | optional (CI)   | Used by `@sentry/nextjs` to upload source maps during production builds.    |
 | `NEXT_PUBLIC_NOINDEX`      | optional        | Set to `1` to force `noindex` metadata (staging/preview).                   |
 
 Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
@@ -84,8 +81,6 @@ npm test
   server actions that POST to the webhook endpoints with SSRF-safe hostname
   allowlisting.
 - **`middleware.ts`** — request-level security + rate-limiting headers.
-- **`instrumentation.ts`** / `sentry.*.config.ts` — Sentry bootstrap for
-  node, edge and browser runtimes.
 
 ## Deployment
 

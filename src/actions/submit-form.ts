@@ -1,7 +1,6 @@
 "use server";
 
 import type { ZodSchema } from "zod";
-import * as Sentry from "@sentry/nextjs";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
@@ -102,9 +101,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
 
     return { success: true as const };
   } catch (error) {
-    Sentry.captureException(error, {
-      tags: { action: "submit-form", label },
-    });
+    console.error(`[submit-form] ${label} failed:`, error);
     return {
       success: false as const,
       message: `We couldn't send your request. Please try again or use the form below.`,
