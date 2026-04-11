@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       className="relative w-full overflow-x-hidden mt-header-safe bg-white"
-      style={{ minHeight: "min(100dvh, 560px)" }}
+      style={{ minHeight: "min(100vh, 560px)" }}
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[560px]">
@@ -16,7 +16,7 @@ export function Hero() {
           <div className="relative z-10 w-full">
             <h1
               id="hero-heading"
-              className="text-[1.75rem] sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.08] tracking-tight text-primary mb-5 break-words"
+              className="text-[1.75rem] sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.08] tracking-tight text-primary mb-5 break-words scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
             >
               Cash for Cars<br />
               <span className="text-accent">Brisbane</span>

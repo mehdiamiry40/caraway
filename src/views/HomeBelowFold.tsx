@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import dynamic from "next/dynamic";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 const PriceEstimator = dynamic(() => import("@/components/sections/PriceEstimator").then((mod) => mod.PriceEstimator));
 
@@ -24,6 +25,7 @@ export default function HomeBelowFold() {
       <CarTypes />
       <ServiceAreas />
       <FAQ />
+      <FinalCTA />
     </>
   );
 }

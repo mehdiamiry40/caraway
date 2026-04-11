@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,11 +24,23 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
   });
+
+  const messageValue = useWatch({ control, name: "message" }) ?? "";
+  const messageLength = messageValue.length;
+  const MESSAGE_MAX = 5000;
+  const MESSAGE_WARN = 4500;
+  const counterClass =
+    messageLength >= MESSAGE_MAX
+      ? "text-destructive"
+      : messageLength > MESSAGE_WARN
+      ? "text-amber-600"
+      : "text-muted-foreground";
 
   const onSubmit = async (data: ContactFormValues) => {
     setErrorMessage(null);
@@ -88,9 +100,12 @@ export function ContactForm() {
         <div>
           <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
             Your name
+            <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
           </label>
           <Input
             autoComplete="name"
+            enterKeyHint="next"
+            maxLength={200}
             placeholder="Jane Smith"
             aria-invalid={errors.name ? true : undefined}
             aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
@@ -109,10 +124,13 @@ export function ContactForm() {
           <div>
             <label htmlFor={fieldIds.email} className="block text-sm font-semibold text-foreground mb-2">
               Email
+              <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
             <Input
               type="email"
               autoComplete="email"
+              enterKeyHint="next"
+              maxLength={320}
               placeholder="jane@example.com"
               aria-invalid={errors.email ? true : undefined}
               aria-describedby={errors.email ? `${fieldIds.email}-error` : undefined}
@@ -133,6 +151,8 @@ export function ContactForm() {
             <Input
               type="tel"
               autoComplete="tel"
+              enterKeyHint="next"
+              maxLength={20}
               placeholder="04xx xxx xxx"
               aria-invalid={errors.phone ? true : undefined}
               aria-describedby={errors.phone ? `${fieldIds.phone}-error` : undefined}
@@ -149,15 +169,31 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground mb-2">
-            Message
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground">
+              Message
+              <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
+            </label>
+            <span
+              className={`text-xs tabular-nums ${counterClass}`}
+              aria-live="polite"
+              id={`${fieldIds.message}-counter`}
+            >
+              {messageLength}/{MESSAGE_MAX}
+            </span>
+          </div>
           <Textarea
             autoComplete="off"
+            enterKeyHint="send"
+            maxLength={MESSAGE_MAX}
             placeholder="Tell us how we can help..."
             rows={4}
             aria-invalid={errors.message ? true : undefined}
-            aria-describedby={errors.message ? `${fieldIds.message}-error` : undefined}
+            aria-describedby={
+              errors.message
+                ? `${fieldIds.message}-error ${fieldIds.message}-counter`
+                : `${fieldIds.message}-counter`
+            }
             {...register("message")}
             id={fieldIds.message}
           />

@@ -92,14 +92,14 @@ describe("estimatePrice", () => {
     expect(fourWd.high).toBeGreaterThan(sedan.high);
   });
 
-  it("enforces the absolute low floor ($100) and high ceiling ($9999)", () => {
+  it("enforces the absolute low floor ($150) and high ceiling ($9999)", () => {
     const worst = estimatePrice({
       make: "Fiat",
       year: 1985,
       condition: "scrap",
       vehicleType: "hatch",
     });
-    expect(worst.low).toBeGreaterThanOrEqual(100);
+    expect(worst.low).toBeGreaterThanOrEqual(150);
 
     const best = estimatePrice({
       make: "Toyota",
@@ -138,5 +138,117 @@ describe("estimatePrice", () => {
       vehicleType: "sedan",
     });
     expect(old.factors.some((f) => f.toLowerCase().includes("older vehicle"))).toBe(true);
+  });
+});
+
+describe("canonical Brisbane market anchors", () => {
+  it("2005 Mazda 3 scrap hatch clears the hatch scrap floor", () => {
+    const result = estimatePrice({
+      make: "Mazda",
+      year: 2005,
+      condition: "scrap",
+      vehicleType: "hatch",
+    });
+    expect(result.high).toBeGreaterThanOrEqual(500);
+  });
+
+  it("2003 Magna scrap sedan clears the sedan scrap floor", () => {
+    const result = estimatePrice({
+      make: "Mitsubishi Magna",
+      year: 2003,
+      condition: "scrap",
+      vehicleType: "sedan",
+    });
+    expect(result.high).toBeGreaterThanOrEqual(400);
+  });
+
+  it("2006 Territory running SUV sits in the $800-$2500 range", () => {
+    const result = estimatePrice({
+      make: "Ford",
+      year: 2006,
+      condition: "running",
+      vehicleType: "suv",
+    });
+    expect(result.low).toBeGreaterThanOrEqual(800);
+    expect(result.high).toBeLessThanOrEqual(2500);
+  });
+
+  it("2020 Ford Ranger needs_work ute gets a meaningful offer (>= $5000 high)", () => {
+    const result = estimatePrice({
+      make: "Ford Ranger",
+      year: 2020,
+      condition: "needs_work",
+      vehicleType: "ute",
+    });
+    expect(result.high).toBeGreaterThanOrEqual(5000);
+  });
+
+  it("2007 Camry needs_work sedan sits in the $400-$1500 range", () => {
+    const result = estimatePrice({
+      make: "Toyota Camry",
+      year: 2007,
+      condition: "needs_work",
+      vehicleType: "sedan",
+    });
+    expect(result.low).toBeGreaterThanOrEqual(400);
+    expect(result.high).toBeLessThanOrEqual(1500);
+  });
+});
+
+describe("input validation", () => {
+  it("returns a safe fallback for NaN year", () => {
+    const result = estimatePrice({
+      make: "Toyota",
+      year: Number.NaN,
+      condition: "running",
+      vehicleType: "sedan",
+    });
+    expect(result.low).toBeLessThan(result.high);
+    expect(Number.isFinite(result.low)).toBe(true);
+    expect(Number.isFinite(result.high)).toBe(true);
+  });
+
+  it("returns a valid range when make is empty", () => {
+    const result = estimatePrice({
+      make: "",
+      year: 2015,
+      condition: "running",
+      vehicleType: "sedan",
+    });
+    expect(result.low).toBeLessThan(result.high);
+    expect(result.low).toBeGreaterThan(0);
+  });
+
+  it("returns a safe fallback for a year in the far future (2030)", () => {
+    const result = estimatePrice({
+      make: "Toyota",
+      year: 2030,
+      condition: "running",
+      vehicleType: "sedan",
+    });
+    expect(result.low).toBeLessThan(result.high);
+    expect(Number.isFinite(result.low)).toBe(true);
+  });
+
+  it("returns a safe fallback for a negative year", () => {
+    const result = estimatePrice({
+      make: "Toyota",
+      year: -5,
+      condition: "running",
+      vehicleType: "sedan",
+    });
+    expect(result.low).toBeLessThan(result.high);
+    expect(Number.isFinite(result.low)).toBe(true);
+  });
+
+  it("returns a valid range when vehicleType is empty", () => {
+    const result = estimatePrice({
+      make: "Toyota",
+      year: 2015,
+      condition: "running",
+      vehicleType: "",
+    });
+    expect(result.low).toBeLessThan(result.high);
+    expect(result.low).toBeGreaterThan(0);
   });
 });

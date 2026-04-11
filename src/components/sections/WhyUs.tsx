@@ -1,6 +1,13 @@
-import { Zap, ShieldCheck, CarFront, FileText, Check } from "lucide-react";
+import { Zap, ShieldCheck, CarFront, FileText, Check, Shield } from "lucide-react";
 
+// TODO: Add "Fully insured pickups" reason once insurance is confirmed
 const reasons = [
+  {
+    icon: <Shield className="w-5 h-5" />,
+    title: "Quoted price guarantee",
+    description: "The number we quote is the number you're paid. No surprise deductions, in writing before pickup.",
+    iconColor: "text-accent",
+  },
   {
     icon: <Zap className="w-5 h-5" />,
     title: "Paid when we pick up",
@@ -10,7 +17,7 @@ const reasons = [
   {
     icon: <CarFront className="w-5 h-5" />,
     title: "Towing's on us",
-    description: "If we buy it, we bring the truck. No surprise deductions for collection in our service area.",
+    description: "If we buy it, we bring the truck. No surprise deductions. The quote is the cash.",
     iconColor: "text-primary",
   },
   {

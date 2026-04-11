@@ -3,18 +3,21 @@ import { MessageSquare, DollarSign, Truck, ArrowRight } from "lucide-react";
 const steps = [
   {
     icon: <MessageSquare className="w-6 h-6" />,
-    title: "Tell us what it is",
+    title: "Tell us about your car",
     description: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
+    timing: "60 seconds",
   },
   {
     icon: <DollarSign className="w-6 h-6" />,
-    title: "Get a number",
-    description: "We send a ballpark straight back, usually within the hour. The final figure is locked in before we send a truck.",
+    title: "Confirm your quote",
+    description: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
+    timing: "Within the hour",
   },
   {
     icon: <Truck className="w-6 h-6" />,
-    title: "We collect, you get paid",
-    description: "Pickup time that suits you. Cash (or agreed payment method) before the vehicle leaves your place.",
+    title: "We pick up, you get paid",
+    description: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+    timing: "Same day",
   },
 ];
 
@@ -51,6 +54,7 @@ export function HowItWorks() {
               </div>
               <h3 className="text-lg sm:text-xl font-display font-bold text-primary mb-2 sm:mb-3">{step.title}</h3>
               <p className="text-muted-foreground leading-relaxed max-w-[300px] text-sm">{step.description}</p>
+              <p className="mt-2 text-xs text-muted-foreground font-medium uppercase tracking-wide">{step.timing}</p>
             </div>
           ))}
         </div>

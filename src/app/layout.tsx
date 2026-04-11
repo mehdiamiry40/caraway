@@ -76,6 +76,10 @@ export const metadata: Metadata = {
     "geo.region": "AU-QLD",
     "geo.placename": "Brisbane",
   },
+  robots:
+    process.env.VERCEL_ENV !== "production"
+      ? { index: false, follow: false }
+      : undefined,
 };
 
 export const viewport: Viewport = {

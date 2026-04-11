@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, ArrowRight, ChevronDown } from "lucide-react";
 import { suburbs } from "@/data/suburbs";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 const additionalAreas = [
   "Brisbane CBD", "Fortitude Valley", "West End", "Paddington",
@@ -92,16 +93,16 @@ export function ServiceAreas() {
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/#price-estimator"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary min-h-12 px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition-all shadow-sm hover:shadow-md touch-manipulation"
+            className={cn(buttonVariants({ size: "lg" }), "min-w-[200px]")}
           >
-            Get an Instant Quote
+            Get an instant quote
           </Link>
           <Link
             href="/locations"
-            className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary min-h-12 px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all touch-manipulation"
+            className={cn(buttonVariants({ size: "lg", variant: "outline" }), "min-w-[200px]")}
           >
             View all locations
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 ml-1" />
           </Link>
         </div>
       </div>
