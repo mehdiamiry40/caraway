@@ -22,9 +22,7 @@ export const BUSINESS = {
 } as const;
 
 export const MIN_PRICE = 300;
-export const MIN_PRICE_LABEL = "$300";
 export const MAX_PRICE = 9999;
-export const MAX_PRICE_LABEL = "$9,999";
 export const PRICE_RANGE_LABEL = "$300–$9,999";
 
 export const PROMISE_POINTS = [

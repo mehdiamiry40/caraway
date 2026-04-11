@@ -115,10 +115,6 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .prose-measure {
-    @apply max-w-prose;
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

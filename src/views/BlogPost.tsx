@@ -82,7 +82,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {post.relatedServices.length > 0 && (
               <div className="rounded-xl border border-border/60 p-5 bg-white">
-                <h3 className="font-display font-bold text-sm text-primary/70 uppercase tracking-wider mb-3">Related Services</h3>
+                <h3 className="font-display font-bold text-sm text-primary uppercase tracking-wider mb-3">Related Services</h3>
                 <ul className="space-y-1">
                   {post.relatedServices.map(slug => {
                     const svc = services.find(s => s.slug === slug);
@@ -101,7 +101,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
             {post.relatedSuburbs.length > 0 && (
               <div className="rounded-xl border border-border/60 p-5 bg-white">
-                <h3 className="font-display font-bold text-sm text-primary/70 uppercase tracking-wider mb-3">Areas We Service</h3>
+                <h3 className="font-display font-bold text-sm text-primary uppercase tracking-wider mb-3">Areas We Service</h3>
                 <ul className="space-y-1">
                   {post.relatedSuburbs.map(slug => {
                     const sub = suburbs.find(s => s.slug === slug);
