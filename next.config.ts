@@ -91,3 +91,5 @@ try {
 }
 
 export default exported;
+
+import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
