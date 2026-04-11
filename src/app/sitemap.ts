@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/blog`, lastModified: latestBlogDate, changeFrequency: "weekly", priority: 0.7 },
     { url: `${SITE_URL}/privacy`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${SITE_URL}/accessibility`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${SITE_URL}/site-map`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.4 },
   ];
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({

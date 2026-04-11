@@ -7,35 +7,15 @@ import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState<boolean>(true);
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/" || pathname === "";
-
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          // Only trigger a state update when the boolean actually flips,
-          // so we avoid re-rendering the whole header on every scroll frame.
-          setIsScrolled((prev) => {
-            const next = window.scrollY > 20;
-            return prev === next ? prev : next;
-          });
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const mobileMenuTriggerRef = useRef<HTMLButtonElement>(null);
@@ -167,8 +147,7 @@ export function Header() {
   return (
     <>
       <header className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe bg-white",
-        isScrolled ? "shadow-md" : "shadow-sm"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe bg-white shadow-sm"
       )}>
         {/* Top bar */}
         <div className="border-b border-border/60 pl-safe pr-safe">
@@ -182,6 +161,7 @@ export function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href={BUSINESS.phoneHref}
+                onClick={() => trackEvent("phone_click", { location: "header" })}
                 className="inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label={`Call ${BUSINESS.phoneFriendly}`}
               >
@@ -200,6 +180,7 @@ export function Header() {
             <div className="lg:hidden flex items-center gap-2">
               <a
                 href={BUSINESS.phoneHref}
+                onClick={() => trackEvent("phone_click", { location: "header" })}
                 className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label={`Call ${BUSINESS.phoneFriendly}`}
               >
@@ -219,7 +200,7 @@ export function Header() {
                 onClick={openMobileMenu}
                 aria-label="Open menu"
               >
-                <Menu className="h-6 w-6" />
+                <Menu aria-hidden="true" className="h-6 w-6" />
               </button>
             </div>
           </div>
@@ -343,7 +324,7 @@ export function Header() {
                 className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-full text-primary hover:bg-muted transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 aria-label="Close menu"
               >
-                <X className="h-6 w-6" />
+                <X aria-hidden="true" className="h-6 w-6" />
               </button>
             </div>
             <div className="flex-1 flex flex-col p-4 sm:p-6 gap-4 overflow-y-auto overscroll-contain min-h-0">
@@ -435,7 +416,10 @@ export function Header() {
               <div className="mt-auto flex flex-col gap-3 pt-4 pb-safe border-t border-border/30">
                 <a
                   href={BUSINESS.phoneHref}
-                  onClick={closeMobileMenu}
+                  onClick={() => {
+                    trackEvent("phone_click", { location: "header_drawer" });
+                    closeMobileMenu();
+                  }}
                   className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-md border-2 border-primary text-primary font-bold text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label={`Call ${BUSINESS.phoneFriendly}`}
                 >

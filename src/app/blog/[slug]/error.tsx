@@ -17,7 +17,7 @@ export default function Error({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 mt-header-safe flex items-center justify-center px-4">
+      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
           <h1 className="text-3xl font-display font-bold text-primary mb-3">
             Something went wrong

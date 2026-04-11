@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or use our online form. Brisbane-wide service, 7 days a week, same-day pickup available.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    type: "website",
     url: "/contact",
     title: "Contact Us — Free Cash for Cars Quote Brisbane | Caraway",
     description:

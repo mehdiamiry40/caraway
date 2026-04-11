@@ -26,7 +26,7 @@ export const services: ServicePage[] = [
     title: "Cash for Cars Brisbane | Up to $9,999 Same-Day Pickup",
     metaDescription: "Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call 1800 227 293.",
     h1: "Cash for Cars Brisbane — Get Paid Today",
-    intro: "Looking to sell your car fast in Brisbane? Caraway is Brisbane's leading cash for cars buyer, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same day, free of charge.",
+    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same day, free of charge.",
     sections: [
       {
         heading: "How Our Cash for Cars Service Works",
@@ -166,7 +166,7 @@ export const services: ServicePage[] = [
     sections: [
       {
         heading: "Why Do Cars Become Unwanted?",
-        content: "Cars become unwanted for many reasons. Maybe you've upgraded and the old car is just taking up space. Perhaps it failed its safety inspection and isn't worth fixing. Maybe you've inherited a vehicle you don't need, or your car was damaged in an accident and you'd rather take the cash than repair it. Whatever the reason, Caraway is the fastest way to turn that unwanted car into money."
+        content: "Cars become unwanted for many reasons. Maybe you've upgraded and the old car is just taking up space. Perhaps it failed its safety inspection and isn't worth fixing. Maybe you've inherited a vehicle you don't need, or your car was damaged in an accident and you'd rather take the cash than repair it. Whatever the reason, Caraway is a straightforward way to turn that unwanted car into money."
       },
       {
         heading: "We Buy All Unwanted Vehicles",
@@ -246,7 +246,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Quick Cash After Your Accident",
-        content: "When you've been in an accident, the last thing you want is a drawn-out selling process. Contact Caraway and you could have cash in your hands within hours. We provide instant quotes over the phone, arrange same-day pickup, and pay you before we take the vehicle. It's the fastest way to move on from an accident."
+        content: "When you've been in an accident, the last thing you want is a drawn-out selling process. Contact Caraway and you could have cash in your hands within hours. We provide instant quotes over the phone, arrange same-day pickup, and pay you before we take the vehicle. It's a simple way to move on from an accident."
       },
       {
         heading: "Understanding Statutory vs Repairable Write-Offs in Queensland",
@@ -351,10 +351,10 @@ export const services: ServicePage[] = [
   },
   {
     slug: "used-cars-brisbane",
-    title: "Sell Used Cars Brisbane | Best Cash Price Today",
-    metaDescription: "Sell your used car for the best price in Brisbane. Skip private sales — get an instant cash offer from Caraway. Free pickup, same-day payment. Call 1800 227 293.",
-    h1: "Sell Your Used Car in Brisbane — Best Cash Price",
-    intro: "Selling a used car in Brisbane doesn't have to mean weeks of advertising and awkward test drives. Caraway offers the fastest way to sell your used car — instant cash offers, free pickup, and same-day payment. We buy all used vehicles in any condition.",
+    title: "Sell Used Cars Brisbane | Fair Cash Price Today",
+    metaDescription: "Sell your used car for a fair price in Brisbane. Skip private sales — get an instant cash offer from Caraway. Free pickup, same-day payment. Call 1800 227 293.",
+    h1: "Sell Your Used Car in Brisbane — Fair Cash Offer",
+    intro: "Selling a used car in Brisbane doesn't have to mean weeks of advertising and awkward test drives. Caraway offers a straightforward way to sell your used car — instant cash offers, free pickup, and same-day payment. We buy all used vehicles in any condition.",
     sections: [
       {
         heading: "The Smart Alternative to Private Sales",

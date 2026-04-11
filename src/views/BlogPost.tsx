@@ -72,7 +72,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               href="/#price-estimator"
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full border-2 border-primary px-7 py-3.5 text-sm font-semibold text-primary hover:bg-primary hover:text-white transition-all"
             >
-              Get a Free Quote
+              Get a free quote
             </Link>
           </div>
         </div>

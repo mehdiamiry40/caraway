@@ -2,6 +2,7 @@
 
 import { Component, type ReactNode } from "react";
 import Link from "next/link";
+import * as Sentry from "@sentry/nextjs";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { buttonVariants } from "@/components/ui/button";
@@ -27,7 +28,15 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.error("ErrorBoundary caught:", error, info.componentStack);
+    if (process.env.NODE_ENV !== "production") {
+      console.error("ErrorBoundary caught:", error, info.componentStack);
+    }
+    Sentry.captureException(error, {
+      contexts: {
+        react: { componentStack: info.componentStack },
+      },
+      tags: { boundary: "component-error-boundary" },
+    });
   }
 
   private handleReset = () => {

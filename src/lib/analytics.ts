@@ -9,7 +9,11 @@ type EventName =
   | "estimator_submit_failed"
   | "estimator_abandoned"
   | "quote_form_submitted"
-  | "contact_form_submitted";
+  | "contact_form_submitted"
+  | "phone_click"
+  | "faq_opened"
+  | "internal_link_click"
+  | "hero_cta_click";
 
 type AllowedValue = string | number | boolean | null;
 

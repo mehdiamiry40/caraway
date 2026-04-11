@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 const serviceLinks = [
   { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" },
@@ -37,7 +38,7 @@ export function Footer() {
   return (
     <footer className="bg-muted text-foreground pl-safe pr-safe border-t border-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
-        <div aria-label="Footer navigation" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
+        <nav aria-label="Footer navigation" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
 
           <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
@@ -49,29 +50,30 @@ export function Footer() {
             <div className="mt-8 space-y-3.5">
               <a
                 href={BUSINESS.phoneHref}
+                onClick={() => trackEvent("phone_click", { location: "footer" })}
                 className="flex items-center gap-3.5 text-foreground hover:text-primary transition-all duration-200 group text-sm font-semibold"
                 aria-label={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <span className="flex h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 items-center justify-center group-hover:bg-primary/15 transition-all duration-200">
-                  <Phone className="h-4 w-4 text-primary" />
+                  <Phone aria-hidden="true" className="h-4 w-4 text-primary" />
                 </span>
                 <span>{BUSINESS.phoneFriendly}</span>
               </a>
               <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 group text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center group-hover:border-primary/30 transition-all duration-200">
-                  <Mail className="h-4 w-4 text-primary" />
+                  <Mail aria-hidden="true" className="h-4 w-4 text-primary" />
                 </span>
                 <span>{BUSINESS.email}</span>
               </a>
               <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
-                  <Clock className="h-4 w-4 text-primary/60" />
+                  <Clock aria-hidden="true" className="h-4 w-4 text-primary/70" />
                 </span>
                 <span>{BUSINESS.hours} · {BUSINESS.hoursDetail}</span>
               </div>
               <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
-                  <MapPin className="h-4 w-4 text-primary/60" />
+                  <MapPin aria-hidden="true" className="h-4 w-4 text-primary/70" />
                 </span>
                 <span>{BUSINESS.location}</span>
               </div>
@@ -79,7 +81,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Services</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/70 mb-5 pb-2 border-b border-border/60">Services</h4>
             <ul className="space-y-1">
               {serviceLinks.map(link => (
                 <li key={link.href}>
@@ -92,7 +94,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Locations</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/70 mb-5 pb-2 border-b border-border/60">Locations</h4>
             <ul className="space-y-1">
               {locationLinks.map(link => (
                 <li key={link.href}>
@@ -105,7 +107,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/60 mb-5 pb-2 border-b border-border/60">Company</h4>
+            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary/70 mb-5 pb-2 border-b border-border/60">Company</h4>
             <ul className="space-y-1">
               {companyLinks.map(link => (
                 <li key={link.href}>
@@ -117,7 +119,7 @@ export function Footer() {
             </ul>
           </div>
 
-        </div>
+        </nav>
       </div>
 
       <div className="border-t border-border/60 pb-safe">

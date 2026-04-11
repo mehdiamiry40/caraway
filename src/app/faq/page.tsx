@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup. Call 1800 227 293 for help.",
   alternates: { canonical: "/faq" },
   openGraph: {
+    type: "website",
     url: "/faq",
     title: "Cash for Cars Brisbane FAQ — Questions Answered | Caraway",
     description:

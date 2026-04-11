@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Learn how Caraway collects, uses, and protects your personal information. Read our privacy policy for our Brisbane cash for cars and vehicle removal services.",
   alternates: { canonical: "/privacy" },
   openGraph: {
+    type: "website",
     url: "/privacy",
     title: "Privacy Policy | Caraway",
     description:

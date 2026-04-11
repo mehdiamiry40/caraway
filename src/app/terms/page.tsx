@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Read the terms of service for Caraway's website and our vehicle purchase and removal services in Queensland, Australia. Updated March 2026.",
   alternates: { canonical: "/terms" },
   openGraph: {
+    type: "website",
     url: "/terms",
     title: "Terms of Service | Caraway",
     description:
