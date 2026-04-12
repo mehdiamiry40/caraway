@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
-import { trackEvent } from "@/lib/analytics";
+import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 const serviceLinks = [
   { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" },
@@ -48,17 +48,17 @@ export function Footer() {
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
             </p>
             <div className="mt-8 space-y-3.5">
-              <a
+              <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
-                onClick={() => trackEvent("phone_click", { location: "footer" })}
+                location="footer"
                 className="flex items-center gap-3.5 text-foreground hover:text-primary transition-all duration-200 group text-sm font-semibold"
-                aria-label={`Call ${BUSINESS.phoneFriendly}`}
+                ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <span className="flex h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 items-center justify-center group-hover:bg-primary/15 transition-all duration-200">
                   <Phone aria-hidden="true" className="h-4 w-4 text-primary" />
                 </span>
                 <span>{BUSINESS.phoneFriendly}</span>
-              </a>
+              </TrackedPhoneLink>
               <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 group text-sm">
                 <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center group-hover:border-primary/30 transition-all duration-200">
                   <Mail aria-hidden="true" className="h-4 w-4 text-primary" />
