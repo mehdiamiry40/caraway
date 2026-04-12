@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { suburbs } from "@/data/suburbs";
 import { MapPin, ArrowRight, Search } from "lucide-react";
@@ -14,12 +14,15 @@ export function LocationsFilter() {
     return () => clearTimeout(t);
   }, [inputValue]);
 
-  const filtered = query.trim()
-    ? suburbs.filter((s) =>
-        s.h1.toLowerCase().includes(query.toLowerCase()) ||
-        s.slug.toLowerCase().includes(query.toLowerCase())
-      )
-    : suburbs;
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return suburbs;
+    return suburbs.filter(
+      (s) =>
+        s.h1.toLowerCase().includes(q) ||
+        s.slug.toLowerCase().includes(q)
+    );
+  }, [query]);
 
   return (
     <>

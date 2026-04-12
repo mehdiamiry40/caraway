@@ -7,6 +7,11 @@ import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
 
+// Revalidate once per day so content changes propagate without a full
+// redeploy. Because all data is static (no external fetch), this is a
+// safety net rather than a correctness requirement.
+export const revalidate = 86400;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {

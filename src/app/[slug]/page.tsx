@@ -6,6 +6,8 @@ import { getServiceBySlug, services } from "@/data/services";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 
+export const revalidate = 86400;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {

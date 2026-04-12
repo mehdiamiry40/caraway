@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -86,6 +86,15 @@ export function PriceEstimator() {
   const estimatorStartedRef = useRef(false);
   const hydratedRef = useRef(false);
   const hasMountedRef = useRef(false);
+  const persistTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Stable ref callbacks — created once, never trigger extra reconciliation.
+  const headingRefCallbacks = useMemo(
+    () => [0, 1, 2, 3].map((i) => (el: HTMLElement | null) => {
+      stepHeadingRefs.current[i] = el;
+    }),
+    []
+  );
 
   const liveMessage = isSuccess
     ? "Your quote request was submitted successfully."
@@ -99,20 +108,38 @@ export function PriceEstimator() {
             ? "Step 3 of 4. Your instant quote is ready."
             : "Step 4 of 4. Enter your contact details to claim your quote.";
 
-  const yearNumber = Number(year);
-  const yearIsValid =
-    year !== "" &&
-    Number.isFinite(yearNumber) &&
-    yearNumber >= 1950 &&
-    yearNumber <= CURRENT_YEAR + 1;
-  const showYearError = yearTouched && year !== "" && !yearIsValid;
+  const yearNumber = useMemo(() => Number(year), [year]);
+  const yearIsValid = useMemo(
+    () =>
+      year !== "" &&
+      Number.isFinite(yearNumber) &&
+      yearNumber >= 1950 &&
+      yearNumber <= CURRENT_YEAR + 1,
+    [year, yearNumber]
+  );
+  const showYearError = useMemo(
+    () => yearTouched && year !== "" && !yearIsValid,
+    [yearTouched, year, yearIsValid]
+  );
 
-  const canProceedStep1 = vehicleType !== "" && make.trim() !== "";
-  const canProceedStep2 = yearIsValid && condition !== "";
-  const canSubmit = name.trim().length >= 2 && phone.trim().length >= 8;
+  const canProceedStep1 = useMemo(
+    () => vehicleType !== "" && make.trim() !== "",
+    [vehicleType, make]
+  );
+  const canProceedStep2 = useMemo(
+    () => yearIsValid && condition !== "",
+    [yearIsValid, condition]
+  );
+  const canSubmit = useMemo(
+    () => name.trim().length >= 2 && phone.trim().length >= 8,
+    [name, phone]
+  );
 
   const totalSteps = 4;
-  const progressPercent = step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100;
+  const progressPercent = useMemo(
+    () => (step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100),
+    [step]
+  );
 
   // Hydrate from sessionStorage on mount.
   useEffect(() => {
@@ -144,24 +171,31 @@ export function PriceEstimator() {
     }
   }, []);
 
-  // Persist state on each change.
+  // Persist state on change — debounced so keystroke-level typing doesn't
+  // run JSON.stringify + sessionStorage.setItem on every character.
   useEffect(() => {
     if (!hydratedRef.current) return;
     if (typeof window === "undefined") return;
-    try {
-      const payload: PersistedState = {
-        step,
-        vehicleType,
-        make,
-        year,
-        condition,
-        name,
-        phone,
-      };
-      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    } catch {
-      // ignore quota / disabled storage
-    }
+    if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
+    persistTimerRef.current = setTimeout(() => {
+      try {
+        const payload: PersistedState = {
+          step,
+          vehicleType,
+          make,
+          year,
+          condition,
+          name,
+          phone,
+        };
+        window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+      } catch {
+        // ignore quota / disabled storage
+      }
+    }, 400);
+    return () => {
+      if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
+    };
   }, [step, vehicleType, make, year, condition, name, phone]);
 
   // Clear stored state on success.
@@ -209,10 +243,10 @@ export function PriceEstimator() {
     };
   }, [step, vehicleType, make, isSuccess]);
 
-  function goToStep(next: Step) {
+  const goToStep = useCallback((next: Step) => {
     setStep(next);
     trackEvent("estimator_step_completed", { step: next });
-  }
+  }, []);
 
   function handleEstimate() {
     if (!canProceedStep2 || isCalculating) return;
@@ -461,9 +495,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={(el) => {
-                        stepHeadingRefs.current[0] = el;
-                      }}
+                      ref={headingRefCallbacks[0]}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -531,9 +563,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={(el) => {
-                        stepHeadingRefs.current[1] = el;
-                      }}
+                      ref={headingRefCallbacks[1]}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -636,9 +666,7 @@ export function PriceEstimator() {
                       {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                     </p>
                     <div
-                      ref={(el) => {
-                        stepHeadingRefs.current[2] = el;
-                      }}
+                      ref={headingRefCallbacks[2]}
                       tabIndex={-1}
                       className="flex items-baseline justify-center gap-2 sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -717,9 +745,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={(el) => {
-                        stepHeadingRefs.current[3] = el;
-                      }}
+                      ref={headingRefCallbacks[3]}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
