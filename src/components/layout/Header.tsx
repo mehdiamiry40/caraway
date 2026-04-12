@@ -221,8 +221,8 @@ export function Header() {
                   className={cn(
                     "text-sm font-medium transition-all duration-200 flex items-center gap-1 rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-accent",
                     pathname === "/cash-for-cars-brisbane" || pathname.startsWith("/cash-for-cars-brisbane/")
-                      ? "text-primary border-primary/30 bg-primary/10"
-                      : "text-primary hover:border-primary/30 hover:bg-primary/10"
+                      ? "text-white border-white/30 bg-white/15"
+                      : "text-white hover:border-white/30 hover:bg-white/15"
                   )}
                   aria-expanded={isServicesOpen}
                   aria-haspopup="true"
@@ -289,8 +289,8 @@ export function Header() {
                     className={cn(
                       "text-sm font-medium transition-all duration-200 flex items-center rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-accent",
                       isActive
-                        ? "text-primary border-primary/30 bg-primary/10"
-                        : "text-primary hover:border-primary/30 hover:bg-primary/10"
+                        ? "text-white border-white/30 bg-white/15"
+                        : "text-white hover:border-white/30 hover:bg-white/15"
                     )}
                   >
                     {link.label}
