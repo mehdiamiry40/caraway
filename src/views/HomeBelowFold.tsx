@@ -3,31 +3,22 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { CarTypes } from "@/components/sections/CarTypes";
 import { Testimonials } from "@/components/sections/Testimonials";
-import dynamic from "next/dynamic";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import { DeferredOnVisible } from "@/components/DeferredOnVisible";
-
-// DeferredOnVisible (client component) gates this so the PriceEstimator
-// chunk (react-hook-form + zod + @hookform/resolvers) is only fetched when
-// the user scrolls near it. ssr: false can't be used here because this is a
-// server component; the IntersectionObserver gate does the deferral.
-const PriceEstimator = dynamic(
-  () => import("@/components/sections/PriceEstimator").then((mod) => mod.PriceEstimator),
-);
+import { DeferredPriceEstimator } from "@/components/sections/DeferredPriceEstimator";
 
 /**
- * Deferred chunk: below-the-fold sections + FAQ.
- * Keeps the initial Home bundle smaller (Hero + chrome load first).
+ * Below-the-fold sections. The PriceEstimator form is deferred via
+ * DeferredPriceEstimator (client component with ssr:false dynamic import
+ * + IntersectionObserver gate) so its heavy deps (~200 KiB) stay off the
+ * initial page bundle.
  */
 export default function HomeBelowFold() {
   return (
     <>
       <Stats />
-      <DeferredOnVisible minHeight={600}>
-        <PriceEstimator />
-      </DeferredOnVisible>
+      <DeferredPriceEstimator />
       <Testimonials />
       <HowItWorks />
       <WhyUs />
