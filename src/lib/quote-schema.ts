@@ -58,6 +58,7 @@ export const quoteFormSchema = z.object({
     errorMap: () => ({ message: "Please select a condition" }),
   }),
   honeypot: honeypotField,
+  marketingConsent: z.boolean().optional().default(false),
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
@@ -79,6 +80,7 @@ export const contactFormSchema = z.object({
         .max(5000, "Message is too long")
     ),
   honeypot: honeypotField,
+  marketingConsent: z.boolean().optional().default(false),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

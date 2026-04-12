@@ -2,6 +2,8 @@
 
 import type { ZodSchema } from "zod";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
+import { getEnv } from "@/lib/env";
+import { validateEndpoint } from "@/lib/validate-endpoint";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
 type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
@@ -11,55 +13,6 @@ interface SubmitFormOptions {
   data: unknown;
   endpointEnvVar: AllowedEndpoint;
   label: string;
-}
-
-/**
- * Validate that an outbound endpoint URL is safe to fetch.
- *
- * - Must be https (no plaintext, no file://, no data:, etc.)
- * - Must not target loopback, link-local, or well-known private ranges
- *   (basic SSRF hardening — this is not a full private IP check).
- * - Optionally restricted to an allowlist via ALLOWED_ENDPOINT_HOSTS
- *   (comma-separated host names). When unset, any public https host is allowed.
- */
-function validateEndpoint(url: string): boolean {
-  let u: URL;
-  try {
-    u = new URL(url);
-  } catch {
-    return false;
-  }
-
-  if (u.protocol !== "https:") return false;
-
-  const hostname = u.hostname.toLowerCase();
-
-  const blockedHosts = new Set([
-    "localhost",
-    "127.0.0.1",
-    "0.0.0.0",
-    "::1",
-    "169.254.169.254", // AWS/GCP instance metadata
-    "metadata.google.internal",
-  ]);
-  if (blockedHosts.has(hostname)) return false;
-
-  // Block RFC1918 and link-local ranges by prefix match.
-  if (hostname.startsWith("10.")) return false;
-  if (hostname.startsWith("192.168.")) return false;
-  if (hostname.startsWith("169.254.")) return false;
-  if (/^172\.(1[6-9]|2\d|3[01])\./.test(hostname)) return false;
-
-  const allowlistRaw = process.env.ALLOWED_ENDPOINT_HOSTS?.trim();
-  if (allowlistRaw) {
-    const allowed = allowlistRaw
-      .split(",")
-      .map((h) => h.trim().toLowerCase())
-      .filter(Boolean);
-    if (!allowed.includes(hostname)) return false;
-  }
-
-  return true;
 }
 
 export async function submitForm({ schema, data, endpointEnvVar, label }: SubmitFormOptions) {
@@ -72,7 +25,8 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
     return { success: false as const, message: "Invalid endpoint" };
   }
 
-  const endpoint = process.env[endpointEnvVar]?.trim();
+  const env = getEnv();
+  const endpoint = env[endpointEnvVar]?.trim();
   const isMockMode = process.env.NODE_ENV === "development" && !endpoint;
 
   try {
@@ -92,6 +46,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
         signal: AbortSignal.timeout(FORM_FETCH_TIMEOUT_MS),
+        redirect: "error",
       });
 
       if (!response.ok) {

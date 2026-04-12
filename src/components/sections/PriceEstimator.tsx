@@ -256,6 +256,7 @@ export function PriceEstimator() {
       year: yearNumber,
       condition,
       honeypot: "",
+      marketingConsent: false,
     });
 
     setIsSubmitting(false);
