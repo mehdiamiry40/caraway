@@ -85,6 +85,7 @@ export function PriceEstimator() {
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const estimatorStartedRef = useRef(false);
   const hydratedRef = useRef(false);
+  const hasMountedRef = useRef(false);
 
   const liveMessage = isSuccess
     ? "Your quote request was submitted successfully."
@@ -298,6 +299,10 @@ export function PriceEstimator() {
   }
 
   useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
     if (isSuccess) {
       successHeadingRef.current?.focus();
       return;
