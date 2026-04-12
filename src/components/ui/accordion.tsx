@@ -12,9 +12,10 @@ interface AccordionItem {
 interface AccordionProps {
   items: AccordionItem[];
   className?: string;
+  onItemToggle?: (question: string, isOpening: boolean) => void;
 }
 
-export function Accordion({ items, className }: AccordionProps) {
+export function Accordion({ items, className, onItemToggle }: AccordionProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const instanceId = useId();
 
@@ -36,7 +37,11 @@ export function Accordion({ items, className }: AccordionProps) {
               <button
                 type="button"
                 id={triggerId}
-                onClick={() => setActiveIndex(isActive ? null : index)}
+                onClick={() => {
+                  const willOpen = !isActive;
+                  setActiveIndex(willOpen ? index : null);
+                  onItemToggle?.(item.question, willOpen);
+                }}
                 className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
                 aria-expanded={isActive}
                 aria-controls={panelId}

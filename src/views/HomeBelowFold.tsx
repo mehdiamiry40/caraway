@@ -7,6 +7,7 @@ import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { DeferredPriceEstimator } from "@/components/sections/DeferredPriceEstimator";
+import { TrustBadges } from "@/components/sections/TrustBadges";
 
 /**
  * Below-the-fold sections. The PriceEstimator form is deferred via
@@ -21,6 +22,7 @@ export default function HomeBelowFold() {
       <DeferredPriceEstimator />
       <HowItWorks />
       <WhyUs />
+      <TrustBadges />
       <CarTypes />
       <ServiceAreas />
       <Testimonials />

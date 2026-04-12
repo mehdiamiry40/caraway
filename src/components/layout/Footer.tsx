@@ -41,7 +41,7 @@ export function Footer() {
         <nav aria-label="Footer navigation" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
 
           <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
+            <Link href="/" aria-label="Caraway — Home" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
               <span className="transition-opacity duration-200 group-hover:opacity-80">caraway<span className="text-accent">.</span></span>
             </Link>
             <p className="text-muted-foreground max-w-sm mt-3 leading-relaxed text-sm">

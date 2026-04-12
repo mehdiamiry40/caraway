@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
+import { trackEvent } from "@/lib/analytics";
 
 interface InternalLinksProps {
   currentSlug?: string;
@@ -23,6 +26,7 @@ export function InternalLinks({ currentSlug }: InternalLinksProps) {
                 <li key={s.slug}>
                   <Link
                     href={`/${s.slug}`}
+                    onClick={() => trackEvent("internal_link_click", { href: `/${s.slug}`, label: s.h1 })}
                     className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
                     {s.h1}
@@ -38,6 +42,7 @@ export function InternalLinks({ currentSlug }: InternalLinksProps) {
                 <li key={s.slug}>
                   <Link
                     href={`/locations/${s.slug}`}
+                    onClick={() => trackEvent("internal_link_click", { href: `/locations/${s.slug}`, label: s.h1 })}
                     className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
                     {s.h1}

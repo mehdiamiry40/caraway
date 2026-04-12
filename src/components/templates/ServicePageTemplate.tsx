@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import dynamic from "next/dynamic";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
+import { TrustBadges } from "@/components/sections/TrustBadges";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
@@ -135,6 +136,7 @@ export default function ServicePageTemplate({
         </div>
 
         <QuoteForm />
+        <TrustBadges />
         <InternalLinks currentSlug={service.slug} />
       </main>
 
