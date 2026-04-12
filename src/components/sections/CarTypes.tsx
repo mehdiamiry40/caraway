@@ -40,8 +40,8 @@ export function CarTypes() {
                 href={type.href}
                 className={cn(
                   "group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-lg",
-                  "bg-white/[0.06] border border-white/10",
-                  "hover:bg-white hover:border-white hover:text-primary hover:shadow-lg",
+                  "bg-primary-foreground/[0.06] border border-primary-foreground/10",
+                  "hover:bg-primary-foreground hover:border-primary-foreground hover:text-primary hover:shadow-lg",
                   "hover:-translate-y-0.5 transition-all duration-300",
                   "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   "touch-manipulation min-h-[120px] sm:min-h-[140px]"
@@ -73,7 +73,7 @@ export function CarTypes() {
             {alsoAccepted.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-white/15 text-xs sm:text-sm text-primary-foreground/80"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-primary-foreground/15 text-xs sm:text-sm text-primary-foreground/80"
               >
                 {type}
               </span>

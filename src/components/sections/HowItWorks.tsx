@@ -48,7 +48,7 @@ export function HowItWorks() {
                 <div className="w-14 h-14 rounded-lg bg-muted border border-border/60 flex items-center justify-center text-primary group-hover:border-primary/30 transition-all duration-300">
                   {step.icon}
                 </div>
-                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center ring-2 ring-white">
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center ring-2 ring-background">
                   {index + 1}
                 </span>
               </div>

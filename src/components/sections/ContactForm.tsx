@@ -41,7 +41,7 @@ export function ContactForm() {
     messageLength >= CONTACT_MESSAGE_MAX
       ? "text-destructive"
       : messageLength > CONTACT_MESSAGE_WARN
-      ? "text-amber-600"
+      ? "text-accent"
       : "text-muted-foreground";
 
   const onSubmit = async (data: ContactFormValues) => {
