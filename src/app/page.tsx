@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqs } from "@/data/home-faqs";
 import { reviews } from "@/data/reviews";
 import { SITE_URL } from "@/lib/site";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import Home from "@/views/Home";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     absolute: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293 for a free quote.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const homeStructuredData = [
+    breadcrumbListSchema([{ label: "Home" }], `${SITE_URL}/`),
     {
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,

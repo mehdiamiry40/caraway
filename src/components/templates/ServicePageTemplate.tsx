@@ -94,7 +94,7 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
+                <nav aria-label="Related services" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Related Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
@@ -109,11 +109,11 @@ export default function ServicePageTemplate({
                       </li>
                     ))}
                   </ul>
-                </div>
+                </nav>
               )}
 
               {relatedSuburbData.length > 0 && (
-                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
+                <nav aria-label="Service areas" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Service Areas</h3>
                   <ul className="space-y-1">
                     {relatedSuburbData.map(s => (
@@ -128,7 +128,7 @@ export default function ServicePageTemplate({
                       </li>
                     ))}
                   </ul>
-                </div>
+                </nav>
               )}
             </aside>
           </div>

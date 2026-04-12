@@ -8,19 +8,19 @@ import { indexableBlogPosts } from "@/data/blog-posts";
 
 export const metadata: Metadata = {
   title: "Sitemap",
-  description: "Browse every page on caraway.au — services, locations, guides, and company info.",
+  description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
   alternates: { canonical: "/site-map" },
   openGraph: {
     type: "website",
     url: "/site-map",
     title: "Sitemap",
-    description: "Browse every page on caraway.au — services, locations, guides, and company info.",
+    description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sitemap",
-    description: "Browse every page on caraway.au — services, locations, guides, and company info.",
+    description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
     images: ["/images/tow-truck-hero.webp"],
   },
 };

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
-import { getRelatedPosts } from "@/data/blog-posts";
+import { getRelatedPosts, categorySlug } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { ArrowLeft, ArrowRight, Clock, Phone, Tag } from "lucide-react";
@@ -21,10 +21,13 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
       title={post.title}
       subtitle={
         <div className="flex flex-wrap items-center gap-3 text-sm text-white/60">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-white/90 text-xs">
+          <Link
+            href={`/blog/category/${categorySlug(post.category)}`}
+            className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-white/90 text-xs hover:bg-white/20 transition-colors"
+          >
             <Tag className="h-3 w-3" />
             {post.category}
-          </span>
+          </Link>
           <span className="inline-flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" />
             {post.readTime}
@@ -36,6 +39,13 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               year: "numeric",
             })}
           </time>
+          <span className="hidden sm:inline text-white/30">|</span>
+          <Link
+            href="/author/sam-williams"
+            className="inline-flex items-center gap-1.5 text-white/70 hover:text-white/90 transition-colors"
+          >
+            By Sam Williams
+          </Link>
         </div>
       }
     >

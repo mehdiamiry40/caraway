@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { BUSINESS } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
+import { services } from "@/data/services";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -135,14 +136,10 @@ export function Header() {
     { label: "Contact", href: "/contact" },
   ];
 
-  const serviceDropdown = [
-    { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" },
-    { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
-    { label: "Sell My Car Brisbane", href: "/sell-my-car-brisbane" },
-    { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-    { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
-    { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
-  ];
+  const serviceDropdown = services.map((s) => ({
+    label: s.title.split("|")[0].trim(),
+    href: `/${s.slug}`,
+  }));
 
   return (
     <>
@@ -249,7 +246,7 @@ export function Header() {
                     id={servicesMenuId}
                     ref={servicesMenuRef}
                     aria-label="Services submenu"
-                    className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-lg border border-border/40 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none"
+                    className="absolute top-full left-0 mt-0 w-[480px] bg-white rounded-lg shadow-lg border border-border/40 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
                     onKeyDown={(e) => {
                       if (e.key === "Escape") {
                         setIsServicesOpen(false);
@@ -329,7 +326,7 @@ export function Header() {
             </div>
             <div className="flex-1 flex flex-col p-4 sm:p-6 gap-4 overflow-y-auto overscroll-contain min-h-0">
               <nav className="flex flex-col gap-0.5" aria-label="Mobile primary navigation">
-                {/* Mobile Services collapsible — all six service links must be
+                {/* Mobile Services collapsible — all service links must be
                     reachable without the desktop hover/focus pattern. */}
                 <div className="flex flex-col">
                   <button

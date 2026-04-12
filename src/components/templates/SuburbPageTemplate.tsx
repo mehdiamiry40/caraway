@@ -118,7 +118,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               {relatedServiceData.length > 0 && (
-                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
+                <nav aria-label="Our services" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Our Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
@@ -133,11 +133,11 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </nav>
               )}
 
               {nearbySuburbData.length > 0 && (
-                <div className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
+                <nav aria-label="Nearby areas" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
                   <h3 className="font-display font-bold text-lg mb-4">Nearby Areas</h3>
                   <ul className="space-y-1">
                     {nearbySuburbData.map(s => (
@@ -152,7 +152,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </nav>
               )}
             </aside>
           </div>

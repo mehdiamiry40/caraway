@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { indexableBlogPosts } from "@/data/blog-posts";
+import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/terms`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/accessibility`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/site-map`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${SITE_URL}/author/sam-williams`, lastModified: latestBlogDate, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
@@ -48,5 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...servicePages, ...suburbPages, ...blogPages];
+  const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map((slug) => ({
+    url: `${SITE_URL}/blog/category/${slug}`,
+    lastModified: latestBlogDate,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
+  return [...staticPages, ...servicePages, ...suburbPages, ...blogPages, ...categoryPages];
 }
