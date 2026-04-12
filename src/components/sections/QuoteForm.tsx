@@ -9,6 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
+import { MAKE_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
@@ -18,6 +19,7 @@ const fieldIds = {
   name: "quote-name",
   phone: "quote-phone",
   make: "quote-make",
+  model: "quote-model",
   year: "quote-year",
   condition: "quote-condition",
 } as const;
@@ -36,10 +38,14 @@ export function QuoteForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    watch,
+    setValue,
   } = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     mode: "onBlur",
   });
+
+  const selectedMake = watch("make");
 
   const onSubmit = async (data: QuoteFormValues) => {
     setErrorMessage(null);
@@ -143,28 +149,49 @@ export function QuoteForm() {
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2">
-                      Make &amp; model
-                      <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
-                    </label>
-                    <Input
-                      autoComplete="off"
-                      enterKeyHint="next"
-                      maxLength={200}
-                      placeholder="e.g. Toyota Corolla"
-                      aria-required="true"
-                      aria-invalid={errors.make ? true : undefined}
-                      aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
-                      {...register("make")}
-                      id={fieldIds.make}
-                    />
-                    {errors.make && (
-                      <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-                        {errors.make.message}
-                      </p>
-                    )}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                    <div>
+                      <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2">
+                        Make
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
+                      </label>
+                      <Select
+                        placeholder="Select make"
+                        options={MAKE_OPTIONS}
+                        aria-required="true"
+                        aria-invalid={errors.make ? true : undefined}
+                        aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
+                        {...register("make", {
+                          onChange: () => setValue("model", ""),
+                        })}
+                        id={fieldIds.make}
+                      />
+                      {errors.make && (
+                        <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          {errors.make.message}
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor={fieldIds.model} className="block text-sm font-semibold text-foreground mb-2">
+                        Model
+                      </label>
+                      <Select
+                        placeholder="Select model"
+                        options={selectedMake && selectedMake !== "Other" ? getModelOptions(selectedMake) : [{ value: "Other", label: "Other" }]}
+                        disabled={!selectedMake}
+                        aria-describedby={errors.model ? `${fieldIds.model}-error` : undefined}
+                        {...register("model")}
+                        id={fieldIds.model}
+                      />
+                      {errors.model && (
+                        <p id={`${fieldIds.model}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          {errors.model.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">

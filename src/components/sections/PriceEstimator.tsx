@@ -12,6 +12,7 @@ import {
   quoteFormSchema,
   type QuoteCondition,
 } from "@/lib/quote-schema";
+import { MAKE_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import {
@@ -25,12 +26,6 @@ const STORAGE_KEY = "caraway-estimator-state";
 
 const CONDITIONS: Array<{ value: QuoteCondition; label: string }> =
   quoteConditionValues.map((value) => ({ value, label: CONDITION_LABELS[value] }));
-
-const POPULAR_MAKES = [
-  "Toyota", "Mazda", "Hyundai", "Kia", "Honda", "Ford",
-  "Holden", "Mitsubishi", "Nissan", "Subaru", "Volkswagen",
-  "BMW", "Mercedes", "Suzuki", "Isuzu", "Jeep",
-];
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -498,41 +493,32 @@ export function PriceEstimator() {
                     <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2">
                       Make<RequiredMark />
                     </label>
-                    <Input
+                    <Select
                       id="est-make"
-                      placeholder="e.g. Toyota, Mazda, Ford..."
+                      placeholder="Select make..."
+                      options={MAKE_OPTIONS}
                       value={make}
-                      onChange={(e) => setMake(e.target.value)}
-                      list="popular-makes"
-                      autoComplete="off"
-                      autoCorrect="off"
-                      autoCapitalize="words"
-                      spellCheck={false}
-                      maxLength={200}
-                      enterKeyHint="next"
+                      onChange={(e) => {
+                        setMake(e.target.value);
+                        setModel("");
+                      }}
                       aria-required="true"
                     />
-                    <datalist id="popular-makes">
-                      {POPULAR_MAKES.map((m) => <option key={m} value={m} />)}
-                    </datalist>
                   </div>
-                  <div>
-                    <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2">
-                      Model
-                    </label>
-                    <Input
-                      id="est-model"
-                      placeholder="e.g. Camry, 3, Ranger..."
-                      value={model}
-                      onChange={(e) => setModel(e.target.value)}
-                      autoComplete="off"
-                      autoCorrect="off"
-                      autoCapitalize="words"
-                      spellCheck={false}
-                      maxLength={200}
-                      enterKeyHint="next"
-                    />
-                  </div>
+                  {make && make !== "Other" && (
+                    <div>
+                      <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2">
+                        Model
+                      </label>
+                      <Select
+                        id="est-model"
+                        placeholder="Select model..."
+                        options={getModelOptions(make)}
+                        value={model}
+                        onChange={(e) => setModel(e.target.value)}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-6 sm:mt-8 flex justify-end">
