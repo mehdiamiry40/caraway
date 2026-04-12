@@ -1,10 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import { Star, Quote, ChevronDown, ChevronUp } from "lucide-react";
-import { reviews as testimonials } from "@/data/reviews";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Star, Quote } from "lucide-react";
+import { reviews as allReviews } from "@/data/reviews";
+import { TestimonialsToggle } from "./TestimonialsToggle";
 
 const INITIAL_COUNT = 6;
 
@@ -23,9 +19,8 @@ function Stars({ count }: { count: number }) {
 }
 
 export function Testimonials() {
-  const [showAll, setShowAll] = useState(false);
-  const displayed = showAll ? testimonials : testimonials.slice(0, INITIAL_COUNT);
-  const hasMore = testimonials.length > INITIAL_COUNT;
+  const initialReviews = allReviews.slice(0, INITIAL_COUNT);
+  const extraReviews = allReviews.slice(INITIAL_COUNT);
 
   return (
     <section className="section-y bg-white" aria-label="What sellers say">
@@ -50,14 +45,17 @@ export function Testimonials() {
           </div>
         </div>
 
+        {/* First batch — server-rendered, no JS needed */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {displayed.map((review, index) => (
+          {initialReviews.map((review, index) => (
             <article
               key={`${review.name}-${review.location}-${index}`}
               className="group relative bg-muted rounded-lg p-5 sm:p-7 border border-border/60 hover:border-primary/30 hover:shadow-md transition-all duration-300"
             >
-              <Quote className="absolute top-5 right-5 w-8 h-8 text-border group-hover:text-primary/10 transition-colors duration-300 -scale-x-100" aria-hidden />
-
+              <Quote
+                className="absolute top-5 right-5 w-8 h-8 text-border group-hover:text-primary/10 transition-colors duration-300 -scale-x-100"
+                aria-hidden
+              />
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
                   <Stars count={review.rating} />
@@ -78,36 +76,21 @@ export function Testimonials() {
                 </div>
                 <div>
                   <div className="font-semibold text-sm text-foreground">{review.name}</div>
-                  <div className="text-xs text-muted-foreground">{review.location}, Brisbane</div>
+                  <div className="text-xs text-muted-foreground">
+                    {review.location}, Brisbane
+                  </div>
                 </div>
               </div>
             </article>
           ))}
         </div>
 
-        {hasMore && (
-          <div className="mt-8 text-center">
-            <button
-              type="button"
-              onClick={() => setShowAll(!showAll)}
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "gap-2",
-              )}
-            >
-              {showAll ? (
-                <>
-                  Show fewer reviews
-                  <ChevronUp className="h-4 w-4" aria-hidden="true" />
-                </>
-              ) : (
-                <>
-                  Show all {testimonials.length} reviews
-                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
-                </>
-              )}
-            </button>
-          </div>
+        {/* Toggle + extra reviews — client island, JS only fetched when toggled */}
+        {extraReviews.length > 0 && (
+          <TestimonialsToggle
+            extraReviews={extraReviews}
+            totalCount={allReviews.length}
+          />
         )}
       </div>
     </section>

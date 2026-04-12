@@ -88,6 +88,18 @@ export default function HomePage() {
 
   return (
     <>
+      {/*
+       * Preload the LCP hero image. In Next.js App Router, <link> elements
+       * returned from server components are automatically hoisted into <head>.
+       * This hints the browser to start fetching the image before React
+       * hydrates and the <Image priority> tag fires.
+       */}
+      <link
+        rel="preload"
+        as="image"
+        href="/images/tow-truck-hero.webp"
+        type="image/webp"
+      />
       <JsonLd data={homeStructuredData} />
       <Home />
     </>

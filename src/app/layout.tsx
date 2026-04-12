@@ -15,7 +15,7 @@ import "./globals.css";
 
 const ubuntu = Ubuntu({
   weight: ["400", "500", "700"],
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-sans-body",
   display: "swap",
 });
@@ -24,7 +24,7 @@ const ubuntu = Ubuntu({
 // font-medium/font-semibold/font-bold used throughout the app.
 const exo = Exo({
   weight: ["500", "600", "700"],
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-display-heading",
   display: "swap",
 });
