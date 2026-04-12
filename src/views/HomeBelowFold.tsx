@@ -19,11 +19,11 @@ export default function HomeBelowFold() {
     <>
       <Stats />
       <DeferredPriceEstimator />
-      <Testimonials />
       <HowItWorks />
       <WhyUs />
       <CarTypes />
       <ServiceAreas />
+      <Testimonials />
       <FAQ />
       <FinalCTA />
     </>
