@@ -58,6 +58,7 @@ export const quoteFormSchema = z.object({
   condition: z.enum(quoteConditionValues, {
     errorMap: () => ({ message: "Please select a condition" }),
   }),
+  address: z.string().transform(trimText).pipe(z.string().max(500, "Address is too long")).optional().default(""),
   honeypot: honeypotField,
   marketingConsent: z.boolean().optional().default(false),
 });

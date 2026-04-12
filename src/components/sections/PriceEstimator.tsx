@@ -12,7 +12,7 @@ import {
   quoteFormSchema,
   type QuoteCondition,
 } from "@/lib/quote-schema";
-import { MAKE_OPTIONS, getModelOptions } from "@/data/car-models";
+import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import {
@@ -37,6 +37,7 @@ type PersistedState = {
   condition?: QuoteCondition | "";
   name?: string;
   phone?: string;
+  address?: string;
 };
 
 function RequiredMark() {
@@ -59,6 +60,9 @@ export function PriceEstimator() {
   const [phone, setPhone] = useState("");
   const [phoneTouched, setPhoneTouched] = useState(false);
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [address, setAddress] = useState("");
+  const [addressTouched, setAddressTouched] = useState(false);
+  const [addressError, setAddressError] = useState<string | null>(null);
   const [honeypot, setHoneypot] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -113,8 +117,8 @@ export function PriceEstimator() {
     [yearIsValid, condition]
   );
   const canSubmit = useMemo(
-    () => name.trim().length >= 2 && phone.trim().length >= 8,
-    [name, phone]
+    () => name.trim().length >= 2 && phone.trim().length >= 8 && address.trim().length >= 5,
+    [name, phone, address]
   );
 
   const totalSteps = 4;
@@ -138,6 +142,7 @@ export function PriceEstimator() {
       if (parsed.condition) setCondition(parsed.condition);
       if (parsed.name) setName(parsed.name);
       if (parsed.phone) setPhone(parsed.phone);
+      if (parsed.address) setAddress(parsed.address);
       // Only restore the step if everything that step depends on is present.
       if (parsed.step && parsed.step >= 2 && parsed.make) {
         setStep(2);
@@ -169,6 +174,7 @@ export function PriceEstimator() {
           condition,
           name,
           phone,
+          address,
         };
         window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
       } catch {
@@ -178,7 +184,7 @@ export function PriceEstimator() {
     return () => {
       if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
     };
-  }, [step, make, model, year, condition, name, phone]);
+  }, [step, make, model, year, condition, name, phone, address]);
 
   // Clear stored state on success.
   useEffect(() => {
@@ -268,6 +274,13 @@ export function PriceEstimator() {
     return result.error.issues[0]?.message ?? "Enter a valid Australian phone number";
   }
 
+  function validateAddress(value: string): string | null {
+    const trimmed = value.trim();
+    if (trimmed.length < 5) return "Enter a pickup address";
+    if (trimmed.length > 500) return "Address is too long";
+    return null;
+  }
+
   async function handleSubmit() {
     if (isSubmitting) return;
     if (!canSubmit || !result || condition === "") return;
@@ -281,11 +294,14 @@ export function PriceEstimator() {
     // Blur-level validation before submission.
     const nameErr = validateName(name);
     const phoneErr = validatePhone(phone);
+    const addressErr = validateAddress(address);
     setNameTouched(true);
     setPhoneTouched(true);
+    setAddressTouched(true);
     setNameError(nameErr);
     setPhoneError(phoneErr);
-    if (nameErr || phoneErr) return;
+    setAddressError(addressErr);
+    if (nameErr || phoneErr || addressErr) return;
 
     setIsSubmitting(true);
     setSubmitError("");
@@ -297,6 +313,7 @@ export function PriceEstimator() {
       model: `${model.trim()} — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
       year: yearNumber,
       condition,
+      address: address.trim(),
       honeypot: "",
       marketingConsent: false,
     });
@@ -334,6 +351,9 @@ export function PriceEstimator() {
     setPhone("");
     setPhoneTouched(false);
     setPhoneError(null);
+    setAddress("");
+    setAddressTouched(false);
+    setAddressError(null);
     setHoneypot("");
     setSubmitError("");
     setIsSuccess(false);
@@ -558,14 +578,10 @@ export function PriceEstimator() {
                     <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2">
                       Year of manufacture<RequiredMark />
                     </label>
-                    <Input
+                    <Select
                       id="est-year"
-                      type="text"
-                      inputMode="numeric"
-                      pattern="[0-9]{4}"
-                      maxLength={4}
-                      enterKeyHint="next"
-                      placeholder="e.g. 2015"
+                      placeholder="Select year..."
+                      options={YEAR_OPTIONS}
                       value={year}
                       onChange={(e) => setYear(e.target.value)}
                       onBlur={() => setYearTouched(true)}
@@ -799,6 +815,40 @@ export function PriceEstimator() {
                     {phoneTouched && phoneError && (
                       <p id="est-phone-error" className="mt-1 text-xs text-destructive" role="alert">
                         {phoneError}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2">
+                      Pickup address<RequiredMark />
+                    </label>
+                    <Input
+                      id="est-address"
+                      placeholder="Street address, suburb, postcode"
+                      value={address}
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                        if (addressTouched) setAddressError(validateAddress(e.target.value));
+                      }}
+                      onBlur={() => {
+                        setAddressTouched(true);
+                        setAddressError(validateAddress(address));
+                      }}
+                      autoComplete="street-address"
+                      enterKeyHint="send"
+                      maxLength={500}
+                      aria-required="true"
+                      aria-invalid={addressTouched && addressError ? true : undefined}
+                      aria-describedby={
+                        addressTouched && addressError ? "est-address-error est-address-help" : "est-address-help"
+                      }
+                    />
+                    <p className="text-xs text-muted-foreground mt-1" id="est-address-help">
+                      Where should we collect the vehicle?
+                    </p>
+                    {addressTouched && addressError && (
+                      <p id="est-address-error" className="mt-1 text-xs text-destructive" role="alert">
+                        {addressError}
                       </p>
                     )}
                   </div>

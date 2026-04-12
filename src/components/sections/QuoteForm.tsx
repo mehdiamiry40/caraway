@@ -9,7 +9,7 @@ import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
-import { MAKE_OPTIONS, getModelOptions } from "@/data/car-models";
+import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
@@ -200,12 +200,9 @@ export function QuoteForm() {
                         Year
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
-                      <Input
-                        inputMode="numeric"
-                        autoComplete="off"
-                        enterKeyHint="next"
-                        maxLength={4}
-                        placeholder="e.g. 2012"
+                      <Select
+                        placeholder="Select year"
+                        options={YEAR_OPTIONS}
                         aria-required="true"
                         aria-invalid={errors.year ? true : undefined}
                         aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
