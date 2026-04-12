@@ -23,22 +23,40 @@ export default function GlobalError({
             <p style={{ color: "#434952", marginBottom: "1.5rem", lineHeight: 1.5 }}>
               We hit an unexpected error loading the page. Please try again.
             </p>
-            <button
-              type="button"
-              onClick={reset}
-              style={{
-                padding: "0.75rem 2rem",
-                background: "#1F4E7B",
-                color: "#FFFFFF",
-                border: "none",
-                borderRadius: "0.5rem",
-                fontSize: "0.875rem",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              Try again
-            </button>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
+              <button
+                type="button"
+                onClick={reset}
+                style={{
+                  padding: "0.75rem 2rem",
+                  background: "#1F4E7B",
+                  color: "#FFFFFF",
+                  border: "none",
+                  borderRadius: "0.5rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                Try again
+              </button>
+              <a
+                href="/"
+                style={{
+                  padding: "0.75rem 2rem",
+                  background: "transparent",
+                  color: "#1F4E7B",
+                  border: "1px solid #1F4E7B",
+                  borderRadius: "0.5rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  textDecoration: "none",
+                }}
+              >
+                Go home
+              </a>
+            </div>
           </div>
         </div>
       </body>

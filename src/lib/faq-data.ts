@@ -4,7 +4,7 @@ export const faqCategories = [
     faqs: [
       { question: "How much will I get for my car in Brisbane?", answer: "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current market. Brisbane sellers typically receive between $300 and $9,999. We always aim to beat competing offers." },
       { question: "How do you determine my car's value?", answer: "We use real-time market data including current scrap metal prices, parts demand, and recent comparable sales in Brisbane. Our valuations are transparent — we'll explain exactly how we arrived at your offer." },
-      { question: "When and how do I get paid?", answer: "You're paid in cash on the spot when our driver arrives to collect your vehicle — before the car leaves your property. No bank transfers, no waiting periods, no cheques." },
+      { question: "When and how do I get paid?", answer: "You're paid in cash on the spot when our driver arrives to collect your vehicle — before the car leaves your property. For amounts over $10,000, we use a bank transfer as required by AUSTRAC regulations. No waiting periods, no cheques." },
       { question: "Can you match or beat a quote I've received elsewhere?", answer: "We'll certainly try. If you've received a competing offer, let us know the amount and we'll do our best to match or exceed it. We're competitive on pricing across Brisbane." }
     ]
   },

@@ -525,7 +525,7 @@ const rawPosts: RawPost[] = [
       "One common mistake is waiting too long. A car that sits unused loses value every month to rust, flat-spotted tyres, dead batteries, and rodent damage. If you've decided to sell, act sooner rather than later. The scrap metal market fluctuates, and today's price isn't guaranteed next month.",
       "The bottom line: most scrap cars in Brisbane are worth between $150 and $3,000, with the sweet spot for older but reasonably complete vehicles sitting around $500 to $1,500. The only way to know your specific car's value is to get a quote based on its actual make, model, year, and condition. A quick phone call or online form takes five minutes and costs nothing.",
     ],
-    date: "2025-04-01",
+    date: "2026-04-01",
     category: "Guides",
     relatedServices: ["scrap-car-removal-brisbane", "cash-for-cars-brisbane", "junk-cars-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "moorooka"],

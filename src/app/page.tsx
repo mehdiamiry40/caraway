@@ -3,7 +3,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqs } from "@/data/home-faqs";
 import { reviews } from "@/data/reviews";
 import { SITE_URL } from "@/lib/site";
-
 import Home from "@/views/Home";
 
 export const metadata: Metadata = {
