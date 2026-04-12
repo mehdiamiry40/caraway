@@ -286,6 +286,18 @@ export function QuoteForm() {
                     <span>Free, no-obligation quote. We never share your info.</span>
                   </div>
 
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="quote-marketing-consent"
+                      className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
+                      {...register("marketingConsent")}
+                    />
+                    <label htmlFor="quote-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                      I'd like to receive occasional updates, offers, and tips from Caraway. You can unsubscribe anytime.
+                    </label>
+                  </div>
+
                   {errorMessage && (
                     <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
                       <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
