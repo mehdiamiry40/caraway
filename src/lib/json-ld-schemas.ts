@@ -27,13 +27,12 @@ const SAME_AS = [
 ];
 
 /* ---------- Compute aggregate rating from reviews data ---------- */
-const ratingValue = (
-  reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-).toFixed(1);
+const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+const ratingValue = Math.round(avg * 10) / 10;
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "AutoDealer"],
+  "@type": ["LocalBusiness", "AutomotiveBusiness"],
   "@id": `${SITE_URL}/#business`,
   name: NAP.name,
   legalName: BUSINESS.legalName,
@@ -112,7 +111,7 @@ export const localBusinessSchema = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue,
-    reviewCount: String(reviews.length),
+    reviewCount: reviews.length,
     bestRating: "5",
     worstRating: "1",
   },
@@ -182,12 +181,6 @@ export const websiteSchema = {
     "Cash for cars Brisbane: free quotes, free removal, and cash paid on pickup. Servicing Greater Brisbane 7 days a week.",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-AU",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/locations?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
+  // SearchAction removed: LocationsFilter uses client-side state only and
+  // does not support a ?q= query parameter.
 };

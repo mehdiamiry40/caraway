@@ -49,7 +49,7 @@ export default function About() {
               </div>
               <div>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
-                  I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you call me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
+                  I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {BUSINESS.legalName} (ABN {BUSINESS.abn}) is a registered Australian company. All pickups are fully insured with public liability and goods-in-transit cover — if we scratch your car loading it, we wear the cost.

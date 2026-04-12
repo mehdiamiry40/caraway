@@ -157,7 +157,7 @@ export function PriceEstimator() {
       if (parsed.name) setName(parsed.name);
       if (parsed.phone) setPhone(parsed.phone);
       // Only restore the step if everything that step depends on is present.
-      if (parsed.step === 2 && parsed.vehicleType && parsed.make) {
+      if (parsed.step && parsed.step >= 2 && parsed.vehicleType && parsed.make) {
         setStep(2);
       }
     } catch (error) {
@@ -245,11 +245,12 @@ export function PriceEstimator() {
 
   const goToStep = useCallback((next: Step) => {
     setStep(next);
-    trackEvent("estimator_step_completed", { step: next });
+    trackEvent("estimator_step_completed", { step: next - 1 });
   }, []);
 
   function handleEstimate() {
     if (!canProceedStep2 || isCalculating) return;
+    setIsCalculating(true);
     const est = estimatePrice({
       make,
       year: yearNumber,
@@ -257,7 +258,6 @@ export function PriceEstimator() {
       vehicleType,
     });
     setResult(est);
-    setIsCalculating(true);
     // Small artificial delay so the result feels deliberate, not random.
     window.setTimeout(() => {
       setIsCalculating(false);
@@ -287,6 +287,7 @@ export function PriceEstimator() {
   }
 
   async function handleSubmit() {
+    if (isSubmitting) return;
     if (!canSubmit || !result || condition === "") return;
 
     // Honeypot — silently pretend success, same pattern as QuoteForm.
