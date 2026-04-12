@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import FAQPage, { allFaqs } from "@/views/FAQPage";
+import FAQPage from "@/views/FAQPage";
+import { allFaqs } from "@/lib/faq-data";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 
