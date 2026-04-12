@@ -147,13 +147,13 @@ export function Header() {
   return (
     <>
       <header className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe bg-white shadow-sm"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-safe bg-primary shadow-sm"
       )}>
         {/* Top bar */}
-        <div className="border-b border-border/60 pl-safe pr-safe">
+        <div className="border-b border-white/20 pl-safe pr-safe">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14">
             <Link href="/" className="flex items-center gap-2 group">
-              <span className="font-display font-bold text-2xl tracking-tight text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
+              <span className="font-display font-bold text-2xl tracking-tight text-white lowercase transition-opacity duration-200 group-hover:opacity-80">
                 caraway<span className="text-accent">.</span>
               </span>
             </Link>
@@ -162,7 +162,7 @@ export function Header() {
               <a
                 href={BUSINESS.phoneHref}
                 onClick={() => trackEvent("phone_click", { location: "header" })}
-                className="inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-1.5 text-sm font-semibold text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 aria-label={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
@@ -171,7 +171,7 @@ export function Header() {
               <Button
                 onClick={scrollToQuote}
                 size="sm"
-                className="bg-primary hover:bg-primary/90 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="bg-accent hover:bg-accent/90 text-white font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 ring-offset-primary"
               >
                 Get my quote
               </Button>
@@ -181,7 +181,7 @@ export function Header() {
               <a
                 href={BUSINESS.phoneHref}
                 onClick={() => trackEvent("phone_click", { location: "header" })}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 aria-label={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <Phone className="h-5 w-5" aria-hidden="true" />
@@ -189,14 +189,14 @@ export function Header() {
               <Button
                 onClick={scrollToQuote}
                 size="sm"
-                className="bg-accent hover:bg-accent/90 text-white text-xs font-semibold px-3 h-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="bg-accent hover:bg-accent/90 text-white text-xs font-semibold px-3 h-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 ring-offset-primary"
               >
                 Quote
               </Button>
               <button
                 type="button"
                 ref={mobileMenuTriggerRef}
-                className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-primary hover:bg-muted transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 onClick={openMobileMenu}
                 aria-label="Open menu"
               >
@@ -207,7 +207,7 @@ export function Header() {
         </div>
 
         {/* Navigation bar */}
-        <div className="border-b border-border/40 hidden lg:block pl-safe pr-safe bg-white">
+        <div className="border-b border-black/10 hidden lg:block pl-safe pr-safe bg-accent">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav aria-label="Primary navigation" className="flex items-center gap-1 h-12">
               <div
@@ -219,10 +219,10 @@ export function Header() {
                   ref={servicesTriggerRef}
                   type="button"
                   className={cn(
-                    "text-sm font-medium transition-all duration-200 flex items-center gap-1 rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    "text-sm font-medium transition-all duration-200 flex items-center gap-1 rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-accent",
                     pathname === "/cash-for-cars-brisbane" || pathname.startsWith("/cash-for-cars-brisbane/")
-                      ? "text-primary border-primary/20 bg-primary/5"
-                      : "text-primary hover:border-primary/30 hover:bg-primary/5"
+                      ? "text-primary border-primary/30 bg-primary/10"
+                      : "text-primary hover:border-primary/30 hover:bg-primary/10"
                   )}
                   aria-expanded={isServicesOpen}
                   aria-haspopup="true"
@@ -287,10 +287,10 @@ export function Header() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "text-sm font-medium transition-all duration-200 flex items-center rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      "text-sm font-medium transition-all duration-200 flex items-center rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-accent",
                       isActive
-                        ? "text-primary border-primary/20 bg-primary/5"
-                        : "text-primary hover:border-primary/30 hover:bg-primary/5"
+                        ? "text-primary border-primary/30 bg-primary/10"
+                        : "text-primary hover:border-primary/30 hover:bg-primary/10"
                     )}
                   >
                     {link.label}
