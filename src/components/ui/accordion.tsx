@@ -32,26 +32,28 @@ export function Accordion({ items, className }: AccordionProps) {
               isActive ? "border-border" : "border-border/60 hover:border-border"
             )}
           >
-            <button
-              type="button"
-              id={triggerId}
-              onClick={() => setActiveIndex(isActive ? null : index)}
-              className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
-              aria-expanded={isActive}
-              aria-controls={panelId}
-            >
-              <span className="font-display text-base sm:text-lg font-medium text-foreground break-words [overflow-wrap:anywhere]">
-                {item.question}
-              </span>
-              <div
-                className={cn(
-                  "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/70 transition-transform duration-300 motion-reduce:transition-none motion-reduce:duration-0",
-                  isActive && "rotate-180"
-                )}
+            <h3 className="m-0">
+              <button
+                type="button"
+                id={triggerId}
+                onClick={() => setActiveIndex(isActive ? null : index)}
+                className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                aria-expanded={isActive}
+                aria-controls={panelId}
               >
-                <ChevronDown className="h-5 w-5" aria-hidden="true" />
-              </div>
-            </button>
+                <span className="font-display text-base sm:text-lg font-medium text-foreground break-words [overflow-wrap:anywhere]">
+                  {item.question}
+                </span>
+                <div
+                  className={cn(
+                    "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/70 transition-transform duration-300 motion-reduce:transition-none motion-reduce:duration-0",
+                    isActive && "rotate-180"
+                  )}
+                >
+                  <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                </div>
+              </button>
+            </h3>
             {/* Grid-rows [0fr]->[1fr] animation: Safari 16+ supports this;
                 older Safari will snap without animating (acceptable fallback). */}
             <div

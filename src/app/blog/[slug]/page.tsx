@@ -91,6 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
             author: {
               "@type": "Person",
               name: "Sam Williams",
+              url: `${SITE_URL}/author/sam-williams`,
               jobTitle: "Senior Buyer",
               worksFor: {
                 "@type": "Organization",

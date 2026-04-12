@@ -97,7 +97,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Everything Queensland drivers need to know about the Written-Off Vehicle Register (WOVR): statutory vs repairable write-offs, PPSR checks, and how to sell a WOVR car in Brisbane.",
     excerpt:
-      "The Written-Off Vehicle Register trips up thousands of Queensland drivers every year. Here's what WOVR actually means, how it affects the sale price, and the easiest way to move a written-off car in Brisbane.",
+      "The Written-Off Vehicle Register trips up thousands of QLD drivers. Here's what WOVR means, how it affects your sale price, and the easiest way to sell a written-off car in Brisbane.",
     content: [
       "If your car has been in a serious prang, caught in a flood, or written off by the insurer, you've probably been told it's now on the WOVR — the Written-Off Vehicle Register. For most Brisbane drivers that's the first time they've heard the term, and it usually comes with more questions than answers. What does WOVR actually mean? Can you still sell the car? Is it worth anything? And what paperwork is involved? Here's the full picture for 2026, written for Queensland sellers rather than insurance lawyers.",
 
@@ -134,7 +134,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "How scrap metal prices shape cash-for-cars offers in Brisbane in 2026. Current steel, aluminium, and copper rates, monthly fluctuations, and why Japanese cars pay more.",
     excerpt:
-      "Scrap metal prices drive a surprising amount of what your old car is worth at a cash buyer's gate. Here's what steel, aluminium, and copper are doing in Brisbane right now — and how that flows through to your quote.",
+      "Scrap metal prices drive a surprising amount of what your old car is worth. Here's what steel, aluminium, and copper are doing in Brisbane right now — and how that affects your quote.",
     content: [
       "If you've ever wondered why cash-for-cars offers seem to jump around from month to month, the answer is usually hiding in a commodities chart. Scrap metal prices — particularly for steel, aluminium, and copper — are the backbone of what any end-of-life vehicle is worth, and those prices shift weekly based on global demand, Chinese manufacturing activity, and the cost of shipping. For Brisbane sellers sitting on an old Commodore, a tired Camry, or a hail-dimpled hatchback, understanding the scrap market is the difference between accepting a lowball offer and getting a genuinely fair price.",
 
@@ -171,7 +171,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Need to cancel car rego in QLD? Step-by-step guide to cancelling Queensland registration with TMR, claiming your refund, and returning plates the right way.",
     excerpt:
-      "Cancelling your car rego in QLD can put hundreds of dollars back in your pocket — but only if you do it properly. Here's the full process, from TMR forms to plate returns, explained for Brisbane drivers.",
+      "Cancelling your car rego in QLD can put hundreds back in your pocket — but only if you do it right. Here's the full process, from TMR forms to plate returns.",
     content: [
       "Thousands of Brisbane drivers need to cancel car rego in QLD every year — sometimes because they've sold a vehicle, sometimes because it's been written off, sometimes because the car is parked in a shed and never going back on the road. Cancelling rego is easier than most people expect, but the rules around refunds, number plates, and timing trip up plenty of owners. Here's exactly how to do it through the Queensland Department of Transport and Main Roads (TMR) without losing money.",
 
@@ -206,7 +206,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Can you sell a car without rego in Brisbane? Yes — here's how to do it legally in QLD, what paperwork you need, and what your unregistered car is worth.",
     excerpt:
-      "Selling an unregistered car in Brisbane is legal and simpler than most people assume. Here's exactly what paperwork you need, how to stay on the right side of QLD law, and what your car is actually worth.",
+      "Selling an unregistered car in Brisbane is legal and simpler than most people assume. Here's the paperwork you need, how to stay legal in QLD, and what your car is worth.",
     content: [
       "Plenty of Brisbane driveways hide a car with expired rego. Maybe the registration lapsed while the owner was interstate, the safety certificate would cost more than the car is worth, or the vehicle has been sitting in a shed in Redcliffe or Logan for years. The good news is you can absolutely sell a car without rego in Brisbane — it happens every day across Queensland — but the process is different from a standard private sale.",
 
@@ -243,7 +243,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Get cash for cars on the Sunshine Coast with free same-day pickup and instant payment. We buy any vehicle in any condition across all Sunshine Coast suburbs.",
     excerpt:
-      "Ready to sell your car on the Sunshine Coast? Find out how cash for cars works from Caloundra to Noosa, what your vehicle is worth, and how to get paid the same day.",
+      "Ready to sell your car on the Sunshine Coast? Find out how cash for cars works from Caloundra to Noosa and how to get paid the same day.",
     content: [
       "The Sunshine Coast stretches roughly 60 kilometres along Queensland's coastline from Caloundra in the south to Noosa Heads in the north, with a hinterland that pushes west to Maleny, Montville, and the Blackall Range. The region is home to around 350,000 residents and growing fast, with new housing estates rolling out across Aura, Palmview, and Beerwah. That growth means more cars on the road — and more vehicles reaching the end of their life every week. Cash for cars on the Sunshine Coast gives you a quick, hassle-free way to sell any vehicle and walk away with money in your hand the same day.",
 
@@ -280,7 +280,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Get cash for cars in Toowoomba with free pickup and same-day payment. We buy any vehicle in any condition — old, damaged, or unregistered. Serving all Toowoomba suburbs.",
     excerpt:
-      "Want to sell your car in Toowoomba without the hassle? Learn how cash for cars works on the Darling Downs, what your vehicle is worth, and how to get paid today.",
+      "Want to sell your car in Toowoomba without the hassle? Learn how cash for cars works on the Darling Downs and how to get paid today.",
     content: [
       "Toowoomba sits roughly 125 kilometres west of Brisbane at the top of the Great Dividing Range, and it is the largest inland city in Queensland. With a population pushing 175,000 across the urban area and surrounding Darling Downs suburbs, Toowoomba has a vehicle culture shaped by long highway commutes, rural work, and a climate that swings between freezing fog in winter and blistering summer heat. When a car reaches the end of its life out here, cash for cars in Toowoomba offers the fastest way to turn it into money without dragging it down the range to a Brisbane wrecker.",
 
@@ -391,7 +391,7 @@ const rawPosts: RawPost[] = [
     metaDescription:
       "Get cash for cars in Caboolture with same-day free pickup and instant payment. Any make, any condition — running, damaged, or unregistered. Serving all Moreton Bay suburbs.",
     excerpt:
-      "Thinking of selling your car in Caboolture without the hassle of private listings? Here's how cash for cars works across the Moreton Bay region and what you can realistically expect to be paid.",
+      "Selling your car in Caboolture without private-listing hassle? Here's how cash for cars works across the Moreton Bay region and what to expect.",
     content: [
       "Caboolture sits at the northern edge of Greater Brisbane, roughly 45 kilometres from the CBD, and it's one of the busiest corridors in South East Queensland for vehicle turnover. Between the rapid housing growth in Morayfield, the acreage blocks out around Wamuran, and the commuter traffic running up and down the Bruce Highway, there are plenty of vehicles reaching the end of their useful life every week. Cash for cars in Caboolture is one of the quickest ways to clear an unwanted vehicle and walk away with money in hand the same day.",
       "The process is refreshingly simple. You provide the basics — make, model, year, and a short description of the condition — and a cash buyer gives you a firm quote in minutes. If the offer suits you, a tow truck is dispatched to your address, often within a few hours. The driver checks the vehicle against your description, you sign the transfer paperwork, and you receive cash on the spot. Most pickups across the Moreton Bay Regional Council area wrap up in under 90 minutes from booking to payment.",
@@ -622,3 +622,23 @@ export const blogPosts: BlogPost[] = rawPosts.map((p) => ({
 }));
 
 export const indexableBlogPosts = blogPosts.filter((post) => post.isIndexable);
+
+/** Convert a category label to a URL-safe slug. */
+export function categorySlug(category: string): string {
+  return category.toLowerCase().replace(/\s+/g, "-");
+}
+
+/** Map of slug → display label for all categories with indexable posts. */
+export const categoryMap: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const post of indexableBlogPosts) {
+    const slug = categorySlug(post.category);
+    if (!map[slug]) map[slug] = post.category;
+  }
+  return map;
+})();
+
+/** Get all indexable posts in a given category (by slug). */
+export function getPostsByCategory(slug: string): BlogPost[] {
+  return indexableBlogPosts.filter((p) => categorySlug(p.category) === slug);
+}

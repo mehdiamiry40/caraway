@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "Read the terms of service for Caraway's website and our vehicle purchase and removal services in Queensland, Australia. Updated March 2026.",
+    "Read the terms of service for Caraway — covering vehicle purchases, free car removal, payment terms, and your rights as a seller in Queensland, Australia.",
   alternates: { canonical: "/terms" },
   openGraph: {
     type: "website",
