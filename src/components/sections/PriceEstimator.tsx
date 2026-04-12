@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
 import {
@@ -822,13 +823,17 @@ export function PriceEstimator() {
                     <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2">
                       Pickup address<RequiredMark />
                     </label>
-                    <Input
+                    <AddressAutocomplete
                       id="est-address"
-                      placeholder="Street address, suburb, postcode"
+                      placeholder="Start typing your address..."
                       value={address}
-                      onChange={(e) => {
-                        setAddress(e.target.value);
-                        if (addressTouched) setAddressError(validateAddress(e.target.value));
+                      onChange={(next) => {
+                        setAddress(next);
+                        if (addressTouched) setAddressError(validateAddress(next));
+                      }}
+                      onPlaceSelected={(picked) => {
+                        setAddressTouched(true);
+                        setAddressError(validateAddress(picked));
                       }}
                       onBlur={() => {
                         setAddressTouched(true);
@@ -844,7 +849,7 @@ export function PriceEstimator() {
                       }
                     />
                     <p className="text-xs text-muted-foreground mt-1" id="est-address-help">
-                      Where should we collect the vehicle?
+                      Where should we collect the vehicle? Select from suggestions or type manually.
                     </p>
                     {addressTouched && addressError && (
                       <p id="est-address-error" className="mt-1 text-xs text-destructive" role="alert">
