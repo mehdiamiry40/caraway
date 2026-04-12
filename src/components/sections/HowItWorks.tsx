@@ -1,4 +1,4 @@
-import { MessageSquare, DollarSign, Truck, ArrowRight } from "lucide-react";
+import { MessageSquare, DollarSign, Truck } from "lucide-react";
 
 const steps = [
   {
@@ -40,8 +40,8 @@ export function HowItWorks() {
           {steps.map((step, index) => (
             <div key={step.title} className="relative flex flex-col items-center text-center group">
               {index > 0 && (
-                <div className="md:hidden flex items-center justify-center -mt-2 mb-2 text-primary/30" aria-hidden>
-                  <ArrowRight className="w-5 h-5 rotate-90" />
+                <div className="md:hidden flex items-center justify-center -mt-1 mb-1" aria-hidden>
+                  <div className="w-px h-6 border-l-2 border-dashed border-primary/20" />
                 </div>
               )}
               <div className="relative mb-6 z-10">

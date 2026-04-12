@@ -10,8 +10,7 @@ import { trackEvent } from "@/lib/analytics";
 export function Hero() {
   return (
     <section
-      className="relative w-full overflow-x-hidden mt-header-safe bg-white"
-      style={{ minHeight: "min(100vh, 560px)" }}
+      className="relative w-full overflow-x-hidden mt-header-safe bg-white min-h-hero"
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[560px]">
@@ -87,6 +86,7 @@ export function Hero() {
 
         {/* Image side */}
         <div className="relative flex-1 min-h-[260px] sm:min-h-[340px] lg:min-h-0">
+          <div className="absolute inset-0 z-[2] bg-gradient-to-r from-white/30 via-transparent to-transparent hidden lg:block" aria-hidden="true" />
           <div className="relative z-[1] block h-full min-h-[260px] sm:min-h-[340px]">
             <Image
               src="/images/tow-truck-hero.webp"

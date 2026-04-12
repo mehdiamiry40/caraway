@@ -1,5 +1,12 @@
-import { Star, Quote } from "lucide-react";
+"use client";
+
+import { useState } from "react";
+import { Star, Quote, ChevronDown, ChevronUp } from "lucide-react";
 import { reviews as testimonials } from "@/data/reviews";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const INITIAL_COUNT = 6;
 
 function Stars({ count }: { count: number }) {
   return (
@@ -16,6 +23,10 @@ function Stars({ count }: { count: number }) {
 }
 
 export function Testimonials() {
+  const [showAll, setShowAll] = useState(false);
+  const displayed = showAll ? testimonials : testimonials.slice(0, INITIAL_COUNT);
+  const hasMore = testimonials.length > INITIAL_COUNT;
+
   return (
     <section className="section-y bg-white" aria-label="What sellers say">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +51,7 @@ export function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          {testimonials.map((review, index) => (
+          {displayed.map((review, index) => (
             <article
               key={`${review.name}-${review.location}-${index}`}
               className="group relative bg-muted rounded-lg p-5 sm:p-7 border border-border/60 hover:border-primary/30 hover:shadow-md transition-all duration-300"
@@ -73,6 +84,31 @@ export function Testimonials() {
             </article>
           ))}
         </div>
+
+        {hasMore && (
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAll(!showAll)}
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "gap-2",
+              )}
+            >
+              {showAll ? (
+                <>
+                  Show fewer reviews
+                  <ChevronUp className="h-4 w-4" aria-hidden="true" />
+                </>
+              ) : (
+                <>
+                  Show all {testimonials.length} reviews
+                  <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -201,6 +201,19 @@
   bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
 }
 
+@utility min-h-hero {
+  min-height: min(100vh, 560px);
+  min-height: min(100dvh, 560px);
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--tw-ring-offset-shadow), 0 0 0 2px hsl(var(--ring)), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-offset-shadow: 0 0 0 2px var(--tw-ring-offset-color, hsl(var(--background)));
+  }
+}
+
 /* Hide scrollbar for breadcrumbs and other horizontal scrollers */
 @utility scrollbar-none {
   -ms-overflow-style: none;

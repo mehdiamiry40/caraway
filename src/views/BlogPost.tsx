@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
+import { ReadingProgress } from "@/components/ReadingProgress";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { getRelatedPosts } from "@/data/blog-posts";
@@ -16,6 +17,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   ];
 
   return (
+    <>
+    <ReadingProgress />
     <PageShell
       breadcrumbs={breadcrumbs}
       title={post.title}
@@ -164,5 +167,6 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
       <InternalLinks />
     </PageShell>
+    </>
   );
 }

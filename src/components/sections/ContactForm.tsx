@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,7 @@ import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
+import { Checkbox } from "@/components/ui/checkbox";
 import { CheckCircle2, Send, Shield } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
 
@@ -23,6 +24,13 @@ const fieldIds = {
 export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Auto-reset success state after 60 seconds so returning users see a fresh form
+  useEffect(() => {
+    if (!isSuccess) return;
+    const timer = setTimeout(() => setIsSuccess(false), 60_000);
+    return () => clearTimeout(timer);
+  }, [isSuccess]);
 
   const {
     register,
@@ -238,10 +246,9 @@ export function ContactForm() {
         </div>
 
         <div className="flex items-start gap-3">
-          <input
-            type="checkbox"
+          <Checkbox
             id="contact-marketing-consent"
-            className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
+            className="mt-0.5"
             {...register("marketingConsent")}
           />
           <label htmlFor="contact-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
