@@ -55,6 +55,7 @@ export function LocationsFilter() {
           </p>
         </div>
       ) : (
+        <>
         <span className="sr-only" aria-live="polite">{filtered.length} results</span>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" aria-live="polite">
           {filtered.map((suburb) => (
@@ -80,6 +81,7 @@ export function LocationsFilter() {
             </Link>
           ))}
         </div>
+        </>
       )}
     </>
   );

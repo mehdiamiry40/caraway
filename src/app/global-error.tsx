@@ -40,6 +40,7 @@ export default function GlobalError({
               >
                 Try again
               </button>
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Root layout is broken at this point; next/link may not work */}
               <a
                 href="/"
                 style={{
