@@ -79,7 +79,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Why Choose Caraway for Car Removal?",
-        content: "Unlike many car removal services that charge towing fees or offer below-market prices, Caraway provides genuinely free removal with competitive cash offers. We're fully licensed and insured, our drivers are professional and punctual, and we've been serving Brisbane for over a decade. We also dispose of vehicles responsibly, complying with all Queensland environmental regulations."
+        content: "Unlike many car removal services that charge towing fees or offer below-market prices, Caraway provides genuinely free removal with competitive cash offers. We're fully licensed and insured, our drivers are professional and punctual, and we've been serving the Brisbane community. We also dispose of vehicles responsibly, complying with all Queensland environmental regulations."
       }
     ],
     faqs: [
@@ -137,7 +137,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "How We Value Scrap Cars in Brisbane",
-        content: "Even scrap cars have value. We assess scrap vehicles based on their weight (steel and aluminium content), salvageable parts, and current scrap metal market prices. A standard sedan typically yields $150–$500 in scrap value, while larger vehicles like 4WDs, vans, and trucks can fetch significantly more. We always offer competitive prices based on real market conditions."
+        content: "Even scrap cars have value. We assess scrap vehicles based on their weight (steel and aluminium content), salvageable parts, and current scrap metal market prices. A standard sedan typically yields $300–$500 in scrap value, while larger vehicles like 4WDs, vans, and trucks can fetch significantly more. We always offer competitive prices based on real market conditions."
       },
       {
         heading: "Environmentally Responsible Scrap Car Disposal",
@@ -149,7 +149,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How much is my scrap car worth in Brisbane?", answer: "Scrap car values depend on size, weight, and condition. Standard cars typically fetch $150–$500, while larger vehicles can be worth more. Contact us for a specific quote." },
+      { question: "How much is my scrap car worth in Brisbane?", answer: "Scrap car values depend on size, weight, and condition. Standard cars typically fetch $300–$500, while larger vehicles can be worth more. Contact us for a specific quote." },
       { question: "Can you remove a car with no engine?", answer: "Yes. We remove vehicles in any state — no engine, no wheels, no doors. If there's enough of the car to identify it, we'll take it." },
       { question: "Do I need paperwork for a scrap car?", answer: "Just photo ID. Registration papers help but aren't essential. We handle all the deregistration and transfer paperwork for you." },
       { question: "Is scrap car removal really free?", answer: "Yes. We never charge for towing or removal. You receive the full quoted cash amount with no deductions." }
@@ -306,7 +306,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Junk Car Prices in Brisbane",
-        content: "Junk car values vary based on vehicle size, weight, condition, and salvageable components. Small sedans typically fetch $100–$400, while larger vehicles like 4WDs, vans, and trucks can be worth $300–$1,500+ depending on parts demand. We base our offers on current Brisbane market conditions, not arbitrary low-ball figures."
+        content: "Junk car values vary based on vehicle size, weight, condition, and salvageable components. Small sedans typically fetch $300–$400, while larger vehicles like 4WDs, vans, and trucks can be worth $300–$1,500+ depending on parts demand. We base our offers on current Brisbane market conditions, not arbitrary low-ball figures."
       },
       {
         heading: "Get Rid of Your Junk Car Today",

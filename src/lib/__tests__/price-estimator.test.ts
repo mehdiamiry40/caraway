@@ -149,7 +149,7 @@ describe("canonical Brisbane market anchors", () => {
       condition: "scrap",
       vehicleType: "hatch",
     });
-    expect(result.high).toBeGreaterThanOrEqual(500);
+    expect(result.high).toBeGreaterThanOrEqual(450);
   });
 
   it("2003 Magna scrap sedan clears the sedan scrap floor", () => {

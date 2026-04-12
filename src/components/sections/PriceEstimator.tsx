@@ -157,7 +157,7 @@ export function PriceEstimator() {
       if (parsed.name) setName(parsed.name);
       if (parsed.phone) setPhone(parsed.phone);
       // Only restore the step if everything that step depends on is present.
-      if (parsed.step === 2 && parsed.vehicleType && parsed.make) {
+      if (parsed.step && parsed.step >= 2 && parsed.vehicleType && parsed.make) {
         setStep(2);
       }
     } catch (error) {
@@ -245,11 +245,12 @@ export function PriceEstimator() {
 
   const goToStep = useCallback((next: Step) => {
     setStep(next);
-    trackEvent("estimator_step_completed", { step: next });
+    trackEvent("estimator_step_completed", { step: next - 1 });
   }, []);
 
   function handleEstimate() {
     if (!canProceedStep2 || isCalculating) return;
+    setIsCalculating(true);
     const est = estimatePrice({
       make,
       year: yearNumber,
@@ -257,7 +258,6 @@ export function PriceEstimator() {
       vehicleType,
     });
     setResult(est);
-    setIsCalculating(true);
     // Small artificial delay so the result feels deliberate, not random.
     window.setTimeout(() => {
       setIsCalculating(false);
@@ -287,6 +287,7 @@ export function PriceEstimator() {
   }
 
   async function handleSubmit() {
+    if (isSubmitting) return;
     if (!canSubmit || !result || condition === "") return;
 
     // Honeypot — silently pretend success, same pattern as QuoteForm.
@@ -375,7 +376,7 @@ export function PriceEstimator() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg border border-border/60 shadow-md p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
-              <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
+              <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden="true" />
             </div>
             <h3
               ref={successHeadingRef}
@@ -388,7 +389,7 @@ export function PriceEstimator() {
               We received your details for your <strong>{year} {make}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
             <div className="inline-flex items-center gap-2 bg-accent/10 text-accent font-bold text-lg sm:text-xl rounded-full px-6 py-2 mb-4">
-              <DollarSign className="w-5 h-5" />
+              <DollarSign className="w-5 h-5" aria-hidden="true" />
               ${result?.low.toLocaleString()} – ${result?.high.toLocaleString()}
             </div>
             <p className="text-muted-foreground text-sm mb-6">
@@ -400,7 +401,7 @@ export function PriceEstimator() {
                 onClick={handleReset}
                 className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all touch-manipulation"
               >
-                <RotateCcw className="w-4 h-4" />
+                <RotateCcw className="w-4 h-4" aria-hidden="true" />
                 Estimate another
               </button>
             </div>
@@ -444,7 +445,7 @@ export function PriceEstimator() {
                     ? "bg-primary text-white"
                     : "bg-white border border-border text-muted-foreground"
                 )}>
-                  {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s}
+                  {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" /> : s}
                 </div>
                 <span className={cn(
                   "text-[10px] sm:text-xs font-medium transition-colors",
@@ -491,7 +492,7 @@ export function PriceEstimator() {
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
-                    <Car className="w-5 h-5" />
+                    <Car className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
                     <h3
@@ -516,6 +517,7 @@ export function PriceEstimator() {
                       placeholder="Select type..."
                       value={vehicleType}
                       onChange={(e) => setVehicleType(e.target.value)}
+                      aria-required="true"
                     />
                   </div>
                   <div>
@@ -534,6 +536,7 @@ export function PriceEstimator() {
                       spellCheck={false}
                       maxLength={200}
                       enterKeyHint="next"
+                      aria-required="true"
                     />
                     <datalist id="popular-makes">
                       {POPULAR_MAKES.map((m) => <option key={m} value={m} />)}
@@ -548,7 +551,7 @@ export function PriceEstimator() {
                     className="h-12 px-8 group"
                   >
                     Next
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                   </Button>
                 </div>
               </div>
@@ -559,7 +562,7 @@ export function PriceEstimator() {
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
-                    <TrendingUp className="w-5 h-5" />
+                    <TrendingUp className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
                     <h3
@@ -589,6 +592,7 @@ export function PriceEstimator() {
                       value={year}
                       onChange={(e) => setYear(e.target.value)}
                       onBlur={() => setYearTouched(true)}
+                      aria-required="true"
                       aria-invalid={year !== "" && !yearIsValid}
                       aria-describedby="est-year-error"
                     />
@@ -608,6 +612,7 @@ export function PriceEstimator() {
                       placeholder="Select condition..."
                       value={condition}
                       onChange={(e) => setCondition(e.target.value as QuoteCondition)}
+                      aria-required="true"
                     />
                   </div>
                 </div>
@@ -618,7 +623,7 @@ export function PriceEstimator() {
                     onClick={() => goToStep(1)}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
                   >
-                    <ArrowLeft className="w-4 h-4" /> Back
+                    <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                   </button>
                   <Button
                     onClick={() => {
@@ -631,13 +636,13 @@ export function PriceEstimator() {
                   >
                     {isCalculating ? (
                       <>
-                        <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                        <Loader2 className="mr-2 w-4 h-4 animate-spin" aria-hidden="true" />
                         Calculating...
                       </>
                     ) : (
                       <>
                         See My Quote
-                        <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
                       </>
                     )}
                   </Button>
@@ -648,7 +653,7 @@ export function PriceEstimator() {
             {/* Calculating */}
             {isCalculating && (
               <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
-                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" />
+                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
                 <p className="font-display font-bold text-foreground">Calculating your quote…</p>
                 <p className="text-xs text-muted-foreground mt-1">Crunching market data for your {make}</p>
               </div>
@@ -660,7 +665,7 @@ export function PriceEstimator() {
                 <div className="p-5 sm:p-8">
                   <div className="text-center mb-6">
                     <div className="inline-flex items-center gap-1.5 bg-accent/10 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
-                      <CheckCircle2 className="w-3.5 h-3.5" /> Your instant quote
+                      <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" /> Your instant quote
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
                       {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
@@ -689,7 +694,7 @@ export function PriceEstimator() {
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
-                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                             {f}
                           </li>
                         ))}
@@ -703,7 +708,7 @@ export function PriceEstimator() {
                       onClick={() => goToStep(2)}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
                     >
-                      <ArrowLeft className="w-4 h-4" /> Back
+                      <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                     </button>
                     <Button
                       onClick={() => goToStep(4)}
@@ -711,7 +716,7 @@ export function PriceEstimator() {
                       className="h-14 px-10 font-bold text-base group"
                     >
                       Continue — get my price
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
@@ -741,7 +746,7 @@ export function PriceEstimator() {
 
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
-                    <Send className="w-5 h-5" />
+                    <Send className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
                     <h3
@@ -775,6 +780,7 @@ export function PriceEstimator() {
                       autoComplete="name"
                       enterKeyHint="next"
                       maxLength={200}
+                      aria-required="true"
                       aria-invalid={nameTouched && nameError ? true : undefined}
                       aria-describedby={nameTouched && nameError ? "est-name-error" : undefined}
                     />
@@ -804,6 +810,7 @@ export function PriceEstimator() {
                       autoComplete="tel"
                       enterKeyHint="send"
                       maxLength={20}
+                      aria-required="true"
                       aria-describedby={
                         phoneTouched && phoneError ? "est-phone-error est-phone-help" : "est-phone-help"
                       }
@@ -832,7 +839,7 @@ export function PriceEstimator() {
                     onClick={() => goToStep(3)}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
                   >
-                    <ArrowLeft className="w-4 h-4" /> Back
+                    <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                   </button>
                   <Button
                     onClick={handleSubmit}
@@ -842,13 +849,13 @@ export function PriceEstimator() {
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                        <Loader2 className="mr-2 w-5 h-5 animate-spin" aria-hidden="true" />
                         Sending...
                       </>
                     ) : (
                       <>
                         Claim My Quote
-                        <CheckCircle2 className="ml-2 w-5 h-5" />
+                        <CheckCircle2 className="ml-2 w-5 h-5" aria-hidden="true" />
                       </>
                     )}
                   </Button>

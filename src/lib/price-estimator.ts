@@ -58,7 +58,7 @@ const PRICE_TABLE = {
   /** Minimum scrap value floor per vehicle type. */
   scrapFloors: {
     sedan: 350,
-    hatch: 400,
+    hatch: 350,
     wagon: 400,
     suv: 450,
     ute: 500,

@@ -13,7 +13,7 @@ const features = [
   { title: "Genuinely Free Towing", desc: "We never deduct towing costs from your offer. The price quoted is the price you get, every time." },
   { title: "Same-Day Service", desc: "Most vehicles are collected the same day you accept our offer. We don't make you wait." },
   { title: "All Vehicles Accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered. No exclusions." },
-  { title: "Cash on the Spot", desc: "You receive your cash payment before the car leaves your property. No bank transfers, no delays." },
+  { title: "Cash on the Spot", desc: "You receive your cash payment before the car leaves your property. No unnecessary delays." },
   { title: "Responsible Recycling", desc: "We dispose of all vehicles through licensed Queensland recycling facilities, meeting EPA requirements." },
   { title: "No Pressure", desc: "Our quotes are free and come with zero obligation. If our offer doesn't work for you, no hard feelings." },
 ];
@@ -49,7 +49,7 @@ export default function About() {
               </div>
               <div>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
-                  I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you call me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
+                  I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {BUSINESS.legalName} (ABN {BUSINESS.abn}) is a registered Australian company. All pickups are fully insured with public liability and goods-in-transit cover — if we scratch your car loading it, we wear the cost.

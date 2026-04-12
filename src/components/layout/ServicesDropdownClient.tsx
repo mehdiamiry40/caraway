@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { services } from "@/data/services";
 
 type ServiceLink = { label: string; href: string };
 
@@ -19,9 +20,9 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
 
-  const isServicesActive =
-    pathname === "/cash-for-cars-brisbane" ||
-    pathname.startsWith("/cash-for-cars-brisbane/");
+  const isServicesActive = services.some(
+    (s) => pathname === "/" + s.slug || pathname.startsWith("/" + s.slug + "/")
+  );
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -73,7 +74,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
             : "text-white hover:border-white/30 hover:bg-white/15"
         )}
         aria-expanded={isOpen}
-        aria-haspopup="true"
+        aria-haspopup="menu"
         aria-controls={menuId}
         onFocus={() => setIsOpen(true)}
         onKeyDown={(e) => {
@@ -102,6 +103,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         <ul
           id={menuId}
           ref={menuRef}
+          role="menu"
           aria-label="Services submenu"
           className="absolute top-full left-0 mt-0 w-[480px] bg-white rounded-lg shadow-lg border border-border/40 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
           onKeyDown={(e) => {
@@ -114,9 +116,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           {serviceLinks.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <li key={item.href}>
+              <li key={item.href} role="none">
                 <Link
                   href={item.href}
+                  role="menuitem"
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-5 py-2.5 text-sm font-medium transition-all duration-150 focus-visible:bg-muted focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",

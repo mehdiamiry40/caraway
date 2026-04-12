@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Phone } from "lucide-react";
@@ -24,7 +23,7 @@ export function HeroCTAs() {
           aria-hidden
         />
       </a>
-      <Link
+      <a
         href={BUSINESS.phoneHref}
         onClick={() => trackEvent("hero_cta_click", { target: "phone" })}
         className={cn(
@@ -35,7 +34,7 @@ export function HeroCTAs() {
       >
         <Phone className="mr-2 h-5 w-5" aria-hidden />
         Call {BUSINESS.phoneFriendly}
-      </Link>
+      </a>
     </div>
   );
 }

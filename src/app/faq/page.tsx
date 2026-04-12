@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import FAQPage from "@/views/FAQPage";
 import { allFaqs } from "@/lib/faq-data";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { BUSINESS, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -36,7 +36,6 @@ export default function FaqRoutePage() {
       description:
         "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup.",
       isPartOf: { "@id": `${SITE_URL}/#website` },
-      telephone: BUSINESS.phone,
       mainEntity: allFaqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,

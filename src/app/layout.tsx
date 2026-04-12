@@ -62,6 +62,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_AU",
     siteName: "Caraway",
+    title: "Caraway — Cash for Cars Brisbane",
+    description:
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -73,6 +76,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: "Caraway — Cash for Cars Brisbane",
+    description:
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
+    images: [
+      {
+        url: "/images/tow-truck-hero.webp",
+        width: 1200,
+        height: 800,
+        alt: "Caraway tow truck — cash for cars Brisbane",
+      },
+    ],
   },
   other: {
     "geo.region": "AU-QLD",

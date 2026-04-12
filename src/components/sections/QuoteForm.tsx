@@ -91,7 +91,7 @@ export function QuoteForm() {
                 {benefits.map((b) => (
                   <div key={b.title} className="flex gap-3 sm:gap-4 group">
                     <div className="w-10 h-10 rounded-lg bg-white border border-border/60 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-200">
-                      <b.icon className="w-5 h-5 text-primary/70" />
+                      <b.icon className="w-5 h-5 text-primary/70" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-foreground text-sm">{b.title}</h3>

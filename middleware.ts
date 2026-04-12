@@ -80,6 +80,34 @@ export function middleware(request: NextRequest) {
     } catch {
       return new NextResponse("Forbidden", { status: 403 });
     }
+  } else {
+    // No Origin header — fall back to Referer for CSRF validation.
+    const referer = request.headers.get("referer");
+    if (referer) {
+      try {
+        const refererUrl = new URL(referer);
+        let ok = false;
+        if (siteUrl) {
+          try {
+            const site = new URL(siteUrl);
+            if (site.host === refererUrl.host) ok = true;
+          } catch {
+            // ignore malformed SITE_URL, fall through to host check
+          }
+        }
+        if (!ok && host && refererUrl.host === host) {
+          ok = true;
+        }
+        if (!ok) {
+          return new NextResponse("Forbidden", { status: 403 });
+        }
+      } catch {
+        return new NextResponse("Forbidden", { status: 403 });
+      }
+    } else {
+      // Neither Origin nor Referer present on a POST — reject.
+      return new NextResponse("Forbidden", { status: 403 });
+    }
   }
 
   return NextResponse.next();

@@ -53,7 +53,7 @@ export function CarTypes() {
                   "group-hover:bg-accent group-hover:text-white",
                   "transition-all duration-300"
                 )}>
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 </div>
                 <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
                   {type.label}

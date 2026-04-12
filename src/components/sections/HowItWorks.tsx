@@ -2,19 +2,19 @@ import { MessageSquare, DollarSign, Truck } from "lucide-react";
 
 const steps = [
   {
-    icon: <MessageSquare className="w-6 h-6" />,
+    icon: <MessageSquare className="w-6 h-6" aria-hidden="true" />,
     title: "Tell us about your car",
     description: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
     timing: "60 seconds",
   },
   {
-    icon: <DollarSign className="w-6 h-6" />,
+    icon: <DollarSign className="w-6 h-6" aria-hidden="true" />,
     title: "Confirm your quote",
     description: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
     timing: "Within the hour",
   },
   {
-    icon: <Truck className="w-6 h-6" />,
+    icon: <Truck className="w-6 h-6" aria-hidden="true" />,
     title: "We pick up, you get paid",
     description: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
     timing: "Same day",
