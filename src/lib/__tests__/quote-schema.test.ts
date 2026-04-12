@@ -4,7 +4,8 @@ import { quoteFormSchema } from "@/lib/quote-schema";
 const baseValid = {
   name: "Jane Doe",
   phone: "0412345678",
-  make: "Toyota Hilux",
+  make: "Toyota",
+  model: "Hilux",
   year: 2015,
   condition: "running" as const,
   honeypot: "",
