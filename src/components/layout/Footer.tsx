@@ -81,7 +81,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Services</h4>
+            <h3 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Services</h3>
             <ul className="space-y-1">
               {serviceLinks.map(link => (
                 <li key={link.href}>
@@ -94,7 +94,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Locations</h4>
+            <h3 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Locations</h3>
             <ul className="space-y-1">
               {locationLinks.map(link => (
                 <li key={link.href}>
@@ -107,7 +107,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Company</h4>
+            <h3 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5 pb-2 border-b border-border/60">Company</h3>
             <ul className="space-y-1">
               {companyLinks.map(link => (
                 <li key={link.href}>

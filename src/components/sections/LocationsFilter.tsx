@@ -27,7 +27,7 @@ export function LocationsFilter() {
   return (
     <>
       <div className="relative max-w-full sm:max-w-lg mb-12">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-muted-foreground/60 pointer-events-none" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-muted-foreground/60 pointer-events-none" aria-hidden="true" />
         <input
           type="search"
           placeholder="Search your suburb..."
@@ -41,7 +41,7 @@ export function LocationsFilter() {
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
-            <Search className="h-6 w-6 text-muted-foreground/50" />
+            <Search className="h-6 w-6 text-muted-foreground/50" aria-hidden="true" />
           </div>
           <p className="text-muted-foreground text-lg mb-2">
             No suburbs match &ldquo;{query}&rdquo;
@@ -55,7 +55,8 @@ export function LocationsFilter() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <span className="sr-only" aria-live="polite">{filtered.length} results</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" aria-live="polite">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
@@ -64,7 +65,7 @@ export function LocationsFilter() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MapPin className="h-4 w-4 text-accent" />
+                  <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
                 </div>
                 <h2 className="text-base font-display font-bold text-foreground group-hover:text-primary transition-colors">
                   {suburb.h1}
@@ -74,7 +75,7 @@ export function LocationsFilter() {
                 {suburb.intro}
               </p>
               <span className="text-sm text-accent font-semibold flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>
           ))}

@@ -13,7 +13,7 @@ const features = [
   { title: "Genuinely Free Towing", desc: "We never deduct towing costs from your offer. The price quoted is the price you get, every time." },
   { title: "Same-Day Service", desc: "Most vehicles are collected the same day you accept our offer. We don't make you wait." },
   { title: "All Vehicles Accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered. No exclusions." },
-  { title: "Cash on the Spot", desc: "You receive your cash payment before the car leaves your property. No bank transfers, no delays." },
+  { title: "Cash on the Spot", desc: "You receive your cash payment before the car leaves your property. No unnecessary delays." },
   { title: "Responsible Recycling", desc: "We dispose of all vehicles through licensed Queensland recycling facilities, meeting EPA requirements." },
   { title: "No Pressure", desc: "Our quotes are free and come with zero obligation. If our offer doesn't work for you, no hard feelings." },
 ];

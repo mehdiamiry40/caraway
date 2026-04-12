@@ -2,37 +2,37 @@ import { Zap, ShieldCheck, CarFront, FileText, Check, Shield } from "lucide-reac
 
 const reasons = [
   {
-    icon: <Shield className="w-5 h-5" />,
+    icon: <Shield className="w-5 h-5" aria-hidden="true" />,
     title: "Quoted price guarantee",
     description: "The number we quote is the number you're paid. No surprise deductions, in writing before pickup.",
     iconColor: "text-accent",
   },
   {
-    icon: <ShieldCheck className="w-5 h-5" />,
+    icon: <ShieldCheck className="w-5 h-5" aria-hidden="true" />,
     title: "Fully insured pickups",
     description: "Public liability and goods-in-transit cover. If we scratch it loading, we wear it.",
     iconColor: "text-accent",
   },
   {
-    icon: <Zap className="w-5 h-5" />,
+    icon: <Zap className="w-5 h-5" aria-hidden="true" />,
     title: "Paid when we pick up",
     description: "We don't drive away with your keys until you've been paid the agreed amount.",
     iconColor: "text-primary",
   },
   {
-    icon: <CarFront className="w-5 h-5" />,
+    icon: <CarFront className="w-5 h-5" aria-hidden="true" />,
     title: "Towing's on us",
     description: "If we buy it, we bring the truck. No surprise deductions. The quote is the cash.",
     iconColor: "text-primary",
   },
   {
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FileText className="w-5 h-5" aria-hidden="true" />,
     title: "Rough to written off",
     description: "Old daily drivers, damaged, unregistered, scrap, fleet — we'll tell you straight if it's a fit.",
     iconColor: "text-primary",
   },
   {
-    icon: <FileText className="w-5 h-5" />,
+    icon: <FileText className="w-5 h-5" aria-hidden="true" />,
     title: "Transfer paperwork",
     description: "We handle the QLD transfer side so you're not stuck in a queue at the counter.",
     iconColor: "text-primary",
@@ -56,7 +56,7 @@ export function WhyUs() {
               {["Brisbane-based team", "Licensed removal & disposal partners", "Upfront if we're not interested"].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-foreground">
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Check className="w-3 h-3 text-primary shrink-0" strokeWidth={3} />
+                    <Check className="w-3 h-3 text-primary shrink-0" strokeWidth={3} aria-hidden="true" />
                   </div>
                   <span className="text-sm font-medium">{item}</span>
                 </li>
