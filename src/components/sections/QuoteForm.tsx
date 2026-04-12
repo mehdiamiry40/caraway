@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
@@ -287,10 +288,9 @@ export function QuoteForm() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <input
-                      type="checkbox"
+                    <Checkbox
                       id="quote-marketing-consent"
-                      className="mt-0.5 h-4 w-4 rounded border-border accent-primary"
+                      className="mt-0.5"
                       {...register("marketingConsent")}
                     />
                     <label htmlFor="quote-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">

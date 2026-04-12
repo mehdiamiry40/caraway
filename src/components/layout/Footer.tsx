@@ -32,7 +32,7 @@ const companyLinks = [
   { label: "Get a Quote", href: "/#price-estimator" },
 ];
 
-const linkClasses = "text-muted-foreground hover:text-primary transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation";
+const linkClasses = "text-muted-foreground hover:text-primary hover:translate-x-0.5 transition-all duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center touch-manipulation motion-reduce:hover:translate-x-0";
 
 export function Footer() {
   return (
