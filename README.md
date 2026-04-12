@@ -6,7 +6,7 @@ Built with Next.js 15 (App Router) and deployed on Vercel.
 ## Tech stack
 
 - **Framework:** Next.js 15 (App Router, Server Actions, RSC)
-- **Runtime:** React 19, Node.js 20 LTS
+- **Runtime:** React 19, Node.js 24
 - **Language:** TypeScript 5.9 (strict)
 - **Styling:** Tailwind CSS 4
 - **Forms / validation:** react-hook-form + zod
@@ -17,8 +17,8 @@ Built with Next.js 15 (App Router) and deployed on Vercel.
 
 ## Prerequisites
 
-- Node.js **>= 20.11 < 21** (see `.nvmrc`; use `nvm use` to pick up)
-- npm 10+ (bundled with Node 20)
+- Node.js **>= 20.11** (see `.nvmrc` for the version CI/Vercel pin to; use `nvm use` to pick up)
+- npm 10+
 - A Vercel account for preview/production deploys
 
 ## Getting started
