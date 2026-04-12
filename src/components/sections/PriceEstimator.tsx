@@ -23,19 +23,6 @@ import { cn } from "@/lib/utils";
 const CURRENT_YEAR = new Date().getFullYear();
 const STORAGE_KEY = "caraway-estimator-state";
 
-const VEHICLE_TYPES = [
-  { value: "sedan", label: "Sedan" },
-  { value: "hatch", label: "Hatchback" },
-  { value: "suv", label: "SUV" },
-  { value: "ute", label: "Ute / Pickup" },
-  { value: "4wd", label: "4WD" },
-  { value: "van", label: "Van" },
-  { value: "truck", label: "Truck" },
-  { value: "wagon", label: "Wagon" },
-  { value: "coupe", label: "Coupe" },
-  { value: "other", label: "Other" },
-];
-
 const CONDITIONS: Array<{ value: QuoteCondition; label: string }> =
   quoteConditionValues.map((value) => ({ value, label: CONDITION_LABELS[value] }));
 
@@ -49,8 +36,8 @@ type Step = 1 | 2 | 3 | 4;
 
 type PersistedState = {
   step?: Step;
-  vehicleType?: string;
   make?: string;
+  model?: string;
   year?: string;
   condition?: QuoteCondition | "";
   name?: string;
@@ -63,8 +50,8 @@ function RequiredMark() {
 
 export function PriceEstimator() {
   const [step, setStep] = useState<Step>(1);
-  const [vehicleType, setVehicleType] = useState("");
   const [make, setMake] = useState("");
+  const [model, setModel] = useState("");
   const [year, setYear] = useState("");
   const [yearTouched, setYearTouched] = useState(false);
   const [condition, setCondition] = useState<QuoteCondition | "">("");
@@ -123,8 +110,8 @@ export function PriceEstimator() {
   );
 
   const canProceedStep1 = useMemo(
-    () => vehicleType !== "" && make.trim() !== "",
-    [vehicleType, make]
+    () => make.trim() !== "",
+    [make]
   );
   const canProceedStep2 = useMemo(
     () => yearIsValid && condition !== "",
@@ -150,14 +137,14 @@ export function PriceEstimator() {
       const raw = window.sessionStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const parsed = JSON.parse(raw) as PersistedState;
-      if (parsed.vehicleType) setVehicleType(parsed.vehicleType);
       if (parsed.make) setMake(parsed.make);
+      if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
       if (parsed.condition) setCondition(parsed.condition);
       if (parsed.name) setName(parsed.name);
       if (parsed.phone) setPhone(parsed.phone);
       // Only restore the step if everything that step depends on is present.
-      if (parsed.step && parsed.step >= 2 && parsed.vehicleType && parsed.make) {
+      if (parsed.step && parsed.step >= 2 && parsed.make) {
         setStep(2);
       }
     } catch (error) {
@@ -181,8 +168,8 @@ export function PriceEstimator() {
       try {
         const payload: PersistedState = {
           step,
-          vehicleType,
           make,
+          model,
           year,
           condition,
           name,
@@ -196,7 +183,7 @@ export function PriceEstimator() {
     return () => {
       if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
     };
-  }, [step, vehicleType, make, year, condition, name, phone]);
+  }, [step, make, model, year, condition, name, phone]);
 
   // Clear stored state on success.
   useEffect(() => {
@@ -209,14 +196,14 @@ export function PriceEstimator() {
     }
   }, [isSuccess]);
 
-  // Fire estimator_started once on first vehicle type choice.
+  // Fire estimator_started once on first make input.
   useEffect(() => {
     if (estimatorStartedRef.current) return;
-    if (vehicleType !== "") {
+    if (make.trim() !== "") {
       estimatorStartedRef.current = true;
-      trackEvent("estimator_started", { vehicleType });
+      trackEvent("estimator_started", { make: make.trim() });
     }
-  }, [vehicleType]);
+  }, [make]);
 
   // Fire estimator_abandoned when the user leaves mid-flow.
   useEffect(() => {
@@ -225,8 +212,8 @@ export function PriceEstimator() {
     const handleLeave = () => {
       trackEvent("estimator_abandoned", {
         step,
-        vehicleType,
         make: make.trim(),
+        model: model.trim(),
       });
     };
 
@@ -241,7 +228,7 @@ export function PriceEstimator() {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("beforeunload", handleLeave);
     };
-  }, [step, vehicleType, make, isSuccess]);
+  }, [step, make, model, isSuccess]);
 
   const goToStep = useCallback((next: Step) => {
     setStep(next);
@@ -253,9 +240,9 @@ export function PriceEstimator() {
     setIsCalculating(true);
     const est = estimatePrice({
       make,
+      model,
       year: yearNumber,
       condition,
-      vehicleType,
     });
     setResult(est);
     // Small artificial delay so the result feels deliberate, not random.
@@ -267,9 +254,9 @@ export function PriceEstimator() {
         estimateLow: est.low,
         estimateHigh: est.high,
         make: make.trim(),
+        model: model.trim(),
         year: yearNumber,
         condition: condition || null,
-        vehicleType,
       });
     }, 600);
   }
@@ -308,12 +295,11 @@ export function PriceEstimator() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const typeLabel = VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label ?? vehicleType;
-
     const res = await submitQuote({
       name: name.trim(),
       phone: phone.trim(),
-      make: `${make.trim()} (${typeLabel}) — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
+      make: make.trim(),
+      model: `${model.trim()} — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
       year: yearNumber,
       condition,
       honeypot: "",
@@ -327,6 +313,7 @@ export function PriceEstimator() {
         estimateLow: result.low,
         estimateHigh: result.high,
         make: make.trim(),
+        model: model.trim(),
         year: yearNumber,
         condition,
       });
@@ -339,8 +326,8 @@ export function PriceEstimator() {
 
   function handleReset() {
     setStep(1);
-    setVehicleType("");
     setMake("");
+    setModel("");
     setYear("");
     setYearTouched(false);
     setCondition("");
@@ -386,7 +373,7 @@ export function PriceEstimator() {
               Your quote is on its way!
             </h3>
             <p className="text-muted-foreground text-sm sm:text-base mb-2">
-              We received your details for your <strong>{year} {make}</strong>. We&apos;ll confirm your final price within the hour.
+              We received your details for your <strong>{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
             <div className="inline-flex items-center gap-2 bg-accent/10 text-accent font-bold text-lg sm:text-xl rounded-full px-6 py-2 mb-4">
               <DollarSign className="w-5 h-5" aria-hidden="true" />
@@ -508,21 +495,8 @@ export function PriceEstimator() {
 
                 <div className="space-y-4 sm:space-y-5">
                   <div>
-                    <label htmlFor="est-vehicle-type" className="block text-sm font-semibold text-foreground mb-2">
-                      Vehicle type<RequiredMark />
-                    </label>
-                    <Select
-                      id="est-vehicle-type"
-                      options={VEHICLE_TYPES}
-                      placeholder="Select type..."
-                      value={vehicleType}
-                      onChange={(e) => setVehicleType(e.target.value)}
-                      aria-required="true"
-                    />
-                  </div>
-                  <div>
                     <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2">
-                      Make / brand<RequiredMark />
+                      Make<RequiredMark />
                     </label>
                     <Input
                       id="est-make"
@@ -541,6 +515,23 @@ export function PriceEstimator() {
                     <datalist id="popular-makes">
                       {POPULAR_MAKES.map((m) => <option key={m} value={m} />)}
                     </datalist>
+                  </div>
+                  <div>
+                    <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2">
+                      Model
+                    </label>
+                    <Input
+                      id="est-model"
+                      placeholder="e.g. Camry, 3, Ranger..."
+                      value={model}
+                      onChange={(e) => setModel(e.target.value)}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="words"
+                      spellCheck={false}
+                      maxLength={200}
+                      enterKeyHint="next"
+                    />
                   </div>
                 </div>
 
@@ -572,7 +563,7 @@ export function PriceEstimator() {
                     >
                       Year and condition
                     </h3>
-                    <p className="text-xs text-muted-foreground">Step 2 of {totalSteps} — {make} {vehicleType}</p>
+                    <p className="text-xs text-muted-foreground">Step 2 of {totalSteps} — {[make, model].filter(Boolean).join(" ")}</p>
                   </div>
                 </div>
 
@@ -655,7 +646,7 @@ export function PriceEstimator() {
               <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
                 <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
                 <p className="font-display font-bold text-foreground">Calculating your quote…</p>
-                <p className="text-xs text-muted-foreground mt-1">Crunching market data for your {make}</p>
+                <p className="text-xs text-muted-foreground mt-1">Crunching market data for your {[make, model].filter(Boolean).join(" ")}</p>
               </div>
             )}
 
@@ -668,7 +659,7 @@ export function PriceEstimator() {
                       <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" /> Your instant quote
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
-                      {year} {make} · {VEHICLE_TYPES.find((t) => t.value === vehicleType)?.label} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
+                      {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                     </p>
                     <div
                       ref={headingRefCallbacks[2]}
@@ -731,7 +722,7 @@ export function PriceEstimator() {
                     <div>
                       <p className="text-xs text-muted-foreground">Your quote</p>
                       <p className="font-display font-bold text-foreground">
-                        {year} {make} · <span className="text-accent">${result.low.toLocaleString()}–${result.high.toLocaleString()}</span>
+                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="text-accent">${result.low.toLocaleString()}–${result.high.toLocaleString()}</span>
                       </p>
                     </div>
                     <button

@@ -53,6 +53,7 @@ export const quoteFormSchema = z.object({
   name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")),
   phone: requiredPhone,
   make: z.string().transform(trimText).pipe(z.string().min(2, "Car make is required").max(200, "Car make is too long")),
+  model: z.string().transform(trimText).pipe(z.string().max(200, "Car model is too long")).optional().default(""),
   year: z.coerce.number().min(1950, "Invalid year").max(new Date().getFullYear() + 1, "Invalid year"),
   condition: z.enum(quoteConditionValues, {
     errorMap: () => ({ message: "Please select a condition" }),

@@ -42,32 +42,8 @@ const PRICE_TABLE = {
     medium: 1.0,
     low: 0.8,
   } satisfies Record<MakeTier, number>,
-  /** Multiplier applied based on vehicle body type. */
-  vehicleTypeMultipliers: {
-    ute: 1.3,
-    "4wd": 1.3,
-    suv: 1.15,
-    van: 1.2,
-    truck: 1.2,
-    sedan: 1.0,
-    wagon: 1.0,
-    coupe: 1.0,
-    hatch: 0.95,
-    other: 1.0,
-  } as Record<string, number>,
-  /** Minimum scrap value floor per vehicle type. */
-  scrapFloors: {
-    sedan: 350,
-    hatch: 350,
-    wagon: 400,
-    suv: 450,
-    ute: 500,
-    "4wd": 500,
-    van: 500,
-    truck: 500,
-    coupe: 350,
-    other: 300,
-  } as Record<string, number>,
+  /** Minimum scrap value floor. */
+  scrapFloor: 350,
   /** Range spread — low = estimated * (1 - spread), high = estimated * (1 + spread). */
   rangeSpread: 0.25,
   /** Round low/high to nearest this many dollars. */
@@ -96,9 +72,9 @@ export const CONDITION_MULTIPLIER: Record<QuoteCondition, number> = {
 
 export interface EstimateInput {
   make: string;
+  model: string;
   year: number;
   condition: string;
-  vehicleType: string;
 }
 
 export interface EstimateResult {
@@ -133,23 +109,15 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
 
   const age = Math.max(0, currentYear - input.year);
   const makeIsEmpty = !input.make || input.make.trim() === "";
-  const makeTier = makeIsEmpty ? "medium" : getMakeTier(input.make);
+  const makeString = [input.make, input.model].filter(Boolean).join(" ");
+  const makeTier = makeIsEmpty ? "medium" : getMakeTier(makeString);
   const conditionMult =
     CONDITION_MULTIPLIER[input.condition as QuoteCondition] ?? 0.5;
 
   const baseValue = getBaseValueForAge(age);
   const makeMult = PRICE_TABLE.makeMultipliers[makeTier];
-  let typeMult = PRICE_TABLE.vehicleTypeMultipliers[input.vehicleType] ?? 1.0;
 
-  // Ute/4WD popular-model boost — Ranger, Hilux and friends command a premium.
-  if (
-    (input.vehicleType === "ute" || input.vehicleType === "4wd") &&
-    /ranger|hilux|navara|triton|d-max|bt-50|colorado/i.test(input.make ?? "")
-  ) {
-    typeMult *= 1.15;
-  }
-
-  let estimated = baseValue * makeMult * conditionMult * typeMult;
+  let estimated = baseValue * makeMult * conditionMult;
 
   const { rangeSpread, rangeRoundTo, minLow, maxHigh } = PRICE_TABLE;
 
@@ -168,12 +136,8 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
     Math.round((estimated * (1 + rangeSpread)) / rangeRoundTo) * rangeRoundTo,
   );
 
-  // Per-vehicle-type scrap floor — even a written-off sedan has hull value.
-  // Floors never go below the site-wide MIN_PRICE.
-  const scrapFloor = Math.max(
-    MIN_PRICE,
-    PRICE_TABLE.scrapFloors[input.vehicleType] ?? MIN_PRICE,
-  );
+  // Scrap floor — even a written-off car has hull value.
+  const scrapFloor = Math.max(MIN_PRICE, PRICE_TABLE.scrapFloor);
   low = Math.max(low, scrapFloor);
   high = Math.max(high, scrapFloor + 100);
 
@@ -190,8 +154,6 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
 
   if (conditionMult >= 0.75) factors.push("Good condition boosts your offer significantly");
   else if (conditionMult <= 0.3) factors.push("Condition factored in — we still pay cash for non-running cars");
-
-  if (typeMult > 1.1) factors.push("Utes, 4WDs, and SUVs are in high demand across South East QLD");
 
   return { low, high, factors };
 }
