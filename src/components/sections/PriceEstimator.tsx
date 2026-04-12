@@ -184,6 +184,31 @@ export function PriceEstimator() {
     }
   }, [vehicleType]);
 
+  // Fire estimator_abandoned when the user leaves mid-flow.
+  useEffect(() => {
+    if (!estimatorStartedRef.current || isSuccess) return;
+
+    const handleLeave = () => {
+      trackEvent("estimator_abandoned", {
+        step,
+        vehicleType,
+        make: make.trim(),
+      });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) handleLeave();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("beforeunload", handleLeave);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("beforeunload", handleLeave);
+    };
+  }, [step, vehicleType, make, isSuccess]);
+
   function goToStep(next: Step) {
     setStep(next);
     trackEvent("estimator_step_completed", { step: next });

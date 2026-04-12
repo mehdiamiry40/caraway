@@ -1,5 +1,6 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
+import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
 import { CheckCircle2 } from "lucide-react";
 
@@ -42,12 +43,19 @@ export default function About() {
 
           <div className="rounded-2xl border border-border/60 bg-muted/40 p-5 sm:p-8">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Meet the Founder</h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
-              I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you call me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              {BUSINESS.legalName} (ABN {BUSINESS.abn}) is a registered Australian company. All pickups are fully insured with public liability and goods-in-transit cover — if we scratch your car loading it, we wear the cost.
-            </p>
+            <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-white font-display font-bold text-2xl" aria-hidden="true">
+                ME
+              </div>
+              <div>
+                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
+                  I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you call me directly at <a href={BUSINESS.emailHref} className="text-primary underline font-medium">{BUSINESS.email}</a>.
+                </p>
+                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                  {BUSINESS.legalName} (ABN {BUSINESS.abn}) is a registered Australian company. All pickups are fully insured with public liability and goods-in-transit cover — if we scratch your car loading it, we wear the cost.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -83,6 +91,7 @@ export default function About() {
         </div>
       </div>
 
+      <TrustBadges />
       <InternalLinks />
     </PageShell>
   );

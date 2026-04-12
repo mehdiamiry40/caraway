@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Accordion } from "@/components/ui/accordion";
 import { faqs } from "@/data/home-faqs";
+import { trackEvent } from "@/lib/analytics";
 
 export function FAQ() {
   return (
@@ -13,7 +16,12 @@ export function FAQ() {
           </p>
         </div>
 
-        <Accordion items={faqs} />
+        <Accordion
+          items={faqs}
+          onItemToggle={(question, isOpening) => {
+            if (isOpening) trackEvent("faq_opened", { question });
+          }}
+        />
 
         <div className="mt-8 sm:mt-10 text-center text-sm text-muted-foreground">
           Still have questions?{" "}

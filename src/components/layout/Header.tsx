@@ -149,7 +149,7 @@ export function Header() {
         {/* Top bar */}
         <div className="border-b border-white/20 pl-safe pr-safe">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14">
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link href="/" aria-label="Caraway — Home" className="flex items-center gap-2 group">
               <span className="font-display font-bold text-2xl tracking-tight text-white lowercase transition-opacity duration-200 group-hover:opacity-80">
                 caraway<span className="text-accent">.</span>
               </span>
