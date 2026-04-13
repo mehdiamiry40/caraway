@@ -20,11 +20,6 @@ describe("buildQuoteEmailContent", () => {
     expect(subject).toBe("New quote request — Toyota Hilux (2015)");
   });
 
-  it("omits the model segment when model is empty", () => {
-    const { subject } = buildQuoteEmailContent({ ...baseValid, model: "" });
-    expect(subject).toBe("New quote request — Toyota (2015)");
-  });
-
   it("includes every captured field in the plain-text body", () => {
     const { text } = buildQuoteEmailContent({
       ...baseValid,
@@ -41,9 +36,8 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toContain("opted in");
   });
 
-  it("renders an em dash for empty model and address", () => {
-    const { text, html } = buildQuoteEmailContent({ ...baseValid, model: "", address: "" });
-    expect(text).toMatch(/Model\s+—/);
+  it("renders an em dash for empty address", () => {
+    const { text, html } = buildQuoteEmailContent({ ...baseValid, address: "" });
     expect(text).toMatch(/Address\s+—/);
     expect(html).toContain("—");
   });

@@ -110,8 +110,8 @@ export function PriceEstimator() {
   );
 
   const canProceedStep1 = useMemo(
-    () => make.trim() !== "",
-    [make]
+    () => make.trim() !== "" && (make === "Other" || model.trim() !== ""),
+    [make, model]
   );
   const canProceedStep2 = useMemo(
     () => yearIsValid && condition !== "",
@@ -529,7 +529,7 @@ export function PriceEstimator() {
                   {make && make !== "Other" && (
                     <div>
                       <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2">
-                        Model
+                        Model<RequiredMark />
                       </label>
                       <Select
                         id="est-model"
@@ -537,6 +537,7 @@ export function PriceEstimator() {
                         options={getModelOptions(make)}
                         value={model}
                         onChange={(e) => setModel(e.target.value)}
+                        aria-required="true"
                       />
                     </div>
                   )}
