@@ -32,7 +32,7 @@ export interface GooglePlacesNamespace {
 interface GoogleMapsGlobal {
   maps: {
     places?: GooglePlacesNamespace;
-    importLibrary?: (name: string) => Promise<unknown>;
+    importLibrary?(name: string): Promise<unknown>;
     event?: { clearInstanceListeners(instance: unknown): void };
   };
 }
@@ -98,14 +98,21 @@ export function loadGoogleMapsPlaces(): Promise<GooglePlacesNamespace | null> {
 
   placesPromise = injectBootstrap(apiKey)
     .then(async () => {
-      const importLibrary = window.google?.maps?.importLibrary;
-      if (!importLibrary) {
-        // Fall back to the legacy synchronous shape, in case a custom
-        // build of Maps populated the namespace directly.
-        return window.google?.maps?.places ?? null;
+      const maps = window.google?.maps;
+      if (!maps) {
+        console.error("[google-maps-loader] window.google.maps is undefined after script load");
+        return null;
       }
-      await importLibrary("places");
-      return window.google?.maps?.places ?? null;
+      // Call importLibrary as a method so its `this` binding is preserved.
+      // With `loading=async` this is the only way to get the Places library.
+      if (typeof maps.importLibrary === "function") {
+        await maps.importLibrary.call(maps, "places");
+      }
+      const places = window.google?.maps?.places ?? null;
+      if (!places) {
+        console.error("[google-maps-loader] Places namespace still missing after importLibrary");
+      }
+      return places;
     })
     .catch((error) => {
       console.error("[google-maps-loader] failed to load Places:", error);

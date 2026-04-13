@@ -47,7 +47,15 @@ export function AddressAutocomplete({
     if (!input) return;
 
     loadGoogleMapsPlaces().then((places) => {
-      if (cancelled || !places || autocompleteRef.current) return;
+      if (cancelled) return;
+      if (!places) {
+        console.warn(
+          "[AddressAutocomplete] Places library unavailable — input will work as plain text. " +
+          "Check NEXT_PUBLIC_GOOGLE_MAPS_API_KEY, CSP, and Google Cloud Console (Places API enabled? key restrictions?).",
+        );
+        return;
+      }
+      if (autocompleteRef.current) return;
 
       const ac = new places.Autocomplete(input, {
         fields: ["formatted_address"],
