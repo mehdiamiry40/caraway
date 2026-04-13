@@ -126,7 +126,7 @@ export function ContactForm() {
             maxLength={200}
             placeholder="Jane Smith"
             aria-required="true"
-            aria-invalid={errors.name ? true : undefined}
+            aria-invalid={!!errors.name}
             aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
             {...register("name")}
             id={fieldIds.name}
@@ -152,7 +152,7 @@ export function ContactForm() {
               maxLength={320}
               placeholder="jane@example.com"
               aria-required="true"
-              aria-invalid={errors.email ? true : undefined}
+              aria-invalid={!!errors.email}
               aria-describedby={errors.email ? `${fieldIds.email}-error` : undefined}
               {...register("email")}
               id={fieldIds.email}
@@ -174,7 +174,7 @@ export function ContactForm() {
               enterKeyHint="next"
               maxLength={20}
               placeholder="04xx xxx xxx"
-              aria-invalid={errors.phone ? true : undefined}
+              aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? `${fieldIds.phone}-error` : undefined}
               {...register("phone")}
               id={fieldIds.phone}
@@ -209,7 +209,7 @@ export function ContactForm() {
             placeholder="Tell us how we can help..."
             rows={4}
             aria-required="true"
-            aria-invalid={errors.message ? true : undefined}
+            aria-invalid={!!errors.message}
             aria-describedby={
               errors.message
                 ? `${fieldIds.message}-error ${fieldIds.message}-counter`

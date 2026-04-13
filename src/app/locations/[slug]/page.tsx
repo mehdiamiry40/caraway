@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: suburb.title,
     description: suburb.metaDescription,
-    alternates: { canonical: `/locations/${suburb.slug}` },
+    alternates: { canonical: `${SITE_URL}/locations/${suburb.slug}` },
     openGraph: {
       type: "website",
       title: suburb.title,
       description: suburb.metaDescription,
-      url: `/locations/${suburb.slug}`,
+      url: `${SITE_URL}/locations/${suburb.slug}`,
       images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
     },
     twitter: { card: "summary_large_image" },

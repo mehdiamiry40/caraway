@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 export interface ServiceFAQ {
   question: string;
   answer: string;
@@ -435,6 +437,6 @@ export const services: ServicePage[] = [
   }
 ];
 
-export function getServiceBySlug(slug: string): ServicePage | undefined {
-  return services.find(s => s.slug === slug);
-}
+export const getServiceBySlug = cache(
+  (slug: string): ServicePage | undefined => services.find((s) => s.slug === slug),
+);

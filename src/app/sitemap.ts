@@ -4,6 +4,8 @@ import { suburbs } from "@/data/suburbs";
 import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic: always advertise today as the site-wide last-modified baseline so
   // crawlers re-check on each fetch. Per-page dates (blog posts) still win.

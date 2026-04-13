@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   title: "Cash for Cars Brisbane — All Suburbs Serviced",
   description:
     "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
-  alternates: { canonical: "/locations" },
+  alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     type: "website",
-    url: "/locations",
+    url: `${SITE_URL}/locations`,
     title: "Cash for Cars Brisbane — All Suburbs Serviced | Caraway",
     description:
       "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",

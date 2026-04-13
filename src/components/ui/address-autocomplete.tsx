@@ -60,6 +60,9 @@ export function AddressAutocomplete({
     const trimmed = value.trim();
     if (justPickedRef.current === trimmed) {
       // Suppress the round-trip caused by our own setValue after a pick.
+      // Clear the ref so this only suppresses the immediate refetch — if
+      // the user later types (or re-enters) the same string, we still fetch.
+      justPickedRef.current = null;
       setSuggestions([]);
       setOpen(false);
       return;
@@ -189,6 +192,7 @@ export function AddressAutocomplete({
         }}
         onBlur={onBlur}
         role="combobox"
+        aria-label="Address"
         aria-autocomplete="list"
         aria-expanded={open}
         aria-controls={open ? listboxId : undefined}

@@ -5,6 +5,7 @@ export type BreadcrumbItem = { label: string; href?: string };
 /** BreadcrumbList JSON-LD: last crumb must have a URL (Schema.org expects `item` on every ListItem). */
 export function breadcrumbListSchema(items: BreadcrumbItem[], currentPageUrl: string) {
   return {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList" as const,
     itemListElement: items.map((bc, i) => ({
       "@type": "ListItem" as const,

@@ -79,7 +79,7 @@ export const localBusinessSchema = {
       latitude: NAP.latitude,
       longitude: NAP.longitude,
     },
-    geoRadius: "100000",
+    geoRadius: 100000,
   },
   areaServed: [
     { "@type": "City", name: "Brisbane" },
@@ -112,8 +112,8 @@ export const localBusinessSchema = {
     "@type": "AggregateRating",
     ratingValue,
     reviewCount: reviews.length,
-    bestRating: "5",
-    worstRating: "1",
+    bestRating: 5,
+    worstRating: 1,
   },
   sameAs: SAME_AS,
 };

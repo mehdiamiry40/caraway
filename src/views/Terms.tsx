@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
+import { LEGAL_DATES } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -14,7 +15,7 @@ export default function Terms() {
       title="Terms of Service"
       subtitle={
         <p>
-          Last updated: March 2026. These terms apply to use of this website and our services in Queensland, Australia.
+          Last updated: {LEGAL_DATES.termsLastUpdated}. These terms apply to use of this website and our services in Queensland, Australia.
         </p>
       }
     >

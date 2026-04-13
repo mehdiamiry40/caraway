@@ -30,7 +30,7 @@ export function JsonLd({
           <script
             key={key}
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(normalizeSchema(item)).replace(/</g, "\\u003c") }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(normalizeSchema(item)).replace(/<\/(script)/gi, "<\\/$1").replace(/<!--/g, "<\\!--").replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029") }}
           />
         );
       })}

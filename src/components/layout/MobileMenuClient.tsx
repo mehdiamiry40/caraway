@@ -58,7 +58,11 @@ export function MobileMenuClient({ serviceLinks }: Props) {
     if (!menu) return () => { document.body.style.overflow = prev; };
 
     const handleTab = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { close(); return; }
+      if (e.key === "Escape") {
+        triggerRef.current?.focus();
+        close();
+        return;
+      }
       if (e.key !== "Tab") return;
       const focusable = menu.querySelectorAll<HTMLElement>(
         'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'

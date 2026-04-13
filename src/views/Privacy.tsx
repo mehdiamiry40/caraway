@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { InternalLinks } from "@/components/sections/InternalLinks";
+import { LEGAL_DATES } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -14,7 +15,7 @@ export default function Privacy() {
       title="Privacy Policy"
       subtitle={
         <p>
-          This policy applies to Caraway — a cash-for-cars service operating in Queensland. Last updated: April 2026.
+          This policy applies to Caraway — a cash-for-cars service operating in Queensland. Last updated: {LEGAL_DATES.privacyLastUpdated}.
         </p>
       }
     >
@@ -162,7 +163,7 @@ export default function Privacy() {
               </Link>
               .
             </p>
-            <p className="mt-3"><strong>Last updated:</strong> April 2026.</p>
+            <p className="mt-3"><strong>Last updated:</strong> {LEGAL_DATES.privacyLastUpdated}.</p>
           </section>
         </div>
       </div>

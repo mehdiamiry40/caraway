@@ -159,7 +159,7 @@ export function QuoteForm() {
                         placeholder="Select make"
                         options={MAKE_OPTIONS}
                         aria-required="true"
-                        aria-invalid={errors.make ? true : undefined}
+                        aria-invalid={!!errors.make}
                         aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
                         {...register("make", {
                           onChange: () => setValue("model", ""),
@@ -181,6 +181,7 @@ export function QuoteForm() {
                         placeholder="Select model"
                         options={selectedMake && selectedMake !== "Other" ? getModelOptions(selectedMake) : [{ value: "Other", label: "Other" }]}
                         disabled={!selectedMake}
+                        aria-invalid={!!errors.model}
                         aria-describedby={errors.model ? `${fieldIds.model}-error` : undefined}
                         {...register("model")}
                         id={fieldIds.model}
@@ -204,7 +205,7 @@ export function QuoteForm() {
                         placeholder="Select year"
                         options={YEAR_OPTIONS}
                         aria-required="true"
-                        aria-invalid={errors.year ? true : undefined}
+                        aria-invalid={!!errors.year}
                         aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
                         {...register("year")}
                         id={fieldIds.year}
@@ -231,7 +232,7 @@ export function QuoteForm() {
                           { value: "scrap", label: "Scrap / junk" },
                         ]}
                         aria-required="true"
-                        aria-invalid={errors.condition ? true : undefined}
+                        aria-invalid={!!errors.condition}
                         aria-describedby={errors.condition ? `${fieldIds.condition}-error` : undefined}
                         {...register("condition")}
                         id={fieldIds.condition}
@@ -257,7 +258,7 @@ export function QuoteForm() {
                         maxLength={200}
                         placeholder="Jane Smith"
                         aria-required="true"
-                        aria-invalid={errors.name ? true : undefined}
+                        aria-invalid={!!errors.name}
                         aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
                         {...register("name")}
                         id={fieldIds.name}
@@ -281,7 +282,7 @@ export function QuoteForm() {
                         maxLength={20}
                         placeholder="04xx xxx xxx"
                         aria-required="true"
-                        aria-invalid={errors.phone ? true : undefined}
+                        aria-invalid={!!errors.phone}
                         aria-describedby={
                           errors.phone ? `${fieldIds.phone}-error` : "quote-phone-help"
                         }
