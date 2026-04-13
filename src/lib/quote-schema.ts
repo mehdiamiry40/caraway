@@ -24,6 +24,7 @@ export const CONDITION_LABELS: Record<QuoteCondition, string> = {
 
 const stripPhone = (v: string) => v.replace(/[\s\-()]/g, "");
 const trimText = (v: string) => v.trim();
+const sanitizeLine = (v: string) => v.replace(/[\r\n]+/g, " ");
 
 /** Honeypot field — present on every public form but hidden from real users. */
 const honeypotField = z
@@ -50,15 +51,20 @@ const optionalPhone = z
   );
 
 export const quoteFormSchema = z.object({
-  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")),
-  phone: requiredPhone,
-  make: z.string().transform(trimText).pipe(z.string().min(2, "Car make is required").max(200, "Car make is too long")),
-  model: z.string().transform(trimText).pipe(z.string().min(1, "Car model is required").max(200, "Car model is too long")),
+  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")).transform(sanitizeLine),
+  phone: requiredPhone.transform(sanitizeLine),
+  make: z.string().transform(trimText).pipe(z.string().min(2, "Car make is required").max(200, "Car make is too long")).transform(sanitizeLine),
+  model: z.string().transform(trimText).pipe(z.string().min(1, "Car model is required").max(200, "Car model is too long")).transform(sanitizeLine),
   year: z.coerce.number().min(1950, "Invalid year").max(new Date().getFullYear() + 1, "Invalid year"),
   condition: z.enum(quoteConditionValues, {
     errorMap: () => ({ message: "Please select a condition" }),
   }),
-  address: z.string().transform(trimText).pipe(z.string().max(500, "Address is too long")).optional().default(""),
+  address: z
+    .string()
+    .transform(trimText)
+    .pipe(z.string().min(5, "Please enter a full pickup address").max(500, "Address is too long"))
+    .transform(sanitizeLine),
+  quoteAmount: z.number().int().positive().max(1000000).optional(),
   honeypot: honeypotField,
   marketingConsent: z.boolean().optional().default(false),
 });
@@ -66,12 +72,13 @@ export const quoteFormSchema = z.object({
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 
 export const contactFormSchema = z.object({
-  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")),
+  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")).transform(sanitizeLine),
   email: z
     .string()
     .transform(trimText)
-    .pipe(z.string().email("Enter a valid email address").max(320, "Email is too long")),
-  phone: optionalPhone,
+    .pipe(z.string().email("Enter a valid email address").max(320, "Email is too long"))
+    .transform(sanitizeLine),
+  phone: optionalPhone.transform(sanitizeLine),
   message: z
     .string()
     .transform(trimText)

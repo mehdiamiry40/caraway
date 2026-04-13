@@ -78,7 +78,7 @@ export default function ServicePageTemplate({
               )}
             </div>
 
-            <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
+            <aside className="space-y-6 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
               <div className="bg-muted border border-border/60 rounded-lg p-4 sm:p-6">
                 <h3 className="font-display font-bold text-lg mb-1">Why Caraway?</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s trusted cash-for-cars service</p>

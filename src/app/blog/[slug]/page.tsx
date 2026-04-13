@@ -97,6 +97,7 @@ export default async function BlogPostPage({ params }: Props) {
               "@type": "Person",
               name: "Sam Williams",
               url: `${SITE_URL}/author/sam-williams`,
+              sameAs: `${SITE_URL}/author/sam-williams`,
               jobTitle: "Senior Buyer",
               worksFor: {
                 "@type": "Organization",

@@ -5,6 +5,8 @@ import { reviews } from "@/data/reviews";
 import { SITE_URL } from "@/lib/site";
 import Home from "@/views/Home";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: {
     absolute: "Cash for Cars Brisbane | Caraway — Same-Day Cash",

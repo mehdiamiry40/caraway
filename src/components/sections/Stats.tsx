@@ -90,7 +90,7 @@ export function Stats() {
         </div>
         <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
-          <p className="mt-1 text-[11px] sm:text-xs text-muted-foreground">
+          <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
             Ratings and seller counts based on direct customer feedback.
           </p>
         </div>

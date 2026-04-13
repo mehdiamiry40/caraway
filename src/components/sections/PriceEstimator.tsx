@@ -301,7 +301,15 @@ export function PriceEstimator() {
     setNameError(nameErr);
     setPhoneError(phoneErr);
     setAddressError(addressErr);
-    if (nameErr || phoneErr || addressErr) return;
+    if (nameErr || phoneErr || addressErr) {
+      const firstErrorId = nameErr
+        ? "est-name"
+        : phoneErr
+          ? "est-phone"
+          : "est-address";
+      document.getElementById(firstErrorId)?.focus();
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitError("");
@@ -310,10 +318,11 @@ export function PriceEstimator() {
       name: name.trim(),
       phone: phone.trim(),
       make: make.trim(),
-      model: `${model.trim()} — Quote: $${result.quote.toLocaleString()}`,
+      model: model.trim(),
       year: yearNumber,
       condition,
       address: address.trim(),
+      quoteAmount: result.quote,
       honeypot: "",
       marketingConsent: false,
     });
@@ -441,7 +450,7 @@ export function PriceEstimator() {
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex items-center gap-1.5 sm:gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs sm:text-sm font-bold transition-colors duration-200",
+                  "flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base font-bold transition-colors duration-200",
                   step >= s
                     ? "bg-primary text-white"
                     : "bg-white border border-border text-muted-foreground"

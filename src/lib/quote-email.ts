@@ -27,9 +27,16 @@ interface QuoteEmailContent {
  * Extracted so we can unit-test the formatting without mocking Resend.
  */
 export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent {
-  const subject = `New quote request — ${data.make} ${data.model} (${data.year})`;
+  const safeHeader = (s: string) => s.replace(/[\r\n]+/g, " ");
+  const subject = safeHeader(
+    `New quote request — ${data.make} ${data.model} (${data.year})`,
+  );
 
   const conditionLabel = CONDITION_LABELS[data.condition] ?? data.condition;
+  const quoteAmountLabel =
+    typeof data.quoteAmount === "number"
+      ? `$${data.quoteAmount.toLocaleString()}`
+      : null;
 
   const rows: Array<[string, string]> = [
     ["Name", data.name],
@@ -38,6 +45,9 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ["Model", data.model],
     ["Year", String(data.year)],
     ["Condition", conditionLabel],
+    ...(quoteAmountLabel
+      ? ([["Estimated quote", quoteAmountLabel]] as Array<[string, string]>)
+      : []),
     ["Address", data.address || "—"],
     ["Marketing consent", data.marketingConsent ? "opted in" : "no"],
   ];

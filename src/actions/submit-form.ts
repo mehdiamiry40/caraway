@@ -18,6 +18,14 @@ interface SubmitFormOptions {
 export async function submitForm({ schema, data, endpointEnvVar, label }: SubmitFormOptions) {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
+    const honeypotHit = parsed.error.issues.some((i) =>
+      i.path.includes("honeypot"),
+    );
+    if (honeypotHit) {
+      console.warn(`[honeypot] ${label} spam detected`, {
+        ts: new Date().toISOString(),
+      });
+    }
     return { success: false as const, message: "Invalid form data" };
   }
 
