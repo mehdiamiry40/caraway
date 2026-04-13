@@ -253,8 +253,7 @@ export function PriceEstimator() {
       setStep(3);
       trackEvent("estimator_step_completed", { step: 3 });
       trackEvent("estimator_quote_shown", {
-        estimateLow: est.low,
-        estimateHigh: est.high,
+        estimateQuote: est.quote,
         make: make.trim(),
         model: model.trim(),
         year: yearNumber,
@@ -311,7 +310,7 @@ export function PriceEstimator() {
       name: name.trim(),
       phone: phone.trim(),
       make: make.trim(),
-      model: `${model.trim()} — Estimate: $${result.low.toLocaleString()}-$${result.high.toLocaleString()}`,
+      model: `${model.trim()} — Quote: $${result.quote.toLocaleString()}`,
       year: yearNumber,
       condition,
       address: address.trim(),
@@ -323,8 +322,7 @@ export function PriceEstimator() {
     if (res.success) {
       setIsSuccess(true);
       trackEvent("estimator_submitted", {
-        estimateLow: result.low,
-        estimateHigh: result.high,
+        estimateQuote: result.quote,
         make: make.trim(),
         model: model.trim(),
         year: yearNumber,
@@ -393,7 +391,7 @@ export function PriceEstimator() {
             </p>
             <div className="inline-flex items-center gap-2 bg-accent/10 text-accent font-bold text-lg sm:text-xl rounded-full px-6 py-2 mb-4">
               <DollarSign className="w-5 h-5" aria-hidden="true" />
-              ${result?.low.toLocaleString()} – ${result?.high.toLocaleString()}
+              ${result?.quote.toLocaleString()}
             </div>
             <p className="text-muted-foreground text-sm mb-6">
               We&apos;ll contact you shortly to confirm a final price. No obligation — if the offer doesn&apos;t work for you, no worries.
@@ -668,14 +666,10 @@ export function PriceEstimator() {
                     <div
                       ref={headingRefCallbacks[2]}
                       tabIndex={-1}
-                      className="flex items-baseline justify-center gap-2 sm:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                      className="flex items-baseline justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
-                      <span className="text-4xl sm:text-6xl font-display font-bold text-primary">
-                        ${result.low.toLocaleString()}
-                      </span>
-                      <span className="text-2xl sm:text-3xl text-muted-foreground/50 font-medium">–</span>
-                      <span className="text-4xl sm:text-6xl font-display font-bold text-accent">
-                        ${result.high.toLocaleString()}
+                      <span className="text-5xl sm:text-7xl font-display font-bold text-accent">
+                        ${result.quote.toLocaleString()}
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">
@@ -726,7 +720,7 @@ export function PriceEstimator() {
                     <div>
                       <p className="text-xs text-muted-foreground">Your quote</p>
                       <p className="font-display font-bold text-foreground">
-                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="text-accent">${result.low.toLocaleString()}–${result.high.toLocaleString()}</span>
+                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="text-accent">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
                     <button
