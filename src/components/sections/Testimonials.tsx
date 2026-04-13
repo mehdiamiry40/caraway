@@ -23,7 +23,7 @@ export function Testimonials() {
   const extraReviews = allReviews.slice(INITIAL_COUNT);
 
   return (
-    <section className="section-y bg-white" aria-label="What sellers say">
+    <section id="reviews" className="section-y bg-white" aria-label="What sellers say">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-18">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-primary text-balance">

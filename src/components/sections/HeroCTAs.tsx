@@ -17,7 +17,7 @@ export function HeroCTAs() {
           "h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-semibold group transition-all duration-300"
         )}
       >
-        Get my instant quote
+        Get my quote
         <ArrowRight
           className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200"
           aria-hidden

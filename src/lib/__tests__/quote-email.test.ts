@@ -58,3 +58,37 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toMatch(/Marketing consent\s+no/);
   });
 });
+
+describe("buildQuoteEmailContent — quoteAmount handling", () => {
+  it("includes an Estimated quote row when quoteAmount is set", () => {
+    const { text, html } = buildQuoteEmailContent({
+      ...baseValid,
+      quoteAmount: 1500,
+    });
+    expect(text).toContain("Estimated quote");
+    expect(text).toContain("$1,500");
+    expect(html).toContain("Estimated quote");
+    expect(html).toContain("$1,500");
+  });
+
+  it("omits the Estimated quote row when quoteAmount is undefined", () => {
+    const { text, html } = buildQuoteEmailContent(baseValid);
+    expect(text).not.toContain("Estimated quote");
+    expect(html).not.toContain("Estimated quote");
+  });
+});
+
+describe("buildQuoteEmailContent — header injection protection", () => {
+  it("strips CRLF from the subject line so injected headers can't break out", () => {
+    const { subject } = buildQuoteEmailContent({
+      ...baseValid,
+      make: "Toyota\r\nBcc: attacker@x",
+    });
+    // The crucial guarantee: a single-line subject with no CR/LF, so any
+    // would-be injected header lands harmlessly inline rather than starting
+    // a new SMTP header.
+    expect(subject).not.toMatch(/[\r\n]/);
+    expect(subject).toContain("Toyota");
+    expect(subject).toContain("Bcc: attacker@x"); // sanitized to a single line
+  });
+});

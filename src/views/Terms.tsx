@@ -36,6 +36,20 @@ export default function Terms() {
           </section>
 
           <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Quoted prices</h2>
+            <p>
+              Prices quoted through our online estimator or over the phone are indicative, based on the information you provide. The final offer is confirmed at pickup after a visual inspection. Market conditions, vehicle condition, and undisclosed damage may affect the final offer. Our published range is $300–$9,999; vehicles may fall anywhere in this range.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Same-day pickup</h2>
+            <p>
+              We aim to offer same-day pickup where scheduling, location, and driver availability permit. Your confirmed pickup window is agreed during the quote call and may fall outside the same day in some cases.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-xl font-display font-bold text-primary mb-3">Your responsibilities</h2>
             <p>You must provide accurate information about the vehicle and ownership. You must have the right to sell the vehicle and cooperate with transfer paperwork as required by Queensland law.</p>
             <p className="mt-3">You must be at least 18 years old and the legal owner of the vehicle (or authorised by the owner) to request a quote or sell a vehicle through our service.</p>

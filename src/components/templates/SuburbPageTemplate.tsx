@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import dynamic from "next/dynamic";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { InternalLinks } from "@/components/sections/InternalLinks";
+import { LocationViewTracker } from "@/components/LocationViewTracker";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
@@ -32,6 +33,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <LocationViewTracker suburb={suburb.slug} />
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">

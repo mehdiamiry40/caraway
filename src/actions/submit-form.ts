@@ -39,6 +39,9 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
 
   try {
     if (isMockMode) {
+      console.warn(
+        `[submit-form] ${label}: running in MOCK mode (no ${endpointEnvVar} configured — dev only). Form will fake success without delivering.`,
+      );
       await new Promise((resolve) => setTimeout(resolve, FORM_MOCK_DELAY_MS));
     } else {
       if (!endpoint) {

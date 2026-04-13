@@ -57,6 +57,7 @@ export function QuoteForm() {
 
     if (result.success) {
       trackEvent("quote_form_submitted");
+      trackEvent("lead_submitted", { source: "quote_form" });
       setIsSuccess(true);
       reset();
     } else {
@@ -322,7 +323,7 @@ export function QuoteForm() {
                       {...register("marketingConsent")}
                     />
                     <label htmlFor="quote-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                      I'd like to receive occasional updates, offers, and tips from Caraway. You can unsubscribe anytime.
+                      I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
                     </label>
                   </div>
 

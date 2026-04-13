@@ -30,15 +30,16 @@ const CONDITIONS: Array<{ value: QuoteCondition; label: string }> =
 
 type Step = 1 | 2 | 3 | 4;
 
+// Persisted state intentionally excludes PII (name, phone, address) so that
+// only Steps 1–3 survive a refresh; Step 4 contact details are never written
+// to sessionStorage. Disclosed in the privacy policy is unnecessary because
+// no personal information leaves the in-memory component state before submit.
 type PersistedState = {
   step?: Step;
   make?: string;
   model?: string;
   year?: string;
   condition?: QuoteCondition | "";
-  name?: string;
-  phone?: string;
-  address?: string;
 };
 
 function RequiredMark() {
@@ -141,21 +142,25 @@ export function PriceEstimator() {
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
       if (parsed.condition) setCondition(parsed.condition);
-      if (parsed.name) setName(parsed.name);
-      if (parsed.phone) setPhone(parsed.phone);
-      if (parsed.address) setAddress(parsed.address);
       // Only restore the step if everything that step depends on is present.
+      // Cap at step 2 so users re-enter Step 4 contact details after refresh
+      // (PII is never persisted).
       if (parsed.step && parsed.step >= 2 && parsed.make) {
         setStep(2);
       }
     } catch (error) {
-      // Corrupt/stale storage. Clear it so we don't get stuck on retry.
       try {
         window.sessionStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // storage may be fully blocked — nothing we can do.
+      } catch (innerError) {
+        console.warn(
+          "[PriceEstimator] hydrate cleanup failed:",
+          innerError instanceof Error ? innerError.message : String(innerError),
+        );
       }
-      console.error("[PriceEstimator] hydrate failed:", error);
+      console.warn(
+        "[PriceEstimator] hydrate failed:",
+        error instanceof Error ? error.message : String(error),
+      );
     }
   }, []);
 
@@ -173,19 +178,19 @@ export function PriceEstimator() {
           model,
           year,
           condition,
-          name,
-          phone,
-          address,
         };
         window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      } catch {
-        // ignore quota / disabled storage
+      } catch (err) {
+        console.warn(
+          "[PriceEstimator] persist failed:",
+          err instanceof Error ? err.message : String(err),
+        );
       }
     }, 400);
     return () => {
       if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
     };
-  }, [step, make, model, year, condition, name, phone, address]);
+  }, [step, make, model, year, condition]);
 
   // Clear stored state on success.
   useEffect(() => {
@@ -336,6 +341,10 @@ export function PriceEstimator() {
         model: model.trim(),
         year: yearNumber,
         condition,
+      });
+      trackEvent("lead_submitted", {
+        source: "estimator",
+        estimate_quote: result.quote,
       });
     } else {
       const reason = res.message ?? "unknown";

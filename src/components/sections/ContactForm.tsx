@@ -62,6 +62,7 @@ export function ContactForm() {
 
     if (result.success) {
       trackEvent("contact_form_submitted");
+      trackEvent("lead_submitted", { source: "contact" });
       setIsSuccess(true);
       reset();
     } else {
@@ -255,7 +256,7 @@ export function ContactForm() {
             {...register("marketingConsent")}
           />
           <label htmlFor="contact-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-            I'd like to receive occasional updates, offers, and tips from Caraway. You can unsubscribe anytime.
+            I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
           </label>
         </div>
 
