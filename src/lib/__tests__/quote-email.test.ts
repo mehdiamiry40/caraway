@@ -1,0 +1,66 @@
+import { describe, expect, it } from "vitest";
+import { buildQuoteEmailContent } from "@/lib/quote-email";
+import type { QuoteFormValues } from "@/lib/quote-schema";
+
+const baseValid: QuoteFormValues = {
+  name: "Jane Doe",
+  phone: "0412345678",
+  make: "Toyota",
+  model: "Hilux",
+  year: 2015,
+  condition: "running",
+  address: "",
+  honeypot: "",
+  marketingConsent: false,
+};
+
+describe("buildQuoteEmailContent", () => {
+  it("puts make / model / year in the subject line", () => {
+    const { subject } = buildQuoteEmailContent(baseValid);
+    expect(subject).toBe("New quote request — Toyota Hilux (2015)");
+  });
+
+  it("omits the model segment when model is empty", () => {
+    const { subject } = buildQuoteEmailContent({ ...baseValid, model: "" });
+    expect(subject).toBe("New quote request — Toyota (2015)");
+  });
+
+  it("includes every captured field in the plain-text body", () => {
+    const { text } = buildQuoteEmailContent({
+      ...baseValid,
+      address: "12 Example St, Brisbane",
+      marketingConsent: true,
+    });
+    expect(text).toContain("Jane Doe");
+    expect(text).toContain("0412345678");
+    expect(text).toContain("Toyota");
+    expect(text).toContain("Hilux");
+    expect(text).toContain("2015");
+    expect(text).toContain("Running");
+    expect(text).toContain("12 Example St, Brisbane");
+    expect(text).toContain("opted in");
+  });
+
+  it("renders an em dash for empty model and address", () => {
+    const { text, html } = buildQuoteEmailContent({ ...baseValid, model: "", address: "" });
+    expect(text).toMatch(/Model\s+—/);
+    expect(text).toMatch(/Address\s+—/);
+    expect(html).toContain("—");
+  });
+
+  it("escapes HTML special characters in user-supplied values", () => {
+    const { html } = buildQuoteEmailContent({
+      ...baseValid,
+      name: "<script>alert(1)</script>",
+      make: "Toy&ota",
+    });
+    expect(html).not.toContain("<script>alert(1)</script>");
+    expect(html).toContain("&lt;script&gt;alert(1)&lt;/script&gt;");
+    expect(html).toContain("Toy&amp;ota");
+  });
+
+  it("reports 'no' when marketing consent is not given", () => {
+    const { text } = buildQuoteEmailContent(baseValid);
+    expect(text).toMatch(/Marketing consent\s+no/);
+  });
+});
