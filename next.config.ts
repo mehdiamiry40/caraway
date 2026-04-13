@@ -31,11 +31,11 @@ const nextConfig: NextConfig = {
           // were to occur.
           value: [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://maps.googleapis.com",
+            "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
-            "img-src 'self' data: blob: https://maps.gstatic.com https://maps.googleapis.com",
-            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com https://maps.googleapis.com",
+            "img-src 'self' data: blob:",
+            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
             "object-src 'none'",
             "frame-ancestors 'none'",
             "base-uri 'self'",
