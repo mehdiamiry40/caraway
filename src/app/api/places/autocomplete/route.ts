@@ -12,9 +12,11 @@ import { NextResponse } from "next/server";
  * Contract:
  *   GET /api/places/autocomplete?q=<query>
  *   → 200 { suggestions: [{ placeId, mainText, secondaryText, fullText }] }
- *   → 400 { error: "missing query" } when q is empty/too short
- *   → 503 { error: "places unavailable" } when the upstream call fails
- *     or the API key is missing (caller should fall back to plain input)
+ *   → 400 { error: "query too long" } when q exceeds the max length
+ *   → 503 { error: "places unavailable" } when the upstream call fails,
+ *     times out, or the API key is missing. The response body is
+ *     intentionally generic; debug details are only written to server
+ *     logs (caller should fall back to plain input).
  */
 
 export const dynamic = "force-dynamic";
@@ -65,7 +67,7 @@ export async function GET(request: Request) {
   if (!apiKey) {
     console.warn("[places/autocomplete] GOOGLE_PLACES_API_KEY is not set");
     return NextResponse.json(
-      { error: "places unavailable", reason: "missing_key" },
+      { error: "places unavailable" },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
@@ -84,6 +86,9 @@ export async function GET(request: Request) {
       }),
       // Avoid Next.js caching personal queries.
       cache: "no-store",
+      // Bail out if the upstream is slow/unreachable so the route
+      // can't hang the caller indefinitely.
+      signal: AbortSignal.timeout(5000),
     });
 
     if (!upstream.ok) {
@@ -99,12 +104,7 @@ export async function GET(request: Request) {
         `[places/autocomplete] upstream ${upstream.status} ${upstream.statusText}: ${upstreamBody.slice(0, 500)}`,
       );
       return NextResponse.json(
-        {
-          error: "places unavailable",
-          reason: "upstream_rejected",
-          upstreamStatus: upstream.status,
-          upstreamMessage: upstreamBody.slice(0, 500),
-        },
+        { error: "places unavailable" },
         { status: 503, headers: { "Cache-Control": "no-store" } },
       );
     }
@@ -127,10 +127,9 @@ export async function GET(request: Request) {
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
     console.error("[places/autocomplete] fetch failed:", error);
     return NextResponse.json(
-      { error: "places unavailable", reason: "fetch_failed", detail: message.slice(0, 300) },
+      { error: "places unavailable" },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }

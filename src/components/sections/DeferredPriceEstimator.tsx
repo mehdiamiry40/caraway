@@ -24,7 +24,6 @@ export function DeferredPriceEstimator() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (visible) return;
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
@@ -42,7 +41,8 @@ export function DeferredPriceEstimator() {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [visible]);
+    // mount-only observer
+  }, []);
 
   return (
     <div ref={ref}>

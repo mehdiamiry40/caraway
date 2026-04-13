@@ -13,11 +13,23 @@ interface AccordionProps {
   items: AccordionItem[];
   className?: string;
   onItemToggle?: (question: string, isOpening: boolean) => void;
+  /**
+   * Semantic heading level used for each accordion trigger. Defaults to 3.
+   * Use 2 on pages where the nearest heading above the accordion is an h1
+   * to avoid skipping heading levels.
+   */
+  headingLevel?: 2 | 3 | 4;
 }
 
-export function Accordion({ items, className, onItemToggle }: AccordionProps) {
+export function Accordion({
+  items,
+  className,
+  onItemToggle,
+  headingLevel = 3,
+}: AccordionProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const instanceId = useId();
+  const HeadingTag = `h${headingLevel}` as "h2" | "h3" | "h4";
 
   return (
     <div className={cn("w-full space-y-3", className)}>
@@ -27,13 +39,13 @@ export function Accordion({ items, className, onItemToggle }: AccordionProps) {
         const panelId = `accordion-panel-${instanceId}-${index}`;
         return (
           <div
-            key={item.question}
+            key={`${index}-${item.question}`}
             className={cn(
               "border bg-card rounded-lg overflow-hidden transition-colors",
               isActive ? "border-border" : "border-border/60 hover:border-border"
             )}
           >
-            <h3 className="m-0">
+            <HeadingTag className="m-0">
               <button
                 type="button"
                 id={triggerId}
@@ -58,7 +70,7 @@ export function Accordion({ items, className, onItemToggle }: AccordionProps) {
                   <ChevronDown className="h-5 w-5" aria-hidden="true" />
                 </div>
               </button>
-            </h3>
+            </HeadingTag>
             {/* Grid-rows [0fr]->[1fr] animation: Safari 16+ supports this;
                 older Safari will snap without animating (acceptable fallback). */}
             <div

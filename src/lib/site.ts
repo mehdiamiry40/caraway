@@ -25,6 +25,11 @@ export const MIN_PRICE = 300;
 export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "$300–$9,999";
 
+export const LEGAL_DATES = {
+  privacyLastUpdated: "April 2026",
+  termsLastUpdated: "March 2026",
+} as const;
+
 export const PROMISE_POINTS = [
   "$300–$9,999 cash",
   "Same-day pickup",

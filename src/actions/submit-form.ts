@@ -56,7 +56,7 @@ export async function submitForm({ schema, data, endpointEnvVar, label }: Submit
 
     return { success: true as const };
   } catch (error) {
-    console.error(`[submit-form] ${label} failed:`, error);
+    console.error(`[submit-form] ${label} failed:`, error instanceof Error ? error.message : String(error));
     return {
       success: false as const,
       message: `We couldn't send your request. Please try again or use the form below.`,

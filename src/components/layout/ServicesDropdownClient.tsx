@@ -110,6 +110,33 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
             if (e.key === "Escape") {
               setIsOpen(false);
               triggerRef.current?.focus();
+              return;
+            }
+            if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+              e.preventDefault();
+              const items = Array.from(
+                menuRef.current?.querySelectorAll<HTMLElement>("a[href]") ?? []
+              );
+              if (items.length === 0) return;
+              const currentIndex = items.findIndex(
+                (el) => el === document.activeElement
+              );
+              const delta = e.key === "ArrowDown" ? 1 : -1;
+              const nextIndex =
+                currentIndex === -1
+                  ? e.key === "ArrowDown"
+                    ? 0
+                    : items.length - 1
+                  : (currentIndex + delta + items.length) % items.length;
+              items[nextIndex]?.focus();
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              const items = menuRef.current?.querySelectorAll<HTMLElement>("a[href]");
+              items?.[0]?.focus();
+            } else if (e.key === "End") {
+              e.preventDefault();
+              const items = menuRef.current?.querySelectorAll<HTMLElement>("a[href]");
+              if (items && items.length > 0) items[items.length - 1]?.focus();
             }
           }}
         >

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 /**
  * Root-level error boundary rendered when even the root layout fails.
  * Intentionally uses inline styles: globals.css / font variables from the
@@ -7,11 +9,18 @@
  * utility classes may not resolve. Keep this file dependency-free.
  */
 export default function GlobalError({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      console.error("Global error:", error);
+    }
+  }, [error]);
+
   return (
     <html lang="en-AU">
       <body>
