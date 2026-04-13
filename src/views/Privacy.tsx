@@ -93,7 +93,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-xl font-display font-bold text-primary mb-3">Overseas disclosure</h2>
             <p>
-              <strong>Yes, some personal information is disclosed overseas.</strong> Our website is hosted on Vercel, which operates infrastructure in the United States, and our analytics provider processes data outside Australia. Where we disclose information overseas we take reasonable steps to ensure the recipient handles it consistently with the APPs, including through contractual protections and recipients&apos; own privacy frameworks.
+              <strong>Yes, some personal information is disclosed overseas.</strong> Our website is hosted on <strong>Vercel</strong> in the <strong>United States</strong>, transactional emails to our team are sent through <strong>Resend</strong> in the <strong>United States</strong>, and address autocomplete in our quote form is provided by the <strong>Google Places API</strong> in the <strong>United States</strong>. Our analytics provider may also process data outside Australia. Where we disclose information overseas we take reasonable steps to ensure the recipient handles it consistently with the APPs, including through contractual protections and recipients&apos; own privacy frameworks.
             </p>
           </section>
 
@@ -102,6 +102,30 @@ export default function Privacy() {
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li><strong>Vercel</strong> — website hosting and Vercel Analytics (United States).</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
+              <li>
+                <strong>Resend</strong> (United States) — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
+                <a
+                  href="https://resend.com/legal/privacy-policy"
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  resend.com/legal/privacy-policy
+                </a>
+                .
+              </li>
+              <li>
+                <strong>Google Places API</strong> (United States) — address autocomplete in the quote form. When you type an address, the partial query (not your personal details) is sent to Google via our server. Privacy policy:{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  policies.google.com/privacy
+                </a>
+                .
+              </li>
               <li><strong>SMS and email providers</strong> — to deliver quotes, booking confirmations and follow-ups.</li>
               <li><strong>Google Fonts</strong> — our fonts are self-hosted via <code>next/font</code>, so no request is made to Google when you visit the site.</li>
             </ul>

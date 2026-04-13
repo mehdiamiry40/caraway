@@ -27,7 +27,16 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.error("ErrorBoundary caught:", error, info.componentStack);
+    console.error(
+      "[error-boundary]",
+      JSON.stringify({
+        digest: (error as Error & { digest?: string }).digest,
+        message: error.message,
+        name: error.name,
+        route: typeof window !== "undefined" ? window.location.pathname : undefined,
+        componentStack: info.componentStack,
+      }),
+    );
   }
 
   private handleReset = () => {

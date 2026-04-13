@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -11,9 +12,17 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  if (process.env.NODE_ENV === "development") {
-    console.error(error);
-  }
+  useEffect(() => {
+    console.error(
+      "[error-boundary]",
+      JSON.stringify({
+        digest: error.digest,
+        message: error.message,
+        name: error.name,
+        route: typeof window !== "undefined" ? window.location.pathname : undefined,
+      }),
+    );
+  }, [error]);
   return (
     <div className="flex flex-col min-h-screen">
       <Header />

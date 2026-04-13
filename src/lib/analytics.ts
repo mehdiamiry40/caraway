@@ -10,7 +10,10 @@ type EventName =
   | "estimator_abandoned"
   | "quote_form_submitted"
   | "contact_form_submitted"
+  | "lead_submitted"
   | "phone_click"
+  | "email_click"
+  | "location_viewed"
   | "faq_opened"
   | "internal_link_click"
   | "hero_cta_click";
@@ -20,7 +23,13 @@ type AllowedValue = string | number | boolean | null;
 export function trackEvent(name: EventName, props?: Record<string, AllowedValue>) {
   try {
     track(name, props);
-  } catch {
-    // swallow in SSR / when analytics blocked
+  } catch (err) {
+    if (typeof window !== "undefined") {
+      console.warn(
+        "[analytics] trackEvent failed",
+        name,
+        err instanceof Error ? err.message : String(err),
+      );
+    }
   }
 }

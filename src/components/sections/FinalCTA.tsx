@@ -32,7 +32,7 @@ export function FinalCTA() {
             "bg-accent hover:bg-accent/90 text-white h-14 px-10 text-base font-bold group",
           )}
         >
-          Get my instant quote
+          Get my quote
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
         </Link>
       </div>

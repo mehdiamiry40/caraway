@@ -16,9 +16,15 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Global error:", error);
-    }
+    console.error(
+      "[error-boundary]",
+      JSON.stringify({
+        digest: error.digest,
+        message: error.message,
+        name: error.name,
+        route: typeof window !== "undefined" ? window.location.pathname : undefined,
+      }),
+    );
   }, [error]);
 
   return (

@@ -69,7 +69,11 @@ export default function HomePage() {
     },
     ...reviews.map((r) => ({
       "@type": "Review" as const,
-      author: { "@type": "Person" as const, name: r.name },
+      author: {
+        "@type": "Person" as const,
+        name: r.name,
+        url: `${SITE_URL}/#reviews`,
+      },
       reviewRating: {
         "@type": "Rating" as const,
         ratingValue: r.rating,
@@ -89,17 +93,12 @@ export default function HomePage() {
   return (
     <>
       {/*
-       * Preload the LCP hero image. In Next.js App Router, <link> elements
-       * returned from server components are automatically hoisted into <head>.
-       * This hints the browser to start fetching the image before React
-       * hydrates and the <Image priority> tag fires.
+       * LCP hero is preloaded automatically by <Image priority> in Hero.tsx.
+       * Manual preload removed because it fetched the raw source file rather
+       * than the optimizer-served /_next/image URL, creating a duplicate
+       * download. Hero.tsx uses priority + fetchPriority="high" which emits
+       * the correct preload matching the rendered asset.
        */}
-      <link
-        rel="preload"
-        as="image"
-        href="/images/tow-truck-hero.webp"
-        type="image/webp"
-      />
       <JsonLd data={homeStructuredData} />
       <Home />
     </>

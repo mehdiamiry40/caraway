@@ -157,6 +157,151 @@ describe("quoteFormSchema — model is required", () => {
   });
 });
 
+describe("quoteFormSchema — address bounds", () => {
+  it("rejects an address shorter than 5 chars", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcd" });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a 5-character address", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcde" });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts an address of exactly 500 chars", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      address: "x".repeat(500),
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects an address longer than 500 chars", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      address: "x".repeat(501),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a missing address", () => {
+    const { address: _address, ...withoutAddress } = baseValid;
+    void _address;
+    const result = quoteFormSchema.safeParse(withoutAddress);
+    expect(result.success).toBe(false);
+  });
+});
+
+describe("quoteFormSchema — quoteAmount bounds", () => {
+  it("succeeds when quoteAmount is omitted", () => {
+    const result = quoteFormSchema.safeParse(baseValid);
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects quoteAmount of 0", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 0 });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects negative quoteAmount", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: -1 });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts quoteAmount of 1", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 1 });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts quoteAmount of 999999", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      quoteAmount: 999999,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects quoteAmount above 1,000,000", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      quoteAmount: 1000001,
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+describe("quoteFormSchema — CRLF sanitization", () => {
+  it("strips CRLF from name", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      name: "Jane\r\nDoe",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.name).toBe("Jane Doe");
+      expect(result.data.name).not.toMatch(/[\r\n]/);
+    }
+  });
+
+  it("strips CRLF from phone (after stripping spaces)", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      phone: "0412\r\n345678",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.phone).not.toMatch(/[\r\n]/);
+    }
+  });
+
+  it("strips CRLF from make", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      make: "Toy\r\nota",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.make).toBe("Toy ota");
+      expect(result.data.make).not.toMatch(/[\r\n]/);
+    }
+  });
+
+  it("strips CRLF from model", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      model: "Hi\r\nlux",
+    });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.model).toBe("Hi lux");
+      expect(result.data.model).not.toMatch(/[\r\n]/);
+    }
+  });
+});
+
+describe("quoteFormSchema — honeypot transforms", () => {
+  it("accepts an empty honeypot string", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, honeypot: "" });
+    expect(result.success).toBe(true);
+  });
+
+  it("accepts a whitespace-only honeypot (trimmed away)", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      honeypot: "   ",
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects any non-empty honeypot content", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      honeypot: "hi",
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
 describe("quoteFormSchema — condition enum", () => {
   it("accepts every value from quoteConditionValues", () => {
     const values = ["running", "needs_work", "not_running", "damaged", "scrap"] as const;
