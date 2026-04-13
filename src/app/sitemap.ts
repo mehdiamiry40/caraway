@@ -12,7 +12,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const SITE_LAST_MODIFIED = new Date().toISOString().split("T")[0];
 
   const latestBlogDate = indexableBlogPosts.reduce(
-    (latest, post) => (post.date > latest ? post.date : latest),
+    (latest, post) => {
+      const stamp = post.updatedAt || post.date;
+      return stamp > latest ? stamp : latest;
+    },
     "2025-01-01"
   );
 
@@ -46,9 +49,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,
-    lastModified: p.date,
-    changeFrequency: "yearly",
-    priority: 0.6,
+    lastModified: p.updatedAt || p.date,
+    changeFrequency: "monthly",
+    priority: 0.7,
   }));
 
   const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map((slug) => ({
