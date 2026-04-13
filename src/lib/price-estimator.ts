@@ -44,13 +44,11 @@ const PRICE_TABLE = {
   } satisfies Record<MakeTier, number>,
   /** Minimum scrap value floor. */
   scrapFloor: 350,
-  /** Range spread — low = estimated * (1 - spread), high = estimated * (1 + spread). */
-  rangeSpread: 0.25,
-  /** Round low/high to nearest this many dollars. */
-  rangeRoundTo: 50,
-  /** Absolute floor/ceiling on the returned range. Sourced from site.ts. */
-  minLow: MIN_PRICE,
-  maxHigh: MAX_PRICE,
+  /** Round the exact quote to the nearest this many dollars. */
+  quoteRoundTo: 50,
+  /** Absolute floor/ceiling on the returned quote. Sourced from site.ts. */
+  minQuote: MIN_PRICE,
+  maxQuote: MAX_PRICE,
 } as const;
 
 function getMakeTier(make: string): MakeTier {
@@ -78,8 +76,8 @@ export interface EstimateInput {
 }
 
 export interface EstimateResult {
-  low: number;
-  high: number;
+  /** Exact dollar quote shown to the customer — not a range. */
+  quote: number;
   factors: string[];
 }
 
@@ -101,9 +99,8 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
     input.year > currentYear + 1
   ) {
     return {
-      low: MIN_PRICE,
-      high: MAX_PRICE,
-      factors: ["Confirm vehicle details — we'll quote on the call"],
+      quote: PRICE_TABLE.scrapFloor,
+      factors: ["Confirm vehicle details — we'll sharpen this quote on the call"],
     };
   }
 
@@ -117,29 +114,17 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
   const baseValue = getBaseValueForAge(age);
   const makeMult = PRICE_TABLE.makeMultipliers[makeTier];
 
-  let estimated = baseValue * makeMult * conditionMult;
+  const estimated = baseValue * makeMult * conditionMult;
 
-  const { rangeSpread, rangeRoundTo, minLow, maxHigh } = PRICE_TABLE;
+  const { quoteRoundTo, minQuote, maxQuote, scrapFloor } = PRICE_TABLE;
 
-  // Symmetric ceiling clip: keep the ±rangeSpread window centered on `estimated`
-  // by capping the center before expanding, rather than lopping the high side off.
-  if (estimated * (1 + rangeSpread) > maxHigh) {
-    estimated = maxHigh / (1 + rangeSpread);
-  }
+  // Round to the nearest $50 bucket so quotes feel deliberate and scannable.
+  const rounded = Math.round(estimated / quoteRoundTo) * quoteRoundTo;
 
-  let low = Math.max(
-    minLow,
-    Math.round((estimated * (1 - rangeSpread)) / rangeRoundTo) * rangeRoundTo,
-  );
-  let high = Math.min(
-    maxHigh,
-    Math.round((estimated * (1 + rangeSpread)) / rangeRoundTo) * rangeRoundTo,
-  );
-
-  // Scrap floor — even a written-off car has hull value.
-  const scrapFloor = Math.max(MIN_PRICE, PRICE_TABLE.scrapFloor);
-  low = Math.max(low, scrapFloor);
-  high = Math.max(high, scrapFloor + 100);
+  // Clamp into the advertised bracket and enforce the scrap-value floor —
+  // even a written-off car has hull value.
+  const effectiveFloor = Math.max(minQuote, scrapFloor);
+  const quote = Math.min(maxQuote, Math.max(effectiveFloor, rounded));
 
   // Build factors
   const factors: string[] = [];
@@ -155,5 +140,5 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
   if (conditionMult >= 0.75) factors.push("Good condition boosts your offer significantly");
   else if (conditionMult <= 0.3) factors.push("Condition factored in — we still pay cash for non-running cars");
 
-  return { low, high, factors };
+  return { quote, factors };
 }
