@@ -124,6 +124,38 @@ describe("quoteFormSchema — year bounds", () => {
   });
 });
 
+describe("quoteFormSchema — model is required", () => {
+  it("rejects a missing model", () => {
+    const { model: _model, ...withoutModel } = baseValid;
+    void _model;
+    const result = quoteFormSchema.safeParse(withoutModel);
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects an empty model", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, model: "" });
+    expect(result.success).toBe(false);
+  });
+
+  it("rejects a whitespace-only model", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, model: "   " });
+    expect(result.success).toBe(false);
+  });
+
+  it("accepts a non-empty model and trims it", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, model: "  Hilux  " });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.model).toBe("Hilux");
+    }
+  });
+
+  it("rejects a model longer than 200 chars", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, model: "x".repeat(201) });
+    expect(result.success).toBe(false);
+  });
+});
+
 describe("quoteFormSchema — condition enum", () => {
   it("accepts every value from quoteConditionValues", () => {
     const values = ["running", "needs_work", "not_running", "damaged", "scrap"] as const;

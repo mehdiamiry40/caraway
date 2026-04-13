@@ -176,11 +176,13 @@ export function QuoteForm() {
                     <div>
                       <label htmlFor={fieldIds.model} className="block text-sm font-semibold text-foreground mb-2">
                         Model
+                        <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
                       <Select
                         placeholder="Select model"
                         options={selectedMake && selectedMake !== "Other" ? getModelOptions(selectedMake) : [{ value: "Other", label: "Other" }]}
                         disabled={!selectedMake}
+                        aria-required="true"
                         aria-invalid={!!errors.model}
                         aria-describedby={errors.model ? `${fieldIds.model}-error` : undefined}
                         {...register("model")}

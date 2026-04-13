@@ -27,8 +27,7 @@ interface QuoteEmailContent {
  * Extracted so we can unit-test the formatting without mocking Resend.
  */
 export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent {
-  const modelPart = data.model ? ` ${data.model}` : "";
-  const subject = `New quote request — ${data.make}${modelPart} (${data.year})`;
+  const subject = `New quote request — ${data.make} ${data.model} (${data.year})`;
 
   const conditionLabel = CONDITION_LABELS[data.condition] ?? data.condition;
 
@@ -36,7 +35,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ["Name", data.name],
     ["Phone", data.phone],
     ["Make", data.make],
-    ["Model", data.model || "—"],
+    ["Model", data.model],
     ["Year", String(data.year)],
     ["Condition", conditionLabel],
     ["Address", data.address || "—"],
