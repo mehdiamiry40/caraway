@@ -65,7 +65,7 @@ export async function GET(request: Request) {
   if (!apiKey) {
     console.warn("[places/autocomplete] GOOGLE_PLACES_API_KEY is not set");
     return NextResponse.json(
-      { error: "places unavailable" },
+      { error: "places unavailable", reason: "missing_key" },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
@@ -87,11 +87,24 @@ export async function GET(request: Request) {
     });
 
     if (!upstream.ok) {
+      // Read the upstream body so the browser can see exactly what
+      // Google rejected — essential for debugging key/permission errors.
+      let upstreamBody = "";
+      try {
+        upstreamBody = await upstream.text();
+      } catch {
+        /* ignore */
+      }
       console.error(
-        `[places/autocomplete] upstream ${upstream.status} ${upstream.statusText}`,
+        `[places/autocomplete] upstream ${upstream.status} ${upstream.statusText}: ${upstreamBody.slice(0, 500)}`,
       );
       return NextResponse.json(
-        { error: "places unavailable" },
+        {
+          error: "places unavailable",
+          reason: "upstream_rejected",
+          upstreamStatus: upstream.status,
+          upstreamMessage: upstreamBody.slice(0, 500),
+        },
         { status: 503, headers: { "Cache-Control": "no-store" } },
       );
     }
@@ -114,9 +127,10 @@ export async function GET(request: Request) {
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
     console.error("[places/autocomplete] fetch failed:", error);
     return NextResponse.json(
-      { error: "places unavailable" },
+      { error: "places unavailable", reason: "fetch_failed", detail: message.slice(0, 300) },
       { status: 503, headers: { "Cache-Control": "no-store" } },
     );
   }
