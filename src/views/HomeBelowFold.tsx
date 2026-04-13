@@ -19,10 +19,10 @@ export default function HomeBelowFold() {
   return (
     <>
       <Stats />
+      <TrustBadges />
       <DeferredPriceEstimator />
       <HowItWorks />
       <WhyUs />
-      <TrustBadges />
       <CarTypes />
       <ServiceAreas />
       <Testimonials />

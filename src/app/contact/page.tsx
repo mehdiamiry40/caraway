@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import Contact from "@/views/Contact";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -40,6 +40,16 @@ export default function ContactPage() {
               "Contact Caraway for a free cash quote on your car. Call 1800 227 293 or fill out our form.",
             mainEntity: { "@id": `${SITE_URL}/#business` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                telephone: BUSINESS.phone,
+                email: BUSINESS.email,
+                areaServed: "AU",
+                availableLanguage: "English",
+              },
+            ],
           },
           breadcrumbListSchema(breadcrumbs, canonical),
         ]}

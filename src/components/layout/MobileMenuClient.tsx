@@ -254,7 +254,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         <Button
           onClick={handleScrollToQuote}
           size="sm"
-          className="bg-accent hover:bg-accent/90 text-white text-xs font-semibold px-3 h-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 ring-offset-primary"
+          className="bg-accent hover:bg-accent/90 text-white text-sm font-semibold px-4 h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 ring-offset-primary"
         >
           Quote
         </Button>

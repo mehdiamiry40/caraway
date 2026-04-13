@@ -8,6 +8,7 @@ const baseValid = {
   model: "Hilux",
   year: 2015,
   condition: "running" as const,
+  address: "12 George St, Brisbane",
   honeypot: "",
 };
 

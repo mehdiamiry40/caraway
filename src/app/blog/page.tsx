@@ -5,6 +5,8 @@ import { indexableBlogPosts } from "@/data/blog-posts";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 
+export const revalidate = 3600;
+
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Blog" },

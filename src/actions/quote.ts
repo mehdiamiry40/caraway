@@ -17,6 +17,15 @@ import { submitForm } from "./submit-form";
 export async function submitQuote(data: QuoteFormValues) {
   const parsed = quoteFormSchema.safeParse(data);
   if (!parsed.success) {
+    const honeypotHit = parsed.error.issues.some((i) =>
+      i.path.includes("honeypot"),
+    );
+    if (honeypotHit) {
+      console.warn("[honeypot] quote spam detected", {
+        ts: new Date().toISOString(),
+      });
+      return { success: true as const };
+    }
     return { success: false as const, message: "Invalid form data" };
   }
 

@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.title,
     description: service.metaDescription,
-    alternates: { canonical: `/${service.slug}` },
+    alternates: { canonical: `${SITE_URL}/${service.slug}` },
     openGraph: {
       type: "website",
       title: service.title,
       description: service.metaDescription,
-      url: `/${service.slug}`,
+      url: `${SITE_URL}/${service.slug}`,
       images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
     },
     twitter: { card: "summary_large_image" },
@@ -74,8 +74,9 @@ export default async function ServiceSlugPage({ params }: Props) {
     },
     {
       "@type": "FAQPage",
-      mainEntity: service.faqs.map((faq) => ({
+      mainEntity: service.faqs.map((faq, index) => ({
         "@type": "Question",
+        "@id": `${canonicalUrl}#q${index + 1}`,
         name: faq.question,
         acceptedAnswer: { "@type": "Answer", text: faq.answer },
       })),

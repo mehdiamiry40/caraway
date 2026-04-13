@@ -147,6 +147,7 @@ export function ContactForm() {
             </label>
             <Input
               type="email"
+              inputMode="email"
               autoComplete="email"
               enterKeyHint="next"
               maxLength={320}
@@ -170,6 +171,7 @@ export function ContactForm() {
             </label>
             <Input
               type="tel"
+              inputMode="tel"
               autoComplete="tel"
               enterKeyHint="next"
               maxLength={20}
@@ -197,6 +199,7 @@ export function ContactForm() {
             <span
               className={`text-xs tabular-nums ${counterClass}`}
               aria-live="polite"
+              aria-atomic="true"
               id={`${fieldIds.message}-counter`}
             >
               {messageLength}/{CONTACT_MESSAGE_MAX}
@@ -259,7 +262,16 @@ export function ContactForm() {
         {errorMessage && (
           <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
             <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-            {errorMessage}
+            <div className="flex-1">
+              <span>{errorMessage}</span>
+              <button
+                type="button"
+                onClick={() => setErrorMessage(null)}
+                className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50 rounded-sm"
+              >
+                Try again
+              </button>
+            </div>
           </div>
         )}
       </form>

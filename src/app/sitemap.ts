@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/terms`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/accessibility`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/site-map`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.4 },
-    { url: `${SITE_URL}/author/sam-williams`, lastModified: latestBlogDate, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${SITE_URL}/author/sam-williams`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({

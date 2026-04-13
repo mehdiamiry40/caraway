@@ -37,7 +37,7 @@ export function Hero() {
                   <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
                 </span>
               </div>
-              <span className="text-[11px] sm:text-xs text-muted-foreground">
+              <span className="text-sm sm:text-xs text-muted-foreground">
                 Based on direct customer feedback.
               </span>
             </div>

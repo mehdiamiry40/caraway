@@ -49,6 +49,7 @@ export function AddressAutocomplete({
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [isLoading, setIsLoading] = useState(false);
   // Tracks the value the user just picked, so we don't immediately
   // re-fetch suggestions for the address we just inserted.
   const justPickedRef = useRef<string | null>(null);
@@ -65,17 +66,21 @@ export function AddressAutocomplete({
       justPickedRef.current = null;
       setSuggestions([]);
       setOpen(false);
+      setIsLoading(false);
       return;
     }
     if (trimmed.length < MIN_QUERY_LENGTH) {
       setSuggestions([]);
       setOpen(false);
+      setIsLoading(false);
       return;
     }
 
     const id = ++requestIdRef.current;
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
+      setIsLoading(true);
+      setOpen(true);
       try {
         const res = await fetch(
           `/api/places/autocomplete?q=${encodeURIComponent(trimmed)}`,
@@ -86,6 +91,7 @@ export function AddressAutocomplete({
           if (id === requestIdRef.current) {
             setSuggestions([]);
             setOpen(false);
+            setIsLoading(false);
           }
           return;
         }
@@ -95,11 +101,13 @@ export function AddressAutocomplete({
         setSuggestions(next);
         setOpen(next.length > 0);
         setActiveIndex(-1);
+        setIsLoading(false);
       } catch (err) {
         if ((err as Error)?.name === "AbortError") return;
         if (id === requestIdRef.current) {
           setSuggestions([]);
           setOpen(false);
+          setIsLoading(false);
         }
       }
     }, DEBOUNCE_MS);
@@ -201,16 +209,29 @@ export function AddressAutocomplete({
         className={className}
         {...rest}
       />
-      {open && suggestions.length > 0 && (
+      {open && (suggestions.length > 0 || isLoading) && (
         <ul
           id={listboxId}
           role="listbox"
+          aria-label="Address suggestions"
           className={cn(
             "absolute z-50 left-0 right-0 mt-1 max-h-72 overflow-y-auto",
             "rounded-lg border border-border bg-card shadow-lg",
             "py-1",
           )}
         >
+          {isLoading && suggestions.length === 0 && (
+            <li
+              role="presentation"
+              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground"
+            >
+              <span
+                aria-hidden="true"
+                className="inline-block h-3 w-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin motion-reduce:animate-none"
+              />
+              Searching…
+            </li>
+          )}
           {suggestions.map((s, i) => {
             const isActive = i === activeIndex;
             return (
