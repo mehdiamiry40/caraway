@@ -50,11 +50,41 @@ export default function BlogPage() {
               "Tips, guides, and insights about selling your car for cash in Brisbane.",
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            inLanguage: "en-AU",
+            dateModified: new Date().toISOString().split("T")[0],
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: indexableBlogPosts.length,
+              itemListElement: indexableBlogPosts.map((post, idx) => ({
+                "@type": "ListItem",
+                position: idx + 1,
+                name: post.title,
+                url: `${SITE_URL}/blog/${post.slug}`,
+              })),
+            },
             hasPart: indexableBlogPosts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,
               url: `${SITE_URL}/blog/${post.slug}`,
               datePublished: post.date,
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "@id": `${canonical}#blog`,
+            name: "Caraway Blog",
+            description:
+              "Tips, guides, and insights about selling your car for cash in Brisbane.",
+            url: canonical,
+            inLanguage: "en-AU",
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            blogPost: indexableBlogPosts.map((post) => ({
+              "@type": "BlogPosting",
+              headline: post.title,
+              url: `${SITE_URL}/blog/${post.slug}`,
+              datePublished: post.date,
+              dateModified: post.updatedAt || post.date,
             })),
           },
         ]}

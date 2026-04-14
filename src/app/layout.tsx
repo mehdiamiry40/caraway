@@ -58,6 +58,11 @@ export const metadata: Metadata = {
     "cash for old cars Brisbane",
     "cash for damaged cars Brisbane",
   ],
+  applicationName: "Caraway",
+  category: "Automotive Services",
+  creator: "Caraway",
+  publisher: "Caraway Pty Ltd",
+  formatDetection: { telephone: true, address: false, email: false },
   openGraph: {
     type: "website",
     locale: "en_AU",
@@ -95,7 +100,17 @@ export const metadata: Metadata = {
   robots:
     process.env.VERCEL_ENV !== "production"
       ? { index: false, follow: false }
-      : undefined,
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
 };
 
 export const viewport: Viewport = {

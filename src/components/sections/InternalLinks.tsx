@@ -48,11 +48,12 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
   const suburbsHeading = isContextual ? "Related Areas We Service" : "Areas We Service";
 
   return (
-    <section className="section-y bg-muted border-t border-border/60">
+    <nav aria-label="Related pages" className="section-y bg-muted border-t border-border/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="sr-only">Explore more of Caraway</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           <div>
-            <h2 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{servicesHeading}</h2>
+            <h3 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{servicesHeading}</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5">
               {servicesToShow.map((s) => (
                 <li key={s.slug}>
@@ -68,7 +69,7 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
             </ul>
           </div>
           <div>
-            <h2 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{suburbsHeading}</h2>
+            <h3 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{suburbsHeading}</h3>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5">
               {suburbsToShow.map((s) => (
                 <li key={s.slug}>
@@ -94,6 +95,6 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
           </div>
         </div>
       </div>
-    </section>
+    </nav>
   );
 }

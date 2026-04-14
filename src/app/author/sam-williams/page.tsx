@@ -56,8 +56,12 @@ export default function AuthorPage() {
             "@type": "ProfilePage",
             name: AUTHOR.name,
             url: canonical,
+            dateCreated: "2025-01-01",
+            dateModified: new Date().toISOString().split("T")[0],
             mainEntity: {
               "@type": "Person",
+              "@id": `${SITE_URL}/author/sam-williams#person`,
+              url: `${SITE_URL}/author/sam-williams`,
               name: AUTHOR.name,
               jobTitle: AUTHOR.jobTitle,
               worksFor: {
@@ -66,6 +70,19 @@ export default function AuthorPage() {
                 url: SITE_URL,
               },
               description: AUTHOR.bio,
+              image: {
+                "@type": "ImageObject",
+                url: `${SITE_URL}/images/logo.webp`,
+                width: 512,
+                height: 279,
+              },
+              knowsAbout: [
+                "Vehicle appraisal",
+                "Cash for cars",
+                "Used car valuation",
+                "Queensland automotive market",
+                "Car removal services",
+              ],
             },
           },
         ]}

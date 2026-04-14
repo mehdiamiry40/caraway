@@ -43,6 +43,14 @@ export default function AboutPage() {
               "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
             mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            inLanguage: "en-AU",
+            dateModified: new Date().toISOString().split("T")[0],
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              url: `${SITE_URL}/images/tow-truck-hero.webp`,
+              width: 1200,
+              height: 800,
+            },
           },
         ]}
       />

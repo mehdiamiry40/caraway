@@ -5,6 +5,9 @@ import { InternalLinks } from "@/components/sections/InternalLinks";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { indexableBlogPosts } from "@/data/blog-posts";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -42,13 +45,34 @@ const companyLinks = [
 
 const linkCls = "text-muted-foreground hover:text-primary transition-colors duration-200 text-sm rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-1.5 min-h-[44px] items-center";
 
+const canonical = `${SITE_URL}/site-map`;
+
 export default function SiteMapPage() {
   return (
-    <PageShell
-      breadcrumbs={breadcrumbs}
-      title="Sitemap"
-      subtitle={<p>Every page on caraway.au — use this to quickly jump to any section.</p>}
-    >
+    <>
+      <JsonLd
+        data={[
+          breadcrumbListSchema(breadcrumbs, canonical),
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical,
+            url: canonical,
+            name: "Sitemap | Caraway",
+            description:
+              "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
+            inLanguage: "en-AU",
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            dateModified: new Date().toISOString().split("T")[0],
+          },
+        ]}
+      />
+      <PageShell
+        breadcrumbs={breadcrumbs}
+        title="Sitemap"
+        subtitle={<p>Every page on caraway.au — use this to quickly jump to any section.</p>}
+      >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12">
         <section>
           <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Services</h2>
@@ -103,7 +127,8 @@ export default function SiteMapPage() {
         </section>
       </div>
 
-      <InternalLinks />
-    </PageShell>
+        <InternalLinks />
+      </PageShell>
+    </>
   );
 }

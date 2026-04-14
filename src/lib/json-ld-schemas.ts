@@ -109,6 +109,15 @@ export const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Unwanted Car Removal Brisbane" } },
     ],
   },
+  slogan: "Cash for cars Brisbane — paid on pickup, free towing, any condition.",
+  knowsAbout: [
+    "Cash for cars Brisbane",
+    "Free car removal",
+    "Vehicle valuation",
+    "Scrap car buyers",
+    "Damaged car removal",
+  ],
+  keywords: "cash for cars Brisbane, sell my car Brisbane, free car removal, scrap car buyers Brisbane",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue,
@@ -126,6 +135,7 @@ export const organizationSchema = {
   name: NAP.name,
   legalName: BUSINESS.legalName,
   taxID: BUSINESS.abn,
+  slogan: "Cash for cars Brisbane — paid on pickup, free towing, any condition.",
   foundingDate: String(BUSINESS.foundingYear),
   founder: {
     "@type": "Person" as const,
@@ -181,6 +191,7 @@ export const websiteSchema = {
   url: SITE_URL,
   description:
     "Cash for cars Brisbane: free quotes, free removal, and cash paid on pickup — usually same- or next-day. Servicing Greater Brisbane 7 days a week.",
+  keywords: "cash for cars Brisbane, sell my car Brisbane, free car removal Brisbane, scrap car buyers Brisbane",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-AU",
   // SearchAction removed: LocationsFilter uses client-side state only and

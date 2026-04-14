@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
+import { reviews } from "@/data/reviews";
 import { getServiceBySlug, services } from "@/data/services";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
@@ -70,6 +71,13 @@ export default async function ServiceSlugPage({ params }: Props) {
         highPrice: "9999",
         description: "Cash paid on pickup. Free car removal and towing included.",
         availability: "https://schema.org/InStock",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10,
+        reviewCount: reviews.length,
+        bestRating: 5,
+        worstRating: 1,
       },
     },
     {

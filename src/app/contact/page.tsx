@@ -40,6 +40,12 @@ export default function ContactPage() {
               "Contact Caraway for a free cash quote on your car. Call 0481 438 444 or fill out our form.",
             mainEntity: { "@id": `${SITE_URL}/#business` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            inLanguage: "en-AU",
+            dateModified: new Date().toISOString().split("T")[0],
+            about: {
+              "@type": "LocalBusiness",
+              "@id": `${SITE_URL}/#business`,
+            },
             contactPoint: [
               {
                 "@type": "ContactPoint",
@@ -48,6 +54,12 @@ export default function ContactPage() {
                 email: BUSINESS.email,
                 areaServed: "AU",
                 availableLanguage: "English",
+                hoursAvailable: {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                  opens: "07:00",
+                  closes: "19:00",
+                },
               },
             ],
           },

@@ -41,6 +41,10 @@ export default function PrivacyPage() {
             description:
               "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
             inLanguage: "en-AU",
+            dateModified: "2026-04-01",
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
           },
         ]}
       />

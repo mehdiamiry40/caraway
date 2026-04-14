@@ -36,6 +36,12 @@ export default function FaqRoutePage() {
       description:
         "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same- or next-day pickup.",
       isPartOf: { "@id": `${SITE_URL}/#website` },
+      inLanguage: "en-AU",
+      dateModified: new Date().toISOString().split("T")[0],
+      about: {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#business`,
+      },
       mainEntity: allFaqs.map((faq, index) => ({
         "@type": "Question",
         "@id": `${canonical}#q${index + 1}`,

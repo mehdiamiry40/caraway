@@ -43,6 +43,18 @@ export default function LocationsPage() {
               "Caraway services all Brisbane suburbs for cash for cars. Find your area.",
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            inLanguage: "en-AU",
+            dateModified: new Date().toISOString().split("T")[0],
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: suburbs.length,
+              itemListElement: suburbs.map((s, idx) => ({
+                "@type": "ListItem",
+                position: idx + 1,
+                name: s.h1,
+                url: `${SITE_URL}/locations/${s.slug}`,
+              })),
+            },
             hasPart: suburbs.map((s) => ({
               "@type": "WebPage",
               name: s.h1,

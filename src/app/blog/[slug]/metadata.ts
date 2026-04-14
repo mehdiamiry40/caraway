@@ -108,9 +108,12 @@ export function buildBlogPostJsonLd(post: BlogPost) {
       wordCount,
       articleBody,
       articleSection: post.category,
-      keywords: [post.category, "cash for cars Brisbane", "Caraway"],
+      timeRequired: `PT${Math.max(1, Math.round(wordCount / 200))}M`,
+      keywords: [post.category, "cash for cars Brisbane", "Caraway", "Brisbane car buyers", "sell my car Brisbane"],
       isAccessibleForFree: true,
       inLanguage: "en-AU",
+      copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+      copyrightYear: new Date(post.date).getFullYear(),
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["article h1", "article .post-excerpt"],
