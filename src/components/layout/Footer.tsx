@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { AUTHORITY_OUTBOUND_LINKS, FOOTER_INTERNAL_RESOURCES } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
+import { TrackedFooterResourceLink } from "@/components/layout/TrackedFooterResourceLink";
 import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
+import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 const serviceLinks = [
@@ -143,6 +146,47 @@ export function Footer() {
           </div>
 
         </nav>
+
+        <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-border/60">
+          <h2 className="font-display font-semibold text-xs uppercase tracking-wider text-primary mb-5">
+            Helpful resources
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground mb-3">On this site</h3>
+              <ul className="space-y-1">
+                {FOOTER_INTERNAL_RESOURCES.map((item) => (
+                  <li key={item.href}>
+                    <TrackedFooterResourceLink href={item.href} label={item.label} className={linkClasses}>
+                      {item.label}
+                    </TrackedFooterResourceLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground mb-3">Official sources</h3>
+              <ul className="space-y-1">
+                {AUTHORITY_OUTBOUND_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <TrackedOutboundLink
+                      href={item.href}
+                      label={item.label}
+                      location="footer_resources"
+                      className={`${linkClasses} gap-2 items-start`}
+                    >
+                      <ExternalLink className="h-3.5 w-3.5 shrink-0 mt-1 text-primary/50" aria-hidden="true" />
+                      <span>{item.label}</span>
+                    </TrackedOutboundLink>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-muted-foreground leading-snug">
+                External links open in a new tab. Caraway is not affiliated with these government sites — they are provided for your convenience.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="border-t border-border/60 pb-safe">

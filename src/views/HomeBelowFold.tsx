@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { InternalLinks } from "@/components/sections/InternalLinks";
 import { DeferredPriceEstimator } from "@/components/sections/DeferredPriceEstimator";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 
@@ -27,6 +28,7 @@ export default function HomeBelowFold() {
       <ServiceAreas />
       <Testimonials />
       <FAQ />
+      <InternalLinks />
       <FinalCTA />
     </>
   );

@@ -23,16 +23,27 @@ export function FAQ() {
           }}
         />
 
-        <div className="mt-8 sm:mt-10 text-center text-sm text-muted-foreground">
-          Still have questions?{" "}
-          <Link href="/#price-estimator" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
-            Get an instant quote
-          </Link>{" "}
-          or{" "}
-          <Link href="/contact" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
-            contact us
-          </Link>{" "}
-          — we&apos;re available 7 days a week.
+        <div className="mt-8 sm:mt-10 text-center text-sm text-muted-foreground space-y-3">
+          <p>
+            <Link href="/faq" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+              View all questions
+            </Link>
+            {" · "}
+            <Link href="/blog" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+              Selling guides
+            </Link>
+          </p>
+          <p>
+            Still have questions?{" "}
+            <Link href="/#price-estimator" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+              Get an instant quote
+            </Link>{" "}
+            or{" "}
+            <Link href="/contact" className="inline-flex items-center min-h-11 text-primary font-semibold hover:underline touch-manipulation">
+              contact us
+            </Link>{" "}
+            — we&apos;re available 7 days a week.
+          </p>
         </div>
       </div>
     </section>
