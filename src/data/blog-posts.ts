@@ -82,7 +82,7 @@ const rawPosts: RawPost[] = [
 
       `## What Cash for Cars Brisbane Buyers Pay`,
 
-      `[Cash for cars Brisbane](/services/cash-for-cars-brisbane) buyers compete on price because their margin is narrower. They aren't reselling your car retail with a warranty — they're either onselling at auction, dismantling for parts, or recycling the metal. That focused business model means lower overhead and a tighter, more competitive bid.`,
+      `[Cash for cars Brisbane](/cash-for-cars-brisbane) buyers compete on price because their margin is narrower. They aren't reselling your car retail with a warranty — they're either onselling at auction, dismantling for parts, or recycling the metal. That focused business model means lower overhead and a tighter, more competitive bid.`,
 
       `For a registered, drivable car in average condition, expect a Brisbane cash buyer to pay 80–90% of trade-in equivalent. For a damaged, unregistered, or end-of-life vehicle — where most dealers simply refuse to take it as a trade — cash buyers are usually the only option, and the price gap reverses entirely in your favour.`,
 
@@ -104,7 +104,7 @@ const rawPosts: RawPost[] = [
 
       `## When Cash for Cars Wins (Almost Always)`,
 
-      `If your car is older than about eight years, has more than 150,000 kilometres on the clock, is unregistered, has body damage, or is a make the dealer doesn't stock, [selling for cash in Brisbane](/services/sell-my-car-brisbane) almost always pays more. Dealers wholesale these cars straight to auction at trade prices — the quote you're given reflects auction value minus a fat handling margin.`,
+      `If your car is older than about eight years, has more than 150,000 kilometres on the clock, is unregistered, has body damage, or is a make the dealer doesn't stock, [selling for cash in Brisbane](/sell-my-car-brisbane) almost always pays more. Dealers wholesale these cars straight to auction at trade prices — the quote you're given reflects auction value minus a fat handling margin.`,
 
       `Cash buyers cut out that middle step. Towing across Logan, Ipswich, Caboolture, and the Bayside is usually free, payment is on the spot, and the TMR disposal notice gets handled by the buyer — so liability for tolls, fines, and CTP transfers cleanly out of your name the same day.`,
 
@@ -131,23 +131,31 @@ const rawPosts: RawPost[] = [
     content: [
       "Brisbane floods are a fact of life. Whether it's a once-in-a-century event like 2011 and 2022 or a localised flash flood through Rocklea, Oxley, or Graceville after a summer storm, thousands of vehicles across South East Queensland end up water-damaged every year. If you're sitting on a flood-damaged car in Brisbane and wondering what it's worth — or whether anyone will even buy it — this guide covers exactly what to do.",
 
+      "## How bad is the flood damage?",
+
       "Not all flood damage is created equal. A car that sat in ankle-deep water for a few hours is in a very different position to one that was submerged to the dashboard overnight. Insurance assessors and cash-for-cars buyers typically look at three levels: minor (water reached the floor but stayed below the seats), moderate (water entered the cabin and soaked seats, carpets, and lower electronics), and severe (water reached the dashboard or higher, submerging the engine and main electrical systems). The classification matters because it determines whether the car is repairable, worth repairing, or destined for parts and scrap.",
 
       "Flood water does more damage than most people realise. Salt and silt corrode wiring looms, connectors, and bare metal within days. Mould colonises carpet, underlay, and seat foam within 48 hours in Brisbane's humid subtropical climate — and once it takes hold, the smell never fully goes. ECUs, airbag modules, ABS controllers, and instrument clusters can fail weeks or months after the event as moisture works its way through circuit boards. Even cars that seem fine after a quick dry-out often develop intermittent electrical faults that make them unreliable and expensive to diagnose.",
 
+      "## Insurance, WOVR, and disclosure obligations",
+
       "If your car is comprehensively insured, the insurer will usually assess the damage and either approve a repair or declare it a total loss. For newer vehicles — roughly five years old or less — the insurance payout is typically the best outcome. For older cars, the maths can work differently. Insurers base their offer on the car's pre-flood market value, minus excess, minus the salvage they expect to recover. On a 12-year-old Camry worth $6,000, the net payout after a $700 excess might land around $4,000–$4,500. Retaining the salvage and selling the flood-damaged car to a Brisbane cash buyer directly can sometimes net you more — and avoids the claim hitting your no-claim bonus.",
 
-      "You can absolutely sell a flood-damaged car in Queensland, but you have disclosure obligations. Under Queensland consumer law, private sellers must not misrepresent the condition of a vehicle. If the car has been flood-damaged, you need to say so. If the insurer has recorded the vehicle on the Written-Off Vehicle Register (WOVR), that information is publicly searchable via a PPSR check anyway. Selling to a licensed cash-for-cars buyer sidesteps most disclosure complexity — they inspect the vehicle, assess the damage themselves, and price accordingly.",
+      "You can absolutely sell a flood-damaged car in Queensland, but you have disclosure obligations. Under Queensland consumer law, private sellers must not misrepresent the condition of a vehicle. If the car has been flood-damaged, you need to say so. If the insurer has recorded the vehicle on the [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide), that information is publicly searchable via a PPSR check anyway. Selling to a licensed cash-for-cars buyer sidesteps most disclosure complexity — they inspect the vehicle, assess the damage themselves, and price accordingly.",
+
+      "## What flood-damaged cars are worth in Brisbane",
 
       "What a flood-damaged car fetches depends on the make, model, year, and severity of the water exposure. As a rough guide in 2026, a common sedan (Camry, Corolla, Mazda 3) with moderate flood damage typically draws $500–$3,000 from a cash buyer. A popular 4WD or ute (Hilux, Ranger, BT-50) in similar condition often fetches $1,500–$5,000 because parts demand is stronger. Severely flood-damaged vehicles — submerged above the dashboard — are valued primarily on their scrap metal and any salvageable mechanical parts, usually $300–$800 depending on size and weight.",
 
-      "The process to sell a flood-damaged car in Brisbane is straightforward. Call or request an online quote, providing the make, model, year, kilometres, and a description of the flood damage — where the water reached, how long the car sat in it, and whether the engine was running when the water hit. You'll get a firm cash offer, usually within minutes. If you accept, a tow truck is booked — often for same-day pickup across Brisbane, Logan, Ipswich, and the Bayside suburbs. Payment happens on the spot before the vehicle is loaded.",
+      "The process to sell a flood-damaged car in Brisbane is straightforward. Call or request an online quote, providing the make, model, year, kilometres, and a description of the flood damage — where the water reached, how long the car sat in it, and whether the engine was running when the water hit. You'll get a firm cash offer, usually within minutes. If you accept, a tow truck is booked — often for [same-day pickup across Brisbane](/cash-for-cars-brisbane), Logan, Ipswich, and the Bayside suburbs. Payment happens on the spot before the vehicle is loaded.",
 
       "Paperwork is minimal. Bring your Queensland driver's licence or photo ID, the vehicle's registration certificate if you have it, and any correspondence from your insurer about the flood damage or write-off status. The buyer handles the disposal notice with TMR, which transfers the vehicle out of your name and ends your liability for future fines, tolls, or CTP. Remove your number plates before the tow truck leaves — in Queensland, plates stay with the owner, not the car.",
 
+      "## Mistakes to avoid with a flood-damaged car",
+
       "Three common mistakes to avoid. First, don't try to start a flood-damaged car. Water in the engine cylinders causes hydro-lock, which can bend conrods and crack the block — turning a repairable engine into a paperweight. Second, don't leave the car sitting for weeks hoping it will dry out. Mould and corrosion accelerate fast in Brisbane's subtropical humidity, and every day the car sits, its value drops. Third, don't attempt to hide the flood damage and sell privately — it's a breach of Queensland consumer law, and buyers who discover it later can pursue you for compensation.",
 
-      "If you're dealing with a flood-damaged car in Brisbane, the quickest and most straightforward option is a licensed cash-for-cars buyer who specialises in damaged and written-off vehicles. Free towing, same-day pickup, cash on the spot, and all the TMR paperwork handled — so you can move on without the car sitting in your driveway growing mould and losing value by the day.",
+      "If you're dealing with a flood-damaged car in Brisbane, the quickest and most straightforward option is a licensed cash-for-cars buyer who specialises in [damaged and written-off vehicles](/damaged-cars-brisbane). Free towing, same-day pickup, cash on the spot, and all the TMR paperwork handled — so you can move on without the car sitting in your driveway growing mould and losing value by the day.",
     ],
     date: "2026-04-12",
     category: "Guides",
@@ -164,27 +172,37 @@ const rawPosts: RawPost[] = [
     content: [
       "If your car has been in a serious prang, caught in a flood, or written off by the insurer, you've probably been told it's now on the WOVR — the Written-Off Vehicle Register. For most Brisbane drivers that's the first time they've heard the term, and it usually comes with more questions than answers. What does WOVR actually mean? Can you still sell the car? Is it worth anything? And what paperwork is involved? Here's the full picture for 2026, written for Queensland sellers rather than insurance lawyers.",
 
+      "## What the WOVR is and how it works in QLD",
+
       "The WOVR is a national database, managed state-by-state, that tracks every vehicle ever declared a total loss by an insurer or registration authority. In Queensland the register is maintained by the Department of Transport and Main Roads (TMR). When an insurer writes off a car — whether from collision damage, fire, flood, hail, or theft-related damage — the vehicle is flagged on the WOVR and the information stays on the register permanently. Anyone running a PPSR (Personal Property Securities Register) check on the VIN can see the write-off status before they buy.",
+
+      "## Statutory vs repairable write-offs",
 
       "The important split to understand is between a statutory write-off and a repairable write-off. A statutory write-off is a vehicle that Queensland law says cannot ever be re-registered for road use. This classification applies when the damage is so severe that the car cannot be safely repaired to roadworthy standard — think major structural collapse, full fire damage, or flood immersion above dashboard level. Statutory write-offs can only ever be sold for parts or scrap. A repairable write-off, by contrast, has been declared a total loss by the insurer on economic grounds — the repair bill exceeds the vehicle's market value — but the car can theoretically be rebuilt and re-registered if someone is willing to do the work and pass a written-off vehicle inspection.",
 
       "The WOVR classification has a massive impact on what the car is worth at resale. A statutory write-off is worth what its parts and scrap metal weigh. A repairable write-off, on the other hand, retains significant value as a rebuild project or as a donor vehicle for other cars of the same make and model — and that value can be surprisingly good for popular models like Hilux, Ranger, Commodore, Camry, and Corolla where parts demand across Queensland never drops.",
 
+      "### Running a PPSR check before you buy",
+
       "A PPSR check is the easiest way to find out whether a car is on the WOVR. It costs $2 through the Australian Government PPSR website and takes about 30 seconds. Punch in the VIN, pay the fee, and the report tells you the write-off status, any finance encumbrances, and whether the vehicle has been reported stolen. If you're buying a used car in Brisbane, a PPSR check is non-negotiable — we've seen plenty of cars advertised privately as clean that turn out to have a hidden WOVR flag from a storm event three owners ago.",
 
-      "For sellers, the key question is whether you can still move the car once it's been written off. The answer is yes — absolutely yes — but the process depends on the classification. Statutory write-offs must be sold to a licensed parts or scrap buyer; they cannot be sold as going concerns to another driver, and they cannot be re-registered. Repairable write-offs can be sold privately to a buyer who plans to rebuild them, sold to a rebuilder or mechanic, or sold to a licensed cash-for-cars buyer who will either rebuild the car, strip it for parts, or on-sell it to the trade.",
+      "## Selling a written-off car for cash in Brisbane",
+
+      "For sellers, the key question is whether you can still move the car once it's been written off. The answer is yes — absolutely yes — but the process depends on the classification. Statutory write-offs must be sold to a licensed parts or scrap buyer; they cannot be sold as going concerns to another driver, and they cannot be re-registered. Repairable write-offs can be sold privately to a buyer who plans to rebuild them, sold to a rebuilder or mechanic, or sold to a [licensed cash-for-cars buyer](/insurance-write-off-cars-brisbane) who will either rebuild the car, strip it for parts, or on-sell it to the trade.",
 
       "The insurance cash-out decision is worth running carefully before you sign anything. When the insurer writes off a car, they'll usually offer you a payout based on the agreed or market value, minus any excess, minus the salvage value they expect to recover from selling the wreck at auction. For newer vehicles on comprehensive cover, the insurance route is usually the best outcome — the payout tends to reflect genuine market value. For older cars (10+ years), the numbers often work better if you retain salvage rights, accept a reduced insurance settlement, and sell the car directly to a cash buyer. The combined total can come out meaningfully higher than the straight insurance payout, and you dodge the hit to your no-claim bonus if you can withdraw the claim in time.",
 
+      "## Paperwork, pickup, and what to expect on the day",
+
       "Paperwork for selling a WOVR car is simpler than most owners expect. You need current photo ID (Queensland driver's licence or passport), the vehicle's registration certificate if you still have it (not essential — the buyer can look up the VIN), and any letters from the insurer confirming the write-off classification and salvage status. You do not need a panel beater's quote, you do not need a police report, and you do not need an engineer's assessment. A licensed cash-for-cars buyer lodges the disposal notice with TMR on your behalf within the 14-day statutory window, which removes the vehicle from your name and ends your liability for tolls, fines, or any other notices tied to the plate.",
 
-      "Expect the cash-for-cars process for a WOVR vehicle to take a single phone call plus a pickup visit. You share the make, model, year, kilometres, and a description of the damage, and the buyer gives you a firm cash offer within minutes. Accept, book a pickup time, and the tow truck arrives — often the same day. Payment is in cash for amounts under $10,000 (the AUSTRAC cash reporting threshold) or bank transfer for larger sales, always before the vehicle is loaded onto the truck. Brisbane sellers in suburbs like Logan, Ipswich, and North Brisbane routinely have the whole transaction wrapped up within a few hours of their first call.",
+      "Expect the cash-for-cars process for a WOVR vehicle to take a single phone call plus a pickup visit. You share the make, model, year, kilometres, and a description of the damage, and the buyer gives you a firm cash offer within minutes. Accept, book a pickup time, and the tow truck arrives — often the same day. Payment is in cash for amounts under $10,000 (the AUSTRAC cash reporting threshold) or bank transfer for larger sales, always before the vehicle is loaded onto the truck. Brisbane sellers in suburbs like [Logan](/locations/logan), Ipswich, and North Brisbane routinely have the whole transaction wrapped up within a few hours of their first call.",
 
       "One thing to watch for: don't drive a written-off car on public roads unless you know for certain the rego is still valid and the vehicle is safe. Insurance companies sometimes cancel the policy the same day the write-off is declared, which leaves you driving uninsured if you have a prang on the way to the buyer. The safest approach is always to let the cash-for-cars buyer tow it away. Their tow truck means no road risk, no CTP exposure, and no second incident to worry about.",
 
       "Finally, don't forget the number plates. In Queensland, plates belong to the registered owner rather than the vehicle, and you need to remove them before the tow truck leaves. You can return them to any TMR customer service centre or keep them for transfer to another car you own. Plates left on a scrapped vehicle create administrative headaches down the track, so take them off as part of the pickup routine.",
 
-      "The short version: the WOVR is not the end of the road for a written-off car. Whether your vehicle is a statutory write-off destined for parts and scrap, or a repairable write-off with rebuild value, a licensed cash-for-cars buyer will quote on it, collect it for free, pay you on the spot, and handle the paperwork with TMR. No repair quotes, no engineer's reports, and no uncertainty about what the car is really worth.",
+      "The short version: the WOVR is not the end of the road for a written-off car. Whether your vehicle is a statutory write-off destined for parts and scrap, or a repairable write-off with rebuild value, a licensed [cash-for-cars buyer](/damaged-cars-brisbane) will quote on it, collect it for free, pay you on the spot, and handle the paperwork with TMR. No repair quotes, no engineer's reports, and no uncertainty about what the car is really worth.",
     ],
     date: "2026-04-09",
     category: "Guides",
@@ -201,15 +219,23 @@ const rawPosts: RawPost[] = [
     content: [
       "If you've ever wondered why cash-for-cars offers seem to jump around from month to month, the answer is usually hiding in a commodities chart. Scrap metal prices — particularly for steel, aluminium, and copper — are the backbone of what any end-of-life vehicle is worth, and those prices shift weekly based on global demand, Chinese manufacturing activity, and the cost of shipping. For Brisbane sellers sitting on an old Commodore, a tired Camry, or a hail-dimpled hatchback, understanding the scrap market is the difference between accepting a lowball offer and getting a genuinely fair price.",
 
+      "## What's inside an end-of-life car",
+
       "Let's start with the basics. A typical passenger car in Australia weighs between 1,200 and 1,800 kilograms, with roughly 65-70% of that being steel, 8-10% aluminium, 1-2% copper, and the remainder plastic, glass, rubber, and other materials. The exact mix varies by make and model — European cars tend to use more aluminium in the bonnet, boot lid, and suspension components, while older Australian-built cars like Falcons and Commodores are heavier on steel. Japanese cars sit in the middle, with good copper content in the wiring harnesses and reasonable aluminium use in engine blocks and wheels.",
+
+      "## Brisbane scrap steel, aluminium, and copper rates in 2026",
 
       "Queensland scrap steel in early 2026 is sitting around $220 to $280 per tonne for standard mixed auto steel, delivered to licensed recyclers across South-East Queensland. That figure has been reasonably stable through the first quarter, which is good news for cash-for-cars sellers — when steel drops, offers drop with it. The steel price is driven mostly by Chinese construction demand, Australian export volumes out of Port Kembla and the Pilbara, and shipping container availability. When any of those shift, the local yard prices move within a week or two.",
 
       "Aluminium is where the real money lives for cars that have a lot of it. Clean aluminium scrap in Brisbane is running between $1.80 and $2.40 per kilogram in early 2026, depending on grade. A modern SUV with an aluminium bonnet, tailgate, and engine block can easily contain 120 to 180 kilograms of aluminium, which adds a few hundred dollars to the car's base scrap value. Older Japanese cars like Pulsars, Lancers, and Corollas from the 90s and early 2000s carry less aluminium and tend to be valued lower on pure scrap grounds, though they make up for it in reusable parts demand.",
 
-      "Copper is the wildcard. Clean copper wiring is worth around $12 to $14 per kilogram at Brisbane yards right now, and a typical modern car contains 20 to 30 kilograms of it — in the wiring harness, the starter motor, the alternator, the radiator, and the air-con system. Cars with more electronics (newer SUVs, luxury models, European cars) carry more copper than older analogue vehicles. That's one reason why a wrecked 2018 Mazda CX-5 is often worth meaningfully more on scrap value alone than a 1998 Commodore of similar weight.",
+      "Copper is the wildcard. Clean copper wiring is worth around $12 to $14 per kilogram at Brisbane yards right now, and a typical modern car contains 20 to 30 kilograms of it — in the wiring harness, the starter motor, the alternator, the radiator, and the air-con system. Cars with more electronics (newer SUVs, luxury models, European cars) carry more copper than older analogue vehicles. That's one reason why a wrecked 2018 Mazda CX-5 is often worth [meaningfully more on scrap value](/blog/how-much-is-my-car-worth-for-scrap-brisbane) alone than a 1998 Commodore of similar weight.",
+
+      "## Why scrap quotes move every month",
 
       "Monthly fluctuations are real and they're the main reason cash-for-cars quotes go up and down over the course of a year. In 2024 and 2025, Queensland scrap steel prices moved across a range of about 35% — roughly $180 per tonne at the low point to $260 at the peak — and aluminium moved by a similar percentage. When the scrap market is running hot, a typical end-of-life sedan might quote at $600 to $900. When the market is soft, the same car might only bring $350 to $550. If you're selling now and the market is reasonable, locking in today's price usually makes more sense than holding out for a rally that might not come.",
+
+      "## How make and model change the maths",
 
       "Why do Japanese cars consistently get stronger offers than their scrap-value equivalents? The answer is parts demand. Toyota Hilux, Landcruiser, Prado, Hiace, Camry, and Corolla — along with Nissan Patrol, Navara, and Pathfinder — all have massive installed bases across Queensland and Australia, and the used-parts market for them is deep and liquid. A 20-year-old Hilux might only contain $500 of scrap metal, but the engine, gearbox, diffs, body panels, and interior components can easily add another $1,500 to $3,000 to the car's real value to a wrecker. Cash-for-cars buyers factor that parts demand straight into the quote, which is why Japanese utes and 4WDs always quote better than Korean or European equivalents of the same age and condition.",
 
@@ -217,11 +243,13 @@ const rawPosts: RawPost[] = [
 
       "Korean cars sit in the middle. Hyundai i30, Getz, Accent, and Elantra, along with Kia Rio, Cerato, and Sportage, have decent parts demand but nothing like the Toyota or Nissan standard. Expect offers on older Korean cars to track roughly 10-20% above pure scrap value, compared with 50%+ premiums for equivalent Japanese utes and 4WDs.",
 
+      "## Maximising your scrap car payout",
+
       "A few things you can do to maximise your payout. First, be realistic about the market — if you've been sitting on an old car for three years waiting for prices to rise, you've probably lost more to rust, weathering, and deteriorating rubber than you'd have ever gained from a commodities rally. Second, get at least two quotes before committing. Third, don't strip parts off the car before selling — unless you have a genuine specialist buyer lined up for specific components, removing parts almost always reduces the cash-for-cars offer by more than the parts are individually worth. Fourth, be honest about condition on the phone; hidden problems discovered at pickup lead to revised offers and wasted time.",
 
-      "For Brisbane sellers in suburbs like South Brisbane, Moorooka, and Ipswich where a lot of our end-of-life pickups happen, current market conditions in early 2026 are reasonable. Scrap steel is steady, aluminium has softened slightly from 2025 highs but is still solid, and copper remains strong. If you've got an old car sitting in the driveway that's no longer earning its keep, now is a fine time to convert it to cash. The longer you wait, the more the vehicle deteriorates, and the further today's quote drifts away from what the car might have brought six months ago.",
+      "For Brisbane sellers in suburbs like [South Brisbane](/locations/south-brisbane), Moorooka, and Ipswich where a lot of our end-of-life pickups happen, current market conditions in early 2026 are reasonable. Scrap steel is steady, aluminium has softened slightly from 2025 highs but is still solid, and copper remains strong. If you've got an old car sitting in the driveway that's no longer earning its keep, now is a fine time to convert it to cash. The longer you wait, the more the vehicle deteriorates, and the further today's quote drifts away from what the car might have brought six months ago.",
 
-      "The final word: scrap metal prices are only part of the story. The best cash-for-cars offers factor in scrap value, parts demand, and current market conditions for your specific make and model. A good buyer will explain how they arrived at the number and stand by the quote on pickup day. If an offer seems too low, ask why. If it seems too high, be cautious — some operators quote aggressively on the phone and then renegotiate when the driver arrives. A transparent, firm-quote operator is always worth more than the cheapest phone offer.",
+      "The final word: scrap metal prices are only part of the story. The best [cash-for-cars offers](/scrap-car-removal-brisbane) factor in scrap value, parts demand, and current market conditions for your specific make and model. A good buyer will explain how they arrived at the number and stand by the quote on pickup day. If an offer seems too low, ask why. If it seems too high, be cautious — some operators quote aggressively on the phone and then renegotiate when the driver arrives. A transparent, firm-quote operator is always worth more than the cheapest phone offer.",
     ],
     date: "2026-04-08",
     category: "Insights",
@@ -238,25 +266,35 @@ const rawPosts: RawPost[] = [
     content: [
       "Thousands of Brisbane drivers need to cancel car rego in QLD every year — sometimes because they've sold a vehicle, sometimes because it's been written off, sometimes because the car is parked in a shed and never going back on the road. Cancelling rego is easier than most people expect, but the rules around refunds, number plates, and timing trip up plenty of owners. Here's exactly how to do it through the Queensland Department of Transport and Main Roads (TMR) without losing money.",
 
+      "## Why cancelling QLD rego matters",
+
       "The first thing to understand is why cancelling rego matters. Keeping registration on a car you no longer drive is wasted money — QLD rego on a standard four-cylinder private vehicle costs around $840 a year including CTP (compulsory third-party) insurance. Beyond the wasted fee, you remain legally responsible for anything tied to that plate: toll charges on the Gateway and Logan Motorways, parking fines, red-light camera infringements, and even speed camera notices. Sellers who forget to cancel or lodge a disposal notice can end up chasing an unfamiliar buyer months later to clear a stack of unpaid tolls.",
 
       "There is also a refund angle that most owners forget. If you cancel car rego in QLD with at least three whole months still on the clock, TMR refunds the unused portion on a pro-rata basis. On a 12-month registration, that typically means $150 to $400 back in your account. CTP insurance is refunded separately by your nominated CTP insurer — Suncorp, QBE, Allianz, or RACQ — usually within two weeks of the cancellation being processed.",
+
+      "## Step-by-step: cancelling rego with TMR",
 
       "To cancel rego in QLD you have two main pathways. The first is online through the TMR website if you have a linked QGov account. The second is walking into a TMR customer service centre in person — there are offices at Carseldine, Sherwood, Cleveland, Helensvale, and in the Brisbane CBD, among others. Most drivers find the in-person route cleaner because you can hand in your plates and paperwork at the same counter. Bring your driver's licence, the registration certificate if you still have it, and the number plates from the vehicle.",
 
       "The paperwork is a single form: a Cancellation of Registration application (Form F3516), available at any TMR centre or as a downloadable PDF. You'll be asked why you're cancelling — sold, written off, unregistered storage, or moving interstate — and where to deposit your refund. Processing takes about ten minutes over the counter. You'll receive a receipt confirming the cancellation, which is worth keeping in case there's a dispute down the track.",
 
+      "### Returning your number plates",
+
       "Number plates are the step most people overlook. In Queensland, plates belong to the registered owner, not the car. When you cancel car rego in QLD, you must surrender the plates at the same time unless you're transferring them to another vehicle you own. Failing to return plates is a technical offence and can delay your refund. If you're attached to a personalised plate — Q-plates or one of the customised designs — TMR can hold them on your account for use on a future vehicle.",
 
       "Refunds usually land within 10 to 15 business days. The amount is calculated from the date TMR receives your cancellation, not the date you stopped driving the car. This is why waiting is expensive — every day you delay is another day of registration fees you will not get back. If you've already sold your car and the buyer has submitted a disposal notice, TMR cancels the rego automatically, but the refund period only starts from the disposal date recorded on the form.",
 
-      "A few scenarios are worth calling out. If you're selling the car to a cash-for-cars buyer anywhere across Greater Brisbane — Logan, Ipswich, Caboolture, or the Redlands — you do not need to cancel the rego before pickup. The buyer lodges the disposal notice with TMR as part of the sale, and the cancellation flows automatically. If you're moving interstate, cancel your QLD rego on the day you re-register in the new state, not before. Driving an unregistered car across the border carries the same fines as any other unregistered driving offence.",
+      "## Selling vs cancelling: cash for cars and interstate moves",
+
+      "A few scenarios are worth calling out. If you're selling the car to a [cash-for-cars buyer](/cash-for-cars-brisbane) anywhere across Greater Brisbane — Logan, Ipswich, Caboolture, or the Redlands — you do not need to cancel the rego before pickup. The buyer lodges the disposal notice with TMR as part of the sale, and the cancellation flows automatically. If you're moving interstate, cancel your QLD rego on the day you re-register in the new state, not before. Driving an unregistered car across the border carries the same fines as any other unregistered driving offence.",
 
       "Avoid these common mistakes. Do not cancel rego and then drive the car to a workshop — that counts as driving unregistered, with a fine of around $709 and zero CTP cover if you crash. Do not forget to cancel tolls and e-tags linked to the vehicle with Linkt on the same day. Do not throw your old plates in the bin; return them or you'll leave money on the table. And do not assume your insurance company has been notified — comprehensive insurance is a separate policy from CTP and needs to be cancelled directly with your insurer to get any unused premium back.",
 
-      "What happens to the car once the rego is gone? Legally, it cannot be driven on any Queensland road. You can still move it by tow truck or trailer, sell it privately as an unregistered vehicle, or book a cash-for-cars pickup. Most Brisbane owners who cancel rego on an older car discover that the cost of getting it roadworthy again — safety certificate, tyres, brakes, battery — exceeds the car's market value. At that point a cash buyer is usually the cleanest exit, because they bring their own tow truck and handle the disposal paperwork with TMR on your behalf.",
+      "## What to do with the car after rego is cancelled",
 
-      "Cancelling car rego in QLD is a ten-minute job at any TMR centre, but timing makes the difference between a meaningful refund and a missed opportunity. If you know the car is not going back on the road, cancel it the same week you make that decision. Keep the receipt, return the plates, notify your insurer, and put the refund to work somewhere more useful than a driveway in Carindale or a carport in Logan.",
+      "What happens to the car once the rego is gone? Legally, it cannot be driven on any Queensland road. You can still move it by tow truck or trailer, [sell it privately as an unregistered vehicle](/blog/how-to-sell-a-car-without-rego-brisbane), or book a cash-for-cars pickup. Most Brisbane owners who cancel rego on an older car discover that the cost of getting it roadworthy again — safety certificate, tyres, brakes, battery — exceeds the car's market value. At that point a cash buyer is usually the cleanest exit, because they bring their own tow truck and handle the disposal paperwork with TMR on your behalf.",
+
+      "Cancelling car rego in QLD is a ten-minute job at any TMR centre, but timing makes the difference between a meaningful refund and a missed opportunity. If you know the car is not going back on the road, cancel it the same week you make that decision. Keep the receipt, return the plates, notify your insurer, and put the refund to work somewhere more useful than a driveway in Carindale or a carport in [Logan](/locations/logan).",
     ],
     date: "2026-04-11",
     category: "Guides",
@@ -273,9 +311,13 @@ const rawPosts: RawPost[] = [
     content: [
       "Plenty of Brisbane driveways hide a car with expired rego. Maybe the registration lapsed while the owner was interstate, the safety certificate would cost more than the car is worth, or the vehicle has been sitting in a shed in Redcliffe or Logan for years. The good news is you can absolutely sell a car without rego in Brisbane — it happens every day across Queensland — but the process is different from a standard private sale.",
 
+      "## Is it legal to sell an unregistered car in QLD?",
+
       "Start with the legal position. In Queensland there is no law that prevents the sale of an unregistered vehicle. The Department of Transport and Main Roads (TMR) does not require a car to be registered for ownership to change hands. What you cannot do is drive it on public roads to deliver it to the buyer. Using an unregistered vehicle on a Queensland road carries a fine of around $709 for a first offence, plus demerit points, and your CTP insurance will not cover you if something goes wrong. The car must be transported on a tow truck or trailer.",
 
       "The common scenarios are predictable. The rego lapsed while the owner was overseas or recovering from illness. The car failed a safety inspection and the repair quote came back higher than the vehicle's market value. An older ute has been sitting on a rural block near Ipswich for years and never got put back on the road. Or a vehicle was inherited and never transferred. All of these end with the same question — how do I sell a car without rego without getting myself into trouble?",
+
+      "## Three options for selling a car with no rego",
 
       "You have three realistic options: re-register the car before selling, sell privately to a buyer who arranges transport and a safety certificate, or use a cash-for-cars service that takes the whole problem off your hands.",
 
@@ -283,17 +325,21 @@ const rawPosts: RawPost[] = [
 
       "Selling privately without rego is legal but slow. You can list the car on Marketplace or Gumtree as 'unregistered, sold as-is', but the pool shrinks and the offers are typically lowball. The buyer must arrange their own tow, get a safety certificate in their own name, then pay the transfer fee and stamp duty before TMR will register the car. Most private buyers will not take on that hassle unless the car is genuinely cheap.",
 
-      "A cash-for-cars buyer is almost always the fastest route. Companies that buy cars across Greater Brisbane — including the northern suburbs, Logan, Ipswich, Moreton Bay, and the Redlands — are geared up for unregistered vehicles. They bring their own tow truck, handle the disposal paperwork with TMR on your behalf, and do not require a safety certificate or current rego to make an offer. All you need to provide is valid photo ID and a signature.",
+      "A cash-for-cars buyer is almost always the fastest route. Companies that buy cars across Greater Brisbane — including the northern suburbs, Logan, Ipswich, Moreton Bay, and the Redlands — are geared up for [unregistered vehicles](/unregistered-cars-brisbane). They bring their own tow truck, handle the disposal paperwork with TMR on your behalf, and do not require a safety certificate or current rego to make an offer. All you need to provide is valid photo ID and a signature.",
+
+      "## Paperwork, plates, and TMR disposal notices",
 
       "The paperwork to sell a car without rego in Brisbane is minimal. You need a current Queensland driver's licence or passport, and ideally the old registration certificate if you still have it (not essential — the buyer can look up the vehicle by VIN). The buyer lodges a vehicle disposal notice with TMR within the 14-day window required by Queensland law. Once processed, the car is no longer associated with your name, and you are no longer liable for tolls or infringements tied to it.",
 
       "Do not forget the number plates. If the car still has its old plates attached, remove them before the tow truck leaves. In Queensland, number plates belong to the registered owner, not the vehicle. You can return them to any TMR customer service centre or keep them if you plan to transfer them to another car. Plates left on a scrapped vehicle can cause administrative headaches months later.",
 
+      "## What an unregistered car is worth in Brisbane",
+
       "What is an unregistered car actually worth in Brisbane? Condition matters more than the rego status. A running, unregistered sedan in reasonable shape — think a 2012 Hyundai i30 with 180,000 kilometres — typically fetches $1,500 to $4,500. A non-running unregistered car with a blown engine might bring $300 to $1,200. A complete wreck with no sellable parts usually pays $300 to $500 based on scrap metal weight. Utes and 4WDs — HiLuxes, Rangers, Prados — attract stronger offers even when unregistered because parts demand across Queensland never drops.",
 
       "A few mistakes to avoid. Never drive an unregistered car on a public road to deliver it — the fine wipes out most of the sale price and your insurance is void if you crash. Never accept a deposit and let the buyer collect later; take cash on pickup. Do not sign over paperwork before the money is in your hand.",
 
-      "Selling a car without rego in Brisbane is genuinely straightforward with a cash-for-cars buyer. Free towing across Greater Brisbane, same-day pickup, no safety certificate required, and payment on the spot. Whether your unregistered car is in a Carindale driveway, a Logan carport, or a rural block out past Ipswich, one phone call usually gets you a firm quote in minutes and the vehicle gone the same day.",
+      "Selling a car without rego in Brisbane is genuinely straightforward with a cash-for-cars buyer. Free towing across Greater Brisbane, same-day pickup, no safety certificate required, and payment on the spot. Whether your unregistered car is in a Carindale driveway, a [Logan carport](/locations/logan), or a rural block out past Ipswich, one phone call usually gets you a firm quote in minutes and the vehicle gone the same day.",
     ],
     date: "2026-04-10",
     category: "Guides",
@@ -456,17 +502,21 @@ const rawPosts: RawPost[] = [
     excerpt:
       "Selling your car in Caboolture without private-listing hassle? Here's how cash for cars works across the Moreton Bay region and what to expect.",
     content: [
-      "Caboolture sits at the northern edge of Greater Brisbane, roughly 45 kilometres from the CBD, and it's one of the busiest corridors in South East Queensland for vehicle turnover. Between the rapid housing growth in Morayfield, the acreage blocks out around Wamuran, and the commuter traffic running up and down the Bruce Highway, there are plenty of vehicles reaching the end of their useful life every week. Cash for cars in Caboolture is one of the quickest ways to clear an unwanted vehicle and walk away with money in hand the same day.",
+      "Caboolture sits at the northern edge of Greater Brisbane, roughly 45 kilometres from the CBD, and it's one of the busiest corridors in South East Queensland for vehicle turnover. Between the rapid housing growth in Morayfield, the acreage blocks out around Wamuran, and the commuter traffic running up and down the Bruce Highway, there are plenty of vehicles reaching the end of their useful life every week. Cash for cars in [Caboolture](/locations/caboolture) is one of the quickest ways to clear an unwanted vehicle and walk away with money in hand the same day.",
+      "## How the Caboolture cash-for-cars process works",
       "The process is refreshingly simple. You provide the basics — make, model, year, and a short description of the condition — and a cash buyer gives you a firm quote in minutes. If the offer suits you, a tow truck is dispatched to your address, often within a few hours. The driver checks the vehicle against your description, you sign the transfer paperwork, and you receive cash on the spot. Most pickups across the Moreton Bay Regional Council area wrap up in under 90 minutes from booking to payment.",
       "A common question from Caboolture sellers is whether a vehicle has to be registered or running to qualify. It doesn't. Cash-for-cars buyers purchase vehicles in any state: unregistered, deregistered, mechanically dead, accident-damaged, rusted out, or storm-affected. The D'Aguilar Highway and surrounding rural stretches see their share of kangaroo strikes and rollovers, and buyers are used to picking up vehicles with serious panel damage or blown drivetrains.",
+      "## What your car is worth in Moreton Bay",
       "So what is a car in Caboolture actually worth? Offers typically range from around $300 for a stripped shell up to $9,999 for a complete, running vehicle in reasonable shape. A non-running Ford Falcon with a tired engine might pull $400 to $900, while a 2012 Hyundai i30 that still drives could fetch $2,000 to $4,000 depending on kilometres and service history. Utes and 4WDs — HiLuxes, Rangers, Patrols, Pajeros — consistently attract stronger offers because their parts are in constant demand across Queensland and their heavier body panels return more in recyclable steel.",
+      "## Free towing and paperwork across the region",
       "Free towing is included right across the Moreton Bay region. Whether your car is parked at a house in Bellmere, a unit in Morayfield, a rural block in Elimbah, or a workshop in Narangba, the truck comes to you at no extra charge. You don't need to organise a flatbed, pay for transport, or drag the car anywhere yourself. That alone saves most sellers $150 to $300 compared with arranging their own tow.",
       "Paperwork is minimal but important. You'll need a valid photo ID — a Queensland driver's licence or passport — and ideally your registration certificate. The buyer will help you complete the disposal section on the rego papers and notify the Department of Transport and Main Roads (TMR) within the 14-day window required by QLD law. Don't forget to remove your number plates before the driver leaves. In Queensland, plates belong to the registered owner, not the car, and you can either return them to TMR or transfer them to another vehicle.",
       "Caboolture has a strong mix of tradies, commuters, and semi-rural households, which means the vehicle stock is varied. Work utes that have hammered up and down the Bruce Highway for a decade, family wagons that have done the school run from Burpengary to Narangba Valley every day, and older 4WDs that have been dragged out to the Glass House Mountains one too many times. Once a car crosses 250,000 kilometres, repair costs start climbing sharply, and the maths quickly favours a cash sale over another round of mechanical work.",
-      "Selling privately is always an option, but for older or damaged cars it's rarely worth the effort in this part of Brisbane. You'll need a safety certificate (roadworthy), you'll have to write a listing, answer messages at all hours, manage test drives with strangers, and haggle on price. For a clean late-model car that still attracts buyers, the effort can pay off. For anything older than ten years, unregistered, or non-running, the private market in Caboolture is thin and the lowball offers are relentless. A cash-for-cars service removes the friction entirely.",
+      "## Why most Caboolture sellers skip the private listing",
+      "Selling privately is always an option, but for older or damaged cars it's rarely worth the effort in this part of Brisbane. You'll need a safety certificate (roadworthy), you'll have to write a listing, answer messages at all hours, manage test drives with strangers, and haggle on price. For a clean late-model car that still attracts buyers, the effort can pay off. For anything older than ten years, unregistered, or non-running, the private market in Caboolture is thin and the lowball offers are relentless. A [cash-for-cars service](/cash-for-cars-brisbane) removes the friction entirely.",
       "Timing is worth a quick thought. Scrap steel prices move with global markets, and those movements feed directly into what buyers can pay for end-of-life vehicles. Through early 2026, Queensland scrap steel has held reasonably steady, which means offers are solid right now. If you've been sitting on a car for months hoping the value will climb, the honest reality is that most unused cars lose value every week to flat tyres, dead batteries, seized brakes, and rodent damage.",
       "A few practical tips for sellers in Caboolture. Be honest about the condition upfront — surprises at pickup lead to revised offers, which wastes everyone's time. Have your paperwork and ID ready before the driver arrives. If access is tight — narrow rural driveway, car bogged on a back block, vehicle parked under a low carport — mention it when booking so the right truck is sent. And if you've got more than one vehicle to clear, say so early; bulk pickups almost always attract a better per-car rate.",
-      "Cash for cars in Caboolture is one of the fastest, cleanest ways to turn an unwanted vehicle into usable money. No listing fees, no weekends lost to tyre-kickers, no mechanical repairs required before sale. Whether your car is in Morayfield, Upper Caboolture, Beerburrum, or anywhere else across the Moreton Bay region, a single phone call is all it takes to get a firm quote and have the vehicle off your property the same day.",
+      "Cash for cars in Caboolture is one of the fastest, cleanest ways to turn an unwanted vehicle into usable money. No listing fees, no weekends lost to tyre-kickers, no mechanical repairs required before sale. Whether your car is in Morayfield, Upper Caboolture, Beerburrum, or anywhere else across the Moreton Bay region, a single phone call is all it takes to get a [firm quote](/#price-estimator) and have the vehicle off your property the same day.",
     ],
     date: "2026-04-05",
     category: "Guides",
@@ -551,18 +601,22 @@ const rawPosts: RawPost[] = [
     excerpt:
       "Transferring car ownership in Queensland is straightforward once you know the steps. Here's exactly what buyers and sellers need to do to stay legal.",
     content: [
-      "Whether you're selling your car privately, through a dealer, or to a cash-for-cars buyer in Brisbane, you need to transfer ownership properly. Getting it wrong can leave you liable for fines, tolls, or even accidents after the car has left your hands. Here's how to handle it correctly in Queensland.",
+      "Whether you're selling your car privately, through a dealer, or to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), you need to transfer ownership properly. Getting it wrong can leave you liable for fines, tolls, or even accidents after the car has left your hands. Here's how to handle it correctly in Queensland.",
+      "## The QLD transfer paperwork: forms and fees",
       "The key document is the vehicle's registration certificate — also called a Certificate of Registration. In QLD, the seller must complete the disposal section on the back of this certificate and submit it to the Department of Transport and Main Roads (TMR) within 14 days of the sale. This step is non-negotiable. Until TMR updates their records, the car is still registered in your name.",
       "For the buyer, they need to complete a Transfer of Registration application (Form 18). This form is available at any TMR customer service centre or online. The buyer pays a transfer fee, which currently sits at around $37.85 for a standard vehicle, plus stamp duty based on the sale price or market value — whichever is higher. Stamp duty in Queensland is calculated at $3 per $100 of the dutiable value up to $100,000.",
       "If the car is sold with an active safety certificate (formerly known as a roadworthy certificate), the transfer is straightforward. Without one, the buyer will need to obtain a safety certificate before they can register the vehicle in their name. Safety certificates in Brisbane typically cost between $80 and $150 from an approved inspection station, though repairs to pass the inspection can add to that cost.",
+      "## What the seller needs to hand over",
       "Here's what the seller needs to provide: a signed transfer section on the registration certificate, a valid safety certificate (if the vehicle is being sold registered), and a receipt showing the agreed sale price. It's good practice to include the vehicle's VIN, make, model, year, and the odometer reading on the receipt. Both parties should keep a copy.",
-      "Don't forget to notify your insurance company. Cancel or transfer your comprehensive or CTP insurance on the day of sale. If you forget, you could be paying premiums on a car you no longer own. In QLD, CTP insurance (also called a green slip) is included in your registration cost, so cancelling your rego will automatically end your CTP cover.",
+      "Don't forget to notify your insurance company. Cancel or transfer your comprehensive or CTP insurance on the day of sale. If you forget, you could be paying premiums on a car you no longer own. In QLD, CTP insurance (also called a green slip) is included in your registration cost, so [cancelling your rego](/blog/how-to-cancel-car-rego-qld) will automatically end your CTP cover.",
       "One common mistake Brisbane sellers make is forgetting to cancel tolls and e-tag accounts linked to the vehicle. If the new owner racks up toll charges on the Gateway Motorway or Logan Motorway before you've updated your details with Linkt or another toll provider, those charges may land on your account. Remove the vehicle from your toll account on the day of sale.",
       "What if you've lost your registration certificate? You can apply for a replacement through TMR before the sale, or complete a statutory declaration confirming you are the registered owner. This adds a small delay, so sort it out early if you know your papers are missing.",
+      "## Cash-for-cars and written-off vehicles",
       "For cash-for-cars transactions, the process is simpler. Reputable buyers like Caraway handle much of the paperwork for you. When our team picks up your vehicle in Brisbane, we complete the transfer documentation on the spot and ensure TMR is notified. You still need to bring valid photo ID and sign the transfer forms, but the heavy lifting is done for you.",
-      "If you're selling a written-off vehicle, there are extra rules. Statutory write-offs in Queensland cannot be re-registered — ever. Repairable write-offs can be re-registered, but only after passing a written-off vehicle inspection through TMR. Make sure you know which category your car falls into before listing it for sale.",
+      "If you're selling a written-off vehicle, there are extra rules. [Statutory write-offs in Queensland](/blog/wovr-written-off-vehicle-register-qld-guide) cannot be re-registered — ever. Repairable write-offs can be re-registered, but only after passing a written-off vehicle inspection through TMR. Make sure you know which category your car falls into before listing it for sale.",
+      "## Avoiding common transfer mistakes",
       "A few final tips to keep the transfer clean. Always conduct the sale during business hours so you can contact TMR if questions arise. Never hand over the keys before receiving full payment — in cash transactions, count the money before signing anything. And take a photo of the buyer's licence for your records, just in case.",
-      "Transferring car ownership in QLD is not complicated, but skipping steps can create headaches weeks or months down the track. Whether you're selling a near-new sedan in Paddington or offloading a twenty-year-old ute in Logan, following this process protects both you and the buyer. If you'd rather skip the paperwork entirely, a cash-for-cars service handles it all — and you walk away with cash on the same day.",
+      "Transferring car ownership in QLD is not complicated, but skipping steps can create headaches weeks or months down the track. Whether you're selling a near-new sedan in Paddington or offloading a twenty-year-old ute in [Logan](/locations/logan), following this process protects both you and the buyer. If you'd rather skip the paperwork entirely, a cash-for-cars service handles it all — and you walk away with cash on the same day.",
     ],
     date: "2026-04-02",
     category: "Guides",
@@ -578,14 +632,17 @@ const rawPosts: RawPost[] = [
       "Wondering what your old car is actually worth as scrap? Brisbane scrap prices depend on several factors most sellers overlook. Here's what determines your payout.",
     content: [
       "If you have an old, damaged, or non-running car sitting in your driveway, one of the first questions you'll ask is: how much is it actually worth? The answer in Brisbane depends on a handful of factors that most sellers never think about.",
-      "The biggest factor is weight. Scrap car prices in Brisbane are heavily influenced by the current price of steel and other metals. A typical sedan weighs between 1,200 and 1,800 kilograms. At current scrap metal rates, the raw metal in an average car is worth between $300 and $400. But that's only the starting point — the real value often comes from what's still usable inside.",
+      "## What drives Brisbane scrap car prices",
+      "The biggest factor is weight. [Scrap car prices in Brisbane](/scrap-car-removal-brisbane) are heavily influenced by the current price of steel and other metals. A typical sedan weighs between 1,200 and 1,800 kilograms. At current scrap metal rates, the raw metal in an average car is worth between $300 and $400. But that's only the starting point — the real value often comes from what's still usable inside.",
       "Salvageable parts can dramatically increase your car's value. An engine that still turns over, a working transmission, undamaged doors, headlights, or even a good set of alloy wheels can add hundreds of dollars to a scrap offer. Popular models like Toyota Corollas, Hiluxes, and Ford Rangers have high parts demand in Brisbane, which pushes their scrap value up even when the car itself is in poor condition.",
+      "## How make, model, and age change the offer",
       "The make and model matter more than you'd expect. Japanese brands — Toyota, Honda, Mazda, Nissan — tend to fetch higher scrap prices because their parts are in constant demand from mechanics and panel shops across South East Queensland. European cars can go either way: some parts are valuable, but others are difficult to move.",
       "Age isn't always a dealbreaker. A 2005 car with a blown engine can be worth more than a 2015 car that's been in a major accident, simply because the older car may have more intact, sellable parts. It depends on the specific damage and what components survived.",
-      "Condition categories and what they typically pay in Brisbane: Running and registered cars in average condition generally receive $1,000 to $9,999 depending on make, model, and age. Non-running cars with salvageable parts usually fetch $300 to $2,000. Complete scrap vehicles — no usable parts, just metal — typically bring $300 to $500 based on weight.",
+      "Condition categories and what they typically pay in Brisbane: Running and registered cars in average condition generally receive $1,000 to $9,999 depending on make, model, and age. Non-running cars with salvageable parts usually fetch $300 to $2,000. Complete [scrap vehicles](/junk-cars-brisbane) — no usable parts, just metal — typically bring $300 to $500 based on weight.",
       "Location within Brisbane also plays a small role. Most reputable cash-for-cars buyers offer free towing across the entire Greater Brisbane region, so your suburb shouldn't affect the price. However, if you're in a very remote area or the car is in a difficult access spot — think underground parking or a narrow laneway — mention it upfront so the buyer can send the right equipment.",
+      "## Getting the best price for your scrap car",
       "To get the best price for your scrap car in Brisbane, follow these steps. First, get at least two or three quotes. Prices vary between buyers, and having a competing offer gives you leverage. Second, be completely honest about the car's condition — surprises at pickup lead to renegotiation, which nobody enjoys. Third, have your ID and any registration documents ready to speed up the process.",
-      "One common mistake is waiting too long. A car that sits unused loses value every month to rust, flat-spotted tyres, dead batteries, and rodent damage. If you've decided to sell, act sooner rather than later. The scrap metal market fluctuates, and today's price isn't guaranteed next month.",
+      "One common mistake is waiting too long. A car that sits unused loses value every month to rust, flat-spotted tyres, dead batteries, and rodent damage. If you've decided to sell, act sooner rather than later. The [scrap metal market](/blog/scrap-metal-prices-brisbane-2026) fluctuates, and today's price isn't guaranteed next month.",
       "The bottom line: most scrap cars in Brisbane are worth between $300 and $3,000, with the sweet spot for older but reasonably complete vehicles sitting around $500 to $1,500. The only way to know your specific car's value is to get a quote based on its actual make, model, year, and condition. A quick phone call or online form takes five minutes and costs nothing.",
     ],
     date: "2026-04-01",
@@ -601,12 +658,15 @@ const rawPosts: RawPost[] = [
     excerpt:
       "Selling a car privately can take weeks of listing, fielding calls, and negotiating. If you want a faster option, cash-for-cars services let you skip all of that.",
     content: [
-      "Selling a car privately can take weeks of listing, fielding calls, and negotiating. If you want a faster option, cash-for-cars services let you skip all of that. Here's how the process works in Brisbane.",
+      "Selling a car privately can take weeks of listing, fielding calls, and negotiating. If you want a faster option, [cash-for-cars services](/cash-for-cars-brisbane) let you skip all of that. Here's how the process works in Brisbane.",
+      "## The three-step quote, pickup, and payment process",
       "First, get a quote. You can call or fill out an online form with your car's make, model, year, and condition. A reputable buyer will give you a price over the phone — no obligation.",
-      "Second, schedule your pickup. Most services offer same-day or next-day collection across Greater Brisbane, including Logan, Ipswich, and Moreton Bay.",
+      "Second, schedule your pickup. Most services offer same-day or next-day collection across Greater Brisbane, including [Logan](/locations/logan), Ipswich, and Moreton Bay.",
       "Third, get paid on the spot. When the tow truck arrives, the driver inspects the car, confirms the quote, and hands you cash. No waiting for bank transfers.",
+      "## What if the car doesn't run or isn't registered?",
       "What about cars that don't run? Most cash-for-cars buyers accept vehicles in any condition — damaged, unregistered, written off, or simply old. Free towing is standard.",
-      "How much will you get? Offers typically range from a few hundred dollars for scrap vehicles up to $9,999 for cars in good working order. The main factors are make, model, age, condition, and current scrap metal prices.",
+      "## How much your car is worth and how to get the best price",
+      "How much will you get? Offers typically range from a few hundred dollars for scrap vehicles up to $9,999 for cars in good working order. The main factors are make, model, age, condition, and [current scrap metal prices](/blog/scrap-metal-prices-brisbane-2026).",
       "To get the best price, have your registration papers ready, be honest about the car's condition, and compare quotes from at least two buyers before committing.",
     ],
     date: "2025-03-15",
@@ -623,11 +683,14 @@ const rawPosts: RawPost[] = [
       "Once the tow truck drives away with your old car, what happens next? The answer depends on the vehicle's condition.",
     content: [
       "Once the tow truck drives away with your old car, what happens next? The answer depends on the vehicle's condition.",
+      "## Resale and export for cars still in working order",
       "Cars in reasonable working order are often resold at auction or exported to markets where older models are still in demand. The buyer handles re-registration and any needed repairs.",
-      "Vehicles that are damaged, written off, or too old to resell go to licensed auto recyclers. There, they're carefully dismantled. Usable parts — engines, transmissions, doors, mirrors — are cleaned, tested, and sold as second-hand spares.",
-      "The remaining shell is crushed, shredded, and sorted. Steel, aluminium, copper, and other metals are separated and sent to smelters. Australia recycles roughly 90% of an end-of-life vehicle's metal content.",
+      "## Dismantling, parts, and recycling at licensed yards",
+      "Vehicles that are damaged, written off, or too old to resell go to [licensed auto recyclers](/scrap-car-removal-brisbane). There, they're carefully dismantled. Usable parts — engines, transmissions, doors, mirrors — are cleaned, tested, and sold as second-hand spares.",
+      "The remaining shell is crushed, shredded, and sorted. Steel, aluminium, copper, and other metals are separated and sent to smelters. Australia recycles roughly 90% of an end-of-life vehicle's [metal content](/blog/scrap-metal-prices-brisbane-2026).",
+      "## Safe disposal of fluids and tyres",
       "Fluids like engine oil, coolant, and brake fluid are drained and either re-refined or disposed of according to EPA guidelines. Tyres are sent to specialist recyclers.",
-      "So whether your car runs or not, selling it for cash means it gets a second life — as parts, raw materials, or both. It's a more responsible option than letting it rust in the yard.",
+      "So whether your car runs or not, [selling it for cash](/cash-for-cars-brisbane) means it gets a second life — as parts, raw materials, or both. It's a more responsible option than letting it rust in the yard.",
     ],
     date: "2025-02-28",
     category: "Insights",
@@ -642,11 +705,13 @@ const rawPosts: RawPost[] = [
     excerpt:
       "Trade-ins seem convenient, but dealerships lowball older vehicles. Here are five signs you'd do better selling for scrap cash.",
     content: [
-      "Trade-ins seem convenient, but dealerships lowball older vehicles because they can't resell them easily. Here are five signs you'd do better selling your car to a cash buyer.",
-      "1. The repair costs exceed the car's value. If a mechanic quotes $3,000 to fix a car worth $2,500, it's time to sell as-is. Cash buyers factor in the scrap value of metals and parts, so you still get paid.",
+      "Trade-ins seem convenient, but dealerships lowball older vehicles because they can't resell them easily. Here are five signs you'd do better selling your car to a [cash buyer](/cash-for-cars-brisbane).",
+      "## When the maths says scrap beats trade-in",
+      "1. The repair costs exceed the car's value. If a mechanic quotes $3,000 to fix a car worth $2,500, it's time to sell as-is. Cash buyers factor in the [scrap value of metals and parts](/blog/scrap-metal-prices-brisbane-2026), so you still get paid.",
       "2. It's been sitting unused for months. A car that's been parked for six months or more is losing value to rust, flat tyres, and battery decay. The longer you wait, the less it's worth.",
       "3. It failed the safety inspection. If your car can't pass a roadworthy certificate and the fixes are expensive, a cash-for-cars service is the simplest exit. No roadworthy required.",
-      "4. The trade-in offer was insultingly low. Dealerships often offer $500 or less for older cars, then charge you fees on top. A direct cash buyer typically offers more because they recover value from parts and metal.",
+      "## When dealer trade-in offers fall flat",
+      "4. The trade-in offer was insultingly low. Dealerships often offer $500 or less for older cars, then charge you fees on top. A [direct cash buyer](/old-cars-brisbane) typically offers more because they recover value from parts and metal.",
       "5. You just want it gone today. Private sales take time — ads, tyre-kickers, test drives, negotiation. If speed matters, cash buyers pick up same day and pay on the spot.",
     ],
     date: "2025-02-10",
@@ -663,12 +728,14 @@ const rawPosts: RawPost[] = [
       "A little preparation before the tow truck arrives makes the pickup faster and ensures you don't leave personal items behind.",
     content: [
       "A little preparation before the tow truck arrives makes the pickup faster and ensures you don't leave personal items behind. Here's a quick checklist.",
+      "## Clearing belongings and gathering paperwork",
       "Remove all personal belongings. Check the glove box, boot, under seats, door pockets, and sun visors. People commonly forget sunglasses, phone chargers, garage remotes, and toll tags.",
       "Gather your paperwork. Have your registration certificate or proof of ownership ready. If you've lost the papers, let the buyer know in advance — most can still proceed with valid ID.",
+      "## Plates, rego, and tow truck access",
       "Remove your number plates. In Queensland, plates belong to the registered owner, not the vehicle. Take them off before the driver arrives, or ask for help on the day.",
-      "Cancel your registration. Once the car is gone, notify the Department of Transport to cancel rego and get a refund on any unused portion.",
+      "Cancel your registration. Once the car is gone, notify the Department of Transport to [cancel rego](/blog/how-to-cancel-car-rego-qld) and get a refund on any unused portion.",
       "Ensure access for the tow truck. Clear the driveway or parking area so the truck can reach the car easily. If the car is in a tight spot, mention it when booking so the right equipment is sent.",
-      "That's it — five simple steps. The whole pickup usually takes 15 to 30 minutes from arrival to payment.",
+      "That's it — five simple steps. The whole [pickup](/car-removal-brisbane) usually takes 15 to 30 minutes from arrival to payment.",
     ],
     date: "2025-01-20",
     category: "Guides",
