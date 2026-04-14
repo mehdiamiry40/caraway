@@ -28,17 +28,19 @@ export function Hero() {
 
             <div className="mt-4 flex flex-col gap-1 text-xs sm:text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="flex gap-0.5" aria-label="4.9 out of 5 stars">
+                <div className="flex gap-0.5" aria-hidden="true">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" aria-hidden="true" />
                   ))}
                 </div>
                 <span>
-                  <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
+                  <strong className="text-foreground">Straightforward quotes</strong>
+                  {" · "}
+                  pickups across Greater Brisbane
                 </span>
               </div>
               <span className="text-sm sm:text-xs text-muted-foreground">
-                Based on direct customer feedback.
+                Recent seller stories are below — every car is different.
               </span>
             </div>
 

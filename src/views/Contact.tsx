@@ -5,7 +5,7 @@ import { BUSINESS } from "@/lib/site";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
 const ContactForm = dynamic(() => import("@/components/sections/ContactForm").then((mod) => mod.ContactForm));
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Building2, Clock, Mail, MapPin } from "lucide-react";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -29,7 +29,7 @@ export default function Contact() {
             <div>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Get in Touch</h2>
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                The fastest way to get a cash offer is to use our online price estimator. Our Brisbane team will follow up with a confirmed quote and arrange same-day pickup in most areas.
+                The fastest way to get a cash offer is to use our online price estimator. Our Brisbane team will follow up with a confirmed quote and arrange same- or next-day pickup in most areas.
               </p>
             </div>
 
@@ -47,8 +47,14 @@ export default function Contact() {
 
               {[
                 {
+                  icon: Building2,
+                  title: "Registered office",
+                  main: BUSINESS.addressFormatted,
+                  sub: "Mail and admin only — not open to the public. We don’t accept vehicle drop-offs; pickups are always at your location.",
+                },
+                {
                   icon: MapPin,
-                  title: "Service Area",
+                  title: "Service area",
                   main: `All of Greater ${BUSINESS.location}`,
                   sub: BUSINESS.locationDetail,
                 },

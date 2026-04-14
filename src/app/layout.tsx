@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Caraway",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 0481 438 444.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "Caraway",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 0481 438 444.",
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 0481 438 444.",
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",

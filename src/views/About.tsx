@@ -11,7 +11,7 @@ const breadcrumbs = [
 
 const features = [
   { title: "Genuinely Free Towing", desc: "We never deduct towing costs from your offer. The price quoted is the price you get, every time." },
-  { title: "Same-Day Service", desc: "Most vehicles are collected the same day you accept our offer. We don't make you wait." },
+  { title: "Fast pickup", desc: "Most pickups are same- or next-day once you accept our offer — we confirm a slot when you book." },
   { title: "All Vehicles Accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered. No exclusions." },
   { title: "Cash on the Spot", desc: "You receive your cash payment before the car leaves your property. No unnecessary delays." },
   { title: "Responsible Recycling", desc: "We dispose of all vehicles through licensed Queensland recycling facilities, meeting EPA requirements." },
@@ -25,7 +25,7 @@ export default function About() {
       title="About Caraway — Cash for Cars Brisbane"
       subtitle={
         <p>
-          We&apos;re a locally owned Brisbane business that makes selling your car for cash simple. No auctions, no advertising, no time-wasters — just fair cash offers and same-day service.
+          We&apos;re a locally owned Brisbane business that makes selling your car for cash simple. No auctions, no advertising, no time-wasters — just fair cash offers and same- or next-day pickup.
         </p>
       }
     >

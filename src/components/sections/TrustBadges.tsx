@@ -24,8 +24,8 @@ const badges = [
   },
   {
     icon: Star,
-    label: "4.9 Star Rating",
-    detail: "200+ Brisbane sellers",
+    label: "Seller stories",
+    detail: "Recent feedback on this page",
   },
 ] as const;
 
