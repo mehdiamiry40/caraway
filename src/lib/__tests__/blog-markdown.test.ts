@@ -91,6 +91,37 @@ describe("renderBlogContent — block-level", () => {
     const className = (first.props as { className?: string }).className ?? "";
     expect(className).toContain("first-letter");
   });
+
+  it("renders ![alt](src) as a figure with a caption", () => {
+    const result = renderBlogContent([
+      "![A flatbed tow truck](/images/tow-truck-hero.webp 800x800)",
+    ]);
+    const fig = asElement(result[0]);
+    expect(fig.type).toBe("figure");
+    const children = getChildren(fig).filter((c) => c != null);
+    const caption = children.find(
+      (c) => isValidElement(c) && (c as ReactElement).type === "figcaption",
+    ) as ReactElement | undefined;
+    expect(caption).toBeDefined();
+    expect(flattenText(caption!)).toBe("A flatbed tow truck");
+  });
+
+  it("parses width and height from ![alt](src WxH)", () => {
+    const result = renderBlogContent(["![hero](/img.webp 1600x900)"]);
+    const fig = asElement(result[0]);
+    const frame = getChildren(fig).find(
+      (c) => isValidElement(c) && (c as ReactElement).type === "div",
+    ) as ReactElement | undefined;
+    expect(frame).toBeDefined();
+    const img = getChildren(frame!).find((c) => isValidElement(c)) as
+      | ReactElement
+      | undefined;
+    expect(img).toBeDefined();
+    const imgProps = img!.props as { src: string; width: number; height: number };
+    expect(imgProps.src).toBe("/img.webp");
+    expect(imgProps.width).toBe(1600);
+    expect(imgProps.height).toBe(900);
+  });
 });
 
 describe("renderBlogContent — inline", () => {
