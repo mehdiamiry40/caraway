@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
+import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 const serviceLinks = [
@@ -65,18 +66,40 @@ export function Footer() {
                 </span>
                 <span>{BUSINESS.email}</span>
               </a>
-              <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
-                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
+              <div className="flex items-start gap-3.5 text-muted-foreground text-sm">
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center shrink-0">
                   <Clock aria-hidden="true" className="h-4 w-4 text-primary/70" />
                 </span>
-                <span>{BUSINESS.hours} · {BUSINESS.hoursDetail}</span>
+                <span className="leading-snug">
+                  <span className="font-medium text-foreground">{BUSINESS.hours}</span>
+                  <span className="text-muted-foreground"> · </span>
+                  {BUSINESS.hoursDetail}
+                </span>
               </div>
               <div className="flex items-center gap-3.5 text-muted-foreground text-sm">
-                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center">
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center shrink-0">
                   <MapPin aria-hidden="true" className="h-4 w-4 text-primary/70" />
                 </span>
-                <span>{BUSINESS.location}</span>
+                <div className="min-w-0">
+                  <address className="not-italic leading-snug">
+                    {BUSINESS.streetAddress}
+                    <br />
+                    {BUSINESS.addressSuburb} {BUSINESS.addressState} {BUSINESS.postalCode}
+                  </address>
+                  <p className="text-xs text-muted-foreground mt-1.5 leading-snug">
+                    Registered address — not a public yard. We collect from you.
+                  </p>
+                </div>
               </div>
+              <TrackedGoogleBusinessLink
+                location="footer"
+                className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 group text-sm"
+              >
+                <span className="flex h-10 w-10 rounded-lg bg-white border border-border/60 items-center justify-center group-hover:border-primary/30 transition-all duration-200">
+                  <ExternalLink aria-hidden="true" className="h-4 w-4 text-primary" />
+                </span>
+                <span>Google Business profile</span>
+              </TrackedGoogleBusinessLink>
             </div>
           </div>
 

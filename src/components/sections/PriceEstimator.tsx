@@ -691,7 +691,7 @@ export function PriceEstimator() {
                       </span>
                     </div>
                     <p className="text-xs text-muted-foreground mt-2">
-                      Final price confirmed before pickup · Free towing · Same-day slots
+                      Final price confirmed before pickup · Free towing · Same- or next-day slots
                     </p>
                   </div>
 

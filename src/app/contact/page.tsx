@@ -12,14 +12,14 @@ const breadcrumbs = [
 export const metadata: Metadata = {
   title: "Contact Us — Free Cash for Cars Quote Brisbane",
   description:
-    "Contact Caraway for a free cash quote on your car. Call 0481 438 444 or use our online form. Brisbane-wide service, 7 days a week, same-day pickup available.",
+    "Contact Caraway for a free cash quote on your car. Call 0481 438 444 or use our online form. Brisbane-wide, 7 days a week — pickup usually same- or next-day, subject to truck availability.",
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",
     url: "/contact",
     title: "Contact Us — Free Cash for Cars Quote Brisbane | Caraway",
     description:
-      "Contact Caraway for a free cash quote on your car. Call 0481 438 444 or use our online form. Brisbane-wide, 7 days a week.",
+      "Contact Caraway for a free cash quote on your car. Call 0481 438 444 or use our online form. Brisbane-wide, 7 days — pickup usually same- or next-day.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: { card: "summary_large_image" },

@@ -43,9 +43,9 @@ export default function Terms() {
           </section>
 
           <section>
-            <h2 className="text-xl font-display font-bold text-primary mb-3">Same-day pickup</h2>
+            <h2 className="text-xl font-display font-bold text-primary mb-3">Pickup timing</h2>
             <p>
-              We aim to offer same-day pickup where scheduling, location, and driver availability permit. Your confirmed pickup window is agreed during the quote call and may fall outside the same day in some cases.
+              We aim to offer same- or next-day pickup where scheduling, location, and driver availability permit. Your confirmed pickup window is agreed when you book and may be the following day in some cases.
             </p>
           </section>
 

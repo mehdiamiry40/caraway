@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Star, Banknote, Truck, Users } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Banknote, ShieldCheck, Truck, Users } from "lucide-react";
 import { PRICE_RANGE_LABEL } from "@/lib/site";
 
 interface StatDef {
   value: string;
   label: string;
-  icon: typeof Star;
+  icon: LucideIcon;
   /** Numeric target for count-up animation. Undefined = fade-in only. */
   animateTo?: number;
   /** Decimal places for the animated number. */
@@ -17,10 +18,10 @@ interface StatDef {
 }
 
 const stats: StatDef[] = [
-  { value: "4.9★", label: "From 200+ Brisbane reviews", icon: Star, animateTo: 4.9, decimals: 1, suffix: "★" },
-  { value: "200+", label: "Sellers served across Brisbane", icon: Users, animateTo: 200, decimals: 0, suffix: "+" },
+  { value: "Local", label: "Brisbane team — reach us by phone, not a call centre", icon: Users },
+  { value: "Insured", label: "Full coverage on pickups we arrange", icon: ShieldCheck },
   { value: PRICE_RANGE_LABEL, label: "Cash range we pay", icon: Banknote },
-  { value: "Same-day", label: "Pickup available 7 days", icon: Truck },
+  { value: "24–48h", label: "Pickup usually same- or next-day — subject to truck availability", icon: Truck },
 ];
 
 const ANIMATION_DURATION = 1000;
@@ -91,7 +92,7 @@ export function Stats() {
         <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
-            Ratings and seller counts based on direct customer feedback.
+            Seller stories on this page are shared with permission and are not a full survey of every pickup.
           </p>
         </div>
       </div>

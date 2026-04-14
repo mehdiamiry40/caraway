@@ -16,7 +16,7 @@ export default function Blog() {
       title="Cash for Cars Brisbane Blog"
       subtitle={
         <p>
-          Expert tips, guides, and insights on selling your car for cash in Brisbane. Get the best price and learn how same-day pickup works.
+          Expert tips, guides, and insights on selling your car for cash in Brisbane. Get the best price and learn how same- or next-day pickup works.
         </p>
       }
     >

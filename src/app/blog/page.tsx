@@ -15,14 +15,14 @@ const breadcrumbs = [
 export const metadata: Metadata = {
   title: "Cash for Cars Brisbane Blog — Tips & Guides",
   description:
-    "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same-day pickup works. Read more now.",
+    "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works. Read more now.",
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/blog`,
     title: "Cash for Cars Brisbane Blog — Tips & Guides",
     description:
-      "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same-day pickup works.",
+      "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
