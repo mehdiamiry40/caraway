@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Banknote, ShieldCheck, Truck, Users } from "lucide-react";
 import { PRICE_RANGE_LABEL } from "@/lib/site";
+import { useIntersectionVisibility } from "@/hooks/use-intersection-visibility";
 
 interface StatDef {
   value: string;
@@ -30,14 +31,15 @@ function useCountUp(target: number | undefined, decimals: number, started: boole
   const [value, setValue] = useState<number | null>(null);
   const frameRef = useRef(0);
 
-  useEffect(() => {
-    if (!started || target === undefined) return;
+  const prefersReducedMotion = useMemo(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    [],
+  );
 
-    // Respect prefers-reduced-motion
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setValue(target);
-      return;
-    }
+  useEffect(() => {
+    if (!started || target === undefined || prefersReducedMotion) return;
 
     const startTime = performance.now();
     const animate = (now: number) => {
@@ -52,34 +54,17 @@ function useCountUp(target: number | undefined, decimals: number, started: boole
     };
     frameRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameRef.current);
-  }, [started, target, decimals]);
+  }, [started, target, decimals, prefersReducedMotion]);
 
+  // Reduced-motion users skip the animation and see the final value directly.
+  if (prefersReducedMotion && started && target !== undefined) return target;
   return value;
 }
 
 export function Stats() {
-  const ref = useRef<HTMLElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setInView(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+  const [ref, inView] = useIntersectionVisibility<HTMLElement>({
+    threshold: 0.3,
+  });
 
   return (
     <section ref={ref} className="relative bg-muted border-b border-border/40" aria-label="What to expect">

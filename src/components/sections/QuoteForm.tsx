@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
@@ -42,14 +42,16 @@ export function QuoteForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    watch,
+    control,
     setValue,
   } = useForm<QuoteFormInput, unknown, QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     mode: "onBlur",
   });
 
-  const selectedMake = watch("make");
+  // `useWatch` is the React Compiler-safe alternative to the `watch()`
+  // function returned by `useForm()`, which cannot be memoized safely.
+  const selectedMake = useWatch({ control, name: "make" });
 
   const onSubmit = async (data: QuoteFormValues) => {
     setErrorMessage(null);
