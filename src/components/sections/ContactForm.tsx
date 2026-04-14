@@ -6,7 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
+import {
+  contactFormSchema,
+  type ContactFormInput,
+  type ContactFormValues,
+} from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
@@ -38,7 +42,7 @@ export function ContactForm() {
     control,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<ContactFormValues>({
+  } = useForm<ContactFormInput, unknown, ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     mode: "onBlur",
   });
@@ -70,7 +74,7 @@ export function ContactForm() {
     }
   };
 
-  const onError = (formErrors: FieldErrors<ContactFormValues>) => {
+  const onError = (formErrors: FieldErrors<ContactFormInput>) => {
     const firstErrorKey = Object.keys(formErrors)[0] as keyof typeof fieldIds | undefined;
     if (firstErrorKey && fieldIds[firstErrorKey]) {
       document.getElementById(fieldIds[firstErrorKey])?.focus();
