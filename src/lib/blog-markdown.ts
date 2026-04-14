@@ -1,5 +1,8 @@
 import { createElement, type ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
+
+const IMAGE_BLOCK_RE = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+(\d+)x(\d+))?\)$/;
 
 export function slugify(input: string): string {
   return input
@@ -77,6 +80,45 @@ export function renderBlogContent(
   return paragraphs.map((raw, i) => {
     const text = raw ?? "";
     const key = `b-${i}`;
+
+    const imgMatch = text.trim().match(IMAGE_BLOCK_RE);
+    if (imgMatch) {
+      const alt = imgMatch[1];
+      const src = imgMatch[2];
+      const width = imgMatch[3] ? Number(imgMatch[3]) : 1600;
+      const height = imgMatch[4] ? Number(imgMatch[4]) : 900;
+      return createElement(
+        "figure",
+        { key, className: "my-10" },
+        createElement(
+          "div",
+          {
+            key: `${key}-frame`,
+            className:
+              "relative overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-sm",
+          },
+          createElement(Image, {
+            src,
+            alt,
+            width,
+            height,
+            sizes: "(max-width: 768px) 100vw, 720px",
+            className: "h-auto w-full object-cover",
+          }),
+        ),
+        alt
+          ? createElement(
+              "figcaption",
+              {
+                key: `${key}-cap`,
+                className:
+                  "mt-3 text-center text-xs sm:text-sm text-muted-foreground italic",
+              },
+              alt,
+            )
+          : null,
+      );
+    }
 
     if (text.startsWith("### ")) {
       const heading = text.slice(4).trim();

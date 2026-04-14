@@ -94,6 +94,8 @@ const rawPosts: RawPost[] = [
 
       "## Paperwork and pickup in QLD",
 
+      "![Free flatbed pickup across Brisbane — your old 4WD loaded and gone the same or next day.](/images/tow-truck-hero.webp 800x800)",
+
       "The paperwork to sell a used 4WD in Brisbane is minimal. Bring your Queensland driver's licence or passport, the registration certificate if you still have it, and any service history that supports your asking price. The buyer files the disposal notice with TMR within the 14-day window required by Queensland law, which removes the vehicle from your name and ends your liability for tolls and fines. Remove your number plates before the tow truck leaves — in QLD, plates belong to the registered owner, not the vehicle.",
 
       "Free pickup typically covers the entire Greater Brisbane footprint: from [Logan](/locations/logan) and Ipswich in the south and west, north to Caboolture and the [North Lakes](/locations/north-lakes) corridor, east across the Bayside, and out to the foothills around The Gap and Kenmore.",
