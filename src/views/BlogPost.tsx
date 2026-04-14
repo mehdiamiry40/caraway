@@ -3,7 +3,9 @@ import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { InternalLinks } from "@/components/sections/InternalLinks";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
-import { getRelatedPosts, categorySlug } from "@/data/blog-posts";
+import { categorySlug } from "@/data/blog-posts";
+import { getSmartRelatedPosts } from "@/lib/related-posts";
+import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import {
@@ -45,7 +47,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
   const canonical = `${SITE_URL}/blog/${post.slug}`;
   const shareText = post.title;
-  const relatedPosts = getRelatedPosts(post.slug);
+  const relatedPosts = getSmartRelatedPosts(post.slug, 3);
   const showUpdated =
     post.updatedAt &&
     post.updatedAt !== post.date &&
@@ -108,26 +110,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </header>
 
             <div className="prose-body max-w-[65ch] mx-auto break-words [overflow-wrap:anywhere]">
-              {post.content.map((paragraph, i) => {
-                if (i === 0) {
-                  return (
-                    <p
-                      key={i}
-                      className="first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-medium mb-8"
-                    >
-                      {paragraph}
-                    </p>
-                  );
-                }
-                return (
-                  <p
-                    key={i}
-                    className="text-base sm:text-lg text-foreground/85 leading-[1.85] mb-7"
-                  >
-                    {paragraph}
-                  </p>
-                );
-              })}
+              {renderBlogContent(post.content, { firstParagraphDropCap: true })}
             </div>
 
             <aside className="mt-14 rounded-2xl bg-gradient-to-br from-primary/5 via-white to-accent/5 border border-primary/15 p-6 sm:p-8 shadow-sm">
@@ -370,7 +353,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
         </div>
 
-        <InternalLinks />
+        <InternalLinks post={post} />
       </PageShell>
     </>
   );
