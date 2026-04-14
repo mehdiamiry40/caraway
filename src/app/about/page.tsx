@@ -14,7 +14,7 @@ const breadcrumbs = [
 export const metadata: Metadata = {
   title: "About Us — Brisbane Cash for Cars Team",
   description:
-    "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, and same-day pickup 7 days a week. Call 1800 227 293.",
+    "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, and same-day pickup 7 days a week. Call 0481 438 444.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",

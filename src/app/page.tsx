@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     absolute: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 0481 438 444.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",

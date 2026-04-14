@@ -13,7 +13,7 @@ const breadcrumbs = [
 export const metadata: Metadata = {
   title: "Cash for Cars Brisbane FAQ — Questions Answered",
   description:
-    "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup. Call 1800 227 293 for help.",
+    "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same-day pickup. Call 0481 438 444 for help.",
   alternates: { canonical: "/faq" },
   openGraph: {
     type: "website",
