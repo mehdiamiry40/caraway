@@ -56,7 +56,7 @@ export const localBusinessSchema = {
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
   description:
-    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing and same-day service across Greater Brisbane. Call 1800 227 293.",
+    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing and same-day service across Greater Brisbane. Call 0481 438 444.",
   // Caraway is a service-area business with no physical retail storefront.
   // We declare locality-level address only (no streetAddress) and rely on
   // serviceArea / areaServed to describe the coverage footprint.
