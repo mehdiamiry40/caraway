@@ -1,10 +1,19 @@
+import Link from "next/link";
 import { MessageSquare, DollarSign, Truck } from "lucide-react";
 
 const steps = [
   {
     icon: <MessageSquare className="w-6 h-6" aria-hidden="true" />,
     title: "Tell us about your car",
-    description: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
+    description: (
+      <>
+        Use our{" "}
+        <Link href="/#price-estimator" className="text-primary font-medium underline decoration-primary/30 underline-offset-2 hover:decoration-primary">
+          online quote tool
+        </Link>
+        {" — make, model, year, condition, suburb. Photos help if you have them."}
+      </>
+    ),
     timing: "60 seconds",
   },
   {
@@ -17,7 +26,7 @@ const steps = [
     icon: <Truck className="w-6 h-6" aria-hidden="true" />,
     title: "We pick up, you get paid",
     description: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
-    timing: "Same day",
+    timing: "Same or next day",
   },
 ];
 
@@ -53,7 +62,7 @@ export function HowItWorks() {
                 </span>
               </div>
               <h3 className="text-lg sm:text-xl font-display font-bold text-primary mb-2 sm:mb-3">{step.title}</h3>
-              <p className="text-muted-foreground leading-relaxed max-w-[300px] text-sm">{step.description}</p>
+              <div className="text-muted-foreground leading-relaxed max-w-[300px] text-sm">{step.description}</div>
               <p className="mt-2 text-xs text-muted-foreground font-medium uppercase tracking-wide">{step.timing}</p>
             </div>
           ))}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check, Star } from "lucide-react";
 import { HeroCTAs } from "./HeroCTAs";
 
@@ -21,7 +22,21 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-md leading-relaxed">
-              Get an instant online quote in 60 seconds, or call for a cash offer. Free pickup. Paid on the spot. $300–$9,999.
+              Get an{" "}
+              <Link
+                href="/#price-estimator"
+                className="text-foreground font-medium underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+              >
+                instant online quote in 60 seconds
+              </Link>
+              , or call for a cash offer.{" "}
+              <Link
+                href="/car-removal-brisbane"
+                className="text-foreground font-medium underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+              >
+                Free pickup
+              </Link>
+              . Paid on the spot. $300–$9,999.
             </p>
 
             <HeroCTAs />

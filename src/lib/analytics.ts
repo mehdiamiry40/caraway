@@ -17,7 +17,8 @@ type EventName =
   | "faq_opened"
   | "internal_link_click"
   | "hero_cta_click"
-  | "google_business_click";
+  | "google_business_click"
+  | "authority_link_click";
 
 type AllowedValue = string | number | boolean | null;
 
