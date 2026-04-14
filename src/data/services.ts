@@ -26,13 +26,13 @@ export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
     title: "Cash for Cars Brisbane | Up to $9,999 Same-Day Pickup",
-    metaDescription: "Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call 1800 227 293.",
+    metaDescription: "Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call 0481 438 444.",
     h1: "Cash for Cars Brisbane — Get Paid Today",
-    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same day, free of charge.",
+    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same or next day, free of charge.",
     sections: [
       {
         heading: "How Our Cash for Cars Service Works",
-        content: "Selling your car for cash in Brisbane couldn't be simpler. Use our online price estimator or fill out our quote form with your car's details — make, model, year, and condition. We'll give you a no-obligation cash offer within minutes. If you accept, we'll arrange free pickup at a time that suits you — often the same day. Our driver arrives, pays you in cash on the spot, and tows your vehicle away at no cost. The entire process takes less than an hour from start to finish."
+        content: "Selling your car for cash in Brisbane couldn't be simpler. Use our online price estimator or fill out our quote form with your car's details — make, model, year, and condition. We'll give you a no-obligation cash offer within minutes. If you accept, we'll arrange free pickup at a time that suits you — often the same or next day. Our driver arrives, pays you in cash on the spot, and tows your vehicle away at no cost. The entire process takes less than an hour from start to finish."
       },
       {
         heading: "Why Brisbane Locals Choose Caraway",
@@ -44,7 +44,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Same-Day Car Removal Across Brisbane",
-        content: "When you accept our offer, we can usually arrange same-day pickup anywhere in Greater Brisbane. Our fleet covers all suburbs from Caboolture in the north to Beenleigh in the south, and from Ipswich in the west to Cleveland in the east. Weekend and after-hours pickups are available by arrangement. We work around your schedule, not the other way around."
+        content: "When you accept our offer, we can usually arrange same- or next-day pickup anywhere in Greater Brisbane. Our fleet covers all suburbs from Caboolture in the north to Beenleigh in the south, and from Ipswich in the west to Cleveland in the east. Weekend and after-hours pickups are available by arrangement. We work around your schedule, not the other way around."
       },
       {
         heading: "How Much Cash Will I Get for My Car?",
@@ -52,7 +52,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How quickly can I get cash for my car in Brisbane?", answer: "Most sellers receive same-day payment. Once you accept our offer, we can often arrange pickup within a few hours. You're paid in cash before the car leaves your property." },
+      { question: "How quickly can I get cash for my car in Brisbane?", answer: "Most sellers receive same- or next-day payment. Once you accept our offer, we can often arrange pickup within a few hours. You're paid in cash before the car leaves your property." },
       { question: "Do you buy cars without registration?", answer: "Yes, we buy unregistered, deregistered, and expired-registration vehicles across Brisbane. No current registration is required." },
       { question: "Is your car removal really free?", answer: "Absolutely. There are no towing fees, no hidden costs, and no deductions from your quoted price. The cash amount we quote is the amount you receive." },
       { question: "What areas of Brisbane do you cover?", answer: "We cover all of Greater Brisbane including North Brisbane, South Brisbane, East Brisbane, West Brisbane, Logan, Ipswich, Redland Bay, and Moreton Bay regions." }
@@ -63,9 +63,9 @@ export const services: ServicePage[] = [
   {
     slug: "car-removal-brisbane",
     title: "Free Car Removal Brisbane | Same-Day Pickup",
-    metaDescription: "Free car removal across Brisbane. Same-day pickup, no towing fees, instant cash payment. We remove old, scrap, and unwanted cars. Call 1800 227 293.",
+    metaDescription: "Free car removal across Brisbane. Same- or next-day pickup, no towing fees, instant cash payment. We remove old, scrap, and unwanted cars. Call 0481 438 444.",
     h1: "Free Car Removal Brisbane — Same-Day Service",
-    intro: "Need a car removed from your property in Brisbane? Caraway offers free car removal across Greater Brisbane with same-day pickup available 7 days a week. We don't just remove your car — we pay you cash for it. No towing fees, no hidden charges, no hassle.",
+    intro: "Need a car removed from your property in Brisbane? Caraway offers free car removal across Greater Brisbane with same- or next-day pickup available 7 days a week. We don't just remove your car — we pay you cash for it. No towing fees, no hidden charges, no hassle.",
     sections: [
       {
         heading: "How Our Brisbane Car Removal Works",
@@ -86,7 +86,7 @@ export const services: ServicePage[] = [
     ],
     faqs: [
       { question: "Is car removal really free in Brisbane?", answer: "Yes — 100% free. We never charge for towing or pickup. The price we quote is the full amount you receive in cash, with nothing deducted." },
-      { question: "How fast can you remove my car?", answer: "We offer same-day car removal across most Brisbane suburbs. Contact us before midday and we can usually arrange afternoon pickup." },
+      { question: "How fast can you remove my car?", answer: "We offer same- or next-day car removal across most Brisbane suburbs. Contact us before midday and we can usually arrange afternoon pickup." },
       { question: "Do you remove cars that don't run?", answer: "Yes. Our tow trucks can load non-running, broken-down, and immobile vehicles. Your car doesn't need to start or drive." },
       { question: "Can you remove a car from a tight space?", answer: "Yes. Our experienced drivers can retrieve vehicles from garages, backyards, driveways, underground car parks, and other tight locations." }
     ],
@@ -96,9 +96,9 @@ export const services: ServicePage[] = [
   {
     slug: "sell-my-car-brisbane",
     title: "Sell My Car Brisbane | Instant Cash, No Hassle",
-    metaDescription: "Sell your car in Brisbane fast. Get an instant cash offer, free pickup, same-day payment. No advertising, no tyre-kickers. Call Caraway on 1800 227 293.",
+    metaDescription: "Sell your car in Brisbane fast. Get an instant cash offer, free pickup, same- or next-day payment. No advertising, no tyre-kickers. Call Caraway on 0481 438 444.",
     h1: "Sell My Car Brisbane — Instant Offer, No Hassle",
-    intro: "Want to sell your car quickly in Brisbane without the hassle of private sales? Caraway makes selling your car effortless. Get an instant cash offer, skip the advertising and test drives, and get paid the same day. We buy all makes and models in any condition.",
+    intro: "Want to sell your car quickly in Brisbane without the hassle of private sales? Caraway makes selling your car effortless. Get an instant cash offer, skip the advertising and test drives, and get paid the same or next day. We buy all makes and models in any condition.",
     sections: [
       {
         heading: "Skip the Hassle of Private Sales",
@@ -118,7 +118,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you an instant offer. Accept, and we'll pick up your car and pay you cash — often the same day." },
+      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you an instant offer. Accept, and we'll pick up your car and pay you cash — often the same or next day." },
       { question: "Do I need a roadworthy to sell my car?", answer: "No. We buy cars as-is, without a Roadworthy Certificate. Your car can be in any condition — running, broken, damaged, or scrap." },
       { question: "How much can I get for my car?", answer: "Offers range from $300 for end-of-life scrap vehicles up to $9,999 for newer models in good condition. Contact us for a free, no-obligation quote specific to your vehicle." },
       { question: "Can I sell a car I still owe finance on?", answer: "In some cases, yes. Contact us to discuss your situation. We can sometimes arrange payout of the remaining finance as part of the sale." }
@@ -129,7 +129,7 @@ export const services: ServicePage[] = [
   {
     slug: "scrap-car-removal-brisbane",
     title: "Scrap Car Removal Brisbane | Cash for Scrap Cars",
-    metaDescription: "Scrap car removal Brisbane. We pay cash for scrap cars and remove them free. End-of-life vehicles, wrecks, and junk cars. Same-day service. Call 1800 227 293.",
+    metaDescription: "Scrap car removal Brisbane. We pay cash for scrap cars and remove them free. End-of-life vehicles, wrecks, and junk cars. Same- or next-day service. Call 0481 438 444.",
     h1: "Scrap Car Removal Brisbane — Cash for Your Scrap Car",
     intro: "Got a scrap car taking up space on your property? Caraway pays cash for scrap cars across Brisbane and removes them free of charge. Whether your vehicle is completely wrecked, mechanically beyond repair, or simply reached end-of-life — we'll pay you and take it away today.",
     sections: [
@@ -162,7 +162,7 @@ export const services: ServicePage[] = [
   {
     slug: "unwanted-cars-brisbane",
     title: "Unwanted Car Removal Brisbane | Cash Paid Today",
-    metaDescription: "Got an unwanted car in Brisbane? We pay cash and remove it free. Any make, any condition. Same-day pickup available. Call Caraway on 1800 227 293.",
+    metaDescription: "Got an unwanted car in Brisbane? We pay cash and remove it free. Any make, any condition. Same- or next-day pickup available. Call Caraway on 0481 438 444.",
     h1: "Unwanted Car Removal Brisbane — Turn It Into Cash",
     intro: "That unwanted car sitting in your driveway, garage, or yard doesn't have to be a headache. Caraway turns unwanted vehicles into instant cash across Brisbane. We buy any unwanted car regardless of its age, condition, or registration status — and we remove it free.",
     sections: [
@@ -189,7 +189,7 @@ export const services: ServicePage[] = [
     ],
     faqs: [
       { question: "What is an unwanted car worth in Brisbane?", answer: "Values range from $300 for end-of-life vehicles to several thousand dollars for newer unwanted cars in reasonable condition. Get a free quote using our online price estimator." },
-      { question: "Can you remove an unwanted car today?", answer: "In most cases, yes. Contact us in the morning and we can usually arrange same-day removal across Brisbane suburbs." },
+      { question: "Can you remove an unwanted car today?", answer: "In most cases, yes. Contact us in the morning and we can usually arrange same- or next-day removal across Brisbane suburbs." },
       { question: "Do I need to be home for the pickup?", answer: "Ideally yes, as we pay cash in person and need your ID. However, we can make alternative arrangements if you're unable to be present — just ask." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "old-cars-brisbane", "junk-cars-brisbane"],
@@ -198,7 +198,7 @@ export const services: ServicePage[] = [
   {
     slug: "damaged-cars-brisbane",
     title: "Cash for Damaged Cars Brisbane | Any Damage Accepted",
-    metaDescription: "Sell your damaged car for cash in Brisbane. We buy crash-damaged, hail-damaged, and mechanically damaged cars. Free removal. Call 1800 227 293.",
+    metaDescription: "Sell your damaged car for cash in Brisbane. We buy crash-damaged, hail-damaged, and mechanically damaged cars. Free removal. Call 0481 438 444.",
     h1: "Cash for Damaged Cars Brisbane",
     intro: "Has your car been damaged in an accident, hailstorm, or flood? Don't spend thousands on repairs — sell it to Caraway for instant cash. We buy all types of damaged vehicles across Brisbane and remove them free of charge, regardless of the extent of the damage.",
     sections: [
@@ -234,7 +234,7 @@ export const services: ServicePage[] = [
   {
     slug: "accident-cars-brisbane",
     title: "Cash for Accident Cars Brisbane | Sell Crashed Cars",
-    metaDescription: "Sell your accident car for cash in Brisbane. We buy crashed, written-off, and collision-damaged vehicles. Free towing, instant payment. Call 1800 227 293.",
+    metaDescription: "Sell your accident car for cash in Brisbane. We buy crashed, written-off, and collision-damaged vehicles. Free towing, instant payment. Call 0481 438 444.",
     h1: "Cash for Accident Cars Brisbane — Sell Your Crashed Car",
     intro: "Been in a car accident in Brisbane? If your vehicle has been crashed, written off, or isn't worth repairing — sell it to Caraway for instant cash. We specialise in purchasing accident-damaged vehicles and offer free removal from anywhere across Greater Brisbane.",
     sections: [
@@ -248,7 +248,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Quick Cash After Your Accident",
-        content: "When you've been in an accident, the last thing you want is a drawn-out selling process. Contact Caraway and you could have cash in your hands within hours. We provide instant quotes over the phone, arrange same-day pickup, and pay you before we take the vehicle. It's a simple way to move on from an accident."
+        content: "When you've been in an accident, the last thing you want is a drawn-out selling process. Contact Caraway and you could have cash in your hands within hours. We provide instant quotes over the phone, arrange same- or next-day pickup, and pay you before we take the vehicle. It's a simple way to move on from an accident."
       },
       {
         heading: "Understanding Statutory vs Repairable Write-Offs in Queensland",
@@ -270,9 +270,9 @@ export const services: ServicePage[] = [
   {
     slug: "old-cars-brisbane",
     title: "Cash for Old Cars Brisbane | Sell Your Old Car Today",
-    metaDescription: "Sell your old car for cash in Brisbane. We buy old, high-mileage, and end-of-life vehicles. Free removal, same-day cash. Call Caraway 1800 227 293.",
+    metaDescription: "Sell your old car for cash in Brisbane. We buy old, high-mileage, and end-of-life vehicles. Free removal, same- or next-day cash. Call Caraway 0481 438 444.",
     h1: "Cash for Old Cars Brisbane — Your Old Car Is Worth Money",
-    intro: "Think your old car is worthless? Think again. Caraway pays cash for old cars across Brisbane — even high-kilometre vehicles, cars from the 90s, and older models that dealers won't touch. Free removal, same-day payment, zero hassle.",
+    intro: "Think your old car is worthless? Think again. Caraway pays cash for old cars across Brisbane — even high-kilometre vehicles, cars from the 90s, and older models that dealers won't touch. Free removal, same- or next-day payment, zero hassle.",
     sections: [
       {
         heading: "Your Old Car Still Has Value",
@@ -298,7 +298,7 @@ export const services: ServicePage[] = [
   {
     slug: "junk-cars-brisbane",
     title: "Junk Car Removal Brisbane | Cash for Junk Cars",
-    metaDescription: "Junk car removal in Brisbane with instant cash payment. We buy and remove junk cars free. Any condition accepted. Call Caraway on 1800 227 293.",
+    metaDescription: "Junk car removal in Brisbane with instant cash payment. We buy and remove junk cars free. Any condition accepted. Call Caraway on 0481 438 444.",
     h1: "Junk Car Removal Brisbane — Cash for Your Junk Car",
     intro: "Got a junk car cluttering up your property? Caraway turns junk into cash across Brisbane. We buy and remove junk cars in any condition — rusted out, engine blown, body damaged, missing parts — and pay you on the spot. Free removal, no strings attached.",
     sections: [
@@ -312,7 +312,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Get Rid of Your Junk Car Today",
-        content: "Why let a junk car sit around any longer? Every day it sits, it loses value to rust and deterioration. Call Caraway today and we'll arrange same-day removal in most Brisbane suburbs. You'll have cash in hand and your space back before dinner. It's quick, easy, and completely free."
+        content: "Why let a junk car sit around any longer? Every day it sits, it loses value to rust and deterioration. Call Caraway today and we'll arrange same- or next-day removal in most Brisbane suburbs. You'll have cash in hand and your space back before dinner. It's quick, easy, and completely free."
       }
     ],
     faqs: [
@@ -326,7 +326,7 @@ export const services: ServicePage[] = [
   {
     slug: "unregistered-cars-brisbane",
     title: "Sell Unregistered Cars Brisbane | No Rego Needed",
-    metaDescription: "Sell your unregistered car for cash in Brisbane. No rego, no RWC, no worries. Free pickup and instant payment. Call Caraway on 1800 227 293.",
+    metaDescription: "Sell your unregistered car for cash in Brisbane. No rego, no RWC, no worries. Free pickup and instant payment. Call Caraway on 0481 438 444.",
     h1: "Sell Your Unregistered Car in Brisbane for Cash",
     intro: "No registration? No problem. Caraway buys unregistered vehicles across Brisbane for instant cash. Whether your rego has expired, been cancelled, or your car was never registered in Queensland — we'll buy it and remove it for free. No RWC required, no paperwork headaches.",
     sections: [
@@ -354,13 +354,13 @@ export const services: ServicePage[] = [
   {
     slug: "used-cars-brisbane",
     title: "Sell Used Cars Brisbane | Fair Cash Price Today",
-    metaDescription: "Sell your used car for a fair price in Brisbane. Skip private sales — get an instant cash offer from Caraway. Free pickup, same-day payment. Call 1800 227 293.",
+    metaDescription: "Sell your used car for a fair price in Brisbane. Skip private sales — get an instant cash offer from Caraway. Free pickup, same- or next-day payment. Call 0481 438 444.",
     h1: "Sell Your Used Car in Brisbane — Fair Cash Offer",
-    intro: "Selling a used car in Brisbane doesn't have to mean weeks of advertising and awkward test drives. Caraway offers a straightforward way to sell your used car — instant cash offers, free pickup, and same-day payment. We buy all used vehicles in any condition.",
+    intro: "Selling a used car in Brisbane doesn't have to mean weeks of advertising and awkward test drives. Caraway offers a straightforward way to sell your used car — instant cash offers, free pickup, and same- or next-day payment. We buy all used vehicles in any condition.",
     sections: [
       {
         heading: "The Smart Alternative to Private Sales",
-        content: "Selling privately in Brisbane means listing on Gumtree or Facebook Marketplace, fielding dozens of messages, arranging inspections, dealing with no-shows, and negotiating with buyers who always want a discount. You might wait weeks or months for a sale, all while paying insurance and registration. With Caraway, you get a fair offer instantly and have cash in hand the same day."
+        content: "Selling privately in Brisbane means listing on Gumtree or Facebook Marketplace, fielding dozens of messages, arranging inspections, dealing with no-shows, and negotiating with buyers who always want a discount. You might wait weeks or months for a sale, all while paying insurance and registration. With Caraway, you get a fair offer instantly and have cash in hand the same or next day."
       },
       {
         heading: "Fair Market Offers for Used Cars",
@@ -374,7 +374,7 @@ export const services: ServicePage[] = [
     faqs: [
       { question: "How much will I get for my used car?", answer: "Used car offers depend on make, model, year, condition, and kilometres. We typically pay between $500 and $9,999 for used cars. Contact us for a specific quote." },
       { question: "Is selling to Caraway better than a dealership trade-in?", answer: "Often, yes. Dealerships heavily discount trade-in values to protect their margins. We offer transparent, competitive cash prices without the pressure to buy another vehicle." },
-      { question: "How long does the process take?", answer: "From quote to cash in hand, the entire process can be completed in under an hour. Most sellers have their used car sold and removed the same day they contact us." }
+      { question: "How long does the process take?", answer: "From quote to cash in hand, the entire process can be completed in under an hour. Most sellers have their used car sold and removed the same or next day they contact us." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
     relatedSuburbs: ["indooroopilly", "carindale", "chermside", "toowong", "bayside-brisbane"]
@@ -384,7 +384,7 @@ export const services: ServicePage[] = [
     title: "Insurance Write-Off Cars Brisbane | Caraway",
     metaDescription: "Sold your car to the insurance company but kept the salvage rights? We buy statutory and repairable write-offs across Brisbane. Free pickup, cash on the spot.",
     h1: "Insurance Write-Off Cars Brisbane",
-    intro: "If your insurer has declared your vehicle a total loss and left you with the wreck — or you've elected to retain salvage rights on an accident, flood, or fire claim — Caraway buys it directly for cash. We purchase both statutory and repairable write-offs across Greater Brisbane, handle all the paperwork with TMR, and come to you with free towing. Same-day pickup is available seven days a week.",
+    intro: "If your insurer has declared your vehicle a total loss and left you with the wreck — or you've elected to retain salvage rights on an accident, flood, or fire claim — Caraway buys it directly for cash. We purchase both statutory and repairable write-offs across Greater Brisbane, handle all the paperwork with TMR, and come to you with free towing. Same- or next-day pickup is available seven days a week.",
     sections: [
       {
         heading: "Statutory vs Repairable Write-Offs Explained",
@@ -400,7 +400,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "Can I sell a car that's listed on the Written-Off Vehicle Register?", answer: "Yes. We buy both statutory and repairable write-offs listed on the WOVR. The WOVR flag doesn't prevent a sale to a licensed buyer — it just prevents the car from being re-registered in the case of a statutory write-off. Call us with the VIN and we'll give you a firm cash offer the same day." },
+      { question: "Can I sell a car that's listed on the Written-Off Vehicle Register?", answer: "Yes. We buy both statutory and repairable write-offs listed on the WOVR. The WOVR flag doesn't prevent a sale to a licensed buyer — it just prevents the car from being re-registered in the case of a statutory write-off. Call us with the VIN and we'll give you a firm cash offer quickly — usually same or next day." },
       { question: "Will your offer beat the insurance payout?", answer: "For newer vehicles on comprehensive cover, the insurance payout usually wins. For older cars (10+ years), or cars where the insurer has quoted a low market value, our offer is often competitive or better — plus you get the money in hours instead of waiting weeks for claim finalisation. We're happy to quote against your insurer's number without obligation." },
       { question: "Do I need to do anything before the pickup?", answer: "Just gather your photo ID, any paperwork from the insurer, and the vehicle's registration certificate if you still have it. Remove personal belongings and take the number plates off before the truck leaves — in Queensland, plates belong to the registered owner, not the car. Everything else we handle." }
     ],
@@ -412,7 +412,7 @@ export const services: ServicePage[] = [
     title: "Hail Damaged Cars Brisbane | Caraway",
     metaDescription: "Hail or storm damage turning your car into a write-off? We buy hail-damaged vehicles across Brisbane. Free pickup, honest quote, no repair quotes needed.",
     h1: "Hail Damaged Cars Brisbane",
-    intro: "Brisbane storm season is brutal on cars, and every summer we buy hundreds of hail-dimpled vehicles across the western and northern suburbs. If your car has been through a hailstorm and you're staring at a panel beater's quote that's worth more than the car, Caraway will take it off your hands for cash. Free pickup, same-day service, no repair quotes or engineer's reports needed — we buy hail-damaged cars in any condition across Greater Brisbane.",
+    intro: "Brisbane storm season is brutal on cars, and every summer we buy hundreds of hail-dimpled vehicles across the western and northern suburbs. If your car has been through a hailstorm and you're staring at a panel beater's quote that's worth more than the car, Caraway will take it off your hands for cash. Free pickup, same- or next-day service, no repair quotes or engineer's reports needed — we buy hail-damaged cars in any condition across Greater Brisbane.",
     sections: [
       {
         heading: "Queensland Storm Season and Why Hail Is So Bad for Cars",

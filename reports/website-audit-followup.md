@@ -9,8 +9,8 @@ Business context: Caraway Pty Ltd — Brisbane cash-for-cars buyer, Next.js 15 /
 
 ## P0 — Ship first (high impact, low effort)
 
-1. **Phone number is hidden.** `1800 CAR AWAY (1800 227 293)` is defined in `src/lib/site.ts:11-12` but never rendered in `Header.tsx`, `Footer.tsx`, or Contact page header. Add a sticky header phone CTA and a footer `tel:` link. High-intent channel is currently invisible.
-2. **Homepage CTA language deficit.** `src/components/sections/Hero.tsx:37` — single button "See my price in 60 seconds"; zero matches on "get quote / call / sell / cash". Add secondary "Call 1800 CAR AWAY" button and tighten primary copy to "Get my instant quote".
+1. **Phone number is hidden.** `0481 438 444` (`tel:0481438444`) is defined in `src/lib/site.ts` but never rendered in `Header.tsx`, `Footer.tsx`, or Contact page header. Add a sticky header phone CTA and a footer `tel:` link. High-intent channel is currently invisible.
+2. **Homepage CTA language deficit.** `src/components/sections/Hero.tsx:37` — single button "See my price in 60 seconds"; zero matches on "get quote / call / sell / cash". Add secondary "Call 0481 438 444" button and tighten primary copy to "Get my instant quote".
 3. **Price range contradiction.** Stats/Hero show `$50–$9,999`, FAQ `src/app/faq/...` says `$150–$9,999`. Pick one. Also dedupe `MAX_PRICE` in `src/lib/site.ts:24-25` vs `PRICE_TABLE.maxHigh` in `src/lib/price-estimator.ts:76`.
 4. **No physical address.** "Locally owned" claim in `About.tsx:39` conflicts with missing NAP. Add street address to `site.ts` and Footer; Locations page `src/views/Locations.tsx` also lacks phone/email/hours.
 5. **Remove unused `critters` dependency.** `package.json:26` — `next.config.ts:16` comments that optimizeCss/critters was removed but the package is still installed.
@@ -22,7 +22,7 @@ Business context: Caraway Pty Ltd — Brisbane cash-for-cars buyer, Next.js 15 /
 8. **Quote form benefits hidden on mobile.** `QuoteForm.tsx:122` uses `hidden lg:flex` — trust reassurance disappears on the device where most submissions happen. Duplicate a compact mobile version.
 9. **Success states lack next steps.** `QuoteForm.tsx:101` ("Thanks — we've got your details") and `ContactForm.tsx:69` ("Message sent") should state ETA ("We'll call within 1 business day") and mention spam folder.
 10. **Contact form friction.** `quote-schema.ts:78` enforces `message >= 10 chars`. Drop to 5 with helper text "Optional: describe your car".
-11. **Blog → conversion weak link.** `BlogPost.tsx:59` CTA "Get a free quote today — same-day pickup" has no phone number and no urgency. Replace with "Call 1800 227 293 or get a free instant quote".
+11. **Blog → conversion weak link.** `BlogPost.tsx:59` CTA "Get a free quote today — same-day pickup" has no phone number and no urgency. Replace with "Call 0481 438 444 or get a free instant quote".
 12. **FAQ CTA lacks phone.** `src/views/FAQPage.tsx:80` "Still have questions?" only links to quote/contact. Add `tel:` link and "No obligation" micro-copy.
 13. **Locations page NAP.** `Locations.tsx:28` CTA is only "Get an Instant Quote". Add local phone copy.
 14. **FAQ schema missing telephone.** `src/app/faq/page.tsx` JSON-LD — add `telephone` to FAQPage schema for rich results.

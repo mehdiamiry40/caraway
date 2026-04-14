@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check, Star } from "lucide-react";
 import { HeroCTAs } from "./HeroCTAs";
 
@@ -21,24 +22,40 @@ export function Hero() {
             </h1>
 
             <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-md leading-relaxed">
-              Get an instant online quote in 60 seconds, or call for a cash offer. Free pickup. Paid on the spot. $300–$9,999.
+              Get an{" "}
+              <Link
+                href="/#price-estimator"
+                className="text-foreground font-medium underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+              >
+                instant online quote in 60 seconds
+              </Link>
+              , or call for a cash offer.{" "}
+              <Link
+                href="/car-removal-brisbane"
+                className="text-foreground font-medium underline decoration-primary/30 underline-offset-4 hover:decoration-primary"
+              >
+                Free pickup
+              </Link>
+              . Paid on the spot. $300–$9,999.
             </p>
 
             <HeroCTAs />
 
             <div className="mt-4 flex flex-col gap-1 text-xs sm:text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="flex gap-0.5" aria-label="4.9 out of 5 stars">
+                <div className="flex gap-0.5" aria-hidden="true">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" aria-hidden="true" />
                   ))}
                 </div>
                 <span>
-                  <strong className="text-foreground">4.9</strong> · 200+ Brisbane sellers served
+                  <strong className="text-foreground">Straightforward quotes</strong>
+                  {" · "}
+                  pickups across Greater Brisbane
                 </span>
               </div>
               <span className="text-sm sm:text-xs text-muted-foreground">
-                Based on direct customer feedback.
+                Recent seller stories are below — every car is different.
               </span>
             </div>
 

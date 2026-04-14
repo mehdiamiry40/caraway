@@ -19,7 +19,7 @@ export const faqs = [
   {
     question: "How fast do I get paid for my car?",
     answer:
-      "You get paid on the spot the moment our driver arrives to collect your vehicle — before the car goes on the truck. Most Brisbane sellers receive same-day payment within a few hours of accepting our offer.",
+      "You get paid on the spot the moment our driver arrives to collect your vehicle — before the car goes on the truck. Once a pickup is booked, most sellers are paid the same or next day, depending on truck availability and your location.",
   },
   {
     question: "What types of cars do you buy in Brisbane?",
@@ -69,7 +69,7 @@ export const faqs = [
   {
     question: "Can you pick up on weekends?",
     answer:
-      "Yes. We run same-day pickup seven days a week, including Saturdays and Sundays, across Greater Brisbane. Weekend bookings are subject to truck availability — during busy periods it's worth calling early in the day to lock in an afternoon slot, but most weekend jobs we quote we also collect the same day.",
+      "Yes. We're available seven days a week for weekend pickups across Greater Brisbane. Pickup is usually same- or next-day, subject to truck availability — during busy periods it's worth calling earlier in the day so we can lock in a slot.",
   },
   {
     question: "Can I change my mind after getting a quote?",

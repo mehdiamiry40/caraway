@@ -8,7 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { quoteFormSchema, type QuoteFormValues } from "@/lib/quote-schema";
+import {
+  quoteFormSchema,
+  type QuoteFormInput,
+  type QuoteFormValues,
+} from "@/lib/quote-schema";
 import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
@@ -40,7 +44,7 @@ export function QuoteForm() {
     reset,
     watch,
     setValue,
-  } = useForm<QuoteFormValues>({
+  } = useForm<QuoteFormInput, unknown, QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     mode: "onBlur",
   });
@@ -65,7 +69,7 @@ export function QuoteForm() {
     }
   };
 
-  const onError = (formErrors: FieldErrors<QuoteFormValues>) => {
+  const onError = (formErrors: FieldErrors<QuoteFormInput>) => {
     const firstErrorKey = Object.keys(formErrors)[0] as keyof typeof fieldIds | undefined;
     if (firstErrorKey && fieldIds[firstErrorKey]) {
       document.getElementById(fieldIds[firstErrorKey])?.focus();

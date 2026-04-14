@@ -7,12 +7,14 @@ const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
   phone: BUSINESS.phone,
   email: BUSINESS.email,
-  addressLocality: "Brisbane",
-  addressRegion: "QLD",
-  postalCode: "4000",
+  streetAddress: BUSINESS.streetAddress,
+  addressLocality: BUSINESS.addressSuburb,
+  addressRegion: BUSINESS.addressState,
+  postalCode: BUSINESS.postalCode,
   addressCountry: "AU",
-  latitude: -27.4698,
-  longitude: 153.0251,
+  /** Registered office (Runcorn); serviceArea below describes pickup coverage. */
+  latitude: -27.5867,
+  longitude: 153.0992,
 };
 
 const openingHours = {
@@ -56,12 +58,11 @@ export const localBusinessSchema = {
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
   description:
-    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing and same-day service across Greater Brisbane. Call 1800 227 293.",
-  // Caraway is a service-area business with no physical retail storefront.
-  // We declare locality-level address only (no streetAddress) and rely on
-  // serviceArea / areaServed to describe the coverage footprint.
+    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call 0481 438 444.",
+  // Registered office address; pickups are at the customer's property (serviceArea).
   address: {
     "@type": "PostalAddress",
+    streetAddress: NAP.streetAddress,
     addressLocality: NAP.addressLocality,
     addressRegion: NAP.addressRegion,
     postalCode: NAP.postalCode,
@@ -158,6 +159,7 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
+    streetAddress: NAP.streetAddress,
     addressLocality: NAP.addressLocality,
     addressRegion: NAP.addressRegion,
     postalCode: NAP.postalCode,
@@ -188,7 +190,7 @@ export const websiteSchema = {
   alternateName: "Caraway Cash for Cars",
   url: SITE_URL,
   description:
-    "Cash for cars Brisbane: free quotes, free removal, and cash paid on pickup. Servicing Greater Brisbane 7 days a week.",
+    "Cash for cars Brisbane: free quotes, free removal, and cash paid on pickup — usually same- or next-day. Servicing Greater Brisbane 7 days a week.",
   keywords: "cash for cars Brisbane, sell my car Brisbane, free car removal Brisbane, scrap car buyers Brisbane",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-AU",

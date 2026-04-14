@@ -9,17 +9,17 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
+    absolute: "Cash for Cars Brisbane | Caraway — Fast Pickup",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition. Call 1800 227 293.",
+    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
     type: "website",
-    title: "Cash for Cars Brisbane | Caraway — Same-Day Cash",
+    title: "Cash for Cars Brisbane | Caraway — Fast Pickup",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same-day pickup. Any make, any condition.",
+      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -40,7 +40,7 @@ export default function HomePage() {
       url: `${SITE_URL}/`,
       name: "Cash for Cars Brisbane | Caraway",
       description:
-        "Cash for cars Brisbane service: instant quotes, free towing, same-day cash payment. We buy damaged, old, scrap, and running vehicles across Greater Brisbane.",
+        "Cash for cars Brisbane service: instant quotes, free towing, payment on pickup (usually same- or next-day). We buy damaged, old, scrap, and running vehicles across Greater Brisbane.",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: {
         "@type": "Service",

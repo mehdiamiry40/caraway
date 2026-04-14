@@ -123,7 +123,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Get a real offer in under 60 seconds.
                   </p>
                   <p className="text-sm text-muted-foreground mt-2 max-w-md">
-                    Same-day pickup across Brisbane. No RWC. Free towing. Cash on the spot.
+                    Same- or next-day pickup across Brisbane. No RWC. Free towing. Cash on the spot.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0">
@@ -291,8 +291,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   Ready to sell your car for cash?
                 </p>
                 <p className="text-white/80 text-sm sm:text-base mb-7 max-w-xl mx-auto">
-                  Call {BUSINESS.phoneFriendly} or grab a free instant quote &mdash; same-day
-                  pickup across Brisbane.
+                  Call {BUSINESS.phoneFriendly} or grab a free instant quote &mdash; same- or
+                  next-day pickup across Brisbane.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a

@@ -1,5 +1,6 @@
-import { Star, Quote } from "lucide-react";
+import { ExternalLink, Quote, Star } from "lucide-react";
 import { reviews as allReviews } from "@/data/reviews";
+import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
 import { TestimonialsToggle } from "./TestimonialsToggle";
 
 const INITIAL_COUNT = 6;
@@ -30,19 +31,21 @@ export function Testimonials() {
             Cash for Cars Brisbane Reviews
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Verified reviews from Brisbane sellers.
+            Representative feedback from people we&apos;ve bought cars from in Greater Brisbane — shared with permission, names and suburbs may be abbreviated.
           </p>
-          <div className="mt-6 flex justify-center">
-            <div className="inline-flex items-center gap-2">
-              <div className="flex gap-0.5" aria-label="4.9 out of 5 stars">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" aria-hidden="true" />
-                ))}
-              </div>
-              <span className="text-2xl font-display font-bold text-foreground">4.9</span>
-              <span className="text-muted-foreground">/ 5 from 200+ Brisbane sellers</span>
-            </div>
-          </div>
+          <p className="mt-5 text-sm text-muted-foreground">
+            <TrackedGoogleBusinessLink
+              location="testimonials"
+              className="inline-flex items-center gap-1.5 font-semibold text-primary hover:text-primary/90 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+            >
+              <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
+              Google Business profile
+            </TrackedGoogleBusinessLink>
+            <span className="text-muted-foreground font-normal">
+              {" "}
+              — maps, hours, and more reviews.
+            </span>
+          </p>
         </div>
 
         {/* First batch — server-rendered, no JS needed */}

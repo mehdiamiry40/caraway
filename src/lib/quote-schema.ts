@@ -70,6 +70,7 @@ export const quoteFormSchema = z.object({
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
+export type QuoteFormInput = z.input<typeof quoteFormSchema>;
 
 export const contactFormSchema = z.object({
   name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")).transform(sanitizeLine),
@@ -93,3 +94,4 @@ export const contactFormSchema = z.object({
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
+export type ContactFormInput = z.input<typeof contactFormSchema>;
