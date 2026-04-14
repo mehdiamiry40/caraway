@@ -41,6 +41,10 @@ export default function TermsPage() {
             description:
               "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
             inLanguage: "en-AU",
+            dateModified: "2026-03-01",
+            publisher: { "@id": `${SITE_URL}/#organization` },
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
           },
         ]}
       />

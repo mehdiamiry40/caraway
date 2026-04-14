@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import SuburbPageTemplate from "@/components/templates/SuburbPageTemplate";
+import { reviews } from "@/data/reviews";
 import { getSuburbBySlug, suburbs } from "@/data/suburbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
@@ -75,6 +76,19 @@ export default async function SuburbSlugPage({ params }: Props) {
         price: "0",
         description: "Free car removal and towing included",
         availability: "https://schema.org/InStock",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10,
+        reviewCount: reviews.length,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "07:00",
+        closes: "19:00",
       },
     },
     breadcrumbListSchema(breadcrumbs, canonicalUrl),

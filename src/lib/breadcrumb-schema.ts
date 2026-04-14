@@ -7,6 +7,8 @@ export function breadcrumbListSchema(items: BreadcrumbItem[], currentPageUrl: st
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList" as const,
+    "@id": `${currentPageUrl}#breadcrumbs`,
+    numberOfItems: items.length,
     itemListElement: items.map((bc, i) => ({
       "@type": "ListItem" as const,
       position: i + 1,

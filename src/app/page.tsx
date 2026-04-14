@@ -67,6 +67,44 @@ export default function HomePage() {
         acceptedAnswer: { "@type": "Answer", text: faq.answer },
       })),
     },
+    {
+      "@type": "HowTo",
+      name: "How to Sell Your Car for Cash in Brisbane",
+      description:
+        "Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup.",
+      totalTime: "PT1D",
+      estimatedCost: { "@type": "MonetaryAmount", currency: "AUD", value: "0" },
+      supply: [
+        {
+          "@type": "HowToSupply",
+          name: "Vehicle details (make, model, year, condition)",
+        },
+      ],
+      tool: [{ "@type": "HowToTool", name: "Caraway online quote tool" }],
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Tell us about your car",
+          text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
+          url: `${SITE_URL}/#how-it-works`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Confirm your quote",
+          text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
+          url: `${SITE_URL}/#how-it-works`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "We pick up, you get paid",
+          text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+          url: `${SITE_URL}/#how-it-works`,
+        },
+      ],
+    },
     ...reviews.map((r) => ({
       "@type": "Review" as const,
       author: {

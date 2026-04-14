@@ -34,10 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: `/blog/category/${category}` },
+    alternates: { canonical: `${SITE_URL}/blog/category/${category}` },
     openGraph: {
       type: "website",
-      url: `/blog/category/${category}`,
+      url: `${SITE_URL}/blog/category/${category}`,
       title,
       description,
       images: [
@@ -79,6 +79,18 @@ export default async function BlogCategoryPage({ params }: Props) {
             description: `All ${label.toLowerCase()} articles on the Caraway blog.`,
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
+            inLanguage: "en-AU",
+            dateModified: new Date().toISOString().split("T")[0],
+            mainEntity: {
+              "@type": "ItemList",
+              numberOfItems: posts.length,
+              itemListElement: posts.map((post, idx) => ({
+                "@type": "ListItem",
+                position: idx + 1,
+                name: post.title,
+                url: `${SITE_URL}/blog/${post.slug}`,
+              })),
+            },
             hasPart: posts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,

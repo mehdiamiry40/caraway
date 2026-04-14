@@ -61,7 +61,8 @@ export function Hero() {
           <div className="relative z-[1] block h-full min-h-[260px] sm:min-h-[340px]">
             <Image
               src="/images/tow-truck-hero.webp"
-              alt="Flatbed tow truck loaded with a vehicle — Caraway pickup in Brisbane"
+              alt="Caraway flatbed tow truck collecting a customer's car for cash in Brisbane — same-day pickup with free towing across Greater Brisbane"
+              title="Caraway cash for cars Brisbane — free pickup"
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 52vw"
               className="object-cover"
