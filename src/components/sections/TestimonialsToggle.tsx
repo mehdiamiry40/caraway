@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Star, Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { Star, ChevronDown, ChevronUp } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Review } from "@/data/reviews";
@@ -30,12 +30,8 @@ function ReviewCard({
   return (
     <article
       key={`${review.name}-${review.location}-${index}`}
-      className="group relative bg-muted rounded-lg p-5 sm:p-7 border border-border/60 hover:border-primary/30 hover:shadow-md transition-all duration-300"
+      className="relative flex flex-col bg-card border border-border/60 rounded-xl p-6 sm:p-7"
     >
-      <Quote
-        className="absolute top-5 right-5 w-8 h-8 text-border group-hover:text-primary/10 transition-colors duration-300 -scale-x-100"
-        aria-hidden
-      />
       <div className="flex items-start justify-between gap-3 mb-4">
         <div>
           <Stars count={review.rating} />
@@ -44,10 +40,10 @@ function ReviewCard({
           {review.car}
         </span>
       </div>
-      <blockquote className="text-foreground/80 text-sm leading-relaxed mb-6">
+      <blockquote className="text-foreground/85 text-sm leading-relaxed flex-1">
         &ldquo;{review.text}&rdquo;
       </blockquote>
-      <div className="flex items-center gap-3 pt-4 border-t border-border/40">
+      <footer className="mt-5 pt-5 border-t border-border/40 flex items-center gap-3">
         <div
           className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm shrink-0"
           aria-hidden="true"
@@ -55,12 +51,12 @@ function ReviewCard({
           {review.name[0]}
         </div>
         <div>
-          <div className="font-semibold text-sm text-foreground">{review.name}</div>
-          <div className="text-xs text-muted-foreground">
+          <div className="font-display font-semibold text-sm text-foreground tracking-tight">{review.name}</div>
+          <div className="text-xs text-muted-foreground mt-0.5">
             {review.location}, Brisbane
           </div>
         </div>
-      </div>
+      </footer>
     </article>
   );
 }
@@ -92,7 +88,7 @@ export function TestimonialsToggle({ extraReviews, totalCount }: Props) {
         <button
           type="button"
           onClick={() => setShowAll(!showAll)}
-          className={cn(buttonVariants({ variant: "outline" }), "gap-2")}
+          className={cn(buttonVariants({ variant: "outline" }), "gap-2 min-h-11")}
         >
           {showAll ? (
             <>

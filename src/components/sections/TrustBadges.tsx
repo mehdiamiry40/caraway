@@ -21,13 +21,13 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section className="py-14 sm:py-20 border-y border-border/60" aria-label="Trust and credentials">
+    <section className="py-10 sm:py-16 border-y border-border/60" aria-label="Trust and credentials">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-border/60">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
           {badges.map(({ icon: Icon, label, detail }) => (
             <div
               key={label}
-              className="flex flex-col items-center text-center gap-2 pt-8 sm:pt-0 first:pt-0 sm:px-6"
+              className="flex flex-col items-center text-center gap-2 sm:px-6"
             >
               <Icon className="h-6 w-6 text-primary/70" strokeWidth={1.75} aria-hidden="true" />
               <span className="mt-1 font-display font-semibold text-sm tracking-tight text-foreground">{label}</span>

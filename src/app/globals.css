@@ -24,23 +24,23 @@
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 210 8% 10%;
-  --primary: 210 65% 22%;
+  --background: 0 0% 99%;
+  --foreground: 220 13% 9%;
+  --primary: 215 60% 16%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 210 14% 97%;
-  --secondary-foreground: 210 8% 10%;
-  --muted: 210 14% 97%;
-  --muted-foreground: 210 6% 36%;
-  --accent: 34 62% 48%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 13% 9%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 42%;
+  --accent: 28 85% 50%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 72% 48%;
   --destructive-foreground: 0 0% 100%;
-  /* Darker border for WCAG 1.4.11 (3:1 against white) */
-  --border: 210 12% 84%;
-  --ring: 210 65% 22%;
+  /* Softer border, still meets WCAG 1.4.11 (3:1 against white) */
+  --border: 220 13% 89%;
+  --ring: 215 60% 16%;
   --card: 0 0% 100%;
-  --card-foreground: 210 8% 10%;
+  --card-foreground: 220 13% 9%;
 }
 
 /*
@@ -109,12 +109,41 @@
 
 @layer utilities {
   .section-y {
-    @apply py-16 sm:py-24 md:py-32;
+    @apply py-14 sm:py-20 lg:py-28 xl:py-32;
+  }
+
+  .section-y-tight {
+    @apply py-10 sm:py-14 lg:py-20;
+  }
+
+  .container-prose {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer components {
+  .prose-body { @apply text-base sm:text-lg leading-[1.75] text-foreground; }
+  .prose-body > * + * { @apply mt-5; }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 leading-snug tracking-tight; }
+  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-semibold text-foreground mt-8 mb-3 leading-snug tracking-tight; }
+  .prose-body h4 { @apply text-lg sm:text-xl font-display font-semibold text-foreground mt-6 mb-2; }
+  .prose-body p { @apply mb-0; }
+  .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
+  .prose-body li { @apply leading-relaxed; }
+  .prose-body a { @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors; }
+  .prose-body strong { @apply font-semibold text-foreground; }
+  .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
+  .prose-body blockquote { @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground; }
+
+  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-muted-foreground; }
+  .list-styled li { @apply leading-relaxed; }
+  .list-styled strong { @apply text-foreground font-semibold; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

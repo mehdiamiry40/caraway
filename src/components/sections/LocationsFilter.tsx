@@ -57,12 +57,12 @@ export function LocationsFilter() {
       ) : (
         <>
         <span className="sr-only" aria-live="polite">{filtered.length} results</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" aria-live="polite">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6" aria-live="polite">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group border border-border/60 rounded-lg p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-200 bg-white"
+              className="group rounded-xl border border-border bg-card p-5 sm:p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">

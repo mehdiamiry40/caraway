@@ -94,7 +94,7 @@ export function QuoteForm() {
             </p>
           </div>
 
-          <div className="lg:col-span-7 bg-white rounded-xl p-6 sm:p-8 md:p-10 border border-border/70">
+          <div className="lg:col-span-7 rounded-xl border border-border/60 bg-card p-6 sm:p-8 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
@@ -110,7 +110,7 @@ export function QuoteForm() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4 sm:space-y-5" noValidate>
+                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -136,7 +136,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2.5">
                         Make
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -152,14 +152,14 @@ export function QuoteForm() {
                         id={fieldIds.make}
                       />
                       {errors.make && (
-                        <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.make.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.model} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.model} className="block text-sm font-semibold text-foreground mb-2.5">
                         Model
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -174,8 +174,8 @@ export function QuoteForm() {
                         id={fieldIds.model}
                       />
                       {errors.model && (
-                        <p id={`${fieldIds.model}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.model}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.model.message}
                         </p>
                       )}
@@ -184,7 +184,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2.5">
                         Year
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -198,14 +198,14 @@ export function QuoteForm() {
                         id={fieldIds.year}
                       />
                       {errors.year && (
-                        <p id={`${fieldIds.year}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.year}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.year.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.condition} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.condition} className="block text-sm font-semibold text-foreground mb-2.5">
                         Condition
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -225,8 +225,8 @@ export function QuoteForm() {
                         id={fieldIds.condition}
                       />
                       {errors.condition && (
-                        <p id={`${fieldIds.condition}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.condition}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.condition.message}
                         </p>
                       )}
@@ -235,12 +235,13 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2.5">
                         Your name
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
                       <Input
                         autoComplete="name"
+                        inputMode="text"
                         enterKeyHint="next"
                         maxLength={200}
                         placeholder="Jane Smith"
@@ -251,14 +252,14 @@ export function QuoteForm() {
                         id={fieldIds.name}
                       />
                       {errors.name && (
-                        <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.name.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2.5">
                         Phone
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -281,8 +282,8 @@ export function QuoteForm() {
                         Australian numbers only, e.g. 0412 345 678
                       </p>
                       {errors.phone && (
-                        <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.phone.message}
                         </p>
                       )}
@@ -290,7 +291,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full h-14 sm:h-16 text-base sm:text-lg font-bold tracking-wide" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full font-bold tracking-wide" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>
@@ -300,13 +301,13 @@ export function QuoteForm() {
                     <span>Free, no-obligation quote. We never share your info.</span>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 pt-3 sm:pt-4">
                     <Checkbox
                       id="quote-marketing-consent"
                       className="mt-0.5"
                       {...register("marketingConsent")}
                     />
-                    <label htmlFor="quote-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                    <label htmlFor="quote-marketing-consent" className="block text-xs text-muted-foreground leading-relaxed cursor-pointer py-1 -my-1">
                       I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
                     </label>
                   </div>

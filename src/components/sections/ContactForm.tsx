@@ -108,7 +108,7 @@ export function ContactForm() {
       <p className="text-sm text-muted-foreground mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
-      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-4 sm:space-y-5" noValidate>
+      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
         {/* Honeypot — hidden from real users, traps bots */}
         <div className="absolute -left-[9999px]" aria-hidden="true">
           <label htmlFor="contact-website">Website</label>
@@ -121,7 +121,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2">
+          <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2.5">
             Your name
             <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
           </label>
@@ -137,8 +137,8 @@ export function ContactForm() {
             id={fieldIds.name}
           />
           {errors.name && (
-            <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-              <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+            <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.name.message}
             </p>
           )}
@@ -146,7 +146,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <div>
-            <label htmlFor={fieldIds.email} className="block text-sm font-semibold text-foreground mb-2">
+            <label htmlFor={fieldIds.email} className="block text-sm font-semibold text-foreground mb-2.5">
               Email
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
@@ -164,15 +164,15 @@ export function ContactForm() {
               id={fieldIds.email}
             />
             {errors.email && (
-              <p id={`${fieldIds.email}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+              <p id={`${fieldIds.email}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.email.message}
               </p>
             )}
           </div>
           <div>
-            <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2">
-              Phone <span className="text-muted-foreground font-normal">(optional)</span>
+            <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2.5">
+              Phone <span className="text-xs font-normal text-muted-foreground ml-2">(optional)</span>
             </label>
             <Input
               type="tel"
@@ -187,8 +187,8 @@ export function ContactForm() {
               id={fieldIds.phone}
             />
             {errors.phone && (
-              <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+              <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.phone.message}
               </p>
             )}
@@ -196,7 +196,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-2.5">
             <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground">
               Message
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
@@ -227,15 +227,15 @@ export function ContactForm() {
             id={fieldIds.message}
           />
           {errors.message && (
-            <p id={`${fieldIds.message}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-              <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+            <p id={`${fieldIds.message}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.message.message}
             </p>
           )}
         </div>
 
         <div className="pt-1">
-          <Button type="submit" size="lg" className="w-full h-14 text-base sm:text-lg font-bold" isLoading={isSubmitting}>
+          <Button type="submit" size="lg" className="w-full font-semibold" isLoading={isSubmitting}>
             {isSubmitting ? (
               "Sending..."
             ) : (

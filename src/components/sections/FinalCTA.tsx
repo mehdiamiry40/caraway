@@ -8,12 +8,12 @@ import { trackEvent } from "@/lib/analytics";
 
 export function FinalCTA() {
   return (
-    <section className="py-16 sm:py-20 bg-primary text-white" aria-label="Get your quote">
+    <section className="section-y bg-primary text-white" aria-label="Get your quote">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="mb-4 text-sm text-white/80">
           Brisbane-based buyer — honest quotes, free pickup (usually same- or next-day), 7 days a week.
         </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-balance">
           Ready to see what your car is worth?
         </h2>
         <p className="text-white/75 text-base sm:text-lg mb-8 max-w-xl mx-auto">
@@ -24,7 +24,7 @@ export function FinalCTA() {
           onClick={() => trackEvent("cta_click", { location: "final_cta" })}
           className={cn(
             buttonVariants({ size: "lg" }),
-            "bg-accent hover:bg-accent/90 text-white h-14 px-10 text-base font-bold group",
+            "bg-accent hover:bg-accent/90 text-white h-12 sm:h-14 w-full sm:w-auto px-10 text-base font-bold group",
           )}
         >
           Get my quote

@@ -93,7 +93,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
         }
       >
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
           <article className="contents">
             <header className="mb-10 pb-8 border-b border-border/50">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-[65ch]">
@@ -113,7 +113,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               {renderBlogContent(post.content, { firstParagraphDropCap: true })}
             </div>
 
-            <aside className="mt-14 rounded-2xl bg-gradient-to-br from-primary/5 via-white to-accent/5 border border-primary/15 p-6 sm:p-8 shadow-sm">
+            <aside className="mt-14 rounded-xl bg-primary/5 border border-primary/10 p-6 sm:p-8">
               <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
                 <div className="flex-1 min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent mb-1.5">

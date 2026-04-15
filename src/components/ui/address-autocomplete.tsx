@@ -211,19 +211,19 @@ export function AddressAutocomplete({
           role="listbox"
           aria-label="Address suggestions"
           className={cn(
-            "absolute z-50 left-0 right-0 mt-1 max-h-72 overflow-y-auto",
-            "rounded-lg border border-border bg-card shadow-lg",
+            "absolute z-50 left-0 right-0 mt-1 max-h-[60vh] overflow-y-auto",
+            "rounded-xl border border-border/60 bg-card shadow-xl shadow-primary/10",
             "py-1",
           )}
         >
           {isLoading && suggestions.length === 0 && (
             <li
               role="presentation"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground"
+              className="flex items-center gap-2 px-4 p-3 text-sm text-muted-foreground"
             >
               <span
                 aria-hidden="true"
-                className="inline-block h-3 w-3 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin motion-reduce:animate-none"
+                className="inline-block h-3.5 w-3.5 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin motion-reduce:animate-none"
               />
               Searching…
             </li>
@@ -243,13 +243,13 @@ export function AddressAutocomplete({
                 }}
                 onMouseEnter={() => setActiveIndex(i)}
                 className={cn(
-                  "cursor-pointer px-3 py-2 text-sm leading-tight",
+                  "cursor-pointer px-4 py-3 text-sm leading-tight",
                   isActive ? "bg-muted" : "bg-transparent",
                 )}
               >
                 <div className="font-medium text-foreground">{s.mainText}</div>
                 {s.secondaryText && (
-                  <div className="text-xs text-muted-foreground">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {s.secondaryText}
                   </div>
                 )}

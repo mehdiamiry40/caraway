@@ -24,7 +24,7 @@ export function Testimonials() {
   return (
     <section id="reviews" className="section-y bg-white" aria-label="What sellers say">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14 md:mb-20">
+        <div className="max-w-2xl mb-10 md:mb-16">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Seller stories
           </p>
@@ -33,17 +33,17 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-xl overflow-hidden">
-          {featured.map((review, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          {featured.map((review) => (
             <article
-              key={`${review.name}-${review.location}-${index}`}
-              className="relative bg-white p-8 sm:p-10 flex flex-col"
+              key={review.name}
+              className="relative flex flex-col bg-card border border-border/60 rounded-xl p-6 sm:p-7"
             >
               <Stars count={review.rating} />
               <blockquote className="mt-5 text-foreground/85 text-base leading-relaxed flex-1">
                 &ldquo;{review.text}&rdquo;
               </blockquote>
-              <footer className="mt-8 pt-6 border-t border-border/60">
+              <footer className="mt-6 pt-5 border-t border-border/40">
                 <div className="font-display font-semibold text-sm text-foreground tracking-tight">
                   {review.name}
                 </div>

@@ -32,21 +32,21 @@ export function PageShell({
         <section
           className={
             isPrimary
-              ? "bg-primary text-white py-16 lg:py-24"
-              : "bg-white py-12 lg:py-16"
+              ? "bg-primary text-white py-14 sm:py-20 lg:py-28"
+              : "bg-white py-10 sm:py-14 lg:py-20"
           }
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Breadcrumbs items={breadcrumbs} light={isPrimary} />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-5 mb-4 sm:mb-6">
               {title}
             </h1>
             {subtitle && (
               <div
                 className={
                   isPrimary
-                    ? "text-white/85 text-lg sm:text-xl leading-relaxed max-w-3xl"
-                    : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl"
+                    ? "text-white/85 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
+                    : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
                 }
               >
                 {subtitle}

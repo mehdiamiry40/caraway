@@ -29,10 +29,10 @@ export default function About() {
         </p>
       }
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
         <div className="max-w-3xl space-y-14">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Who We Are</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">Who We Are</h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
               Caraway is a Brisbane-based buyer — we pay cash for cars we want, and we organise pickup when we agree a price. No listings, no strangers at your door for test drives.
             </p>
@@ -41,8 +41,8 @@ export default function About() {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border/60 bg-muted/40 p-5 sm:p-8">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Meet the Founder</h2>
+          <div className="rounded-xl border border-border/60 bg-card p-5 sm:p-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">Meet the Founder</h2>
             <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
               <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-white font-display font-bold text-2xl" aria-hidden="true">
                 ME
@@ -59,17 +59,17 @@ export default function About() {
           </div>
 
           <div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">How we work</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">How we work</h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we show up when we say we will, we pay what we agreed before the car leaves, and we use licensed recyclers when a car is at end of life.
             </p>
           </div>
 
           <div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">What Sets Us Apart</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">What Sets Us Apart</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
               {features.map(item => (
-                <div key={item.title} className="flex gap-3 sm:gap-4 p-4 sm:p-5 rounded-lg bg-muted border border-border/60 hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+                <div key={item.title} className="flex gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card p-5 sm:p-6 hover:border-primary/30 hover:shadow-sm transition-all duration-200">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 shrink-0 mt-0.5">
                     <CheckCircle2 className="h-4 w-4 text-accent" />
                   </span>
@@ -83,7 +83,7 @@ export default function About() {
           </div>
 
           <div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Our Service Area</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">Our Service Area</h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               We service the entire Greater Brisbane region — from Caboolture in the north to Beenleigh in the south, from Ipswich in the west to Cleveland in the east. This includes all suburbs across Brisbane City, Logan City, Ipswich City, Moreton Bay, and Redland City council areas. If you&apos;re not sure whether we cover your area, just call — we almost certainly do.
             </p>
