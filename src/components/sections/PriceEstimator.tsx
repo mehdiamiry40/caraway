@@ -18,7 +18,7 @@ import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import {
   Car, DollarSign, ArrowRight, ArrowLeft, RotateCcw,
-  TrendingUp, CheckCircle2, Send, Loader2, PartyPopper,
+  CheckCircle2, Send, Loader2, PartyPopper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -28,12 +28,12 @@ const STORAGE_KEY = "caraway-estimator-state";
 const CONDITIONS: Array<{ value: QuoteCondition; label: string }> =
   quoteConditionValues.map((value) => ({ value, label: CONDITION_LABELS[value] }));
 
-type Step = 1 | 2 | 3 | 4;
+type Step = 1 | 2 | 3;
 
 // Persisted state intentionally excludes PII (name, phone, address) so that
-// only Steps 1–3 survive a refresh; Step 4 contact details are never written
-// to sessionStorage. Disclosed in the privacy policy is unnecessary because
-// no personal information leaves the in-memory component state before submit.
+// only Step 1 vehicle inputs survive a refresh; Step 3 contact details are
+// never written to sessionStorage. No personal information leaves the
+// in-memory component state before submit.
 type PersistedState = {
   step?: Step;
   make?: string;
@@ -73,9 +73,8 @@ export function PriceEstimator() {
   // callback refs) so react-hooks/refs is satisfied without any
   // ref-callback indexing during render.
   const step1HeadingRef = useRef<HTMLHeadingElement>(null);
-  const step2HeadingRef = useRef<HTMLHeadingElement>(null);
-  const step3HeadingRef = useRef<HTMLDivElement>(null);
-  const step4HeadingRef = useRef<HTMLHeadingElement>(null);
+  const step2HeadingRef = useRef<HTMLDivElement>(null);
+  const step3HeadingRef = useRef<HTMLHeadingElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const estimatorStartedRef = useRef(false);
   const hydratedRef = useRef(false);
@@ -87,12 +86,10 @@ export function PriceEstimator() {
     : isCalculating
       ? "Calculating your instant quote…"
       : step === 1
-        ? "Step 1 of 4. Tell us about your vehicle."
+        ? "Step 1 of 3. Tell us about your vehicle."
         : step === 2
-          ? "Step 2 of 4. Enter the year and condition."
-          : step === 3
-            ? "Step 3 of 4. Your instant quote is ready."
-            : "Step 4 of 4. Enter your contact details to claim your quote.";
+          ? "Step 2 of 3. Your instant quote is ready."
+          : "Step 3 of 3. Enter your contact details to claim your quote.";
 
   const yearNumber = useMemo(() => Number(year), [year]);
   const yearIsValid = useMemo(
@@ -108,22 +105,22 @@ export function PriceEstimator() {
     [yearTouched, year, yearIsValid]
   );
 
-  const canProceedStep1 = useMemo(
-    () => make.trim() !== "" && (make === "Other" || model.trim() !== ""),
-    [make, model]
-  );
-  const canProceedStep2 = useMemo(
-    () => yearIsValid && condition !== "",
-    [yearIsValid, condition]
+  const canCalculate = useMemo(
+    () =>
+      make.trim() !== "" &&
+      (make === "Other" || model.trim() !== "") &&
+      yearIsValid &&
+      condition !== "",
+    [make, model, yearIsValid, condition]
   );
   const canSubmit = useMemo(
     () => name.trim().length >= 2 && phone.trim().length >= 8 && address.trim().length >= 5,
     [name, phone, address]
   );
 
-  const totalSteps = 4;
+  const totalSteps = 3;
   const progressPercent = useMemo(
-    () => (step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100),
+    () => (step === 1 ? 33 : step === 2 ? 66 : 100),
     [step]
   );
 
@@ -145,12 +142,10 @@ export function PriceEstimator() {
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
       if (parsed.condition) setCondition(parsed.condition);
-      // Only restore the step if everything that step depends on is present.
-      // Cap at step 2 so users re-enter Step 4 contact details after refresh
-      // (PII is never persisted).
-      if (parsed.step && parsed.step >= 2 && parsed.make) {
-        setStep(2);
-      }
+      // Step 1 now holds all vehicle inputs, so rehydration simply refills the
+      // fields — the user still needs to click "See my quote" to recalculate.
+      // Step 2 (quote) and Step 3 (PII) are never restored: the quote result
+      // lives only in memory and PII is never persisted.
     } catch (error) {
       try {
         window.sessionStorage.removeItem(STORAGE_KEY);
@@ -246,7 +241,7 @@ export function PriceEstimator() {
   }, []);
 
   function handleEstimate() {
-    if (!canProceedStep2 || isCalculating) return;
+    if (!canCalculate || isCalculating) return;
     setIsCalculating(true);
     const est = estimatePrice({
       make,
@@ -258,8 +253,8 @@ export function PriceEstimator() {
     // Small artificial delay so the result feels deliberate, not random.
     window.setTimeout(() => {
       setIsCalculating(false);
-      setStep(3);
-      trackEvent("estimator_step_completed", { step: 3 });
+      setStep(2);
+      trackEvent("estimator_step_completed", { step: 2 });
       trackEvent("estimator_quote_shown", {
         estimateQuote: est.quote,
         make: make.trim(),
@@ -389,7 +384,7 @@ export function PriceEstimator() {
       successHeadingRef.current?.focus();
       return;
     }
-    const refs = [step1HeadingRef, step2HeadingRef, step3HeadingRef, step4HeadingRef];
+    const refs = [step1HeadingRef, step2HeadingRef, step3HeadingRef];
     refs[step - 1]?.current?.focus();
   }, [isSuccess, step]);
 
@@ -460,7 +455,7 @@ export function PriceEstimator() {
           aria-valuetext={`Step ${step} of ${totalSteps}`}
         >
           <div className="flex items-center justify-between mb-2">
-            {[1, 2, 3, 4].map((s) => (
+            {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-1.5 sm:gap-2">
                 <div className={cn(
                   "flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base font-bold transition-colors duration-200",
@@ -475,10 +470,10 @@ export function PriceEstimator() {
                   step >= s ? "text-foreground" : "text-muted-foreground"
                 )}>
                   <span className="sm:hidden">
-                    {s === 1 ? "Vehicle" : s === 2 ? "Details" : s === 3 ? "Quote" : "Claim"}
+                    {s === 1 ? "Vehicle" : s === 2 ? "Quote" : "Claim"}
                   </span>
                   <span className="hidden sm:inline">
-                    {s === 1 ? "Vehicle" : s === 2 ? "Details" : s === 3 ? "Your Quote" : "Claim It"}
+                    {s === 1 ? "Vehicle" : s === 2 ? "Your Quote" : "Claim It"}
                   </span>
                 </span>
               </div>
@@ -510,7 +505,7 @@ export function PriceEstimator() {
               />
             </div>
 
-            {/* Step 1 */}
+            {/* Step 1 — Vehicle (make, model, year, condition) */}
             <div className={cn("transition-all duration-300", step === 1 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-6">
@@ -561,42 +556,6 @@ export function PriceEstimator() {
                       />
                     </div>
                   )}
-                </div>
-
-                <div className="mt-6 sm:mt-8 flex justify-end">
-                  <Button
-                    onClick={() => canProceedStep1 && goToStep(2)}
-                    disabled={!canProceedStep1}
-                    size="lg"
-                    className="group"
-                  >
-                    Next
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
-              <div className="p-5 sm:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
-                    <TrendingUp className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3
-                      ref={step2HeadingRef}
-                      tabIndex={-1}
-                      className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
-                    >
-                      Year and condition
-                    </h3>
-                    <p className="text-xs text-muted-foreground">Step 2 of {totalSteps} — {[make, model].filter(Boolean).join(" ")}</p>
-                  </div>
-                </div>
-
-                <div className="space-y-5 sm:space-y-6">
                   <div>
                     <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2.5">
                       Year of manufacture<RequiredMark />
@@ -634,21 +593,13 @@ export function PriceEstimator() {
                   </div>
                 </div>
 
-                <div className="mt-6 sm:mt-8 flex items-center justify-between">
-                  <Button
-                    type="button"
-                    onClick={() => goToStep(1)}
-                    variant="outline"
-                    size="lg"
-                  >
-                    <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
-                  </Button>
+                <div className="mt-6 sm:mt-8 flex justify-end">
                   <Button
                     onClick={() => {
                       setYearTouched(true);
                       handleEstimate();
                     }}
-                    disabled={!canProceedStep2 || isCalculating}
+                    disabled={!canCalculate || isCalculating}
                     variant="secondary"
                     size="lg"
                     className="font-bold group"
@@ -678,8 +629,8 @@ export function PriceEstimator() {
               </div>
             )}
 
-            {/* Step 3 */}
-            <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
+            {/* Step 2 — Your Quote */}
+            <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
                   <div className="rounded-xl bg-accent/10 border border-accent/30 p-6 sm:p-8 text-center mb-6">
@@ -690,7 +641,7 @@ export function PriceEstimator() {
                       {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                     </p>
                     <div
-                      ref={step3HeadingRef}
+                      ref={step2HeadingRef}
                       tabIndex={-1}
                       className="flex items-baseline justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -720,14 +671,14 @@ export function PriceEstimator() {
                   <div className="flex items-center justify-between">
                     <Button
                       type="button"
-                      onClick={() => goToStep(2)}
+                      onClick={() => goToStep(1)}
                       variant="outline"
                       size="lg"
                     >
                       <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
                     </Button>
                     <Button
-                      onClick={() => goToStep(4)}
+                      onClick={() => goToStep(3)}
                       variant="secondary"
                       size="lg"
                       className="font-bold group"
@@ -740,8 +691,8 @@ export function PriceEstimator() {
               )}
             </div>
 
-            {/* Step 4 */}
-            <div className={cn("transition-all duration-300", step === 4 && !isCalculating ? "block" : "hidden")}>
+            {/* Step 3 — Claim (contact details) */}
+            <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
                   <div className="flex items-center justify-between bg-muted border border-border/40 rounded-xl px-4 py-3 mb-6">
@@ -753,7 +704,7 @@ export function PriceEstimator() {
                     </div>
                     <button
                       type="button"
-                      onClick={() => goToStep(3)}
+                      onClick={() => goToStep(2)}
                       className="text-xs text-primary hover:text-primary/80 font-medium min-h-[44px] px-2 touch-manipulation"
                     >
                       Edit
@@ -767,13 +718,13 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={step4HeadingRef}
+                      ref={step3HeadingRef}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
                       Where should we send it?
                     </h3>
-                    <p className="text-xs text-muted-foreground">Step 4 of {totalSteps} — we&apos;ll call to confirm & arrange pickup</p>
+                    <p className="text-xs text-muted-foreground">Step 3 of {totalSteps} — we&apos;ll call to confirm & arrange pickup</p>
                   </div>
                 </div>
 
@@ -896,7 +847,7 @@ export function PriceEstimator() {
                 <div className="mt-6 sm:mt-8 flex items-center justify-between">
                   <Button
                     type="button"
-                    onClick={() => goToStep(3)}
+                    onClick={() => goToStep(2)}
                     variant="outline"
                     size="lg"
                   >
@@ -935,9 +886,9 @@ export function PriceEstimator() {
             </div>
           </div>
 
-          {step < 4 && (
+          {step < 3 && (
             <p className="text-center text-xs text-muted-foreground mt-4">
-              {step < 3
+              {step < 2
                 ? "No personal information required to see your quote."
                 : "This is an indicative estimate. Your final offer is confirmed before pickup."}
             </p>
