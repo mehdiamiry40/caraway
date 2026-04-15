@@ -4,7 +4,7 @@ import { HeroCTAs } from "./HeroCTAs";
 export function Hero() {
   return (
     <section
-      className="relative w-full overflow-x-hidden mt-header-safe bg-white min-h-hero"
+      className="relative w-full overflow-x-hidden mt-header-safe bg-background min-h-hero"
       aria-labelledby="hero-heading"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[580px]">

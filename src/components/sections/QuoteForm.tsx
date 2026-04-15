@@ -79,7 +79,7 @@ export function QuoteForm() {
   };
 
   return (
-    <section id="quote-section" className="section-y bg-white">
+    <section id="quote-section" className="section-y bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">

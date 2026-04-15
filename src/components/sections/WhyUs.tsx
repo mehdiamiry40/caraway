@@ -23,7 +23,7 @@ const reasons = [
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="section-y bg-emerald-50">
+    <section id="why-us" className="section-y bg-secondary">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-28">
