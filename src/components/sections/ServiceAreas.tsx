@@ -5,7 +5,7 @@ import { suburbs } from "@/data/suburbs";
 export function ServiceAreas() {
   return (
     <section
-      className="section-y bg-muted"
+      className="section-y bg-amber-50"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
