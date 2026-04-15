@@ -25,22 +25,22 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 210 5% 8%;
-  --primary: 209 60% 30%;
+  --foreground: 210 8% 10%;
+  --primary: 210 65% 22%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 180 3% 96%;
-  --secondary-foreground: 210 5% 8%;
-  --muted: 180 3% 96%;
-  --muted-foreground: 200 3% 27%;
-  --accent: 32 93% 54%;
+  --secondary: 210 14% 97%;
+  --secondary-foreground: 210 8% 10%;
+  --muted: 210 14% 97%;
+  --muted-foreground: 210 6% 36%;
+  --accent: 34 62% 48%;
   --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
+  --destructive: 0 72% 48%;
   --destructive-foreground: 0 0% 100%;
   /* Darker border for WCAG 1.4.11 (3:1 against white) */
-  --border: 200 10% 82%;
-  --ring: 209 60% 30%;
+  --border: 210 12% 84%;
+  --ring: 210 65% 22%;
   --card: 0 0% 100%;
-  --card-foreground: 210 5% 8%;
+  --card-foreground: 210 8% 10%;
 }
 
 /*
@@ -109,7 +109,7 @@
 
 @layer utilities {
   .section-y {
-    @apply py-12 sm:py-20 md:py-28;
+    @apply py-16 sm:py-24 md:py-32;
   }
 
   .text-balance {
@@ -224,12 +224,11 @@
 }
 
 /* Header-aware top margin that accounts for safe-area-inset on notched devices.
-   Mobile: brand strip only (3.5rem / 56px).
-   Desktop (lg+): brand strip + nav bar (56px + 48px = 104px). */
+   Single-tier header: 4rem / 64px on mobile, 4.5rem / 72px on desktop. */
 @utility mt-header-safe {
-  margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  margin-top: calc(4rem + env(safe-area-inset-top, 0px));
   @media (min-width: 1024px) {
-    margin-top: calc(104px + env(safe-area-inset-top, 0px));
+    margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
   }
 }
 
