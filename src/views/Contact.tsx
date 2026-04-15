@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { PageShell } from "@/components/layout/PageShell";
 import { BUSINESS } from "@/lib/site";
 
-const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
 const ContactForm = dynamic(() => import("@/components/sections/ContactForm").then((mod) => mod.ContactForm));
 import { Building2, Clock, Mail, MapPin } from "lucide-react";
 
@@ -101,8 +100,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      <QuoteForm />
     </PageShell>
   );
 }
