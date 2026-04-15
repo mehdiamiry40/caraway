@@ -310,7 +310,7 @@ export function PriceEstimator() {
         : phoneErr
           ? "est-phone"
           : "est-address";
-      document.getElementById(firstErrorId)?.focus();
+      document.getElementById(firstErrorId)?.focus({ preventScroll: true });
       return;
     }
 
@@ -380,12 +380,17 @@ export function PriceEstimator() {
       hasMountedRef.current = true;
       return;
     }
+    // Use preventScroll so focusing a step heading for accessibility
+    // doesn't yank the page — combined with `scroll-behavior: smooth`
+    // this was causing a "drag" while the user scrolled past the
+    // "How Much Is Your Car Worth?" section, e.g. when sessionStorage
+    // hydration moves the form from step 1 to step 2 mid-mount.
     if (isSuccess) {
-      successHeadingRef.current?.focus();
+      successHeadingRef.current?.focus({ preventScroll: true });
       return;
     }
     const refs = [step1HeadingRef, step2HeadingRef, step3HeadingRef];
-    refs[step - 1]?.current?.focus();
+    refs[step - 1]?.current?.focus({ preventScroll: true });
   }, [isSuccess, step]);
 
   if (isSuccess) {
