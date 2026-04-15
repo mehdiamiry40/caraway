@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { indexableBlogPosts, categoryMap, categorySlug } from "@/data/blog-posts";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
@@ -83,8 +82,6 @@ export default function Blog() {
           ))}
         </div>
       </div>
-
-      <InternalLinks />
     </PageShell>
   );
 }

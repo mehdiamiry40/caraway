@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { LEGAL_DATES } from "@/lib/site";
 
 const breadcrumbs = [
@@ -131,8 +130,6 @@ export default function Terms() {
           </section>
         </div>
       </div>
-
-      <InternalLinks />
     </PageShell>
   );
 }

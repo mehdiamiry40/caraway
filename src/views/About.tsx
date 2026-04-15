@@ -1,5 +1,4 @@
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
 import { CheckCircle2 } from "lucide-react";
@@ -92,7 +91,6 @@ export default function About() {
       </div>
 
       <TrustBadges />
-      <InternalLinks />
     </PageShell>
   );
 }

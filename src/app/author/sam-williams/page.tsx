@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL, BUSINESS } from "@/lib/site";
@@ -152,8 +151,6 @@ export default function AuthorPage() {
             ))}
           </div>
         </div>
-
-        <InternalLinks />
       </PageShell>
     </>
   );

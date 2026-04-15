@@ -1,5 +1,4 @@
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -55,7 +54,6 @@ export default function Accessibility() {
           </p>
         </div>
       </div>
-      <InternalLinks />
     </PageShell>
   );
 }

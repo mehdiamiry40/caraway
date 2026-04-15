@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { Accordion } from "@/components/ui/accordion";
 import { MessageCircle, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
@@ -72,8 +71,6 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-
-      <InternalLinks />
     </PageShell>
   );
 }

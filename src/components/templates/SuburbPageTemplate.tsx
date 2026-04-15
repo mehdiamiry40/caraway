@@ -3,7 +3,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import dynamic from "next/dynamic";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { LocationViewTracker } from "@/components/LocationViewTracker";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
@@ -161,7 +160,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
         </div>
 
         <QuoteForm />
-        <InternalLinks currentSlug={suburb.slug} />
       </main>
 
       <Footer />
