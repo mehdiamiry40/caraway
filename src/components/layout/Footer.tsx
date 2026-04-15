@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { Clock, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
-import { AUTHORITY_OUTBOUND_LINKS, FOOTER_INTERNAL_RESOURCES } from "@/data/resource-links";
+import { Mail, Phone } from "lucide-react";
+import { AUTHORITY_OUTBOUND_LINKS } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
-import { TrackedFooterResourceLink } from "@/components/layout/TrackedFooterResourceLink";
-import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
@@ -23,176 +21,146 @@ const locationLinks = [
   { label: "Ipswich", href: "/locations/ipswich" },
   { label: "Redcliffe", href: "/locations/redcliffe" },
   { label: "Caboolture", href: "/locations/caboolture" },
-  { label: "Bayside Brisbane", href: "/locations/bayside-brisbane" },
-  { label: "North Lakes", href: "/locations/north-lakes" },
-  { label: "All Locations", href: "/locations" },
+  { label: "All locations", href: "/locations" },
 ];
 
 const companyLinks = [
-  { label: "About Us", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
-  { label: "Get a Quote", href: "/#price-estimator" },
+  { label: "Get a quote", href: "/#price-estimator" },
 ];
 
-const linkClasses = "text-muted-foreground hover:text-primary hover:translate-x-0.5 transition-all duration-200 text-[15px] rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none inline-flex py-2 min-h-[44px] items-center touch-manipulation motion-reduce:hover:translate-x-0";
+const legalLinks = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
+  { label: "Accessibility", href: "/accessibility" },
+  { label: "Sitemap", href: "/site-map" },
+];
+
+const navLinkClasses =
+  "text-muted-foreground hover:text-primary transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none touch-manipulation";
+
+const columnHeadingClasses = "font-display font-semibold text-sm text-foreground mb-3";
 
 export function Footer() {
-  return (
-    <footer className="bg-muted text-foreground pl-safe pr-safe border-t border-border/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
-        <nav aria-label="Footer navigation" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-8 lg:gap-12">
+  const year = new Date().getFullYear();
 
-          <div className="sm:col-span-2 lg:col-span-2">
-            <Link href="/" aria-label="Caraway — Home" className="font-display font-bold text-2xl tracking-tight text-primary mb-4 block lowercase group">
-              <span className="transition-opacity duration-200 group-hover:opacity-80">caraway<span className="text-accent">.</span></span>
+  return (
+    <footer className="bg-muted text-foreground border-t border-border/60 pl-safe pr-safe">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
+
+          {/* Brand + contact */}
+          <div className="sm:col-span-2 lg:col-span-4">
+            <Link
+              href="/"
+              aria-label="Caraway — Home"
+              className="font-display font-bold text-2xl tracking-tight text-primary lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+            >
+              caraway<span className="text-accent">.</span>
             </Link>
-            <p className="text-muted-foreground max-w-sm mt-3 leading-relaxed text-sm">
-              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered. Use our online price estimator.
+            <p className="mt-3 max-w-sm text-sm text-muted-foreground leading-relaxed">
+              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
             </p>
-            <div className="mt-8 space-y-3.5">
+
+            <div className="mt-6 space-y-2.5 text-sm">
               <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
                 location="footer"
-                className="flex items-center gap-3.5 text-foreground hover:text-primary transition-all duration-200 group text-sm font-semibold"
+                className="inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors duration-200"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
-                <span className="flex h-10 w-10 rounded-lg bg-primary/10 border border-primary/20 items-center justify-center group-hover:bg-primary/15 transition-all duration-200">
-                  <Phone aria-hidden="true" className="h-4 w-4 text-primary" />
-                </span>
+                <Phone aria-hidden="true" className="h-4 w-4 text-primary" />
                 <span>{BUSINESS.phoneFriendly}</span>
               </TrackedPhoneLink>
-              <a href={BUSINESS.emailHref} className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 text-sm">
-                <Mail aria-hidden="true" className="h-4 w-4 text-muted-foreground shrink-0" />
+              <a
+                href={BUSINESS.emailHref}
+                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
+                <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <div className="flex items-start gap-3.5 text-muted-foreground text-sm">
-                <Clock aria-hidden="true" className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5" />
-                <span className="leading-snug">
-                  <span className="font-medium text-foreground">{BUSINESS.hours}</span>
-                  <span className="text-muted-foreground"> · </span>
-                  {BUSINESS.hoursDetail}
-                </span>
-              </div>
-              <div className="flex items-start gap-3.5 text-muted-foreground text-sm">
-                <MapPin aria-hidden="true" className="h-4 w-4 text-muted-foreground shrink-0 mt-0.5" />
-                <div className="min-w-0">
-                  <address className="not-italic leading-snug">
-                    {BUSINESS.streetAddress}
-                    <br />
-                    {BUSINESS.addressSuburb} {BUSINESS.addressState} {BUSINESS.postalCode}
-                  </address>
-                  <p className="text-xs text-muted-foreground mt-1.5 leading-snug">
-                    Registered address — not a public yard. We collect from you.
-                  </p>
-                </div>
-              </div>
-              <TrackedGoogleBusinessLink
-                location="footer"
-                className="flex items-center gap-3.5 text-muted-foreground hover:text-primary transition-all duration-200 text-sm"
-              >
-                <ExternalLink aria-hidden="true" className="h-4 w-4 text-muted-foreground shrink-0" />
-                <span>Google Business profile</span>
-              </TrackedGoogleBusinessLink>
+              <p className="text-muted-foreground">
+                <span className="font-medium text-foreground">{BUSINESS.hours}</span> · seven days
+              </p>
+              <address className="not-italic text-muted-foreground leading-snug">
+                {BUSINESS.addressFormatted}
+              </address>
             </div>
           </div>
 
-          <div>
-            <h3 className="font-display font-bold text-[13px] sm:text-xs uppercase tracking-[0.14em] text-primary mb-5 pb-2 border-b border-border/60">Services</h3>
-            <ul className="space-y-1">
+          {/* Services */}
+          <nav aria-label="Services" className="lg:col-span-3">
+            <h3 className={columnHeadingClasses}>Services</h3>
+            <ul className="space-y-0.5">
               {serviceLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className={linkClasses}>
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h3 className="font-display font-bold text-[13px] sm:text-xs uppercase tracking-[0.14em] text-primary mb-5 pb-2 border-b border-border/60">Locations</h3>
-            <ul className="space-y-1">
+          {/* Locations */}
+          <nav aria-label="Locations" className="lg:col-span-3">
+            <h3 className={columnHeadingClasses}>Locations</h3>
+            <ul className="space-y-0.5">
               {locationLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className={linkClasses}>
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h3 className="font-display font-bold text-[13px] sm:text-xs uppercase tracking-[0.14em] text-primary mb-5 pb-2 border-b border-border/60">Company</h3>
-            <ul className="space-y-1">
+          {/* Company */}
+          <nav aria-label="Company" className="sm:col-span-2 lg:col-span-2">
+            <h3 className={columnHeadingClasses}>Company</h3>
+            <ul className="space-y-0.5">
               {companyLinks.map(link => (
                 <li key={link.href}>
-                  <Link href={link.href} className={linkClasses}>
-                    {link.label}
-                  </Link>
+                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
+        </div>
 
-        </nav>
-
-        <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-border/60">
-          <h2 className="font-display font-bold text-[13px] sm:text-xs uppercase tracking-[0.14em] text-primary mb-5">
-            Helpful resources
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">On this site</h3>
-              <ul className="space-y-1">
-                {FOOTER_INTERNAL_RESOURCES.map((item) => (
-                  <li key={item.href}>
-                    <TrackedFooterResourceLink href={item.href} label={item.label} className={linkClasses}>
-                      {item.label}
-                    </TrackedFooterResourceLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Official sources</h3>
-              <ul className="space-y-1">
-                {AUTHORITY_OUTBOUND_LINKS.map((item) => (
-                  <li key={item.href}>
-                    <TrackedOutboundLink
-                      href={item.href}
-                      label={item.label}
-                      location="footer_resources"
-                      className={`${linkClasses} gap-2 items-start`}
-                    >
-                      <ExternalLink className="h-3.5 w-3.5 shrink-0 mt-1 text-primary/50" aria-hidden="true" />
-                      <span>{item.label}</span>
-                    </TrackedOutboundLink>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-3 text-xs text-muted-foreground leading-snug">
-                External links open in a new tab. Caraway is not affiliated with these government sites — they are provided for your convenience.
-              </p>
-            </div>
-          </div>
+        {/* Official references — compact replacement for the old resources block */}
+        <div className="mt-12 pt-6 border-t border-border/60 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="font-medium text-foreground">Official references:</span>
+          {AUTHORITY_OUTBOUND_LINKS.map(item => (
+            <TrackedOutboundLink
+              key={item.href}
+              href={item.href}
+              label={item.label}
+              location="footer_references"
+              className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+            >
+              {item.label}
+            </TrackedOutboundLink>
+          ))}
         </div>
       </div>
 
+      {/* Legal bar */}
       <div className="border-t border-border/60 pb-safe">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-[13px] text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
-          <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center md:justify-end">
-            <Link href="/privacy" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-3 px-2">Privacy Policy</Link>
-            <span aria-hidden="true" className="w-px h-3 bg-border" />
-            <Link href="/terms" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-3 px-2">Terms of Service</Link>
-            <span aria-hidden="true" className="w-px h-3 bg-border" />
-            <Link href="/accessibility" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-3 px-2">Accessibility</Link>
-            <span aria-hidden="true" className="w-px h-3 bg-border" />
-            <Link href="/site-map" className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation py-3 px-2">Sitemap</Link>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+          <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+            {legalLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>
