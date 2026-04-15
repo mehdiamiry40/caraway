@@ -21,7 +21,7 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section className="py-10 sm:py-16 border-y border-border/60" aria-label="Trust and credentials">
+    <section className="py-10 sm:py-16 bg-primary text-primary-foreground" aria-label="Trust and credentials">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
           {badges.map(({ icon: Icon, label, detail }) => (
@@ -29,9 +29,9 @@ export function TrustBadges() {
               key={label}
               className="flex flex-col items-center text-center gap-2 sm:px-6"
             >
-              <Icon className="h-6 w-6 text-primary/70" strokeWidth={1.75} aria-hidden="true" />
-              <span className="mt-1 font-display font-semibold text-sm tracking-tight text-foreground">{label}</span>
-              <span className="text-xs text-muted-foreground leading-snug">{detail}</span>
+              <Icon className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
+              <span className="mt-1 font-display font-semibold text-sm tracking-tight text-primary-foreground">{label}</span>
+              <span className="text-xs text-primary-foreground/70 leading-snug">{detail}</span>
             </div>
           ))}
         </div>
