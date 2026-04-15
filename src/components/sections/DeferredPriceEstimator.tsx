@@ -29,7 +29,7 @@ export function DeferredPriceEstimator() {
       {visible ? (
         <PriceEstimator />
       ) : (
-        <section className="section-y bg-amber-50">
+        <section className="section-y bg-[#FEF6E0]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
               <Skeleton className="h-10 w-80 mx-auto mb-3" />
