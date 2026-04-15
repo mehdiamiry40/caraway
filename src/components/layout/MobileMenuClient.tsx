@@ -242,11 +242,11 @@ export function MobileMenuClient({ serviceLinks }: Props) {
   return (
     <>
       {/* Mobile top-bar controls (phone icon, Quote button, hamburger) */}
-      <div className="lg:hidden flex items-center gap-2">
+      <div className="lg:hidden flex items-center gap-1">
         <a
           href={BUSINESS.phoneHref}
           onClick={() => trackEvent("phone_click", { location: "header" })}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           aria-label={`Call ${BUSINESS.phoneFriendly}`}
         >
           <Phone className="h-5 w-5" aria-hidden="true" />
@@ -254,14 +254,14 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         <Button
           onClick={handleScrollToQuote}
           size="sm"
-          className="bg-accent hover:bg-accent/90 text-white text-sm font-semibold px-4 h-11 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 ring-offset-primary"
+          className="h-10 px-4 text-sm"
         >
           Quote
         </Button>
         <button
           type="button"
           ref={triggerRef}
-          className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-md text-primary hover:bg-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           onClick={open}
           aria-label="Open menu"
         >

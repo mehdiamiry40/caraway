@@ -68,10 +68,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         ref={triggerRef}
         type="button"
         className={cn(
-          "text-sm font-medium transition-all duration-200 flex items-center gap-1 rounded-full px-4 py-1.5 border border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-accent",
+          "text-sm font-medium transition-colors duration-200 flex items-center gap-1 rounded-md px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           isServicesActive
-            ? "text-white border-white/30 bg-white/15"
-            : "text-white hover:border-white/30 hover:bg-white/15"
+            ? "text-primary"
+            : "text-foreground/75 hover:text-primary"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"

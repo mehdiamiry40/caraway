@@ -16,7 +16,7 @@ import {
 import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
-import { CheckCircle2, Shield, Clock, BadgeCheck, Sparkles } from "lucide-react";
+import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
 
 const fieldIds = {
@@ -27,11 +27,6 @@ const fieldIds = {
   year: "quote-year",
   condition: "quote-condition",
 } as const;
-
-const benefits = [
-  { icon: Clock, title: "Same-day response", desc: "We usually reply within a few hours during business hours." },
-  { icon: Shield, title: "No obligation", desc: "Not happy with the offer? No worries — there's zero pressure to accept." },
-];
 
 export function QuoteForm() {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -85,38 +80,21 @@ export function QuoteForm() {
 
   return (
     <section id="quote-section" className="section-y bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-muted rounded-lg p-4 sm:p-8 md:p-12 lg:p-16 border border-border/60">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
-            <div className="flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 bg-accent/10 text-accent border border-accent/20 rounded-full px-4 py-1.5 text-sm font-semibold mb-5 w-fit">
-                <Sparkles className="w-4 h-4 text-accent" aria-hidden />
-                <span className="text-accent">Free instant quote</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary mb-4 md:mb-6 text-balance leading-tight">
-                Get Your Cash for Cars Brisbane Quote
-              </h2>
-              <p className="text-muted-foreground mb-8 sm:mb-10 leading-relaxed text-base sm:text-lg">
-                Tell us about the car. We&apos;ll call or text back with a price range and next steps — usually within one business day. No obligation.
-              </p>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          <div className="lg:col-span-5 lg:pt-4">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Your quote
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display font-bold text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
+              Tell us about the car.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-md">
+              We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
+            </p>
+          </div>
 
-              <div className="flex flex-col gap-4 lg:gap-6">
-                {benefits.map((b) => (
-                  <div key={b.title} className="flex gap-3 sm:gap-4 group">
-                    <div className="w-10 h-10 rounded-lg bg-white border border-border/60 flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-200">
-                      <b.icon className="w-5 h-5 text-primary/70" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <h3 className="font-display font-bold text-foreground text-sm">{b.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-0.5 leading-relaxed">{b.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-4 sm:p-8 border border-border/40 shadow-md relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-primary" aria-hidden />
+          <div className="lg:col-span-7 bg-white rounded-xl p-6 sm:p-8 md:p-10 border border-border/70">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
@@ -357,7 +335,6 @@ export function QuoteForm() {
                   </p>
                 </form>
               )}
-            </div>
           </div>
         </div>
       </div>
