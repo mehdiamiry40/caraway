@@ -75,7 +75,7 @@ describe("estimatePrice", () => {
     expect(running.quote).toBeGreaterThan(scrap.quote);
   });
 
-  it("enforces the absolute low floor ($300) and high ceiling ($9999)", () => {
+  it("enforces the absolute low floor ($200) and high ceiling ($1200)", () => {
     const worst = estimatePrice({
       make: "Fiat",
       model: "Punto",
@@ -127,8 +127,8 @@ describe("canonical Brisbane market anchors", () => {
       year: 2005,
       condition: "scrap",
     });
-    expect(result.quote).toBeGreaterThanOrEqual(350);
-    expect(result.quote).toBeLessThanOrEqual(500);
+    expect(result.quote).toBeGreaterThanOrEqual(200);
+    expect(result.quote).toBeLessThanOrEqual(350);
   });
 
   it("2003 Mitsubishi Magna scrap lands at the scrap-value floor", () => {
@@ -138,8 +138,8 @@ describe("canonical Brisbane market anchors", () => {
       year: 2003,
       condition: "scrap",
     });
-    expect(result.quote).toBeGreaterThanOrEqual(350);
-    expect(result.quote).toBeLessThanOrEqual(500);
+    expect(result.quote).toBeGreaterThanOrEqual(200);
+    expect(result.quote).toBeLessThanOrEqual(350);
   });
 
   it("2006 Ford Territory running sits in a reasonable range", () => {
@@ -149,19 +149,19 @@ describe("canonical Brisbane market anchors", () => {
       year: 2006,
       condition: "running",
     });
-    expect(result.quote).toBeGreaterThanOrEqual(800);
-    expect(result.quote).toBeLessThanOrEqual(2500);
+    expect(result.quote).toBeGreaterThanOrEqual(350);
+    expect(result.quote).toBeLessThanOrEqual(700);
   });
 
-  it("2007 Toyota Camry needs_work sits in the $400-$1500 band", () => {
+  it("2007 Toyota Camry needs_work sits in the $200-$500 band", () => {
     const result = estimatePrice({
       make: "Toyota",
       model: "Camry",
       year: 2007,
       condition: "needs_work",
     });
-    expect(result.quote).toBeGreaterThanOrEqual(400);
-    expect(result.quote).toBeLessThanOrEqual(1500);
+    expect(result.quote).toBeGreaterThanOrEqual(200);
+    expect(result.quote).toBeLessThanOrEqual(500);
   });
 });
 

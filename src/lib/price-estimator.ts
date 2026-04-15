@@ -25,25 +25,30 @@ type MakeTier = "high" | "medium" | "low";
 /**
  * Central pricing configuration. Keep every magic number here so the
  * tuning surface is discoverable and easy to test.
+ *
+ * Tuned for a scrap-focused buyer: the vast majority of vehicles we
+ * collect are bought for their hull/parts value, so base values and
+ * spreads are narrow — most quotes land between $200 and $1,200.
  */
 const PRICE_TABLE = {
   /** Base value brackets by vehicle age (years). First matching bracket wins. */
   ageBaseValues: [
-    { maxAge: 3, base: 8000 },
-    { maxAge: 6, base: 5500 },
-    { maxAge: 10, base: 3500 },
-    { maxAge: 15, base: 2000 },
-    { maxAge: 20, base: 1200 },
-    { maxAge: Infinity, base: 600 },
+    { maxAge: 3, base: 1200 },
+    { maxAge: 6, base: 1000 },
+    { maxAge: 10, base: 800 },
+    { maxAge: 15, base: 600 },
+    { maxAge: 20, base: 450 },
+    { maxAge: Infinity, base: 350 },
   ] as const,
-  /** Multiplier applied based on make-tier (demand). */
+  /** Multiplier applied based on make-tier (demand). Narrow spread — scrap
+   * value doesn't swing much by brand once the car is off the road. */
   makeMultipliers: {
-    high: 1.2,
+    high: 1.1,
     medium: 1.0,
-    low: 0.8,
+    low: 0.9,
   } satisfies Record<MakeTier, number>,
-  /** Minimum scrap value floor. */
-  scrapFloor: 350,
+  /** Minimum scrap value floor — even a written-off hull has metal value. */
+  scrapFloor: 200,
   /** Round the exact quote to the nearest this many dollars. */
   quoteRoundTo: 50,
   /** Absolute floor/ceiling on the returned quote. Sourced from site.ts. */
