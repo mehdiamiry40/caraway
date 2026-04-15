@@ -36,12 +36,12 @@ export function DeferredPriceEstimator() {
               <Skeleton className="h-5 w-96 max-w-full mx-auto" />
             </div>
             <div className="max-w-2xl mx-auto">
-              <div className="bg-white rounded-lg border border-border/60 shadow-md p-6 sm:p-8">
-                <Skeleton className="h-6 w-48 mb-6" />
+              <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] p-6 sm:p-8">
+                <Skeleton className="h-6 w-48 mb-6 rounded-xl" />
                 <div className="space-y-4">
-                  <Skeleton className="h-14 w-full" />
-                  <Skeleton className="h-14 w-full" />
-                  <Skeleton className="h-12 w-32 ml-auto rounded-full" />
+                  <Skeleton className="h-14 w-full rounded-xl" />
+                  <Skeleton className="h-14 w-full rounded-xl" />
+                  <Skeleton className="h-12 w-32 ml-auto rounded-xl" />
                 </div>
               </div>
             </div>

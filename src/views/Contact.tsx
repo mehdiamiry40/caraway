@@ -23,18 +23,18 @@ export default function Contact() {
         </p>
       }
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14">
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">Get in Touch</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">Get in Touch</h2>
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 The fastest way to get a cash offer is to use our online price estimator. Our Brisbane team will follow up with a confirmed quote and arrange same- or next-day pickup in most areas.
               </p>
             </div>
 
             <div className="space-y-5">
-              <a href={BUSINESS.emailHref} className="flex items-start gap-3 sm:gap-4 group p-4 -mx-4 rounded-lg hover:bg-muted transition-colors min-h-[44px] touch-manipulation">
+              <a href={BUSINESS.emailHref} className="flex items-start gap-3 sm:gap-4 group rounded-xl border border-border/60 bg-card p-5 sm:p-6 hover:border-primary/40 hover:shadow-sm transition-all min-h-[44px] touch-manipulation">
                 <div className="w-11 h-11 sm:w-12 sm:h-12 bg-accent/10 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-accent/15 transition-colors">
                   <Mail className="h-5 w-5 text-accent" />
                 </div>
@@ -65,7 +65,7 @@ export default function Contact() {
                   sub: BUSINESS.hoursDetail,
                 },
               ].map((item) => (
-                <div key={item.title} className="flex items-start gap-3 sm:gap-4 p-4 -mx-4">
+                <div key={item.title} className="flex items-start gap-3 sm:gap-4 rounded-xl border border-border/60 bg-card p-5 sm:p-6">
                   <div className="w-11 h-11 sm:w-12 sm:h-12 bg-muted rounded-lg flex items-center justify-center shrink-0">
                     <item.icon className="h-5 w-5 text-primary/60" />
                   </div>
@@ -82,7 +82,7 @@ export default function Contact() {
           <div className="space-y-8">
             <ContactForm />
 
-            <div className="bg-muted rounded-lg p-4 sm:p-7 md:p-8 border border-border/60">
+            <div className="rounded-xl border border-border/60 bg-card p-5 sm:p-6">
               <h2 className="text-lg font-display font-bold text-foreground mb-1">Quick Reference</h2>
               <p className="text-sm text-muted-foreground mb-6">Everything you need to know before getting a quote</p>
               <div className="space-y-4 text-sm">

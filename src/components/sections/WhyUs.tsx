@@ -44,7 +44,7 @@ export function WhyUs() {
 
           <dl className="lg:col-span-7 divide-y divide-border/60 border-t border-border/60">
             {reasons.map((reason) => (
-              <div key={reason.title} className="py-6 sm:py-8 grid grid-cols-12 gap-4">
+              <div key={reason.title} className="py-6 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6">
                 <dt className="col-span-12 sm:col-span-5 font-display font-semibold text-primary text-base sm:text-lg tracking-tight">
                   {reason.title}
                 </dt>

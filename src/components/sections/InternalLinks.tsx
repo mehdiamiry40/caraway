@@ -54,13 +54,13 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           <div>
             <h3 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{servicesHeading}</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5">
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-0.5">
               {servicesToShow.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/${s.slug}`}
                     onClick={() => trackEvent("internal_link_click", { href: `/${s.slug}`, label: s.h1, variant })}
-                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
+                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-11 py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
                     {s.h1}
                   </Link>
@@ -70,13 +70,13 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
           </div>
           <div>
             <h3 className="text-sm font-display font-bold text-primary uppercase tracking-wider mb-4 sm:mb-5">{suburbsHeading}</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-0.5">
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-0.5">
               {suburbsToShow.map((s) => (
                 <li key={s.slug}>
                   <Link
                     href={`/locations/${s.slug}`}
                     onClick={() => trackEvent("internal_link_click", { href: `/locations/${s.slug}`, label: s.h1, variant })}
-                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
+                    className="inline-flex items-center text-sm text-foreground/80 hover:text-accent transition-colors min-h-11 py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none break-words"
                   >
                     {s.h1}
                   </Link>
@@ -86,7 +86,7 @@ export function InternalLinks({ currentSlug, post }: InternalLinksProps) {
             <div className="pt-3">
               <Link
                 href="/locations"
-                className="inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:underline underline-offset-2 min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="inline-flex items-center gap-1.5 text-sm text-accent font-semibold hover:underline underline-offset-2 min-h-11 py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 View all locations
                 <span aria-hidden="true">&rarr;</span>

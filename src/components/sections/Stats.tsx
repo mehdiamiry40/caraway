@@ -69,7 +69,7 @@ export function Stats() {
   return (
     <section ref={ref} className="relative bg-muted border-b border-border/40" aria-label="What to expect">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 lg:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, index) => (
             <StatItem key={stat.label} stat={stat} index={index} inView={inView} />
           ))}
@@ -95,12 +95,12 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
 
   return (
     <div
-      className="group relative flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-4"
+      className="group relative flex flex-col items-center text-center gap-3 sm:gap-4"
     >
       {index > 0 && (
         <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
       )}
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
+      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
         <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" />
       </div>
       <div className="min-w-0">

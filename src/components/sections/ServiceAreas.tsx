@@ -9,7 +9,7 @@ export function ServiceAreas() {
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-12 md:mb-16">
+        <div className="max-w-2xl mb-10 md:mb-14">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Service areas
           </p>

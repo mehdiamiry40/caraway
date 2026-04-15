@@ -43,7 +43,7 @@ export default function ServicePageTemplate({
         <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-[1.1] mt-6 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
               {service.h1}
             </h1>
             <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
@@ -55,10 +55,10 @@ export default function ServicePageTemplate({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-10 sm:space-y-12 max-w-none lg:max-w-4xl">
               {service.sections.map((section, i) => (
                 <div key={i} className="group">
-                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4 leading-snug">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">
                     {section.heading}
                   </h2>
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
@@ -69,7 +69,7 @@ export default function ServicePageTemplate({
 
               {service.faqs.length > 0 && (
                 <div className="pt-4 border-t border-border/40">
-                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2 leading-snug">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-2 leading-snug tracking-tight">
                     Frequently Asked Questions
                   </h2>
                   <p className="text-muted-foreground mb-8">Common questions about this service.</p>
@@ -79,8 +79,8 @@ export default function ServicePageTemplate({
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-muted border border-border/60 rounded-lg p-4 sm:p-6">
-                <h3 className="font-display font-bold text-lg mb-1">Why Caraway?</h3>
+              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-display font-bold mb-1">Why Caraway?</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s trusted cash-for-cars service</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
@@ -95,8 +95,8 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Related services" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
-                  <h3 className="font-display font-bold text-lg mb-4">Related Services</h3>
+                <nav aria-label="Related services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                  <h3 className="text-base sm:text-lg font-display font-bold mb-4">Related Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
                       <li key={s.slug}>
@@ -114,8 +114,8 @@ export default function ServicePageTemplate({
               )}
 
               {relatedSuburbData.length > 0 && (
-                <nav aria-label="Service areas" className="border border-border/60 rounded-lg p-4 sm:p-6 bg-white">
-                  <h3 className="font-display font-bold text-lg mb-4">Service Areas</h3>
+                <nav aria-label="Service areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                  <h3 className="text-base sm:text-lg font-display font-bold mb-4">Service Areas</h3>
                   <ul className="space-y-1">
                     {relatedSuburbData.map(s => (
                       <li key={s.slug}>

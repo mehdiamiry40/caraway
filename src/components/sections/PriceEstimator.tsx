@@ -397,7 +397,7 @@ export function PriceEstimator() {
     return (
       <section id="price-estimator" className="section-y bg-muted" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg border border-border/60 shadow-md p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
+          <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden="true" />
             </div>
@@ -484,9 +484,9 @@ export function PriceEstimator() {
               </div>
             ))}
           </div>
-          <div className="h-1.5 bg-white rounded-full overflow-hidden border border-border/40">
+          <div className="h-1.5 bg-muted rounded-full overflow-hidden border border-border/40">
             <div
-              className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-accent rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -494,7 +494,7 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg border border-border/60 shadow-md overflow-hidden">
+          <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -529,9 +529,9 @@ export function PriceEstimator() {
                   </div>
                 </div>
 
-                <div className="space-y-4 sm:space-y-5">
+                <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2.5">
                       Make<RequiredMark />
                     </label>
                     <Select
@@ -548,7 +548,7 @@ export function PriceEstimator() {
                   </div>
                   {make && make !== "Other" && (
                     <div>
-                      <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2">
+                      <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2.5">
                         Model<RequiredMark />
                       </label>
                       <Select
@@ -567,7 +567,8 @@ export function PriceEstimator() {
                   <Button
                     onClick={() => canProceedStep1 && goToStep(2)}
                     disabled={!canProceedStep1}
-                    className="h-12 px-8 group"
+                    size="lg"
+                    className="group"
                   >
                     Next
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
@@ -595,9 +596,9 @@ export function PriceEstimator() {
                   </div>
                 </div>
 
-                <div className="space-y-4 sm:space-y-5">
+                <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2.5">
                       Year of manufacture<RequiredMark />
                     </label>
                     <Select
@@ -612,13 +613,14 @@ export function PriceEstimator() {
                       aria-describedby="est-year-error"
                     />
                     {showYearError && (
-                      <p id="est-year-error" className="mt-1 text-xs text-destructive" role="alert">
+                      <p id="est-year-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
+                        <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         Enter a year between 1950 and {CURRENT_YEAR + 1}.
                       </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-condition" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-condition" className="block text-sm font-semibold text-foreground mb-2.5">
                       Condition<RequiredMark />
                     </label>
                     <Select
@@ -633,13 +635,14 @@ export function PriceEstimator() {
                 </div>
 
                 <div className="mt-6 sm:mt-8 flex items-center justify-between">
-                  <button
+                  <Button
                     type="button"
                     onClick={() => goToStep(1)}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
+                    variant="outline"
+                    size="lg"
                   >
-                    <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
-                  </button>
+                    <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
+                  </Button>
                   <Button
                     onClick={() => {
                       setYearTouched(true);
@@ -647,7 +650,8 @@ export function PriceEstimator() {
                     }}
                     disabled={!canProceedStep2 || isCalculating}
                     variant="secondary"
-                    className="h-12 px-8 font-bold group"
+                    size="lg"
+                    className="font-bold group"
                   >
                     {isCalculating ? (
                       <>
@@ -678,8 +682,8 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center gap-1.5 bg-accent/10 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
+                  <div className="rounded-xl bg-accent/10 border border-accent/30 p-6 sm:p-8 text-center mb-6">
+                    <div className="inline-flex items-center gap-1.5 bg-accent/15 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
                       <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" /> Your instant quote
                     </div>
                     <p className="text-sm text-muted-foreground mb-2">
@@ -690,7 +694,7 @@ export function PriceEstimator() {
                       tabIndex={-1}
                       className="flex items-baseline justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
-                      <span className="text-5xl sm:text-7xl font-display font-bold text-accent">
+                      <span className="text-4xl sm:text-5xl font-display font-bold text-foreground">
                         ${result.quote.toLocaleString()}
                       </span>
                     </div>
@@ -700,7 +704,7 @@ export function PriceEstimator() {
                   </div>
 
                   {result.factors.length > 0 && (
-                    <div className="bg-muted rounded-lg p-4 mb-6">
+                    <div className="bg-muted rounded-xl p-4 mb-6">
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
@@ -714,17 +718,19 @@ export function PriceEstimator() {
                   )}
 
                   <div className="flex items-center justify-between">
-                    <button
+                    <Button
                       type="button"
                       onClick={() => goToStep(2)}
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
+                      variant="outline"
+                      size="lg"
                     >
-                      <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
-                    </button>
+                      <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
+                    </Button>
                     <Button
                       onClick={() => goToStep(4)}
                       variant="secondary"
-                      className="h-14 px-10 font-bold text-base group"
+                      size="lg"
+                      className="font-bold group"
                     >
                       Continue — get my price
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
@@ -738,7 +744,7 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 4 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
-                  <div className="flex items-center justify-between bg-muted border border-border/40 rounded-lg px-4 py-3 mb-6">
+                  <div className="flex items-center justify-between bg-muted border border-border/40 rounded-xl px-4 py-3 mb-6">
                     <div>
                       <p className="text-xs text-muted-foreground">Your quote</p>
                       <p className="font-display font-bold text-foreground">
@@ -771,9 +777,9 @@ export function PriceEstimator() {
                   </div>
                 </div>
 
-                <div className="space-y-4 sm:space-y-5">
+                <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-name" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-name" className="block text-sm font-semibold text-foreground mb-2.5">
                       Your name<RequiredMark />
                     </label>
                     <Input
@@ -789,6 +795,7 @@ export function PriceEstimator() {
                         setNameError(validateName(name));
                       }}
                       autoComplete="name"
+                      inputMode="text"
                       enterKeyHint="next"
                       maxLength={200}
                       aria-required="true"
@@ -796,18 +803,20 @@ export function PriceEstimator() {
                       aria-describedby={nameTouched && nameError ? "est-name-error" : undefined}
                     />
                     {nameTouched && nameError && (
-                      <p id="est-name-error" className="mt-1 text-xs text-destructive" role="alert">
+                      <p id="est-name-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
+                        <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {nameError}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-phone" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-phone" className="block text-sm font-semibold text-foreground mb-2.5">
                       Phone number<RequiredMark />
                     </label>
                     <Input
                       id="est-phone"
                       type="tel"
+                      inputMode="tel"
                       placeholder="04XX XXX XXX"
                       value={phone}
                       onChange={(e) => {
@@ -827,17 +836,18 @@ export function PriceEstimator() {
                       }
                       aria-invalid={phoneTouched && phoneError ? true : undefined}
                     />
-                    <p className="text-xs text-muted-foreground mt-1" id="est-phone-help">
+                    <p className="text-xs text-muted-foreground mt-1.5" id="est-phone-help">
                       Australian numbers only, e.g. 0412 345 678
                     </p>
                     {phoneTouched && phoneError && (
-                      <p id="est-phone-error" className="mt-1 text-xs text-destructive" role="alert">
+                      <p id="est-phone-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
+                        <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {phoneError}
                       </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2.5">
                       Pickup address<RequiredMark />
                     </label>
                     <AddressAutocomplete
@@ -865,11 +875,12 @@ export function PriceEstimator() {
                         addressTouched && addressError ? "est-address-error est-address-help" : "est-address-help"
                       }
                     />
-                    <p className="text-xs text-muted-foreground mt-1" id="est-address-help">
+                    <p className="text-xs text-muted-foreground mt-1.5" id="est-address-help">
                       Where should we collect the vehicle? Select from suggestions or type manually.
                     </p>
                     {addressTouched && addressError && (
-                      <p id="est-address-error" className="mt-1 text-xs text-destructive" role="alert">
+                      <p id="est-address-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
+                        <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {addressError}
                       </p>
                     )}
@@ -877,24 +888,26 @@ export function PriceEstimator() {
                 </div>
 
                 {submitError && (
-                  <div className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-4 py-3" role="alert">
-                    <p className="text-sm text-destructive">{submitError}</p>
+                  <div className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3" role="alert">
+                    <p className="text-sm text-destructive font-medium">{submitError}</p>
                   </div>
                 )}
 
                 <div className="mt-6 sm:mt-8 flex items-center justify-between">
-                  <button
+                  <Button
                     type="button"
                     onClick={() => goToStep(3)}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors min-h-[44px] touch-manipulation"
+                    variant="outline"
+                    size="lg"
                   >
-                    <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
-                  </button>
+                    <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
+                  </Button>
                   <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit || isSubmitting}
                     variant="secondary"
-                    className="h-14 px-10 font-bold text-base"
+                    size="lg"
+                    className="font-bold"
                   >
                     {isSubmitting ? (
                       <>

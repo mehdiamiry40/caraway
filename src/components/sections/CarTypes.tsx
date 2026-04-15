@@ -31,7 +31,7 @@ export function CarTypes() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
           {carTypes.map((type) => {
             const Icon = type.icon;
             return (
@@ -39,18 +39,17 @@ export function CarTypes() {
                 key={type.label}
                 href={type.href}
                 className={cn(
-                  "group relative flex flex-col items-center text-center p-4 sm:p-6 rounded-lg",
+                  "group relative flex flex-col items-center text-center p-5 sm:p-6 rounded-xl",
                   "bg-primary-foreground/[0.06] border border-primary-foreground/10",
-                  "hover:bg-primary-foreground hover:border-primary-foreground hover:text-primary hover:shadow-lg",
+                  "hover:border-primary-foreground/40 hover:bg-primary-foreground/[0.09]",
                   "hover:-translate-y-0.5 transition-all duration-300",
                   "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
-                  "touch-manipulation min-h-[120px] sm:min-h-[140px]"
+                  "touch-manipulation min-h-[116px] sm:min-h-[136px]"
                 )}
               >
                 <div className={cn(
-                  "flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-lg mb-3",
+                  "flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl mb-3",
                   "bg-accent/20 text-accent",
-                  "group-hover:bg-accent group-hover:text-white",
                   "transition-all duration-300"
                 )}>
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
@@ -58,7 +57,7 @@ export function CarTypes() {
                 <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/75 group-hover:text-primary/70 leading-tight">
+                <span className="text-[11px] sm:text-xs text-primary-foreground/75 leading-tight">
                   {type.desc}
                 </span>
                 <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />

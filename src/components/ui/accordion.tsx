@@ -41,8 +41,8 @@ export function Accordion({
           <div
             key={`${index}-${item.question}`}
             className={cn(
-              "border bg-card rounded-lg overflow-hidden transition-colors",
-              isActive ? "border-border" : "border-border/60 hover:border-border"
+              "border bg-card rounded-xl overflow-hidden transition-all duration-200",
+              isActive ? "border-primary/30 shadow-[0_4px_16px_-4px_rgba(20,52,88,0.08)]" : "border-border/80 hover:border-border"
             )}
           >
             <HeadingTag className="m-0">
@@ -54,7 +54,7 @@ export function Accordion({
                   setActiveIndex(willOpen ? index : null);
                   onItemToggle?.(item.question, willOpen);
                 }}
-                className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-4 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-5 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
                 aria-expanded={isActive}
                 aria-controls={panelId}
               >
@@ -83,7 +83,7 @@ export function Accordion({
               )}
             >
               <div className="overflow-hidden">
-                <div className="px-4 pb-4 pt-0 sm:px-6 sm:pb-6 text-muted-foreground text-sm sm:text-base leading-relaxed break-words [overflow-wrap:anywhere]">
+                <div className="px-5 pb-5 pt-0 sm:px-6 sm:pb-6 text-base sm:text-lg text-muted-foreground leading-relaxed break-words [overflow-wrap:anywhere]">
                   {item.answer}
                 </div>
               </div>

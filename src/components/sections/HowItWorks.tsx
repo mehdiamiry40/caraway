@@ -35,7 +35,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="section-y bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14 md:mb-20">
+        <div className="max-w-2xl mb-10 md:mb-16">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             How it works
           </p>
@@ -50,9 +50,12 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border/60 border border-border/60 rounded-xl overflow-hidden">
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
           {steps.map((step, index) => (
-            <li key={step.title} className="relative bg-white p-8 sm:p-10">
+            <li
+              key={step.title}
+              className="relative bg-card border border-border/60 rounded-xl p-6 sm:p-8"
+            >
               <span className="font-display text-xs font-semibold text-muted-foreground tabular-nums tracking-[0.18em]">
                 {String(index + 1).padStart(2, "0")}
               </span>
