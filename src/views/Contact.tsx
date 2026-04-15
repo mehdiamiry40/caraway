@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { BUSINESS } from "@/lib/site";
 
 const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
@@ -104,7 +103,6 @@ export default function Contact() {
       </div>
 
       <QuoteForm />
-      <InternalLinks />
     </PageShell>
   );
 }

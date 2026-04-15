@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import {
   categoryMap,
   categorySlug,
@@ -157,8 +156,6 @@ export default async function BlogCategoryPage({ params }: Props) {
             ))}
           </div>
         </div>
-
-        <InternalLinks />
       </PageShell>
     </>
   );

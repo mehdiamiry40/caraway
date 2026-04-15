@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { indexableBlogPosts } from "@/data/blog-posts";
@@ -126,8 +125,6 @@ export default function SiteMapPage() {
           </ul>
         </section>
       </div>
-
-        <InternalLinks />
       </PageShell>
     </>
   );

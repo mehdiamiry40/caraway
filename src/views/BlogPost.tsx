@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { categorySlug } from "@/data/blog-posts";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
@@ -352,8 +351,6 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </Link>
           </div>
         </div>
-
-        <InternalLinks post={post} />
       </PageShell>
     </>
   );

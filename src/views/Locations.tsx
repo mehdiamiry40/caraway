@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
-import { InternalLinks } from "@/components/sections/InternalLinks";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
 import { BUSINESS } from "@/lib/site";
 
@@ -47,8 +46,6 @@ export default function Locations() {
           </div>
         </div>
       </div>
-
-      <InternalLinks />
     </PageShell>
   );
 }
