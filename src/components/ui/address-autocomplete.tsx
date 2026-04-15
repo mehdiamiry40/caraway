@@ -50,29 +50,17 @@ export function AddressAutocomplete({
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
-  // Tracks the value the user just picked, so we don't immediately
-  // re-fetch suggestions for the address we just inserted.
-  const justPickedRef = useRef<string | null>(null);
+  // Tracks the value the user just picked, so the debounce effect
+  // skips the refetch that `onChange` would otherwise trigger. The
+  // next keystroke clears it.
+  const [justPickedValue, setJustPickedValue] = useState<string | null>(null);
   // Latest request id, so out-of-order responses can't overwrite newer ones.
   const requestIdRef = useRef(0);
 
   // Debounced fetch
   useEffect(() => {
     const trimmed = value.trim();
-    if (justPickedRef.current === trimmed) {
-      // Suppress the round-trip caused by our own setValue after a pick.
-      // Clear the ref so this only suppresses the immediate refetch — if
-      // the user later types (or re-enters) the same string, we still fetch.
-      justPickedRef.current = null;
-      setSuggestions([]);
-      setOpen(false);
-      setIsLoading(false);
-      return;
-    }
-    if (trimmed.length < MIN_QUERY_LENGTH) {
-      setSuggestions([]);
-      setOpen(false);
-      setIsLoading(false);
+    if (justPickedValue === trimmed || trimmed.length < MIN_QUERY_LENGTH) {
       return;
     }
 
@@ -116,7 +104,7 @@ export function AddressAutocomplete({
       controller.abort();
       window.clearTimeout(timer);
     };
-  }, [value]);
+  }, [value, justPickedValue]);
 
   // Close on outside click
   useEffect(() => {
@@ -133,11 +121,13 @@ export function AddressAutocomplete({
 
   const pick = useCallback(
     (s: Suggestion) => {
-      justPickedRef.current = s.fullText;
-      onChange(s.fullText);
-      onPlaceSelected?.(s.fullText);
+      setJustPickedValue(s.fullText);
+      setSuggestions([]);
       setOpen(false);
       setActiveIndex(-1);
+      setIsLoading(false);
+      onChange(s.fullText);
+      onPlaceSelected?.(s.fullText);
       // Return focus to the input so the user can keep tabbing forward.
       inputRef.current?.focus();
     },
@@ -190,9 +180,15 @@ export function AddressAutocomplete({
         ref={inputRef}
         value={value}
         onChange={(e) => {
-          // User typing invalidates any previous "just picked" guard.
-          justPickedRef.current = null;
-          onChange(e.target.value);
+          const next = e.target.value;
+          // Typing invalidates any "just picked" guard.
+          setJustPickedValue(null);
+          if (next.trim().length < MIN_QUERY_LENGTH) {
+            setSuggestions([]);
+            setOpen(false);
+            setIsLoading(false);
+          }
+          onChange(next);
         }}
         onKeyDown={handleKeyDown}
         onFocus={() => {

@@ -1,8 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useIntersectionVisibility } from "@/hooks/use-intersection-visibility";
 
 const PriceEstimator = dynamic(
   () =>
@@ -20,29 +20,9 @@ const PriceEstimator = dynamic(
  * page bundle entirely — only fetched on-demand.
  */
 export function DeferredPriceEstimator() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "400px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-    // mount-only observer
-  }, []);
+  const [ref, visible] = useIntersectionVisibility<HTMLDivElement>({
+    rootMargin: "400px",
+  });
 
   return (
     <div ref={ref}>

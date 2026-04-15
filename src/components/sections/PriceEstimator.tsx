@@ -69,20 +69,18 @@ export function PriceEstimator() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const stepHeadingRefs = useRef<Array<HTMLElement | null>>([null, null, null, null]);
+  // One ref per step heading, kept as individual refs (not an array of
+  // callback refs) so react-hooks/refs is satisfied without any
+  // ref-callback indexing during render.
+  const step1HeadingRef = useRef<HTMLHeadingElement>(null);
+  const step2HeadingRef = useRef<HTMLHeadingElement>(null);
+  const step3HeadingRef = useRef<HTMLDivElement>(null);
+  const step4HeadingRef = useRef<HTMLHeadingElement>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const estimatorStartedRef = useRef(false);
   const hydratedRef = useRef(false);
   const hasMountedRef = useRef(false);
   const persistTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Stable ref callbacks — created once, never trigger extra reconciliation.
-  const headingRefCallbacks = useMemo(
-    () => [0, 1, 2, 3].map((i) => (el: HTMLElement | null) => {
-      stepHeadingRefs.current[i] = el;
-    }),
-    []
-  );
 
   const liveMessage = isSuccess
     ? "Your quote request was submitted successfully."
@@ -129,7 +127,11 @@ export function PriceEstimator() {
     [step]
   );
 
-  // Hydrate from sessionStorage on mount.
+  // Hydrate from sessionStorage on mount. We can't use lazy state
+  // initializers here because reading storage during render would cause
+  // a hydration mismatch (server has no window.sessionStorage, client
+  // does) — the setState flush is intentional and happens exactly once
+  // per mount, guarded by `hydratedRef`.
   useEffect(() => {
     if (hydratedRef.current) return;
     hydratedRef.current = true;
@@ -138,6 +140,7 @@ export function PriceEstimator() {
       const raw = window.sessionStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const parsed = JSON.parse(raw) as PersistedState;
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount hydration; see block comment above.
       if (parsed.make) setMake(parsed.make);
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
@@ -386,7 +389,8 @@ export function PriceEstimator() {
       successHeadingRef.current?.focus();
       return;
     }
-    stepHeadingRefs.current[step - 1]?.focus();
+    const refs = [step1HeadingRef, step2HeadingRef, step3HeadingRef, step4HeadingRef];
+    refs[step - 1]?.current?.focus();
   }, [isSuccess, step]);
 
   if (isSuccess) {
@@ -515,7 +519,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={headingRefCallbacks[0]}
+                      ref={step1HeadingRef}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -581,7 +585,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={headingRefCallbacks[1]}
+                      ref={step2HeadingRef}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -682,7 +686,7 @@ export function PriceEstimator() {
                       {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                     </p>
                     <div
-                      ref={headingRefCallbacks[2]}
+                      ref={step3HeadingRef}
                       tabIndex={-1}
                       className="flex items-baseline justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
@@ -757,7 +761,7 @@ export function PriceEstimator() {
                   </div>
                   <div>
                     <h3
-                      ref={headingRefCallbacks[3]}
+                      ref={step4HeadingRef}
                       tabIndex={-1}
                       className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
