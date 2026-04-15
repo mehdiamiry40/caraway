@@ -25,7 +25,7 @@ export function Hero() {
 
             <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-md">
               A straightforward price, free pickup across Greater Brisbane, and
-              payment on the spot. Any make, any condition — from $300 to $9,999.
+              payment on the spot. Any make, any condition — from $200 to $1,200.
             </p>
 
             <HeroCTAs />
