@@ -41,9 +41,11 @@ The dev server starts on <http://localhost:3000>.
 | `QUOTE_ENDPOINT`           | yes             | HTTPS webhook URL the quote server action POSTs to.                         |
 | `CONTACT_ENDPOINT`         | yes             | HTTPS webhook URL the contact server action POSTs to.                       |
 | `ALLOWED_ENDPOINT_HOSTS`   | yes             | Comma-separated allowlist of hostnames the server actions may call (SSRF). |
-| `RESEND_API_KEY`           | optional        | Resend API key. When set (with the two vars below), quote submissions are also emailed to the business inbox in parallel with the webhook. |
+| `RESEND_API_KEY`           | optional        | Resend API key. When set (with the matching FROM/TO pair), quote and contact submissions are also emailed to the business inbox in parallel with the webhook. Either channel succeeding is enough to show the user success — this is what keeps the forms working if a webhook is misconfigured. |
 | `QUOTE_NOTIFICATION_FROM`  | optional        | Sender address used by the quote notification email. Must be on a Resend-verified domain, e.g. `Caraway Quotes <quotes@caraway.au>`. |
 | `QUOTE_NOTIFICATION_TO`    | optional        | Recipient for quote notification emails, typically `info@caraway.au`.       |
+| `CONTACT_NOTIFICATION_FROM`| optional        | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
+| `CONTACT_NOTIFICATION_TO`  | optional        | Recipient for contact notification emails, typically `info@caraway.au`.     |
 | `NEXT_PUBLIC_NOINDEX`      | optional        | Set to `1` to force `noindex` metadata (staging/preview).                   |
 
 Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
