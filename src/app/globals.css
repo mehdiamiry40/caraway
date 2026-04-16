@@ -24,24 +24,23 @@
 }
 
 :root {
-  /* Navy & Gold palette */
-  --background: 60 20% 98%;
-  --foreground: 218 70% 14%;
-  --primary: 218 70% 14%;
+  /* Slate & Teal palette */
+  --background: 210 20% 98%;
+  --foreground: 222 47% 11%;
+  --primary: 222 47% 11%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 42 40% 94%;
-  --secondary-foreground: 218 70% 14%;
-  --muted: 42 40% 94%;
-  --muted-foreground: 36 12% 38%;
-  --accent: 42 65% 52%;
-  --accent-foreground: 218 70% 14%;
+  --secondary: 210 18% 94%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 18% 94%;
+  --muted-foreground: 215 16% 42%;
+  --accent: 172 66% 40%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 72% 42%;
   --destructive-foreground: 0 0% 100%;
-  /* Softer border, still meets WCAG 1.4.11 (3:1 against white) */
-  --border: 42 30% 82%;
-  --ring: 218 70% 14%;
+  --border: 214 18% 84%;
+  --ring: 172 66% 40%;
   --card: 0 0% 100%;
-  --card-foreground: 218 70% 14%;
+  --card-foreground: 222 47% 11%;
 }
 
 /*
