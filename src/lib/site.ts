@@ -31,8 +31,8 @@ export const BUSINESS = {
 } as const;
 
 export const MIN_PRICE = 200;
-export const MAX_PRICE = 1200;
-export const PRICE_RANGE_LABEL = "$200–$1,200";
+export const MAX_PRICE = 9999;
+export const PRICE_RANGE_LABEL = "$200–$9,999";
 
 export const LEGAL_DATES = {
   privacyLastUpdated: "April 2026",
@@ -40,7 +40,7 @@ export const LEGAL_DATES = {
 } as const;
 
 export const PROMISE_POINTS = [
-  "$200–$1,200 cash",
+  "$200–$9,999 cash",
   "Same- or next-day pickup",
   "Free towing always",
   "No RWC needed",

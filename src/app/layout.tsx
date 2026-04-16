@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Ubuntu, Exo } from "next/font/google";
+import { LocalBusinessJsonLd, OrganizationJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
-  localBusinessSchema,
-  organizationSchema,
+  localBusinessJsonLdProps,
+  organizationJsonLdProps,
   websiteSchema,
 } from "@/lib/json-ld-schemas";
 import { Analytics } from "@vercel/analytics/next";
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Caraway",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
+    "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers. Call 0481 438 444.",
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
     siteName: "Caraway",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
+      "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -83,7 +84,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
+      "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -144,9 +145,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <JsonLd
-          data={[localBusinessSchema, organizationSchema, websiteSchema]}
-        />
+        <LocalBusinessJsonLd {...localBusinessJsonLdProps} />
+        <OrganizationJsonLd {...organizationJsonLdProps} />
+        <JsonLd data={[websiteSchema]} />
         <ErrorBoundary>
           <Providers>{children}</Providers>
         </ErrorBoundary>

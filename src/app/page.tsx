@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FAQJsonLd, HowToJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import { faqs } from "@/data/home-faqs";
 import { reviews } from "@/data/reviews";
@@ -9,15 +10,15 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Cash for Cars Brisbane | Caraway — Fast Pickup",
+    absolute: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
+    "Cash for cars Brisbane: sell your car for up to $9,999 with free car removal and same-day pickup. Any make, any condition. Trusted Brisbane car buyers — call 0481 438 444.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
     type: "website",
-    title: "Cash for Cars Brisbane | Caraway — Fast Pickup",
+    title: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
     description:
       "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition.",
     images: [
@@ -59,52 +60,6 @@ export default function HomePage() {
         ],
       },
     },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-    {
-      "@type": "HowTo",
-      name: "How to Sell Your Car for Cash in Brisbane",
-      description:
-        "Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup.",
-      totalTime: "PT1D",
-      estimatedCost: { "@type": "MonetaryAmount", currency: "AUD", value: "0" },
-      supply: [
-        {
-          "@type": "HowToSupply",
-          name: "Vehicle details (make, model, year, condition)",
-        },
-      ],
-      tool: [{ "@type": "HowToTool", name: "Caraway online quote tool" }],
-      step: [
-        {
-          "@type": "HowToStep",
-          position: 1,
-          name: "Tell us about your car",
-          text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
-          url: `${SITE_URL}/#how-it-works`,
-        },
-        {
-          "@type": "HowToStep",
-          position: 2,
-          name: "Confirm your quote",
-          text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
-          url: `${SITE_URL}/#how-it-works`,
-        },
-        {
-          "@type": "HowToStep",
-          position: 3,
-          name: "We pick up, you get paid",
-          text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
-          url: `${SITE_URL}/#how-it-works`,
-        },
-      ],
-    },
     ...reviews.map((r) => ({
       "@type": "Review" as const,
       author: {
@@ -130,13 +85,37 @@ export default function HomePage() {
 
   return (
     <>
-      {/*
-       * LCP hero is preloaded automatically by <Image priority> in Hero.tsx.
-       * Manual preload removed because it fetched the raw source file rather
-       * than the optimizer-served /_next/image URL, creating a duplicate
-       * download. Hero.tsx uses priority + fetchPriority="high" which emits
-       * the correct preload matching the rendered asset.
-       */}
+      <FAQJsonLd
+        questions={faqs.map((faq) => ({
+          name: faq.question,
+          acceptedAnswer: faq.answer,
+        }))}
+      />
+      <HowToJsonLd
+        name="How to Sell Your Car for Cash in Brisbane"
+        description="Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup."
+        totalTime="PT1D"
+        estimatedCost={{ currency: "AUD", value: "0" }}
+        step={[
+          {
+            name: "Tell us about your car",
+            text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
+            url: `${SITE_URL}/#how-it-works`,
+          },
+          {
+            name: "Confirm your quote",
+            text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
+            url: `${SITE_URL}/#how-it-works`,
+          },
+          {
+            name: "We pick up, you get paid",
+            text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+            url: `${SITE_URL}/#how-it-works`,
+          },
+        ]}
+        supply={["Vehicle details (make, model, year, condition)"]}
+        tool={["Caraway online quote tool"]}
+      />
       <JsonLd data={homeStructuredData} />
       <Home />
     </>

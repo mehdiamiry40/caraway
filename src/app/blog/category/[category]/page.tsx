@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import {
@@ -9,7 +10,6 @@ import {
   getPostsByCategory,
   indexableBlogPosts,
 } from "@/data/blog-posts";
-import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
@@ -68,9 +68,15 @@ export default async function BlogCategoryPage({ params }: Props) {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: `${SITE_URL}/` },
+          { name: "Blog", item: `${SITE_URL}/blog` },
+          { name: label, item: canonical },
+        ]}
+      />
       <JsonLd
         data={[
-          breadcrumbListSchema(breadcrumbs, canonical),
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",

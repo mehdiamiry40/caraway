@@ -12,20 +12,20 @@ export function Hero() {
         <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] shrink-0 px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24 lg:pl-6 lg:pr-12">
           <div className="relative z-10 w-full max-w-xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Brisbane · Since 2018
+              Brisbane's Trusted Cash for Cars Buyer
             </p>
             <h1
               id="hero-heading"
               className="text-[2rem] sm:text-5xl lg:text-[3.5rem] font-display font-bold leading-[1.05] tracking-tight text-primary mb-4 sm:mb-5 break-words scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
             >
-              Cash for cars,
+              Cash for Cars Brisbane
               <br />
-              done quietly.
+              — Paid on Pickup
             </h1>
 
             <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-md">
-              A straightforward price, free pickup across Greater Brisbane, and
-              payment on the spot. Any make, any condition — from $200 to $1,200.
+              Sell your car for cash today. Free pickup across Greater Brisbane,
+              payment on the spot. Any make, any condition — up to $9,999.
             </p>
 
             <HeroCTAs />
