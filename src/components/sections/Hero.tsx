@@ -29,10 +29,6 @@ export function Hero() {
             </p>
 
             <HeroCTAs />
-
-            <p className="mt-5 sm:mt-8 text-sm text-muted-foreground">
-              Fully insured pickups · Licensed recycler · ABN registered
-            </p>
           </div>
         </div>
 
