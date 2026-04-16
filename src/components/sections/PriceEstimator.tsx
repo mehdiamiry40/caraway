@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
@@ -444,9 +443,6 @@ export function PriceEstimator() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground">
             How Much Is Your Car Worth?
           </h2>
-          <p className="mt-3 text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
-            Get an instant quote in under a minute. See your price before we ask for any details.
-          </p>
         </div>
 
         {/* Progress bar */}
@@ -517,16 +513,13 @@ export function PriceEstimator() {
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
                     <Car className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <div>
-                    <h3
-                      ref={step1HeadingRef}
-                      tabIndex={-1}
-                      className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
-                    >
-                      Tell us about your vehicle
-                    </h3>
-                    <p className="text-xs text-muted-foreground">Step 1 of {totalSteps}</p>
-                  </div>
+                  <h3
+                    ref={step1HeadingRef}
+                    tabIndex={-1}
+                    className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                  >
+                    Tell us about your vehicle
+                  </h3>
                 </div>
 
                 <div className="space-y-5 sm:space-y-6">
@@ -630,7 +623,6 @@ export function PriceEstimator() {
               <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
                 <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
                 <p className="font-display font-bold text-foreground">Calculating your quote…</p>
-                <p className="text-xs text-muted-foreground mt-1">Crunching market data for your {[make, model].filter(Boolean).join(" ")}</p>
               </div>
             )}
 
@@ -654,9 +646,6 @@ export function PriceEstimator() {
                         ${result.quote.toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Final price confirmed before pickup · Free towing · Same- or next-day slots
-                    </p>
                   </div>
 
                   {result.factors.length > 0 && (
@@ -721,16 +710,13 @@ export function PriceEstimator() {
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
                     <Send className="w-5 h-5" aria-hidden="true" />
                   </div>
-                  <div>
-                    <h3
-                      ref={step3HeadingRef}
-                      tabIndex={-1}
-                      className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
-                    >
-                      Where should we send it?
-                    </h3>
-                    <p className="text-xs text-muted-foreground">Step 3 of {totalSteps} — we&apos;ll call to confirm & arrange pickup</p>
-                  </div>
+                  <h3
+                    ref={step3HeadingRef}
+                    tabIndex={-1}
+                    className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                  >
+                    Where should we send it?
+                  </h3>
                 </div>
 
                 <div className="space-y-5 sm:space-y-6">
@@ -788,13 +774,10 @@ export function PriceEstimator() {
                       maxLength={20}
                       aria-required="true"
                       aria-describedby={
-                        phoneTouched && phoneError ? "est-phone-error est-phone-help" : "est-phone-help"
+                        phoneTouched && phoneError ? "est-phone-error" : undefined
                       }
                       aria-invalid={phoneTouched && phoneError ? true : undefined}
                     />
-                    <p className="text-xs text-muted-foreground mt-1.5" id="est-phone-help">
-                      Australian numbers only, e.g. 0412 345 678
-                    </p>
                     {phoneTouched && phoneError && (
                       <p id="est-phone-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
                         <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
@@ -828,12 +811,9 @@ export function PriceEstimator() {
                       aria-required="true"
                       aria-invalid={addressTouched && addressError ? true : undefined}
                       aria-describedby={
-                        addressTouched && addressError ? "est-address-error est-address-help" : "est-address-help"
+                        addressTouched && addressError ? "est-address-error" : undefined
                       }
                     />
-                    <p className="text-xs text-muted-foreground mt-1.5" id="est-address-help">
-                      Where should we collect the vehicle? Select from suggestions or type manually.
-                    </p>
                     {addressTouched && addressError && (
                       <p id="est-address-error" className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium" role="alert">
                         <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
@@ -878,26 +858,9 @@ export function PriceEstimator() {
                     )}
                   </Button>
                 </div>
-
-                <p className="text-[10px] text-muted-foreground mt-3 text-center">
-                  We only use your details to confirm your quote. Read our{" "}
-                  <Link href="/privacy" className="underline">privacy policy</Link>.
-                </p>
-
-                <p className="text-center text-xs text-muted-foreground mt-4">
-                  We&apos;ll call to confirm the price and arrange free pickup. No obligation.
-                </p>
               </div>
             </div>
           </div>
-
-          {step < 3 && (
-            <p className="text-center text-xs text-muted-foreground mt-4">
-              {step < 2
-                ? "No personal information required to see your quote."
-                : "This is an indicative estimate. Your final offer is confirmed before pickup."}
-            </p>
-          )}
         </div>
       </div>
     </section>
