@@ -29,14 +29,14 @@ export function DeferredPriceEstimator() {
       {visible ? (
         <PriceEstimator />
       ) : (
-        <section className="section-y bg-[#E6F5F3]">
+        <section className="section-y bg-secondary/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 sm:mb-12">
               <Skeleton className="h-10 w-80 mx-auto mb-3" />
               <Skeleton className="h-5 w-96 max-w-full mx-auto" />
             </div>
             <div className="max-w-2xl mx-auto">
-              <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] p-6 sm:p-8">
+              <div className="bg-card rounded-xl border border-border/60 shadow-[0_20px_44px_-32px_hsl(var(--shadow-color)/0.42)] p-6 sm:p-8">
                 <Skeleton className="h-6 w-48 mb-6 rounded-xl" />
                 <div className="space-y-4">
                   <Skeleton className="h-14 w-full rounded-xl" />

@@ -102,7 +102,7 @@ export function QuoteForm() {
             </p>
           </div>
 
-          <div className="lg:col-span-7 rounded-xl border border-border/60 bg-card p-6 sm:p-8 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)]">
+          <div className="lg:col-span-7 rounded-xl border border-border/60 bg-card p-6 sm:p-8 shadow-[0_20px_44px_-32px_hsl(var(--shadow-color)/0.42)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">

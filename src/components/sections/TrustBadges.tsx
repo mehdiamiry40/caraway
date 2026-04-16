@@ -21,8 +21,9 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section className="py-10 sm:py-16 bg-primary text-primary-foreground" aria-label="Trust and credentials">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-10 sm:py-16 text-primary-foreground [background:linear-gradient(135deg,hsl(var(--primary))_0%,hsl(215_30%_14%)_100%)]" aria-label="Trust and credentials">
+      <div aria-hidden="true" className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_top,hsl(var(--accent)/0.2),transparent_38%)]" />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
           {badges.map(({ icon: Icon, label, detail }) => (
             <div

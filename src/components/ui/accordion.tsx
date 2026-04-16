@@ -42,7 +42,7 @@ export function Accordion({
             key={`${index}-${item.question}`}
             className={cn(
               "border bg-card rounded-xl overflow-hidden transition-all duration-200",
-              isActive ? "border-primary/30 shadow-[0_4px_16px_-4px_rgba(20,52,88,0.08)]" : "border-border/80 hover:border-border"
+              isActive ? "border-primary/30 shadow-[0_18px_36px_-30px_hsl(var(--shadow-color)/0.45)]" : "border-border/80 hover:border-border"
             )}
           >
             <HeadingTag className="m-0">

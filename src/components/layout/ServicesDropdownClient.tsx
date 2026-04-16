@@ -105,7 +105,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           ref={menuRef}
           role="menu"
           aria-label="Services submenu"
-          className="absolute top-full left-0 mt-1 w-[480px] max-w-[calc(100vw-2rem)] bg-white rounded-xl shadow-xl shadow-primary/5 border border-border/60 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
+          className="absolute top-full left-0 mt-1 w-[480px] max-w-[calc(100vw-2rem)] bg-card rounded-2xl shadow-[0_24px_48px_-32px_hsl(var(--shadow-color)/0.4)] border border-border/70 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               setIsOpen(false);
@@ -149,10 +149,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
                   role="menuitem"
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "block px-5 py-3 text-sm font-medium transition-all duration-150 focus-visible:bg-muted focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    "block px-5 py-3 text-sm font-medium transition-all duration-150 focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                     isActive
-                      ? "text-primary bg-primary/5 border-l-2 border-primary"
-                      : "text-foreground/80 hover:text-primary hover:bg-muted border-l-2 border-transparent"
+                      ? "text-primary bg-accent/[0.08] border-l-2 border-accent"
+                      : "text-foreground/80 hover:text-primary hover:bg-secondary/70 border-l-2 border-transparent"
                   )}
                 >
                   {item.label}

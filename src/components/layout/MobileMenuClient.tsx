@@ -104,10 +104,10 @@ export function MobileMenuClient({ serviceLinks }: Props) {
       <div
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute inset-0 bg-black/20 animate-in fade-in duration-300"
+        className="absolute inset-0 bg-primary/28 animate-in fade-in duration-300"
         onClick={close}
       />
-      <div className="relative bg-white flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
+      <div className="relative bg-card flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
         <div className="flex items-center justify-between min-h-16 px-5 sm:px-6 border-b border-border/40 shrink-0">
           <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-primary lowercase">
             caraway<span className="text-accent">.</span>
@@ -131,7 +131,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 aria-controls="mobile-services-list"
                 className={cn(
                   "text-base sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                  "text-foreground hover:text-primary hover:bg-muted"
+                  "text-foreground hover:text-primary hover:bg-secondary/70"
                 )}
               >
                 <span className="flex items-center gap-2">Services</span>
@@ -152,8 +152,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                       className={cn(
                         "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                         pathname === "/cash-for-cars-brisbane"
-                          ? "text-primary bg-primary/5"
-                          : "text-foreground/80 hover:text-primary hover:bg-muted"
+                          ? "text-primary bg-accent/[0.08]"
+                          : "text-foreground/80 hover:text-primary hover:bg-secondary/70"
                       )}
                     >
                       Services overview
@@ -171,8 +171,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                             className={cn(
                               "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                               isActive
-                                ? "text-primary bg-primary/5"
-                                : "text-foreground/80 hover:text-primary hover:bg-muted"
+                                ? "text-primary bg-accent/[0.08]"
+                                : "text-foreground/80 hover:text-primary hover:bg-secondary/70"
                             )}
                           >
                             {service.label}
@@ -198,8 +198,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                     className={cn(
                       "text-base sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                       isActive
-                        ? "text-primary bg-primary/5"
-                        : "text-foreground hover:text-primary hover:bg-muted"
+                        ? "text-primary bg-accent/[0.08]"
+                        : "text-foreground hover:text-primary hover:bg-secondary/70"
                     )}
                   >
                     <span className="flex items-center gap-2">
