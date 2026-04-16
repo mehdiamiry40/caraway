@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Ubuntu, Exo } from "next/font/google";
+import { LocalBusinessJsonLd, OrganizationJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
-  localBusinessSchema,
-  organizationSchema,
+  localBusinessJsonLdProps,
+  organizationJsonLdProps,
   websiteSchema,
 } from "@/lib/json-ld-schemas";
 import { Analytics } from "@vercel/analytics/next";
@@ -144,9 +145,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <JsonLd
-          data={[localBusinessSchema, organizationSchema, websiteSchema]}
-        />
+        <LocalBusinessJsonLd {...localBusinessJsonLdProps} />
+        <OrganizationJsonLd {...organizationJsonLdProps} />
+        <JsonLd data={[websiteSchema]} />
         <ErrorBoundary>
           <Providers>{children}</Providers>
         </ErrorBoundary>

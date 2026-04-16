@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import Blog from "@/views/Blog";
 import { indexableBlogPosts } from "@/data/blog-posts";
-import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
-
-const breadcrumbs = [
-  { label: "Home", href: "/" },
-  { label: "Blog" },
-];
 
 export const metadata: Metadata = {
   title: "Cash for Cars Brisbane Blog — Tips & Guides",
@@ -39,9 +34,14 @@ export default function BlogPage() {
   const canonical = `${SITE_URL}/blog`;
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: `${SITE_URL}/` },
+          { name: "Blog", item: `${SITE_URL}/blog` },
+        ]}
+      />
       <JsonLd
         data={[
-          breadcrumbListSchema(breadcrumbs, canonical),
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",

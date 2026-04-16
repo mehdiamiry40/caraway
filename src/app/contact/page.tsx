@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import Contact from "@/views/Contact";
-import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { BUSINESS, SITE_URL } from "@/lib/site";
-
-const breadcrumbs = [
-  { label: "Home", href: "/" },
-  { label: "Contact Us" },
-];
 
 export const metadata: Metadata = {
   title: "Contact Us — Free Cash for Cars Quote Brisbane",
@@ -29,6 +24,12 @@ export default function ContactPage() {
   const canonical = `${SITE_URL}/contact`;
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: `${SITE_URL}/` },
+          { name: "Contact Us", item: canonical },
+        ]}
+      />
       <JsonLd
         data={[
           {
@@ -63,7 +64,6 @@ export default function ContactPage() {
               },
             ],
           },
-          breadcrumbListSchema(breadcrumbs, canonical),
         ]}
       />
       <Contact />

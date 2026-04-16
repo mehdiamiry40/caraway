@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
-  buildBlogPostJsonLd,
+  buildBlogPostSeoProps,
   generateMetadata,
 } from "@/app/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
@@ -114,42 +114,34 @@ describe("generateMetadata (blog post route)", () => {
     });
   });
 
-  describe("buildBlogPostJsonLd (BlogPosting schema)", () => {
-    it("emits both BreadcrumbList and BlogPosting entries", () => {
-      const schemas = buildBlogPostJsonLd(indexablePost!);
-      expect(Array.isArray(schemas)).toBe(true);
-      expect(schemas).toHaveLength(2);
-      const types = schemas.map((s) => (s as { "@type": string })["@type"]);
-      expect(types).toContain("BreadcrumbList");
-      expect(types).toContain("BlogPosting");
+  describe("buildBlogPostSeoProps (BlogPosting schema)", () => {
+    it("returns articleProps, breadcrumbItems, wordCount, and plainContent", () => {
+      const result = buildBlogPostSeoProps(indexablePost!);
+      expect(result.articleProps).toBeDefined();
+      expect(result.breadcrumbItems).toBeDefined();
+      expect(result.wordCount).toBeDefined();
+      expect(result.plainContent).toBeDefined();
+      expect(result.breadcrumbItems).toHaveLength(3);
     });
 
-    it("populates BlogPosting with headline, dates, canonical url and author", () => {
-      const schemas = buildBlogPostJsonLd(indexablePost!);
-      const post = schemas.find(
-        (s) => (s as { "@type": string })["@type"] === "BlogPosting",
-      ) as Record<string, unknown>;
-      expect(post.headline).toBe(indexablePost!.title);
-      expect(post.datePublished).toBe(indexablePost!.date);
-      expect(post.dateModified).toBe(indexablePost!.updatedAt);
-      expect(post.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
-      expect(post.inLanguage).toBe("en-AU");
-      expect(post.isAccessibleForFree).toBe(true);
-      const author = post.author as { name: string; sameAs: string };
+    it("populates articleProps with headline, dates, canonical url and author", () => {
+      const { articleProps } = buildBlogPostSeoProps(indexablePost!);
+      expect(articleProps.headline).toBe(indexablePost!.title);
+      expect(articleProps.datePublished).toBe(indexablePost!.date);
+      expect(articleProps.dateModified).toBe(indexablePost!.updatedAt);
+      expect(articleProps.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
+      expect(articleProps.isAccessibleForFree).toBe(true);
+      const author = articleProps.author as { name: string; url: string };
       expect(author.name).toBe("Sam Williams");
-      expect(author.sameAs).toBe(`${SITE_URL}/author/sam-williams`);
+      expect(author.url).toBe(`${SITE_URL}/author/sam-williams`);
     });
 
-    it("computes a non-zero wordCount and truncates articleBody at 5000 chars", () => {
-      const schemas = buildBlogPostJsonLd(indexablePost!);
-      const post = schemas.find(
-        (s) => (s as { "@type": string })["@type"] === "BlogPosting",
-      ) as Record<string, unknown>;
-      expect(typeof post.wordCount).toBe("number");
-      expect(post.wordCount).toBeGreaterThan(0);
-      const body = post.articleBody as string;
-      expect(typeof body).toBe("string");
-      expect(body.length).toBeLessThanOrEqual(5000);
+    it("computes a non-zero wordCount", () => {
+      const { wordCount, plainContent } = buildBlogPostSeoProps(indexablePost!);
+      expect(typeof wordCount).toBe("number");
+      expect(wordCount).toBeGreaterThan(0);
+      expect(typeof plainContent).toBe("string");
+      expect(plainContent.length).toBeGreaterThan(0);
     });
   });
 });

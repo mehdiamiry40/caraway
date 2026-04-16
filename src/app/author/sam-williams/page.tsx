@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { JsonLd } from "@/components/JsonLd";
+import { ProfilePageJsonLd, BreadcrumbJsonLd } from "next-seo";
 import { PageShell } from "@/components/layout/PageShell";
 import { indexableBlogPosts } from "@/data/blog-posts";
-import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL, BUSINESS } from "@/lib/site";
 import { ArrowRight, Clock, Tag } from "lucide-react";
 
@@ -47,44 +46,23 @@ export default function AuthorPage() {
 
   return (
     <>
-      <JsonLd
-        data={[
-          breadcrumbListSchema(breadcrumbs, canonical),
-          {
-            "@context": "https://schema.org",
-            "@type": "ProfilePage",
-            name: AUTHOR.name,
-            url: canonical,
-            dateCreated: "2025-01-01",
-            dateModified: new Date().toISOString().split("T")[0],
-            mainEntity: {
-              "@type": "Person",
-              "@id": `${SITE_URL}/author/sam-williams#person`,
-              url: `${SITE_URL}/author/sam-williams`,
-              name: AUTHOR.name,
-              jobTitle: AUTHOR.jobTitle,
-              worksFor: {
-                "@type": "Organization",
-                name: BUSINESS.name,
-                url: SITE_URL,
-              },
-              description: AUTHOR.bio,
-              image: {
-                "@type": "ImageObject",
-                url: `${SITE_URL}/images/logo.webp`,
-                width: 512,
-                height: 279,
-              },
-              knowsAbout: [
-                "Vehicle appraisal",
-                "Cash for cars",
-                "Used car valuation",
-                "Queensland automotive market",
-                "Car removal services",
-              ],
-            },
-          },
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: `${SITE_URL}/` },
+          { name: "Blog", item: `${SITE_URL}/blog` },
+          { name: AUTHOR.name, item: canonical },
         ]}
+      />
+      <ProfilePageJsonLd
+        dateCreated="2025-01-01"
+        dateModified={new Date().toISOString().split("T")[0]}
+        mainEntity={{
+          name: AUTHOR.name,
+          url: `${SITE_URL}/author/sam-williams`,
+          description: AUTHOR.bio,
+          image: `${SITE_URL}/images/logo.webp`,
+          sameAs: `${SITE_URL}/author/sam-williams`,
+        }}
       />
       <PageShell
         breadcrumbs={breadcrumbs}

@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
 import About from "@/views/About";
-import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
-
-const breadcrumbs = [
-  { label: "Home", href: "/" },
-  { label: "About Caraway" },
-];
 
 export const metadata: Metadata = {
   title: "About Us — Brisbane Cash for Cars Team",
@@ -31,9 +26,14 @@ export default function AboutPage() {
   const canonical = `${SITE_URL}/about`;
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: `${SITE_URL}/` },
+          { name: "About Caraway", item: canonical },
+        ]}
+      />
       <JsonLd
         data={[
-          breadcrumbListSchema(breadcrumbs, canonical),
           {
             "@context": "https://schema.org",
             "@type": "AboutPage",
