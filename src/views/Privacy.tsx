@@ -25,7 +25,7 @@ export default function Privacy() {
             <p>
               Caraway (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates a vehicle buying and removal service in Queensland. This policy explains how we handle personal information under the{" "}
               <a
-                href="https://www.oaic.gov.au/privacy/privacy-act"
+                href="https://www.oaic.gov.au/privacy/the-privacy-act/"
                 className="text-primary underline underline-offset-2"
                 target="_blank"
                 rel="noopener noreferrer"
