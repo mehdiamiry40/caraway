@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import {
   contactFormSchema,
   type ContactFormInput,
-  type ContactFormValues,
 } from "@/lib/quote-schema";
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
@@ -42,9 +41,13 @@ export function ContactForm() {
     control,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<ContactFormInput, unknown, ContactFormValues>({
+  } = useForm<ContactFormInput>({
     resolver: zodResolver(contactFormSchema),
     mode: "onBlur",
+    defaultValues: {
+      honeypot: "",
+      marketingConsent: false,
+    },
   });
 
   const messageValue = useWatch({ control, name: "message" }) ?? "";
@@ -56,7 +59,7 @@ export function ContactForm() {
       ? "text-accent"
       : "text-muted-foreground";
 
-  const onSubmit = async (data: ContactFormValues) => {
+  const onSubmit = async (data: ContactFormInput) => {
     setErrorMessage(null);
     if (data.honeypot) {
       setIsSuccess(true); // Fake success for bots
