@@ -76,7 +76,7 @@ export default function AuthorPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <div className="max-w-3xl mb-14">
             <h2 className="font-display font-bold text-2xl mb-4">About {AUTHOR.name}</h2>
-            <p className="text-foreground/85 leading-relaxed text-base sm:text-lg">{AUTHOR.bio}</p>
+            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{AUTHOR.bio}</p>
           </div>
 
           <h2 className="font-display font-bold text-2xl mb-8">
@@ -86,7 +86,7 @@ export default function AuthorPage() {
             {posts.map((post) => (
               <article
                 key={post.slug}
-                className="group rounded-lg border border-border/60 bg-white hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden"
+                className="group rounded-lg border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden"
               >
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">

@@ -36,11 +36,11 @@ function ReviewCard({
         <div>
           <Stars count={review.rating} />
         </div>
-        <span className="text-xs text-primary/70 bg-white border border-border/60 px-2.5 py-1 rounded-full shrink-0 font-medium">
+        <span className="text-xs text-primary/70 bg-card border border-border/60 px-2.5 py-1 rounded-full shrink-0 font-medium">
           {review.car}
         </span>
       </div>
-      <blockquote className="text-foreground/85 text-sm leading-relaxed flex-1">
+      <blockquote className="text-muted-foreground text-sm leading-relaxed flex-1">
         &ldquo;{review.text}&rdquo;
       </blockquote>
       <footer className="mt-5 pt-5 border-t border-border/40 flex items-center gap-3">

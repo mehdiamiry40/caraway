@@ -71,7 +71,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           "text-sm font-medium transition-colors duration-200 flex items-center gap-1 rounded-md px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           isServicesActive
             ? "text-primary"
-            : "text-foreground/80 hover:text-primary"
+            : "text-muted-foreground hover:text-primary"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
@@ -152,7 +152,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
                     "block px-5 py-3 text-sm font-medium transition-all duration-150 focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                     isActive
                       ? "text-primary bg-accent/[0.08] border-l-2 border-accent"
-                      : "text-foreground/80 hover:text-primary hover:bg-secondary/70 border-l-2 border-transparent"
+                      : "text-muted-foreground hover:text-primary hover:bg-secondary/70 border-l-2 border-transparent"
                   )}
                 >
                   {item.label}

@@ -24,7 +24,7 @@ export function Hero() {
               — Paid on Pickup
             </h1>
 
-            <p className="text-base sm:text-lg text-foreground/72 mb-6 sm:mb-8 leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-md">
               Sell your car for cash today. Free pickup across Greater Brisbane,
               payment on the spot. Any make, any condition — up to $9,999.
             </p>

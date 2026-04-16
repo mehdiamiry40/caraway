@@ -20,7 +20,7 @@ export default function FaqLoading() {
 
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-4">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="rounded-lg border border-border/60 bg-white p-5">
+              <div key={i} className="rounded-lg border border-border/60 bg-card p-5">
                 <Skeleton className="h-6 w-full max-w-md" />
               </div>
             ))}
