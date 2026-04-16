@@ -37,7 +37,7 @@ export function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-200 px-3.5 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 px-3.5 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {link.label}
             </Link>

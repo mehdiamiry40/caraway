@@ -100,7 +100,7 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
       {index > 0 && (
         <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
       )}
-      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
+      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-card border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
         <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" />
       </div>
       <div className="min-w-0">

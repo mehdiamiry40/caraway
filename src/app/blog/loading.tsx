@@ -21,7 +21,7 @@ export default function BlogLoading() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Featured post skeleton (full width) */}
-              <div className="md:col-span-2 rounded-lg border border-border/60 bg-white p-4 sm:p-6 md:p-10">
+              <div className="md:col-span-2 rounded-lg border border-border/60 bg-card p-4 sm:p-6 md:p-10">
                 <div className="flex gap-3 mb-5">
                   <Skeleton className="h-6 w-20 rounded-full" />
                   <Skeleton className="h-6 w-16" />
@@ -35,7 +35,7 @@ export default function BlogLoading() {
 
               {/* Regular post skeletons */}
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="rounded-lg border border-border/60 bg-white p-4 sm:p-6 md:p-8">
+                <div key={i} className="rounded-lg border border-border/60 bg-card p-4 sm:p-6 md:p-8">
                   <div className="flex gap-3 mb-5">
                     <Skeleton className="h-6 w-20 rounded-full" />
                     <Skeleton className="h-6 w-16" />

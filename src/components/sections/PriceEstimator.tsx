@@ -653,7 +653,7 @@ export function PriceEstimator() {
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
+                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                             <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                             {f}
                           </li>

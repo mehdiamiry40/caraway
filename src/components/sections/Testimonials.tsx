@@ -40,7 +40,7 @@ export function Testimonials() {
               className="relative flex flex-col bg-card border border-border/60 rounded-xl p-6 sm:p-7"
             >
               <Stars count={review.rating} />
-              <blockquote className="mt-5 text-foreground/85 text-base leading-relaxed flex-1">
+              <blockquote className="mt-5 text-muted-foreground text-base leading-relaxed flex-1">
                 &ldquo;{review.text}&rdquo;
               </blockquote>
               <footer className="mt-6 pt-5 border-t border-border/40">

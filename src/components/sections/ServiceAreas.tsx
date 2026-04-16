@@ -5,7 +5,7 @@ import { suburbs } from "@/data/suburbs";
 export function ServiceAreas() {
   return (
     <section
-      className="section-y bg-[#E6F5F3]"
+      className="section-y bg-muted"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +27,7 @@ export function ServiceAreas() {
             <li key={suburb.slug} className="border-b border-border/60">
               <Link
                 href={`/locations/${suburb.slug}`}
-                className="group flex items-center justify-between gap-3 py-4 px-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors min-h-[44px]"
+                className="group flex items-center justify-between gap-3 py-4 px-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors min-h-[44px]"
               >
                 <span className="tracking-tight">
                   {suburb.h1.replace("Cash for Cars ", "")}

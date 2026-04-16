@@ -45,7 +45,7 @@ export default function ServicePageTemplate({
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
               {service.h1}
             </h1>
-            <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+            <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
               {service.intro}
             </p>
             <ScrollToQuoteCTA />
@@ -78,12 +78,12 @@ export default function ServicePageTemplate({
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                 <h3 className="text-base sm:text-lg font-display font-bold mb-1">Why Caraway?</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s trusted cash-for-cars service</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-foreground/80">
+                    <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10">
                         <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
                       </span>
@@ -94,7 +94,7 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Related services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                <nav aria-label="Related services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                   <h3 className="text-base sm:text-lg font-display font-bold mb-4">Related Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
@@ -113,7 +113,7 @@ export default function ServicePageTemplate({
               )}
 
               {relatedSuburbData.length > 0 && (
-                <nav aria-label="Service areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                <nav aria-label="Service areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                   <h3 className="text-base sm:text-lg font-display font-bold mb-4">Service Areas</h3>
                   <ul className="space-y-1">
                     {relatedSuburbData.map(s => (

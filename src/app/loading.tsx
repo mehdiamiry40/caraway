@@ -11,7 +11,7 @@ export default function Loading() {
           <span className="sr-only">Loading…</span>
 
           {/* Hero skeleton */}
-          <section className="bg-white min-h-hero">
+          <section className="bg-card min-h-hero">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[560px]">
               <div className="w-full lg:w-[48%] shrink-0 px-4 sm:px-6 lg:px-10 py-10 sm:py-18 lg:py-24 lg:pl-8 lg:pr-14">
                 <Skeleton className="h-12 w-full max-w-sm mb-5" />

@@ -153,7 +153,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                         "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                         pathname === "/cash-for-cars-brisbane"
                           ? "text-primary bg-accent/[0.08]"
-                          : "text-foreground/80 hover:text-primary hover:bg-secondary/70"
+                          : "text-muted-foreground hover:text-primary hover:bg-secondary/70"
                       )}
                     >
                       Services overview
@@ -172,7 +172,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                               "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                               isActive
                                 ? "text-primary bg-accent/[0.08]"
-                                : "text-foreground/80 hover:text-primary hover:bg-secondary/70"
+                                : "text-muted-foreground hover:text-primary hover:bg-secondary/70"
                             )}
                           >
                             {service.label}

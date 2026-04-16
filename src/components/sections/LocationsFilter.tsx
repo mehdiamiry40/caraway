@@ -33,7 +33,7 @@ export function LocationsFilter() {
           placeholder="Search your suburb..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full h-13 rounded-lg border border-border bg-white pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
+          className="w-full h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>
@@ -41,7 +41,7 @@ export function LocationsFilter() {
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
-            <Search className="h-6 w-6 text-muted-foreground/50" aria-hidden="true" />
+            <Search className="h-6 w-6 text-muted-foreground/60" aria-hidden="true" />
           </div>
           <p className="text-muted-foreground text-lg mb-2">
             No suburbs match &ldquo;{query}&rdquo;

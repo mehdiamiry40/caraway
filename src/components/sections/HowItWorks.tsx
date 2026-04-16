@@ -65,7 +65,7 @@ export function HowItWorks() {
               <div className="mt-3 text-muted-foreground leading-relaxed text-sm">
                 {step.description}
               </div>
-              <p className="mt-6 text-xs text-muted-foreground/80 tracking-wide">
+              <p className="mt-6 text-xs text-muted-foreground/60 tracking-wide">
                 {step.timing}
               </p>
             </li>
