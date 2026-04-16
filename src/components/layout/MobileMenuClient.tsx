@@ -232,7 +232,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               variant="secondary"
               className="w-full h-14 rounded-lg font-bold text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Get my quote
+              Get your free cash offer
             </Button>
           </div>
         </div>

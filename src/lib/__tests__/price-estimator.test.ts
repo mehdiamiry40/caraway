@@ -75,7 +75,7 @@ describe("estimatePrice", () => {
     expect(running.quote).toBeGreaterThan(scrap.quote);
   });
 
-  it("enforces the absolute low floor ($200) and high ceiling ($1200)", () => {
+  it("enforces the absolute low floor ($200) and high ceiling ($9999)", () => {
     const worst = estimatePrice({
       make: "Fiat",
       model: "Punto",

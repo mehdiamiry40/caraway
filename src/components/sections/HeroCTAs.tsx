@@ -14,7 +14,7 @@ export function HeroCTAs() {
         onClick={() => trackEvent("hero_cta_click", { target: "quote" })}
         className={cn(buttonVariants({ size: "lg" }), "group")}
       >
-        Get my quote
+        Get your free cash offer
         <ArrowRight
           className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-200"
           aria-hidden

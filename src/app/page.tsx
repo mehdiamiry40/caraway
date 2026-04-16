@@ -10,15 +10,15 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Cash for Cars Brisbane | Caraway — Fast Pickup",
+    absolute: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
   },
   description:
-    "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition. Call 0481 438 444.",
+    "Cash for cars Brisbane: sell your car for up to $9,999 with free car removal and same-day pickup. Any make, any condition. Trusted Brisbane car buyers — call 0481 438 444.",
   alternates: { canonical: "/" },
   openGraph: {
     url: "/",
     type: "website",
-    title: "Cash for Cars Brisbane | Caraway — Fast Pickup",
+    title: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
     description:
       "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition.",
     images: [

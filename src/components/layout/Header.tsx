@@ -46,7 +46,7 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center shrink-0">
-          <GetMyQuoteButton size="sm">Get my quote</GetMyQuoteButton>
+          <GetMyQuoteButton size="sm">Get your free cash offer</GetMyQuoteButton>
         </div>
 
         {/* Mobile: phone icon + Quote button + hamburger + drawer */}

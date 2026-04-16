@@ -78,7 +78,7 @@ export default async function ServiceSlugPage({ params }: Props) {
             offers: {
               "@type": "AggregateOffer",
               priceCurrency: "AUD",
-              lowPrice: "300",
+              lowPrice: "200",
               highPrice: "9999",
               description: "Cash paid on pickup. Free car removal and towing included.",
               availability: "https://schema.org/InStock",
