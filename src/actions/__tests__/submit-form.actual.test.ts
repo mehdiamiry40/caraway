@@ -72,8 +72,10 @@ describe("submitForm — schema failures", () => {
     });
 
     expect(result.success).toBe(false);
-    if (!result.success) {
+    if (!result.success && "message" in result) {
       expect(result.message).toBe("Invalid form data");
+    } else {
+      throw new Error("expected schema failure to carry a message");
     }
   });
 
@@ -89,6 +91,45 @@ describe("submitForm — schema failures", () => {
     expect(warnSpy).toHaveBeenCalled();
     const warned = warnSpy.mock.calls.map((c: unknown[]) => c.join(" ")).join("\n");
     expect(warned).toContain("[honeypot]");
+  });
+});
+
+describe("submitForm — unconfigured endpoint in production", () => {
+  it("returns { success: false, skipped: true } and emits no error log", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    // Intentionally unset the webhook env var — operator is running
+    // email-only delivery and expects this to be a quiet skip, not a
+    // loud failure.
+    const previous = process.env.QUOTE_ENDPOINT;
+    delete process.env.QUOTE_ENDPOINT;
+
+    try {
+      const { submitForm: submitFormFresh } = await import(
+        "@/actions/submit-form"
+      );
+
+      const result = await submitFormFresh({
+        schema: quoteFormSchema,
+        data: baseValid,
+        endpointEnvVar: "QUOTE_ENDPOINT",
+        label: "Quote submission",
+      });
+
+      expect(result.success).toBe(false);
+      if (!result.success && "skipped" in result) {
+        expect(result.skipped).toBe(true);
+      } else {
+        throw new Error(
+          "expected unconfigured endpoint to return skipped: true",
+        );
+      }
+      // No ops error log — skipped is an intentional config choice.
+      expect(errorSpy).not.toHaveBeenCalled();
+    } finally {
+      if (previous !== undefined) {
+        process.env.QUOTE_ENDPOINT = previous;
+      }
+    }
   });
 });
 
