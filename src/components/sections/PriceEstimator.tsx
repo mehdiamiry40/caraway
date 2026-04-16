@@ -394,7 +394,7 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-[#FEF6E0]" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y bg-[#E6F5F3]" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
@@ -434,7 +434,7 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-[#FEF6E0]" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y bg-[#E6F5F3]" aria-label="Instant price estimate">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
