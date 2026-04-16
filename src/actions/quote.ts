@@ -44,41 +44,24 @@ export async function submitQuote(data: QuoteFormValues) {
   const emailOk =
     emailResult.status === "fulfilled" && emailResult.value.sent;
 
+  const webhookFailureReason = describeWebhookFailure(webhookResult);
+  const emailFailureReason = describeEmailFailure(emailResult);
+
   if (webhookOk || emailOk) {
-    if (!webhookOk) {
-      const reason =
-        webhookResult.status === "rejected"
-          ? webhookResult.reason instanceof Error
-            ? webhookResult.reason.message
-            : String(webhookResult.reason)
-          : webhookResult.value.message;
-      console.error("[submit-quote] webhook delivery failed:", reason);
+    if (webhookFailureReason) {
+      console.error("[submit-quote] webhook delivery failed:", webhookFailureReason);
     }
-    if (emailResult.status === "rejected") {
-      const reason =
-        emailResult.reason instanceof Error
-          ? emailResult.reason.message
-          : String(emailResult.reason);
-      console.error("[submit-quote] email delivery failed:", reason);
+    if (emailFailureReason) {
+      console.error("[submit-quote] email delivery failed:", emailFailureReason);
     }
     return { success: true as const };
   }
 
-  if (webhookResult.status === "rejected") {
-    console.error(
-      "[submit-quote] webhook delivery failed:",
-      webhookResult.reason instanceof Error
-        ? webhookResult.reason.message
-        : String(webhookResult.reason),
-    );
+  if (webhookFailureReason) {
+    console.error("[submit-quote] webhook delivery failed:", webhookFailureReason);
   }
-  if (emailResult.status === "rejected") {
-    console.error(
-      "[submit-quote] email delivery failed:",
-      emailResult.reason instanceof Error
-        ? emailResult.reason.message
-        : String(emailResult.reason),
-    );
+  if (emailFailureReason) {
+    console.error("[submit-quote] email delivery failed:", emailFailureReason);
   }
 
   return {
@@ -86,4 +69,43 @@ export async function submitQuote(data: QuoteFormValues) {
     message:
       "We couldn't send your request. Please try again or use the form below.",
   };
+}
+
+type WebhookResult = Awaited<ReturnType<typeof submitForm>>;
+
+/**
+ * Returns an operator-facing failure reason for the webhook channel, or
+ * `null` if there's nothing to log — either because delivery succeeded
+ * or because the channel is intentionally not configured (the `skipped`
+ * case should never produce an ops error).
+ */
+function describeWebhookFailure(
+  result: PromiseSettledResult<WebhookResult>,
+): string | null {
+  if (result.status === "rejected") {
+    return result.reason instanceof Error
+      ? result.reason.message
+      : String(result.reason);
+  }
+  const value = result.value;
+  if (value.success) return null;
+  if ("skipped" in value && value.skipped) return null;
+  if ("message" in value) return value.message;
+  return "unknown failure";
+}
+
+/**
+ * Returns an operator-facing failure reason for the email channel, or
+ * `null` if there's nothing to log — either because delivery succeeded
+ * or because Resend isn't configured (quiet skip, not a failure).
+ */
+function describeEmailFailure(
+  result: PromiseSettledResult<{ sent: boolean }>,
+): string | null {
+  if (result.status === "rejected") {
+    return result.reason instanceof Error
+      ? result.reason.message
+      : String(result.reason);
+  }
+  return null;
 }

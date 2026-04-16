@@ -8,13 +8,17 @@ const envSchema = z.object({
   // validate-endpoint.ts — the allowlist is an additional layer for
   // production deployments that want to pin fetches to known hosts.
   ALLOWED_ENDPOINT_HOSTS: z.string().optional(),
-  // Quote notification email delivery (Resend). When all three are set,
-  // the quote server action also emails the formatted lead to
-  // QUOTE_NOTIFICATION_TO in parallel with the webhook POST. Either
-  // channel succeeding is enough for the user to see a success response.
+  // Lead notification email delivery (Resend). When RESEND_API_KEY is set
+  // alongside the matching NOTIFICATION_FROM/NOTIFICATION_TO pair, the
+  // quote / contact server actions also email the formatted lead to the
+  // business inbox in parallel with the webhook POST. Either channel
+  // succeeding is enough for the user to see a success response — this
+  // is what keeps the forms working when a webhook is misconfigured.
   RESEND_API_KEY: z.string().min(1).optional(),
   QUOTE_NOTIFICATION_FROM: z.string().min(1).optional(),
   QUOTE_NOTIFICATION_TO: z.string().email().optional(),
+  CONTACT_NOTIFICATION_FROM: z.string().min(1).optional(),
+  CONTACT_NOTIFICATION_TO: z.string().email().optional(),
   SITE_URL: z.string().url().optional(),
   VERCEL_ENV: z
     .enum(["production", "preview", "development"])

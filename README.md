@@ -35,16 +35,28 @@ The dev server starts on <http://localhost:3000>.
 
 ## Environment variables
 
+Each public form (quote, contact) must have **at least one** delivery
+channel configured — either the webhook or the Resend email channel.
+Both forms run both channels in parallel and treat either success as
+overall success, so configuring both gives you redundancy.
+
 | Variable                   | Required        | Description                                                                 |
 | -------------------------- | --------------- | --------------------------------------------------------------------------- |
 | `SITE_URL`                 | yes (prod)      | Canonical site origin, e.g. `https://caraway.au`. Used for metadata + SEO.  |
-| `QUOTE_ENDPOINT`           | yes             | HTTPS webhook URL the quote server action POSTs to.                         |
-| `CONTACT_ENDPOINT`         | yes             | HTTPS webhook URL the contact server action POSTs to.                       |
-| `ALLOWED_ENDPOINT_HOSTS`   | yes             | Comma-separated allowlist of hostnames the server actions may call (SSRF). |
-| `RESEND_API_KEY`           | optional        | Resend API key. When set (with the two vars below), quote submissions are also emailed to the business inbox in parallel with the webhook. |
-| `QUOTE_NOTIFICATION_FROM`  | optional        | Sender address used by the quote notification email. Must be on a Resend-verified domain, e.g. `Caraway Quotes <quotes@caraway.au>`. |
-| `QUOTE_NOTIFICATION_TO`    | optional        | Recipient for quote notification emails, typically `info@caraway.au`.       |
+| `QUOTE_ENDPOINT`           | quote channel A | HTTPS webhook URL the quote server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
+| `CONTACT_ENDPOINT`         | contact channel A | HTTPS webhook URL the contact server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
+| `ALLOWED_ENDPOINT_HOSTS`   | when webhooks set | Comma-separated allowlist of hostnames the server actions may call (SSRF). Required when using the webhook channel. |
+| `RESEND_API_KEY`           | email channels  | Resend API key. Required to enable either the quote or contact email channel. |
+| `QUOTE_NOTIFICATION_FROM`  | quote channel B | Sender address used by the quote notification email. Must be on a Resend-verified domain, e.g. `Caraway Quotes <quotes@caraway.au>`. |
+| `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`.       |
+| `CONTACT_NOTIFICATION_FROM`| contact channel B | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
+| `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
 | `NEXT_PUBLIC_NOINDEX`      | optional        | Set to `1` to force `noindex` metadata (staging/preview).                   |
+
+`/api/health` reports each form's channel configuration: HTTP 503 if any
+form has zero channels, `"degraded"` with HTTP 200 if every form has at
+least one channel but the configuration isn't fully redundant, `"ok"`
+with HTTP 200 if all four channels are wired up.
 
 Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
 `noindex, nofollow` robots metadata and a `Disallow: /` robots.txt.
