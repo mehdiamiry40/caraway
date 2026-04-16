@@ -57,7 +57,7 @@ export const quoteFormSchema = z.object({
   model: z.string().transform(trimText).pipe(z.string().min(1, "Car model is required").max(200, "Car model is too long")).transform(sanitizeLine),
   year: z.coerce.number().min(1950, "Invalid year").max(new Date().getFullYear() + 1, "Invalid year"),
   condition: z.enum(quoteConditionValues, {
-    error: () => "Please select a condition",
+    message: "Please select a condition",
   }),
   address: z
     .string()

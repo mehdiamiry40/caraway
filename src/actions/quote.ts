@@ -1,7 +1,7 @@
 "use server";
 
 import { sendQuoteNotificationEmail } from "@/lib/quote-email";
-import { QuoteFormValues, quoteFormSchema } from "@/lib/quote-schema";
+import { type QuoteFormInput, quoteFormSchema } from "@/lib/quote-schema";
 import { submitForm } from "./submit-form";
 
 /**
@@ -14,7 +14,7 @@ import { submitForm } from "./submit-form";
  * and we don't want an email provider outage to lose a webhook-delivered lead.
  * Partial failures are logged for operators but kept out of the user response.
  */
-export async function submitQuote(data: QuoteFormValues) {
+export async function submitQuote(data: QuoteFormInput) {
   const parsed = quoteFormSchema.safeParse(data);
   if (!parsed.success) {
     const honeypotHit = parsed.error.issues.some((i) =>

@@ -25,6 +25,9 @@ export const runtime = "nodejs";
 const PLACES_ENDPOINT = "https://places.googleapis.com/v1/places:autocomplete";
 const MIN_QUERY_LENGTH = 3;
 const MAX_QUERY_LENGTH = 200;
+const WINDOW_MS = 60_000;
+const MAX_REQUESTS = 30;
+const buckets = new Map<string, { count: number; reset: number }>();
 
 export interface AutocompleteSuggestion {
   placeId: string;
@@ -46,20 +49,112 @@ interface PlacesResponse {
   }>;
 }
 
+function noStoreHeaders(extra: Record<string, string> = {}) {
+  return {
+    "Cache-Control": "no-store",
+    "X-Robots-Tag": "noindex",
+    ...extra,
+  };
+}
+
+function getClientIp(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    const first = forwarded.split(",")[0]?.trim();
+    if (first) return first;
+  }
+
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp;
+
+  return "unknown";
+}
+
+function rateLimitResponse(request: Request): NextResponse | null {
+  const ip = getClientIp(request);
+  const now = Date.now();
+  const bucket = buckets.get(ip);
+
+  if (!bucket || bucket.reset < now) {
+    buckets.set(ip, { count: 1, reset: now + WINDOW_MS });
+  } else {
+    bucket.count += 1;
+    if (bucket.count > MAX_REQUESTS) {
+      return NextResponse.json(
+        { error: "too many requests" },
+        {
+          status: 429,
+          headers: noStoreHeaders({
+            "Retry-After": Math.max(1, Math.ceil((bucket.reset - now) / 1000)).toString(),
+          }),
+        },
+      );
+    }
+  }
+
+  if (buckets.size > 5000) {
+    for (const [key, value] of buckets.entries()) {
+      if (value.reset < now) buckets.delete(key);
+    }
+  }
+
+  return null;
+}
+
+function isAllowedCaller(request: Request): boolean {
+  const requestUrl = new URL(request.url);
+  const allowedHosts = new Set([requestUrl.host]);
+  const host = request.headers.get("host");
+  if (host) allowedHosts.add(host);
+
+  const siteUrl = process.env.SITE_URL?.trim();
+  if (siteUrl) {
+    try {
+      allowedHosts.add(new URL(siteUrl).host);
+    } catch {
+      // Ignore malformed SITE_URL and fall back to request host checks.
+    }
+  }
+
+  const origin = request.headers.get("origin");
+  const referer = request.headers.get("referer");
+
+  for (const source of [origin, referer]) {
+    if (!source) continue;
+    try {
+      if (allowedHosts.has(new URL(source).host)) return true;
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
+}
+
 export async function GET(request: Request) {
+  const limited = rateLimitResponse(request);
+  if (limited) return limited;
+
+  if (!isAllowedCaller(request)) {
+    return NextResponse.json(
+      { error: "forbidden" },
+      { status: 403, headers: noStoreHeaders() },
+    );
+  }
+
   const url = new URL(request.url);
   const query = (url.searchParams.get("q") ?? "").trim();
 
   if (query.length < MIN_QUERY_LENGTH) {
     return NextResponse.json(
       { suggestions: [] },
-      { headers: { "Cache-Control": "no-store" } },
+      { headers: noStoreHeaders() },
     );
   }
   if (query.length > MAX_QUERY_LENGTH) {
     return NextResponse.json(
       { error: "query too long" },
-      { status: 400, headers: { "Cache-Control": "no-store" } },
+      { status: 400, headers: noStoreHeaders() },
     );
   }
 
@@ -68,7 +163,7 @@ export async function GET(request: Request) {
     console.warn("[places/autocomplete] GOOGLE_PLACES_API_KEY is not set");
     return NextResponse.json(
       { error: "places unavailable" },
-      { status: 503, headers: { "Cache-Control": "no-store" } },
+      { status: 503, headers: noStoreHeaders() },
     );
   }
 
@@ -105,7 +200,7 @@ export async function GET(request: Request) {
       );
       return NextResponse.json(
         { error: "places unavailable" },
-        { status: 503, headers: { "Cache-Control": "no-store" } },
+        { status: 503, headers: noStoreHeaders() },
       );
     }
 
@@ -124,13 +219,13 @@ export async function GET(request: Request) {
 
     return NextResponse.json(
       { suggestions },
-      { headers: { "Cache-Control": "no-store" } },
+      { headers: noStoreHeaders() },
     );
   } catch (error) {
     console.error("[places/autocomplete] fetch failed:", error);
     return NextResponse.json(
       { error: "places unavailable" },
-      { status: 503, headers: { "Cache-Control": "no-store" } },
+      { status: 503, headers: noStoreHeaders() },
     );
   }
 }

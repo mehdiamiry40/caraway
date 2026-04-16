@@ -6,12 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   quoteFormSchema,
   type QuoteFormInput,
-  type QuoteFormValues,
 } from "@/lib/quote-schema";
 import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
@@ -26,6 +26,7 @@ const fieldIds = {
   model: "quote-model",
   year: "quote-year",
   condition: "quote-condition",
+  address: "quote-address",
 } as const;
 
 export function QuoteForm() {
@@ -39,16 +40,23 @@ export function QuoteForm() {
     reset,
     control,
     setValue,
-  } = useForm<QuoteFormInput, unknown, QuoteFormValues>({
+    trigger,
+  } = useForm<QuoteFormInput>({
     resolver: zodResolver(quoteFormSchema),
     mode: "onBlur",
+    defaultValues: {
+      address: "",
+      honeypot: "",
+      marketingConsent: false,
+    },
   });
 
   // `useWatch` is the React Compiler-safe alternative to the `watch()`
   // function returned by `useForm()`, which cannot be memoized safely.
   const selectedMake = useWatch({ control, name: "make" });
+  const addressValue = useWatch({ control, name: "address" }) ?? "";
 
-  const onSubmit = async (data: QuoteFormValues) => {
+  const onSubmit = async (data: QuoteFormInput) => {
     setErrorMessage(null);
     if (data.honeypot) {
       setIsSuccess(true);
@@ -267,7 +275,7 @@ export function QuoteForm() {
                         type="tel"
                         inputMode="tel"
                         autoComplete="tel"
-                        enterKeyHint="send"
+                        enterKeyHint="next"
                         maxLength={20}
                         placeholder="04xx xxx xxx"
                         aria-required="true"
@@ -288,6 +296,45 @@ export function QuoteForm() {
                         </p>
                       )}
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor={fieldIds.address} className="block text-sm font-semibold text-foreground mb-2">
+                      Pickup address
+                      <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
+                    </label>
+                    <AddressAutocomplete
+                      id={fieldIds.address}
+                      name="address"
+                      value={addressValue}
+                      onChange={(next) => {
+                        setValue("address", next, {
+                          shouldDirty: true,
+                          shouldTouch: true,
+                          shouldValidate: !!errors.address,
+                        });
+                      }}
+                      onBlur={() => {
+                        void trigger("address");
+                      }}
+                      autoComplete="street-address"
+                      enterKeyHint="send"
+                      placeholder="Start typing your pickup address..."
+                      aria-required="true"
+                      aria-invalid={!!errors.address}
+                      aria-describedby={
+                        errors.address ? `${fieldIds.address}-error quote-address-help` : "quote-address-help"
+                      }
+                    />
+                    <p className="text-xs text-muted-foreground mt-1" id="quote-address-help">
+                      Brisbane pickup suburbs only. You can also type the full address manually.
+                    </p>
+                    {errors.address && (
+                      <p id={`${fieldIds.address}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        {errors.address.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="pt-1">

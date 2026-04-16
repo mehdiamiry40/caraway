@@ -1,7 +1,7 @@
 "use server";
 
 import { sendContactNotificationEmail } from "@/lib/contact-email";
-import { contactFormSchema, type ContactFormValues } from "@/lib/quote-schema";
+import { contactFormSchema, type ContactFormInput } from "@/lib/quote-schema";
 import { submitForm } from "./submit-form";
 
 /**
@@ -18,7 +18,7 @@ import { submitForm } from "./submit-form";
  * Matches the dual-channel pattern used by submitQuote so that both
  * public forms share the same reliability story.
  */
-export async function submitContact(data: ContactFormValues) {
+export async function submitContact(data: ContactFormInput) {
   const parsed = contactFormSchema.safeParse(data);
   if (!parsed.success) {
     const honeypotHit = parsed.error.issues.some((i) =>
