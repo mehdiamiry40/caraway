@@ -1,74 +1,221 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
-import { SITE_URL } from "@/lib/site";
+import {
+  indexableBlogPosts,
+  categoryMap,
+  getPostsByCategory,
+} from "@/data/blog-posts";
+import { SITE_URL, LEGAL_DATES } from "@/lib/site";
 
 export const revalidate = 3600;
 
+/* ---------------------------------------------------------------------------
+ * Image constants — only the hero image is relevant for Google Image search.
+ * The logo is decorative and adds no crawl value.
+ * -------------------------------------------------------------------------*/
+const HERO_IMAGE = [`${SITE_URL}/images/tow-truck-hero.webp`];
+
+/* ---------------------------------------------------------------------------
+ * Date helpers — honest lastModified dates build crawler trust.  Using
+ * "today" for pages that haven't changed erodes crawl budget over time.
+ * -------------------------------------------------------------------------*/
+
+/** Resolve a "Month YYYY" string (e.g. "April 2026") to an ISO date. */
+function monthYearToISO(label: string): string {
+  const d = new Date(`1 ${label}`);
+  return d.toISOString().split("T")[0];
+}
+
+/** Pick a changeFrequency hint based on content age. */
+function changeFreqByAge(
+  isoDate: string,
+): "daily" | "weekly" | "monthly" | "yearly" {
+  const ageMs = Date.now() - new Date(isoDate).getTime();
+  const ageDays = ageMs / 86_400_000;
+  if (ageDays < 14) return "weekly";
+  if (ageDays < 180) return "monthly";
+  return "yearly";
+}
+
+/** The date the current content was deployed / last structurally changed. */
+const CONTENT_DEPLOY_DATE = "2026-04-15";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const SITE_IMAGES = [
-    `${SITE_URL}/images/tow-truck-hero.webp`,
-    `${SITE_URL}/images/logo.webp`,
-  ];
-
-  // Dynamic: always advertise today as the site-wide last-modified baseline so
-  // crawlers re-check on each fetch. Per-page dates (blog posts) still win.
-  const SITE_LAST_MODIFIED = new Date().toISOString().split("T")[0];
-
+  /* ---- Latest blog date (for the /blog index page) ---- */
   const latestBlogDate = indexableBlogPosts.reduce(
     (latest, post) => {
       const stamp = post.updatedAt || post.date;
       return stamp > latest ? stamp : latest;
     },
-    "2025-01-01"
+    "2025-01-01",
   );
 
+  /* ---- Latest author post date ---- */
+  const latestAuthorDate = latestBlogDate;
+
+  /* -----------------------------------------------------------------------
+   * 1. Static pages — use honest, fixed dates
+   * ---------------------------------------------------------------------*/
   const staticPages: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: SITE_LAST_MODIFIED, changeFrequency: "weekly", priority: 1.0, images: SITE_IMAGES },
-    { url: `${SITE_URL}/about`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.6, images: SITE_IMAGES },
-    { url: `${SITE_URL}/contact`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7, images: SITE_IMAGES },
-    { url: `${SITE_URL}/faq`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.7, images: SITE_IMAGES },
-    { url: `${SITE_URL}/locations`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8, images: SITE_IMAGES },
-    { url: `${SITE_URL}/blog`, lastModified: latestBlogDate, changeFrequency: "weekly", priority: 0.7, images: SITE_IMAGES },
-    { url: `${SITE_URL}/privacy`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3, images: SITE_IMAGES },
-    { url: `${SITE_URL}/terms`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.3, images: SITE_IMAGES },
-    { url: `${SITE_URL}/accessibility`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.5, images: SITE_IMAGES },
-    { url: `${SITE_URL}/site-map`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "yearly", priority: 0.4, images: SITE_IMAGES },
-    { url: `${SITE_URL}/author/sam-williams`, lastModified: SITE_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.4, images: SITE_IMAGES },
+    {
+      url: SITE_URL,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "weekly",
+      priority: 1.0,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.6,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/faq`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/locations`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/blog`,
+      lastModified: latestBlogDate,
+      changeFrequency: "weekly",
+      priority: 0.7,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/privacy`,
+      lastModified: monthYearToISO(LEGAL_DATES.privacyLastUpdated),
+      changeFrequency: "yearly",
+      priority: 0.2,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/terms`,
+      lastModified: monthYearToISO(LEGAL_DATES.termsLastUpdated),
+      changeFrequency: "yearly",
+      priority: 0.2,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/accessibility`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "yearly",
+      priority: 0.3,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/site-map`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.3,
+      images: HERO_IMAGE,
+    },
+    {
+      url: `${SITE_URL}/author/sam-williams`,
+      lastModified: latestAuthorDate,
+      changeFrequency: "monthly",
+      priority: 0.4,
+      images: HERO_IMAGE,
+    },
   ];
+
+  /* -----------------------------------------------------------------------
+   * 2. Service pages — money pages get the highest non-homepage priority
+   * ---------------------------------------------------------------------*/
+  const PRIMARY_SERVICE_SLUGS = new Set([
+    "cash-for-cars-brisbane",
+    "car-removal-brisbane",
+    "sell-my-car-brisbane",
+  ]);
 
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
-    lastModified: SITE_LAST_MODIFIED,
-    changeFrequency: "monthly",
-    priority: s.slug === "cash-for-cars-brisbane" ? 0.95 : 0.8,
-    images: SITE_IMAGES,
+    lastModified: CONTENT_DEPLOY_DATE,
+    changeFrequency: "monthly" as const,
+    priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
+    images: HERO_IMAGE,
   }));
 
+  /* -----------------------------------------------------------------------
+   * 3. Location (suburb) pages
+   * ---------------------------------------------------------------------*/
   const suburbPages: MetadataRoute.Sitemap = suburbs.map((s) => ({
     url: `${SITE_URL}/locations/${s.slug}`,
-    lastModified: SITE_LAST_MODIFIED,
-    changeFrequency: "monthly",
-    priority: 0.6,
-    images: SITE_IMAGES,
-  }));
-
-  const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.map((p) => ({
-    url: `${SITE_URL}/blog/${p.slug}`,
-    lastModified: p.updatedAt || p.date,
-    changeFrequency: "monthly",
+    lastModified: CONTENT_DEPLOY_DATE,
+    changeFrequency: "monthly" as const,
     priority: 0.7,
-    images: SITE_IMAGES,
+    images: HERO_IMAGE,
   }));
 
-  const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map((slug) => ({
-    url: `${SITE_URL}/blog/category/${slug}`,
-    lastModified: latestBlogDate,
-    changeFrequency: "monthly",
-    priority: 0.5,
-    images: SITE_IMAGES,
-  }));
+  /* -----------------------------------------------------------------------
+   * 4. Blog posts — dynamic changeFrequency based on content age
+   * ---------------------------------------------------------------------*/
+  const CORNERSTONE_SLUGS = new Set([
+    "how-to-sell-your-car-for-cash-brisbane",
+    "how-to-sell-a-car-without-rego-brisbane",
+    "how-to-cancel-car-rego-qld",
+    "how-to-transfer-car-ownership-qld",
+    "wovr-written-off-vehicle-register-qld-guide",
+    "scrap-metal-prices-brisbane-2026",
+  ]);
 
-  return [...staticPages, ...servicePages, ...suburbPages, ...blogPages, ...categoryPages];
+  const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.map((p) => {
+    const modified = p.updatedAt || p.date;
+    return {
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: modified,
+      changeFrequency: changeFreqByAge(modified),
+      priority: CORNERSTONE_SLUGS.has(p.slug) ? 0.8 : 0.6,
+      images: HERO_IMAGE,
+    };
+  });
+
+  /* -----------------------------------------------------------------------
+   * 5. Blog category pages — per-category lastModified date
+   * ---------------------------------------------------------------------*/
+  const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map(
+    (slug) => {
+      const postsInCategory = getPostsByCategory(slug);
+      const latestInCategory = postsInCategory.reduce(
+        (latest, p) => {
+          const stamp = p.updatedAt || p.date;
+          return stamp > latest ? stamp : latest;
+        },
+        "2025-01-01",
+      );
+      return {
+        url: `${SITE_URL}/blog/category/${slug}`,
+        lastModified: latestInCategory,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+        images: HERO_IMAGE,
+      };
+    },
+  );
+
+  return [
+    ...staticPages,
+    ...servicePages,
+    ...suburbPages,
+    ...blogPages,
+    ...categoryPages,
+  ];
 }
