@@ -15,7 +15,7 @@ export const FOOTER_INTERNAL_RESOURCES = [
 export const AUTHORITY_OUTBOUND_LINKS = [
   {
     label: "Transfer vehicle registration (Queensland Government)",
-    href: "https://www.qld.gov.au/transport/registration/transfer-registration",
+    href: "https://www.qld.gov.au/transport/registration/transfer",
   },
   {
     label: "Verify our ABN (ABR)",

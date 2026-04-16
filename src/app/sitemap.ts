@@ -23,8 +23,27 @@ const HERO_IMAGE = [`${SITE_URL}/images/tow-truck-hero.webp`];
 
 /** Resolve a "Month YYYY" string (e.g. "April 2026") to an ISO date. */
 function monthYearToISO(label: string): string {
-  const d = new Date(`1 ${label}`);
-  return d.toISOString().split("T")[0];
+  const [monthLabel, year] = label.trim().split(/\s+/);
+  const monthNumber = {
+    January: "01",
+    February: "02",
+    March: "03",
+    April: "04",
+    May: "05",
+    June: "06",
+    July: "07",
+    August: "08",
+    September: "09",
+    October: "10",
+    November: "11",
+    December: "12",
+  }[monthLabel];
+
+  if (!monthNumber || !/^\d{4}$/.test(year ?? "")) {
+    throw new Error(`Invalid month/year label: ${label}`);
+  }
+
+  return `${year}-${monthNumber}-01`;
 }
 
 /** Pick a changeFrequency hint based on content age. */

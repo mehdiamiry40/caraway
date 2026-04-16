@@ -1,5 +1,5 @@
-/** Canonical public site origin (matches former SEO.tsx and breadcrumb-schema). */
-export const SITE_URL = "https://caraway.au";
+/** Canonical public site origin (matches the live production redirect target). */
+export const SITE_URL = "https://www.caraway.au";
 
 /** Centralised business contact details — import these instead of hard-coding. */
 export const BUSINESS = {

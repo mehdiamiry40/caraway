@@ -95,6 +95,10 @@ describe("sitemap.ts — category pages", () => {
  * Page coverage — every route type is represented
  * ---------------------------------------------------------------------*/
 describe("sitemap.ts — page coverage", () => {
+  it("uses the deployed www host for canonical sitemap URLs", () => {
+    expect(SITE_URL).toBe("https://www.caraway.au");
+  });
+
   it("includes the core static pages", () => {
     const corePaths = [
       "",
@@ -128,5 +132,13 @@ describe("sitemap.ts — page coverage", () => {
     const staticEntry = entries.find((e) => e.url === `${SITE_URL}/about`);
     expect(staticEntry).toBeDefined();
     expect(staticEntry?.lastModified).not.toBe(today);
+  });
+
+  it("uses the first day of the stated month for legal-page lastModified dates", () => {
+    const privacyEntry = entries.find((e) => e.url === `${SITE_URL}/privacy`);
+    const termsEntry = entries.find((e) => e.url === `${SITE_URL}/terms`);
+
+    expect(privacyEntry?.lastModified).toBe("2026-04-01");
+    expect(termsEntry?.lastModified).toBe("2026-03-01");
   });
 });
