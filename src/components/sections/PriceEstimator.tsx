@@ -394,9 +394,9 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-[#E6F5F3]" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y bg-secondary/70" aria-label="Quote submitted">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
+          <div className="bg-card rounded-xl border border-border/60 shadow-[0_20px_44px_-32px_hsl(var(--shadow-color)/0.42)] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-accent/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden="true" />
             </div>
@@ -434,7 +434,7 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-[#E6F5F3]" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y bg-secondary/70" aria-label="Instant price estimate">
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
@@ -462,7 +462,7 @@ export function PriceEstimator() {
                   "flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base font-bold transition-colors duration-200",
                   step >= s
                     ? "bg-primary text-white"
-                    : "bg-white border border-border text-muted-foreground"
+                    : "bg-card border border-border/80 text-muted-foreground"
                 )}>
                   {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" /> : s}
                 </div>
@@ -490,7 +490,7 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-card rounded-xl border border-border/60 shadow-[0_4px_24px_-8px_rgba(20,52,88,0.08)] overflow-hidden">
+          <div className="bg-card rounded-xl border border-border/60 shadow-[0_20px_44px_-32px_hsl(var(--shadow-color)/0.42)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">

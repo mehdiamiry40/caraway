@@ -212,7 +212,7 @@ export function AddressAutocomplete({
           aria-label="Address suggestions"
           className={cn(
             "absolute z-50 left-0 right-0 mt-1 max-h-[60vh] overflow-y-auto",
-            "rounded-xl border border-border/60 bg-card shadow-xl shadow-primary/10",
+            "rounded-xl border border-border/60 bg-card shadow-[0_24px_48px_-32px_hsl(var(--shadow-color)/0.4)]",
             "py-1",
           )}
         >

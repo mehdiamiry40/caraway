@@ -40,15 +40,15 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-muted-foreground hover:text-primary transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none touch-manipulation";
+  "text-primary-foreground/72 hover:text-accent transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none touch-manipulation";
 
-const columnHeadingClasses = "font-display font-semibold text-sm text-foreground mb-3";
+const columnHeadingClasses = "font-display font-semibold text-sm text-primary-foreground mb-3";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted text-foreground border-t border-border/60 pl-safe pr-safe">
+    <footer className="text-primary-foreground border-t border-white/10 pl-safe pr-safe [background:var(--footer-wash)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
@@ -62,7 +62,7 @@ export function Footer() {
             >
               caraway<span className="text-accent">.</span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-3 max-w-sm text-sm text-primary-foreground/72 leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
             </p>
 
@@ -70,23 +70,23 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
                 location="footer"
-                className="inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary transition-colors duration-200"
+                className="inline-flex items-center gap-2 font-semibold text-primary-foreground hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
-                <Phone aria-hidden="true" className="h-4 w-4 text-primary" />
+                <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
                 <span>{BUSINESS.phoneFriendly}</span>
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="flex items-center gap-2 text-primary-foreground/72 hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <p className="text-muted-foreground">
-                <span className="font-medium text-foreground">{BUSINESS.hours}</span> · seven days
+              <p className="text-primary-foreground/72">
+                <span className="font-medium text-primary-foreground">{BUSINESS.hours}</span> · seven days
               </p>
-              <address className="not-italic text-muted-foreground leading-snug">
+              <address className="not-italic text-primary-foreground/68 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
             </div>
@@ -130,15 +130,15 @@ export function Footer() {
         </div>
 
         {/* Official references — compact replacement for the old resources block */}
-        <div className="mt-12 pt-6 border-t border-border/60 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
-          <span className="font-medium text-foreground">Official references:</span>
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary-foreground/60">
+          <span className="font-medium text-primary-foreground">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map(item => (
             <TrackedOutboundLink
               key={item.href}
               href={item.href}
               label={item.label}
               location="footer_references"
-              className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="hover:text-accent transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none"
             >
               {item.label}
             </TrackedOutboundLink>
@@ -147,15 +147,15 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-border/60 pb-safe">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+      <div className="border-t border-white/10 pb-safe">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             {legalLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-primary transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
+                className="hover:text-accent transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
               >
                 {link.label}
               </Link>

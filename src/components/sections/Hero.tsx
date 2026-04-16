@@ -4,14 +4,15 @@ import { HeroCTAs } from "./HeroCTAs";
 export function Hero() {
   return (
     <section
-      className="relative w-full overflow-x-hidden mt-header-safe bg-background min-h-hero"
+      className="relative w-full overflow-x-hidden mt-header-safe min-h-hero [background:var(--hero-wash)]"
       aria-labelledby="hero-heading"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 [background:var(--hero-mesh)] opacity-90" />
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row min-h-0 lg:min-h-[580px]">
         {/* Text side */}
         <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] shrink-0 px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-24 lg:pl-6 lg:pr-12">
           <div className="relative z-10 w-full max-w-xl">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-5 inline-flex items-center rounded-full border border-border/70 bg-card/85 px-3.5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-muted-foreground shadow-[0_14px_30px_-24px_hsl(var(--shadow-color)/0.45)] backdrop-blur-sm">
               Brisbane's Trusted Cash for Cars Buyer
             </p>
             <h1
@@ -23,7 +24,7 @@ export function Hero() {
               — Paid on Pickup
             </h1>
 
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-foreground/72 mb-6 sm:mb-8 leading-relaxed max-w-md">
               Sell your car for cash today. Free pickup across Greater Brisbane,
               payment on the spot. Any make, any condition — up to $9,999.
             </p>
@@ -34,7 +35,8 @@ export function Hero() {
 
         {/* Image side */}
         <div className="relative flex-1 min-h-[260px] sm:min-h-[340px] lg:min-h-0">
-          <div className="relative block h-full min-h-[260px] sm:min-h-[340px]">
+          <div className="absolute inset-x-6 bottom-4 top-10 rounded-[2rem] bg-primary/12 blur-3xl lg:inset-8" aria-hidden="true" />
+          <div className="relative block h-full min-h-[260px] sm:min-h-[340px] overflow-hidden rounded-t-[2rem] sm:rounded-t-[2.5rem] lg:rounded-none">
             <Image
               src="/images/tow-truck-hero.webp"
               alt="Caraway flatbed tow truck collecting a customer's car for cash in Brisbane — same-day pickup with free towing across Greater Brisbane"
@@ -45,6 +47,7 @@ export function Hero() {
               priority
               fetchPriority="high"
             />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-background/15 via-transparent to-primary/35" />
           </div>
         </div>
       </div>

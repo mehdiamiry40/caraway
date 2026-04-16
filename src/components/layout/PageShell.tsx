@@ -13,7 +13,7 @@ interface PageShellProps {
   title: string;
   subtitle?: ReactNode;
   children: ReactNode;
-  /** Render the section as full-width with a darker background. Default: true (teal hero) */
+  /** Render the section as full-width with a darker background. */
   heroVariant?: "primary" | "white";
 }
 
@@ -32,8 +32,8 @@ export function PageShell({
         <section
           className={
             isPrimary
-              ? "bg-primary text-white py-14 sm:py-20 lg:py-28"
-              : "bg-white py-10 sm:py-14 lg:py-20"
+              ? "[background:linear-gradient(135deg,hsl(var(--primary))_0%,hsl(215_30%_13%)_100%)] text-primary-foreground py-14 sm:py-20 lg:py-28"
+              : "bg-background/70 py-10 sm:py-14 lg:py-20"
           }
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +45,7 @@ export function PageShell({
               <div
                 className={
                   isPrimary
-                    ? "text-white/85 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
+                    ? "text-primary-foreground/84 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
                     : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
                 }
               >
