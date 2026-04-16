@@ -66,7 +66,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
         breadcrumbs={breadcrumbs}
         title={post.title}
         subtitle={
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/70">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/80">
             <Link
               href={`/blog/category/${categorySlug(post.category)}`}
               className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-white text-xs hover:bg-white/20 transition-colors"
@@ -76,7 +76,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </Link>
             <Link
               href={AUTHOR.href}
-              className="inline-flex items-center gap-1.5 text-white/75 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-white/80 hover:text-white transition-colors"
             >
               <User className="h-3.5 w-3.5" aria-hidden />
               By {AUTHOR.name}
@@ -99,9 +99,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 {post.excerpt}
               </p>
               {showUpdated && (
-                <p className="mt-5 text-xs text-muted-foreground/80">
+                <p className="mt-5 text-xs text-muted-foreground/60">
                   Last updated{" "}
-                  <time dateTime={post.updatedAt} className="font-medium text-foreground/70">
+                  <time dateTime={post.updatedAt} className="font-medium text-muted-foreground">
                     {formatDate(post.updatedAt)}
                   </time>
                 </p>
@@ -135,7 +135,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </Link>
                   <a
                     href={BUSINESS.phoneHref}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary/30 bg-white px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-all"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary/30 bg-card px-6 py-3 text-sm font-semibold text-primary hover:bg-primary/5 transition-all"
                     aria-label={`Call ${BUSINESS.phoneFriendly}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -148,7 +148,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             {(post.relatedServices.length > 0 || post.relatedSuburbs.length > 0) && (
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {post.relatedServices.length > 0 && (
-                  <div className="rounded-xl border border-border/60 p-5 bg-white">
+                  <div className="rounded-xl border border-border/60 p-5 bg-card">
                     <h3 className="font-display font-bold text-sm text-primary uppercase tracking-wider mb-3">
                       Related Services
                     </h3>
@@ -160,7 +160,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                           <li key={slug}>
                             <Link
                               href={`/${slug}`}
-                              className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors py-1.5"
+                              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors py-1.5"
                             >
                               <span className="w-1 h-1 rounded-full bg-accent/40 shrink-0" />
                               {svc.h1}
@@ -172,7 +172,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </div>
                 )}
                 {post.relatedSuburbs.length > 0 && (
-                  <div className="rounded-xl border border-border/60 p-5 bg-white">
+                  <div className="rounded-xl border border-border/60 p-5 bg-card">
                     <h3 className="font-display font-bold text-sm text-primary uppercase tracking-wider mb-3">
                       Areas We Service
                     </h3>
@@ -184,7 +184,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                           <li key={slug}>
                             <Link
                               href={`/locations/${slug}`}
-                              className="inline-flex items-center gap-2 text-sm text-foreground/80 hover:text-accent transition-colors py-1.5"
+                              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors py-1.5"
                             >
                               <span className="w-1 h-1 rounded-full bg-accent/40 shrink-0" />
                               {sub.h1}
@@ -199,7 +199,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             <footer className="mt-14 pt-10 border-t border-border/50 space-y-10">
-              <div className="rounded-2xl border border-border/60 bg-white p-6 sm:p-7">
+              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-7">
                 <div className="flex items-start gap-4 sm:gap-5">
                   <div
                     aria-hidden
@@ -245,7 +245,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={xShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-white px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-2 text-xs font-semibold text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on X"
                   >
                     <Twitter className="h-3.5 w-3.5" aria-hidden />
@@ -255,7 +255,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={fbShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-white px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-2 text-xs font-semibold text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <Facebook className="h-3.5 w-3.5" aria-hidden />
@@ -265,7 +265,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={liShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-white px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-2 text-xs font-semibold text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <Linkedin className="h-3.5 w-3.5" aria-hidden />
@@ -275,7 +275,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     type="button"
                     id={copyBtnId}
                     data-canonical={canonical}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-white px-4 py-2 text-xs font-semibold text-foreground/80 hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-2 text-xs font-semibold text-muted-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
                     aria-label="Copy link to article"
                   >
                     <Link2 className="h-3.5 w-3.5" aria-hidden />
@@ -324,7 +324,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <Link
                     key={related.slug}
                     href={`/blog/${related.slug}`}
-                    className="group rounded-lg border border-border/60 bg-white p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-200"
+                    className="group rounded-lg border border-border/60 bg-card p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-200"
                   >
                     <span className="inline-flex items-center gap-1.5 text-xs text-accent font-semibold rounded-full bg-accent/10 px-2.5 py-1">
                       {related.category}

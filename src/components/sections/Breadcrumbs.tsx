@@ -19,7 +19,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
           {items.map((item, i) => (
             <li key={item.href || item.label} className="flex items-center gap-1.5 min-w-0 shrink-0 last:shrink">
               {i > 0 && (
-                <span aria-hidden="true" className={cn("text-xs select-none", light ? "text-white/80" : "text-muted-foreground/70")}>/</span>
+                <span aria-hidden="true" className={cn("text-xs select-none", light ? "text-white/80" : "text-muted-foreground/60")}>/</span>
               )}
               {item.href ? (
                 <Link

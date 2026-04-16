@@ -42,7 +42,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
               {suburb.h1}
             </h1>
-            <p className="text-white/75 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+            <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
               {suburb.intro}
             </p>
             <ScrollToQuoteCTA />
@@ -79,7 +79,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </p>
               </div>
 
-              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-5 sm:p-8 lg:p-10">
+              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-5 sm:p-8 lg:p-10">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-2 leading-snug tracking-tight">
                   How It Works
                 </h2>
@@ -103,12 +103,12 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                 <h3 className="text-base sm:text-lg font-display font-bold mb-1">Our Promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-foreground/80">
+                    <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10">
                         <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
                       </span>
@@ -119,7 +119,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Our services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                <nav aria-label="Our services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                   <h3 className="text-base sm:text-lg font-display font-bold mb-4">Our Services</h3>
                   <ul className="space-y-1">
                     {relatedServiceData.map(s => (
@@ -138,7 +138,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {nearbySuburbData.length > 0 && (
-                <nav aria-label="Nearby areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_rgba(20,52,88,0.04)] p-4 sm:p-6">
+                <nav aria-label="Nearby areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
                   <h3 className="text-base sm:text-lg font-display font-bold mb-4">Nearby Areas</h3>
                   <ul className="space-y-1">
                     {nearbySuburbData.map(s => (

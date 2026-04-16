@@ -25,7 +25,7 @@ export default function LocationsLoading() {
             {/* Location cards grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={i} className="rounded-lg border border-border/60 bg-white p-5">
+                <div key={i} className="rounded-lg border border-border/60 bg-card p-5">
                   <Skeleton className="h-6 w-3/4 mb-2" />
                   <Skeleton className="h-4 w-1/2" />
                 </div>

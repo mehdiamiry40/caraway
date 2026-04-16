@@ -25,7 +25,7 @@ export default function Blog() {
             <Link
               key={slug}
               href={`/blog/category/${slug}`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-white px-4 py-2 text-sm font-medium text-foreground/80 hover:border-primary/30 hover:text-primary hover:bg-muted/50 transition-colors min-h-[44px] touch-manipulation"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card px-4 py-2 text-sm font-medium text-muted-foreground hover:border-primary/30 hover:text-primary hover:bg-muted/50 transition-colors min-h-[44px] touch-manipulation"
             >
               <Tag className="h-3 w-3" />
               {label}
@@ -36,7 +36,7 @@ export default function Blog() {
           {indexableBlogPosts.map((post, idx) => (
             <article
               key={post.slug}
-              className={`group rounded-xl border border-border/60 bg-white hover:border-primary/50 hover:shadow-lg transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
+              className={`group rounded-xl border border-border/60 bg-card hover:border-primary/50 hover:shadow-lg transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
             >
               <div className="p-5 sm:p-6 md:p-7 flex flex-col h-full">
                 <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">

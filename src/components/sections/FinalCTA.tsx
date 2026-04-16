@@ -16,7 +16,7 @@ export function FinalCTA() {
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-balance">
           Ready to see what your car is worth?
         </h2>
-        <p className="text-white/75 text-base sm:text-lg mb-8 max-w-xl mx-auto">
+        <p className="text-white/80 text-base sm:text-lg mb-8 max-w-xl mx-auto">
           One form. Honest price. Free pickup. Cash on the spot.
         </p>
         <Link

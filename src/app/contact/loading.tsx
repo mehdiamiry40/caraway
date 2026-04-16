@@ -43,7 +43,7 @@ export default function ContactLoading() {
 
               {/* Form side */}
               <div className="space-y-8">
-                <div className="bg-white rounded-lg border border-border/60 p-6 sm:p-8">
+                <div className="bg-card rounded-lg border border-border/60 p-6 sm:p-8">
                   <Skeleton className="h-7 w-40 mb-6" />
                   <div className="space-y-4">
                     <Skeleton className="h-14 w-full" />

@@ -32,7 +32,7 @@ export function PageShell({
         <section
           className={
             isPrimary
-              ? "[background:linear-gradient(135deg,hsl(var(--primary))_0%,hsl(215_30%_13%)_100%)] text-primary-foreground py-14 sm:py-20 lg:py-28"
+              ? "[background:var(--footer-wash)] text-primary-foreground py-14 sm:py-20 lg:py-28"
               : "bg-background/70 py-10 sm:py-14 lg:py-20"
           }
         >
@@ -45,7 +45,7 @@ export function PageShell({
               <div
                 className={
                   isPrimary
-                    ? "text-primary-foreground/84 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
+                    ? "text-primary-foreground/80 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
                     : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
                 }
               >

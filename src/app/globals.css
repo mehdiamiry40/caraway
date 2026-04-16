@@ -24,35 +24,44 @@
 }
 
 :root {
-  /* Asphalt, sandstone, and copper palette */
-  --background: 36 40% 96%;
-  --foreground: 214 28% 15%;
-  --primary: 216 32% 17%;
-  --primary-foreground: 42 43% 98%;
-  --secondary: 35 48% 90%;
-  --secondary-foreground: 214 28% 15%;
-  --muted: 34 32% 92%;
-  --muted-foreground: 214 14% 38%;
-  --accent: 18 78% 43%;
-  --accent-foreground: 42 45% 98%;
-  --destructive: 0 74% 44%;
+  /*
+   * 60-30-10 palette: neutral / charcoal / electric blue
+   * 60 %  — background · card · muted (cool neutral scale)
+   * 30 %  — primary (charcoal)
+   * 10 %  — accent  (electric blue)
+   * Semantic — destructive (red, functional only)
+   *
+   * Text levels (light bg): foreground · muted-foreground · muted-foreground/60
+   * Text levels (dark bg):  white · white/80
+   */
+  --background: 210 20% 97%;
+  --foreground: 220 15% 15%;
+  --primary: 220 15% 15%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 212 18% 92%;
+  --secondary-foreground: 220 15% 15%;
+  --muted: 212 18% 92%;
+  --muted-foreground: 215 14% 46%;
+  --accent: 210 100% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
   --destructive-foreground: 0 0% 100%;
-  --border: 31 24% 80%;
-  --ring: 18 78% 43%;
-  --card: 42 44% 99%;
-  --card-foreground: 214 28% 15%;
-  --shadow-color: 215 25% 20%;
+  --border: 212 17% 83%;
+  --ring: 210 100% 50%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 15% 15%;
+  --shadow-color: 220 20% 14%;
   --page-wash:
-    radial-gradient(circle at top left, hsl(30 92% 92% / 0.92), transparent 32%),
-    radial-gradient(circle at 88% 12%, hsl(18 100% 92% / 0.7), transparent 26%),
-    linear-gradient(180deg, hsl(var(--background)) 0%, hsl(36 52% 97%) 48%, hsl(38 48% 94%) 100%);
+    radial-gradient(circle at top left, hsl(var(--accent) / 0.08), transparent 32%),
+    radial-gradient(circle at 88% 12%, hsl(var(--accent) / 0.06), transparent 26%),
+    linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.5) 48%, hsl(var(--muted)) 100%);
   --hero-wash:
-    radial-gradient(circle at 12% 18%, hsl(22 100% 91% / 0.9), transparent 28%),
-    linear-gradient(120deg, hsl(38 52% 97%) 0%, hsl(32 60% 94%) 46%, hsl(28 79% 89%) 100%);
+    radial-gradient(circle at 12% 18%, hsl(var(--accent) / 0.09), transparent 28%),
+    linear-gradient(120deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.6) 46%, hsl(var(--muted)) 100%);
   --hero-mesh:
     linear-gradient(135deg, hsl(var(--primary) / 0.14), transparent 55%),
     linear-gradient(0deg, hsl(var(--accent) / 0.08), transparent 68%);
-  --footer-wash: linear-gradient(180deg, hsl(216 33% 16%) 0%, hsl(215 30% 13%) 100%);
+  --footer-wash: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(220 14% 10%) 100%);
 }
 
 /*

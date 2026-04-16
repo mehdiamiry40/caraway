@@ -40,7 +40,7 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-primary-foreground/72 hover:text-accent transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none touch-manipulation";
+  "text-primary-foreground/80 hover:text-accent transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses = "font-display font-semibold text-sm text-primary-foreground mb-3";
 
@@ -62,7 +62,7 @@ export function Footer() {
             >
               caraway<span className="text-accent">.</span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm text-primary-foreground/72 leading-relaxed">
+            <p className="mt-3 max-w-sm text-sm text-primary-foreground/80 leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
             </p>
 
@@ -78,15 +78,15 @@ export function Footer() {
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-primary-foreground/72 hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <p className="text-primary-foreground/72">
+              <p className="text-primary-foreground/80">
                 <span className="font-medium text-primary-foreground">{BUSINESS.hours}</span> · seven days
               </p>
-              <address className="not-italic text-primary-foreground/68 leading-snug">
+              <address className="not-italic text-primary-foreground/80 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
             </div>
