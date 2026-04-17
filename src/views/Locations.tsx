@@ -31,7 +31,7 @@ export default function Locations() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={BUSINESS.phoneHref}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-white rounded-full py-3.5 px-8 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full py-3.5 px-8 font-semibold hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
               aria-label={`Call ${BUSINESS.phoneFriendly}`}
             >
               <Phone className="h-4 w-4" aria-hidden />
@@ -39,7 +39,7 @@ export default function Locations() {
             </a>
             <Link
               href="/#price-estimator"
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-8 font-semibold hover:bg-primary hover:text-white transition-all"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 border-2 border-primary text-primary rounded-full py-3.5 px-8 font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
             >
               Get a free quote
             </Link>

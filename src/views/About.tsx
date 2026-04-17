@@ -43,7 +43,7 @@ export default function About() {
           <div className="rounded-xl border border-border/60 bg-card p-5 sm:p-6">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">Meet the Founder</h2>
             <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-white font-display font-bold text-2xl" aria-hidden="true">
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display font-bold text-2xl" aria-hidden="true">
                 ME
               </div>
               <div>

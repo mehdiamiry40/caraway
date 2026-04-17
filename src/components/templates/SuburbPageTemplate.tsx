@@ -36,13 +36,13 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+        <section className="bg-primary text-primary-foreground py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
               {suburb.h1}
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+            <p className="text-primary-foreground/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
               {suburb.intro}
             </p>
             <ScrollToQuoteCTA />
@@ -91,7 +91,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     { step: "3", title: "Get Paid Today", desc: "We pick up your car free and pay you cash on the spot." }
                   ].map(item => (
                     <div key={item.step} className="text-center">
-                      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-sm">
+                      <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-sm">
                         {item.step}
                       </div>
                       <h3 className="font-display font-bold text-foreground mb-2">{item.title}</h3>

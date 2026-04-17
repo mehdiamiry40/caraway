@@ -66,17 +66,17 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
         breadcrumbs={breadcrumbs}
         title={post.title}
         subtitle={
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/80">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-primary-foreground/80">
             <Link
               href={`/blog/category/${categorySlug(post.category)}`}
-              className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-white text-xs hover:bg-white/20 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary-foreground/10 backdrop-blur-sm px-3.5 py-1.5 font-medium text-primary-foreground text-xs hover:bg-primary-foreground/20 transition-colors"
             >
               <Tag className="h-3 w-3" aria-hidden />
               {post.category}
             </Link>
             <Link
               href={AUTHOR.href}
-              className="inline-flex items-center gap-1.5 text-white/80 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               <User className="h-3.5 w-3.5" aria-hidden />
               By {AUTHOR.name}
@@ -128,7 +128,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex flex-col gap-2.5 shrink-0">
                   <Link
                     href="/#price-estimator"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
                   >
                     Get my quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
@@ -203,7 +203,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex items-start gap-4 sm:gap-5">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-display font-bold text-xl sm:text-2xl"
+                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-display font-bold text-xl sm:text-2xl"
                   >
                     SW
                   </div>
@@ -285,18 +285,18 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <script dangerouslySetInnerHTML={{ __html: copyScript }} />
               </div>
 
-              <div className="rounded-2xl bg-primary text-white p-6 sm:p-10 text-center">
+              <div className="rounded-2xl bg-primary text-primary-foreground p-6 sm:p-10 text-center">
                 <p className="font-display font-bold text-2xl sm:text-3xl leading-tight mb-3">
                   Ready to sell your car for cash?
                 </p>
-                <p className="text-white/80 text-sm sm:text-base mb-7 max-w-xl mx-auto">
+                <p className="text-primary-foreground/80 text-sm sm:text-base mb-7 max-w-xl mx-auto">
                   Call {BUSINESS.phoneFriendly} or grab a free instant quote &mdash; same- or
                   next-day pickup across Brisbane.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <a
                     href={BUSINESS.phoneHref}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-primary hover:bg-white/90 shadow-sm hover:shadow-md transition-all w-full sm:w-auto"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary-foreground px-7 py-3.5 text-sm font-semibold text-primary hover:bg-primary-foreground/90 shadow-sm hover:shadow-md transition-all w-full sm:w-auto"
                     aria-label={`Call ${BUSINESS.phoneFriendly}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -304,7 +304,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </a>
                   <Link
                     href="/#price-estimator"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border-2 border-white/70 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white hover:text-primary transition-all w-full sm:w-auto"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border-2 border-primary-foreground/70 px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-all w-full sm:w-auto"
                   >
                     Get a free quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
