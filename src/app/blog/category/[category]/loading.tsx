@@ -12,9 +12,9 @@ export default function CategoryLoading() {
 
           <section className="bg-primary py-16 lg:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <Skeleton className="h-4 w-40 bg-white/10 mb-4" />
-              <Skeleton className="h-12 w-full max-w-xl bg-white/10 mb-4" />
-              <Skeleton className="h-5 w-full max-w-2xl bg-white/10" />
+              <Skeleton className="h-4 w-40 bg-primary-foreground/10 mb-4" />
+              <Skeleton className="h-12 w-full max-w-xl bg-primary-foreground/10 mb-4" />
+              <Skeleton className="h-5 w-full max-w-2xl bg-primary-foreground/10" />
             </div>
           </section>
 

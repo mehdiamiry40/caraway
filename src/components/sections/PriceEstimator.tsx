@@ -421,7 +421,7 @@ export function PriceEstimator() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-white transition-all touch-manipulation"
+                className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-all touch-manipulation"
               >
                 <RotateCcw className="w-4 h-4" aria-hidden="true" />
                 Estimate another
@@ -461,7 +461,7 @@ export function PriceEstimator() {
                 <div className={cn(
                   "flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm sm:text-base font-bold transition-colors duration-200",
                   step >= s
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-primary-foreground"
                     : "bg-card border border-border/80 text-muted-foreground"
                 )}>
                   {step > s ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" /> : s}

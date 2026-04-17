@@ -48,7 +48,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="text-primary-foreground border-t border-white/10 pl-safe pr-safe [background:var(--footer-wash)]">
+    <footer className="text-primary-foreground border-t border-primary-foreground/10 pl-safe pr-safe [background:var(--footer-wash)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
@@ -130,7 +130,7 @@ export function Footer() {
         </div>
 
         {/* Official references — compact replacement for the old resources block */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary-foreground/60">
+        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary-foreground/60">
           <span className="font-medium text-primary-foreground">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map(item => (
             <TrackedOutboundLink
@@ -147,7 +147,7 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-white/10 pb-safe">
+      <div className="border-t border-primary-foreground/10 pb-safe">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">

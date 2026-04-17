@@ -39,13 +39,13 @@ export default function ServicePageTemplate({
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-white py-16 lg:py-24 relative overflow-hidden">
+        <section className="bg-primary text-primary-foreground py-16 lg:py-24 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <Breadcrumbs items={breadcrumbs} light />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
               {service.h1}
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+            <p className="text-primary-foreground/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
               {service.intro}
             </p>
             <ScrollToQuoteCTA />
