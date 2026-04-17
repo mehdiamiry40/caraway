@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 
+const isDev = process.env.NODE_ENV !== "production";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -29,28 +31,34 @@ const nextConfig: NextConfig = {
           // integration). object-src 'none' is added as defence in depth
           // so plugins/applets cannot be embedded even if an injection
           // were to occur.
+          // In development, 'unsafe-eval' is needed for Next.js source maps
+          // and frame-ancestors is relaxed for the Replit preview pane.
           value: [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+            isDev
+              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
+              : "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
             "img-src 'self' data: blob:",
             "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
             "object-src 'none'",
-            "frame-ancestors 'none'",
+            isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
             "base-uri 'self'",
             "form-action 'self'",
-            "upgrade-insecure-requests",
+            ...(isDev ? [] : ["upgrade-insecure-requests"]),
           ].join("; "),
         },
-        { key: "X-Frame-Options", value: "DENY" },
+        ...(isDev ? [] : [{ key: "X-Frame-Options", value: "DENY" }]),
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-        { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+        ...(isDev ? [] : [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" }]),
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
         { key: "X-DNS-Prefetch-Control", value: "on" },
-        { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-        { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+        ...(isDev ? [] : [
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+        ]),
       ],
     },
     // Long-lived cache for immutable static assets
