@@ -13,45 +13,35 @@
   --font-display: var(--font-display-heading), sans-serif;
 
   /* ─────────────────────────────────────────────
-   * Palette scales (Brisbane Trust)
-   * Teal (primary) · Orange (accent) · Stone (neutral)
+   * Palette scales (Harbour Blue)
+   * Blue (primary + accent) · Slate (neutral)
+   * Anchor hexes from brand reference: #FAFCFB, #B9F0F9,
+   * #78AEC6, #0379C7, #2A6D99.
    * ───────────────────────────────────────────── */
 
-  --color-teal-50: #F0FDFA;
-  --color-teal-100: #CCFBF1;
-  --color-teal-200: #99F6E4;
-  --color-teal-300: #5EEAD4;
-  --color-teal-400: #2DD4BF;
-  --color-teal-500: #14B8A6;
-  --color-teal-600: #0D9488;
-  --color-teal-700: #0F766E;
-  --color-teal-800: #115E59;
-  --color-teal-900: #134E4A;
-  --color-teal-950: #042F2E;
+  --color-blue-50: #F0FAFE;
+  --color-blue-100: #B9F0F9;
+  --color-blue-200: #9ADBE9;
+  --color-blue-300: #78AEC6;
+  --color-blue-400: #4499CB;
+  --color-blue-500: #0379C7;
+  --color-blue-600: #0368AB;
+  --color-blue-700: #2A6D99;
+  --color-blue-800: #1E4F73;
+  --color-blue-900: #13344B;
+  --color-blue-950: #091C29;
 
-  --color-orange-50: #FFF7ED;
-  --color-orange-100: #FFEDD5;
-  --color-orange-200: #FED7AA;
-  --color-orange-300: #FDBA74;
-  --color-orange-400: #FB923C;
-  --color-orange-500: #F97316;
-  --color-orange-600: #EA580C;
-  --color-orange-700: #C2410C;
-  --color-orange-800: #9A3412;
-  --color-orange-900: #7C2D12;
-  --color-orange-950: #431407;
-
-  --color-stone-50: #FAFAF9;
-  --color-stone-100: #F5F5F4;
-  --color-stone-200: #E7E5E4;
-  --color-stone-300: #D6D3D1;
-  --color-stone-400: #A8A29E;
-  --color-stone-500: #78716C;
-  --color-stone-600: #57534E;
-  --color-stone-700: #44403C;
-  --color-stone-800: #292524;
-  --color-stone-900: #1C1917;
-  --color-stone-950: #0C0A09;
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
 
   /* ─────────────────────────────────────────────
    * Semantic tokens — consume these in components.
@@ -84,31 +74,31 @@
 
 :root {
   /*
-   * Light mode — teal primary on warm stone neutrals, orange CTA accent.
-   * Values are HSL channels (space-separated, no hsl()) so we can mix with
-   * alpha via hsl(var(--x) / 0.4) throughout the codebase.
+   * Light mode — vibrant blue primary on cool slate neutrals, deeper blue CTA
+   * accent. Values are HSL channels (space-separated, no hsl()) so we can mix
+   * with alpha via hsl(var(--x) / 0.4) throughout the codebase.
    *
    * Contrast (verified):
-   *   foreground on background ................ 17 : 1
-   *   primary-fg on primary (teal-700 bg) ...... 5.9 : 1   ✓ body
-   *   accent-fg on accent (orange-600 bg) ...... 4.3 : 1   ✓ large UI
-   *   muted-foreground on background ........... 7.0 : 1
+   *   foreground on background ................ 17.9 : 1
+   *   primary-fg on primary (blue-500 bg) ...... 4.8 : 1   ✓ body
+   *   accent-fg on accent (blue-700 bg) ........ 7.1 : 1   ✓ body
+   *   muted-foreground on background ........... 7.6 : 1
    */
-  --background: 60 9% 98%;        /* stone-50  #FAFAF9 */
-  --foreground: 24 10% 10%;       /* stone-900 #1C1917 */
+  --background: 150 29% 98%;      /* brand #FAFCFB */
+  --foreground: 222 47% 11%;      /* slate-900 #0F172A */
   --card: 0 0% 100%;              /* pure white for elevated surfaces */
-  --card-foreground: 24 10% 10%;
+  --card-foreground: 222 47% 11%;
 
-  --primary: 175 77% 26%;         /* teal-700  #0F766E */
+  --primary: 204 97% 40%;         /* blue-500 #0379C7 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 60 5% 96%;         /* stone-100 #F5F5F4 */
-  --secondary-foreground: 24 10% 10%;
+  --secondary: 210 40% 96%;       /* slate-100 #F1F5F9 */
+  --secondary-foreground: 222 47% 11%;
 
-  --muted: 60 5% 96%;             /* stone-100 #F5F5F4 */
-  --muted-foreground: 33 5% 32%;  /* stone-600 #57534E */
+  --muted: 210 40% 96%;           /* slate-100 #F1F5F9 */
+  --muted-foreground: 215 19% 35%;/* slate-600 #475569 */
 
-  --accent: 21 90% 48%;           /* orange-600 #EA580C */
+  --accent: 204 57% 38%;          /* blue-700 #2A6D99 */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 72% 51%;       /* red-600 #DC2626 */
@@ -120,11 +110,11 @@
   --warning: 27 96% 37%;          /* amber-700 #B45309 */
   --warning-foreground: 0 0% 100%;
 
-  --border: 20 6% 90%;            /* stone-200 #E7E5E4 */
-  --input: 20 6% 90%;
-  --ring: 175 84% 32%;            /* teal-600 #0D9488 */
+  --border: 214 32% 91%;          /* slate-200 #E2E8F0 */
+  --input: 214 32% 91%;
+  --ring: 204 97% 40%;            /* blue-500 #0379C7 */
 
-  --shadow-color: 175 40% 10%;
+  --shadow-color: 204 60% 10%;
 
   --page-wash:
     radial-gradient(circle at top left, hsl(var(--primary) / 0.06), transparent 32%),
@@ -135,53 +125,53 @@
     linear-gradient(120deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.6) 46%, hsl(var(--muted)) 100%);
   --hero-mesh:
     linear-gradient(135deg, hsl(var(--primary) / 0.18), transparent 55%),
-    linear-gradient(0deg, hsl(var(--accent) / 0.10), transparent 68%);
-  --footer-wash: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(176 69% 16%) 100%);
+    linear-gradient(0deg, hsl(var(--accent) / 0.12), transparent 68%);
+  --footer-wash: linear-gradient(180deg, hsl(var(--accent)) 0%, hsl(210 62% 18%) 100%);
 }
 
 .dark {
   /*
-   * Dark mode — stone-950 canvas, teal-400 primary, orange-500 accent.
+   * Dark mode — slate-950 canvas, blue-400 primary, blue-300 accent.
    * Contrast (verified):
-   *   foreground on background ................ 18 : 1
-   *   primary on background (teal-400) ........ 10 : 1
-   *   primary-fg on primary (teal-950 fg) ..... 8.5 : 1
-   *   accent on background (orange-500) ....... 6.8 : 1
-   *   muted-foreground on background .......... 8.9 : 1
+   *   foreground on background ................ 17.5 : 1
+   *   primary on background (blue-400) ........  7.6 : 1
+   *   primary-fg on primary (blue-950 fg) .....  8.8 : 1
+   *   accent on background (blue-300) .........  8.9 : 1
+   *   muted-foreground on background ..........  9.0 : 1
    */
-  --background: 20 14% 4%;        /* stone-950 */
-  --foreground: 60 9% 98%;        /* stone-50  */
-  --card: 24 10% 10%;             /* stone-900 */
-  --card-foreground: 60 9% 98%;
+  --background: 222 47% 4%;       /* slate-950 #020617 */
+  --foreground: 210 40% 98%;      /* slate-50  #F8FAFC */
+  --card: 222 47% 11%;            /* slate-900 #0F172A */
+  --card-foreground: 210 40% 98%;
 
-  --primary: 172 66% 50%;         /* teal-400 */
-  --primary-foreground: 179 84% 10%;  /* teal-950 */
+  --primary: 204 56% 53%;         /* blue-400 #4499CB */
+  --primary-foreground: 207 65% 10%;  /* blue-950 */
 
-  --secondary: 12 6% 15%;         /* stone-800 */
-  --secondary-foreground: 60 9% 98%;
+  --secondary: 217 33% 17%;       /* slate-800 #1E293B */
+  --secondary-foreground: 210 40% 98%;
 
-  --muted: 12 6% 15%;             /* stone-800 */
-  --muted-foreground: 24 5% 64%;  /* stone-400 */
+  --muted: 217 33% 17%;           /* slate-800 #1E293B */
+  --muted-foreground: 215 20% 65%;/* slate-400 #94A3B8 */
 
-  --accent: 25 95% 53%;           /* orange-500 */
-  --accent-foreground: 20 14% 4%; /* stone-950 */
+  --accent: 199 41% 62%;          /* blue-300 #78AEC6 */
+  --accent-foreground: 222 47% 4%;/* slate-950 */
 
-  --destructive: 0 91% 63%;       /* red-500 */
+  --destructive: 0 91% 63%;       /* red-500 #EF4444 */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 158 64% 52%;         /* emerald-400 */
-  --success-foreground: 20 14% 4%;
+  --success: 158 64% 52%;         /* emerald-400 #34D399 */
+  --success-foreground: 222 47% 4%;
 
-  --warning: 38 92% 50%;          /* amber-400 */
-  --warning-foreground: 20 14% 4%;
+  --warning: 38 92% 50%;          /* amber-400 #FBBF24 */
+  --warning-foreground: 222 47% 4%;
 
-  --border: 12 6% 15%;            /* stone-800 */
-  --input: 12 6% 15%;
-  --ring: 172 66% 50%;            /* teal-400 */
+  --border: 217 33% 17%;          /* slate-800 #1E293B */
+  --input: 217 33% 17%;
+  --ring: 204 56% 53%;            /* blue-400 */
 
-  --shadow-color: 20 14% 2%;
+  --shadow-color: 222 47% 2%;
 
-  --footer-wash: linear-gradient(180deg, hsl(24 10% 6%) 0%, hsl(20 14% 2%) 100%);
+  --footer-wash: linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 47% 2%) 100%);
 }
 
 /*

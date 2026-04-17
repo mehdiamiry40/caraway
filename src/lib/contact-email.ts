@@ -50,8 +50,8 @@ export function buildContactEmailContent(data: ContactFormValues): ContactEmailC
     .map(
       ([k, v]) =>
         `<tr>` +
-        `<td style="border:1px solid #E7E5E4;background:#F5F5F4;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
-        `<td style="border:1px solid #E7E5E4;padding:8px 12px">${escapeHtml(v)}</td>` +
+        `<td style="border:1px solid #E2E8F0;background:#F1F5F9;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
+        `<td style="border:1px solid #E2E8F0;padding:8px 12px">${escapeHtml(v)}</td>` +
         `</tr>`,
     )
     .join("");
@@ -59,14 +59,14 @@ export function buildContactEmailContent(data: ContactFormValues): ContactEmailC
   const messageHtml = escapeHtml(data.message).replace(/\n/g, "<br>");
 
   const html =
-    `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1C1917;margin:0;padding:24px">` +
-    `<h2 style="margin:0 0 12px;font-size:18px;color:#0F766E">New contact message</h2>` +
-    `<p style="margin:0 0 16px;color:#57534E">Submitted via the caraway.au contact form.</p>` +
+    `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#0F172A;margin:0;padding:24px">` +
+    `<h2 style="margin:0 0 12px;font-size:18px;color:#0379C7">New contact message</h2>` +
+    `<p style="margin:0 0 16px;color:#475569">Submitted via the caraway.au contact form.</p>` +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px;margin-bottom:16px">` +
     htmlRows +
     `</table>` +
     `<h3 style="margin:0 0 8px;font-size:15px">Message</h3>` +
-    `<div style="white-space:pre-wrap;border:1px solid #E7E5E4;background:#F5F5F4;padding:12px;border-radius:6px;font-size:14px;line-height:1.5">` +
+    `<div style="white-space:pre-wrap;border:1px solid #E2E8F0;background:#F1F5F9;padding:12px;border-radius:6px;font-size:14px;line-height:1.5">` +
     messageHtml +
     `</div>` +
     `</body></html>`;

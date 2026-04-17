@@ -4,7 +4,7 @@ This project uses a two-layer color system:
 
 1. **Palette scales** — fixed hex values organised 50 → 950, defined once in
    `src/app/globals.css` inside the `@theme inline` block. Exposed to Tailwind
-   as utilities (`bg-teal-500`, `text-orange-300`, `border-stone-200`, etc.).
+   as utilities (`bg-blue-500`, `text-blue-300`, `border-slate-200`, etc.).
    Think of these as raw paint.
 2. **Semantic tokens** — meaning-first CSS variables like `--primary`,
    `--background`, `--muted-foreground`. Also exposed as Tailwind utilities
@@ -16,19 +16,25 @@ automatically get correct light/dark behaviour.
 
 ---
 
-## Current palette: **Brisbane Trust**
+## Current palette: **Harbour Blue**
 
-Modern automotive trust — teal primary, orange CTA accent, warm stone
-neutrals. Aligns with the favicon. Distinctive in the cash-for-cars
-category (competitors lean hot-red / yellow).
+Confident, Xero-adjacent automotive blue — vibrant blue primary, deeper
+navy-blue accent, cool slate neutrals. Aligns with the repainted favicon.
+Distinctive in the cash-for-cars category (competitors lean hot-red /
+yellow / green).
+
+Anchor hexes (from brand reference):
+`#FAFCFB`, `#B9F0F9`, `#78AEC6`, `#0379C7`, `#2A6D99`.
 
 ### Scales
 
 | Family       | 50       | 100      | 200      | 300      | 400      | 500      | 600      | 700      | 800      | 900      | 950      |
 | ------------ | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| **Teal**     | `#F0FDFA`| `#CCFBF1`| `#99F6E4`| `#5EEAD4`| `#2DD4BF`| `#14B8A6`| `#0D9488`| `#0F766E`| `#115E59`| `#134E4A`| `#042F2E`|
-| **Orange**   | `#FFF7ED`| `#FFEDD5`| `#FED7AA`| `#FDBA74`| `#FB923C`| `#F97316`| `#EA580C`| `#C2410C`| `#9A3412`| `#7C2D12`| `#431407`|
-| **Stone**    | `#FAFAF9`| `#F5F5F4`| `#E7E5E4`| `#D6D3D1`| `#A8A29E`| `#78716C`| `#57534E`| `#44403C`| `#292524`| `#1C1917`| `#0C0A09`|
+| **Blue**     | `#F0FAFE`| `#B9F0F9`| `#9ADBE9`| `#78AEC6`| `#4499CB`| `#0379C7`| `#0368AB`| `#2A6D99`| `#1E4F73`| `#13344B`| `#091C29`|
+| **Slate**    | `#F8FAFC`| `#F1F5F9`| `#E2E8F0`| `#CBD5E1`| `#94A3B8`| `#64748B`| `#475569`| `#334155`| `#1E293B`| `#0F172A`| `#020617`|
+
+The five anchor hexes land at blue-100, blue-300, blue-500, blue-700, and
+(as page canvas) `--background` (≈ slate-50 tinted warm to `#FAFCFB`).
 
 ---
 
@@ -39,43 +45,40 @@ Tailwind utilities generated from the `@theme inline` mapping.
 
 | Token                    | Utility                        | Light          | Dark           | Role                                      |
 | ------------------------ | ------------------------------ | -------------- | -------------- | ----------------------------------------- |
-| `--background`           | `bg-background`                | stone-50       | stone-950      | Page canvas                               |
-| `--foreground`           | `text-foreground`              | stone-900      | stone-50       | Default body text                         |
-| `--card`                 | `bg-card`                      | white          | stone-900      | Elevated surface (cards, popovers)        |
-| `--card-foreground`      | `text-card-foreground`         | stone-900      | stone-50       | Text on cards                             |
-| `--primary`              | `bg-primary`, `text-primary`   | teal-700       | teal-400       | Brand / dominant action                   |
-| `--primary-foreground`   | `text-primary-foreground`      | white          | teal-950       | Text on `--primary` surfaces              |
-| `--secondary`            | `bg-secondary`                 | stone-100      | stone-800      | Low-emphasis surface                      |
-| `--secondary-foreground` | `text-secondary-foreground`    | stone-900      | stone-50       | Text on `--secondary`                     |
-| `--muted`                | `bg-muted`                     | stone-100      | stone-800      | Subtle backgrounds (code, fills)          |
-| `--muted-foreground`     | `text-muted-foreground`        | stone-600      | stone-400      | Secondary / helper text                   |
-| `--accent`               | `bg-accent`, `text-accent`     | orange-600     | orange-500     | Secondary CTA, highlight                  |
-| `--accent-foreground`    | `text-accent-foreground`       | white          | stone-950      | Text on `--accent`                        |
+| `--background`           | `bg-background`                | `#FAFCFB`      | slate-950      | Page canvas                               |
+| `--foreground`           | `text-foreground`              | slate-900      | slate-50       | Default body text                         |
+| `--card`                 | `bg-card`                      | white          | slate-900      | Elevated surface (cards, popovers)        |
+| `--card-foreground`      | `text-card-foreground`         | slate-900      | slate-50       | Text on cards                             |
+| `--primary`              | `bg-primary`, `text-primary`   | blue-500       | blue-400       | Brand / dominant action                   |
+| `--primary-foreground`   | `text-primary-foreground`      | white          | blue-950       | Text on `--primary` surfaces              |
+| `--secondary`            | `bg-secondary`                 | slate-100      | slate-800      | Low-emphasis surface                      |
+| `--secondary-foreground` | `text-secondary-foreground`    | slate-900      | slate-50       | Text on `--secondary`                     |
+| `--muted`                | `bg-muted`                     | slate-100      | slate-800      | Subtle backgrounds (code, fills)          |
+| `--muted-foreground`     | `text-muted-foreground`        | slate-600      | slate-400      | Secondary / helper text                   |
+| `--accent`               | `bg-accent`, `text-accent`     | blue-700       | blue-300       | Secondary CTA, highlight                  |
+| `--accent-foreground`    | `text-accent-foreground`       | white          | slate-950      | Text on `--accent`                        |
 | `--destructive`          | `bg-destructive`               | red-600        | red-500        | Errors, destructive actions               |
 | `--destructive-foreground`| `text-destructive-foreground` | white          | white          | Text on `--destructive`                   |
 | `--success`              | `bg-success`                   | emerald-700    | emerald-400    | Success signal                            |
-| `--success-foreground`   | `text-success-foreground`      | white          | stone-950      | Text on `--success`                       |
+| `--success-foreground`   | `text-success-foreground`      | white          | slate-950      | Text on `--success`                       |
 | `--warning`              | `bg-warning`                   | amber-700      | amber-400      | Warning signal                            |
-| `--warning-foreground`   | `text-warning-foreground`      | white          | stone-950      | Text on `--warning`                       |
-| `--border`               | `border-border`                | stone-200      | stone-800      | Default border                            |
-| `--input`                | `border-input`                 | stone-200      | stone-800      | Form field border                         |
-| `--ring`                 | `ring-ring`                    | teal-600       | teal-400       | Focus ring                                |
+| `--warning-foreground`   | `text-warning-foreground`      | white          | slate-950      | Text on `--warning`                       |
+| `--border`               | `border-border`                | slate-200      | slate-800      | Default border                            |
+| `--input`                | `border-input`                 | slate-200      | slate-800      | Form field border                         |
+| `--ring`                 | `ring-ring`                    | blue-500       | blue-400       | Focus ring                                |
 
 ### WCAG contrast (AA)
 
 | Combination                                   | Light   | Dark    |
 | --------------------------------------------- | ------- | ------- |
-| `foreground` on `background`                  | 17.2:1  | 18.0:1  |
-| `primary-foreground` on `primary`             |  5.9:1  |  8.5:1  |
-| `accent-foreground` on `accent`               |  4.3:1¹ |  6.8:1  |
-| `muted-foreground` on `background`            |  7.0:1  |  8.9:1  |
-| `muted-foreground` on `muted`                 |  6.8:1  |  7.3:1  |
-| `primary` on `background` (links)             |  5.9:1  |  9.9:1  |
+| `foreground` on `background`                  | 17.9:1  | 17.5:1  |
+| `primary-foreground` on `primary`             |  4.8:1  |  8.8:1  |
+| `accent-foreground` on `accent`               |  7.1:1  |  8.9:1  |
+| `muted-foreground` on `background`            |  7.6:1  |  9.0:1  |
+| `muted-foreground` on `muted`                 |  7.2:1  |  7.1:1  |
+| `primary` on `background` (links)             |  4.8:1  |  7.6:1  |
 | `destructive` on `background` (error text)    |  4.8:1  |  4.8:1  |
 | `ring` around focused inputs                  |  ≥3:1   |  ≥3:1   |
-
-¹ `accent` (orange-600 on white) meets 3:1 for large/UI components.
-For body copy on `accent` surfaces prefer `primary-foreground` or darker.
 
 All body text ≥ 4.5:1. Large text and UI components ≥ 3:1. No information
 relies on colour alone — icons and text always accompany status colours.
@@ -87,7 +90,7 @@ relies on colour alone — icons and text always accompany status colours.
 ### Do
 - Use semantic tokens in JSX: `className="bg-primary text-primary-foreground"`
 - Use scale utilities only for fine-tuning *within* a semantic role, e.g.
-  `bg-stone-100` for a decorative tint on a card, or `text-teal-400` for a
+  `bg-slate-100` for a decorative tint on a card, or `text-blue-300` for a
   dark-mode-only accent inside a custom component.
 - Pair every coloured surface with its matching `-foreground` token.
 - Add opacity with slash syntax on semantic tokens: `bg-primary/10`,
@@ -102,7 +105,7 @@ relies on colour alone — icons and text always accompany status colours.
 - **No `bg-white`, `text-white`, `bg-black`, `text-black`, `border-white/x`.**
   These break in dark mode. Use `bg-card` / `text-primary-foreground` /
   `bg-primary-foreground/10` instead, depending on context.
-- **No named Tailwind colour utilities** (`bg-blue-500`, `text-gray-900`,
+- **No named Tailwind colour utilities** (`bg-red-500`, `text-gray-900`,
   etc.). If you need a colour that isn't in the palette, add it to
   `globals.css` first.
 
@@ -148,7 +151,7 @@ These have baked-in colours from earlier palettes and would need regenerating
 if the brand changes:
 
 - `public/icon-192.png`, `public/icon-512.png`, `public/icon-512.webp`
-  (app icons — currently aligned with new teal/white favicon style)
+  (app icons — now out of sync with the blue favicon and should be regenerated)
 - `public/images/logo.webp`, `public/images/logo.avif`
 - `public/images/tow-truck-hero.webp`, `public/images/tow-truck-hero.avif`
   (photography — generally neutral, but any OG / Twitter card crops
