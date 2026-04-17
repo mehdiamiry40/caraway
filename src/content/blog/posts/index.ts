@@ -1,3 +1,4 @@
+import { post as post0 } from "./cash-for-cars-moreton-bay";
 import { post as post1 } from "./what-paperwork-to-sell-a-car-qld";
 import { post as post2 } from "./sell-accident-car-brisbane";
 import { post as post3 } from "./sell-used-4wd-brisbane";
@@ -22,6 +23,7 @@ import { post as post21 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post22 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  post0,
   post1,
   post2,
   post3,
