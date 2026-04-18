@@ -62,16 +62,16 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     .map(
       ([k, v]) =>
         `<tr>` +
-        `<td style="border:1px solid #E7E5E4;background:#F5F5F4;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
-        `<td style="border:1px solid #E7E5E4;padding:8px 12px">${escapeHtml(v)}</td>` +
+        `<td style="border:1px solid #E3E8EE;background:#EEF2F7;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
+        `<td style="border:1px solid #E3E8EE;padding:8px 12px">${escapeHtml(v)}</td>` +
         `</tr>`,
     )
     .join("");
 
   const html =
-    `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#1C1917;margin:0;padding:24px">` +
-    `<h2 style="margin:0 0 12px;font-size:18px;color:#0F766E">New quote request</h2>` +
-    `<p style="margin:0 0 16px;color:#57534E">Submitted via the caraway.au quote form.</p>` +
+    `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#0A2540;margin:0;padding:24px">` +
+    `<h2 style="margin:0 0 12px;font-size:18px;color:#3D4EB5">New quote request</h2>` +
+    `<p style="margin:0 0 16px;color:#425466">Submitted via the caraway.au quote form.</p>` +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px">` +
     htmlRows +
     `</table>` +
