@@ -4,8 +4,8 @@
   "description": "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FAFAF9",
-  "theme_color": "#0F766E",
+  "background_color": "#F6F9FC",
+  "theme_color": "#3D4EB5",
   "icons": [
     {
       "src": "/favicon.svg",

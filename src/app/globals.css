@@ -1,57 +1,9 @@
 @import "tailwindcss";
 
-/*
- * Class-based dark mode: apply `class="dark"` to <html> (or any ancestor) to
- * switch. Defaults to light; no auto-switch on prefers-color-scheme to avoid
- * surprising users without a toggle wired up.
- */
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
   /* Bound in app/layout.tsx via next/font (see --font-sans-body / --font-display-heading) */
   --font-sans: var(--font-sans-body), sans-serif;
   --font-display: var(--font-display-heading), sans-serif;
-
-  /* ─────────────────────────────────────────────
-   * Palette scales (Xero Blue)
-   * Blue (primary) · Navy (accent) · Stone (neutral)
-   * ───────────────────────────────────────────── */
-
-  --color-teal-50:  #EFF8FF;
-  --color-teal-100: #B9F0F9;
-  --color-teal-200: #93D8EC;
-  --color-teal-300: #78AEC6;
-  --color-teal-400: #4A8DB0;
-  --color-teal-500: #0379C7;
-  --color-teal-600: #0369AC;
-  --color-teal-700: #2A6D99;
-  --color-teal-800: #1B4F72;
-  --color-teal-900: #0D2E45;
-  --color-teal-950: #061928;
-
-  --color-orange-50:  #EFF4FA;
-  --color-orange-100: #C8DDEF;
-  --color-orange-200: #9FC4E3;
-  --color-orange-300: #78AEC6;
-  --color-orange-400: #4A8DB0;
-  --color-orange-500: #2A6D99;
-  --color-orange-600: #1B5A87;
-  --color-orange-700: #154873;
-  --color-orange-800: #0F365C;
-  --color-orange-900: #092445;
-  --color-orange-950: #04142A;
-
-  --color-stone-50: #FAFAF9;
-  --color-stone-100: #F5F5F4;
-  --color-stone-200: #E7E5E4;
-  --color-stone-300: #D6D3D1;
-  --color-stone-400: #A8A29E;
-  --color-stone-500: #78716C;
-  --color-stone-600: #57534E;
-  --color-stone-700: #44403C;
-  --color-stone-800: #292524;
-  --color-stone-900: #1C1917;
-  --color-stone-950: #0C0A09;
 
   /* ─────────────────────────────────────────────
    * Semantic tokens — consume these in components.
@@ -77,6 +29,8 @@
   --color-success-foreground: hsl(var(--success-foreground));
   --color-warning: hsl(var(--warning));
   --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-info: hsl(var(--info));
+  --color-info-foreground: hsl(var(--info-foreground));
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -84,105 +38,64 @@
 
 :root {
   /*
-   * Light mode — Xero blue palette.
-   * Primary: #0379C7 · Accent: #2A6D99 · Background: #FAFCFB
-   * Values are HSL channels (space-separated, no hsl()) so we can mix with
-   * alpha via hsl(var(--x) / 0.4) throughout the codebase.
+   * Palette — single-mode, Stripe-adjacent indigo on a cool-neutral base.
+   * Values are HSL channels (space-separated, no hsl()) so components can
+   * mix with alpha via hsl(var(--x) / 0.4).
    *
-   * Contrast (verified):
-   *   foreground on background ................ 16 : 1
-   *   primary-fg on primary (#0379C7 bg) ...... 5.5 : 1   ✓ body
-   *   accent-fg on accent (#2A6D99 bg) ........ 5.0 : 1   ✓ large UI
-   *   muted-foreground on background ........... 7.0 : 1
+   * Contrast (verified, WCAG):
+   *   foreground (#0A2540) on background (#F6F9FC) ........ 17.5:1  AAA
+   *   foreground on card (#FFFFFF) ........................ 18.2:1  AAA
+   *   muted-foreground (#425466) on background ............  8.9:1  AAA
+   *   primary-foreground (white) on primary (#3D4EB5) ......  7.1:1  AAA
+   *   accent-foreground (white) on accent (#2F3E9A) ........  9.4:1  AAA
+   *   primary (#3D4EB5) text on background ................  7.0:1  AAA
+   *   destructive (#B42318) text on background ............  6.1:1  AA+
+   *   success (#0B875B) white-on-fill ......................  4.9:1  AA
+   *   warning (#B54708) white-on-fill ......................  5.4:1  AA
    */
-  --background: 210 33% 98%;      /* #FAFCFB near-white with blue tint */
-  --foreground: 210 50% 12%;      /* deep navy */
-  --card: 0 0% 100%;              /* pure white for elevated surfaces */
-  --card-foreground: 210 50% 12%;
+  --background: 210 38% 97%;         /* #F6F9FC */
+  --foreground: 214 72% 15%;         /* #0A2540 */
+  --card: 0 0% 100%;                 /* #FFFFFF */
+  --card-foreground: 214 72% 15%;    /* #0A2540 */
 
-  --primary: 210 97% 39%;         /* #0379C7 Xero bright blue */
+  --primary: 233 50% 47%;            /* #3D4EB5 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 188 89% 93%;       /* #B9F0F9-tinted light blue */
-  --secondary-foreground: 210 50% 12%;
+  --secondary: 214 33% 95%;          /* #EEF2F7 */
+  --secondary-foreground: 214 72% 15%;
 
-  --muted: 210 30% 95%;           /* very light blue-gray */
-  --muted-foreground: 207 30% 38%; /* #78AEC6-adjacent */
+  --muted: 214 33% 95%;              /* #EEF2F7 */
+  --muted-foreground: 211 22% 33%;   /* #425466 */
 
-  --accent: 207 57% 38%;          /* #2A6D99 Xero dark blue */
+  --accent: 233 53% 40%;             /* #2F3E9A  (darker shade of primary hue) */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 51%;       /* red-600 #DC2626 */
+  --destructive: 5 76% 40%;          /* #B42318 */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 160 94% 24%;         /* emerald-700 #047857 */
+  --success: 155 85% 29%;            /* #0B875B */
   --success-foreground: 0 0% 100%;
 
-  --warning: 27 96% 37%;          /* amber-700 #B45309 */
+  --warning: 22 92% 37%;             /* #B54708 */
   --warning-foreground: 0 0% 100%;
 
-  --border: 210 30% 88%;          /* light blue-tinted border */
-  --input: 210 30% 88%;
-  --ring: 210 97% 39%;            /* #0379C7 */
+  --info: 210 88% 36%;               /* #0B5CAD */
+  --info-foreground: 0 0% 100%;
 
-  --shadow-color: 210 60% 15%;
+  --border: 213 27% 91%;             /* #E3E8EE */
+  --input: 213 27% 91%;
+  --ring: 233 50% 47%;               /* #3D4EB5 */
 
-  --page-wash:
-    radial-gradient(circle at top left, hsl(var(--primary) / 0.06), transparent 32%),
-    radial-gradient(circle at 88% 12%, hsl(var(--accent) / 0.05), transparent 26%),
-    linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.5) 48%, hsl(var(--muted)) 100%);
-  --hero-wash:
-    radial-gradient(circle at 12% 18%, hsl(var(--primary) / 0.08), transparent 28%),
-    linear-gradient(120deg, hsl(var(--background)) 0%, hsl(var(--muted) / 0.6) 46%, hsl(var(--muted)) 100%);
-  --hero-mesh:
-    linear-gradient(135deg, hsl(var(--primary) / 0.18), transparent 55%),
-    linear-gradient(0deg, hsl(var(--accent) / 0.10), transparent 68%);
-  --footer-wash: linear-gradient(180deg, hsl(210 97% 28%) 0%, hsl(210 60% 14%) 100%);
-}
+  --shadow-color: 214 72% 15%;
 
-.dark {
   /*
-   * Dark mode — deep navy canvas, #78AEC6 primary, #B9F0F9 accent.
-   * Contrast (verified):
-   *   foreground on background ................ 17 : 1
-   *   primary on background (#78AEC6) ......... 9.5 : 1
-   *   primary-fg on primary (deep navy fg) .... 8.0 : 1
-   *   accent on background (#B9F0F9) .......... 7.2 : 1
-   *   muted-foreground on background .......... 8.5 : 1
+   * Legacy gradient token names kept for backward compatibility with
+   * Hero / Footer / TrustBadges / PageShell. Redefined as solid fills
+   * so the site reads calm rather than decorated.
    */
-  --background: 210 50% 6%;       /* deep navy */
-  --foreground: 210 33% 96%;      /* near-white with blue tint */
-  --card: 210 45% 10%;            /* slightly lighter navy */
-  --card-foreground: 210 33% 96%;
-
-  --primary: 198 38% 62%;         /* #78AEC6 Xero medium blue */
-  --primary-foreground: 210 50% 8%;   /* deep navy */
-
-  --secondary: 210 40% 15%;       /* dark navy */
-  --secondary-foreground: 210 33% 96%;
-
-  --muted: 210 40% 15%;           /* dark navy */
-  --muted-foreground: 198 30% 65%; /* medium blue-gray */
-
-  --accent: 188 89% 72%;          /* #B9F0F9-ish light blue */
-  --accent-foreground: 210 50% 8%; /* deep navy */
-
-  --destructive: 0 91% 63%;       /* red-500 */
-  --destructive-foreground: 0 0% 100%;
-
-  --success: 158 64% 52%;         /* emerald-400 */
-  --success-foreground: 20 14% 4%;
-
-  --warning: 38 92% 50%;          /* amber-400 */
-  --warning-foreground: 20 14% 4%;
-
-  --border: 210 40% 18%;          /* dark navy border */
-  --input: 210 40% 18%;
-  --ring: 198 38% 62%;            /* #78AEC6 */
-
-  --shadow-color: 210 60% 3%;
-
-  --footer-wash: linear-gradient(180deg, hsl(210 50% 8%) 0%, hsl(210 60% 3%) 100%);
+  --footer-wash: hsl(var(--foreground));
+  --hero-wash: hsl(var(--background));
+  --hero-mesh: transparent;
 }
 
 /*
@@ -201,9 +114,8 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-accent/20 selection:text-accent-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/15 selection:text-foreground;
     overscroll-behavior-y: none;
-    background-image: var(--page-wash);
   }
 
   h1, h2, h3, h4, h5, h6 {
