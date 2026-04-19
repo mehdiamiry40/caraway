@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* ─────────────────────────────────────────────
-   * Fonts — bound in app/layout.tsx via next/font
-   * Ubuntu: body + display + header (humanist UI sans).
-   * Ubuntu Mono: quote-result numerals / data.
-   * ───────────────────────────────────────────── */
-  --font-sans: var(--font-ubuntu), system-ui, sans-serif;
-  --font-display: var(--font-ubuntu), system-ui, sans-serif;
-  --font-mono: var(--font-ubuntu-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Swiss Design system (International Typographic Style)
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  Principles applied:
+ *  - Mathematical grid; flush-left, ragged-right text
+ *  - Limited palette: pure white, pure black, single red accent
+ *  - Helvetica-derived geometric sans (Inter) at all sizes
+ *  - Sharp 90° corners — no rounded geometry
+ *  - Hairline 1px rules instead of shadows
+ *  - Generous, intentional whitespace
+ *  - Uppercase mono eyebrows for strict typographic hierarchy
+ * ─────────────────────────────────────────────────────────────────────────── */
 
-  /* ─────────────────────────────────────────────
-   * Semantic colour tokens — consume these in components.
-   * Do NOT reference hex/scale values in JSX/TSX;
-   * use bg-background, text-foreground, bg-primary, etc.
-   * ───────────────────────────────────────────── */
+@theme inline {
+  /* Fonts — bound in app/layout.tsx via next/font.
+   * Inter ships the Helvetica-style geometric sans we need;
+   * JetBrains Mono powers tabular figures and eyebrow labels. */
+  --font-sans: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Semantic colour tokens — components consume these (bg-background, etc.). */
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
@@ -39,127 +46,113 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
 
-  /* Dark "ink" surface scale — used for stats band, footer, quote-result card */
+  /* Dark "ink" surface scale — pure black surfaces in Swiss treatment */
   --color-ink: hsl(var(--ink));
   --color-ink-deep: hsl(var(--ink-deep));
   --color-ink-raised: hsl(var(--ink-raised));
   --color-on-dark: hsl(var(--on-dark));
   --color-on-dark-hi: hsl(var(--on-dark-hi));
 
-  /* Gradient-only accents (teal / gold / sage) — never used as solid surfaces.
-   * Reserved for aurora mesh, gradient text, and glow effects. */
-  --color-grad-violet: hsl(var(--grad-violet));
-  --color-grad-pink: hsl(var(--grad-pink));
-  --color-grad-lilac: hsl(var(--grad-lilac));
-  --color-grad-cyan: hsl(var(--grad-cyan));
+  /* Legacy gradient tokens — collapsed to the single red accent so any
+   * remaining gradient consumer renders as a flat red field instead of a mesh. */
+  --color-grad-violet: hsl(var(--accent));
+  --color-grad-pink: hsl(var(--accent));
+  --color-grad-lilac: hsl(var(--background));
+  --color-grad-cyan: hsl(var(--accent));
 
-  /* ─────────────────────────────────────────────
-   * Layered "Stripe" shadow scale — navy-tinted, multi-stop.
-   * ───────────────────────────────────────────── */
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
-  --shadow-md:
-    0 4px 12px hsl(var(--shadow-color) / 0.08),
-    0 1px 2px hsl(var(--shadow-color) / 0.04);
-  --shadow-lg:
-    0 1px 2px hsl(var(--shadow-color) / 0.04),
-    0 8px 16px hsl(var(--shadow-color) / 0.06),
-    0 32px 64px -12px hsl(var(--shadow-color) / 0.10);
-  --shadow-xl:
-    0 2px 4px hsl(var(--shadow-color) / 0.04),
-    0 12px 24px hsl(var(--shadow-color) / 0.08),
-    0 48px 96px -16px hsl(var(--shadow-color) / 0.14);
-  --shadow-glow:
-    0 0 0 1px rgb(255 255 255 / 0.06),
-    0 24px 48px hsl(var(--grad-violet) / 0.28);
-  --shadow-focus:
-    0 0 0 4px hsl(var(--primary) / 0.22);
+  /* Shadows are intentionally absent in Swiss design.
+   * Tokens are kept so components compile, but resolve to nothing visible.
+   * Focus shadow is preserved as a 2px black ring for accessibility. */
+  --shadow-sm: 0 0 transparent;
+  --shadow-md: 0 0 transparent;
+  --shadow-lg: 0 0 transparent;
+  --shadow-xl: 0 0 transparent;
+  --shadow-glow: 0 0 transparent;
+  --shadow-focus: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 
-  /* ─────────────────────────────────────────────
-   * Letter-spacing scale — Stripe leans on negative tracking for display type.
-   * ───────────────────────────────────────────── */
-  --tracking-display: -0.035em;
-  --tracking-tight: -0.022em;
-  --tracking-snug: -0.015em;
+  /* Letter-spacing — Swiss display type sits a touch tighter,
+   * body type sits at zero, eyebrow labels open up wide. */
+  --tracking-display: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-snug: -0.005em;
   --tracking-normal: 0;
-  --tracking-wide: 0.04em;
-  --tracking-wider: 0.08em;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
 
-  /* ─────────────────────────────────────────────
-   * Motion — Stripe uses ease-out-quint, 700ms for scroll reveals.
-   * ───────────────────────────────────────────── */
+  /* Motion */
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Sharp geometry — flatten Tailwind's default radius scale. */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-3xl: 0;
+  --radius-full: 9999px;
 }
 
 :root {
   /*
-   * Palette — warm paper canvas, deep teal brand, ember accent (cash / urgency).
-   * Values are HSL channels (space-separated, no hsl()) so components can
+   * Swiss palette — pure achromatic surfaces with one cardinal-red accent.
+   * Channels are HSL (space-separated, no hsl()) so components can
    * mix with alpha via hsl(var(--x) / 0.4).
-   *
-   * Contrast (approximate, WCAG targets):
-   *   foreground on background ............................ ~15:1   AAA
-   *   muted-foreground on background ...................... ~7:1   AAA
-   *   primary-foreground on primary ......................... ~5.5:1 AA+
-   *   accent-foreground on accent ......................... ~5:1   AA+
-   *   on-dark on ink ....................................... ~10:1   AAA
    */
-  --background: 43 38% 97%;          /* #FAF9F6 — warm paper */
-  --foreground: 220 24% 12%;         /* #161C26 — cool ink */
+  --background: 0 0% 100%;           /* #FFFFFF — paper white */
+  --foreground: 0 0% 0%;             /* #000000 — ink black */
   --card: 0 0% 100%;                 /* #FFFFFF */
-  --card-foreground: 220 24% 12%;
+  --card-foreground: 0 0% 0%;
 
-  --primary: 168 56% 30%;            /* #117A6C — deep teal */
+  --primary: 0 0% 0%;                /* black is the primary brand surface */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 155 28% 93%;          /* #E8F4F0 — mint wash */
-  --secondary-foreground: 220 24% 12%;
+  --secondary: 0 0% 96%;             /* #F5F5F5 — paper grid wash */
+  --secondary-foreground: 0 0% 0%;
 
-  --muted: 42 28% 94%;               /* #F2F0EB — warm mist */
-  --muted-foreground: 220 11% 40%;   /* #5C6470 */
+  --muted: 0 0% 96%;                 /* #F5F5F5 */
+  --muted-foreground: 0 0% 28%;      /* #474747 — readable grey */
 
-  --accent: 18 72% 42%;              /* #B84A24 — ember rust */
+  --accent: 354 91% 45%;             /* #E1051A — Swiss red */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 70% 44%;          /* #C42A2A */
+  --destructive: 354 91% 45%;
   --destructive-foreground: 0 0% 100%;
 
-  --success: 152 55% 32%;            /* #0F6B4D — forest */
+  --success: 0 0% 0%;                /* monochrome — meaning is in the label */
   --success-foreground: 0 0% 100%;
 
-  --warning: 32 92% 44%;             /* #D97706 — amber */
+  --warning: 354 91% 45%;
   --warning-foreground: 0 0% 100%;
 
-  --info: 234 52% 52%;               /* #5B67DB — periwinkle */
+  --info: 0 0% 0%;
   --info-foreground: 0 0% 100%;
 
-  --border: 40 22% 88%;              /* warm hairline */
-  --input: 40 22% 88%;
-  --ring: 168 56% 30%;
+  --border: 0 0% 0%;                 /* hairline rules are pure black */
+  --input: 0 0% 0%;
+  --ring: 0 0% 0%;
 
-  --shadow-color: 220 24% 12%;
+  --shadow-color: 0 0% 0%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
-  --site-frame-stroke: hsl(var(--border) / 0.8);
+  --site-frame-stroke: hsl(var(--border));
 
-  /* Dark "ink" surfaces — blue-black with a hint of teal */
-  --ink: 215 32% 11%;                /* #141A22 */
-  --ink-deep: 222 45% 5%;            /* #05070A */
-  --ink-raised: 215 22% 18%;         /* #242E38 */
-  --on-dark: 210 25% 82%;            /* #C9D1DB */
+  /* Dark "ink" surfaces — flat black, no blue tint */
+  --ink: 0 0% 0%;
+  --ink-deep: 0 0% 0%;
+  --ink-raised: 0 0% 8%;             /* #141414 — hairline contrast on black */
+  --on-dark: 0 0% 78%;               /* #C7C7C7 */
   --on-dark-hi: 0 0% 100%;
 
-  /* Gradient-only accents — aurora mesh, text-gradient, glow (names legacy). */
-  --grad-violet: 168 65% 46%;        /* teal glow */
-  --grad-pink: 32 95% 56%;           /* honey gold */
-  --grad-lilac: 95 32% 88%;          /* pale sage */
-  --grad-cyan: 168 72% 48%;          /* seafoam pop */
+  /* Legacy "grad" tokens — flatten to red so gradient stops resolve to a single field. */
+  --grad-violet: 354 91% 45%;
+  --grad-pink: 354 91% 45%;
+  --grad-lilac: 0 0% 100%;
+  --grad-cyan: 354 91% 45%;
 
-  /*
-   * Legacy compatibility tokens used by Hero / Footer / TrustBadges / PageShell.
-   * Footer stays dark (ink); hero wash delegates to the aurora utility.
-   */
+  /* Legacy compatibility tokens used by Hero / Footer / TrustBadges / PageShell. */
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--background));
   --hero-mesh: transparent;
@@ -177,14 +170,6 @@
   }
 }
 
-/*
- * Transition timing convention:
- * - duration-200 (200ms): interactive state changes (hover, focus, press)
- * - duration-300 (300ms): larger UI transitions (dropdowns, menus, shadows)
- * - duration-500 (500ms): content expansion/collapse (accordions, progress bars)
- * - duration-700 (700ms): scroll-reveal fade + slide-up
- */
-
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
@@ -194,32 +179,51 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/15 selection:text-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-foreground selection:text-background;
     overscroll-behavior-y: none;
+    /* Swiss type prefers crisper rendering on light backgrounds */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply font-bold;
     letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
   }
 
   h1 { letter-spacing: var(--tracking-display); }
   h2 { letter-spacing: var(--tracking-tight); }
   h3, h4 { letter-spacing: var(--tracking-snug); }
 
-  /* Ensure inputs scroll above the mobile keyboard when focused */
+  /* Swiss design: flush-left ragged-right text by default. */
+  p { text-wrap: pretty; }
+
+  /* Force sharp corners across all primitives — Swiss design has no curves. */
+  button, input, select, textarea,
+  .rounded, .rounded-sm, .rounded-md, .rounded-lg,
+  .rounded-xl, .rounded-2xl, .rounded-3xl,
+  .rounded-t, .rounded-b, .rounded-l, .rounded-r,
+  .rounded-tl, .rounded-tr, .rounded-bl, .rounded-br {
+    border-radius: 0 !important;
+  }
+  /* …but keep pills and circular avatars/spinners round. */
+  .rounded-full {
+    border-radius: 9999px !important;
+  }
+
+  /* Inputs scroll above the mobile keyboard when focused */
   input, select, textarea {
     scroll-margin-top: 1rem;
     scroll-margin-bottom: 4rem;
   }
 
-  /* Global touch-action for interactive elements (removes 300ms tap delay) */
   a, button, [role="button"], input, select, textarea {
     touch-action: manipulation;
   }
 
-  /* Autofill styling override — keep card/foreground colors on autofilled inputs */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -231,7 +235,6 @@
     transition: background-color 5000s ease-in-out 0s;
   }
 
-  /* Avoid iOS scroll jump under fixed header when focus moves to a heading */
   h3[tabindex="-1"],
   h2[tabindex="-1"],
   h1[tabindex="-1"] {
@@ -249,17 +252,13 @@
 
 @layer utilities {
   .section-y {
-    @apply py-14 sm:py-20 lg:py-24 xl:py-28;
+    @apply py-16 sm:py-24 lg:py-32 xl:py-40;
   }
 
   .section-y-tight {
-    @apply py-10 sm:py-14 lg:py-20;
+    @apply py-12 sm:py-16 lg:py-24;
   }
 
-  /* The "Stripe line" — every section's outer container snaps to this
-     max-width + horizontal padding so content aligns edge-to-edge across
-     the site. Inner prose/card widths can still be narrower, but the
-     left/right outer edges always line up. */
   .site-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -274,60 +273,67 @@
     text-wrap: balance;
   }
 
-  /* Eyebrow — 12px uppercase with wide tracking. */
+  /* Eyebrow — uppercase mono label, opens wide, marked by a leading red bar. */
   .eyebrow {
-    @apply text-xs font-semibold uppercase text-primary;
-    letter-spacing: var(--tracking-wide);
+    @apply text-xs font-bold uppercase text-foreground inline-flex items-center gap-2;
+    font-family: var(--font-mono);
+    letter-spacing: var(--tracking-wider);
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background-color: hsl(var(--accent));
   }
 
   .eyebrow-on-dark {
-    @apply text-xs font-semibold uppercase;
-    color: hsl(var(--on-dark));
-    letter-spacing: var(--tracking-wide);
+    @apply text-xs font-bold uppercase inline-flex items-center gap-2;
+    color: hsl(var(--on-dark-hi));
+    font-family: var(--font-mono);
+    letter-spacing: var(--tracking-wider);
+  }
+  .eyebrow-on-dark::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background-color: hsl(var(--accent));
   }
 
-  /* Gradient-fill text — apply to a single word inside a headline. */
+  /* "Gradient" text now resolves to flat Swiss red — single accent only. */
   .text-gradient {
-    background-image: linear-gradient(
-      135deg,
-      hsl(var(--grad-lilac)) 0%,
-      hsl(var(--grad-violet)) 45%,
-      hsl(var(--grad-pink)) 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
+    color: hsl(var(--accent));
+    background: none;
+    -webkit-text-fill-color: hsl(var(--accent));
   }
 
-  /* Animated left-origin underline for nav / inline links. */
+  /* Static black underline — Swiss links are persistently underlined.
+   * Hover swaps the colour to red rather than animating the rule. */
   .link-underline {
     position: relative;
     display: inline-block;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 160ms var(--ease-out-quint);
   }
-  .link-underline::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 240ms var(--ease-out-quint);
-  }
-  .link-underline:hover::after,
-  .link-underline:focus-visible::after {
-    transform: scaleX(1);
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    color: hsl(var(--accent));
   }
 
-  /* Hairline divider between stacked blocks. */
+  /* Hairline divider — 1px black rule, the visible grid of Swiss design. */
   .hairline {
     border-top: 1px solid hsl(var(--border));
   }
   .hairline-on-dark {
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid hsl(var(--on-dark-hi) / 0.2);
+  }
+
+  /* Swiss "rule" — heavier 2px black bar for section openings. */
+  .swiss-rule {
+    border-top: 2px solid hsl(var(--foreground));
   }
 }
 
@@ -350,48 +356,34 @@
     }
   }
 
-  .prose-body { @apply text-base sm:text-lg leading-[1.65] text-foreground; }
+  .prose-body { @apply text-base sm:text-lg leading-[1.6] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-foreground mt-12 mb-4 leading-tight pt-6 border-t border-foreground; letter-spacing: var(--tracking-tight); }
   .prose-body h3 { @apply text-xl sm:text-2xl font-display font-bold text-foreground mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
   .prose-body h4 { @apply text-lg sm:text-xl font-display font-bold text-foreground mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
-  .prose-body a { @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors; }
+  .prose-body a { @apply underline underline-offset-4 hover:text-accent transition-colors; }
   .prose-body strong { @apply font-bold text-foreground; }
-  .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-4 border-primary/60 pl-4 italic text-foreground; }
+  .prose-body code { @apply bg-muted px-1.5 py-0.5 text-sm font-mono; }
+  .prose-body blockquote { @apply border-l-2 border-accent pl-4 text-foreground; font-style: normal; }
 
   .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
   .list-styled li { @apply leading-relaxed; }
   .list-styled strong { @apply text-foreground font-bold; }
 }
 
-/* ─────────────────────────────────────────────
- * Aurora — the signature Stripe hero gradient mesh.
- * CSS-only, GPU-composited, 24s loop. Pauses on reduced motion.
- * ───────────────────────────────────────────── */
-
-@keyframes aurora {
-  0%   { background-position: 0% 0%, 100% 0%, 50% 100%, 0 0; }
-  50%  { background-position: 10% 8%, 90% 14%, 55% 92%, 0 0; }
-  100% { background-position: 0% 0%, 100% 0%, 50% 100%, 0 0; }
-}
-
-@keyframes aurora-drift {
-  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50%  { transform: translate3d(2%, -1.5%, 0) rotate(1.5deg); }
-  100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-}
+/*
+ * Aurora keyframes are kept as no-ops so any element that still references them
+ * remains valid CSS. Swiss design has no animated mesh backgrounds.
+ */
+@keyframes aurora { from {} to {} }
+@keyframes aurora-drift { from {} to {} }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
-  }
-
-  .aurora-animate::before {
-    animation: aurora-drift 28s ease-in-out infinite alternate;
   }
 }
 
@@ -411,7 +403,6 @@
   }
 }
 
-/* Windows High Contrast / forced-colors support */
 @media (forced-colors: active) {
   button, a, [role="button"] {
     forced-color-adjust: auto;
@@ -423,7 +414,6 @@
   }
 }
 
-/* Print stylesheet */
 @media print {
   header, footer, nav, [role="banner"], .no-print, button, a[href^="#"] {
     display: none !important;
@@ -455,10 +445,6 @@
   img {
     max-width: 100% !important;
   }
-  .aurora-surface::before,
-  .aurora-surface::after {
-    display: none !important;
-  }
 }
 
 @utility pt-safe {
@@ -488,14 +474,12 @@
 
 @utility focus-ring {
   &:focus-visible {
-    outline: none;
-    box-shadow:
-      0 0 0 2px hsl(var(--background)),
-      0 0 0 4px hsl(var(--ring) / 0.9);
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    box-shadow: none;
   }
 }
 
-/* Hide scrollbar for breadcrumbs and other horizontal scrollers */
 @utility scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -504,8 +488,6 @@
   }
 }
 
-/* Header-aware top margin that accounts for safe-area-inset on notched devices.
-   Single-tier header: 4rem / 64px on mobile, 4.5rem / 72px on desktop. */
 @utility mt-header-safe {
   margin-top: calc(4rem + env(safe-area-inset-top, 0px));
   @media (min-width: 1024px) {
@@ -513,85 +495,35 @@
   }
 }
 
-/* 100dvh fallback — uses static vh first, then overrides to dvh where supported */
 @utility min-h-screen-safe {
   min-height: 100vh;
   min-height: 100dvh;
 }
 
-/* ─────────────────────────────────────────────
- * Aurora surface — attach to any section that needs the mesh background.
- * Uses ::before so the mesh sits behind content but above the parent bg,
- * keeping text contrast clean via a cream overlay fade toward the bottom.
- * ───────────────────────────────────────────── */
+/* Aurora surface — flattened to the paper background.
+ * The mesh, fade, and saturation are removed. Sections that previously called
+ * this utility now render as a clean white field, in keeping with Swiss design. */
 @utility aurora-surface {
   position: relative;
   isolation: isolate;
   background-color: hsl(var(--background));
   overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -10% -10% auto -10%;
-    height: 90%;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      radial-gradient(60% 50% at 20% 10%, hsl(var(--grad-lilac) / 0.55) 0%, transparent 62%),
-      radial-gradient(50% 55% at 82% 18%, hsl(var(--grad-pink) / 0.45) 0%, transparent 58%),
-      radial-gradient(65% 60% at 50% 95%, hsl(var(--grad-violet) / 0.38) 0%, transparent 62%);
-    filter: saturate(110%);
-    will-change: transform;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent 55%, hsl(var(--background)) 100%);
-  }
 }
 
-/* Full-height aurora — extends the mesh and removes the fade so the gradient
- * reaches the bottom edge of its section. */
 @utility aurora-full {
-  &::before {
-    inset: -10% -10% -10% -10%;
-    height: auto;
-  }
-
-  &::after {
-    background: none;
-  }
+  background-color: hsl(var(--background));
 }
 
-/* Dark aurora — for CTA bands and footer top-edge glow. */
+/* Dark aurora — flattened to solid black. */
 @utility aurora-surface-dark {
   position: relative;
   isolation: isolate;
   background-color: hsl(var(--ink));
+  color: hsl(var(--on-dark-hi));
   overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -20% -10% auto -10%;
-    height: 70%;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      radial-gradient(50% 55% at 22% 25%, hsl(var(--grad-violet) / 0.38) 0%, transparent 60%),
-      radial-gradient(45% 55% at 78% 20%, hsl(var(--grad-pink) / 0.28) 0%, transparent 60%),
-      radial-gradient(60% 60% at 50% 90%, hsl(var(--grad-lilac) / 0.22) 0%, transparent 65%);
-    filter: saturate(115%);
-    will-change: transform;
-  }
 }
 
-/* Subtle top-edge gradient glow — for footer separator. */
+/* Top-edge accent — single 1px red bar instead of the previous gradient glow. */
 @utility edge-glow-top {
   position: relative;
 
@@ -603,18 +535,11 @@
     right: 0;
     height: 1px;
     pointer-events: none;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      hsl(var(--grad-violet) / 0.75) 50%,
-      transparent 100%
-    );
+    background: hsl(var(--accent));
   }
 }
 
-/* ─────────────────────────────────────────────
- * Auto-scrolling marquee — used by Testimonials.
- * ───────────────────────────────────────────── */
+/* Marquee — kept for the Testimonials component, no visual chrome change. */
 @keyframes marquee-x {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
@@ -650,13 +575,13 @@
   }
 }
 
-/* Stripe-style "quote result" card chrome. */
+/* Quote-result card — Swiss treatment is a flat black field with a top red rule.
+ * No glow, no rounded corners, no gradient hairline. */
 @utility quote-card {
   background-color: hsl(var(--ink));
   color: hsl(var(--on-dark-hi));
-  border-radius: 1rem;
-  box-shadow: var(--shadow-glow);
-  border: 1px solid rgb(255 255 255 / 0.06);
+  border: 1px solid hsl(var(--ink));
+  border-radius: 0;
   position: relative;
   overflow: hidden;
 
@@ -664,7 +589,7 @@
     content: "";
     position: absolute;
     inset: 0 0 auto 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--grad-violet) / 0.55), transparent);
+    height: 2px;
+    background: hsl(var(--accent));
   }
 }
