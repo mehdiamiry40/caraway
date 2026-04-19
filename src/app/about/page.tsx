@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import About from "@/views/About";
 import { SITE_URL } from "@/lib/site";
 
@@ -26,14 +26,12 @@ export default function AboutPage() {
   const canonical = `${SITE_URL}/about`;
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "About Caraway", item: canonical },
-        ]}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "About Caraway", item: canonical },
+          ]),
           {
             "@context": "https://schema.org",
             "@type": "AboutPage",

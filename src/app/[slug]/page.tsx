@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FAQJsonLd, BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
 import { reviews } from "@/data/reviews";
 import { getServiceBySlug, services } from "@/data/services";
@@ -48,20 +48,13 @@ export default async function ServiceSlugPage({ params }: Props) {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: service.h1, item: canonicalUrl },
-        ]}
-      />
-      <FAQJsonLd
-        questions={service.faqs.map((faq) => ({
-          name: faq.question,
-          acceptedAnswer: faq.answer,
-        }))}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: service.h1, item: canonicalUrl },
+          ]),
+          faqPageSchema(service.faqs),
           {
             "@type": "Service",
             name: service.h1,

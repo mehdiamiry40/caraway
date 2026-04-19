@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { ArticleJsonLd, BreadcrumbJsonLd } from "next-seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import BlogPostView from "@/views/BlogPost";
 import { blogPosts } from "@/data/blog-posts";
 import { buildBlogPostSeoProps } from "./metadata";
@@ -15,12 +16,11 @@ export default async function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const { articleProps, breadcrumbItems } = buildBlogPostSeoProps(post);
+  const { articleSchema, breadcrumbItems } = buildBlogPostSeoProps(post);
 
   return (
     <>
-      <ArticleJsonLd {...articleProps} />
-      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <JsonLd data={[articleSchema, breadcrumbListSchema(breadcrumbItems)]} />
       <BlogPostView post={post} />
     </>
   );

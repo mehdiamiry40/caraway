@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
@@ -34,14 +34,12 @@ export default function BlogPage() {
   const canonical = `${SITE_URL}/blog`;
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "Blog", item: `${SITE_URL}/blog` },
-        ]}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "Blog", item: `${SITE_URL}/blog` },
+          ]),
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",

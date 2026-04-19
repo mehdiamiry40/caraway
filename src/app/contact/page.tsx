@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Contact from "@/views/Contact";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 
@@ -24,14 +24,12 @@ export default function ContactPage() {
   const canonical = `${SITE_URL}/contact`;
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "Contact Us", item: canonical },
-        ]}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "Contact Us", item: canonical },
+          ]),
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
