@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { GetMyQuoteButton } from "./GetMyQuoteButton";
+import { HeaderFrame } from "./HeaderFrame";
 
 const navLinks = [
   { label: "Locations", href: "/locations" },
@@ -19,11 +20,15 @@ export function Header() {
   }));
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe bg-background/85 backdrop-blur-xl border-b border-border/70 shadow-[0_16px_40px_-34px_hsl(var(--shadow-color)/0.45)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[68px] gap-2 sm:gap-4 lg:gap-6">
-        <Link href="/" aria-label="Caraway — Home" className="flex items-center gap-2 group shrink-0">
-          <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
-            caraway<span className="text-accent">.</span>
+    <HeaderFrame>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[72px] gap-2 sm:gap-4 lg:gap-6">
+        <Link
+          href="/"
+          aria-label="Caraway — Home"
+          className="flex items-center gap-2 group shrink-0"
+        >
+          <span className="font-display font-semibold text-xl sm:text-[1.375rem] tracking-[-0.02em] text-foreground lowercase transition-opacity duration-200 group-hover:opacity-80">
+            caraway<span className="text-primary">.</span>
           </span>
         </Link>
 
@@ -37,7 +42,7 @@ export function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 px-3.5 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="link-underline text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 px-3 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {link.label}
             </Link>
@@ -52,6 +57,6 @@ export function Header() {
         {/* Mobile: phone icon + Quote button + hamburger + drawer */}
         <MobileMenuClient serviceLinks={serviceLinks} />
       </div>
-    </header>
+    </HeaderFrame>
   );
 }
