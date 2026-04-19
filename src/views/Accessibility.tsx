@@ -12,8 +12,8 @@ export default function Accessibility() {
       title="Accessibility at Caraway"
       subtitle={<p>We&apos;re committed to making our website usable by everyone, including people with disabilities.</p>}
     >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
-        <div className="prose-body">
+      <div className="site-container py-14 sm:py-20 lg:py-28">
+        <div className="prose-body max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Our commitment</h2>
           <p>
             We aim to conform to <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>.

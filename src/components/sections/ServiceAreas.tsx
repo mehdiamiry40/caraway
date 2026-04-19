@@ -78,7 +78,7 @@ export function ServiceAreas() {
       className="section-y bg-secondary/50 border-t border-b border-border/60"
       aria-label="Cash for cars service areas Brisbane"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <Reveal className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">

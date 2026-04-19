@@ -30,7 +30,7 @@ export default function About() {
         </p>
       }
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+      <div className="site-container py-14 sm:py-20 lg:py-24">
         <div className="max-w-3xl space-y-14 sm:space-y-16">
           <Reveal>
             <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>

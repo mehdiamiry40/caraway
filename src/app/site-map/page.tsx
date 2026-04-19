@@ -72,7 +72,7 @@ export default function SiteMapPage() {
         title="Sitemap"
         subtitle={<p>Every page on caraway.au — use this to quickly jump to any section.</p>}
       >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 space-y-12">
+      <div className="site-container py-12 sm:py-16 lg:py-20 space-y-12">
         <section>
           <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Services</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">

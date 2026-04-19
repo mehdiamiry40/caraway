@@ -21,7 +21,7 @@ export default function Locations() {
         </p>
       }
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+      <div className="site-container py-14 sm:py-20 lg:py-24">
         <LocationsFilter />
 
         <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">

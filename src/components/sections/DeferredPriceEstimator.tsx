@@ -30,7 +30,7 @@ export function DeferredPriceEstimator() {
         <PriceEstimator />
       ) : (
         <section className="section-y bg-secondary/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="site-container">
             <div className="text-center mb-8 sm:mb-12">
               <Skeleton className="h-10 w-80 mx-auto mb-3" />
               <Skeleton className="h-5 w-96 max-w-full mx-auto" />

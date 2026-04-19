@@ -8,13 +8,13 @@ export default function LocationLoading() {
       <Header />
       <main id="main-content" className="flex-1 mt-header-safe">
         <section className="bg-primary py-16 lg:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="site-container">
             <Skeleton className="h-4 w-48 bg-primary-foreground/10 mb-4" />
             <Skeleton className="h-12 w-full max-w-xl bg-primary-foreground/10 mb-4" />
             <Skeleton className="h-5 w-full max-w-2xl bg-primary-foreground/10" />
           </div>
         </section>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-6">
+        <div className="site-container py-16 space-y-6">
           <Skeleton className="h-5 w-full" />
           <Skeleton className="h-5 w-5/6" />
           <Skeleton className="h-5 w-full" />

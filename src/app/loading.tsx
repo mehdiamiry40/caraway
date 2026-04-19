@@ -30,7 +30,7 @@ export default function Loading() {
 
           {/* Stats skeleton */}
           <section className="bg-muted border-b border-border/40">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
+            <div className="site-container py-8 sm:py-14">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 lg:gap-6">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="flex flex-col items-center sm:flex-row sm:items-start gap-4">

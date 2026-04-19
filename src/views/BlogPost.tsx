@@ -92,8 +92,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           </div>
         }
       >
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
-          <article className="contents">
+        <div className="site-container py-14 sm:py-20 lg:py-28">
+          <article className="mx-auto max-w-3xl">
             <header className="mb-10 pb-8 border-b border-border/50">
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-[65ch]">
                 {post.excerpt}

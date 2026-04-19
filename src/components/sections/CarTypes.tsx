@@ -21,7 +21,7 @@ const alsoAccepted = [
 export function CarTypes() {
   return (
     <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
             What Cars We Buy in Brisbane

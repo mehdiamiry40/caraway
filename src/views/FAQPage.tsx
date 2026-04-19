@@ -25,8 +25,9 @@ export default function FAQPage() {
         </p>
       }
     >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 space-y-14 sm:space-y-16">
-        {faqCategories.map((category, idx) => (
+      <div className="site-container py-14 sm:py-20 lg:py-24">
+        <div className="max-w-3xl space-y-14 sm:space-y-16">
+          {faqCategories.map((category, idx) => (
           <div key={category.category}>
             <div className="flex items-baseline gap-3 mb-6">
               <span className="font-mono text-xs font-medium tabular-nums tracking-[0.1em] text-primary">
@@ -73,6 +74,7 @@ export default function FAQPage() {
               Contact us
             </Link>
           </div>
+        </div>
         </div>
       </div>
     </PageShell>

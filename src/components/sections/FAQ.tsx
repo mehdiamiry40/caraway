@@ -14,7 +14,7 @@ export function FAQ() {
       className="section-y bg-background"
       aria-label="Frequently asked questions"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
             <p className="eyebrow mb-5">FAQ</p>

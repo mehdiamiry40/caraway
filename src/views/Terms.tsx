@@ -18,8 +18,8 @@ export default function Terms() {
         </p>
       }
     >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28">
-        <div className="prose-body">
+      <div className="site-container py-14 sm:py-20 lg:py-28">
+        <div className="prose-body max-w-3xl">
           <section>
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Agreement</h2>
             <p>

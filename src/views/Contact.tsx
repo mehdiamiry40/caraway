@@ -22,7 +22,7 @@ export default function Contact() {
         </p>
       }
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+      <div className="site-container py-14 sm:py-20 lg:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14">
           <div className="space-y-10">
             <div>

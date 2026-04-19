@@ -11,14 +11,14 @@ export default function CategoryLoading() {
           <span className="sr-only">Loading articles…</span>
 
           <section className="bg-primary py-16 lg:py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="site-container">
               <Skeleton className="h-4 w-40 bg-primary-foreground/10 mb-4" />
               <Skeleton className="h-12 w-full max-w-xl bg-primary-foreground/10 mb-4" />
               <Skeleton className="h-5 w-full max-w-2xl bg-primary-foreground/10" />
             </div>
           </section>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+          <div className="site-container py-14 sm:py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="rounded-lg border border-border/60 bg-card p-4 sm:p-6 md:p-8">
