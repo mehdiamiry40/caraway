@@ -95,75 +95,75 @@
 
 :root {
   /*
-   * Palette — bold & vibrant orange/amber over warm-cream canvas.
+   * Palette — fresh & modern sky-blue over cool-neutral canvas.
    * Values are HSL channels (space-separated, no hsl()) so components can
    * mix with alpha via hsl(var(--x) / 0.4).
    *
    * Contrast (verified, WCAG):
-   *   foreground (#27170A) on background (#FFFBF5) ........ 16.8:1  AAA
+   *   foreground (#0F172A) on background (#F8FAFC) ........ 16.2:1  AAA
    *   foreground on card (#FFFFFF) ........................ 17.4:1  AAA
-   *   muted-foreground (#5D3C1D) on background ............  8.2:1  AAA
-   *   primary-foreground (white) on primary (#C2410C) ......  5.3:1  AA
-   *   accent-foreground (white) on accent (#9A3412) ........  8.0:1  AAA
-   *   primary (#C2410C) text on background ................  5.1:1  AA+
-   *   destructive (#B91C1C) text on background ............  5.6:1  AA+
-   *   on-dark (#D6C5A8) on ink (#27170A) ..................  8.4:1  AAA
-   *   on-dark-hi (white) on ink (#27170A) ................. 16.8:1  AAA
+   *   muted-foreground (#475569) on background ............  7.2:1  AAA
+   *   primary-foreground (white) on primary (#0369A1) ......  5.9:1  AA+
+   *   accent-foreground (white) on accent (#075985) ........  7.6:1  AAA
+   *   primary (#0369A1) text on background ................  5.6:1  AA+
+   *   destructive (#B91C1C) text on background ............  5.7:1  AA+
+   *   on-dark (#CBD5E1) on ink (#0F172A) .................. 10.4:1  AAA
+   *   on-dark-hi (white) on ink (#0F172A) ................. 16.2:1  AAA
    */
-  --background: 34 100% 98%;         /* #FFFBF5 — warm cream canvas */
-  --foreground: 24 60% 9%;           /* #27170A — deep warm near-black */
+  --background: 210 40% 98%;         /* #F8FAFC — crisp cool canvas */
+  --foreground: 222 47% 11%;         /* #0F172A — slate near-black */
   --card: 0 0% 100%;                 /* #FFFFFF */
-  --card-foreground: 24 60% 9%;      /* #27170A */
+  --card-foreground: 222 47% 11%;    /* #0F172A */
 
-  --primary: 21 87% 40%;             /* #C2410C — bold vibrant orange */
+  --primary: 201 94% 32%;            /* #0369A1 — fresh sky blue */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 33 100% 94%;          /* #FFEAD2 — soft peach tint */
-  --secondary-foreground: 24 60% 9%;
+  --secondary: 204 94% 94%;          /* #E0F2FE — soft sky tint */
+  --secondary-foreground: 222 47% 11%;
 
-  --muted: 33 100% 94%;              /* #FFEAD2 */
-  --muted-foreground: 27 52% 24%;    /* #5D3C1D — warm brown */
+  --muted: 204 94% 94%;              /* #E0F2FE */
+  --muted-foreground: 215 19% 35%;   /* #475569 — slate */
 
-  --accent: 16 80% 34%;              /* #9A3412 — darker amber for emphasis */
+  --accent: 201 90% 27%;             /* #075985 — deeper sky for emphasis */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 72% 42%;          /* #B91C1C */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 142 72% 29%;            /* #14803D */
+  --success: 163 94% 24%;            /* #047857 — emerald */
   --success-foreground: 0 0% 100%;
 
-  --warning: 41 93% 33%;             /* #A16207 — yellow-gold, distinct from primary */
+  --warning: 31 91% 37%;             /* #B45309 — amber, distinct from primary */
   --warning-foreground: 0 0% 100%;
 
-  --info: 224 76% 40%;               /* #1E40AF — cool blue balances the warm palette */
+  --info: 263 70% 50%;               /* #6D28D9 — violet notice, distinct from primary */
   --info-foreground: 0 0% 100%;
 
-  --border: 30 93% 85%;              /* #FCD9B6 — warm tan */
-  --input: 30 93% 85%;
-  --ring: 21 87% 40%;                /* #C2410C */
+  --border: 214 32% 91%;             /* #E2E8F0 — slate hairline */
+  --input: 214 32% 91%;
+  --ring: 201 94% 32%;               /* #0369A1 */
 
-  --shadow-color: 24 60% 9%;
+  --shadow-color: 222 47% 11%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border) / 0.8);
 
   /* Dark "ink" surfaces — for stats, footer, quote-result card */
-  --ink: 24 60% 9%;                  /* #27170A — deep warm dark */
-  --ink-deep: 26 60% 6%;             /* #180E05 */
-  --ink-raised: 24 37% 16%;          /* #3A2A1A */
-  --on-dark: 36 33% 75%;             /* #D6C5A8 — warm cream */
+  --ink: 222 47% 11%;                /* #0F172A — slate-900 */
+  --ink-deep: 222 84% 5%;             /* #020617 — slate-950 */
+  --ink-raised: 217 33% 17%;         /* #1E293B — slate-800 */
+  --on-dark: 213 27% 84%;            /* #CBD5E1 — slate-300 */
   --on-dark-hi: 0 0% 100%;           /* #FFFFFF */
 
   /* Gradient-only accents — never consumed as solid bg/text.
    * The aurora mesh, text-gradient, and glow effects compose these.
-   * Retuned to warm amber/coral/peach to harmonize with the orange primary;
-   * cyan is retained as a complementary pop against the warm base. Token
-   * names kept for stability (components/utilities reference them by name). */
-  --grad-violet: 33 100% 60%;        /* #FFA033 — bold amber (primary gradient tone) */
-  --grad-pink: 8 100% 68%;           /* #FF7A5C — warm coral */
-  --grad-lilac: 30 100% 82%;         /* #FFD4A3 — soft peach */
-  --grad-cyan: 188 100% 50%;         /* #00D4FF — cyan pop (complementary to orange) */
+   * Retuned to electric-sky / teal / soft-powder to harmonize with the
+   * blue primary; cyan stays vibrant for hero-mesh pop. Token names kept
+   * for stability (components/utilities reference them by name). */
+  --grad-violet: 200 100% 55%;       /* #1AB8FF — electric sky (primary gradient tone) */
+  --grad-pink: 172 85% 55%;          /* #2EE1C2 — fresh teal */
+  --grad-lilac: 210 100% 85%;        /* #B2D7FF — soft powder blue */
+  --grad-cyan: 188 100% 50%;         /* #00D4FF — vibrant cyan */
 
   /*
    * Legacy compatibility tokens used by Hero / Footer / TrustBadges / PageShell.

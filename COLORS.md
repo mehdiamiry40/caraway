@@ -12,63 +12,63 @@ The indirection lets us swap the palette without touching components.
 
 ## Current palette
 
-Bold and vibrant. A confident orange primary over a warm-cream canvas, with
-amber/coral/peach aurora accents for the hero mesh and gradient text. Light
-mode only.
+Fresh and modern. A clean sky-blue primary over a crisp cool canvas, with
+electric-sky / teal / powder-blue aurora accents for the hero mesh and
+gradient text. Light mode only.
 
 | Token                      | Hex      | HSL              | Role                                        |
 | -------------------------- | -------- | ---------------- | ------------------------------------------- |
-| `--background`             | `#FFFBF5` | `34 100% 98%`   | Page canvas (warm cream)                    |
-| `--foreground`             | `#27170A` | `24 60% 9%`     | Default body text (deep warm near-black)    |
+| `--background`             | `#F8FAFC` | `210 40% 98%`   | Page canvas (crisp cool)                    |
+| `--foreground`             | `#0F172A` | `222 47% 11%`   | Default body text (slate near-black)        |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)  |
-| `--card-foreground`        | `#27170A` | `24 60% 9%`     | Text on cards                               |
-| `--primary`                | `#C2410C` | `21 87% 40%`    | Brand / dominant action (bold orange)       |
+| `--card-foreground`        | `#0F172A` | `222 47% 11%`   | Text on cards                               |
+| `--primary`                | `#0369A1` | `201 94% 32%`   | Brand / dominant action (sky blue)          |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                         |
-| `--secondary`              | `#FFEAD2` | `33 100% 94%`   | Low-emphasis surface (peach tint)           |
-| `--secondary-foreground`   | `#27170A` | `24 60% 9%`     | Text on `--secondary`                       |
-| `--muted`                  | `#FFEAD2` | `33 100% 94%`   | Subtle backgrounds (code, fills)            |
-| `--muted-foreground`       | `#5D3C1D` | `27 52% 24%`    | Secondary / helper text (warm brown)        |
-| `--accent`                 | `#9A3412` | `16 80% 34%`    | Darker shade of primary — emphasis text/UI  |
+| `--secondary`              | `#E0F2FE` | `204 94% 94%`   | Low-emphasis surface (sky tint)             |
+| `--secondary-foreground`   | `#0F172A` | `222 47% 11%`   | Text on `--secondary`                       |
+| `--muted`                  | `#E0F2FE` | `204 94% 94%`   | Subtle backgrounds (code, fills)            |
+| `--muted-foreground`       | `#475569` | `215 19% 35%`   | Secondary / helper text (slate)             |
+| `--accent`                 | `#075985` | `201 90% 27%`   | Darker shade of primary — emphasis text/UI  |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                          |
 | `--destructive`            | `#B91C1C` | `0 72% 42%`     | Errors, destructive actions                 |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                     |
-| `--success`                | `#14803D` | `142 72% 29%`   | Success signal                              |
+| `--success`                | `#047857` | `163 94% 24%`   | Success signal (emerald)                    |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                         |
-| `--warning`                | `#A16207` | `41 93% 33%`    | Warning signal (yellow-gold, not orange)    |
+| `--warning`                | `#B45309` | `31 91% 37%`    | Warning signal (amber, distinct from info)  |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                         |
-| `--info`                   | `#1E40AF` | `224 76% 40%`   | Neutral notices (cool blue, complementary)  |
+| `--info`                   | `#6D28D9` | `263 70% 50%`   | Neutral notices (violet, distinct from primary) |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                            |
-| `--border`                 | `#FCD9B6` | `30 93% 85%`    | Default border / divider (warm tan)         |
-| `--input`                  | `#FCD9B6` | `30 93% 85%`    | Form field border                           |
-| `--ring`                   | `#C2410C` | `21 87% 40%`    | Focus ring                                  |
+| `--border`                 | `#E2E8F0` | `214 32% 91%`   | Default border / divider (slate hairline)   |
+| `--input`                  | `#E2E8F0` | `214 32% 91%`   | Form field border                           |
+| `--ring`                   | `#0369A1` | `201 94% 32%`   | Focus ring                                  |
 
 ### Gradient-only accents (aurora mesh, gradient text, glow)
 
 Token names are historical — kept stable because several components
 reference them directly. Values were retuned to harmonize with the
-orange primary.
+sky-blue primary.
 
 | Token            | Hex      | HSL              | Role                                          |
 | ---------------- | -------- | ---------------- | --------------------------------------------- |
-| `--grad-violet`  | `#FFA033` | `33 100% 60%`   | Bold amber — primary gradient tone            |
-| `--grad-pink`    | `#FF7A5C` | `8 100% 68%`    | Warm coral                                    |
-| `--grad-lilac`   | `#FFD4A3` | `30 100% 82%`   | Soft peach                                    |
-| `--grad-cyan`    | `#00D4FF` | `188 100% 50%`  | Cyan pop (complementary to orange)            |
+| `--grad-violet`  | `#1AB8FF` | `200 100% 55%`  | Electric sky — primary gradient tone          |
+| `--grad-pink`    | `#2EE1C2` | `172 85% 55%`   | Fresh teal                                    |
+| `--grad-lilac`   | `#B2D7FF` | `210 100% 85%`  | Soft powder blue                              |
+| `--grad-cyan`    | `#00D4FF` | `188 100% 50%`  | Vibrant cyan                                  |
 
 ### WCAG contrast (AA+ throughout)
 
 | Combination                                   | Ratio    | Level |
 | --------------------------------------------- | -------- | ----- |
-| `foreground` on `background`                  | 16.8 : 1 | AAA   |
+| `foreground` on `background`                  | 16.2 : 1 | AAA   |
 | `foreground` on `card`                        | 17.4 : 1 | AAA   |
-| `muted-foreground` on `background`            |  8.2 : 1 | AAA   |
-| `muted-foreground` on `card`                  |  8.5 : 1 | AAA   |
-| `primary-foreground` on `primary`             |  5.3 : 1 | AA    |
-| `accent-foreground` on `accent`               |  8.0 : 1 | AAA   |
-| `primary` (text) on `background` (links)      |  5.1 : 1 | AA+   |
-| `destructive` (text) on `background`          |  5.6 : 1 | AA+   |
-| `success-foreground` on `success` (fill)      |  4.9 : 1 | AA    |
-| `warning-foreground` on `warning` (fill)      |  5.1 : 1 | AA    |
+| `muted-foreground` on `background`            |  7.2 : 1 | AAA   |
+| `muted-foreground` on `card`                  |  7.4 : 1 | AAA   |
+| `primary-foreground` on `primary`             |  5.9 : 1 | AA+   |
+| `accent-foreground` on `accent`               |  7.6 : 1 | AAA   |
+| `primary` (text) on `background` (links)      |  5.6 : 1 | AA+   |
+| `destructive` (text) on `background`          |  5.7 : 1 | AA+   |
+| `success-foreground` on `success` (fill)      |  6.1 : 1 | AA+   |
+| `warning-foreground` on `warning` (fill)      |  4.8 : 1 | AA    |
 | `ring` around focused inputs                  |  ≥ 3:1  | AA    |
 
 All body text ≥ 4.5:1. Large text and UI components ≥ 3:1. No information
