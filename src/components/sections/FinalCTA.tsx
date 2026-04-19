@@ -19,13 +19,13 @@ export function FinalCTA() {
         <Reveal className="max-w-4xl mx-auto text-center">
           <p className="eyebrow-on-dark mb-5">Ready when you are</p>
           <h2
-            className="font-display text-3xl sm:text-4xl md:text-[3rem] font-semibold text-on-dark-hi leading-[1.05] tracking-[var(--tracking-display)] text-balance"
+            className="font-display text-3xl sm:text-4xl md:text-[3rem] font-bold text-on-dark-hi leading-[1.05] tracking-[var(--tracking-display)] text-balance"
           >
             Ready to see what
             <br />
             your car is <span className="text-gradient">worth?</span>
           </h2>
-          <p className="mt-5 mx-auto max-w-xl text-on-dark leading-relaxed text-base sm:text-lg">
+          <p className="mt-5 mx-auto max-w-xl text-on-dark-hi/90 leading-relaxed text-base sm:text-lg">
             One form. Honest price. Free pickup across Greater Brisbane.
             Cash on the spot — usually same- or next-day.
           </p>
@@ -48,7 +48,7 @@ export function FinalCTA() {
             <TrackedPhoneLink
               href={BUSINESS.phoneHref}
               location="final_cta"
-              className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 w-full sm:w-auto px-6 text-sm font-medium text-on-dark-hi/90 hover:text-on-dark-hi rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 w-full sm:w-auto px-6 text-sm font-semibold text-on-dark-hi hover:text-on-dark-hi rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
             >
               <Phone aria-hidden="true" className="h-4 w-4" />

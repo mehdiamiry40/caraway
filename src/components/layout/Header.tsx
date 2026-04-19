@@ -27,7 +27,7 @@ export function Header() {
           aria-label="Caraway — Home"
           className="flex items-center gap-2 group shrink-0"
         >
-          <span className="font-display font-semibold text-xl sm:text-[1.375rem] tracking-[-0.02em] text-foreground lowercase transition-opacity duration-200 group-hover:opacity-80">
+          <span className="font-display font-bold text-xl sm:text-[1.375rem] tracking-[-0.02em] text-foreground lowercase transition-opacity duration-200 group-hover:opacity-80">
             caraway<span className="text-primary">.</span>
           </span>
         </Link>
@@ -42,7 +42,7 @@ export function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="link-underline text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 px-3 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="link-underline text-[0.9375rem] font-semibold text-foreground/75 hover:text-foreground transition-colors duration-200 px-3 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {link.label}
             </Link>

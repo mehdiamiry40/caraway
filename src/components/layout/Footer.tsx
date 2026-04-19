@@ -40,10 +40,10 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-on-dark/90 hover:text-on-dark-hi transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
+  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-display font-semibold text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)]";
+  "font-display font-bold text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)] uppercase";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -57,12 +57,12 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-semibold text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-bold text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">caraway</span>
               <span className="text-gradient">.</span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm text-on-dark leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm text-on-dark-hi/85 leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
             </p>
 
@@ -70,7 +70,7 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
                 location="footer"
-                className="inline-flex items-center gap-2 font-medium text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                className="inline-flex items-center gap-2 font-bold text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-[hsl(var(--grad-lilac))]" />
@@ -78,15 +78,15 @@ export function Footer() {
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-on-dark hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                className="flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <p className="text-on-dark">
-                <span className="font-medium text-on-dark-hi">{BUSINESS.hours}</span> · seven days
+              <p className="text-on-dark-hi/85">
+                <span className="font-bold text-on-dark-hi">{BUSINESS.hours}</span> · seven days
               </p>
-              <address className="not-italic text-on-dark leading-snug">
+              <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
             </div>
@@ -130,8 +130,8 @@ export function Footer() {
         </div>
 
         {/* Official references */}
-        <div className="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark/70">
-          <span className="font-medium text-on-dark-hi">Official references:</span>
+        <div className="mt-14 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark-hi/80">
+          <span className="font-bold text-on-dark-hi">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map((item) => (
             <TrackedOutboundLink
               key={item.href}
@@ -147,8 +147,8 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-white/10 pb-safe">
-        <div className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark/70">
+      <div className="border-t border-white/20 pb-safe">
+        <div className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark-hi/80 font-medium">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             {legalLinks.map((link) => (

@@ -67,14 +67,14 @@ export function Stats() {
   });
 
   return (
-    <section ref={ref} className="relative bg-muted border-b border-border/40" aria-label="What to expect">
+    <section ref={ref} className="relative bg-muted border-y border-border" aria-label="What to expect">
       <div className="site-container py-8 sm:py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, index) => (
             <StatItem key={stat.label} stat={stat} index={index} inView={inView} />
           ))}
         </div>
-        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border/60 text-center text-xs sm:text-sm text-muted-foreground text-balance">
+        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
             Seller stories on this page are shared with permission and are not a full survey of every pickup.
@@ -100,8 +100,8 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
       {index > 0 && (
         <div className="hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
       )}
-      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-card border border-border/60 group-hover:border-primary/30 transition-colors duration-300">
-        <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" />
+      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-card border border-border group-hover:border-primary/50 transition-colors duration-300">
+        <Icon className="h-5 w-5 text-primary" strokeWidth={2} aria-hidden="true" />
       </div>
       <div className="min-w-0">
         <p
@@ -111,7 +111,7 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
         >
           {displayValue}
         </p>
-        <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-snug text-balance">
+        <p className="text-xs sm:text-sm text-foreground/75 mt-1 leading-snug text-balance font-medium">
           {stat.label}
         </p>
       </div>
