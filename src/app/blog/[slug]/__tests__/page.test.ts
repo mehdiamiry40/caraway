@@ -115,23 +115,23 @@ describe("generateMetadata (blog post route)", () => {
   });
 
   describe("buildBlogPostSeoProps (BlogPosting schema)", () => {
-    it("returns articleProps, breadcrumbItems, wordCount, and plainContent", () => {
+    it("returns articleSchema, breadcrumbItems, wordCount, and plainContent", () => {
       const result = buildBlogPostSeoProps(indexablePost!);
-      expect(result.articleProps).toBeDefined();
+      expect(result.articleSchema).toBeDefined();
       expect(result.breadcrumbItems).toBeDefined();
       expect(result.wordCount).toBeDefined();
       expect(result.plainContent).toBeDefined();
       expect(result.breadcrumbItems).toHaveLength(3);
     });
 
-    it("populates articleProps with headline, dates, canonical url and author", () => {
-      const { articleProps } = buildBlogPostSeoProps(indexablePost!);
-      expect(articleProps.headline).toBe(indexablePost!.title);
-      expect(articleProps.datePublished).toBe(indexablePost!.date);
-      expect(articleProps.dateModified).toBe(indexablePost!.updatedAt);
-      expect(articleProps.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
-      expect(articleProps.isAccessibleForFree).toBe(true);
-      const author = articleProps.author as { name: string; url: string };
+    it("populates articleSchema with headline, dates, canonical url and author", () => {
+      const { articleSchema } = buildBlogPostSeoProps(indexablePost!);
+      expect(articleSchema.headline).toBe(indexablePost!.title);
+      expect(articleSchema.datePublished).toBe(indexablePost!.date);
+      expect(articleSchema.dateModified).toBe(indexablePost!.updatedAt);
+      expect(articleSchema.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
+      expect(articleSchema.isAccessibleForFree).toBe(true);
+      const author = articleSchema.author as { name: string; url: string };
       expect(author.name).toBe("Sam Williams");
       expect(author.url).toBe(`${SITE_URL}/author/sam-williams`);
     });

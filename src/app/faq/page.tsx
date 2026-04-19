@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { FAQJsonLd, BreadcrumbJsonLd } from "next-seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
 import FAQPage from "@/views/FAQPage";
 import { allFaqs } from "@/lib/faq-data";
 import { SITE_URL } from "@/lib/site";
@@ -23,17 +24,14 @@ export const metadata: Metadata = {
 export default function FaqRoutePage() {
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "FAQ", item: `${SITE_URL}/faq` },
+      <JsonLd
+        data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "FAQ", item: `${SITE_URL}/faq` },
+          ]),
+          faqPageSchema(allFaqs),
         ]}
-      />
-      <FAQJsonLd
-        questions={allFaqs.map((faq) => ({
-          name: faq.question,
-          acceptedAnswer: faq.answer,
-        }))}
       />
       <FAQPage />
     </>

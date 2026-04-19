@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import SuburbPageTemplate from "@/components/templates/SuburbPageTemplate";
 import { reviews } from "@/data/reviews";
 import { getSuburbBySlug, suburbs } from "@/data/suburbs";
@@ -50,15 +50,13 @@ export default async function SuburbSlugPage({ params }: Props) {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "Locations", item: `${SITE_URL}/locations` },
-          { name: suburb.h1, item: canonicalUrl },
-        ]}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "Locations", item: `${SITE_URL}/locations` },
+            { name: suburb.h1, item: canonicalUrl },
+          ]),
           {
             "@type": "Service",
             name: `Cash for Cars ${areaName}`,

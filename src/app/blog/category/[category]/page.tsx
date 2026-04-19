@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { BreadcrumbJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { PageShell } from "@/components/layout/PageShell";
 import {
   categoryMap,
@@ -68,15 +68,13 @@ export default async function BlogCategoryPage({ params }: Props) {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "Blog", item: `${SITE_URL}/blog` },
-          { name: label, item: canonical },
-        ]}
-      />
       <JsonLd
         data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "Blog", item: `${SITE_URL}/blog` },
+            { name: label, item: canonical },
+          ]),
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",

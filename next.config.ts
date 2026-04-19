@@ -18,6 +18,50 @@ const nextConfig: NextConfig = {
     // optimizeCss removed: critters is abandoned upstream and breaks builds.
     optimizePackageImports: ["lucide-react"],
   },
+  // Replace Next.js's polyfill-module with an empty shim in client builds.
+  // It patches Array.prototype.at/flat/flatMap, Object.fromEntries/hasOwn,
+  // String.prototype.trimStart/trimEnd, Promise.prototype.finally, and
+  // URL.canParse — all natively supported by every browser in our
+  // browserslist target (last 2 Chrome/Firefox/Safari/Edge). Next.js loads
+  // the polyfill via a relative `require`, so resolve.alias on the package
+  // path doesn't match; NormalModuleReplacementPlugin matches on the
+  // resolved path instead. Shaves the ~12 KiB of "Legacy JavaScript" that
+  // Lighthouse flagged.
+  webpack: (config, { isServer, dev, webpack }) => {
+    if (!isServer) {
+      const noop = path.resolve(__dirname, "scripts/noop-polyfill.js");
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /next[\\/]dist[\\/]build[\\/]polyfills[\\/]polyfill-module/,
+          noop,
+        ),
+      );
+      // Strip Next.js dev-overlay from production client chunks. Next.js's
+      // app-globals.js and app-index.js both `require('../next-devtools/
+      // userspace/app/...')` inside `if (process.env.NODE_ENV !==
+      // 'production')` guards — but webpack still bundles CommonJS
+      // `require()` calls even in dead branches, dragging in DevOverlay,
+      // segmentExplorer, anser, strip-ansi, stacktrace-parser and the
+      // /__nextjs_* dev endpoints (~800 KB uncompressed in ed9f2dc4-*.js,
+      // ~210 KB gzipped). Matches both next/dist/next-devtools/ and
+      // next/dist/esm/next-devtools/ (Next.js aliases dist→esm on the
+      // client) plus the pre-bundled next/dist/compiled/next-devtools/.
+      // Guarded by !dev so local dev keeps the overlay.
+      if (!dev) {
+        config.plugins.push(
+          new webpack.NormalModuleReplacementPlugin(
+            /next[\\/]dist[\\/](esm[\\/])?next-devtools[\\/]/,
+            noop,
+          ),
+          new webpack.NormalModuleReplacementPlugin(
+            /next[\\/]dist[\\/]compiled[\\/]next-devtools[\\/]/,
+            noop,
+          ),
+        );
+      }
+    }
+    return config;
+  },
   headers: async () => [
     {
       source: "/(.*)",
