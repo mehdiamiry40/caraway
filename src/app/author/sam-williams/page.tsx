@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ProfilePageJsonLd, BreadcrumbJsonLd } from "next-seo";
+import { JsonLd } from "@/components/JsonLd";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { PageShell } from "@/components/layout/PageShell";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { SITE_URL, BUSINESS } from "@/lib/site";
@@ -46,23 +47,28 @@ export default function AuthorPage() {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", item: `${SITE_URL}/` },
-          { name: "Blog", item: `${SITE_URL}/blog` },
-          { name: AUTHOR.name, item: canonical },
+      <JsonLd
+        data={[
+          breadcrumbListSchema([
+            { name: "Home", item: `${SITE_URL}/` },
+            { name: "Blog", item: `${SITE_URL}/blog` },
+            { name: AUTHOR.name, item: canonical },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            dateCreated: "2025-01-01",
+            dateModified: new Date().toISOString().split("T")[0],
+            mainEntity: {
+              "@type": "Person",
+              name: AUTHOR.name,
+              url: `${SITE_URL}/author/sam-williams`,
+              description: AUTHOR.bio,
+              image: `${SITE_URL}/images/logo.webp`,
+              sameAs: [`${SITE_URL}/author/sam-williams`],
+            },
+          },
         ]}
-      />
-      <ProfilePageJsonLd
-        dateCreated="2025-01-01"
-        dateModified={new Date().toISOString().split("T")[0]}
-        mainEntity={{
-          name: AUTHOR.name,
-          url: `${SITE_URL}/author/sam-williams`,
-          description: AUTHOR.bio,
-          image: `${SITE_URL}/images/logo.webp`,
-          sameAs: `${SITE_URL}/author/sam-williams`,
-        }}
       />
       <PageShell
         breadcrumbs={breadcrumbs}

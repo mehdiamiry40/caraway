@@ -1,6 +1,5 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import type { LocalBusinessJsonLdProps, OrganizationJsonLdProps } from "next-seo";
 import { SITE_URL, BUSINESS } from "@/lib/site";
 import { reviews } from "@/data/reviews";
 
@@ -199,68 +198,84 @@ export const websiteSchema = {
   // does not support a ?q= query parameter.
 };
 
-/* ---------- next-seo component props ---------- */
+/* ---------- Schema builders for call sites ---------- */
 
-export const localBusinessJsonLdProps: LocalBusinessJsonLdProps = {
-  type: ["LocalBusiness", "AutomotiveBusiness"],
-  name: NAP.name,
-  description:
-    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call 0481 438 444.",
-  url: SITE_URL,
-  telephone: NAP.phone,
-  email: NAP.email,
-  address: {
-    streetAddress: NAP.streetAddress,
-    addressLocality: NAP.addressLocality,
-    addressRegion: NAP.addressRegion,
-    postalCode: NAP.postalCode,
-    addressCountry: NAP.addressCountry,
-  },
-  geo: {
-    latitude: NAP.latitude,
-    longitude: NAP.longitude,
-  },
-  image: `${SITE_URL}/images/tow-truck-hero.webp`,
-  priceRange: "$$",
-  currenciesAccepted: "AUD",
-  paymentAccepted: "Cash, Bank Transfer",
-  openingHoursSpecification: {
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    opens: "07:00",
-    closes: "19:00",
-  },
-  aggregateRating: {
-    ratingValue,
-    reviewCount: reviews.length,
-    bestRating: 5,
-    worstRating: 1,
-  },
-  areaServed: ["Brisbane", "Ipswich", "Logan", "Redland Bay", "Moreton Bay"],
-  slogan: "Cash for cars Brisbane — paid on pickup, free towing, any condition.",
-  sameAs: SAME_AS,
-};
+export function breadcrumbListSchema(
+  items: Array<{ name: string; item: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: it.item,
+    })),
+  };
+}
 
-export const organizationJsonLdProps: OrganizationJsonLdProps = {
-  type: "Organization",
-  name: NAP.name,
-  legalName: BUSINESS.legalName,
-  taxID: BUSINESS.abn,
-  foundingDate: String(BUSINESS.foundingYear),
-  url: SITE_URL,
-  logo: `${SITE_URL}/images/logo.webp`,
-  telephone: NAP.phone,
-  email: NAP.email,
-  contactPoint: {
-    contactType: "customer service",
-    telephone: NAP.phone,
-    email: NAP.email,
-  },
-  address: {
-    streetAddress: NAP.streetAddress,
-    addressLocality: NAP.addressLocality,
-    addressRegion: NAP.addressRegion,
-    postalCode: NAP.postalCode,
-    addressCountry: NAP.addressCountry,
-  },
-  sameAs: SAME_AS,
-};
+export function faqPageSchema(
+  faqs: Array<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+}
+
+type HowToStep = { name: string; text: string; url?: string };
+
+export function howToSchema(params: {
+  name: string;
+  description: string;
+  totalTime?: string;
+  estimatedCost?: { currency: string; value: string };
+  steps: HowToStep[];
+  supply?: string[];
+  tool?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: params.name,
+    description: params.description,
+    ...(params.totalTime ? { totalTime: params.totalTime } : {}),
+    ...(params.estimatedCost
+      ? {
+          estimatedCost: {
+            "@type": "MonetaryAmount",
+            currency: params.estimatedCost.currency,
+            value: params.estimatedCost.value,
+          },
+        }
+      : {}),
+    step: params.steps.map((s) => ({
+      "@type": "HowToStep",
+      name: s.name,
+      text: s.text,
+      ...(s.url ? { url: s.url } : {}),
+    })),
+    ...(params.supply
+      ? {
+          supply: params.supply.map((name) => ({
+            "@type": "HowToSupply",
+            name,
+          })),
+        }
+      : {}),
+    ...(params.tool
+      ? {
+          tool: params.tool.map((name) => ({
+            "@type": "HowToTool",
+            name,
+          })),
+        }
+      : {}),
+  };
+}

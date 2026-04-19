@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ArticleJsonLdProps } from "next-seo";
 import { blogPosts, calcWordCount, type BlogPost } from "@/data/blog-posts";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
@@ -84,22 +83,29 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     .trim();
   const wordCount = calcWordCount(plainContent);
 
-  const articleProps: ArticleJsonLdProps = {
-    type: "BlogPosting",
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     url: canonical,
+    mainEntityOfPage: canonical,
     headline: post.title,
     description: post.metaDescription,
     datePublished: post.date,
     dateModified: post.updatedAt,
     image: `${SITE_URL}/images/tow-truck-hero.webp`,
     author: {
+      "@type": "Person",
       name: "Sam Williams",
       url: `${SITE_URL}/author/sam-williams`,
     },
     publisher: {
+      "@type": "Organization",
       name: publisherSchema.name,
       url: publisherSchema.url,
-      logo: (publisherSchema.logo as { url: string }).url,
+      logo: {
+        "@type": "ImageObject",
+        url: (publisherSchema.logo as { url: string }).url,
+      },
     },
     isAccessibleForFree: true,
   };
@@ -110,5 +116,5 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     { name: post.title, item: canonical },
   ];
 
-  return { articleProps, breadcrumbItems, wordCount, plainContent };
+  return { articleSchema, breadcrumbItems, wordCount, plainContent };
 }

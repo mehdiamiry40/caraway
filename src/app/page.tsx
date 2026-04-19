@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { FAQJsonLd, HowToJsonLd } from "next-seo";
 import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema, howToSchema } from "@/lib/json-ld-schemas";
 import { faqs } from "@/data/home-faqs";
 import { reviews } from "@/data/reviews";
 import { SITE_URL } from "@/lib/site";
@@ -85,38 +85,38 @@ export default function HomePage() {
 
   return (
     <>
-      <FAQJsonLd
-        questions={faqs.map((faq) => ({
-          name: faq.question,
-          acceptedAnswer: faq.answer,
-        }))}
-      />
-      <HowToJsonLd
-        name="How to Sell Your Car for Cash in Brisbane"
-        description="Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup."
-        totalTime="PT1D"
-        estimatedCost={{ currency: "AUD", value: "0" }}
-        step={[
-          {
-            name: "Tell us about your car",
-            text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
-            url: `${SITE_URL}/#how-it-works`,
-          },
-          {
-            name: "Confirm your quote",
-            text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
-            url: `${SITE_URL}/#how-it-works`,
-          },
-          {
-            name: "We pick up, you get paid",
-            text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
-            url: `${SITE_URL}/#how-it-works`,
-          },
+      <JsonLd
+        data={[
+          faqPageSchema(faqs),
+          howToSchema({
+            name: "How to Sell Your Car for Cash in Brisbane",
+            description:
+              "Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup.",
+            totalTime: "PT1D",
+            estimatedCost: { currency: "AUD", value: "0" },
+            steps: [
+              {
+                name: "Tell us about your car",
+                text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
+                url: `${SITE_URL}/#how-it-works`,
+              },
+              {
+                name: "Confirm your quote",
+                text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
+                url: `${SITE_URL}/#how-it-works`,
+              },
+              {
+                name: "We pick up, you get paid",
+                text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+                url: `${SITE_URL}/#how-it-works`,
+              },
+            ],
+            supply: ["Vehicle details (make, model, year, condition)"],
+            tool: ["Caraway online quote tool"],
+          }),
+          ...homeStructuredData,
         ]}
-        supply={["Vehicle details (make, model, year, condition)"]}
-        tool={["Caraway online quote tool"]}
       />
-      <JsonLd data={homeStructuredData} />
       <Home />
     </>
   );
