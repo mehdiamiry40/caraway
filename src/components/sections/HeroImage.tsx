@@ -26,26 +26,6 @@ export function HeroImage() {
           className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--ink)/0.22)] via-transparent to-[hsl(var(--grad-violet)/0.14)]"
         />
       </div>
-
-      <div
-        className="absolute -bottom-4 left-3 sm:-bottom-6 sm:left-10 quote-card w-[min(240px,76%)] sm:w-[min(260px,72%)] px-3 py-2.5 sm:px-4 sm:py-3 text-[0.75rem] sm:text-[0.8125rem]"
-        aria-hidden="true"
-      >
-        <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
-          <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
-          <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
-          <span className="ml-auto text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-            Offer sent
-          </span>
-        </div>
-        <div className="mt-2 flex items-baseline justify-between">
-          <span className="text-[hsl(var(--on-dark))]">2011 Toyota Camry</span>
-          <span className="font-mono tabular-nums text-base font-medium text-[hsl(var(--on-dark-hi))]">
-            $3,450
-          </span>
-        </div>
-      </div>
     </div>
   );
 }
