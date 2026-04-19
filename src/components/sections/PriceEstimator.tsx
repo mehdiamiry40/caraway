@@ -502,7 +502,7 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] overflow-hidden">
+          <div className="relative bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
