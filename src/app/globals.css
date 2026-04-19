@@ -558,6 +558,19 @@
   }
 }
 
+/* Full-height aurora — extends the mesh and removes the fade so the gradient
+ * reaches the bottom edge of its section. */
+@utility aurora-full {
+  &::before {
+    inset: -10% -10% -10% -10%;
+    height: auto;
+  }
+
+  &::after {
+    background: none;
+  }
+}
+
 /* Dark aurora — for CTA bands and footer top-edge glow. */
 @utility aurora-surface-dark {
   position: relative;

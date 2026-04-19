@@ -4,7 +4,7 @@ import { HeroImage } from "./HeroImage";
 export function Hero() {
   return (
     <section
-      className="aurora-surface aurora-animate relative w-full mt-header-safe overflow-hidden"
+      className="aurora-surface aurora-full aurora-animate relative w-full mt-header-safe overflow-hidden"
       aria-labelledby="hero-heading"
     >
       <div className="site-container pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32">
