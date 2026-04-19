@@ -51,9 +51,9 @@ export function Footer() {
   return (
     <footer className="edge-glow-top bg-ink text-on-dark pl-safe pr-safe">
       <div className="site-container py-14 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10">
           {/* Brand + contact */}
-          <div className="sm:col-span-2 lg:col-span-4">
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Link
               href="/"
               aria-label="Caraway — Home"
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <nav aria-label="Services" className="lg:col-span-3">
+          <nav aria-label="Services" className="md:col-span-1 lg:col-span-3">
             <h3 className={columnHeadingClasses}>Services</h3>
             <ul className="space-y-0.5">
               {serviceLinks.map((link) => (
@@ -105,7 +105,7 @@ export function Footer() {
           </nav>
 
           {/* Locations */}
-          <nav aria-label="Locations" className="lg:col-span-3">
+          <nav aria-label="Locations" className="md:col-span-1 lg:col-span-3">
             <h3 className={columnHeadingClasses}>Locations</h3>
             <ul className="space-y-0.5">
               {locationLinks.map((link) => (
@@ -117,7 +117,7 @@ export function Footer() {
           </nav>
 
           {/* Company */}
-          <nav aria-label="Company" className="sm:col-span-2 lg:col-span-2">
+          <nav aria-label="Company" className="sm:col-span-2 md:col-span-1 lg:col-span-2">
             <h3 className={columnHeadingClasses}>Company</h3>
             <ul className="space-y-0.5">
               {companyLinks.map((link) => (

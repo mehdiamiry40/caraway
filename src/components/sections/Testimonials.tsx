@@ -33,7 +33,7 @@ function initials(name: string) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="relative flex w-[20rem] sm:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-7 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)]">
+    <article className="relative flex w-[17rem] sm:w-[20rem] md:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 sm:p-7 md:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)]">
       <Quote
         aria-hidden="true"
         className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.1]"

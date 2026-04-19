@@ -28,7 +28,7 @@ export function HeroImage() {
       </div>
 
       <div
-        className="absolute -bottom-5 left-4 sm:-bottom-6 sm:left-10 quote-card w-[min(260px,72%)] px-4 py-3 text-[0.8125rem]"
+        className="absolute -bottom-4 left-3 sm:-bottom-6 sm:left-10 quote-card w-[min(240px,76%)] sm:w-[min(260px,72%)] px-3 py-2.5 sm:px-4 sm:py-3 text-[0.75rem] sm:text-[0.8125rem]"
         aria-hidden="true"
       >
         <div className="flex items-center gap-1.5">

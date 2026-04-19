@@ -603,7 +603,7 @@ export function PriceEstimator() {
                   </div>
                 </div>
 
-                <div className="mt-7 sm:mt-9 flex justify-end">
+                <div className="mt-7 sm:mt-9 flex sm:justify-end">
                   <Button
                     onClick={() => {
                       setYearTouched(true);
@@ -612,7 +612,7 @@ export function PriceEstimator() {
                     disabled={!canCalculate || isCalculating}
                     variant="default"
                     size="lg"
-                    className="group"
+                    className="group w-full sm:w-auto"
                   >
                     {isCalculating ? (
                       <>
@@ -642,12 +642,14 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
-                  <div className="quote-card p-5 sm:p-6 mb-6">
-                    <div className="flex items-center gap-1.5 mb-4">
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
-                      <span className="ml-3 inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--grad-violet))] pb-1">
+                  <div className="quote-card p-4 sm:p-6 mb-6">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--grad-violet))] pb-1">
                         Your quote
                       </span>
                       <span className="text-[0.75rem] font-medium text-[hsl(var(--on-dark))] pb-1">
@@ -685,12 +687,13 @@ export function PriceEstimator() {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
                     <Button
                       type="button"
                       onClick={() => goToStep(1)}
                       variant="outline"
                       size="lg"
+                      className="w-full sm:w-auto"
                     >
                       <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                     </Button>
@@ -698,7 +701,7 @@ export function PriceEstimator() {
                       onClick={() => goToStep(3)}
                       variant="default"
                       size="lg"
-                      className="group"
+                      className="group w-full sm:w-auto"
                     >
                       Claim my quote
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
@@ -852,12 +855,13 @@ export function PriceEstimator() {
                   </div>
                 )}
 
-                <div className="mt-7 sm:mt-9 flex items-center justify-between gap-3">
+                <div className="mt-7 sm:mt-9 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3">
                   <Button
                     type="button"
                     onClick={() => goToStep(2)}
                     variant="outline"
                     size="lg"
+                    className="w-full sm:w-auto"
                   >
                     <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                   </Button>
@@ -866,6 +870,7 @@ export function PriceEstimator() {
                     disabled={!canSubmit || isSubmitting}
                     variant="default"
                     size="lg"
+                    className="w-full sm:w-auto"
                   >
                     {isSubmitting ? (
                       <>
