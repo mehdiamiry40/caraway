@@ -12,49 +12,63 @@ The indirection lets us swap the palette without touching components.
 
 ## Current palette
 
-Calm, credible, Stripe-adjacent. A single indigo accent on a cool-neutral
-base. No gradients, no shadows, no dark mode.
+Bold and vibrant. A confident orange primary over a warm-cream canvas, with
+amber/coral/peach aurora accents for the hero mesh and gradient text. Light
+mode only.
 
 | Token                      | Hex      | HSL              | Role                                        |
 | -------------------------- | -------- | ---------------- | ------------------------------------------- |
-| `--background`             | `#F6F9FC` | `210 38% 97%`   | Page canvas                                 |
-| `--foreground`             | `#0A2540` | `214 72% 15%`   | Default body text                           |
+| `--background`             | `#FFFBF5` | `34 100% 98%`   | Page canvas (warm cream)                    |
+| `--foreground`             | `#27170A` | `24 60% 9%`     | Default body text (deep warm near-black)    |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)  |
-| `--card-foreground`        | `#0A2540` | `214 72% 15%`   | Text on cards                               |
-| `--primary`                | `#3D4EB5` | `233 50% 47%`   | Brand / dominant action                     |
+| `--card-foreground`        | `#27170A` | `24 60% 9%`     | Text on cards                               |
+| `--primary`                | `#C2410C` | `21 87% 40%`    | Brand / dominant action (bold orange)       |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                         |
-| `--secondary`              | `#EEF2F7` | `214 33% 95%`   | Low-emphasis surface                        |
-| `--secondary-foreground`   | `#0A2540` | `214 72% 15%`   | Text on `--secondary`                       |
-| `--muted`                  | `#EEF2F7` | `214 33% 95%`   | Subtle backgrounds (code, fills)            |
-| `--muted-foreground`       | `#425466` | `211 22% 33%`   | Secondary / helper text                     |
-| `--accent`                 | `#2F3E9A` | `233 53% 40%`   | Darker shade of primary — emphasis text/UI  |
+| `--secondary`              | `#FFEAD2` | `33 100% 94%`   | Low-emphasis surface (peach tint)           |
+| `--secondary-foreground`   | `#27170A` | `24 60% 9%`     | Text on `--secondary`                       |
+| `--muted`                  | `#FFEAD2` | `33 100% 94%`   | Subtle backgrounds (code, fills)            |
+| `--muted-foreground`       | `#5D3C1D` | `27 52% 24%`    | Secondary / helper text (warm brown)        |
+| `--accent`                 | `#9A3412` | `16 80% 34%`    | Darker shade of primary — emphasis text/UI  |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                          |
-| `--destructive`            | `#B42318` | `5 76% 40%`     | Errors, destructive actions                 |
+| `--destructive`            | `#B91C1C` | `0 72% 42%`     | Errors, destructive actions                 |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                     |
-| `--success`                | `#0B875B` | `155 85% 29%`   | Success signal                              |
+| `--success`                | `#14803D` | `142 72% 29%`   | Success signal                              |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                         |
-| `--warning`                | `#B54708` | `22 92% 37%`    | Warning signal                              |
+| `--warning`                | `#A16207` | `41 93% 33%`    | Warning signal (yellow-gold, not orange)    |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                         |
-| `--info`                   | `#0B5CAD` | `210 88% 36%`   | Neutral notices (distinct from primary)     |
+| `--info`                   | `#1E40AF` | `224 76% 40%`   | Neutral notices (cool blue, complementary)  |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                            |
-| `--border`                 | `#E3E8EE` | `213 27% 91%`   | Default border / divider                    |
-| `--input`                  | `#E3E8EE` | `213 27% 91%`   | Form field border                           |
-| `--ring`                   | `#3D4EB5` | `233 50% 47%`   | Focus ring                                  |
+| `--border`                 | `#FCD9B6` | `30 93% 85%`    | Default border / divider (warm tan)         |
+| `--input`                  | `#FCD9B6` | `30 93% 85%`    | Form field border                           |
+| `--ring`                   | `#C2410C` | `21 87% 40%`    | Focus ring                                  |
+
+### Gradient-only accents (aurora mesh, gradient text, glow)
+
+Token names are historical — kept stable because several components
+reference them directly. Values were retuned to harmonize with the
+orange primary.
+
+| Token            | Hex      | HSL              | Role                                          |
+| ---------------- | -------- | ---------------- | --------------------------------------------- |
+| `--grad-violet`  | `#FFA033` | `33 100% 60%`   | Bold amber — primary gradient tone            |
+| `--grad-pink`    | `#FF7A5C` | `8 100% 68%`    | Warm coral                                    |
+| `--grad-lilac`   | `#FFD4A3` | `30 100% 82%`   | Soft peach                                    |
+| `--grad-cyan`    | `#00D4FF` | `188 100% 50%`  | Cyan pop (complementary to orange)            |
 
 ### WCAG contrast (AA+ throughout)
 
 | Combination                                   | Ratio    | Level |
 | --------------------------------------------- | -------- | ----- |
-| `foreground` on `background`                  | 17.5 : 1 | AAA   |
-| `foreground` on `card`                        | 18.2 : 1 | AAA   |
-| `muted-foreground` on `background`            |  8.9 : 1 | AAA   |
-| `muted-foreground` on `card`                  |  9.3 : 1 | AAA   |
-| `primary-foreground` on `primary`             |  7.1 : 1 | AAA   |
-| `accent-foreground` on `accent`               |  9.4 : 1 | AAA   |
-| `primary` (text) on `background` (links)      |  7.0 : 1 | AAA   |
-| `destructive` (text) on `background`          |  6.1 : 1 | AA+   |
+| `foreground` on `background`                  | 16.8 : 1 | AAA   |
+| `foreground` on `card`                        | 17.4 : 1 | AAA   |
+| `muted-foreground` on `background`            |  8.2 : 1 | AAA   |
+| `muted-foreground` on `card`                  |  8.5 : 1 | AAA   |
+| `primary-foreground` on `primary`             |  5.3 : 1 | AA    |
+| `accent-foreground` on `accent`               |  8.0 : 1 | AAA   |
+| `primary` (text) on `background` (links)      |  5.1 : 1 | AA+   |
+| `destructive` (text) on `background`          |  5.6 : 1 | AA+   |
 | `success-foreground` on `success` (fill)      |  4.9 : 1 | AA    |
-| `warning-foreground` on `warning` (fill)      |  5.4 : 1 | AA    |
+| `warning-foreground` on `warning` (fill)      |  5.1 : 1 | AA    |
 | `ring` around focused inputs                  |  ≥ 3:1  | AA    |
 
 All body text ≥ 4.5:1. Large text and UI components ≥ 3:1. No information
