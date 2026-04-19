@@ -60,7 +60,7 @@ export function Accordion({
               >
                 <span
                   className={cn(
-                    "font-display text-base sm:text-lg font-semibold break-words [overflow-wrap:anywhere] transition-colors duration-200",
+                    "font-display text-base sm:text-lg break-words [overflow-wrap:anywhere] transition-colors duration-200",
                     isActive ? "text-foreground" : "text-foreground group-hover:text-primary"
                   )}
                 >

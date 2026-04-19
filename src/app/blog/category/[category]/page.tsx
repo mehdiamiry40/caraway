@@ -121,7 +121,7 @@ export default async function BlogCategoryPage({ params }: Props) {
               >
                 <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 text-accent text-xs">
                       <Tag className="h-3 w-3" />
                       {post.category}
                     </span>
@@ -138,7 +138,7 @@ export default async function BlogCategoryPage({ params }: Props) {
                     </time>
                   </div>
 
-                  <h2 className="font-display font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-3 text-lg sm:text-xl">
+                  <h2 className="font-display text-foreground group-hover:text-primary transition-colors leading-snug mb-3 text-lg sm:text-xl">
                     <Link href={`/blog/${post.slug}`} className="hover:underline underline-offset-2 decoration-primary/30">
                       {post.title}
                     </Link>
@@ -150,7 +150,7 @@ export default async function BlogCategoryPage({ params }: Props) {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
                   >
                     Read more
                     <ArrowRight className="h-3.5 w-3.5" />

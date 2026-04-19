@@ -21,7 +21,7 @@ export default function Privacy() {
       <div className="site-container py-14 sm:py-20 lg:py-28">
         <div className="prose-body max-w-3xl">
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Who we are</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Who we are</h2>
             <p>
               Caraway (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates a vehicle buying and removal service in Queensland. This policy explains how we handle personal information under the{" "}
               <a
@@ -37,7 +37,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Personal information we collect</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Personal information we collect</h2>
             <p>The types of personal information we collect include:</p>
             <ul className="list-styled mt-4">
               <li><strong>Name</strong> — to address you personally and to complete ownership transfer paperwork.</li>
@@ -50,14 +50,14 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">How we collect it</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How we collect it</h2>
             <p>
               We collect personal information directly from you through our website quote forms, by phone, by SMS, and by email. We may also collect information from our tow operators at the time of pickup (for example, photos of the vehicle and a signed receipt).
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Why we collect it and how we use it</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Why we collect it and how we use it</h2>
             <p>We use personal information for the following purposes:</p>
             <ul className="list-styled mt-4">
               <li><strong>Quote delivery</strong> — to prepare and send you a valuation based on the details you provide.</li>
@@ -70,7 +70,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
             <ul className="list-styled mt-4">
               <li><strong>Quote enquiries</strong> where no sale takes place: kept for up to <strong>90 days</strong>, then deleted or de-identified.</li>
               <li><strong>Vehicle transfer records</strong> (receipts, TMR paperwork, ID verification): kept for <strong>7 years</strong> in line with Queensland record-keeping requirements and general tax law.</li>
@@ -79,7 +79,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Who we disclose information to</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Who we disclose information to</h2>
             <p>We may disclose your personal information to:</p>
             <ul className="list-styled mt-4">
               <li><strong>Tow operators and drivers</strong> who carry out the pickup — they receive your name, phone number and pickup address.</li>
@@ -90,14 +90,14 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
             <p>
               <strong>Yes, some personal information is disclosed overseas.</strong> Our website is hosted on <strong>Vercel</strong> in the <strong>United States</strong>, transactional emails to our team are sent through <strong>Resend</strong> in the <strong>United States</strong>, and address autocomplete in our quote form is provided by the <strong>Google Places API</strong> in the <strong>United States</strong>. Our analytics provider may also process data outside Australia. Where we disclose information overseas we take reasonable steps to ensure the recipient handles it consistently with the APPs, including through contractual protections and recipients&apos; own privacy frameworks.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
               <li><strong>Vercel</strong> — website hosting and Vercel Analytics (United States).</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
@@ -131,21 +131,21 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Cookies and analytics</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and analytics</h2>
             <p>
               We use a small number of <strong>essential cookies</strong> needed for the site to function, and <strong>Vercel Analytics</strong>, which measures site performance and traffic in an anonymised form. Vercel Analytics does not use cookies and does not store personal identifiers such as your name, email or IP address in a way that identifies you.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Security</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Security</h2>
             <p>
               We take reasonable steps to protect personal information from misuse, interference, loss, and unauthorised access, modification or disclosure. These steps include <strong>encryption in transit (HTTPS/TLS)</strong>, <strong>access controls</strong> so only authorised staff can view customer records, and regular review of our third-party providers. No system is completely secure, and we encourage you to tell us promptly if you suspect any misuse of your information.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Accessing and correcting your information</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Accessing and correcting your information</h2>
             <p>
               Under APPs 12 and 13 you have the right to request access to the personal information we hold about you and to ask us to correct it if it is inaccurate, out of date, incomplete, irrelevant or misleading. To make a request, email{" "}
               <a href="mailto:privacy@caraway.au" className="text-primary underline underline-offset-2">privacy@caraway.au</a>
@@ -154,7 +154,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Complaints</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Complaints</h2>
             <p>If you believe we have breached the APPs or mishandled your personal information, please follow these steps:</p>
             <ol className="list-decimal pl-5 mt-2 space-y-1">
               <li>
@@ -178,7 +178,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 tracking-tight">Updates to this policy</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Updates to this policy</h2>
             <p>
               We may update this policy from time to time. The revised version will be posted on this page with an updated date. For general questions, see our{" "}
               <Link href="/contact" className="text-primary underline underline-offset-2">

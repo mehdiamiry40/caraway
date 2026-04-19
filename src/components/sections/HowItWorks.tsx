@@ -42,7 +42,7 @@ export function HowItWorks() {
       <div className="site-container">
         <Reveal className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             Three quiet steps.
             <br />
             No back-and-forth.
@@ -64,17 +64,17 @@ export function HowItWorks() {
                       <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/[0.14]">
                         <StepIcon size={22} strokeWidth={1.5} aria-hidden="true" />
                       </span>
-                      <span className="font-mono text-xs font-semibold tabular-nums tracking-[0.1em] text-foreground/70">
+                      <span className="font-mono text-xs tabular-nums tracking-[0.1em] text-foreground/70">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-display font-bold text-foreground">
+                    <h3 className="text-lg sm:text-xl font-display text-foreground">
                       {step.title}
                     </h3>
                     <div className="mt-3 text-foreground/75 leading-relaxed text-[0.9375rem]">
                       {step.description}
                     </div>
-                    <p className="mt-6 pt-5 border-t border-border flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.04em] text-foreground/80">
+                    <p className="mt-6 pt-5 border-t border-border flex items-center gap-1.5 text-xs uppercase tracking-[0.04em] text-foreground/80">
                       <ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" className="text-primary" />
                       {step.timing}
                     </p>

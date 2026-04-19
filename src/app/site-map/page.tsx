@@ -74,7 +74,7 @@ export default function SiteMapPage() {
       >
       <div className="site-container py-12 sm:py-16 lg:py-20 space-y-12">
         <section>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Services</h2>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Services</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {services.map((s) => (
               <li key={s.slug}>
@@ -87,7 +87,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Locations</h2>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Locations</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1">
             {suburbs.map((s) => (
               <li key={s.slug}>
@@ -100,7 +100,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Blog &amp; Guides</h2>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Blog &amp; Guides</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {indexableBlogPosts.map((p) => (
               <li key={p.slug}>
@@ -113,7 +113,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-primary mb-5">Company</h2>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Company</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {companyLinks.map((link) => (
               <li key={link.href}>

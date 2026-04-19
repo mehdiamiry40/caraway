@@ -105,7 +105,7 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
       </div>
       <div className="min-w-0">
         <p
-          className={`text-base sm:text-xl font-display font-bold text-primary leading-tight transition-opacity duration-700 ${
+          className={`text-base sm:text-xl font-display text-primary leading-tight transition-opacity duration-700 ${
             inView ? "opacity-100" : "opacity-0"
           } motion-reduce:opacity-100`}
         >

@@ -3,6 +3,8 @@ import path from "node:path";
 
 const isDev = process.env.NODE_ENV !== "production";
 
+const noopPolyfill = path.join(__dirname, "scripts/noop-polyfill.js");
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -17,6 +19,14 @@ const nextConfig: NextConfig = {
   experimental: {
     // optimizeCss removed: critters is abandoned upstream and breaks builds.
     optimizePackageImports: ["lucide-react"],
+  },
+  // Keep Turbopack aligned with the webpack hooks below so `next dev --turbopack`
+  // does not warn and client resolution matches production intent.
+  turbopack: {
+    resolveAlias: {
+      "next/dist/build/polyfills/polyfill-module": noopPolyfill,
+      "next/dist/build/polyfills/polyfill-module.js": noopPolyfill,
+    },
   },
   // Replace Next.js's polyfill-module with an empty shim in client builds.
   // It patches Array.prototype.at/flat/flatMap, Object.fromEntries/hasOwn,

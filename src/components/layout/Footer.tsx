@@ -43,7 +43,7 @@ const navLinkClasses =
   "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-display font-bold text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)] uppercase";
+  "font-display text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)] uppercase";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -57,7 +57,7 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-bold text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">caraway</span>
               <span className="text-gradient">.</span>
@@ -70,7 +70,7 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
                 location="footer"
-                className="inline-flex items-center gap-2 font-bold text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-[hsl(var(--grad-lilac))]" />

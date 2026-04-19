@@ -24,7 +24,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-14">
           <div className="space-y-10">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>Get in touch</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>Get in touch</h2>
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 The fastest way to get a cash offer is the online estimator. Our Brisbane team will follow up with a confirmed quote and arrange same- or next-day pickup in most areas.
               </p>
@@ -36,7 +36,7 @@ export default function Contact() {
                   <Mail className="h-5 w-5" strokeWidth={1.5} />
                 </span>
                 <div>
-                  <h3 className="font-display text-sm font-semibold text-foreground">Email</h3>
+                  <h3 className="font-display text-sm text-foreground">Email</h3>
                   <p className="text-base font-medium text-primary">{BUSINESS.email}</p>
                   <p className="text-sm text-muted-foreground mt-0.5">We respond within 1 hour during business hours.</p>
                 </div>
@@ -67,7 +67,7 @@ export default function Contact() {
                     <item.icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>
                   <div>
-                    <h3 className="font-display text-sm font-semibold text-foreground">{item.title}</h3>
+                    <h3 className="font-display text-sm text-foreground">{item.title}</h3>
                     <p className="text-foreground/85 text-[0.9375rem]">{item.main}</p>
                     <p className="text-sm text-muted-foreground mt-0.5">{item.sub}</p>
                   </div>
@@ -81,7 +81,7 @@ export default function Contact() {
 
             <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-7 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)]">
               <p className="eyebrow mb-3">Before you call</p>
-              <h2 className="text-lg font-display font-semibold text-foreground mb-5">Quick reference</h2>
+              <h2 className="text-lg font-display text-foreground mb-5">Quick reference</h2>
               <dl className="divide-y divide-border/60 border-t border-border/60 text-sm">
                 {[
                   { q: "What to have ready", a: "Your car's make, model, year, approximate kilometres, and a brief description of its condition." },
@@ -90,7 +90,7 @@ export default function Contact() {
                   { q: "Towing cost", a: "Free. Always. No exceptions." },
                 ].map((item) => (
                   <div key={item.q} className="py-3.5 grid grid-cols-12 gap-4">
-                    <dt className="col-span-12 sm:col-span-5 font-display font-semibold text-foreground">{item.q}</dt>
+                    <dt className="col-span-12 sm:col-span-5 font-display text-foreground">{item.q}</dt>
                     <dd className="col-span-12 sm:col-span-7 text-muted-foreground">{item.a}</dd>
                   </div>
                 ))}

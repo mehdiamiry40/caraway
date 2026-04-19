@@ -12,7 +12,7 @@ export function ScrollToQuoteCTA() {
       <Button
         size="lg"
         onClick={scrollToQuote}
-        className="w-full font-semibold group touch-manipulation"
+        className="w-full group touch-manipulation"
       >
         Get My Free Quote
         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-200" />

@@ -19,7 +19,7 @@ export function FinalCTA() {
         <Reveal className="max-w-4xl mx-auto text-center">
           <p className="eyebrow-on-dark mb-5">Ready when you are</p>
           <h2
-            className="font-display text-3xl sm:text-4xl md:text-[3rem] font-bold text-on-dark-hi leading-[1.05] tracking-[var(--tracking-display)] text-balance"
+            className="font-display text-3xl sm:text-4xl md:text-[3rem] text-on-dark-hi leading-[1.05] tracking-[var(--tracking-display)] text-balance"
           >
             Ready to see what
             <br />
@@ -36,7 +36,7 @@ export function FinalCTA() {
               onClick={() => trackEvent("cta_click", { location: "final_cta" })}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "group h-12 sm:h-14 w-full sm:w-auto px-10 text-base font-semibold",
+                "group h-12 sm:h-14 w-full sm:w-auto px-10 text-base",
                 "bg-gradient-to-r from-[hsl(var(--grad-lilac))] via-[hsl(var(--grad-violet))] to-[hsl(var(--grad-pink))]",
                 "text-ink-deep shadow-[0_12px_40px_hsl(var(--grad-violet)/0.35)]",
                 "hover:brightness-105 hover:shadow-[0_16px_48px_hsl(var(--grad-violet)/0.45)]",
@@ -48,7 +48,7 @@ export function FinalCTA() {
             <TrackedPhoneLink
               href={BUSINESS.phoneHref}
               location="final_cta"
-              className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 w-full sm:w-auto px-6 text-sm font-semibold text-on-dark-hi hover:text-on-dark-hi rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 w-full sm:w-auto px-6 text-sm text-on-dark-hi hover:text-on-dark-hi rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
             >
               <Phone aria-hidden="true" className="h-4 w-4" />

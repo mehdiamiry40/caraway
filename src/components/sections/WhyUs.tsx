@@ -30,7 +30,7 @@ export function WhyUs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
             <p className="eyebrow mb-5">Why Caraway</p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-foreground mb-6 leading-[1.1] text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground mb-6 leading-[1.1] text-balance">
               One price.
               <br />
               One pickup. Done.
@@ -48,7 +48,7 @@ export function WhyUs() {
                 <RevealItem key={reason.title}>
                   <div className="relative py-6 sm:py-8 grid grid-cols-12 gap-2 sm:gap-4 md:gap-6 group">
                     <span aria-hidden="true" className="absolute left-0 top-8 bottom-8 w-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-300" />
-                    <dt className="col-span-12 md:col-span-5 pl-3 font-display font-bold text-foreground text-base sm:text-lg">
+                    <dt className="col-span-12 md:col-span-5 pl-3 font-display text-foreground text-base sm:text-lg">
                       {reason.title}
                     </dt>
                     <dd className="col-span-12 md:col-span-7 pl-3 md:pl-0 text-foreground/80 text-[0.9375rem] sm:text-base leading-relaxed">

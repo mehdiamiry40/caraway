@@ -35,7 +35,7 @@ export default function Error({
           <div className="mx-auto w-12 h-12 rounded-full bg-destructive/10 text-destructive flex items-center justify-center mb-4">
             <AlertCircle className="w-6 h-6" />
           </div>
-          <h1 className="text-3xl font-display font-bold text-primary mb-3">
+          <h1 className="text-3xl font-display text-primary mb-3">
             Something went wrong
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">

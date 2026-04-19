@@ -28,7 +28,7 @@ export default function Error({
       <Header />
       <main id="main-content" className="flex-1 mt-header-safe flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
-          <h1 className="text-3xl font-display font-bold text-primary mb-3">
+          <h1 className="text-3xl font-display text-primary mb-3">
             Something went wrong
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -37,13 +37,13 @@ export default function Error({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
               onClick={reset}
-              className="inline-flex items-center justify-center rounded-xl h-11 px-8 text-sm font-semibold bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-xl h-11 px-8 text-sm bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Try again
             </button>
             <Link
               href="/"
-              className="inline-flex items-center justify-center rounded-xl h-11 px-8 text-sm font-semibold border-2 border-border text-foreground hover:border-primary hover:text-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center rounded-xl h-11 px-8 text-sm border-2 border-border text-foreground hover:border-primary hover:text-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Go home
             </Link>

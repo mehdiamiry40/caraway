@@ -23,10 +23,10 @@ export function HeroCTAs() {
       <a
         href={BUSINESS.phoneHref}
         onClick={() => trackEvent("hero_cta_click", { target: "phone" })}
-        className="inline-flex items-center text-sm font-semibold text-foreground/75 hover:text-foreground transition-colors"
+        className="inline-flex items-center text-sm text-foreground/75 hover:text-foreground transition-colors"
         aria-label={`Call ${BUSINESS.phoneFriendly}`}
       >
-        or call <span className="ml-1.5 font-bold tracking-tight text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">{BUSINESS.phoneFriendly}</span>
+        or call <span className="ml-1.5 tracking-tight text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">{BUSINESS.phoneFriendly}</span>
       </a>
     </div>
   );

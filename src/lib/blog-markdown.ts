@@ -128,7 +128,7 @@ export function renderBlogContent(
           key,
           id: slugify(heading),
           className:
-            "font-display font-bold text-xl sm:text-2xl text-foreground mt-10 mb-4 scroll-mt-24",
+            "font-display text-xl sm:text-2xl text-foreground mt-10 mb-4 scroll-mt-24",
         },
         ...parseInline(heading, key),
       );
@@ -142,7 +142,7 @@ export function renderBlogContent(
           key,
           id: slugify(heading),
           className:
-            "font-display font-bold text-2xl sm:text-3xl text-primary mt-12 mb-5 scroll-mt-24",
+            "font-display text-2xl sm:text-3xl text-primary mt-12 mb-5 scroll-mt-24",
         },
         ...parseInline(heading, key),
       );

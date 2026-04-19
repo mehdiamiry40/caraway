@@ -404,12 +404,12 @@ export function PriceEstimator() {
             <h3
               ref={successHeadingRef}
               tabIndex={-1}
-              className="font-display font-bold text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+              className="font-display text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
             >
               Your quote is on its way.
             </h3>
             <p className="text-foreground/80 text-sm sm:text-base mb-5">
-              We received your details for your <strong className="text-foreground font-semibold">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
+              We received your details for your <strong className="text-foreground">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
             <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
               <div className="flex items-center gap-1.5">
@@ -454,7 +454,7 @@ export function PriceEstimator() {
       <div className="site-container">
         <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Instant valuation</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             How much is your car worth?
           </h2>
           <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
@@ -476,7 +476,7 @@ export function PriceEstimator() {
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] font-bold transition-[background-color,color,border-color] duration-300",
+                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] transition-[background-color,color,border-color] duration-300",
                   step >= s
                     ? "bg-primary text-primary-foreground"
                     : "bg-card border border-border text-foreground/70"
@@ -484,7 +484,7 @@ export function PriceEstimator() {
                   {step > s ? <CheckCircle2 className="w-4 h-4" strokeWidth={2.25} aria-hidden="true" /> : s}
                 </div>
                 <span className={cn(
-                  "text-xs font-semibold transition-colors hidden sm:inline",
+                  "text-xs transition-colors hidden sm:inline",
                   step >= s ? "text-foreground" : "text-foreground/70"
                 )}>
                   {s === 1 ? "Vehicle" : s === 2 ? "Your quote" : "Claim it"}
@@ -528,7 +528,7 @@ export function PriceEstimator() {
                   <h3
                     ref={step1HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-bold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Tell us about your vehicle
                   </h3>
@@ -536,7 +536,7 @@ export function PriceEstimator() {
 
                 <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-make" className="block text-sm text-foreground mb-2.5">
                       Make<RequiredMark />
                     </label>
                     <Select
@@ -553,7 +553,7 @@ export function PriceEstimator() {
                   </div>
                   {make && make !== "Other" && (
                     <div>
-                      <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor="est-model" className="block text-sm text-foreground mb-2.5">
                         Model<RequiredMark />
                       </label>
                       <Select
@@ -567,7 +567,7 @@ export function PriceEstimator() {
                     </div>
                   )}
                   <div>
-                    <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-year" className="block text-sm text-foreground mb-2.5">
                       Year of manufacture<RequiredMark />
                     </label>
                     <Select
@@ -589,7 +589,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-condition" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-condition" className="block text-sm text-foreground mb-2.5">
                       Condition<RequiredMark />
                     </label>
                     <Select
@@ -634,7 +634,7 @@ export function PriceEstimator() {
             {isCalculating && (
               <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
                 <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
-                <p className="font-display font-bold text-foreground">Calculating your quote…</p>
+                <p className="font-display text-foreground">Calculating your quote…</p>
               </div>
             )}
 
@@ -675,7 +675,7 @@ export function PriceEstimator() {
 
                   {result.factors.length > 0 && (
                     <div className="bg-muted rounded-xl p-4 mb-6 border border-border">
-                      <p className="text-xs font-bold uppercase tracking-[0.06em] text-foreground/75 mb-2">What affects your price</p>
+                      <p className="text-xs uppercase tracking-[0.06em] text-foreground/75 mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-foreground/85">
@@ -717,15 +717,15 @@ export function PriceEstimator() {
                 {result && (
                   <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider">Your quote</p>
+                      <p className="text-xs text-foreground/70 uppercase tracking-wider">Your quote</p>
                       <p className="font-semibold text-foreground truncate">
-                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary font-bold">${result.quote.toLocaleString()}</span>
+                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => goToStep(2)}
-                      className="text-xs text-primary hover:text-primary/80 font-bold min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="text-xs text-primary hover:text-primary/80 min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Edit
                     </button>
@@ -739,7 +739,7 @@ export function PriceEstimator() {
                   <h3
                     ref={step3HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-bold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Where should we send it?
                   </h3>
@@ -747,7 +747,7 @@ export function PriceEstimator() {
 
                 <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-name" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-name" className="block text-sm text-foreground mb-2.5">
                       Your name<RequiredMark />
                     </label>
                     <Input
@@ -778,7 +778,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-phone" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-phone" className="block text-sm text-foreground mb-2.5">
                       Phone number<RequiredMark />
                     </label>
                     <Input
@@ -812,7 +812,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2.5">
+                    <label htmlFor="est-address" className="block text-sm text-foreground mb-2.5">
                       Pickup address<RequiredMark />
                     </label>
                     <AddressAutocomplete

@@ -25,7 +25,9 @@ export function JsonLd({
     <>
       {items.map((item, i) => {
         const type = item["@type"];
-        const key = Array.isArray(type) ? type.join("-") : (type as string) || String(i);
+        const typePart = Array.isArray(type) ? type.join("-") : (type as string) || "schema";
+        // Index suffix: many graphs repeat the same @type (e.g. multiple Review blocks).
+        const key = `${typePart}-${i}`;
         return (
           <script
             key={key}
