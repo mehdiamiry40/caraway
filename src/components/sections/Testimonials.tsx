@@ -1,12 +1,19 @@
-"use client";
-
-import { useState } from "react";
 import { ArrowUpRight, Quote, Star } from "lucide-react";
 import { reviews as allReviews, type Review } from "@/data/reviews";
 import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
-import { Reveal } from "@/components/ui/motion";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
-const FEATURED = allReviews.slice(0, 9);
+const HOMEPAGE_REVIEW_NAMES = [
+  "Jason M.",
+  "Sarah K.",
+  "Derek T.",
+  "Brett H.",
+  "Angela R.",
+] as const;
+
+const FEATURED: Review[] = HOMEPAGE_REVIEW_NAMES
+  .map((name) => allReviews.find((r) => r.name === name))
+  .filter((r): r is Review => Boolean(r));
 
 function Stars({ count }: { count: number }) {
   return (
@@ -33,7 +40,7 @@ function initials(name: string) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="relative flex w-[20rem] sm:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border/60 bg-card p-7 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card p-7 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
       <Quote
         aria-hidden="true"
         className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.07]"
@@ -64,9 +71,6 @@ function ReviewCard({ review }: { review: Review }) {
 }
 
 export function Testimonials() {
-  const [paused, setPaused] = useState(false);
-  const track = [...FEATURED, ...FEATURED];
-
   return (
     <section id="reviews" className="section-y bg-background" aria-label="What sellers say">
       <div className="site-container">
@@ -81,34 +85,26 @@ export function Testimonials() {
             Real quotes from real sellers across Greater Brisbane — collected on Google and pulled in here unedited.
           </p>
         </Reveal>
-      </div>
 
-      <div
-        className="marquee-mask relative"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        onFocusCapture={() => setPaused(true)}
-        onBlurCapture={() => setPaused(false)}
-      >
-        <div
-          className="marquee-track flex gap-5 sm:gap-6 px-4 sm:px-6"
-          style={{ animationPlayState: paused ? "paused" : "running" }}
-          aria-live="off"
-        >
-          {track.map((review, index) => (
-            <ReviewCard key={`${review.name}-${index}`} review={review} />
-          ))}
+        <RevealGroup>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {FEATURED.map((review) => (
+              <RevealItem key={review.name} className="h-full">
+                <ReviewCard review={review} />
+              </RevealItem>
+            ))}
+          </ul>
+        </RevealGroup>
+
+        <div className="mt-12 text-center">
+          <TrackedGoogleBusinessLink
+            location="testimonials"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+          >
+            Read more reviews on Google
+            <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+          </TrackedGoogleBusinessLink>
         </div>
-      </div>
-
-      <div className="site-container mt-12 text-center">
-        <TrackedGoogleBusinessLink
-          location="testimonials"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-        >
-          Read more on Google
-          <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-        </TrackedGoogleBusinessLink>
       </div>
     </section>
   );
