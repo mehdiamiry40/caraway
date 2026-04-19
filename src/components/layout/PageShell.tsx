@@ -12,43 +12,43 @@ interface PageShellProps {
   breadcrumbs: BreadcrumbItem[];
   title: string;
   subtitle?: ReactNode;
+  eyebrow?: string;
   children: ReactNode;
-  /** Render the section as full-width with a darker background. */
-  heroVariant?: "primary" | "white";
+  /** Render the hero with the aurora gradient mesh (default) or a plain background. */
+  heroVariant?: "aurora" | "plain";
 }
 
 export function PageShell({
   breadcrumbs,
   title,
   subtitle,
+  eyebrow,
   children,
-  heroVariant = "primary",
+  heroVariant = "aurora",
 }: PageShellProps) {
-  const isPrimary = heroVariant === "primary";
+  const isAurora = heroVariant === "aurora";
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe">
         <section
           className={
-            isPrimary
-              ? "[background:var(--footer-wash)] text-primary-foreground py-14 sm:py-20 lg:py-28"
-              : "bg-background/70 py-10 sm:py-14 lg:py-20"
+            isAurora
+              ? "aurora-surface py-14 sm:py-20 lg:py-24"
+              : "bg-background py-10 sm:py-14 lg:py-20"
           }
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumbs items={breadcrumbs} light={isPrimary} />
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-5 mb-4 sm:mb-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <Breadcrumbs items={breadcrumbs} />
+            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
+            <h1
+              className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mt-4 mb-5"
+              style={{ letterSpacing: "var(--tracking-display)" }}
+            >
               {title}
             </h1>
             {subtitle && (
-              <div
-                className={
-                  isPrimary
-                    ? "text-primary-foreground/80 text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
-                    : "text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl text-balance"
-                }
-              >
+              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
                 {subtitle}
               </div>
             )}
