@@ -33,7 +33,7 @@ export function TrustBadges() {
               className="flex items-center gap-3 text-foreground/80"
             >
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary shrink-0">
-                <Icon className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" size={18} />
+                <Icon className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden="true" />
               </span>
               <span className="flex flex-col leading-tight">
                 <span className="text-sm font-bold text-foreground">

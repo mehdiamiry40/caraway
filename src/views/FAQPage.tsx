@@ -52,7 +52,7 @@ export default function FAQPage() {
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
             Our Brisbane team is happy to help. No obligation — just a quick chat.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
             <a
               href={BUSINESS.phoneHref}
               className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full py-3 px-6 text-sm font-semibold transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_hsl(var(--primary)/0.25)]"

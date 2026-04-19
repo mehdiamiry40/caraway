@@ -39,7 +39,7 @@ export function CarTypes() {
                 key={type.label}
                 href={type.href}
                 className={cn(
-                  "group relative flex flex-col items-center text-center p-5 sm:p-6 rounded-xl",
+                  "group relative flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-xl",
                   "bg-primary-foreground/[0.08] border border-primary-foreground/20",
                   "hover:border-primary-foreground/50 hover:bg-primary-foreground/[0.12]",
                   "hover:-translate-y-0.5 transition-all duration-300",

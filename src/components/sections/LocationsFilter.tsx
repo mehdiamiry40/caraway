@@ -26,14 +26,14 @@ export function LocationsFilter() {
 
   return (
     <>
-      <div className="relative max-w-full sm:max-w-lg mb-12">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4.5 w-4.5 text-muted-foreground/60 pointer-events-none" aria-hidden="true" />
+      <div className="relative max-w-full sm:max-w-lg mb-10 sm:mb-12">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-[18px] w-[18px] text-muted-foreground/60 pointer-events-none" aria-hidden="true" />
         <input
           type="search"
           placeholder="Search your suburb..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
+          className="w-full h-12 sm:h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>

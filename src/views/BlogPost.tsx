@@ -113,7 +113,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </div>
 
             <aside className="mt-14 rounded-xl bg-primary/5 border border-primary/10 p-6 sm:p-8">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
+              <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-7">
                 <div className="flex-1 min-w-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-accent mb-1.5">
                     Selling your car?
@@ -125,7 +125,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Same- or next-day pickup across Brisbane. No RWC. Free towing. Cash on the spot.
                   </p>
                 </div>
-                <div className="flex flex-col gap-2.5 shrink-0">
+                <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
                   <Link
                     href="/#price-estimator"
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md transition-all"
