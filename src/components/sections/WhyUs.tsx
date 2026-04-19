@@ -45,16 +45,17 @@ export function WhyUs() {
           <RevealGroup className="lg:col-span-7">
             <dl className="divide-y divide-border border-t border-border">
               {reasons.map((reason) => (
-                <RevealItem key={reason.title}>
-                  <div className="relative py-6 sm:py-8 grid grid-cols-12 gap-2 sm:gap-4 md:gap-6 group">
-                    <span aria-hidden="true" className="absolute left-0 top-8 bottom-8 w-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-300" />
-                    <dt className="col-span-12 md:col-span-5 pl-3 font-display text-foreground text-base sm:text-lg">
-                      {reason.title}
-                    </dt>
-                    <dd className="col-span-12 md:col-span-7 pl-3 md:pl-0 text-foreground/80 text-[0.9375rem] sm:text-base leading-relaxed">
-                      {reason.description}
-                    </dd>
-                  </div>
+                <RevealItem
+                  key={reason.title}
+                  className="relative py-6 sm:py-8 grid grid-cols-12 gap-2 sm:gap-4 md:gap-6 group"
+                >
+                  <span aria-hidden="true" className="absolute left-0 top-8 bottom-8 w-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-300" />
+                  <dt className="col-span-12 md:col-span-5 pl-3 font-display text-foreground text-base sm:text-lg">
+                    {reason.title}
+                  </dt>
+                  <dd className="col-span-12 md:col-span-7 pl-3 md:pl-0 text-foreground/80 text-[0.9375rem] sm:text-base leading-relaxed">
+                    {reason.description}
+                  </dd>
                 </RevealItem>
               ))}
             </dl>
