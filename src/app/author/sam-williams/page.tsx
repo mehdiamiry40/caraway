@@ -81,11 +81,11 @@ export default function AuthorPage() {
       >
         <div className="site-container py-14 sm:py-20">
           <div className="max-w-3xl mb-14">
-            <h2 className="font-display font-bold text-2xl mb-4">About {AUTHOR.name}</h2>
+            <h2 className="font-display text-2xl mb-4">About {AUTHOR.name}</h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{AUTHOR.bio}</p>
           </div>
 
-          <h2 className="font-display font-bold text-2xl mb-8">
+          <h2 className="font-display text-2xl mb-8">
             Articles by {AUTHOR.name}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -96,7 +96,7 @@ export default function AuthorPage() {
               >
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 font-semibold text-accent text-xs">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 text-accent text-xs">
                       <Tag className="h-3 w-3" />
                       {post.category}
                     </span>
@@ -113,7 +113,7 @@ export default function AuthorPage() {
                     </time>
                   </div>
 
-                  <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors leading-snug mb-3 text-lg sm:text-xl">
+                  <h3 className="font-display text-foreground group-hover:text-primary transition-colors leading-snug mb-3 text-lg sm:text-xl">
                     <Link href={`/blog/${post.slug}`} className="hover:underline underline-offset-2 decoration-primary/30">
                       {post.title}
                     </Link>
@@ -125,7 +125,7 @@ export default function AuthorPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
                   >
                     Read more
                     <ArrowRight className="h-3.5 w-3.5" />

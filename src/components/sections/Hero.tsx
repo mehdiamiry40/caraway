@@ -14,12 +14,12 @@ export function Hero() {
             <p className="eyebrow mb-5">Free pickup · Same-day service</p>
             <h1
               id="hero-heading"
-              className="font-display font-bold text-[clamp(2.25rem,6vw,4.25rem)] leading-[1.04] tracking-[var(--tracking-display)] text-foreground text-balance mb-6 scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
+              className="font-display font-bold text-[clamp(1.875rem,5vw,3.5rem)] leading-[1.04] tracking-[var(--tracking-display)] text-foreground text-balance mb-6 scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
             >
-              <span className="text-foreground">Cash for cars Brisbane</span> and{" "}
+              <span className="text-foreground">Cash for Cars Brisbane</span> and{" "}
               <span className="text-foreground">Scrap Car Removal Brisbane</span>
             </h1>
-            <ul className="text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg mb-8 space-y-1.5 sm:space-y-2">
+            <ul className="list-disc list-outside pl-5 sm:pl-6 marker:text-foreground/50 text-xs sm:text-sm md:text-base text-foreground/80 leading-relaxed max-w-lg mb-8 space-y-1.5 sm:space-y-2">
               <li>Instant cash offers up to $9,999</li>
               <li>Free pickup across Greater Brisbane</li>
               <li>Payment on the spot — paid on pickup</li>

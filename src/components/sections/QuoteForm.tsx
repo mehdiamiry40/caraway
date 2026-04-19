@@ -91,10 +91,10 @@ export function QuoteForm() {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-foreground/75">
+            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
               Your quote
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display font-bold text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
@@ -109,7 +109,7 @@ export function QuoteForm() {
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
                     <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
-                  <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
+                  <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
                   </p>
@@ -144,7 +144,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.make} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.make} className="block text-sm text-foreground mb-2.5">
                         Make
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -167,7 +167,7 @@ export function QuoteForm() {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.model} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.model} className="block text-sm text-foreground mb-2.5">
                         Model
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -192,7 +192,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.year} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.year} className="block text-sm text-foreground mb-2.5">
                         Year
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -213,7 +213,7 @@ export function QuoteForm() {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.condition} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.condition} className="block text-sm text-foreground mb-2.5">
                         Condition
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -243,7 +243,7 @@ export function QuoteForm() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
                         Your name
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -267,7 +267,7 @@ export function QuoteForm() {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.phone} className="block text-sm text-foreground mb-2.5">
                         Phone
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -299,7 +299,7 @@ export function QuoteForm() {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.address} className="block text-sm font-semibold text-foreground mb-2">
+                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2">
                       Pickup address
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
@@ -338,7 +338,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full font-bold tracking-wide" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full tracking-wide" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>

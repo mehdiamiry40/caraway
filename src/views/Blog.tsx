@@ -62,7 +62,7 @@ export default function Blog() {
                       </time>
                     </div>
 
-                    <h2 className={`font-display font-semibold text-foreground leading-[1.2] mb-3 ${idx === 0 ? "text-xl sm:text-2xl md:text-[1.75rem]" : "text-lg sm:text-xl"}`} style={{ letterSpacing: "var(--tracking-tight)" }}>
+                    <h2 className={`font-display text-foreground leading-[1.2] mb-3 ${idx === 0 ? "text-xl sm:text-2xl md:text-[1.75rem]" : "text-lg sm:text-xl"}`} style={{ letterSpacing: "var(--tracking-tight)" }}>
                       <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0 after:content-[''] group-hover:text-primary transition-colors">
                         {post.title}
                       </Link>

@@ -81,7 +81,7 @@ export function ServiceAreas() {
       <div className="site-container">
         <Reveal className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             Free pickup across
             <br />
             Greater Brisbane.
@@ -104,11 +104,11 @@ export function ServiceAreas() {
                       <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary transition-colors duration-300 group-hover:bg-primary/20">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="font-mono text-xs font-semibold tabular-nums tracking-[0.08em] text-foreground/70">
+                      <span className="font-mono text-xs tabular-nums tracking-[0.08em] text-foreground/70">
                         {String(hubs.length).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-lg sm:text-xl font-bold text-foreground">
+                    <h3 className="mt-5 font-display text-lg sm:text-xl text-foreground">
                       {region.label}
                     </h3>
                     <p className="mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
@@ -119,7 +119,7 @@ export function ServiceAreas() {
                         <li key={hub.slug}>
                           <Link
                             href={`/locations/${hub.slug}`}
-                            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-semibold text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                           >
                             {hub.h1.replace("Cash for Cars ", "")}
                           </Link>
@@ -136,7 +136,7 @@ export function ServiceAreas() {
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3">
           <Link
             href="/locations"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary link-underline"
+            className="inline-flex items-center gap-1.5 text-sm text-primary link-underline"
           >
             View every suburb we cover
             <ArrowUpRight className="h-4 w-4" aria-hidden />

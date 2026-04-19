@@ -23,7 +23,7 @@ export function CarTypes() {
     <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
       <div className="site-container">
         <div className="text-center mb-10 sm:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display leading-tight">
             What Cars We Buy in Brisbane
           </h2>
           <p className="mt-3 text-primary-foreground/90 text-sm sm:text-base max-w-xl mx-auto">
@@ -54,7 +54,7 @@ export function CarTypes() {
                 )}>
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
                 </div>
-                <span className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
+                <span className="font-display text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
                 <span className="text-[11px] sm:text-xs text-primary-foreground/85 leading-tight">
@@ -67,7 +67,7 @@ export function CarTypes() {
         </div>
 
         <div className="mt-8 sm:mt-10 text-center">
-          <p className="text-xs uppercase tracking-wider font-semibold text-primary-foreground/90 mb-3">Also accepted</p>
+          <p className="text-xs uppercase tracking-wider text-primary-foreground/90 mb-3">Also accepted</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {alsoAccepted.map((type) => (
               <span

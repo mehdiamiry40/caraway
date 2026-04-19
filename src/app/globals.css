@@ -3,12 +3,11 @@
 @theme inline {
   /* ─────────────────────────────────────────────
    * Fonts — bound in app/layout.tsx via next/font
-   * Geist Sans is used for both body and display (single variable-font family,
-   * matches the Stripe Sohne approach of letting scale + tracking carry hierarchy).
-   * Geist Mono is the numerals font for the "quote result" data-card.
+   * Plus Jakarta Sans: body + display (warm, readable; fits paper + teal brand).
+   * Geist Mono: quote-result numerals / data.
    * ───────────────────────────────────────────── */
-  --font-sans: var(--font-geist-sans), "Inter", system-ui, sans-serif;
-  --font-display: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-plus-jakarta-sans), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-plus-jakarta-sans), "Inter", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   /* ─────────────────────────────────────────────
@@ -197,7 +196,6 @@
   body {
     @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/15 selection:text-foreground;
     overscroll-behavior-y: none;
-    font-feature-settings: "ss01", "ss03", "cv11";  /* Geist Sans refinements */
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -23,9 +23,9 @@ export default function NotFound() {
       >
         <div className="w-full max-w-lg text-center py-16 sm:py-20">
           <div className="w-20 h-20 rounded-full bg-primary/[0.06] flex items-center justify-center mx-auto mb-8">
-            <span className="text-4xl font-display font-bold text-primary/40">404</span>
+            <span className="text-4xl font-display text-primary/40">404</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl font-display text-foreground mb-4">
             Page not found
           </h1>
           <p className="text-muted-foreground leading-relaxed mb-10 max-w-sm mx-auto">
@@ -69,7 +69,7 @@ export default function NotFound() {
               Need help?{" "}
               <Link
                 href="/#price-estimator"
-                className="text-primary font-semibold hover:text-accent transition-colors inline-flex items-center gap-1"
+                className="text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
               >
                 <Calculator className="h-3.5 w-3.5" />
                 Get an instant quote

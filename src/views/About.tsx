@@ -33,7 +33,7 @@ export default function About() {
       <div className="site-container py-14 sm:py-20 lg:py-24">
         <div className="max-w-3xl space-y-14 sm:space-y-16">
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
               Who we are
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
@@ -47,11 +47,11 @@ export default function About() {
           <Reveal>
             <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
               <p className="eyebrow mb-3">Founder</p>
-              <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-5 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+              <h2 className="text-2xl sm:text-3xl font-display text-foreground mb-5 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                 Meet the founder
               </h2>
               <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-display font-semibold text-xl" aria-hidden="true">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-display text-xl" aria-hidden="true">
                   ME
                 </div>
                 <div className="flex-1">
@@ -67,7 +67,7 @@ export default function About() {
           </Reveal>
 
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
               How we work
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
@@ -77,7 +77,7 @@ export default function About() {
 
           <div>
             <Reveal>
-              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-6 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-6 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                 What sets us apart
               </h2>
             </Reveal>
@@ -90,7 +90,7 @@ export default function About() {
                         <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} />
                       </span>
                       <div>
-                        <dt className="font-display text-sm font-semibold text-foreground">{item.title}</dt>
+                        <dt className="font-display text-sm text-foreground">{item.title}</dt>
                         <dd className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</dd>
                       </div>
                     </div>
@@ -101,7 +101,7 @@ export default function About() {
           </div>
 
           <Reveal>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
               Our service area
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">

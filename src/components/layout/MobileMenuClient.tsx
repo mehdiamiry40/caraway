@@ -109,7 +109,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
       />
       <div className="relative bg-card flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
         <div className="flex items-center justify-between min-h-16 px-5 sm:px-6 border-b border-border/40 shrink-0">
-          <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-primary lowercase">
+          <span className="font-display text-xl sm:text-2xl tracking-tight text-primary lowercase">
             caraway<span className="text-accent">.</span>
           </span>
           <button
@@ -130,7 +130,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 aria-expanded={isMobileServicesOpen}
                 aria-controls="mobile-services-list"
                 className={cn(
-                  "text-base sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                  "text-base sm:text-lg font-display py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                   "text-foreground hover:text-primary hover:bg-secondary/70"
                 )}
               >
@@ -196,7 +196,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                     href={link.href}
                     onClick={close}
                     className={cn(
-                      "text-base sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      "text-base sm:text-lg font-display py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                       isActive
                         ? "text-primary bg-accent/[0.08]"
                         : "text-foreground hover:text-primary hover:bg-secondary/70"
@@ -220,7 +220,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 trackEvent("phone_click", { location: "header_drawer" });
                 close();
               }}
-              className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-lg border-[1.5px] border-primary text-primary font-bold text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-lg border-[1.5px] border-primary text-primary text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={`Call ${BUSINESS.phoneFriendly}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -230,7 +230,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               onClick={handleScrollToQuote}
               size="lg"
               variant="secondary"
-              className="w-full h-14 rounded-lg font-bold text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="w-full h-14 rounded-lg text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Get your free cash offer
             </Button>

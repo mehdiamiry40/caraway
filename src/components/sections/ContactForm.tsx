@@ -92,7 +92,7 @@ export function ContactForm() {
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
-          <h3 className="text-xl sm:text-2xl font-display font-bold text-primary mb-3">Message sent — thanks!</h3>
+          <h3 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h3>
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
             We&apos;ll reply within 1 business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
@@ -107,7 +107,7 @@ export function ContactForm() {
   return (
     <div className="bg-card rounded-lg p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-32px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
-      <h2 className="text-lg sm:text-xl font-display font-bold text-foreground mb-1 pt-1">Send Us a Message</h2>
+      <h2 className="text-lg sm:text-xl font-display text-foreground mb-1 pt-1">Send Us a Message</h2>
       <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
@@ -124,7 +124,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor={fieldIds.name} className="block text-sm font-semibold text-foreground mb-2.5">
+          <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
             Your name
             <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
           </label>
@@ -149,7 +149,7 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <div>
-            <label htmlFor={fieldIds.email} className="block text-sm font-semibold text-foreground mb-2.5">
+            <label htmlFor={fieldIds.email} className="block text-sm text-foreground mb-2.5">
               Email
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
@@ -174,7 +174,7 @@ export function ContactForm() {
             )}
           </div>
           <div>
-            <label htmlFor={fieldIds.phone} className="block text-sm font-semibold text-foreground mb-2.5">
+            <label htmlFor={fieldIds.phone} className="block text-sm text-foreground mb-2.5">
               Phone <span className="text-xs font-normal text-muted-foreground ml-2">(optional)</span>
             </label>
             <Input
@@ -200,7 +200,7 @@ export function ContactForm() {
 
         <div>
           <div className="flex items-center justify-between mb-2.5">
-            <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground">
+            <label htmlFor={fieldIds.message} className="block text-sm text-foreground">
               Message
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
@@ -238,7 +238,7 @@ export function ContactForm() {
         </div>
 
         <div className="pt-1">
-          <Button type="submit" size="lg" className="w-full font-semibold" isLoading={isSubmitting}>
+          <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
             {isSubmitting ? (
               "Sending..."
             ) : (
