@@ -16,7 +16,7 @@ export function Hero() {
               id="hero-heading"
               className="font-display font-bold text-[clamp(2.25rem,6vw,4.25rem)] leading-[1.04] tracking-[var(--tracking-display)] text-foreground text-balance mb-6 scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
             >
-              <span className="text-gradient">Cash for cars Brisbane</span> and{" "}
+              <span className="text-foreground">Cash for cars Brisbane</span> and{" "}
               <span className="text-foreground">Scrap Car Removal Brisbane</span>
             </h1>
             <ul className="text-lg sm:text-xl text-foreground/80 leading-relaxed max-w-lg mb-8 space-y-2">
