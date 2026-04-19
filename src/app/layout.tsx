@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 import { JsonLd } from "@/components/JsonLd";
@@ -120,7 +120,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${plusJakartaSans.variable} ${GeistMono.variable}`}
+      className={`${inter.variable} ${GeistMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
