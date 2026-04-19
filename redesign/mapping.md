@@ -79,13 +79,22 @@ Editorial long-form: 680 px measure, Inter body-lg, table-of-contents sidebar st
 - Existing data shapes (`services.ts`, `suburbs.ts`, `reviews.ts`, `home-faqs.ts`).
 - Price-estimator algorithm.
 
-## K. Open questions for you
+## K. Decisions (resolved)
 
-1. **[Q1]** Swap Ubuntu+Exo → **Inter Variable + Geist Mono**? (Needed for authentic Stripe typographic feel.)
-2. **[Q2]** Introduce **violet + pink accents (`#7C6BFF`, `#FF80BF`, `#C7A2FF`)** for gradients / glows only, while keeping `#3D4EB5` as the solid primary?
-3. **[Q3]** OK to **retire the tow-truck hero image** from the homepage top slot in favour of the floating valuation card? Truck imagery moves lower.
-4. **[Q4]** **Re-introduce the Stats band** on the homepage (currently omitted from `HomeBelowFold`)? Stripe homepages lean on a dark-stats moment.
-5. **[Q5]** OK to **group suburbs by region** (N/S/E/W/Bayside) in `ServiceAreas`?
-6. **[Q6]** Any concern about the **aurora gradient animation**? It's CSS-only + GPU-accelerated + pauses on `prefers-reduced-motion`, but it's a visible break from the current flat aesthetic.
-7. **[Q7]** Lucide vs. a custom thin-stroke set — Lucide at 1.5 px stroke is the default Stripe-like choice. Confirm.
-8. **[Q8]** Should I keep `CarTypes.tsx` off the homepage (current state) or fold its content into a new "We buy" grid? Currently it lives only on service pages.
+1. **Q1 → YES** Swap Ubuntu + Exo for **Inter Variable** (body + UI) + **Geist Mono** (quote-result numerals).
+2. **Q2 → YES (author's call)** Introduce `--accent-violet #7C6BFF`, `--accent-pink #FF80BF`, `--accent-lilac #C7A2FF` **for gradients and glows only**. `#3D4EB5` stays as the solid brand `--primary` on buttons, links, focus rings. Solid-colour surfaces are never violet/pink.
+3. **Q3 → NO** Keep the tow-truck hero image in the right column. It gets the Stripe product-mockup treatment: aurora gradient on the full hero section behind it, subtle `-2°` tilt that straightens on scroll, three-stop soft shadow, and an optional floating "$2,450 — offer sent" pill overlay for social proof. No standalone floating valuation card.
+4. **Q4 → NO** No Stats band on the homepage. Keep the flow lean, as today.
+5. **Q5 → YES** Group `ServiceAreas` suburbs by region (North / South / East / West / Bayside) using lat/long already in `suburbs.ts`. Cards lift on hover, expand to a suburb list.
+6. **Q6 → YES (recommended)** Aurora mesh proceeds — CSS-only, GPU-accelerated, pauses on `prefers-reduced-motion`.
+7. **Q7 → YES (recommended)** Lucide React at `strokeWidth={1.5}`, sizes 20/24/28 standardized via a thin `<Icon>` wrapper.
+8. **Q8 → Keep off homepage (recommended)** `CarTypes` continues to live on service pages only.
+
+### Consequent revision to §C row 1 (Hero)
+
+Hero layout stays split — headline + CTAs left, **tow-truck image right**. The changes:
+- Section background gets the aurora mesh (replacing the current flat `--hero-wash`).
+- Headline becomes display-scale (~88 px on desktop) with **one gradient-fill word** (e.g. "cash") using the violet→pink gradient.
+- Primary CTA ("Get my quote") + ghost CTA with arrow.
+- The tow-truck image sits in a Stripe-style product-mockup frame: `rounded-2xl`, 3-stop `shadow-lg`, `-2°` tilt via `useScroll` that straightens as you scroll.
+- Optional floating "quote received" pill (small dark-ink card) overlapping the image's lower-left for social proof — reuses the quote-result chrome at miniature scale.
