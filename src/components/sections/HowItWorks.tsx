@@ -41,16 +41,9 @@ export function HowItWorks() {
     <section id="how-it-works" className="section-y bg-background">
       <div className="site-container">
         <Reveal className="max-w-2xl mb-12 md:mb-16">
-          <p className="eyebrow mb-5">How it works</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
-            Three quiet steps.
-            <br />
-            No back-and-forth.
+            How it works
           </h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed text-base sm:text-lg max-w-xl">
-            We buy the car directly. If we&apos;re not the right fit, we&apos;ll
-            say so — we&apos;d rather you know upfront than waste a day.
-          </p>
         </Reveal>
 
         <RevealGroup>

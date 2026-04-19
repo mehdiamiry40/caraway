@@ -75,7 +75,6 @@ export function Testimonials() {
     <section id="reviews" className="section-y bg-background" aria-label="What sellers say">
       <div className="site-container">
         <Reveal className="max-w-2xl mb-10 md:mb-14">
-          <p className="eyebrow mb-5">Seller stories</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
             Honest feedback from
             <br />

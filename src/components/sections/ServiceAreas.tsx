@@ -10,11 +10,8 @@ export function ServiceAreas() {
     >
       <div className="site-container">
         <Reveal className="max-w-2xl mb-10 md:mb-12">
-          <p className="eyebrow mb-5">Service areas</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
-            Free pickup across
-            <br />
-            Greater Brisbane.
+            Where we pick up
           </h2>
         </Reveal>
 
