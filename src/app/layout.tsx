@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import { GeistMono } from "geist/font/mono";
+import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 
-const inter = Inter({
+const ubuntu = Ubuntu({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-ubuntu",
+  display: "swap",
+});
+
+const ubuntuMono = Ubuntu_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-ubuntu-mono",
   display: "swap",
 });
 import { JsonLd } from "@/components/JsonLd";
@@ -120,7 +127,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${inter.variable} ${GeistMono.variable}`}
+      className={`${ubuntu.variable} ${ubuntuMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
