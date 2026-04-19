@@ -1,6 +1,6 @@
 "use server";
 
-import type { ZodSchema } from "zod";
+import type { ZodMiniType } from "zod/mini";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
 import { getEnv } from "@/lib/env";
 import { validateEndpoint } from "@/lib/validate-endpoint";
@@ -9,7 +9,7 @@ const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
 type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
 
 interface SubmitFormOptions {
-  schema: ZodSchema;
+  schema: ZodMiniType;
   data: unknown;
   endpointEnvVar: AllowedEndpoint;
   label: string;
