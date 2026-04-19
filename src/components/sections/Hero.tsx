@@ -16,14 +16,16 @@ export function Hero() {
               id="hero-heading"
               className="font-display font-semibold text-[clamp(2.25rem,6vw,4.25rem)] leading-[1.04] tracking-[var(--tracking-display)] text-foreground text-balance mb-6 scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
             >
-              <span className="text-gradient">Cash</span> for cars in Brisbane —{" "}
-              <span className="text-foreground/95">paid on pickup.</span>
+              <span className="text-gradient">Cash for cars Brisbane</span> and{" "}
+              <span className="text-foreground/95">Scrap Car Removal Brisbane</span>
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-lg mb-8">
-              Sell your car for cash today. Free pickup across Greater
-              Brisbane, payment on the spot. Any make, any condition — up to
-              $9,999.
-            </p>
+            <ul className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-lg mb-8 space-y-2">
+              <li>Instant cash offers up to $9,999</li>
+              <li>Free pickup across Greater Brisbane</li>
+              <li>Payment on the spot — paid on pickup</li>
+              <li>Any make, model or condition accepted</li>
+              <li>Same-day or next-day removal, 7 days a week</li>
+            </ul>
             <HeroCTAs />
           </div>
 
