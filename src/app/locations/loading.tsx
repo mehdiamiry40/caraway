@@ -11,14 +11,14 @@ export default function LocationsLoading() {
           <span className="sr-only">Loading locations…</span>
 
           <section className="bg-primary py-16 lg:py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="site-container">
               <Skeleton className="h-4 w-40 bg-primary-foreground/10 mb-4" />
               <Skeleton className="h-12 w-full max-w-xl bg-primary-foreground/10 mb-4" />
               <Skeleton className="h-5 w-full max-w-2xl bg-primary-foreground/10" />
             </div>
           </section>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+          <div className="site-container py-14 sm:py-20">
             {/* Search bar skeleton */}
             <Skeleton className="h-12 w-full max-w-md mb-8" />
 

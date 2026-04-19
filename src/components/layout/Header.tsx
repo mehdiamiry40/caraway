@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[72px] gap-2 sm:gap-4 lg:gap-6">
+      <div className="site-container flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[72px] gap-2 sm:gap-4 lg:gap-6">
         <Link
           href="/"
           aria-label="Caraway — Home"

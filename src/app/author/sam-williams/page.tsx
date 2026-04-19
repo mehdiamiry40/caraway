@@ -79,7 +79,7 @@ export default function AuthorPage() {
           </p>
         }
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div className="site-container py-14 sm:py-20">
           <div className="max-w-3xl mb-14">
             <h2 className="font-display font-bold text-2xl mb-4">About {AUTHOR.name}</h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">{AUTHOR.bio}</p>

@@ -248,6 +248,14 @@
     @apply py-10 sm:py-14 lg:py-20;
   }
 
+  /* The "Stripe line" — every section's outer container snaps to this
+     max-width + horizontal padding so content aligns edge-to-edge across
+     the site. Inner prose/card widths can still be narrower, but the
+     left/right outer edges always line up. */
+  .site-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
   .container-prose {
     max-width: 65ch;
     margin-left: auto;

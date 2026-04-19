@@ -69,7 +69,7 @@ export function Testimonials() {
 
   return (
     <section id="reviews" className="section-y bg-background" aria-label="What sellers say">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <Reveal className="max-w-2xl mb-10 md:mb-14">
           <p className="eyebrow mb-5">Seller stories</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
@@ -101,7 +101,7 @@ export function Testimonials() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
+      <div className="site-container mt-12 text-center">
         <TrackedGoogleBusinessLink
           location="testimonials"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"

@@ -50,7 +50,7 @@ export function Footer() {
 
   return (
     <footer className="edge-glow-top bg-ink text-on-dark pl-safe pr-safe">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+      <div className="site-container py-14 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
           {/* Brand + contact */}
           <div className="sm:col-span-2 lg:col-span-4">
@@ -148,7 +148,7 @@ export function Footer() {
 
       {/* Legal bar */}
       <div className="border-t border-white/10 pb-safe">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark/70">
+        <div className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark/70">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             {legalLinks.map((link) => (

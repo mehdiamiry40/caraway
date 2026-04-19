@@ -7,7 +7,7 @@ export function Hero() {
       className="aurora-surface aurora-animate relative w-full mt-header-safe overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32">
+      <div className="site-container pt-10 pb-16 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-center">
           {/* Copy */}
           <div className="relative z-10 max-w-xl">

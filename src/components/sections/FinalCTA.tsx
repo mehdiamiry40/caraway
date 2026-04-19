@@ -15,8 +15,8 @@ export function FinalCTA() {
       className="section-y aurora-surface-dark"
       aria-label="Get your quote"
     >
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <Reveal>
+      <div className="site-container relative">
+        <Reveal className="max-w-4xl mx-auto text-center">
           <p className="eyebrow-on-dark mb-5">Ready when you are</p>
           <h2
             className="font-display text-3xl sm:text-4xl md:text-[3rem] font-semibold text-on-dark-hi leading-[1.05] tracking-[var(--tracking-display)] text-balance"

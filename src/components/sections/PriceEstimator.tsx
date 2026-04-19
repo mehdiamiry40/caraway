@@ -396,8 +396,8 @@ export function PriceEstimator() {
     return (
       <section id="price-estimator" className="section-y bg-background relative overflow-hidden" aria-label="Quote submitted">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.14),transparent_60%)]" />
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center" role="status" aria-live="polite" aria-atomic="true">
+        <div className="site-container">
+          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} aria-hidden="true" />
             </div>
@@ -451,7 +451,7 @@ export function PriceEstimator() {
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Instant valuation</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">

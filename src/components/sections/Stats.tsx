@@ -68,7 +68,7 @@ export function Stats() {
 
   return (
     <section ref={ref} className="relative bg-muted border-b border-border/40" aria-label="What to expect">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
+      <div className="site-container py-8 sm:py-14">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, index) => (
             <StatItem key={stat.label} stat={stat} index={index} inView={inView} />
