@@ -51,6 +51,15 @@ export function FAQ() {
                 if (isOpening) trackEvent("faq_opened", { question });
               }}
             />
+            <div className="mt-8">
+              <Link
+                href="/faq"
+                className="inline-flex items-center gap-1.5 text-base font-medium text-primary link-underline"
+              >
+                See all questions
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
           </Reveal>
         </div>
       </div>
