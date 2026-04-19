@@ -18,6 +18,26 @@ const nextConfig: NextConfig = {
     // optimizeCss removed: critters is abandoned upstream and breaks builds.
     optimizePackageImports: ["lucide-react"],
   },
+  // Replace Next.js's polyfill-module with an empty shim in client builds.
+  // It patches Array.prototype.at/flat/flatMap, Object.fromEntries/hasOwn,
+  // String.prototype.trimStart/trimEnd, Promise.prototype.finally, and
+  // URL.canParse — all natively supported by every browser in our
+  // browserslist target (last 2 Chrome/Firefox/Safari/Edge). Next.js loads
+  // the polyfill via a relative `require`, so resolve.alias on the package
+  // path doesn't match; NormalModuleReplacementPlugin matches on the
+  // resolved path instead. Shaves the ~12 KiB of "Legacy JavaScript" that
+  // Lighthouse flagged.
+  webpack: (config, { isServer, webpack }) => {
+    if (!isServer) {
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /next[\\/]dist[\\/]build[\\/]polyfills[\\/]polyfill-module/,
+          path.resolve(__dirname, "scripts/noop-polyfill.js"),
+        ),
+      );
+    }
+    return config;
+  },
   headers: async () => [
     {
       source: "/(.*)",
