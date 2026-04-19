@@ -1,8 +1,12 @@
-import { ArrowUpRight, Star } from "lucide-react";
-import { reviews as allReviews } from "@/data/reviews";
-import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
+"use client";
 
-const FEATURED_COUNT = 3;
+import { useState } from "react";
+import { ArrowUpRight, Quote, Star } from "lucide-react";
+import { reviews as allReviews, type Review } from "@/data/reviews";
+import { TrackedGoogleBusinessLink } from "@/components/layout/TrackedGoogleBusinessLink";
+import { Reveal } from "@/components/ui/motion";
+
+const FEATURED = allReviews.slice(0, 9);
 
 function Stars({ count }: { count: number }) {
   return (
@@ -18,52 +22,93 @@ function Stars({ count }: { count: number }) {
   );
 }
 
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+function ReviewCard({ review }: { review: Review }) {
+  return (
+    <article className="relative flex w-[20rem] sm:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border/60 bg-card p-7 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+      <Quote
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.07]"
+        strokeWidth={1}
+      />
+      <Stars count={review.rating} />
+      <blockquote className="relative z-10 mt-5 flex-1 text-[0.9375rem] leading-relaxed text-muted-foreground">
+        &ldquo;{review.text}&rdquo;
+      </blockquote>
+      <footer className="relative z-10 mt-6 flex items-center gap-3 border-t border-border/50 pt-5">
+        <span
+          aria-hidden="true"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 font-display text-xs font-semibold text-primary"
+        >
+          {initials(review.name)}
+        </span>
+        <div className="min-w-0">
+          <div className="font-display text-sm font-semibold tracking-tight text-foreground">
+            {review.name}
+          </div>
+          <div className="truncate text-xs text-muted-foreground/80">
+            {review.location} · {review.car}
+          </div>
+        </div>
+      </footer>
+    </article>
+  );
+}
+
 export function Testimonials() {
-  const featured = allReviews.slice(0, FEATURED_COUNT);
+  const [paused, setPaused] = useState(false);
+  const track = [...FEATURED, ...FEATURED];
 
   return (
     <section id="reviews" className="section-y bg-background" aria-label="What sellers say">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-10 md:mb-16">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            Seller stories
-          </p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display font-bold text-primary leading-[1.08] tracking-[-0.02em] text-balance">
-            Honest feedback from people who sold us their car.
+        <Reveal className="max-w-2xl mb-10 md:mb-14">
+          <p className="eyebrow mb-5">Seller stories</p>
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+            Honest feedback from
+            <br />
+            people who sold us their car.
           </h2>
-        </div>
+          <p className="mt-5 text-muted-foreground leading-relaxed text-base sm:text-lg max-w-xl">
+            Real quotes from real sellers across Greater Brisbane — collected on Google and pulled in here unedited.
+          </p>
+        </Reveal>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {featured.map((review) => (
-            <article
-              key={review.name}
-              className="relative flex flex-col bg-card border border-border/60 rounded-xl p-6 sm:p-7"
-            >
-              <Stars count={review.rating} />
-              <blockquote className="mt-5 text-muted-foreground text-base leading-relaxed flex-1">
-                &ldquo;{review.text}&rdquo;
-              </blockquote>
-              <footer className="mt-6 pt-5 border-t border-border/40">
-                <div className="font-display font-semibold text-sm text-foreground tracking-tight">
-                  {review.name}
-                </div>
-                <div className="text-xs text-muted-foreground mt-0.5">
-                  {review.location}, Brisbane · {review.car}
-                </div>
-              </footer>
-            </article>
+      <div
+        className="marquee-mask relative"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={() => setPaused(false)}
+      >
+        <div
+          className="marquee-track flex gap-5 sm:gap-6 px-4 sm:px-6"
+          style={{ animationPlayState: paused ? "paused" : "running" }}
+          aria-live="off"
+        >
+          {track.map((review, index) => (
+            <ReviewCard key={`${review.name}-${index}`} review={review} />
           ))}
         </div>
+      </div>
 
-        <div className="mt-10 text-center">
-          <TrackedGoogleBusinessLink
-            location="testimonials"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-          >
-            Read more on Google
-            <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-          </TrackedGoogleBusinessLink>
-        </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
+        <TrackedGoogleBusinessLink
+          location="testimonials"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+        >
+          Read more on Google
+          <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+        </TrackedGoogleBusinessLink>
       </div>
     </section>
   );

@@ -562,6 +562,44 @@
   }
 }
 
+/* ─────────────────────────────────────────────
+ * Auto-scrolling marquee — used by Testimonials.
+ * ───────────────────────────────────────────── */
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@utility marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+@utility marquee-track {
+  width: max-content;
+  animation: marquee-x 60s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
 /* Stripe-style "quote result" card chrome. */
 @utility quote-card {
   background-color: hsl(var(--ink));
