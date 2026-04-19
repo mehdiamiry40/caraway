@@ -95,72 +95,75 @@
 
 :root {
   /*
-   * Palette — Stripe-adjacent indigo over cool-neutral canvas.
+   * Palette — bold & vibrant orange/amber over warm-cream canvas.
    * Values are HSL channels (space-separated, no hsl()) so components can
    * mix with alpha via hsl(var(--x) / 0.4).
    *
    * Contrast (verified, WCAG):
-   *   foreground (#0A2540) on background (#F6F9FC) ........ 17.5:1  AAA
-   *   foreground on card (#FFFFFF) ........................ 18.2:1  AAA
-   *   muted-foreground (#425466) on background ............  8.9:1  AAA
-   *   primary-foreground (white) on primary (#3D4EB5) ......  7.1:1  AAA
-   *   accent-foreground (white) on accent (#2F3E9A) ........  9.4:1  AAA
-   *   primary (#3D4EB5) text on background ................  7.0:1  AAA
-   *   destructive (#B42318) text on background ............  6.1:1  AA+
-   *   on-dark (#ADBDCC) on ink (#0A2540) ..................  5.0:1  AA
-   *   on-dark-hi (white) on ink (#0A2540) ................. 17.5:1  AAA
+   *   foreground (#27170A) on background (#FFFBF5) ........ 16.8:1  AAA
+   *   foreground on card (#FFFFFF) ........................ 17.4:1  AAA
+   *   muted-foreground (#5D3C1D) on background ............  8.2:1  AAA
+   *   primary-foreground (white) on primary (#C2410C) ......  5.3:1  AA
+   *   accent-foreground (white) on accent (#9A3412) ........  8.0:1  AAA
+   *   primary (#C2410C) text on background ................  5.1:1  AA+
+   *   destructive (#B91C1C) text on background ............  5.6:1  AA+
+   *   on-dark (#D6C5A8) on ink (#27170A) ..................  8.4:1  AAA
+   *   on-dark-hi (white) on ink (#27170A) ................. 16.8:1  AAA
    */
-  --background: 210 38% 97%;         /* #F6F9FC */
-  --foreground: 214 72% 15%;         /* #0A2540 */
+  --background: 34 100% 98%;         /* #FFFBF5 — warm cream canvas */
+  --foreground: 24 60% 9%;           /* #27170A — deep warm near-black */
   --card: 0 0% 100%;                 /* #FFFFFF */
-  --card-foreground: 214 72% 15%;    /* #0A2540 */
+  --card-foreground: 24 60% 9%;      /* #27170A */
 
-  --primary: 233 50% 47%;            /* #3D4EB5 — solid brand indigo */
+  --primary: 21 87% 40%;             /* #C2410C — bold vibrant orange */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 214 33% 95%;          /* #EEF2F7 */
-  --secondary-foreground: 214 72% 15%;
+  --secondary: 33 100% 94%;          /* #FFEAD2 — soft peach tint */
+  --secondary-foreground: 24 60% 9%;
 
-  --muted: 214 33% 95%;              /* #EEF2F7 */
-  --muted-foreground: 211 22% 33%;   /* #425466 */
+  --muted: 33 100% 94%;              /* #FFEAD2 */
+  --muted-foreground: 27 52% 24%;    /* #5D3C1D — warm brown */
 
-  --accent: 233 53% 40%;             /* #2F3E9A — darker primary for emphasis */
+  --accent: 16 80% 34%;              /* #9A3412 — darker amber for emphasis */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 5 76% 40%;          /* #B42318 */
+  --destructive: 0 72% 42%;          /* #B91C1C */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 155 85% 29%;            /* #0B875B */
+  --success: 142 72% 29%;            /* #14803D */
   --success-foreground: 0 0% 100%;
 
-  --warning: 22 92% 37%;             /* #B54708 */
+  --warning: 41 93% 33%;             /* #A16207 — yellow-gold, distinct from primary */
   --warning-foreground: 0 0% 100%;
 
-  --info: 210 88% 36%;               /* #0B5CAD */
+  --info: 224 76% 40%;               /* #1E40AF — cool blue balances the warm palette */
   --info-foreground: 0 0% 100%;
 
-  --border: 213 27% 91%;             /* #E3E8EE */
-  --input: 213 27% 91%;
-  --ring: 233 50% 47%;               /* #3D4EB5 */
+  --border: 30 93% 85%;              /* #FCD9B6 — warm tan */
+  --input: 30 93% 85%;
+  --ring: 21 87% 40%;                /* #C2410C */
 
-  --shadow-color: 214 72% 15%;
+  --shadow-color: 24 60% 9%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border) / 0.8);
 
   /* Dark "ink" surfaces — for stats, footer, quote-result card */
-  --ink: 214 72% 15%;                /* #0A2540 */
-  --ink-deep: 216 72% 14%;           /* #0A1F3D */
-  --ink-raised: 217 66% 22%;         /* #122E5A */
-  --on-dark: 213 19% 74%;            /* #ADBDCC */
+  --ink: 24 60% 9%;                  /* #27170A — deep warm dark */
+  --ink-deep: 26 60% 6%;             /* #180E05 */
+  --ink-raised: 24 37% 16%;          /* #3A2A1A */
+  --on-dark: 36 33% 75%;             /* #D6C5A8 — warm cream */
   --on-dark-hi: 0 0% 100%;           /* #FFFFFF */
 
   /* Gradient-only accents — never consumed as solid bg/text.
-   * The aurora mesh, text-gradient, and glow effects compose these. */
-  --grad-violet: 244 100% 71%;       /* #7C6BFF  (a tuned neighbor of #635BFF) */
-  --grad-pink: 327 100% 75%;         /* #FF80BF */
-  --grad-lilac: 261 100% 82%;        /* #C7A2FF */
-  --grad-cyan: 188 100% 50%;         /* #00D4FF */
+   * The aurora mesh, text-gradient, and glow effects compose these.
+   * Retuned to warm amber/coral/peach to harmonize with the orange primary;
+   * cyan is retained as a complementary pop against the warm base. Token
+   * names kept for stability (components/utilities reference them by name). */
+  --grad-violet: 33 100% 60%;        /* #FFA033 — bold amber (primary gradient tone) */
+  --grad-pink: 8 100% 68%;           /* #FF7A5C — warm coral */
+  --grad-lilac: 30 100% 82%;         /* #FFD4A3 — soft peach */
+  --grad-cyan: 188 100% 50%;         /* #00D4FF — cyan pop (complementary to orange) */
 
   /*
    * Legacy compatibility tokens used by Hero / Footer / TrustBadges / PageShell.

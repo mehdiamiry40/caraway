@@ -30,12 +30,12 @@ export default function GlobalError({
   return (
     <html lang="en-AU">
       <body>
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#0A2540", background: "#F6F9FC" }}>
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#27170A", background: "#FFFBF5" }}>
           <div style={{ maxWidth: "28rem", textAlign: "center" }}>
             <h1 style={{ fontSize: "1.875rem", fontWeight: 700, marginBottom: "0.75rem" }}>
               Something went wrong
             </h1>
-            <p style={{ color: "#425466", marginBottom: "1.5rem", lineHeight: 1.5 }}>
+            <p style={{ color: "#5D3C1D", marginBottom: "1.5rem", lineHeight: 1.5 }}>
               We hit an unexpected error loading the page. Please try again.
             </p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
@@ -44,7 +44,7 @@ export default function GlobalError({
                 onClick={reset}
                 style={{
                   padding: "0.75rem 2rem",
-                  background: "#3D4EB5",
+                  background: "#C2410C",
                   color: "#FFFFFF",
                   border: "none",
                   borderRadius: "0.5rem",
@@ -61,8 +61,8 @@ export default function GlobalError({
                 style={{
                   padding: "0.75rem 2rem",
                   background: "transparent",
-                  color: "#3D4EB5",
-                  border: "1px solid #3D4EB5",
+                  color: "#C2410C",
+                  border: "1px solid #C2410C",
                   borderRadius: "0.5rem",
                   fontSize: "0.875rem",
                   fontWeight: 600,
