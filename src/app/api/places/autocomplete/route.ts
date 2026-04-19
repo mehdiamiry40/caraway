@@ -124,7 +124,8 @@ function isAllowedCaller(request: Request): boolean {
     try {
       if (allowedHosts.has(new URL(source).host)) return true;
     } catch {
-      return false;
+      // Malformed URL on one header (e.g. Origin) must not skip a valid Referer.
+      continue;
     }
   }
 
