@@ -144,6 +144,9 @@
   --ring: 233 50% 47%;               /* #3D4EB5 */
 
   --shadow-color: 214 72% 15%;
+  --site-frame-max-width: 80rem;
+  --site-frame-gutter: 1rem;
+  --site-frame-stroke: hsl(var(--border) / 0.8);
 
   /* Dark "ink" surfaces — for stats, footer, quote-result card */
   --ink: 214 72% 15%;                /* #0A2540 */
@@ -166,6 +169,18 @@
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--background));
   --hero-mesh: transparent;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --site-frame-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-frame-gutter: 2rem;
+  }
 }
 
 /*
@@ -324,6 +339,17 @@
 }
 
 @layer components {
+  .site-frame {
+    position: fixed;
+    inset-block: 0;
+    left: 50%;
+    z-index: 20;
+    width: min(calc(100vw - (var(--site-frame-gutter) * 2)), var(--site-frame-max-width));
+    transform: translateX(-50%);
+    border-inline: 1px solid var(--site-frame-stroke);
+    pointer-events: none;
+  }
+
   .prose-body { @apply text-base sm:text-lg leading-[1.65] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
   .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-semibold text-foreground mt-10 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
@@ -400,6 +426,9 @@
 /* Print stylesheet */
 @media print {
   header, footer, nav, [role="banner"], .no-print, button, a[href^="#"] {
+    display: none !important;
+  }
+  .site-frame {
     display: none !important;
   }
   main, [role="main"] {
