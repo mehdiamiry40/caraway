@@ -1,5 +1,12 @@
+import { ShieldCheck, Recycle, Building2 } from "lucide-react";
 import { HeroCTAs } from "./HeroCTAs";
 import { HeroImage } from "./HeroImage";
+
+const trustItems = [
+  { icon: ShieldCheck, label: "Fully insured" },
+  { icon: Recycle, label: "Licensed recycler" },
+  { icon: Building2, label: "ABN registered" },
+] as const;
 
 export function Hero() {
   return (
@@ -25,6 +32,15 @@ export function Hero() {
               $9,999.
             </p>
             <HeroCTAs />
+
+            <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              {trustItems.map(({ icon: Icon, label }) => (
+                <li key={label} className="inline-flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                  <span className="font-medium text-foreground/90">{label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Product shot */}

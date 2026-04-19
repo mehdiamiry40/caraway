@@ -10,15 +10,6 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 
-/**
- * Stripe-style floating product shot. The truck image sits in a rounded
- * card with a three-stop indigo-tinted shadow and a subtle tilt that
- * straightens as the user scrolls past the hero. A small dark "quote sent"
- * pill overlaps the lower-left corner for micro social proof.
- *
- * Framer Motion is opt-out on prefers-reduced-motion — the image renders
- * flat with no transform in that mode.
- */
 export function HeroImage() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -39,7 +30,6 @@ export function HeroImage() {
 
   return (
     <div ref={ref} className="relative w-full">
-      {/* Soft indigo glow behind the card */}
       <div
         aria-hidden="true"
         className="absolute inset-x-6 inset-y-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.38),transparent_70%)] blur-3xl"
@@ -63,30 +53,6 @@ export function HeroImage() {
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--ink)/0.22)] via-transparent to-[hsl(var(--grad-violet)/0.14)]"
         />
-      </motion.div>
-
-      {/* Floating "quote sent" pill — Stripe-style data chip */}
-      <motion.div
-        initial={reduce ? false : { opacity: 0, y: 12 }}
-        animate={reduce ? false : { opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -bottom-5 left-4 sm:-bottom-6 sm:left-10 quote-card w-[min(260px,72%)] px-4 py-3 text-[0.8125rem]"
-        aria-hidden="true"
-      >
-        <div className="flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
-          <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
-          <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
-          <span className="ml-auto text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-            Offer sent
-          </span>
-        </div>
-        <div className="mt-2 flex items-baseline justify-between">
-          <span className="text-[hsl(var(--on-dark))]">2011 Toyota Camry</span>
-          <span className="font-mono tabular-nums text-base font-medium text-[hsl(var(--on-dark-hi))]">
-            $3,450
-          </span>
-        </div>
       </motion.div>
     </div>
   );
