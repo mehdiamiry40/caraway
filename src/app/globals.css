@@ -210,7 +210,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-semibold;
+    @apply font-bold;
     letter-spacing: var(--tracking-tight);
   }
 
@@ -286,12 +286,12 @@
 
   /* Eyebrow — 12px uppercase with wide tracking. */
   .eyebrow {
-    @apply text-xs font-medium uppercase text-primary;
+    @apply text-xs font-semibold uppercase text-primary;
     letter-spacing: var(--tracking-wide);
   }
 
   .eyebrow-on-dark {
-    @apply text-xs font-medium uppercase;
+    @apply text-xs font-semibold uppercase;
     color: hsl(var(--on-dark));
     letter-spacing: var(--tracking-wide);
   }
@@ -362,20 +362,20 @@
 
   .prose-body { @apply text-base sm:text-lg leading-[1.65] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-semibold text-foreground mt-10 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
-  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-semibold text-foreground mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
-  .prose-body h4 { @apply text-lg sm:text-xl font-display font-semibold text-foreground mt-6 mb-2; }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-foreground mt-10 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
+  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-bold text-foreground mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
+  .prose-body h4 { @apply text-lg sm:text-xl font-display font-bold text-foreground mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
   .prose-body a { @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors; }
-  .prose-body strong { @apply font-semibold text-foreground; }
+  .prose-body strong { @apply font-bold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground; }
+  .prose-body blockquote { @apply border-l-4 border-primary/60 pl-4 italic text-foreground; }
 
-  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-muted-foreground; }
+  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
   .list-styled li { @apply leading-relaxed; }
-  .list-styled strong { @apply text-foreground font-semibold; }
+  .list-styled strong { @apply text-foreground font-bold; }
 }
 
 /* ─────────────────────────────────────────────

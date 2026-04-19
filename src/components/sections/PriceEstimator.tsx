@@ -404,11 +404,11 @@ export function PriceEstimator() {
             <h3
               ref={successHeadingRef}
               tabIndex={-1}
-              className="font-display font-semibold text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+              className="font-display font-bold text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
             >
               Your quote is on its way.
             </h3>
-            <p className="text-muted-foreground text-sm sm:text-base mb-5">
+            <p className="text-foreground/80 text-sm sm:text-base mb-5">
               We received your details for your <strong className="text-foreground font-semibold">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
             <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
@@ -454,10 +454,10 @@ export function PriceEstimator() {
       <div className="site-container">
         <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Instant valuation</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-foreground leading-[1.1] text-balance">
             How much is your car worth?
           </h2>
-          <p className="mt-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
+          <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
             Answer four quick questions. We&apos;ll send back a firm cash offer for your car — no account, no spam.
           </p>
         </div>
@@ -476,16 +476,16 @@ export function PriceEstimator() {
             {[1, 2, 3].map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] font-medium transition-[background-color,color,border-color] duration-300",
+                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] font-bold transition-[background-color,color,border-color] duration-300",
                   step >= s
                     ? "bg-primary text-primary-foreground"
-                    : "bg-card border border-border text-muted-foreground"
+                    : "bg-card border border-border text-foreground/70"
                 )}>
-                  {step > s ? <CheckCircle2 className="w-4 h-4" strokeWidth={2} aria-hidden="true" /> : s}
+                  {step > s ? <CheckCircle2 className="w-4 h-4" strokeWidth={2.25} aria-hidden="true" /> : s}
                 </div>
                 <span className={cn(
-                  "text-xs font-medium transition-colors hidden sm:inline",
-                  step >= s ? "text-foreground" : "text-muted-foreground"
+                  "text-xs font-semibold transition-colors hidden sm:inline",
+                  step >= s ? "text-foreground" : "text-foreground/70"
                 )}>
                   {s === 1 ? "Vehicle" : s === 2 ? "Your quote" : "Claim it"}
                 </span>
@@ -528,7 +528,7 @@ export function PriceEstimator() {
                   <h3
                     ref={step1HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-semibold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display font-bold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Tell us about your vehicle
                   </h3>
@@ -672,12 +672,12 @@ export function PriceEstimator() {
                   </div>
 
                   {result.factors.length > 0 && (
-                    <div className="bg-muted/60 rounded-xl p-4 mb-6 border border-border/60">
-                      <p className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground mb-2">What affects your price</p>
+                    <div className="bg-muted rounded-xl p-4 mb-6 border border-border">
+                      <p className="text-xs font-bold uppercase tracking-[0.06em] text-foreground/75 mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={1.75} aria-hidden="true" />
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/85">
+                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
                             {f}
                           </li>
                         ))}
@@ -712,17 +712,17 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
-                  <div className="flex items-center justify-between gap-3 bg-muted/60 border border-border/60 rounded-xl px-4 py-3 mb-7">
+                  <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
                     <div className="min-w-0">
-                      <p className="text-xs text-muted-foreground">Your quote</p>
-                      <p className="font-medium text-foreground truncate">
-                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
+                      <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider">Your quote</p>
+                      <p className="font-semibold text-foreground truncate">
+                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary font-bold">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => goToStep(2)}
-                      className="text-xs text-primary hover:text-primary/80 font-medium min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="text-xs text-primary hover:text-primary/80 font-bold min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Edit
                     </button>
@@ -736,7 +736,7 @@ export function PriceEstimator() {
                   <h3
                     ref={step3HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-semibold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display font-bold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Where should we send it?
                   </h3>

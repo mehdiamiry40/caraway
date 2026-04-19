@@ -91,18 +91,18 @@ export function QuoteForm() {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-foreground/75">
               Your quote
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display font-bold text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
               Tell us about the car.
             </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-md">
+            <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
               We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
             </p>
           </div>
 
-          <div className="lg:col-span-7 rounded-xl border border-border/60 bg-card p-6 sm:p-8 shadow-[0_20px_44px_-32px_hsl(var(--shadow-color)/0.42)]">
+          <div className="lg:col-span-7 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
@@ -110,7 +110,7 @@ export function QuoteForm() {
                     <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display font-bold text-primary mb-3">Thanks — we&apos;ve got your details</h3>
-                  <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
+                  <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">

@@ -25,21 +25,21 @@ export function TrustBadges() {
       className="relative bg-background"
       aria-label="Trust and credentials"
     >
-      <div className="site-container py-8 sm:py-10 border-y border-border/60">
+      <div className="site-container py-8 sm:py-10 border-y border-border">
         <ul className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-14 gap-y-4">
           {badges.map(({ icon: Icon, label, detail }) => (
             <li
               key={label}
-              className="flex items-center gap-3 text-muted-foreground"
+              className="flex items-center gap-3 text-foreground/80"
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
-                <Icon className="h-4.5 w-4.5" strokeWidth={1.5} aria-hidden="true" size={18} />
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary shrink-0">
+                <Icon className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" size={18} />
               </span>
               <span className="flex flex-col leading-tight">
-                <span className="text-sm font-medium text-foreground">
+                <span className="text-sm font-bold text-foreground">
                   {label}
                 </span>
-                <span className="text-xs text-muted-foreground/80">
+                <span className="text-xs text-foreground/70 font-medium">
                   {detail}
                 </span>
               </span>
