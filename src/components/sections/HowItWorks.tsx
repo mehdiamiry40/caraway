@@ -1,89 +1,80 @@
 import Link from "next/link";
-import { ClipboardList, MessageCircleReply, Truck, ArrowUpRight } from "lucide-react";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 const steps = [
   {
-    icon: ClipboardList,
     title: "Tell us about your car",
     description: (
       <>
         Use our{" "}
         <Link
           href="/#price-estimator"
-          className="text-primary font-medium underline decoration-primary/30 underline-offset-2 hover:decoration-primary"
+          className="font-medium text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary"
         >
           online quote tool
         </Link>
-        {" — make, model, year, condition, suburb. Photos help if you have them."}
+        {" with your make, model, year, condition, and suburb. Photos help if you have them."}
       </>
     ),
-    timing: "60 seconds",
+    timing: "About 60 seconds",
   },
   {
-    icon: MessageCircleReply,
-    title: "Confirm your quote",
+    title: "Lock in the number",
     description:
-      "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
-    timing: "Within the hour",
+      "We send a firm quote back quickly. If it works for you, we confirm the pickup window before anyone is on the road.",
+    timing: "Usually within the hour",
   },
   {
-    icon: Truck,
-    title: "We pick up, you get paid",
+    title: "Pickup and payment",
     description:
-      "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+      "Our truck arrives, checks the vehicle matches the quote, and you get paid before the car leaves your property.",
     timing: "Same or next day",
   },
-];
+] as const;
 
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="section-y bg-background">
-      <div className="site-container">
-        <Reveal className="max-w-2xl mb-12 md:mb-16">
-          <p className="eyebrow mb-5">How it works</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
-            Three quiet steps.
-            <br />
-            No back-and-forth.
-          </h2>
-          <p className="mt-5 text-muted-foreground leading-relaxed text-base sm:text-lg max-w-xl">
-            We buy the car directly. If we&apos;re not the right fit, we&apos;ll
-            say so — we&apos;d rather you know upfront than waste a day.
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow">How it works</p>
+            <h2 className="mt-5 text-3xl font-display font-bold leading-[1.04] tracking-[-0.02em] text-primary text-balance sm:text-4xl md:text-[2.75rem]">
+              Simple enough to finish in a lunch break.
+            </h2>
+          </div>
+          <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Direct buyer, direct process. No auction listing, no inspection
+            roulette, no “we&apos;ll see when we arrive.”
           </p>
-        </Reveal>
+        </div>
 
-        <RevealGroup>
-          <ol className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
-            {steps.map((step, index) => {
-              const StepIcon = step.icon;
-              return (
-                <RevealItem key={step.title} className="h-full">
-                  <li className="group relative h-full bg-card border border-border/60 rounded-2xl p-6 sm:p-8 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] hover:border-border">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/[0.14]">
-                        <StepIcon size={22} strokeWidth={1.5} aria-hidden="true" />
-                      </span>
-                      <span className="font-mono text-xs font-medium tabular-nums tracking-[0.1em] text-muted-foreground/70">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-                      {step.title}
-                    </h3>
-                    <div className="mt-3 text-muted-foreground leading-relaxed text-[0.9375rem]">
-                      {step.description}
-                    </div>
-                    <p className="mt-6 pt-5 border-t border-border/60 flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.04em] text-muted-foreground/80">
-                      <ArrowUpRight size={14} strokeWidth={1.75} aria-hidden="true" className="text-primary" />
-                      {step.timing}
-                    </p>
-                  </li>
-                </RevealItem>
-              );
-            })}
-          </ol>
-        </RevealGroup>
+        <ol className="mt-12 grid gap-5 md:grid-cols-3 sm:gap-6">
+          {steps.map((step, index) => (
+            <li
+              key={step.title}
+              className="surface-card relative overflow-hidden px-6 py-6 sm:px-8 sm:py-8"
+            >
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-accent/60 to-transparent"
+              />
+              <div className="flex items-center justify-between gap-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-accent/12 font-display text-base font-bold text-accent">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  {step.timing}
+                </span>
+              </div>
+              <h3 className="mt-5 text-xl font-display font-semibold tracking-tight text-primary">
+                {step.title}
+              </h3>
+              <div className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {step.description}
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

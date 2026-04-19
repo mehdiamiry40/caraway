@@ -1,64 +1,67 @@
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
-
 const reasons = [
   {
     title: "Quoted price guarantee",
     description:
-      "The number we quote is the number you're paid — in writing before pickup, with no surprise deductions on the day.",
+      "The number we quote is the number you&apos;re paid, in writing before pickup, with no surprise deductions on the day.",
   },
   {
     title: "Fully insured pickups",
     description:
-      "Public liability and goods-in-transit cover. If we scratch it loading, we wear it — not you.",
+      "Public liability and goods-in-transit cover. If we mark something up while loading, that is our problem, not yours.",
   },
   {
-    title: "Paid when we pick up",
+    title: "Paid before the vehicle leaves",
     description:
-      "We don't drive away with your keys until you've been paid the agreed amount in your preferred method.",
+      "We do not load up and sort payment later. Funds are confirmed before the car leaves your property.",
   },
   {
-    title: "Rough to written off",
+    title: "Useful even for rough cars",
     description:
-      "Old daily drivers, damaged, unregistered, scrap, fleet. If it's not a fit, we'll say so upfront.",
+      "Old daily drivers, damaged, unregistered, scrap, flood-affected, written off, or parked for years. If it is not a fit, we say so early.",
   },
-];
+] as const;
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="section-y bg-secondary/50 border-t border-b border-border/60">
-      <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
-            <p className="eyebrow mb-5">Why Caraway</p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground mb-6 leading-[1.1] text-balance">
-              One price.
-              <br />
-              One pickup. Done.
+    <section id="why-us" className="section-y bg-secondary/65">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <div className="lg:sticky lg:top-28">
+            <p className="eyebrow">Why Caraway</p>
+            <h2 className="mt-5 text-3xl font-display font-bold leading-[1.04] tracking-[-0.02em] text-primary text-balance sm:text-4xl md:text-[2.75rem]">
+              Designed to feel straightforward, because it is.
             </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-md">
-              Private buyers flake. Dealers lowball trade-ins. We&apos;re a
-              buyer, not an auction — just a straightforward offer and a truck
-              at your door.
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Private buyers flake. Dealers price against what suits them.
+              We&apos;re a direct buyer with a truck, a written quote, and a
+              clear pickup process.
             </p>
-          </Reveal>
 
-          <RevealGroup className="lg:col-span-7">
-            <dl className="divide-y divide-border/60 border-t border-border/60">
-              {reasons.map((reason) => (
-                <RevealItem key={reason.title}>
-                  <div className="relative py-6 sm:py-8 grid grid-cols-12 gap-4 sm:gap-6 group">
-                    <span aria-hidden="true" className="absolute left-0 top-8 bottom-8 w-[2px] bg-primary/0 group-hover:bg-primary/60 transition-colors duration-300" />
-                    <dt className="col-span-12 sm:col-span-5 pl-3 font-display font-semibold text-foreground text-base sm:text-lg">
-                      {reason.title}
-                    </dt>
-                    <dd className="col-span-12 sm:col-span-7 text-muted-foreground text-[0.9375rem] sm:text-base leading-relaxed">
-                      {reason.description}
-                    </dd>
-                  </div>
-                </RevealItem>
-              ))}
-            </dl>
-          </RevealGroup>
+            <div className="surface-dark mt-8 p-6">
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-primary-foreground/70">
+                The working rule
+              </p>
+              <p className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight text-primary-foreground">
+                Quote first. Confirm it. Then send the truck.
+              </p>
+            </div>
+          </div>
+
+          <dl className="grid gap-4 sm:grid-cols-2">
+            {reasons.map((reason, index) => (
+              <div key={reason.title} className="surface-card px-6 py-6 sm:px-7 sm:py-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                  0{index + 1}
+                </p>
+                <dt className="mt-4 font-display text-xl font-semibold tracking-tight text-primary">
+                  {reason.title}
+                </dt>
+                <dd className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {reason.description}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
