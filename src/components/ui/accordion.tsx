@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useId } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface AccordionItem {
@@ -32,7 +32,7 @@ export function Accordion({
   const HeadingTag = `h${headingLevel}` as "h2" | "h3" | "h4";
 
   return (
-    <div className={cn("w-full space-y-3", className)}>
+    <div className={cn("w-full border-t border-border/60", className)}>
       {items.map((item, index) => {
         const isActive = activeIndex === index;
         const triggerId = `accordion-trigger-${instanceId}-${index}`;
@@ -41,8 +41,8 @@ export function Accordion({
           <div
             key={`${index}-${item.question}`}
             className={cn(
-              "border bg-card rounded-xl overflow-hidden transition-all duration-200",
-              isActive ? "border-primary/30 shadow-[0_18px_36px_-30px_hsl(var(--shadow-color)/0.45)]" : "border-border/80 hover:border-border"
+              "border-b border-border/60 transition-colors duration-200",
+              isActive && "border-border"
             )}
           >
             <HeadingTag className="m-0">
@@ -54,20 +54,25 @@ export function Accordion({
                   setActiveIndex(willOpen ? index : null);
                   onItemToggle?.(item.question, willOpen);
                 }}
-                className="flex w-full min-h-12 items-center justify-between gap-2 sm:gap-3 p-5 sm:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                className="group flex w-full min-h-12 items-center justify-between gap-3 sm:gap-4 py-5 sm:py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
                 aria-expanded={isActive}
                 aria-controls={panelId}
               >
-                <span className="font-display text-base sm:text-lg font-medium text-foreground break-words [overflow-wrap:anywhere]">
+                <span
+                  className={cn(
+                    "font-display text-base sm:text-lg font-medium break-words [overflow-wrap:anywhere] transition-colors duration-200",
+                    isActive ? "text-foreground" : "text-foreground/90 group-hover:text-foreground"
+                  )}
+                >
                   {item.question}
                 </span>
                 <div
                   className={cn(
-                    "flex-shrink-0 ml-2 sm:ml-4 flex items-center justify-center h-8 w-8 rounded-full bg-muted text-primary/70 transition-transform duration-300 motion-reduce:transition-none motion-reduce:duration-0",
-                    isActive && "rotate-180"
+                    "flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full border border-border/60 bg-secondary/60 text-muted-foreground transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
+                    isActive && "rotate-45 border-primary/40 bg-primary/10 text-primary"
                   )}
                 >
-                  <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                  <Plus className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
                 </div>
               </button>
             </HeadingTag>
@@ -83,7 +88,7 @@ export function Accordion({
               )}
             >
               <div className="overflow-hidden">
-                <div className="px-5 pb-5 pt-0 sm:px-6 sm:pb-6 text-base sm:text-lg text-muted-foreground leading-relaxed break-words [overflow-wrap:anywhere]">
+                <div className="pb-6 pt-0 pr-10 text-[0.9375rem] sm:text-base text-muted-foreground leading-relaxed break-words [overflow-wrap:anywhere]">
                   {item.answer}
                 </div>
               </div>

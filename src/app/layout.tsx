@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Ubuntu, Exo } from "next/font/google";
+import { Inter } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
@@ -13,20 +14,11 @@ import { SITE_URL } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
 
-const ubuntu = Ubuntu({
-  weight: ["400", "500", "700"],
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans-body",
   display: "swap",
-});
-
-// Exo loads 500/600/700 to cover font-display paired with
-// font-medium/font-semibold/font-bold used throughout the app.
-const exo = Exo({
-  weight: ["500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-display-heading",
-  display: "swap",
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
@@ -129,7 +121,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${ubuntu.variable} ${exo.variable}`}
+      className={`${inter.variable} ${GeistMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />

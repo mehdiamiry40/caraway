@@ -21,21 +21,31 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section className="relative overflow-hidden py-10 sm:py-16 text-primary-foreground [background:var(--footer-wash)]" aria-label="Trust and credentials">
-      <div aria-hidden="true" className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_top,hsl(var(--accent)/0.2),transparent_38%)]" />
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+    <section
+      className="relative bg-background"
+      aria-label="Trust and credentials"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 border-y border-border/60">
+        <ul className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-14 gap-y-4">
           {badges.map(({ icon: Icon, label, detail }) => (
-            <div
+            <li
               key={label}
-              className="flex flex-col items-center text-center gap-2 sm:px-6"
+              className="flex items-center gap-3 text-muted-foreground"
             >
-              <Icon className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden="true" />
-              <span className="mt-1 font-display font-semibold text-sm tracking-tight text-primary-foreground">{label}</span>
-              <span className="text-xs text-primary-foreground/80 leading-snug">{detail}</span>
-            </div>
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
+                <Icon className="h-4.5 w-4.5" strokeWidth={1.5} aria-hidden="true" size={18} />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-sm font-medium text-foreground">
+                  {label}
+                </span>
+                <span className="text-xs text-muted-foreground/80">
+                  {detail}
+                </span>
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

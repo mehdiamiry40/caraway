@@ -36,25 +36,26 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="bg-primary text-primary-foreground py-16 lg:py-24 relative overflow-hidden">
+        <section className="aurora-surface py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <Breadcrumbs items={breadcrumbs} light />
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.1] tracking-tight mt-6 mb-6">
+            <Breadcrumbs items={breadcrumbs} />
+            <p className="eyebrow mt-6 mb-4">Location</p>
+            <h1 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mb-6" style={{ letterSpacing: "var(--tracking-display)" }}>
               {suburb.h1}
             </h1>
-            <p className="text-primary-foreground/80 text-lg sm:text-xl leading-relaxed max-w-3xl mb-10">
+            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
               {suburb.intro}
             </p>
             <ScrollToQuoteCTA />
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2 space-y-10 sm:space-y-12 max-w-none lg:max-w-4xl">
+            <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">
-                  Local Car Buying Service
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                  Local car buying service
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.localContent}
@@ -62,8 +63,8 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">
-                  What We Buy in {suburb.h1.replace("Cash for Cars ", "")}
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                  What we buy in {suburb.h1.replace("Cash for Cars ", "")}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.serviceDetails}
@@ -71,64 +72,64 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-4 leading-snug tracking-tight">
-                  Why Choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                  Why choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.whyUs}
                 </p>
               </div>
 
-              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-5 sm:p-8 lg:p-10">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-foreground mb-2 leading-snug tracking-tight">
-                  How It Works
+              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 lg:p-10 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                <p className="eyebrow mb-3">How it works</p>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display font-semibold text-foreground mb-3 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                  Three steps to cash in hand.
                 </h2>
-                <p className="text-sm text-muted-foreground mb-8">Three simple steps to get cash for your car.</p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <p className="text-sm text-muted-foreground mb-8">Quote, confirm, pickup — nothing else to do.</p>
+                <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                   {[
-                    { step: "1", title: "Get Your Quote", desc: "Use our online price estimator or fill out our form with your car details." },
-                    { step: "2", title: "Accept Your Offer", desc: "We'll make a fair cash offer. No obligation if you decline." },
-                    { step: "3", title: "Get Paid Today", desc: "We pick up your car free and pay you cash on the spot." }
+                    { step: "01", title: "Get your quote", desc: "Use the online estimator or send us your car details." },
+                    { step: "02", title: "Lock the number", desc: "We confirm a firm price. Book a pickup window that suits you." },
+                    { step: "03", title: "Cash on pickup", desc: "Free tow anywhere in the area. Paid before the car leaves." },
                   ].map(item => (
-                    <div key={item.step} className="text-center">
-                      <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-sm">
+                    <li key={item.step}>
+                      <div className="font-mono text-xs font-medium tabular-nums tracking-[0.1em] text-primary mb-3">
                         {item.step}
                       </div>
-                      <h3 className="font-display font-bold text-foreground mb-2">{item.title}</h3>
+                      <h3 className="font-display font-semibold text-foreground mb-1.5">{item.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ol>
               </div>
             </div>
 
-            <aside className="space-y-6 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-display font-bold mb-1">Our Promise</h3>
+            <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
+              <div className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                <h3 className="text-sm font-display font-semibold mb-1 text-foreground">Our promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/10">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0" />
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                        <CheckCircle2 className="h-3 w-3" strokeWidth={2} />
                       </span>
-                      <span className="font-medium">{item}</span>
+                      <span className="text-foreground/80">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Our services" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-display font-bold mb-4">Our Services</h3>
-                  <ul className="space-y-1">
+                <nav aria-label="Our services" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                  <h3 className="text-sm font-display font-semibold mb-4 text-foreground">Our services</h3>
+                  <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedServiceData.map(s => (
                       <li key={s.slug}>
                         <Link
                           href={`/${s.slug}`}
-                          className="flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors min-h-[44px] py-2 px-2 -mx-2 rounded-lg hover:bg-muted/50"
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
                         >
-                          <span className="w-1 h-1 rounded-full bg-accent/50 shrink-0" />
                           {s.h1}
                         </Link>
                       </li>
@@ -138,16 +139,15 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {nearbySuburbData.length > 0 && (
-                <nav aria-label="Nearby areas" className="bg-card border border-border/60 rounded-xl shadow-[0_2px_12px_-6px_hsl(var(--shadow-color)/0.04)] p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-display font-bold mb-4">Nearby Areas</h3>
-                  <ul className="space-y-1">
+                <nav aria-label="Nearby areas" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                  <h3 className="text-sm font-display font-semibold mb-4 text-foreground">Nearby areas</h3>
+                  <ul className="divide-y divide-border/60 border-t border-border/60">
                     {nearbySuburbData.map(s => (
                       <li key={s.slug}>
                         <Link
                           href={`/locations/${s.slug}`}
-                          className="flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors min-h-[44px] py-2 px-2 -mx-2 rounded-lg hover:bg-muted/50"
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
                         >
-                          <span className="w-1 h-1 rounded-full bg-accent/50 shrink-0" />
                           {s.h1}
                         </Link>
                       </li>

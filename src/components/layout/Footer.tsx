@@ -40,29 +40,29 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-primary-foreground/80 hover:text-accent transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none touch-manipulation";
+  "text-on-dark/90 hover:text-on-dark-hi transition-colors duration-200 text-sm inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
-const columnHeadingClasses = "font-display font-semibold text-sm text-primary-foreground mb-3";
+const columnHeadingClasses =
+  "font-display font-semibold text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)]";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="text-primary-foreground border-t border-primary-foreground/10 pl-safe pr-safe [background:var(--footer-wash)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
-
+    <footer className="edge-glow-top bg-ink text-on-dark pl-safe pr-safe">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
-
           {/* Brand + contact */}
           <div className="sm:col-span-2 lg:col-span-4">
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-bold text-2xl tracking-tight text-primary lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-semibold text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
-              caraway<span className="text-accent">.</span>
+              <span className="text-on-dark-hi">caraway</span>
+              <span className="text-gradient">.</span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm text-primary-foreground/80 leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm text-on-dark leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
             </p>
 
@@ -70,23 +70,23 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneHref}
                 location="footer"
-                className="inline-flex items-center gap-2 font-semibold text-primary-foreground hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="inline-flex items-center gap-2 font-medium text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
-                <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
+                <Phone aria-hidden="true" className="h-4 w-4 text-[hsl(var(--grad-lilac))]" />
                 <span>{BUSINESS.phoneFriendly}</span>
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="flex items-center gap-2 text-on-dark hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <p className="text-primary-foreground/80">
-                <span className="font-medium text-primary-foreground">{BUSINESS.hours}</span> · seven days
+              <p className="text-on-dark">
+                <span className="font-medium text-on-dark-hi">{BUSINESS.hours}</span> · seven days
               </p>
-              <address className="not-italic text-primary-foreground/80 leading-snug">
+              <address className="not-italic text-on-dark leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
             </div>
@@ -96,7 +96,7 @@ export function Footer() {
           <nav aria-label="Services" className="lg:col-span-3">
             <h3 className={columnHeadingClasses}>Services</h3>
             <ul className="space-y-0.5">
-              {serviceLinks.map(link => (
+              {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
@@ -108,7 +108,7 @@ export function Footer() {
           <nav aria-label="Locations" className="lg:col-span-3">
             <h3 className={columnHeadingClasses}>Locations</h3>
             <ul className="space-y-0.5">
-              {locationLinks.map(link => (
+              {locationLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
@@ -120,7 +120,7 @@ export function Footer() {
           <nav aria-label="Company" className="sm:col-span-2 lg:col-span-2">
             <h3 className={columnHeadingClasses}>Company</h3>
             <ul className="space-y-0.5">
-              {companyLinks.map(link => (
+              {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
                 </li>
@@ -129,16 +129,16 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Official references — compact replacement for the old resources block */}
-        <div className="mt-12 pt-6 border-t border-primary-foreground/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-primary-foreground/60">
-          <span className="font-medium text-primary-foreground">Official references:</span>
-          {AUTHORITY_OUTBOUND_LINKS.map(item => (
+        {/* Official references */}
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark/70">
+          <span className="font-medium text-on-dark-hi">Official references:</span>
+          {AUTHORITY_OUTBOUND_LINKS.map((item) => (
             <TrackedOutboundLink
               key={item.href}
               href={item.href}
               label={item.label}
               location="footer_references"
-              className="hover:text-accent transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none"
+              className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
             >
               {item.label}
             </TrackedOutboundLink>
@@ -147,15 +147,15 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-primary-foreground/10 pb-safe">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
+      <div className="border-t border-white/10 pb-safe">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark/70">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-            {legalLinks.map(link => (
+            {legalLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-accent transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
+                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
               >
                 {link.label}
               </Link>
