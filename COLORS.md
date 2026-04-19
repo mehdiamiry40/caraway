@@ -12,64 +12,51 @@ The indirection lets us swap the palette without touching components.
 
 ## Current palette
 
-Fresh and modern. A clean sky-blue primary over a crisp cool canvas, with
-electric-sky / teal / powder-blue aurora accents for the hero mesh and
-gradient text. Light mode only.
+Warm paper canvas, deep teal primary, and ember accent for secondary CTAs and
+highlights. Aurora gradients use teal, honey gold, and sage. Light mode only.
 
 | Token                      | Hex      | HSL              | Role                                        |
 | -------------------------- | -------- | ---------------- | ------------------------------------------- |
-| `--background`             | `#F8FAFC` | `210 40% 98%`   | Page canvas (crisp cool)                    |
-| `--foreground`             | `#0F172A` | `222 47% 11%`   | Default body text (slate near-black)        |
+| `--background`             | `#FAF9F6` | `43 38% 97%`    | Page canvas (warm paper)                    |
+| `--foreground`             | `#161C26` | `220 24% 12%`   | Default body text                           |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)  |
-| `--card-foreground`        | `#0F172A` | `222 47% 11%`   | Text on cards                               |
-| `--primary`                | `#0369A1` | `201 94% 32%`   | Brand / dominant action (sky blue)          |
+| `--card-foreground`        | `#161C26` | `220 24% 12%`   | Text on cards                               |
+| `--primary`                | `#117A6C` | `168 56% 30%`   | Brand / dominant action (deep teal)         |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                         |
-| `--secondary`              | `#E0F2FE` | `204 94% 94%`   | Low-emphasis surface (sky tint)             |
-| `--secondary-foreground`   | `#0F172A` | `222 47% 11%`   | Text on `--secondary`                       |
-| `--muted`                  | `#E0F2FE` | `204 94% 94%`   | Subtle backgrounds (code, fills)            |
-| `--muted-foreground`       | `#475569` | `215 19% 35%`   | Secondary / helper text (slate)             |
-| `--accent`                 | `#075985` | `201 90% 27%`   | Darker shade of primary — emphasis text/UI  |
+| `--secondary`              | `#E8F4F0` | `155 28% 93%`   | Low-emphasis surface (mint wash)            |
+| `--secondary-foreground`   | `#161C26` | `220 24% 12%`   | Text on `--secondary`                       |
+| `--muted`                  | `#F2F0EB` | `42 28% 94%`    | Subtle backgrounds (code, fills)            |
+| `--muted-foreground`       | `#5C6470` | `220 11% 40%`   | Secondary / helper text                     |
+| `--accent`                 | `#B84A24` | `18 72% 42%`    | Ember — secondary buttons, emphasis         |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                          |
-| `--destructive`            | `#B91C1C` | `0 72% 42%`     | Errors, destructive actions                 |
-| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                     |
-| `--success`                | `#047857` | `163 94% 24%`   | Success signal (emerald)                    |
+| `--destructive`            | `#C42A2A` | `0 70% 44%`     | Errors, destructive actions                 |
+| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`   | Text on `--destructive`                     |
+| `--success`                | `#0F6B4D` | `152 55% 32%`   | Success signal (forest)                     |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                         |
-| `--warning`                | `#B45309` | `31 91% 37%`    | Warning signal (amber, distinct from info)  |
+| `--warning`                | `#D97706` | `32 92% 44%`    | Warning signal (amber)                      |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                         |
-| `--info`                   | `#6D28D9` | `263 70% 50%`   | Neutral notices (violet, distinct from primary) |
+| `--info`                   | `#5B67DB` | `234 52% 52%`   | Neutral notices (periwinkle)                |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                            |
-| `--border`                 | `#E2E8F0` | `214 32% 91%`   | Default border / divider (slate hairline)   |
-| `--input`                  | `#E2E8F0` | `214 32% 91%`   | Form field border                           |
-| `--ring`                   | `#0369A1` | `201 94% 32%`   | Focus ring                                  |
+| `--border`                 | `#E8E4DD` | `40 22% 88%`    | Default border / divider                    |
+| `--input`                  | `#E8E4DD` | `40 22% 88%`    | Form field border                           |
+| `--ring`                   | `#117A6C` | `168 56% 30%`   | Focus ring                                  |
 
 ### Gradient-only accents (aurora mesh, gradient text, glow)
 
 Token names are historical — kept stable because several components
-reference them directly. Values were retuned to harmonize with the
-sky-blue primary.
+reference them directly. Values harmonize with the teal / ember brand.
 
 | Token            | Hex      | HSL              | Role                                          |
 | ---------------- | -------- | ---------------- | --------------------------------------------- |
-| `--grad-violet`  | `#1AB8FF` | `200 100% 55%`  | Electric sky — primary gradient tone          |
-| `--grad-pink`    | `#2EE1C2` | `172 85% 55%`   | Fresh teal                                    |
-| `--grad-lilac`   | `#B2D7FF` | `210 100% 85%`  | Soft powder blue                              |
-| `--grad-cyan`    | `#00D4FF` | `188 100% 50%`  | Vibrant cyan                                  |
+| `--grad-violet`  | `#2BA894` | `168 65% 46%`   | Teal glow                                     |
+| `--grad-pink`    | `#F5B435` | `32 95% 56%`    | Honey gold                                    |
+| `--grad-lilac`   | `#E2EDD9` | `95 32% 88%`    | Pale sage                                     |
+| `--grad-cyan`    | `#2EC4A8` | `168 72% 48%`   | Seafoam pop                                   |
 
-### WCAG contrast (AA+ throughout)
+### WCAG contrast
 
-| Combination                                   | Ratio    | Level |
-| --------------------------------------------- | -------- | ----- |
-| `foreground` on `background`                  | 16.2 : 1 | AAA   |
-| `foreground` on `card`                        | 17.4 : 1 | AAA   |
-| `muted-foreground` on `background`            |  7.2 : 1 | AAA   |
-| `muted-foreground` on `card`                  |  7.4 : 1 | AAA   |
-| `primary-foreground` on `primary`             |  5.9 : 1 | AA+   |
-| `accent-foreground` on `accent`               |  7.6 : 1 | AAA   |
-| `primary` (text) on `background` (links)      |  5.6 : 1 | AA+   |
-| `destructive` (text) on `background`          |  5.7 : 1 | AA+   |
-| `success-foreground` on `success` (fill)      |  6.1 : 1 | AA+   |
-| `warning-foreground` on `warning` (fill)      |  4.8 : 1 | AA    |
-| `ring` around focused inputs                  |  ≥ 3:1  | AA    |
+Targets are AA+ for core text and UI; verify in `src/app/globals.css` if you
+change tokens. Large text and UI components follow WCAG large-text thresholds.
 
 All body text ≥ 4.5:1. Large text and UI components ≥ 3:1. No information
 relies on colour alone — icons and text always accompany status colours.
