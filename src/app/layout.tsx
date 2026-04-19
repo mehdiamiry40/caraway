@@ -1,17 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Ubuntu, Ubuntu_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
-const ubuntu = Ubuntu({
+// Inter — geometric Helvetica-derived sans, used for all UI and display type
+// in the Swiss redesign. Weight range covers light captions through bold display.
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-ubuntu",
+  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-inter",
   display: "swap",
 });
 
-const ubuntuMono = Ubuntu_Mono({
+// JetBrains Mono — monospaced face for eyebrow labels, tabular figures,
+// quote results, and any data presentation.
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-ubuntu-mono",
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 import { JsonLd } from "@/components/JsonLd";
@@ -116,7 +120,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#117A6C",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -127,7 +131,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${ubuntu.variable} ${ubuntuMono.variable}`}
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
@@ -138,7 +142,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-2 focus:left-2 focus:rounded-lg focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
         >
           Skip to main content
         </a>

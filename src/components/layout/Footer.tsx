@@ -43,13 +43,13 @@ const navLinkClasses =
   "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-display text-sm text-on-dark-hi mb-3 tracking-[var(--tracking-snug)] uppercase";
+  "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="edge-glow-top bg-ink text-on-dark pl-safe pr-safe">
+    <footer className="bg-ink text-on-dark pl-safe pr-safe border-t-2 border-accent">
       <div className="site-container py-14 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10">
           {/* Brand + contact */}
@@ -57,10 +57,10 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display text-2xl tracking-[var(--tracking-tight)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-black text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">caraway</span>
-              <span className="text-gradient">.</span>
+              <span className="text-accent">.</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-on-dark-hi/85 leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
@@ -73,7 +73,7 @@ export function Footer() {
                 className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
               >
-                <Phone aria-hidden="true" className="h-4 w-4 text-[hsl(var(--grad-lilac))]" />
+                <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
                 <span>{BUSINESS.phoneFriendly}</span>
               </TrackedPhoneLink>
               <a

@@ -4,31 +4,32 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg tracking-[-0.005em]",
-    "ring-offset-background transition-[transform,box-shadow,background-color,color] duration-[180ms] ease-[var(--ease-out-quint)]",
+    // Swiss buttons: rectangular, flat, monospace label, wide tracking,
+    // bold uppercase. No lift on hover — colour inversion only.
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none",
+    "font-mono font-bold uppercase tracking-[0.08em]",
+    "ring-offset-background transition-[background-color,color,border-color] duration-150 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
-    "hover:-translate-y-px active:translate-y-0 active:scale-[0.99]",
-    "motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100 motion-reduce:transition-none",
   ].join(" "),
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[0_6px_16px_-6px_hsl(var(--primary)/0.55),0_1px_2px_hsl(var(--shadow-color)/0.08)] hover:bg-primary/96 hover:shadow-[0_12px_24px_-8px_hsl(var(--primary)/0.6),0_2px_4px_hsl(var(--shadow-color)/0.1)] active:bg-primary",
+          "bg-primary text-primary-foreground border border-primary hover:bg-accent hover:border-accent active:bg-accent",
         secondary:
-          "bg-accent text-accent-foreground shadow-[0_6px_16px_-6px_hsl(var(--accent)/0.5),0_1px_2px_hsl(var(--shadow-color)/0.08)] hover:bg-accent/94 hover:shadow-[0_12px_24px_-8px_hsl(var(--accent)/0.55),0_2px_4px_hsl(var(--shadow-color)/0.1)] active:bg-accent",
+          "bg-accent text-accent-foreground border border-accent hover:bg-primary hover:border-primary active:bg-primary",
         outline:
-          "border border-border bg-card text-foreground shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06)] hover:border-primary/40 hover:bg-primary/[0.04] hover:text-primary hover:shadow-[0_4px_12px_hsl(var(--shadow-color)/0.08)]",
+          "border border-foreground bg-background text-foreground hover:bg-foreground hover:text-background",
         ghost:
-          "bg-transparent text-foreground hover:text-primary hover:bg-primary/[0.04]",
+          "bg-transparent text-foreground hover:text-accent",
         inkOutline:
-          "border border-[hsl(var(--on-dark)/0.25)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi)/0.08)] hover:border-[hsl(var(--on-dark-hi)/0.45)]",
+          "border border-[hsl(var(--on-dark-hi)/0.4)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi))] hover:text-[hsl(var(--ink))]",
       },
       size: {
-        default: "h-11 sm:h-12 px-5 text-[0.9375rem]",
-        sm: "h-10 px-4 text-sm",
-        lg: "h-12 sm:h-[52px] px-6 sm:px-7 text-base",
+        default: "h-11 sm:h-12 px-5 text-[0.8125rem]",
+        sm: "h-10 px-4 text-xs",
+        lg: "h-12 sm:h-[52px] px-6 sm:px-7 text-sm",
         icon: "h-11 w-11 sm:h-12 sm:w-12",
       },
     },
