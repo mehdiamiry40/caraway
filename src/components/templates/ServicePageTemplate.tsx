@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import dynamic from "next/dynamic";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { TrustBadges } from "@/components/sections/TrustBadges";
-
-const QuoteForm = dynamic(() => import("@/components/sections/QuoteForm").then((mod) => mod.QuoteForm));
+import { QuoteForm } from "@/components/sections/QuoteForm";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { ServicePage } from "@/data/services";
 import { services } from "@/data/services";

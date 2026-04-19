@@ -1,8 +1,6 @@
-import dynamic from "next/dynamic";
 import { PageShell } from "@/components/layout/PageShell";
 import { BUSINESS } from "@/lib/site";
-
-const ContactForm = dynamic(() => import("@/components/sections/ContactForm").then((mod) => mod.ContactForm));
+import { ContactForm } from "@/components/sections/ContactForm";
 import { Building2, Clock, Mail, MapPin } from "lucide-react";
 
 const breadcrumbs = [
