@@ -83,21 +83,23 @@ export function Testimonials() {
         </Reveal>
       </div>
 
-      <div
-        className="marquee-mask relative"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        onFocusCapture={() => setPaused(true)}
-        onBlurCapture={() => setPaused(false)}
-      >
+      <div className="site-container">
         <div
-          className="marquee-track flex gap-5 sm:gap-6 px-4 sm:px-6"
-          style={{ animationPlayState: paused ? "paused" : "running" }}
-          aria-live="off"
+          className="marquee-mask relative"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
         >
-          {track.map((review, index) => (
-            <ReviewCard key={`${review.name}-${index}`} review={review} />
-          ))}
+          <div
+            className="marquee-track flex gap-5 sm:gap-6 px-0.5"
+            style={{ animationPlayState: paused ? "paused" : "running" }}
+            aria-live="off"
+          >
+            {track.map((review, index) => (
+              <ReviewCard key={`${review.name}-${index}`} review={review} />
+            ))}
+          </div>
         </div>
       </div>
 
