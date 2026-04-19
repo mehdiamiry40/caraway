@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
 import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { GetMyQuoteButton } from "./GetMyQuoteButton";
-import { TrackedPhoneLink } from "./TrackedPhoneLink";
-import { BUSINESS } from "@/lib/site";
+import { HeaderFrame } from "./HeaderFrame";
 
 const navLinks = [
   { label: "Locations", href: "/locations" },
@@ -22,17 +20,16 @@ export function Header() {
   }));
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe border-b border-border/70 bg-background/82 backdrop-blur-xl shadow-[0_16px_40px_-34px_hsl(var(--shadow-color)/0.45)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[72px] gap-2 sm:gap-4 lg:gap-6">
-        <Link href="/" aria-label="Caraway — Home" className="flex items-center gap-3 group shrink-0">
-          <div className="flex flex-col leading-none">
-            <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
-              caraway<span className="text-accent">.</span>
-            </span>
-            <span className="hidden xl:block text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-              Cash for cars Brisbane
-            </span>
-          </div>
+    <HeaderFrame>
+      <div className="site-container flex items-center justify-between min-h-14 h-14 sm:h-16 lg:h-[72px] gap-2 sm:gap-4 lg:gap-6">
+        <Link
+          href="/"
+          aria-label="Caraway — Home"
+          className="flex items-center gap-2 group shrink-0"
+        >
+          <span className="font-display font-semibold text-xl sm:text-[1.375rem] tracking-[-0.02em] text-foreground lowercase transition-opacity duration-200 group-hover:opacity-80">
+            caraway<span className="text-primary">.</span>
+          </span>
         </Link>
 
         {/* Desktop nav: inline primary links */}
@@ -45,7 +42,7 @@ export function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 px-3.5 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="link-underline text-[0.9375rem] font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 px-3 py-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {link.label}
             </Link>
@@ -53,24 +50,13 @@ export function Header() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-2.5 shrink-0">
-          <TrackedPhoneLink
-            href={BUSINESS.phoneHref}
-            location="header_desktop"
-            ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-border/70 bg-card/80 px-4 text-sm font-semibold text-primary transition-colors duration-200 hover:border-primary/30 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <Phone className="h-4 w-4" aria-hidden="true" />
-            {BUSINESS.phoneFriendly}
-          </TrackedPhoneLink>
-          <GetMyQuoteButton size="sm" variant="secondary">
-            Get instant quote
-          </GetMyQuoteButton>
+        <div className="hidden lg:flex items-center shrink-0">
+          <GetMyQuoteButton size="sm">Get your free cash offer</GetMyQuoteButton>
         </div>
 
         {/* Mobile: phone icon + Quote button + hamburger + drawer */}
         <MobileMenuClient serviceLinks={serviceLinks} />
       </div>
-    </header>
+    </HeaderFrame>
   );
 }
