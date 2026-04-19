@@ -16,11 +16,10 @@ import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import {
-  Car, DollarSign, ArrowRight, ArrowLeft, RotateCcw,
-  CheckCircle2, Send, Loader2, PartyPopper, Phone,
+  Car, ArrowRight, ArrowLeft, RotateCcw,
+  CheckCircle2, Send, Loader2, PartyPopper,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BUSINESS } from "@/lib/site";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const STORAGE_KEY = "caraway-estimator-state";
@@ -45,25 +44,6 @@ type PersistedState = {
 function RequiredMark() {
   return <span aria-hidden="true" className="text-destructive ml-0.5">*</span>;
 }
-
-const estimatorBenefits = [
-  {
-    title: "Instant starting price",
-    detail: "A fast range based on your car details before anyone calls.",
-  },
-  {
-    title: "Quote confirmed before pickup",
-    detail: "We lock in the number before the truck is dispatched.",
-  },
-  {
-    title: "No-pressure process",
-    detail: "If the offer is not for you, you can walk away with no obligation.",
-  },
-  {
-    title: "Pickup sorted quickly",
-    detail: "Same-day or next-day windows when truck availability allows.",
-  },
-] as const;
 
 export function PriceEstimator() {
   const [step, setStep] = useState<Step>(1);
@@ -414,171 +394,115 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-secondary/70" aria-label="Quote submitted">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8">
-            <div className="surface-dark p-6 sm:p-8">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-primary-foreground/70">
-                What happens next
-              </p>
-              <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-primary-foreground">
-                We&apos;ll call to confirm the final number and pickup window.
-              </h2>
-              <ul className="mt-6 space-y-3 text-sm leading-relaxed text-primary-foreground/78">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  Expect a call within the hour during business hours.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  We confirm the vehicle details and lock in the pickup time.
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                  If the offer does not suit, there is no obligation to proceed.
-                </li>
-              </ul>
-              <a
-                href={BUSINESS.phoneHref}
-                onClick={() => trackEvent("phone_click", { location: "estimator_success" })}
-                className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/7 px-5 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                Call {BUSINESS.phoneFriendly}
-              </a>
+      <section id="price-estimator" className="section-y bg-background relative overflow-hidden" aria-label="Quote submitted">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.14),transparent_60%)]" />
+        <div className="site-container">
+          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
+            <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
+              <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} aria-hidden="true" />
             </div>
-
-            <div className="surface-card p-6 text-center sm:p-10" role="status" aria-live="polite" aria-atomic="true">
-              <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 sm:h-20 sm:w-20">
-                <PartyPopper className="h-8 w-8 text-accent sm:h-10 sm:w-10" aria-hidden="true" />
+            <h3
+              ref={successHeadingRef}
+              tabIndex={-1}
+              className="font-display font-semibold text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+            >
+              Your quote is on its way.
+            </h3>
+            <p className="text-muted-foreground text-sm sm:text-base mb-5">
+              We received your details for your <strong className="text-foreground font-semibold">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
+            </p>
+            <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
+                <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
+                <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
+                <span className="ml-auto text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">Offer sent</span>
               </div>
-              <h3
-                ref={successHeadingRef}
-                tabIndex={-1}
-                className="mb-2 rounded font-display text-xl font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-2xl"
+              <div className="mt-3 flex items-baseline justify-between">
+                <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your quote</span>
+                <span className="font-mono tabular-nums text-xl font-medium text-[hsl(var(--on-dark-hi))]">
+                  ${result?.quote.toLocaleString()}
+                </span>
+              </div>
+            </div>
+            <p className="text-muted-foreground text-sm mb-6">
+              We&apos;ll contact you shortly to confirm a final price. No obligation — if the offer doesn&apos;t work for you, no worries.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button
+                type="button"
+                onClick={handleReset}
+                variant="outline"
+                size="lg"
               >
-                Your quote request is in.
-              </h3>
-              <p className="mb-2 text-sm text-muted-foreground sm:text-base">
-                We received your details for{" "}
-                <strong>{year} {[make, model].filter(Boolean).join(" ")}</strong>.
-              </p>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-accent/10 px-6 py-2 text-lg font-bold text-accent sm:text-xl">
-                <DollarSign className="h-5 w-5" aria-hidden="true" />
-                ${result?.quote.toLocaleString()}
-              </div>
-              <p className="mx-auto mb-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                This is your current estimate. We&apos;ll confirm the final price
-                and pickup timing directly with you. No obligation if the offer
-                doesn&apos;t work for you.
-              </p>
-              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button type="button" onClick={handleReset} variant="outline" size="lg">
-                  <RotateCcw className="mr-2 h-4 w-4" aria-hidden="true" />
-                  Estimate another
-                </Button>
-              </div>
+                <RotateCcw className="w-4 h-4" aria-hidden="true" />
+                Estimate another
+              </Button>
             </div>
           </div>
         </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }
 
   return (
-    <section id="price-estimator" className="section-y relative overflow-hidden bg-secondary/70" aria-label="Instant price estimate">
-      <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--accent)/0.08),transparent_34%)]" />
+    <section id="price-estimator" className="section-y bg-background relative overflow-hidden" aria-label="Instant price estimate">
+      <div aria-hidden="true" className="absolute inset-x-0 top-16 -z-10 h-[55%] bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.16),transparent_65%)]" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-8">
-          <div className="lg:sticky lg:top-28">
-            <p className="eyebrow">Instant quote</p>
-            <h2 className="mt-5 text-3xl font-display font-bold leading-[1.04] tracking-[-0.02em] text-foreground text-balance sm:text-4xl md:text-[2.75rem]">
-              See your likely price before you speak to anyone.
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Start with the vehicle details. We turn that into a fast estimate,
-              then confirm the final price and pickup window directly with you.
-            </p>
+      <div className="site-container">
+        <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
+          <p className="eyebrow mb-4">Instant valuation</p>
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+            How much is your car worth?
+          </h2>
+          <p className="mt-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            Answer four quick questions. We&apos;ll send back a firm cash offer for your car — no account, no spam.
+          </p>
+        </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              {estimatorBenefits.map((item) => (
-                <div key={item.title} className="surface-card px-5 py-5">
-                  <p className="text-sm font-semibold tracking-tight text-primary">
-                    {item.title}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {item.detail}
-                  </p>
+        {/* Progress bar */}
+        <div
+          className="max-w-2xl mx-auto mb-8"
+          role="progressbar"
+          aria-valuenow={progressPercent}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="Quote progress"
+          aria-valuetext={`Step ${step} of ${totalSteps}`}
+        >
+          <div className="flex items-center justify-between mb-3">
+            {[1, 2, 3].map((s) => (
+              <div key={s} className="flex items-center gap-2">
+                <div className={cn(
+                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] font-medium transition-[background-color,color,border-color] duration-300",
+                  step >= s
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-card border border-border text-muted-foreground"
+                )}>
+                  {step > s ? <CheckCircle2 className="w-4 h-4" strokeWidth={2} aria-hidden="true" /> : s}
                 </div>
-              ))}
-            </div>
-
-            <div className="surface-dark mt-8 p-6">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-primary-foreground/70">
-                Prefer to talk it through?
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/78">
-                Call us and we can sanity-check the car details before you book
-                the pickup.
-              </p>
-              <a
-                href={BUSINESS.phoneHref}
-                onClick={() => trackEvent("phone_click", { location: "estimator_sidebar" })}
-                className="mt-5 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/7 px-5 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {BUSINESS.phoneFriendly}
-              </a>
-            </div>
+                <span className={cn(
+                  "text-xs font-medium transition-colors hidden sm:inline",
+                  step >= s ? "text-foreground" : "text-muted-foreground"
+                )}>
+                  {s === 1 ? "Vehicle" : s === 2 ? "Your quote" : "Claim it"}
+                </span>
+              </div>
+            ))}
           </div>
-
-          <div>
+          <div className="h-1 bg-border/70 rounded-full overflow-hidden">
             <div
-              className="surface-card mb-6 px-5 py-5 sm:px-6"
-              role="progressbar"
-              aria-valuenow={progressPercent}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Quote progress"
-              aria-valuetext={`Step ${step} of ${totalSteps}`}
-            >
-              <div className="mb-2 flex items-center justify-between">
-                {[1, 2, 3].map((s) => (
-                  <div key={s} className="flex items-center gap-1.5 sm:gap-2">
-                    <div className={cn(
-                      "flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 sm:h-10 sm:w-10 sm:text-base",
-                      step >= s
-                        ? "bg-primary text-white"
-                        : "bg-card border border-border/80 text-muted-foreground"
-                    )}>
-                      {step > s ? <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" /> : s}
-                    </div>
-                    <span className={cn(
-                      "text-[10px] font-medium transition-colors sm:text-xs",
-                      step >= s ? "text-foreground" : "text-muted-foreground"
-                    )}>
-                      <span className="sm:hidden">
-                        {s === 1 ? "Vehicle" : s === 2 ? "Quote" : "Claim"}
-                      </span>
-                      <span className="hidden sm:inline">
-                        {s === 1 ? "Vehicle" : s === 2 ? "Your Quote" : "Claim It"}
-                      </span>
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="h-1.5 overflow-hidden rounded-full border border-border/40 bg-muted">
-                <div
-                  className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-            </div>
+              className="h-full rounded-full transition-all duration-500 ease-out bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(var(--grad-violet)))]"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+        </div>
 
-            <div className="surface-card overflow-hidden">
+        {/* Card */}
+        <div className="max-w-2xl mx-auto">
+          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -597,27 +521,22 @@ export function PriceEstimator() {
             {/* Step 1 — Vehicle (make, model, year, condition) */}
             <div className={cn("transition-all duration-300", step === 1 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted text-primary">
-                    <Car className="w-5 h-5" aria-hidden="true" />
-                  </div>
+                <div className="flex items-center gap-3 mb-7">
+                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
+                    <Car className="w-5 h-5" strokeWidth={1.5} aria-hidden="true" />
+                  </span>
                   <h3
                     ref={step1HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display font-semibold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Tell us about your vehicle
                   </h3>
                 </div>
 
-                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                  We only need the basics to generate a fast starting price.
-                </p>
-
-                <fieldset className="space-y-5 sm:space-y-6">
-                  <legend className="sr-only">Vehicle details</legend>
+                <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-make" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-make" className="block text-sm font-semibold text-foreground mb-2.5">
                       Make<RequiredMark />
                     </label>
                     <Select
@@ -634,7 +553,7 @@ export function PriceEstimator() {
                   </div>
                   {make && make !== "Other" && (
                     <div>
-                      <label htmlFor="est-model" className="mb-2.5 block text-sm font-semibold text-foreground">
+                      <label htmlFor="est-model" className="block text-sm font-semibold text-foreground mb-2.5">
                         Model<RequiredMark />
                       </label>
                       <Select
@@ -648,7 +567,7 @@ export function PriceEstimator() {
                     </div>
                   )}
                   <div>
-                    <label htmlFor="est-year" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-year" className="block text-sm font-semibold text-foreground mb-2.5">
                       Year of manufacture<RequiredMark />
                     </label>
                     <Select
@@ -670,7 +589,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-condition" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-condition" className="block text-sm font-semibold text-foreground mb-2.5">
                       Condition<RequiredMark />
                     </label>
                     <Select
@@ -682,78 +601,83 @@ export function PriceEstimator() {
                       aria-required="true"
                     />
                   </div>
-                </fieldset>
+                </div>
 
-                <div className="mt-6 flex justify-end sm:mt-8">
+                <div className="mt-7 sm:mt-9 flex justify-end">
                   <Button
                     onClick={() => {
                       setYearTouched(true);
                       handleEstimate();
                     }}
                     disabled={!canCalculate || isCalculating}
-                    variant="secondary"
+                    variant="default"
                     size="lg"
-                    className="font-bold group"
+                    className="group"
                   >
                     {isCalculating ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-                        Calculating...
+                        <Loader2 className="mr-2 w-4 h-4 animate-spin" aria-hidden="true" />
+                        Calculating…
                       </>
                     ) : (
                       <>
-                        See My Quote
-                        <DollarSign className="ml-1.5 w-4 h-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                        See my quote
+                        <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                       </>
                     )}
                   </Button>
                 </div>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  No email needed at this stage. You only share contact details if the estimate looks right.
-                </p>
               </div>
             </div>
 
             {/* Calculating */}
             {isCalculating && (
               <div className="p-8 sm:p-12 flex flex-col items-center justify-center text-center" role="status" aria-live="polite">
-                <Loader2 className="mb-4 h-10 w-10 animate-spin text-primary motion-reduce:animate-none" aria-hidden="true" />
+                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
                 <p className="font-display font-bold text-foreground">Calculating your quote…</p>
               </div>
             )}
 
-            {/* Step 2 — Your Quote */}
+            {/* Step 2 — Your Quote (Stripe-style dark "quote result" card) */}
             <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
-                  <div className="rounded-xl bg-accent/10 border border-accent/30 p-6 sm:p-8 text-center mb-6">
-                    <div className="inline-flex items-center gap-1.5 bg-accent/15 text-accent rounded-full px-3 py-1 text-xs font-semibold mb-3">
-                      <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" /> Your instant quote
+                  <div className="quote-card p-5 sm:p-6 mb-6">
+                    <div className="flex items-center gap-1.5 mb-4">
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+                      <span className="ml-3 inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--grad-violet))] pb-1">
+                        Your quote
+                      </span>
+                      <span className="text-[0.75rem] font-medium text-[hsl(var(--on-dark))] pb-1">
+                        Your car
+                      </span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
-                    </p>
                     <div
                       ref={step2HeadingRef}
                       tabIndex={-1}
-                      className="flex items-baseline justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--grad-violet))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--ink))] rounded"
                     >
-                      <span className="text-4xl sm:text-5xl font-display font-bold text-foreground">
+                      <p className="text-[0.8125rem] text-[hsl(var(--on-dark))] mb-1">
+                        {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
+                      </p>
+                      <p className="font-mono tabular-nums text-4xl sm:text-5xl font-medium text-[hsl(var(--on-dark-hi))] tracking-[-0.02em]">
                         ${result.quote.toLocaleString()}
-                      </span>
+                      </p>
+                      <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
+                        Instant estimate · firm offer within the hour
+                      </p>
                     </div>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      If the vehicle matches what you entered, this is the number we work from when we confirm pickup.
-                    </p>
                   </div>
 
                   {result.factors.length > 0 && (
-                    <div className="bg-muted rounded-xl p-4 mb-6">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">What affects your price</p>
+                    <div className="bg-muted/60 rounded-xl p-4 mb-6 border border-border/60">
+                      <p className="text-xs font-medium uppercase tracking-[0.06em] text-muted-foreground mb-2">What affects your price</p>
                       <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={1.75} aria-hidden="true" />
                             {f}
                           </li>
                         ))}
@@ -761,32 +685,23 @@ export function PriceEstimator() {
                     </div>
                   )}
 
-                  <div className="mb-6 rounded-xl border border-border/50 bg-card/60 px-4 py-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-                      Before you continue
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      Step 3 only asks for your phone number and pickup address so we can confirm the final quote and book the truck.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center justify-between gap-3">
                     <Button
                       type="button"
                       onClick={() => goToStep(1)}
                       variant="outline"
                       size="lg"
                     >
-                      <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
+                      <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                     </Button>
                     <Button
                       onClick={() => goToStep(3)}
-                      variant="secondary"
+                      variant="default"
                       size="lg"
-                      className="font-bold group"
+                      className="group"
                     >
-                      Continue — get my price
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                      Claim my quote
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                     </Button>
                   </div>
                 </div>
@@ -797,44 +712,39 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
-                  <div className="flex items-center justify-between bg-muted border border-border/40 rounded-xl px-4 py-3 mb-6">
-                    <div>
+                  <div className="flex items-center justify-between gap-3 bg-muted/60 border border-border/60 rounded-xl px-4 py-3 mb-7">
+                    <div className="min-w-0">
                       <p className="text-xs text-muted-foreground">Your quote</p>
-                      <p className="font-display font-bold text-foreground">
-                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="text-accent">${result.quote.toLocaleString()}</span>
+                      <p className="font-medium text-foreground truncate">
+                        {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => goToStep(2)}
-                      className="text-xs text-primary hover:text-primary/80 font-medium min-h-[44px] px-2 touch-manipulation"
+                      className="text-xs text-primary hover:text-primary/80 font-medium min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Edit
                     </button>
                   </div>
                 )}
 
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-accent/10 text-accent">
-                    <Send className="w-5 h-5" aria-hidden="true" />
-                  </div>
+                <div className="flex items-center gap-3 mb-7">
+                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
+                    <Send className="w-5 h-5" strokeWidth={1.5} aria-hidden="true" />
+                  </span>
                   <h3
                     ref={step3HeadingRef}
                     tabIndex={-1}
-                    className="font-display font-bold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                    className="font-display font-semibold text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                   >
                     Where should we send it?
                   </h3>
                 </div>
 
-                <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                  We use these details only to confirm the quote and schedule your pickup.
-                </p>
-
-                <fieldset className="space-y-5 sm:space-y-6">
-                  <legend className="sr-only">Contact details</legend>
+                <div className="space-y-5 sm:space-y-6">
                   <div>
-                    <label htmlFor="est-name" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-name" className="block text-sm font-semibold text-foreground mb-2.5">
                       Your name<RequiredMark />
                     </label>
                     <Input
@@ -865,7 +775,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-phone" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-phone" className="block text-sm font-semibold text-foreground mb-2.5">
                       Phone number<RequiredMark />
                     </label>
                     <Input
@@ -899,7 +809,7 @@ export function PriceEstimator() {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="est-address" className="mb-2.5 block text-sm font-semibold text-foreground">
+                    <label htmlFor="est-address" className="block text-sm font-semibold text-foreground mb-2.5">
                       Pickup address<RequiredMark />
                     </label>
                     <AddressAutocomplete
@@ -934,7 +844,7 @@ export function PriceEstimator() {
                       </p>
                     )}
                   </div>
-                </fieldset>
+                </div>
 
                 {submitError && (
                   <div className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3" role="alert">
@@ -942,52 +852,38 @@ export function PriceEstimator() {
                   </div>
                 )}
 
-                <div className="mt-6 flex flex-col-reverse gap-3 sm:mt-8 sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-7 sm:mt-9 flex items-center justify-between gap-3">
                   <Button
                     type="button"
                     onClick={() => goToStep(2)}
                     variant="outline"
                     size="lg"
                   >
-                    <ArrowLeft className="w-4 h-4 mr-1.5" aria-hidden="true" /> Back
+                    <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
                   </Button>
                   <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit || isSubmitting}
-                    variant="secondary"
+                    variant="default"
                     size="lg"
-                    className="font-bold"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin motion-reduce:animate-none" aria-hidden="true" />
-                        Sending...
+                        <Loader2 className="mr-2 w-4 h-4 animate-spin" aria-hidden="true" />
+                        Sending…
                       </>
                     ) : (
                       <>
-                        Claim My Quote
-                        <CheckCircle2 className="ml-2 w-5 h-5" aria-hidden="true" />
+                        Claim my quote
+                        <CheckCircle2 className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
                       </>
                     )}
                   </Button>
                 </div>
-
-                <p className="mt-4 text-sm text-muted-foreground">
-                  Need help instead? Call{" "}
-                  <a
-                    href={BUSINESS.phoneHref}
-                    onClick={() => trackEvent("phone_click", { location: "estimator_step3" })}
-                    className="font-semibold text-primary underline decoration-accent/30 underline-offset-4 transition-colors duration-200 hover:text-accent hover:decoration-accent"
-                  >
-                    {BUSINESS.phoneFriendly}
-                  </a>
-                  .
-                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

@@ -1,64 +1,51 @@
-import { Building2, Clock3, Recycle, ShieldCheck } from "lucide-react";
+import { ShieldCheck, Recycle, Building2 } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
 const badges = [
   {
     icon: ShieldCheck,
     label: "Fully insured",
-    detail: "Public liability and goods-in-transit cover on every pickup.",
+    detail: "Public liability & goods-in-transit",
   },
   {
     icon: Recycle,
     label: "Licensed recycler",
-    detail: "EPA-compliant handling for scrap, damaged, and end-of-life vehicles.",
-  },
-  {
-    icon: Clock3,
-    label: "7 days a week",
-    detail: `${BUSINESS.hours} for calls and quotes across Greater Brisbane.`,
+    detail: "EPA-compliant disposal",
   },
   {
     icon: Building2,
     label: "ABN registered",
-    detail: `Caraway Pty Ltd · ABN ${BUSINESS.abn}`,
+    detail: `ABN ${BUSINESS.abn}`,
   },
 ] as const;
 
 export function TrustBadges() {
   return (
     <section
-      className="relative overflow-hidden py-12 text-primary-foreground [background:var(--footer-wash)] sm:py-16"
+      className="relative bg-background"
       aria-label="Trust and credentials"
     >
-      <div aria-hidden="true" className="absolute inset-0 opacity-60 [background:radial-gradient(circle_at_top,hsl(var(--accent)/0.2),transparent_38%)]" />
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 max-w-2xl">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-primary-foreground/65">
-            Credentials
-          </p>
-          <h2 className="mt-3 text-2xl font-display font-bold tracking-tight text-primary-foreground sm:text-3xl">
-            Real operator details, not vague promises.
-          </h2>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="site-container py-8 sm:py-10 border-y border-border/60">
+        <ul className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-14 gap-y-4">
           {badges.map(({ icon: Icon, label, detail }) => (
-            <div
+            <li
               key={label}
-              className="rounded-[1.5rem] border border-white/10 bg-white/6 px-5 py-5 backdrop-blur-sm"
+              className="flex items-center gap-3 text-muted-foreground"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/8 text-accent">
-                <Icon className="h-5 w-5" strokeWidth={1.85} aria-hidden="true" />
-              </div>
-              <p className="mt-4 font-display text-lg font-semibold tracking-tight text-primary-foreground">
-                {label}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-primary-foreground/75">
-                {detail}
-              </p>
-            </div>
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0">
+                <Icon className="h-4.5 w-4.5" strokeWidth={1.5} aria-hidden="true" size={18} />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-sm font-medium text-foreground">
+                  {label}
+                </span>
+                <span className="text-xs text-muted-foreground/80">
+                  {detail}
+                </span>
+              </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
