@@ -1,4 +1,4 @@
-import { z } from "zod";
+import * as z from "zod/mini";
 
 /** Matches Australian phone formats: 04xx, +614xx, landlines, 1800/1300 numbers */
 const auPhoneRegex = /^(?:\+?61|0)[2-478]\d{8}$|^1[38]00\d{6}$/;
@@ -23,74 +23,101 @@ export const CONDITION_LABELS: Record<QuoteCondition, string> = {
 };
 
 const stripPhone = (v: string) => v.replace(/[\s\-()]/g, "");
-const trimText = (v: string) => v.trim();
 const sanitizeLine = (v: string) => v.replace(/[\r\n]+/g, " ");
 
 /** Honeypot field — present on every public form but hidden from real users. */
-const honeypotField = z
-  .string()
-  .optional()
-  .transform((value) => value?.trim() ?? "")
-  .refine((value) => value === "", "Invalid form submission");
+const honeypotField = z.pipe(
+  z.pipe(
+    z.optional(z.string()),
+    z.transform((value) => value?.trim() ?? ""),
+  ),
+  z.string().check(z.refine((v) => v === "", "Invalid form submission")),
+);
 
-const requiredPhone = z
-  .string()
-  .transform(trimText)
-  .transform(stripPhone)
-  .pipe(z.string().regex(auPhoneRegex, "Enter a valid Australian phone number"));
+const requiredPhone = z.string().check(
+  z.trim(),
+  z.overwrite(stripPhone),
+  z.regex(auPhoneRegex, "Enter a valid Australian phone number"),
+  z.overwrite(sanitizeLine),
+);
 
-const optionalPhone = z
-  .string()
-  .optional()
-  .transform((v) => (v ? stripPhone(v.trim()) : ""))
-  .pipe(
-    z.string().refine(
+const optionalPhone = z.pipe(
+  z.pipe(
+    z.optional(z.string()),
+    z.transform((v) => (v ? stripPhone(v.trim()) : "")),
+  ),
+  z.string().check(
+    z.refine(
       (v) => v === "" || auPhoneRegex.test(v),
-      "Enter a valid Australian phone number"
-    )
-  );
+      "Enter a valid Australian phone number",
+    ),
+    z.overwrite(sanitizeLine),
+  ),
+);
 
 export const quoteFormSchema = z.object({
-  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")).transform(sanitizeLine),
-  phone: requiredPhone.transform(sanitizeLine),
-  make: z.string().transform(trimText).pipe(z.string().min(2, "Car make is required").max(200, "Car make is too long")).transform(sanitizeLine),
-  model: z.string().transform(trimText).pipe(z.string().min(1, "Car model is required").max(200, "Car model is too long")).transform(sanitizeLine),
-  year: z.coerce.number().min(1950, "Invalid year").max(new Date().getFullYear() + 1, "Invalid year"),
+  name: z.string().check(
+    z.trim(),
+    z.minLength(2, "Name is required"),
+    z.maxLength(200, "Name is too long"),
+    z.overwrite(sanitizeLine),
+  ),
+  phone: requiredPhone,
+  make: z.string().check(
+    z.trim(),
+    z.minLength(2, "Car make is required"),
+    z.maxLength(200, "Car make is too long"),
+    z.overwrite(sanitizeLine),
+  ),
+  model: z.string().check(
+    z.trim(),
+    z.minLength(1, "Car model is required"),
+    z.maxLength(200, "Car model is too long"),
+    z.overwrite(sanitizeLine),
+  ),
+  year: z.coerce.number().check(
+    z.gte(1950, "Invalid year"),
+    z.lte(new Date().getFullYear() + 1, "Invalid year"),
+  ),
   condition: z.enum(quoteConditionValues, {
     message: "Please select a condition",
   }),
-  address: z
-    .string()
-    .transform(trimText)
-    .pipe(z.string().min(5, "Please enter a full pickup address").max(500, "Address is too long"))
-    .transform(sanitizeLine),
-  quoteAmount: z.number().int().positive().max(1000000).optional(),
+  address: z.string().check(
+    z.trim(),
+    z.minLength(5, "Please enter a full pickup address"),
+    z.maxLength(500, "Address is too long"),
+    z.overwrite(sanitizeLine),
+  ),
+  quoteAmount: z.optional(z.int().check(z.positive(), z.lte(1000000))),
   honeypot: honeypotField,
-  marketingConsent: z.boolean().optional().default(false),
+  marketingConsent: z._default(z.optional(z.boolean()), false),
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 export type QuoteFormInput = z.input<typeof quoteFormSchema>;
 
 export const contactFormSchema = z.object({
-  name: z.string().transform(trimText).pipe(z.string().min(2, "Name is required").max(200, "Name is too long")).transform(sanitizeLine),
-  email: z
-    .string()
-    .transform(trimText)
-    .pipe(z.string().email("Enter a valid email address").max(320, "Email is too long"))
-    .transform(sanitizeLine),
-  phone: optionalPhone.transform(sanitizeLine),
-  message: z
-    .string()
-    .transform(trimText)
-    .pipe(
-      z
-        .string()
-        .min(5, "Please add a short note (at least 5 characters)")
-        .max(5000, "Message is too long")
+  name: z.string().check(
+    z.trim(),
+    z.minLength(2, "Name is required"),
+    z.maxLength(200, "Name is too long"),
+    z.overwrite(sanitizeLine),
+  ),
+  email: z.pipe(
+    z.string().check(z.trim()),
+    z.email("Enter a valid email address").check(
+      z.maxLength(320, "Email is too long"),
+      z.overwrite(sanitizeLine),
     ),
+  ),
+  phone: optionalPhone,
+  message: z.string().check(
+    z.trim(),
+    z.minLength(5, "Please add a short note (at least 5 characters)"),
+    z.maxLength(5000, "Message is too long"),
+  ),
   honeypot: honeypotField,
-  marketingConsent: z.boolean().optional().default(false),
+  marketingConsent: z._default(z.optional(z.boolean()), false),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
