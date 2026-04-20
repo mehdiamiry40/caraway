@@ -11,7 +11,7 @@ import {
   indexableBlogPosts,
 } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Clock } from "lucide-react";
 
 type Props = { params: Promise<{ category: string }> };
 
@@ -52,6 +52,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-AU", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
 export default async function BlogCategoryPage({ params }: Props) {
   const { category } = await params;
   const label = categoryMap[category];
@@ -65,6 +73,10 @@ export default async function BlogCategoryPage({ params }: Props) {
     { label: "Blog", href: "/blog" },
     { label },
   ];
+
+  const otherCategories = Object.entries(categoryMap).filter(
+    ([slug]) => slug !== category
+  );
 
   return (
     <>
@@ -105,6 +117,7 @@ export default async function BlogCategoryPage({ params }: Props) {
       />
       <PageShell
         breadcrumbs={breadcrumbs}
+        eyebrow="Blog category"
         title={label}
         subtitle={
           <p>
@@ -112,52 +125,92 @@ export default async function BlogCategoryPage({ params }: Props) {
           </p>
         }
       >
-        <div className="site-container py-14 sm:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="site-container py-14 sm:py-20 lg:py-24">
+          <div className="flex items-baseline justify-between mb-6 sm:mb-8">
+            <p className="eyebrow">In this category</p>
+            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground tabular-nums">
+              {String(posts.length).padStart(2, "0")} {posts.length === 1 ? "entry" : "entries"}
+            </p>
+          </div>
+
+          <ul className="border-t border-foreground">
             {posts.map((post, idx) => (
-              <article
-                key={post.slug}
-                className={`group rounded-lg border border-border/60 bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200 overflow-hidden ${idx === 0 ? "md:col-span-2" : ""}`}
-              >
-                <div className={`p-4 sm:p-6 md:p-8 flex flex-col h-full ${idx === 0 ? "md:p-10" : ""}`}>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 text-accent text-xs">
-                      <Tag className="h-3 w-3" />
-                      {post.category}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="h-3 w-3" />
-                      {post.readTime}
-                    </span>
-                    <time dateTime={post.date}>
-                      {new Date(post.date).toLocaleDateString("en-AU", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </time>
-                  </div>
-
-                  <h2 className="font-display text-foreground group-hover:text-primary transition-colors leading-snug mb-3 text-lg sm:text-xl">
-                    <Link href={`/blog/${post.slug}`} className="hover:underline underline-offset-2 decoration-primary/30">
-                      {post.title}
-                    </Link>
-                  </h2>
-
-                  <p className="text-muted-foreground leading-relaxed flex-1 text-sm">
-                    {post.excerpt}
-                  </p>
-
+              <li key={post.slug}>
+                <article className="group relative border-b border-border">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
+                    className="block py-7 sm:py-9 transition-colors hover:bg-muted/50 -mx-4 px-4 sm:-mx-6 sm:px-6"
                   >
-                    Read more
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <div className="grid grid-cols-12 gap-x-6 gap-y-3 items-start">
+                      <div className="col-span-12 sm:col-span-1">
+                        <span
+                          className="font-mono text-xs font-bold uppercase tabular-nums text-accent"
+                          aria-hidden
+                        >
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div className="col-span-12 sm:col-span-8 lg:col-span-8">
+                        <h2
+                          className="font-display text-xl sm:text-2xl lg:text-[1.75rem] font-bold leading-[1.15] text-foreground text-balance group-hover:text-accent transition-colors"
+                          style={{ letterSpacing: "var(--tracking-tight)" }}
+                        >
+                          {post.title}
+                        </h2>
+                        <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[60ch] line-clamp-2">
+                          {post.excerpt}
+                        </p>
+                        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent">
+                          Read article
+                          <ArrowUpRight
+                            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            strokeWidth={1.75}
+                            aria-hidden
+                          />
+                        </span>
+                      </div>
+                      <div className="col-span-12 sm:col-span-3 lg:col-span-3 font-mono text-xs uppercase tracking-wider text-muted-foreground space-y-1.5 sm:text-right">
+                        <div className="tabular-nums">{formatDate(post.date)}</div>
+                        <div className="inline-flex items-center gap-1.5 sm:justify-end">
+                          <Clock className="h-3 w-3" strokeWidth={1.75} />
+                          {post.readTime}
+                        </div>
+                      </div>
+                    </div>
                   </Link>
-                </div>
-              </article>
+                </article>
+              </li>
             ))}
+          </ul>
+
+          {otherCategories.length > 0 && (
+            <section className="mt-16 sm:mt-20 border-t-2 border-foreground pt-8">
+              <p className="eyebrow mb-5">Other topics</p>
+              <div className="flex flex-wrap gap-2">
+                {otherCategories.map(([slug, otherLabel]) => (
+                  <Link
+                    key={slug}
+                    href={`/blog/category/${slug}`}
+                    className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-foreground hover:text-primary-foreground min-h-[36px] touch-manipulation"
+                  >
+                    {otherLabel}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <div className="mt-14 pt-6 border-t border-border">
+            <Link
+              href="/blog"
+              className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-foreground hover:text-accent transition-colors"
+            >
+              <ArrowLeft
+                className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5"
+                aria-hidden
+              />
+              Back to all posts
+            </Link>
           </div>
         </div>
       </PageShell>
