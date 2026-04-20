@@ -12,46 +12,47 @@ The indirection lets us swap the palette without touching components.
 
 ## Current palette
 
-Warm paper canvas, deep teal primary, and ember accent for secondary CTAs and
-highlights. Aurora gradients use teal, honey gold, and sage. Light mode only.
+Soft blue-tinted paper canvas, deep navy primary, light-blue secondary wash,
+and a warm coral (terracotta) accent for CTAs and emphasis. Hairline rules
+stay navy to preserve the Swiss-style typographic grid. Light mode only.
 
 | Token                      | Hex      | HSL              | Role                                        |
 | -------------------------- | -------- | ---------------- | ------------------------------------------- |
-| `--background`             | `#FAF9F6` | `43 38% 97%`    | Page canvas (warm paper)                    |
-| `--foreground`             | `#161C26` | `220 24% 12%`   | Default body text                           |
+| `--background`             | `#F7FAFC` | `210 40% 98%`   | Page canvas (blue-tinted paper)             |
+| `--foreground`             | `#0F172A` | `222 47% 11%`   | Default body text (deep navy)               |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)  |
-| `--card-foreground`        | `#161C26` | `220 24% 12%`   | Text on cards                               |
-| `--primary`                | `#117A6C` | `168 56% 30%`   | Brand / dominant action (deep teal)         |
+| `--card-foreground`        | `#0F172A` | `222 47% 11%`   | Text on cards                               |
+| `--primary`                | `#1E3A8A` | `224 76% 33%`   | Brand / dominant action (navy)              |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                         |
-| `--secondary`              | `#E8F4F0` | `155 28% 93%`   | Low-emphasis surface (mint wash)            |
-| `--secondary-foreground`   | `#161C26` | `220 24% 12%`   | Text on `--secondary`                       |
-| `--muted`                  | `#F2F0EB` | `42 28% 94%`    | Subtle backgrounds (code, fills)            |
-| `--muted-foreground`       | `#5C6470` | `220 11% 40%`   | Secondary / helper text                     |
-| `--accent`                 | `#B84A24` | `18 72% 42%`    | Ember — secondary buttons, emphasis         |
+| `--secondary`              | `#BFDBFE` | `213 97% 87%`   | Low-emphasis surface (light-blue wash)      |
+| `--secondary-foreground`   | `#0F172A` | `222 47% 11%`   | Text on `--secondary`                       |
+| `--muted`                  | `#F1F5F9` | `210 40% 96%`   | Subtle backgrounds (code, fills)            |
+| `--muted-foreground`       | `#475569` | `215 19% 35%`   | Secondary / helper text                     |
+| `--accent`                 | `#C2410C` | `17 79% 40%`    | Coral terracotta — CTAs, emphasis           |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                          |
-| `--destructive`            | `#C42A2A` | `0 70% 44%`     | Errors, destructive actions                 |
-| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`   | Text on `--destructive`                     |
-| `--success`                | `#0F6B4D` | `152 55% 32%`   | Success signal (forest)                     |
+| `--destructive`            | `#B91C1C` | `0 74% 42%`     | Errors, destructive actions                 |
+| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                     |
+| `--success`                | `#047857` | `160 84% 30%`   | Success signal (emerald)                    |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                         |
-| `--warning`                | `#D97706` | `32 92% 44%`    | Warning signal (amber)                      |
+| `--warning`                | `#D97706` | `32 95% 44%`    | Warning signal (amber)                      |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                         |
-| `--info`                   | `#5B67DB` | `234 52% 52%`   | Neutral notices (periwinkle)                |
+| `--info`                   | `#0284C7` | `199 89% 48%`   | Neutral notices (sky)                       |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                            |
-| `--border`                 | `#E8E4DD` | `40 22% 88%`    | Default border / divider                    |
-| `--input`                  | `#E8E4DD` | `40 22% 88%`    | Form field border                           |
-| `--ring`                   | `#117A6C` | `168 56% 30%`   | Focus ring                                  |
+| `--border`                 | `#0F172A` | `222 47% 11%`   | Default border / divider (navy hairline)    |
+| `--input`                  | `#0F172A` | `222 47% 11%`   | Form field border                           |
+| `--ring`                   | `#1E3A8A` | `224 76% 33%`   | Focus ring                                  |
 
-### Gradient-only accents (aurora mesh, gradient text, glow)
+### Gradient-only accents (legacy tokens)
 
 Token names are historical — kept stable because several components
-reference them directly. Values harmonize with the teal / ember brand.
+reference them directly. Values map onto the new navy / coral palette.
 
 | Token            | Hex      | HSL              | Role                                          |
 | ---------------- | -------- | ---------------- | --------------------------------------------- |
-| `--grad-violet`  | `#2BA894` | `168 65% 46%`   | Teal glow                                     |
-| `--grad-pink`    | `#F5B435` | `32 95% 56%`    | Honey gold                                    |
-| `--grad-lilac`   | `#E2EDD9` | `95 32% 88%`    | Pale sage                                     |
-| `--grad-cyan`    | `#2EC4A8` | `168 72% 48%`   | Seafoam pop                                   |
+| `--grad-violet`  | `#1E3A8A` | `224 76% 33%`   | Navy                                          |
+| `--grad-pink`    | `#C2410C` | `17 79% 40%`    | Coral terracotta                              |
+| `--grad-lilac`   | `#BFDBFE` | `213 97% 87%`   | Light blue                                    |
+| `--grad-cyan`    | `#0284C7` | `199 89% 48%`   | Sky                                           |
 
 ### WCAG contrast
 

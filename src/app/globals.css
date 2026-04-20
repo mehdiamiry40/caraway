@@ -97,60 +97,62 @@
 
 :root {
   /*
-   * Swiss palette — pure achromatic surfaces with one cardinal-red accent.
-   * Channels are HSL (space-separated, no hsl()) so components can
-   * mix with alpha via hsl(var(--x) / 0.4).
+   * Navy + light-blue palette with a warm coral accent.
+   * Deep navy primary, light-blue secondary wash, terracotta-coral accent
+   * for CTAs and emphasis. Channels are HSL (space-separated, no hsl())
+   * so components can mix with alpha via hsl(var(--x) / 0.4).
    */
-  --background: 0 0% 100%;           /* #FFFFFF — paper white */
-  --foreground: 0 0% 0%;             /* #000000 — ink black */
+  --background: 210 40% 98%;         /* #F7FAFC — soft blue-tinted paper */
+  --foreground: 222 47% 11%;         /* #0F172A — deep navy ink */
   --card: 0 0% 100%;                 /* #FFFFFF */
-  --card-foreground: 0 0% 0%;
+  --card-foreground: 222 47% 11%;
 
-  --primary: 0 0% 0%;                /* black is the primary brand surface */
+  --primary: 224 76% 33%;            /* #1E3A8A — navy brand surface */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 96%;             /* #F5F5F5 — paper grid wash */
-  --secondary-foreground: 0 0% 0%;
+  --secondary: 213 97% 87%;          /* #BFDBFE — light-blue wash */
+  --secondary-foreground: 222 47% 11%;
 
-  --muted: 0 0% 96%;                 /* #F5F5F5 */
-  --muted-foreground: 0 0% 28%;      /* #474747 — readable grey */
+  --muted: 210 40% 96%;              /* #F1F5F9 — pale slate */
+  --muted-foreground: 215 19% 35%;   /* #475569 — readable slate */
 
-  --accent: 354 91% 45%;             /* #E1051A — Swiss red */
+  --accent: 17 79% 40%;              /* #C2410C — warm coral / terracotta */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 354 91% 45%;
+  --destructive: 0 74% 42%;          /* #B91C1C */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 0 0% 0%;                /* monochrome — meaning is in the label */
+  --success: 160 84% 30%;            /* #047857 — emerald */
   --success-foreground: 0 0% 100%;
 
-  --warning: 354 91% 45%;
+  --warning: 32 95% 44%;             /* #D97706 — amber */
   --warning-foreground: 0 0% 100%;
 
-  --info: 0 0% 0%;
+  --info: 199 89% 48%;               /* #0284C7 — sky */
   --info-foreground: 0 0% 100%;
 
-  --border: 0 0% 0%;                 /* hairline rules are pure black */
-  --input: 0 0% 0%;
-  --ring: 0 0% 0%;
+  --border: 222 47% 11%;             /* navy hairline rules */
+  --input: 222 47% 11%;
+  --ring: 224 76% 33%;               /* focus ring matches primary */
 
-  --shadow-color: 0 0% 0%;
+  --shadow-color: 222 47% 11%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
-  /* Dark "ink" surfaces — flat black, no blue tint */
-  --ink: 0 0% 0%;
-  --ink-deep: 0 0% 0%;
-  --ink-raised: 0 0% 8%;             /* #141414 — hairline contrast on black */
-  --on-dark: 0 0% 78%;               /* #C7C7C7 */
+  /* Dark "ink" surfaces — deep navy instead of pure black */
+  --ink: 222 47% 11%;                /* #0F172A */
+  --ink-deep: 222 47% 8%;            /* #070B14 */
+  --ink-raised: 217 50% 17%;         /* #16243E — hairline contrast on navy */
+  --on-dark: 213 30% 82%;            /* #C5D1DD */
   --on-dark-hi: 0 0% 100%;
 
-  /* Legacy "grad" tokens — flatten to red so gradient stops resolve to a single field. */
-  --grad-violet: 354 91% 45%;
-  --grad-pink: 354 91% 45%;
-  --grad-lilac: 0 0% 100%;
-  --grad-cyan: 354 91% 45%;
+  /* Legacy "grad" tokens — map to palette colours so any remaining
+   * gradient consumer renders within the new navy/coral brand. */
+  --grad-violet: 224 76% 33%;        /* navy */
+  --grad-pink: 17 79% 40%;           /* coral */
+  --grad-lilac: 213 97% 87%;         /* light blue */
+  --grad-cyan: 199 89% 48%;          /* sky */
 
   /* Legacy compatibility tokens used by Hero / Footer / TrustBadges / PageShell. */
   --footer-wash: hsl(var(--ink));
