@@ -1,3 +1,4 @@
+import type { SVGProps } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
@@ -7,16 +8,47 @@ import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Facebook,
-  Link2,
-  Linkedin,
-  Phone,
-  Twitter,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Link2, Phone } from "lucide-react";
 import { BUSINESS, SITE_URL } from "@/lib/site";
+
+function TwitterIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z" />
+    </svg>
+  );
+}
+
+function FacebookIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M13.5 9H16V6h-2.5a3.5 3.5 0 0 0-3.5 3.5V12H8v3h2v7h3v-7h2.5l.5-3H13V9.75c0-.414.336-.75.75-.75H13.5Z" />
+    </svg>
+  );
+}
+
+function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.446-2.136 2.94v5.666H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.268 2.37 4.268 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.554V9H7.12v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+    </svg>
+  );
+}
 
 const AUTHOR = {
   name: "Sam Williams",
@@ -254,7 +286,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
                     aria-label="Share on X"
                   >
-                    <Twitter className="h-3.5 w-3.5" aria-hidden />
+                    <TwitterIcon className="h-3.5 w-3.5" aria-hidden />
                     X
                   </a>
                   <a
@@ -264,7 +296,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
                     aria-label="Share on Facebook"
                   >
-                    <Facebook className="h-3.5 w-3.5" aria-hidden />
+                    <FacebookIcon className="h-3.5 w-3.5" aria-hidden />
                     Facebook
                   </a>
                   <a
@@ -274,7 +306,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
                     aria-label="Share on LinkedIn"
                   >
-                    <Linkedin className="h-3.5 w-3.5" aria-hidden />
+                    <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />
                     LinkedIn
                   </a>
                   <button
