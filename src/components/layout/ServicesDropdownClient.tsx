@@ -68,10 +68,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         ref={triggerRef}
         type="button"
         className={cn(
-          "text-sm font-medium transition-colors duration-200 flex items-center gap-1 rounded-md px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "text-[0.9375rem] font-medium transition-colors duration-200 flex items-center gap-1 rounded-md px-3.5 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
           isServicesActive
-            ? "text-primary"
-            : "text-muted-foreground hover:text-primary"
+            ? "text-foreground"
+            : "text-muted-foreground hover:text-foreground"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
@@ -105,7 +105,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           ref={menuRef}
           role="menu"
           aria-label="Services submenu"
-          className="absolute top-full left-0 mt-1 w-[480px] max-w-[calc(100vw-2rem)] bg-card rounded-2xl shadow-[0_24px_48px_-32px_hsl(var(--shadow-color)/0.4)] border border-border/70 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
+          className="absolute top-full left-0 mt-2 w-[520px] max-w-[calc(100vw-2rem)] bg-card rounded-2xl shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_24px_48px_-16px_hsl(var(--shadow-color)/0.25)] border border-border p-2 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2 gap-1"
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               setIsOpen(false);
@@ -149,10 +149,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
                   role="menuitem"
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "block px-5 py-3 text-sm font-medium transition-all duration-150 focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    "block rounded-xl px-4 py-3 text-[0.875rem] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                     isActive
-                      ? "text-primary bg-accent/[0.08] border-l-2 border-accent"
-                      : "text-muted-foreground hover:text-primary hover:bg-secondary/70 border-l-2 border-transparent"
+                      ? "text-primary bg-primary/[0.06]"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
                   {item.label}

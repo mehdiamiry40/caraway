@@ -108,14 +108,22 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         onClick={close}
       />
       <div className="relative bg-card flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
-        <div className="flex items-center justify-between min-h-16 px-5 sm:px-6 border-b border-border/40 shrink-0">
-          <span className="font-display text-xl sm:text-2xl tracking-tight text-primary lowercase">
-            caraway<span className="text-accent">.</span>
+        <div className="flex items-center justify-between min-h-16 px-5 sm:px-6 border-b border-border shrink-0">
+          <span className="inline-flex items-center gap-2.5">
+            <span
+              aria-hidden="true"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-[10px] bg-primary text-primary-foreground font-display font-bold text-sm"
+            >
+              C
+            </span>
+            <span className="font-display font-bold text-xl tracking-[-0.02em] text-foreground">
+              Caraway
+            </span>
           </span>
           <button
             type="button"
             onClick={close}
-            className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-full text-primary hover:bg-muted transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-full text-foreground hover:bg-muted transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
             aria-label="Close menu"
           >
             <X aria-hidden="true" className="h-6 w-6" />
@@ -130,8 +138,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 aria-expanded={isMobileServicesOpen}
                 aria-controls="mobile-services-list"
                 className={cn(
-                  "text-base sm:text-lg font-display py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                  "text-foreground hover:text-primary hover:bg-secondary/70"
+                  "text-[1.0625rem] sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
+                  "text-foreground hover:text-primary hover:bg-muted"
                 )}
               >
                 <span className="flex items-center gap-2">Services</span>
@@ -150,10 +158,10 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                       href="/cash-for-cars-brisbane"
                       onClick={close}
                       className={cn(
-                        "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                        "text-sm sm:text-base font-medium py-2.5 min-h-11 flex items-center rounded-lg px-2 -mx-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
                         pathname === "/cash-for-cars-brisbane"
-                          ? "text-primary bg-accent/[0.08]"
-                          : "text-muted-foreground hover:text-primary hover:bg-secondary/70"
+                          ? "text-primary bg-primary/[0.06]"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
                       )}
                     >
                       Services overview
@@ -196,15 +204,15 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                     href={link.href}
                     onClick={close}
                     className={cn(
-                      "text-base sm:text-lg font-display py-3.5 min-h-[52px] border-b border-border/30 flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      "text-[1.0625rem] sm:text-lg font-display font-semibold py-3.5 min-h-[52px] border-b border-border flex items-center justify-between transition-colors duration-200 rounded-lg px-2 -mx-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2",
                       isActive
-                        ? "text-primary bg-accent/[0.08]"
-                        : "text-foreground hover:text-primary hover:bg-secondary/70"
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary hover:bg-muted"
                     )}
                   >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-2.5">
                       {isActive && (
-                        <span className="w-1 h-6 rounded-full bg-accent" />
+                        <span aria-hidden="true" className="w-1 h-6 rounded-full bg-accent" />
                       )}
                       {link.label}
                     </span>
@@ -213,27 +221,26 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               );
             })}
           </nav>
-          <div className="mt-auto flex flex-col gap-3 pt-6 sm:pt-8 pb-safe border-t border-border/30">
+          <div className="mt-auto flex flex-col gap-3 pt-6 sm:pt-8 pb-safe border-t border-border">
+            <Button
+              onClick={handleScrollToQuote}
+              size="lg"
+              className="w-full h-14 text-base"
+            >
+              Get my free cash offer
+            </Button>
             <a
               href={BUSINESS.phoneHref}
               onClick={() => {
                 trackEvent("phone_click", { location: "header_drawer" });
                 close();
               }}
-              className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-lg border-[1.5px] border-primary text-primary text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-full border border-border-strong text-foreground text-base sm:text-lg hover:border-primary/50 hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
               aria-label={`Call ${BUSINESS.phoneFriendly}`}
             >
-              <Phone className="h-5 w-5" aria-hidden="true" />
+              <Phone className="h-5 w-5" aria-hidden="true" strokeWidth={2} />
               Call {BUSINESS.phoneFriendly}
             </a>
-            <Button
-              onClick={handleScrollToQuote}
-              size="lg"
-              variant="secondary"
-              className="w-full h-14 rounded-lg text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              Get your free cash offer
-            </Button>
           </div>
         </div>
       </div>
@@ -247,19 +254,19 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         <a
           href={BUSINESS.phoneHref}
           onClick={() => trackEvent("phone_click", { location: "header" })}
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-foreground hover:bg-muted hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
           aria-label={`Call ${BUSINESS.phoneFriendly}`}
         >
-          <Phone className="h-5 w-5" aria-hidden="true" />
+          <Phone className="h-5 w-5" aria-hidden="true" strokeWidth={2} />
         </a>
         <button
           type="button"
           ref={triggerRef}
-          className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-md text-primary hover:bg-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="min-h-11 min-w-11 -mr-1 inline-flex items-center justify-center rounded-full text-foreground hover:bg-muted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
           onClick={open}
           aria-label="Open menu"
         >
-          <Menu aria-hidden="true" className="h-6 w-6" />
+          <Menu aria-hidden="true" className="h-6 w-6" strokeWidth={2} />
         </button>
       </div>
 

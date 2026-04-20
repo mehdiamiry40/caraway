@@ -75,20 +75,18 @@ function hubsFor(region: Region) {
 export function ServiceAreas() {
   return (
     <section
-      className="section-y bg-secondary border-t border-b border-border"
+      className="section-y bg-secondary"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="site-container">
-        <Reveal className="max-w-2xl mb-12 md:mb-16">
-          <p className="eyebrow mb-5">Service areas</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
-            Free pickup across
-            <br />
-            Greater Brisbane.
+        <Reveal className="max-w-2xl mb-12 md:mb-14">
+          <p className="eyebrow mb-4">Service areas</p>
+          <h2 className="text-[1.875rem] sm:text-[2.25rem] md:text-[2.75rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+            Free pickup across Greater Brisbane.
           </h2>
-          <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            Brisbane, Ipswich, Logan, Redlands, and the Moreton Bay region.
-            If you&apos;re a bit further out, ask — we usually make it work.
+          <p className="mt-5 text-muted-foreground leading-relaxed text-[1.0625rem] sm:text-lg max-w-xl">
+            Brisbane, Ipswich, Logan, Redlands and the Moreton Bay region.
+            If you&apos;re further out, ask — we usually make it work.
           </p>
         </Reveal>
 
@@ -99,19 +97,19 @@ export function ServiceAreas() {
               const hubs = hubsFor(region);
               return (
                 <RevealItem as="li" key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08),0_32px_64px_-12px_hsl(var(--shadow-color)/0.14)] hover:border-primary/40">
+                  <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-6 sm:p-7 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)] transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_2px_6px_hsl(var(--shadow-color)/0.06),0_18px_40px_-14px_hsl(var(--shadow-color)/0.18)] hover:border-border-strong">
                     <div className="flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary transition-colors duration-300 group-hover:bg-primary/20">
-                        <Icon size={18} strokeWidth={2} aria-hidden="true" />
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] text-primary ring-1 ring-primary/10 transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:ring-primary">
+                        <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
                       </span>
-                      <span className="font-mono text-xs tabular-nums tracking-[0.08em] text-foreground/70">
+                      <span className="font-mono text-[0.75rem] font-semibold tabular-nums text-muted-foreground">
                         {String(hubs.length).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-lg sm:text-xl text-foreground">
+                    <h3 className="mt-5 font-display font-semibold text-lg sm:text-xl text-foreground">
                       {region.label}
                     </h3>
-                    <p className="mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
+                    <p className="mt-1.5 text-[0.9375rem] text-muted-foreground leading-relaxed">
                       {region.description}
                     </p>
                     <ul className="mt-5 flex flex-wrap gap-1.5">
@@ -119,7 +117,7 @@ export function ServiceAreas() {
                         <li key={hub.slug}>
                           <Link
                             href={`/locations/${hub.slug}`}
-                            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-3 py-1 text-[0.75rem] font-medium text-foreground/85 transition-colors hover:border-primary/30 hover:bg-primary/[0.06] hover:text-primary"
                           >
                             {hub.h1.replace("Cash for Cars ", "")}
                           </Link>
@@ -133,15 +131,16 @@ export function ServiceAreas() {
           </ul>
         </RevealGroup>
 
-        <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.9375rem]">
           <Link
             href="/locations"
-            className="inline-flex items-center gap-1.5 text-sm text-primary link-underline"
+            className="inline-flex items-center gap-1.5 font-semibold text-primary link-underline"
           >
             View every suburb we cover
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
+            <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
           </Link>
-          <p className="text-xs text-foreground/70 font-medium">
+          <span className="text-muted-foreground">·</span>
+          <p className="text-muted-foreground">
             Not listed? Call us — we cover most of South-East Queensland.
           </p>
         </div>

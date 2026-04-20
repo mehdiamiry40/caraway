@@ -14,8 +14,8 @@ export function ScrollToQuoteCTA() {
         onClick={scrollToQuote}
         className="w-full group touch-manipulation"
       >
-        Get My Free Quote
-        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-200" />
+        Get my firm offer
+        <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-200" strokeWidth={2} aria-hidden />
       </Button>
     </div>
   );

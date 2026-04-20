@@ -4,33 +4,50 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
-    // Swiss buttons: rectangular, flat, monospace label, wide tracking,
-    // bold uppercase. No lift on hover — colour inversion only.
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none",
-    "font-mono font-bold uppercase tracking-[0.08em]",
-    "ring-offset-background transition-[background-color,color,border-color] duration-150 ease-[var(--ease-out-quint)]",
+    "relative inline-flex items-center justify-center gap-2 whitespace-nowrap",
+    "font-sans font-semibold tracking-tight",
+    "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
+    "select-none",
   ].join(" "),
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground border border-primary hover:bg-accent hover:border-accent active:bg-accent",
-        secondary:
-          "bg-accent text-accent-foreground border border-accent hover:bg-primary hover:border-primary active:bg-primary",
-        outline:
-          "border border-foreground bg-background text-foreground hover:bg-foreground hover:text-background",
-        ghost:
-          "bg-transparent text-foreground hover:text-accent",
-        inkOutline:
-          "border border-[hsl(var(--on-dark-hi)/0.4)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi))] hover:text-[hsl(var(--ink))]",
+        // Primary: deep navy with soft shadow, lifts on hover, amber ring on focus
+        default: [
+          "bg-primary text-primary-foreground border border-primary",
+          "shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_6px_16px_-4px_hsl(var(--primary)/0.35)]",
+          "hover:bg-[hsl(224_56%_23%)] hover:border-[hsl(224_56%_23%)] hover:-translate-y-[1px]",
+          "hover:shadow-[0_2px_4px_hsl(var(--shadow-color)/0.08),0_12px_28px_-6px_hsl(var(--primary)/0.45)]",
+          "active:translate-y-0 active:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.08)]",
+        ].join(" "),
+        // Secondary: warm amber — the value / money button
+        secondary: [
+          "bg-accent text-accent-foreground border border-accent",
+          "shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_6px_16px_-4px_hsl(var(--accent)/0.35)]",
+          "hover:bg-[hsl(38_62%_40%)] hover:border-[hsl(38_62%_40%)] hover:-translate-y-[1px]",
+          "hover:shadow-[0_2px_4px_hsl(var(--shadow-color)/0.08),0_12px_28px_-6px_hsl(var(--accent)/0.45)]",
+          "active:translate-y-0",
+        ].join(" "),
+        // Outline: clean hairline, navy text, hover fill light navy tint
+        outline: [
+          "border border-border-strong bg-card text-foreground",
+          "hover:bg-muted hover:border-primary/40 hover:text-primary",
+        ].join(" "),
+        // Ghost: text-only, no chrome
+        ghost: "bg-transparent text-foreground hover:text-primary hover:bg-primary/5",
+        // Ink outline: used on dark surfaces
+        inkOutline: [
+          "border border-[hsl(var(--on-dark-hi)/0.35)] bg-transparent text-[hsl(var(--on-dark-hi))]",
+          "hover:bg-[hsl(var(--on-dark-hi)/0.1)] hover:border-[hsl(var(--on-dark-hi)/0.6)]",
+        ].join(" "),
       },
       size: {
-        default: "h-11 sm:h-12 px-5 text-[0.8125rem]",
-        sm: "h-10 px-4 text-xs",
-        lg: "h-12 sm:h-[52px] px-6 sm:px-7 text-sm",
-        icon: "h-11 w-11 sm:h-12 sm:w-12",
+        default: "h-11 sm:h-12 px-6 text-sm rounded-full",
+        sm: "h-10 px-5 text-[0.8125rem] rounded-full",
+        lg: "h-12 sm:h-[52px] px-7 sm:px-8 text-[0.9375rem] rounded-full",
+        icon: "h-11 w-11 sm:h-12 sm:w-12 rounded-full",
       },
     },
     defaultVariants: {

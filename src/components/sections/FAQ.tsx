@@ -11,35 +11,33 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="section-y bg-muted border-t border-b border-border"
+      className="section-y bg-background"
       aria-label="Frequently asked questions"
     >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
-            <p className="eyebrow mb-5">FAQ</p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
-              Cash for cars,
-              <br />
-              without the surprises.
+            <p className="eyebrow mb-4">FAQ</p>
+            <h2 className="text-[1.875rem] sm:text-[2.25rem] md:text-[2.75rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+              Cash for cars, without the surprises.
             </h2>
-            <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
+            <p className="mt-5 text-muted-foreground leading-relaxed text-[1.0625rem] sm:text-lg max-w-md">
               Towing, rego, pricing — the stuff people actually ask before they book a pickup.
             </p>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
               <Link
                 href="/faq"
-                className="inline-flex items-center gap-1 text-primary link-underline"
+                className="inline-flex items-center gap-1.5 font-semibold text-primary link-underline"
               >
                 View all questions
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1 text-foreground/80 link-underline hover:text-foreground"
+                className="inline-flex items-center gap-1.5 text-muted-foreground link-underline hover:text-foreground"
               >
                 Contact us
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
               </Link>
             </div>
           </Reveal>
