@@ -62,7 +62,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     .map(
       ([k, v]) =>
         `<tr>` +
-        `<td style="border:1px solid #E2E8F0;background:#E0F2FE;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
+        `<td style="border:1px solid #E2E8F0;background:#BFDBFE;font-weight:600;padding:8px 12px">${escapeHtml(k)}</td>` +
         `<td style="border:1px solid #E2E8F0;padding:8px 12px">${escapeHtml(v)}</td>` +
         `</tr>`,
     )
@@ -70,7 +70,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
 
   const html =
     `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#0F172A;margin:0;padding:24px">` +
-    `<h2 style="margin:0 0 12px;font-size:18px;color:#117A6C">New quote request</h2>` +
+    `<h2 style="margin:0 0 12px;font-size:18px;color:#1E3A8A">New quote request</h2>` +
     `<p style="margin:0 0 16px;color:#475569">Submitted via the caraway.au quote form.</p>` +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px">` +
     htmlRows +
