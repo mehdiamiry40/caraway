@@ -12,7 +12,6 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-stretch">
           {/* Copy */}
           <div className="relative z-10 lg:col-span-7 lg:pr-12 lg:border-r lg:border-foreground">
-            <p className="eyebrow mb-8">01 — Free pickup · Same-day service</p>
             <h1
               id="hero-heading"
               className="font-display font-black text-[clamp(2.25rem,6.5vw,5rem)] leading-[0.95] tracking-[var(--tracking-display)] text-foreground text-balance mb-10 scroll-mt-[calc(4rem+env(safe-area-inset-top))]"
