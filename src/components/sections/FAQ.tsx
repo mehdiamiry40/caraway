@@ -11,7 +11,7 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="section-y bg-background"
+      className="section-y bg-muted border-t border-b border-border"
       aria-label="Frequently asked questions"
     >
       <div className="site-container">

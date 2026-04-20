@@ -22,7 +22,7 @@ const badges = [
 export function TrustBadges() {
   return (
     <section
-      className="relative bg-background"
+      className="relative bg-muted"
       aria-label="Trust and credentials"
     >
       <div className="site-container py-6 sm:py-10 border-y border-border">

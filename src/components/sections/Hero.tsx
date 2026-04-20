@@ -4,7 +4,7 @@ import { HeroImage } from "./HeroImage";
 export function Hero() {
   return (
     <section
-      className="relative w-full mt-header-safe bg-background border-b border-foreground"
+      className="relative w-full mt-header-safe bg-secondary border-b border-foreground"
       aria-labelledby="hero-heading"
     >
       <div className="site-container pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-24 lg:pb-32">
