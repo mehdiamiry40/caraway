@@ -394,39 +394,39 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-secondary relative overflow-hidden" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Quote submitted">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.14),transparent_60%)]" />
         <div className="site-container">
-          <div className="bg-card rounded-3xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_12px_32px_-8px_hsl(var(--shadow-color)/0.12),0_32px_80px_-16px_hsl(var(--shadow-color)/0.18)] p-8 sm:p-12 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
-            <div className="flex items-center justify-center w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full bg-success/10 text-success ring-4 ring-success/5 mx-auto mb-6">
-              <PartyPopper className="w-8 h-8 sm:w-9 sm:h-9" strokeWidth={1.75} aria-hidden="true" />
+          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
+            <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
+              <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} aria-hidden="true" />
             </div>
             <h3
               ref={successHeadingRef}
               tabIndex={-1}
-              className="font-display font-semibold text-2xl sm:text-3xl text-foreground mb-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 rounded"
+              className="font-display text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
             >
               Your quote is on its way.
             </h3>
-            <p className="text-muted-foreground text-[0.9375rem] sm:text-base mb-6 max-w-md mx-auto">
-              We&apos;ve received your details for your <strong className="text-foreground font-semibold">{year} {[make, model].filter(Boolean).join(" ")}</strong>. A team member will confirm your firm price within the hour.
+            <p className="text-foreground/80 text-sm sm:text-base mb-5">
+              We received your details for your <strong className="text-foreground">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
-            <div className="quote-card max-w-sm mx-auto px-6 py-5 text-left mb-6">
-              <div className="flex items-center justify-between">
-                <span className="text-[0.75rem] uppercase tracking-[0.12em] font-semibold text-on-dark">Offer sent</span>
-                <span className="inline-flex items-center gap-1 rounded-full bg-success/20 text-on-dark-hi px-2 py-0.5 text-[0.6875rem] font-semibold">
-                  <CheckCircle2 className="h-3 w-3" strokeWidth={2.5} aria-hidden="true" />
-                  Confirmed
-                </span>
+            <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
+              <div className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
+                <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
+                <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
+                <span className="ml-auto text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">Offer sent</span>
               </div>
               <div className="mt-3 flex items-baseline justify-between">
-                <span className="text-[0.8125rem] text-on-dark">Your quote</span>
-                <span className="font-mono tabular-nums text-2xl font-semibold text-on-dark-hi">
+                <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your quote</span>
+                <span className="font-mono tabular-nums text-xl font-medium text-[hsl(var(--on-dark-hi))]">
                   ${result?.quote.toLocaleString()}
                 </span>
               </div>
             </div>
-            <p className="text-muted-foreground text-sm mb-7">
-              No obligation — if the final offer doesn&apos;t work for you, no worries.
+            <p className="text-muted-foreground text-sm mb-6">
+              We&apos;ll contact you shortly to confirm a final price. No obligation — if the offer doesn&apos;t work for you, no worries.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
@@ -436,7 +436,7 @@ export function PriceEstimator() {
                 size="lg"
               >
                 <RotateCcw className="w-4 h-4" aria-hidden="true" />
-                Estimate another car
+                Estimate another
               </Button>
             </div>
           </div>
@@ -446,18 +446,19 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-secondary relative overflow-hidden" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Instant price estimate">
+      <div aria-hidden="true" className="absolute inset-x-0 top-16 -z-10 h-[55%] bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.16),transparent_65%)]" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
       <div className="site-container">
         <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Instant valuation</p>
-          <h2 className="text-[1.875rem] sm:text-[2.25rem] md:text-[2.75rem] font-display font-semibold text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             How much is your car worth?
           </h2>
-          <p className="mt-5 text-muted-foreground text-[1.0625rem] sm:text-lg leading-relaxed">
-            Four quick questions. A firm, written offer in your inbox within the hour — no account, no spam.
+          <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
+            Answer four quick questions. We&apos;ll send back a firm cash offer for your car — no account, no spam.
           </p>
         </div>
 
@@ -473,27 +474,27 @@ export function PriceEstimator() {
         >
           <div className="flex items-center justify-between mb-3">
             {[1, 2, 3].map((s) => (
-              <div key={s} className="flex items-center gap-2.5">
+              <div key={s} className="flex items-center gap-2">
                 <div className={cn(
-                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] font-semibold transition-[background-color,color,border-color] duration-300",
+                  "flex items-center justify-center w-8 h-8 rounded-full text-[0.8125rem] transition-[background-color,color,border-color] duration-300",
                   step >= s
                     ? "bg-primary text-primary-foreground"
-                    : "bg-card border border-border text-muted-foreground"
+                    : "bg-card border border-border text-foreground/70"
                 )}>
                   {step > s ? <CheckCircle2 className="w-4 h-4" strokeWidth={2.25} aria-hidden="true" /> : s}
                 </div>
                 <span className={cn(
-                  "text-[0.8125rem] font-medium transition-colors hidden sm:inline",
-                  step >= s ? "text-foreground" : "text-muted-foreground"
+                  "text-xs transition-colors hidden sm:inline",
+                  step >= s ? "text-foreground" : "text-foreground/70"
                 )}>
-                  {s === 1 ? "Vehicle" : s === 2 ? "Your offer" : "Claim it"}
+                  {s === 1 ? "Vehicle" : s === 2 ? "Your quote" : "Claim it"}
                 </span>
               </div>
             ))}
           </div>
-          <div className="h-1 bg-border rounded-full overflow-hidden">
+          <div className="h-1 bg-border/70 rounded-full overflow-hidden">
             <div
-              className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
+              className="h-full rounded-full transition-all duration-500 ease-out bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(var(--grad-violet)))]"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -501,7 +502,7 @@ export function PriceEstimator() {
 
         {/* Card */}
         <div className="max-w-2xl mx-auto">
-          <div className="relative bg-card rounded-3xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_12px_32px_-8px_hsl(var(--shadow-color)/0.12),0_32px_80px_-16px_hsl(var(--shadow-color)/0.18)] overflow-hidden">
+          <div className="relative bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
             <div className="absolute -left-[9999px]" aria-hidden="true">
@@ -521,19 +522,16 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 1 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 <div className="flex items-center gap-3 mb-7">
-                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/[0.06] text-primary ring-1 ring-primary/10">
-                    <Car className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
+                    <Car className="w-5 h-5" strokeWidth={1.5} aria-hidden="true" />
                   </span>
-                  <div>
-                    <p className="text-[0.75rem] uppercase tracking-[0.1em] font-semibold text-muted-foreground">Step 1 of 3</p>
-                    <h3
-                      ref={step1HeadingRef}
-                      tabIndex={-1}
-                      className="font-display font-semibold text-[1.0625rem] sm:text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 rounded"
-                    >
-                      Tell us about your vehicle
-                    </h3>
-                  </div>
+                  <h3
+                    ref={step1HeadingRef}
+                    tabIndex={-1}
+                    className="font-display text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                  >
+                    Tell us about your vehicle
+                  </h3>
                 </div>
 
                 <div className="space-y-5 sm:space-y-6">
@@ -640,41 +638,48 @@ export function PriceEstimator() {
               </div>
             )}
 
-            {/* Step 2 — Your instant offer */}
+            {/* Step 2 — Your Quote (Stripe-style dark "quote result" card) */}
             <div className={cn("transition-all duration-300", step === 2 && !isCalculating ? "block" : "hidden")}>
               {result && (
                 <div className="p-5 sm:p-8">
-                  <div className="quote-card p-6 sm:p-8 mb-6">
-                    <div className="flex items-center justify-between mb-5">
-                      <span className="text-[0.75rem] uppercase tracking-[0.12em] font-semibold text-on-dark">Your instant offer</span>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-on-dark-hi/10 text-on-dark-hi px-2 py-0.5 text-[0.6875rem] font-semibold">
-                        Est.
+                  <div className="quote-card p-4 sm:p-6 mb-6">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--grad-violet))] pb-1">
+                        Your quote
+                      </span>
+                      <span className="text-[0.75rem] font-medium text-[hsl(var(--on-dark))] pb-1">
+                        Your car
                       </span>
                     </div>
                     <div
                       ref={step2HeadingRef}
                       tabIndex={-1}
-                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink rounded"
+                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--grad-violet))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--ink))] rounded"
                     >
-                      <p className="text-[0.9375rem] text-on-dark mb-2">
+                      <p className="text-[0.8125rem] text-[hsl(var(--on-dark))] mb-1">
                         {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
                       </p>
-                      <p className="font-mono tabular-nums text-5xl sm:text-6xl font-semibold text-on-dark-hi tracking-[-0.03em]">
+                      <p className="font-mono tabular-nums text-4xl sm:text-5xl font-medium text-[hsl(var(--on-dark-hi))] tracking-[-0.02em]">
                         ${result.quote.toLocaleString()}
                       </p>
-                      <p className="mt-3 text-[0.8125rem] text-on-dark">
-                        A firm, written offer lands in your inbox within the hour.
+                      <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
+                        Instant estimate · firm offer within the hour
                       </p>
                     </div>
                   </div>
 
                   {result.factors.length > 0 && (
-                    <div className="bg-muted rounded-xl p-5 mb-6 border border-border">
-                      <p className="text-[0.75rem] uppercase tracking-[0.1em] font-semibold text-foreground mb-3">What shapes your price</p>
-                      <ul className="space-y-2">
+                    <div className="bg-muted rounded-xl p-4 mb-6 border border-border">
+                      <p className="text-xs uppercase tracking-[0.06em] text-foreground/75 mb-2">What affects your price</p>
+                      <ul className="space-y-1.5">
                         {result.factors.map((f, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-[0.9375rem] text-muted-foreground">
-                            <CheckCircle2 className="w-4 h-4 text-success shrink-0 mt-[3px]" strokeWidth={2.25} aria-hidden="true" />
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground/85">
+                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={2} aria-hidden="true" />
                             {f}
                           </li>
                         ))}
@@ -710,17 +715,17 @@ export function PriceEstimator() {
             <div className={cn("transition-all duration-300", step === 3 && !isCalculating ? "block" : "hidden")}>
               <div className="p-5 sm:p-8">
                 {result && (
-                  <div className="flex items-center justify-between gap-3 bg-primary/[0.04] border border-primary/15 rounded-2xl px-5 py-4 mb-7">
+                  <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
                     <div className="min-w-0">
-                      <p className="text-[0.6875rem] uppercase tracking-[0.12em] font-semibold text-muted-foreground">Your quote</p>
-                      <p className="mt-1 font-semibold text-foreground truncate text-[0.9375rem]">
+                      <p className="text-xs text-foreground/70 uppercase tracking-wider">Your quote</p>
+                      <p className="font-semibold text-foreground truncate">
                         {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => goToStep(2)}
-                      className="text-[0.8125rem] font-semibold text-primary hover:text-primary/80 min-h-[40px] px-3 rounded-full touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 transition-colors"
+                      className="text-xs text-primary hover:text-primary/80 min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       Edit
                     </button>
@@ -728,19 +733,16 @@ export function PriceEstimator() {
                 )}
 
                 <div className="flex items-center gap-3 mb-7">
-                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/[0.06] text-primary ring-1 ring-primary/10">
-                    <Send className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+                  <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-primary/10 text-primary">
+                    <Send className="w-5 h-5" strokeWidth={1.5} aria-hidden="true" />
                   </span>
-                  <div>
-                    <p className="text-[0.75rem] uppercase tracking-[0.1em] font-semibold text-muted-foreground">Step 3 of 3</p>
-                    <h3
-                      ref={step3HeadingRef}
-                      tabIndex={-1}
-                      className="font-display font-semibold text-[1.0625rem] sm:text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 rounded"
-                    >
-                      Where should we send it?
-                    </h3>
-                  </div>
+                  <h3
+                    ref={step3HeadingRef}
+                    tabIndex={-1}
+                    className="font-display text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+                  >
+                    Where should we send it?
+                  </h3>
                 </div>
 
                 <div className="space-y-5 sm:space-y-6">

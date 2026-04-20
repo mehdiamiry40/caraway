@@ -86,17 +86,17 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="bg-card rounded-2xl p-6 sm:p-10 border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_12px_32px_-8px_hsl(var(--shadow-color)/0.12)] relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent" aria-hidden />
-        <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-6 sm:py-8">
-          <div className="flex items-center justify-center w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full bg-success/10 text-success ring-4 ring-success/5 mb-6">
-            <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9" strokeWidth={1.75} aria-hidden />
+      <div className="bg-card rounded-lg p-4 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
+        <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
+            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
-          <h3 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">Message sent — thanks!</h3>
-          <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-[0.9375rem] sm:text-base">
+          <h3 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h3>
+          <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
             We&apos;ll reply within 1 business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
-          <Button onClick={() => setIsSuccess(false)} variant="outline" size="lg" className="w-full sm:w-auto">
+          <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
             Send another message
           </Button>
         </div>
@@ -105,10 +105,10 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card rounded-2xl p-6 sm:p-8 border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_12px_32px_-8px_hsl(var(--shadow-color)/0.1)] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-accent/60 to-transparent" aria-hidden />
-      <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-1.5 pt-1">Send us a message</h2>
-      <p className="text-[0.9375rem] text-muted-foreground mb-6 sm:mb-7">
+    <div className="bg-card rounded-lg p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-32px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
+      <h2 className="text-lg sm:text-xl font-display text-foreground mb-1 pt-1">Send Us a Message</h2>
+      <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
