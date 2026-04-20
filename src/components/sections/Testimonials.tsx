@@ -68,7 +68,7 @@ export function Testimonials() {
   const track = [...FEATURED, ...FEATURED];
 
   return (
-    <section id="reviews" className="section-y bg-background" aria-label="What sellers say">
+    <section id="reviews" className="section-y bg-muted border-t border-b border-border" aria-label="What sellers say">
       <div className="site-container">
         <Reveal className="max-w-2xl mb-10 md:mb-14">
           <p className="eyebrow mb-5">Seller stories</p>

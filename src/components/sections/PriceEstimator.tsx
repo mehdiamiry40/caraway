@@ -394,7 +394,7 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-background relative overflow-hidden" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Quote submitted">
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.14),transparent_60%)]" />
         <div className="site-container">
           <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
@@ -446,7 +446,7 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-background relative overflow-hidden" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Instant price estimate">
       <div aria-hidden="true" className="absolute inset-x-0 top-16 -z-10 h-[55%] bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.16),transparent_65%)]" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
