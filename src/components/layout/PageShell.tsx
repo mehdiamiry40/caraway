@@ -40,15 +40,15 @@ export function PageShell({
         >
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
-            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
+            {eyebrow && <p className="eyebrow mt-7 mb-4">{eyebrow}</p>}
             <h1
-              className="font-display text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mt-4 mb-5"
+              className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mt-3 mb-5"
               style={{ letterSpacing: "var(--tracking-display)" }}
             >
               {title}
             </h1>
             {subtitle && (
-              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
+              <div className="text-muted-foreground text-[1.0625rem] sm:text-xl leading-relaxed max-w-2xl">
                 {subtitle}
               </div>
             )}

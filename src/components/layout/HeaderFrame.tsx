@@ -45,9 +45,11 @@ export function HeaderFrame({ children }: { children: ReactNode }) {
       data-scrolled="false"
       className={cn(
         "fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe",
-        "transition-[background-color,border-color] duration-200 ease-[var(--ease-out-quint)]",
-        // Swiss header: solid white field, persistent 1px black hairline rule.
-        "bg-background border-b border-foreground",
+        "transition-[background-color,border-color,box-shadow,backdrop-filter] duration-200 ease-[var(--ease-out-quint)]",
+        // Rest state: clean background, hairline divider barely visible
+        "bg-background/85 backdrop-blur-md border-b border-transparent",
+        // Scrolled state: solid ground, hairline border, soft shadow
+        "data-[scrolled=true]:bg-card/95 data-[scrolled=true]:border-border data-[scrolled=true]:shadow-[0_1px_0_0_hsl(var(--shadow-color)/0.04),0_8px_24px_-12px_hsl(var(--shadow-color)/0.1)]",
       )}
     >
       {children}

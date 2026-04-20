@@ -1,20 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
-// Inter — geometric Helvetica-derived sans, used for all UI and display type
-// in the Swiss redesign. Weight range covers light captions through bold display.
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// JetBrains Mono — monospaced face for eyebrow labels, tabular figures,
-// quote results, and any data presentation.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-jetbrains-mono",
   display: "swap",
 });
@@ -120,7 +116,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#1E3A8A",
+  themeColor: "#152449",
 };
 
 export default function RootLayout({

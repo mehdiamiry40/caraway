@@ -42,7 +42,7 @@ export function Accordion({
             key={`${index}-${item.question}`}
             className={cn(
               "border-b border-border transition-colors duration-200",
-              isActive && "border-primary/40"
+              isActive && "bg-card/60"
             )}
           >
             <HeadingTag className="m-0">
@@ -54,22 +54,24 @@ export function Accordion({
                   setActiveIndex(willOpen ? index : null);
                   onItemToggle?.(item.question, willOpen);
                 }}
-                className="group flex w-full min-h-12 items-center justify-between gap-3 sm:gap-4 py-5 sm:py-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                className="group flex w-full min-h-12 items-center justify-between gap-4 py-5 sm:py-6 px-1 sm:px-2 text-left rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 touch-manipulation"
                 aria-expanded={isActive}
                 aria-controls={panelId}
               >
                 <span
                   className={cn(
-                    "font-display text-base sm:text-lg break-words [overflow-wrap:anywhere] transition-colors duration-200",
-                    isActive ? "text-foreground" : "text-foreground group-hover:text-primary"
+                    "font-display font-semibold text-[1.0625rem] sm:text-lg text-foreground break-words [overflow-wrap:anywhere] transition-colors duration-200",
+                    !isActive && "group-hover:text-primary"
                   )}
                 >
                   {item.question}
                 </span>
                 <div
                   className={cn(
-                    "flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full border border-border bg-secondary text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
-                    isActive && "rotate-45 border-primary/50 bg-primary/15 text-primary"
+                    "flex-shrink-0 flex items-center justify-center h-9 w-9 rounded-full border transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
+                    isActive
+                      ? "rotate-45 border-primary bg-primary text-primary-foreground"
+                      : "border-border bg-card text-foreground/70 group-hover:border-primary/40 group-hover:text-primary"
                   )}
                 >
                   <Plus className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
@@ -88,7 +90,7 @@ export function Accordion({
               )}
             >
               <div className="overflow-hidden">
-                <div className="pb-6 pt-0 pr-10 text-[0.9375rem] sm:text-base text-foreground/80 leading-relaxed break-words [overflow-wrap:anywhere]">
+                <div className="pb-6 pt-0 pl-1 sm:pl-2 pr-12 text-[0.9375rem] sm:text-base text-muted-foreground leading-relaxed break-words [overflow-wrap:anywhere]">
                   {item.answer}
                 </div>
               </div>

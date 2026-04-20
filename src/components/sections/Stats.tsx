@@ -67,16 +67,16 @@ export function Stats() {
   });
 
   return (
-    <section ref={ref} className="relative bg-muted border-y border-border" aria-label="What to expect">
-      <div className="site-container py-8 sm:py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+    <section ref={ref} className="relative bg-card border-y border-border" aria-label="What to expect">
+      <div className="site-container py-10 sm:py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-8">
           {stats.map((stat, index) => (
             <StatItem key={stat.label} stat={stat} index={index} inView={inView} />
           ))}
         </div>
-        <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
+        <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-border text-center text-[0.8125rem] sm:text-[0.875rem] text-muted-foreground text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
-          <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
+          <p className="mt-1.5 text-[0.75rem] text-muted-foreground/80">
             Seller stories on this page are shared with permission and are not a full survey of every pickup.
           </p>
         </div>
@@ -94,24 +94,22 @@ function StatItem({ stat, index, inView }: { stat: StatDef; index: number; inVie
     : stat.value;
 
   return (
-    <div
-      className="group relative flex flex-col items-center text-center gap-3 sm:gap-4"
-    >
+    <div className="group relative flex flex-col items-center text-center gap-3 sm:gap-4">
       {index > 0 && (
-        <div className="hidden md:block absolute -left-3 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
+        <div className="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 h-10 w-px bg-border" aria-hidden />
       )}
-      <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-card border border-border group-hover:border-primary/50 transition-colors duration-300">
-        <Icon className="h-5 w-5 text-primary" strokeWidth={2} aria-hidden="true" />
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/[0.06] text-primary ring-1 ring-primary/10 transition-colors duration-300">
+        <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden="true" />
       </div>
       <div className="min-w-0">
         <p
-          className={`text-base sm:text-xl font-display text-primary leading-tight transition-opacity duration-700 ${
+          className={`text-base sm:text-xl font-display font-semibold text-foreground leading-tight transition-opacity duration-700 ${
             inView ? "opacity-100" : "opacity-0"
           } motion-reduce:opacity-100`}
         >
           {displayValue}
         </p>
-        <p className="text-xs sm:text-sm text-foreground/75 mt-1 leading-snug text-balance font-medium">
+        <p className="text-[0.8125rem] sm:text-[0.875rem] text-muted-foreground mt-1.5 leading-snug text-balance">
           {stat.label}
         </p>
       </div>

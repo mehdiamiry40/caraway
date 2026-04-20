@@ -91,29 +91,27 @@ export function QuoteForm() {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
-              Your quote
-            </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
+            <p className="eyebrow mb-4">Your quote</p>
+            <h2 className="text-[1.875rem] sm:text-[2.25rem] md:text-[2.75rem] font-display font-semibold text-foreground leading-[1.1] text-balance mb-5">
               Tell us about the car.
             </h2>
-            <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
-              We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
+            <p className="text-muted-foreground leading-relaxed text-[1.0625rem] sm:text-lg max-w-md">
+              We&apos;ll call or text back with a firm price and next steps — usually within the hour. No obligation, no follow-up pressure.
             </p>
           </div>
 
-          <div className="lg:col-span-7 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_12px_32px_-8px_hsl(var(--shadow-color)/0.1)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
-                    <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
+                  <div className="flex items-center justify-center w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-full bg-success/10 text-success ring-4 ring-success/5 mb-6">
+                    <CheckCircle2 className="w-8 h-8 sm:w-9 sm:h-9" strokeWidth={1.75} aria-hidden />
                   </div>
-                  <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
-                  <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
+                  <h3 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">Thanks — we&apos;ve got your details</h3>
+                  <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed text-[0.9375rem] sm:text-base">
+                    Our team will call or text you within 1 business day. Keep an eye on your phone — and check your spam folder if we reach out by email.
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
+                  <Button onClick={() => resetMutation()} variant="outline" size="lg" className="w-full sm:w-auto">
                     Submit another vehicle
                   </Button>
                 </div>
