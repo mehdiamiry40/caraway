@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { indexableBlogPosts } from "@/data/blog-posts";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -49,7 +49,7 @@ export default function BlogPage() {
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             mainEntity: {
               "@type": "ItemList",
               numberOfItems: indexableBlogPosts.length,

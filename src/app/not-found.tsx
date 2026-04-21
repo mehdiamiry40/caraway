@@ -3,11 +3,11 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Home, MapPin, Calculator, Car } from "lucide-react";
+import { Home, MapPin, Calculator, Car, Mail } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Page not found | Caraway",
+  title: { absolute: "Page not found — Caraway" },
   description:
     "The page you requested could not be found. Return to Caraway's home page to request a cash offer.",
   robots: { index: false, follow: true },
@@ -62,6 +62,16 @@ export default function NotFound() {
             >
               <MapPin className="h-4 w-4" />
               Find your suburb
+            </Link>
+            <Link
+              href="/contact"
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
+              )}
+            >
+              <Mail className="h-4 w-4" />
+              Contact us
             </Link>
           </div>
           <div className="mt-10 pt-8 border-t border-border/30">

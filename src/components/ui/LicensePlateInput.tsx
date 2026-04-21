@@ -1,6 +1,12 @@
 "use client";
 
-import { forwardRef, type InputHTMLAttributes } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  type InputHTMLAttributes,
+} from "react";
 import { cn } from "@/lib/utils";
 
 interface LicensePlateInputProps
@@ -15,16 +21,27 @@ const prefixTints: Record<NonNullable<LicensePlateInputProps["prefixTint"]>, str
   orange: "bg-accent text-accent-foreground",
 };
 
-/**
- * Looping-style plate input: yellow "plate" body with a coloured country/state
- * prefix block, and a big bold uppercase input field. Used as the primary lead
- * capture in the hero and final CTA bands.
- */
 export const LicensePlateInput = forwardRef<HTMLInputElement, LicensePlateInputProps>(
   function LicensePlateInput(
-    { className, prefix = "QLD", prefixTint = "green", placeholder = "ABC 123", ...rest },
+    { className, prefix = "QLD", prefixTint = "green", placeholder = "ABC 123", name, ...rest },
     ref,
   ) {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    useImperativeHandle(ref, () => inputRef.current as HTMLInputElement, []);
+
+    // Matching writes in Hero.tsx and FinalCTA.tsx submit handlers make this
+    // field feel sticky across scrolls and reloads for the "plate" instances.
+    useEffect(() => {
+      if (name !== "plate" || typeof window === "undefined") return;
+      try {
+        const stored = window.sessionStorage.getItem("caraway_plate");
+        const el = inputRef.current;
+        if (stored && el && !el.value) el.value = stored;
+      } catch {
+        /* ignore */
+      }
+    }, [name]);
+
     return (
       <div
         className={cn(
@@ -42,7 +59,8 @@ export const LicensePlateInput = forwardRef<HTMLInputElement, LicensePlateInputP
           {prefix}
         </span>
         <input
-          ref={ref}
+          ref={inputRef}
+          name={name}
           type="text"
           inputMode="text"
           autoComplete="off"

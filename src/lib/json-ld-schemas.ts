@@ -7,14 +7,12 @@ const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
   phone: BUSINESS.phone,
   email: BUSINESS.email,
-  streetAddress: BUSINESS.streetAddress,
   addressLocality: BUSINESS.addressSuburb,
   addressRegion: BUSINESS.addressState,
-  postalCode: BUSINESS.postalCode,
   addressCountry: "AU",
-  /** Registered office (Runcorn); serviceArea below describes pickup coverage. */
-  latitude: -27.5867,
-  longitude: 153.0992,
+  /** Brisbane CBD reference point; serviceArea below covers pickup radius. */
+  latitude: -27.4698,
+  longitude: 153.0251,
 };
 
 const openingHours = {
@@ -59,13 +57,11 @@ export const localBusinessSchema = {
   paymentAccepted: "Cash, Bank Transfer",
   description:
     "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call 0481 438 444.",
-  // Registered office address; pickups are at the customer's property (serviceArea).
+  // City-level address only; pickups happen at the customer's property (serviceArea).
   address: {
     "@type": "PostalAddress",
-    streetAddress: NAP.streetAddress,
     addressLocality: NAP.addressLocality,
     addressRegion: NAP.addressRegion,
-    postalCode: NAP.postalCode,
     addressCountry: NAP.addressCountry,
   },
   geo: {
@@ -159,10 +155,8 @@ export const organizationSchema = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: NAP.streetAddress,
     addressLocality: NAP.addressLocality,
     addressRegion: NAP.addressRegion,
-    postalCode: NAP.postalCode,
     addressCountry: NAP.addressCountry,
   },
   sameAs: SAME_AS,

@@ -13,12 +13,11 @@ export const BUSINESS = {
   phoneHref: "tel:0481438444",
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
-  /** Street address for NAP / footer (pickups are at the customer's location). */
-  streetAddress: "20 Bonemill Rd",
-  addressSuburb: "Runcorn",
+  /** City-level NAP — we don't operate a public yard; pickups happen at the
+   *  customer's location, so we don't publish a street address. */
+  addressSuburb: "Brisbane",
   addressState: "QLD",
-  postalCode: "4113",
-  addressFormatted: "20 Bonemill Rd, Runcorn QLD 4113",
+  addressFormatted: "Brisbane, QLD",
   /** Metro label — used with "Greater …" service-area copy. */
   location: "Brisbane, QLD",
   locationDetail: "Including Logan, Ipswich, Moreton Bay & Redland Bay",
@@ -38,6 +37,11 @@ export const LEGAL_DATES = {
   privacyLastUpdated: "April 2026",
   termsLastUpdated: "March 2026",
 } as const;
+
+/** The date the current content was deployed / last structurally changed.
+ *  Shared by sitemap and JSON-LD so `dateModified` stays stable across
+ *  builds instead of drifting to "today" on every deploy. */
+export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
 export const PROMISE_POINTS = [
   "$200–$9,999 cash",

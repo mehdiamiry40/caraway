@@ -395,7 +395,7 @@ export function PriceEstimator() {
   if (isSuccess) {
     return (
       <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Quote submitted">
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.14),transparent_60%)]" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.14),transparent_60%)]" />
         <div className="site-container">
           <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
@@ -412,11 +412,8 @@ export function PriceEstimator() {
               We received your details for your <strong className="text-foreground">{year} {[make, model].filter(Boolean).join(" ")}</strong>. We&apos;ll confirm your final price within the hour.
             </p>
             <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
-                <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
-                <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
-                <span className="ml-auto text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">Offer sent</span>
+              <div className="flex items-center">
+                <span className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">Offer sent</span>
               </div>
               <div className="mt-3 flex items-baseline justify-between">
                 <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your quote</span>
@@ -447,7 +444,7 @@ export function PriceEstimator() {
 
   return (
     <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Instant price estimate">
-      <div aria-hidden="true" className="absolute inset-x-0 top-16 -z-10 h-[55%] bg-[radial-gradient(ellipse_at_center,hsl(var(--grad-violet)/0.16),transparent_65%)]" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-16 -z-10 h-[55%] bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.16),transparent_65%)]" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
@@ -494,7 +491,7 @@ export function PriceEstimator() {
           </div>
           <div className="h-1 bg-border/70 rounded-full overflow-hidden">
             <div
-              className="h-full rounded-full transition-all duration-500 ease-out bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(var(--grad-violet)))]"
+              className="h-full rounded-full transition-all duration-500 ease-out bg-[linear-gradient(90deg,hsl(var(--primary)),hsl(var(--accent)))]"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -644,12 +641,7 @@ export function PriceEstimator() {
                 <div className="p-5 sm:p-8">
                   <div className="quote-card p-4 sm:p-6 mb-6">
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
-                      </div>
-                      <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--grad-violet))] pb-1">
+                      <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--primary))] pb-1">
                         Your quote
                       </span>
                       <span className="text-[0.75rem] font-medium text-[hsl(var(--on-dark))] pb-1">
@@ -659,7 +651,7 @@ export function PriceEstimator() {
                     <div
                       ref={step2HeadingRef}
                       tabIndex={-1}
-                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--grad-violet))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--ink))] rounded"
+                      className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--ink))] rounded"
                     >
                       <p className="text-[0.8125rem] text-[hsl(var(--on-dark))] mb-1">
                         {year} {[make, model].filter(Boolean).join(" ")} · {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}

@@ -434,6 +434,228 @@ export const services: ServicePage[] = [
     ],
     relatedServices: ["damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "cash-for-cars-brisbane", "accident-cars-brisbane"],
     relatedSuburbs: ["chermside", "indooroopilly", "north-brisbane", "ipswich", "toowong"]
+  },
+  {
+    slug: "sell-toyota-hilux-brisbane",
+    title: "Sell My Toyota HiLux Brisbane | Cash for HiLux, Any Condition",
+    metaDescription: "Sell your Toyota HiLux for cash in Brisbane. We buy all HiLux generations — 2005 KUN, 2015 GUN, SR5, Workmate, dual-cab, extra-cab, manual, auto. Same-day pickup. Call 0481 438 444.",
+    h1: "Cash for Toyota HiLux Brisbane — Any Year, Any Condition",
+    intro: "The Toyota HiLux is the best-selling vehicle in Australia for good reason, and Brisbane HiLux owners often find they can earn a strong cash price even when the ute is tired, accident-damaged, or off the road. Caraway pays competitive cash for HiLuxes across every generation and trim — Workmate, SR, SR5, Rugged X, and Rogue — with free same- or next-day pickup anywhere in Greater Brisbane.",
+    sections: [
+      {
+        heading: "Which HiLux Generations We Buy",
+        content: "We buy every HiLux generation on Brisbane roads. That includes the N50/N60 (1988–1997) old-school workhorses that still turn up on rural blocks, the N140/N170 (1997–2005) solid-axle dual cabs that outlived their paintwork, the KUN26 N70 (2005–2015) which is the single most common HiLux in our Brisbane pickup schedule, the GUN126/GUN136 N80 (2015–2024) with the 1GD-FTV diesel, and the newest N90 range. Early 4-cylinder petrols, 3.0L 1KD diesels, 2.7L 2TR petrols, and the newer 2.8L turbodiesels all attract fair cash offers regardless of kilometres."
+      },
+      {
+        heading: "Why HiLuxes Hold Their Value in Brisbane",
+        content: "Queensland is the country's biggest HiLux market — tradies, farmers, fleet operators, and weekend 4WDers all buy them, and that demand keeps wholesale and parts values high even for high-kilometre examples. A tidy 2012 SR5 4x4 with 250,000 km will still pull strong money, and even a rolled or mechanically finished N70 is worth meaningful parts value because the KUN chassis shares components with Fortuners, Prados, and older HiAce vans. That's why our cash offers on HiLuxes consistently sit at the top end of what we pay for any non-prestige vehicle."
+      },
+      {
+        heading: "We Buy HiLuxes in Any Condition",
+        content: "Running or not, rego'd or not, pretty or rusted. We regularly buy HiLuxes with blown head gaskets, dropped diffs, rust through the chassis rails (a common N70 issue in coastal Queensland), accident damage, rolled cabs, hail dents, water damage from the 2022 floods, and plenty that are simply worn out after 400,000+ km of hard use. We also buy ex-mining, ex-fleet, and repairable write-off HiLuxes direct from the owner after the insurance claim closes. No RWC needed, no quotes from mechanics required."
+      },
+      {
+        heading: "How Much Is My HiLux Worth in Brisbane?",
+        content: "Offers depend on year, sub-model (4x2 vs 4x4, single cab vs dual cab), kilometres, and mechanical condition. Rough ranges: a 1998 Workmate 4x2 petrol, tired but running, typically fetches $800–$1,800. A 2005–2011 N70 SR5 4x4 diesel, running with average km, commonly lands $3,500–$7,500. A 2015+ GUN N80 dual cab, running, usually pulls $6,000–$9,999+. Non-runners and scrap HiLuxes — even heavily damaged or incomplete — rarely come in under $1,200 because the parts market is so strong. Call us with the rego, kilometres, and a brief condition description and we'll quote on the phone."
+      },
+      {
+        heading: "Free Same-Day HiLux Pickup Across Greater Brisbane",
+        content: "Whether your HiLux is parked at a Logan workshop, bogged on a property in Ipswich, tucked behind a Redcliffe carport, or sitting on a Chermside driveway, we'll come to you with a flatbed, winch, and cash in hand. We handle all transfer paperwork on the spot and never charge for towing. Most Brisbane HiLux pickups happen the same or next business day."
+      }
+    ],
+    faqs: [
+      { question: "Do you buy HiLuxes without rego?", answer: "Yes. We buy unregistered and long-deregistered HiLuxes every week across Brisbane. No RWC needed. Just photo ID on pickup day and we handle the deregistration paperwork for you." },
+      { question: "My HiLux has chassis rust — will you still buy it?", answer: "Yes. Chassis rust is a known issue on 2005–2015 N70 HiLuxes in coastal Queensland and we buy them all the time. We value the car on its drivetrain, interior, and parts potential — not the chassis rails." },
+      { question: "Do you buy repairable write-off HiLuxes?", answer: "Yes. If your HiLux is a WOVR repairable write-off, we buy them regularly. Mention the write-off status when you request your quote so we can factor it in from the start." },
+      { question: "Will you pay more for a diesel HiLux than a petrol?", answer: "Usually, yes. Diesel HiLuxes — especially the 1KZ, 1KD, and 1GD turbodiesels — generally fetch higher prices because the drivetrain parts demand is stronger. But a clean, low-km 2.7L petrol can still pull a strong number." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "used-cars-brisbane", "car-removal-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "redcliffe", "caboolture", "north-brisbane"]
+  },
+  {
+    slug: "sell-toyota-corolla-brisbane",
+    title: "Sell My Toyota Corolla Brisbane | Cash for Corolla, Any Year",
+    metaDescription: "Sell your Toyota Corolla for cash in Brisbane. We buy every Corolla generation — AE92, AE101, ZZE122, ZRE152, ZRE182, E210. Hatch, sedan, hybrid. Same-day pickup. Call 0481 438 444.",
+    h1: "Cash for Toyota Corolla Brisbane — Every Generation",
+    intro: "The Toyota Corolla is one of the most common cars on Brisbane roads, and Caraway pays fair cash for Corollas of every generation, kilometres, and condition. Whether you're offloading a much-loved first car, clearing a deceased estate hatch, or getting rid of an accident-written-off sedan, we'll come to you with a firm cash offer and free same- or next-day pickup.",
+    sections: [
+      {
+        heading: "Every Corolla Generation, Every Body Style",
+        content: "We buy every Corolla generation sold in Australia. That includes the KE70 rear-drivers, the AE82 front-wheel-drive transition cars, the AE92/AE95 Seca and Conquest generation, the AE101/AE102/AE112 mid-90s workhorses (including the Liftback and Ascent), the ZZE122 9th-gen 2001–2006 cars, the ZRE152 2007–2012 hatches and sedans, the ZRE182 2012–2018 models, and the current E210 range. Hatches, sedans, wagons (the Seca/Wagon), and the hybrids — they all qualify. Manual or automatic, Ascent, Conquest, SX, ZR — any trim."
+      },
+      {
+        heading: "Why Brisbane Is Full of Corollas Worth Selling",
+        content: "Corollas are famously long-lasting, which is exactly why so many of them end up at the back of Brisbane driveways, under carports, and in garages long past the point where the owner actively uses them. That reliability also means the used-parts market stays strong — late-model Corollas are in constant demand for panels, drivetrains, and interior trims across Queensland, so even non-running examples carry real value. We routinely pay solid cash for Corollas that their owners assumed were worth nothing."
+      },
+      {
+        heading: "We Buy Corollas in Any Condition",
+        content: "Running or not, rego'd or expired, pristine or panel-damaged. We buy Corollas with dead batteries after years in the driveway, blown head gaskets on the 1ZZ and 2ZZ engines, seized autos, flood-damaged interiors, and plenty of hail-dented examples. We also buy repairable write-offs and statutory write-offs direct from owners after insurance claims close. No RWC required and no mechanical reports needed."
+      },
+      {
+        heading: "Corolla Cash Price Ranges in Brisbane",
+        content: "Offers depend on year, engine, kilometres, and condition. A 1998 AE101 Corolla, tired but running, typically fetches $500–$1,200. A 2005–2010 ZZE122 Ascent or Conquest, running with average km, commonly lands $1,500–$3,800. A 2012+ ZRE182, running, usually pulls $3,000–$6,500. The current E210 hybrid and ZR models, running and tidy, frequently reach our top tier at $7,000–$9,999. Non-runners and scrap Corollas generally land $300–$800 based on parts and scrap value."
+      },
+      {
+        heading: "Greater Brisbane Corolla Pickup, Free and Fast",
+        content: "We collect Corollas from every corner of Greater Brisbane — Logan apartments, Indooroopilly carports, Ipswich properties, Redcliffe streets, and inner-city battle-axe blocks alike. Free towing always, cash paid before the car leaves your property, and all transfer paperwork handled on the spot. Most Brisbane Corolla pickups happen same or next business day."
+      }
+    ],
+    faqs: [
+      { question: "My Corolla has been sitting for years and won't start — is it worth selling?", answer: "Almost always, yes. Corollas have strong parts demand in Queensland, so even a long-dormant, non-running car usually pulls $300+ before we factor in the drivetrain and interior condition. Call us with the year and we'll quote." },
+      { question: "Do you buy Corolla hybrids?", answer: "Yes. We buy the Corolla Hybrid and we're familiar with the hybrid-specific transfer and battery handling. We account for battery condition in the offer but you'll find our hybrid quotes competitive." },
+      { question: "Do I need the original service books or spare keys?", answer: "No — they help but they aren't required. All we need on pickup day is photo ID. If you have the rego papers and a spare key, bring them; if not, we'll still complete the sale." },
+      { question: "Do you buy Corollas with failed safety certificates?", answer: "Yes. We don't require a roadworthy certificate. Failed safety checks don't reduce our offer — we're buying the whole car, not a car that needs to be re-registered." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane", "used-cars-brisbane"],
+    relatedSuburbs: ["chermside", "sunnybank", "indooroopilly", "springwood", "north-brisbane"]
+  },
+  {
+    slug: "sell-holden-commodore-brisbane",
+    title: "Sell My Holden Commodore Brisbane | VE, VF, VT, VX, VY, VZ Cash Offers",
+    metaDescription: "Sell your Holden Commodore for cash in Brisbane. VT, VX, VY, VZ, VE, VF sedans, wagons, utes, SS, SV6, Calais. Any condition. Same-day pickup. Call 0481 438 444.",
+    h1: "Cash for Holden Commodore Brisbane — Every Model",
+    intro: "Holden Commodores are everywhere in Brisbane, and Caraway pays fair cash for them regardless of generation, condition, or kilometres. Whether it's a VT sedan that's been parked for years, a VE SS with accident damage, a VF ute that's worn out its clutch, or a Calais wagon on the way to scrap — we'll make a firm offer and pick it up for free same or next day.",
+    sections: [
+      {
+        heading: "Every Commodore Generation We Buy",
+        content: "We buy every Commodore sold in Australia from the VN forward. That includes the VN/VP/VR/VS cars from 1988–1997, the VT/VX/VY/VZ range from 1997–2006, the VE from 2006–2013, and the final VF range from 2013–2017. Sedans, wagons, utes (including the VE/VF Maloo), and Sportwagon variants all qualify. Executive, Acclaim, Berlina, Calais, SV6, SS, and SS-V trims — every spec, every engine (from the Ecotec V6 and Alloytec LY7 to the L76/L77 V8 and LS3 Redline), and every transmission."
+      },
+      {
+        heading: "Why Queensland Is a Commodore Market",
+        content: "Brisbane and South-East Queensland have one of the highest Commodore densities in the country, which means the used-parts market here is strong for every generation. Even a scrap-bound VT will deliver meaningful parts value because panels, interior trims, and driveline components stay in high demand. VE and VF Commodores often hold surprising money even with high km or blown engines because Supercars-era enthusiast demand and modification parts keep values up. That's why our Commodore offers are typically competitive against any Brisbane cash-for-cars service."
+      },
+      {
+        heading: "We Buy Commodores in Any Condition",
+        content: "Running or not, rego'd or not, panel-straight or wrecked. Common Commodore issues we see every week include blown VT/VX cooling systems, Alloytec timing chain failures, VE L77 valve lifter issues, VF slipping autos, hail-damaged SV6s and SS sedans, flood-affected cars from the 2011 and 2022 floods, rolled utes, and deceased-estate VTs that have been sitting for a decade. None of that reduces our willingness to buy — we value the car on parts potential and drivetrain condition, not cosmetics."
+      },
+      {
+        heading: "Commodore Cash Prices in Brisbane",
+        content: "Offers depend heavily on generation and trim. A tidy 1998 VT Executive with average km typically fetches $600–$1,500. A 2002–2006 VY/VZ sedan, running, usually lands $800–$2,200. A 2006–2013 VE SV6 or Calais, running with average km, commonly pulls $2,500–$5,500. VE and VF SS and SS-V V8s in decent condition can reach $6,500–$9,999+. Non-runners and scrap-bound Commodores generally land $400–$1,200 based on parts and scrap value. Performance variants — HSV Clubsport, Maloo, GTS — are quoted case-by-case and often exceed our standard ceiling."
+      },
+      {
+        heading: "Free Brisbane-Wide Commodore Pickup",
+        content: "We collect Commodores from every Brisbane suburb. Logan and Ipswich have some of the highest concentrations in our pickup schedule — older Commodores are a fixture of those areas — but we service the northside, southside, east, west, and outer regions equally. Free towing, cash before the car leaves, all paperwork handled. Most pickups happen the same or next business day."
+      }
+    ],
+    faqs: [
+      { question: "Do you buy Commodores with blown engines?", answer: "Yes. Blown head gaskets, timing chain failures, and full engine seizes are common Commodore issues and we buy them every week. We value the car on drivetrain parts, body panels, and interior — not on running condition." },
+      { question: "Do you buy HSV Commodores separately?", answer: "Yes. HSV variants (Clubsport, Maloo, GTS, Senator) are valued case-by-case and usually command higher offers than standard Commodores. Mention the HSV badge and VIN when you request your quote." },
+      { question: "My VE ute has been written off — still worth selling?", answer: "Yes. Repairable write-offs (WOVR) on VE and VF utes remain in strong demand, both for resale after repair and for parts. We buy them direct from owners after insurance claims close." },
+      { question: "Do you buy Commodores that have been sitting for years?", answer: "Yes, and this is a common pickup for us. Long-dormant Commodores with dead batteries, flat tyres, and seized brakes are welcome — we bring winches and the right gear to load them regardless." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane", "scrap-car-removal-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "springwood", "caboolture", "south-brisbane"]
+  },
+  {
+    slug: "sell-ford-falcon-brisbane",
+    title: "Sell My Ford Falcon Brisbane | Cash for BA, BF, FG Falcons & Utes",
+    metaDescription: "Sell your Ford Falcon for cash in Brisbane. AU, BA, BF, FG sedans, utes, wagons, XR6, XR8, Turbo, G6E, Territory. Any condition. Same-day pickup. Call 0481 438 444.",
+    h1: "Cash for Ford Falcon Brisbane — All Models & Conditions",
+    intro: "Ford Falcons were a staple of Queensland roads for decades, and a huge number of them are still parked at the back of Brisbane properties waiting to be moved on. Caraway pays fair cash for every Falcon generation, including XR6 and XR8 performance variants, utes, wagons, and the related Territory SUV. Free pickup, no RWC required, cash on the spot.",
+    sections: [
+      {
+        heading: "Falcon Generations We Buy",
+        content: "We buy every mainstream Falcon from the EA onward. That covers the EA/EB/ED/EF/EL (1988–1998) generations, the AU (1998–2002), the BA (2002–2005), the BF (2005–2008), and the final FG and FG X (2008–2016). Every body style qualifies — sedans, wagons, utes, and the Territory SX/SY/SY2/SZ SUV. Every trim — Forte, Futura, Futura II, Fairmont, Fairmont Ghia, XR6, XR6 Turbo, XR8, G6, G6E, G6E Turbo — attracts a fair offer."
+      },
+      {
+        heading: "Why Falcons Still Sell for Real Money in Brisbane",
+        content: "Falcons are slowly leaving Queensland roads, which is actually pushing parts values up. BA and BF XR6 Turbos have become genuine enthusiast cars, FG XR8s command strong money, and even base-spec sedans hold meaningful parts value because late-model Falcon driveline and interior components are becoming scarce. Brisbane's Falcon enthusiast community is active, and our wholesale and parts buyers keep demand steady — which means even tired or non-running Falcons typically pull decent cash rather than pure scrap money."
+      },
+      {
+        heading: "We Buy Falcons in Every Condition",
+        content: "Running or not, rego'd or not, straight or accident-damaged. Common Falcon issues we see weekly include BA/BF auto transmission failures, thermo fan faults, AU Falcons dropped for scrap after years of storage, FG coil pack issues, Territory 4-spd auto failures, rusted EF/EL Falcons from long-term outdoor storage, and plenty of deceased-estate examples across the older suburbs. Flood-affected Falcons from the 2011 and 2022 events are a steady part of our purchase mix. No mechanical quote needed, no safety certificate required."
+      },
+      {
+        heading: "Falcon Cash Price Ranges in Brisbane",
+        content: "Offers depend on generation, trim, and condition. An EF/EL Falcon, running, typically fetches $600–$1,500. An AU Falcon, running, commonly lands $500–$1,400. A BA/BF Falcon XT or Futura, running with average km, usually pulls $1,200–$3,200. An FG Falcon, running, commonly reaches $1,800–$4,500 for base models. Performance variants change the picture — tidy BA/BF/FG XR6 Turbos and XR8s routinely reach $4,500–$9,999, and particularly strong examples (low km, unmodified, genuine) can exceed that. Territory SUVs span $1,000–$6,500 depending on trim and condition."
+      },
+      {
+        heading: "Brisbane-Wide Falcon Pickup",
+        content: "We collect Falcons from every part of Greater Brisbane. Our busiest Falcon-pickup areas are Ipswich, Logan, Caboolture, and the outer north — all regions where older Falcons and wagons are still common. Free towing, cash on the spot, all transfer paperwork handled. No distance surcharges, no reduced offers for outer-suburb pickups."
+      }
+    ],
+    faqs: [
+      { question: "Do you pay extra for XR6 Turbo or XR8 Falcons?", answer: "Yes, almost always. Performance variants with their original driveline and sound mechanical condition consistently attract our top-tier offers — mention the XR badge and VIN when requesting your quote." },
+      { question: "My Falcon's auto is blown — still worth selling?", answer: "Yes. BA/BF ZF and 4-speed auto failures are one of the most common reasons Falcons end up in our purchase schedule. We value the rest of the car and the drivetrain parts even when the transmission is finished." },
+      { question: "Do you buy Territories?", answer: "Yes. All Territory generations — SX, SY, SY2, SZ — in any condition. We're familiar with the common Territory issues (autos, 4WD systems, diesel fuel pump failures) and quote accordingly." },
+      { question: "Do you buy Falcon utes without a tray?", answer: "Yes. Utes without trays, damaged trays, or aftermarket canopies are all fine. The tray doesn't materially affect our offer — we're buying the cab and drivetrain." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane", "scrap-car-removal-brisbane"],
+    relatedSuburbs: ["ipswich", "logan", "caboolture", "north-brisbane", "redcliffe"]
+  },
+  {
+    slug: "sell-ford-ranger-brisbane",
+    title: "Sell My Ford Ranger Brisbane | Cash for PJ, PK, PX, Next-Gen Rangers",
+    metaDescription: "Sell your Ford Ranger for cash in Brisbane. PJ, PK, PX, PX MkII, PX MkIII, and Next-Gen Ranger. XL, XLT, Wildtrak, Raptor. Same-day pickup. Call 0481 438 444.",
+    h1: "Cash for Ford Ranger Brisbane — All Generations",
+    intro: "The Ford Ranger has been one of Australia's top-selling vehicles for years, and Caraway pays strong cash for Rangers across every generation and trim. Whether you're offloading a tired PJ fleet ute, a rolled PX Wildtrak, or a Next-Gen Raptor being moved on, we'll quote on the phone and pick up free across Greater Brisbane.",
+    sections: [
+      {
+        heading: "Ranger Generations We Buy",
+        content: "We buy every Ranger Australia has seen. The PJ (2006–2009) and PK (2009–2011) Mazda-BT50-twin era, the PX (2011–2015), PX MkII (2015–2018), and PX MkIII (2018–2022) range, plus the current Next-Gen T6.2 Ranger launched in 2022. XL, XLS, XLT, FX4, Sport, Wildtrak, Raptor and Raptor X variants all qualify. 2.2L TDCi, 3.2L 5-cylinder, 2.0L bi-turbo, 3.0L V6 turbodiesel, and the Raptor's 2.0L/3.0L engines are all within our purchase scope."
+      },
+      {
+        heading: "Ranger Demand in Queensland",
+        content: "Queensland is one of the strongest Ranger markets in Australia — tradies, farmers, tourism operators, and weekend 4WDers all buy them in volume. That keeps the wholesale and parts market strong, which in turn supports our cash offers even for Rangers with high kilometres, mechanical issues, or accident damage. Ranger drivelines share components with the Mazda BT-50 and (pre-Next-Gen) with Everest SUVs, so the parts market for older Rangers remains deep."
+      },
+      {
+        heading: "Any Condition: Running, Non-Running, Damaged",
+        content: "We buy Rangers with blown engines (PX 3.2L oil pump and EGR failures, 2.0L bi-turbo carbon build-up), transmission failures, rolled cabs, hail damage, flood damage from the 2022 SEQ floods, accident write-offs, and high-km fleet Rangers worn out from mining or agricultural work. Repairable write-offs (WOVR) on Rangers remain in strong demand and we buy them regularly direct from owners after insurance settlement."
+      },
+      {
+        heading: "Ranger Cash Price Ranges",
+        content: "Offers depend on generation, sub-model, and condition. A PJ/PK Ranger, running with average km, typically fetches $2,000–$5,000. A PX Ranger (2011–2015), running, commonly lands $4,000–$8,000. A PX MkII or MkIII (2015–2022) running and tidy usually pulls $6,500–$9,999+, with Wildtraks and Raptors often near or above our ceiling. Non-runners and heavily damaged Rangers rarely come in under $1,500 because the parts demand is persistent. Next-Gen Rangers and Raptors are quoted individually and frequently exceed our standard top tier."
+      },
+      {
+        heading: "Free Same- or Next-Day Ranger Pickup",
+        content: "Wherever your Ranger is — a Logan driveway, a Sunshine Coast–fringe property, an Ipswich farm, or a Brisbane CBD tower car park — we bring the right gear to load it. Free towing across Greater Brisbane, cash before the car leaves, transfer paperwork done on the spot."
+      }
+    ],
+    faqs: [
+      { question: "Do you buy Ranger Raptors?", answer: "Yes. Both first-gen (PX MkII/MkIII) and Next-Gen Raptors. They're typically at the top of our offer range and we quote them case-by-case with the VIN and mechanical condition in hand." },
+      { question: "My Ranger has a known oil-pump issue — will you still buy it?", answer: "Yes. PX 3.2L oil pump failures are a known issue and we buy affected Rangers every week. We value the rest of the vehicle, including the body, interior, and recoverable drivetrain parts, and price accordingly." },
+      { question: "Do you buy Ranger-based conversions and canopies?", answer: "Yes. Aftermarket canopies, service bodies, tray conversions, and mining-spec Rangers are all fine. Good aftermarket fit-outs can add to the offer; damaged ones don't reduce it." },
+      { question: "Do you buy Rangers with finance still owing?", answer: "Sometimes, depending on the payout figure. Call us with the payout amount from your lender and we'll talk through whether we can structure the purchase — it happens regularly." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "used-cars-brisbane", "car-removal-brisbane"],
+    relatedSuburbs: ["logan", "ipswich", "caboolture", "north-brisbane", "redcliffe"]
+  },
+  {
+    slug: "sell-toyota-landcruiser-brisbane",
+    title: "Sell My Toyota LandCruiser Brisbane | Cash for 70, 80, 100, 200, 300 Series",
+    metaDescription: "Sell your Toyota LandCruiser for cash in Brisbane. 70 Series, 80 Series, 100, 200, and 300 Series. Troop Carrier, Sahara, GXL, VX, Workmate. Any condition. Call 0481 438 444.",
+    h1: "Cash for Toyota LandCruiser Brisbane — 70, 80, 100, 200, 300 Series",
+    intro: "Toyota LandCruisers hold their value better than almost anything else on Australian roads, and Caraway pays strong cash for every generation — 70, 80, 100, 200, and 300 Series — regardless of kilometres or condition. Whether it's a tired Troopy, an 80 Series with a blown head gasket, a 100 Series V8 that's been touring the country for 500,000 km, or a 200 Series with accident damage, we'll quote and pick up free across Greater Brisbane.",
+    sections: [
+      {
+        heading: "LandCruiser Generations We Buy",
+        content: "Every LandCruiser sold in Australia. 40 Series (1960–1984) early classics when they come up. 60 Series (1980–1990) wagons. 70 Series (1984–present) — HJ75, HZJ75, HZJ79, HDJ78, VDJ76, VDJ78, VDJ79 Workmate/GX/GXL/Sahara — in every body style (Troop Carrier, dual cab, single cab, wagon). 80 Series (1990–1998) — 1HZ, 1HD-T, 1HD-FT, 1FZ-FE. 100 Series (1998–2007) — 1HD-FTE diesel, 2UZ-FE V8 petrol. 200 Series (2007–2021) — 1VD-FTV V8 diesel, 2UZ V8 petrol, GX/GXL/VX/Sahara. And the current 300 Series with the 3.3L V6 twin-turbo diesel."
+      },
+      {
+        heading: "Why LandCruisers Keep Their Value",
+        content: "LandCruisers are the backbone of Australia's remote touring, farming, mining, and tourism sectors, and Queensland has one of the biggest LandCruiser populations in the country. The wholesale market for every generation stays strong — a clean 80 Series 1HD-FT is a collector's item, a tidy 100 Series V8 diesel is a long-distance tourer's dream, 70 Series Troopies are in permanent demand for outback work, 200 Series VXs and Saharas command premium prices, and 300 Series wait lists remain long at Toyota dealers. All of that means our LandCruiser cash offers are consistently the highest end of what we pay for any class of vehicle."
+      },
+      {
+        heading: "We Buy LandCruisers in Any Condition",
+        content: "Running or not, rego'd or not, straight or rolled. Common LandCruiser issues we buy weekly: 80 Series 1HZ/1HD-T injector pump failures, 100 Series 1HD-FTE head gasket issues, 200 Series EGR coke-up on the 1VD-FTV, rolled 70 Series Troopies from Cape York trips, 100 Series with cracked cylinder heads, and 200/300 Series accident write-offs. Ex-mining LandCruisers with 700,000+ km, flood-damaged examples, repairable write-offs (WOVR) — all welcome. Mining-spec safety cages, bullbars, and touring fit-outs can add to offers."
+      },
+      {
+        heading: "LandCruiser Cash Price Ranges in Brisbane",
+        content: "Offers span a wide range because the model catalogue does. A running 80 Series wagon with high km typically fetches $3,500–$8,500 depending on variant and condition; clean 1HD-FT examples reach $9,999+. A running 100 Series V8 diesel commonly lands $4,500–$9,999, with tidy GXL/Sahara examples exceeding our standard ceiling. 70 Series Troop Carriers and dual cabs range from $3,000 to well beyond $9,999 for newer, low-km examples. 200 and 300 Series are quoted case-by-case and routinely command higher prices than our standard tier. Non-runners and mechanical failures on any generation rarely come in under $2,500 because the parts market is so deep."
+      },
+      {
+        heading: "Brisbane-Wide LandCruiser Pickup",
+        content: "We'll come to you anywhere in Greater Brisbane — from inner-city car parks where a 200 Series is parked, to rural blocks in Ipswich or on the Sunshine Coast fringe where a Troopy has been working hard. We bring flatbeds suited to heavy 4WDs, winches, and extended ramps. Free towing, cash on the spot, paperwork handled. No mileage or condition surcharges."
+      }
+    ],
+    faqs: [
+      { question: "Do you buy 70 Series Troop Carriers with touring fit-outs?", answer: "Yes. We're happy to account for quality aftermarket touring gear — drawer systems, long-range tanks, roof racks, suspension upgrades, winches — in the offer. Mention the fit-out when you call and we'll factor it in." },
+      { question: "My 80 Series has a blown head gasket — is it worth selling?", answer: "Yes, and they're worth significantly more than you might expect. 80 Series 1HD-T and 1HZ drivetrains carry strong parts value, and we buy head-gasket failures every week. Call with year, engine code, and km." },
+      { question: "Do you pay competitive prices on 200 Series VX and Sahara?", answer: "Yes. 200 Series VX and Sahara variants are usually at the top end of our offer range and often exceed our standard ceiling, especially for low-km or well-maintained examples. We quote them individually with the VIN." },
+      { question: "Do you buy ex-mining LandCruisers with 500,000+ km?", answer: "Yes. Ex-mining 70 Series and 200 Series with high kilometres are a regular part of our pickup schedule. We value the drivetrain, chassis, and parts potential — high km doesn't disqualify the vehicle." }
+    ],
+    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "used-cars-brisbane", "car-removal-brisbane"],
+    relatedSuburbs: ["ipswich", "logan", "caboolture", "north-brisbane", "redcliffe"]
   }
 ];
 

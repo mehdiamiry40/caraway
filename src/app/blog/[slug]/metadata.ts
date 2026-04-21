@@ -14,8 +14,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) {
     return {
-      title: "Post not found | Caraway",
+      title: { absolute: "Post not found — Caraway" },
       robots: { index: false, follow: false },
+      openGraph: null,
+      twitter: null,
     };
   }
 

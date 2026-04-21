@@ -45,9 +45,9 @@ export default function Contact() {
               {[
                 {
                   icon: Building2,
-                  title: "Registered office",
+                  title: "Based in",
                   main: BUSINESS.addressFormatted,
-                  sub: "Mail and admin only — not open to the public. Pickups are always at your location.",
+                  sub: "We don't operate a public yard — pickups are always at your location with free towing.",
                 },
                 {
                   icon: MapPin,

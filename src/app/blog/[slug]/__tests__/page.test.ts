@@ -97,20 +97,24 @@ describe("generateMetadata (blog post route)", () => {
   });
 
   describe("non-existent slug", () => {
-    it("returns 'Post not found' title with noindex,nofollow robots (no throw)", async () => {
+    it("returns absolute 'Post not found' title with noindex,nofollow robots (no throw)", async () => {
       const meta = await generateMetadata(
         makeParams("definitely-not-a-real-post-slug-xyz"),
       );
-      expect(meta.title).toBe("Post not found | Caraway");
+      // title.absolute bypasses the "%s | Caraway" template so the 404 title
+      // doesn't render as "Post not found — Caraway | Caraway".
+      expect(meta.title).toEqual({ absolute: "Post not found — Caraway" });
       const robots = meta.robots as { index?: boolean; follow?: boolean };
       expect(robots).toBeDefined();
       expect(robots.index).toBe(false);
       expect(robots.follow).toBe(false);
-      // The 404 metadata path intentionally omits description/canonical/og —
-      // we are asserting that contract to catch accidental leakage.
+      // The 404 metadata path intentionally omits description/canonical and
+      // nulls out openGraph/twitter so no social card leaks for the missing
+      // post — lock that contract in.
       expect(meta.description).toBeUndefined();
       expect(meta.alternates).toBeUndefined();
-      expect(meta.openGraph).toBeUndefined();
+      expect(meta.openGraph).toBeNull();
+      expect(meta.twitter).toBeNull();
     });
   });
 

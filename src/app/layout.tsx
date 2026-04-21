@@ -5,7 +5,9 @@ import { Poppins, JetBrains_Mono } from "next/font/google";
 // Looping-style headline treatment.
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  // Weights 400–900 are all referenced in components (font-normal through
+  // font-black). 300 (light) is never used — dropping it trims payload.
+  weight: ["400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
   display: "swap",
 });
@@ -48,6 +50,9 @@ export const metadata: Metadata = {
     "cash for cars Brisbane",
     "cash for cars brisbane today",
     "sell car for cash Brisbane",
+    "sell my car online Brisbane",
+    "instant cash for cars Brisbane",
+    "car buyers near me Brisbane",
     "car removal Brisbane",
     "sell my car Brisbane",
     "scrap car buyers Brisbane",

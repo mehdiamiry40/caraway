@@ -50,11 +50,6 @@
   --color-cta: hsl(var(--cta));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  --color-grad-violet: hsl(var(--primary));
-  --color-grad-pink: hsl(var(--accent));
-  --color-grad-lilac: hsl(var(--secondary));
-  --color-grad-cyan: hsl(var(--info));
-
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
   --shadow-md: 0 4px 8px hsl(var(--shadow-color) / 0.06), 0 10px 20px hsl(var(--shadow-color) / 0.10);
   --shadow-lg: 0 8px 16px hsl(var(--shadow-color) / 0.08), 0 24px 48px hsl(var(--shadow-color) / 0.14);
@@ -135,11 +130,6 @@
   --cta: 92 57% 48%;                   /* #7CB92F — bright green */
   --cta-foreground: 0 0% 100%;
 
-  --grad-violet: 259 55% 45%;
-  --grad-pink: 14 95% 60%;
-  --grad-lilac: 272 60% 96%;
-  --grad-cyan: 92 57% 48%;
-
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
   --hero-mesh: transparent;
@@ -166,7 +156,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-hidden selection:bg-primary/20 selection:text-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-primary/20 selection:text-foreground;
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -261,7 +251,6 @@
 
   /* "Highlight" word — used inline within a headline for colour mixing */
   .hl-orange { color: hsl(var(--accent)); }
-  .hl-pink { color: #F4B5C4; }
   .hl-green { color: hsl(var(--cta)); }
   .hl-lilac { color: hsl(var(--secondary)); }
 
