@@ -23,6 +23,11 @@ export default function ServiceLoading() {
           <Skeleton className="h-5 w-full" />
           <Skeleton className="h-5 w-3/4" />
         </div>
+        <div className="site-container pb-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Skeleton className="h-28 w-full rounded-xl" />
+          <Skeleton className="h-28 w-full rounded-xl" />
+          <Skeleton className="h-28 w-full rounded-xl" />
+        </div>
       </main>
       <Footer />
     </div>

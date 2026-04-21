@@ -17,6 +17,8 @@ interface State {
 }
 
 export class ErrorBoundary extends Component<Props, State> {
+  private savedScrollY = 0;
+
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -27,6 +29,9 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
+    if (typeof window !== "undefined") {
+      this.savedScrollY = window.scrollY;
+    }
     console.error(
       "[error-boundary]",
       JSON.stringify({
@@ -40,7 +45,12 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   private handleReset = () => {
-    this.setState({ hasError: false });
+    const y = this.savedScrollY;
+    this.setState({ hasError: false }, () => {
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: y, behavior: "auto" });
+      }
+    });
   };
 
   render() {

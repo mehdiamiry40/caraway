@@ -6,7 +6,7 @@ import { Poppins, JetBrains_Mono } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -141,7 +141,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-semibold"
+          className="sr-only focus:not-sr-only focus:fixed focus:z-[300] focus:top-3 focus:left-3 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:rounded-md focus:shadow-[0_8px_24px_hsl(var(--shadow-color)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Skip to main content
         </a>

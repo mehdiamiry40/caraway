@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -32,6 +32,11 @@ const fieldIds = {
 export function QuoteForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const errorAlertRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (errorMessage) errorAlertRef.current?.focus();
+  }, [errorMessage]);
 
   const {
     register,
@@ -132,12 +137,12 @@ export function QuoteForm() {
 
                   <div className="flex items-center gap-3 text-sm text-muted-foreground pb-1 lg:hidden">
                     <div className="flex items-center gap-1.5">
-                      <Shield className="w-4 h-4 text-primary/50" aria-hidden />
+                      <Shield className="w-4 h-4 text-primary" aria-hidden />
                       <span>No obligation</span>
                     </div>
                     <span className="text-border">|</span>
                     <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4 text-primary/50" aria-hidden />
+                      <Clock className="w-4 h-4 text-primary" aria-hidden />
                       <span>Same-day reply</span>
                     </div>
                   </div>
@@ -286,7 +291,7 @@ export function QuoteForm() {
                         {...register("phone")}
                         id={fieldIds.phone}
                       />
-                      <p className="text-xs text-muted-foreground mt-1" id="quote-phone-help">
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-phone-help">
                         Australian numbers only, e.g. 0412 345 678
                       </p>
                       {errors.phone && (
@@ -299,7 +304,7 @@ export function QuoteForm() {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2">
+                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2.5 cursor-pointer">
                       Pickup address
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
@@ -326,7 +331,7 @@ export function QuoteForm() {
                         errors.address ? `${fieldIds.address}-error quote-address-help` : "quote-address-help"
                       }
                     />
-                    <p className="text-xs text-muted-foreground mt-1" id="quote-address-help">
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-address-help">
                       Brisbane pickup suburbs only. You can also type the full address manually.
                     </p>
                     {errors.address && (
@@ -338,7 +343,7 @@ export function QuoteForm() {
                   </div>
 
                   <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full tracking-wide" isLoading={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
                       {isSubmitting ? "Sending your details..." : "Get my free quote"}
                     </Button>
                   </div>
@@ -360,7 +365,12 @@ export function QuoteForm() {
                   </div>
 
                   {errorMessage && (
-                    <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
+                    <div
+                      ref={errorAlertRef}
+                      tabIndex={-1}
+                      className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+                      role="alert"
+                    >
                       <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                       <div className="flex-1">
                         <span>{errorMessage}</span>

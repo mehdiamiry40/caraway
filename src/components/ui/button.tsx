@@ -19,10 +19,10 @@ const buttonVariants = cva(
           "bg-cta text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5),0_12px_24px_hsl(var(--cta)/0.25)] hover:bg-cta/95 hover:shadow-[0_6px_0_0_hsl(var(--cta)/0.55),0_14px_28px_hsl(var(--cta)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Deep purple — brand primary used for secondary CTAs on light surfaces.
         primary:
-          "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:-translate-y-0.5 active:translate-y-0",
+          "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:shadow-[0_6px_0_0_hsl(var(--primary)/0.55),0_14px_28px_hsl(var(--primary)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Orange emphasis — used for highlight CTAs.
         secondary:
-          "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:-translate-y-0.5 active:translate-y-0",
+          "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:shadow-[0_6px_0_0_hsl(var(--accent)/0.55),0_14px_28px_hsl(var(--accent)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Light outline for quiet actions on white surfaces.
         outline:
           "border-2 border-primary/15 bg-card text-primary hover:bg-primary/5 hover:border-primary/25 active:translate-y-px",
