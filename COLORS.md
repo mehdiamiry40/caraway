@@ -42,7 +42,7 @@ stay navy to preserve the Swiss-style typographic grid. Light mode only.
 | `--input`                  | `#0F172A` | `222 47% 11%`   | Form field border                           |
 | `--ring`                   | `#1E3A8A` | `224 76% 33%`   | Focus ring                                  |
 
-### Gradient-only accents (legacy tokens)
+### Legacy accent tokens
 
 Token names are historical — kept stable because several components
 reference them directly. Values map onto the new navy / coral palette.

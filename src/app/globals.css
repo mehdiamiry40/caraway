@@ -254,14 +254,6 @@
   .hl-green { color: hsl(var(--cta)); }
   .hl-lilac { color: hsl(var(--secondary)); }
 
-  .text-gradient {
-    background: linear-gradient(120deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
   .link-underline {
     position: relative;
     display: inline-block;
@@ -435,21 +427,6 @@
   overflow: hidden;
 }
 
-@utility edge-glow-top {
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    pointer-events: none;
-    background: linear-gradient(90deg, transparent, hsl(var(--accent)) 30%, hsl(var(--cta)) 70%, transparent);
-  }
-}
-
 @keyframes marquee-x {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
@@ -457,8 +434,6 @@
 
 @utility marquee-mask {
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, black 6%, black 94%, transparent 100%);
 }
 
 @utility marquee-track {
@@ -486,6 +461,6 @@
     position: absolute;
     inset: 0 0 auto 0;
     height: 4px;
-    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--cta)));
+    background: hsl(var(--primary));
   }
 }

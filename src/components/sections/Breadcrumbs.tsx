@@ -66,13 +66,6 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
           })}
         </ol>
       </nav>
-      <div
-        aria-hidden="true"
-        className={cn(
-          "pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-8 bg-gradient-to-l to-transparent",
-          light ? "from-primary" : "from-background"
-        )}
-      />
     </div>
   );
 }
