@@ -50,6 +50,7 @@ export function AddressAutocomplete({
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
+  const [showNoResults, setShowNoResults] = useState(false);
   // Tracks the value the user just picked, so the debounce effect
   // skips the refetch that `onChange` would otherwise trigger. The
   // next keystroke clears it.
@@ -68,6 +69,7 @@ export function AddressAutocomplete({
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       setIsLoading(true);
+      setShowNoResults(false);
       setOpen(true);
       try {
         const res = await fetch(
@@ -80,6 +82,7 @@ export function AddressAutocomplete({
             setSuggestions([]);
             setOpen(false);
             setIsLoading(false);
+            setShowNoResults(false);
           }
           return;
         }
@@ -87,7 +90,8 @@ export function AddressAutocomplete({
         if (id !== requestIdRef.current) return;
         const next = data.suggestions ?? [];
         setSuggestions(next);
-        setOpen(next.length > 0);
+        setShowNoResults(next.length === 0);
+        setOpen(true);
         setActiveIndex(-1);
         setIsLoading(false);
       } catch (err) {
@@ -96,6 +100,7 @@ export function AddressAutocomplete({
           setSuggestions([]);
           setOpen(false);
           setIsLoading(false);
+          setShowNoResults(false);
         }
       }
     }, DEBOUNCE_MS);
@@ -126,6 +131,7 @@ export function AddressAutocomplete({
       setOpen(false);
       setActiveIndex(-1);
       setIsLoading(false);
+      setShowNoResults(false);
       onChange(s.fullText);
       onPlaceSelected?.(s.fullText);
       // Return focus to the input so the user can keep tabbing forward.
@@ -187,6 +193,7 @@ export function AddressAutocomplete({
             setSuggestions([]);
             setOpen(false);
             setIsLoading(false);
+            setShowNoResults(false);
           }
           onChange(next);
         }}
@@ -196,7 +203,6 @@ export function AddressAutocomplete({
         }}
         onBlur={onBlur}
         role="combobox"
-        aria-label="Address"
         aria-autocomplete="list"
         aria-expanded={open}
         aria-controls={open ? listboxId : undefined}
@@ -205,13 +211,13 @@ export function AddressAutocomplete({
         className={className}
         {...rest}
       />
-      {open && (suggestions.length > 0 || isLoading) && (
+      {open && (suggestions.length > 0 || isLoading || showNoResults) && (
         <ul
           id={listboxId}
           role="listbox"
           aria-label="Address suggestions"
           className={cn(
-            "absolute z-50 left-0 right-0 mt-1 max-h-[60vh] overflow-y-auto",
+            "absolute z-50 left-0 right-0 mt-1 max-h-[50vh] overflow-y-auto overflow-x-hidden",
             "rounded-xl border border-border/60 bg-card shadow-[0_24px_48px_-32px_hsl(var(--shadow-color)/0.4)]",
             "py-1",
           )}
@@ -219,13 +225,21 @@ export function AddressAutocomplete({
           {isLoading && suggestions.length === 0 && (
             <li
               role="presentation"
-              className="flex items-center gap-2 px-4 p-3 text-sm text-muted-foreground"
+              className="flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground"
             >
               <span
                 aria-hidden="true"
                 className="inline-block h-3.5 w-3.5 rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground animate-spin motion-reduce:animate-none"
               />
               Searching…
+            </li>
+          )}
+          {!isLoading && showNoResults && (
+            <li
+              role="presentation"
+              className="px-4 py-3 text-sm text-muted-foreground"
+            >
+              No addresses found. Try a different suburb or type the full address.
             </li>
           )}
           {suggestions.map((s, i) => {
@@ -243,7 +257,7 @@ export function AddressAutocomplete({
                 }}
                 onMouseEnter={() => setActiveIndex(i)}
                 className={cn(
-                  "cursor-pointer px-4 py-3 text-sm leading-tight",
+                  "cursor-pointer px-4 py-3 text-sm leading-tight transition-colors duration-150 motion-reduce:transition-none",
                   isActive ? "bg-muted" : "bg-transparent",
                 )}
               >

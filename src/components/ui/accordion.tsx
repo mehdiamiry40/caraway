@@ -83,7 +83,7 @@ export function Accordion({
               role="region"
               aria-labelledby={triggerId}
               className={cn(
-                "grid transition-all duration-300 ease-in-out motion-reduce:transition-none motion-reduce:duration-0",
+                "grid transition-all duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
                 isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
               )}
             >

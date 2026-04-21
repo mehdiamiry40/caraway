@@ -40,7 +40,7 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-2 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
+  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
   "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
@@ -155,7 +155,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center touch-manipulation"
+                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center py-2.5 px-1 -mx-1 touch-manipulation"
               >
                 {link.label}
               </Link>

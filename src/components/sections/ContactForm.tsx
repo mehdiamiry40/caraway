@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
@@ -27,13 +27,11 @@ const fieldIds = {
 export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const errorAlertRef = useRef<HTMLDivElement>(null);
 
-  // Auto-reset success state after 60 seconds so returning users see a fresh form
   useEffect(() => {
-    if (!isSuccess) return;
-    const timer = setTimeout(() => setIsSuccess(false), 60_000);
-    return () => clearTimeout(timer);
-  }, [isSuccess]);
+    if (errorMessage) errorAlertRef.current?.focus();
+  }, [errorMessage]);
 
   const {
     register,
@@ -268,7 +266,12 @@ export function ContactForm() {
         </div>
 
         {errorMessage && (
-          <div className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium" role="alert">
+          <div
+            ref={errorAlertRef}
+            tabIndex={-1}
+            className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+            role="alert"
+          >
             <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
             <div className="flex-1">
               <span>{errorMessage}</span>

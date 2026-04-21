@@ -133,8 +133,11 @@ export function Hero() {
 function HeroArt() {
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
-      {/* orange floating tag (price) */}
-      <div className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]">
+      {/* orange floating tag (price) — decorative; hero copy already mentions the offer */}
+      <div
+        aria-hidden="true"
+        className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]"
+      >
         <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-85">
           Top offer
         </span>
@@ -143,8 +146,11 @@ function HeroArt() {
         </span>
       </div>
 
-      {/* green floating tag (time) */}
-      <div className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 rotate-[4deg] z-20 rounded-2xl bg-cta text-cta-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--cta)/0.4)]">
+      {/* green floating tag (time) — decorative; same-day pickup is covered in the promises list */}
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 rotate-[4deg] z-20 rounded-2xl bg-cta text-cta-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--cta)/0.4)]"
+      >
         <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-90">
           Pickup
         </span>
@@ -159,7 +165,7 @@ function HeroArt() {
           alt="Caraway flatbed tow truck collecting a customer's car for cash in Brisbane — same-day pickup with free towing across Greater Brisbane"
           title="Caraway cash for cars Brisbane — free pickup"
           fill
-          sizes="(max-width: 640px) 88vw, (max-width: 1024px) 80vw, 540px"
+          sizes="(max-width: 640px) 88vw, (max-width: 1024px) 75vw, 560px"
           className="object-cover"
           priority
           fetchPriority="high"
