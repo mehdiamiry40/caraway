@@ -8,6 +8,7 @@ import { getSuburbBySlug, suburbs } from "@/data/suburbs";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 86400;
+export const dynamicParams = false;
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -20,8 +21,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const suburb = getSuburbBySlug(slug);
   if (!suburb) {
     return {
-      title: "Page not found | Caraway",
+      title: { absolute: "Page not found — Caraway" },
       robots: { index: false, follow: false },
+      openGraph: null,
+      twitter: null,
     };
   }
   return {

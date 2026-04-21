@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import About from "@/views/About";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
             mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             primaryImageOfPage: {
               "@type": "ImageObject",
               url: `${SITE_URL}/images/tow-truck-hero.webp`,

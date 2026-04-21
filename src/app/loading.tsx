@@ -6,7 +6,7 @@ export default function Loading() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main id="main-content" className="flex-1 mt-header-safe overflow-x-hidden">
+      <main id="main-content" className="flex-1 mt-header-safe overflow-x-clip">
         <div role="status" aria-live="polite">
           <span className="sr-only">Loading…</span>
 

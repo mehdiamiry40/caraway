@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 overflow-x-hidden">
+      <main id="main-content" className="flex-1 overflow-x-clip">
         <Hero />
         <HomeBelowFold />
       </main>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Contact from "@/views/Contact";
-import { BUSINESS, SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us — Free Cash for Cars Quote Brisbane",
@@ -40,7 +40,7 @@ export default function ContactPage() {
             mainEntity: { "@id": `${SITE_URL}/#business` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             about: {
               "@type": "LocalBusiness",
               "@id": `${SITE_URL}/#business`,

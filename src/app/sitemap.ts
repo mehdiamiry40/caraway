@@ -6,7 +6,7 @@ import {
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
-import { SITE_URL, LEGAL_DATES } from "@/lib/site";
+import { SITE_URL, LEGAL_DATES, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -56,9 +56,6 @@ function changeFreqByAge(
   if (ageDays < 180) return "monthly";
   return "yearly";
 }
-
-/** The date the current content was deployed / last structurally changed. */
-const CONTENT_DEPLOY_DATE = "2026-04-15";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* ---- Latest blog date (for the /blog index page) ---- */

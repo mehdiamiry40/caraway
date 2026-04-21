@@ -133,7 +133,10 @@ export function Hero() {
 function HeroArt() {
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
-      {/* orange floating tag (price) — decorative; hero copy already mentions the offer */}
+      <span className="sr-only">
+        Offers up to $9,999 with same- or next-day pickup.
+      </span>
+      {/* orange floating tag (price) — decorative; sr-only sentence above covers the $9,999 figure */}
       <div
         aria-hidden="true"
         className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]"

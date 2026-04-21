@@ -10,8 +10,10 @@ import {
   getPostsByCategory,
   indexableBlogPosts,
 } from "@/data/blog-posts";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 import { ArrowLeft, ArrowUpRight, Clock } from "lucide-react";
+
+export const dynamicParams = false;
 
 type Props = { params: Promise<{ category: string }> };
 
@@ -24,7 +26,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
   const label = categoryMap[category];
   if (!label) {
-    return { title: "Category not found | Caraway", robots: { index: false, follow: false } };
+    return {
+      title: { absolute: "Category not found — Caraway" },
+      robots: { index: false, follow: false },
+      openGraph: null,
+      twitter: null,
+    };
   }
 
   const title = `${label} — Caraway Blog`;
@@ -95,7 +102,7 @@ export default async function BlogCategoryPage({ params }: Props) {
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             mainEntity: {
               "@type": "ItemList",
               numberOfItems: posts.length,

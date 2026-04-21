@@ -6,7 +6,7 @@ import { suburbs } from "@/data/suburbs";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -63,7 +63,7 @@ export default function SiteMapPage() {
             inLanguage: "en-AU",
             isPartOf: { "@id": `${SITE_URL}/#website` },
             publisher: { "@id": `${SITE_URL}/#organization` },
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
           },
         ]}
       />

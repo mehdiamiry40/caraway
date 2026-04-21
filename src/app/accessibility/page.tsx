@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Accessibility from "@/views/Accessibility";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Accessibility",
@@ -41,7 +41,7 @@ export default function AccessibilityPage() {
             description:
               "Caraway's commitment to making our website accessible to everyone — WCAG 2.1 AA, keyboard navigation, and screen-reader support.",
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             publisher: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             about: { "@id": `${SITE_URL}/#organization` },

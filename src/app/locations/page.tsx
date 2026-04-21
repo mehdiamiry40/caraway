@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import Locations from "@/views/Locations";
 import { suburbs } from "@/data/suburbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -44,7 +44,7 @@ export default function LocationsPage() {
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: new Date().toISOString().split("T")[0],
+            dateModified: CONTENT_DEPLOY_DATE,
             mainEntity: {
               "@type": "ItemList",
               numberOfItems: suburbs.length,

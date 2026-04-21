@@ -3,21 +3,26 @@ import { SITE_URL } from "@/lib/site";
 
 /**
  * AI / scraper bots to block from crawling site content.
- * Kept as a flat list so each gets its own User-agent + Disallow block,
- * which is the format most bots actually respect.
+ *
+ * Policy: block *training* crawlers, allow *live retrieval* crawlers that
+ * surface content to users in AI search (ChatGPT Search, Google SGE / AI
+ * Overviews, Perplexity, Apple Intelligence). Blocking both cuts off a
+ * growing source of referral traffic.
+ *
+ * Allowed (intentionally removed from this list):
+ *   - ChatGPT-User        — live fetch when a ChatGPT user asks
+ *   - Google-Extended     — Google generative AI surfaces (SGE / AI Overviews)
+ *   - PerplexityBot       — Perplexity live retrieval
+ *   - Applebot-Extended   — Apple Intelligence
  */
 const BLOCKED_BOTS = [
   "GPTBot",
-  "ChatGPT-User",
   "CCBot",
-  "Google-Extended",
   "anthropic-ai",
   "ClaudeBot",
   "Claude-Web",
   "Bytespider",
-  "Applebot-Extended",
   "FacebookBot",
-  "PerplexityBot",
   "Amazonbot",
   "Cohere-ai",
   "Meta-ExternalAgent",

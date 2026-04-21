@@ -31,7 +31,7 @@ export const faqCategories = [
   {
     category: "Service Area & Availability",
     faqs: [
-      { question: "Can I visit your office or drop my car off?", answer: "No. Our Runcorn address is for mail and administration only — it isn't a public yard and we don't accept vehicle drop-offs. We collect cars from you (home, work, or another agreed spot) with free towing." },
+      { question: "Can I visit your office or drop my car off?", answer: "No. We don't operate a public yard and we don't accept vehicle drop-offs. We collect cars from you (home, work, or another agreed spot) across Greater Brisbane with free towing." },
       { question: "What areas of Brisbane do you cover?", answer: "We cover all of Greater Brisbane — north to Caboolture, south to Beenleigh, west to Ipswich, and east to Cleveland. This includes Logan, Moreton Bay, Redland City, and Ipswich council areas." },
       { question: "Do you charge extra for outer suburbs?", answer: "No. Whether you're in the CBD or Caboolture, our service is the same price — free towing and competitive cash offers regardless of your location." },
       { question: "Are you available on weekends?", answer: "Yes. We're reachable 7 days a week, Monday to Sunday, 7am to 7pm for quotes and bookings. Weekend pickups are usually same- or next-day, subject to truck availability — during busy periods it's worth calling earlier in the day so we can lock in a slot." },
