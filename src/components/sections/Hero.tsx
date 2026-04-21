@@ -173,11 +173,6 @@ function HeroArt() {
           priority
           fetchPriority="high"
         />
-        {/* warm overlay so the plate-yellow ring picks up beneath */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--primary)/0.4)] via-transparent to-transparent"
-        />
       </div>
     </div>
   );

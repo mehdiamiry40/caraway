@@ -76,7 +76,7 @@ export function HowItWorks() {
                   />
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--primary)/0.1)] to-[hsl(var(--primary)/0.55)]"
+                    className="absolute inset-0 bg-[hsl(var(--primary)/0.35)]"
                   />
                   <span className="absolute top-4 left-4 font-display font-black text-[clamp(3.5rem,9vw,6rem)] leading-none tracking-tight text-accent drop-shadow-[0_4px_12px_hsl(var(--ink-deep)/0.35)]">
                     {step.number}

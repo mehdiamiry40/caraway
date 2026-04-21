@@ -14,7 +14,7 @@ interface PageShellProps {
   subtitle?: ReactNode;
   eyebrow?: string;
   children: ReactNode;
-  /** Render the hero with the aurora gradient mesh (default) or a plain background. */
+  /** Render the hero on the aurora surface (default) or a plain background. */
   heroVariant?: "aurora" | "plain";
 }
 
