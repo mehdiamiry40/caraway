@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Locations", href: "/locations" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Header() {
