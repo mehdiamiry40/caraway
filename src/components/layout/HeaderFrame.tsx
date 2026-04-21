@@ -6,12 +6,11 @@ import { cn } from "@/lib/utils";
 const SCROLL_THRESHOLD = 24;
 
 /**
- * Client shell for the header. Keeps the header server-rendered where possible
- * while managing a single `data-scrolled` attribute that swaps the backdrop
- * treatment once the user passes ~24px of scroll — the Stripe nav convention.
+ * Looping-style header shell. Tracks scroll so the top utility strip can
+ * collapse on scroll and the main pill nav can add a deeper shadow.
  */
 export function HeaderFrame({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -40,17 +39,14 @@ export function HeaderFrame({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <header
+    <div
       ref={ref}
       data-scrolled="false"
       className={cn(
         "fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe",
-        "transition-[background-color,border-color] duration-200 ease-[var(--ease-out-quint)]",
-        // Swiss header: solid white field, persistent 1px black hairline rule.
-        "bg-background border-b border-foreground",
       )}
     >
       {children}
-    </header>
+    </div>
   );
 }
