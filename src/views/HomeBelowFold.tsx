@@ -5,6 +5,7 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomeBelowFold() {
   return (
@@ -16,6 +17,7 @@ export default function HomeBelowFold() {
       <Testimonials />
       <ServiceAreas />
       <FAQ />
+      <FinalCTA />
     </>
   );
 }

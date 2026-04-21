@@ -1,17 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Poppins, JetBrains_Mono } from "next/font/google";
 
-// Inter — geometric Helvetica-derived sans, used for all UI and display type
-// in the Swiss redesign. Weight range covers light captions through bold display.
-const inter = Inter({
+// Poppins — rounded geometric sans, heavy display weights for the bold
+// Looping-style headline treatment.
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
   display: "swap",
 });
 
-// JetBrains Mono — monospaced face for eyebrow labels, tabular figures,
-// quote results, and any data presentation.
+// JetBrains Mono — retained for tabular figures and any mono-needed spots.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -120,7 +119,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#1E3A8A",
+  themeColor: "#5B3FBE",
 };
 
 export default function RootLayout({
@@ -131,7 +130,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${poppins.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />

@@ -4,33 +4,39 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
-    // Swiss buttons: rectangular, flat, monospace label, wide tracking,
-    // bold uppercase. No lift on hover — colour inversion only.
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none",
-    "font-mono font-bold uppercase tracking-[0.08em]",
-    "ring-offset-background transition-[background-color,color,border-color] duration-150 ease-[var(--ease-out-quint)]",
+    // Looping-style buttons: fully rounded pills, bold sentence-case label, hover lift.
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
+    "font-bold tracking-[-0.005em]",
+    "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
   ].join(" "),
   {
     variants: {
       variant: {
+        // Bright lime-green primary — mirrors Looping's "check your car" CTA.
         default:
-          "bg-primary text-primary-foreground border border-primary hover:bg-accent hover:border-accent active:bg-accent",
+          "bg-cta text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5),0_12px_24px_hsl(var(--cta)/0.25)] hover:bg-cta/95 hover:shadow-[0_6px_0_0_hsl(var(--cta)/0.55),0_14px_28px_hsl(var(--cta)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
+        // Deep purple — brand primary used for secondary CTAs on light surfaces.
+        primary:
+          "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:-translate-y-0.5 active:translate-y-0",
+        // Orange emphasis — used for highlight CTAs.
         secondary:
-          "bg-accent text-accent-foreground border border-accent hover:bg-primary hover:border-primary active:bg-primary",
+          "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:-translate-y-0.5 active:translate-y-0",
+        // Light outline for quiet actions on white surfaces.
         outline:
-          "border border-foreground bg-background text-foreground hover:bg-foreground hover:text-background",
+          "border-2 border-primary/15 bg-card text-primary hover:bg-primary/5 hover:border-primary/25 active:translate-y-px",
         ghost:
-          "bg-transparent text-foreground hover:text-accent",
+          "bg-transparent text-primary hover:bg-primary/8",
+        // Outline-on-dark — used on purple bands for secondary actions.
         inkOutline:
-          "border border-[hsl(var(--on-dark-hi)/0.4)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi))] hover:text-[hsl(var(--ink))]",
+          "border-2 border-[hsl(var(--on-dark-hi)/0.35)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi)/0.08)] hover:border-[hsl(var(--on-dark-hi)/0.55)]",
       },
       size: {
-        default: "h-11 sm:h-12 px-5 text-[0.8125rem]",
-        sm: "h-10 px-4 text-xs",
-        lg: "h-12 sm:h-[52px] px-6 sm:px-7 text-sm",
-        icon: "h-11 w-11 sm:h-12 sm:w-12",
+        default: "h-12 px-6 text-[0.9375rem]",
+        sm: "h-10 px-5 text-sm",
+        lg: "h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg",
+        icon: "h-12 w-12",
       },
     },
     defaultVariants: {

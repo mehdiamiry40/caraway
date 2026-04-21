@@ -1,44 +1,59 @@
-import { ShieldCheck, Recycle, Building2 } from "lucide-react";
+import { Check, ShieldCheck, Recycle, Building2 } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 
-const badges = [
+const credentials = [
   {
     icon: ShieldCheck,
     label: "Fully insured",
-    detail: "Public liability & goods-in-transit",
   },
   {
     icon: Recycle,
     label: "Licensed recycler",
-    detail: "EPA-compliant disposal",
   },
   {
     icon: Building2,
-    label: "ABN registered",
-    detail: `ABN ${BUSINESS.abn}`,
+    label: `ABN ${BUSINESS.abn}`,
   },
 ] as const;
+
+const quickPromises = [
+  "Free pickup, every postcode",
+  "No paperwork headaches",
+  "Firm offer, no haggling",
+  "Any make or condition",
+];
 
 export function TrustBadges() {
   return (
     <section
-      className="relative bg-muted"
+      className="relative bg-background border-b border-border/70"
       aria-label="Trust and credentials"
     >
-      <div className="site-container py-6 sm:py-10 border-y border-border">
-        <ul className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-10 md:gap-x-14 sm:gap-y-4">
-          {badges.map(({ icon: Icon, label, detail }) => (
+      <div className="site-container py-8 sm:py-10">
+        {/* Row 1 — four quick promise items separated by green checks */}
+        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10">
+          {quickPromises.map((p) => (
+            <li
+              key={p}
+              className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-foreground/85"
+            >
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cta/15 text-cta">
+                <Check size={14} strokeWidth={3} aria-hidden="true" />
+              </span>
+              {p}
+            </li>
+          ))}
+        </ul>
+
+        {/* Row 2 — credential pills, tiny, muted */}
+        <ul className="mt-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {credentials.map(({ icon: Icon, label }) => (
             <li
               key={label}
-              className="flex w-full min-w-0 items-center gap-3 text-foreground/80 sm:w-auto"
+              className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-xs font-semibold text-primary"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
-                <Icon className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden="true" />
-              </span>
-              <span className="flex min-w-0 flex-col leading-tight">
-                <span className="text-sm text-foreground">{label}</span>
-                <span className="text-xs text-pretty text-foreground/70 font-medium">{detail}</span>
-              </span>
+              <Icon size={13} strokeWidth={2} aria-hidden="true" />
+              {label}
             </li>
           ))}
         </ul>
