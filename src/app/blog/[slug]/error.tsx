@@ -29,7 +29,7 @@ export default function Error({
       <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
           <h1 className="text-3xl font-display text-primary mb-3">
-            Something went wrong
+            We couldn&apos;t load this post
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
             We couldn&apos;t load this post. Please try again, or{" "}

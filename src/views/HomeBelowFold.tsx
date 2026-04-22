@@ -1,4 +1,5 @@
 import { TrustBadges } from "@/components/sections/TrustBadges";
+import { Stats } from "@/components/sections/Stats";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { WhyUs } from "@/components/sections/WhyUs";
@@ -11,6 +12,7 @@ export default function HomeBelowFold() {
   return (
     <>
       <TrustBadges />
+      <Stats />
       <HowItWorks />
       <PriceEstimator />
       <WhyUs />

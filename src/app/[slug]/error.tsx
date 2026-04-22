@@ -29,10 +29,10 @@ export default function Error({
       <main id="main-content" className="flex-1 mt-header-safe flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
           <h1 className="text-3xl font-display text-primary mb-3">
-            Something went wrong
+            We couldn&apos;t load this page
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
-            We hit an unexpected error loading this page. Please try again.
+            Something went wrong on our end. Please try again, or head back home.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
@@ -45,7 +45,7 @@ export default function Error({
               href="/"
               className="inline-flex items-center justify-center rounded-xl h-11 px-8 text-sm border-2 border-border text-foreground hover:border-primary hover:text-primary transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              Go home
+              Back to home
             </Link>
           </div>
         </div>

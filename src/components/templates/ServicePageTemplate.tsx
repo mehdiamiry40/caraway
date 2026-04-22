@@ -85,7 +85,7 @@ export default function ServicePageTemplate({
                   {PROMISE_POINTS.map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
                       <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                        <CheckCircle2 className="h-3 w-3" strokeWidth={2} />
+                        <CheckCircle2 className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
                       </span>
                       <span className="text-foreground/80">{item}</span>
                     </li>

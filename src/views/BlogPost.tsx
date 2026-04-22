@@ -10,6 +10,7 @@ import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { ArrowLeft, ArrowRight, Link2, Phone } from "lucide-react";
 import { BUSINESS, SITE_URL } from "@/lib/site";
+import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -116,7 +117,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   >
                     {AUTHOR.name}
                   </Link>
-                  <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.7rem]">
+                  <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.75rem]">
                     {AUTHOR.role}
                   </p>
                 </div>
@@ -126,7 +127,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     {formatDate(post.date)}
                   </time>
                   {showUpdated && (
-                    <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.7rem]">
+                    <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.75rem]">
                       Updated{" "}
                       <time dateTime={post.updatedAt} className="tabular-nums">
                         {formatDate(post.updatedAt)}
@@ -139,7 +140,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <p className="text-foreground font-bold">{post.readTime}</p>
                   <Link
                     href={`/blog/category/${categorySlug(post.category)}`}
-                    className="mt-1 inline-block text-muted-foreground hover:text-accent normal-case tracking-normal text-[0.7rem] transition-colors"
+                    className="mt-1 inline-block text-muted-foreground hover:text-accent normal-case tracking-normal text-[0.75rem] transition-colors"
                   >
                     in {post.category} →
                   </Link>
@@ -338,14 +339,15 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   next-day pickup across Brisbane.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <a
+                  <TrackedPhoneLink
                     href={BUSINESS.phoneHref}
+                    location="blog_post_footer"
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors w-full sm:w-auto"
-                    aria-label={`Call ${BUSINESS.phoneFriendly}`}
+                    ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
                     Call {BUSINESS.phoneFriendly}
-                  </a>
+                  </TrackedPhoneLink>
                   <Link
                     href="/#price-estimator"
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary-foreground/70 px-7 py-3.5 text-sm font-medium text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-colors w-full sm:w-auto"
@@ -379,7 +381,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                       <span className="font-mono text-xs font-bold uppercase tabular-nums text-accent">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
-                      <p className="mt-3 font-mono text-[0.7rem] uppercase tracking-wider text-muted-foreground">
+                      <p className="mt-3 font-mono text-[0.75rem] uppercase tracking-wider text-muted-foreground">
                         {related.category} &middot; {related.readTime}
                       </p>
                       <h3

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowRight, Clock, Sparkles } from "lucide-react";
 import { RevealGroup, RevealItem } from "@/components/ui/motion";
 
 const breadcrumbs = [
@@ -32,14 +32,14 @@ export default function Blog() {
       }
     >
       <div className="site-container py-14 sm:py-20 lg:py-24">
-        <nav aria-label="Blog categories" className="mb-12 sm:mb-16">
+        <nav aria-label="Blog categories" className="mb-12 sm:mb-14">
           <p className="eyebrow mb-4">Browse by topic</p>
           <div className="flex flex-wrap gap-2">
             {Object.entries(categoryMap).map(([slug, label]) => (
               <Link
                 key={slug}
                 href={`/blog/category/${slug}`}
-                className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-foreground hover:text-primary-foreground min-h-[36px] touch-manipulation"
+                className="inline-flex items-center rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
               >
                 {label}
               </Link>
@@ -50,42 +50,46 @@ export default function Blog() {
         {featured && (
           <RevealGroup>
             <RevealItem>
-              <article className="group relative mb-14 sm:mb-20">
+              <article className="mb-12 sm:mb-16">
                 <Link
                   href={`/blog/${featured.slug}`}
-                  className="block border-t-2 border-foreground pt-6 sm:pt-8"
+                  className="group block rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-8 lg:p-10 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
                   aria-label={`Read: ${featured.title}`}
                 >
-                  <div className="grid grid-cols-12 gap-x-6 gap-y-6 sm:gap-y-8">
-                    <div className="col-span-12 md:col-span-4 lg:col-span-3">
-                      <p className="eyebrow">Featured</p>
-                      <div className="mt-4 font-mono text-xs uppercase tracking-wider text-muted-foreground space-y-1.5">
-                        <div className="tabular-nums">{formatDate(featured.date)}</div>
-                        <div>{featured.category}</div>
-                        <div className="inline-flex items-center gap-1.5">
-                          <Clock className="h-3 w-3" strokeWidth={1.75} />
-                          {featured.readTime}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-span-12 md:col-span-8 lg:col-span-9">
-                      <h2
-                        className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.05] text-foreground text-balance group-hover:text-accent transition-colors"
-                        style={{ letterSpacing: "var(--tracking-display)" }}
-                      >
-                        {featured.title}
-                      </h2>
-                      <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-[60ch]">
-                        {featured.excerpt}
-                      </p>
-                      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
-                        Read the feature
-                        <ArrowUpRight
-                          className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                          strokeWidth={1.75}
-                        />
-                      </span>
-                    </div>
+                  <div className="flex flex-wrap items-center gap-2 mb-5">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground">
+                      <Sparkles className="h-3 w-3" strokeWidth={2} aria-hidden />
+                      Featured
+                    </span>
+                    <span className="inline-flex items-center rounded-full border border-border/80 bg-card px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                      {featured.category}
+                    </span>
+                  </div>
+                  <h2
+                    className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-[1.08] text-foreground text-balance group-hover:text-primary transition-colors"
+                    style={{ letterSpacing: "var(--tracking-display)" }}
+                  >
+                    {featured.title}
+                  </h2>
+                  <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-[62ch]">
+                    {featured.excerpt}
+                  </p>
+                  <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                    <time dateTime={featured.date} className="tabular-nums">
+                      {formatDate(featured.date)}
+                    </time>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+                      {featured.readTime}
+                    </span>
+                    <span className="sm:ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                      Read the feature
+                      <ArrowRight
+                        className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                        strokeWidth={1.75}
+                        aria-hidden
+                      />
+                    </span>
                   </div>
                 </Link>
               </article>
@@ -97,47 +101,50 @@ export default function Blog() {
           <section>
             <div className="flex items-baseline justify-between mb-6 sm:mb-8">
               <p className="eyebrow">All articles</p>
-              <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground tabular-nums">
-                {String(rest.length).padStart(2, "0")} entries
+              <p className="text-xs font-medium text-muted-foreground">
+                {rest.length} {rest.length === 1 ? "article" : "articles"}
               </p>
             </div>
 
             <RevealGroup>
-              <ul className="border-t border-foreground">
-                {rest.map((post, idx) => (
+              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+                {rest.map((post) => (
                   <RevealItem as="li" key={post.slug}>
-                    <article className="group relative border-b border-border">
+                    <article className="h-full">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="block py-7 sm:py-9 transition-colors hover:bg-muted/50 -mx-4 px-4 sm:-mx-6 sm:px-6"
+                        className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
                       >
-                        <div className="grid grid-cols-12 gap-x-6 gap-y-3 items-start">
-                          <div className="col-span-12 sm:col-span-1">
-                            <span
-                              className="font-mono text-xs font-bold uppercase tabular-nums text-accent"
-                              aria-hidden
-                            >
-                              {String(idx + 1).padStart(2, "0")}
-                            </span>
-                          </div>
-                          <div className="col-span-12 sm:col-span-8 lg:col-span-8">
-                            <h3
-                              className="font-display text-xl sm:text-2xl lg:text-[1.75rem] font-bold leading-[1.15] text-foreground text-balance group-hover:text-accent transition-colors"
-                              style={{ letterSpacing: "var(--tracking-tight)" }}
-                            >
-                              {post.title}
-                            </h3>
-                            <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[60ch] line-clamp-2">
-                              {post.excerpt}
-                            </p>
-                          </div>
-                          <div className="col-span-12 sm:col-span-3 lg:col-span-3 font-mono text-xs uppercase tracking-wider text-muted-foreground space-y-1.5 sm:text-right">
-                            <div className="tabular-nums">{formatDate(post.date)}</div>
-                            <div>{post.category}</div>
-                            <div className="inline-flex items-center gap-1.5 sm:justify-end">
-                              <Clock className="h-3 w-3" strokeWidth={1.75} />
+                        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
+                          {post.category}
+                        </span>
+                        <h3
+                          className="font-display text-lg sm:text-xl font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                          style={{ letterSpacing: "var(--tracking-tight)" }}
+                        >
+                          {post.title}
+                        </h3>
+                        <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                        <div className="mt-auto pt-5">
+                          <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
+                            <time dateTime={post.date} className="tabular-nums">
+                              {formatDate(post.date)}
+                            </time>
+                            <span aria-hidden>·</span>
+                            <span className="inline-flex items-center gap-1">
+                              <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
                               {post.readTime}
-                            </div>
+                            </span>
+                            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
+                              Read
+                              <ArrowRight
+                                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                                strokeWidth={1.75}
+                                aria-hidden
+                              />
+                            </span>
                           </div>
                         </div>
                       </Link>
@@ -146,12 +153,6 @@ export default function Blog() {
                 ))}
               </ul>
             </RevealGroup>
-
-            <div className="flex items-center justify-end mt-6">
-              <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                — End of feed —
-              </p>
-            </div>
           </section>
         )}
       </div>

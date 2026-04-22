@@ -25,7 +25,13 @@ export const metadata: Metadata = {
       "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cash for Cars Brisbane — All Suburbs | Caraway",
+    description:
+      "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
+    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+  },
 };
 
 export default function LocationsPage() {

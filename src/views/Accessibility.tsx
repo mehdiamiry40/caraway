@@ -19,6 +19,12 @@ export default function Accessibility() {
             We aim to conform to <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>.
             Where we fall short, we&apos;re working to improve.
           </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Last reviewed{" "}
+            <time dateTime="2026-04-22">22 April 2026</time>. We review this
+            statement whenever we ship a significant design or markup change,
+            and at least every six months.
+          </p>
 
           <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">What we&apos;ve done</h2>
           <ul className="list-styled mt-4">

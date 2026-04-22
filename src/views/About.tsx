@@ -87,7 +87,7 @@ export default function About() {
                   <RevealItem key={item.title}>
                     <div className="group flex gap-3 rounded-2xl border border-border/60 bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-border hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.06)]">
                       <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
-                        <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} />
+                        <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
                       </span>
                       <div>
                         <dt className="font-display text-sm text-foreground">{item.title}</dt>

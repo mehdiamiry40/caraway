@@ -17,6 +17,7 @@ type EventName =
   | "faq_opened"
   | "internal_link_click"
   | "hero_cta_click"
+  | "scroll_to_quote_click"
   | "google_business_click"
   | "authority_link_click";
 

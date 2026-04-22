@@ -145,19 +145,13 @@ export function PriceEstimator() {
       // fields — the user still needs to click "See my quote" to recalculate.
       // Step 2 (quote) and Step 3 (PII) are never restored: the quote result
       // lives only in memory and PII is never persisted.
-    } catch (error) {
+    } catch {
       try {
         window.sessionStorage.removeItem(STORAGE_KEY);
-      } catch (innerError) {
-        console.warn(
-          "[PriceEstimator] hydrate cleanup failed:",
-          innerError instanceof Error ? innerError.message : String(innerError),
-        );
+      } catch {
+        // sessionStorage may be unavailable (private mode / quota / SecurityError);
+        // cache hydration is best-effort, so let the user start fresh silently.
       }
-      console.warn(
-        "[PriceEstimator] hydrate failed:",
-        error instanceof Error ? error.message : String(error),
-      );
     }
   }, []);
 
@@ -177,11 +171,9 @@ export function PriceEstimator() {
           condition,
         };
         window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      } catch (err) {
-        console.warn(
-          "[PriceEstimator] persist failed:",
-          err instanceof Error ? err.message : String(err),
-        );
+      } catch {
+        // sessionStorage may throw on quota/private-mode; persistence is
+        // cosmetic, so drop silently rather than spamming the console.
       }
     }, 400);
     return () => {
@@ -345,7 +337,10 @@ export function PriceEstimator() {
       });
     } else {
       const reason = res.message ?? "unknown";
-      setSubmitError(res.message ?? "Something went wrong. Please try again.");
+      setSubmitError(
+        res.message ??
+          "Something went wrong. Please try again or call 0481 438 444.",
+      );
       trackEvent("estimator_submit_failed", { reason });
     }
   }

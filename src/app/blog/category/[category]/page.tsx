@@ -55,7 +55,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
     },
-    twitter: { card: "summary_large_image" },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    },
   };
 }
 
@@ -140,6 +145,20 @@ export default async function BlogCategoryPage({ params }: Props) {
             </p>
           </div>
 
+          {posts.length === 0 ? (
+            <div className="border-t border-foreground py-14 text-center">
+              <p className="text-base text-muted-foreground">
+                No posts in this category yet — check back soon.
+              </p>
+              <Link
+                href="/blog"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-accent hover:text-foreground transition-colors"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+                Browse all posts
+              </Link>
+            </div>
+          ) : (
           <ul className="border-t border-foreground">
             {posts.map((post, idx) => (
               <li key={post.slug}>
@@ -189,6 +208,7 @@ export default async function BlogCategoryPage({ params }: Props) {
               </li>
             ))}
           </ul>
+          )}
 
           {otherCategories.length > 0 && (
             <section className="mt-16 sm:mt-20 border-t-2 border-foreground pt-8">

@@ -58,7 +58,7 @@ export default function Error({
               href="/"
               className={cn(buttonVariants({ size: "lg", variant: "outline" }), "min-w-[140px]")}
             >
-              Go home
+              Back to home
             </Link>
           </div>
         </div>
