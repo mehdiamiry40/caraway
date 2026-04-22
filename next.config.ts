@@ -72,6 +72,17 @@ const nextConfig: NextConfig = {
     }
     return config;
   },
+  redirects: async () => [
+    // `/how-it-works` is a homepage section anchor, not a standalone route.
+    // Google discovered the bare path via an old link and was serving the
+    // 404 page (which emits noindex). Redirect to the real anchor so the
+    // URL resolves cleanly and GSC drops the exclusion.
+    {
+      source: "/how-it-works",
+      destination: "/#how-it-works",
+      permanent: true,
+    },
+  ],
   headers: async () => [
     {
       source: "/(.*)",
