@@ -11,7 +11,7 @@ import {
   indexableBlogPosts,
 } from "@/data/blog-posts";
 import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
-import { ArrowLeft, ArrowUpRight, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 
 export const dynamicParams = false;
 
@@ -140,85 +140,81 @@ export default async function BlogCategoryPage({ params }: Props) {
         <div className="site-container py-14 sm:py-20 lg:py-24">
           <div className="flex items-baseline justify-between mb-6 sm:mb-8">
             <p className="eyebrow">In this category</p>
-            <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground tabular-nums">
-              {String(posts.length).padStart(2, "0")} {posts.length === 1 ? "entry" : "entries"}
+            <p className="text-xs font-medium text-muted-foreground">
+              {posts.length} {posts.length === 1 ? "article" : "articles"}
             </p>
           </div>
 
           {posts.length === 0 ? (
-            <div className="border-t border-foreground py-14 text-center">
+            <div className="rounded-2xl border border-border/60 bg-secondary/60 py-14 px-8 text-center">
               <p className="text-base text-muted-foreground">
                 No posts in this category yet — check back soon.
               </p>
               <Link
                 href="/blog"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-accent hover:text-foreground transition-colors"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
               >
                 <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
                 Browse all posts
               </Link>
             </div>
           ) : (
-          <ul className="border-t border-foreground">
-            {posts.map((post, idx) => (
-              <li key={post.slug}>
-                <article className="group relative border-b border-border">
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="block py-7 sm:py-9 transition-colors hover:bg-muted/50 -mx-4 px-4 sm:-mx-6 sm:px-6"
-                  >
-                    <div className="grid grid-cols-12 gap-x-6 gap-y-3 items-start">
-                      <div className="col-span-12 sm:col-span-1">
-                        <span
-                          className="font-mono text-xs font-bold uppercase tabular-nums text-accent"
-                          aria-hidden
-                        >
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                      <div className="col-span-12 sm:col-span-8 lg:col-span-8">
-                        <h2
-                          className="font-display text-xl sm:text-2xl lg:text-[1.75rem] font-bold leading-[1.15] text-foreground text-balance group-hover:text-accent transition-colors"
-                          style={{ letterSpacing: "var(--tracking-tight)" }}
-                        >
-                          {post.title}
-                        </h2>
-                        <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-[60ch] line-clamp-2">
-                          {post.excerpt}
-                        </p>
-                        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent">
-                          Read article
-                          <ArrowUpRight
-                            className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            strokeWidth={1.75}
-                            aria-hidden
-                          />
-                        </span>
-                      </div>
-                      <div className="col-span-12 sm:col-span-3 lg:col-span-3 font-mono text-xs uppercase tracking-wider text-muted-foreground space-y-1.5 sm:text-right">
-                        <div className="tabular-nums">{formatDate(post.date)}</div>
-                        <div className="inline-flex items-center gap-1.5 sm:justify-end">
-                          <Clock className="h-3 w-3" strokeWidth={1.75} />
-                          {post.readTime}
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+              {posts.map((post) => (
+                <li key={post.slug}>
+                  <article className="h-full">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+                    >
+                      <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
+                        {post.category}
+                      </span>
+                      <h2
+                        className="font-display text-lg sm:text-xl font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                        style={{ letterSpacing: "var(--tracking-tight)" }}
+                      >
+                        {post.title}
+                      </h2>
+                      <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <div className="mt-auto pt-5">
+                        <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
+                          <time dateTime={post.date} className="tabular-nums">
+                            {formatDate(post.date)}
+                          </time>
+                          <span aria-hidden>·</span>
+                          <span className="inline-flex items-center gap-1">
+                            <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+                            {post.readTime}
+                          </span>
+                          <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
+                            Read
+                            <ArrowRight
+                              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                              strokeWidth={1.75}
+                              aria-hidden
+                            />
+                          </span>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                </article>
-              </li>
-            ))}
-          </ul>
+                    </Link>
+                  </article>
+                </li>
+              ))}
+            </ul>
           )}
 
           {otherCategories.length > 0 && (
-            <section className="mt-16 sm:mt-20 border-t-2 border-foreground pt-8">
-              <p className="eyebrow mb-5">Other topics</p>
+            <section className="mt-16 sm:mt-20">
+              <p className="eyebrow mb-4">Other topics</p>
               <div className="flex flex-wrap gap-2">
                 {otherCategories.map(([slug, otherLabel]) => (
                   <Link
                     key={slug}
                     href={`/blog/category/${slug}`}
-                    className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-foreground hover:text-primary-foreground min-h-[36px] touch-manipulation"
+                    className="inline-flex items-center rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
                   >
                     {otherLabel}
                   </Link>
@@ -227,13 +223,14 @@ export default async function BlogCategoryPage({ params }: Props) {
             </section>
           )}
 
-          <div className="mt-14 pt-6 border-t border-border">
+          <div className="mt-14">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-foreground hover:text-accent transition-colors"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft
-                className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5"
+                className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
+                strokeWidth={1.75}
                 aria-hidden
               />
               Back to all posts

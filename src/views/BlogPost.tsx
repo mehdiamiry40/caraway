@@ -8,7 +8,7 @@ import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { ArrowLeft, ArrowRight, Link2, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Link2, Phone } from "lucide-react";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
@@ -107,44 +107,46 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
       >
         <div className="site-container py-14 sm:py-20 lg:py-24">
           <article className="mx-auto max-w-3xl">
-            <header className="mb-12 pb-8 border-b border-foreground">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-5 sm:gap-6 font-mono text-xs uppercase tracking-wider">
-                <div>
-                  <p className="text-muted-foreground mb-1.5">Written by</p>
-                  <Link
-                    href={AUTHOR.href}
-                    className="text-foreground font-bold hover:text-accent transition-colors"
+            <header className="mb-12 pb-8 border-b border-border/60">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground">
+                <Link
+                  href={AUTHOR.href}
+                  className="inline-flex items-center gap-2.5 text-foreground hover:text-primary transition-colors"
+                >
+                  <span
+                    aria-hidden
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-bold"
                   >
-                    {AUTHOR.name}
-                  </Link>
-                  <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.75rem]">
-                    {AUTHOR.role}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground mb-1.5">Published</p>
-                  <time dateTime={post.date} className="text-foreground font-bold tabular-nums">
+                    {authorInitials}
+                  </span>
+                  <span className="font-medium">{AUTHOR.name}</span>
+                </Link>
+                <span aria-hidden className="text-border">·</span>
+                <div className="inline-flex items-center gap-1.5">
+                  <time dateTime={post.date} className="tabular-nums">
                     {formatDate(post.date)}
                   </time>
                   {showUpdated && (
-                    <p className="text-muted-foreground mt-1 normal-case tracking-normal text-[0.75rem]">
-                      Updated{" "}
+                    <span className="text-muted-foreground/80">
+                      (updated{" "}
                       <time dateTime={post.updatedAt} className="tabular-nums">
                         {formatDate(post.updatedAt)}
                       </time>
-                    </p>
+                      )
+                    </span>
                   )}
                 </div>
-                <div>
-                  <p className="text-muted-foreground mb-1.5">Read time</p>
-                  <p className="text-foreground font-bold">{post.readTime}</p>
-                  <Link
-                    href={`/blog/category/${categorySlug(post.category)}`}
-                    className="mt-1 inline-block text-muted-foreground hover:text-accent normal-case tracking-normal text-[0.75rem] transition-colors"
-                  >
-                    in {post.category} →
-                  </Link>
-                </div>
+                <span aria-hidden className="text-border">·</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+                  {post.readTime}
+                </span>
+                <Link
+                  href={`/blog/category/${categorySlug(post.category)}`}
+                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent hover:bg-accent/15 transition-colors"
+                >
+                  {post.category}
+                </Link>
               </div>
             </header>
 
@@ -152,7 +154,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               {renderBlogContent(post.content, { firstParagraphDropCap: true })}
             </div>
 
-            <aside className="mt-16 border-y-2 border-foreground py-8 sm:py-10">
+            <aside className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10">
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
@@ -169,14 +171,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
                   <Link
                     href="/#price-estimator"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_hsl(var(--primary)/0.25)]"
                   >
                     Get my quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <a
                     href={BUSINESS.phoneHref}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-foreground bg-card px-6 py-3 text-sm font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
+                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border/80 bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label={`Call ${BUSINESS.phoneFriendly}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -187,11 +189,11 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </aside>
 
             {(post.relatedServices.length > 0 || post.relatedSuburbs.length > 0) && (
-              <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+              <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {post.relatedServices.length > 0 && (
-                  <div>
+                  <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Related services</p>
-                    <ul className="divide-y divide-border border-t border-border">
+                    <ul className="space-y-1">
                       {post.relatedServices.map((slug) => {
                         const svc = services.find((s) => s.slug === slug);
                         if (!svc) return null;
@@ -199,11 +201,11 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                           <li key={slug}>
                             <Link
                               href={`/${slug}`}
-                              className="group flex items-center justify-between gap-3 py-3 text-sm text-foreground hover:text-accent transition-colors"
+                              className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
                               <span>{svc.h1}</span>
                               <ArrowRight
-                                className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
                                 aria-hidden
                               />
@@ -215,9 +217,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </div>
                 )}
                 {post.relatedSuburbs.length > 0 && (
-                  <div>
+                  <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Areas we service</p>
-                    <ul className="divide-y divide-border border-t border-border">
+                    <ul className="space-y-1">
                       {post.relatedSuburbs.map((slug) => {
                         const sub = suburbs.find((s) => s.slug === slug);
                         if (!sub) return null;
@@ -225,11 +227,11 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                           <li key={slug}>
                             <Link
                               href={`/locations/${slug}`}
-                              className="group flex items-center justify-between gap-3 py-3 text-sm text-foreground hover:text-accent transition-colors"
+                              className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
                               <span>{sub.h1}</span>
                               <ArrowRight
-                                className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5"
+                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
                                 aria-hidden
                               />
@@ -243,8 +245,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </div>
             )}
 
-            <footer className="mt-16 pt-10 border-t border-foreground space-y-12">
-              <div className="border-t border-b border-border py-8">
+            <footer className="mt-16 space-y-10">
+              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8">
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
@@ -255,7 +257,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <div className="min-w-0 flex-1">
                     <p className="eyebrow mb-2">About the author</p>
                     <p className="font-display text-lg font-bold text-foreground">
-                      <Link href={AUTHOR.href} className="hover:text-accent transition-colors">
+                      <Link href={AUTHOR.href} className="hover:text-primary transition-colors">
                         {AUTHOR.name}
                       </Link>
                       <span className="font-normal text-muted-foreground">
@@ -268,10 +270,10 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     </p>
                     <Link
                       href={AUTHOR.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent hover:text-foreground transition-colors"
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
                     >
                       More articles by {AUTHOR.name.split(" ")[0]}
-                      <ArrowRight className="h-3 w-3" aria-hidden />
+                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
                     </Link>
                   </div>
                 </div>
@@ -284,7 +286,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={xShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on X"
                   >
                     <TwitterIcon className="h-3.5 w-3.5" aria-hidden />
@@ -294,7 +296,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={fbShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <FacebookIcon className="h-3.5 w-3.5" aria-hidden />
@@ -304,7 +306,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={liShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />
@@ -314,7 +316,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     type="button"
                     id={copyBtnId}
                     data-canonical={canonical}
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground hover:bg-foreground hover:text-primary-foreground transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
                     aria-label="Copy link to article"
                   >
                     <Link2 className="h-3.5 w-3.5" aria-hidden />
@@ -324,10 +326,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <script dangerouslySetInnerHTML={{ __html: copyScript }} />
               </div>
 
-              <div className="bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
-                <p className="font-mono text-xs uppercase tracking-wider text-primary-foreground/70 mb-4">
-                  Ready when you are
-                </p>
+              <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
                   className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
@@ -362,55 +361,61 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
           {relatedPosts.length > 0 && (
             <section className="mt-20 sm:mt-24">
-              <div className="flex items-baseline justify-between mb-8 border-t-2 border-foreground pt-6">
+              <div className="flex items-baseline justify-between mb-6 sm:mb-8">
                 <p className="eyebrow">Keep reading</p>
-                <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground tabular-nums">
-                  {String(relatedPosts.length).padStart(2, "0")} related
+                <p className="text-xs font-medium text-muted-foreground">
+                  {relatedPosts.length} related
                 </p>
               </div>
-              <ul className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6 border-t border-border">
-                {relatedPosts.map((related, idx) => (
-                  <li
-                    key={related.slug}
-                    className="border-b border-border md:border-b-0 md:border-r md:last:border-r-0 md:pr-6 md:-mr-6 md:last:pr-0 md:last:mr-0"
-                  >
-                    <Link
-                      href={`/blog/${related.slug}`}
-                      className="group block py-6 md:py-8 h-full"
-                    >
-                      <span className="font-mono text-xs font-bold uppercase tabular-nums text-accent">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
-                      <p className="mt-3 font-mono text-[0.75rem] uppercase tracking-wider text-muted-foreground">
-                        {related.category} &middot; {related.readTime}
-                      </p>
-                      <h3
-                        className="mt-3 font-display text-lg sm:text-xl font-bold leading-snug text-foreground group-hover:text-accent transition-colors text-balance"
-                        style={{ letterSpacing: "var(--tracking-tight)" }}
+              <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+                {relatedPosts.map((related) => (
+                  <li key={related.slug}>
+                    <article className="h-full">
+                      <Link
+                        href={`/blog/${related.slug}`}
+                        className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
                       >
-                        {related.title}
-                      </h3>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent">
-                        Read article
-                        <ArrowRight
-                          className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
-                          aria-hidden
-                        />
-                      </span>
-                    </Link>
+                        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
+                          {related.category}
+                        </span>
+                        <h3
+                          className="font-display text-lg font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                          style={{ letterSpacing: "var(--tracking-tight)" }}
+                        >
+                          {related.title}
+                        </h3>
+                        <div className="mt-auto pt-5">
+                          <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
+                            <span className="inline-flex items-center gap-1">
+                              <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
+                              {related.readTime}
+                            </span>
+                            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
+                              Read
+                              <ArrowRight
+                                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                                strokeWidth={1.75}
+                                aria-hidden
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </Link>
+                    </article>
                   </li>
                 ))}
               </ul>
             </section>
           )}
 
-          <div className="mt-14 pt-6 border-t border-border">
+          <div className="mt-14">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-foreground hover:text-accent transition-colors"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
               <ArrowLeft
-                className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5"
+                className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
+                strokeWidth={1.75}
                 aria-hidden
               />
               Back to all posts
