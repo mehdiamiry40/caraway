@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 const steps = [
@@ -9,8 +8,8 @@ const steps = [
     description:
       "Drop in your plate or share make, model and year. Photos help if you have them.",
     timing: "60 seconds",
-    image: "/images/tow-truck-hero.webp",
     tint: "bg-primary",
+    numberClass: "text-accent",
   },
   {
     number: "02",
@@ -18,8 +17,8 @@ const steps = [
     description:
       "We send a locked-in number — no haggle games, no bait-and-switch. Accept and we book a time.",
     timing: "Within the hour",
-    image: "/images/tow-truck-hero.webp",
-    tint: "bg-primary",
+    tint: "bg-accent",
+    numberClass: "text-primary",
   },
   {
     number: "03",
@@ -27,8 +26,8 @@ const steps = [
     description:
       "Our truck arrives at the booked slot, anywhere in Greater Brisbane. Free towing, always.",
     timing: "Same or next day",
-    image: "/images/tow-truck-hero.webp",
-    tint: "bg-primary",
+    tint: "bg-cta",
+    numberClass: "text-primary",
   },
   {
     number: "04",
@@ -36,8 +35,8 @@ const steps = [
     description:
       "Cash or transfer before the wheels leave your driveway. All paperwork handled by us.",
     timing: "Paid that day",
-    image: "/images/tow-truck-hero.webp",
-    tint: "bg-primary",
+    tint: "bg-plate",
+    numberClass: "text-primary",
   },
 ] as const;
 
@@ -66,19 +65,8 @@ export function HowItWorks() {
                 key={step.number}
                 className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden`}>
-                  <Image
-                    src={step.image}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 280px"
-                    className="object-cover mix-blend-luminosity opacity-45"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-[hsl(var(--primary)/0.35)]"
-                  />
-                  <span className="absolute top-4 left-4 font-display font-extrabold text-[clamp(3.5rem,9vw,6rem)] leading-none tracking-tight text-accent drop-shadow-[0_4px_12px_hsl(var(--ink-deep)/0.35)]">
+                <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden flex items-end justify-start p-5`}>
+                  <span className={`font-display font-extrabold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
                     {step.number}
                   </span>
                 </div>
