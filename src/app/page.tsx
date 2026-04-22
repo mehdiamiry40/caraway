@@ -14,9 +14,14 @@ export const metadata: Metadata = {
   },
   description:
     "Cash for cars Brisbane: sell your car for up to $9,999 with free car removal and same-day pickup. Any make, any condition. Trusted Brisbane car buyers — call 0481 438 444.",
-  alternates: { canonical: "/" },
+  // Canonical is rendered manually in the JSX below. Next.js's metadata
+  // resolver strips the trailing slash from root-path canonicals when
+  // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
+  // producing `https://www.caraway.au` instead of `https://www.caraway.au/`.
+  // That string mismatch is what GSC flags as "Alternative page with proper
+  // canonical tag" against the slash-bearing URL Google actually crawls.
   openGraph: {
-    url: "/",
+    url: `${SITE_URL}/`,
     type: "website",
     title: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
     description:
@@ -85,6 +90,7 @@ export default function HomePage() {
 
   return (
     <>
+      <link rel="canonical" href={`${SITE_URL}/`} />
       <JsonLd
         data={[
           faqPageSchema(faqs),
