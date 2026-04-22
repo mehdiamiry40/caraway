@@ -446,11 +446,11 @@
   .marquee-track { animation: none !important; }
 }
 
-/* Quote-result card — purple-tinted rounded card with coloured top bar */
+/* Quote-result card — deep ink surface with coloured top bar */
 @utility quote-card {
-  background: hsl(var(--card));
-  color: hsl(var(--foreground));
-  border: 1px solid hsl(var(--border));
+  background: hsl(var(--ink));
+  color: hsl(var(--on-dark-hi));
+  border: 1px solid hsl(var(--on-dark-hi) / 0.08);
   border-radius: 1.5rem;
   position: relative;
   overflow: hidden;
