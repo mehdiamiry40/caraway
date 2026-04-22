@@ -23,14 +23,14 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="relative z-10 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-bold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Brisbane&apos;s friendly car buyers
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display font-black text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="font-display font-extrabold text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
             >
               Sell your car in{" "}
               <span className="hl-orange">3&nbsp;steps</span>
@@ -38,7 +38,7 @@ export function Hero() {
               with <span className="hl-green">cash</span> on pickup.
             </h1>
 
-            <p className="mt-6 max-w-xl text-on-dark-hi/85 leading-relaxed text-lg sm:text-xl">
+            <p className="mt-6 max-w-xl text-on-dark-hi/85 leading-relaxed text-lg sm:text-xl font-light">
               Tell us your make and model, get a firm offer in under a minute,
               and we&apos;ll drive to you — any condition.
             </p>
@@ -99,7 +99,7 @@ function HeroArt() {
         <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-85">
           Top offer
         </span>
-        <span className="block font-display font-black text-2xl tabular-nums leading-none mt-1">
+        <span className="block font-display font-extrabold text-2xl tabular-nums leading-none mt-1">
           $9,999
         </span>
       </div>
@@ -112,7 +112,7 @@ function HeroArt() {
         <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-90">
           Pickup
         </span>
-        <span className="block font-display font-black text-lg leading-none mt-1">
+        <span className="block font-display font-extrabold text-lg leading-none mt-1">
           Same-day
         </span>
       </div>

@@ -47,12 +47,12 @@ export function HowItWorks() {
       <div className="site-container">
         <Reveal className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display font-black text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
+          <h2 className="font-display font-extrabold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
             Four simple steps.
             <br />
             <span className="hl-orange">Cash</span> in your hand.
           </h2>
-          <p className="mt-6 text-foreground/70 leading-relaxed text-base sm:text-lg max-w-xl mx-auto">
+          <p className="mt-6 text-foreground/70 leading-relaxed text-base sm:text-lg max-w-xl mx-auto font-light">
             We buy the car directly. If we&apos;re not the right fit, we&apos;ll
             say so — we&apos;d rather you know upfront than waste a day.
           </p>
@@ -78,7 +78,7 @@ export function HowItWorks() {
                     aria-hidden="true"
                     className="absolute inset-0 bg-[hsl(var(--primary)/0.35)]"
                   />
-                  <span className="absolute top-4 left-4 font-display font-black text-[clamp(3.5rem,9vw,6rem)] leading-none tracking-tight text-accent drop-shadow-[0_4px_12px_hsl(var(--ink-deep)/0.35)]">
+                  <span className="absolute top-4 left-4 font-display font-extrabold text-[clamp(3.5rem,9vw,6rem)] leading-none tracking-tight text-accent drop-shadow-[0_4px_12px_hsl(var(--ink-deep)/0.35)]">
                     {step.number}
                   </span>
                 </div>

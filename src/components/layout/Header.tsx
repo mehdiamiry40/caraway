@@ -55,7 +55,7 @@ export function Header() {
             aria-label="Caraway — Home"
             className="flex items-center gap-2 group shrink-0"
           >
-            <span className="font-display font-black text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
+            <span className="font-display font-extrabold text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
               caraway<span className="text-accent">.</span>
             </span>
           </Link>

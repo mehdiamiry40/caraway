@@ -57,7 +57,7 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-black text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-extrabold text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">caraway</span>
               <span className="text-accent">.</span>
@@ -84,7 +84,7 @@ export function Footer() {
                 <span>{BUSINESS.email}</span>
               </a>
               <p className="text-on-dark-hi/85">
-                <span className="font-bold text-on-dark-hi">{BUSINESS.hours}</span> · seven days
+                <span className="font-semibold text-on-dark-hi">{BUSINESS.hours}</span> · seven days
               </p>
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
@@ -131,7 +131,7 @@ export function Footer() {
 
         {/* Official references */}
         <div className="mt-14 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark-hi/80">
-          <span className="font-bold text-on-dark-hi">Official references:</span>
+          <span className="font-semibold text-on-dark-hi">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map((item) => (
             <TrackedOutboundLink
               key={item.href}
