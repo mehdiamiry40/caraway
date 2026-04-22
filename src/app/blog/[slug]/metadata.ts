@@ -95,6 +95,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     datePublished: post.date,
     dateModified: post.updatedAt,
     image: `${SITE_URL}/images/tow-truck-hero.webp`,
+    wordCount,
     author: {
       "@type": "Person",
       name: "Sam Williams",

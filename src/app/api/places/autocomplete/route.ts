@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getEnv } from "@/lib/env";
 
 /**
  * Server-side proxy for Google Places API (New) autocomplete.
@@ -159,7 +160,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+  const apiKey = getEnv().GOOGLE_PLACES_API_KEY;
   if (!apiKey) {
     console.warn("[places/autocomplete] GOOGLE_PLACES_API_KEY is not set");
     return NextResponse.json(

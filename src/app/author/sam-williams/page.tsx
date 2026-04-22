@@ -5,24 +5,13 @@ import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { PageShell } from "@/components/layout/PageShell";
 import { indexableBlogPosts } from "@/data/blog-posts";
 import { SITE_URL, BUSINESS, CONTENT_DEPLOY_DATE } from "@/lib/site";
-import { ArrowRight, Award, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock, Tag } from "lucide-react";
 
-// NOTE: Placeholder profile — replace `licenseNumber`, `yearsExperience`,
-// `vehiclesAppraised`, and the bio paragraphs with Sam's real details before
-// the next content refresh. Schema.org/Person markup below mirrors this data.
 const AUTHOR = {
   name: "Sam Williams",
-  jobTitle: "Senior Vehicle Buyer",
+  jobTitle: "Senior Buyer",
   slug: "sam-williams",
-  licenseNumber: "LMCT 4831592",
-  yearsExperience: 12,
-  vehiclesAppraised: "8,000+",
   location: "Brisbane, Queensland",
-  credentials: [
-    "Licensed Queensland Motor Dealer (LMCT)",
-    "Certified End-of-Life Vehicle (ELV) Recycler",
-    "Member, Motor Trades Association of Queensland (MTAQ)",
-  ],
   specialties: [
     "Cash-for-cars valuations",
     "Scrap and end-of-life vehicle assessment",
@@ -30,11 +19,10 @@ const AUTHOR = {
     "Queensland transfer and deregistration paperwork",
     "Commercial vehicle and 4WD appraisal",
   ],
-  bioShort: `Sam Williams is ${BUSINESS.name}'s Senior Vehicle Buyer in Brisbane. With 12 years appraising vehicles across Queensland and over 8,000 cars personally assessed, Sam helps Brisbane sellers get fair, transparent cash offers — whether the car runs, doesn't run, or is being sent for recycling.`,
+  bioShort: `Sam Williams is ${BUSINESS.name}'s Senior Buyer in Brisbane — appraising cars daily and writing here about fair pricing, paperwork, and getting paid fast when you sell a vehicle in Queensland.`,
   bioLong: [
-    `Sam started in the Queensland motor trade as an apprentice mechanic in the mid-2010s, moved into dealership pre-purchase inspections, and has spent the last several years on the buying side — appraising everything from near-new late-model sedans to flood-damaged write-offs. That hands-on mechanical background is what makes a difference when pricing cars that aren't textbook cases: old Commodores with deferred maintenance, Hiluxes with rust in the chassis rails, and the kind of high-kilometre fleet vehicles that wholesalers don't want to touch.`,
-    `At ${BUSINESS.name}, Sam leads the valuation team, sets our daily price guides against live scrap-metal and auction data, and personally handles the trickier appraisals — deceased estates, written-off vehicles, flood-affected cars from the 2022 South-East Queensland floods, and commercial fleet clear-outs. Sam's philosophy is simple: the price you're quoted on the phone is the price you're paid on pickup, with no last-minute "reassessment" when the tow truck arrives.`,
-    `Outside work, Sam restores older Japanese performance cars and follows Supercars closely — Bathurst weekend is a non-negotiable holiday.`,
+    `Sam's day-to-day is pricing Brisbane cars: what a 2008 Commodore with 280,000 km is actually worth, why a flood-affected Hilux still moves, and how to value a car that won't start without dragging a seller through an in-person inspection. Writing here is an extension of that work — honest pricing explained, the paperwork demystified, and common mistakes called out.`,
+    `The short version of our philosophy: the price you're quoted on the phone is the price you're paid on pickup. No last-minute "reassessment" when the tow truck arrives, and no pressure to accept an offer. Articles on this blog reflect how we actually run quotes and jobs — not a sales script.`,
   ],
 };
 
@@ -46,13 +34,13 @@ const breadcrumbs = [
 
 export const metadata: Metadata = {
   title: `${AUTHOR.name} — ${AUTHOR.jobTitle} at ${BUSINESS.name}`,
-  description: `${AUTHOR.name}, ${AUTHOR.jobTitle} at ${BUSINESS.name} — ${AUTHOR.yearsExperience} years appraising Brisbane vehicles, ${AUTHOR.vehiclesAppraised} cars assessed. Licensed Queensland Motor Dealer (${AUTHOR.licenseNumber}).`,
+  description: `${AUTHOR.name}, ${AUTHOR.jobTitle} at ${BUSINESS.name}. Writes about Brisbane cash-for-cars pricing, paperwork, and how to sell a vehicle without the common mistakes.`,
   alternates: { canonical: `/author/${AUTHOR.slug}` },
   openGraph: {
     type: "profile",
     url: `/author/${AUTHOR.slug}`,
     title: `${AUTHOR.name} — ${AUTHOR.jobTitle} at ${BUSINESS.name}`,
-    description: `${AUTHOR.yearsExperience} years of Queensland vehicle appraisal experience. Expert insights on selling your car for cash in Brisbane.`,
+    description: `Notes from ${BUSINESS.name}'s Brisbane buyer on fair pricing, Queensland paperwork, and getting paid fast when you sell your car.`,
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -62,7 +50,12 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: `${AUTHOR.name} — ${AUTHOR.jobTitle} at ${BUSINESS.name}`,
+    description: `Notes from ${BUSINESS.name}'s Brisbane buyer on fair pricing, Queensland paperwork, and getting paid fast when you sell your car.`,
+    images: ["/images/tow-truck-hero.webp"],
+  },
 };
 
 export default function AuthorPage() {
@@ -104,17 +97,7 @@ export default function AuthorPage() {
                   addressCountry: "AU",
                 },
               },
-              hasCredential: AUTHOR.credentials.map((name) => ({
-                "@type": "EducationalOccupationalCredential",
-                credentialCategory: "license",
-                name,
-              })),
               knowsAbout: AUTHOR.specialties,
-              identifier: {
-                "@type": "PropertyValue",
-                propertyID: "LMCT",
-                value: AUTHOR.licenseNumber,
-              },
               sameAs: [`${SITE_URL}/author/sam-williams`],
             },
           },
@@ -154,35 +137,14 @@ export default function AuthorPage() {
                   <dd className="col-span-7 text-muted-foreground">{AUTHOR.jobTitle}</dd>
                 </div>
                 <div className="py-3.5 grid grid-cols-12 gap-4">
-                  <dt className="col-span-5 font-display text-foreground">Experience</dt>
-                  <dd className="col-span-7 text-muted-foreground">
-                    {AUTHOR.yearsExperience} years
-                  </dd>
-                </div>
-                <div className="py-3.5 grid grid-cols-12 gap-4">
-                  <dt className="col-span-5 font-display text-foreground">Cars appraised</dt>
-                  <dd className="col-span-7 text-muted-foreground">{AUTHOR.vehiclesAppraised}</dd>
-                </div>
-                <div className="py-3.5 grid grid-cols-12 gap-4">
-                  <dt className="col-span-5 font-display text-foreground">Licence</dt>
-                  <dd className="col-span-7 text-muted-foreground">{AUTHOR.licenseNumber}</dd>
+                  <dt className="col-span-5 font-display text-foreground">Works at</dt>
+                  <dd className="col-span-7 text-muted-foreground">{BUSINESS.name}</dd>
                 </div>
                 <div className="py-3.5 grid grid-cols-12 gap-4">
                   <dt className="col-span-5 font-display text-foreground">Based in</dt>
                   <dd className="col-span-7 text-muted-foreground">{AUTHOR.location}</dd>
                 </div>
               </dl>
-              <div className="mt-6 pt-6 border-t border-border/60">
-                <p className="eyebrow mb-3">Credentials</p>
-                <ul className="space-y-2.5 text-sm text-muted-foreground">
-                  {AUTHOR.credentials.map((c) => (
-                    <li key={c} className="flex items-start gap-2.5">
-                      <Award className="h-4 w-4 text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
-                      <span>{c}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
               <div className="mt-6 pt-6 border-t border-border/60">
                 <p className="eyebrow mb-3">Specialises in</p>
                 <ul className="flex flex-wrap gap-2">

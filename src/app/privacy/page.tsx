@@ -17,7 +17,13 @@ export const metadata: Metadata = {
       "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
     images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Caraway",
+    description:
+      "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
+    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+  },
 };
 
 const canonical = `${SITE_URL}/privacy`;

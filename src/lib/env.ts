@@ -19,6 +19,9 @@ const envSchema = z.object({
   QUOTE_NOTIFICATION_TO: z.optional(z.email()),
   CONTACT_NOTIFICATION_FROM: z.optional(z.string().check(z.minLength(1))),
   CONTACT_NOTIFICATION_TO: z.optional(z.email()),
+  // Google Places proxy — used by /api/places/autocomplete to return
+  // address suggestions without exposing the API key to the client.
+  GOOGLE_PLACES_API_KEY: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
   VERCEL_ENV: z.optional(z.enum(["production", "preview", "development"])),
   VERCEL_GIT_COMMIT_SHA: z.optional(z.string()),

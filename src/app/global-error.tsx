@@ -30,12 +30,12 @@ export default function GlobalError({
   return (
     <html lang="en-AU">
       <body>
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#0F172A", background: "#F7FAFC" }}>
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#2A1F4B", background: "#FAF9F2" }}>
           <div style={{ maxWidth: "28rem", textAlign: "center" }}>
-            <h1 style={{ fontSize: "1.875rem", fontWeight: 700, marginBottom: "0.75rem" }}>
+            <h1 style={{ fontSize: "1.875rem", fontWeight: 700, marginBottom: "0.75rem", color: "#5B3FBE" }}>
               Something went wrong
             </h1>
-            <p style={{ color: "#475569", marginBottom: "1.5rem", lineHeight: 1.5 }}>
+            <p style={{ color: "#5A5272", marginBottom: "1.5rem", lineHeight: 1.5 }}>
               We hit an unexpected error loading the page. Please try again.
             </p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
@@ -44,12 +44,12 @@ export default function GlobalError({
                 onClick={reset}
                 style={{
                   padding: "0.75rem 2rem",
-                  background: "#1E3A8A",
+                  background: "#5B3FBE",
                   color: "#FFFFFF",
                   border: "none",
-                  borderRadius: "0.5rem",
+                  borderRadius: "9999px",
                   fontSize: "0.875rem",
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: "pointer",
                 }}
               >
@@ -61,16 +61,16 @@ export default function GlobalError({
                 style={{
                   padding: "0.75rem 2rem",
                   background: "transparent",
-                  color: "#1E3A8A",
-                  border: "1px solid #1E3A8A",
-                  borderRadius: "0.5rem",
+                  color: "#5B3FBE",
+                  border: "1px solid #5B3FBE",
+                  borderRadius: "9999px",
                   fontSize: "0.875rem",
-                  fontWeight: 600,
+                  fontWeight: 700,
                   cursor: "pointer",
                   textDecoration: "none",
                 }}
               >
-                Go home
+                Back to home
               </a>
             </div>
           </div>

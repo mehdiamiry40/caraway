@@ -75,7 +75,10 @@ export function QuoteForm() {
       setIsSuccess(true);
       reset();
     } else {
-      setErrorMessage(result.message || "An error occurred.");
+      setErrorMessage(
+        result.message ||
+          "We couldn't send your quote. Please try again or call 0481 438 444.",
+      );
     }
   };
 
