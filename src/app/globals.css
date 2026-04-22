@@ -164,7 +164,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-extrabold;
+    @apply font-bold;
     letter-spacing: var(--tracking-tight);
     text-wrap: balance;
     color: hsl(var(--primary));
@@ -304,9 +304,9 @@
 
   .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-extrabold text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
-  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-extrabold text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
-  .prose-body h4 { @apply text-lg sm:text-xl font-display font-extrabold text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
+  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-bold text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
+  .prose-body h4 { @apply text-lg sm:text-xl font-display font-bold text-primary mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }

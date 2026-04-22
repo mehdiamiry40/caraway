@@ -53,7 +53,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                   <span
                     aria-current="page"
                     className={cn(
-                      "font-bold px-1.5 py-1 -mx-1.5 -my-1 rounded-md",
+                      "font-semibold px-1.5 py-1 -mx-1.5 -my-1 rounded-md",
                       isLast && "block max-w-[16rem] sm:max-w-[28rem] md:max-w-none truncate",
                       light ? "text-primary-foreground" : "text-foreground"
                     )}

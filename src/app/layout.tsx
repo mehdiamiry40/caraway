@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, JetBrains_Mono } from "next/font/google";
 
-// Poppins — rounded geometric sans, heavy display weights for the bold
-// Looping-style headline treatment.
+// Poppins — rounded geometric sans. 300 (light) softens body/UI text where
+// Poppins 400 reads heavier than typical sans-serifs. 900 (black) reserved for
+// emphasis only; default headlines top out at 800 (extrabold).
 const poppins = Poppins({
   subsets: ["latin"],
-  // Weights 400–900 are all referenced in components (font-normal through
-  // font-black). 300 (light) is never used — dropping it trims payload.
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-poppins",
   display: "swap",
 });
