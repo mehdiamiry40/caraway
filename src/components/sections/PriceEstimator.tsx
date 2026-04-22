@@ -391,7 +391,7 @@ export function PriceEstimator() {
     return (
       <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Quote submitted">
         <div className="site-container">
-          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-2xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
+          <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-3xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
               <PartyPopper className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} aria-hidden="true" />
             </div>
@@ -454,7 +454,7 @@ export function PriceEstimator() {
 
         {/* Progress bar */}
         <div
-          className="max-w-2xl mx-auto mb-8"
+          className="max-w-3xl mx-auto mb-8"
           role="progressbar"
           aria-valuenow={progressPercent}
           aria-valuemin={0}
@@ -491,7 +491,7 @@ export function PriceEstimator() {
         </div>
 
         {/* Card */}
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="relative bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] overflow-hidden">
 
             {/* Honeypot — visually hidden, aria-hidden, out of tab order. */}
