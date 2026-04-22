@@ -77,7 +77,7 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <GetMyQuoteButton size="sm">Check my car</GetMyQuoteButton>
+            <GetMyQuoteButton size="sm">Get my quote</GetMyQuoteButton>
           </div>
 
           <MobileMenuClient serviceLinks={serviceLinks} />
