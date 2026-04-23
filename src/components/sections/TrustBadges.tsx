@@ -37,7 +37,7 @@ export function TrustBadges() {
               key={p}
               className="flex items-center gap-2.5 text-sm sm:text-base font-medium text-foreground/85"
             >
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cta/15 text-cta-strong">
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cta/15 text-cta">
                 <Check size={14} strokeWidth={3} aria-hidden="true" />
               </span>
               {p}
