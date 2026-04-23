@@ -116,7 +116,7 @@ export function QuoteForm() {
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
-                    <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent-strong" aria-hidden />
+                    <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
@@ -128,10 +128,6 @@ export function QuoteForm() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
-                  <p className="text-xs text-muted-foreground -mt-1 mb-1">
-                    Fields marked <span aria-hidden="true" className="text-destructive">*</span>
-                    <span className="sr-only">asterisk</span> are required.
-                  </p>
                   <div className="absolute -left-[9999px]" aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input

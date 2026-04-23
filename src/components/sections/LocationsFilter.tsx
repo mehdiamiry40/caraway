@@ -66,7 +66,7 @@ export function LocationsFilter() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MapPin className="h-4 w-4 text-accent-strong" aria-hidden="true" />
+                  <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
                 </div>
                 <h2 className="text-base font-display text-foreground group-hover:text-primary transition-colors">
                   {suburb.h1}
@@ -75,7 +75,7 @@ export function LocationsFilter() {
               <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5">
                 {suburb.intro}
               </p>
-              <span className="text-sm text-accent-strong flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              <span className="text-sm text-accent flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                 View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>

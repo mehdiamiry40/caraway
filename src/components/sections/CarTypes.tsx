@@ -49,7 +49,7 @@ export function CarTypes() {
               >
                 <div className={cn(
                   "flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl mb-3",
-                  "bg-accent/20 text-accent-strong",
+                  "bg-accent/20 text-accent",
                   "transition-all duration-300"
                 )}>
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />

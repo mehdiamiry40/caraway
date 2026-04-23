@@ -59,7 +59,7 @@ export function ContactForm() {
     messageLength >= CONTACT_MESSAGE_MAX
       ? "text-destructive"
       : messageLength > CONTACT_MESSAGE_WARN
-      ? "text-accent-strong"
+      ? "text-accent"
       : "text-muted-foreground";
 
   const onSubmit = async (data: ContactFormInput) => {
@@ -96,7 +96,7 @@ export function ContactForm() {
         <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
-            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent-strong" aria-hidden />
+            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
           <h2
             ref={successHeadingRef}

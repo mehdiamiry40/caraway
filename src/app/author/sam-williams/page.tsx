@@ -172,7 +172,7 @@ export default function AuthorPage() {
               >
                 <div className="p-4 sm:p-6 md:p-8 flex flex-col h-full">
                   <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-5">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 text-accent-strong text-xs">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3 py-1.5 text-accent text-xs">
                       <Tag className="h-3 w-3" />
                       {post.category}
                     </span>
@@ -201,7 +201,7 @@ export default function AuthorPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent-strong hover:text-accent-strong/80 transition-colors min-h-[44px] touch-manipulation"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent/80 transition-colors min-h-[44px] touch-manipulation"
                   >
                     Read more
                     <ArrowRight className="h-3.5 w-3.5" />
