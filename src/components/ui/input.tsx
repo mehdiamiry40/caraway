@@ -15,7 +15,7 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
           "flex h-12 sm:h-14 w-full px-4 text-base leading-snug",
           fieldSurfaceClasses,
           "file:border-0 file:bg-transparent file:text-sm file:font-medium",
-          "placeholder:text-muted-foreground/60",
+          "placeholder:text-muted-foreground",
           fieldStateClasses,
           fieldAutofillClasses,
           className
