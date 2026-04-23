@@ -28,10 +28,15 @@ export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     if (errorMessage) errorAlertRef.current?.focus();
   }, [errorMessage]);
+
+  useEffect(() => {
+    if (isSuccess) successHeadingRef.current?.focus();
+  }, [isSuccess]);
 
   const {
     register,
@@ -93,7 +98,13 @@ export function ContactForm() {
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
-          <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h2>
+          <h2
+            ref={successHeadingRef}
+            tabIndex={-1}
+            className="text-xl sm:text-2xl font-display text-primary mb-3 focus-visible:outline-none"
+          >
+            Message sent — thanks!
+          </h2>
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
             We&apos;ll reply within 1 business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
@@ -109,8 +120,12 @@ export function ContactForm() {
     <div className="bg-card rounded-2xl p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
       <h2 className="text-lg sm:text-xl font-display text-foreground mb-1 pt-1">Send us a message</h2>
-      <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
+      <p className="text-sm text-foreground/80 mb-2">
         Have a question? Fill out the form and we&apos;ll get back to you.
+      </p>
+      <p className="text-xs text-muted-foreground mb-5 sm:mb-6">
+        Fields marked <span aria-hidden="true" className="text-destructive">*</span>
+        <span className="sr-only">asterisk</span> are required.
       </p>
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
         {/* Honeypot — hidden from real users, traps bots */}

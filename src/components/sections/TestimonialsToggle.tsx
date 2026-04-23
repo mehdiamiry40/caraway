@@ -12,7 +12,7 @@ function Stars({ count }: { count: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`w-4 h-4 ${i < count ? "fill-accent text-accent" : "fill-transparent text-border"}`}
+          className={`w-4 h-4 ${i < count ? "fill-accent-strong text-accent-strong" : "fill-transparent text-border"}`}
           aria-hidden="true"
         />
       ))}

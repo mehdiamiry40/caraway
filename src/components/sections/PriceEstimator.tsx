@@ -295,7 +295,7 @@ export function PriceEstimator() {
                       handleEstimate();
                     }}
                     disabled={!canCalculate || isCalculating}
-                    variant="default"
+                    variant="cta"
                     size="lg"
                     className="group w-full sm:w-auto"
                   >
@@ -379,7 +379,7 @@ export function PriceEstimator() {
                     </Button>
                     <Button
                       onClick={() => goToStep(3)}
-                      variant="default"
+                      variant="cta"
                       size="lg"
                       className="group w-full sm:w-auto"
                     >
@@ -548,7 +548,7 @@ export function PriceEstimator() {
                   <Button
                     onClick={handleSubmit}
                     disabled={!canSubmit || isSubmitting}
-                    variant="default"
+                    variant="cta"
                     size="lg"
                     className="w-full sm:w-auto"
                   >

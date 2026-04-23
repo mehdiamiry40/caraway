@@ -44,7 +44,7 @@ export default function ServicePageTemplate({
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             <p className="eyebrow mt-6 mb-4">Service</p>
-            <h1 className="font-display text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mb-6" style={{ letterSpacing: "var(--tracking-display)" }}>
+            <h1 className="h-page text-foreground max-w-3xl mb-6">
               {service.h1}
             </h1>
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">

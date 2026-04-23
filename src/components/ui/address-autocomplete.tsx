@@ -250,8 +250,14 @@ export function AddressAutocomplete({
                 id={`${listboxId}-opt-${i}`}
                 role="option"
                 aria-selected={isActive}
-                // Use mousedown so the click fires before the input's blur.
+                // Use mousedown/touchend so selection fires before the input's blur
+                // on both desktop and mobile Safari (which otherwise dismisses the
+                // listbox before the click resolves).
                 onMouseDown={(e) => {
+                  e.preventDefault();
+                  pick(s);
+                }}
+                onTouchEnd={(e) => {
                   e.preventDefault();
                   pick(s);
                 }}

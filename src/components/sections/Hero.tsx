@@ -9,7 +9,7 @@ import { trackEvent } from "@/lib/analytics";
 
 const promises = [
   "Firm offer in 60 seconds",
-  "Free pickup across Brisbane",
+  "No haggling, no tricks",
   "Cash on the spot",
 ];
 
@@ -23,17 +23,17 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="relative z-10 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-ink-deep/50 ring-1 ring-on-dark-hi/20 px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Brisbane&apos;s friendly car buyers
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display font-extrabold text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="h-hero text-on-dark-hi"
             >
               Sell your car in{" "}
-              <span className="hl-orange">3&nbsp;steps</span>
+              <span className="hl-plate">3&nbsp;steps</span>
               <br />
               with <span className="hl-green">cash</span> on pickup.
             </h1>
@@ -117,7 +117,7 @@ function HeroArt() {
         </span>
       </div>
 
-      <div className="relative aspect-[4/5] sm:aspect-[5/6] rounded-[2.5rem] overflow-hidden ring-4 ring-[hsl(var(--on-dark-hi)/0.18)] bg-plate shadow-[0_30px_80px_-20px_hsl(var(--ink-deep)/0.6)]">
+      <div className="relative aspect-[4/5] sm:aspect-[5/6] rounded-4xl overflow-hidden ring-4 ring-[hsl(var(--on-dark-hi)/0.18)] bg-plate shadow-[0_30px_80px_-20px_hsl(var(--ink-deep)/0.6)]">
         <Image
           src="/images/tow-truck-hero.webp"
           alt="Caraway flatbed tow truck collecting a customer's car for cash in Brisbane — same-day pickup with free towing across Greater Brisbane"
