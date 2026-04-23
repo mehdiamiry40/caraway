@@ -274,6 +274,8 @@ export function ContactForm() {
             tabIndex={-1}
             className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
             role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
           >
             <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
             <div className="flex-1">

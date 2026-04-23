@@ -50,6 +50,11 @@ export function validateEndpoint(url: string): boolean {
   if (hostname.startsWith("169.254.")) return false;
   if (/^172\.(1[6-9]|2\d|3[01])\./.test(hostname)) return false;
 
+  // Block IPv6 Unique Local Addresses (fc00::/7 — fc00 and fd00 prefixes).
+  if (/^f[cd][0-9a-f]{2}:/i.test(hostname)) return false;
+  // Block IPv6 link-local range (fe80::/10).
+  if (/^fe[89ab][0-9a-f]:/i.test(hostname)) return false;
+
   const allowlistRaw = process.env.ALLOWED_ENDPOINT_HOSTS?.trim();
   if (allowlistRaw) {
     const allowed = allowlistRaw

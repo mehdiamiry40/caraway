@@ -50,10 +50,16 @@ export async function GET() {
     quoteChannels.webhook &&
     quoteChannels.email;
 
-  const checks = {
-    contact: contactChannels,
-    quote: quoteChannels,
-  };
+  const isProduction = process.env.VERCEL_ENV === "production";
+
+  // Public callers in production only see the overall status — channel-by-channel
+  // details (which integrations are wired up) are ops metadata, not lead-safety
+  // signals, so we withhold them from unauthenticated traffic. Preview and
+  // development environments still return the full breakdown for debugging.
+  const body = (status: "ok" | "degraded" | "error") =>
+    isProduction
+      ? { status, fullyRedundant }
+      : { status, fullyRedundant, checks: { contact: contactChannels, quote: quoteChannels } };
 
   const headers = {
     "X-Robots-Tag": "noindex",
@@ -61,12 +67,11 @@ export async function GET() {
   } as const;
 
   if (!contactOk || !quoteOk) {
-    return NextResponse.json(
-      { status: "error", checks },
-      { status: 503, headers },
-    );
+    return NextResponse.json(body("error"), { status: 503, headers });
   }
 
-  const status = fullyRedundant ? "ok" : "degraded";
-  return NextResponse.json({ status, checks }, { status: 200, headers });
+  return NextResponse.json(
+    body(fullyRedundant ? "ok" : "degraded"),
+    { status: 200, headers },
+  );
 }

@@ -147,6 +147,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
                 <Link
                   href={item.href}
                   role="menuitem"
+                  aria-current={isActive ? "page" : undefined}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block px-5 py-3 text-sm font-medium transition-all duration-150 focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",

@@ -16,7 +16,7 @@ export default function Accessibility() {
         <div className="prose-body max-w-3xl">
           <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Our commitment</h2>
           <p>
-            We aim to conform to <strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>.
+            We aim to conform to <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>.
             Where we fall short, we&apos;re working to improve.
           </p>
           <p className="mt-3 text-sm text-muted-foreground">

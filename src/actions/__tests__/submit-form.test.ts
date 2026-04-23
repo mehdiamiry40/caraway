@@ -79,6 +79,21 @@ describe("validateEndpoint", () => {
     it("blocks GCP metadata endpoint", () => {
       expect(validateEndpoint("https://metadata.google.internal/")).toBe(false);
     });
+
+    it("blocks IPv6 Unique Local Address ranges (fc00::/7)", () => {
+      expect(validateEndpoint("https://[fd00::1]/hook")).toBe(false);
+      expect(validateEndpoint("https://[fc00::1]/hook")).toBe(false);
+      expect(validateEndpoint("https://[fd12:3456:789a::1]/hook")).toBe(false);
+    });
+
+    it("blocks IPv6 link-local addresses (fe80::/10)", () => {
+      expect(validateEndpoint("https://[fe80::1]/hook")).toBe(false);
+      expect(validateEndpoint("https://[fea0::1]/hook")).toBe(false);
+    });
+
+    it("allows global IPv6 addresses (2000::/3)", () => {
+      expect(validateEndpoint("https://[2001:db8::1]/hook")).toBe(true);
+    });
   });
 
   describe("port validation", () => {
