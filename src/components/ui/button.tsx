@@ -14,14 +14,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Lime-green action — the site's default CTA ("Get my quote").
-        cta:
+        // Bright lime-green primary — mirrors Looping's "check your car" CTA.
+        default:
           "bg-cta text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5),0_12px_24px_hsl(var(--cta)/0.25)] hover:bg-cta/95 hover:shadow-[0_6px_0_0_hsl(var(--cta)/0.55),0_14px_28px_hsl(var(--cta)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Deep purple — brand primary used for secondary CTAs on light surfaces.
         primary:
           "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:shadow-[0_6px_0_0_hsl(var(--primary)/0.55),0_14px_28px_hsl(var(--primary)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Orange emphasis — used for highlight CTAs.
-        accent:
+        secondary:
           "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:shadow-[0_6px_0_0_hsl(var(--accent)/0.55),0_14px_28px_hsl(var(--accent)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
         // Light outline for quiet actions on white surfaces.
         outline:
@@ -34,13 +34,13 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-12 px-6 text-[0.9375rem]",
-        sm: "h-11 px-5 text-sm",
+        sm: "h-10 px-5 text-sm",
         lg: "h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg",
         icon: "h-12 w-12",
       },
     },
     defaultVariants: {
-      variant: "cta",
+      variant: "default",
       size: "default",
     },
   },

@@ -50,12 +50,6 @@
   --color-cta: hsl(var(--cta));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  /* Darker variants for small text/icons on light surfaces where the vibrant
-   * tones fail WCAG 2.1 AA contrast. Pair -strong with light backgrounds;
-   * keep the vibrant base for filled buttons/chips. */
-  --color-accent-strong: hsl(var(--accent-strong));
-  --color-cta-strong: hsl(var(--cta-strong));
-
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
   --shadow-md: 0 4px 8px hsl(var(--shadow-color) / 0.06), 0 10px 20px hsl(var(--shadow-color) / 0.10);
   --shadow-lg: 0 8px 16px hsl(var(--shadow-color) / 0.08), 0 24px 48px hsl(var(--shadow-color) / 0.14);
@@ -81,7 +75,6 @@
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-3xl: 2rem;
-  --radius-4xl: 2.5rem;
   --radius-full: 9999px;
 }
 
@@ -102,8 +95,7 @@
   --muted-foreground: 258 15% 40%;     /* #5E5770 */
 
   --accent: 14 95% 60%;                /* #F97449 — orange emphasis */
-  --accent-foreground: 258 35% 12%;    /* dark plum — 8.9:1 on orange for WCAG AA */
-  --accent-strong: 14 88% 42%;         /* #C9441C — darker orange for text/icons on light bg (4.8:1) */
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 74% 52%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
@@ -138,8 +130,7 @@
   --plate-foreground: 258 35% 12%;
   /* Action green for CTA buttons and the "action" accent — distinct from --success. */
   --cta: 92 57% 48%;                   /* #7CB92F — lime CTA green */
-  --cta-foreground: 259 50% 15%;       /* deep plum — 7.8:1 on lime for WCAG AA */
-  --cta-strong: 92 70% 28%;            /* #3F7815 — darker lime for text/icons on light bg (5.7:1) */
+  --cta-foreground: 0 0% 100%;
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -245,48 +236,24 @@
     text-wrap: balance;
   }
 
-  /* Display headings — shared clamp/leading/tracking for hero and page-level h1/h2.
-     Use these instead of re-declaring `font-display font-extrabold text-[clamp(...)]`
-     inline. Extend with tailwind utilities for colour on dark bands. */
-  .h-hero {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(2.75rem, 7vw, 5.5rem);
-    line-height: 0.98;
-    letter-spacing: var(--tracking-display);
-    text-wrap: balance;
-  }
-  .h-page {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(2.25rem, 5.5vw, 3.75rem);
-    line-height: 1.05;
-    letter-spacing: var(--tracking-display);
-    text-wrap: balance;
-  }
-
   /* Eyebrow — small orange label above a purple headline */
   .eyebrow {
     display: inline-block;
     font-size: 0.9375rem;
     font-weight: 700;
     letter-spacing: 0;
-    color: hsl(var(--accent-strong));
+    color: hsl(var(--accent));
   }
   .eyebrow-on-dark {
     display: inline-block;
     font-size: 0.9375rem;
     font-weight: 700;
-    color: hsl(var(--plate));
+    color: hsl(var(--accent));
   }
 
-  /* "Highlight" word — used inline within a headline for colour mixing.
-   * hl-orange = dark-ish orange for text on LIGHT backgrounds.
-   * hl-green  = lime, intended for LARGE text on DARK backgrounds only.
-   * hl-plate  = plate yellow for LARGE text on DARK backgrounds. */
-  .hl-orange { color: hsl(var(--accent-strong)); }
+  /* "Highlight" word — used inline within a headline for colour mixing */
+  .hl-orange { color: hsl(var(--accent)); }
   .hl-green { color: hsl(var(--cta)); }
-  .hl-plate { color: hsl(var(--plate)); }
   .hl-lilac { color: hsl(var(--secondary)); }
 
   .link-underline {

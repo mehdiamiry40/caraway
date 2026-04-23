@@ -10,62 +10,49 @@ The indirection lets us swap the palette without touching components.
 
 ---
 
-## Current palette — Looping direction
+## Current palette
 
-White canvas with deep purple feature bands, orange emphasis accent, lime
-action CTAs, and plate yellow for playful surfaces. Ink text is deep plum,
-not black, so the whole palette stays tonally connected. Light mode only.
+Soft blue-tinted paper canvas, deep navy primary, light-blue secondary wash,
+and a warm coral (terracotta) accent for CTAs and emphasis. Hairline rules
+stay navy to preserve the Swiss-style typographic grid. Light mode only.
 
-| Token                      | Hex       | HSL             | Role                                        |
-| -------------------------- | --------- | --------------- | ------------------------------------------- |
-| `--background`             | `#FFFFFF` | `0 0% 100%`     | Page canvas (clean white)                   |
-| `--foreground`             | `#211734` | `258 35% 15%`   | Body ink (deep plum — not true black)       |
+| Token                      | Hex      | HSL              | Role                                        |
+| -------------------------- | -------- | ---------------- | ------------------------------------------- |
+| `--background`             | `#F7FAFC` | `210 40% 98%`   | Page canvas (blue-tinted paper)             |
+| `--foreground`             | `#0F172A` | `222 47% 11%`   | Default body text (deep navy)               |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)  |
-| `--card-foreground`        | `#211734` | `258 35% 15%`   | Text on cards                               |
-| `--primary`                | `#5B3FBE` | `259 55% 45%`   | Looping purple — headings, brand, hero band |
+| `--card-foreground`        | `#0F172A` | `222 47% 11%`   | Text on cards                               |
+| `--primary`                | `#1E3A8A` | `224 76% 33%`   | Brand / dominant action (navy)              |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                         |
-| `--secondary`              | `#F4EEFB` | `272 60% 96%`   | Soft lavender wash (muted surfaces)         |
-| `--secondary-foreground`   | `#2D1F5C` | `259 55% 25%`   | Text on `--secondary`                       |
-| `--muted`                  | `#F6F3FA` | `270 30% 97%`   | Subtle backgrounds (code, fills)            |
-| `--muted-foreground`       | `#5E5770` | `258 15% 40%`   | Secondary / helper text                     |
-| `--accent`                 | `#F97449` | `14 95% 60%`    | Orange emphasis — highlights, chips         |
+| `--secondary`              | `#BFDBFE` | `213 97% 87%`   | Low-emphasis surface (light-blue wash)      |
+| `--secondary-foreground`   | `#0F172A` | `222 47% 11%`   | Text on `--secondary`                       |
+| `--muted`                  | `#F1F5F9` | `210 40% 96%`   | Subtle backgrounds (code, fills)            |
+| `--muted-foreground`       | `#475569` | `215 19% 35%`   | Secondary / helper text                     |
+| `--accent`                 | `#C2410C` | `17 79% 40%`    | Coral terracotta — CTAs, emphasis           |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                          |
-| `--cta`                    | `#7CB92F` | `92 57% 48%`    | Lime action green — primary CTA fills       |
-| `--cta-foreground`         | `#211734` | `259 50% 15%`   | Text on `--cta` (deep plum, 7.8:1 contrast) |
-| `--plate`                  | `#F5D012` | `48 95% 54%`    | Plate yellow — step cards, playful fills    |
-| `--plate-foreground`       | `#1B0F38` | `258 35% 12%`   | Text on `--plate`                           |
-| `--destructive`            | `#DC2626` | `0 74% 52%`     | Errors, destructive actions                 |
+| `--destructive`            | `#B91C1C` | `0 74% 42%`     | Errors, destructive actions                 |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                     |
-| `--success`                | `#16A34A` | `142 71% 38%`   | Success signal (emerald — distinct from CTA)|
+| `--success`                | `#047857` | `160 84% 30%`   | Success signal (emerald)                    |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                         |
-| `--warning`                | `#F59E0B` | `38 92% 50%`    | Warning signal (amber)                      |
+| `--warning`                | `#D97706` | `32 95% 44%`    | Warning signal (amber)                      |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                         |
 | `--info`                   | `#0284C7` | `199 89% 48%`   | Neutral notices (sky)                       |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                            |
-| `--border`                 | `#E5DEEF` | `270 20% 90%`   | Default hairline                            |
-| `--input`                  | `#DACEE8` | `270 20% 85%`   | Form field border                           |
-| `--ring`                   | `#5B3FBE` | `259 55% 45%`   | Focus ring                                  |
+| `--border`                 | `#0F172A` | `222 47% 11%`   | Default border / divider (navy hairline)    |
+| `--input`                  | `#0F172A` | `222 47% 11%`   | Form field border                           |
+| `--ring`                   | `#1E3A8A` | `224 76% 33%`   | Focus ring                                  |
 
-### Ink tokens — for dark bands
+### Legacy accent tokens
 
-| Token         | Hex       | HSL           | Role                                  |
-| ------------- | --------- | ------------- | ------------------------------------- |
-| `--ink`       | `#2A1A4D` | `259 50% 20%` | Deep plum band (footer, top utility)  |
-| `--ink-deep`  | `#1F1239` | `259 50% 15%` | Darker plum variant                   |
-| `--ink-raised`| `#44337A` | `259 45% 30%` | Raised surface on dark                |
-| `--on-dark`   | `#DDD1EB` | `270 30% 88%` | Muted text on ink                     |
-| `--on-dark-hi`| `#FFFFFF` | `0 0% 100%`   | High-contrast text on ink             |
+Token names are historical — kept stable because several components
+reference them directly. Values map onto the new navy / coral palette.
 
-### `--cta` vs `--success`
-
-Two greens, two different jobs. Do not swap them.
-
-- **`--cta`** (lime `#7CB92F`) — the button fill. "Get my quote" and every
-  primary action the user is meant to tap. Pair with `text-cta-foreground`
-  (deep plum), **not** white — white text on lime is 2.27:1 and fails WCAG AA.
-- **`--success`** (emerald `#16A34A`) — status colour for toasts, success
-  banners, validated form state, and narrative "yes" signals. White on
-  emerald is accessible (4.5:1+).
+| Token            | Hex      | HSL              | Role                                          |
+| ---------------- | -------- | ---------------- | --------------------------------------------- |
+| `--grad-violet`  | `#1E3A8A` | `224 76% 33%`   | Navy                                          |
+| `--grad-pink`    | `#C2410C` | `17 79% 40%`    | Coral terracotta                              |
+| `--grad-lilac`   | `#BFDBFE` | `213 97% 87%`   | Light blue                                    |
+| `--grad-cyan`    | `#0284C7` | `199 89% 48%`   | Sky                                           |
 
 ### WCAG contrast
 
@@ -74,16 +61,6 @@ change tokens. Large text and UI components follow WCAG large-text thresholds.
 
 All body text ≥ 4.5:1. Large text and UI components ≥ 3:1. No information
 relies on colour alone — icons and text always accompany status colours.
-
-Known pairings worth preserving:
-
-- `text-cta-foreground` on `bg-cta` — **7.8:1** (deep plum on lime). Changing
-  `--cta-foreground` back to white drops this to 2.27:1 and fails AA.
-- `text-on-dark-hi` on `bg-primary` — **7.8:1** (white on Looping purple).
-- `text-primary` on `bg-background` — **7.6:1** (purple headings on white).
-- `text-accent` on `bg-primary` — **~2.6:1** (orange on purple). Used for
-  the hero `hl-orange` highlight at 88px display size only; do not reuse
-  on small text.
 
 ---
 
@@ -106,11 +83,8 @@ Known pairings worth preserving:
 - **No named Tailwind colour utilities** (`bg-blue-500`, `text-gray-900`,
   etc.). If you need a colour that isn't in the palette, add it to
   `globals.css` first.
-- **No gradients, glows, or glassmorphism** on surface fills. The palette
-  uses solid hues with playful tilt/sticker compositions instead.
-- **Do not use white text on `--cta`** — the lime is too light. Use
-  `text-cta-foreground` (deep plum). Same rule for decorative chips
-  filled with `bg-cta`.
+- **No gradients, glows, or glassmorphism.** The palette is deliberately
+  calm — use solid fills and borders.
 
 ---
 

@@ -13,9 +13,9 @@ export function FinalCTA() {
   return (
     <section className="section-y bg-background" aria-label="Get your quote">
       <div className="site-container">
-        <Reveal className="relative overflow-hidden rounded-3xl lg:rounded-4xl bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <Reveal className="relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
           <div className="relative z-10 text-center">
-            <p className="inline-flex items-center gap-2 rounded-full bg-ink-deep/50 ring-1 ring-on-dark-hi/20 px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Ready when you are
             </p>

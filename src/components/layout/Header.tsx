@@ -37,7 +37,7 @@ export function Header() {
             </span>
             <a
               href={BUSINESS.phoneHref}
-              className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep"
+              className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors"
               aria-label={`Call ${BUSINESS.phoneFriendly}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
