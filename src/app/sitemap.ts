@@ -184,7 +184,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.map((p) => {
     const modified = p.updatedAt || p.date;
     return {
-      url: `${SITE_URL}/blog/${p.slug}`,
+      url: p.canonicalUrl,
       lastModified: modified,
       changeFrequency: changeFreqByAge(modified),
       priority: CORNERSTONE_SLUGS.has(p.slug) ? 0.8 : 0.6,

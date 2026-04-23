@@ -9,7 +9,7 @@ import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { ArrowLeft, ArrowRight, Clock, Link2, Phone } from "lucide-react";
-import { BUSINESS, SITE_URL } from "@/lib/site";
+import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
@@ -73,7 +73,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
     { label: post.title },
   ];
 
-  const canonical = `${SITE_URL}/blog/${post.slug}`;
+  const canonical = post.canonicalUrl;
   const shareText = post.title;
   const relatedPosts = getSmartRelatedPosts(post.slug, 3);
   const showUpdated =

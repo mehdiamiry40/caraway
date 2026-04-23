@@ -23,8 +23,7 @@ describe("sitemap.ts — blog post inclusion", () => {
   it("includes every indexable blog post exactly once", () => {
     expect(indexableBlogPosts.length).toBeGreaterThan(0);
     for (const post of indexableBlogPosts) {
-      const url = `${SITE_URL}/blog/${post.slug}`;
-      expect(urls.has(url)).toBe(true);
+      expect(urls.has(post.canonicalUrl)).toBe(true);
     }
     const blogUrlsRaw = entries
       .map((e) => e.url)
@@ -38,19 +37,18 @@ describe("sitemap.ts — blog post inclusion", () => {
 
   it("excludes noindex blog posts", () => {
     expect(noindexPost).toBeDefined();
-    const noindexUrl = `${SITE_URL}/blog/${noindexPost!.slug}`;
-    expect(urls.has(noindexUrl)).toBe(false);
+    expect(urls.has(noindexPost!.canonicalUrl)).toBe(false);
 
     const noindexPosts = blogPosts.filter((p) => !p.isIndexable);
     for (const p of noindexPosts) {
-      expect(urls.has(`${SITE_URL}/blog/${p.slug}`)).toBe(false);
+      expect(urls.has(p.canonicalUrl)).toBe(false);
     }
   });
 
   it("uses updatedAt (falling back to date) as lastModified on blog entries", () => {
     expect(indexablePost).toBeDefined();
     const entry = entries.find(
-      (e) => e.url === `${SITE_URL}/blog/${indexablePost!.slug}`,
+      (e) => e.url === indexablePost!.canonicalUrl,
     );
     expect(entry).toBeDefined();
     expect(entry?.lastModified).toBe(
