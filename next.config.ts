@@ -93,6 +93,20 @@ const nextConfig: NextConfig = {
       destination: "/#how-it-works",
       permanent: true,
     },
+    // Legacy `.html` URLs from a previous version of the site that GSC is
+    // still tracking under "Crawled - currently not indexed". Map each to
+    // its closest live equivalent so Google consolidates signals onto the
+    // canonical page rather than leaving the orphan URL in the index queue.
+    {
+      source: "/privacy-policy.html",
+      destination: "/privacy",
+      permanent: true,
+    },
+    {
+      source: "/blog/sell-damaged-car-brisbane.html",
+      destination: "/damaged-cars-brisbane",
+      permanent: true,
+    },
   ],
   headers: async () => [
     {
