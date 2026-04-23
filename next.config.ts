@@ -73,6 +73,17 @@ const nextConfig: NextConfig = {
     return config;
   },
   redirects: async () => [
+    // Force canonical host: apex (caraway.au) → www.caraway.au with a
+    // permanent 308. Vercel's default assigned-domain redirect is a 307
+    // (temporary), which keeps `http://caraway.au/` in GSC's "Page with
+    // redirect" list indefinitely because temporary redirects don't
+    // consolidate link equity onto the canonical URL.
+    {
+      source: "/:path*",
+      has: [{ type: "host", value: "caraway.au" }],
+      destination: "https://www.caraway.au/:path*",
+      permanent: true,
+    },
     // `/how-it-works` is a homepage section anchor, not a standalone route.
     // Google discovered the bare path via an old link and was serving the
     // 404 page (which emits noindex). Redirect to the real anchor so the
