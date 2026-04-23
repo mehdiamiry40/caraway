@@ -100,7 +100,8 @@
   --destructive: 0 74% 52%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 92 57% 48%;               /* #7CB92F — vibrant CTA green */
+  /* Status green for success toasts/banners — distinct from --cta action green. */
+  --success: 142 71% 38%;              /* #16A34A — emerald */
   --success-foreground: 0 0% 100%;
 
   --warning: 38 92% 50%;               /* #F59E0B */
@@ -127,7 +128,8 @@
   /* License plate and CTA green surfaced as their own tokens. */
   --plate: 48 95% 54%;                 /* #F5D012 — plate yellow */
   --plate-foreground: 258 35% 12%;
-  --cta: 92 57% 48%;                   /* #7CB92F — bright green */
+  /* Action green for CTA buttons and the "action" accent — distinct from --success. */
+  --cta: 92 57% 48%;                   /* #7CB92F — lime CTA green */
   --cta-foreground: 0 0% 100%;
 
   --footer-wash: hsl(var(--ink));

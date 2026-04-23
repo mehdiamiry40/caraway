@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     absolute: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
   },
   description:
-    "Cash for cars Brisbane: sell your car for up to $9,999 with free car removal and same-day pickup. Any make, any condition. Trusted Brisbane car buyers — call 0481 438 444.",
+    "Cash for cars Brisbane: sell your car for up to $9,999, free removal, same-day pickup. Any make, any condition. Call Caraway on 0481 438 444.",
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),

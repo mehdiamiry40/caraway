@@ -88,3 +88,22 @@ export const categoryMap: Record<string, string> = (() => {
 export function getPostsByCategory(slug: string): BlogPost[] {
   return indexableBlogPosts.filter((p) => categorySlug(p.category) === slug);
 }
+
+/** Indexable posts whose relatedServices include the given service slug,
+ *  sorted by most recently updated. Used to cross-link service pages to
+ *  the blog for internal linking / topical clustering. */
+export function getPostsForService(serviceSlug: string, limit = 3): BlogPost[] {
+  return indexableBlogPosts
+    .filter((p) => p.relatedServices.includes(serviceSlug))
+    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    .slice(0, limit);
+}
+
+/** Indexable posts whose relatedSuburbs include the given suburb slug,
+ *  sorted by most recently updated. */
+export function getPostsForSuburb(suburbSlug: string, limit = 3): BlogPost[] {
+  return indexableBlogPosts
+    .filter((p) => p.relatedSuburbs.includes(suburbSlug))
+    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    .slice(0, limit);
+}

@@ -200,5 +200,81 @@ describe("submitForm — endpoint failures", () => {
     expect(result).toEqual({ success: true });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
+
+  it("fails gracefully when the fetch aborts via AbortSignal timeout", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("QUOTE_ENDPOINT", "https://hooks.example.com/webhook");
+    vi.stubEnv("ALLOWED_ENDPOINT_HOSTS", "");
+    vi.resetModules();
+
+    const fetchMock = vi.fn(async () => {
+      throw new DOMException("The operation was aborted due to timeout", "TimeoutError");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const { submitForm: submitFormFresh } = await import("@/actions/submit-form");
+
+    const result = await submitFormFresh({
+      schema: quoteFormSchema,
+      data: baseValid,
+      endpointEnvVar: "QUOTE_ENDPOINT",
+      label: "Quote submission",
+    });
+
+    expect(result.success).toBe(false);
+    if (!result.success && "message" in result) {
+      expect(result.message).toMatch(/couldn't send/i);
+    } else {
+      throw new Error("expected timeout to surface a user-facing message");
+    }
+    expect(errorSpy).toHaveBeenCalled();
+  });
+
+  it("fails gracefully when fetch rejects with a network error", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("QUOTE_ENDPOINT", "https://hooks.example.com/webhook");
+    vi.stubEnv("ALLOWED_ENDPOINT_HOSTS", "");
+    vi.resetModules();
+
+    const fetchMock = vi.fn(async () => {
+      throw new TypeError("fetch failed");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const { submitForm: submitFormFresh } = await import("@/actions/submit-form");
+
+    const result = await submitFormFresh({
+      schema: quoteFormSchema,
+      data: baseValid,
+      endpointEnvVar: "QUOTE_ENDPOINT",
+      label: "Quote submission",
+    });
+
+    expect(result.success).toBe(false);
+    expect(errorSpy).toHaveBeenCalled();
+  });
+
+  it("blocks IPv6 ULA endpoints at the allowlist layer", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("QUOTE_ENDPOINT", "https://[fd00::1]/hook");
+    vi.stubEnv("ALLOWED_ENDPOINT_HOSTS", "");
+    vi.resetModules();
+
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
+    const { submitForm: submitFormFresh } = await import("@/actions/submit-form");
+
+    const result = await submitFormFresh({
+      schema: quoteFormSchema,
+      data: baseValid,
+      endpointEnvVar: "QUOTE_ENDPOINT",
+      label: "Quote submission",
+    });
+
+    expect(result.success).toBe(false);
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalled();
+  });
 });
 

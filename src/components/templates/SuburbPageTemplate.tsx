@@ -8,6 +8,7 @@ import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
 import { services, type ServicePage } from "@/data/services";
+import { getPostsForSuburb } from "@/data/blog-posts";
 import { CheckCircle2 } from "lucide-react";
 import { PROMISE_POINTS } from "@/lib/site";
 
@@ -21,6 +22,8 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const nearbySuburbData = suburb.nearbySuburbs
     .map(slug => suburbs.find(s => s.slug === slug))
     .filter((s): s is SuburbPage => s !== undefined);
+
+  const relatedPosts = getPostsForSuburb(suburb.slug);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -147,6 +150,24 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                           className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
                         >
                           {s.h1}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
+
+              {relatedPosts.length > 0 && (
+                <nav aria-label="Related articles" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                  <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
+                  <ul className="divide-y divide-border/60 border-t border-border/60">
+                    {relatedPosts.map(p => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/blog/${p.slug}`}
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
+                        >
+                          {p.title}
                         </Link>
                       </li>
                     ))}
