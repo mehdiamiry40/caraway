@@ -1,3 +1,4 @@
+import { post as postFirst } from "./sell-old-truck-brisbane";
 import { post as postNewest } from "./cash-for-cars-beenleigh";
 import { post as postLatest } from "./cash-for-cars-redlands";
 import { post as postNew } from "./sell-junk-car-brisbane";
@@ -27,6 +28,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postFirst,
   postNewest,
   postLatest,
   postNew,
