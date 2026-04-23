@@ -23,7 +23,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="relative z-10 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-ink-deep/50 ring-1 ring-on-dark-hi/20 px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Brisbane&apos;s friendly car buyers
             </p>
@@ -33,7 +33,7 @@ export function Hero() {
               className="h-hero text-on-dark-hi"
             >
               Sell your car in{" "}
-              <span className="hl-orange">3&nbsp;steps</span>
+              <span className="hl-plate">3&nbsp;steps</span>
               <br />
               with <span className="hl-green">cash</span> on pickup.
             </h1>

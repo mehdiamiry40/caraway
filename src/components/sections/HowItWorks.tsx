@@ -9,7 +9,7 @@ const steps = [
       "Drop in your plate or share make, model and year. Photos help if you have them.",
     timing: "60 seconds",
     tint: "bg-primary",
-    numberClass: "text-accent",
+    numberClass: "text-primary-foreground",
   },
   {
     number: "02",
@@ -18,7 +18,7 @@ const steps = [
       "We send a locked-in number — no haggle games, no bait-and-switch. Accept and we book a time.",
     timing: "Within the hour",
     tint: "bg-accent",
-    numberClass: "text-primary",
+    numberClass: "text-accent-foreground",
   },
   {
     number: "03",
@@ -27,7 +27,7 @@ const steps = [
       "Our truck arrives at the booked slot, anywhere in Greater Brisbane. Free towing, always.",
     timing: "Same or next day",
     tint: "bg-cta",
-    numberClass: "text-primary",
+    numberClass: "text-cta-foreground",
   },
   {
     number: "04",
@@ -36,7 +36,7 @@ const steps = [
       "Cash or transfer before the wheels leave your driveway. All paperwork handled by us.",
     timing: "Paid that day",
     tint: "bg-plate",
-    numberClass: "text-primary",
+    numberClass: "text-plate-foreground",
   },
 ] as const;
 

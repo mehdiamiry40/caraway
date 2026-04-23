@@ -139,6 +139,7 @@
   /* Action green for CTA buttons and the "action" accent — distinct from --success. */
   --cta: 92 57% 48%;                   /* #7CB92F — lime CTA green */
   --cta-foreground: 259 50% 15%;       /* deep plum — 7.8:1 on lime for WCAG AA */
+  --cta-strong: 92 70% 28%;            /* #3F7815 — darker lime for text/icons on light bg (5.7:1) */
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -270,18 +271,22 @@
     font-size: 0.9375rem;
     font-weight: 700;
     letter-spacing: 0;
-    color: hsl(var(--accent));
+    color: hsl(var(--accent-strong));
   }
   .eyebrow-on-dark {
     display: inline-block;
     font-size: 0.9375rem;
     font-weight: 700;
-    color: hsl(var(--accent));
+    color: hsl(var(--plate));
   }
 
-  /* "Highlight" word — used inline within a headline for colour mixing */
-  .hl-orange { color: hsl(var(--accent)); }
+  /* "Highlight" word — used inline within a headline for colour mixing.
+   * hl-orange = dark-ish orange for text on LIGHT backgrounds.
+   * hl-green  = lime, intended for LARGE text on DARK backgrounds only.
+   * hl-plate  = plate yellow for LARGE text on DARK backgrounds. */
+  .hl-orange { color: hsl(var(--accent-strong)); }
   .hl-green { color: hsl(var(--cta)); }
+  .hl-plate { color: hsl(var(--plate)); }
   .hl-lilac { color: hsl(var(--secondary)); }
 
   .link-underline {
