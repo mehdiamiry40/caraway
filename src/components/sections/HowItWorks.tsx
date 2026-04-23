@@ -77,7 +77,7 @@ export function HowItWorks() {
                   <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
                     {step.description}
                   </p>
-                  <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.08em] text-primary">
+                  <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.08em] text-cta-strong">
                     {step.timing}
                   </p>
                 </div>
