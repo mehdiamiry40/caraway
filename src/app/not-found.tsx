@@ -36,7 +36,7 @@ export default function NotFound() {
             <Link
               href="/"
               className={cn(
-                buttonVariants({ variant: "default" }),
+                buttonVariants({ variant: "cta" }),
                 "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
               )}
             >

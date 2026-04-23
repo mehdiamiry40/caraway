@@ -229,7 +229,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             <Button
               onClick={handleScrollToQuote}
               size="lg"
-              variant="secondary"
+              variant="accent"
               className="w-full h-14 rounded-lg text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Get your free cash offer

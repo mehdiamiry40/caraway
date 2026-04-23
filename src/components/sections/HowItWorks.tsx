@@ -46,7 +46,7 @@ export function HowItWorks() {
       <div className="site-container">
         <Reveal className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display font-extrabold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             Four simple steps.
             <br />
             <span className="hl-orange">Cash</span> in your hand.
@@ -77,7 +77,7 @@ export function HowItWorks() {
                   <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
                     {step.description}
                   </p>
-                  <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.08em] text-cta">
+                  <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.08em] text-primary">
                     {step.timing}
                   </p>
                 </div>
