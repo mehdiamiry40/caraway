@@ -30,7 +30,7 @@ export function Hero() {
 
             <h1
               id="hero-heading"
-              className="font-display font-extrabold text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="font-display font-extrabold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
             >
               Sell your car in{" "}
               <span className="hl-orange">3&nbsp;steps</span>

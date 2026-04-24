@@ -65,7 +65,6 @@ function ReviewCard({ review }: { review: Review }) {
 
 export function Testimonials() {
   const [paused, setPaused] = useState(false);
-  const track = [...FEATURED, ...FEATURED];
 
   return (
     <section id="reviews" className="section-y bg-muted border-t border-b border-border" aria-label="What sellers say">
@@ -96,9 +95,16 @@ export function Testimonials() {
             style={{ animationPlayState: paused ? "paused" : "running" }}
             aria-live="off"
           >
-            {track.map((review, index) => (
-              <ReviewCard key={`${review.name}-${index}`} review={review} />
-            ))}
+            <div className="flex gap-5 sm:gap-6">
+              {FEATURED.map((review) => (
+                <ReviewCard key={review.name} review={review} />
+              ))}
+            </div>
+            <div className="flex gap-5 sm:gap-6" aria-hidden="true">
+              {FEATURED.map((review) => (
+                <ReviewCard key={`${review.name}-duplicate`} review={review} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
