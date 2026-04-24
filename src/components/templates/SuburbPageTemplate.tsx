@@ -37,7 +37,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="aurora-surface py-16 lg:py-24">
+        <section className="aurora-surface py-10 sm:py-14 lg:py-16">
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             <p className="eyebrow mt-6 mb-4">Location</p>

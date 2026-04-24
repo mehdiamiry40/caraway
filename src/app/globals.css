@@ -95,7 +95,7 @@
   --muted-foreground: 258 15% 40%;     /* #5E5770 */
 
   --accent: 14 95% 60%;                /* #F97449 — orange emphasis */
-  --accent-foreground: 0 0% 100%;
+  --accent-foreground: 258 35% 15%;
 
   --destructive: 0 74% 52%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
@@ -130,7 +130,7 @@
   --plate-foreground: 258 35% 12%;
   /* Action green for CTA buttons and the "action" accent — distinct from --success. */
   --cta: 92 57% 48%;                   /* #7CB92F — lime CTA green */
-  --cta-foreground: 0 0% 100%;
+  --cta-foreground: 258 35% 15%;
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -401,6 +401,16 @@
   @media (min-width: 1024px) {
     /* utility strip (2.25rem) + nav (4.5rem) */
     margin-top: calc(6.75rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+@utility scroll-mt-header {
+  scroll-margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+  @media (min-width: 640px) {
+    scroll-margin-top: calc(7.25rem + env(safe-area-inset-top, 0px));
+  }
+  @media (min-width: 1024px) {
+    scroll-margin-top: calc(7.75rem + env(safe-area-inset-top, 0px));
   }
 }
 
