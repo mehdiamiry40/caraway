@@ -1,10 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import {
-  issuePlacesSession,
-  PLACES_NONCE_COOKIE,
-  PLACES_SESSION_COOKIE,
-} from "@/lib/places-session";
 
 // Simple in-memory token bucket for rate limiting.
 // Keyed by client IP, resets every 60s, 10 requests allowed per window.
@@ -26,44 +21,9 @@ function getClientIp(request: NextRequest): string {
   return "unknown";
 }
 
-export async function middleware(request: NextRequest) {
-  // GET/HEAD page requests mint a short-lived first-party Places session so
-  // the autocomplete proxy is not directly callable without first loading
-  // the site in a browser.
+export function middleware(request: NextRequest) {
   if (request.method !== "POST") {
-    const response = NextResponse.next();
-    const acceptsHtml = request.headers.get("accept")?.includes("text/html");
-    const secret = process.env.GOOGLE_PLACES_API_KEY?.trim();
-
-    if ((request.method === "GET" || request.method === "HEAD") && acceptsHtml && secret) {
-      const session = await issuePlacesSession({
-        secret,
-        clientIp: getClientIp(request),
-        userAgent: request.headers.get("user-agent") ?? "",
-      });
-      const expires = new Date(session.expiresAt);
-
-      response.cookies.set({
-        name: PLACES_SESSION_COOKIE,
-        value: session.token,
-        expires,
-        httpOnly: true,
-        sameSite: "lax",
-        secure: !process.env.NODE_ENV || process.env.NODE_ENV === "production",
-        path: "/",
-      });
-      response.cookies.set({
-        name: PLACES_NONCE_COOKIE,
-        value: session.nonce,
-        expires,
-        httpOnly: false,
-        sameSite: "lax",
-        secure: !process.env.NODE_ENV || process.env.NODE_ENV === "production",
-        path: "/",
-      });
-    }
-
-    return response;
+    return NextResponse.next();
   }
 
   // --- Rate limiting ---

@@ -1,10 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
-import {
-  PLACES_NONCE_COOKIE,
-  PLACES_SESSION_COOKIE,
-  verifyPlacesSession,
-} from "@/lib/places-session";
 
 type MiddlewareModule = typeof import("../middleware");
 
@@ -43,7 +38,7 @@ describe("middleware", () => {
       expect(res.status).toBe(200);
     });
 
-    it("issues a verifiable Places session on HTML page requests", async () => {
+    it("does not set Places session cookies on HTML page requests", async () => {
       process.env.GOOGLE_PLACES_API_KEY = "places-test-secret";
       const middleware = await loadMiddleware();
       const req = makeRequest("GET", {
@@ -53,34 +48,8 @@ describe("middleware", () => {
       });
 
       const res = await middleware(req);
-      const getSetCookie = (res.headers as Headers & { getSetCookie?: () => string[] })
-        .getSetCookie;
-      const setCookies = getSetCookie
-        ? getSetCookie.call(res.headers)
-        : (res.headers.get("set-cookie") ?? "").split(/,\s*(?=caraway_places_)/);
-      const sessionCookie = setCookies.find((cookie) =>
-        cookie.startsWith(`${PLACES_SESSION_COOKIE}=`),
-      );
-      const nonceCookie = setCookies.find((cookie) =>
-        cookie.startsWith(`${PLACES_NONCE_COOKIE}=`),
-      );
-      const token = sessionCookie?.match(new RegExp(`${PLACES_SESSION_COOKIE}=([^;]+)`))?.[1];
-      const nonce = nonceCookie?.match(new RegExp(`${PLACES_NONCE_COOKIE}=([^;]+)`))?.[1];
-
       expect(res.status).toBe(200);
-      expect(token).toBeTruthy();
-      expect(nonce).toBeTruthy();
-      expect(sessionCookie).toContain("HttpOnly");
-      expect(nonceCookie).not.toContain("HttpOnly");
-      await expect(
-        verifyPlacesSession({
-          secret: "places-test-secret",
-          token,
-          nonce,
-          clientIp: "203.0.113.10",
-          userAgent: "Vitest Browser",
-        }),
-      ).resolves.toBe(true);
+      expect(res.headers.get("set-cookie")).toBeNull();
     });
   });
 

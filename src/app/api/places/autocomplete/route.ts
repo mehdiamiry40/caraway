@@ -111,6 +111,7 @@ function rateLimitResponse(request: Request): NextResponse | null {
 function isFirstPartyFetch(request: Request): boolean {
   const site = request.headers.get("sec-fetch-site");
   const mode = request.headers.get("sec-fetch-mode");
+  if (!site && !mode) return true;
   if (site !== "same-origin" && site !== "same-site") return false;
   return mode === "cors" || mode === "same-origin";
 }
