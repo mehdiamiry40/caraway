@@ -35,6 +35,20 @@ function readCookie(name: string): string | null {
   return null;
 }
 
+async function ensurePlacesNonce(): Promise<string | null> {
+  const existing = readCookie(PLACES_NONCE_COOKIE);
+  if (existing) return existing;
+
+  const res = await fetch("/api/places/session", {
+    method: "POST",
+    cache: "no-store",
+    credentials: "same-origin",
+  });
+  if (!res.ok) return null;
+
+  return readCookie(PLACES_NONCE_COOKIE);
+}
+
 /**
  * Address input with Google Places autocomplete.
  *
@@ -86,12 +100,13 @@ export function AddressAutocomplete({
       setShowNoResults(false);
       setOpen(true);
       try {
+        const nonce = await ensurePlacesNonce();
         const res = await fetch(
           `/api/places/autocomplete?q=${encodeURIComponent(trimmed)}`,
           {
             signal: controller.signal,
             headers: {
-              [PLACES_NONCE_HEADER]: readCookie(PLACES_NONCE_COOKIE) ?? "",
+              [PLACES_NONCE_HEADER]: nonce ?? "",
             },
           },
         );
