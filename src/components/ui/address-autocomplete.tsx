@@ -64,6 +64,7 @@ export function AddressAutocomplete({
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
   const [showNoResults, setShowNoResults] = useState(false);
+  const [manualEntryActive, setManualEntryActive] = useState(false);
   // Tracks the value the user just picked, so the debounce effect
   // skips the refetch that `onChange` would otherwise trigger. The
   // next keystroke clears it.
@@ -95,12 +96,15 @@ export function AddressAutocomplete({
           },
         );
         if (!res.ok) {
-          // 503 = proxy unavailable; stay silent and act as a plain input.
+          // If the proxy is unavailable or the browser cannot present a valid
+          // first-party session, keep this as a plain input so real leads can
+          // still submit a manually typed pickup address.
           if (id === requestIdRef.current) {
             setSuggestions([]);
             setOpen(false);
             setIsLoading(false);
             setShowNoResults(false);
+            setManualEntryActive(true);
           }
           return;
         }
@@ -112,6 +116,7 @@ export function AddressAutocomplete({
         setOpen(true);
         setActiveIndex(-1);
         setIsLoading(false);
+        setManualEntryActive(false);
       } catch (err) {
         if ((err as Error)?.name === "AbortError") return;
         if (id === requestIdRef.current) {
@@ -119,6 +124,7 @@ export function AddressAutocomplete({
           setOpen(false);
           setIsLoading(false);
           setShowNoResults(false);
+          setManualEntryActive(true);
         }
       }
     }, DEBOUNCE_MS);
@@ -229,6 +235,11 @@ export function AddressAutocomplete({
         className={className}
         {...rest}
       />
+      {manualEntryActive && (
+        <p className="sr-only" role="status" aria-live="polite">
+          Address suggestions are unavailable. Continue typing the pickup address manually.
+        </p>
+      )}
       {open && (suggestions.length > 0 || isLoading || showNoResults) && (
         <ul
           id={listboxId}
