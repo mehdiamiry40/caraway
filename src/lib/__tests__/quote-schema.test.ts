@@ -158,6 +158,19 @@ describe("quoteFormSchema — model is required", () => {
 });
 
 describe("quoteFormSchema — address bounds", () => {
+  it("accepts a manually typed Brisbane pickup address without Google place metadata", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      address: "Unit 2/14 Boundary St, West End QLD 4101",
+    });
+
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.address).toBe("Unit 2/14 Boundary St, West End QLD 4101");
+      expect("placeId" in result.data).toBe(false);
+    }
+  });
+
   it("rejects an address shorter than 5 chars", () => {
     const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcd" });
     expect(result.success).toBe(false);
