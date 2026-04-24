@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * ---------------------------------------------------------------------*/
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       lastModified: CONTENT_DEPLOY_DATE,
       changeFrequency: "weekly",
       priority: 1.0,

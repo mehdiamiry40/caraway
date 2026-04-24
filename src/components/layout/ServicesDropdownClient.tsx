@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { services } from "@/data/services";
 
 type ServiceLink = { label: string; href: string };
 
@@ -20,8 +19,8 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
 
-  const isServicesActive = services.some(
-    (s) => pathname === "/" + s.slug || pathname.startsWith("/" + s.slug + "/")
+  const isServicesActive = serviceLinks.some(
+    (s) => pathname === s.href || pathname.startsWith(`${s.href}/`)
   );
 
   useEffect(() => {

@@ -68,17 +68,22 @@ export function QuoteForm() {
       setIsSuccess(true);
       return;
     }
-    const result = await submitQuote(data);
-
-    if (result.success) {
-      trackEvent("quote_form_submitted");
-      trackEvent("lead_submitted", { source: "quote_form" });
-      setIsSuccess(true);
-      reset();
-    } else {
+    try {
+      const result = await submitQuote(data);
+      if (result.success) {
+        trackEvent("quote_form_submitted");
+        trackEvent("lead_submitted", { source: "quote_form" });
+        setIsSuccess(true);
+        reset();
+        return;
+      }
       setErrorMessage(
         result.message ||
           `We couldn't send your quote. Please try again or call ${BUSINESS.phoneFriendly}.`,
+      );
+    } catch {
+      setErrorMessage(
+        `We couldn't send your quote. Please try again or call ${BUSINESS.phoneFriendly}.`,
       );
     }
   };

@@ -115,7 +115,6 @@ export function usePriceEstimator() {
       const raw = window.sessionStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const parsed = JSON.parse(raw) as PersistedState;
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount hydration; see block comment above.
       if (parsed.make) setMake(parsed.make);
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
@@ -287,40 +286,48 @@ export function usePriceEstimator() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const res = await submitQuote({
-      name: name.trim(),
-      phone: phone.trim(),
-      make: make.trim(),
-      model: model.trim(),
-      year: yearNumber,
-      condition,
-      address: address.trim(),
-      quoteAmount: result.quote,
-      honeypot: "",
-      marketingConsent: false,
-    });
-
-    setIsSubmitting(false);
-    if (res.success) {
-      setIsSuccess(true);
-      trackEvent("estimator_submitted", {
-        estimateQuote: result.quote,
+    try {
+      const res = await submitQuote({
+        name: name.trim(),
+        phone: phone.trim(),
         make: make.trim(),
         model: model.trim(),
         year: yearNumber,
         condition,
+        address: address.trim(),
+        quoteAmount: result.quote,
+        honeypot: "",
+        marketingConsent: false,
       });
-      trackEvent("lead_submitted", {
-        source: "estimator",
-        estimate_quote: result.quote,
-      });
-    } else {
-      const reason = res.message ?? "unknown";
+
+      if (res.success) {
+        setIsSuccess(true);
+        trackEvent("estimator_submitted", {
+          estimateQuote: result.quote,
+          make: make.trim(),
+          model: model.trim(),
+          year: yearNumber,
+          condition,
+        });
+        trackEvent("lead_submitted", {
+          source: "estimator",
+          estimate_quote: result.quote,
+        });
+      } else {
+        const reason = res.message ?? "unknown";
+        setSubmitError(
+          res.message ??
+            "Something went wrong. Please try again or call 0481 438 444.",
+        );
+        trackEvent("estimator_submit_failed", { reason });
+      }
+    } catch {
       setSubmitError(
-        res.message ??
-          "Something went wrong. Please try again or call 0481 438 444.",
+        "Something went wrong. Please try again or call 0481 438 444.",
       );
-      trackEvent("estimator_submit_failed", { reason });
+      trackEvent("estimator_submit_failed", { reason: "transport_error" });
+    } finally {
+      setIsSubmitting(false);
     }
   }, [
     isSubmitting,

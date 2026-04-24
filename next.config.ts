@@ -151,23 +151,18 @@ const nextConfig: NextConfig = {
         ]),
       ],
     },
-    // Long-lived cache for immutable static assets
+    // Unhashed image/icon URLs must stay revalidatable so in-place branding
+    // updates do not get pinned behind immutable browser caches.
     {
       source: "/images/(.*)",
       headers: [
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-      ],
-    },
-    {
-      source: "/_next/image",
-      headers: [
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
       ],
     },
     {
       source: "/favicon.svg",
       headers: [
-        { key: "Cache-Control", value: "public, max-age=604800, immutable" },
+        { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
       ],
     },
   ],

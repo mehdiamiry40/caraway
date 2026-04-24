@@ -82,6 +82,8 @@ export function Accordion({
               id={panelId}
               role="region"
               aria-labelledby={triggerId}
+              aria-hidden={!isActive}
+              hidden={!isActive}
               className={cn(
                 "grid transition-all duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
                 isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
