@@ -46,7 +46,7 @@ export function HowItWorks() {
       <div className="site-container">
         <Reveal className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display font-extrabold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
+          <h2 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
             Four simple steps.
             <br />
             <span className="hl-orange">Cash</span> in your hand.
@@ -66,18 +66,18 @@ export function HowItWorks() {
                 className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden flex items-end justify-start p-5`}>
-                  <span className={`font-display font-extrabold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
+                  <span className={`font-display font-semibold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
                     {step.number}
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-display font-extrabold text-primary leading-snug">
+                  <h3 className="text-lg font-display font-semibold text-primary leading-snug">
                     {step.title}
                   </h3>
                   <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
                     {step.description}
                   </p>
-                  <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.08em] text-cta">
+                  <p className="mt-auto pt-5 text-xs font-medium uppercase tracking-[0.08em] text-cta">
                     {step.timing}
                   </p>
                 </div>
@@ -89,7 +89,7 @@ export function HowItWorks() {
         <Reveal className="mt-12 text-center">
           <Link
             href="/#price-estimator"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-accent transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-colors"
           >
             Start with your plate
             <span aria-hidden="true">→</span>

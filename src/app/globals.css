@@ -166,7 +166,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-bold;
+    @apply font-semibold;
     letter-spacing: var(--tracking-tight);
     text-wrap: balance;
     color: hsl(var(--primary));
@@ -240,14 +240,14 @@
   .eyebrow {
     display: inline-block;
     font-size: 0.9375rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0;
     color: hsl(var(--accent));
   }
   .eyebrow-on-dark {
     display: inline-block;
     font-size: 0.9375rem;
-    font-weight: 700;
+    font-weight: 600;
     color: hsl(var(--accent));
   }
 
@@ -306,20 +306,20 @@
 
   .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-bold text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
-  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-bold text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
-  .prose-body h4 { @apply text-lg sm:text-xl font-display font-bold text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-semibold text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
+  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-semibold text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
+  .prose-body h4 { @apply text-lg sm:text-xl font-display font-semibold text-primary mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
   .prose-body a { @apply underline underline-offset-4 hover:text-accent transition-colors text-primary; }
-  .prose-body strong { @apply font-bold text-foreground; }
+  .prose-body strong { @apply font-semibold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
   .prose-body blockquote { @apply border-l-2 border-primary pl-4 text-foreground; font-style: normal; }
 
   .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
   .list-styled li { @apply leading-relaxed; }
-  .list-styled strong { @apply text-foreground font-bold; }
+  .list-styled strong { @apply text-foreground font-semibold; }
 }
 
 @media (prefers-reduced-motion: no-preference) {

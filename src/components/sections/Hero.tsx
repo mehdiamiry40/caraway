@@ -23,14 +23,14 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="relative z-10 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-medium text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Brisbane&apos;s friendly car buyers
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display font-extrabold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="font-display font-semibold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
             >
               Sell your car in{" "}
               <span className="hl-orange">3&nbsp;steps</span>
@@ -96,10 +96,10 @@ function HeroArt() {
         aria-hidden="true"
         className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]"
       >
-        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-85">
+        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-medium opacity-85">
           Top offer
         </span>
-        <span className="block font-display font-extrabold text-2xl tabular-nums leading-none mt-1">
+        <span className="block font-display font-semibold text-2xl tabular-nums leading-none mt-1">
           $9,999
         </span>
       </div>
@@ -109,10 +109,10 @@ function HeroArt() {
         aria-hidden="true"
         className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 rotate-[4deg] z-20 rounded-2xl bg-cta text-cta-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--cta)/0.4)]"
       >
-        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-90">
+        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-medium opacity-90">
           Pickup
         </span>
-        <span className="block font-display font-extrabold text-lg leading-none mt-1">
+        <span className="block font-display font-semibold text-lg leading-none mt-1">
           Same-day
         </span>
       </div>
