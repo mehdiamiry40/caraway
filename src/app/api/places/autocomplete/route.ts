@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
 import { getEnv } from "@/lib/env";
+import {
+  PLACES_NONCE_COOKIE,
+  PLACES_NONCE_HEADER,
+  PLACES_SESSION_COOKIE,
+  verifyPlacesSession,
+} from "@/lib/places-session";
 
 /**
  * Server-side proxy for Google Places API (New) autocomplete.
@@ -102,42 +108,43 @@ function rateLimitResponse(request: Request): NextResponse | null {
   return null;
 }
 
-function isAllowedCaller(request: Request): boolean {
-  const requestUrl = new URL(request.url);
-  const allowedHosts = new Set([requestUrl.host]);
-  const host = request.headers.get("host");
-  if (host) allowedHosts.add(host);
+function isFirstPartyFetch(request: Request): boolean {
+  const site = request.headers.get("sec-fetch-site");
+  const mode = request.headers.get("sec-fetch-mode");
+  if (site !== "same-origin" && site !== "same-site") return false;
+  return mode === "cors" || mode === "same-origin";
+}
 
-  const siteUrl = process.env.SITE_URL?.trim();
-  if (siteUrl) {
-    try {
-      allowedHosts.add(new URL(siteUrl).host);
-    } catch {
-      // Ignore malformed SITE_URL and fall back to request host checks.
-    }
-  }
+async function hasValidPlacesSession(request: Request): Promise<boolean> {
+  const cookieHeader = request.headers.get("cookie") ?? "";
+  const cookies = new Map(
+    cookieHeader
+      .split(";")
+      .map((entry) => entry.trim())
+      .filter(Boolean)
+      .map((entry) => {
+        const [name, ...rest] = entry.split("=");
+        return [name, rest.join("=")];
+      }),
+  );
 
-  const origin = request.headers.get("origin");
-  const referer = request.headers.get("referer");
+  const apiKey = getEnv().GOOGLE_PLACES_API_KEY;
+  if (!apiKey) return false;
 
-  for (const source of [origin, referer]) {
-    if (!source) continue;
-    try {
-      if (allowedHosts.has(new URL(source).host)) return true;
-    } catch {
-      // Malformed URL on one header (e.g. Origin) must not skip a valid Referer.
-      continue;
-    }
-  }
-
-  return false;
+  return verifyPlacesSession({
+    secret: apiKey,
+    token: cookies.get(PLACES_SESSION_COOKIE),
+    nonce: request.headers.get(PLACES_NONCE_HEADER) ?? cookies.get(PLACES_NONCE_COOKIE),
+    clientIp: getClientIp(request),
+    userAgent: request.headers.get("user-agent") ?? "",
+  });
 }
 
 export async function GET(request: Request) {
   const limited = rateLimitResponse(request);
   if (limited) return limited;
 
-  if (!isAllowedCaller(request)) {
+  if (!isFirstPartyFetch(request) || !(await hasValidPlacesSession(request))) {
     return NextResponse.json(
       { error: "forbidden" },
       { status: 403, headers: noStoreHeaders() },

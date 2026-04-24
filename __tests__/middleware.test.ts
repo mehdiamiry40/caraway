@@ -32,7 +32,7 @@ describe("middleware", () => {
     it("passes GET requests through without rate limiting or origin checks", async () => {
       const middleware = await loadMiddleware();
       const req = makeRequest("GET");
-      const res = middleware(req);
+      const res = await middleware(req);
       // NextResponse.next() returns a 200 Response
       expect(res.status).toBe(200);
     });
@@ -45,7 +45,7 @@ describe("middleware", () => {
         "x-forwarded-for": "1.1.1.1",
         host: "localhost",
       });
-      const res = middleware(req);
+      const res = await middleware(req);
       expect(res.status).toBe(403);
     });
 
@@ -56,7 +56,7 @@ describe("middleware", () => {
         host: "localhost",
         origin: "http://localhost",
       });
-      const res = middleware(req);
+      const res = await middleware(req);
       expect(res.status).toBe(200);
     });
 
@@ -67,7 +67,7 @@ describe("middleware", () => {
         host: "localhost",
         origin: "http://evil.example.com",
       });
-      const res = middleware(req);
+      const res = await middleware(req);
       expect(res.status).toBe(403);
     });
 
@@ -78,7 +78,7 @@ describe("middleware", () => {
         host: "localhost",
         referer: "http://localhost/some/page",
       });
-      const res = middleware(req);
+      const res = await middleware(req);
       expect(res.status).toBe(200);
     });
 
@@ -89,7 +89,7 @@ describe("middleware", () => {
         host: "localhost",
         referer: "http://evil.example.com/path",
       });
-      const res = middleware(req);
+      const res = await middleware(req);
       expect(res.status).toBe(403);
     });
   });
@@ -104,11 +104,11 @@ describe("middleware", () => {
       };
 
       for (let i = 0; i < 10; i++) {
-        const res = middleware(makeRequest("POST", headers));
+        const res = await middleware(makeRequest("POST", headers));
         expect(res.status).toBe(200);
       }
 
-      const res11 = middleware(makeRequest("POST", headers));
+      const res11 = await middleware(makeRequest("POST", headers));
       expect(res11.status).toBe(429);
       expect(res11.headers.get("Retry-After")).not.toBeNull();
     });
@@ -116,7 +116,7 @@ describe("middleware", () => {
     it("does not rate-limit requests from different IPs", async () => {
       const middleware = await loadMiddleware();
       for (let i = 0; i < 11; i++) {
-        const res = middleware(
+        const res = await middleware(
           makeRequest("POST", {
             "x-forwarded-for": `192.0.2.${i + 1}`,
             host: "localhost",
@@ -137,15 +137,15 @@ describe("middleware", () => {
 
       // 10 allowed
       for (let i = 0; i < 10; i++) {
-        const res = middleware(makeRequest("POST", headers));
+        const res = await middleware(makeRequest("POST", headers));
         expect(res.status).toBe(200);
       }
       // 11th from "same" first-IP key should be limited
-      const res11 = middleware(makeRequest("POST", headers));
+      const res11 = await middleware(makeRequest("POST", headers));
       expect(res11.status).toBe(429);
 
       // A different leading IP (with same trailing list) should still pass
-      const res12 = middleware(
+      const res12 = await middleware(
         makeRequest("POST", {
           ...headers,
           "x-forwarded-for": "203.0.113.99, 198.51.100.1, 10.0.0.1",

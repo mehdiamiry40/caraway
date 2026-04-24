@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { PLACES_NONCE_COOKIE, PLACES_NONCE_HEADER } from "@/lib/places-session";
 
 interface Suggestion {
   placeId: string;
@@ -21,6 +22,18 @@ interface AddressAutocompleteProps
 
 const DEBOUNCE_MS = 200;
 const MIN_QUERY_LENGTH = 3;
+
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const prefix = `${name}=`;
+  for (const part of document.cookie.split(";")) {
+    const trimmed = part.trim();
+    if (trimmed.startsWith(prefix)) {
+      return decodeURIComponent(trimmed.slice(prefix.length));
+    }
+  }
+  return null;
+}
 
 /**
  * Address input with Google Places autocomplete.
@@ -74,7 +87,12 @@ export function AddressAutocomplete({
       try {
         const res = await fetch(
           `/api/places/autocomplete?q=${encodeURIComponent(trimmed)}`,
-          { signal: controller.signal },
+          {
+            signal: controller.signal,
+            headers: {
+              [PLACES_NONCE_HEADER]: readCookie(PLACES_NONCE_COOKIE) ?? "",
+            },
+          },
         );
         if (!res.ok) {
           // 503 = proxy unavailable; stay silent and act as a plain input.

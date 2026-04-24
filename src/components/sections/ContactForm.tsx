@@ -63,17 +63,22 @@ export function ContactForm() {
       setIsSuccess(true); // Fake success for bots
       return;
     }
-    const result = await submitContact(data);
-
-    if (result.success) {
-      trackEvent("contact_form_submitted");
-      trackEvent("lead_submitted", { source: "contact" });
-      setIsSuccess(true);
-      reset();
-    } else {
+    try {
+      const result = await submitContact(data);
+      if (result.success) {
+        trackEvent("contact_form_submitted");
+        trackEvent("lead_submitted", { source: "contact" });
+        setIsSuccess(true);
+        reset();
+        return;
+      }
       setErrorMessage(
         result.message ||
           "We couldn't send your message. Please try again or call 0481 438 444.",
+      );
+    } catch {
+      setErrorMessage(
+        "We couldn't send your message. Please try again or call 0481 438 444.",
       );
     }
   };

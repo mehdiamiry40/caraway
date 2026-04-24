@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
+import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 
 const breadcrumbs = [
@@ -10,6 +11,12 @@ const breadcrumbs = [
 ];
 
 export default function Locations() {
+  const locationItems = suburbs.map((suburb) => ({
+    slug: suburb.slug,
+    h1: suburb.h1,
+    summary: suburb.metaDescription,
+  }));
+
   return (
     <PageShell
       breadcrumbs={breadcrumbs}
@@ -22,7 +29,7 @@ export default function Locations() {
       }
     >
       <div className="site-container py-14 sm:py-20 lg:py-24">
-        <LocationsFilter />
+        <LocationsFilter items={locationItems} />
 
         <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">
           <p className="eyebrow mb-3">Not sure?</p>
