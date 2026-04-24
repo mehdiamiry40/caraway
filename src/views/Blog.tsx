@@ -57,7 +57,7 @@ export default function Blog() {
                   aria-label={`Read: ${featured.title}`}
                 >
                   <div className="flex flex-wrap items-center gap-2 mb-5">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary-foreground">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
                       <Sparkles className="h-3 w-3" strokeWidth={2} aria-hidden />
                       Featured
                     </span>
@@ -66,7 +66,7 @@ export default function Blog() {
                     </span>
                   </div>
                   <h2
-                    className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-[1.08] text-foreground text-balance group-hover:text-primary transition-colors"
+                    className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold leading-[1.08] text-foreground text-balance group-hover:text-primary transition-colors"
                     style={{ letterSpacing: "var(--tracking-display)" }}
                   >
                     {featured.title}
@@ -119,7 +119,7 @@ export default function Blog() {
                           {post.category}
                         </span>
                         <h3
-                          className="font-display text-lg sm:text-xl font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                          className="font-display text-lg sm:text-xl font-semibold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
                           style={{ letterSpacing: "var(--tracking-tight)" }}
                         >
                           {post.title}

@@ -115,7 +115,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-bold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-semibold"
                   >
                     {authorInitials}
                   </span>
@@ -159,7 +159,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
                   <p
-                    className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-[1.1] text-balance"
+                    className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-[1.1] text-balance"
                     style={{ letterSpacing: "var(--tracking-tight)" }}
                   >
                     Get a real offer in under 60 seconds.
@@ -250,13 +250,13 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-bold"
+                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
                   >
                     {authorInitials}
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="eyebrow mb-2">About the author</p>
-                    <p className="font-display text-lg font-bold text-foreground">
+                    <p className="font-display text-lg font-semibold text-foreground">
                       <Link href={AUTHOR.href} className="hover:text-primary transition-colors">
                         {AUTHOR.name}
                       </Link>
@@ -328,7 +328,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
               <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
-                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] max-w-xl mx-auto text-balance"
+                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
                 >
                   Ready to sell your car for cash?
@@ -379,7 +379,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                           {related.category}
                         </span>
                         <h3
-                          className="font-display text-lg font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                          className="font-display text-lg font-semibold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
                           style={{ letterSpacing: "var(--tracking-tight)" }}
                         >
                           {related.title}

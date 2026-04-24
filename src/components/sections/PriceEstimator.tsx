@@ -398,7 +398,7 @@ export function PriceEstimator() {
                   <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
                     <div className="min-w-0">
                       <p className="text-xs text-foreground/70 uppercase tracking-wider">Your quote</p>
-                      <p className="font-semibold text-foreground truncate">
+                      <p className="font-medium text-foreground truncate">
                         {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>

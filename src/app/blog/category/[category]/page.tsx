@@ -171,7 +171,7 @@ export default async function BlogCategoryPage({ params }: Props) {
                         {post.category}
                       </span>
                       <h2
-                        className="font-display text-lg sm:text-xl font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
+                        className="font-display text-lg sm:text-xl font-semibold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
                         style={{ letterSpacing: "var(--tracking-tight)" }}
                       >
                         {post.title}

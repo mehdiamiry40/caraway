@@ -150,7 +150,7 @@ export function renderBlogContent(
 
     const isFirstPara = i === 0;
     const paraClass = isFirstPara && dropCap
-      ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-medium mb-8"
+      ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-semibold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-normal mb-8"
       : "text-base sm:text-lg text-foreground/85 leading-[1.85] mb-7";
     return createElement("p", { key, className: paraClass }, ...parseInline(text, key));
   });
