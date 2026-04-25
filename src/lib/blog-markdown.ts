@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const IMAGE_BLOCK_RE = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+(\d+)x(\d+))?\)$/;
+const ORDERED_LIST_ITEM_RE = /^\s*\d+\.\s+(.+)$/;
+const UNORDERED_LIST_ITEM_RE = /^\s*[-*]\s+(.+)$/;
 
 export function slugify(input: string): string {
   return input
@@ -67,6 +69,16 @@ function parseInline(text: string, keyPrefix: string): ReactNode[] {
   return nodes;
 }
 
+function parseListItem(text: string): { type: "ol" | "ul"; content: string } | null {
+  const ordered = text.match(ORDERED_LIST_ITEM_RE);
+  if (ordered) return { type: "ol", content: ordered[1] };
+
+  const unordered = text.match(UNORDERED_LIST_ITEM_RE);
+  if (unordered) return { type: "ul", content: unordered[1] };
+
+  return null;
+}
+
 export function renderBlogContent(
   paragraphs: string[],
   opts: { firstParagraphDropCap?: boolean } = {},
@@ -77,9 +89,47 @@ export function renderBlogContent(
     (paragraphs[0].startsWith("## ") || paragraphs[0].startsWith("### "));
   const dropCap = (opts.firstParagraphDropCap ?? false) && !firstIsHeading;
 
-  return paragraphs.map((raw, i) => {
+  const nodes: ReactNode[] = [];
+
+  for (let i = 0; i < paragraphs.length; i += 1) {
+    const raw = paragraphs[i];
     const text = raw ?? "";
     const key = `b-${i}`;
+
+    const firstListItem = parseListItem(text);
+    if (firstListItem) {
+      const listType = firstListItem.type;
+      const items: string[] = [firstListItem.content];
+
+      while (i + 1 < paragraphs.length) {
+        const nextText = paragraphs[i + 1] ?? "";
+        const nextItem = parseListItem(nextText);
+        if (!nextItem || nextItem.type !== listType) break;
+        items.push(nextItem.content);
+        i += 1;
+      }
+
+      nodes.push(
+        createElement(
+          listType,
+          {
+            key,
+            className:
+              listType === "ol"
+                ? "list-decimal pl-5 sm:pl-6 space-y-3 text-base sm:text-lg text-foreground/85 leading-[1.75] mb-7"
+                : "list-disc pl-5 sm:pl-6 space-y-3 text-base sm:text-lg text-foreground/85 leading-[1.75] mb-7",
+          },
+          ...items.map((item, itemIndex) =>
+            createElement(
+              "li",
+              { key: `${key}-li-${itemIndex}`, className: "pl-1" },
+              ...parseInline(item, `${key}-li-${itemIndex}`),
+            ),
+          ),
+        ),
+      );
+      continue;
+    }
 
     const imgMatch = text.trim().match(IMAGE_BLOCK_RE);
     if (imgMatch) {
@@ -87,7 +137,7 @@ export function renderBlogContent(
       const src = imgMatch[2];
       const width = imgMatch[3] ? Number(imgMatch[3]) : 1600;
       const height = imgMatch[4] ? Number(imgMatch[4]) : 900;
-      return createElement(
+      nodes.push(createElement(
         "figure",
         { key, className: "my-10" },
         createElement(
@@ -117,12 +167,13 @@ export function renderBlogContent(
               alt,
             )
           : null,
-      );
+      ));
+      continue;
     }
 
     if (text.startsWith("### ")) {
       const heading = text.slice(4).trim();
-      return createElement(
+      nodes.push(createElement(
         "h3",
         {
           key,
@@ -131,12 +182,13 @@ export function renderBlogContent(
             "font-display text-xl sm:text-2xl text-foreground mt-10 mb-4 scroll-mt-24",
         },
         ...parseInline(heading, key),
-      );
+      ));
+      continue;
     }
 
     if (text.startsWith("## ")) {
       const heading = text.slice(3).trim();
-      return createElement(
+      nodes.push(createElement(
         "h2",
         {
           key,
@@ -145,13 +197,16 @@ export function renderBlogContent(
             "font-display text-2xl sm:text-3xl text-primary mt-12 mb-5 scroll-mt-24",
         },
         ...parseInline(heading, key),
-      );
+      ));
+      continue;
     }
 
     const isFirstPara = i === 0;
     const paraClass = isFirstPara && dropCap
-      ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-bold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-medium mb-8"
+      ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-semibold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-normal mb-8"
       : "text-base sm:text-lg text-foreground/85 leading-[1.85] mb-7";
-    return createElement("p", { key, className: paraClass }, ...parseInline(text, key));
-  });
+    nodes.push(createElement("p", { key, className: paraClass }, ...parseInline(text, key)));
+  }
+
+  return nodes;
 }

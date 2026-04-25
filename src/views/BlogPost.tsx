@@ -8,9 +8,11 @@ import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { ArrowLeft, ArrowRight, Clock, Link2, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -85,9 +87,6 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonical)}`;
   const liShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}`;
 
-  const copyBtnId = `copy-link-${post.slug}`;
-  const copyScript = `(function(){var b=document.getElementById(${JSON.stringify(copyBtnId)});if(!b)return;var l=b.querySelector('[data-copy-label]');var o=l?l.textContent:'';b.addEventListener('click',function(e){e.preventDefault();try{navigator.clipboard.writeText(${JSON.stringify(canonical)});if(l){l.textContent='Copied!';setTimeout(function(){l.textContent=o;},1800);}}catch(err){}});})();`;
-
   const authorInitials = AUTHOR.name
     .split(" ")
     .map((part) => part[0])
@@ -115,7 +114,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-bold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-semibold"
                   >
                     {authorInitials}
                   </span>
@@ -159,7 +158,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
                   <p
-                    className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-[1.1] text-balance"
+                    className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-[1.1] text-balance"
                     style={{ letterSpacing: "var(--tracking-tight)" }}
                   >
                     Get a real offer in under 60 seconds.
@@ -250,13 +249,13 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-bold"
+                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
                   >
                     {authorInitials}
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="eyebrow mb-2">About the author</p>
-                    <p className="font-display text-lg font-bold text-foreground">
+                    <p className="font-display text-lg font-semibold text-foreground">
                       <Link href={AUTHOR.href} className="hover:text-primary transition-colors">
                         {AUTHOR.name}
                       </Link>
@@ -312,23 +311,13 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />
                     LinkedIn
                   </a>
-                  <button
-                    type="button"
-                    id={copyBtnId}
-                    data-canonical={canonical}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
-                    aria-label="Copy link to article"
-                  >
-                    <Link2 className="h-3.5 w-3.5" aria-hidden />
-                    <span data-copy-label>Copy link</span>
-                  </button>
+                  <CopyLinkButton url={canonical} />
                 </div>
-                <script dangerouslySetInnerHTML={{ __html: copyScript }} />
               </div>
 
               <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
-                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] max-w-xl mx-auto text-balance"
+                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
                 >
                   Ready to sell your car for cash?
@@ -370,38 +359,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                 {relatedPosts.map((related) => (
                   <li key={related.slug}>
-                    <article className="h-full">
-                      <Link
-                        href={`/blog/${related.slug}`}
-                        className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
-                      >
-                        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
-                          {related.category}
-                        </span>
-                        <h3
-                          className="font-display text-lg font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
-                          style={{ letterSpacing: "var(--tracking-tight)" }}
-                        >
-                          {related.title}
-                        </h3>
-                        <div className="mt-auto pt-5">
-                          <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
-                            <span className="inline-flex items-center gap-1">
-                              <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
-                              {related.readTime}
-                            </span>
-                            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
-                              Read
-                              <ArrowRight
-                                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                                strokeWidth={1.75}
-                                aria-hidden
-                              />
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    </article>
+                    <BlogPostCard post={related} variant="compact" showDate={false} />
                   </li>
                 ))}
               </ul>
