@@ -81,40 +81,40 @@
 :root {
   /* Clean white canvas; purple lives in feature bands, not the whole page. */
   --background: 0 0% 100%;             /* #FFFFFF */
-  --foreground: 258 35% 15%;           /* #211734 — dark plum ink for body copy */
+  --foreground: 261 39% 15%;           /* #211734 — dark plum ink for body copy */
   --card: 0 0% 100%;
-  --card-foreground: 258 35% 15%;
+  --card-foreground: 261 39% 15%;
 
-  --primary: 259 55% 45%;              /* #5B3FBE — Looping purple */
+  --primary: 253 50% 50%;              /* #5B3FBE — Looping purple */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 272 60% 96%;            /* #F4EEFB — soft lavender wash */
+  --secondary: 268 62% 96%;            /* #F4EEFB — soft lavender wash */
   --secondary-foreground: 259 55% 25%;
 
-  --muted: 270 30% 97%;                /* #F6F3FA */
-  --muted-foreground: 258 15% 40%;     /* #5E5770 */
+  --muted: 266 41% 97%;                /* #F6F3FA */
+  --muted-foreground: 257 13% 39%;     /* #5E5770 */
 
-  --accent: 14 95% 60%;                /* #F97449 — orange emphasis */
-  --accent-foreground: 258 35% 15%;
+  --accent: 15 94% 63%;                /* #F97449 — orange emphasis */
+  --accent-foreground: 261 39% 15%;
 
-  --destructive: 0 74% 52%;            /* #DC2626 */
+  --destructive: 0 72% 51%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
 
   /* Status green for success toasts/banners — distinct from --cta action green. */
-  --success: 142 71% 38%;              /* #16A34A — emerald */
+  --success: 142 76% 36%;              /* #16A34A — emerald */
   --success-foreground: 0 0% 100%;
 
   --warning: 38 92% 50%;               /* #F59E0B */
   --warning-foreground: 0 0% 100%;
 
-  --info: 199 89% 48%;                 /* #0284C7 */
+  --info: 200 98% 39%;                 /* #0284C7 */
   --info-foreground: 0 0% 100%;
 
-  --border: 270 20% 90%;               /* #E5DEEF */
-  --input: 270 20% 85%;
-  --ring: 259 55% 45%;
+  --border: 265 35% 90%;               /* #E5DEEF */
+  --input: 272 20% 85%;                /* #D9D1E0 */
+  --ring: 253 50% 50%;
 
-  --shadow-color: 259 35% 15%;         /* purple-tinted shadow */
+  --shadow-color: 261 39% 15%;         /* purple-tinted shadow */
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
@@ -126,11 +126,11 @@
   --on-dark-hi: 0 0% 100%;
 
   /* License plate and CTA green surfaced as their own tokens. */
-  --plate: 48 95% 54%;                 /* #F5D012 — plate yellow */
-  --plate-foreground: 258 35% 12%;
+  --plate: 50 92% 52%;                 /* #F5D012 — plate yellow */
+  --plate-foreground: 261 39% 15%;
   /* Action green for CTA buttons and the "action" accent — distinct from --success. */
-  --cta: 92 57% 48%;                   /* #7CB92F — lime CTA green */
-  --cta-foreground: 258 35% 15%;
+  --cta: 87 59% 45%;                   /* #7CB92F — lime CTA green */
+  --cta-foreground: 261 39% 15%;
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
