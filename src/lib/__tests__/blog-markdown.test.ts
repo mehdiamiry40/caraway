@@ -70,6 +70,36 @@ describe("renderBlogContent — block-level", () => {
     expect(flattenText(el)).toBe("Just a plain paragraph.");
   });
 
+  it("groups consecutive numbered blocks into an ordered list", () => {
+    const result = renderBlogContent([
+      "1. First **point**.",
+      "2. Second [point](/second).",
+      "A follow-up paragraph.",
+    ]);
+    const list = asElement(result[0]);
+    expect(list.type).toBe("ol");
+    const items = getChildren(list);
+    expect(items).toHaveLength(2);
+    expect(flattenText(items[0])).toBe("First point.");
+    expect(flattenText(items[1])).toBe("Second point.");
+
+    const para = asElement(result[1]);
+    expect(para.type).toBe("p");
+    expect(flattenText(para)).toBe("A follow-up paragraph.");
+  });
+
+  it("groups consecutive bullet blocks into an unordered list", () => {
+    const result = renderBlogContent([
+      "- First item",
+      "* Second item",
+      "## Next section",
+    ]);
+    const list = asElement(result[0]);
+    expect(list.type).toBe("ul");
+    expect(getChildren(list)).toHaveLength(2);
+    expect(flattenText(list)).toBe("First itemSecond item");
+  });
+
   it("only drop-caps the first paragraph when it is actually a paragraph", () => {
     const result = renderBlogContent(
       ["## Heading first", "Then a paragraph."],

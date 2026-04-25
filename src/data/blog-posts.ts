@@ -31,7 +31,13 @@ function materializePost(post: RawBlogPostEntry): BlogPost {
   return createBlogPost(post, { isIndexable: !noindexPostSlugs.has(post.slug) });
 }
 
-export const blogPosts: BlogPost[] = rawBlogPosts.map(materializePost);
+function sortByNewest(a: BlogPost, b: BlogPost): number {
+  const aTime = Date.parse(a.updatedAt || a.date);
+  const bTime = Date.parse(b.updatedAt || b.date);
+  return bTime - aTime;
+}
+
+export const blogPosts: BlogPost[] = rawBlogPosts.map(materializePost).sort(sortByNewest);
 
 export const indexableBlogPosts = blogPosts.filter((post) => post.isIndexable);
 
