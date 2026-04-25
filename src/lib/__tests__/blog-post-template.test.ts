@@ -46,6 +46,12 @@ describe("blog post template", () => {
     expect(failures).toEqual([]);
   });
 
+  it("keeps materialized posts sorted from newest to oldest", () => {
+    const timestamps = blogPosts.map((post) => Date.parse(post.updatedAt || post.date));
+    const sorted = [...timestamps].sort((a, b) => b - a);
+    expect(timestamps).toEqual(sorted);
+  });
+
   it("emits matching canonical URLs across metadata and BlogPosting schema", () => {
     for (const post of blogPosts) {
       const metadata = buildBlogPostMetadata(post);
