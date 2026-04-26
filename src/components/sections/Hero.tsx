@@ -1,11 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/analytics";
 
 const promises = [
   "Firm offer in 60 seconds",
@@ -32,10 +29,9 @@ export function Hero() {
               id="hero-heading"
               className="font-display font-semibold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
             >
-              Sell your car in{" "}
-              <span className="hl-orange">3&nbsp;steps</span>
+              Sell Your Car Today
               <br />
-              with <span className="hl-green">cash</span> on pickup.
+              in <span className="hl-green">Brisbane</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-on-dark-hi/85 leading-relaxed text-lg sm:text-xl font-light">
@@ -49,7 +45,6 @@ export function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-xl">
               <Link
                 href="/#price-estimator"
-                onClick={() => trackEvent("hero_cta_click", { target: "price-estimator" })}
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "group w-full sm:w-auto px-8",

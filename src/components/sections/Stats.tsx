@@ -21,7 +21,7 @@ interface StatDef {
 const stats: StatDef[] = [
   { value: "Local", label: "Brisbane team — reach us by phone, not a call centre", icon: Users },
   { value: "Insured", label: "Full coverage on pickups we arrange", icon: ShieldCheck },
-  { value: PRICE_RANGE_LABEL, label: "Selected vehicles only; offer depends on details", icon: Banknote },
+  { value: PRICE_RANGE_LABEL, label: "Actual offers depend on condition, completeness, location, demand, and current market value", icon: Banknote },
   { value: "Same- or next-day", label: "Usually same- or next-day pickup — subject to truck availability", icon: Truck },
 ];
 

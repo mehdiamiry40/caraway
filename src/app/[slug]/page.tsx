@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
-import { reviews } from "@/data/reviews";
 import { getServiceBySlug, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
@@ -83,13 +82,6 @@ export default async function ServiceSlugPage({ params }: Props) {
               highPrice: "9999",
               description: "Offer depends on vehicle details, condition, completeness, location, and current market demand. Free car removal and towing included.",
               availability: "https://schema.org/InStock",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10,
-              reviewCount: reviews.length,
-              bestRating: 5,
-              worstRating: 1,
             },
           },
         ]}

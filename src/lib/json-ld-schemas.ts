@@ -1,7 +1,6 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
 import { SITE_URL, BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
-import { reviews } from "@/data/reviews";
 
 const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
@@ -25,10 +24,6 @@ const openingHours = {
 const SAME_AS = [
   BUSINESS.googleBusinessUrl,
 ];
-
-/* ---------- Compute aggregate rating from reviews data ---------- */
-const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
-const ratingValue = Math.round(avg * 10) / 10;
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -113,13 +108,6 @@ export const localBusinessSchema = {
     "Damaged car removal",
   ],
   keywords: "cash for cars Brisbane, sell my car Brisbane, free car removal, scrap car buyers Brisbane",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue,
-    reviewCount: reviews.length,
-    bestRating: 5,
-    worstRating: 1,
-  },
   sameAs: SAME_AS,
 };
 

@@ -149,10 +149,10 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div aria-hidden="true" className="site-frame" />
-        <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
         <ErrorBoundary>
           <Providers>{children}</Providers>
         </ErrorBoundary>
+        <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
         <Analytics />
         <SpeedInsights />
       </body>

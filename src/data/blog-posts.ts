@@ -31,10 +31,13 @@ function materializePost(post: RawBlogPostEntry): BlogPost {
   return createBlogPost(post, { isIndexable: !noindexPostSlugs.has(post.slug) });
 }
 
+function dateTime(post: BlogPost): number {
+  const parsed = Date.parse(post.updatedAt || post.date);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
 function sortByNewest(a: BlogPost, b: BlogPost): number {
-  const aTime = Date.parse(a.updatedAt || a.date);
-  const bTime = Date.parse(b.updatedAt || b.date);
-  return bTime - aTime;
+  return dateTime(b) - dateTime(a);
 }
 
 export const blogPosts: BlogPost[] = rawBlogPosts.map(materializePost).sort(sortByNewest);
@@ -43,7 +46,7 @@ export const indexableBlogPosts = blogPosts.filter((post) => post.isIndexable);
 
 /** Convert a category label to a URL-safe slug. */
 export function categorySlug(category: string): string {
-  return category.toLowerCase().replace(/\s+/g, "-");
+  return category.trim().toLowerCase().replace(/\s+/g, "-");
 }
 
 /** Map of slug → display label for all categories with indexable posts. */
@@ -67,7 +70,7 @@ export function getPostsByCategory(slug: string): BlogPost[] {
 export function getPostsForService(serviceSlug: string, limit = 3): BlogPost[] {
   return indexableBlogPosts
     .filter((p) => p.relatedServices.includes(serviceSlug))
-    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    .sort((a, b) => dateTime(b) - dateTime(a))
     .slice(0, limit);
 }
 
@@ -76,6 +79,6 @@ export function getPostsForService(serviceSlug: string, limit = 3): BlogPost[] {
 export function getPostsForSuburb(suburbSlug: string, limit = 3): BlogPost[] {
   return indexableBlogPosts
     .filter((p) => p.relatedSuburbs.includes(suburbSlug))
-    .sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))
+    .sort((a, b) => dateTime(b) - dateTime(a))
     .slice(0, limit);
 }
