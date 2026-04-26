@@ -21,7 +21,7 @@ interface StatDef {
 const stats: StatDef[] = [
   { value: "Local", label: "Brisbane team — reach us by phone, not a call centre", icon: Users },
   { value: "Insured", label: "Full coverage on pickups we arrange", icon: ShieldCheck },
-  { value: PRICE_RANGE_LABEL, label: "Cash range we pay", icon: Banknote },
+  { value: PRICE_RANGE_LABEL, label: "Selected vehicles only; offer depends on details", icon: Banknote },
   { value: "24–48h", label: "Pickup usually same- or next-day — subject to truck availability", icon: Truck },
 ];
 
@@ -77,7 +77,7 @@ export function Stats() {
         <div className="mt-6 sm:mt-10 pt-5 sm:pt-8 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
-            Seller stories on this page are shared with permission and are not a full survey of every pickup.
+            Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
           </p>
         </div>
       </div>

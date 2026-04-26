@@ -81,7 +81,7 @@ export default async function ServiceSlugPage({ params }: Props) {
               priceCurrency: "AUD",
               lowPrice: "200",
               highPrice: "9999",
-              description: "Cash paid on pickup. Free car removal and towing included.",
+              description: "Offer depends on vehicle details, condition, completeness, location, and current market demand. Free car removal and towing included.",
               availability: "https://schema.org/InStock",
             },
             aggregateRating: {

@@ -28,7 +28,7 @@ type MakeTier = "high" | "medium" | "low";
  *
  * Tuned for a scrap-focused buyer: the vast majority of vehicles we
  * collect are bought for their hull/parts value, so base values and
- * spreads are narrow — most quotes land between $200 and $9,999.
+ * spreads are narrow — quotes are capped at $9,999 and depend on vehicle details.
  */
 const PRICE_TABLE = {
   /** Base value brackets by vehicle age (years). First matching bracket wins. */

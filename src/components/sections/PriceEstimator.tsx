@@ -84,7 +84,8 @@ export function PriceEstimator() {
 
   if (isSuccess) {
     return (
-      <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Quote submitted">
+      <section id="price-estimator" className="section-y scroll-mt-header bg-muted relative overflow-hidden" aria-label="Quote submitted">
+        <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
         <div className="site-container">
           <div className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-3xl mx-auto" role="status" aria-live="polite" aria-atomic="true">
             <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
@@ -132,7 +133,8 @@ export function PriceEstimator() {
   }
 
   return (
-    <section id="price-estimator" className="section-y bg-muted relative overflow-hidden" aria-label="Instant price estimate">
+    <section id="price-estimator" className="section-y scroll-mt-header bg-muted relative overflow-hidden" aria-label="Instant price estimate">
+      <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
         {liveMessage}
       </div>
@@ -144,6 +146,9 @@ export function PriceEstimator() {
           </h2>
           <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
             Answer four quick questions. We&apos;ll send back a firm cash offer for your car — no account, no spam.
+          </p>
+          <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Actual offers depend on condition, completeness, location, demand, and current market value.
           </p>
         </div>
 
@@ -350,6 +355,9 @@ export function PriceEstimator() {
                       <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
                         Instant estimate · firm offer within the hour
                       </p>
+                      <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--on-dark))]">
+                        Final offers depend on the vehicle details and a pickup inspection.
+                      </p>
                     </div>
                   </div>
 
@@ -398,7 +406,7 @@ export function PriceEstimator() {
                   <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
                     <div className="min-w-0">
                       <p className="text-xs text-foreground/70 uppercase tracking-wider">Your quote</p>
-                      <p className="font-semibold text-foreground truncate">
+                      <p className="font-medium text-foreground truncate">
                         {year} {[make, model].filter(Boolean).join(" ")} · <span className="font-mono tabular-nums text-primary">${result.quote.toLocaleString()}</span>
                       </p>
                     </div>
