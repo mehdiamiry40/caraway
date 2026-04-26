@@ -54,6 +54,8 @@ export default function ServicePageTemplate({
           </div>
         </section>
 
+        <QuoteForm />
+
         <div className="site-container py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
@@ -153,7 +155,6 @@ export default function ServicePageTemplate({
           </div>
         </div>
 
-        <QuoteForm />
         <TrustBadges />
       </main>
 
