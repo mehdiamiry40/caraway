@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { LocationViewTracker } from "@/components/LocationViewTracker";
 import { QuoteForm } from "@/components/sections/QuoteForm";
+import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
@@ -178,6 +179,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
           </div>
         </div>
 
+        <SellingSafelySection />
         <QuoteForm />
       </main>
 

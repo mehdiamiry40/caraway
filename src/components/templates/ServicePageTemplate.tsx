@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { QuoteForm } from "@/components/sections/QuoteForm";
+import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { ServicePage } from "@/data/services";
 import { services } from "@/data/services";
@@ -155,6 +156,7 @@ export default function ServicePageTemplate({
           </div>
         </div>
 
+        <SellingSafelySection />
         <TrustBadges />
       </main>
 
