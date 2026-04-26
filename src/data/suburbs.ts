@@ -6,9 +6,28 @@ export interface SuburbPage {
   metaDescription: string;
   h1: string;
   intro: string;
+  regionName?: string;
   localContent: string;
   serviceDetails: string;
   whyUs: string;
+  nearbyAreaNames?: string[];
+  pickupAccessNotes?: string[];
+  localSellingPoints?: string[];
+  exampleVehiclesBought?: Array<{
+    vehicle: string;
+    area: string;
+    condition: string;
+    note?: string;
+  }>;
+  localFaqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  internalLinks?: Array<{
+    label: string;
+    href: string;
+  }>;
+  finalCtaText?: string;
   nearbySuburbs: string[];
   relatedServices: string[];
 }
@@ -20,9 +39,39 @@ export const suburbs: SuburbPage[] = [
     metaDescription: `Cash for cars in North Brisbane. Free car removal across Chermside, Aspley, Kedron, Stafford & more. Same- or next-day cash payment. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars North Brisbane",
     intro: "Caraway provides fast, reliable cash for cars across North Brisbane. Whether you're in Chermside, Aspley, Kedron, Stafford, Nundah, or anywhere across Brisbane's northside — we'll come to you, pay cash on the spot, and tow your car away free.",
+    regionName: "North Brisbane",
     localContent: "North Brisbane is one of our busiest service areas. With major arterials like Gympie Road, Stafford Road, Webster Road, and the Gateway Motorway running through the region, our drivers can reach most northside suburbs within 30 minutes of our depot. We regularly collect vehicles from residential streets, apartment complexes, and commercial properties across the northside corridor from Bowen Hills and Albion through Windsor, Wavell Heights, Nundah, and out to Bracken Ridge and Bald Hills. The northside is a mix of older post-war cottages in Wooloowin and Clayfield, the brick-and-tile suburbia of Aspley and Carseldine, newer estates around Fitzgibbon and Taigum, and the high-density apartment corridors along Lutwyche Road and Sandgate Road. Each of those environments throws up a different set of car-selling situations: long-term residents offloading the Commodore they've had since 1998, apartment dwellers clearing out an unregistered second car from a stack parking bay, or families upgrading from the family hatch to something newer. We see all of them. The area's proximity to Brisbane Airport also means we buy plenty of cars from people leaving the country — students, contractors, and expats who need a quick, reliable sale before their flight. Our familiarity with the northside road network, from the back streets of Grange and Gordon Park to the industrial pockets in Geebung and Zillmere, means we can get to you fast and navigate access constraints without drama.",
     serviceDetails: "Our North Brisbane service covers all vehicle types and conditions. We buy old Commodores and Falcons from Aspley driveways, remove accident-damaged cars from Chermside side streets, collect scrap cars from Kedron workshops, and purchase unwanted vehicles from Stafford homeowners. The northside has a particularly high number of cars that have been sitting unused for years — tucked under Queenslanders, parked at the back of long driveways in Nundah and Wavell Heights, or forgotten in sheds on the larger blocks around Bridgeman Downs and Albany Creek. These long-dormant cars are our specialty. Our tow trucks are set up to winch non-running vehicles out of tight spaces, tyres flat, battery dead, brakes seized — none of it matters. We also handle the paperwork for deceased estate sales, which come up often across the established northside suburbs where longtime residents are downsizing or passing away. No car is too old, too damaged, or too far gone for us to make a competitive cash offer, and we always quote on the phone before any driver is dispatched so there are no surprises at pickup.",
     whyUs: "Local knowledge matters. Our drivers know the northside — they know which streets are tight, which complexes need body corporate access, and the fastest routes to get to you when Gympie Road is gridlocked. We know that Gordon Park has a lot of narrow driveways, that Hamilton has weight-restricted access for some heritage streets, and that the Kedron Brook floodway area has a handful of properties that go underwater in heavy rain. That local familiarity translates into faster, smoother pickups and fewer surprises on the day. We've been serving North Brisbane for years, and our repeat customers and word-of-mouth referrals across the area speak to the quality of our service. We're not a faceless national brand routing your enquiry to a call centre in another state — we're a Brisbane operation answering Brisbane phone calls and sending Brisbane-based drivers to Brisbane addresses. When you call us from the northside, you get someone who knows the area and respects your time.",
+    nearbyAreaNames: ["Chermside", "Aspley", "Nundah", "Kedron", "Stafford"],
+    pickupAccessNotes: [
+      "Pickup is available from houses, apartment complexes, workshops, and street-accessible locations across the northside.",
+      "Tell us if the vehicle is in basement parking, a tight townhouse driveway, or a workshop yard so we can plan the right truck access.",
+      "Same-day or next-day northside collection may be available depending on the schedule and vehicle details."
+    ],
+    localSellingPoints: [
+      "Free towing across North Brisbane suburbs",
+      "Paid before the vehicle leaves",
+      "No RWC needed for many unwanted or unregistered vehicles",
+      "Help with QLD sale and transfer paperwork"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2009 Toyota Camry", area: "Aspley", condition: "High kilometres", note: "Example only" },
+      { vehicle: "2011 Holden Commodore", area: "Stafford", condition: "Unregistered", note: "Example only" },
+      { vehicle: "2007 Mazda 3", area: "Nundah", condition: "Not running", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Do you collect cars from North Brisbane apartment buildings?", answer: "Yes, in many cases. Please tell us the clearance height, gate access, parking level, and whether the vehicle can roll so we can confirm the right pickup method." },
+      { question: "Can you remove an unregistered car from a northside driveway?", answer: "Yes. We regularly buy unregistered vehicles from driveways, carports, workshops, and street-accessible locations across North Brisbane." },
+      { question: "How fast can you pick up a car in North Brisbane?", answer: "Same-day or next-day pickup may be available depending on your suburb, truck schedule, access, and vehicle details." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Chermside", href: "/locations/chermside" },
+      { label: "Cash for Cars Redcliffe", href: "/locations/redcliffe" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ],
+    finalCtaText: "Ready to clear an unwanted car from North Brisbane? Send the details for a free quote and pickup options.",
     nearbySuburbs: ["chermside", "redcliffe", "caboolture"],
     relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "unwanted-cars-brisbane", "old-cars-brisbane"]
   },
@@ -32,9 +81,40 @@ export const suburbs: SuburbPage[] = [
     metaDescription: `Sell your car for cash in South Brisbane. Covering Woolloongabba, Annerley, Yeronga, Moorooka & surrounds. Free removal. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars South Brisbane",
     intro: "Selling a car in South Brisbane? Caraway offers instant cash for cars across Brisbane's southside — from Woolloongabba and Annerley to Yeronga, Moorooka, and beyond. Free same- or next-day removal, no towing charges, and cash paid before your car leaves.",
+    regionName: "South Brisbane",
     localContent: "South Brisbane is a diverse mix of inner-city apartments, character homes, and busy commercial areas. We navigate the area daily, collecting vehicles from the tight streets around West End and Highgate Hill, the suburban blocks of Yeronga and Fairfield, the workshops along Ipswich Road in Moorooka, and the riverside developments around South Bank and Kangaroo Point. The inner south is changing fast — old warehouses in West End are being converted into apartment blocks, the Woolloongabba Cross River Rail precinct is reshaping the suburb around the Gabba, and new high-rises are going up along Montague Road and Melbourne Street. All of that construction and turnover means a steady stream of residents moving, downsizing, or getting rid of cars they no longer need in the denser urban environment. We also see a lot of sales from the large student population around Dutton Park and Highgate Hill — international students finishing their degrees, heading home, and needing to offload a car before they fly out. Further south along the Ipswich Road corridor, Moorooka is Brisbane's traditional used-car strip and nearby Rocklea is one of the low-lying flood zones that took a hammering in 2011 and again in 2022 — we buy a lot of flood-affected vehicles from those suburbs every year. The character homes of Greenslopes, Fairfield, and Annerley add another layer of older cars hidden away under Queenslanders and in carports, many of which haven't been started in years.",
     serviceDetails: "We handle everything from late-model used cars in Greenslopes to scrap vehicles in Rocklea. If your car is parked at a Woolloongabba apartment complex, sitting in a Dutton Park garage, or tucked into a stack parking bay under a West End high-rise, our team will work around access restrictions to get to your vehicle. We bring our own equipment and never leave a mess behind. In inner south suburbs we deal regularly with body corporate access, restricted parking zones, and the sort of street frontage where our tow truck has to double-park briefly while we load — we know how to manage all of that without holding up traffic or upsetting neighbours. For the flat blocks in Yeronga, Fairfield, and Annerley, pickups are usually very quick; for steeper streets in Highgate Hill, Dutton Park, and parts of East Brisbane, we bring winches and extended ramps as standard. We also routinely handle flood-affected vehicles from Rocklea, Archerfield, and the low-lying parts of Graceville and Sherwood — these cars often need to be loaded carefully because seized brakes and waterlogged interiors make them heavier and harder to move than a normal car.",
     whyUs: "Convenience is key in South Brisbane. Our central location means we can reach most southside suburbs in under 20 minutes, making same- or next-day pickup easy even for afternoon calls. We understand that parking is tight in inner-south suburbs, so we come prepared with the right equipment for any situation. We also understand that apartment living in the inner south often means strict pickup windows — you don't want us holding up the shared driveway at your West End block for an hour — so we turn up on time and get the job done efficiently. Our quote on the phone is the price you're paid at pickup: no 'reassessment' when the driver arrives, no surprise deductions for condition issues we already knew about. That transparency is why we get a lot of repeat business and referrals from the inner south.",
+    nearbyAreaNames: ["Sunnybank", "Moorooka", "Mount Gravatt", "Carindale", "Eight Mile Plains"],
+    pickupAccessNotes: [
+      "Southside pickups commonly include townhouses, older homes, apartment visitor bays, workshops, and unregistered cars in driveways.",
+      "Let us know if the vehicle is behind a gate, parked on a slope, or blocked by another car so the driver can bring the right equipment.",
+      "Workshop and industrial pickups around Moorooka, Rocklea, Archerfield, and Acacia Ridge can usually be arranged within normal business access hours."
+    ],
+    localSellingPoints: [
+      "Free towing across Brisbane's southside",
+      "Useful for unregistered, damaged, scrap, and non-running vehicles",
+      "Pickup from residential, townhouse, workshop, and yard locations",
+      "Clear quotes before collection"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2010 Hyundai i30", area: "Sunnybank", condition: "Expired registration", note: "Example only" },
+      { vehicle: "2006 Ford Falcon", area: "Moorooka", condition: "Mechanical issue", note: "Example only" },
+      { vehicle: "2013 Nissan Dualis", area: "Mount Gravatt", condition: "Damaged panels", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you collect a car from a South Brisbane townhouse complex?", answer: "Yes, where access is safe. Send us the driveway layout, gate details, and whether the car rolls so we can confirm the pickup plan." },
+      { question: "Do you buy unregistered cars on the southside?", answer: "Yes. Many unwanted or unregistered vehicles can be sold without a roadworthy, subject to ownership checks and current QLD requirements." },
+      { question: "Can you pick up from a southside workshop?", answer: "Yes. We can coordinate with the workshop during access hours and confirm payment before the vehicle leaves." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Sunnybank", href: "/locations/sunnybank" },
+      { label: "Cash for Cars Moorooka", href: "/locations/moorooka" },
+      { label: "Cash for Cars Mount Gravatt", href: "/locations/mount-gravatt" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ],
+    finalCtaText: "Tell us where the car is on the southside, what condition it is in, and whether it can roll. We will confirm a clear quote and pickup options.",
     nearbySuburbs: ["moorooka", "mount-gravatt", "sunnybank"],
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane", "car-removal-brisbane"]
   },
@@ -55,7 +135,7 @@ export const suburbs: SuburbPage[] = [
     title: "Cash for Cars Ipswich | Sell Your Car for Cash Today",
     metaDescription: `Cash for cars in Ipswich. Free car removal across Ipswich, Goodna, Springfield, Redbank & more. Instant cash payment. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Ipswich — Sell Your Car Today",
-    intro: "Caraway pays top cash for cars across the Ipswich region. Whether you're in central Ipswich, Goodna, Springfield, Redbank Plains, or Rosewood — we offer free car removal with same- or next-day cash payment. All vehicle types and conditions accepted.",
+    intro: "Caraway pays fair cash offers for cars across the Ipswich region. Whether you're in central Ipswich, Goodna, Springfield, Redbank Plains, or Rosewood — we offer free car removal with same- or next-day cash payment. All vehicle types and conditions accepted.",
     localContent: "Ipswich and its surrounding suburbs sit at the western edge of Greater Brisbane, connected by the Ipswich Motorway and Warrego Highway. Despite the distance from the CBD, we service the entire Ipswich corridor daily. From the established suburbs around Booval, Bundamba, Brassall, and Raceview to the growing communities of Springfield Lakes, Augustine Heights, and Ripley, our team covers it all without charging extra for the trip. Ipswich has one of the oldest housing stocks in South-East Queensland and a correspondingly older vehicle fleet — heritage suburbs like East Ipswich, Blackstone, Silkstone, Booval, and Basin Pocket have cars that have been parked on the same blocks for decades. The Warrego Highway also gives us easy access to the Scenic Rim and Lockyer Valley fringes — we regularly make runs out to Rosewood, Marburg, Walloon, and Thagoona where rural properties often have old farm vehicles, second utes, and project cars that have long outlived their usefulness. Further out, the flood-prone areas along the Bremer River and Bundamba Creek have produced a steady stream of water-damaged cars over the years, especially after the 2011 and 2022 floods, and we've bought many of them direct from owners after insurance finalised the claim. The newer growth corridors of Ipswich — Springfield Central, Augustine Heights, Brookwater, and Ripley — tell a different story: families upgrading from their first home car to something bigger, and trading out the old hatchback we come and collect.",
     serviceDetails: "The Ipswich region has a strong automotive culture, and we see a wide variety of vehicles — old Falcons and Commodores from Goodna, work utes from Wacol and Darra, family cars from Springfield Lakes, and scrap vehicles from rural blocks around Rosewood and Marburg. We also handle a high volume of ex-mining and ex-fleet vehicles that come out of the Ipswich area, where a lot of long-distance commuters and tradies have given their cars a hard life and are ready to move them on. Our tow trucks are set up for rural access — longer ramps, heavier winches, and drivers who've done enough Lockyer Valley pickups to know how to get a dead ute off a muddy paddock. For the more suburban parts of Ipswich we bring the same professional equipment we use in inner Brisbane, and we respect the character of the older homes in places like Woodend and Eastern Heights when navigating tight driveways. Whatever your vehicle, and wherever it's sitting, we'll make a fair cash offer on the phone before any driver is dispatched, so you know exactly what you're getting.",
     whyUs: "We don't treat Ipswich as a secondary service area. Our Ipswich customers receive the same competitive offers and fast service as our inner-Brisbane clients. We never reduce your cash offer because of distance, and we never charge towing fees — even for pickups in the outer Ipswich region out towards Rosewood, Marburg, Walloon, or Amberley. We run scheduled Ipswich routes most days of the week, which keeps our costs efficient and means same- or next-day pickup is usually achievable for morning calls. Call us from Ipswich, get an honest quote, and we'll be there with cash in hand the same or next day.",
@@ -127,7 +207,7 @@ export const suburbs: SuburbPage[] = [
     title: "Cash for Cars Sunnybank | Top Dollar for All Vehicles",
     metaDescription: `Cash for cars Sunnybank. We buy cars in any condition — old, scrap, damaged. Free towing across Sunnybank, Runcorn, Calamvale. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Sunnybank",
-    intro: "Caraway pays top cash for cars in Sunnybank, Sunnybank Hills, Runcorn, Calamvale, and Algester. We buy all vehicles in any condition and remove them free of charge. Same- or next-day service available seven days a week.",
+    intro: "Caraway pays fair cash offers for cars in Sunnybank, Sunnybank Hills, Runcorn, Calamvale, and Algester. We buy all vehicles in any condition and remove them free of charge. Same- or next-day service available seven days a week.",
     localContent: "Sunnybank and its neighbouring suburbs form one of Brisbane's most vibrant and diverse communities. The area's bustling commercial precincts along Mains Road and McCullough Street sit alongside established residential streets where many families have owned their cars for years. We're regular visitors to the Sunnybank area and know it well.",
     serviceDetails: "We frequently buy older vehicles from Sunnybank families upgrading their cars, scrap vehicles from the light industrial areas around Runcorn, and unwanted cars from Calamvale and Algester residents. The area's excellent road connections mean we can get to you quickly and offer competitive prices without distance penalties.",
     whyUs: "Sunnybank's diverse community means we serve customers from all backgrounds, and we pride ourselves on clear, honest communication with every seller. Our offers are transparent, our process is simple, and our cash payments are immediate.",
@@ -187,7 +267,7 @@ export const suburbs: SuburbPage[] = [
     title: "Cash for Cars Browns Plains | Top Cash, Free Towing",
     metaDescription: `Cash for cars Browns Plains. Top cash for all vehicles, free towing across Browns Plains, Regents Park, Heritage Park, Hillcrest. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Browns Plains",
-    intro: "Caraway pays top cash for cars in Browns Plains, Regents Park, Heritage Park, Hillcrest, and Forestdale. Sell your old, damaged, or unwanted car today with free removal and instant cash payment.",
+    intro: "Caraway pays fair cash offers for cars in Browns Plains, Regents Park, Heritage Park, Hillcrest, and Forestdale. Sell your old, damaged, or unwanted car today with free removal and payment on pickup.",
     localContent: "Browns Plains and the surrounding suburbs in the Logan-Beaudesert corridor have grown rapidly over the past two decades, with new housing estates bringing thousands of families to the area. Many of these families now have older second cars, trade-in rejects, or vehicles they no longer need. That's where Caraway comes in — we turn those unwanted vehicles into cash.",
     serviceDetails: "We regularly service the Browns Plains area, collecting vehicles from the residential streets around Grand Plaza, the newer estates of Heritage Park and Forestdale, and the industrial areas along Beaudesert Road. Our tow trucks can handle all vehicle types and conditions, and we bring the cash with us — you get paid on the spot.",
     whyUs: "Browns Plains residents value straightforward, no-nonsense service, and that's exactly what Caraway delivers. No hidden fees, no last-minute price changes, no time-wasting. We quote a price, we show up on time, we pay you, and we take the car. Simple.",
@@ -237,7 +317,7 @@ export const suburbs: SuburbPage[] = [
     h1: "Cash for Cars Capalaba",
     intro: "Selling a car in Capalaba? Caraway pays instant cash for cars across Capalaba and the wider Redlands — including Alexandra Hills, Thornlands, Birkdale, Wellington Point, and Cleveland. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway. All makes, all conditions accepted.",
     localContent: "Capalaba is the commercial heart of the Redlands, sitting at the junction of Old Cleveland Road and Moreton Bay Road with the Capalaba Park and Capalaba Central shopping precincts in the middle of it all. Our drivers run Capalaba pickups daily, collecting vehicles from the established residential streets around Degen Road and Redland Bay Road, the estates spreading out towards Sheldon and Burbank, and the light industrial area along Old Cleveland Road East where a lot of mechanics, panel beaters, and workshops end up with unwanted project cars and trade-in rejects. The suburb has been a strong Commodore, Falcon, and Hilux area for decades — plenty of older tradie utes and family sedans still sitting in carports and under Queenslanders — and we see a steady flow of 4WDs and boats that have come off trailers after years of service. The bayside location means salt air is a real factor: vehicles parked outside in Capalaba, Alexandra Hills, and Thornlands cop more underbody corrosion than inland suburbs, and we regularly buy cars that look tidy on top but have rust through exhausts, brake lines, and subframes. With Moreton Bay Road giving us fast access from Capalaba to Cleveland in one direction and Carindale in the other, we can reach most Redlands pickups within 25 to 30 minutes.",
-    serviceDetails: "Capalaba residents commonly sell us older family sedans that have been replaced by newer cars, high-kilometre tradie utes from the local building trades, unregistered second cars that have been sitting in sheds for years, and flood- or storm-damaged vehicles from the low-lying streets near Tingalpa Creek. We also buy a lot of retired 4WDs and camper-style vehicles from Redlands residents who've downsized out of boating and four-wheel-driving as they've got older. Our tow trucks are equipped for the full range of pickup scenarios common in the area: tight residential streets in the older parts of Capalaba, steep driveways up towards Mount Cotton and Sheldon, acreage blocks around Chandler and Gumdale, and the stack parking bays at apartment complexes along the Moreton Bay Road corridor. We handle statutory and repairable write-offs, deceased estate vehicles, and bulk pickups for tradies clearing a workshop. Every quote is firm on the phone and cash-ready at pickup — no reassessments, no deductions.",
+    serviceDetails: "Capalaba residents commonly sell us older family sedans that have been replaced by newer cars, high-kilometre tradie utes from the local building trades, unregistered second cars that have been sitting in sheds for years, and flood- or storm-damaged vehicles from the low-lying streets near Tingalpa Creek. We also buy a lot of retired 4WDs and camper-style vehicles from Redlands residents who've downsized out of boating and four-wheel-driving as they've got older. Our tow trucks are equipped for the full range of pickup scenarios common in the area: tight residential streets in the older parts of Capalaba, steep driveways up towards Mount Cotton and Sheldon, acreage blocks around Chandler and Gumdale, and the stack parking bays at apartment complexes along the Moreton Bay Road corridor. We handle statutory and repairable write-offs, deceased estate vehicles, and bulk pickups for tradies clearing a workshop. Every quote is based on the details you provide and confirmed at pickup.",
     whyUs: "Capalaba is one of our most consistent service areas. We run the Redlands multiple times a week, which keeps our logistics efficient and lets us offer the same competitive pricing you'd get in an inner-city suburb — no distance surcharge, no reduced quote because you're on the bay side of the M1. Our drivers know the area well, from the back streets of Birkdale to the bushier blocks around Burbank and Sheldon, and they come prepared for the corrosion and rust conditions that come with living close to Moreton Bay. When you call us from Capalaba, you get a genuine local quote from a Brisbane operator — not a national lead broker routing your job to whoever's cheapest that day. Cash on pickup, paperwork handled on the spot, and the car gone within hours of your first call.",
     nearbySuburbs: ["bayside-brisbane", "carindale", "mount-gravatt"],
     relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "unwanted-cars-brisbane", "old-cars-brisbane"]
@@ -423,6 +503,348 @@ export const suburbs: SuburbPage[] = [
     relatedServices: ["scrap-car-removal-brisbane", "junk-cars-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"]
   }
 ];
+
+const priorityLocationEnhancements: Record<string, Partial<SuburbPage>> = {
+  chermside: {
+    regionName: "North Brisbane",
+    title: "Cash for Cars Chermside | Free Car Removal",
+    metaDescription: "Sell your car in Chermside with Caraway. Free towing, paid on pickup, and car removal for unwanted, damaged, scrap, or unregistered vehicles.",
+    intro: "Caraway collects unwanted, damaged, scrap, and unregistered vehicles across Chermside and nearby northside suburbs. We can arrange pickup from homes, apartments, workshops, and street-accessible locations.",
+    nearbyAreaNames: ["Wavell Heights", "Stafford", "Kedron", "Aspley", "Nundah"],
+    pickupAccessNotes: [
+      "Pickup available from houses, apartment car parks, workshops, and street parking where access is safe.",
+      "Let us know if the vehicle is near Westfield Chermside, in a basement car park, or parked on a narrow street so we can plan the right access.",
+      "Same-day or next-day northside pickup may be available depending on schedule and vehicle details."
+    ],
+    localSellingPoints: [
+      "Free towing in Chermside and nearby suburbs",
+      "No RWC needed for many unwanted or unregistered vehicles",
+      "Paid before the vehicle leaves",
+      "Help with QLD transfer paperwork"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2008 Toyota Corolla", area: "Chermside", condition: "Not running", note: "Example only" },
+      { vehicle: "2012 Holden Cruze", area: "Wavell Heights", condition: "Engine issue", note: "Example only" },
+      { vehicle: "2010 Mazda 3", area: "Stafford", condition: "Unregistered", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you pick up a car from an apartment car park in Chermside?", answer: "Yes, in many cases we can. Please tell us the clearance height, access details, and whether the vehicle can roll so we can arrange the right pickup method." },
+      { question: "Do I need a roadworthy to sell my car in Chermside?", answer: "Many unwanted, damaged, scrap, or unregistered vehicles can be sold without a roadworthy. Keep your own sale records and follow current QLD Transport guidance." },
+      { question: "How quickly can you collect my car in Chermside?", answer: "Same-day or next-day pickup may be available depending on your location, vehicle details, and schedule." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars North Brisbane", href: "/locations/north-brisbane" },
+      { label: "Cash for Cars Redcliffe", href: "/locations/redcliffe" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ],
+    finalCtaText: "Tell us where the vehicle is parked in Chermside and whether it can roll, and we will confirm a quote and pickup options."
+  },
+  sunnybank: {
+    regionName: "South Brisbane",
+    title: "Cash for Cars Sunnybank | Free Towing & Pickup",
+    metaDescription: "Sell your car in Sunnybank with free towing, paid-on-pickup service, and removal for unwanted, damaged, scrap, or unregistered vehicles.",
+    nearbyAreaNames: ["Sunnybank Hills", "Runcorn", "Eight Mile Plains", "Robertson", "Acacia Ridge"],
+    pickupAccessNotes: [
+      "Pickup is available from driveways, townhouse complexes, unit visitor bays, workshops, and street-accessible parking.",
+      "Mains Road, McCullough Street, and local school-hour traffic can affect timing, so access details help us book a realistic pickup window.",
+      "For townhouse complexes, tell us about gate codes, visitor parking, turning room, and whether the vehicle starts or rolls."
+    ],
+    localSellingPoints: [
+      "Free southside towing from Sunnybank and nearby suburbs",
+      "Clear quotes before pickup",
+      "Suitable for old, damaged, scrap, and unregistered cars",
+      "Paid before the car leaves"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2009 Honda Civic", area: "Sunnybank", condition: "Transmission fault", note: "Example only" },
+      { vehicle: "2014 Toyota Camry", area: "Runcorn", condition: "Damaged front end", note: "Example only" },
+      { vehicle: "2007 Hyundai Getz", area: "Robertson", condition: "Expired registration", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you pick up a car from a Sunnybank townhouse complex?", answer: "Yes, if the access is safe. Please send gate, driveway, and turning details, plus whether the car can roll or needs winching." },
+      { question: "Do you buy unregistered cars in Sunnybank?", answer: "Yes. We buy many unregistered and unwanted vehicles in Sunnybank and nearby suburbs, subject to ownership checks and current QLD requirements." },
+      { question: "Can you collect from a busy road near Sunnybank?", answer: "Often yes, but we may need to arrange a safe time or nearby loading position depending on traffic, parking, and tow access." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Mount Gravatt", href: "/locations/mount-gravatt" },
+      { label: "Cash for Cars Moorooka", href: "/locations/moorooka" },
+      { label: "Cash for Cars South Brisbane", href: "/locations/south-brisbane" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  "mount-gravatt": {
+    regionName: "South Brisbane",
+    title: "Cash for Cars Mount Gravatt | Free Car Removal",
+    metaDescription: "Cash for cars in Mount Gravatt with free towing, paid on pickup, and removal for damaged, unwanted, scrap, and unregistered vehicles.",
+    nearbyAreaNames: ["Upper Mount Gravatt", "Mansfield", "Wishart", "Holland Park", "Carindale"],
+    pickupAccessNotes: [
+      "Tell us about hill access, steep driveways, under-house parking, or tight townhouse entries before pickup.",
+      "Workshop pickups around Logan Road, Kessels Road, and nearby commercial areas can be arranged during access hours.",
+      "If the car does not start or cannot roll, we can plan for winching where the location is accessible."
+    ],
+    localSellingPoints: [
+      "Free towing around Mount Gravatt and nearby southside suburbs",
+      "Pickup from homes, units, workshops, and street-accessible locations",
+      "No RWC needed for many unwanted or unregistered vehicles",
+      "Paid before collection is completed"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2011 Subaru Forester", area: "Mount Gravatt", condition: "Head gasket issue", note: "Example only" },
+      { vehicle: "2008 Ford Focus", area: "Upper Mount Gravatt", condition: "Not running", note: "Example only" },
+      { vehicle: "2013 Kia Rio", area: "Mansfield", condition: "Accident damaged", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you remove a car from a steep Mount Gravatt driveway?", answer: "Usually, yes. Send photos or describe the slope, turning room, and whether the car can roll so we can confirm the safest pickup method." },
+      { question: "Do you collect cars from Mount Gravatt workshops?", answer: "Yes. We can coordinate with mechanics and workshops around Mount Gravatt, Upper Mount Gravatt, and nearby suburbs." },
+      { question: "Can I sell a non-running car in Mount Gravatt?", answer: "Yes. Non-running, damaged, scrap, and unregistered vehicles are common pickups for us in the Mount Gravatt area." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Sunnybank", href: "/locations/sunnybank" },
+      { label: "Cash for Cars Carindale", href: "/locations/carindale" },
+      { label: "Cash for Cars Moorooka", href: "/locations/moorooka" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  carindale: {
+    regionName: "East Brisbane",
+    title: "Cash for Cars Carindale | Free Car Removal",
+    metaDescription: "Sell your car in Carindale with free towing, payment on pickup, and removal for unwanted, damaged, scrap, and unregistered cars.",
+    nearbyAreaNames: ["Camp Hill", "Belmont", "Carina", "Carina Heights", "Mount Gravatt East"],
+    pickupAccessNotes: [
+      "Pickup is available from residential streets, apartment visitor bays, workshops, and street-accessible locations.",
+      "Westfield Carindale and Old Cleveland Road traffic can affect timing, so we confirm a pickup window that suits safe loading.",
+      "Tell us if the car is in basement parking, behind a gate, or on a narrow residential street."
+    ],
+    localSellingPoints: [
+      "Free towing in Carindale and nearby eastern suburbs",
+      "Pickup from homes, apartments, and workshop locations",
+      "Paid before the vehicle leaves",
+      "Helpful with QLD paperwork steps"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2012 Nissan X-Trail", area: "Carindale", condition: "Engine issue", note: "Example only" },
+      { vehicle: "2009 Toyota Yaris", area: "Carina", condition: "Hail damage", note: "Example only" },
+      { vehicle: "2006 Holden Astra", area: "Camp Hill", condition: "Unregistered", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you pick up near Westfield Carindale?", answer: "Yes, where loading is safe and legal. We may suggest a suitable pickup time to avoid heavy shopping-centre traffic." },
+      { question: "Do you collect cars from Carindale apartment buildings?", answer: "Yes, in many cases. Clearance height, ramp access, gate details, and whether the vehicle rolls are the key details we need." },
+      { question: "Can you buy a damaged car in Carindale?", answer: "Yes. We buy damaged, old, scrap, unwanted, and unregistered vehicles across Carindale and nearby eastern suburbs." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Mount Gravatt", href: "/locations/mount-gravatt" },
+      { label: "Cash for Cars South Brisbane", href: "/locations/south-brisbane" },
+      { label: "Cash for Cars Bayside Brisbane", href: "/locations/bayside-brisbane" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  moorooka: {
+    regionName: "South Brisbane",
+    title: "Cash for Cars Moorooka | Free Car Removal",
+    metaDescription: "Cash for cars in Moorooka with free towing, payment on pickup, and removal for unwanted, workshop, scrap, damaged, and unregistered vehicles.",
+    nearbyAreaNames: ["Rocklea", "Salisbury", "Annerley", "Yeronga", "Acacia Ridge"],
+    pickupAccessNotes: [
+      "Moorooka pickups often involve workshops, industrial yards, older residential driveways, and vehicles parked along local streets.",
+      "Tell us if a workshop is holding the vehicle, if keys are unavailable, or if the car has seized brakes or flat tyres.",
+      "For street parking near Ipswich Road or Beaudesert Road, we arrange a safe loading time and position where possible."
+    ],
+    localSellingPoints: [
+      "Free towing around Moorooka, Rocklea, and nearby suburbs",
+      "Useful for workshop rejects and older vehicles",
+      "Scrap, damaged, non-running, and unregistered cars considered",
+      "Paid before pickup is completed"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2005 Holden Commodore", area: "Moorooka", condition: "Failed safety inspection", note: "Example only" },
+      { vehicle: "2010 Volkswagen Golf", area: "Rocklea", condition: "Mechanical repair too costly", note: "Example only" },
+      { vehicle: "2008 Toyota HiAce", area: "Salisbury", condition: "Workshop pickup", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you collect my car from a Moorooka mechanic?", answer: "Yes. We can coordinate with the workshop, confirm access hours, and arrange payment before the vehicle leaves." },
+      { question: "Do you buy older cars around Moorooka?", answer: "Yes. Moorooka is a common area for older, high-kilometre, damaged, scrap, and unregistered vehicle pickups." },
+      { question: "Can you remove a car parked on the street in Moorooka?", answer: "Often yes, if loading is safe and legal. We will ask for the exact parking position and any access constraints before booking." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars South Brisbane", href: "/locations/south-brisbane" },
+      { label: "Cash for Cars Sunnybank", href: "/locations/sunnybank" },
+      { label: "Cash for Cars Rocklea", href: "/locations/rocklea" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  indooroopilly: {
+    regionName: "West Brisbane",
+    title: "Cash for Cars Indooroopilly | Free Car Removal",
+    metaDescription: "Sell your car in Indooroopilly with free towing, paid on pickup, and removal for unwanted, damaged, scrap, student, or unregistered vehicles.",
+    nearbyAreaNames: ["Taringa", "St Lucia", "Toowong", "Chapel Hill", "Kenmore"],
+    pickupAccessNotes: [
+      "Indooroopilly pickups often involve apartment car parks, narrow hilly streets, student vehicles, and steep residential driveways.",
+      "Tell us the clearance height if the vehicle is in a unit block or shopping-centre-style basement car park.",
+      "If the car is parked on a slope or tight street, photos help us confirm whether winching and loading will be straightforward."
+    ],
+    localSellingPoints: [
+      "Free towing in Indooroopilly and nearby western suburbs",
+      "Pickup from apartments, homes, student rentals, and workshops",
+      "No RWC needed for many unwanted or unregistered vehicles",
+      "Clear payment before the vehicle leaves"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2011 Mazda 2", area: "Indooroopilly", condition: "Student vehicle, expired rego", note: "Example only" },
+      { vehicle: "2007 Honda Accord", area: "Taringa", condition: "Not starting", note: "Example only" },
+      { vehicle: "2013 Hyundai ix35", area: "Chapel Hill", condition: "Transmission issue", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you pick up a car from an Indooroopilly apartment car park?", answer: "Yes, where clearance and access allow. Please provide the height limit, ramp details, and whether the vehicle starts or rolls." },
+      { question: "Do you buy student cars in Indooroopilly?", answer: "Yes. We often help students and renters sell cars quickly when moving, finishing study, or leaving Brisbane." },
+      { question: "Can you handle steep driveways in Indooroopilly?", answer: "Usually, yes. Send access details or photos so we can plan the safest pickup method." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Toowong", href: "/locations/toowong" },
+      { label: "Cash for Cars Kenmore", href: "/locations/kenmore" },
+      { label: "Cash for Cars Ipswich", href: "/locations/ipswich" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  toowong: {
+    regionName: "Inner West Brisbane",
+    title: "Cash for Cars Toowong | Free Car Removal",
+    metaDescription: "Cash for cars in Toowong with free towing, paid on pickup, and removal for unwanted, damaged, scrap, student, and unregistered vehicles.",
+    nearbyAreaNames: ["Auchenflower", "Taringa", "Milton", "St Lucia", "Indooroopilly"],
+    pickupAccessNotes: [
+      "Toowong pickups often involve unit blocks, basement parking, busy roads, and tight inner-west streets.",
+      "For basement parking, send the clearance height, ramp angle, and whether the vehicle can be moved to visitor parking.",
+      "For cars near Milton Road, Miskin Street, or Coronation Drive, we plan around safe tow-truck positioning."
+    ],
+    localSellingPoints: [
+      "Free towing in Toowong and inner-west suburbs",
+      "Pickup from units, student rentals, homes, and street-accessible parking",
+      "Useful for damaged, old, unwanted, and unregistered vehicles",
+      "Paid before collection"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2010 Toyota Corolla", area: "Toowong", condition: "Basement car park pickup", note: "Example only" },
+      { vehicle: "2008 Subaru Impreza", area: "St Lucia", condition: "Not running", note: "Example only" },
+      { vehicle: "2012 Ford Fiesta", area: "Auchenflower", condition: "Expired registration", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Can you collect from a Toowong basement car park?", answer: "Yes, in many cases. Clearance height, ramp access, and whether the vehicle can roll determine the pickup method." },
+      { question: "Can you remove a car from a busy road in Toowong?", answer: "Often yes, but we need safe tow access. We may suggest a quieter pickup time or nearby loading spot." },
+      { question: "Do I need a roadworthy to sell an unwanted car in Toowong?", answer: "Many unwanted, damaged, scrap, or unregistered vehicles can be sold without a roadworthy. Keep your own records and follow current QLD Transport guidance." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Indooroopilly", href: "/locations/indooroopilly" },
+      { label: "Cash for Cars Kenmore", href: "/locations/kenmore" },
+      { label: "Cash for Cars South Brisbane", href: "/locations/south-brisbane" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  logan: {
+    regionName: "Logan City",
+    nearbyAreaNames: ["Woodridge", "Logan Central", "Slacks Creek", "Springwood", "Beenleigh"],
+    pickupAccessNotes: [
+      "Logan is a larger service area, so driveway, yard, shed, and street-access details help us book the right collection run.",
+      "We regularly handle unregistered vehicles, non-running cars, and cars stored on larger residential blocks or workshop yards.",
+      "For outer Logan edges and semi-rural access, tell us about gravel driveways, paddock access, gates, and whether the vehicle can roll."
+    ],
+    localSellingPoints: [
+      "Free towing across Logan where access is safe",
+      "Flexible pickup for driveways, yards, sheds, and workshops",
+      "Unregistered, damaged, old, and scrap vehicles considered",
+      "Paid before the vehicle leaves"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2007 Holden Commodore", area: "Woodridge", condition: "High kilometres", note: "Example only" },
+      { vehicle: "2011 Toyota Camry", area: "Logan Central", condition: "Unregistered", note: "Example only" },
+      { vehicle: "2009 Nissan Navara", area: "Beenleigh", condition: "Non-running", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Do you pick up cars across Logan or only Logan Central?", answer: "We service the wider Logan area, including Woodridge, Slacks Creek, Springwood, Beenleigh, and surrounding suburbs, subject to schedule and access." },
+      { question: "Can you collect an unregistered car from a Logan yard?", answer: "Yes. Let us know whether the car can roll, how firm the ground is, and whether there is clear tow-truck access." },
+      { question: "How quickly can you collect a car in Logan?", answer: "Same-day or next-day pickup may be available depending on the vehicle, access, and the truck schedule for your part of Logan." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Springwood", href: "/locations/springwood" },
+      { label: "Cash for Cars Beenleigh", href: "/locations/beenleigh" },
+      { label: "Cash for Cars South Brisbane", href: "/locations/south-brisbane" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  ipswich: {
+    regionName: "Ipswich",
+    nearbyAreaNames: ["Redbank Plains", "Springfield", "Goodna", "Brassall", "Booval"],
+    pickupAccessNotes: [
+      "Ipswich pickups can include larger blocks, workshops, older residential driveways, and non-running cars stored in sheds or yards.",
+      "For outer-west and semi-rural access, tell us about gate width, driveway surface, paddock access, and whether the vehicle can roll.",
+      "Workshop pickups around Ipswich, Booval, Goodna, and Springfield can be coordinated during business access hours."
+    ],
+    localSellingPoints: [
+      "Free towing across Ipswich service areas",
+      "Pickup from homes, workshops, sheds, and larger blocks",
+      "Non-running, damaged, scrap, and unregistered cars considered",
+      "Clear payment before collection"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2006 Ford Falcon", area: "Booval", condition: "Not running", note: "Example only" },
+      { vehicle: "2012 Mitsubishi Triton", area: "Redbank Plains", condition: "Engine issue", note: "Example only" },
+      { vehicle: "2008 Toyota Corolla", area: "Goodna", condition: "Expired registration", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Do you collect cars from outer Ipswich suburbs?", answer: "Yes, subject to schedule and safe access. Let us know the exact suburb, driveway access, and whether the car can roll." },
+      { question: "Can you pick up a non-running car in Ipswich?", answer: "Yes. Non-running and unregistered vehicles are common Ipswich pickups, including cars in driveways, yards, sheds, and workshops." },
+      { question: "Do you charge extra for Ipswich towing?", answer: "Caraway provides free towing for eligible pickups in our Ipswich service area. We confirm access and scheduling when we quote." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars Logan", href: "/locations/logan" },
+      { label: "Cash for Cars Indooroopilly", href: "/locations/indooroopilly" },
+      { label: "Cash for Cars Browns Plains", href: "/locations/browns-plains" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  },
+  redcliffe: {
+    regionName: "Redcliffe Peninsula",
+    nearbyAreaNames: ["Kippa-Ring", "Clontarf", "Margate", "Scarborough", "Woody Point"],
+    pickupAccessNotes: [
+      "Peninsula pickups commonly involve residential streets, coastal garages, unit blocks, and cars affected by long-term salt-air exposure.",
+      "Tell us if access is on a narrow street, steep driveway, or shared unit driveway so we can plan the safest loading position.",
+      "Northside scheduling may depend on the run for the day, so morning enquiries give the best chance of same-day or next-day pickup."
+    ],
+    localSellingPoints: [
+      "Free towing across the Redcliffe Peninsula",
+      "Pickup from homes, units, workshops, and street-accessible locations",
+      "Coastal, old, damaged, and unregistered vehicles considered",
+      "Paid before the vehicle leaves"
+    ],
+    exampleVehiclesBought: [
+      { vehicle: "2009 Hyundai Tucson", area: "Kippa-Ring", condition: "Rust and mechanical issue", note: "Example only" },
+      { vehicle: "2006 Toyota Camry", area: "Margate", condition: "Unregistered", note: "Example only" },
+      { vehicle: "2012 Holden Captiva", area: "Clontarf", condition: "Engine fault", note: "Example only" }
+    ],
+    localFaqs: [
+      { question: "Do you pick up cars across the Redcliffe Peninsula?", answer: "Yes. We service Redcliffe, Kippa-Ring, Clontarf, Margate, Scarborough, Woody Point, and nearby peninsula suburbs." },
+      { question: "Can you buy a coastal car with rust in Redcliffe?", answer: "Yes. Rust, age, and weather exposure affect the offer, but they do not automatically stop us from buying the vehicle." },
+      { question: "How fast can you collect a car in Redcliffe?", answer: "Same-day or next-day pickup may be available depending on northside scheduling, access, and vehicle details." }
+    ],
+    internalLinks: [
+      { label: "Cash for Cars North Brisbane", href: "/locations/north-brisbane" },
+      { label: "Cash for Cars Chermside", href: "/locations/chermside" },
+      { label: "Cash for Cars Caboolture", href: "/locations/caboolture" },
+      { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
+      { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" }
+    ]
+  }
+};
+
+for (const suburb of suburbs) {
+  Object.assign(suburb, priorityLocationEnhancements[suburb.slug]);
+}
 
 export function getSuburbBySlug(slug: string): SuburbPage | undefined {
   return suburbs.find(s => s.slug === slug);
