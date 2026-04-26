@@ -8,7 +8,7 @@ import { useCallback } from "react";
  *
  * - On the home page, scrolls to the #price-estimator section.
  * - On other pages, tries to find an embedded quote section
- *   (#price-estimator or #quote-section) before falling back to
+ *   (#price-estimator or #quote-form) before falling back to
  *   navigating home with a hash.
  */
 export function useScrollToQuote() {
@@ -27,7 +27,7 @@ export function useScrollToQuote() {
 
     const el =
       document.getElementById("price-estimator") ||
-      document.getElementById("quote-section");
+      document.getElementById("quote-form");
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {

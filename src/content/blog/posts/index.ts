@@ -1,4 +1,10 @@
 import { post as postFirst } from "./sell-old-truck-brisbane";
+import { post as postHighIntent0 } from "./sell-car-without-roadworthy-qld";
+import { post as postHighIntent1 } from "./how-much-is-scrap-car-worth-brisbane";
+import { post as postHighIntent2 } from "./cancel-rego-after-selling-car-qld";
+import { post as postHighIntent3 } from "./sell-car-not-in-my-name-qld";
+import { post as postHighIntent4 } from "./number-plates-when-selling-car-qld";
+import { post as postHighIntent5 } from "./cash-for-cars-vs-private-sale";
 import { post as postNewest } from "./cash-for-cars-beenleigh";
 import { post as postLatest } from "./cash-for-cars-redlands";
 import { post as postNew } from "./sell-junk-car-brisbane";
@@ -29,6 +35,12 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
   postFirst,
+  postHighIntent0,
+  postHighIntent1,
+  postHighIntent2,
+  postHighIntent3,
+  postHighIntent4,
+  postHighIntent5,
   postNewest,
   postLatest,
   postNew,

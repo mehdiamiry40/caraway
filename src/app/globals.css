@@ -162,6 +162,13 @@
     overscroll-behavior-y: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      padding-bottom: 0;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -401,6 +408,16 @@
   @media (min-width: 1024px) {
     /* utility strip (2.25rem) + nav (4.5rem) */
     margin-top: calc(6.75rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+@utility scroll-mt-header {
+  scroll-margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+  @media (min-width: 640px) {
+    scroll-margin-top: calc(7.25rem + env(safe-area-inset-top, 0px));
+  }
+  @media (min-width: 1024px) {
+    scroll-margin-top: calc(7.75rem + env(safe-area-inset-top, 0px));
   }
 }
 
