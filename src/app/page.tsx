@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema, howToSchema } from "@/lib/json-ld-schemas";
 import { faqs } from "@/data/home-faqs";
-import { reviews } from "@/data/reviews";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 import Home from "@/views/Home";
 
@@ -64,32 +63,12 @@ export default function HomePage() {
         ],
       },
     },
-    ...reviews.map((r) => ({
-      "@type": "Review" as const,
-      author: {
-        "@type": "Person" as const,
-        name: r.name,
-        url: `${SITE_URL}/#reviews`,
-      },
-      reviewRating: {
-        "@type": "Rating" as const,
-        ratingValue: r.rating,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      reviewBody: r.text,
-      datePublished: r.date,
-      itemReviewed: {
-        "@type": "LocalBusiness" as const,
-        "@id": `${SITE_URL}/#business`,
-        name: "Caraway — Cash for Cars Brisbane",
-      },
-    })),
   ];
 
   return (
     <>
       <link rel="canonical" href={`${SITE_URL}/`} />
+      <Home />
       <JsonLd
         data={[
           faqPageSchema(faqs),
@@ -122,7 +101,6 @@ export default function HomePage() {
           ...homeStructuredData,
         ]}
       />
-      <Home />
     </>
   );
 }

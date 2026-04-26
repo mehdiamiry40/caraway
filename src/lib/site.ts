@@ -30,7 +30,7 @@ export const BUSINESS = {
 
 export const MIN_PRICE = 200;
 export const MAX_PRICE = 9999;
-export const PRICE_RANGE_LABEL = "Up to $9,999";
+export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
 export const LEGAL_DATES = {
   privacyLastUpdated: "April 2026",
