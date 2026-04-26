@@ -2,8 +2,8 @@ export const faqCategories = [
   {
     category: "Pricing & Payment",
     faqs: [
-      { question: "How much will I get for my car in Brisbane?", answer: "Every car is different. We calculate your offer based on make, model, year, condition, mileage, and the current market. Brisbane sellers typically receive between $200 and $9,999. We always aim to beat competing offers." },
-      { question: "How do you determine my car's value?", answer: "We use real-time market data including current scrap metal prices, parts demand, and recent comparable sales in Brisbane. Our valuations are transparent — we'll explain exactly how we arrived at your offer." },
+      { question: "Will I really get up to $9,999 for my car?", answer: "Some selected vehicles may receive offers up to $9,999, but most older, damaged, or scrap vehicles receive lower offers. Your quote depends on the vehicle's make, model, year, condition, completeness, location, and current market demand." },
+      { question: "How do you determine my car's value?", answer: "We use real-time market data including current scrap metal prices, parts demand, recent comparable sales in Brisbane, condition, completeness, and towing access. Our valuations are transparent — we'll explain exactly how we arrived at your offer." },
       { question: "When and how do I get paid?", answer: "You're paid in cash on the spot when our driver arrives to collect your vehicle — before the car leaves your property. For amounts over $10,000, we use a bank transfer as required by AUSTRAC regulations. No waiting periods, no cheques." },
       { question: "Can you match or beat a quote I've received elsewhere?", answer: "We'll certainly try. If you've received a competing offer, let us know the amount and we'll do our best to match or exceed it. We're competitive on pricing across Brisbane." }
     ]
@@ -23,7 +23,7 @@ export const faqCategories = [
     faqs: [
       { question: "How does the selling process work?", answer: "It's three simple steps: (1) Contact us with your car details for a free quote. (2) Accept our offer. (3) We pick up your car and pay you cash. The whole process can be completed in under an hour." },
       { question: "How fast can you pick up my car?", answer: "Most pickups are same- or next-day across Greater Brisbane, depending on truck availability in your area and when you accept the offer. When you book, we confirm a pickup window — we won't promise a slot we can't keep." },
-      { question: "Is your towing really free?", answer: "Yes — 100% free towing anywhere in Greater Brisbane. There are no hidden towing fees, no deductions, and no surprises. The quoted price is what you receive." },
+      { question: "Is your towing really free?", answer: "Yes — towing is free anywhere in Greater Brisbane. We do not deduct towing costs from your agreed quote when the vehicle matches the details provided." },
       { question: "What paperwork do I need?", answer: "Just your photo ID (driver's licence). Registration papers help speed things up but aren't essential. We handle all vehicle transfer documentation." },
       { question: "Do I need to be home for the pickup?", answer: "Ideally yes, as we pay cash in person and need to verify your ID. However, we can sometimes make alternative arrangements — just ask when booking." }
     ]

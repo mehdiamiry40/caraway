@@ -39,8 +39,11 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-xl text-on-dark-hi/85 leading-relaxed text-lg sm:text-xl font-light">
-              Tell us your make and model, get a firm offer in under a minute,
+              Tell us your make and model, get a fair offer in under a minute,
               and we&apos;ll drive to you — any condition.
+            </p>
+            <p className="mt-3 max-w-xl text-on-dark-hi/72 leading-relaxed text-sm sm:text-base">
+              Selected vehicles may receive up to $9,999. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-xl">
@@ -89,15 +92,15 @@ function HeroArt() {
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
       <span className="sr-only">
-        Offers up to $9,999 with usually same- or next-day pickup.
+        Selected vehicles may receive offers up to $9,999 with same- or next-day pickup.
       </span>
-      {/* orange floating tag (price) — decorative; sr-only sentence above covers the $9,999 figure */}
+      {/* orange floating tag (price) — decorative; nearby copy explains that the top figure applies to selected vehicles */}
       <div
         aria-hidden="true"
         className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]"
       >
         <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-medium opacity-85">
-          Top offer
+          Selected
         </span>
         <span className="block font-display font-semibold text-2xl tabular-nums leading-none mt-1">
           $9,999
@@ -113,7 +116,7 @@ function HeroArt() {
           Pickup
         </span>
         <span className="block font-display font-semibold text-lg leading-none mt-1">
-          Same/next day
+          Same-day
         </span>
       </div>
 

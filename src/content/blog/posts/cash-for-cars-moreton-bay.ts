@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     `## Free Towing, No Hidden Costs`,
 
-    `The price quoted is the price paid — there are no callout fees, fuel surcharges, or on-the-day deductions. Free towing applies across the full Moreton Bay region, from Redcliffe and Bribie Island through North Lakes, Burpengary, and Caboolture to the rural fringes near Elimbah. That clarity makes it straightforward to compare offers from different buyers and choose confidently. For cash for cars Moreton Bay, there's no need to arrange your own tow, drive to a depot, or worry about surprise charges when the driver arrives.`,
+    `The agreed quote is based on the details you provide and confirmed at pickup — there are no callout fees or fuel surcharges. Free towing applies across the full Moreton Bay region, from Redcliffe and Bribie Island through North Lakes, Burpengary, and Caboolture to the rural fringes near Elimbah. That clarity makes it straightforward to compare offers from different buyers and choose confidently. For cash for cars Moreton Bay, there's no need to arrange your own tow, drive to a depot, or worry about surprise towing charges when the driver arrives.`,
 
     `Caraway covers all of Moreton Bay — call us on **${BUSINESS.phoneDisplay}** or request a free quote online. Same- or next-day pickup from anywhere in the region, cash on the spot, and free towing included. If your car, ute, or 4WD is sitting idle and costing you registration, insurance, and space, we make it easy to turn it into cash today.`,
   ],

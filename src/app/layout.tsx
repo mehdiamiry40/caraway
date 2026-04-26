@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     default: "Caraway — Cash for Cars Brisbane",
     template: "%s | Caraway",
   },
-  description: `Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same-day pickup, and payment on pickup. Call ${BUSINESS.phoneDisplay}.`,
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     siteName: "Caraway",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers.",
+      "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same-day pickup, and payment on pickup.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Caraway — Cash for Cars Brisbane",
     description:
-      "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers.",
+      "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same-day pickup, and payment on pickup.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",

@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "## How the cash for cars process works for a truck",
 
-    "Getting a quote to sell your old truck in Brisbane works the same way regardless of the vehicle's condition. Provide the make, model, year, current kilometres, and an honest description of what doesn't work — non-runner, seized engine, structural damage — and you'll receive a firm offer. Being upfront from the start means no price adjustment when the truck is inspected. Once you accept, a flatbed or tow truck is arranged at no charge across Greater Brisbane, including [Logan](/locations/logan), Ipswich, Redlands, and Caboolture. Payment in cash or direct bank transfer is made before the vehicle is collected and loaded. No towing fees, no hidden deductions.",
+    "Getting a quote to sell your old truck in Brisbane works the same way regardless of the vehicle's condition. Provide the make, model, year, current kilometres, and an honest description of what doesn't work — non-runner, seized engine, structural damage — and you'll receive an offer based on those details. Being upfront from the start helps avoid price changes when the truck is inspected. Once you accept, a flatbed or tow truck is arranged at no charge across Greater Brisbane, including [Logan](/locations/logan), Ipswich, Redlands, and Caboolture. Payment in cash or direct bank transfer is made before the vehicle is collected and loaded. No towing fees.",
 
     "## Paperwork for selling a truck in Queensland",
 
