@@ -1,11 +1,13 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import { SITE_URL, BUSINESS } from "@/lib/site";
+import { SITE_URL, BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
 import { reviews } from "@/data/reviews";
 
 const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
-  phone: BUSINESS.phone,
+  /** E.164 form for schema.org `telephone` (Google's recommended format).
+   *  Display copy keeps the local 04XX format via BUSINESS.phoneFriendly. */
+  phone: "+61481438444",
   email: BUSINESS.email,
   addressLocality: BUSINESS.addressSuburb,
   addressRegion: BUSINESS.addressState,
@@ -52,7 +54,7 @@ export const localBusinessSchema = {
   image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: NAP.phone,
   email: NAP.email,
-  priceRange: "$$",
+  priceRange: PRICE_RANGE_LABEL,
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
   description:
