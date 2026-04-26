@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { indexableBlogPosts } from "@/data/blog-posts";
-import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -38,6 +38,14 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const canonical = `${SITE_URL}/blog`;
+  const latestBlogDate = indexableBlogPosts.reduce(
+    (latest, post) => {
+      const stamp = post.updatedAt || post.date;
+      return stamp > latest ? stamp : latest;
+    },
+    "2025-01-01",
+  );
+
   return (
     <>
       <JsonLd
@@ -55,7 +63,7 @@ export default function BlogPage() {
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: CONTENT_DEPLOY_DATE,
+            dateModified: latestBlogDate,
             mainEntity: {
               "@type": "ItemList",
               numberOfItems: indexableBlogPosts.length,

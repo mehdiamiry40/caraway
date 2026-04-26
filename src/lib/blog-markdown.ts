@@ -5,6 +5,8 @@ import Link from "next/link";
 const IMAGE_BLOCK_RE = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+(\d+)x(\d+))?\)$/;
 const ORDERED_LIST_ITEM_RE = /^\s*\d+\.\s+(.+)$/;
 const UNORDERED_LIST_ITEM_RE = /^\s*[-*]\s+(.+)$/;
+const TABLE_ROW_RE = /^\s*\|(.+)\|\s*$/;
+const TABLE_SEPARATOR_RE = /^\s*\|(?:\s*:?-{3,}:?\s*\|)+\s*$/;
 
 export function slugify(input: string): string {
   return input
@@ -79,6 +81,15 @@ function parseListItem(text: string): { type: "ol" | "ul"; content: string } | n
   return null;
 }
 
+function parseTableRow(text: string): string[] | null {
+  if (!TABLE_ROW_RE.test(text) || TABLE_SEPARATOR_RE.test(text)) return null;
+  return text
+    .trim()
+    .slice(1, -1)
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
 export function renderBlogContent(
   paragraphs: string[],
   opts: { firstParagraphDropCap?: boolean } = {},
@@ -124,6 +135,80 @@ export function renderBlogContent(
               "li",
               { key: `${key}-li-${itemIndex}`, className: "pl-1" },
               ...parseInline(item, `${key}-li-${itemIndex}`),
+            ),
+          ),
+        ),
+      );
+      continue;
+    }
+
+    const headerCells = parseTableRow(text);
+    const separator = paragraphs[i + 1] ?? "";
+    if (headerCells && TABLE_SEPARATOR_RE.test(separator)) {
+      const rows: string[][] = [];
+      i += 1;
+
+      while (i + 1 < paragraphs.length) {
+        const nextRow = parseTableRow(paragraphs[i + 1] ?? "");
+        if (!nextRow) break;
+        rows.push(nextRow);
+        i += 1;
+      }
+
+      nodes.push(
+        createElement(
+          "div",
+          {
+            key,
+            className:
+              "my-8 overflow-x-auto rounded-xl border border-border/60 bg-card",
+          },
+          createElement(
+            "table",
+            {
+              className:
+                "min-w-full divide-y divide-border/60 text-left text-sm sm:text-base",
+            },
+            createElement(
+              "thead",
+              { className: "bg-secondary/70" },
+              createElement(
+                "tr",
+                null,
+                ...headerCells.map((cell, cellIndex) =>
+                  createElement(
+                    "th",
+                    {
+                      key: `${key}-th-${cellIndex}`,
+                      scope: "col",
+                      className:
+                        "px-4 py-3 font-semibold text-foreground whitespace-nowrap",
+                    },
+                    ...parseInline(cell, `${key}-th-${cellIndex}`),
+                  ),
+                ),
+              ),
+            ),
+            createElement(
+              "tbody",
+              { className: "divide-y divide-border/50" },
+              ...rows.map((row, rowIndex) =>
+                createElement(
+                  "tr",
+                  { key: `${key}-tr-${rowIndex}` },
+                  ...row.map((cell, cellIndex) =>
+                    createElement(
+                      "td",
+                      {
+                        key: `${key}-td-${rowIndex}-${cellIndex}`,
+                        className:
+                          "align-top px-4 py-3 text-foreground/85 leading-relaxed",
+                      },
+                      ...parseInline(cell, `${key}-td-${rowIndex}-${cellIndex}`),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),
