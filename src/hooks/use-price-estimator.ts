@@ -3,6 +3,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
 import { quoteFormSchema, type QuoteCondition } from "@/lib/quote-schema";
+import {
+  parsePersistedState,
+  type PersistedState,
+  type Step,
+} from "@/lib/persisted-estimator-state";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
@@ -10,19 +15,7 @@ import { BUSINESS } from "@/lib/site";
 const CURRENT_YEAR = new Date().getFullYear();
 const STORAGE_KEY = "caraway-estimator-state";
 
-export type Step = 1 | 2 | 3;
-
-// Persisted state intentionally excludes PII (name, phone, address) so that
-// only Step 1 vehicle inputs survive a refresh; Step 3 contact details are
-// never written to sessionStorage. No personal information leaves the
-// in-memory component state before submit.
-type PersistedState = {
-  step?: Step;
-  make?: string;
-  model?: string;
-  year?: string;
-  condition?: QuoteCondition | "";
-};
+export type { Step };
 
 export function usePriceEstimator() {
   const [step, setStep] = useState<Step>(1);
@@ -115,7 +108,11 @@ export function usePriceEstimator() {
     try {
       const raw = window.sessionStorage.getItem(STORAGE_KEY);
       if (!raw) return;
-      const parsed = JSON.parse(raw) as PersistedState;
+      const parsed = parsePersistedState(raw);
+      if (!parsed) {
+        window.sessionStorage.removeItem(STORAGE_KEY);
+        return;
+      }
       if (parsed.make) setMake(parsed.make);
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
@@ -125,12 +122,8 @@ export function usePriceEstimator() {
       // Step 2 (quote) and Step 3 (PII) are never restored: the quote result
       // lives only in memory and PII is never persisted.
     } catch {
-      try {
-        window.sessionStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // sessionStorage may be unavailable (private mode / quota / SecurityError);
-        // cache hydration is best-effort, so let the user start fresh silently.
-      }
+      // sessionStorage may be unavailable (private mode / quota / SecurityError);
+      // cache hydration is best-effort, so let the user start fresh silently.
     }
   }, []);
 
