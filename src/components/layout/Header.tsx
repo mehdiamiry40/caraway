@@ -36,12 +36,12 @@ export function Header() {
               Free pickup across Greater Brisbane
             </span>
             <a
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors"
-              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              {BUSINESS.phoneFriendly}
+              {BUSINESS.phoneDisplay}
             </a>
           </div>
         </div>

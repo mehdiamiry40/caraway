@@ -1,6 +1,6 @@
 import * as z from "zod/mini";
 
-/** Matches Australian phone formats: 04xx, +614xx, landlines, 1800/1300 numbers */
+/** Matches Australian phone formats: mobiles, landlines, and common AU service numbers. */
 const auPhoneRegex = /^(?:\+?61|0)[2-478]\d{8}$|^1[38]00\d{6}$/;
 
 export const quoteConditionValues = [

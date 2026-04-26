@@ -68,13 +68,13 @@ export function Footer() {
 
             <div className="mt-6 space-y-2.5 text-sm">
               <TrackedPhoneLink
-                href={BUSINESS.phoneHref}
+                href={BUSINESS.phoneTel}
                 location="footer"
                 className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
-                <span>{BUSINESS.phoneFriendly}</span>
+                <span>{BUSINESS.phoneDisplay}</span>
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}

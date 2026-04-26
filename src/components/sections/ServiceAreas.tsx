@@ -146,12 +146,12 @@ export function ServiceAreas() {
           <p className="text-xs text-foreground/70 font-medium">
             Not listed?{" "}
             <TrackedPhoneLink
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               location="service_areas"
               className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-              ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+              ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
-              Call {BUSINESS.phoneFriendly}
+              Call {BUSINESS.phoneDisplay}
             </TrackedPhoneLink>{" "}
             — we cover most of South-East Queensland.
           </p>

@@ -35,16 +35,16 @@ export default function Locations() {
           <p className="eyebrow mb-3">Not sure?</p>
           <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
-            We service all of Greater Brisbane — even if your suburb isn&apos;t shown above. Call {BUSINESS.phoneFriendly} for local details, or use the price estimator.
+            We service all of Greater Brisbane — even if your suburb isn&apos;t shown above. Call {BUSINESS.phoneDisplay} for local details, or use the price estimator.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full py-3 px-6 text-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_hsl(var(--primary)/0.25)]"
-              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-              Call {BUSINESS.phoneFriendly}
+              Call {BUSINESS.phoneDisplay}
             </a>
             <Link
               href="/#price-estimator"

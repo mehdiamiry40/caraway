@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
     slug: "what-paperwork-to-sell-a-car-qld",
@@ -44,7 +45,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      "When you sell to a licensed [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), the paperwork burden drops significantly. They handle the PPSR check, file the disposal notice with TMR, and provide a receipt on the spot. Your obligations reduce to three things: bring your Queensland driver's licence or photo ID, sign the transfer form, and remove your number plates before the tow truck departs — in QLD, plates belong to the registered owner, not the vehicle. The paperwork to sell a car in QLD really is that manageable when you have the right buyer. Free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside, with cash paid before the vehicle is loaded. Call **0481 438 444** or get a free online quote to get started.",
+      `When you sell to a licensed [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), the paperwork burden drops significantly. They handle the PPSR check, file the disposal notice with TMR, and provide a receipt on the spot. Your obligations reduce to three things: bring your Queensland driver's licence or photo ID, sign the transfer form, and remove your number plates before the tow truck departs — in QLD, plates belong to the registered owner, not the vehicle. The paperwork to sell a car in QLD really is that manageable when you have the right buyer. Free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside, with cash paid before the vehicle is loaded. Call **${BUSINESS.phoneDisplay}** or get a free online quote to get started.`,
     ],
     date: "2026-04-16",
     category: "Guides",

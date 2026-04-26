@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
     slug: "trade-in-vs-cash-for-cars-brisbane",
@@ -56,7 +57,7 @@ export const post: RawBlogPostEntry = {
 
       `On older, damaged, or high-kilometre cars, cash for cars in Brisbane almost always pays more. On clean, late-model trade-ins of the make the dealer sells, trade-in can be competitive — especially with the QLD stamp duty offset factored in. The only way to know for sure is to get both numbers and compare them side by side.`,
 
-      `Ready to sell your car for cash? Call **0481 438 444** or get a free instant quote — same- or next-day pickup across Brisbane, Logan, Ipswich, Caboolture, and the Bayside, with cash on the spot before the tow truck leaves.`,
+      `Ready to sell your car for cash? Call **${BUSINESS.phoneDisplay}** or get a free instant quote — same- or next-day pickup across Brisbane, Logan, Ipswich, Caboolture, and the Bayside, with cash on the spot before the tow truck leaves.`,
     ],
     date: "2026-04-13",
     category: "Insights",

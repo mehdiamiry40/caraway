@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "how-to-scrap-a-car-legally-brisbane",
@@ -48,7 +49,7 @@ export const post: RawBlogPostEntry = {
 
     `Not all scrap car buyers operate legally. Unlicensed operators may skip the TMR disposal notice, meaning the car technically stays in your name for months or years. Before you accept a quote, check that the buyer is licensed under Queensland's Waste Reduction and Recycling Act, and ask whether they handle the TMR paperwork directly. Reputable Brisbane operators will confirm this upfront. Free towing across the metro area — from Caboolture in the north to Beenleigh in the south and out to Ipswich in the west — is standard. If a buyer is asking you to pay for collection on a scrap vehicle, they're not a serious operator.`,
 
-    `Ready to scrap your car in Brisbane legally and for cash? Call **0481 438 444** or get a free instant quote online — same- or next-day pickup across Greater Brisbane, all TMR paperwork handled, cash paid on the spot before the tow truck leaves.`,
+    `Ready to scrap your car in Brisbane legally and for cash? Call **${BUSINESS.phoneDisplay}** or get a free instant quote online — same- or next-day pickup across Greater Brisbane, all TMR paperwork handled, cash paid on the spot before the tow truck leaves.`,
   ],
   date: "2026-04-25",
   category: "Guides",

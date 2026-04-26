@@ -5,9 +5,7 @@ import { reviews } from "@/data/reviews";
 
 const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
-  /** E.164 form for schema.org `telephone` (Google's recommended format).
-   *  Display copy keeps the local 04XX format via BUSINESS.phoneFriendly. */
-  phone: "+61481438444",
+  phone: BUSINESS.phoneDisplay,
   email: BUSINESS.email,
   addressLocality: BUSINESS.addressSuburb,
   addressRegion: BUSINESS.addressState,
@@ -57,8 +55,7 @@ export const localBusinessSchema = {
   priceRange: PRICE_RANGE_LABEL,
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
-  description:
-    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call 0481 438 444.",
+  description: `Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
   // City-level address only; pickups happen at the customer's property (serviceArea).
   address: {
     "@type": "PostalAddress",

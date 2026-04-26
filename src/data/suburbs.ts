@@ -1,3 +1,5 @@
+import { BUSINESS } from "@/lib/site";
+
 export interface SuburbPage {
   slug: string;
   title: string;
@@ -15,7 +17,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "north-brisbane",
     title: "Cash for Cars North Brisbane | Free Removal, Same-Day Cash",
-    metaDescription: "Cash for cars in North Brisbane. Free car removal across Chermside, Aspley, Kedron, Stafford & more. Same- or next-day cash payment. Call 0481 438 444.",
+    metaDescription: `Cash for cars in North Brisbane. Free car removal across Chermside, Aspley, Kedron, Stafford & more. Same- or next-day cash payment. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars North Brisbane",
     intro: "Caraway provides fast, reliable cash for cars across North Brisbane. Whether you're in Chermside, Aspley, Kedron, Stafford, Nundah, or anywhere across Brisbane's northside — we'll come to you, pay cash on the spot, and tow your car away free.",
     localContent: "North Brisbane is one of our busiest service areas. With major arterials like Gympie Road, Stafford Road, Webster Road, and the Gateway Motorway running through the region, our drivers can reach most northside suburbs within 30 minutes of our depot. We regularly collect vehicles from residential streets, apartment complexes, and commercial properties across the northside corridor from Bowen Hills and Albion through Windsor, Wavell Heights, Nundah, and out to Bracken Ridge and Bald Hills. The northside is a mix of older post-war cottages in Wooloowin and Clayfield, the brick-and-tile suburbia of Aspley and Carseldine, newer estates around Fitzgibbon and Taigum, and the high-density apartment corridors along Lutwyche Road and Sandgate Road. Each of those environments throws up a different set of car-selling situations: long-term residents offloading the Commodore they've had since 1998, apartment dwellers clearing out an unregistered second car from a stack parking bay, or families upgrading from the family hatch to something newer. We see all of them. The area's proximity to Brisbane Airport also means we buy plenty of cars from people leaving the country — students, contractors, and expats who need a quick, reliable sale before their flight. Our familiarity with the northside road network, from the back streets of Grange and Gordon Park to the industrial pockets in Geebung and Zillmere, means we can get to you fast and navigate access constraints without drama.",
@@ -27,7 +29,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "south-brisbane",
     title: "Cash for Cars South Brisbane | Same-Day Pickup & Payment",
-    metaDescription: "Sell your car for cash in South Brisbane. Covering Woolloongabba, Annerley, Yeronga, Moorooka & surrounds. Free removal. Call Caraway 0481 438 444.",
+    metaDescription: `Sell your car for cash in South Brisbane. Covering Woolloongabba, Annerley, Yeronga, Moorooka & surrounds. Free removal. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars South Brisbane",
     intro: "Selling a car in South Brisbane? Caraway offers instant cash for cars across Brisbane's southside — from Woolloongabba and Annerley to Yeronga, Moorooka, and beyond. Free same- or next-day removal, no towing charges, and cash paid before your car leaves.",
     localContent: "South Brisbane is a diverse mix of inner-city apartments, character homes, and busy commercial areas. We navigate the area daily, collecting vehicles from the tight streets around West End and Highgate Hill, the suburban blocks of Yeronga and Fairfield, the workshops along Ipswich Road in Moorooka, and the riverside developments around South Bank and Kangaroo Point. The inner south is changing fast — old warehouses in West End are being converted into apartment blocks, the Woolloongabba Cross River Rail precinct is reshaping the suburb around the Gabba, and new high-rises are going up along Montague Road and Melbourne Street. All of that construction and turnover means a steady stream of residents moving, downsizing, or getting rid of cars they no longer need in the denser urban environment. We also see a lot of sales from the large student population around Dutton Park and Highgate Hill — international students finishing their degrees, heading home, and needing to offload a car before they fly out. Further south along the Ipswich Road corridor, Moorooka is Brisbane's traditional used-car strip and nearby Rocklea is one of the low-lying flood zones that took a hammering in 2011 and again in 2022 — we buy a lot of flood-affected vehicles from those suburbs every year. The character homes of Greenslopes, Fairfield, and Annerley add another layer of older cars hidden away under Queenslanders and in carports, many of which haven't been started in years.",
@@ -39,7 +41,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "logan",
     title: "Cash for Cars Logan | Free Car Removal Logan City",
-    metaDescription: "Cash for cars in Logan. We buy all cars and offer free removal across Logan Central, Springwood, Beenleigh, Marsden & more. Call 0481 438 444.",
+    metaDescription: `Cash for cars in Logan. We buy all cars and offer free removal across Logan Central, Springwood, Beenleigh, Marsden & more. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Logan — Free Removal & Instant Cash",
     intro: "Caraway is Logan's go-to cash for cars buyer. We service the entire Logan City area including Logan Central, Woodridge, Springwood, Beenleigh, Marsden, Crestmead, and surrounding suburbs. Get a free quote, same- or next-day pickup, and instant cash payment.",
     localContent: "The Logan area is home to a large volume of older vehicles, making it one of our most active service regions. From the busy corridors along the Pacific Motorway and Logan Motorway to the residential streets of Kingston, Slacks Creek, Woodridge, and Loganlea, we collect cars throughout Logan every day. We know the area well — including the industrial zones around Meadowbrook and Slacks Creek, the residential estates of Marsden, Crestmead, and Berrinba, and the older housing stock around Logan Central and Woodridge. Logan has one of the highest concentrations of older Australian-made cars in South-East Queensland: Commodores from the VN through to the VE era, Ford Falcons from the EF onwards, Camrys and Magnas still clocking up kilometres across Kingston and Marsden, and plenty of big old 4WDs — Patrols, Landcruisers, and first-gen Pajeros — that have served tradies and families for decades. A lot of these cars are now at the point where repairs don't stack up against the value, and that's where we come in. The Pacific Motorway runs straight through the middle of our coverage area, and the arterials branching off — Kingston Road, Compton Road, Wembley Road, and Chambers Flat Road — give us quick access to every corner of Logan City Council's LGA, from Rochedale South at the northern edge down to Jimboomba and Cedar Grove in the south-west. We regularly pick up from properties in Park Ridge, Greenbank, and North Maclean where semi-rural blocks mean cars have been sitting in sheds or on back paddocks for years.",
@@ -51,7 +53,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "ipswich",
     title: "Cash for Cars Ipswich | Sell Your Car for Cash Today",
-    metaDescription: "Cash for cars in Ipswich. Free car removal across Ipswich, Goodna, Springfield, Redbank & more. Instant cash payment. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars in Ipswich. Free car removal across Ipswich, Goodna, Springfield, Redbank & more. Instant cash payment. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Ipswich — Sell Your Car Today",
     intro: "Caraway pays top cash for cars across the Ipswich region. Whether you're in central Ipswich, Goodna, Springfield, Redbank Plains, or Rosewood — we offer free car removal with same- or next-day cash payment. All vehicle types and conditions accepted.",
     localContent: "Ipswich and its surrounding suburbs sit at the western edge of Greater Brisbane, connected by the Ipswich Motorway and Warrego Highway. Despite the distance from the CBD, we service the entire Ipswich corridor daily. From the established suburbs around Booval, Bundamba, Brassall, and Raceview to the growing communities of Springfield Lakes, Augustine Heights, and Ripley, our team covers it all without charging extra for the trip. Ipswich has one of the oldest housing stocks in South-East Queensland and a correspondingly older vehicle fleet — heritage suburbs like East Ipswich, Blackstone, Silkstone, Booval, and Basin Pocket have cars that have been parked on the same blocks for decades. The Warrego Highway also gives us easy access to the Scenic Rim and Lockyer Valley fringes — we regularly make runs out to Rosewood, Marburg, Walloon, and Thagoona where rural properties often have old farm vehicles, second utes, and project cars that have long outlived their usefulness. Further out, the flood-prone areas along the Bremer River and Bundamba Creek have produced a steady stream of water-damaged cars over the years, especially after the 2011 and 2022 floods, and we've bought many of them direct from owners after insurance finalised the claim. The newer growth corridors of Ipswich — Springfield Central, Augustine Heights, Brookwater, and Ripley — tell a different story: families upgrading from their first home car to something bigger, and trading out the old hatchback we come and collect.",
@@ -63,7 +65,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "redcliffe",
     title: "Cash for Cars Redcliffe | Free Car Removal Redcliffe",
-    metaDescription: "Cash for cars Redcliffe. Free car removal across Redcliffe, Margate, Scarborough, Kippa-Ring & surrounds. Same- or next-day cash. Call 0481 438 444.",
+    metaDescription: `Cash for cars Redcliffe. Free car removal across Redcliffe, Margate, Scarborough, Kippa-Ring & surrounds. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Redcliffe — Get Paid Today",
     intro: "Selling your car on the Redcliffe Peninsula? Caraway offers fast cash for cars and free removal across Redcliffe, Margate, Scarborough, Kippa-Ring, Clontarf, and Woody Point. No hassle, no towing fees, just cash in your hands today.",
     localContent: "The Redcliffe Peninsula sits at the northern tip of Moreton Bay, connected to mainland Brisbane via Anzac Avenue and the Houghton Highway. Our team travels to the peninsula regularly, collecting vehicles from the beachside streets of Scarborough, the residential areas of Margate and Kippa-Ring, and the commercial zones along Oxley Avenue. The salty coastal air can be tough on vehicles, which means we see plenty of cars with surface rust and weathering — and we buy them all.",
@@ -75,7 +77,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "chermside",
     title: "Cash for Cars Chermside | Instant Cash & Free Towing",
-    metaDescription: "Cash for cars in Chermside. Sell your old, damaged, or unwanted car for instant cash. Free towing, same- or next-day service. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars in Chermside. Sell your old, damaged, or unwanted car for instant cash. Free towing, same- or next-day service. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Chermside",
     intro: "Looking to sell your car in Chermside? Caraway pays instant cash for cars in Chermside, Stafford, Kedron, Wavell Heights, and surrounding northside suburbs. Free towing, same- or next-day pickup, and competitive offers on all vehicles.",
     localContent: "Chermside is one of North Brisbane's major hubs, centred around Westfield Chermside — the largest shopping centre in Queensland by floor area — and the Prince Charles Hospital precinct on Rode Road. The suburb's mix of older post-war homes, established streets with big backyards, and newer apartment developments along Gympie Road means we see a wide variety of vehicles, from old family cars in established streets like Banfield Street and Hall Street to unwanted second cars at apartment complexes near the shopping centre. Our team is familiar with every corner of the Chermside area. The suburb sits at the intersection of Gympie Road and Webster Road, with Hamilton Road running east-west, giving us fast access from almost any direction and making same- or next-day pickups highly achievable. The surrounding suburbs we also cover from this page — Stafford, Stafford Heights, Kedron, Wavell Heights, and Everton Park — add thousands more properties to the catchment. Kedron Brook runs through the middle of the area and parts of Stafford and Gordon Park sit on the flood plain, so we occasionally buy flood-affected vehicles from those streets. The Prince Charles Hospital, Holy Spirit Northside, and the broader health precinct mean a steady flow of shift-working medical staff who sometimes need to offload a reliable second car quickly when they relocate for a new position.",
@@ -87,7 +89,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "toowong",
     title: "Cash for Cars Toowong | Free Removal & Cash Today",
-    metaDescription: "Sell your car for cash in Toowong. Free removal across Toowong, St Lucia, Taringa, Auchenflower & surrounds. Call Caraway 0481 438 444.",
+    metaDescription: `Sell your car for cash in Toowong. Free removal across Toowong, St Lucia, Taringa, Auchenflower & surrounds. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Toowong",
     intro: "Caraway pays cash for cars in Toowong, St Lucia, Taringa, Auchenflower, and Brisbane's inner western suburbs. Whether your car is parked at a Toowong apartment or sitting in a St Lucia garage, we'll come to you, pay cash, and remove it free.",
     localContent: "Brisbane's inner western suburbs are characterised by hilly terrain, narrow streets, and a mix of Queenslander homes, modern apartments, and university student housing. We navigate Toowong, Taringa, and St Lucia regularly — our drivers know which streets have steep driveways, where to find parking for our tow truck, and how to access vehicles in multi-storey apartment car parks.",
@@ -99,7 +101,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "indooroopilly",
     title: "Cash for Cars Indooroopilly | Instant Cash, Free Pickup",
-    metaDescription: "Cash for cars Indooroopilly. We buy all cars — old, damaged, unwanted. Free removal across Indooroopilly, Kenmore, Chapel Hill & more. Call 0481 438 444.",
+    metaDescription: `Cash for cars Indooroopilly. We buy all cars — old, damaged, unwanted. Free removal across Indooroopilly, Kenmore, Chapel Hill & more. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Indooroopilly",
     intro: "Get instant cash for your car in Indooroopilly. Caraway services Indooroopilly, Kenmore, Chapel Hill, Fig Tree Pocket, and all western Brisbane suburbs. Free car removal, no towing charges, and same- or next-day cash payment for all vehicle types.",
     localContent: "Indooroopilly and surrounding suburbs like Kenmore, Chapel Hill, and Fig Tree Pocket are well-established residential areas with many families who've owned their homes — and their cars — for decades. We see a lot of older vehicles in this area that have been sitting unused in garages or under carports. These cars often have valuable parts despite their age and condition.",
@@ -111,7 +113,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "carindale",
     title: "Cash for Cars Carindale | Free Car Removal Carindale",
-    metaDescription: "Cash for cars in Carindale. Sell your car for instant cash with free removal. Covering Carindale, Tingalpa, Wynnum, Carina & surrounds. Call 0481 438 444.",
+    metaDescription: `Cash for cars in Carindale. Sell your car for instant cash with free removal. Covering Carindale, Tingalpa, Wynnum, Carina & surrounds. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Carindale",
     intro: "Caraway pays cash for cars across Carindale, Carina, Tingalpa, Wynnum, Manly, and Brisbane's bayside suburbs. Sell your old, damaged, or unwanted car today with free removal and same- or next-day payment. No RWC, no hassle.",
     localContent: "Carindale and Brisbane's eastern suburbs stretch from the busy Old Cleveland Road corridor down to the Wynnum-Manly bayside. This area's mix of suburban homes, shopping precincts, and light industrial zones means we see a diverse range of vehicles — from family runabouts in Carindale to tradies' utes in Tingalpa and older vehicles in the bayside suburbs.",
@@ -123,7 +125,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "sunnybank",
     title: "Cash for Cars Sunnybank | Top Dollar for All Vehicles",
-    metaDescription: "Cash for cars Sunnybank. We buy cars in any condition — old, scrap, damaged. Free towing across Sunnybank, Runcorn, Calamvale. Call 0481 438 444.",
+    metaDescription: `Cash for cars Sunnybank. We buy cars in any condition — old, scrap, damaged. Free towing across Sunnybank, Runcorn, Calamvale. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Sunnybank",
     intro: "Caraway pays top cash for cars in Sunnybank, Sunnybank Hills, Runcorn, Calamvale, and Algester. We buy all vehicles in any condition and remove them free of charge. Same- or next-day service available seven days a week.",
     localContent: "Sunnybank and its neighbouring suburbs form one of Brisbane's most vibrant and diverse communities. The area's bustling commercial precincts along Mains Road and McCullough Street sit alongside established residential streets where many families have owned their cars for years. We're regular visitors to the Sunnybank area and know it well.",
@@ -135,7 +137,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "moorooka",
     title: "Cash for Cars Moorooka | Instant Cash, Free Removal",
-    metaDescription: "Cash for cars in Moorooka. We pay instant cash for cars in any condition. Free removal across Moorooka, Rocklea, Salisbury, Annerley. Call 0481 438 444.",
+    metaDescription: `Cash for cars in Moorooka. We pay instant cash for cars in any condition. Free removal across Moorooka, Rocklea, Salisbury, Annerley. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Moorooka",
     intro: "Sell your car for cash in Moorooka. Caraway services Moorooka, Rocklea, Salisbury, Annerley, Yeronga, and surrounding suburbs with instant cash offers and free car removal. All makes, all conditions, all accepted.",
     localContent: "Moorooka and the surrounding suburbs along Ipswich Road form Brisbane's traditional used car sales strip. Ironically, this means many local residents have access to plenty of car options — but also end up with older vehicles they no longer need. We're active in the area daily, collecting cars from the residential streets off Beaudesert Road and the industrial zones around Rocklea.",
@@ -147,7 +149,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "mount-gravatt",
     title: "Cash for Cars Mount Gravatt | Free Towing & Instant Cash",
-    metaDescription: "Cash for cars Mount Gravatt. Sell your car for instant cash with free towing. Covering Mt Gravatt, Holland Park, Wishart, Upper Mt Gravatt. Call 0481 438 444.",
+    metaDescription: `Cash for cars Mount Gravatt. Sell your car for instant cash with free towing. Covering Mt Gravatt, Holland Park, Wishart, Upper Mt Gravatt. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Mount Gravatt",
     intro: "Caraway pays cash for cars in Mount Gravatt, Upper Mount Gravatt, Holland Park, Wishart, and Mansfield. Whether your car is old, damaged, or just unwanted — we'll buy it for cash and remove it free. Same- or next-day service across the Mt Gravatt area.",
     localContent: "Mount Gravatt sits at a strategic crossroads in Brisbane's south, where Logan Road, Creek Road, and Kessels Road intersect. This accessibility makes it one of our most efficiently serviced areas. The mix of older homes around Mt Gravatt proper and newer developments in Wishart and Mansfield West means we encounter vehicles of all ages and conditions across the area.",
@@ -159,7 +161,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "caboolture",
     title: "Cash for Cars Caboolture | Same-Day Car Removal",
-    metaDescription: "Cash for cars in Caboolture. Free car removal across Caboolture, Morayfield, Bribie Island, Burpengary. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars in Caboolture. Free car removal across Caboolture, Morayfield, Bribie Island, Burpengary. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Caboolture",
     intro: "Caraway buys cars for cash across the Caboolture region — including Morayfield, Burpengary, Narangba, Bribie Island, and Wamuran. Free removal, same- or next-day payment, and no distance surcharges. We come to you, wherever you are in the Caboolture area.",
     localContent: "Caboolture marks the northern boundary of Greater Brisbane's main urban corridor, where suburbia gives way to semi-rural properties, acreages, and small farms. This means we encounter a wider variety of vehicles here than in inner-city areas — old farm trucks, disused 4WDs, project cars in sheds, and family cars that have simply run their course. We service the entire region from Narangba in the south to Woodford in the north.",
@@ -171,7 +173,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "springwood",
     title: "Cash for Cars Springwood | Free Removal & Cash Payment",
-    metaDescription: "Cash for cars Springwood. Free car removal across Springwood, Daisy Hill, Shailer Park, Rochedale South. Instant cash. Call 0481 438 444.",
+    metaDescription: `Cash for cars Springwood. Free car removal across Springwood, Daisy Hill, Shailer Park, Rochedale South. Instant cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Springwood",
     intro: "Get cash for your car in Springwood. Caraway services Springwood, Daisy Hill, Shailer Park, Rochedale South, and the surrounding Logan corridor with instant cash offers, free car removal, and same- or next-day pickup.",
     localContent: "Springwood sits along the Pacific Motorway corridor between Brisbane and the Gold Coast, making it an accessible and well-connected area for our car removal service. The suburb and its neighbours — Daisy Hill, Shailer Park, and Rochedale South — are established residential areas with a mix of older homes and newer estates. We know the area well and service it regularly.",
@@ -183,7 +185,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "browns-plains",
     title: "Cash for Cars Browns Plains | Top Cash, Free Towing",
-    metaDescription: "Cash for cars Browns Plains. Top cash for all vehicles, free towing across Browns Plains, Regents Park, Heritage Park, Hillcrest. Call 0481 438 444.",
+    metaDescription: `Cash for cars Browns Plains. Top cash for all vehicles, free towing across Browns Plains, Regents Park, Heritage Park, Hillcrest. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Browns Plains",
     intro: "Caraway pays top cash for cars in Browns Plains, Regents Park, Heritage Park, Hillcrest, and Forestdale. Sell your old, damaged, or unwanted car today with free removal and instant cash payment.",
     localContent: "Browns Plains and the surrounding suburbs in the Logan-Beaudesert corridor have grown rapidly over the past two decades, with new housing estates bringing thousands of families to the area. Many of these families now have older second cars, trade-in rejects, or vehicles they no longer need. That's where Caraway comes in — we turn those unwanted vehicles into cash.",
@@ -195,7 +197,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "beenleigh",
     title: "Cash for Cars Beenleigh | Free Removal & Instant Cash",
-    metaDescription: "Cash for cars in Beenleigh. Free car removal across Beenleigh, Eagleby, Edens Landing, Holmview & surrounds. Same- or next-day cash payment. Call 0481 438 444.",
+    metaDescription: `Cash for cars in Beenleigh. Free car removal across Beenleigh, Eagleby, Edens Landing, Holmview & surrounds. Same- or next-day cash payment. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Beenleigh",
     intro: "Caraway pays cash for cars across Beenleigh, Eagleby, Edens Landing, Holmview, and Waterford. Whether your car is old, damaged, scrap, or simply unwanted — we'll buy it for cash and remove it free. Same- or next-day service available across the Beenleigh corridor.",
     localContent: "Beenleigh sits at the southern edge of Logan City, straddling the Pacific Motorway and the Brisbane-Gold Coast rail line. The area's mix of older fibro homes, newer housing estates, and light industrial zones means we see a wide variety of vehicles. From high-kilometre commuter cars that have done years on the M1 to older utes sitting idle on Eagleby blocks, we buy them all.",
@@ -207,7 +209,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "bayside-brisbane",
     title: "Cash for Cars Bayside Brisbane | Wynnum, Manly & Cleveland",
-    metaDescription: "Cash for cars in Brisbane's bayside suburbs. Free removal across Wynnum, Manly, Cleveland, Capalaba, Victoria Point & Redland Bay. Call 0481 438 444.",
+    metaDescription: `Cash for cars in Brisbane's bayside suburbs. Free removal across Wynnum, Manly, Cleveland, Capalaba, Victoria Point & Redland Bay. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Bayside Brisbane",
     intro: "Caraway services Brisbane's entire bayside and Redlands corridor with instant cash for cars and free removal. Whether you're in Wynnum, Manly, Cleveland, Capalaba, Victoria Point, or Redland Bay — we'll come to you, pay cash on the spot, and tow your car away at no cost.",
     localContent: "Brisbane's bayside stretches from the industrial wharves of the Port of Brisbane through the charming waterfront suburbs of Wynnum and Manly, out to the Redlands area around Cleveland, Capalaba, and Victoria Point. The coastal lifestyle means vehicles here cop more salt air exposure than inland suburbs, leading to accelerated corrosion on exhausts, brake lines, and underbody components. We see plenty of cars in the bayside that look reasonable on top but have significant rust underneath — and we buy them regardless.",
@@ -219,7 +221,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "north-lakes",
     title: "Cash for Cars North Lakes | Same-Day Cash & Free Towing",
-    metaDescription: "Cash for cars in North Lakes. Free car removal across North Lakes, Mango Hill, Kallangur, Petrie & Strathpine. Same- or next-day cash. Call 0481 438 444.",
+    metaDescription: `Cash for cars in North Lakes. Free car removal across North Lakes, Mango Hill, Kallangur, Petrie & Strathpine. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars North Lakes",
     intro: "Get cash for your car in North Lakes. Caraway services North Lakes, Mango Hill, Kallangur, Petrie, Strathpine, and the entire Pine Rivers corridor with instant cash offers, free car removal, and same- or next-day pickup. All makes, all conditions accepted.",
     localContent: "North Lakes is one of Greater Brisbane's fastest-growing master-planned communities, and the surrounding Pine Rivers corridor — from Strathpine and Bray Park through to Kallangur, Petrie, and Lawnton — has seen massive residential growth over the past two decades. That growth means a steady supply of vehicles reaching end-of-life: families upgrading, second cars sitting unused, and older vehicles that are no longer worth the cost of registration and repairs.",
@@ -231,7 +233,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "capalaba",
     title: "Cash for Cars Capalaba | Free Removal Across the Redlands",
-    metaDescription: "Cash for cars in Capalaba. Free car removal across Capalaba, Alexandra Hills, Thornlands, Birkdale & Cleveland. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars in Capalaba. Free car removal across Capalaba, Alexandra Hills, Thornlands, Birkdale & Cleveland. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Capalaba",
     intro: "Selling a car in Capalaba? Caraway pays instant cash for cars across Capalaba and the wider Redlands — including Alexandra Hills, Thornlands, Birkdale, Wellington Point, and Cleveland. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway. All makes, all conditions accepted.",
     localContent: "Capalaba is the commercial heart of the Redlands, sitting at the junction of Old Cleveland Road and Moreton Bay Road with the Capalaba Park and Capalaba Central shopping precincts in the middle of it all. Our drivers run Capalaba pickups daily, collecting vehicles from the established residential streets around Degen Road and Redland Bay Road, the estates spreading out towards Sheldon and Burbank, and the light industrial area along Old Cleveland Road East where a lot of mechanics, panel beaters, and workshops end up with unwanted project cars and trade-in rejects. The suburb has been a strong Commodore, Falcon, and Hilux area for decades — plenty of older tradie utes and family sedans still sitting in carports and under Queenslanders — and we see a steady flow of 4WDs and boats that have come off trailers after years of service. The bayside location means salt air is a real factor: vehicles parked outside in Capalaba, Alexandra Hills, and Thornlands cop more underbody corrosion than inland suburbs, and we regularly buy cars that look tidy on top but have rust through exhausts, brake lines, and subframes. With Moreton Bay Road giving us fast access from Capalaba to Cleveland in one direction and Carindale in the other, we can reach most Redlands pickups within 25 to 30 minutes.",
@@ -243,7 +245,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "kenmore",
     title: "Cash for Cars Kenmore | Free Pickup Across Brisbane's West",
-    metaDescription: "Cash for cars Kenmore. Free car removal across Kenmore, Chapel Hill, Fig Tree Pocket, Brookfield & Pullenvale. Same- or next-day cash. Call 0481 438 444.",
+    metaDescription: `Cash for cars Kenmore. Free car removal across Kenmore, Chapel Hill, Fig Tree Pocket, Brookfield & Pullenvale. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Kenmore",
     intro: "Get cash for your car in Kenmore. Caraway services Kenmore, Kenmore Hills, Chapel Hill, Fig Tree Pocket, Brookfield, and Pullenvale with instant cash offers, free car removal, and same- or next-day pickup. Whether your car is tucked behind a leafy western suburbs driveway or sitting on an acreage block, we'll come to you and pay cash on the spot.",
     localContent: "Kenmore is a well-established western suburb straddling Moggill Road, with Kenmore Village at its centre and the Western Freeway forming the northern boundary. The suburb and its neighbours — Kenmore Hills, Chapel Hill, Fig Tree Pocket, Brookfield, and Pullenvale — are characterised by leafy streets, large blocks, and family homes that have been owned by the same residents for decades. That longevity shows up in the cars we collect: older Camrys, Corollas, Magnas, and Commodores that have been daily drivers for 20 years, retired 4WDs like Pajeros and Prados that were family weekend vehicles, and second cars — often the kids' first hatch — that have been sitting under a carport since the kids moved out. Many Kenmore properties sit on the hillier country towards Brookfield and the Brisbane Forest Park fringe, where long, steep driveways and bush-lined properties are the norm. Moggill Road handles most of the area's traffic, running through Kenmore Village and out towards Moggill and Bellbowrie, and our drivers know which back streets to use to avoid the school-run bottlenecks around Kenmore State School and Kenmore State High. The 2011 and 2022 Brisbane floods affected parts of Fig Tree Pocket along the river, and we still occasionally buy flood-affected vehicles from those streets.",
@@ -255,7 +257,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "the-gap",
     title: "Cash for Cars The Gap | Free Removal Across Brisbane's Western Suburbs",
-    metaDescription: "Cash for cars The Gap. Free removal across The Gap, Ashgrove, Ferny Grove, Upper Kedron & Bardon. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars The Gap. Free removal across The Gap, Ashgrove, Ferny Grove, Upper Kedron & Bardon. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars The Gap",
     intro: "Selling a car in The Gap? Caraway pays instant cash for cars across The Gap, Upper Kedron, Ferny Grove, Keperra, Bardon, and Ashgrove. Free removal, same- or next-day pickup, and cash on the spot before the car leaves your driveway. We handle the tight driveways, the steep blocks, and the bushy properties that come with Brisbane's western suburbs.",
     localContent: "The Gap is one of Brisbane's leafiest and most distinctive western suburbs, stretching along Waterworks Road from Ashgrove out towards Mount Coot-tha and D'Aguilar National Park, with Settlement Road forming the main east-west connector through the middle of the suburb. The area is framed by bushland on three sides and sits on genuinely hilly country — a lot of homes are on steep, heavily treed blocks with long driveways cut into the hillside. That terrain shapes the kind of cars we collect here: plenty of older 4WDs and AWD wagons that families bought for the driveway climbs and the weekend runs into the national park, retired family Camrys and Commodores that have been daily drivers for decades, and second cars that have been sitting in low-set garages for years. The suburb cops its share of severe summer storms coming down off the range, and we've bought a lot of hail-damaged cars from The Gap, Ferny Grove, Upper Kedron, and Keperra after major hail events. Waterworks Road and Settlement Road are the main arterials, and our drivers know which stretches bottleneck during school pickup at The Gap State School and The Gap State High. We also routinely service the adjacent pockets of Bardon, Ashgrove, and Enoggera where the housing stock is older and the driveways are often tighter.",
@@ -267,7 +269,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "bulimba",
     title: "Cash for Cars Bulimba | Free Removal & Same-Day Cash",
-    metaDescription: "Cash for cars Bulimba. Free removal across Bulimba, Hawthorne, Balmoral & Morningside. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Bulimba. Free removal across Bulimba, Hawthorne, Balmoral & Morningside. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Bulimba",
     intro: "Selling a car in Bulimba? Caraway pays instant cash for cars across Bulimba, Hawthorne, Balmoral, Morningside, and Brisbane's inner east riverside corridor. Free removal, same- or next-day pickup, and cash in hand before the tow truck leaves your driveway.",
     localContent: "Bulimba sits on a bend of the Brisbane River across from Newstead and Teneriffe, with Oxford Street running as the spine through the suburb's cafe strip and the CityCat terminal at Bulimba Ferry anchoring the western end. The suburb's mix of heritage Queenslanders, worker's cottages, and newer riverside townhouses means we see a broad range of cars: long-term residents offloading 25-year-old Camrys that have been daily drivers since the kids were in primary school, apartment dwellers clearing out second cars from the developments along Riding Road, and families trading up to newer cars as they move through the suburb. The streets closer to the river in Hawthorne and Balmoral feature a lot of older Queenslanders on sloping blocks with narrow drives — the sort of properties where a forgotten car has been sitting in a carport for a decade. Further out towards Morningside and Cannon Hill, the housing stock becomes more varied and we see a higher share of tradie utes and older 4WDs. The 2011 and 2022 floods reached parts of Bulimba's lower streets along Oxford and Barramul, and we've bought a number of flood-affected vehicles from those areas over the years.",
@@ -279,7 +281,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "hawthorne",
     title: "Cash for Cars Hawthorne | Instant Cash, Free Pickup",
-    metaDescription: "Cash for cars Hawthorne. Free removal across Hawthorne, Bulimba, Balmoral & Morningside. Same- or next-day cash payment. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Hawthorne. Free removal across Hawthorne, Bulimba, Balmoral & Morningside. Same- or next-day cash payment. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Hawthorne",
     intro: "Caraway pays instant cash for cars in Hawthorne, Bulimba, Balmoral, Morningside, and Brisbane's inner east. Whether your car is parked at a Hawthorne Queenslander or sitting at a Balmoral apartment complex, we'll come to you, pay cash on the spot, and tow it away free.",
     localContent: "Hawthorne sits between Bulimba and Balmoral on the southern bank of the Brisbane River, with Hawthorne Road running as the main spine and the Hawthorne Cinemas precinct at its heart. The suburb is predominantly heritage Queenslanders on sloping blocks with leafy streets, character homes around Hawthorne Park, and a steady flow of river-facing townhouses and newer apartments along Riding Road and Saunders Street. We regularly collect cars from every part of the suburb, from the tighter streets closer to Oxford Street to the quieter residential pockets up towards the river. The area's demographic — long-term residents who've owned their homes for decades alongside younger families moving into renovated Queenslanders — means a steady flow of older second cars, retired family vehicles, and cars that have been sitting in under-house garages for years. The low-set pre-war homes on streets like Riding Road and Oxford Street often have tight driveways and narrow carports that we're set up to work around.",
@@ -291,7 +293,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "ascot",
     title: "Cash for Cars Ascot | Free Removal Across Brisbane's North",
-    metaDescription: "Cash for cars Ascot. Free removal across Ascot, Hamilton, Clayfield & Hendra. Same- or next-day cash payment. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Ascot. Free removal across Ascot, Hamilton, Clayfield & Hendra. Same- or next-day cash payment. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Ascot",
     intro: "Selling a car in Ascot? Caraway pays instant cash for cars across Ascot, Hamilton, Hendra, Clayfield, and Brisbane's prestigious northside. Free removal, same- or next-day pickup, and cash on the spot before the car leaves your property.",
     localContent: "Ascot sits north of the Brisbane River around Eagle Farm Racecourse and Doomben, with Racecourse Road as the main commercial strip and the surrounding streets lined with large heritage homes, period Queenslanders, and more recent prestige developments. The suburb shares its character with neighbouring Hamilton, Clayfield, and Hendra — established, affluent northside pockets where a lot of long-term residents have owned both their homes and their cars for decades. The cars we collect here reflect that longevity: retired family Mercedes, BMWs, and Volvos that have been replaced by newer models, older Commodores and Camrys used as daily drivers for 20+ years, and second cars that have been sitting in double garages for years unused. The Eagle Farm industrial and commercial precinct along Nudgee Road and Kingsford Smith Drive brings its own flow of workshop and trade vehicles — panel beaters, mechanics, and fleet operators clearing out project cars and retired work vehicles. Brisbane Airport is a short drive away, and we regularly service Ascot and Hamilton residents who are relocating overseas and need to offload a car quickly before a flight.",
@@ -303,7 +305,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "clayfield",
     title: "Cash for Cars Clayfield | Instant Cash & Free Towing",
-    metaDescription: "Cash for cars Clayfield. Free removal across Clayfield, Hendra, Ascot & Wooloowin. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Clayfield. Free removal across Clayfield, Hendra, Ascot & Wooloowin. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Clayfield",
     intro: "Caraway pays cash for cars in Clayfield, Hendra, Ascot, Wooloowin, and Brisbane's inner north. Whether your car is parked at a Clayfield Queenslander or sitting at a Hendra apartment, we'll come to you, pay cash on the spot, and tow it away free.",
     localContent: "Clayfield sits on the northern side of the Brisbane River between Ascot and Wooloowin, with Sandgate Road running north-south through the middle of the suburb and Bonney Avenue forming the east-west connector through the Clayfield College precinct. The suburb is characterised by large heritage Queenslanders on established tree-lined streets, a growing population of unit and townhouse developments along Sandgate Road, and a strong mix of long-term residents alongside younger families moving in after renovations. The cars we collect here reflect that mix: retired family sedans and wagons that have been daily drivers for decades, unregistered second cars sitting in double-garage properties, and the occasional older European prestige vehicle that has reached the end of its practical life. The area's proximity to Brisbane Airport via Kingsford Smith Drive also means we see a steady flow of relocations — residents moving overseas who need a quick, reliable sale before they fly out.",
@@ -315,7 +317,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "everton-park",
     title: "Cash for Cars Everton Park | Free Removal & Cash Today",
-    metaDescription: "Cash for cars Everton Park. Free removal across Everton Park, Mitchelton, Stafford Heights & Gaythorne. Same- or next-day cash. Call 0481 438 444.",
+    metaDescription: `Cash for cars Everton Park. Free removal across Everton Park, Mitchelton, Stafford Heights & Gaythorne. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Everton Park",
     intro: "Selling a car in Everton Park? Caraway pays instant cash for cars across Everton Park, Mitchelton, Stafford Heights, Gaythorne, and Brisbane's mid-northside. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway.",
     localContent: "Everton Park sits along South Pine Road between Stafford and Mitchelton, with Everton Plaza shopping centre at the heart of the suburb and Kedron Brook forming the southern boundary. The area is characterised by post-war brick-and-tile homes, established residential streets with mature trees, and a steady flow of newer townhouse developments filling in the older blocks. The cars we collect here tend to be long-owned family vehicles — Commodores, Falcons, Camrys, and Corollas that have been daily drivers across the area for 15 to 25 years, high-kilometre tradie utes from the local building trades, and second cars that have been sitting unused in carports since the kids left home. Kedron Brook runs along the southern edge of the suburb and parts of Everton Park and Stafford have been affected by flooding in heavy rainfall events, so we occasionally buy flood-affected vehicles from those streets. South Pine Road and Old Northern Road give us fast access to the area from both the inner city and the western corridor.",
@@ -327,7 +329,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "stafford",
     title: "Cash for Cars Stafford | Same-Day Cash, Free Removal",
-    metaDescription: "Cash for cars Stafford. Free removal across Stafford, Stafford Heights, Everton Park & Kedron. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Stafford. Free removal across Stafford, Stafford Heights, Everton Park & Kedron. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Stafford",
     intro: "Caraway pays cash for cars in Stafford, Stafford Heights, Everton Park, Kedron, and Brisbane's mid-northside. Free removal, same- or next-day pickup, and instant cash payment for all vehicle types and conditions.",
     localContent: "Stafford is a well-established mid-northside suburb along Stafford Road, sitting between Chermside and Everton Park with Kedron Brook running through its southern end. The suburb is a classic Brisbane post-war area — brick-and-tile homes on quarter-acre blocks, mature streets with jacarandas and poincianas, and the Stafford City shopping centre at the commercial heart of the suburb. We regularly collect cars from across Stafford and its neighbours: older family Commodores and Falcons from long-term residents in streets like Webster Road and Hall Street, high-kilometre tradie utes from the light industrial pockets along Stafford Road, and unregistered second cars that have been sitting in carports for years. Parts of Stafford along Kedron Brook sit on the flood plain and were affected during the 2011 and 2022 Brisbane floods — we've bought a number of flood-affected vehicles from those streets over the years. Stafford Road and Webster Road give our drivers fast access from the inner city, and same- or next-day pickup is achievable for most morning calls.",
@@ -339,7 +341,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "nundah",
     title: "Cash for Cars Nundah | Instant Cash, Free Pickup",
-    metaDescription: "Cash for cars Nundah. Free removal across Nundah, Northgate, Wavell Heights & Clayfield. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Nundah. Free removal across Nundah, Northgate, Wavell Heights & Clayfield. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Nundah",
     intro: "Caraway pays cash for cars in Nundah, Northgate, Wavell Heights, and Brisbane's inner north. Sell your car today with free removal and instant cash payment — all makes, all conditions, all accepted.",
     localContent: "Nundah sits on the northside between Clayfield and Toombul, with Sandgate Road and the Nundah Village precinct forming the commercial heart of the suburb. The suburb's mix of heritage Queenslanders on quiet side streets, newer apartment developments clustered around Nundah Station and the Village, and established post-war homes in the blocks towards Wavell Heights means we see a wide variety of cars and sellers. Apartment dwellers clearing out second vehicles, long-term residents offloading older Camrys and Commodores that have been daily drivers for 20 years, and young families trading up to newer cars as they renovate Queenslanders on Buckland Road and Kamarin Street. The suburb's proximity to Brisbane Airport and the Gateway Motorway also means we see a steady flow of relocation pickups — residents moving interstate or overseas who need a quick, reliable sale before they fly.",
@@ -351,7 +353,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "new-farm",
     title: "Cash for Cars New Farm | Same-Day Cash & Free Removal",
-    metaDescription: "Cash for cars New Farm. Free removal across New Farm, Teneriffe, Newstead & Fortitude Valley. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars New Farm. Free removal across New Farm, Teneriffe, Newstead & Fortitude Valley. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars New Farm",
     intro: "Selling a car in New Farm? Caraway pays instant cash for cars across New Farm, Teneriffe, Newstead, and Fortitude Valley. Free removal, same- or next-day pickup, and cash on the spot before the car leaves your apartment building, driveway, or street parking.",
     localContent: "New Farm occupies a peninsula on the Brisbane River a short CityCat trip from the CBD, with Brunswick Street running as the main spine and New Farm Park anchoring the southern end of the suburb. The area is a dense mix of heritage Queenslanders on leafy streets, converted warehouses in the Teneriffe woolstores precinct, and modern apartment developments along Merthyr Road and James Street. That density means car selling in New Farm often looks different from suburban Brisbane — stack parking bays under apartment blocks, permit-only street parking, narrow laneway driveways behind character homes, and body corporate access requirements for almost every apartment pickup. We handle all of it as a routine part of the job. The suburb's demographic — a mix of long-term residents, young professionals, and relocating expats — produces a steady flow of pickup scenarios: apartment dwellers moving interstate or overseas, established residents clearing out unused second cars, and the occasional retired European prestige vehicle that's reached end-of-life.",
@@ -363,7 +365,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "paddington",
     title: "Cash for Cars Paddington | Free Pickup Across Brisbane's Inner West",
-    metaDescription: "Cash for cars Paddington. Free removal across Paddington, Red Hill, Bardon & Rosalie. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Paddington. Free removal across Paddington, Red Hill, Bardon & Rosalie. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Paddington",
     intro: "Caraway pays cash for cars in Paddington, Red Hill, Bardon, Rosalie, and Brisbane's inner west character suburbs. Free removal, same- or next-day pickup, and cash on the spot — whether your car is parked on a narrow Paddington ridge or tucked behind a Bardon Queenslander.",
     localContent: "Paddington is one of Brisbane's most distinctive character suburbs, sitting on the ridges and gullies between Given Terrace, Latrobe Terrace, and Enoggera Terrace with Rosalie and Red Hill as its immediate neighbours. The area is almost entirely heritage Queenslanders and worker's cottages on very steep, narrow streets — blocks where long driveways climb at gradient and low-set under-house garages are cut into the side of the hill. That terrain shapes every pickup we do here. Our drivers are set up for it: winches capable of retrieving a non-running car from a carport halfway up a 30-degree driveway, extended ramps for the tighter under-house garages, and enough local experience to know which streets require a specific approach for the tow truck. The suburb's demographic — a mix of long-term character-home owners and younger professionals who've renovated — produces a steady flow of retired family cars, second vehicles that have been sitting in carports for years, and occasionally older European prestige cars that have reached end-of-life.",
@@ -375,7 +377,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "newstead",
     title: "Cash for Cars Newstead | Free Removal & Instant Cash",
-    metaDescription: "Cash for cars Newstead. Free removal across Newstead, Teneriffe, Bowen Hills & Fortitude Valley. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Newstead. Free removal across Newstead, Teneriffe, Bowen Hills & Fortitude Valley. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Newstead",
     intro: "Selling a car in Newstead? Caraway pays cash for cars across Newstead, Teneriffe, Bowen Hills, and Brisbane's inner north. Free removal from apartment buildings, stack parking bays, and laneway driveways — cash on the spot, paperwork handled, and the car gone the same day.",
     localContent: "Newstead is an inner-north precinct along the Brisbane River that has been comprehensively redeveloped over the past two decades, with the Gasworks Plaza at Skyring Terrace, the James Street retail strip to the south, and a dense cluster of modern apartment towers lining Breakfast Creek Road and Commercial Road. The suburb is dominated by apartment living, with a smaller base of heritage worker's cottages on the quieter back streets towards Bowen Hills. That apartment-heavy profile means most of our Newstead pickups involve stack parking bays, basement carparks, and body corporate access — we handle all of it as routine. The cars we collect here skew younger and often better-maintained than the suburban average — apartment dwellers tend to turn over their cars more frequently, and the kind of pickup we do in Newstead is often a second car that has been mostly unused for a couple of years, or a relocation sale where the owner is moving interstate or overseas. The converted warehouses in the Teneriffe woolstores precinct next door often have dedicated loading bays that make pickups straightforward, though timing still has to be coordinated with the building.",
@@ -387,7 +389,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "wynnum",
     title: "Cash for Cars Wynnum | Free Removal Across Brisbane's Bayside",
-    metaDescription: "Cash for cars Wynnum. Free removal across Wynnum, Manly, Lota & Tingalpa. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Wynnum. Free removal across Wynnum, Manly, Lota & Tingalpa. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Wynnum",
     intro: "Caraway pays cash for cars in Wynnum, Manly, Lota, and Tingalpa along Brisbane's bayside. Free removal, same- or next-day pickup, and cash on the spot — whether your car is parked at a Wynnum waterfront Queenslander or tucked into a Tingalpa carport.",
     localContent: "Wynnum sits on the shores of Moreton Bay about 15 kilometres east of the Brisbane CBD, with the Wynnum foreshore and the Wynnum-Manly commercial strip running along the bay and the residential streets climbing inland towards Tingalpa and Lytton Road. The suburb is a classic Brisbane bayside area — heritage Queenslanders on large blocks, post-war brick-and-tile homes, and newer townhouse developments filling in around the Wynnum Plaza precinct. The salt air is the defining local factor for vehicle condition: cars parked outside in Wynnum, Manly, and Lota cop significantly more underbody corrosion than inland suburbs, and we regularly buy cars that look tidy on top but have rust through exhausts, brake lines, subframes, and door sills. The area also has a strong boating and fishing culture, which shows up in the sort of cars we collect — retired 4WDs that did years of boat-ramp duty, towing vehicles with hard-working hitches, and the occasional camper van that has reached the end of its holiday life. We service the whole bayside region from Wynnum North through Manly and Lota down to the edge of Thorneside.",
@@ -399,7 +401,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "manly",
     title: "Cash for Cars Manly | Same-Day Cash & Free Removal",
-    metaDescription: "Cash for cars Manly Brisbane. Free removal across Manly, Wynnum, Lota & Manly West. Same- or next-day cash. Call Caraway 0481 438 444.",
+    metaDescription: `Cash for cars Manly Brisbane. Free removal across Manly, Wynnum, Lota & Manly West. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Manly Brisbane",
     intro: "Selling a car in Manly? Caraway pays cash for cars across Manly, Manly West, Wynnum, and Lota on Brisbane's bayside. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway or apartment carpark.",
     localContent: "Manly sits on Moreton Bay next to Wynnum, with the Manly Boat Harbour and the Royal Queensland Yacht Squadron at its heart and the residential streets climbing inland through Manly West towards Tingalpa. The suburb shares Wynnum's bayside character — heritage Queenslanders, post-war brick-and-tile homes, a strong boating and fishing culture, and the salt-air conditions that accelerate underbody corrosion on everything parked outside. The cars we collect here reflect that: family sedans with tidy paint but rusted exhausts, retired 4WDs that did years of boat-ramp work and are now sitting unused, and older utes that have given up after 20 years on the coast. The area's marina precinct and the surrounding boating community generate a steady flow of vehicles connected to the water — tow vehicles, camper utes, and second cars kept close to the harbour. We service the whole area from Manly foreshore through Manly West and up the hill towards Gumdale.",
@@ -411,7 +413,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "rocklea",
     title: "Cash for Cars Rocklea | Flood-Affected & Scrap Cars Bought",
-    metaDescription: "Cash for cars Rocklea. We buy flood-damaged, scrap, and end-of-life cars. Free removal across Rocklea, Moorooka & Archerfield. Call 0481 438 444.",
+    metaDescription: `Cash for cars Rocklea. We buy flood-damaged, scrap, and end-of-life cars. Free removal across Rocklea, Moorooka & Archerfield. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Rocklea",
     intro: "Caraway buys cars for cash in Rocklea, Moorooka, Archerfield, and Brisbane's south-west industrial corridor. We specialise in flood-affected, end-of-life, and scrap vehicles — free removal, same- or next-day pickup, and cash on the spot regardless of condition.",
     localContent: "Rocklea sits on the low-lying flats along the Brisbane River south-west of the CBD, with the Rocklea Markets and a large industrial and wholesale precinct forming the commercial heart of the suburb. The suburb's defining feature for our business is its flood history: large parts of Rocklea sit on the Brisbane River floodplain and have been significantly affected in both the 2011 and 2022 floods. We've bought hundreds of flood-damaged vehicles from the area over the years — cars that had water up to the dashboard, seized engines from submerged intakes, electrical systems written off by saltwater, and paintwork damaged by silt and debris. The suburb's mix of light industrial blocks, modest residential housing, and the nearby mechanical trade precinct also produces a steady flow of end-of-life cars: workshop rejects, trade-in refusals, vehicles that failed safety inspections, and unregistered second cars that have been sitting on property for years. Rocklea and its neighbour Archerfield are both straightforward for our tow trucks to access via Ipswich Road and Beatty Road, and we can usually manage same- or next-day pickup for most calls.",

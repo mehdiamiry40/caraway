@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
     slug: "sell-accident-car-brisbane",
@@ -40,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
       "## The bottom line",
 
-      "Whether it's a minor smash in a car park in Carindale or a serious collision on the Gateway Motorway, there's a real cash market for accident-damaged vehicles across South East Queensland. A reputable [cash-for-cars buyer](/sell-my-car-brisbane) offers a firm price, free towing, and handles the TMR disposal paperwork on the spot. Call **0481 438 444** or request a free quote online — same- or next-day pickup across Greater Brisbane, with cash paid before the tow truck leaves your driveway.",
+      `Whether it's a minor smash in a car park in Carindale or a serious collision on the Gateway Motorway, there's a real cash market for accident-damaged vehicles across South East Queensland. A reputable [cash-for-cars buyer](/sell-my-car-brisbane) offers a firm price, free towing, and handles the TMR disposal paperwork on the spot. Call **${BUSINESS.phoneDisplay}** or request a free quote online — same- or next-day pickup across Greater Brisbane, with cash paid before the tow truck leaves your driveway.`,
     ],
     date: "2026-04-15",
     category: "Guides",

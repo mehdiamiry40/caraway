@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-redlands",
@@ -36,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "A few practical tips for sellers across the Redlands area. Be straightforward about the vehicle's condition when you call for a quote — discrepancies discovered at pickup lead to revised offers and delays. Have your ID and registration documents ready before the driver arrives. If access to the car is restricted — narrow side gate, steep driveway, car parked on soft ground — flag it at the time of booking so the right recovery equipment is dispatched. And if you have more than one vehicle to move, mention it upfront; bulk pickups often attract a better per-car rate.",
 
-    "Cash for cars in the Redlands area is one of the quickest, most hassle-free ways to clear an unwanted vehicle. Whether your car is in Capalaba, Cleveland, Victoria Point, Alexandra Hills, or anywhere else across the bayside, a two-minute phone call or online quote is all it takes to find out what it's worth. Call **0481 438 444** or [get a free instant quote](/#price-estimator) — free towing, payment on the spot, and TMR paperwork sorted on the day.",
+    `Cash for cars in the Redlands area is one of the quickest, most hassle-free ways to clear an unwanted vehicle. Whether your car is in Capalaba, Cleveland, Victoria Point, Alexandra Hills, or anywhere else across the bayside, a two-minute phone call or online quote is all it takes to find out what it's worth. Call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) — free towing, payment on the spot, and TMR paperwork sorted on the day.`,
   ],
   date: "2026-04-21",
   category: "Guides",
