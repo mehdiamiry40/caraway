@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "end-of-financial-year-car-sale-brisbane",
@@ -42,7 +43,7 @@ export const post: RawBlogPostEntry = {
 
     `If you're not running a business, there's still a strong case for completing an end of financial year car sale before 30 June. Clearing a non-running or unwanted vehicle avoids another insurance and rego cycle, frees up driveway or garage space, and means you're starting the new financial year without the hassle of an asset you don't use. Across [Logan](/suburbs/logan), [Beenleigh](/suburbs/beenleigh), [Ipswich](/suburbs/ipswich), and the northern suburbs, free towing means the entire process costs you nothing out of pocket — you simply receive the cash.`,
 
-    `Don't let the end of financial year pass without getting a quote on your unwanted vehicle. Call Caraway on **0481 438 444** or request a free instant quote online. We cover all of Brisbane, Logan, Ipswich, Caboolture, the Bayside, and Greater Moreton Bay — same- or next-day pickup available, cash on the spot, and free towing included. The sooner you call before 30 June, the more scheduling options you'll have.`,
+    `Don't let the end of financial year pass without getting a quote on your unwanted vehicle. Call Caraway on **${BUSINESS.phoneDisplay}** or request a free instant quote online. We cover all of Brisbane, Logan, Ipswich, Caboolture, the Bayside, and Greater Moreton Bay — same- or next-day pickup available, cash on the spot, and free towing included. The sooner you call before 30 June, the more scheduling options you'll have.`,
   ],
   date: "2026-04-19",
   category: "Insights",

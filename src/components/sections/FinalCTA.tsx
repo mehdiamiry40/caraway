@@ -47,13 +47,13 @@ export function FinalCTA() {
             <div className="mt-6 text-sm text-on-dark-hi/75">
               or{" "}
               <TrackedPhoneLink
-                href={BUSINESS.phoneHref}
+                href={BUSINESS.phoneTel}
                 location="final_cta"
                 className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline underline-offset-4 decoration-cta hover:text-cta"
-                ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4" />
-                call {BUSINESS.phoneFriendly}
+                call {BUSINESS.phoneDisplay}
               </TrackedPhoneLink>
             </div>
           </div>

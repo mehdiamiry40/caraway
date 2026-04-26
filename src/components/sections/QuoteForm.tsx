@@ -79,11 +79,11 @@ export function QuoteForm() {
       }
       setErrorMessage(
         result.message ||
-          `We couldn't send your quote. Please try again or call ${BUSINESS.phoneFriendly}.`,
+          `We couldn't send your quote. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
     } catch {
       setErrorMessage(
-        `We couldn't send your quote. Please try again or call ${BUSINESS.phoneFriendly}.`,
+        `We couldn't send your quote. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
     }
   };

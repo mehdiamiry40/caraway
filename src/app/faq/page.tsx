@@ -3,12 +3,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
 import FAQPage from "@/views/FAQPage";
 import { allFaqs } from "@/lib/faq-data";
-import { SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cash for Cars Brisbane FAQ — Questions Answered",
-  description:
-    "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same- or next-day pickup. Call 0481 438 444 for help.",
+  description: `Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same- or next-day pickup. Call ${BUSINESS.phoneDisplay} for help.`,
   alternates: { canonical: "/faq" },
   openGraph: {
     type: "website",

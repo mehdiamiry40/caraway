@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-junk-car-brisbane",
@@ -42,7 +43,7 @@ export const post: RawBlogPostEntry = {
 
     "## The bottom line",
 
-    "A junk car rusting in your driveway in Inala, Woodridge, or Tingalpa has real cash value — not a fortune, but a genuine offer that's paid on the day. If you've been putting off dealing with an old car because the process seemed complicated or the vehicle seemed worthless, it's simpler and more rewarding than that. Call **0481 438 444** or request a free online quote — same- or next-day pickup across all of Greater Brisbane, with cash paid before the tow truck leaves.",
+    `A junk car rusting in your driveway in Inala, Woodridge, or Tingalpa has real cash value — not a fortune, but a genuine offer that's paid on the day. If you've been putting off dealing with an old car because the process seemed complicated or the vehicle seemed worthless, it's simpler and more rewarding than that. Call **${BUSINESS.phoneDisplay}** or request a free online quote — same- or next-day pickup across all of Greater Brisbane, with cash paid before the tow truck leaves.`,
   ],
   date: "2026-04-20",
   category: "Guides",

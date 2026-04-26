@@ -27,7 +27,7 @@ import {
 } from "@/lib/json-ld-schemas";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL } from "@/lib/site";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -37,8 +37,7 @@ export const metadata: Metadata = {
     default: "Caraway — Cash for Cars Brisbane",
     template: "%s | Caraway",
   },
-  description:
-    "Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers. Call 0481 438 444.",
+  description: `Cash for cars Brisbane — sell your car for up to $9,999. Free car removal, same-day pickup, and cash paid on the spot. Brisbane's trusted local car buyers. Call ${BUSINESS.phoneDisplay}.`,
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },

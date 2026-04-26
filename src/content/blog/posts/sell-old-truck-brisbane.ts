@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-old-truck-brisbane",
@@ -42,7 +43,7 @@ export const post: RawBlogPostEntry = {
 
     "## Get a cash offer for your old truck today",
 
-    "If you have an old truck sitting unused anywhere across Greater Brisbane — including [Ipswich](/locations/ipswich), [Logan](/locations/logan), Redlands, or Caboolture — finding out what it's worth costs nothing. Call **0481 438 444** or use the online quote form, describe the vehicle in plain terms, and get a firm offer in minutes. Same- or next-day pickup is available across the region, with cash or bank transfer paid before the truck leaves your property. No call-out fees, no paperwork hassle.",
+    `If you have an old truck sitting unused anywhere across Greater Brisbane — including [Ipswich](/locations/ipswich), [Logan](/locations/logan), Redlands, or Caboolture — finding out what it's worth costs nothing. Call **${BUSINESS.phoneDisplay}** or use the online quote form, describe the vehicle in plain terms, and get a firm offer in minutes. Same- or next-day pickup is available across the region, with cash or bank transfer paid before the truck leaves your property. No call-out fees, no paperwork hassle.`,
   ],
   date: "2026-04-23",
   category: "Guides",

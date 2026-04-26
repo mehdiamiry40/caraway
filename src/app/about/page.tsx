@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import About from "@/views/About";
-import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "About Us — Brisbane Cash for Cars Team",
-  description:
-    "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, and same- or next-day pickup 7 days a week. Call 0481 438 444.",
+  description: `Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, and same- or next-day pickup 7 days a week. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
