@@ -456,6 +456,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none !important; }
+  /* When the marquee can't loop, the clone serves no purpose and just
+     reads as a duplicated block of testimonials — hide it. */
+  .marquee-clone { display: none !important; }
 }
 
 /* Quote-result card — deep ink surface with coloured top bar */
