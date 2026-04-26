@@ -95,16 +95,26 @@ export function Testimonials() {
             style={{ animationPlayState: paused ? "paused" : "running" }}
             aria-live="off"
           >
-            <div className="flex gap-5 sm:gap-6">
+            <ul className="flex gap-5 sm:gap-6 list-none m-0 p-0">
               {FEATURED.map((review) => (
-                <ReviewCard key={review.name} review={review} />
+                <li key={review.name}>
+                  <ReviewCard review={review} />
+                </li>
               ))}
-            </div>
-            <div className="flex gap-5 sm:gap-6" aria-hidden="true">
+            </ul>
+            {/* Decorative clone — hidden from AT and removed entirely when
+                animation is paused so reduced-motion users don't see two
+                copies of every story. */}
+            <ul
+              className="marquee-clone flex gap-5 sm:gap-6 list-none m-0 p-0"
+              aria-hidden="true"
+            >
               {FEATURED.map((review) => (
-                <ReviewCard key={`${review.name}-duplicate`} review={review} />
+                <li key={`${review.name}-clone`}>
+                  <ReviewCard review={review} />
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

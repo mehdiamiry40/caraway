@@ -89,7 +89,7 @@ function HeroArt() {
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
       <span className="sr-only">
-        Offers up to $9,999 with same- or next-day pickup.
+        Offers up to $9,999 with usually same- or next-day pickup.
       </span>
       {/* orange floating tag (price) — decorative; sr-only sentence above covers the $9,999 figure */}
       <div
@@ -113,7 +113,7 @@ function HeroArt() {
           Pickup
         </span>
         <span className="block font-display font-semibold text-lg leading-none mt-1">
-          Same-day
+          Same/next day
         </span>
       </div>
 

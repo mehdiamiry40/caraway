@@ -25,7 +25,7 @@ const steps = [
     title: "We come to you",
     description:
       "Our truck arrives at the booked slot, anywhere in Greater Brisbane. Free towing, always.",
-    timing: "Same or next day",
+    timing: "Usually same- or next-day",
     tint: "bg-cta",
     numberClass: "text-primary",
   },

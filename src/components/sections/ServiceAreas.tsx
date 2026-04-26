@@ -9,6 +9,8 @@ import {
   Sunset,
 } from "lucide-react";
 import { suburbs } from "@/data/suburbs";
+import { BUSINESS } from "@/lib/site";
+import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 type RegionKey = "north" | "south" | "east" | "west" | "bayside" | "logan";
@@ -105,7 +107,7 @@ export function ServiceAreas() {
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
                       <span className="font-mono text-xs tabular-nums tracking-[0.08em] text-foreground/70">
-                        {String(hubs.length).padStart(2, "0")}
+                        {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
                       </span>
                     </div>
                     <h3 className="mt-5 font-display text-lg sm:text-xl text-foreground">
@@ -142,7 +144,16 @@ export function ServiceAreas() {
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
           <p className="text-xs text-foreground/70 font-medium">
-            Not listed? Call us — we cover most of South-East Queensland.
+            Not listed?{" "}
+            <TrackedPhoneLink
+              href={BUSINESS.phoneHref}
+              location="service_areas"
+              className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+            >
+              Call {BUSINESS.phoneFriendly}
+            </TrackedPhoneLink>{" "}
+            — we cover most of South-East Queensland.
           </p>
         </div>
       </div>
