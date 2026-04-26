@@ -59,6 +59,7 @@ export function buildMissingBlogPostMetadata(): Metadata {
 }
 
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
+  const authorName = post.author ?? BLOG_AUTHOR.name;
   return {
     title: post.title,
     description: post.metaDescription,
@@ -76,7 +77,7 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updatedAt,
-      authors: [BLOG_AUTHOR.name],
+      authors: [authorName],
       tags: [post.category],
       locale: "en_AU",
       siteName: "Caraway",
@@ -107,7 +108,7 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       "article:tag": post.category,
       "article:published_time": post.date,
       "article:modified_time": post.updatedAt,
-      "article:author": BLOG_AUTHOR.name,
+      "article:author": authorName,
     },
   };
 }
@@ -123,6 +124,19 @@ export function plainBlogPostContent(post: BlogPost): string {
 export function buildBlogPostSeoProps(post: BlogPost) {
   const plainContent = plainBlogPostContent(post);
   const wordCount = calcWordCount(plainContent);
+  const authorName = post.author ?? BLOG_AUTHOR.name;
+  const authorSchema =
+    authorName === publisherSchema.name || authorName === "Caraway"
+      ? {
+          "@type": "Organization",
+          name: authorName,
+          url: SITE_URL,
+        }
+      : {
+          "@type": "Person",
+          name: authorName,
+          url: BLOG_AUTHOR.url,
+        };
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -135,11 +149,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     dateModified: post.updatedAt,
     image: BLOG_IMAGE.url,
     wordCount,
-    author: {
-      "@type": "Person",
-      name: BLOG_AUTHOR.name,
-      url: BLOG_AUTHOR.url,
-    },
+    author: authorSchema,
     publisher: {
       "@type": "Organization",
       name: publisherSchema.name,
@@ -152,13 +162,29 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     isAccessibleForFree: true,
   };
 
+  const faqSchema =
+    post.faqs && post.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: post.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   const breadcrumbItems = [
     { name: "Home", item: `${SITE_URL}/` },
     { name: "Blog", item: `${SITE_URL}/blog` },
     { name: post.title, item: post.canonicalUrl },
   ];
 
-  return { articleSchema, breadcrumbItems, wordCount, plainContent };
+  return { articleSchema, faqSchema, breadcrumbItems, wordCount, plainContent };
 }
 
 export function validateBlogPostSeo(post: BlogPost): string[] {

@@ -3,7 +3,12 @@ export interface RawBlogPostEntry {
   title: string;
   metaDescription: string;
   excerpt: string;
+  author?: string;
   content: string[];
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
   date: string;
   updatedAt?: string;
   category: string;
