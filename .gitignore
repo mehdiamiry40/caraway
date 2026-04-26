@@ -49,3 +49,8 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Local-only design / audit artefacts (kept out of repo)
+/redesign
+/reports
+/attached_assets
