@@ -56,10 +56,16 @@ function newestDate<T>(
   getDate: (item: T) => string | undefined,
   fallback = CONTENT_DEPLOY_DATE,
 ): string {
-  return items.reduce((latest, item) => {
-    const stamp = validIsoDate(getDate(item), fallback);
-    return stamp > latest ? stamp : latest;
-  }, fallback);
+  // Compute the actual maximum of valid item dates.  Seeding the reducer with
+  // `fallback` would mask older content (a category whose newest post is from
+  // 2025-02 would otherwise appear in the sitemap with the deploy date).
+  let latest: string | null = null;
+  for (const item of items) {
+    const raw = getDate(item);
+    if (!raw || !/^\d{4}-\d{2}-\d{2}$/.test(raw) || !Number.isFinite(Date.parse(raw))) continue;
+    if (latest === null || raw > latest) latest = raw;
+  }
+  return latest ?? fallback;
 }
 
 /** Pick a changeFrequency hint based on content age. */
