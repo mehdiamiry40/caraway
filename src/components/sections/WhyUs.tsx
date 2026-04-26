@@ -2,9 +2,9 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 const reasons = [
   {
-    title: "Quoted price guarantee",
+    title: "Clear quoted price",
     description:
-      "The number we quote is the number you're paid — in writing before pickup, with no surprise deductions on the day.",
+      "The agreed quote is confirmed in writing before pickup. If the vehicle matches the details provided, there are no surprise towing deductions on the day.",
   },
   {
     title: "Fully insured pickups",

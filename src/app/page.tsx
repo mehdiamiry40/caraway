@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
   },
-  description: `Cash for cars Brisbane: sell your car for up to $9,999, free removal, same-day pickup. Any make, any condition. Call Caraway on ${BUSINESS.phoneDisplay}.`,
+  description: `Get a fair cash offer for your unwanted car in Brisbane, with free towing and payment on pickup. Call Caraway on ${BUSINESS.phoneDisplay}.`,
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
     description:
-      "Sell your car for cash in Brisbane today. Caraway pays up to $9,999 with free towing and same- or next-day pickup. Any make, any condition.",
+      "Sell your car for cash in Brisbane today. Caraway gives fair offers with free towing and same- or next-day pickup. Any make, any condition.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",

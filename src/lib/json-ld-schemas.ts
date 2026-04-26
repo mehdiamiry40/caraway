@@ -55,7 +55,7 @@ export const localBusinessSchema = {
   priceRange: PRICE_RANGE_LABEL,
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
-  description: `Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Cash for cars Brisbane: Caraway gives fair cash offers based on vehicle details, with free towing and payment on pickup. Selected vehicles may receive offers up to $9,999. Call ${BUSINESS.phoneDisplay}.`,
   // City-level address only; pickups happen at the customer's property (serviceArea).
   address: {
     "@type": "PostalAddress",

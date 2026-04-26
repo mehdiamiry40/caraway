@@ -26,10 +26,10 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    title: "Cash for Cars Brisbane | Up to $9,999 Same-Day Pickup",
-    metaDescription: `Cash for cars Brisbane: Caraway pays up to $9,999 for any car, any condition. Free towing, cash on pickup, Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
+    title: "Cash for Cars Brisbane | Fair Offers, Same-Day Pickup",
+    metaDescription: `Cash for cars Brisbane: get a fair cash offer based on your vehicle details. Free towing, payment on pickup, Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Brisbane — Get Paid Today",
-    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, paying up to $9,999 for vehicles in any condition. Whether your car is old, damaged, scrap, or running perfectly — we'll make you a fair cash offer and pick it up the same or next day, free of charge.",
+    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, giving fair offers for vehicles in any condition — up to $9,999 for selected vehicles. Whether your car is old, damaged, scrap, or running perfectly, we'll make you a clear cash offer and pick it up the same or next day, free of charge. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
     sections: [
       {
         heading: "How Our Cash for Cars Service Works",
@@ -49,13 +49,18 @@ export const services: ServicePage[] = [
       },
       {
         heading: "How Much Cash Will I Get for My Car?",
-        content: "The amount we pay depends on your vehicle's make, model, year, condition, and the current market for parts and scrap metal. Many sellers receive between $200 and $9,999 — with late-model vehicles in decent condition at the top of the range and older cars still earning a solid payday. If you have another written quote, mention it — we'll see what we can do."
+        content: "Offers may range from $200 to $9,999 depending on the vehicle. The amount we pay depends on your vehicle's make, model, year, condition, completeness, location, and the current market for parts and scrap metal. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. If you have another written quote, mention it — we'll see what we can do."
+      },
+      {
+        heading: "How We Calculate Your Car Offer",
+        content: "Your offer depends on the vehicle's make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand. Scrap vehicles usually receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers."
       }
     ],
     faqs: [
+      { question: "Will I really get up to $9,999 for my car?", answer: "Some selected vehicles may receive offers up to $9,999, but most older, damaged, or scrap vehicles receive lower offers. Your quote depends on the vehicle's make, model, year, condition, completeness, location, and current market demand." },
       { question: "How quickly can I get cash for my car in Brisbane?", answer: "Most sellers receive same- or next-day payment. Once you accept our offer, we can often arrange pickup within a few hours. You're paid in cash before the car leaves your property." },
       { question: "Do you buy cars without registration?", answer: "Yes, we buy unregistered, deregistered, and expired-registration vehicles across Brisbane. No current registration is required." },
-      { question: "Is your car removal really free?", answer: "Absolutely. There are no towing fees, no hidden costs, and no deductions from your quoted price. The cash amount we quote is the amount you receive." },
+      { question: "Is your car removal really free?", answer: "Absolutely. There are no towing fees or hidden pickup costs. We do not deduct towing from your agreed quote when the vehicle matches the details provided." },
       { question: "What areas of Brisbane do you cover?", answer: "We cover all of Greater Brisbane including North Brisbane, South Brisbane, East Brisbane, West Brisbane, Logan, Ipswich, Redland Bay, and Moreton Bay regions." }
     ],
     relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane"],
@@ -119,9 +124,9 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you an instant offer. Accept, and we'll pick up your car and pay you cash — often the same or next day." },
+      { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you a free offer based on those details. Accept, and we'll pick up your car and pay you cash — often the same or next day." },
       { question: "Do I need a roadworthy to sell my car?", answer: "No. We buy cars as-is, without a Roadworthy Certificate. Your car can be in any condition — running, broken, damaged, or scrap." },
-      { question: "How much can I get for my car?", answer: "Offers range from $200 for end-of-life scrap vehicles up to $9,999 for newer models in good condition. Contact us for a free, no-obligation quote specific to your vehicle." },
+      { question: "How much can I get for my car?", answer: "Offers may range from $200 to $9,999 depending on the vehicle, but there is no one-size-fits-all price. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. Contact us for a free, no-obligation quote specific to your vehicle." },
       { question: "Can I sell a car I still owe finance on?", answer: "In some cases, yes. Contact us to discuss your situation. We can sometimes arrange payout of the remaining finance as part of the sale." }
     ],
     relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "used-cars-brisbane", "old-cars-brisbane"],
@@ -155,7 +160,7 @@ export const services: ServicePage[] = [
       { question: "How much is my scrap car worth in Brisbane?", answer: "Scrap car values depend on size, weight, and condition. Standard cars typically fetch $300–$500, while larger vehicles can be worth more. Contact us for a specific quote." },
       { question: "Can you remove a car with no engine?", answer: "Yes. We remove vehicles in any state — no engine, no wheels, no doors. If there's enough of the car to identify it, we'll take it." },
       { question: "Do I need paperwork for a scrap car?", answer: "Just photo ID. Registration papers help but aren't essential. We handle all the deregistration and transfer paperwork for you." },
-      { question: "Is scrap car removal really free?", answer: "Yes. We never charge for towing or removal. You receive the full quoted cash amount with no deductions." }
+      { question: "Is scrap car removal really free?", answer: "Yes. We do not charge for towing or removal, and we do not deduct towing costs from your agreed quote when the vehicle matches the details provided." }
     ],
     relatedServices: ["car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "caboolture", "browns-plains", "beenleigh"]
@@ -373,7 +378,7 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "How much will I get for my used car?", answer: "Used car offers depend on make, model, year, condition, and kilometres. We typically pay between $500 and $9,999 for used cars. Contact us for a specific quote." },
+      { question: "How much will I get for my used car?", answer: "Used car offers depend on make, model, year, condition, kilometres, completeness, location, and current market demand. Selected newer or high-demand vehicles may receive higher offers, while older, damaged, or incomplete vehicles usually receive lower offers. Contact us for a specific quote." },
       { question: "Is selling to Caraway better than a dealership trade-in?", answer: "Often, yes. Dealerships heavily discount trade-in values to protect their margins. We offer transparent, competitive cash prices without the pressure to buy another vehicle." },
       { question: "How long does the process take?", answer: "From quote to cash in hand, the entire process can be completed in under an hour. Most sellers have their used car sold and removed the same or next day they contact us." }
     ],
@@ -425,7 +430,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Typical Hail-Damaged Car Prices in Brisbane",
-        content: "Offers on hail-damaged vehicles depend primarily on the car's mechanical condition, kilometres, make, and model — cosmetic hail dents barely move the needle. A 2015 Hyundai i30 with 150,000 kilometres and moderate hail damage that still runs well typically fetches between $2,500 and $5,500. A hail-damaged ute or 4WD from the last five years — HiLuxes, Rangers, Pajeros, Prados — can fetch $6,000 to $9,999+ depending on condition, because the underlying parts demand stays strong regardless of dented panels. Older vehicles (pre-2005) with heavy hail damage usually land between $400 and $1,500 based on salvage and scrap value. If your car is still mechanically sound and just looks like a golf ball, you'll be pleasantly surprised — we value it on the engine, drivetrain, and interior, not the roof. We also buy cars that were already write-offs before the hail hit, and storm-damaged vehicles with broken glass, water ingress, or fallen branches through the roof. No quotes required, no paperwork headaches, and free towing across Greater Brisbane."
+        content: "Offers on hail-damaged vehicles depend primarily on the car's mechanical condition, kilometres, make, and model — cosmetic hail dents barely move the needle. A 2015 Hyundai i30 with 150,000 kilometres and moderate hail damage that still runs well typically fetches between $2,500 and $5,500. A hail-damaged ute or 4WD from the last five years — HiLuxes, Rangers, Pajeros, Prados — may fetch $6,000 to $9,999+ depending on condition, because the underlying parts demand stays strong regardless of dented panels. Older vehicles (pre-2005) with heavy hail damage usually land between $400 and $1,500 based on salvage and scrap value. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. If your car is still mechanically sound and just looks like a golf ball, you'll be pleasantly surprised — we value it on the engine, drivetrain, and interior, not the roof. We also buy cars that were already write-offs before the hail hit, and storm-damaged vehicles with broken glass, water ingress, or fallen branches through the roof. No quotes required, no paperwork headaches, and free towing across Greater Brisbane."
       }
     ],
     faqs: [
@@ -457,7 +462,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "How Much Is My HiLux Worth in Brisbane?",
-        content: "Offers depend on year, sub-model (4x2 vs 4x4, single cab vs dual cab), kilometres, and mechanical condition. Rough ranges: a 1998 Workmate 4x2 petrol, tired but running, typically fetches $800–$1,800. A 2005–2011 N70 SR5 4x4 diesel, running with average km, commonly lands $3,500–$7,500. A 2015+ GUN N80 dual cab, running, usually pulls $6,000–$9,999+. Non-runners and scrap HiLuxes — even heavily damaged or incomplete — rarely come in under $1,200 because the parts market is so strong. Call us with the rego, kilometres, and a brief condition description and we'll quote on the phone."
+        content: "Offers depend on year, sub-model (4x2 vs 4x4, single cab vs dual cab), kilometres, completeness, and mechanical condition. Rough ranges: a 1998 Workmate 4x2 petrol, tired but running, typically fetches $800–$1,800. A 2005–2011 N70 SR5 4x4 diesel, running with average km, commonly lands $3,500–$7,500. A 2015+ GUN N80 dual cab, running, may pull $6,000–$9,999+ where condition and demand support it. Non-runners and scrap HiLuxes — even heavily damaged or incomplete — are valued on parts and scrap demand. Call us with the rego, kilometres, and a brief condition description and we'll quote on the phone."
       },
       {
         heading: "Free Same-Day HiLux Pickup Across Greater Brisbane",
@@ -494,7 +499,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Corolla Cash Price Ranges in Brisbane",
-        content: "Offers depend on year, engine, kilometres, and condition. A 1998 AE101 Corolla, tired but running, typically fetches $500–$1,200. A 2005–2010 ZZE122 Ascent or Conquest, running with average km, commonly lands $1,500–$3,800. A 2012+ ZRE182, running, usually pulls $3,000–$6,500. The current E210 hybrid and ZR models, running and tidy, frequently reach our top tier at $7,000–$9,999. Non-runners and scrap Corollas generally land $300–$800 based on parts and scrap value."
+        content: "Offers depend on year, engine, kilometres, completeness, and condition. A 1998 AE101 Corolla, tired but running, typically fetches $500–$1,200. A 2005–2010 ZZE122 Ascent or Conquest, running with average km, commonly lands $1,500–$3,800. A 2012+ ZRE182, running, usually pulls $3,000–$6,500. Current E210 hybrid and ZR models, running and tidy, may reach $7,000–$9,999 where condition and demand support it. Non-runners and scrap Corollas generally land $300–$800 based on parts and scrap value."
       },
       {
         heading: "Greater Brisbane Corolla Pickup, Free and Fast",
@@ -531,7 +536,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Commodore Cash Prices in Brisbane",
-        content: "Offers depend heavily on generation and trim. A tidy 1998 VT Executive with average km typically fetches $600–$1,500. A 2002–2006 VY/VZ sedan, running, usually lands $800–$2,200. A 2006–2013 VE SV6 or Calais, running with average km, commonly pulls $2,500–$5,500. VE and VF SS and SS-V V8s in decent condition can reach $6,500–$9,999+. Non-runners and scrap-bound Commodores generally land $400–$1,200 based on parts and scrap value. Performance variants — HSV Clubsport, Maloo, GTS — are quoted case-by-case and often exceed our standard ceiling."
+        content: "Offers depend heavily on generation, trim, completeness, and condition. A tidy 1998 VT Executive with average km typically fetches $600–$1,500. A 2002–2006 VY/VZ sedan, running, usually lands $800–$2,200. A 2006–2013 VE SV6 or Calais, running with average km, commonly pulls $2,500–$5,500. VE and VF SS and SS-V V8s in decent condition may reach $6,500–$9,999+ where condition and demand support it. Non-runners and scrap-bound Commodores generally land $400–$1,200 based on parts and scrap value. Performance variants — HSV Clubsport, Maloo, GTS — are quoted case-by-case and may exceed our standard ceiling."
       },
       {
         heading: "Free Brisbane-Wide Commodore Pickup",
@@ -568,7 +573,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Falcon Cash Price Ranges in Brisbane",
-        content: "Offers depend on generation, trim, and condition. An EF/EL Falcon, running, typically fetches $600–$1,500. An AU Falcon, running, commonly lands $500–$1,400. A BA/BF Falcon XT or Futura, running with average km, usually pulls $1,200–$3,200. An FG Falcon, running, commonly reaches $1,800–$4,500 for base models. Performance variants change the picture — tidy BA/BF/FG XR6 Turbos and XR8s routinely reach $4,500–$9,999, and particularly strong examples (low km, unmodified, genuine) can exceed that. Territory SUVs span $1,000–$6,500 depending on trim and condition."
+        content: "Offers depend on generation, trim, completeness, and condition. An EF/EL Falcon, running, typically fetches $600–$1,500. An AU Falcon, running, commonly lands $500–$1,400. A BA/BF Falcon XT or Futura, running with average km, usually pulls $1,200–$3,200. An FG Falcon, running, commonly reaches $1,800–$4,500 for base models. Performance variants change the picture — tidy BA/BF/FG XR6 Turbos and XR8s may reach $4,500–$9,999 where condition and demand support it, and particularly strong examples (low km, unmodified, genuine) can exceed that. Territory SUVs span $1,000–$6,500 depending on trim and condition."
       },
       {
         heading: "Brisbane-Wide Falcon Pickup",
@@ -605,7 +610,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Ranger Cash Price Ranges",
-        content: "Offers depend on generation, sub-model, and condition. A PJ/PK Ranger, running with average km, typically fetches $2,000–$5,000. A PX Ranger (2011–2015), running, commonly lands $4,000–$8,000. A PX MkII or MkIII (2015–2022) running and tidy usually pulls $6,500–$9,999+, with Wildtraks and Raptors often near or above our ceiling. Non-runners and heavily damaged Rangers rarely come in under $1,500 because the parts demand is persistent. Next-Gen Rangers and Raptors are quoted individually and frequently exceed our standard top tier."
+        content: "Offers depend on generation, sub-model, completeness, and condition. A PJ/PK Ranger, running with average km, typically fetches $2,000–$5,000. A PX Ranger (2011–2015), running, commonly lands $4,000–$8,000. A PX MkII or MkIII (2015–2022) running and tidy may pull $6,500–$9,999+ where condition and demand support it, with Wildtraks and Raptors often near or above our ceiling. Non-runners and heavily damaged Rangers are valued on parts and scrap demand. Next-Gen Rangers and Raptors are quoted individually and may exceed our standard top tier."
       },
       {
         heading: "Free Same- or Next-Day Ranger Pickup",
@@ -642,7 +647,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "LandCruiser Cash Price Ranges in Brisbane",
-        content: "Offers span a wide range because the model catalogue does. A running 80 Series wagon with high km typically fetches $3,500–$8,500 depending on variant and condition; clean 1HD-FT examples reach $9,999+. A running 100 Series V8 diesel commonly lands $4,500–$9,999, with tidy GXL/Sahara examples exceeding our standard ceiling. 70 Series Troop Carriers and dual cabs range from $3,000 to well beyond $9,999 for newer, low-km examples. 200 and 300 Series are quoted case-by-case and routinely command higher prices than our standard tier. Non-runners and mechanical failures on any generation rarely come in under $2,500 because the parts market is so deep."
+        content: "Offers span a wide range because the model catalogue does. A running 80 Series wagon with high km typically fetches $3,500–$8,500 depending on variant and condition; clean 1HD-FT examples may reach $9,999+ where condition and demand support it. A running 100 Series V8 diesel commonly lands $4,500–$9,999, with tidy GXL/Sahara examples sometimes exceeding our standard ceiling. 70 Series Troop Carriers and dual cabs range from $3,000 to well beyond $9,999 for newer, low-km examples. 200 and 300 Series are quoted case-by-case and can command higher prices than our standard tier. Non-runners and mechanical failures are valued on parts and scrap demand."
       },
       {
         heading: "Brisbane-Wide LandCruiser Pickup",
