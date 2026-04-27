@@ -1,3 +1,4 @@
+import { post as postCarRecycling } from "./how-car-recycling-works-australia";
 import { post as postBestTime } from "./best-time-to-sell-your-car-brisbane";
 import { post as postScrapCar } from "./how-to-scrap-a-car-legally-brisbane";
 import { post as postRoadworthy } from "./how-to-get-a-roadworthy-certificate-brisbane";
@@ -37,6 +38,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postCarRecycling,
   postBestTime,
   postScrapCar,
   postRoadworthy,
