@@ -8,9 +8,11 @@ import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { ArrowLeft, ArrowRight, Clock, Link2, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -84,11 +86,15 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const xShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(canonical)}`;
   const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonical)}`;
   const liShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}`;
+  const authorName = post.author ?? AUTHOR.name;
+  const isDefaultAuthor = authorName === AUTHOR.name;
+  const authorHref = isDefaultAuthor ? AUTHOR.href : "/";
+  const authorRole = isDefaultAuthor ? AUTHOR.role : "Team";
+  const authorBio = isDefaultAuthor
+    ? AUTHOR.bio
+    : `${BUSINESS.name} writes practical Brisbane car selling guides based on quoting, pickup, paperwork, and vehicle removal questions from local sellers.`;
 
-  const copyBtnId = `copy-link-${post.slug}`;
-  const copyScript = `(function(){var b=document.getElementById(${JSON.stringify(copyBtnId)});if(!b)return;var l=b.querySelector('[data-copy-label]');var o=l?l.textContent:'';b.addEventListener('click',function(e){e.preventDefault();try{navigator.clipboard.writeText(${JSON.stringify(canonical)});if(l){l.textContent='Copied!';setTimeout(function(){l.textContent=o;},1800);}}catch(err){}});})();`;
-
-  const authorInitials = AUTHOR.name
+  const authorInitials = authorName
     .split(" ")
     .map((part) => part[0])
     .join("")
@@ -110,16 +116,16 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             <header className="mb-12 pb-8 border-b border-border/60">
               <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground">
                 <Link
-                  href={AUTHOR.href}
+                  href={authorHref}
                   className="inline-flex items-center gap-2.5 text-foreground hover:text-primary transition-colors"
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-bold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-semibold"
                   >
                     {authorInitials}
                   </span>
-                  <span className="font-medium">{AUTHOR.name}</span>
+                  <span className="font-medium">{authorName}</span>
                 </Link>
                 <span aria-hidden className="text-border">·</span>
                 <div className="inline-flex items-center gap-1.5">
@@ -159,7 +165,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
                   <p
-                    className="font-display text-2xl sm:text-3xl font-bold text-foreground leading-[1.1] text-balance"
+                    className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-[1.1] text-balance"
                     style={{ letterSpacing: "var(--tracking-tight)" }}
                   >
                     Get a real offer in under 60 seconds.
@@ -177,12 +183,12 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <a
-                    href={BUSINESS.phoneHref}
+                    href={BUSINESS.phoneTel}
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border/80 bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    aria-label={`Call ${BUSINESS.phoneFriendly}`}
+                    aria-label={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
-                    {BUSINESS.phoneFriendly}
+                    {BUSINESS.phoneDisplay}
                   </a>
                 </div>
               </div>
@@ -250,31 +256,33 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-bold"
+                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
                   >
                     {authorInitials}
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="eyebrow mb-2">About the author</p>
-                    <p className="font-display text-lg font-bold text-foreground">
-                      <Link href={AUTHOR.href} className="hover:text-primary transition-colors">
-                        {AUTHOR.name}
+                    <p className="font-display text-lg font-semibold text-foreground">
+                      <Link href={authorHref} className="hover:text-primary transition-colors">
+                        {authorName}
                       </Link>
                       <span className="font-normal text-muted-foreground">
                         {" "}
-                        &middot; {AUTHOR.role}, {BUSINESS.name}
+                        &middot; {authorRole}, {BUSINESS.name}
                       </span>
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-2 max-w-xl">
-                      {AUTHOR.bio}
+                      {authorBio}
                     </p>
-                    <Link
-                      href={AUTHOR.href}
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
-                    >
-                      More articles by {AUTHOR.name.split(" ")[0]}
-                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
-                    </Link>
+                    {isDefaultAuthor && (
+                      <Link
+                        href={AUTHOR.href}
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
+                      >
+                        More articles by {AUTHOR.name.split(" ")[0]}
+                        <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -312,40 +320,30 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />
                     LinkedIn
                   </a>
-                  <button
-                    type="button"
-                    id={copyBtnId}
-                    data-canonical={canonical}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
-                    aria-label="Copy link to article"
-                  >
-                    <Link2 className="h-3.5 w-3.5" aria-hidden />
-                    <span data-copy-label>Copy link</span>
-                  </button>
+                  <CopyLinkButton url={canonical} />
                 </div>
-                <script dangerouslySetInnerHTML={{ __html: copyScript }} />
               </div>
 
               <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
-                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.1] max-w-xl mx-auto text-balance"
+                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
                 >
                   Ready to sell your car for cash?
                 </p>
                 <p className="text-primary-foreground/80 text-sm sm:text-base mt-4 mb-8 max-w-xl mx-auto leading-relaxed">
-                  Call {BUSINESS.phoneFriendly} or grab a free instant quote &mdash; same- or
+                  Call {BUSINESS.phoneDisplay} or grab a free instant quote &mdash; same- or
                   next-day pickup across Brisbane.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <TrackedPhoneLink
-                    href={BUSINESS.phoneHref}
+                    href={BUSINESS.phoneTel}
                     location="blog_post_footer"
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors w-full sm:w-auto"
-                    ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                    ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
-                    Call {BUSINESS.phoneFriendly}
+                    Call {BUSINESS.phoneDisplay}
                   </TrackedPhoneLink>
                   <Link
                     href="/#price-estimator"
@@ -370,38 +368,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                 {relatedPosts.map((related) => (
                   <li key={related.slug}>
-                    <article className="h-full">
-                      <Link
-                        href={`/blog/${related.slug}`}
-                        className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
-                      >
-                        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
-                          {related.category}
-                        </span>
-                        <h3
-                          className="font-display text-lg font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
-                          style={{ letterSpacing: "var(--tracking-tight)" }}
-                        >
-                          {related.title}
-                        </h3>
-                        <div className="mt-auto pt-5">
-                          <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
-                            <span className="inline-flex items-center gap-1">
-                              <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
-                              {related.readTime}
-                            </span>
-                            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
-                              Read
-                              <ArrowRight
-                                className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                                strokeWidth={1.75}
-                                aria-hidden
-                              />
-                            </span>
-                          </div>
-                        </div>
-                      </Link>
-                    </article>
+                    <BlogPostCard post={related} variant="compact" showDate={false} />
                   </li>
                 ))}
               </ul>

@@ -36,12 +36,12 @@ export function Header() {
               Free pickup across Greater Brisbane
             </span>
             <a
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors"
-              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              {BUSINESS.phoneFriendly}
+              {BUSINESS.phoneDisplay}
             </a>
           </div>
         </div>
@@ -55,7 +55,7 @@ export function Header() {
             aria-label="Caraway — Home"
             className="flex items-center gap-2 group shrink-0"
           >
-            <span className="font-display font-extrabold text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
+            <span className="font-display font-semibold text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
               caraway<span className="text-accent">.</span>
             </span>
           </Link>
@@ -69,7 +69,7 @@ export function Header() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-sm font-semibold text-foreground/75 hover:text-primary transition-colors duration-200 px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors duration-200 px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {link.label}
               </Link>

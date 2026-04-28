@@ -99,7 +99,7 @@ describe("sitemap.ts — page coverage", () => {
 
   it("includes the core static pages", () => {
     const corePaths = [
-      "",
+      "/",
       "/about",
       "/contact",
       "/faq",

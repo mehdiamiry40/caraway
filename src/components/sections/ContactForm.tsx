@@ -13,6 +13,7 @@ import {
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
+import { BUSINESS } from "@/lib/site";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckCircle2, Send, Shield } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
@@ -63,17 +64,22 @@ export function ContactForm() {
       setIsSuccess(true); // Fake success for bots
       return;
     }
-    const result = await submitContact(data);
-
-    if (result.success) {
-      trackEvent("contact_form_submitted");
-      trackEvent("lead_submitted", { source: "contact" });
-      setIsSuccess(true);
-      reset();
-    } else {
+    try {
+      const result = await submitContact(data);
+      if (result.success) {
+        trackEvent("contact_form_submitted");
+        trackEvent("lead_submitted", { source: "contact" });
+        setIsSuccess(true);
+        reset();
+        return;
+      }
       setErrorMessage(
         result.message ||
-          "We couldn't send your message. Please try again or call 0481 438 444.",
+          `We couldn't send your message. Please try again or call ${BUSINESS.phoneDisplay}.`,
+      );
+    } catch {
+      setErrorMessage(
+        `We couldn't send your message. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
     }
   };

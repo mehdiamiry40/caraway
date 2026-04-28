@@ -39,18 +39,40 @@ function monthYearToISO(label: string): string {
     December: "12",
   }[monthLabel];
 
-  if (!monthNumber || !/^\d{4}$/.test(year ?? "")) {
-    throw new Error(`Invalid month/year label: ${label}`);
-  }
+  if (!monthNumber || !/^\d{4}$/.test(year ?? "")) return CONTENT_DEPLOY_DATE;
 
   return `${year}-${monthNumber}-01`;
+}
+
+function validIsoDate(value: string | undefined, fallback = CONTENT_DEPLOY_DATE): string {
+  if (value && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value))) {
+    return value;
+  }
+  return fallback;
+}
+
+function newestDate<T>(
+  items: T[],
+  getDate: (item: T) => string | undefined,
+  fallback = CONTENT_DEPLOY_DATE,
+): string {
+  // Compute the actual maximum of valid item dates.  Seeding the reducer with
+  // `fallback` would mask older content (a category whose newest post is from
+  // 2025-02 would otherwise appear in the sitemap with the deploy date).
+  let latest: string | null = null;
+  for (const item of items) {
+    const raw = getDate(item);
+    if (!raw || !/^\d{4}-\d{2}-\d{2}$/.test(raw) || !Number.isFinite(Date.parse(raw))) continue;
+    if (latest === null || raw > latest) latest = raw;
+  }
+  return latest ?? fallback;
 }
 
 /** Pick a changeFrequency hint based on content age. */
 function changeFreqByAge(
   isoDate: string,
 ): "daily" | "weekly" | "monthly" | "yearly" {
-  const ageMs = Date.now() - new Date(isoDate).getTime();
+  const ageMs = Date.now() - new Date(validIsoDate(isoDate)).getTime();
   const ageDays = ageMs / 86_400_000;
   if (ageDays < 14) return "weekly";
   if (ageDays < 180) return "monthly";
@@ -59,20 +81,14 @@ function changeFreqByAge(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* ---- Latest blog date (for the /blog index page) ---- */
-  const latestBlogDate = indexableBlogPosts.reduce(
-    (latest, post) => {
-      const stamp = post.updatedAt || post.date;
-      return stamp > latest ? stamp : latest;
-    },
-    "2025-01-01",
-  );
+  const latestBlogDate = newestDate(indexableBlogPosts, (post) => post.updatedAt || post.date);
 
   /* -----------------------------------------------------------------------
    * 1. Static pages — use honest, fixed dates
    * ---------------------------------------------------------------------*/
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       lastModified: CONTENT_DEPLOY_DATE,
       changeFrequency: "weekly",
       priority: 1.0,
@@ -150,7 +166,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "sell-my-car-brisbane",
   ]);
 
-  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
+  const servicePages: MetadataRoute.Sitemap = services.filter((s) => s.slug).map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
     lastModified: CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
@@ -161,7 +177,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* -----------------------------------------------------------------------
    * 3. Location (suburb) pages
    * ---------------------------------------------------------------------*/
-  const suburbPages: MetadataRoute.Sitemap = suburbs.map((s) => ({
+  const suburbPages: MetadataRoute.Sitemap = suburbs.filter((s) => s.slug).map((s) => ({
     url: `${SITE_URL}/locations/${s.slug}`,
     lastModified: CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
@@ -181,8 +197,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "scrap-metal-prices-brisbane-2026",
   ]);
 
-  const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.map((p) => {
-    const modified = p.updatedAt || p.date;
+  const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.filter((p) => p.slug).map((p) => {
+    const modified = validIsoDate(p.updatedAt || p.date);
     return {
       url: p.canonicalUrl,
       lastModified: modified,
@@ -198,13 +214,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map(
     (slug) => {
       const postsInCategory = getPostsByCategory(slug);
-      const latestInCategory = postsInCategory.reduce(
-        (latest, p) => {
-          const stamp = p.updatedAt || p.date;
-          return stamp > latest ? stamp : latest;
-        },
-        "2025-01-01",
-      );
+      const latestInCategory = newestDate(postsInCategory, (p) => p.updatedAt || p.date);
       return {
         url: `${SITE_URL}/blog/category/${slug}`,
         lastModified: latestInCategory,
@@ -214,11 +224,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
-  return [
+  const entries = [
     ...staticPages,
     ...servicePages,
     ...suburbPages,
     ...blogPages,
     ...categoryPages,
   ];
+
+  return Array.from(new Map(entries.filter((entry) => entry.url.startsWith(SITE_URL)).map((entry) => [entry.url, entry])).values());
 }

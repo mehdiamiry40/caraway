@@ -1,4 +1,15 @@
+import { post as postDamagedCar } from "./sell-damaged-car-brisbane";
+import { post as postCarRecycling } from "./how-car-recycling-works-australia";
+import { post as postBestTime } from "./best-time-to-sell-your-car-brisbane";
+import { post as postScrapCar } from "./how-to-scrap-a-car-legally-brisbane";
+import { post as postRoadworthy } from "./how-to-get-a-roadworthy-certificate-brisbane";
 import { post as postFirst } from "./sell-old-truck-brisbane";
+import { post as postHighIntent0 } from "./sell-car-without-roadworthy-qld";
+import { post as postHighIntent1 } from "./how-much-is-scrap-car-worth-brisbane";
+import { post as postHighIntent2 } from "./cancel-rego-after-selling-car-qld";
+import { post as postHighIntent3 } from "./sell-car-not-in-my-name-qld";
+import { post as postHighIntent4 } from "./number-plates-when-selling-car-qld";
+import { post as postHighIntent5 } from "./cash-for-cars-vs-private-sale";
 import { post as postNewest } from "./cash-for-cars-beenleigh";
 import { post as postLatest } from "./cash-for-cars-redlands";
 import { post as postNew } from "./sell-junk-car-brisbane";
@@ -28,7 +39,18 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postDamagedCar,
+  postCarRecycling,
+  postBestTime,
+  postScrapCar,
+  postRoadworthy,
   postFirst,
+  postHighIntent0,
+  postHighIntent1,
+  postHighIntent2,
+  postHighIntent3,
+  postHighIntent4,
+  postHighIntent5,
   postNewest,
   postLatest,
   postNew,

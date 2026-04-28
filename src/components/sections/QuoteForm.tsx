@@ -68,17 +68,22 @@ export function QuoteForm() {
       setIsSuccess(true);
       return;
     }
-    const result = await submitQuote(data);
-
-    if (result.success) {
-      trackEvent("quote_form_submitted");
-      trackEvent("lead_submitted", { source: "quote_form" });
-      setIsSuccess(true);
-      reset();
-    } else {
+    try {
+      const result = await submitQuote(data);
+      if (result.success) {
+        trackEvent("quote_form_submitted");
+        trackEvent("lead_submitted", { source: "quote_form" });
+        setIsSuccess(true);
+        reset();
+        return;
+      }
       setErrorMessage(
         result.message ||
-          `We couldn't send your quote. Please try again or call ${BUSINESS.phoneFriendly}.`,
+          `We couldn't send your quote. Please try again or call ${BUSINESS.phoneDisplay}.`,
+      );
+    } catch {
+      setErrorMessage(
+        `We couldn't send your quote. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
     }
   };
@@ -96,7 +101,7 @@ export function QuoteForm() {
   };
 
   return (
-    <section id="quote-section" className="section-y bg-background">
+    <section id="quote-form" className="section-y scroll-mt-header bg-background">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
@@ -109,6 +114,12 @@ export function QuoteForm() {
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
               We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
             </p>
+            <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
+              <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
+              </p>
+            </div>
           </div>
 
           <div className="lg:col-span-7 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">

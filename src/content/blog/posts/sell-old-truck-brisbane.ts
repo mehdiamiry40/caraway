@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-old-truck-brisbane",
@@ -30,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "## How the cash for cars process works for a truck",
 
-    "Getting a quote to sell your old truck in Brisbane works the same way regardless of the vehicle's condition. Provide the make, model, year, current kilometres, and an honest description of what doesn't work — non-runner, seized engine, structural damage — and you'll receive a firm offer. Being upfront from the start means no price adjustment when the truck is inspected. Once you accept, a flatbed or tow truck is arranged at no charge across Greater Brisbane, including [Logan](/locations/logan), Ipswich, Redlands, and Caboolture. Payment in cash or direct bank transfer is made before the vehicle is collected and loaded. No towing fees, no hidden deductions.",
+    "Getting a quote to sell your old truck in Brisbane works the same way regardless of the vehicle's condition. Provide the make, model, year, current kilometres, and an honest description of what doesn't work — non-runner, seized engine, structural damage — and you'll receive an offer based on those details. Being upfront from the start helps avoid price changes when the truck is inspected. Once you accept, a flatbed or tow truck is arranged at no charge across Greater Brisbane, including [Logan](/locations/logan), Ipswich, Redlands, and Caboolture. Payment in cash or direct bank transfer is made before the vehicle is collected and loaded. No towing fees.",
 
     "## Paperwork for selling a truck in Queensland",
 
@@ -42,7 +43,7 @@ export const post: RawBlogPostEntry = {
 
     "## Get a cash offer for your old truck today",
 
-    "If you have an old truck sitting unused anywhere across Greater Brisbane — including [Ipswich](/locations/ipswich), [Logan](/locations/logan), Redlands, or Caboolture — finding out what it's worth costs nothing. Call **0481 438 444** or use the online quote form, describe the vehicle in plain terms, and get a firm offer in minutes. Same- or next-day pickup is available across the region, with cash or bank transfer paid before the truck leaves your property. No call-out fees, no paperwork hassle.",
+    `If you have an old truck sitting unused anywhere across Greater Brisbane — including [Ipswich](/locations/ipswich), [Logan](/locations/logan), Redlands, or Caboolture — finding out what it's worth costs nothing. Call **${BUSINESS.phoneDisplay}** or use the online quote form, describe the vehicle in plain terms, and get a firm offer in minutes. Same- or next-day pickup is available across the region, with cash or bank transfer paid before the truck leaves your property. No call-out fees, no paperwork hassle.`,
   ],
   date: "2026-04-23",
   category: "Guides",

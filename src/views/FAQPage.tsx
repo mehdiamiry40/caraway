@@ -55,11 +55,11 @@ export default function FAQPage() {
           </p>
           <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
             <a
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               className={cn(buttonVariants({ variant: "primary", size: "sm" }))}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-              Call {BUSINESS.phoneFriendly}
+              Call {BUSINESS.phoneDisplay}
             </a>
             <Link
               href="/#price-estimator"

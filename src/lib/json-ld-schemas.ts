@@ -1,11 +1,10 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import { SITE_URL, BUSINESS } from "@/lib/site";
-import { reviews } from "@/data/reviews";
+import { SITE_URL, BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
 
 const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
-  phone: BUSINESS.phone,
+  phone: BUSINESS.phoneDisplay,
   email: BUSINESS.email,
   addressLocality: BUSINESS.addressSuburb,
   addressRegion: BUSINESS.addressState,
@@ -25,10 +24,6 @@ const openingHours = {
 const SAME_AS = [
   BUSINESS.googleBusinessUrl,
 ];
-
-/* ---------- Compute aggregate rating from reviews data ---------- */
-const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
-const ratingValue = Math.round(avg * 10) / 10;
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -52,11 +47,10 @@ export const localBusinessSchema = {
   image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: NAP.phone,
   email: NAP.email,
-  priceRange: "$$",
+  priceRange: PRICE_RANGE_LABEL,
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
-  description:
-    "Cash for cars Brisbane: Caraway pays cash on pickup for any make or condition — up to $9,999. Free towing; pickup usually same- or next-day across Greater Brisbane. Call 0481 438 444.",
+  description: `Cash for cars Brisbane: Caraway gives fair cash offers based on vehicle details, with free towing and payment on pickup. Selected vehicles may receive offers up to $9,999. Call ${BUSINESS.phoneDisplay}.`,
   // City-level address only; pickups happen at the customer's property (serviceArea).
   address: {
     "@type": "PostalAddress",
@@ -114,13 +108,6 @@ export const localBusinessSchema = {
     "Damaged car removal",
   ],
   keywords: "cash for cars Brisbane, sell my car Brisbane, free car removal, scrap car buyers Brisbane",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue,
-    reviewCount: reviews.length,
-    bestRating: 5,
-    worstRating: 1,
-  },
   sameAs: SAME_AS,
 };
 

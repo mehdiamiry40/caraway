@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
+import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
 import SuburbPageTemplate from "@/components/templates/SuburbPageTemplate";
-import { reviews } from "@/data/reviews";
 import { getSuburbBySlug, suburbs } from "@/data/suburbs";
 import { SITE_URL } from "@/lib/site";
 
@@ -54,57 +53,50 @@ export default async function SuburbSlugPage({ params }: Props) {
 
   const canonicalUrl = `${SITE_URL}/locations/${suburb.slug}`;
 
-  const areaName = suburb.h1.replace("Cash for Cars ", "");
+  const areaName = suburb.regionName ?? suburb.h1.replace("Cash for Cars ", "");
+  const schemas = [
+    breadcrumbListSchema([
+      { name: "Home", item: `${SITE_URL}/` },
+      { name: "Locations", item: `${SITE_URL}/locations` },
+      { name: suburb.h1, item: canonicalUrl },
+    ]),
+    {
+      "@type": "Service",
+      name: `Cash for Cars ${areaName}`,
+      description: suburb.metaDescription,
+      provider: {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#business`,
+        name: "Caraway — Cash for Cars Brisbane",
+      },
+      areaServed: {
+        "@type": "Place",
+        name: areaName,
+        containedInPlace: { "@type": "City", name: "Brisbane" },
+      },
+      serviceType: "Cash for Cars",
+      url: canonicalUrl,
+      image: `${SITE_URL}/images/tow-truck-hero.webp`,
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "AUD",
+        price: "0",
+        description: "Free car removal and towing included",
+        availability: "https://schema.org/InStock",
+      },
+      hoursAvailable: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "07:00",
+        closes: "19:00",
+      },
+    },
+    ...(suburb.localFaqs?.length ? [faqPageSchema(suburb.localFaqs)] : []),
+  ];
 
   return (
     <>
-      <JsonLd
-        data={[
-          breadcrumbListSchema([
-            { name: "Home", item: `${SITE_URL}/` },
-            { name: "Locations", item: `${SITE_URL}/locations` },
-            { name: suburb.h1, item: canonicalUrl },
-          ]),
-          {
-            "@type": "Service",
-            name: `Cash for Cars ${areaName}`,
-            description: suburb.metaDescription,
-            provider: {
-              "@type": "LocalBusiness",
-              "@id": `${SITE_URL}/#business`,
-              name: "Caraway — Cash for Cars Brisbane",
-            },
-            areaServed: {
-              "@type": "Place",
-              name: areaName,
-              containedInPlace: { "@type": "City", name: "Brisbane" },
-            },
-            serviceType: "Cash for Cars",
-            url: canonicalUrl,
-            image: `${SITE_URL}/images/tow-truck-hero.webp`,
-            offers: {
-              "@type": "Offer",
-              priceCurrency: "AUD",
-              price: "0",
-              description: "Free car removal and towing included",
-              availability: "https://schema.org/InStock",
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10,
-              reviewCount: reviews.length,
-              bestRating: 5,
-              worstRating: 1,
-            },
-            hoursAvailable: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-              opens: "07:00",
-              closes: "19:00",
-            },
-          },
-        ]}
-      />
+      <JsonLd data={schemas} />
       <SuburbPageTemplate suburb={suburb} />
     </>
   );

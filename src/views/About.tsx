@@ -10,7 +10,7 @@ const breadcrumbs = [
 ];
 
 const features = [
-  { title: "Genuinely free towing", desc: "We never deduct towing costs from your offer. The price quoted is the price you get." },
+  { title: "Genuinely free towing", desc: "We do not deduct towing costs from your agreed offer when the vehicle matches the details provided." },
   { title: "Fast pickup", desc: "Most pickups are same- or next-day once you accept our offer — we confirm a slot when you book." },
   { title: "All vehicles accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered." },
   { title: "Cash on the spot", desc: "You receive your cash payment before the car leaves your property. No delays." },

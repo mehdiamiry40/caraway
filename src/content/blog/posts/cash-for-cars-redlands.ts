@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-redlands",
@@ -18,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "## What your car is worth in Redlands",
 
-    "Valuations across the Redlands region typically range from around $300 for a stripped shell or severely damaged vehicle up to $9,999 for a complete, running car in reasonable condition. A non-running Toyota Corolla with a blown head gasket might pull $400 to $800, while a 2013 Mazda CX-5 that still drives could fetch $3,500 to $6,000 depending on kilometres and service history. Utes and 4WDs — HiLuxes, Patrols, Prados, and Everests — consistently attract stronger offers because parts demand is high and their heavier steel content adds value at the recycling stage. If you've got a boat trailer sitting alongside the car, mention it; buyers sometimes purchase the trailer separately.",
+    "Valuations across the Redlands region may range from around $300 for a stripped shell or severely damaged vehicle up to $9,999 for a complete, running car in reasonable condition, depending on the vehicle. A non-running Toyota Corolla with a blown head gasket might pull $400 to $800, while a 2013 Mazda CX-5 that still drives could fetch $3,500 to $6,000 depending on kilometres and service history. Utes and 4WDs — HiLuxes, Patrols, Prados, and Everests — consistently attract stronger offers because parts demand is high and their heavier steel content adds value at the recycling stage. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. If you've got a boat trailer sitting alongside the car, mention it; buyers sometimes purchase the trailer separately.",
 
     "## Free towing across Cleveland, Capalaba, and beyond",
 
@@ -36,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "A few practical tips for sellers across the Redlands area. Be straightforward about the vehicle's condition when you call for a quote — discrepancies discovered at pickup lead to revised offers and delays. Have your ID and registration documents ready before the driver arrives. If access to the car is restricted — narrow side gate, steep driveway, car parked on soft ground — flag it at the time of booking so the right recovery equipment is dispatched. And if you have more than one vehicle to move, mention it upfront; bulk pickups often attract a better per-car rate.",
 
-    "Cash for cars in the Redlands area is one of the quickest, most hassle-free ways to clear an unwanted vehicle. Whether your car is in Capalaba, Cleveland, Victoria Point, Alexandra Hills, or anywhere else across the bayside, a two-minute phone call or online quote is all it takes to find out what it's worth. Call **0481 438 444** or [get a free instant quote](/#price-estimator) — free towing, payment on the spot, and TMR paperwork sorted on the day.",
+    `Cash for cars in the Redlands area is one of the quickest, most hassle-free ways to clear an unwanted vehicle. Whether your car is in Capalaba, Cleveland, Victoria Point, Alexandra Hills, or anywhere else across the bayside, a two-minute phone call or online quote is all it takes to find out what it's worth. Call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) — free towing, payment on the spot, and TMR paperwork sorted on the day.`,
   ],
   date: "2026-04-21",
   category: "Guides",

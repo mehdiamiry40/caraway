@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { PLACES_NONCE_COOKIE, PLACES_NONCE_HEADER } from "@/lib/places-session";
 
 interface Suggestion {
   placeId: string;
@@ -21,6 +22,32 @@ interface AddressAutocompleteProps
 
 const DEBOUNCE_MS = 200;
 const MIN_QUERY_LENGTH = 3;
+
+function readCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const prefix = `${name}=`;
+  for (const part of document.cookie.split(";")) {
+    const trimmed = part.trim();
+    if (trimmed.startsWith(prefix)) {
+      return decodeURIComponent(trimmed.slice(prefix.length));
+    }
+  }
+  return null;
+}
+
+async function ensurePlacesNonce(): Promise<string | null> {
+  const existing = readCookie(PLACES_NONCE_COOKIE);
+  if (existing) return existing;
+
+  const res = await fetch("/api/places/session", {
+    method: "POST",
+    cache: "no-store",
+    credentials: "same-origin",
+  });
+  if (!res.ok) return null;
+
+  return readCookie(PLACES_NONCE_COOKIE);
+}
 
 /**
  * Address input with Google Places autocomplete.
@@ -51,6 +78,7 @@ export function AddressAutocomplete({
   const [activeIndex, setActiveIndex] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
   const [showNoResults, setShowNoResults] = useState(false);
+  const [manualEntryActive, setManualEntryActive] = useState(false);
   // Tracks the value the user just picked, so the debounce effect
   // skips the refetch that `onChange` would otherwise trigger. The
   // next keystroke clears it.
@@ -72,17 +100,26 @@ export function AddressAutocomplete({
       setShowNoResults(false);
       setOpen(true);
       try {
+        const nonce = await ensurePlacesNonce();
         const res = await fetch(
           `/api/places/autocomplete?q=${encodeURIComponent(trimmed)}`,
-          { signal: controller.signal },
+          {
+            signal: controller.signal,
+            headers: {
+              [PLACES_NONCE_HEADER]: nonce ?? "",
+            },
+          },
         );
         if (!res.ok) {
-          // 503 = proxy unavailable; stay silent and act as a plain input.
+          // If the proxy is unavailable or the browser cannot present a valid
+          // first-party session, keep this as a plain input so real leads can
+          // still submit a manually typed pickup address.
           if (id === requestIdRef.current) {
             setSuggestions([]);
             setOpen(false);
             setIsLoading(false);
             setShowNoResults(false);
+            setManualEntryActive(true);
           }
           return;
         }
@@ -94,6 +131,7 @@ export function AddressAutocomplete({
         setOpen(true);
         setActiveIndex(-1);
         setIsLoading(false);
+        setManualEntryActive(false);
       } catch (err) {
         if ((err as Error)?.name === "AbortError") return;
         if (id === requestIdRef.current) {
@@ -101,6 +139,7 @@ export function AddressAutocomplete({
           setOpen(false);
           setIsLoading(false);
           setShowNoResults(false);
+          setManualEntryActive(true);
         }
       }
     }, DEBOUNCE_MS);
@@ -211,6 +250,11 @@ export function AddressAutocomplete({
         className={className}
         {...rest}
       />
+      {manualEntryActive && (
+        <p className="sr-only" role="status" aria-live="polite">
+          Address suggestions are unavailable. Continue typing the pickup address manually.
+        </p>
+      )}
       {open && (suggestions.length > 0 || isLoading || showNoResults) && (
         <ul
           id={listboxId}

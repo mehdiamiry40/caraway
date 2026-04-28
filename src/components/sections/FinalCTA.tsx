@@ -15,12 +15,12 @@ export function FinalCTA() {
       <div className="site-container">
         <Reveal className="relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
           <div className="relative z-10 text-center">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-medium text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Ready when you are
             </p>
 
-            <h2 className="font-display font-extrabold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-[var(--tracking-display)] text-on-dark-hi text-balance">
+            <h2 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-[var(--tracking-display)] text-on-dark-hi text-balance">
               See what your car is worth{" "}
               <span className="hl-green">today</span>.
             </h2>
@@ -47,13 +47,13 @@ export function FinalCTA() {
             <div className="mt-6 text-sm text-on-dark-hi/75">
               or{" "}
               <TrackedPhoneLink
-                href={BUSINESS.phoneHref}
+                href={BUSINESS.phoneTel}
                 location="final_cta"
-                className="inline-flex items-center gap-1.5 font-bold text-on-dark-hi underline underline-offset-4 decoration-cta hover:text-cta"
-                ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline underline-offset-4 decoration-cta hover:text-cta"
+                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4" />
-                call {BUSINESS.phoneFriendly}
+                call {BUSINESS.phoneDisplay}
               </TrackedPhoneLink>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { QuoteForm } from "@/components/sections/QuoteForm";
+import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
 import type { ServicePage } from "@/data/services";
 import { services } from "@/data/services";
@@ -40,7 +41,7 @@ export default function ServicePageTemplate({
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="aurora-surface py-16 lg:py-24">
+        <section className="aurora-surface py-10 sm:py-14 lg:py-16">
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             <p className="eyebrow mt-6 mb-4">Service</p>
@@ -53,6 +54,8 @@ export default function ServicePageTemplate({
             <ScrollToQuoteCTA />
           </div>
         </section>
+
+        <QuoteForm />
 
         <div className="site-container py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
@@ -153,7 +156,7 @@ export default function ServicePageTemplate({
           </div>
         </div>
 
-        <QuoteForm />
+        <SellingSafelySection />
         <TrustBadges />
       </main>
 

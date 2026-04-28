@@ -2,10 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { suburbs } from "@/data/suburbs";
 import { MapPin, ArrowRight, Search } from "lucide-react";
 
-export function LocationsFilter() {
+export interface LocationFilterItem {
+  slug: string;
+  h1: string;
+  summary: string;
+}
+
+export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
   const [inputValue, setInputValue] = useState("");
   const [query, setQuery] = useState("");
 
@@ -16,13 +21,13 @@ export function LocationsFilter() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return suburbs;
-    return suburbs.filter(
+    if (!q) return items;
+    return items.filter(
       (s) =>
         s.h1.toLowerCase().includes(q) ||
         s.slug.toLowerCase().includes(q)
     );
-  }, [query]);
+  }, [items, query]);
 
   return (
     <>
@@ -73,7 +78,7 @@ export function LocationsFilter() {
                 </h2>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5">
-                {suburb.intro}
+                {suburb.summary}
               </p>
               <span className="text-sm text-accent flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                 View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />

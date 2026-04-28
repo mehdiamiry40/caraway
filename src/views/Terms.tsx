@@ -37,7 +37,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Quoted prices</h2>
             <p>
-              Prices quoted through our online estimator or over the phone are indicative, based on the information you provide. The final offer is confirmed at pickup after a visual inspection. Market conditions, vehicle condition, and undisclosed damage may affect the final offer. Our published range is $200–$9,999; vehicles may fall anywhere in this range.
+              Prices quoted through our online estimator or over the phone are indicative, based on the information you provide. The final offer is confirmed at pickup after a visual inspection. Market conditions, vehicle condition, completeness, location, and undisclosed damage may affect the final offer. Selected vehicles may receive offers up to $9,999, while most older or scrap vehicles receive lower offers.
             </p>
           </section>
 

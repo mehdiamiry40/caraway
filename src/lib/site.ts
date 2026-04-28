@@ -8,9 +8,8 @@ export const BUSINESS = {
   abn: "62 351 619 456",
   foundingYear: 2025,
   founder: "Mehdi Emir",
-  phone: "0481 438 444",
-  phoneFriendly: "0481 438 444",
-  phoneHref: "tel:0481438444",
+  phoneDisplay: "0481 438 444",
+  phoneTel: "tel:0481438444",
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
   /** City-level NAP — we don't operate a public yard; pickups happen at the
@@ -31,7 +30,7 @@ export const BUSINESS = {
 
 export const MIN_PRICE = 200;
 export const MAX_PRICE = 9999;
-export const PRICE_RANGE_LABEL = "$200–$9,999";
+export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
 export const LEGAL_DATES = {
   privacyLastUpdated: "April 2026",
@@ -44,7 +43,7 @@ export const LEGAL_DATES = {
 export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
 export const PROMISE_POINTS = [
-  "$200–$9,999 cash",
+  "Fair offer based on details",
   "Same- or next-day pickup",
   "Free towing always",
   "No RWC needed",

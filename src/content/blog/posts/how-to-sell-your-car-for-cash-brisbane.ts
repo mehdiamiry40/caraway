@@ -16,7 +16,7 @@ export const post: RawBlogPostEntry = {
       "## What if the car doesn't run or isn't registered?",
       "What about cars that don't run? Most cash-for-cars buyers accept vehicles in any condition — damaged, unregistered, written off, or simply old. Free towing is standard.",
       "## How much your car is worth and how to get the best price",
-      "How much will you get? Offers typically range from a few hundred dollars for scrap vehicles up to $9,999 for cars in good working order. The main factors are make, model, age, condition, and [current scrap metal prices](/blog/scrap-metal-prices-brisbane-2026).",
+      "How much will you get? Offers may range from a few hundred dollars for scrap vehicles up to $9,999 for selected cars in good working order. The main factors are make, model, age, condition, completeness, location, demand, and [current scrap metal prices](/blog/scrap-metal-prices-brisbane-2026). Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
       "To get the best price, have your registration papers ready, be honest about the car's condition, and compare quotes from at least two buyers before committing.",
     ],
     date: "2025-03-15",

@@ -1,38 +1,41 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
-import { quoteFormSchema, type QuoteCondition } from "@/lib/quote-schema";
+import { type QuoteCondition } from "@/lib/quote-schema";
+import {
+  validateName,
+  validatePhone,
+  validateAddress,
+} from "@/lib/estimator-validators";
+import { type Step } from "@/lib/persisted-estimator-state";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
+import { BUSINESS } from "@/lib/site";
+import { useEstimatorPersistence } from "@/hooks/use-estimator-persistence";
+import { useEstimatorAnalytics } from "@/hooks/use-estimator-analytics";
+import { useEstimatorFocus } from "@/hooks/use-estimator-focus";
 
 const CURRENT_YEAR = new Date().getFullYear();
-const STORAGE_KEY = "caraway-estimator-state";
+const CALCULATE_DELAY_MS = 600;
 
-export type Step = 1 | 2 | 3;
-
-// Persisted state intentionally excludes PII (name, phone, address) so that
-// only Step 1 vehicle inputs survive a refresh; Step 3 contact details are
-// never written to sessionStorage. No personal information leaves the
-// in-memory component state before submit.
-type PersistedState = {
-  step?: Step;
-  make?: string;
-  model?: string;
-  year?: string;
-  condition?: QuoteCondition | "";
-};
+export type { Step };
 
 export function usePriceEstimator() {
   const [step, setStep] = useState<Step>(1);
+
+  // Vehicle (Step 1)
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
   const [yearTouched, setYearTouched] = useState(false);
   const [condition, setCondition] = useState<QuoteCondition | "">("");
+
+  // Quote (Step 2)
   const [result, setResult] = useState<EstimateResult | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
+  // Contact (Step 3)
   const [name, setName] = useState("");
   const [nameTouched, setNameTouched] = useState(false);
   const [nameError, setNameError] = useState<string | null>(null);
@@ -43,31 +46,11 @@ export function usePriceEstimator() {
   const [addressTouched, setAddressTouched] = useState(false);
   const [addressError, setAddressError] = useState<string | null>(null);
   const [honeypot, setHoneypot] = useState("");
+
+  // Submission
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-
-  // One ref per step heading, kept as individual refs (not an array of
-  // callback refs) so react-hooks/refs is satisfied without any
-  // ref-callback indexing during render.
-  const step1HeadingRef = useRef<HTMLHeadingElement>(null);
-  const step2HeadingRef = useRef<HTMLDivElement>(null);
-  const step3HeadingRef = useRef<HTMLHeadingElement>(null);
-  const successHeadingRef = useRef<HTMLHeadingElement>(null);
-  const estimatorStartedRef = useRef(false);
-  const hydratedRef = useRef(false);
-  const hasMountedRef = useRef(false);
-  const persistTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const liveMessage = isSuccess
-    ? "Your quote request was submitted successfully."
-    : isCalculating
-      ? "Calculating your instant quote…"
-      : step === 1
-        ? "Step 1 of 3. Tell us about your vehicle."
-        : step === 2
-          ? "Step 2 of 3. Your instant quote is ready."
-          : "Step 3 of 3. Enter your contact details to claim your quote.";
 
   const yearNumber = useMemo(() => Number(year), [year]);
   const yearIsValid = useMemo(
@@ -92,7 +75,10 @@ export function usePriceEstimator() {
     [make, model, yearIsValid, condition]
   );
   const canSubmit = useMemo(
-    () => name.trim().length >= 2 && phone.trim().length >= 8 && address.trim().length >= 5,
+    () =>
+      name.trim().length >= 2 &&
+      phone.trim().length >= 8 &&
+      address.trim().length >= 5,
     [name, phone, address]
   );
 
@@ -102,108 +88,44 @@ export function usePriceEstimator() {
     [step]
   );
 
-  // Hydrate from sessionStorage on mount. We can't use lazy state
-  // initializers here because reading storage during render would cause
-  // a hydration mismatch (server has no window.sessionStorage, client
-  // does) — the setState flush is intentional and happens exactly once
-  // per mount, guarded by `hydratedRef`.
-  useEffect(() => {
-    if (hydratedRef.current) return;
-    hydratedRef.current = true;
-    if (typeof window === "undefined") return;
-    try {
-      const raw = window.sessionStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as PersistedState;
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount hydration; see block comment above.
+  const liveMessage = isSuccess
+    ? "Your quote request was submitted successfully."
+    : isCalculating
+      ? "Calculating your instant quote…"
+      : step === 1
+        ? "Step 1 of 3. Tell us about your vehicle."
+        : step === 2
+          ? "Step 2 of 3. Your instant quote is ready."
+          : "Step 3 of 3. Enter your contact details to claim your quote.";
+
+  const persistedPayload = useMemo(
+    () => ({ step, make, model, year, condition }),
+    [step, make, model, year, condition]
+  );
+
+  useEstimatorPersistence({
+    payload: persistedPayload,
+    isSuccess,
+    onHydrated: useCallback((parsed) => {
+      // Step 1 holds all vehicle inputs, so rehydration simply refills the
+      // fields — the user still needs to click "See my quote" to recalculate.
+      // Step 2 (quote) and Step 3 (PII) are never restored: the quote result
+      // lives only in memory and PII is never persisted.
       if (parsed.make) setMake(parsed.make);
       if (parsed.model) setModel(parsed.model);
       if (parsed.year) setYear(parsed.year);
       if (parsed.condition) setCondition(parsed.condition);
-      // Step 1 now holds all vehicle inputs, so rehydration simply refills the
-      // fields — the user still needs to click "See my quote" to recalculate.
-      // Step 2 (quote) and Step 3 (PII) are never restored: the quote result
-      // lives only in memory and PII is never persisted.
-    } catch {
-      try {
-        window.sessionStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // sessionStorage may be unavailable (private mode / quota / SecurityError);
-        // cache hydration is best-effort, so let the user start fresh silently.
-      }
-    }
-  }, []);
+    }, []),
+  });
 
-  // Persist state on change — debounced so keystroke-level typing doesn't
-  // run JSON.stringify + sessionStorage.setItem on every character.
-  useEffect(() => {
-    if (!hydratedRef.current) return;
-    if (typeof window === "undefined") return;
-    if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
-    persistTimerRef.current = setTimeout(() => {
-      try {
-        const payload: PersistedState = {
-          step,
-          make,
-          model,
-          year,
-          condition,
-        };
-        window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-      } catch {
-        // sessionStorage may throw on quota/private-mode; persistence is
-        // cosmetic, so drop silently rather than spamming the console.
-      }
-    }, 400);
-    return () => {
-      if (persistTimerRef.current) clearTimeout(persistTimerRef.current);
-    };
-  }, [step, make, model, year, condition]);
+  const analytics = useEstimatorAnalytics({ step, make, model, isSuccess });
 
-  // Clear stored state on success.
-  useEffect(() => {
-    if (!isSuccess) return;
-    if (typeof window === "undefined") return;
-    try {
-      window.sessionStorage.removeItem(STORAGE_KEY);
-    } catch {
-      // ignore
-    }
-  }, [isSuccess]);
-
-  // Fire estimator_started once on first make input.
-  useEffect(() => {
-    if (estimatorStartedRef.current) return;
-    if (make.trim() !== "") {
-      estimatorStartedRef.current = true;
-      trackEvent("estimator_started", { make: make.trim() });
-    }
-  }, [make]);
-
-  // Fire estimator_abandoned when the user leaves mid-flow.
-  useEffect(() => {
-    if (!estimatorStartedRef.current || isSuccess) return;
-
-    const handleLeave = () => {
-      trackEvent("estimator_abandoned", {
-        step,
-        make: make.trim(),
-        model: model.trim(),
-      });
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) handleLeave();
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("beforeunload", handleLeave);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("beforeunload", handleLeave);
-    };
-  }, [step, make, model, isSuccess]);
+  const {
+    step1HeadingRef,
+    step2HeadingRef,
+    step3HeadingRef,
+    successHeadingRef,
+  } = useEstimatorFocus({ step, isSuccess });
 
   const goToStep = useCallback((next: Step) => {
     setStep(next);
@@ -232,27 +154,8 @@ export function usePriceEstimator() {
         year: yearNumber,
         condition: condition || null,
       });
-    }, 600);
+    }, CALCULATE_DELAY_MS);
   }, [canCalculate, isCalculating, make, model, yearNumber, condition]);
-
-  const validateName = useCallback((value: string): string | null => {
-    const result = quoteFormSchema.shape.name.safeParse(value);
-    if (result.success) return null;
-    return result.error.issues[0]?.message ?? "Enter your name";
-  }, []);
-
-  const validatePhone = useCallback((value: string): string | null => {
-    const result = quoteFormSchema.shape.phone.safeParse(value);
-    if (result.success) return null;
-    return result.error.issues[0]?.message ?? "Enter a valid Australian phone number";
-  }, []);
-
-  const validateAddress = useCallback((value: string): string | null => {
-    const trimmed = value.trim();
-    if (trimmed.length < 5) return "Enter a pickup address";
-    if (trimmed.length > 500) return "Address is too long";
-    return null;
-  }, []);
 
   const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
@@ -264,7 +167,6 @@ export function usePriceEstimator() {
       return;
     }
 
-    // Blur-level validation before submission.
     const nameErr = validateName(name);
     const phoneErr = validatePhone(phone);
     const addressErr = validateAddress(address);
@@ -287,40 +189,48 @@ export function usePriceEstimator() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const res = await submitQuote({
-      name: name.trim(),
-      phone: phone.trim(),
-      make: make.trim(),
-      model: model.trim(),
-      year: yearNumber,
-      condition,
-      address: address.trim(),
-      quoteAmount: result.quote,
-      honeypot: "",
-      marketingConsent: false,
-    });
-
-    setIsSubmitting(false);
-    if (res.success) {
-      setIsSuccess(true);
-      trackEvent("estimator_submitted", {
-        estimateQuote: result.quote,
+    try {
+      const res = await submitQuote({
+        name: name.trim(),
+        phone: phone.trim(),
         make: make.trim(),
         model: model.trim(),
         year: yearNumber,
         condition,
+        address: address.trim(),
+        quoteAmount: result.quote,
+        honeypot: "",
+        marketingConsent: false,
       });
-      trackEvent("lead_submitted", {
-        source: "estimator",
-        estimate_quote: result.quote,
-      });
-    } else {
-      const reason = res.message ?? "unknown";
+
+      if (res.success) {
+        setIsSuccess(true);
+        trackEvent("estimator_submitted", {
+          estimateQuote: result.quote,
+          make: make.trim(),
+          model: model.trim(),
+          year: yearNumber,
+          condition,
+        });
+        trackEvent("lead_submitted", {
+          source: "estimator",
+          estimate_quote: result.quote,
+        });
+      } else {
+        const reason = res.message ?? "unknown";
+        setSubmitError(
+          res.message ??
+            `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
+        );
+        trackEvent("estimator_submit_failed", { reason });
+      }
+    } catch {
       setSubmitError(
-        res.message ??
-          "Something went wrong. Please try again or call 0481 438 444.",
+        `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
-      trackEvent("estimator_submit_failed", { reason });
+      trackEvent("estimator_submit_failed", { reason: "transport_error" });
+    } finally {
+      setIsSubmitting(false);
     }
   }, [
     isSubmitting,
@@ -334,9 +244,6 @@ export function usePriceEstimator() {
     make,
     model,
     yearNumber,
-    validateName,
-    validatePhone,
-    validateAddress,
   ]);
 
   const handleReset = useCallback(() => {
@@ -360,26 +267,8 @@ export function usePriceEstimator() {
     setHoneypot("");
     setSubmitError("");
     setIsSuccess(false);
-    estimatorStartedRef.current = false;
-  }, []);
-
-  useEffect(() => {
-    if (!hasMountedRef.current) {
-      hasMountedRef.current = true;
-      return;
-    }
-    // Use preventScroll so focusing a step heading for accessibility
-    // doesn't yank the page — combined with `scroll-behavior: smooth`
-    // this was causing a "drag" while the user scrolled past the
-    // "How Much Is Your Car Worth?" section, e.g. when sessionStorage
-    // hydration moves the form from step 1 to step 2 mid-mount.
-    if (isSuccess) {
-      successHeadingRef.current?.focus({ preventScroll: true });
-      return;
-    }
-    const refs = [step1HeadingRef, step2HeadingRef, step3HeadingRef];
-    refs[step - 1]?.current?.focus({ preventScroll: true });
-  }, [isSuccess, step]);
+    analytics.resetStartedFlag();
+  }, [analytics]);
 
   return {
     // Step
@@ -434,7 +323,7 @@ export function usePriceEstimator() {
     isSuccess,
     handleSubmit,
     handleReset,
-    // Validators (for inline onChange/onBlur)
+    // Validators (re-exported for inline onChange/onBlur)
     validateName,
     validatePhone,
     validateAddress,

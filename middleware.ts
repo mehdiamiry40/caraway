@@ -22,7 +22,6 @@ function getClientIp(request: NextRequest): string {
 }
 
 export function middleware(request: NextRequest) {
-  // Only enforce on POST (Next.js server actions are POST requests).
   if (request.method !== "POST") {
     return NextResponse.next();
   }

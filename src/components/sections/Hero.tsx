@@ -1,11 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/analytics";
 
 const promises = [
   "Firm offer in 60 seconds",
@@ -23,30 +20,31 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Copy column */}
           <div className="relative z-10 lg:col-span-7">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-semibold text-on-dark-hi mb-6 backdrop-blur-sm">
+            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-medium text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Brisbane&apos;s friendly car buyers
             </p>
 
             <h1
               id="hero-heading"
-              className="font-display font-extrabold text-[clamp(2.75rem,7vw,5.5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="font-display font-semibold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
             >
-              Sell your car in{" "}
-              <span className="hl-orange">3&nbsp;steps</span>
+              Sell Your Car Today
               <br />
-              with <span className="hl-green">cash</span> on pickup.
+              in <span className="hl-green">Brisbane</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-on-dark-hi/85 leading-relaxed text-lg sm:text-xl font-light">
-              Tell us your make and model, get a firm offer in under a minute,
+              Tell us your make and model, get a fair offer in under a minute,
               and we&apos;ll drive to you — any condition.
+            </p>
+            <p className="mt-3 max-w-xl text-on-dark-hi/72 leading-relaxed text-sm sm:text-base">
+              Selected vehicles may receive up to $9,999. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-xl">
               <Link
                 href="/#price-estimator"
-                onClick={() => trackEvent("hero_cta_click", { target: "price-estimator" })}
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "group w-full sm:w-auto px-8",
@@ -89,17 +87,17 @@ function HeroArt() {
   return (
     <div className="relative mx-auto w-full max-w-[560px]">
       <span className="sr-only">
-        Offers up to $9,999 with same- or next-day pickup.
+        Selected vehicles may receive offers up to $9,999 with same- or next-day pickup.
       </span>
-      {/* orange floating tag (price) — decorative; sr-only sentence above covers the $9,999 figure */}
+      {/* orange floating tag (price) — decorative; nearby copy explains that the top figure applies to selected vehicles */}
       <div
         aria-hidden="true"
         className="absolute -top-4 right-2 sm:-top-6 sm:-right-2 rotate-[-6deg] z-20 rounded-2xl bg-accent text-accent-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--accent)/0.3)]"
       >
-        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-85">
-          Top offer
+        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-medium opacity-85">
+          Selected
         </span>
-        <span className="block font-display font-extrabold text-2xl tabular-nums leading-none mt-1">
+        <span className="block font-display font-semibold text-2xl tabular-nums leading-none mt-1">
           $9,999
         </span>
       </div>
@@ -109,10 +107,10 @@ function HeroArt() {
         aria-hidden="true"
         className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-8 rotate-[4deg] z-20 rounded-2xl bg-cta text-cta-foreground px-5 py-3 shadow-xl ring-1 ring-[hsl(var(--cta)/0.4)]"
       >
-        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-bold opacity-90">
+        <span className="block text-[0.6875rem] uppercase tracking-[0.08em] font-medium opacity-90">
           Pickup
         </span>
-        <span className="block font-display font-extrabold text-lg leading-none mt-1">
+        <span className="block font-display font-semibold text-lg leading-none mt-1">
           Same-day
         </span>
       </div>

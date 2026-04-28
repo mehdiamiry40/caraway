@@ -4,6 +4,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { PageShell } from "@/components/layout/PageShell";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import {
   categoryMap,
   categorySlug,
@@ -11,7 +12,7 @@ import {
   indexableBlogPosts,
 } from "@/data/blog-posts";
 import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export const dynamicParams = false;
 
@@ -62,14 +63,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
     },
   };
-}
-
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-AU", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
 }
 
 export default async function BlogCategoryPage({ params }: Props) {
@@ -162,45 +155,7 @@ export default async function BlogCategoryPage({ params }: Props) {
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
               {posts.map((post) => (
                 <li key={post.slug}>
-                  <article className="h-full">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
-                    >
-                      <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
-                        {post.category}
-                      </span>
-                      <h2
-                        className="font-display text-lg sm:text-xl font-bold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors"
-                        style={{ letterSpacing: "var(--tracking-tight)" }}
-                      >
-                        {post.title}
-                      </h2>
-                      <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                      <div className="mt-auto pt-5">
-                        <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
-                          <time dateTime={post.date} className="tabular-nums">
-                            {formatDate(post.date)}
-                          </time>
-                          <span aria-hidden>·</span>
-                          <span className="inline-flex items-center gap-1">
-                            <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
-                            {post.readTime}
-                          </span>
-                          <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
-                            Read
-                            <ArrowRight
-                              className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                              strokeWidth={1.75}
-                              aria-hidden
-                            />
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </article>
+                  <BlogPostCard post={post} headingLevel="h2" />
                 </li>
               ))}
             </ul>
