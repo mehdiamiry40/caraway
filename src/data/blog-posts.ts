@@ -1,6 +1,6 @@
 import { rawBlogPosts } from "@/content/blog/posts";
 import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
-import { createBlogPost } from "@/lib/blog-post-template";
+import { createBlogPost } from "@/lib/blog-post";
 
 export type { BlogPost };
 
