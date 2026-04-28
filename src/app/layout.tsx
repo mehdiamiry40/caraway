@@ -28,6 +28,7 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL } from "@/lib/site";
+import { shouldNoindexSite } from "@/lib/noindex";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -103,7 +104,7 @@ export const metadata: Metadata = {
     "geo.placename": "Brisbane",
   },
   robots:
-    process.env.VERCEL_ENV !== "production"
+    shouldNoindexSite()
       ? { index: false, follow: false }
       : {
           index: true,

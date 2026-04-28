@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
+import type { BlogPost } from "@/content/blog/types";
+import { blogPostCanonicalUrl, calcWordCount } from "@/lib/blog-post";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
+
+export { blogPostCanonicalUrl, calcWordCount, createBlogPost } from "@/lib/blog-post";
 
 const BLOG_AUTHOR = {
   name: "Sam Williams",
@@ -15,39 +18,6 @@ const BLOG_IMAGE = {
   height: 800,
   alt: "Caraway cash for cars Brisbane",
 } as const;
-
-type BlogPostOptions = {
-  isIndexable?: boolean;
-};
-
-/** Count words in a plain-text string by splitting on whitespace. */
-export function calcWordCount(content: string): number {
-  return content.split(/\s+/).filter(Boolean).length;
-}
-
-/** Calculate reading time from content paragraphs (~200 WPM average). */
-function calcReadTime(content: string[]): string {
-  const words = calcWordCount(content.join(" "));
-  const minutes = Math.max(1, Math.round(words / 200));
-  return `${minutes} min read`;
-}
-
-export function blogPostCanonicalUrl(slug: string): string {
-  return `${SITE_URL}/blog/${slug}`;
-}
-
-export function createBlogPost(
-  post: RawBlogPostEntry,
-  options: BlogPostOptions = {},
-): BlogPost {
-  return {
-    ...post,
-    updatedAt: post.updatedAt ?? post.date,
-    canonicalUrl: blogPostCanonicalUrl(post.slug),
-    readTime: calcReadTime(post.content),
-    isIndexable: options.isIndexable ?? true,
-  };
-}
 
 export function buildMissingBlogPostMetadata(): Metadata {
   return {

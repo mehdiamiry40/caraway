@@ -23,6 +23,7 @@ const envSchema = z.object({
   // address suggestions without exposing the API key to the client.
   GOOGLE_PLACES_API_KEY: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
+  NEXT_PUBLIC_NOINDEX: z.optional(z.enum(["1"])),
   VERCEL_ENV: z.optional(z.enum(["production", "preview", "development"])),
   VERCEL_GIT_COMMIT_SHA: z.optional(z.string()),
   VERCEL_REGION: z.optional(z.string()),
