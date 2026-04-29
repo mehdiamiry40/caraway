@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/sections/Hero";
 import HomeBelowFold from "@/views/HomeBelowFold";
 
@@ -14,6 +15,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

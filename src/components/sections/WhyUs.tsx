@@ -1,67 +1,149 @@
+import type { LucideIcon } from "lucide-react";
+import { BadgeCheck, ShieldCheck, BanknoteArrowDown, Wrench } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
-const reasons = [
-  {
-    title: "Clear quoted price",
-    description:
-      "The agreed quote is confirmed in writing before pickup. If the vehicle matches the details provided, there are no surprise towing deductions on the day.",
-  },
+interface Reason {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}
+
+const featureReason: Reason = {
+  title: "One quoted price, locked in writing",
+  description:
+    "The agreed offer is confirmed before the truck is booked. If the vehicle matches the details you gave, there are no surprise towing deductions on the day.",
+  icon: BadgeCheck,
+};
+
+const supportingReasons: Reason[] = [
   {
     title: "Fully insured pickups",
     description:
       "Public liability and goods-in-transit cover. If we scratch it loading, we wear it — not you.",
+    icon: ShieldCheck,
   },
   {
     title: "Paid when we pick up",
     description:
       "We don't drive away with your keys until you've been paid the agreed amount in your preferred method.",
+    icon: BanknoteArrowDown,
   },
   {
     title: "Rough to written off",
     description:
       "Old daily drivers, damaged, unregistered, scrap, fleet. If it's not a fit, we'll say so upfront.",
+    icon: Wrench,
   },
 ];
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="section-y bg-secondary border-t border-b border-border">
+    <section
+      id="why-us"
+      className="section-y bg-secondary border-t border-b border-border"
+      aria-labelledby="why-us-heading"
+    >
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <Reveal className="lg:col-span-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
-            <p className="eyebrow mb-5">Why Caraway</p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground mb-6 leading-[1.1] text-balance">
-              One price.
-              <br />
-              One pickup. Done.
-            </h2>
-            <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
-              Private buyers flake. Dealers lowball trade-ins. We&apos;re a
-              buyer, not an auction — just a straightforward offer and a truck
-              at your door.
-            </p>
-          </Reveal>
+        <Reveal className="max-w-2xl mb-12 md:mb-16">
+          <p className="eyebrow mb-5">Why Caraway</p>
+          <h2
+            id="why-us-heading"
+            className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance"
+          >
+            One price.
+            <br />
+            <span className="hl-orange">One pickup.</span> Done.
+          </h2>
+          <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
+            Private buyers flake. Dealers lowball trade-ins. We&apos;re a buyer,
+            not an auction — just a straightforward offer and a truck at your door.
+          </p>
+        </Reveal>
 
-          <RevealGroup className="lg:col-span-7">
-            <dl className="divide-y divide-border border-t border-border">
-              {reasons.map((reason) => (
-                <RevealItem
-                  key={reason.title}
-                  className="relative py-6 sm:py-8 grid grid-cols-12 gap-2 sm:gap-4 md:gap-6 group"
-                >
-                  <span aria-hidden="true" className="absolute left-0 top-8 bottom-8 w-[2px] bg-primary/0 group-hover:bg-primary transition-colors duration-300" />
-                  <dt className="col-span-12 md:col-span-5 pl-3 font-display text-foreground text-base sm:text-lg">
-                    {reason.title}
-                  </dt>
-                  <dd className="col-span-12 md:col-span-7 pl-3 md:pl-0 text-foreground/80 text-[0.9375rem] sm:text-base leading-relaxed">
-                    {reason.description}
-                  </dd>
-                </RevealItem>
-              ))}
-            </dl>
-          </RevealGroup>
-        </div>
+        <RevealGroup>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+            {/* Featured card spans the full row on mobile, half on desktop */}
+            <RevealItem className="lg:col-span-6 lg:row-span-2">
+              <FeatureReasonCard reason={featureReason} />
+            </RevealItem>
+
+            {supportingReasons.map((reason, idx) => (
+              <RevealItem
+                key={reason.title}
+                className={
+                  // first two share a row on lg, third spans full width below
+                  idx < 2
+                    ? "lg:col-span-6"
+                    : "lg:col-span-6"
+                }
+              >
+                <SupportingReasonCard reason={reason} />
+              </RevealItem>
+            ))}
+          </div>
+        </RevealGroup>
       </div>
     </section>
+  );
+}
+
+function FeatureReasonCard({ reason }: { reason: Reason }) {
+  const Icon = reason.icon;
+  return (
+    <article className="relative h-full overflow-hidden rounded-3xl bg-primary text-on-dark-hi p-7 sm:p-9 ring-1 ring-[hsl(var(--on-dark-hi)/0.1)]">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[hsl(var(--accent)/0.32)] blur-3xl"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-[hsl(var(--cta)/0.28)] blur-3xl"
+      />
+      <div className="relative flex h-full flex-col">
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--on-dark-hi)/0.14)] ring-1 ring-[hsl(var(--on-dark-hi)/0.18)] text-on-dark-hi">
+          <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
+        </span>
+        <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/70">
+          The Caraway promise
+        </p>
+        <h3 className="mt-2 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi text-balance">
+          {reason.title}
+        </h3>
+        <p className="mt-4 max-w-md text-[0.9375rem] sm:text-base leading-relaxed text-on-dark-hi/85">
+          {reason.description}
+        </p>
+        <ul className="mt-auto pt-8 flex flex-wrap gap-2">
+          {["No bait-and-switch", "No tow deductions", "Confirmed in writing"].map((tag) => (
+            <li
+              key={tag}
+              className="inline-flex items-center rounded-full border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
+
+function SupportingReasonCard({ reason }: { reason: Reason }) {
+  const Icon = reason.icon;
+  return (
+    <article className="group relative h-full overflow-hidden rounded-3xl border border-border/70 bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)]">
+      <div className="flex items-start gap-4 sm:gap-5">
+        <span className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-cta/15 text-cta transition-colors duration-300 group-hover:bg-cta/25">
+          <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />
+        </span>
+        <div className="min-w-0">
+          <h3 className="font-display text-lg sm:text-xl text-foreground leading-snug">
+            {reason.title}
+          </h3>
+          <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
+            {reason.description}
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }

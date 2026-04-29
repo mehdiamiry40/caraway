@@ -43,7 +43,7 @@ export function HeaderFrame({ children }: { children: ReactNode }) {
       ref={ref}
       data-scrolled="false"
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe",
+        "fixed top-0 left-0 right-0 z-50 pt-safe pl-safe pr-safe transition-shadow duration-300 ease-[var(--ease-out-quint)]",
       )}
     >
       {children}
