@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import { reviews as allReviews, type Review } from "@/data/reviews";
 import { Reveal } from "@/components/ui/motion";
 
@@ -9,14 +9,21 @@ const FEATURED = allReviews.slice(0, 9);
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="relative flex w-[17rem] sm:w-[20rem] md:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 sm:p-7 md:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)]">
+    <article className="relative flex w-[17rem] sm:w-[20rem] md:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 sm:p-7 md:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)] transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_12px_24px_hsl(var(--shadow-color)/0.12)]">
       <Quote
         aria-hidden="true"
         className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.1]"
         strokeWidth={1}
       />
-      <p className="eyebrow relative z-10 mb-5">Example situation</p>
-      <p className="relative z-10 flex-1 text-[0.9375rem] leading-relaxed text-foreground/85">
+      <div className="relative z-10 flex items-center justify-between">
+        <p className="eyebrow">Example situation</p>
+        <span className="star-row" aria-hidden="true">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Star key={i} className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
+          ))}
+        </span>
+      </div>
+      <p className="relative z-10 mt-5 flex-1 text-[0.9375rem] leading-relaxed text-foreground/85">
         {review.text}
       </p>
       <footer className="relative z-10 mt-6 flex items-center gap-3 border-t border-border pt-5">
@@ -49,6 +56,17 @@ export function Testimonials() {
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
             These examples reflect common situations customers ask us about. Actual experiences, vehicle values, and pickup times vary.
           </p>
+          <div className="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-full border border-border bg-card pl-2 pr-4 py-1.5 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)]">
+            <span className="star-row" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="h-4 w-4 fill-current" strokeWidth={0} />
+              ))}
+            </span>
+            <span className="text-sm font-semibold text-foreground">5-star service</span>
+            <span className="text-xs text-foreground/65">
+              · clear quotes, no surprises
+            </span>
+          </div>
         </Reveal>
       </div>
 

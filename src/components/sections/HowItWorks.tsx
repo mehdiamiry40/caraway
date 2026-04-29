@@ -58,32 +58,41 @@ export function HowItWorks() {
         </Reveal>
 
         <RevealGroup>
-          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {steps.map((step) => (
-              <RevealItem
-                as="li"
-                key={step.number}
-                className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden flex items-end justify-start p-5`}>
-                  <span className={`font-display font-semibold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
-                    {step.number}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-display font-semibold text-primary leading-snug">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
-                    {step.description}
-                  </p>
-                  <p className="mt-auto pt-5 text-xs font-medium uppercase tracking-[0.08em] text-cta">
-                    {step.timing}
-                  </p>
-                </div>
-              </RevealItem>
-            ))}
-          </ol>
+          <div className="relative">
+            {/* Desktop dotted timeline connector behind the cards */}
+            <div
+              aria-hidden="true"
+              className="hidden lg:block pointer-events-none absolute left-[12.5%] right-[12.5%] top-[20%] h-px step-timeline"
+            />
+            <ol className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+              {steps.map((step) => (
+                <RevealItem
+                  as="li"
+                  key={step.number}
+                  className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl hover:border-primary/40"
+                >
+                  <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden flex items-end justify-start p-5`}>
+                    <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[hsl(var(--on-dark-hi)/0.18)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className={`relative font-display font-semibold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
+                      {step.number}
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-display font-semibold text-primary leading-snug">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
+                      {step.description}
+                    </p>
+                    <p className="mt-auto pt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-cta">
+                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
+                      {step.timing}
+                    </p>
+                  </div>
+                </RevealItem>
+              ))}
+            </ol>
+          </div>
         </RevealGroup>
 
         <Reveal className="mt-12 text-center">

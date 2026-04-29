@@ -50,7 +50,7 @@ export function TrustBadges() {
           {credentials.map(({ icon: Icon, label }) => (
             <li
               key={label}
-              className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-primary"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-primary transition-colors duration-200 hover:border-primary/40 hover:bg-primary/5"
             >
               <Icon size={13} strokeWidth={2} aria-hidden="true" />
               {label}

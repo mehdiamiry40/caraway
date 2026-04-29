@@ -101,22 +101,27 @@ export function ServiceAreas() {
               const hubs = hubsFor(region);
               return (
                 <RevealItem as="li" key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08),0_32px_64px_-12px_hsl(var(--shadow-color)/0.14)] hover:border-primary/40">
-                    <div className="flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15 text-primary transition-colors duration-300 group-hover:bg-primary/20">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08),0_32px_64px_-12px_hsl(var(--shadow-color)/0.14)] hover:border-primary/40">
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/[0.06] transition-all duration-500 group-hover:bg-primary/[0.12] group-hover:scale-110"
+                    />
+                    <div className="relative flex items-center justify-between">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-colors duration-300 group-hover:bg-primary/20">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="font-mono text-xs tabular-nums tracking-[0.08em] text-foreground/70">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta">
+                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
                         {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
                       </span>
                     </div>
-                    <h3 className="mt-5 font-display text-lg sm:text-xl text-foreground">
+                    <h3 className="relative mt-5 font-display text-lg sm:text-xl text-foreground">
                       {region.label}
                     </h3>
-                    <p className="mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
+                    <p className="relative mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
                       {region.description}
                     </p>
-                    <ul className="mt-5 flex flex-wrap gap-1.5">
+                    <ul className="relative mt-5 flex flex-wrap gap-1.5">
                       {hubs.map((hub) => (
                         <li key={hub.slug}>
                           <Link
