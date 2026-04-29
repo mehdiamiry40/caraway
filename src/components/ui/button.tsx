@@ -4,39 +4,33 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
-    // Looping-style buttons: fully rounded pills with a clear sentence-case label.
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
-    "font-semibold tracking-[-0.005em]",
-    "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md",
+    "font-medium",
+    "transition-opacity duration-150 ease-[var(--ease-out-quint)]",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "disabled:pointer-events-none disabled:opacity-50 touch-manipulation",
   ].join(" "),
   {
     variants: {
       variant: {
-        // Bright lime-green primary — mirrors Looping's "check your car" CTA.
         default:
-          "bg-cta text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5),0_12px_24px_hsl(var(--cta)/0.25)] hover:bg-cta/95 hover:shadow-[0_6px_0_0_hsl(var(--cta)/0.55),0_14px_28px_hsl(var(--cta)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Deep purple — brand primary used for secondary CTAs on light surfaces.
+          "bg-foreground text-background hover:opacity-90 active:opacity-95",
         primary:
-          "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:shadow-[0_6px_0_0_hsl(var(--primary)/0.55),0_14px_28px_hsl(var(--primary)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Orange emphasis — used for highlight CTAs.
+          "bg-foreground text-background hover:opacity-90 active:opacity-95",
         secondary:
-          "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:shadow-[0_6px_0_0_hsl(var(--accent)/0.55),0_14px_28px_hsl(var(--accent)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Light outline for quiet actions on white surfaces.
+          "bg-secondary text-foreground hover:bg-muted",
         outline:
-          "border-2 border-primary/15 bg-card text-primary hover:bg-primary/5 hover:border-primary/25 active:translate-y-px",
+          "border border-border bg-background text-foreground hover:bg-secondary",
         ghost:
-          "bg-transparent text-primary hover:bg-primary/8",
-        // Outline-on-dark — used on purple bands for secondary actions.
+          "bg-transparent text-foreground hover:bg-secondary",
         inkOutline:
-          "border-2 border-[hsl(var(--on-dark-hi)/0.35)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi)/0.08)] hover:border-[hsl(var(--on-dark-hi)/0.55)]",
+          "border border-[hsl(var(--on-dark-hi)/0.4)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi)/0.1)]",
       },
       size: {
-        default: "h-12 px-6 text-[0.9375rem]",
-        sm: "h-10 px-5 text-sm",
-        lg: "h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg",
-        icon: "h-12 w-12",
+        default: "h-10 px-5 text-sm",
+        sm: "h-9 px-4 text-sm",
+        lg: "h-12 px-7 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
@@ -63,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span className="mr-2 h-5 w-5 animate-spin motion-reduce:animate-none rounded-full border-[2.5px] border-current border-t-transparent" aria-hidden="true" />
+          <span className="mr-2 h-4 w-4 animate-spin motion-reduce:animate-none rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
         ) : null}
         {children}
       </button>

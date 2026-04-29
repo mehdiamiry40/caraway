@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { Phone, Clock } from "lucide-react";
 import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { GetMyQuoteButton } from "./GetMyQuoteButton";
 import { HeaderFrame } from "./HeaderFrame";
-import { BUSINESS } from "@/lib/site";
 
 const navLinks = [
   { label: "How it works", href: "/#how-it-works" },
@@ -24,60 +22,36 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      {/* Top utility strip — dark purple band with phone + hours */}
-      <div className="hidden sm:block w-full bg-ink-deep text-on-dark-hi">
-        <div className="site-container flex items-center justify-between h-9 text-xs font-medium">
-          <span className="inline-flex items-center gap-2 text-on-dark-hi/80">
-            <Clock className="h-3.5 w-3.5 text-cta" aria-hidden="true" />
-            Open today · {BUSINESS.hours} · 7 days
-          </span>
-          <div className="flex items-center gap-5">
-            <span className="text-on-dark-hi/70">
-              Free pickup across Greater Brisbane
-            </span>
-            <a
-              href={BUSINESS.phoneTel}
-              className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors"
-              aria-label={`Call ${BUSINESS.phoneDisplay}`}
-            >
-              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              {BUSINESS.phoneDisplay}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main nav */}
-      <div className="bg-background border-b border-border/80">
-        <div className="site-container flex items-center justify-between h-14 sm:h-16 lg:h-[72px] gap-3 lg:gap-6">
+      <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
+        <div className="site-container flex items-center justify-between h-14 sm:h-16 gap-4">
           <Link
             href="/"
             aria-label="Caraway — Home"
             className="flex items-center gap-2 group shrink-0"
           >
-            <span className="font-display font-semibold text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
-              caraway<span className="text-accent">.</span>
+            <span className="font-medium text-lg tracking-tight text-foreground lowercase transition-opacity duration-150 group-hover:opacity-70">
+              caraway
             </span>
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-1 flex-1 justify-center"
+            className="hidden lg:flex items-center gap-6 flex-1 justify-center"
           >
             <ServicesDropdownClient serviceLinks={serviceLinks} />
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors duration-200 px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <GetMyQuoteButton size="sm">Get my quote</GetMyQuoteButton>
+          <div className="hidden lg:flex items-center shrink-0">
+            <GetMyQuoteButton size="sm">Get a quote</GetMyQuoteButton>
           </div>
 
           <MobileMenuClient serviceLinks={serviceLinks} />
