@@ -40,7 +40,10 @@ export function Accordion({
         return (
           <div
             key={`${index}-${item.question}`}
-            className="border-b border-border"
+            className={cn(
+              "border-b border-border transition-colors duration-200",
+              isActive && "border-primary/40"
+            )}
           >
             <HeadingTag className="m-0">
               <button
@@ -57,16 +60,16 @@ export function Accordion({
               >
                 <span
                   className={cn(
-                    "text-base font-medium break-words [overflow-wrap:anywhere] transition-opacity duration-150",
-                    "text-foreground group-hover:opacity-70"
+                    "font-display text-base sm:text-lg break-words [overflow-wrap:anywhere] transition-colors duration-200",
+                    isActive ? "text-foreground" : "text-foreground group-hover:text-primary"
                   )}
                 >
                   {item.question}
                 </span>
                 <div
                   className={cn(
-                    "flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full text-muted-foreground transition-transform duration-200 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
-                    isActive && "rotate-45"
+                    "flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full border border-border bg-secondary text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] motion-reduce:transition-none motion-reduce:duration-0",
+                    isActive && "rotate-45 border-primary/50 bg-primary/15 text-primary"
                   )}
                 >
                   <Plus className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
@@ -87,7 +90,7 @@ export function Accordion({
               )}
             >
               <div className="overflow-hidden">
-                <div className="pb-6 pt-0 pr-10 text-sm sm:text-base text-muted-foreground leading-relaxed break-words [overflow-wrap:anywhere]">
+                <div className="pb-6 pt-0 pr-10 text-[0.9375rem] sm:text-base text-foreground/80 leading-relaxed break-words [overflow-wrap:anywhere]">
                   {item.answer}
                 </div>
               </div>

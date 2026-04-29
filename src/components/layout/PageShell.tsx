@@ -14,7 +14,7 @@ interface PageShellProps {
   subtitle?: ReactNode;
   eyebrow?: string;
   children: ReactNode;
-  /** Backwards-compatible prop, kept so existing call-sites still type-check. */
+  /** Render the hero on the aurora surface (default) or a plain background. */
   heroVariant?: "aurora" | "plain";
 }
 
@@ -24,23 +24,31 @@ export function PageShell({
   subtitle,
   eyebrow,
   children,
+  heroVariant = "aurora",
 }: PageShellProps) {
+  const isAurora = heroVariant === "aurora";
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe">
-        <section className="bg-background py-10 sm:py-14 lg:py-16 border-b border-border">
-          <div className="site-container">
+        <section
+          className={
+            isAurora
+              ? "aurora-surface py-10 sm:py-14 lg:py-16"
+              : "bg-background py-8 sm:py-12 lg:py-14"
+          }
+        >
+          <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
-            {eyebrow && <p className="eyebrow mt-6 mb-3">{eyebrow}</p>}
+            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
             <h1
-              className="font-medium text-[clamp(2rem,5vw,3rem)] leading-tight text-foreground text-balance max-w-3xl mt-4 mb-4"
+              className="font-display text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mt-4 mb-5"
               style={{ letterSpacing: "var(--tracking-display)" }}
             >
               {title}
             </h1>
             {subtitle && (
-              <div className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl">
+              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
                 {subtitle}
               </div>
             )}
