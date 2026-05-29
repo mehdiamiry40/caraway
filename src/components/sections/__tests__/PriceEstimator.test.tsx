@@ -137,7 +137,7 @@ describe("PriceEstimator", () => {
     await waitFor(() => {
       expect(submitQuoteMock).toHaveBeenCalledTimes(1);
     });
-    expect(await screen.findByText(/your quote is on its way/i)).toBeInTheDocument();
+    expect(await screen.findByText(/your estimate is on its way/i)).toBeInTheDocument();
     expect(trackEventMock).toHaveBeenCalledWith(
       "estimator_submitted",
       expect.objectContaining({ make: "Toyota", model: "Corolla" })
@@ -163,7 +163,7 @@ describe("PriceEstimator", () => {
     await user.click(getVisibleClaimButton());
 
     // Honeypot path fakes a success without contacting the server.
-    expect(await screen.findByText(/your quote is on its way/i)).toBeInTheDocument();
+    expect(await screen.findByText(/your estimate is on its way/i)).toBeInTheDocument();
     expect(submitQuoteMock).not.toHaveBeenCalled();
   });
 });

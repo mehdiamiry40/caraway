@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 overflow-x-clip">
+      <main id="main-content" className="flex-1 overflow-x-clip pb-[5.5rem] lg:pb-0">
         <Hero />
         <HomeBelowFold />
       </main>

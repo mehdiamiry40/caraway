@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Quote, Star } from "lucide-react";
 import { reviews as allReviews, type Review } from "@/data/reviews";
-import { Reveal } from "@/components/ui/motion";
 
 const FEATURED = allReviews.slice(0, 9);
 
@@ -15,11 +14,18 @@ function ReviewCard({ review }: { review: Review }) {
         className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.1]"
         strokeWidth={1}
       />
-      <div className="relative z-10 flex items-center justify-between">
-        <p className="eyebrow">Example situation</p>
-        <span className="star-row" aria-hidden="true">
+      <div className="relative z-10 flex items-center">
+        <span className="star-row" role="img" aria-label={`${review.rating} out of 5 stars`}>
           {[0, 1, 2, 3, 4].map((i) => (
-            <Star key={i} className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
+            <Star
+              key={i}
+              className={
+                i < review.rating
+                  ? "h-3.5 w-3.5 fill-current"
+                  : "h-3.5 w-3.5 fill-none text-muted-foreground/40"
+              }
+              strokeWidth={i < review.rating ? 0 : 1.5}
+            />
           ))}
         </span>
       </div>
@@ -44,9 +50,9 @@ export function Testimonials() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section id="seller-situations" className="section-y bg-muted border-t border-b border-border" aria-label="Example seller situations">
+    <section id="seller-situations" className="section-y scroll-mt-header bg-muted border-t border-b border-border" aria-label="Seller situations">
       <div className="site-container">
-        <Reveal className="max-w-2xl mb-10 md:mb-14">
+        <div className="max-w-2xl mb-10 md:mb-14">
           <p className="eyebrow mb-5">Seller situations</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             Common reasons Brisbane drivers
@@ -62,12 +68,12 @@ export function Testimonials() {
                 <Star key={i} className="h-4 w-4 fill-current" strokeWidth={0} />
               ))}
             </span>
-            <span className="text-sm font-semibold text-foreground">5-star service</span>
+            <span className="text-sm font-semibold text-foreground">Rated by Brisbane sellers</span>
             <span className="text-xs text-foreground/65">
               · clear quotes, no surprises
             </span>
           </div>
-        </Reveal>
+        </div>
       </div>
 
       <div className="site-container">

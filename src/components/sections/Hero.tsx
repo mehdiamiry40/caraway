@@ -7,7 +7,7 @@ import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const promises = [
-  "Firm offer in 60 seconds",
+  "Instant estimate in 60 seconds",
   "Free pickup across Brisbane",
   "Cash on the spot",
 ];
@@ -29,7 +29,7 @@ export function Hero() {
 
             <h1
               id="hero-heading"
-              className="font-display font-semibold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-[var(--tracking-display)] text-on-dark-hi text-balance"
+              className="font-display font-semibold text-[clamp(2.75rem,6.25vw,5rem)] leading-[0.98] tracking-display text-on-dark-hi text-balance"
             >
               Sell Your Car Today
               <br />
@@ -152,7 +152,7 @@ function HeroArt() {
         <span className="text-xs font-semibold tracking-tight">Fully insured</span>
       </div>
 
-      <div className="relative aspect-[4/5] sm:aspect-[5/6] rounded-[2.5rem] overflow-hidden ring-4 ring-[hsl(var(--on-dark-hi)/0.18)] bg-plate shadow-[0_30px_80px_-20px_hsl(var(--ink-deep)/0.6)]">
+      <div className="relative aspect-[4/5] sm:aspect-[5/6] rounded-4xl overflow-hidden ring-4 ring-[hsl(var(--on-dark-hi)/0.18)] bg-plate shadow-[0_30px_80px_-20px_hsl(var(--ink-deep)/0.6)]">
         <Image
           src="/images/tow-truck-hero.webp"
           alt="Caraway flatbed tow truck collecting a customer's car for cash in Brisbane — same-day pickup with free towing across Greater Brisbane"

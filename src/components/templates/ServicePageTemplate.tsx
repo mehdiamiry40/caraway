@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { QuoteForm } from "@/components/sections/QuoteForm";
@@ -40,8 +41,8 @@ export default function ServicePageTemplate({
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="aurora-surface py-10 sm:py-14 lg:py-16">
+      <main id="main-content" className="flex-1 mt-header-safe pb-[5.5rem] lg:pb-0">
+        <section className="aurora-surface section-y-hero">
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             <p className="eyebrow mt-6 mb-4">Service</p>
@@ -84,7 +85,7 @@ export default function ServicePageTemplate({
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+              <div className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
                 <h3 className="text-sm font-display mb-1 text-foreground">Why Caraway</h3>
                 <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s cash-for-cars buyer</p>
                 <ul className="space-y-3.5">
@@ -100,7 +101,7 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Related services" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                <nav aria-label="Related services" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related services</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedServiceData.map(s => (
@@ -118,7 +119,7 @@ export default function ServicePageTemplate({
               )}
 
               {relatedSuburbData.length > 0 && (
-                <nav aria-label="Service areas" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                <nav aria-label="Service areas" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Service areas</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedSuburbData.map(s => (
@@ -136,7 +137,7 @@ export default function ServicePageTemplate({
               )}
 
               {relatedPosts.length > 0 && (
-                <nav aria-label="Related articles" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                <nav aria-label="Related articles" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedPosts.map(p => (
@@ -161,6 +162,7 @@ export default function ServicePageTemplate({
       </main>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

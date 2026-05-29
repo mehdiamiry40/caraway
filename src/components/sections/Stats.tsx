@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import { Banknote, ShieldCheck, Truck, Users } from "lucide-react";
 import { PRICE_RANGE_LABEL } from "@/lib/site";
@@ -10,12 +9,6 @@ interface StatDef {
   value: string;
   label: string;
   icon: LucideIcon;
-  /** Numeric target for count-up animation. Undefined = fade-in only. */
-  animateTo?: number;
-  /** Decimal places for the animated number. */
-  decimals?: number;
-  /** Suffix appended after the animated number. */
-  suffix?: string;
   /** Optional emphasis tone — only the featured stat uses this. */
   feature?: boolean;
 }
@@ -33,42 +26,6 @@ const supportingStats: StatDef[] = [
   { value: "Fully insured", label: "Public liability and goods-in-transit cover on every pickup", icon: ShieldCheck },
   { value: "Same- or next-day", label: "Usually same- or next-day pickup, subject to truck availability", icon: Truck },
 ];
-
-const ANIMATION_DURATION = 1000;
-
-function useCountUp(target: number | undefined, decimals: number, started: boolean) {
-  const [value, setValue] = useState<number | null>(null);
-  const frameRef = useRef(0);
-
-  const prefersReducedMotion = useMemo(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    [],
-  );
-
-  useEffect(() => {
-    if (!started || target === undefined || prefersReducedMotion) return;
-
-    const startTime = performance.now();
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / ANIMATION_DURATION, 1);
-      // Ease-out cubic for a natural feel
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(parseFloat((eased * target).toFixed(decimals)));
-      if (progress < 1) {
-        frameRef.current = requestAnimationFrame(animate);
-      }
-    };
-    frameRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameRef.current);
-  }, [started, target, decimals, prefersReducedMotion]);
-
-  // Reduced-motion users skip the animation and see the final value directly.
-  if (prefersReducedMotion && started && target !== undefined) return target;
-  return value;
-}
 
 export function Stats() {
   const [ref, inView] = useIntersectionVisibility<HTMLElement>({
@@ -136,11 +93,6 @@ function FeatureStatCard({ stat, inView }: { stat: StatDef; inView: boolean }) {
 
 function SupportStatItem({ stat, index, inView }: { stat: StatDef; index: number; inView: boolean }) {
   const Icon = stat.icon;
-  const animatedValue = useCountUp(stat.animateTo, stat.decimals ?? 0, inView);
-
-  const displayValue = stat.animateTo !== undefined && animatedValue !== null
-    ? `${animatedValue.toFixed(stat.decimals ?? 0)}${stat.suffix ?? ""}`
-    : stat.value;
 
   return (
     <li
@@ -153,7 +105,7 @@ function SupportStatItem({ stat, index, inView }: { stat: StatDef; index: number
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>
       <p className="mt-4 font-display text-base sm:text-lg leading-tight text-foreground">
-        {displayValue}
+        {stat.value}
       </p>
       <p className="mt-1.5 text-xs sm:text-sm text-foreground/75 leading-snug font-medium">
         {stat.label}

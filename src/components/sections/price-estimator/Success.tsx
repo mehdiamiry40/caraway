@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { PartyPopper, RotateCcw } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { PartyPopper, RotateCcw, Phone } from "lucide-react";
+import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { BUSINESS } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import type { EstimatorState } from "./types";
 
 export function Success({ state }: { state: EstimatorState }) {
@@ -30,14 +33,14 @@ export function Success({ state }: { state: EstimatorState }) {
             tabIndex={-1}
             className="font-display text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
           >
-            Your quote is on its way.
+            Your estimate is on its way.
           </h3>
           <p className="text-foreground/80 text-sm sm:text-base mb-5">
             We received your details for your{" "}
             <strong className="text-foreground">
               {year} {[make, model].filter(Boolean).join(" ")}
             </strong>
-            . We&apos;ll confirm your final price within the hour.
+            . We&apos;ll confirm your final price within 1 business day.
           </p>
           <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
             <div className="flex items-center">
@@ -46,7 +49,7 @@ export function Success({ state }: { state: EstimatorState }) {
               </span>
             </div>
             <div className="mt-3 flex items-baseline justify-between">
-              <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your quote</span>
+              <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your estimate</span>
               <span className="font-mono tabular-nums text-xl font-medium text-[hsl(var(--on-dark-hi))]">
                 ${result?.quote.toLocaleString()}
               </span>
@@ -57,7 +60,16 @@ export function Success({ state }: { state: EstimatorState }) {
             doesn&apos;t work for you, no worries.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button type="button" onClick={handleReset} variant="outline" size="lg">
+            <TrackedPhoneLink
+              href={BUSINESS.phoneTel}
+              location="estimator_success"
+              className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto")}
+              ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+            >
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              Want it sorted today? Call {BUSINESS.phoneDisplay}
+            </TrackedPhoneLink>
+            <Button type="button" onClick={handleReset} variant="outline" size="lg" className="w-full sm:w-auto">
               <RotateCcw className="w-4 h-4" aria-hidden="true" />
               Estimate another
             </Button>

@@ -45,6 +45,7 @@ export function usePriceEstimator() {
   const [address, setAddress] = useState("");
   const [addressTouched, setAddressTouched] = useState(false);
   const [addressError, setAddressError] = useState<string | null>(null);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [honeypot, setHoneypot] = useState("");
 
   // Submission
@@ -159,7 +160,10 @@ export function usePriceEstimator() {
 
   const handleSubmit = useCallback(async () => {
     if (isSubmitting) return;
-    if (!canSubmit || !result || condition === "") return;
+    // Note: we intentionally do NOT gate on canSubmit here — the validation
+    // block below runs on click and focuses the first invalid field, so the
+    // submit button can stay enabled (disabled buttons give no feedback).
+    if (!result || condition === "") return;
 
     // Honeypot — silently pretend success, same pattern as QuoteForm.
     if (honeypot.trim() !== "") {
@@ -194,13 +198,16 @@ export function usePriceEstimator() {
         name: name.trim(),
         phone: phone.trim(),
         make: make.trim(),
-        model: model.trim(),
+        // "Other" make hides the model field, so default the empty model to
+        // "Other" — the server schema requires a non-empty model, and without
+        // this every "Other"-make lead silently failed validation.
+        model: model.trim() || "Other",
         year: yearNumber,
         condition,
         address: address.trim(),
         quoteAmount: result.quote,
         honeypot: "",
-        marketingConsent: false,
+        marketingConsent,
       });
 
       if (res.success) {
@@ -234,7 +241,6 @@ export function usePriceEstimator() {
     }
   }, [
     isSubmitting,
-    canSubmit,
     result,
     condition,
     honeypot,
@@ -244,6 +250,7 @@ export function usePriceEstimator() {
     make,
     model,
     yearNumber,
+    marketingConsent,
   ]);
 
   const handleReset = useCallback(() => {
@@ -264,6 +271,7 @@ export function usePriceEstimator() {
     setAddress("");
     setAddressTouched(false);
     setAddressError(null);
+    setMarketingConsent(false);
     setHoneypot("");
     setSubmitError("");
     setIsSuccess(false);
@@ -314,6 +322,8 @@ export function usePriceEstimator() {
     setAddressTouched,
     addressError,
     setAddressError,
+    marketingConsent,
+    setMarketingConsent,
     honeypot,
     setHoneypot,
     // Submit

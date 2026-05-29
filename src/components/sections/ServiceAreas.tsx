@@ -11,7 +11,6 @@ import {
 import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 type RegionKey = "north" | "south" | "east" | "west" | "bayside" | "logan";
 
@@ -81,7 +80,7 @@ export function ServiceAreas() {
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="site-container">
-        <Reveal className="max-w-2xl mb-12 md:mb-16">
+        <div className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
             Free pickup across
@@ -92,15 +91,15 @@ export function ServiceAreas() {
             Brisbane, Ipswich, Logan, Redlands, and the Moreton Bay region.
             If you&apos;re a bit further out, ask — we usually make it work.
           </p>
-        </Reveal>
+        </div>
 
-        <RevealGroup>
+        <div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {REGIONS.map((region) => {
               const Icon = region.icon;
               const hubs = hubsFor(region);
               return (
-                <RevealItem as="li" key={region.key} className="h-full">
+                <li key={region.key} className="h-full">
                   <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08),0_32px_64px_-12px_hsl(var(--shadow-color)/0.14)] hover:border-primary/40">
                     <span
                       aria-hidden="true"
@@ -110,7 +109,7 @@ export function ServiceAreas() {
                       <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-colors duration-300 group-hover:bg-primary/20">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta-ink">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
                         {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
                       </span>
@@ -134,11 +133,11 @@ export function ServiceAreas() {
                       ))}
                     </ul>
                   </article>
-                </RevealItem>
+                </li>
               );
             })}
           </ul>
-        </RevealGroup>
+        </div>
 
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3">
           <Link

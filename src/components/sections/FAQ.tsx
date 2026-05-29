@@ -5,18 +5,17 @@ import { ArrowUpRight } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { faqs } from "@/data/home-faqs";
 import { trackEvent } from "@/lib/analytics";
-import { Reveal } from "@/components/ui/motion";
 
 export function FAQ() {
   return (
     <section
       id="faq"
-      className="section-y bg-muted border-t border-b border-border"
+      className="section-y scroll-mt-header bg-muted border-t border-b border-border"
       aria-label="Frequently asked questions"
     >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <Reveal className="lg:col-span-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
+          <div className="lg:col-span-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
             <p className="eyebrow mb-5">FAQ</p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
               Cash for cars,
@@ -42,16 +41,16 @@ export function FAQ() {
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </Link>
             </div>
-          </Reveal>
+          </div>
 
-          <Reveal className="lg:col-span-7">
+          <div className="lg:col-span-7">
             <Accordion
               items={faqs}
               onItemToggle={(question, isOpening) => {
                 if (isOpening) trackEvent("faq_opened", { question });
               }}
             />
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
