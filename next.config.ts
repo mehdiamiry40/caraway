@@ -5,6 +5,20 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const noopPolyfill = path.join(__dirname, "scripts/noop-polyfill.js");
 
+// Google Ads gtag.js (conversion measurement, see src/components/GoogleTag).
+// The library is served from googletagmanager.com; conversion pings/pixels go
+// to the Google ad domains below — including the AU ccTLD, since the audience
+// is Australian. The transport hosts are mirrored across connect-src and
+// img-src because gtag sends data via both fetch/beacon and image pixels.
+const GTAG_SCRIPT_SRC = "https://www.googletagmanager.com";
+const GTAG_TRANSPORT_SRC = [
+  "https://www.googletagmanager.com",
+  "https://www.google.com",
+  "https://www.google.com.au",
+  "https://www.googleadservices.com",
+  "https://googleads.g.doubleclick.net",
+].join(" ");
+
 export const legacyIndexingRedirects = [
   {
     source: "/how-it-works",
@@ -128,12 +142,12 @@ const nextConfig: NextConfig = {
           value: [
             "default-src 'self'",
             isDev
-              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
-              : "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+              ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`
+              : `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`,
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",
-            "img-src 'self' data: blob:",
-            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+            `img-src 'self' data: blob: ${GTAG_TRANSPORT_SRC}`,
+            `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com ${GTAG_TRANSPORT_SRC}`,
             "object-src 'none'",
             isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
             "base-uri 'self'",
