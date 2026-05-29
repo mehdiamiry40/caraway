@@ -34,7 +34,7 @@ export function Stats() {
 
   return (
     <section ref={ref} className="relative bg-muted border-y border-border" aria-label="What to expect">
-      <div className="site-container py-12 sm:py-16">
+      <div className="site-container section-y-tight">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
           <FeatureStatCard stat={featureStat} inView={inView} />
           <ul className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">

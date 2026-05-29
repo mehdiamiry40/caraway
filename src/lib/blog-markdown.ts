@@ -167,7 +167,7 @@ export function renderBlogContent(
             "table",
             {
               className:
-                "min-w-full divide-y divide-border/60 text-left text-sm sm:text-base",
+                "min-w-[34rem] sm:min-w-full divide-y divide-border/60 text-left text-sm sm:text-base",
             },
             createElement(
               "thead",
