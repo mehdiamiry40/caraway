@@ -50,6 +50,12 @@
   --color-cta: hsl(var(--cta));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
+  /* Accessible "ink" variants of the action/accent hues, for use as TEXT on
+     light surfaces. The bright --cta/--accent are AA only as *surfaces* (with
+     their plum foreground); as text on white they fall to ~2.4–2.8:1. */
+  --color-cta-ink: hsl(var(--cta-ink));
+  --color-accent-ink: hsl(var(--accent-ink));
+
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
   --shadow-md: 0 4px 8px hsl(var(--shadow-color) / 0.06), 0 10px 20px hsl(var(--shadow-color) / 0.10);
   --shadow-lg: 0 8px 16px hsl(var(--shadow-color) / 0.08), 0 24px 48px hsl(var(--shadow-color) / 0.14);
@@ -75,6 +81,7 @@
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
   --radius-full: 9999px;
 }
 
@@ -119,6 +126,12 @@
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
+  /* Single source of truth for the fixed-header height (utility strip + nav).
+     The utility strip is hidden below lg, so sm/md is nav-only. Consumed by the
+     mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
+     three can never drift apart. */
+  --header-h: 3.5rem;                  /* mobile: nav h-14 */
+
   --ink: 259 50% 20%;                  /* deep plum — dark purple band backgrounds */
   --ink-deep: 259 50% 15%;
   --ink-raised: 259 45% 30%;
@@ -129,8 +142,17 @@
   --plate: 50 92% 52%;                 /* #F5D012 — plate yellow */
   --plate-foreground: 261 39% 15%;
   /* Action green for CTA buttons and the "action" accent — distinct from --success. */
-  --cta: 87 59% 45%;                   /* #7CB92F — lime CTA green */
+  --cta: 87 59% 45%;                   /* #7CB92F — lime CTA green (SURFACE only) */
   --cta-foreground: 261 39% 15%;
+
+  /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
+     pass AA only as backgrounds (paired with plum -foreground); as text on
+     white they're ~2.4–2.8:1. These darker variants are for labels/links/text
+     on light surfaces, and the brighter ones for emphasis on dark bands. */
+  --cta-ink: 90 72% 27%;               /* ~#427613 — ~5.4:1 on white */
+  --accent-ink: 18 82% 40%;            /* ~#BA4512 — ~5.3:1 on white */
+  --cta-bright: 85 76% 62%;            /* emphasis lime on the --primary band (~4.8:1) */
+  --accent-on-dark: 25 100% 80%;       /* eyebrow peach on the --primary band (~4.6:1) */
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -140,12 +162,14 @@
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
+    --header-h: 4rem;                  /* sm/md: nav h-16, strip hidden until lg */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
+    --header-h: 6.75rem;               /* lg: strip h-9 (2.25) + nav h-[72px] (4.5) */
   }
 }
 
@@ -201,15 +225,8 @@
   h3[tabindex="-1"],
   h2[tabindex="-1"],
   h1[tabindex="-1"] {
-    scroll-margin-top: calc(5rem + env(safe-area-inset-top, 0px));
-  }
-
-  @media (min-width: 1024px) {
-    h3[tabindex="-1"],
-    h2[tabindex="-1"],
-    h1[tabindex="-1"] {
-      scroll-margin-top: calc(7rem + env(safe-area-inset-top, 0px));
-    }
+    /* header height + 1rem breathing gap (matches scroll-mt-header) */
+    scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
   }
 }
 
@@ -220,6 +237,11 @@
 
   .section-y-tight {
     @apply py-12 sm:py-16;
+  }
+
+  /* Quieter rhythm for inner-page hero bands (service/suburb templates). */
+  .section-y-hero {
+    @apply py-10 sm:py-14 lg:py-16;
   }
 
   .site-container {
@@ -236,24 +258,26 @@
     text-wrap: balance;
   }
 
-  /* Eyebrow — small orange label above a purple headline */
+  /* Eyebrow — small accent label above a headline. Uses the accessible
+     --accent-ink on light (the bright --accent is ~2.5:1 as small text). */
   .eyebrow {
     display: inline-block;
     font-size: 0.9375rem;
     font-weight: 600;
     letter-spacing: 0;
-    color: hsl(var(--accent));
+    color: hsl(var(--accent-ink));
   }
   .eyebrow-on-dark {
     display: inline-block;
     font-size: 0.9375rem;
     font-weight: 600;
-    color: hsl(var(--accent));
+    color: hsl(var(--accent-on-dark));
   }
 
-  /* "Highlight" word — used inline within a headline for colour mixing */
-  .hl-orange { color: hsl(var(--accent)); }
-  .hl-green { color: hsl(var(--cta)); }
+  /* "Highlight" word — inline emphasis within a headline. hl-orange sits on
+     light (accent-ink); hl-green sits on the dark purple bands (cta-bright). */
+  .hl-orange { color: hsl(var(--accent-ink)); }
+  .hl-green { color: hsl(var(--cta-bright)); }
   .hl-lilac { color: hsl(var(--secondary)); }
 
   .link-underline {
@@ -391,27 +415,27 @@
   &::-webkit-scrollbar { display: none; }
 }
 
+/* Elevation tokens — the recurring card shadows, centralised so elevation stays
+   consistent and retunable (replaces hand-rolled shadow-[…] repeats). */
+@utility shadow-card {
+  box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.04), 0 4px 8px hsl(var(--shadow-color) / 0.04);
+}
+@utility shadow-card-hover {
+  box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 8px 16px hsl(var(--shadow-color) / 0.08);
+}
+@utility shadow-card-xl {
+  box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.04), 0 8px 16px hsl(var(--shadow-color) / 0.06), 0 32px 64px -12px hsl(var(--shadow-color) / 0.1);
+}
+
 @utility mt-header-safe {
-  /* mobile: no utility strip, just nav (3.5rem) */
-  margin-top: calc(3.5rem + env(safe-area-inset-top, 0px));
-  @media (min-width: 640px) {
-    /* utility strip (2.25rem) + nav (4rem) */
-    margin-top: calc(6.25rem + env(safe-area-inset-top, 0px));
-  }
-  @media (min-width: 1024px) {
-    /* utility strip (2.25rem) + nav (4.5rem) */
-    margin-top: calc(6.75rem + env(safe-area-inset-top, 0px));
-  }
+  /* Offsets the fixed-header height (single source: --header-h). */
+  margin-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
 }
 
 @utility scroll-mt-header {
-  scroll-margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
-  @media (min-width: 640px) {
-    scroll-margin-top: calc(7.25rem + env(safe-area-inset-top, 0px));
-  }
-  @media (min-width: 1024px) {
-    scroll-margin-top: calc(7.75rem + env(safe-area-inset-top, 0px));
-  }
+  /* Header height + 1rem breathing gap so anchored sections land just below
+     the fixed header rather than flush against it. */
+  scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
 }
 
 @utility min-h-screen-safe {

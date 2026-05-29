@@ -25,7 +25,7 @@ export function Header() {
   return (
     <HeaderFrame>
       {/* Top utility strip — dark purple band with phone + hours */}
-      <div className="hidden sm:block w-full bg-ink-deep text-on-dark-hi">
+      <div className="hidden lg:block w-full bg-ink-deep text-on-dark-hi">
         <div className="site-container flex items-center justify-between h-9 text-xs font-medium">
           <span className="inline-flex items-center gap-2 text-on-dark-hi/80">
             <Clock className="h-3.5 w-3.5 text-cta" aria-hidden="true" />
@@ -37,7 +37,7 @@ export function Header() {
             </span>
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex items-center gap-1.5 text-on-dark-hi hover:text-cta transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-sm text-on-dark-hi hover:text-cta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />

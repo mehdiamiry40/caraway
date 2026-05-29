@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 const steps = [
   {
@@ -16,7 +15,7 @@ const steps = [
     title: "Get a firm cash offer",
     description:
       "We send a locked-in number — no haggle games, no bait-and-switch. Accept and we book a time.",
-    timing: "Within the hour",
+    timing: "Within 1 business day",
     tint: "bg-accent",
     numberClass: "text-primary",
   },
@@ -42,11 +41,11 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-y bg-background relative">
+    <section id="how-it-works" className="section-y scroll-mt-header bg-background relative">
       <div className="site-container">
-        <Reveal className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
+        <div className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-[var(--tracking-display)] text-balance">
+          <h2 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-display text-balance">
             Four simple steps.
             <br />
             <span className="hl-orange">Cash</span> in your hand.
@@ -55,9 +54,9 @@ export function HowItWorks() {
             We buy the car directly. If we&apos;re not the right fit, we&apos;ll
             say so — we&apos;d rather you know upfront than waste a day.
           </p>
-        </Reveal>
+        </div>
 
-        <RevealGroup>
+        <div>
           <div className="relative">
             {/* Desktop dotted timeline connector behind the cards */}
             <div
@@ -66,8 +65,7 @@ export function HowItWorks() {
             />
             <ol className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
               {steps.map((step) => (
-                <RevealItem
-                  as="li"
+                <li
                   key={step.number}
                   className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl hover:border-primary/40"
                 >
@@ -84,18 +82,18 @@ export function HowItWorks() {
                     <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
                       {step.description}
                     </p>
-                    <p className="mt-auto pt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-cta">
+                    <p className="mt-auto pt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-cta-ink">
                       <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
                       {step.timing}
                     </p>
                   </div>
-                </RevealItem>
+                </li>
               ))}
             </ol>
           </div>
-        </RevealGroup>
+        </div>
 
-        <Reveal className="mt-12 text-center">
+        <div className="mt-12 text-center">
           <Link
             href="/#price-estimator"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-colors"
@@ -103,7 +101,7 @@ export function HowItWorks() {
             Start with your plate
             <span aria-hidden="true">→</span>
           </Link>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

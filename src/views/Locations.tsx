@@ -4,6 +4,8 @@ import { PageShell } from "@/components/layout/PageShell";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
 import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -40,7 +42,7 @@ export default function Locations() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full py-3 px-6 text-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_hsl(var(--primary)/0.25)]"
+              className={cn(buttonVariants({ variant: "primary" }), "w-full sm:w-auto")}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
@@ -48,7 +50,7 @@ export default function Locations() {
             </a>
             <Link
               href="/#price-estimator"
-              className="inline-flex min-h-[44px] items-center justify-center gap-2 border border-border/80 bg-card text-foreground rounded-full py-3 px-6 text-sm transition-colors duration-200 hover:border-primary/40 hover:text-primary"
+              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
             >
               Get a free quote
             </Link>

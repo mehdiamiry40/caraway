@@ -25,14 +25,11 @@ export function Step1Vehicle({ state }: { state: EstimatorState }) {
     year,
     setYear,
     setYearTouched,
-    yearIsValid,
-    showYearError,
     condition,
     setCondition,
     canCalculate,
     handleEstimate,
     step1HeadingRef,
-    currentYear,
   } = state;
 
   return (
@@ -103,22 +100,7 @@ export function Step1Vehicle({ state }: { state: EstimatorState }) {
               onChange={(e) => setYear(e.target.value)}
               onBlur={() => setYearTouched(true)}
               aria-required="true"
-              aria-invalid={year !== "" && !yearIsValid}
-              aria-describedby="est-year-error"
             />
-            {showYearError && (
-              <p
-                id="est-year-error"
-                className="flex items-start gap-1.5 mt-2 text-sm text-destructive font-medium"
-                role="alert"
-              >
-                <span
-                  className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0"
-                  aria-hidden
-                />
-                Enter a year between 1950 and {currentYear + 1}.
-              </p>
-            )}
           </div>
           <div>
             <label htmlFor="est-condition" className="block text-sm text-foreground mb-2.5">

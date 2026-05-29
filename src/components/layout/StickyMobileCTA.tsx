@@ -33,6 +33,7 @@ export function StickyMobileCTA() {
   return (
     <div
       aria-hidden={!shown}
+      inert={!shown}
       className={`lg:hidden fixed inset-x-0 bottom-0 z-40 pb-safe pl-safe pr-safe pointer-events-none transition-[opacity,transform] duration-300 ease-[var(--ease-out-quint)] ${
         shown
           ? "opacity-100 translate-y-0"

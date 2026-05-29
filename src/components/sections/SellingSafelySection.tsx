@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BUSINESS } from "@/lib/site";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const trustPoints = [
   {
@@ -65,7 +67,7 @@ export function SellingSafelySection() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
                 location="selling_safely"
-                className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-ring"
+                className={cn(buttonVariants({ variant: "primary" }), "mt-3")}
                 ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />

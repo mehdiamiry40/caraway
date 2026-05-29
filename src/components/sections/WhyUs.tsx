@@ -1,6 +1,5 @@
 import type { LucideIcon } from "lucide-react";
 import { BadgeCheck, ShieldCheck, BanknoteArrowDown, Wrench } from "lucide-react";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/motion";
 
 interface Reason {
   title: string;
@@ -40,11 +39,11 @@ export function WhyUs() {
   return (
     <section
       id="why-us"
-      className="section-y bg-secondary border-t border-b border-border"
+      className="section-y scroll-mt-header bg-secondary border-t border-b border-border"
       aria-labelledby="why-us-heading"
     >
       <div className="site-container">
-        <Reveal className="max-w-2xl mb-12 md:mb-16">
+        <div className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Why Caraway</p>
           <h2
             id="why-us-heading"
@@ -58,17 +57,17 @@ export function WhyUs() {
             Private buyers flake. Dealers lowball trade-ins. We&apos;re a buyer,
             not an auction — just a straightforward offer and a truck at your door.
           </p>
-        </Reveal>
+        </div>
 
-        <RevealGroup>
+        <div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
             {/* Featured card spans the full row on mobile, half on desktop */}
-            <RevealItem className="lg:col-span-6 lg:row-span-2">
+            <div className="lg:col-span-6 lg:row-span-2">
               <FeatureReasonCard reason={featureReason} />
-            </RevealItem>
+            </div>
 
             {supportingReasons.map((reason, idx) => (
-              <RevealItem
+              <div
                 key={reason.title}
                 className={
                   // first two share a row on lg, third spans full width below
@@ -78,10 +77,10 @@ export function WhyUs() {
                 }
               >
                 <SupportingReasonCard reason={reason} />
-              </RevealItem>
+              </div>
             ))}
           </div>
-        </RevealGroup>
+        </div>
       </div>
     </section>
   );

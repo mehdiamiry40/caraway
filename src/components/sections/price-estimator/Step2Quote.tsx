@@ -20,7 +20,7 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
           <div className="quote-card p-4 sm:p-6 mb-6">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
               <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--primary))] pb-1">
-                Your quote
+                Your estimate
               </span>
               <span className="text-[0.75rem] font-medium text-[hsl(var(--on-dark))] pb-1">
                 Your car
@@ -39,7 +39,7 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
                 ${result.quote.toLocaleString()}
               </p>
               <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-                Instant estimate · firm offer within the hour
+                Instant estimate · firm offer within 1 business day
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--on-dark))]">
                 Final offers depend on the vehicle details and a pickup inspection.

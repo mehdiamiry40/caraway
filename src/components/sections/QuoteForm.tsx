@@ -108,7 +108,7 @@ export function QuoteForm() {
             <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
               Your quote
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-display text-primary leading-[1.08] tracking-[-0.02em] text-balance mb-5">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
@@ -122,7 +122,7 @@ export function QuoteForm() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 rounded-xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">

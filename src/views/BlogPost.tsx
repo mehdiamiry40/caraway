@@ -13,6 +13,8 @@ import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -127,7 +129,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </span>
                   <span className="font-medium">{authorName}</span>
                 </Link>
-                <span aria-hidden className="text-border">·</span>
+                <span aria-hidden className="text-muted-foreground/50">·</span>
                 <div className="inline-flex items-center gap-1.5">
                   <time dateTime={post.date} className="tabular-nums">
                     {formatDate(post.date)}
@@ -142,14 +144,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     </span>
                   )}
                 </div>
-                <span aria-hidden className="text-border">·</span>
+                <span aria-hidden className="text-muted-foreground/50">·</span>
                 <span className="inline-flex items-center gap-1.5">
                   <Clock className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
                   {post.readTime}
                 </span>
                 <Link
                   href={`/blog/category/${categorySlug(post.category)}`}
-                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent hover:bg-accent/15 transition-colors"
+                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink hover:bg-accent/15 transition-colors"
                 >
                   {post.category}
                 </Link>
@@ -177,14 +179,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
                   <Link
                     href="/#price-estimator"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_8px_24px_hsl(var(--primary)/0.25)]"
+                    className={cn(buttonVariants({ variant: "primary" }), "w-full md:w-auto")}
                   >
                     Get my quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <a
                     href={BUSINESS.phoneTel}
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border/80 bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className={cn(buttonVariants({ variant: "outline" }), "w-full md:w-auto")}
                     aria-label={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -339,7 +341,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <TrackedPhoneLink
                     href={BUSINESS.phoneTel}
                     location="blog_post_footer"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors w-full sm:w-auto"
+                    className={cn(buttonVariants({ variant: "secondary" }), "w-full sm:w-auto")}
                     ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -347,7 +349,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </TrackedPhoneLink>
                   <Link
                     href="/#price-estimator"
-                    className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-primary-foreground/70 px-7 py-3.5 text-sm font-medium text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-colors w-full sm:w-auto"
+                    className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
                   >
                     Get a free quote
                     <ArrowRight className="h-4 w-4" aria-hidden />

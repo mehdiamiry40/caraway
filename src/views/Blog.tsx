@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
-import { RevealGroup, RevealItem } from "@/components/ui/motion";
 import { BlogPostCard, FeaturedBlogPostCard } from "@/components/blog/BlogPostCard";
 
 const breadcrumbs = [
@@ -40,11 +39,11 @@ export default function Blog() {
         </nav>
 
         {featured && (
-          <RevealGroup>
-            <RevealItem>
+          <div>
+            <div>
               <FeaturedBlogPostCard post={featured} />
-            </RevealItem>
-          </RevealGroup>
+            </div>
+          </div>
         )}
 
         {rest.length > 0 && (
@@ -56,15 +55,15 @@ export default function Blog() {
               </p>
             </div>
 
-            <RevealGroup>
+            <div>
               <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                 {rest.map((post) => (
-                  <RevealItem as="li" key={post.slug}>
+                  <li key={post.slug}>
                     <BlogPostCard post={post} />
-                  </RevealItem>
+                  </li>
                 ))}
               </ul>
-            </RevealGroup>
+            </div>
           </section>
         )}
       </div>

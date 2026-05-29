@@ -14,9 +14,9 @@ export function ProgressBar({ step, totalSteps, progressPercent }: ProgressBarPr
     <div
       className="max-w-3xl mx-auto mb-8"
       role="progressbar"
-      aria-valuenow={progressPercent}
-      aria-valuemin={0}
-      aria-valuemax={100}
+      aria-valuenow={step}
+      aria-valuemin={1}
+      aria-valuemax={totalSteps}
       aria-label="Quote progress"
       aria-valuetext={`Step ${step} of ${totalSteps}`}
     >

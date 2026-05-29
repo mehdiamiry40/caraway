@@ -40,7 +40,7 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
+  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
   "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-medium flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
@@ -70,7 +70,7 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
                 location="footer"
-                className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
@@ -78,7 +78,7 @@ export function Footer() {
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
+                className="flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
@@ -130,7 +130,7 @@ export function Footer() {
         </div>
 
         {/* Official references */}
-        <div className="mt-14 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark-hi/80">
+        <div className="mt-14 pt-6 border-t border-[hsl(var(--on-dark-hi)/0.2)] flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark-hi/80">
           <span className="font-medium text-on-dark-hi">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map((item) => (
             <TrackedOutboundLink
@@ -138,7 +138,7 @@ export function Footer() {
               href={item.href}
               label={item.label}
               location="footer_references"
-              className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
+              className="inline-flex items-center min-h-11 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
             >
               {item.label}
             </TrackedOutboundLink>
@@ -147,7 +147,7 @@ export function Footer() {
       </div>
 
       {/* Legal bar */}
-      <div className="border-t border-white/20 pb-safe">
+      <div className="border-t border-[hsl(var(--on-dark-hi)/0.2)] pb-safe">
         <div className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark-hi/80 font-medium">
           <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
@@ -155,7 +155,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center py-2.5 px-1 -mx-1 touch-manipulation"
+                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center py-2.5 px-1 -mx-1 touch-manipulation"
               >
                 {link.label}
               </Link>

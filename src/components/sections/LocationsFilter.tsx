@@ -38,7 +38,7 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
           placeholder="Search your suburb..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full h-12 sm:h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
+          className="w-full h-12 sm:h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>
@@ -80,7 +80,7 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
               <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5">
                 {suburb.summary}
               </p>
-              <span className="text-sm text-accent flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              <span className="text-sm text-accent-ink flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                 View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>

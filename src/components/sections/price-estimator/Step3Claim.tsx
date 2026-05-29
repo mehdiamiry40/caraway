@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, CheckCircle2, Loader2, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RequiredMark } from "./RequiredMark";
@@ -32,7 +34,8 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
     setAddressTouched,
     addressError,
     setAddressError,
-    canSubmit,
+    marketingConsent,
+    setMarketingConsent,
     isSubmitting,
     submitError,
     handleSubmit,
@@ -54,7 +57,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
         {result && (
           <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-xl px-4 py-3 mb-7">
             <div className="min-w-0">
-              <p className="text-xs text-foreground/70 uppercase tracking-wider">Your quote</p>
+              <p className="text-xs text-foreground/70 uppercase tracking-wider">Your estimate</p>
               <p className="font-medium text-foreground truncate">
                 {year} {[make, model].filter(Boolean).join(" ")} ·{" "}
                 <span className="font-mono tabular-nums text-primary">
@@ -64,7 +67,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
             </div>
             <button
               type="button"
-              onClick={() => goToStep(2)}
+              onClick={() => goToStep(1)}
               className="text-xs text-primary hover:text-primary/80 min-h-[44px] px-3 rounded-md touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Edit
@@ -209,6 +212,22 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
           </div>
         </div>
 
+        <div className="mt-5 flex items-start gap-3">
+          <Checkbox
+            id="est-marketing-consent"
+            className="mt-0.5"
+            checked={marketingConsent}
+            onChange={(e) => setMarketingConsent(e.target.checked)}
+          />
+          <label htmlFor="est-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+            Email me occasional offers and tips (optional). See our{" "}
+            <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground">
+              privacy policy
+            </Link>
+            .
+          </label>
+        </div>
+
         {submitError && (
           <div
             className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3"
@@ -230,7 +249,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
           </Button>
           <Button
             onClick={handleSubmit}
-            disabled={!canSubmit || isSubmitting}
+            disabled={isSubmitting}
             variant="default"
             size="lg"
             className="w-full sm:w-auto"

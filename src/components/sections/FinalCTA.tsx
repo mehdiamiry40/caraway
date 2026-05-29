@@ -7,20 +7,19 @@ import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
-import { Reveal } from "@/components/ui/motion";
 
 export function FinalCTA() {
   return (
     <section className="section-y bg-background" aria-label="Get your quote">
       <div className="site-container">
-        <Reveal className="relative overflow-hidden rounded-[2rem] lg:rounded-[2.5rem] bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24 hero-atmosphere">
+        <div className="relative overflow-hidden rounded-3xl lg:rounded-4xl bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24 hero-atmosphere">
           <div className="relative z-10 text-center">
             <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-medium text-on-dark-hi mb-6 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
               Ready when you are
             </p>
 
-            <h2 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-[var(--tracking-display)] text-on-dark-hi text-balance">
+            <h2 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-display text-on-dark-hi text-balance">
               See what your car is worth{" "}
               <span className="hl-green">today</span>.
             </h2>
@@ -57,7 +56,7 @@ export function FinalCTA() {
               </TrackedPhoneLink>
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

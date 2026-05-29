@@ -33,7 +33,7 @@ export function BlogPostCard({
         href={`/blog/${post.slug}`}
         className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
       >
-        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent">
+        <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
           {post.category}
         </span>
         <Heading
@@ -61,7 +61,7 @@ export function BlogPostCard({
               <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
               {post.readTime}
             </span>
-            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent transition-all group-hover:gap-1.5">
+            <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent-ink transition-all group-hover:gap-1.5">
               Read
               <ArrowRight
                 className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
