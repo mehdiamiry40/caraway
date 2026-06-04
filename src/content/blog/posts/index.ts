@@ -1,3 +1,4 @@
+import { post as postVan } from "./sell-my-van-brisbane";
 import { post as postWrittenOff } from "./sell-written-off-car-brisbane";
 import { post as postBlownEngine } from "./sell-car-with-blown-engine-brisbane";
 import { post as postNewYear } from "./new-year-car-cleanout-brisbane";
@@ -44,6 +45,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postVan,
   postWrittenOff,
   postBlownEngine,
   postNewYear,
