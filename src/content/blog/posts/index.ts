@@ -1,3 +1,4 @@
+import { post as postFinanceOwing } from "./how-to-sell-a-car-with-finance-owing-qld";
 import { post as postVan } from "./sell-my-van-brisbane";
 import { post as postWrittenOff } from "./sell-written-off-car-brisbane";
 import { post as postBlownEngine } from "./sell-car-with-blown-engine-brisbane";
@@ -45,6 +46,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postFinanceOwing,
   postVan,
   postWrittenOff,
   postBlownEngine,
