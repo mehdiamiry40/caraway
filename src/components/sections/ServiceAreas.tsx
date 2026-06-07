@@ -82,7 +82,7 @@ export function ServiceAreas() {
       <div className="site-container">
         <div className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
+          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
             Free pickup across
             <br />
             Greater Brisbane.

@@ -8,7 +8,7 @@ const FEATURED = allReviews.slice(0, 9);
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <article className="relative flex w-[17rem] sm:w-[20rem] md:w-[22rem] shrink-0 flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 sm:p-7 md:p-8 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)] transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_12px_24px_hsl(var(--shadow-color)/0.12)]">
+    <article className="relative flex w-[17rem] shrink-0 flex-col overflow-hidden border border-border bg-card p-5 shadow-sm transition-[box-shadow,border-color] duration-300 hover:border-primary hover:shadow-md sm:w-[20rem] sm:p-7 md:w-[22rem] md:p-8">
       <Quote
         aria-hidden="true"
         className="pointer-events-none absolute -right-2 -top-2 h-24 w-24 text-primary/[0.1]"
@@ -50,11 +50,11 @@ export function Testimonials() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section id="seller-situations" className="section-y scroll-mt-header bg-muted border-t border-b border-border" aria-label="Seller situations">
+    <section id="seller-situations" className="section-y scroll-mt-header border-t border-b border-border bg-background" aria-label="Seller situations">
       <div className="site-container">
         <div className="max-w-2xl mb-10 md:mb-14">
           <p className="eyebrow mb-5">Seller situations</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance">
+          <h2 className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]">
             Common reasons Brisbane drivers
             <br />
             sell to Caraway.

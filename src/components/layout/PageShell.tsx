@@ -34,7 +34,7 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "aurora-surface py-10 sm:py-14 lg:py-16"
+              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
               : "bg-background py-8 sm:py-12 lg:py-14"
           }
         >
@@ -42,7 +42,7 @@ export function PageShell({
             <Breadcrumbs items={breadcrumbs} />
             {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
             <h1
-              className="font-display text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mt-4 mb-5"
+              className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.08] text-primary text-balance max-w-3xl mt-4 mb-5"
               style={{ letterSpacing: "var(--tracking-display)" }}
             >
               {title}

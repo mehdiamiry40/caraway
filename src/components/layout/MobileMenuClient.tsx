@@ -109,8 +109,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
       />
       <div className="relative bg-card flex flex-col h-full w-full animate-in slide-in-from-right-full duration-300 ease-out pl-safe pr-safe">
         <div className="flex items-center justify-between min-h-16 px-5 sm:px-6 border-b border-border/40 shrink-0">
-          <span className="font-display text-xl sm:text-2xl tracking-tight text-primary lowercase">
-            caraway<span className="text-accent">.</span>
+          <span className="font-display font-bold text-xl sm:text-2xl tracking-[0.08em] text-primary uppercase">
+            Caraway
           </span>
           <button
             type="button"

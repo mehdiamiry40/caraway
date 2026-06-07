@@ -7,17 +7,13 @@ const steps = [
     description:
       "Drop in your plate or share make, model and year. Photos help if you have them.",
     timing: "60 seconds",
-    tint: "bg-primary",
-    numberClass: "text-accent",
   },
   {
     number: "02",
     title: "Get a firm cash offer",
     description:
-      "We send a locked-in number — no haggle games, no bait-and-switch. Accept and we book a time.",
+      "We send a locked-in number - no haggle games, no bait-and-switch. Accept and we book a time.",
     timing: "Within 1 business day",
-    tint: "bg-accent",
-    numberClass: "text-primary",
   },
   {
     number: "03",
@@ -25,8 +21,6 @@ const steps = [
     description:
       "Our truck arrives at the booked slot, anywhere in Greater Brisbane. Free towing, always.",
     timing: "Usually same- or next-day",
-    tint: "bg-cta",
-    numberClass: "text-primary",
   },
   {
     number: "04",
@@ -34,72 +28,59 @@ const steps = [
     description:
       "Cash or transfer before the wheels leave your driveway. All paperwork handled by us.",
     timing: "Paid that day",
-    tint: "bg-plate",
-    numberClass: "text-primary",
   },
 ] as const;
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-y scroll-mt-header bg-background relative">
+    <section id="how-it-works" className="section-y scroll-mt-header relative bg-background">
       <div className="site-container">
-        <div className="max-w-2xl mx-auto text-center mb-14 md:mb-20">
+        <div className="mb-12 max-w-2xl md:mb-16">
           <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display font-semibold text-[clamp(2.25rem,5.5vw,4rem)] leading-[1.02] tracking-display text-balance">
-            Four simple steps.
-            <br />
-            <span className="hl-orange">Cash</span> in your hand.
+          <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
+            From quote to collection in four clear steps.
           </h2>
-          <p className="mt-6 text-foreground/70 leading-relaxed text-base sm:text-lg max-w-xl mx-auto font-light">
-            We buy the car directly. If we&apos;re not the right fit, we&apos;ll
-            say so — we&apos;d rather you know upfront than waste a day.
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
+            We buy the car directly. If we&apos;re not the right fit, we&apos;ll say so - we&apos;d
+            rather you know upfront than waste a day.
           </p>
         </div>
 
-        <div>
-          <div className="relative">
-            {/* Desktop dotted timeline connector behind the cards */}
-            <div
-              aria-hidden="true"
-              className="hidden lg:block pointer-events-none absolute left-[12.5%] right-[12.5%] top-[20%] h-px step-timeline"
-            />
-            <ol className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-              {steps.map((step) => (
-                <li
-                  key={step.number}
-                  className="group relative flex flex-col overflow-hidden rounded-3xl bg-card border border-border/70 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-xl hover:border-primary/40"
-                >
-                  <div className={`relative aspect-[5/4] ${step.tint} overflow-hidden flex items-end justify-start p-5`}>
-                    <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[hsl(var(--on-dark-hi)/0.18)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className={`relative font-display font-semibold text-[clamp(4.5rem,11vw,7.5rem)] leading-[0.85] tracking-tight ${step.numberClass}`}>
-                      {step.number}
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="text-lg font-display font-semibold text-primary leading-snug">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 text-[0.9375rem] text-foreground/75 leading-relaxed">
-                      {step.description}
-                    </p>
-                    <p className="mt-auto pt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.08em] text-cta-ink">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
-                      {step.timing}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
+        <ol className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          {steps.map((step) => (
+            <li
+              key={step.number}
+              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
+            >
+              <div
+                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
+                aria-hidden="true"
+              />
+              <div className="flex flex-1 flex-col p-6">
+                <span className="font-display text-4xl font-bold leading-none text-primary/25">
+                  {step.number}
+                </span>
+                <h3 className="mt-6 font-display text-lg font-semibold leading-snug text-primary">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
+                  {step.description}
+                </p>
+                <p className="mt-auto pt-5 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink">
+                  {step.timing}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10">
           <Link
             href="/#price-estimator"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
           >
             Start with your plate
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">-&gt;</span>
           </Link>
         </div>
       </div>

@@ -4,9 +4,8 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   [
-    // Looping-style buttons: fully rounded pills with a clear sentence-case label.
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
-    "font-semibold tracking-[-0.005em]",
+    "font-display font-semibold tracking-[-0.005em]",
     "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
@@ -14,23 +13,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Bright lime-green primary — mirrors Looping's "check your car" CTA.
         default:
-          "bg-cta text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5),0_12px_24px_hsl(var(--cta)/0.25)] hover:bg-cta/95 hover:shadow-[0_6px_0_0_hsl(var(--cta)/0.55),0_14px_28px_hsl(var(--cta)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Deep purple — brand primary used for secondary CTAs on light surfaces.
+          "bg-cta text-cta-foreground border border-cta hover:bg-cta/88 hover:border-cta/88 active:translate-y-px",
         primary:
-          "bg-primary text-primary-foreground shadow-[0_4px_0_0_hsl(var(--primary)/0.5),0_12px_24px_hsl(var(--primary)/0.2)] hover:bg-primary/95 hover:shadow-[0_6px_0_0_hsl(var(--primary)/0.55),0_14px_28px_hsl(var(--primary)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Orange emphasis — used for highlight CTAs.
+          "bg-primary text-primary-foreground border border-primary hover:bg-ink-deep hover:border-ink-deep active:translate-y-px",
         secondary:
-          "bg-accent text-accent-foreground shadow-[0_4px_0_0_hsl(var(--accent)/0.5),0_12px_24px_hsl(var(--accent)/0.2)] hover:bg-accent/95 hover:shadow-[0_6px_0_0_hsl(var(--accent)/0.55),0_14px_28px_hsl(var(--accent)/0.3)] hover:-translate-y-0.5 active:translate-y-0",
-        // Light outline for quiet actions on white surfaces.
+          "bg-accent text-accent-foreground border border-accent hover:bg-accent/90 active:translate-y-px",
         outline:
-          "border-2 border-primary/15 bg-card text-primary hover:bg-primary/5 hover:border-primary/25 active:translate-y-px",
+          "border-2 border-primary bg-card text-primary hover:bg-primary hover:text-primary-foreground active:translate-y-px",
         ghost:
           "bg-transparent text-primary hover:bg-primary/8",
-        // Outline-on-dark — used on purple bands for secondary actions.
         inkOutline:
-          "border-2 border-[hsl(var(--on-dark-hi)/0.35)] bg-transparent text-[hsl(var(--on-dark-hi))] hover:bg-[hsl(var(--on-dark-hi)/0.08)] hover:border-[hsl(var(--on-dark-hi)/0.55)]",
+          "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary",
       },
       size: {
         default: "h-12 px-6 text-[0.9375rem]",
