@@ -5,6 +5,21 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const noopPolyfill = path.join(__dirname, "scripts/noop-polyfill.js");
 
+export const legacyIndexingRedirects = [
+  {
+    source: "/how-it-works",
+    destination: "/#how-it-works",
+  },
+  {
+    source: "/privacy-policy.html",
+    destination: "/privacy",
+  },
+  {
+    source: "/blog/sell-damaged-car-brisbane.html",
+    destination: "/damaged-cars-brisbane",
+  },
+] as const;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -84,29 +99,16 @@ const nextConfig: NextConfig = {
       destination: "https://www.caraway.au/:path*",
       permanent: true,
     },
-    // `/how-it-works` is a homepage section anchor, not a standalone route.
-    // Google discovered the bare path via an old link and was serving the
-    // 404 page (which emits noindex). Redirect to the real anchor so the
-    // URL resolves cleanly and GSC drops the exclusion.
-    {
-      source: "/how-it-works",
-      destination: "/#how-it-works",
+    // URLs GSC has tracked under "Crawled - currently not indexed":
+    // - `/how-it-works` is a homepage section anchor, not a standalone route.
+    // - the `.html` URLs are legacy paths from an older site version.
+    // Map each to its closest live equivalent so Google consolidates signals
+    // onto a canonical page rather than keeping stale URLs in the crawl queue.
+    ...legacyIndexingRedirects.map(({ source, destination }) => ({
+      source,
+      destination,
       permanent: true,
-    },
-    // Legacy `.html` URLs from a previous version of the site that GSC is
-    // still tracking under "Crawled - currently not indexed". Map each to
-    // its closest live equivalent so Google consolidates signals onto the
-    // canonical page rather than leaving the orphan URL in the index queue.
-    {
-      source: "/privacy-policy.html",
-      destination: "/privacy",
-      permanent: true,
-    },
-    {
-      source: "/blog/sell-damaged-car-brisbane.html",
-      destination: "/damaged-cars-brisbane",
-      permanent: true,
-    },
+    })),
   ],
   headers: async () => [
     {
@@ -165,6 +167,13 @@ const nextConfig: NextConfig = {
         { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
       ],
     },
+    ...legacyIndexingRedirects.map(({ source }) => ({
+      source,
+      headers: [
+        { key: "X-Robots-Tag", value: "noindex, follow" },
+        { key: "Cache-Control", value: "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800" },
+      ],
+    })),
   ],
 };
 

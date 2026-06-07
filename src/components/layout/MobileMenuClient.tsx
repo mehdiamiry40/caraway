@@ -215,16 +215,16 @@ export function MobileMenuClient({ serviceLinks }: Props) {
           </nav>
           <div className="mt-auto flex flex-col gap-3 pt-6 sm:pt-8 pb-safe border-t border-border/30">
             <a
-              href={BUSINESS.phoneHref}
+              href={BUSINESS.phoneTel}
               onClick={() => {
                 trackEvent("phone_click", { location: "header_drawer" });
                 close();
               }}
               className="inline-flex items-center justify-center gap-2 w-full h-14 rounded-lg border-[1.5px] border-primary text-primary text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              aria-label={`Call ${BUSINESS.phoneFriendly}`}
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
-              Call {BUSINESS.phoneFriendly}
+              Call {BUSINESS.phoneDisplay}
             </a>
             <Button
               onClick={handleScrollToQuote}
@@ -245,10 +245,10 @@ export function MobileMenuClient({ serviceLinks }: Props) {
       {/* Mobile top-bar controls (phone icon + hamburger) */}
       <div className="lg:hidden flex items-center gap-1">
         <a
-          href={BUSINESS.phoneHref}
+          href={BUSINESS.phoneTel}
           onClick={() => trackEvent("phone_click", { location: "header" })}
           className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          aria-label={`Call ${BUSINESS.phoneFriendly}`}
+          aria-label={`Call ${BUSINESS.phoneDisplay}`}
         >
           <Phone className="h-5 w-5" aria-hidden="true" />
         </a>

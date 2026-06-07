@@ -5,6 +5,7 @@ import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
 import { quoteFormSchema, type QuoteCondition } from "@/lib/quote-schema";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
+import { BUSINESS } from "@/lib/site";
 
 const CURRENT_YEAR = new Date().getFullYear();
 const STORAGE_KEY = "caraway-estimator-state";
@@ -317,13 +318,13 @@ export function usePriceEstimator() {
         const reason = res.message ?? "unknown";
         setSubmitError(
           res.message ??
-            "Something went wrong. Please try again or call 0481 438 444.",
+            `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
         );
         trackEvent("estimator_submit_failed", { reason });
       }
     } catch {
       setSubmitError(
-        "Something went wrong. Please try again or call 0481 438 444.",
+        `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
       trackEvent("estimator_submit_failed", { reason: "transport_error" });
     } finally {

@@ -183,12 +183,12 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <a
-                    href={BUSINESS.phoneHref}
+                    href={BUSINESS.phoneTel}
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-border/80 bg-card px-6 py-3 text-sm font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    aria-label={`Call ${BUSINESS.phoneFriendly}`}
+                    aria-label={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
-                    {BUSINESS.phoneFriendly}
+                    {BUSINESS.phoneDisplay}
                   </a>
                 </div>
               </div>
@@ -332,18 +332,18 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   Ready to sell your car for cash?
                 </p>
                 <p className="text-primary-foreground/80 text-sm sm:text-base mt-4 mb-8 max-w-xl mx-auto leading-relaxed">
-                  Call {BUSINESS.phoneFriendly} or grab a free instant quote &mdash; same- or
+                  Call {BUSINESS.phoneDisplay} or grab a free instant quote &mdash; same- or
                   next-day pickup across Brisbane.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <TrackedPhoneLink
-                    href={BUSINESS.phoneHref}
+                    href={BUSINESS.phoneTel}
                     location="blog_post_footer"
                     className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors w-full sm:w-auto"
-                    ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                    ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
-                    Call {BUSINESS.phoneFriendly}
+                    Call {BUSINESS.phoneDisplay}
                   </TrackedPhoneLink>
                   <Link
                     href="/#price-estimator"

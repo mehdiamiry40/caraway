@@ -34,8 +34,8 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "aurora-surface py-14 sm:py-20 lg:py-24"
-              : "bg-background py-10 sm:py-14 lg:py-20"
+              ? "aurora-surface py-10 sm:py-14 lg:py-16"
+              : "bg-background py-8 sm:py-12 lg:py-14"
           }
         >
           <div className="site-container relative">

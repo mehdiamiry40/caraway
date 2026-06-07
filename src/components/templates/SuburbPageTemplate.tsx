@@ -4,13 +4,18 @@ import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import { LocationViewTracker } from "@/components/LocationViewTracker";
 import { QuoteForm } from "@/components/sections/QuoteForm";
+import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
+import { Accordion } from "@/components/ui/accordion";
+import { buttonVariants } from "@/components/ui/button";
 import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
 import { services, type ServicePage } from "@/data/services";
 import { getPostsForSuburb } from "@/data/blog-posts";
-import { CheckCircle2 } from "lucide-react";
-import { PROMISE_POINTS } from "@/lib/site";
+import { CheckCircle2, Phone } from "lucide-react";
+import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
+import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { cn } from "@/lib/utils";
 
 
 
@@ -24,6 +29,13 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
     .filter((s): s is SuburbPage => s !== undefined);
 
   const relatedPosts = getPostsForSuburb(suburb.slug);
+  const areaName = suburb.h1.replace("Cash for Cars ", "").replace(" — Free Removal & Instant Cash", "").replace(" — Sell Your Car Today", "").replace(" — Get Paid Today", "");
+  const nearbyAreaNames = suburb.nearbyAreaNames ?? nearbySuburbData.map((s) => s.h1.replace("Cash for Cars ", ""));
+  const localSellingPoints = suburb.localSellingPoints ?? PROMISE_POINTS.slice(1, 5);
+  const internalLinks = suburb.internalLinks ?? [
+    ...relatedServiceData.slice(0, 2).map((s) => ({ label: s.h1, href: `/${s.slug}` })),
+    ...nearbySuburbData.slice(0, 3).map((s) => ({ label: s.h1, href: `/locations/${s.slug}` })),
+  ];
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -37,7 +49,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <Header />
 
       <main id="main-content" className="flex-1 mt-header-safe">
-        <section className="aurora-surface py-16 lg:py-24">
+        <section className="aurora-surface py-10 sm:py-14 lg:py-16">
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             <p className="eyebrow mt-6 mb-4">Location</p>
@@ -47,7 +59,21 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
               {suburb.intro}
             </p>
-            <ScrollToQuoteCTA />
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center mb-5">
+              <ScrollToQuoteCTA source={`location_hero_${suburb.slug}`} />
+              <TrackedPhoneLink
+                href={BUSINESS.phoneTel}
+                location={`location_hero_${suburb.slug}`}
+                ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
+                className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+              >
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                Call {BUSINESS.phoneDisplay}
+              </TrackedPhoneLink>
+            </div>
+            <p className="text-sm text-foreground/70">
+              Free towing · Paid on pickup · No RWC needed for many vehicles · Brisbane-based
+            </p>
           </div>
         </section>
 
@@ -56,12 +82,49 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-                  Local car buying service
+                  Car removal in {areaName} and nearby suburbs
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.localContent}
                 </p>
+                {nearbyAreaNames.length > 0 && (
+                  <div className="mt-6">
+                    <h3 className="text-sm font-display text-foreground mb-3">Nearby suburbs covered</h3>
+                    <ul className="flex flex-wrap gap-2">
+                      {nearbyAreaNames.map((name) => (
+                        <li key={name} className="rounded-full border border-border/70 bg-secondary px-3 py-1.5 text-sm text-foreground/80">
+                          {name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {localSellingPoints.length > 0 && (
+                  <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {localSellingPoints.map((point) => (
+                      <li key={point} className="flex gap-3 text-sm text-foreground/80">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
+
+              {suburb.pickupAccessNotes && suburb.pickupAccessNotes.length > 0 && (
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                    Pickup access in {areaName}
+                  </h2>
+                  <ul className="space-y-3">
+                    {suburb.pickupAccessNotes.map((note) => (
+                      <li key={note} className="rounded-lg border border-border/60 bg-card p-4 text-muted-foreground leading-relaxed">
+                        {note}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
@@ -72,6 +135,27 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </p>
               </div>
 
+              {suburb.exampleVehiclesBought && suburb.exampleVehiclesBought.length > 0 && (
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                    Example vehicles we buy in {areaName}
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {suburb.exampleVehiclesBought.map((item) => (
+                      <div key={`${item.vehicle}-${item.area}`} className="rounded-lg border border-border/60 bg-card p-4">
+                        <h3 className="font-display text-foreground mb-1">{item.vehicle}</h3>
+                        <p className="text-sm text-muted-foreground">{item.area}</p>
+                        <p className="text-sm text-foreground/80 mt-3">{item.condition}</p>
+                        {item.note && <p className="text-xs text-muted-foreground mt-3">{item.note}</p>}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-4">
+                    Examples only. Actual offers depend on vehicle condition, location, completeness, demand, and current market value.
+                  </p>
+                </div>
+              )}
+
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Why choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
@@ -80,6 +164,15 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   {suburb.whyUs}
                 </p>
               </div>
+
+              {suburb.localFaqs && suburb.localFaqs.length > 0 && (
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                    {areaName} car removal FAQs
+                  </h2>
+                  <Accordion items={suburb.localFaqs} headingLevel={3} />
+                </div>
+              )}
 
               <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 lg:p-10 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
                 <p className="eyebrow mb-3">How it works</p>
@@ -103,6 +196,29 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   ))}
                 </ol>
               </div>
+
+              {suburb.finalCtaText && (
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                    Get a local pickup quote
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-6">
+                    {suburb.finalCtaText}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <ScrollToQuoteCTA source={`location_final_${suburb.slug}`} />
+                    <TrackedPhoneLink
+                      href={BUSINESS.phoneTel}
+                      location={`location_final_${suburb.slug}`}
+                      ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
+                      className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                    >
+                      <Phone className="h-5 w-5" aria-hidden="true" />
+                      Call {BUSINESS.phoneDisplay}
+                    </TrackedPhoneLink>
+                  </div>
+                </div>
+              )}
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
@@ -157,6 +273,24 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </nav>
               )}
 
+              {internalLinks.length > 0 && (
+                <nav aria-label="Nearby areas we service" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
+                  <h3 className="text-sm font-display mb-4 text-foreground">Nearby areas we service</h3>
+                  <ul className="divide-y divide-border/60 border-t border-border/60">
+                    {internalLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
+
               {relatedPosts.length > 0 && (
                 <nav aria-label="Related articles" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
@@ -178,6 +312,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
           </div>
         </div>
 
+        <SellingSafelySection />
         <QuoteForm />
       </main>
 

@@ -43,7 +43,7 @@ const navLinkClasses =
   "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
+  "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-medium flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -57,7 +57,7 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-extrabold text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-semibold text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">caraway</span>
               <span className="text-accent">.</span>
@@ -68,13 +68,13 @@ export function Footer() {
 
             <div className="mt-6 space-y-2.5 text-sm">
               <TrackedPhoneLink
-                href={BUSINESS.phoneHref}
+                href={BUSINESS.phoneTel}
                 location="footer"
                 className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                ariaLabel={`Call ${BUSINESS.phoneFriendly}`}
+                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
-                <span>{BUSINESS.phoneFriendly}</span>
+                <span>{BUSINESS.phoneDisplay}</span>
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
@@ -84,7 +84,7 @@ export function Footer() {
                 <span>{BUSINESS.email}</span>
               </a>
               <p className="text-on-dark-hi/85">
-                <span className="font-semibold text-on-dark-hi">{BUSINESS.hours}</span> · seven days
+                <span className="font-medium text-on-dark-hi">{BUSINESS.hours}</span> · seven days
               </p>
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
@@ -131,7 +131,7 @@ export function Footer() {
 
         {/* Official references */}
         <div className="mt-14 pt-6 border-t border-white/20 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-on-dark-hi/80">
-          <span className="font-semibold text-on-dark-hi">Official references:</span>
+          <span className="font-medium text-on-dark-hi">Official references:</span>
           {AUTHORITY_OUTBOUND_LINKS.map((item) => (
             <TrackedOutboundLink
               key={item.href}

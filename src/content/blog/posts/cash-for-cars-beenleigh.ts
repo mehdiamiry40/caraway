@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-beenleigh",
@@ -42,7 +43,7 @@ export const post: RawBlogPostEntry = {
 
     "## Get a quote today",
 
-    "If you've got a vehicle in Beenleigh or the surrounding area that you're ready to move on from, the quickest way to find out what it's worth is a call or online quote. Ring **0481 438 444**, describe the car, and get a firm offer in minutes. Same- or next-day pickup is available across all of Beenleigh and nearby suburbs, with cash or bank transfer paid before the vehicle leaves your property. No fees, no surprises.",
+    `If you've got a vehicle in Beenleigh or the surrounding area that you're ready to move on from, the quickest way to find out what it's worth is a call or online quote. Ring **${BUSINESS.phoneDisplay}**, describe the car, and get a firm offer in minutes. Same- or next-day pickup is available across all of Beenleigh and nearby suburbs, with cash or bank transfer paid before the vehicle leaves your property. No fees, no surprises.`,
   ],
   date: "2026-04-22",
   category: "Guides",
