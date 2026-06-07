@@ -43,13 +43,14 @@ const navLinkClasses =
   "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-mono text-xs text-on-dark-hi mb-5 tracking-[var(--tracking-wider)] uppercase font-medium flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-px before:bg-accent";
+  "font-display text-xs text-on-dark-hi mb-5 tracking-[0.12em] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-0.5 before:bg-cta";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink text-on-dark pl-safe pr-safe border-t-2 border-accent">
+    <footer className="relative bg-ink text-on-dark pl-safe pr-safe">
+      <div className="h-1 bg-gradient-to-r from-cta via-accent to-white" aria-hidden="true" />
       <div className="site-container py-14 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10">
           {/* Brand + contact */}
@@ -57,10 +58,9 @@ export function Footer() {
             <Link
               href="/"
               aria-label="Caraway — Home"
-              className="font-display font-semibold text-3xl tracking-[var(--tracking-display)] lowercase inline-block transition-opacity duration-200 hover:opacity-80"
+              className="font-display font-bold text-2xl tracking-[0.08em] uppercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
-              <span className="text-on-dark-hi">caraway</span>
-              <span className="text-accent">.</span>
+              <span className="text-on-dark-hi">Caraway</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-on-dark-hi/85 leading-relaxed">
               Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.

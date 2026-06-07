@@ -1,17 +1,10 @@
 @import "tailwindcss";
 
-/* ─────────────────────────────────────────────────────────────────────────────
- * Caraway "Looping-inspired" design system
- * ─────────────────────────────────────────────────────────────────────────────
- *  Palette: bold purple primary, orange emphasis, lime-green CTA, plate yellow.
- *  Shapes:  rounded pill navigation, wavy section dividers, pill buttons, big
- *           rounded cards (20–32 px). Heavy rounded sans (Poppins) for headings.
- *  Tone:    friendly, confident, colour-mixed headlines with emphasis words.
- * ─────────────────────────────────────────────────────────────────────────── */
+/* Caraway utility design system: clear, civic, practical, Queensland-focused. */
 
 @theme inline {
-  --font-sans: var(--font-poppins), "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-display: var(--font-poppins), "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-open-sans), "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-montserrat), "Montserrat", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --color-background: hsl(var(--background));
@@ -55,12 +48,14 @@
      their plum foreground); as text on white they fall to ~2.4–2.8:1. */
   --color-cta-ink: hsl(var(--cta-ink));
   --color-accent-ink: hsl(var(--accent-ink));
+  --color-cta-bright: hsl(var(--cta-bright));
+  --color-accent-on-dark: hsl(var(--accent-on-dark));
 
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
-  --shadow-md: 0 4px 8px hsl(var(--shadow-color) / 0.06), 0 10px 20px hsl(var(--shadow-color) / 0.10);
-  --shadow-lg: 0 8px 16px hsl(var(--shadow-color) / 0.08), 0 24px 48px hsl(var(--shadow-color) / 0.14);
-  --shadow-xl: 0 12px 24px hsl(var(--shadow-color) / 0.10), 0 40px 80px -12px hsl(var(--shadow-color) / 0.22);
-  --shadow-glow: 0 12px 40px hsl(var(--primary) / 0.35);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
+  --shadow-md: 0 2px 8px hsl(var(--shadow-color) / 0.08);
+  --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.10);
+  --shadow-xl: 0 14px 36px hsl(var(--shadow-color) / 0.12);
+  --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
   --tracking-display: -0.03em;
@@ -74,35 +69,34 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  --radius-xs: 0.375rem;
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
-  --radius-4xl: 2.5rem;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.1875rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.3125rem;
+  --radius-2xl: 0.375rem;
+  --radius-3xl: 0.5rem;
+  --radius-4xl: 0.625rem;
   --radius-full: 9999px;
 }
 
 :root {
-  /* Clean white canvas; purple lives in feature bands, not the whole page. */
-  --background: 0 0% 100%;             /* #FFFFFF */
-  --foreground: 261 39% 15%;           /* #211734 — dark plum ink for body copy */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 19%;
   --card: 0 0% 100%;
-  --card-foreground: 261 39% 15%;
+  --card-foreground: 0 0% 19%;
 
-  --primary: 253 50% 50%;              /* #5B3FBE — Looping purple */
+  --primary: 216 55% 38%;              /* #2C5697 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 268 62% 96%;            /* #F4EEFB — soft lavender wash */
-  --secondary-foreground: 259 55% 25%;
+  --secondary: 198 57% 95%;            /* #EAF5FA */
+  --secondary-foreground: 216 48% 29%;
 
-  --muted: 266 41% 97%;                /* #F6F3FA */
-  --muted-foreground: 257 13% 39%;     /* #5E5770 */
+  --muted: 200 17% 97%;
+  --muted-foreground: 210 11% 39%;
 
-  --accent: 15 94% 63%;                /* #F97449 — orange emphasis */
-  --accent-foreground: 261 39% 15%;
+  --accent: 187 54% 38%;               /* #2D8795 */
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 72% 51%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
@@ -117,42 +111,40 @@
   --info: 200 98% 39%;                 /* #0284C7 */
   --info-foreground: 0 0% 100%;
 
-  --border: 265 35% 90%;               /* #E5DEEF */
-  --input: 272 20% 85%;                /* #D9D1E0 */
-  --ring: 253 50% 50%;
+  --border: 210 12% 85%;
+  --input: 207 15% 78%;
+  --ring: 216 55% 38%;
 
-  --shadow-color: 261 39% 15%;         /* purple-tinted shadow */
+  --shadow-color: 216 35% 22%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
   /* Single source of truth for the fixed-header height (utility strip + nav).
-     The utility strip is hidden below lg, so sm/md is nav-only. Consumed by the
+     The utility strip is hidden on mobile. Consumed by the
      mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
      three can never drift apart. */
-  --header-h: 3.5rem;                  /* mobile: nav h-14 */
+  --header-h: 4.25rem;
 
-  --ink: 259 50% 20%;                  /* deep plum — dark purple band backgrounds */
-  --ink-deep: 259 50% 15%;
-  --ink-raised: 259 45% 30%;
-  --on-dark: 270 30% 88%;
+  --ink: 216 55% 38%;
+  --ink-deep: 214 55% 25%;
+  --ink-raised: 212 42% 46%;
+  --on-dark: 205 35% 91%;
   --on-dark-hi: 0 0% 100%;
 
-  /* License plate and CTA green surfaced as their own tokens. */
-  --plate: 50 92% 52%;                 /* #F5D012 — plate yellow */
-  --plate-foreground: 261 39% 15%;
-  /* Action green for CTA buttons and the "action" accent — distinct from --success. */
-  --cta: 87 59% 45%;                   /* #7CB92F — lime CTA green (SURFACE only) */
-  --cta-foreground: 261 39% 15%;
+  --plate: 72 59% 54%;
+  --plate-foreground: 216 48% 23%;
+  --cta: 72 59% 54%;                   /* #B5D145 */
+  --cta-foreground: 216 48% 23%;
 
   /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
      pass AA only as backgrounds (paired with plum -foreground); as text on
      white they're ~2.4–2.8:1. These darker variants are for labels/links/text
      on light surfaces, and the brighter ones for emphasis on dark bands. */
-  --cta-ink: 90 72% 27%;               /* ~#427613 — ~5.4:1 on white */
-  --accent-ink: 18 82% 40%;            /* ~#BA4512 — ~5.3:1 on white */
-  --cta-bright: 85 76% 62%;            /* emphasis lime on the --primary band (~4.8:1) */
-  --accent-on-dark: 25 100% 80%;       /* eyebrow peach on the --primary band (~4.6:1) */
+  --cta-ink: 72 66% 27%;
+  --accent-ink: 187 62% 28%;
+  --cta-bright: 72 72% 70%;
+  --accent-on-dark: 187 65% 82%;
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -162,14 +154,14 @@
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 4rem;                  /* sm/md: nav h-16, strip hidden until lg */
+    --header-h: 7.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    --header-h: 6.75rem;               /* lg: strip h-9 (2.25) + nav h-[72px] (4.5) */
+    --header-h: 7.25rem;
   }
 }
 
@@ -263,19 +255,20 @@
   .eyebrow {
     display: inline-block;
     font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: hsl(var(--accent-ink));
   }
   .eyebrow-on-dark {
     display: inline-block;
     font-size: 0.9375rem;
-    font-weight: 600;
-    color: hsl(var(--accent-on-dark));
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--cta-bright));
   }
 
-  /* "Highlight" word — inline emphasis within a headline. hl-orange sits on
-     light (accent-ink); hl-green sits on the dark purple bands (cta-bright). */
   .hl-orange { color: hsl(var(--accent-ink)); }
   .hl-green { color: hsl(var(--cta-bright)); }
   .hl-lilac { color: hsl(var(--secondary)); }
@@ -290,7 +283,7 @@
   }
   .link-underline:hover,
   .link-underline:focus-visible {
-    color: hsl(var(--accent));
+    color: hsl(var(--accent-ink));
   }
 
   .hairline {
@@ -300,26 +293,15 @@
     border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
   }
 
-  /* Wavy divider — place at the bottom of a coloured band, points DOWN. */
+  .hero-edge {
+    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
   .wave-divider-bottom {
     position: relative;
   }
   .wave-divider-bottom::after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    height: 48px;
-    background: hsl(var(--background));
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0 60 C 300 0 900 120 1200 60 L 1200 120 L 0 120 Z' fill='black'/></svg>");
-    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0 60 C 300 0 900 120 1200 60 L 1200 120 L 0 120 Z' fill='black'/></svg>");
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-  }
-  @media (min-width: 1024px) {
-    .wave-divider-bottom::after { height: 72px; }
+    content: none;
   }
 }
 
@@ -443,18 +425,31 @@
   min-height: 100dvh;
 }
 
-/* Light hero wash — kept for backward-compat but now just white */
 @utility aurora-surface {
   position: relative;
   isolation: isolate;
-  background-color: hsl(var(--background));
+  background-color: hsl(var(--secondary));
+  border-bottom: 1px solid hsl(var(--border));
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--cta)),
+      hsl(var(--accent)),
+      hsl(var(--primary))
+    );
+  }
 }
 
 @utility aurora-full {
-  background-color: hsl(var(--background));
+  background-color: hsl(var(--secondary));
 }
 
-/* Dark band — deep purple instead of black */
 @utility aurora-surface-dark {
   position: relative;
   isolation: isolate;
@@ -576,12 +571,11 @@
   .float-soft { animation: none !important; }
 }
 
-/* Quote-result card — deep ink surface with coloured top bar */
 @utility quote-card {
   background: hsl(var(--ink));
   color: hsl(var(--on-dark-hi));
   border: 1px solid hsl(var(--on-dark-hi) / 0.08);
-  border-radius: 1.5rem;
+  border-radius: 0.375rem;
   position: relative;
   overflow: hidden;
   box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.08), 0 16px 40px hsl(var(--primary) / 0.15);

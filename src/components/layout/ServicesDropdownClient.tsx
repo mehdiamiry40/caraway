@@ -67,10 +67,10 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         ref={triggerRef}
         type="button"
         className={cn(
-          "text-sm font-medium transition-colors duration-200 flex items-center gap-1 rounded-md px-3 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "text-sm font-semibold transition-colors duration-200 flex items-center gap-1 rounded-sm px-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           isServicesActive
             ? "text-primary"
-            : "text-muted-foreground hover:text-primary"
+            : "text-primary/85 hover:text-accent"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
@@ -104,7 +104,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           ref={menuRef}
           role="menu"
           aria-label="Services submenu"
-          className="absolute top-full left-0 mt-1 w-[480px] max-w-[calc(100vw-2rem)] bg-card rounded-2xl shadow-[0_24px_48px_-32px_hsl(var(--shadow-color)/0.4)] border border-border/70 py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
+          className="absolute top-full left-0 mt-0 w-[480px] max-w-[calc(100vw-2rem)] bg-card rounded-sm shadow-lg border border-border py-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-200 list-none grid grid-cols-2"
           onKeyDown={(e) => {
             if (e.key === "Escape") {
               setIsOpen(false);

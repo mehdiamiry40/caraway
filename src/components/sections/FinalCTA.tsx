@@ -10,30 +10,33 @@ import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 export function FinalCTA() {
   return (
-    <section className="section-y bg-background" aria-label="Get your quote">
+    <section className="bg-background py-12 sm:py-16" aria-label="Get your quote">
       <div className="site-container">
-        <div className="relative overflow-hidden rounded-3xl lg:rounded-4xl bg-primary text-on-dark-hi px-6 py-14 sm:px-10 sm:py-20 lg:px-16 lg:py-24 hero-atmosphere">
-          <div className="relative z-10 text-center">
-            <p className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--on-dark-hi)/0.12)] px-4 py-1.5 text-xs sm:text-sm font-medium text-on-dark-hi mb-6 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-cta" aria-hidden="true" />
-              Ready when you are
-            </p>
+        <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
+          <div
+            className="h-1 bg-gradient-to-r from-cta via-accent to-white"
+            aria-hidden="true"
+          />
+          <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
+            <div className="lg:col-span-8">
+              <p className="eyebrow-on-dark mb-5">Ready when you are</p>
+              <h2 className="font-display text-[clamp(2.1rem,5vw,3.5rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
+                Find out what your car could be worth today.
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
+                One form. Firm price. Free pickup across Greater Brisbane. Cash on the spot -
+                usually same- or next-day.
+              </p>
+            </div>
 
-            <h2 className="font-display font-semibold text-[clamp(2.25rem,6vw,4.5rem)] leading-[1.02] tracking-display text-on-dark-hi text-balance">
-              See what your car is worth{" "}
-              <span className="hl-green">today</span>.
-            </h2>
-
-            <p className="mt-5 mx-auto max-w-xl text-on-dark-hi/85 leading-relaxed text-base sm:text-lg font-light">
-              One form. Firm price. Free pickup across Greater Brisbane.
-              Cash on the spot — usually same- or next-day.
-            </p>
-
-            <div className="mt-10 mx-auto flex justify-center max-w-xl">
+            <div className="lg:col-span-4 lg:text-right">
               <Link
                 href="/#price-estimator"
                 onClick={() => trackEvent("cta_click", { location: "final_cta" })}
-                className={cn(buttonVariants({ size: "lg" }), "group px-8")}
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "group w-full px-8 sm:w-auto",
+                )}
               >
                 Get my quote
                 <ArrowRight
@@ -41,19 +44,18 @@ export function FinalCTA() {
                   aria-hidden="true"
                 />
               </Link>
-            </div>
-
-            <div className="mt-6 text-sm text-on-dark-hi/75">
-              or{" "}
-              <TrackedPhoneLink
-                href={BUSINESS.phoneTel}
-                location="final_cta"
-                className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline underline-offset-4 decoration-cta hover:text-cta"
-                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
-              >
-                <Phone aria-hidden="true" className="h-4 w-4" />
-                call {BUSINESS.phoneDisplay}
-              </TrackedPhoneLink>
+              <div className="mt-5 text-sm text-on-dark-hi/75">
+                or{" "}
+                <TrackedPhoneLink
+                  href={BUSINESS.phoneTel}
+                  location="final_cta"
+                  className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline decoration-cta underline-offset-4 hover:text-cta-bright"
+                  ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+                >
+                  <Phone aria-hidden="true" className="h-4 w-4" />
+                  call {BUSINESS.phoneDisplay}
+                </TrackedPhoneLink>
+              </div>
             </div>
           </div>
         </div>

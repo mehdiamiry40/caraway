@@ -1,17 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Montserrat, Open_Sans } from "next/font/google";
 
-// Poppins — rounded geometric sans. 300 (light) softens body/UI text where
-// Poppins 400 reads heavier than typical sans-serifs. 900 (black) reserved for
-// emphasis only; default headlines top out at 800 (extrabold).
-const poppins = Poppins({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-open-sans",
   display: "swap",
 });
 
-// JetBrains Mono — retained for tabular figures and any mono-needed spots.
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "700"],
@@ -124,7 +127,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#5B3FBE",
+  themeColor: "#2C5697",
 };
 
 export default function RootLayout({
@@ -139,7 +142,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${poppins.variable} ${jetbrainsMono.variable}`}
+      className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />

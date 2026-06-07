@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Clock } from "lucide-react";
+import { CarFront, Clock, MapPin, Phone } from "lucide-react";
 import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
@@ -24,20 +24,22 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      {/* Top utility strip — dark purple band with phone + hours */}
-      <div className="hidden lg:block w-full bg-ink-deep text-on-dark-hi">
-        <div className="site-container flex items-center justify-between h-9 text-xs font-medium">
-          <span className="inline-flex items-center gap-2 text-on-dark-hi/80">
-            <Clock className="h-3.5 w-3.5 text-cta" aria-hidden="true" />
-            Open today · {BUSINESS.hours} · 7 days
-          </span>
-          <div className="flex items-center gap-5">
-            <span className="text-on-dark-hi/70">
+      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
+
+      <div className="hidden sm:block w-full bg-background border-b border-border">
+        <div className="site-container flex items-center justify-end h-8 text-xs">
+          <div className="flex items-center divide-x divide-border">
+            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
+              <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+              Open today · {BUSINESS.hours} · 7 days
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
               Free pickup across Greater Brisbane
             </span>
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex items-center gap-1.5 rounded-sm text-on-dark-hi hover:text-cta transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep"
+              className="inline-flex items-center gap-1.5 pl-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
@@ -47,29 +49,36 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main nav */}
-      <div className="bg-background border-b border-border/80">
-        <div className="site-container flex items-center justify-between h-14 sm:h-16 lg:h-[72px] gap-3 lg:gap-6">
+      <div className="bg-background border-b border-border">
+        <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
           <Link
             href="/"
             aria-label="Caraway — Home"
-            className="flex items-center gap-2 group shrink-0"
+            className="flex items-center gap-3 group shrink-0"
           >
-            <span className="font-display font-semibold text-2xl lg:text-[1.625rem] tracking-[-0.04em] text-primary lowercase transition-opacity duration-200 group-hover:opacity-80">
-              caraway<span className="text-accent">.</span>
+            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-white transition-colors group-hover:bg-ink-deep">
+              <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <span className="leading-none">
+              <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
+                CARAWAY
+              </span>
+              <span className="mt-1 block text-[0.58rem] sm:text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                Vehicle buying
+              </span>
             </span>
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-1 flex-1 justify-center"
+            className="hidden lg:flex items-center gap-0 flex-1 justify-center"
           >
             <ServicesDropdownClient serviceLinks={serviceLinks} />
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors duration-200 px-3 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="text-sm font-semibold text-primary/85 hover:text-accent transition-colors duration-200 px-3 py-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {link.label}
               </Link>

@@ -10,13 +10,13 @@ export function Success({ state }: { state: EstimatorState }) {
   return (
     <section
       id="price-estimator"
-      className="section-y scroll-mt-header bg-muted relative overflow-hidden"
+      className="section-y scroll-mt-header relative overflow-hidden border-y border-border bg-secondary"
       aria-label="Quote submitted"
     >
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
       <div className="site-container">
         <div
-          className="bg-card rounded-2xl border border-border shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_8px_16px_hsl(var(--shadow-color)/0.06),0_32px_64px_-12px_hsl(var(--shadow-color)/0.1)] p-6 sm:p-10 text-center max-w-3xl mx-auto"
+          className="relative mx-auto max-w-3xl overflow-hidden rounded-sm border border-border bg-card p-6 text-center shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary sm:p-10"
           role="status"
           aria-live="polite"
           aria-atomic="true"
