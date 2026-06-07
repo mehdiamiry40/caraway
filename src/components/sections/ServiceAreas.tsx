@@ -100,16 +100,12 @@ export function ServiceAreas() {
               const hubs = hubsFor(region);
               return (
                 <li key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-7 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-1 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08),0_32px_64px_-12px_hsl(var(--shadow-color)/0.14)] hover:border-primary/40">
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/[0.06] transition-all duration-500 group-hover:bg-primary/[0.12] group-hover:scale-110"
-                    />
+                  <article className="group relative flex h-full flex-col overflow-hidden border border-border bg-card p-5 sm:p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-md hover:border-primary/40">
                     <div className="relative flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-colors duration-300 group-hover:bg-primary/20">
+                      <span className="flex h-10 w-10 items-center justify-center bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta-ink">
+                      <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta-ink">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
                         {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
                       </span>
@@ -120,18 +116,27 @@ export function ServiceAreas() {
                     <p className="relative mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
                       {region.description}
                     </p>
-                    <ul className="relative mt-5 flex flex-wrap gap-1.5">
+                    <ul className="relative mt-4 hidden flex-wrap gap-1.5 sm:flex">
                       {hubs.map((hub) => (
                         <li key={hub.slug}>
                           <Link
                             href={`/locations/${hub.slug}`}
-                            className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                            className="inline-flex min-h-11 items-center gap-1 border border-border bg-background px-2.5 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                           >
                             {hub.h1.replace("Cash for Cars ", "")}
                           </Link>
                         </li>
                       ))}
                     </ul>
+                    {hubs[0] && (
+                      <Link
+                        href={`/locations/${hubs[0].slug}`}
+                        className="relative mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary sm:hidden"
+                      >
+                        View {region.label} areas
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    )}
                   </article>
                 </li>
               );

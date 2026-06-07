@@ -1,37 +1,41 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useCallback } from "react";
+
+const QUOTE_TARGET_IDS = ["price-estimator", "quote-form", "quote-section"] as const;
+
+export function findQuoteTarget(doc: Pick<Document, "getElementById"> = document) {
+  for (const id of QUOTE_TARGET_IDS) {
+    const target = doc.getElementById(id);
+    if (target) return target;
+  }
+  return null;
+}
 
 /**
  * Returns a callback that scrolls the user to the quote form.
  *
  * - On the home page, scrolls to the #price-estimator section.
  * - On other pages, tries to find an embedded quote section
- *   (#price-estimator or #quote-section) before falling back to
+ *   before falling back to
  *   navigating home with a hash.
  */
 export function useScrollToQuote() {
   const router = useRouter();
-  const pathname = usePathname();
-  const isHome = pathname === "/" || pathname === "";
 
   return useCallback(() => {
-    if (isHome) {
-      const el = document.getElementById("price-estimator");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-    }
-
-    const el =
-      document.getElementById("price-estimator") ||
-      document.getElementById("quote-section");
+    const el = findQuoteTarget();
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      ).matches;
+      el.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
     } else {
       router.push("/#price-estimator");
     }
-  }, [isHome, router]);
+  }, [router]);
 }

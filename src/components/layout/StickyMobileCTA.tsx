@@ -18,17 +18,34 @@ import { BUSINESS } from "@/lib/site";
  */
 export function StickyMobileCTA() {
   const scrollToQuote = useScrollToQuote();
-  const [shown, setShown] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
+  const [quoteVisible, setQuoteVisible] = useState(false);
 
   useEffect(() => {
     const HERO_OFFSET = 480;
     const onScroll = () => {
-      setShown(window.scrollY > HERO_OFFSET);
+      setPastHero(window.scrollY > HERO_OFFSET);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const quoteTarget =
+      document.getElementById("price-estimator") ||
+      document.getElementById("quote-form");
+    if (!quoteTarget || !("IntersectionObserver" in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setQuoteVisible(entry.isIntersecting),
+      { rootMargin: "-15% 0px -15% 0px" },
+    );
+    observer.observe(quoteTarget);
+    return () => observer.disconnect();
+  }, []);
+
+  const shown = pastHero && !quoteVisible;
 
   return (
     <div

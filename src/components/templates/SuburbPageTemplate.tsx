@@ -17,8 +17,7 @@ import { CheckCircle2, Phone } from "lucide-react";
 import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { cn } from "@/lib/utils";
-
-
+import { getLeadSentence } from "@/lib/content-summary";
 
 export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const relatedServiceData = suburb.relatedServices
@@ -30,6 +29,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
     .filter((s): s is SuburbPage => s !== undefined);
 
   const relatedPosts = getPostsForSuburb(suburb.slug);
+  const heroIntro = getLeadSentence(suburb.intro);
   const areaName = suburb.h1.replace("Cash for Cars ", "").replace(" — Free Removal & Instant Cash", "").replace(" — Sell Your Car Today", "").replace(" — Get Paid Today", "");
   const nearbyAreaNames = suburb.nearbyAreaNames ?? nearbySuburbData.map((s) => s.h1.replace("Cash for Cars ", ""));
   const localSellingPoints = suburb.localSellingPoints ?? PROMISE_POINTS.slice(1, 5);
@@ -49,18 +49,18 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <LocationViewTracker suburb={suburb.slug} />
       <Header />
 
-      <main id="main-content" className="flex-1 mt-header-safe pb-[5.5rem] lg:pb-0">
-        <section className="aurora-surface section-y-hero">
+      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
+        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
-            <p className="eyebrow mt-6 mb-4">Location</p>
-            <h1 className="font-display text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.05] text-foreground text-balance max-w-3xl mb-6" style={{ letterSpacing: "var(--tracking-display)" }}>
+            <p className="eyebrow mt-5 mb-3">Location</p>
+            <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[1.06] text-primary text-balance max-w-4xl mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
               {suburb.h1}
             </h1>
-            <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl mb-10">
-              {suburb.intro}
+            <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
+              {heroIntro}
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:items-center mb-5">
+            <div className="flex flex-col sm:flex-row gap-3 sm:items-center mb-4">
               <ScrollToQuoteCTA source={`location_hero_${suburb.slug}`} />
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
@@ -86,6 +86,9 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   Car removal in {areaName} and nearby suburbs
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                  {suburb.intro}
+                </p>
+                <p className="mt-5 text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.localContent}
                 </p>
                 {nearbyAreaNames.length > 0 && (
@@ -93,7 +96,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     <h3 className="text-sm font-display text-foreground mb-3">Nearby suburbs covered</h3>
                     <ul className="flex flex-wrap gap-2">
                       {nearbyAreaNames.map((name) => (
-                        <li key={name} className="rounded-full border border-border/70 bg-secondary px-3 py-1.5 text-sm text-foreground/80">
+                        <li key={name} className="border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
                           {name}
                         </li>
                       ))}
@@ -175,7 +178,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </div>
               )}
 
-              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 lg:p-10 shadow-card">
+              <div className="border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
                 <p className="eyebrow mb-3">How it works</p>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-3 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Three steps to cash in hand.
@@ -223,13 +226,13 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
+              <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                 <h3 className="text-sm font-display mb-1 text-foreground">Our promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                      <span className="flex h-5 w-5 items-center justify-center bg-primary/10 text-primary shrink-0">
                         <CheckCircle2 className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
                       </span>
                       <span className="text-foreground/80">{item}</span>
@@ -239,7 +242,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Our services" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
+                <nav aria-label="Our services" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                   <h3 className="text-sm font-display mb-4 text-foreground">Our services</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedServiceData.map(s => (
@@ -257,7 +260,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {nearbySuburbData.length > 0 && (
-                <nav aria-label="Nearby areas" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
+                <nav aria-label="Nearby areas" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                   <h3 className="text-sm font-display mb-4 text-foreground">Nearby areas</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {nearbySuburbData.map(s => (
@@ -275,7 +278,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {internalLinks.length > 0 && (
-                <nav aria-label="Nearby areas we service" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
+                <nav aria-label="Nearby areas we service" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                   <h3 className="text-sm font-display mb-4 text-foreground">Nearby areas we service</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {internalLinks.map((link) => (
@@ -293,7 +296,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {relatedPosts.length > 0 && (
-                <nav aria-label="Related articles" className="bg-card border border-border/60 rounded-2xl p-5 sm:p-6 shadow-card">
+                <nav aria-label="Related articles" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedPosts.map(p => (

@@ -13,28 +13,27 @@ emails, browser chrome, and app icons.
 
 ## Current palette
 
-Clean white canvas, dark plum text, Looping-style purple brand surfaces, soft
-lavender washes, orange emphasis, lime-green primary CTAs, and a yellow plate
-accent. Light mode only.
+Clean white canvas, utility blue brand surfaces, teal emphasis, pale blue
+supporting washes, and lime-green primary actions. Light mode only.
 
 | Token                      | Hex      | HSL              | Role                                           |
 | -------------------------- | -------- | ---------------- | ---------------------------------------------- |
 | `--background`             | `#FFFFFF` | `0 0% 100%`     | Page canvas                                    |
-| `--foreground`             | `#211734` | `261 39% 15%`   | Default body text                              |
+| `--foreground`             | `#303030` | `0 0% 19%`      | Default body text                              |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)     |
-| `--card-foreground`        | `#211734` | `261 39% 15%`   | Text on cards                                  |
-| `--primary`                | `#5B3FBE` | `253 50% 50%`   | Brand purple / dominant brand surfaces         |
+| `--card-foreground`        | `#303030` | `0 0% 19%`      | Text on cards                                  |
+| `--primary`                | `#2C5696` | `216 55% 38%`   | Brand blue / dominant brand surfaces           |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                            |
-| `--secondary`              | `#F4EEFB` | `268 62% 96%`   | Low-emphasis lavender surface                  |
-| `--secondary-foreground`   | `#331D63` | `259 55% 25%`   | Text on `--secondary`                          |
-| `--muted`                  | `#F6F3FA` | `266 41% 97%`   | Subtle backgrounds (code, fills)               |
-| `--muted-foreground`       | `#5E5770` | `257 13% 39%`   | Secondary / helper text                        |
-| `--accent`                 | `#F97449` | `15 94% 63%`    | Orange emphasis / highlight CTAs               |
-| `--accent-foreground`      | `#211734` | `261 39% 15%`   | Text on `--accent`                             |
-| `--cta`                    | `#7CB92F` | `87 59% 45%`    | Lime primary CTA buttons and action accents    |
-| `--cta-foreground`         | `#211734` | `261 39% 15%`   | Text on `--cta`                                |
-| `--plate`                  | `#F5D012` | `50 92% 52%`    | License-plate yellow accent                    |
-| `--plate-foreground`       | `#211734` | `261 39% 15%`   | Text on `--plate`                              |
+| `--secondary`              | `#EBF5FA` | `198 57% 95%`   | Low-emphasis pale blue surface                 |
+| `--secondary-foreground`   | `#26436D` | `216 48% 29%`   | Text on `--secondary`                          |
+| `--muted`                  | `#F6F8F9` | `200 17% 97%`   | Subtle backgrounds (code, fills)               |
+| `--muted-foreground`       | `#59636E` | `210 11% 39%`   | Secondary / helper text                        |
+| `--accent`                 | `#2D8995` | `187 54% 38%`   | Teal emphasis / supporting action surfaces     |
+| `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                             |
+| `--cta`                    | `#B3CF44` | `72 59% 54%`    | Lime primary CTA buttons and action accents    |
+| `--cta-foreground`         | `#1E3557` | `216 48% 23%`   | Text on `--cta`                                |
+| `--plate`                  | `#B3CF44` | `72 59% 54%`    | Vehicle plate / estimate accent                |
+| `--plate-foreground`       | `#1E3557` | `216 48% 23%`   | Text on `--plate`                              |
 | `--destructive`            | `#DC2626` | `0 72% 51%`     | Errors, destructive actions                    |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                        |
 | `--success`                | `#16A34A` | `142 76% 36%`   | Success signal (distinct from CTA green)       |
@@ -43,22 +42,22 @@ accent. Light mode only.
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                            |
 | `--info`                   | `#0284C7` | `200 98% 39%`   | Neutral notices                                |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                               |
-| `--border`                 | `#E5DEEF` | `265 35% 90%`   | Default border / divider                       |
-| `--input`                  | `#D9D1E0` | `264 25% 85%`   | Form field border                              |
-| `--ring`                   | `#5B3FBE` | `253 50% 50%`   | Focus ring                                     |
+| `--border`                 | `#D4D9DD` | `210 12% 85%`   | Default border / divider                       |
+| `--input`                  | `#BEC8CF` | `207 15% 78%`   | Form field border                              |
+| `--ring`                   | `#2C5696` | `216 55% 38%`   | Focus ring                                     |
 
 ### Dark Band Tokens
 
-These tokens support purple hero/footer bands and dark quote-result surfaces.
+These tokens support blue hero/footer bands and dark quote-result surfaces.
 
 | Token                 | Hex      | HSL              | Role                             |
 | --------------------- | -------- | ---------------- | -------------------------------- |
-| `--ink`               | `#2A1A4D` | `259 50% 20%`   | Deep plum dark surface           |
-| `--ink-deep`          | `#1F1339` | `259 50% 15%`   | Deeper plum shadow / dark depth  |
-| `--ink-raised`        | `#402A6F` | `259 45% 30%`   | Raised dark surface              |
-| `--on-dark`           | `#E0D7EA` | `270 30% 88%`   | Secondary text on dark surfaces  |
+| `--ink`               | `#2C5696` | `216 55% 38%`   | Primary blue dark surface        |
+| `--ink-deep`          | `#1D3B63` | `214 55% 25%`   | Deeper blue shadow / dark depth  |
+| `--ink-raised`        | `#4472A7` | `212 42% 46%`   | Raised dark surface              |
+| `--on-dark`           | `#E0E9F0` | `205 35% 91%`   | Secondary text on dark surfaces  |
 | `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
-| `--shadow-color`      | `#211734` | `261 39% 15%`   | Purple-tinted shadows            |
+| `--shadow-color`      | `#24344C` | `216 35% 22%`   | Blue-tinted shadows              |
 
 ### WCAG contrast
 
