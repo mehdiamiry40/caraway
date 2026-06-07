@@ -56,7 +56,7 @@ export function Header() {
             aria-label="Caraway — Home"
             className="flex items-center gap-3 group shrink-0"
           >
-            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-white transition-colors group-hover:bg-ink-deep">
+            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
               <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
             </span>
             <span className="leading-none">

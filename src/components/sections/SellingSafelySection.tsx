@@ -46,7 +46,7 @@ const trustPoints = [
 
 export function SellingSafelySection() {
   return (
-    <section className="section-y bg-background border-t border-border/70" aria-labelledby="selling-safely-heading">
+    <section className="section-y-tight bg-background border-t border-border/70" aria-labelledby="selling-safely-heading">
       <div className="site-container">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 lg:items-start">
           <div className="lg:col-span-4 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
@@ -62,7 +62,7 @@ export function SellingSafelySection() {
               We make the car selling process clear from quote to pickup, so you know what to expect before your vehicle leaves.
             </p>
 
-            <div className="mt-7 rounded-2xl border border-border/70 bg-secondary p-5 sm:p-6">
+            <div className="mt-7 border border-border bg-secondary p-5 sm:p-6">
               <p className="text-sm font-medium text-foreground">Questions before you book?</p>
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
@@ -77,16 +77,16 @@ export function SellingSafelySection() {
           </div>
 
           <div className="lg:col-span-8">
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
               {trustPoints.map(({ icon: Icon, title, description }) => (
                 <li
                   key={title}
-                  className="rounded-2xl border border-border/70 bg-card p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.04)]"
+                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 sm:block sm:p-5"
                 >
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-cta/15 text-cta">
+                  <div className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta sm:mb-4 sm:h-11 sm:w-11">
                     <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
                   </div>
-                  <h3 className="mb-2 font-display text-lg leading-snug text-foreground">{title}</h3>
+                  <h3 className="mb-1 font-display text-base leading-snug text-primary sm:mb-2 sm:text-lg">{title}</h3>
                   <p className="text-sm sm:text-[0.9375rem] leading-relaxed text-muted-foreground">
                     {description}
                   </p>
@@ -94,7 +94,7 @@ export function SellingSafelySection() {
               ))}
             </ul>
 
-            <p className="mt-6 rounded-2xl border border-border/70 bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-5 border border-border bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
               Vehicle transfer requirements can vary depending on the situation. Always keep your own sale records and follow current QLD Transport guidance.
             </p>
           </div>

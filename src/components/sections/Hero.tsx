@@ -20,7 +20,7 @@ export function Hero() {
     >
       <div className="mt-header-safe mx-auto max-w-[96rem]">
         <div className="grid min-h-[34rem] grid-cols-1 lg:grid-cols-12">
-          <div className="relative order-2 min-h-[20rem] overflow-hidden sm:min-h-[28rem] lg:order-1 lg:col-span-7 lg:min-h-[34rem]">
+          <div className="relative order-2 min-h-[13rem] overflow-hidden sm:min-h-[24rem] lg:order-1 lg:col-span-7 lg:min-h-[34rem]">
             <Image
               src="/images/tow-truck-hero.webp"
               alt="Caraway tow truck collecting a customer's car in Brisbane"
@@ -40,9 +40,9 @@ export function Hero() {
             />
           </div>
 
-          <div className="relative z-10 order-1 flex items-center px-5 py-12 sm:px-8 sm:py-16 lg:order-2 lg:col-span-5 lg:px-12 xl:px-16">
+          <div className="relative z-10 order-1 flex items-center px-5 py-10 sm:px-8 sm:py-14 lg:order-2 lg:col-span-5 lg:px-10 xl:px-14">
             <div className="max-w-xl">
-              <p className="mb-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-cta-bright sm:text-sm">
+              <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-cta-bright sm:mb-5 sm:text-sm">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
                 Brisbane cash for cars
               </p>
@@ -56,7 +56,7 @@ export function Hero() {
                 We&apos;ll handle the rest.
               </h1>
 
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:mt-6 sm:text-lg">
                 Get a clear cash offer, free pickup across Greater Brisbane, and payment before
                 your vehicle leaves.
               </p>
@@ -65,7 +65,7 @@ export function Hero() {
                 demand.
               </p>
 
-              <div className="mt-8 flex max-w-xl flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <div className="mt-7 flex max-w-xl flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
                 <Link
                   href="/#price-estimator"
                   className={cn(
@@ -82,7 +82,7 @@ export function Hero() {
                 <TrackedPhoneLink
                   href={BUSINESS.phoneTel}
                   location="hero"
-                  className="inline-flex items-center justify-center gap-2 text-sm font-medium text-on-dark-hi/90 underline decoration-cta/70 underline-offset-4 transition-colors hover:text-on-dark-hi hover:decoration-cta sm:text-[0.9375rem]"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap px-2 text-sm font-medium text-on-dark-hi/90 underline decoration-cta/70 underline-offset-4 transition-colors hover:text-on-dark-hi hover:decoration-cta sm:px-0 sm:text-[0.9375rem]"
                   ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                 >
                   <Phone aria-hidden="true" className="h-4 w-4 text-cta-bright" />
@@ -90,7 +90,7 @@ export function Hero() {
                 </TrackedPhoneLink>
               </div>
 
-              <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+              <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2.5 sm:mt-8">
                 {promises.map((promise) => (
                   <li
                     key={promise}
@@ -104,7 +104,7 @@ export function Hero() {
                 ))}
               </ul>
 
-              <div className="mt-8 inline-flex flex-wrap items-center gap-x-3 gap-y-2 border border-white/20 bg-white/8 px-3 py-2">
+              <div className="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-2 border border-on-dark-hi/20 bg-on-dark-hi/8 px-3 py-2 sm:mt-8">
                 <span className="star-row" aria-hidden="true">
                   {[0, 1, 2, 3, 4].map((index) => (
                     <Star key={index} className="h-4 w-4 fill-current" strokeWidth={0} />

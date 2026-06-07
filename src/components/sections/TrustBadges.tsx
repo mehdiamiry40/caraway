@@ -22,7 +22,7 @@ const quickLinks = [
   {
     icon: BadgeDollarSign,
     label: "Get a cash quote",
-    description: "A clear estimate in four quick steps.",
+    description: "A clear estimate from four quick details.",
     href: "/#price-estimator",
   },
   {
@@ -51,7 +51,7 @@ export function TrustBadges() {
       className="relative border-b border-border/70 bg-background"
       aria-label="Trust and credentials"
     >
-      <div className="site-container py-10 sm:py-14">
+      <div className="site-container py-9 sm:py-14">
         <div className="border border-border bg-card p-5 sm:p-6 lg:flex lg:items-center lg:justify-between lg:gap-8">
           <div className="flex items-center gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-secondary text-primary">
@@ -69,25 +69,25 @@ export function TrustBadges() {
           </div>
           <Link
             href="/locations"
-            className="mt-5 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-display text-sm font-semibold text-white transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:mt-0"
+            className="mt-5 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-display text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:mt-0"
           >
             Check your area
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
 
-        <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-6 grid grid-cols-1 gap-3 sm:mt-7 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
           {quickLinks.map(({ icon: Icon, label, description, href }) => (
             <li key={label}>
               <Link
                 href={href}
-                className="group flex min-h-40 h-full flex-col border border-border bg-card p-5 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="group grid min-h-0 h-full grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 border border-border bg-card p-4 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
               >
-                <Icon className="h-10 w-10 text-primary" strokeWidth={1.5} aria-hidden="true" />
-                <h3 className="mt-5 font-display text-base font-semibold text-primary">{label}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{description}</p>
+                <Icon className="row-span-2 h-9 w-9 text-primary sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
+                <h3 className="font-display text-base font-semibold text-primary sm:mt-5">{label}</h3>
+                <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground sm:mt-1">{description}</p>
                 <ArrowRight
-                  className="mt-auto h-8 w-4 pt-4 text-accent-ink transition-transform group-hover:translate-x-1"
+                  className="row-span-2 h-4 w-4 text-accent-ink transition-transform group-hover:translate-x-1 sm:mt-auto sm:h-8 sm:pt-4"
                   aria-hidden="true"
                 />
               </Link>

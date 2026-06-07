@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
-import { faqs } from "@/data/home-faqs";
+import { homepageFaqs } from "@/data/home-faqs";
 import { trackEvent } from "@/lib/analytics";
 
 export function FAQ() {
@@ -28,14 +28,14 @@ export function FAQ() {
             <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm">
               <Link
                 href="/faq"
-                className="inline-flex items-center gap-1 text-primary link-underline"
+                className="inline-flex min-h-11 items-center gap-1 text-primary link-underline"
               >
                 View all questions
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-1 text-foreground/80 link-underline hover:text-foreground"
+                className="inline-flex min-h-11 items-center gap-1 text-foreground/80 link-underline hover:text-foreground"
               >
                 Contact us
                 <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
@@ -45,7 +45,7 @@ export function FAQ() {
 
           <div className="lg:col-span-7">
             <Accordion
-              items={faqs}
+              items={homepageFaqs}
               onItemToggle={(question, isOpening) => {
                 if (isOpening) trackEvent("faq_opened", { question });
               }}

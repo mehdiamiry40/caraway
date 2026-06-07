@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema, howToSchema } from "@/lib/json-ld-schemas";
-import { faqs } from "@/data/home-faqs";
+import { homepageFaqs } from "@/data/home-faqs";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 import Home from "@/views/Home";
 
@@ -71,11 +71,11 @@ export default function HomePage() {
       <Home />
       <JsonLd
         data={[
-          faqPageSchema(faqs),
+          faqPageSchema(homepageFaqs),
           howToSchema({
             name: "How to Sell Your Car for Cash in Brisbane",
             description:
-              "Three simple steps to get cash for your car with Caraway in Brisbane: get a quote, accept the offer, and get paid on pickup.",
+              "Four clear steps to sell your car to Caraway in Brisbane: share the vehicle details, get a firm offer, arrange free pickup, and get paid.",
             totalTime: "PT1D",
             estimatedCost: { currency: "AUD", value: "0" },
             steps: [
@@ -85,13 +85,18 @@ export default function HomePage() {
                 url: `${SITE_URL}/#how-it-works`,
               },
               {
-                name: "Confirm your quote",
-                text: "We send a firm number straight back through the quote tool. Lock it in and book a pickup time that suits you.",
+                name: "Get a firm cash offer",
+                text: "We send a locked-in number without haggle games or bait-and-switch pricing. Accept it and book a time that suits you.",
                 url: `${SITE_URL}/#how-it-works`,
               },
               {
-                name: "We pick up, you get paid",
-                text: "Our truck arrives at the booked slot. Cash (or agreed payment method) before the vehicle leaves your place.",
+                name: "We come to you",
+                text: "Our truck arrives at the booked slot anywhere in Greater Brisbane, with free towing included.",
+                url: `${SITE_URL}/#how-it-works`,
+              },
+              {
+                name: "Get paid on the spot",
+                text: "Receive cash or an agreed transfer before the vehicle leaves, with the paperwork handled for you.",
                 url: `${SITE_URL}/#how-it-works`,
               },
             ],

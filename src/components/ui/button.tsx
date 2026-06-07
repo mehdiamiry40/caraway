@@ -24,7 +24,7 @@ const buttonVariants = cva(
         ghost:
           "bg-transparent text-primary hover:bg-primary/8",
         inkOutline:
-          "border-2 border-white bg-transparent text-white hover:bg-white hover:text-primary",
+          "border-2 border-on-dark-hi bg-transparent text-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
       },
       size: {
         default: "h-12 px-6 text-[0.9375rem]",

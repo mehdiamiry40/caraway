@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const repoRoot = process.cwd();
@@ -27,6 +27,10 @@ function countLines(path, regex) {
   const content = readFileSync(resolve(repoRoot, path), 'utf8');
   const matches = content.match(regex);
   return matches ? matches.length : 0;
+}
+
+function countMatches(paths, regex) {
+  return paths.reduce((total, path) => total + countLines(path, regex), 0);
 }
 
 function auditBuildAgent() {
@@ -91,7 +95,22 @@ function auditAccessibilityAgent() {
 function auditConversionAgent() {
   const hasQuoteAction = checkFile('src/actions/quote.ts');
   const hasContactAction = checkFile('src/actions/contact.ts');
-  const ctaCount = countLines('src/views/Home.tsx', /Quote|Call|Contact/gi);
+  const homepageFiles = [
+    'src/views/Home.tsx',
+    'src/views/HomeBelowFold.tsx',
+    'src/components/sections/Hero.tsx',
+    'src/components/sections/TrustBadges.tsx',
+    'src/components/sections/Stats.tsx',
+    'src/components/sections/HowItWorks.tsx',
+    'src/components/sections/PriceEstimator.tsx',
+    'src/components/sections/WhyUs.tsx',
+    'src/components/sections/Testimonials.tsx',
+    'src/components/sections/ServiceAreas.tsx',
+    'src/components/sections/FAQ.tsx',
+    'src/components/sections/SellingSafelySection.tsx',
+    'src/components/sections/FinalCTA.tsx',
+  ];
+  const ctaCount = countMatches(homepageFiles, /Quote|Call|Contact/gi);
 
   return {
     agent: 'Conversion Agent',
@@ -109,7 +128,7 @@ function auditConversionAgent() {
       {
         name: 'CTA language density on homepage',
         status: ctaCount >= 5 ? 'pass' : 'warn',
-        details: `Detected ${ctaCount} CTA keyword matches in src/views/Home.tsx.`,
+        details: `Detected ${ctaCount} CTA keyword matches across the homepage component tree.`,
       },
     ],
   };
@@ -167,8 +186,10 @@ const results = [
 
 const summary = summarize(results);
 const report = createReport(results, summary);
-const reportPath = resolve(repoRoot, 'reports/website-audit.md');
+const reportDirectory = resolve(repoRoot, 'reports');
+const reportPath = resolve(reportDirectory, 'website-audit.md');
 
+mkdirSync(reportDirectory, { recursive: true });
 writeFileSync(reportPath, report, 'utf8');
 console.log(`Audit complete. Report written to ${reportPath}`);
 console.log(`Score: ${summary.score}/100 (${summary.passed} pass, ${summary.warned} warn, ${summary.failed} fail)`);

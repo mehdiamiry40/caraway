@@ -87,3 +87,5 @@ export const faqs = [
       "Yes — bulk pickups are one of our favourite jobs. Deceased estates, tradies clearing a yard, rural properties with a row of old utes, fleet disposals: we handle them all. Mention the number of vehicles when you request your quote and we'll usually improve the per-car price because collecting two or three cars on a single run is cheaper for us than making separate trips.",
   },
 ];
+
+export const homepageFaqs = faqs.slice(0, 6);

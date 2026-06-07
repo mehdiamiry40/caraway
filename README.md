@@ -1,16 +1,16 @@
 # Caraway
 
 Cash-for-cars marketing and lead-generation site for Caraway, Brisbane.
-Built with Next.js 15 (App Router) and deployed on Vercel.
+Built with Next.js 16 (App Router) and deployed on Vercel.
 
 ## Tech stack
 
-- **Framework:** Next.js 15 (App Router, Server Actions, RSC)
+- **Framework:** Next.js 16 (App Router, Server Actions, RSC)
 - **Runtime:** React 19, Node.js 24
-- **Language:** TypeScript 5.9 (strict)
+- **Language:** TypeScript 6 (strict)
 - **Styling:** Tailwind CSS 4
 - **Forms / validation:** react-hook-form + zod
-- **Testing:** Vitest 3
+- **Testing:** Vitest 4
 - **Linting:** ESLint 9 (`eslint-config-next`)
 - **Hosting:** Vercel (auto-deploy from `main`, PR previews)
 - **Monitoring:** Vercel Analytics, Speed Insights
@@ -76,8 +76,8 @@ Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
 
 ## Testing
 
-26 unit tests live under `src/lib/__tests__/` covering the quote schema and
-price estimator. Run them with:
+The Vitest suite covers server actions, forms, API routes, SEO helpers,
+middleware, persistence, quote validation, and pricing. Run it with:
 
 ```bash
 npm test

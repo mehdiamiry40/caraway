@@ -34,16 +34,16 @@ export function Stats() {
 
   return (
     <section ref={ref} className="relative bg-muted border-y border-border" aria-label="What to expect">
-      <div className="site-container section-y-tight">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+      <div className="site-container py-10 sm:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5">
           <FeatureStatCard stat={featureStat} inView={inView} />
-          <ul className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+          <ul className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
             {supportingStats.map((stat, index) => (
               <SupportStatItem key={stat.label} stat={stat} index={index} inView={inView} />
             ))}
           </ul>
         </div>
-        <div className="mt-8 sm:mt-10 pt-5 sm:pt-6 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
+        <div className="mt-7 sm:mt-9 pt-5 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
           <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
             Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
@@ -59,21 +59,14 @@ function FeatureStatCard({ stat, inView }: { stat: StatDef; inView: boolean }) {
 
   return (
     <article
-      className={`relative lg:col-span-5 overflow-hidden rounded-3xl bg-primary text-on-dark-hi p-7 sm:p-9 ring-1 ring-[hsl(var(--on-dark-hi)/0.1)] transition-opacity duration-700 ${
+      className={`relative lg:col-span-5 overflow-hidden bg-primary text-on-dark-hi p-6 sm:p-8 ring-1 ring-[hsl(var(--on-dark-hi)/0.1)] transition-opacity duration-700 ${
         inView ? "opacity-100" : "opacity-0"
       } motion-reduce:opacity-100`}
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-[hsl(var(--cta)/0.25)] blur-3xl"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-8 -top-8 h-32 w-32 rounded-full bg-[hsl(var(--accent)/0.22)] blur-3xl"
-      />
+      <span className="absolute inset-x-0 top-0 h-1 bg-cta" aria-hidden="true" />
       <div className="relative">
         <div className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[hsl(var(--on-dark-hi)/0.14)] ring-1 ring-[hsl(var(--on-dark-hi)/0.18)] text-on-dark-hi">
+          <span className="flex h-10 w-10 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.12)] ring-1 ring-[hsl(var(--on-dark-hi)/0.18)] text-on-dark-hi">
             <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
           </span>
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/70">
@@ -96,18 +89,18 @@ function SupportStatItem({ stat, index, inView }: { stat: StatDef; index: number
 
   return (
     <li
-      className={`group relative flex flex-col rounded-2xl border border-border/70 bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color,opacity] duration-500 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.06),0_8px_16px_hsl(var(--shadow-color)/0.08)] ${
+      className={`group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 transition-[box-shadow,border-color,opacity,transform] duration-500 ease-[var(--ease-out-quint)] hover:border-primary/40 hover:shadow-md sm:flex sm:flex-col sm:p-5 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
       } motion-reduce:opacity-100 motion-reduce:translate-y-0`}
       style={{ transitionDelay: inView ? `${index * 80}ms` : "0ms" }}
     >
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-cta/15 text-cta transition-colors duration-300 group-hover:bg-cta/25">
+      <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>
-      <p className="mt-4 font-display text-base sm:text-lg leading-tight text-foreground">
+      <p className="font-display text-base leading-tight text-primary sm:mt-4 sm:text-lg">
         {stat.value}
       </p>
-      <p className="mt-1.5 text-xs sm:text-sm text-foreground/75 leading-snug font-medium">
+      <p className="mt-1 text-xs sm:mt-1.5 sm:text-sm text-foreground/75 leading-snug font-medium">
         {stat.label}
       </p>
     </li>

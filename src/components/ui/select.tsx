@@ -8,7 +8,12 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, options, placeholder, ...props }, ref) => {
+  ({ className, options, placeholder, defaultValue, value, ...props }, ref) => {
+    const initialValue =
+      value === undefined && defaultValue === undefined && placeholder
+        ? ""
+        : defaultValue;
+
     return (
       <div className="group relative">
         <select
@@ -21,6 +26,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             className
           )}
           ref={ref}
+          value={value}
+          defaultValue={initialValue}
           {...props}
         >
           {placeholder && (

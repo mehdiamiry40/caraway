@@ -27,7 +27,7 @@ interface Props {
 
 export function MobileMenuClient({ serviceLinks }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(true);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const pathname = usePathname();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -35,7 +35,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
 
   const close = () => setIsOpen(false);
   const open = () => {
-    setIsMobileServicesOpen(true);
+    setIsMobileServicesOpen(false);
     setIsOpen(true);
   };
 
