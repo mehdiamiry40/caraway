@@ -27,11 +27,11 @@ export const post: RawBlogPostEntry = {
 
     "## How cash for cars works for a junk vehicle",
 
-    "A licensed cash-for-cars buyer in Brisbane handles junk cars every day. The process starts with a quote — by phone or online form — where you describe the make, model, year, kilometres, and general condition. Be straightforward about what's wrong: a non-runner, seized engine, or extensive rust doesn't disqualify the car, it just sets an accurate price from the start. Once you accept the offer, a tow truck is booked — free of charge across Greater Brisbane, including [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside — and payment is made in cash or direct bank transfer at pickup, before the vehicle leaves your property.",
+    "An established cash-for-cars buyer can assess a junk vehicle from its make, model, year, completeness, access, and condition. Describe non-running, seized, rusted, or missing components before accepting the quote. If Caraway buys the vehicle, towing is included within the confirmed service area and payment is confirmed before it leaves.",
 
     "## What paperwork you need",
 
-    "Selling a junk car in Brisbane is light on paperwork. You'll need a current Queensland driver's licence or other photo ID, and the vehicle's registration certificate if you have it — though expired rego does not prevent the sale. If the car was ever declared a write-off by an insurer, any paperwork from the insurance company is helpful but not mandatory. The [cash-for-cars buyer](/cash-for-cars-brisbane) completes a disposal notice under Queensland Transport and Main Roads requirements, which removes the vehicle from your name and ends your liability for future CTP charges, toll notices, and infringement notices. Before the tow truck arrives, remove your number plates — in Queensland, plates stay with the registered owner, not the vehicle.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
     "## Tips to get the best offer on your junk car",
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "## The legal side: disposing of a car properly in QLD",
 
-    "Queensland law requires that when a vehicle changes hands, the new owner files a transfer or the seller files a disposal notice with TMR within 14 days. When you sell to a licensed wrecker or cash-for-cars buyer, this is handled on your behalf — the buyer lodges the disposal notice within the legal window, and you receive confirmation. If you simply abandon the car or leave it on a friend's property indefinitely, you remain the registered owner and continue to receive CTP renewal demands, toll notices, and any parking or traffic infringements associated with the vehicle. A proper sale to a licensed buyer is the clean, legal exit that ends your liability from the day the vehicle is collected.",
+    "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
     "## The bottom line",
 

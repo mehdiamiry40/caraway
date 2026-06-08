@@ -84,7 +84,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
             tabIndex={-1}
             className="font-display text-lg text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
           >
-            Where should we send it?
+            Where can we contact you?
           </h3>
         </div>
 
@@ -261,7 +261,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
               </>
             ) : (
               <>
-                Claim my quote
+                Request confirmed offer
                 <CheckCircle2 className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
               </>
             )}

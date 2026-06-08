@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "## Paperwork for selling a car in Beenleigh",
 
-    "Queensland law keeps the paperwork straightforward. You'll need a current Queensland driver's licence or other government-issued photo ID, and the vehicle's registration certificate if you have it — expired rego does not prevent the sale. Before pickup, remove your number plates: under Queensland Transport and Main Roads (TMR) rules, plates stay with the registered operator, not the vehicle. The cash-for-cars buyer lodges a disposal notice with TMR within the required 14-day window on your behalf, which removes the vehicle from your name and ends your liability for future CTP premiums, toll notices, and traffic infringements associated with that vehicle.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
     "## Suburbs we cover near Beenleigh",
 

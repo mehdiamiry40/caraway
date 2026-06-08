@@ -20,7 +20,7 @@ export const post: RawBlogPostEntry = {
 
       "If your car is comprehensively insured, the insurer will usually assess the damage and either approve a repair or declare it a total loss. For newer vehicles — roughly five years old or less — the insurance payout is typically the best outcome. For older cars, the maths can work differently. Insurers base their offer on the car's pre-flood market value, minus excess, minus the salvage they expect to recover. On a 12-year-old Camry worth $6,000, the net payout after a $700 excess might land around $4,000–$4,500. Retaining the salvage and selling the flood-damaged car to a Brisbane cash buyer directly can sometimes net you more — and avoids the claim hitting your no-claim bonus.",
 
-      "You can absolutely sell a flood-damaged car in Queensland, but you have disclosure obligations. Under Queensland consumer law, private sellers must not misrepresent the condition of a vehicle. If the car has been flood-damaged, you need to say so. If the insurer has recorded the vehicle on the [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide), that information is publicly searchable via a PPSR check anyway. Selling to a licensed cash-for-cars buyer sidesteps most disclosure complexity — they inspect the vehicle, assess the damage themselves, and price accordingly.",
+      "A flood-damaged car can be sold, but describe known water exposure, insurer status, and write-off history accurately. A [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide) record is visible through a PPSR search. An established cash-for-cars buyer can assess the damage as-is, but accurate information still matters to the quote and receipt.",
 
       "## What flood-damaged cars are worth in Brisbane",
 
@@ -28,13 +28,13 @@ export const post: RawBlogPostEntry = {
 
       "The process to sell a flood-damaged car in Brisbane is straightforward. Call or request an online quote, providing the make, model, year, kilometres, and a description of the flood damage — where the water reached, how long the car sat in it, and whether the engine was running when the water hit. You'll get a firm cash offer, usually within minutes. If you accept, a tow truck is booked — often for [same- or next-day pickup across Brisbane](/cash-for-cars-brisbane), Logan, Ipswich, and the Bayside suburbs. Payment happens on the spot before the vehicle is loaded.",
 
-      "Paperwork is minimal. Bring your Queensland driver's licence or photo ID, the vehicle's registration certificate if you have it, and any correspondence from your insurer about the flood damage or write-off status. The buyer handles the disposal notice with TMR, which transfers the vehicle out of your name and ends your liability for future fines, tolls, or CTP. Remove your number plates before the tow truck leaves — in Queensland, plates stay with the owner, not the car.",
+      "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
       "## Mistakes to avoid with a flood-damaged car",
 
       "Three common mistakes to avoid. First, don't try to start a flood-damaged car. Water in the engine cylinders causes hydro-lock, which can bend conrods and crack the block — turning a repairable engine into a paperweight. Second, don't leave the car sitting for weeks hoping it will dry out. Mould and corrosion accelerate fast in Brisbane's subtropical humidity, and every day the car sits, its value drops. Third, don't attempt to hide the flood damage and sell privately — it's a breach of Queensland consumer law, and buyers who discover it later can pursue you for compensation.",
 
-      "If you're dealing with a flood-damaged car in Brisbane, the quickest and most straightforward option is a licensed cash-for-cars buyer who specialises in [damaged and written-off vehicles](/damaged-cars-brisbane). Free towing, same- or next-day pickup, cash on the spot, and all the TMR paperwork handled — so you can move on without the car sitting in your driveway growing mould and losing value by the day.",
+      "If you're dealing with a flood-damaged car in Brisbane, an established buyer that assesses [damaged and written-off vehicles](/damaged-cars-brisbane) can quote from the insurer status and damage details. Caraway includes towing when we buy, confirms payment at pickup, and provides a signed receipt and buyer details.",
     ],
     date: "2026-04-12",
     category: "Guides",

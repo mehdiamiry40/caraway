@@ -12,7 +12,7 @@ export const post: RawBlogPostEntry = {
       "## When the maths says scrap beats trade-in",
       "1. The repair costs exceed the car's value. If a mechanic quotes $3,000 to fix a car worth $2,500, it's time to sell as-is. Cash buyers factor in the [scrap value of metals and parts](/blog/scrap-metal-prices-brisbane-2026), so you still get paid.",
       "2. It's been sitting unused for months. A car that's been parked for six months or more is losing value to rust, flat tyres, and battery decay. The longer you wait, the less it's worth.",
-      "3. It failed the safety inspection. If your car can't pass a roadworthy certificate and the fixes are expensive, a cash-for-cars service is the simplest exit. No roadworthy required.",
+      "3. It failed the safety inspection. If repairs cost more than the vehicle justifies, compare an as-is offer with the cost of repairing it for a private registered sale. Safety-certificate requirements depend on registration status and sale type.",
       "## When dealer trade-in offers fall flat",
       "4. The trade-in offer was insultingly low. Dealerships often offer $500 or less for older cars, then charge you fees on top. A [direct cash buyer](/old-cars-brisbane) typically offers more because they recover value from parts and metal.",
       "5. You just want it gone today. Private sales take time — ads, tyre-kickers, test drives, negotiation. If speed matters, cash buyers often pick up the same or next day and pay on the spot.",

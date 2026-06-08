@@ -10,9 +10,9 @@ const steps = [
   },
   {
     number: "02",
-    title: "Get a firm cash offer",
+    title: "Get a confirmed offer",
     description:
-      "We send a locked-in number - no haggle games, no bait-and-switch. Accept and we book a time.",
+      "We review the vehicle details and confirm the offer in writing before a pickup is booked.",
     timing: "Within 1 business day",
   },
   {
@@ -26,7 +26,7 @@ const steps = [
     number: "04",
     title: "Get paid on the spot",
     description:
-      "Cash or transfer before the wheels leave your driveway. All paperwork handled by us.",
+      "Payment confirmed before the wheels leave, with a signed receipt and buyer details for your records.",
     timing: "Paid that day",
   },
 ] as const;

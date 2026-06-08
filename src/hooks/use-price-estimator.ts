@@ -90,14 +90,14 @@ export function usePriceEstimator() {
   );
 
   const liveMessage = isSuccess
-    ? "Your quote request was submitted successfully."
+    ? "Your confirmed-offer request was submitted successfully."
     : isCalculating
-      ? "Calculating your instant quote…"
+      ? "Calculating your instant estimate…"
       : step === 1
         ? "Step 1 of 3. Tell us about your vehicle."
         : step === 2
-          ? "Step 2 of 3. Your instant quote is ready."
-          : "Step 3 of 3. Enter your contact details to claim your quote.";
+          ? "Step 2 of 3. Your instant estimate is ready."
+          : "Step 3 of 3. Enter your contact details to request a confirmed offer.";
 
   const persistedPayload = useMemo(
     () => ({ step, make, model, year, condition }),

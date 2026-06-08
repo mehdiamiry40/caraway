@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { trackEvent } from "@/lib/analytics";
 
-/** External link that opens in a new tab and records `authority_link_click` (e.g. TMR, ABR, AUSTRAC). */
+/** External link that opens in a new tab and records `authority_link_click` (e.g. TMR or ABR). */
 export function TrackedOutboundLink({
   href,
   label,

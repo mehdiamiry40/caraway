@@ -144,8 +144,8 @@ const nextConfig: NextConfig = {
             isDev
               ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`
               : `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`,
-            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-            "font-src 'self' https://fonts.gstatic.com",
+            "style-src 'self' 'unsafe-inline'",
+            "font-src 'self'",
             `img-src 'self' data: blob: ${GTAG_TRANSPORT_SRC}`,
             `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com ${GTAG_TRANSPORT_SRC}`,
             "object-src 'none'",

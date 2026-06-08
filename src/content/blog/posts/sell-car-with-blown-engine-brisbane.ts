@@ -25,19 +25,19 @@ export const post: RawBlogPostEntry = {
 
     "## How selling works — and why you don't need it running",
 
-    "The process to sell a car with a blown engine in Brisbane is the same as any cash-for-cars sale, with one advantage: the car never has to move under its own power. You provide the make, model, year, kilometres, and an honest description — including that the engine is blown and what you know about how it failed. A licensed buyer gives a firm quote, usually within minutes. If you accept, a tow truck is dispatched, often for same- or next-day pickup across Brisbane, Logan, Ipswich, and the Bayside. The car is winched on, you sign the transfer paperwork, and you're paid on the spot before it leaves the driveway. Free towing is standard, which matters when the alternative is paying $150 to $300 to have a dead car relocated yourself.",
+    "The process to sell a car with a blown engine in Brisbane is the same as any cash-for-cars sale, with one advantage: the car never has to move under its own power. You provide the make, model, year, kilometres, and an honest description — including that the engine is blown and what you know about how it failed. A buyer gives a firm quote, usually within minutes. If you accept, a tow truck is dispatched, often for same- or next-day pickup across Brisbane, Logan, Ipswich, and the Bayside. The car is winched on, you sign the transfer paperwork, and you're paid on the spot before it leaves the driveway. Free towing is standard, which matters when the alternative is paying $150 to $300 to have a dead car relocated yourself.",
 
     "One tip that affects the offer: don't keep cranking a car you suspect has a serious engine fault. Turning over an engine with a snapped timing belt or coolant in the cylinders can crack the block — and a buyer pays more for a complete engine, even a dead one, than a seized lump. If it's stopped, leave it stopped.",
 
     "## The paperwork in Queensland",
 
-    "Paperwork is minimal. You'll need a valid photo ID — a Queensland driver's licence or passport — and ideally the registration certificate, though buyers can usually proceed without it. The buyer lodges the disposal notice with the Department of Transport and Main Roads (TMR), which transfers the car out of your name and ends your liability for any future fines, tolls, or CTP obligations. Remember to remove your number plates before the truck departs: in Queensland, plates belong to the registered owner, not the vehicle. You can hand them back at a TMR service centre or retain them to transfer onto your next car.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## Don't let it sit and lose value",
 
     "A car with a blown engine loses value the longer it sits in a Brisbane driveway. Tyres flat-spot, the battery dies, brakes seize, and the subtropical humidity goes to work on the interior and any exposed metal — mould and corrosion can take hold within weeks. Salvageable parts degrade too, which lowers what a dismantler will pay. If you've already decided not to repair it, the offer you'll get today is generally the best one you'll see.",
 
-    `If you're sitting on a dead car and weighing up your options, the cleanest exit is usually a licensed cash buyer who handles [damaged and non-running vehicles](/damaged-cars-brisbane). No repair bill, no towing cost, no strangers test-driving a car that won't start. To sell a car with a blown engine in Brisbane, call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) — firm offer up front, free same- or next-day pickup, cash on the spot, and the TMR paperwork sorted on the day.`,
+    `If you're weighing up repair, storage, and sale options for a non-running car, an established buyer of [damaged and non-running vehicles](/damaged-cars-brisbane) can provide an as-is comparison quote. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Caraway includes towing when we buy, confirms payment before collection, and provides a signed receipt and buyer details.`,
   ],
   faqs: [
     {
@@ -48,7 +48,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Do I need a roadworthy certificate to sell a car with a blown engine?",
       answer:
-        "No. When you sell to a licensed cash-for-cars or wrecking buyer in Queensland, you don't need a safety (roadworthy) certificate. That requirement applies to registered vehicles sold to private buyers who intend to drive them.",
+        "It depends on the vehicle's registration status and the buyer. Unregistered vehicles can be sold without a safety certificate, and a licensed motor dealer is another recognised exception. Verify the buyer's licence and current TMR rules before relying on an exemption.",
     },
     {
       question: "Is it worth repairing a blown engine before selling?",

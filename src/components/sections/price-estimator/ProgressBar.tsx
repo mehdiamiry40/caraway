@@ -7,7 +7,7 @@ interface ProgressBarProps {
   progressPercent: number;
 }
 
-const STEP_LABELS = ["Vehicle", "Your quote", "Claim it"] as const;
+const STEP_LABELS = ["Vehicle", "Estimate", "Request"] as const;
 
 export function ProgressBar({ step, totalSteps, progressPercent }: ProgressBarProps) {
   return (
@@ -17,7 +17,7 @@ export function ProgressBar({ step, totalSteps, progressPercent }: ProgressBarPr
       aria-valuenow={step}
       aria-valuemin={1}
       aria-valuemax={totalSteps}
-      aria-label="Quote progress"
+      aria-label="Estimate progress"
       aria-valuetext={`Step ${step} of ${totalSteps}`}
     >
       <div className="flex items-center justify-between mb-3">

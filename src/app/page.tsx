@@ -96,7 +96,7 @@ export default function HomePage() {
               },
               {
                 name: "Get paid on the spot",
-                text: "Receive cash or an agreed transfer before the vehicle leaves, with the paperwork handled for you.",
+                text: "Receive the agreed payment before the vehicle leaves, plus a receipt and the buyer details needed for your records.",
                 url: `${SITE_URL}/#how-it-works`,
               },
             ],

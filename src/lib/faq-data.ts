@@ -4,7 +4,7 @@ export const faqCategories = [
     faqs: [
       { question: "Will I really get up to $9,999 for my car?", answer: "Some selected vehicles may receive offers up to $9,999, but most older, damaged, or scrap vehicles receive lower offers. Your quote depends on the vehicle's make, model, year, condition, completeness, location, and current market demand." },
       { question: "How do you determine my car's value?", answer: "We use real-time market data including current scrap metal prices, parts demand, recent comparable sales in Brisbane, condition, completeness, and towing access. Our valuations are transparent — we'll explain exactly how we arrived at your offer." },
-      { question: "When and how do I get paid?", answer: "You're paid in cash on the spot when our driver arrives to collect your vehicle — before the car leaves your property. For amounts over $10,000, we use a bank transfer as required by AUSTRAC regulations. No waiting periods, no cheques." },
+      { question: "When and how do I get paid?", answer: "We agree the payment method before pickup. Payment may be made in cash or by cleared bank transfer depending on the sale, and it is confirmed before the vehicle leaves your property." },
       { question: "Can you match or beat a quote I've received elsewhere?", answer: "We'll certainly try. If you've received a competing offer, let us know the amount and we'll do our best to match or exceed it. We're competitive on pricing across Brisbane." }
     ]
   },
@@ -12,7 +12,7 @@ export const faqCategories = [
     category: "Vehicle Requirements",
     faqs: [
       { question: "What types of cars do you buy?", answer: "We buy all types — sedans, utes, 4WDs, SUVs, vans, trucks, and commercial vehicles. Old cars, damaged cars, scrap cars, accident write-offs, flood-damaged vehicles, and more. Running or not." },
-      { question: "Do I need a Roadworthy Certificate (RWC)?", answer: "No. We buy cars as-is in any condition. A roadworthy certificate is not required to sell your vehicle to Caraway." },
+      { question: "Do I need a Roadworthy Certificate (RWC)?", answer: "We can assess your vehicle as-is without a safety certificate. Queensland requirements depend on registration status and sale type, so check current TMR guidance for the paperwork that applies." },
       { question: "Can I sell a car without registration?", answer: "Yes. We buy unregistered, deregistered, and expired-registration vehicles across Brisbane. No current registration is needed." },
       { question: "Do you buy cars that don't run or start?", answer: "Absolutely. Non-running, mechanically failed, and immobile vehicles are among the most common types we purchase. Our tow truck will handle the rest." },
       { question: "Can I sell a car I still owe finance on?", answer: "In some cases, yes. Contact us to discuss your specific situation. We may be able to arrange payout of remaining finance as part of the sale." }
@@ -24,7 +24,7 @@ export const faqCategories = [
       { question: "How does the selling process work?", answer: "It's three simple steps: (1) Contact us with your car details for a free quote. (2) Accept our offer. (3) We pick up your car and pay you cash. The whole process can be completed in under an hour." },
       { question: "How fast can you pick up my car?", answer: "Most pickups are same- or next-day across Greater Brisbane, depending on truck availability in your area and when you accept the offer. When you book, we confirm a pickup window — we won't promise a slot we can't keep." },
       { question: "Is your towing really free?", answer: "Yes — towing is free anywhere in Greater Brisbane. We do not deduct towing costs from your agreed quote when the vehicle matches the details provided." },
-      { question: "What paperwork do I need?", answer: "Just your photo ID (driver's licence). Registration papers help speed things up but aren't essential. We handle all vehicle transfer documentation." },
+      { question: "What paperwork do I need?", answer: "Bring current photo ID and any registration, finance, insurer, or ownership documents you have. We provide a receipt and buyer details, while you complete the seller-side TMR steps that apply." },
       { question: "Do I need to be home for the pickup?", answer: "Ideally yes, as we pay cash in person and need to verify your ID. However, we can sometimes make alternative arrangements — just ask when booking." }
     ]
   },

@@ -35,7 +35,7 @@ export const post: RawBlogPostEntry = {
 
     "## Paperwork for selling a truck in Queensland",
 
-    "Selling a truck in Queensland requires minimal documentation. You'll need a current Queensland driver's licence or other government-issued photo ID, and the registration certificate if the vehicle is still registered — though an expired rego does not prevent a sale. Before pickup, remove your number plates; under Queensland Transport and Main Roads rules, plates remain with the registered operator, not the vehicle. If there's a canopy, toolbox, tray liner, or tow hitch you want to keep, remove or discuss it at the time of accepting the offer. The buyer lodges a disposal notice with TMR within the required 14-day window on your behalf, clearing the vehicle from your name and ending your liability for future CTP charges and toll notices.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## Getting the best offer on your old truck",
 

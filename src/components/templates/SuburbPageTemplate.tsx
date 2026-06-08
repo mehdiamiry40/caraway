@@ -73,7 +73,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </TrackedPhoneLink>
             </div>
             <p className="text-sm text-foreground/70">
-              Free towing · Paid on pickup · No RWC needed for many vehicles · Brisbane-based
+              Free towing · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
             </p>
           </div>
         </section>

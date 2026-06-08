@@ -18,7 +18,7 @@ export const post: RawBlogPostEntry = {
 
       "Free towing is included across the entire Ipswich City Council area. Whether your car is parked at a house in Booval, a unit block in Goodna, a rural property in Rosewood, or a workshop in Redbank Plains, the tow truck comes to you at no charge. You don't need to organise or pay for transport — it's all part of the service.",
 
-      "Paperwork is straightforward. You'll need a valid photo ID (driver's licence or passport) and ideally your registration certificate. The buyer will help you complete the transfer documentation and ensure the Department of Transport and Main Roads (TMR) is notified of the disposal. Remember to remove your number plates before handover — in Queensland, plates belong to the owner, not the vehicle. You can return them to TMR or transfer them to another car.",
+      "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
       "Ipswich has a strong industrial and working-class heritage, which means there are plenty of older, high-mileage vehicles in the region. Cars that have spent years commuting along the Warrego Highway or Cunningham Highway tend to rack up kilometres fast. Once they hit 250,000 or 300,000 km, repair costs start climbing and resale value drops sharply. That's the sweet spot for a cash-for-cars sale — you avoid pouring money into a vehicle that's worth less than the repair bill.",
 

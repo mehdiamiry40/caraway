@@ -15,7 +15,7 @@ export const post: RawBlogPostEntry = {
 
     "The private market for vans is genuinely thin compared with cars. A high-kilometre commercial van appeals to a small pool of buyers — mostly other tradies and small-business owners — and they know exactly what to look for, which means they negotiate hard on tyres, timing chains, clutch wear, and service history. People movers face the opposite problem: families want low kilometres and a clean interior, and a van that's hauled kids, dogs, and surfboards for a decade rarely ticks those boxes. List a tired van on Facebook Marketplace or Gumtree and you'll often field weeks of lowball offers, no-shows, and tyre-kickers before anyone serious turns up.",
 
-    "Cash for vans sidesteps all of that. You provide the make, model, year, kilometres, and an honest rundown of the condition, and a licensed buyer gives you a firm quote — usually within a few minutes. There's no listing fee, no safety certificate required from you, and no parade of strangers at your address over multiple weekends.",
+    "Cash for vans sidesteps advertising and repeated inspections. Provide the make, model, year, kilometres, registration status, and an accurate condition summary for a quote. Queensland safety-certificate requirements still depend on the registration status and type of sale.",
 
     "## What your van is worth in Brisbane",
 
@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "## The Queensland paperwork",
 
-    "Selling a van in Queensland is straightforward but there are a few steps worth getting right. You'll need a valid photo ID — a QLD driver's licence or passport — and ideally your registration certificate. The buyer notifies the Department of Transport and Main Roads (TMR) of the disposal as part of the transfer, but it's smart to lodge your own notice of disposal through your TMR online account too, so the van is no longer linked to you for tolls, fines, or infringements. Remove your number plates before the driver departs — in Queensland, plates belong to the registered operator, not the vehicle, and you can return them to a TMR service centre or transfer them to your next vehicle.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
     "If the van was registered to a business or held under an ABN, make sure whoever signs the paperwork is authorised to dispose of the asset, and keep a record of the sale for your end-of-financial-year accounting. Many Brisbane tradies time the sale of an old work van to coincide with EOFY so the disposal lands in the right tax period.",
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "Clear out the van before pickup — vans hide a surprising amount of gear in side pockets, under seats, and in roof storage, and once it's towed away you won't get it back. Pull out any aftermarket racking, shelving, or tools you want to keep, and mention removable extras when you get your quote, as some can be sold separately. If access to the van is restricted — a steep driveway, a tight worksite, soft ground, or a flat-tyred van that can't roll — flag it at booking so the right recovery equipment is sent.",
 
-    `Selling your van in Brisbane doesn't need to drag on for weeks. Whether it's a worn-out tradie van, a retired people mover, or a commercial van that's reached the end of its working life, a two-minute phone call or online quote tells you what it's worth. Call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) — free towing across Greater Brisbane, payment on the spot, and TMR paperwork handled on the day.`,
+    `Selling your van in Brisbane doesn't need to drag on for weeks. Whether it's a worn-out tradie van, a retired people mover, or a commercial van at the end of its working life, call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Towing is included when we buy, and we provide a signed receipt and buyer details at pickup.`,
   ],
   faqs: [
     {
@@ -55,7 +55,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "What paperwork do I need to sell a van in QLD?",
       answer:
-        "A valid photo ID (QLD licence or passport) and ideally your registration certificate. Remove your number plates before pickup, and lodge a notice of disposal through your TMR online account so the van is no longer linked to you.",
+        "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
     },
     {
       question: "Do you buy commercial and business-owned vans?",

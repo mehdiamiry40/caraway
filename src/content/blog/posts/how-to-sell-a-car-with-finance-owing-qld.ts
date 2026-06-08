@@ -35,11 +35,11 @@ export const post: RawBlogPostEntry = {
 
     "## The QLD paperwork and TMR steps",
 
-    "Once the finance is sorted, the rest follows the standard Queensland process. You'll need your current QLD driver's licence and the certificate of registration. Sign the TMR transfer of registration form with the buyer, and lodge a disposal notice with Transport and Main Roads within 14 days so the car is off your name for tolls, fines, and CTP liability. Remember that in QLD number plates stay with the registered operator, not the car, so remove them before the vehicle leaves. Keep written records of the payout and the lender's discharge confirmation — they're your proof the loan was cleared if anything is ever queried.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
     "## Selling a financed car to a cash-for-cars buyer",
 
-    `If the car is older, high-kilometre, or damaged, a private buyer prepared to wait on a finance discharge can be hard to find — and that's where a licensed [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) makes life easier. A reputable operator is comfortable dealing with encumbered vehicles: they'll run the PPSR check, pay your lender's payout figure directly to discharge the loan, and pass any surplus to you, all on settlement day. It turns what feels like a complicated problem into a single appointment. The same applies whether you're [selling your car](/sell-my-car-brisbane) in [Logan](/locations/logan), the inner south, or out toward Ipswich.`,
+    `If the car is older, high-kilometre, or damaged, a private buyer may be reluctant to wait for a finance discharge. A [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) may agree to a settlement process using a current lender payout figure, but confirm the payment flow in writing and verify that the security interest is discharged. The same principle applies whether you're [selling your car](/sell-my-car-brisbane) in [Logan](/locations/logan), the inner south, or Ipswich.`,
 
     "## Get a quote on your financed car",
 

@@ -43,8 +43,8 @@ export function PriceEstimator() {
             How much is your car worth?
           </h2>
           <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
-            Answer four quick questions. We&apos;ll send back a firm cash offer for your car — no
-            account, no spam.
+            Answer four quick questions for an instant estimate, then request a confirmed offer
+            from our team — no account required.
           </p>
           <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
             Actual offers depend on condition, completeness, location, demand, and current market

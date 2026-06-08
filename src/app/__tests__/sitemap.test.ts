@@ -136,7 +136,7 @@ describe("sitemap.ts — page coverage", () => {
     const privacyEntry = entries.find((e) => e.url === `${SITE_URL}/privacy`);
     const termsEntry = entries.find((e) => e.url === `${SITE_URL}/terms`);
 
-    expect(privacyEntry?.lastModified).toBe("2026-04-01");
-    expect(termsEntry?.lastModified).toBe("2026-03-01");
+    expect(privacyEntry?.lastModified).toBe("2026-06-01");
+    expect(termsEntry?.lastModified).toBe("2026-06-01");
   });
 });

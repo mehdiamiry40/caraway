@@ -4,7 +4,7 @@ export const faqs = [
   {
     question: "How does cash for cars work in Brisbane?",
     answer:
-      "Cash for cars means we pay you cash when we collect your vehicle — no waiting on bank transfers. You get a quote, we arrange free towing, and you are paid on the spot before the car leaves your property. Caraway services all of Greater Brisbane, 7 days a week.",
+      "Request a quote, agree on a payment method and pickup time, and complete the sale paperwork that applies to your vehicle. We arrange free towing across Greater Brisbane and confirm payment before the vehicle leaves your property.",
   },
   {
     question: "Will I really get up to $9,999 for my car?",
@@ -24,7 +24,7 @@ export const faqs = [
   {
     question: "How fast do I get paid for my car?",
     answer:
-      "You get paid on the spot the moment our driver arrives to collect your vehicle — before the car goes on the truck. Once a pickup is booked, most sellers are paid the same or next day, depending on truck availability and your location.",
+      "Payment is confirmed at pickup before the vehicle leaves your property. Most booked pickups happen the same or next day, depending on truck availability, location, and the agreed payment method.",
   },
   {
     question: "What types of cars do you buy in Brisbane?",
@@ -34,12 +34,12 @@ export const faqs = [
   {
     question: "Do I need a Roadworthy Certificate (RWC) to sell?",
     answer:
-      "No RWC is required at all. We buy cars as-is, in any condition. Whether your car is registered, unregistered, damaged, broken down, or completely written off — we don't require a roadworthy certificate.",
+      "We can assess your car as-is without a safety certificate. Queensland requirements depend on the vehicle's registration status and the type of sale, so we confirm the relevant paperwork before pickup and recommend checking current TMR guidance.",
   },
   {
     question: "What paperwork do I need to sell my car?",
     answer:
-      "Just your photo ID (driver's licence) to prove ownership. If you have the registration papers, great — but they're not essential. We handle all the vehicle transfer documentation and paperwork on your behalf.",
+      "Bring current photo ID and any registration, finance, insurer, or ownership documents you have. We provide a receipt and buyer details, while you complete and retain confirmation of the seller-side TMR steps that apply.",
   },
   {
     question: "Do you buy cars across all Brisbane suburbs?",
@@ -59,12 +59,12 @@ export const faqs = [
   {
     question: "What happens to my car after you buy it?",
     answer:
-      "Depending on the vehicle's condition, we either resell it, part it out as spare parts, or responsibly recycle and scrap it at a licensed facility. We comply with all Queensland environmental regulations for vehicle recycling.",
+      "Depending on the vehicle's condition, it may be resold, used for parts, or sent to an appropriate specialist for dismantling and material recovery.",
   },
   {
     question: "How will you pay me?",
     answer:
-      "For amounts under $10,000 we pay cash on pickup — handed to you before the car is loaded onto the truck. This is the AUSTRAC cash reporting threshold, so for sales above $10,000 we arrange an immediate bank transfer and wait for it to show as cleared in your account before the vehicle is unloaded at our yard. Either way, you are never asked to release the car before you have the money.",
+      "We agree the payment method before pickup. Depending on the sale and operational arrangements, payment may be made in cash or by cleared bank transfer, and it is confirmed before the vehicle leaves your property.",
   },
   {
     question: "Do I need to pay tax on the sale?",

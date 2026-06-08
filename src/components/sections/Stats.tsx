@@ -2,7 +2,7 @@
 
 import type { LucideIcon } from "lucide-react";
 import { Banknote, ShieldCheck, Truck, Users } from "lucide-react";
-import { PRICE_RANGE_LABEL } from "@/lib/site";
+import { BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
 import { useIntersectionVisibility } from "@/hooks/use-intersection-visibility";
 
 interface StatDef {
@@ -23,7 +23,7 @@ const featureStat: StatDef = {
 
 const supportingStats: StatDef[] = [
   { value: "Local team", label: "Reach a Brisbane buyer by phone — not a call centre", icon: Users },
-  { value: "Fully insured", label: "Public liability and goods-in-transit cover on every pickup", icon: ShieldCheck },
+  { value: "Pickup details", label: "Operator, timing, access, and applicable cover confirmed before collection", icon: ShieldCheck },
   { value: "Same- or next-day", label: "Usually same- or next-day pickup, subject to truck availability", icon: Truck },
 ];
 
@@ -44,7 +44,7 @@ export function Stats() {
           </ul>
         </div>
         <div className="mt-7 sm:mt-9 pt-5 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
-          <p>Caraway Pty Ltd · ABN 62 351 619 456 · Fully insured pickups · Brisbane, QLD</p>
+          <p>{BUSINESS.name} · ABN {BUSINESS.abn} · Brisbane-based vehicle buyer</p>
           <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
             Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
           </p>

@@ -32,13 +32,13 @@ export const post: RawBlogPostEntry = {
 
       "You have the same three routes as any other vehicle: dealer trade-in, private sale, or [cash for cars](/cash-for-cars-brisbane). Dealer trade-ins on 4WDs are typically 15–25% below private-sale value because the dealer needs reconditioning margin. A private sale through Marketplace, Carsales, or Gumtree can land the highest figure for a clean late-model 4WD, but the process drags — you'll need a roadworthy certificate, decent photos, and weekend availability to handle tyre-kickers and lowball offers.",
 
-      "Cash for cars wins on speed and certainty for older, high-kilometre, modified, or damaged 4WDs. A licensed buyer pays competitively for the parts and metal value, brings their own truck, and handles the TMR disposal paperwork on the spot. For a 4WD that's no longer earning its rego cost, it's usually the cleanest exit.",
+      "Cash for cars can be practical for an older, high-kilometre, modified, or damaged 4WD. Compare the offer, towing terms, payment method, and sale records before accepting. Complete and retain confirmation of the seller-side TMR steps that apply.",
 
       "## Paperwork and pickup in QLD",
 
       "![Free flatbed pickup across Brisbane — your old 4WD loaded and gone the same or next day.](/images/tow-truck-hero.webp 800x800)",
 
-      "The paperwork to sell a used 4WD in Brisbane is minimal. Bring your Queensland driver's licence or passport, the registration certificate if you still have it, and any service history that supports your asking price. The buyer files the disposal notice with TMR within the 14-day window required by Queensland law, which removes the vehicle from your name and ends your liability for tolls and fines. Remove your number plates before the tow truck leaves — in QLD, plates belong to the registered owner, not the vehicle.",
+      "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
       "Free pickup typically covers the entire Greater Brisbane footprint: from [Logan](/locations/logan) and Ipswich in the south and west, north to Caboolture and the [North Lakes](/locations/north-lakes) corridor, east across the Bayside, and out to the foothills around The Gap and Kenmore.",
 

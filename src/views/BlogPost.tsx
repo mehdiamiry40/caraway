@@ -56,10 +56,10 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 const AUTHOR = {
-  name: "Sam Williams",
-  role: "Senior Buyer",
-  href: "/author/sam-williams",
-  bio: `Sam appraises Brisbane vehicles every day and writes about fair pricing, paperwork, and getting paid fast.`,
+  name: BUSINESS.name,
+  role: "Editorial",
+  href: "/about",
+  bio: `${BUSINESS.name} publishes practical Brisbane car-selling guides and reviews regulatory guidance against current official Queensland sources.`,
 };
 
 function formatDate(iso: string): string {
@@ -95,6 +95,8 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const authorBio = isDefaultAuthor
     ? AUTHOR.bio
     : `${BUSINESS.name} writes practical Brisbane car selling guides based on quoting, pickup, paperwork, and vehicle removal questions from local sellers.`;
+  const authorAffiliation =
+    authorName === BUSINESS.name ? authorRole : `${authorRole}, ${BUSINESS.name}`;
 
   const authorInitials = authorName
     .split(" ")
@@ -173,7 +175,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Get a real offer in under 60 seconds.
                   </p>
                   <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-md leading-relaxed">
-                    Same- or next-day pickup across Brisbane. No RWC. Free towing. Cash on the spot.
+                    Same- or next-day pickup across Brisbane. Cars assessed as-is. Free towing. Payment confirmed at pickup.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
@@ -263,14 +265,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     {authorInitials}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="eyebrow mb-2">About the author</p>
+                    <p className="eyebrow mb-2">About this guide</p>
                     <p className="font-display text-lg font-semibold text-foreground">
                       <Link href={authorHref} className="hover:text-primary transition-colors">
                         {authorName}
                       </Link>
                       <span className="font-normal text-muted-foreground">
                         {" "}
-                        &middot; {authorRole}, {BUSINESS.name}
+                        &middot; {authorAffiliation}
                       </span>
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-2 max-w-xl">
@@ -281,7 +283,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                         href={AUTHOR.href}
                         className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
                       >
-                        More articles by {AUTHOR.name.split(" ")[0]}
+                        About {AUTHOR.name}
                         <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
                       </Link>
                     )}

@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   applicationName: "Caraway",
   category: "Automotive Services",
   creator: "Caraway",
-  publisher: "Caraway Pty Ltd",
+  publisher: BUSINESS.name,
   formatDetection: { telephone: true, address: false, email: false },
   openGraph: {
     type: "website",
