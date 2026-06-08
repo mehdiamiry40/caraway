@@ -9,7 +9,7 @@ import {
   categoryMap,
   categorySlug,
   getPostsByCategory,
-  indexableBlogPosts,
+  blogPosts,
 } from "@/data/blog-posts";
 import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 import { ArrowLeft } from "lucide-react";
@@ -19,7 +19,7 @@ export const dynamicParams = false;
 type Props = { params: Promise<{ category: string }> };
 
 export async function generateStaticParams() {
-  const slugs = new Set(indexableBlogPosts.map((p) => categorySlug(p.category)));
+  const slugs = new Set(blogPosts.map((p) => categorySlug(p.category)));
   return Array.from(slugs).map((category) => ({ category }));
 }
 

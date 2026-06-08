@@ -22,6 +22,4 @@ export interface BlogPost extends RawBlogPostEntry {
   /** Fully-qualified, self-canonical URL for the post. */
   canonicalUrl: string;
   readTime: string;
-  /** Whether this post should be listed and indexed for organic search surfaces. */
-  isIndexable: boolean;
 }

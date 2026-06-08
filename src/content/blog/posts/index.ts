@@ -33,13 +33,7 @@ import { post as post7 } from "./wovr-written-off-vehicle-register-qld-guide";
 import { post as post8 } from "./scrap-metal-prices-brisbane-2026";
 import { post as post9 } from "./how-to-cancel-car-rego-qld";
 import { post as post10 } from "./how-to-sell-a-car-without-rego-brisbane";
-import { post as post11 } from "./cash-for-cars-sunshine-coast";
-import { post as post12 } from "./cash-for-cars-toowoomba";
-import { post as post13 } from "./cash-for-cars-redcliffe-brisbane";
-import { post as post14 } from "./cash-for-cars-gold-coast";
 import { post as post15 } from "./cash-for-cars-caboolture-brisbane";
-import { post as post16 } from "./cash-for-cars-ipswich-brisbane";
-import { post as post17 } from "./cash-for-cars-logan-brisbane";
 import { post as post18 } from "./how-to-transfer-car-ownership-qld";
 import { post as post19 } from "./how-much-is-my-car-worth-for-scrap-brisbane";
 import { post as post20 } from "./how-to-sell-your-car-for-cash-brisbane";
@@ -83,13 +77,7 @@ export const rawBlogPosts = [
   post8,
   post9,
   post10,
-  post11,
-  post12,
-  post13,
-  post14,
   post15,
-  post16,
-  post17,
   post18,
   post19,
   post20,

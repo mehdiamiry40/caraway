@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { indexableBlogPosts, categoryMap } from "@/data/blog-posts";
+import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { BlogPostCard, FeaturedBlogPostCard } from "@/components/blog/BlogPostCard";
 
 const breadcrumbs = [
@@ -9,7 +9,7 @@ const breadcrumbs = [
 ];
 
 export default function Blog() {
-  const [featured, ...rest] = indexableBlogPosts;
+  const [featured, ...rest] = blogPosts;
 
   return (
     <PageShell

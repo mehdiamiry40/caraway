@@ -32,6 +32,30 @@ export const legacyIndexingRedirects = [
     source: "/blog/sell-damaged-car-brisbane.html",
     destination: "/damaged-cars-brisbane",
   },
+  {
+    source: "/blog/cash-for-cars-redcliffe-brisbane",
+    destination: "/locations/redcliffe",
+  },
+  {
+    source: "/blog/cash-for-cars-ipswich-brisbane",
+    destination: "/locations/ipswich",
+  },
+  {
+    source: "/blog/cash-for-cars-logan-brisbane",
+    destination: "/locations/logan",
+  },
+  {
+    source: "/blog/cash-for-cars-sunshine-coast",
+    destination: "/cash-for-cars-brisbane",
+  },
+  {
+    source: "/blog/cash-for-cars-toowoomba",
+    destination: "/cash-for-cars-brisbane",
+  },
+  {
+    source: "/blog/cash-for-cars-gold-coast",
+    destination: "/cash-for-cars-brisbane",
+  },
 ] as const;
 
 const nextConfig: NextConfig = {
@@ -113,9 +137,11 @@ const nextConfig: NextConfig = {
       destination: "https://www.caraway.au/:path*",
       permanent: true,
     },
-    // URLs GSC has tracked under "Crawled - currently not indexed":
+    // URLs GSC has tracked under indexing exclusions:
     // - `/how-it-works` is a homepage section anchor, not a standalone route.
     // - the `.html` URLs are legacy paths from an older site version.
+    // - retired location articles either duplicated live Greater Brisbane
+    //   landing pages or claimed service in markets Caraway does not cover.
     // Map each to its closest live equivalent so Google consolidates signals
     // onto a canonical page rather than keeping stale URLs in the crawl queue.
     ...legacyIndexingRedirects.map(({ source, destination }) => ({
@@ -181,13 +207,6 @@ const nextConfig: NextConfig = {
         { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
       ],
     },
-    ...legacyIndexingRedirects.map(({ source }) => ({
-      source,
-      headers: [
-        { key: "X-Robots-Tag", value: "noindex, follow" },
-        { key: "Cache-Control", value: "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800" },
-      ],
-    })),
   ],
 };
 

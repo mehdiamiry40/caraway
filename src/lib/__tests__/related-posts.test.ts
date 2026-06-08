@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { blogPosts } from "@/data/blog-posts";
 
-const NOINDEX_SLUGS = [
+const RETIRED_SLUGS = [
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
   "cash-for-cars-gold-coast",
@@ -28,14 +28,12 @@ describe("getSmartRelatedPosts", () => {
     expect(result.find((p) => p.slug === slug)).toBeUndefined();
   });
 
-  it("never includes any noindex posts", () => {
+  it("never includes retired posts", () => {
     const result = getSmartRelatedPosts("trade-in-vs-cash-for-cars-brisbane", 50);
-    for (const noindex of NOINDEX_SLUGS) {
-      expect(result.find((p) => p.slug === noindex)).toBeUndefined();
+    for (const retired of RETIRED_SLUGS) {
+      expect(result.find((p) => p.slug === retired)).toBeUndefined();
+      expect(blogPosts.find((p) => p.slug === retired)).toBeUndefined();
     }
-
-    const noindexExistsInRaw = blogPosts.some((p) => p.slug === NOINDEX_SLUGS[0]);
-    expect(noindexExistsInRaw).toBe(true);
   });
 
   it("ranks same-category posts ahead of different-category posts", () => {
@@ -47,7 +45,7 @@ describe("getSmartRelatedPosts", () => {
     expect(result.length).toBeGreaterThan(0);
 
     const sameCategoryCount = blogPosts.filter(
-      (p) => p.isIndexable && p.slug !== currentSlug && p.category === current!.category,
+      (p) => p.slug !== currentSlug && p.category === current!.category,
     ).length;
     const expectedSameInTop = Math.min(sameCategoryCount, result.length);
 
@@ -62,8 +60,8 @@ describe("getSmartRelatedPosts", () => {
     const result = getSmartRelatedPosts("totally-unknown-slug-that-does-not-exist", 3);
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(3);
-    for (const noindex of NOINDEX_SLUGS) {
-      expect(result.find((p) => p.slug === noindex)).toBeUndefined();
+    for (const retired of RETIRED_SLUGS) {
+      expect(result.find((p) => p.slug === retired)).toBeUndefined();
     }
   });
 });

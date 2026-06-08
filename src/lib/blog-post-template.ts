@@ -39,7 +39,6 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
         "en-AU": post.canonicalUrl,
       },
     },
-    robots: post.isIndexable ? undefined : { index: false, follow: true },
     openGraph: {
       url: post.canonicalUrl,
       title: post.title,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
-import { indexableBlogPosts } from "@/data/blog-posts";
+import { blogPosts } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const canonical = `${SITE_URL}/blog`;
-  const latestBlogDate = indexableBlogPosts.reduce(
+  const latestBlogDate = blogPosts.reduce(
     (latest, post) => {
       const stamp = post.updatedAt || post.date;
       return stamp > latest ? stamp : latest;
@@ -66,15 +66,15 @@ export default function BlogPage() {
             dateModified: latestBlogDate,
             mainEntity: {
               "@type": "ItemList",
-              numberOfItems: indexableBlogPosts.length,
-              itemListElement: indexableBlogPosts.map((post, idx) => ({
+              numberOfItems: blogPosts.length,
+              itemListElement: blogPosts.map((post, idx) => ({
                 "@type": "ListItem",
                 position: idx + 1,
                 name: post.title,
                 url: post.canonicalUrl,
               })),
             },
-            hasPart: indexableBlogPosts.map((post) => ({
+            hasPart: blogPosts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,
               url: post.canonicalUrl,
@@ -91,7 +91,7 @@ export default function BlogPage() {
             url: canonical,
             inLanguage: "en-AU",
             publisher: { "@id": `${SITE_URL}/#organization` },
-            blogPost: indexableBlogPosts.map((post) => ({
+            blogPost: blogPosts.map((post) => ({
               "@type": "BlogPosting",
               headline: post.title,
               url: post.canonicalUrl,

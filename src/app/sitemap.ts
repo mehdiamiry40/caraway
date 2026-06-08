@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import {
-  indexableBlogPosts,
+  blogPosts,
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
@@ -81,7 +81,7 @@ function changeFreqByAge(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   /* ---- Latest blog date (for the /blog index page) ---- */
-  const latestBlogDate = newestDate(indexableBlogPosts, (post) => post.updatedAt || post.date);
+  const latestBlogDate = newestDate(blogPosts, (post) => post.updatedAt || post.date);
 
   /* -----------------------------------------------------------------------
    * 1. Static pages — use honest, fixed dates
@@ -191,7 +191,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "scrap-metal-prices-brisbane-2026",
   ]);
 
-  const blogPages: MetadataRoute.Sitemap = indexableBlogPosts.filter((p) => p.slug).map((p) => {
+  const blogPages: MetadataRoute.Sitemap = blogPosts.filter((p) => p.slug).map((p) => {
     const modified = validIsoDate(p.updatedAt || p.date);
     return {
       url: p.canonicalUrl,
