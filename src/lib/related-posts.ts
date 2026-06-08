@@ -24,9 +24,7 @@ function parseTime(value: string): number {
 export function getSmartRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
   const current = blogPosts.find((p) => p.slug === currentSlug);
 
-  const candidates = blogPosts.filter(
-    (p) => p.slug !== currentSlug && p.isIndexable,
-  );
+  const candidates = blogPosts.filter((p) => p.slug !== currentSlug);
 
   if (candidates.length === 0) return [];
 

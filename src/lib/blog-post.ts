@@ -1,10 +1,6 @@
 import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
 import { SITE_URL } from "@/lib/site";
 
-type BlogPostOptions = {
-  isIndexable?: boolean;
-};
-
 /** Count words in a plain-text string by splitting on whitespace. */
 export function calcWordCount(content: string): number {
   return content.split(/\s+/).filter(Boolean).length;
@@ -31,7 +27,6 @@ export function blogPostCanonicalUrl(slug: string): string {
 
 export function createBlogPost(
   post: RawBlogPostEntry,
-  options: BlogPostOptions = {},
 ): BlogPost {
   const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug ?? "")
     ? post.slug
@@ -67,6 +62,5 @@ export function createBlogPost(
       : [],
     canonicalUrl: blogPostCanonicalUrl(slug),
     readTime: calcReadTime(content),
-    isIndexable: options.isIndexable ?? true,
   };
 }

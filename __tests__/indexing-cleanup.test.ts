@@ -3,6 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import nextConfig, { legacyIndexingRedirects } from "../next.config";
 import sitemap from "@/app/sitemap";
+import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
+import { blogPosts } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/site";
 
 type HeaderRule = {
@@ -43,7 +45,7 @@ function walkSourceFiles(dir: string): string[] {
   });
 }
 
-describe("Crawled - currently not indexed cleanup", () => {
+describe("Search Console indexing cleanup", () => {
   it("keeps the known stale URLs on permanent redirects to live canonical targets", async () => {
     const redirects = await getRedirectRules();
     const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
@@ -60,19 +62,45 @@ describe("Crawled - currently not indexed cleanup", () => {
     }
   });
 
-  it("adds crawler and cache headers to the stale redirect URLs", async () => {
+  it("consolidates retired location articles instead of serving noindex pages", async () => {
+    const redirects = await getRedirectRules();
+    const staticSlugs = new Set(
+      (await generateBlogStaticParams()).map(({ slug }) => slug),
+    );
+    const liveSlugs = new Set(blogPosts.map(({ slug }) => slug));
+    const expected = new Map([
+      ["/blog/cash-for-cars-redcliffe-brisbane", "/locations/redcliffe"],
+      ["/blog/cash-for-cars-ipswich-brisbane", "/locations/ipswich"],
+      ["/blog/cash-for-cars-logan-brisbane", "/locations/logan"],
+      ["/blog/cash-for-cars-sunshine-coast", "/cash-for-cars-brisbane"],
+      ["/blog/cash-for-cars-toowoomba", "/cash-for-cars-brisbane"],
+      ["/blog/cash-for-cars-gold-coast", "/cash-for-cars-brisbane"],
+    ]);
+
+    for (const [source, destination] of expected) {
+      expect(redirects.find((rule) => rule.source === source)).toMatchObject({
+        destination,
+        permanent: true,
+      });
+
+      const slug = source.replace("/blog/", "");
+      expect(liveSlugs.has(slug)).toBe(false);
+      expect(staticSlugs.has(slug)).toBe(false);
+    }
+  });
+
+  it("does not attach noindex headers to permanent redirects", async () => {
     const headers = await getHeaderRules();
 
     for (const legacy of legacyIndexingRedirects) {
-      const rule = headers.find((entry) => entry.source === legacy.source);
-      expect(rule).toBeDefined();
-
-      const headerMap = new Map(
-        rule!.headers.map((header) => [header.key.toLowerCase(), header.value]),
-      );
-      expect(headerMap.get("x-robots-tag")).toBe("noindex, follow");
-      expect(headerMap.get("cache-control")).toContain("max-age=86400");
-      expect(headerMap.get("cache-control")).toContain("stale-while-revalidate=604800");
+      const redirectHeaders = headers
+        .filter((entry) => entry.source === legacy.source)
+        .flatMap((entry) => entry.headers);
+      expect(
+        redirectHeaders.some(
+          (header) => header.key.toLowerCase() === "x-robots-tag",
+        ),
+      ).toBe(false);
     }
   });
 

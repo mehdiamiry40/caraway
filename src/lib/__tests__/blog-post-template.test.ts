@@ -10,7 +10,7 @@ import {
 import { SITE_URL } from "@/lib/site";
 
 describe("blog post template", () => {
-  it("defaults new posts to indexable, self-canonical metadata", () => {
+  it("defaults new posts to self-canonical, indexable metadata", () => {
     const post = createBlogPost({
       slug: "example-seo-safe-post",
       title: "Example SEO Safe Blog Post Title",
@@ -27,7 +27,6 @@ describe("blog post template", () => {
 
     const metadata = buildBlogPostMetadata(post);
 
-    expect(post.isIndexable).toBe(true);
     expect(post.canonicalUrl).toBe(`${SITE_URL}/blog/example-seo-safe-post`);
     expect(metadata.alternates?.canonical).toBe(post.canonicalUrl);
     expect(metadata.robots).toBeUndefined();
@@ -66,18 +65,10 @@ describe("blog post template", () => {
     }
   });
 
-  it("only emits noindex robots for posts explicitly marked non-indexable", () => {
-    const noindexPosts = blogPosts.filter((post) => !post.isIndexable);
-    expect(noindexPosts.length).toBeGreaterThan(0);
-
+  it("does not emit noindex metadata for any live blog post", () => {
     for (const post of blogPosts) {
       const metadata = buildBlogPostMetadata(post);
-
-      if (post.isIndexable) {
-        expect(metadata.robots).toBeUndefined();
-      } else {
-        expect(metadata.robots).toEqual({ index: false, follow: true });
-      }
+      expect(metadata.robots).toBeUndefined();
     }
   });
 });

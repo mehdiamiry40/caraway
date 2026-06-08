@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import {
   blogPosts,
-  indexableBlogPosts,
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
@@ -13,16 +12,15 @@ import { SITE_URL } from "@/lib/site";
 const entries = sitemap();
 const urls = new Set(entries.map((e) => e.url));
 
-const indexablePost = blogPosts.find((p) => p.isIndexable);
-const noindexPost = blogPosts.find((p) => !p.isIndexable);
+const examplePost = blogPosts[0];
 
 /* -----------------------------------------------------------------------
  * Blog post inclusion
  * ---------------------------------------------------------------------*/
 describe("sitemap.ts — blog post inclusion", () => {
-  it("includes every indexable blog post exactly once", () => {
-    expect(indexableBlogPosts.length).toBeGreaterThan(0);
-    for (const post of indexableBlogPosts) {
+  it("includes every live blog post exactly once", () => {
+    expect(blogPosts.length).toBeGreaterThan(0);
+    for (const post of blogPosts) {
       expect(urls.has(post.canonicalUrl)).toBe(true);
     }
     const blogUrlsRaw = entries
@@ -35,24 +33,29 @@ describe("sitemap.ts — blog post inclusion", () => {
     expect(blogUrlsRaw.length).toBe(blogUrlsUnique.size);
   });
 
-  it("excludes noindex blog posts", () => {
-    expect(noindexPost).toBeDefined();
-    expect(urls.has(noindexPost!.canonicalUrl)).toBe(false);
+  it("excludes retired blog URLs that now consolidate elsewhere", () => {
+    const retiredSlugs = [
+      "cash-for-cars-sunshine-coast",
+      "cash-for-cars-toowoomba",
+      "cash-for-cars-gold-coast",
+      "cash-for-cars-redcliffe-brisbane",
+      "cash-for-cars-ipswich-brisbane",
+      "cash-for-cars-logan-brisbane",
+    ];
 
-    const noindexPosts = blogPosts.filter((p) => !p.isIndexable);
-    for (const p of noindexPosts) {
-      expect(urls.has(p.canonicalUrl)).toBe(false);
+    for (const slug of retiredSlugs) {
+      expect(urls.has(`${SITE_URL}/blog/${slug}`)).toBe(false);
     }
   });
 
   it("uses updatedAt (falling back to date) as lastModified on blog entries", () => {
-    expect(indexablePost).toBeDefined();
+    expect(examplePost).toBeDefined();
     const entry = entries.find(
-      (e) => e.url === indexablePost!.canonicalUrl,
+      (e) => e.url === examplePost!.canonicalUrl,
     );
     expect(entry).toBeDefined();
     expect(entry?.lastModified).toBe(
-      indexablePost!.updatedAt || indexablePost!.date,
+      examplePost!.updatedAt || examplePost!.date,
     );
   });
 });

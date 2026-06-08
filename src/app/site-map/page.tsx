@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { indexableBlogPosts } from "@/data/blog-posts";
+import { blogPosts } from "@/data/blog-posts";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
@@ -102,7 +102,7 @@ export default function SiteMapPage() {
         <section>
           <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Blog &amp; Guides</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-            {indexableBlogPosts.map((p) => (
+            {blogPosts.map((p) => (
               <li key={p.slug}>
                 <Link href={`/blog/${p.slug}`} className={linkCls}>
                   {p.title}

@@ -9,10 +9,8 @@ import { SITE_URL } from "@/lib/site";
 // Pick concrete fixtures from real data. Using slugs rather than array
 // indices keeps these tests stable as posts are added or reordered.
 const INDEXABLE_SLUG = "trade-in-vs-cash-for-cars-brisbane";
-const NOINDEX_SLUG = "cash-for-cars-sunshine-coast";
 
 const indexablePost = blogPosts.find((p) => p.slug === INDEXABLE_SLUG);
-const noindexPost = blogPosts.find((p) => p.slug === NOINDEX_SLUG);
 
 function makeParams(slug: string) {
   return { params: Promise.resolve({ slug }) };
@@ -22,7 +20,6 @@ describe("generateMetadata (blog post route)", () => {
   describe("indexable post", () => {
     it("is a valid fixture (sanity check — the test data must exist and be indexable)", () => {
       expect(indexablePost).toBeDefined();
-      expect(indexablePost?.isIndexable).toBe(true);
     });
 
     it("returns a title containing the post title", async () => {
@@ -68,31 +65,6 @@ describe("generateMetadata (blog post route)", () => {
       expect(og?.publishedTime).toBe(indexablePost!.date);
       expect(og?.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
       expect(og?.title).toBe(indexablePost!.title);
-    });
-  });
-
-  describe("noindex post", () => {
-    it("is a valid fixture (sanity check — the test data must exist and be noindex)", () => {
-      // If no noindex posts exist in the data any more, this whole block
-      // becomes meaningless — fail loudly instead of silently skipping.
-      expect(noindexPost).toBeDefined();
-      expect(noindexPost?.isIndexable).toBe(false);
-    });
-
-    it("returns robots.index=false (noindex) while keeping follow=true", async () => {
-      const meta = await generateMetadata(makeParams(NOINDEX_SLUG));
-      expect(meta.robots).toBeDefined();
-      expect(typeof meta.robots).toBe("object");
-      const robots = meta.robots as { index?: boolean; follow?: boolean };
-      expect(robots.index).toBe(false);
-      // Follow is deliberately kept true so link equity to indexable pages
-      // still flows — lock that contract in.
-      expect(robots.follow).toBe(true);
-    });
-
-    it("still emits a canonical URL (so if Google does crawl it, it at least self-canonicalises)", async () => {
-      const meta = await generateMetadata(makeParams(NOINDEX_SLUG));
-      expect(meta.alternates?.canonical).toBe(`${SITE_URL}/blog/${NOINDEX_SLUG}`);
     });
   });
 
