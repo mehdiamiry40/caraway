@@ -90,11 +90,11 @@ export function Hero() {
                 </TrackedPhoneLink>
               </div>
 
-              <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2.5 sm:mt-8">
+              <ul className="mt-7 grid max-w-xl gap-y-2.5 sm:mt-8">
                 {promises.map((promise) => (
                   <li
                     key={promise}
-                    className="flex items-center gap-2 text-sm font-semibold text-on-dark-hi/90"
+                    className="flex items-start gap-2 text-sm font-semibold leading-5 text-on-dark-hi/90"
                   >
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-cta text-cta-foreground">
                       <Check size={12} strokeWidth={3} aria-hidden="true" />
