@@ -53,10 +53,10 @@ overall success, so configuring both gives you redundancy.
 | `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
 | `NEXT_PUBLIC_NOINDEX`      | optional        | Set to `1` to force `noindex` metadata (staging/preview).                   |
 
-`/api/health` reports each form's channel configuration: HTTP 503 if any
-form has zero channels, `"degraded"` with HTTP 200 if every form has at
-least one channel but the configuration isn't fully redundant, `"ok"`
-with HTTP 200 if all four channels are wired up.
+`/api/health` reports service availability and delivery redundancy. It
+returns HTTP 503 with `"error"` if either form has zero delivery channels.
+Otherwise it returns HTTP 200 with `"ok"`; `fullyRedundant` indicates
+whether both webhook and email delivery are configured for both forms.
 
 Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
 `noindex, nofollow` robots metadata and a `Disallow: /` robots.txt.

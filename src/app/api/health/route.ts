@@ -11,12 +11,11 @@ export const dynamic = "force-dynamic";
  *   - webhook  → QUOTE_ENDPOINT / CONTACT_ENDPOINT
  *   - email    → RESEND_API_KEY + (QUOTE|CONTACT)_NOTIFICATION_FROM/TO
  *
- * A form is "ok" if *either* channel is configured. If a form has zero
- * channels the lead capture is broken end-to-end and we fail the check
- * with HTTP 503. If both forms have at least one channel but aren't
- * fully redundant (missing webhook OR email on any form), we report
- * "degraded" with HTTP 200 so uptime monitors stay green while still
- * signalling to ops that redundancy is incomplete.
+ * A form is available if *either* channel is configured. If a form has
+ * zero channels the lead capture is broken end-to-end and we fail the
+ * check with HTTP 503. Optional failover coverage is reported separately
+ * through `fullyRedundant`; lacking a backup channel does not make an
+ * otherwise operational service unhealthy.
  *
  * Intentionally does not make outbound network requests — configuration
  * validation only — to avoid cost and DoS abuse vectors against /api/health.
@@ -61,7 +60,7 @@ export async function GET() {
   // details (which integrations are wired up) are ops metadata, not lead-safety
   // signals, so we withhold them from unauthenticated traffic. Preview and
   // development environments still return the full breakdown for debugging.
-  const body = (status: "ok" | "degraded" | "error") =>
+  const body = (status: "ok" | "error") =>
     isProduction
       ? { status, fullyRedundant }
       : { status, fullyRedundant, checks: { contact: contactChannels, quote: quoteChannels } };
@@ -75,8 +74,5 @@ export async function GET() {
     return NextResponse.json(body("error"), { status: 503, headers });
   }
 
-  return NextResponse.json(
-    body(fullyRedundant ? "ok" : "degraded"),
-    { status: 200, headers },
-  );
+  return NextResponse.json(body("ok"), { status: 200, headers });
 }
