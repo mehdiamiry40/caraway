@@ -1,3 +1,4 @@
+import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
 import { post as postUte } from "./sell-my-ute-brisbane";
 import { post as postScamsGuide } from "./how-to-avoid-cash-for-cars-scams-brisbane";
 import { post as postFinanceOwing } from "./how-to-sell-a-car-with-finance-owing-qld";
@@ -42,6 +43,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postWreckersVs,
   postUte,
   postScamsGuide,
   postFinanceOwing,
