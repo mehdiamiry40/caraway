@@ -56,6 +56,18 @@ const prohibitedClaims = [
   },
 ];
 
+const regulatedPosts = new Set([
+  "cancel-rego-after-selling-car-qld.ts",
+  "how-to-cancel-car-rego-qld.ts",
+  "how-to-sell-a-car-with-finance-owing-qld.ts",
+  "how-to-transfer-car-ownership-qld.ts",
+  "number-plates-when-selling-car-qld.ts",
+  "sell-car-not-in-my-name-qld.ts",
+  "sell-car-without-roadworthy-qld.ts",
+  "what-paperwork-to-sell-a-car-qld.ts",
+  "wovr-written-off-vehicle-register-qld-guide.ts",
+]);
+
 function collectSourceFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -67,7 +79,8 @@ function collectSourceFiles(directory) {
 const violations = [];
 
 for (const filePath of collectSourceFiles(sourceRoot)) {
-  const lines = readFileSync(filePath, "utf8").split("\n");
+  const source = readFileSync(filePath, "utf8");
+  const lines = source.split("\n");
   for (const [index, line] of lines.entries()) {
     for (const claim of prohibitedClaims) {
       if (claim.pattern.test(line)) {
@@ -77,6 +90,27 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
           label: claim.label,
         });
       }
+    }
+  }
+
+  const fileName = filePath.split("/").at(-1);
+  if (fileName && regulatedPosts.has(fileName)) {
+    if (!/reviewedAt:\s*"\d{4}-\d{2}-\d{2}"/.test(source)) {
+      violations.push({
+        file: relative(repoRoot, filePath),
+        line: 1,
+        label: "regulated article missing reviewedAt metadata",
+      });
+    }
+    if (
+      !/sources:\s*\[/.test(source) ||
+      !/https:\/\/(?:www\.)?(?:qld\.gov\.au|ppsr\.gov\.au)\//.test(source)
+    ) {
+      violations.push({
+        file: relative(repoRoot, filePath),
+        line: 1,
+        label: "regulated article missing an official primary source",
+      });
     }
   }
 }

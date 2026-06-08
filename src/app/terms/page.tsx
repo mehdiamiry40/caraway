@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Terms from "@/views/Terms";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -47,7 +47,7 @@ export default function TermsPage() {
             description:
               "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
             inLanguage: "en-AU",
-            dateModified: "2026-03-01",
+            dateModified: LEGAL_DATE_ISO.termsLastUpdated,
             publisher: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             about: { "@id": `${SITE_URL}/#organization` },

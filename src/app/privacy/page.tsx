@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Privacy from "@/views/Privacy";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL } from "@/lib/site";
+import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
             description:
               "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
             inLanguage: "en-AU",
-            dateModified: "2026-04-01",
+            dateModified: LEGAL_DATE_ISO.privacyLastUpdated,
             publisher: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             about: { "@id": `${SITE_URL}/#organization` },

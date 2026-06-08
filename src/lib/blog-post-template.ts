@@ -128,6 +128,9 @@ export function buildBlogPostSeoProps(post: BlogPost) {
         url: (publisherSchema.logo as { url: string }).url,
       },
     },
+    ...(post.sources?.length
+      ? { citation: post.sources.map((source) => source.url) }
+      : {}),
     isAccessibleForFree: true,
   };
 
@@ -194,6 +197,34 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
 
   if (Date.parse(post.updatedAt) < Date.parse(post.date)) {
     errors.push("updatedAt must not be earlier than date");
+  }
+
+  if (post.reviewedAt && !/^\d{4}-\d{2}-\d{2}$/.test(post.reviewedAt)) {
+    errors.push("reviewedAt must be ISO yyyy-mm-dd");
+  }
+
+  if (post.reviewedAt && Date.parse(post.reviewedAt) < Date.parse(post.updatedAt)) {
+    errors.push("reviewedAt must not be earlier than updatedAt");
+  }
+
+  if (post.sources?.length && !post.reviewedAt) {
+    errors.push("reviewedAt is required when sources are provided");
+  }
+
+  if (post.reviewedAt && !post.sources?.length) {
+    errors.push("sources are required when reviewedAt is provided");
+  }
+
+  for (const source of post.sources ?? []) {
+    if (!source.title.trim()) errors.push("source title is required");
+    try {
+      const url = new URL(source.url);
+      if (url.protocol !== "https:") {
+        errors.push("source URLs must use HTTPS");
+      }
+    } catch {
+      errors.push("source URL must be valid");
+    }
   }
 
   if (!post.category.trim()) {

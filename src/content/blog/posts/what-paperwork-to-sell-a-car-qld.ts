@@ -48,6 +48,22 @@ export const post: RawBlogPostEntry = {
       `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring photo ID and any registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR. Complete and retain confirmation of your seller-side transfer or cancellation steps. Standard plates usually stay with a registered vehicle during a normal transfer; cancellation and personalised plates follow different rules. Caraway offers free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
     ],
     date: "2026-04-16",
+    updatedAt: "2026-06-08",
+    reviewedAt: "2026-06-08",
+    sources: [
+      {
+        title: "Queensland Government — transfer registration online",
+        url: "https://www.qld.gov.au/transport/registration/transfer/online",
+      },
+      {
+        title: "Queensland Government — safety certificates",
+        url: "https://www.qld.gov.au/transport/registration/roadworthy",
+      },
+      {
+        title: "Australian Government PPSR — used car search",
+        url: "https://www.ppsr.gov.au/node/76",
+      },
+    ],
     category: "Guides",
     relatedServices: ["sell-my-car-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],

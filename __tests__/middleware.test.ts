@@ -22,6 +22,8 @@ function makeRequest(
 beforeEach(() => {
   delete process.env.SITE_URL;
   delete process.env.GOOGLE_PLACES_API_KEY;
+  delete process.env.UPSTASH_REDIS_REST_URL;
+  delete process.env.UPSTASH_REDIS_REST_TOKEN;
 });
 
 afterEach(() => {

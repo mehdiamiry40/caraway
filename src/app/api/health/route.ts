@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isDistributedRateLimitConfigured } from "@/lib/rate-limit";
 import { validateEndpoint } from "@/lib/validate-endpoint";
 
 export const dynamic = "force-dynamic";
@@ -53,6 +54,10 @@ export async function GET() {
     contactChannels.email &&
     quoteChannels.webhook &&
     quoteChannels.email;
+  const distributedRateLimit = isDistributedRateLimitConfigured();
+  const leadMonitorEnabled =
+    process.env.LEAD_MONITOR_ENABLED === "1" &&
+    Boolean(process.env.CRON_SECRET?.trim());
 
   const isProduction = process.env.VERCEL_ENV === "production";
 
@@ -62,8 +67,19 @@ export async function GET() {
   // development environments still return the full breakdown for debugging.
   const body = (status: "ok" | "error") =>
     isProduction
-      ? { status, fullyRedundant }
-      : { status, fullyRedundant, checks: { contact: contactChannels, quote: quoteChannels } };
+      ? {
+          status,
+          fullyRedundant,
+          distributedRateLimit,
+          leadMonitorEnabled,
+        }
+      : {
+          status,
+          fullyRedundant,
+          distributedRateLimit,
+          leadMonitorEnabled,
+          checks: { contact: contactChannels, quote: quoteChannels },
+        };
 
   const headers = {
     "X-Robots-Tag": "noindex",

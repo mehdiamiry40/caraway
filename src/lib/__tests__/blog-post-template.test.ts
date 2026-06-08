@@ -71,4 +71,33 @@ describe("blog post template", () => {
       expect(metadata.robots).toBeUndefined();
     }
   });
+
+  it("adds citations to reviewed regulatory article schema", () => {
+    const post = createBlogPost({
+      slug: "reviewed-car-selling-guide",
+      title: "Reviewed Queensland Car Selling Guide",
+      metaDescription:
+        "A reviewed Queensland car selling guide with official primary sources and clear regulatory information for local vehicle sellers.",
+      excerpt:
+        "This reviewed guide explains a Queensland vehicle-selling process and links readers to the official source used for regulatory checks.",
+      content: ["First useful paragraph.", "Second useful paragraph."],
+      date: "2026-06-01",
+      updatedAt: "2026-06-08",
+      reviewedAt: "2026-06-08",
+      sources: [
+        {
+          title: "Queensland Government",
+          url: "https://www.qld.gov.au/transport/registration/transfer",
+        },
+      ],
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    expect(validateBlogPostSeo(post)).toEqual([]);
+    expect(buildBlogPostSeoProps(post).articleSchema.citation).toEqual([
+      "https://www.qld.gov.au/transport/registration/transfer",
+    ]);
+  });
 });
