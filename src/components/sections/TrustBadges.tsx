@@ -13,8 +13,8 @@ import {
 import { BUSINESS } from "@/lib/site";
 
 const credentials = [
-  { icon: ShieldCheck, label: "Fully insured" },
-  { icon: Recycle, label: "Licensed recycler" },
+  { icon: ShieldCheck, label: "Pickup terms confirmed" },
+  { icon: Recycle, label: "Responsible recycling" },
   { icon: Building2, label: `ABN ${BUSINESS.abn}` },
 ] as const;
 

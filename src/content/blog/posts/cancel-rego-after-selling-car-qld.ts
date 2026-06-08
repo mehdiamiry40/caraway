@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "In a normal registered vehicle sale, the seller and buyer usually complete the transfer process. The seller records the disposal and the buyer completes their side of the transfer. Our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld) explains the broader process.",
 
-    "If the vehicle is sold to a licensed motor dealer, dismantler, or car removal business, the process may differ from a standard private sale. Ask the buyer what paperwork they complete and keep a copy of anything you sign.",
+    "If the vehicle is sold to a licensed motor dealer, the process may differ from a standard private sale. A dismantler or car-removal business is not automatically a licensed motor dealer, so verify the licence and complete the seller-side TMR steps that apply.",
 
     "## Why transfer records matter",
 

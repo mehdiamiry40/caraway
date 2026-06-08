@@ -91,12 +91,12 @@ describe("PriceEstimator", () => {
     return true;
   }
 
-  function getVisibleClaimButton() {
-    const all = screen.getAllByRole("button", { name: /claim my quote/i });
+  function getVisibleOfferRequestButton() {
+    const all = screen.getAllByRole("button", { name: /request confirmed offer/i });
     const visible = all.filter(isInVisibleStep);
     if (visible.length !== 1) {
       throw new Error(
-        `Expected exactly one visible "Claim my quote" button; found ${visible.length}`
+        `Expected exactly one visible "Request confirmed offer" button; found ${visible.length}`
       );
     }
     return visible[0]!;
@@ -124,20 +124,20 @@ describe("PriceEstimator", () => {
     await user.click(screen.getByRole("button", { name: /see my quote/i }));
     await waitForStep(2);
 
-    // Step 2 → Step 3 (uses the only visible "Claim my quote" CTA).
-    await user.click(getVisibleClaimButton());
+    // Step 2 → Step 3 (uses the only visible offer-request CTA).
+    await user.click(getVisibleOfferRequestButton());
     await waitForStep(3);
 
     await user.type(screen.getByLabelText(/your name/i), "Jane Smith");
     await user.type(screen.getByLabelText(/phone number/i), "0412345678");
     await user.type(screen.getByLabelText(/pickup address/i), "123 Smith St, Brisbane QLD 4000");
 
-    await user.click(getVisibleClaimButton());
+    await user.click(getVisibleOfferRequestButton());
 
     await waitFor(() => {
       expect(submitQuoteMock).toHaveBeenCalledTimes(1);
     });
-    expect(await screen.findByText(/your estimate is on its way/i)).toBeInTheDocument();
+    expect(await screen.findByText(/your offer request is in/i)).toBeInTheDocument();
     expect(trackEventMock).toHaveBeenCalledWith(
       "estimator_submitted",
       expect.objectContaining({ make: "Toyota", model: "Corolla" })
@@ -151,7 +151,7 @@ describe("PriceEstimator", () => {
     await fillStep1(user);
     await user.click(screen.getByRole("button", { name: /see my quote/i }));
     await waitForStep(2);
-    await user.click(getVisibleClaimButton());
+    await user.click(getVisibleOfferRequestButton());
     await waitForStep(3);
 
     await user.type(screen.getByLabelText(/your name/i), "Bot");
@@ -160,10 +160,10 @@ describe("PriceEstimator", () => {
     const honeypot = document.getElementById("est-website") as HTMLInputElement;
     await user.type(honeypot, "http://evil.example");
 
-    await user.click(getVisibleClaimButton());
+    await user.click(getVisibleOfferRequestButton());
 
     // Honeypot path fakes a success without contacting the server.
-    expect(await screen.findByText(/your estimate is on its way/i)).toBeInTheDocument();
+    expect(await screen.findByText(/your offer request is in/i)).toBeInTheDocument();
     expect(submitQuoteMock).not.toHaveBeenCalled();
   });
 });

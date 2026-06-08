@@ -11,7 +11,7 @@ export function Success({ state }: { state: EstimatorState }) {
     <section
       id="price-estimator"
       className="section-y scroll-mt-header relative overflow-hidden border-y border-border bg-secondary"
-      aria-label="Quote submitted"
+      aria-label="Offer request submitted"
     >
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
       <div className="site-container">
@@ -33,7 +33,7 @@ export function Success({ state }: { state: EstimatorState }) {
             tabIndex={-1}
             className="font-display text-xl sm:text-2xl text-foreground mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
           >
-            Your estimate is on its way.
+            Your offer request is in.
           </h3>
           <p className="text-foreground/80 text-sm sm:text-base mb-5">
             We received your details for your{" "}
@@ -45,7 +45,7 @@ export function Success({ state }: { state: EstimatorState }) {
           <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
             <div className="flex items-center">
               <span className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-                Offer sent
+                Estimate submitted
               </span>
             </div>
             <div className="mt-3 flex items-baseline justify-between">

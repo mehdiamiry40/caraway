@@ -24,13 +24,13 @@ export const post: RawBlogPostEntry = {
 
       "Selling privately without rego is legal but slow. You can list the car on Marketplace or Gumtree as 'unregistered, sold as-is', but the pool shrinks and the offers are typically lowball. The buyer must arrange their own tow, get a safety certificate in their own name, then pay the transfer fee and stamp duty before TMR will register the car. Most private buyers will not take on that hassle unless the car is genuinely cheap.",
 
-      "A cash-for-cars buyer is almost always the fastest route. Companies that buy cars across Greater Brisbane — including the northern suburbs, Logan, Ipswich, Moreton Bay, and the Redlands — are geared up for [unregistered vehicles](/unregistered-cars-brisbane). They bring their own tow truck, handle the disposal paperwork with TMR on your behalf, and do not require a safety certificate or current rego to make an offer. All you need to provide is valid photo ID and a signature.",
+      "A cash-for-cars buyer can be a practical option for an [unregistered vehicle](/unregistered-cars-brisbane) because towing avoids the need to drive it. Bring photo ID and evidence that you are authorised to sell, then keep a signed receipt containing the VIN or chassis number, vehicle details, date, price, and both parties' details.",
 
       "## Paperwork, plates, and TMR disposal notices",
 
       "The paperwork to sell a car without rego in Brisbane is minimal. You need a current Queensland driver's licence or passport, and ideally the old registration certificate if you still have it (not essential — the buyer can look up the vehicle by VIN). The buyer lodges a vehicle disposal notice with TMR within the 14-day window required by Queensland law. Once processed, the car is no longer associated with your name, and you are no longer liable for tolls or infringements tied to it.",
 
-      "Do not forget the number plates. If the car still has its old plates attached, remove them before the tow truck leaves. In Queensland, number plates belong to the registered owner, not the vehicle. You can return them to any TMR customer service centre or keep them if you plan to transfer them to another car. Plates left on a scrapped vehicle can cause administrative headaches months later.",
+      "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
       "## What an unregistered car is worth in Brisbane",
 
@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
 
       "A few mistakes to avoid. Never drive an unregistered car on a public road to deliver it — the fine wipes out most of the sale price and your insurance is void if you crash. Never accept a deposit and let the buyer collect later; take cash on pickup. Do not sign over paperwork before the money is in your hand.",
 
-      "Selling a car without rego in Brisbane is genuinely straightforward with a cash-for-cars buyer. Free towing across Greater Brisbane, same- or next-day pickup, no safety certificate required, and payment on the spot. Whether your unregistered car is in a Carindale driveway, a [Logan carport](/locations/logan), or a rural block out past Ipswich, one phone call usually gets you a firm quote in minutes and the vehicle gone the same or next day.",
+      "An unregistered vehicle can be sold without a safety certificate, but it cannot be driven on public roads without the permissions and cover required for that journey. Caraway includes towing when we buy and usually offers same- or next-day pickup across Greater Brisbane, subject to access and truck availability.",
     ],
     date: "2026-04-10",
     category: "Guides",

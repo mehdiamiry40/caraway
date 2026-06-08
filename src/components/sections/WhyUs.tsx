@@ -16,9 +16,9 @@ const featureReason: Reason = {
 
 const supportingReasons: Reason[] = [
   {
-    title: "Fully insured pickups",
+    title: "Pickup details confirmed",
     description:
-      "Public liability and goods-in-transit cover. If we scratch it loading, we wear it — not you.",
+      "We confirm the assigned operator, access plan, timing, and applicable insurance details before collection.",
     icon: ShieldCheck,
   },
   {

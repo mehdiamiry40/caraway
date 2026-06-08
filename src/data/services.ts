@@ -37,7 +37,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Why Brisbane Locals Choose Caraway",
-        content: "We focus on making the sale straightforward: no Roadworthy Certificate required, no classified ads, and no strangers test-driving your car. We handle transfer paperwork, pay you before the vehicle leaves your property, and include towing when we buy. We're a Brisbane-based buyer — not a national lead broker."
+        content: "We focus on making the sale straightforward: cars are assessed as-is, there are no classified ads or stranger test drives, and towing is included when we buy. We provide a receipt and buyer details for the applicable Queensland paperwork, and payment is confirmed before the vehicle leaves. We're a Brisbane-based buyer — not a national lead broker."
       },
       {
         heading: "What Cars We Buy for Cash in Brisbane",
@@ -69,13 +69,13 @@ export const services: ServicePage[] = [
   {
     slug: "car-removal-brisbane",
     title: "Free Car Removal Brisbane | Same-Day Pickup",
-    metaDescription: `Free car removal across Brisbane. Same- or next-day pickup, no towing fees, instant cash payment. We remove old, scrap, and unwanted cars. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Free car removal across Brisbane when we buy. Same- or next-day pickup is usually available, with payment confirmed at collection. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Free Car Removal Brisbane — Same-Day Service",
     intro: "Need a car removed from your property in Brisbane? Caraway offers free car removal across Greater Brisbane with same- or next-day pickup available 7 days a week. We don't just remove your car — we pay you cash for it. No towing fees, no hidden charges, no hassle.",
     sections: [
       {
         heading: "How Our Brisbane Car Removal Works",
-        content: "Our car removal process is straightforward. Contact us with your vehicle details — we'll provide a free, no-obligation quote. Once you accept, our licensed driver will come to your location at a time that works for you. We bring our own tow truck and equipment, so your car doesn't need to be running or roadworthy. You get paid in cash before we load the vehicle. We handle all transfer paperwork on the spot."
+        content: "Our car removal process is straightforward. Contact us with your vehicle details for a free, no-obligation quote. Once you accept, our pickup driver comes at the agreed time with the towing equipment needed for non-running vehicles. We confirm the agreed payment before loading and provide a receipt and buyer details for the Queensland paperwork that applies."
       },
       {
         heading: "We Remove All Types of Vehicles",
@@ -87,7 +87,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Why Choose Caraway for Car Removal?",
-        content: "Unlike many car removal services that charge towing fees or offer below-market prices, Caraway provides genuinely free removal with competitive cash offers. We're fully licensed and insured, our drivers are professional and punctual, and we've been serving the Brisbane community. We also dispose of vehicles responsibly, complying with all Queensland environmental regulations."
+        content: "Unlike many car removal services that charge towing fees, Caraway includes removal when we buy and provides a clear offer before dispatch. We're insured and Brisbane-based, and our drivers aim to be professional and punctual. Vehicles intended for dismantling or recycling are sent through appropriate specialist facilities."
       }
     ],
     faqs: [
@@ -120,12 +120,12 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Minimal Paperwork Required",
-        content: "To sell your car to Caraway, all you need is photo ID to prove ownership. If you have the registration papers, that speeds things up — but they're not essential. We handle the vehicle transfer documentation, saving you a trip to Queensland Transport. It couldn't be easier."
+        content: "Bring current photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the vehicle. We provide a signed receipt and buyer details, while you complete and retain confirmation of the seller-side TMR steps that apply."
       }
     ],
     faqs: [
       { question: "How do I sell my car to Caraway in Brisbane?", answer: "Use our online price estimator or submit our quote form. Provide your car's details and we'll give you a free offer based on those details. Accept, and we'll pick up your car and pay you cash — often the same or next day." },
-      { question: "Do I need a roadworthy to sell my car?", answer: "No. We buy cars as-is, without a Roadworthy Certificate. Your car can be in any condition — running, broken, damaged, or scrap." },
+      { question: "Do I need a roadworthy to sell my car?", answer: "We can assess your car as-is without a safety certificate. Queensland requirements depend on registration status and sale type, so check current TMR guidance and confirm the applicable paperwork before pickup." },
       { question: "How much can I get for my car?", answer: "Offers may range from $200 to $9,999 depending on the vehicle, but there is no one-size-fits-all price. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. Contact us for a free, no-obligation quote specific to your vehicle." },
       { question: "Can I sell a car I still owe finance on?", answer: "In some cases, yes. Contact us to discuss your situation. We can sometimes arrange payout of the remaining finance as part of the sale." }
     ],
@@ -159,7 +159,7 @@ export const services: ServicePage[] = [
     faqs: [
       { question: "How much is my scrap car worth in Brisbane?", answer: "Scrap car values depend on size, weight, and condition. Standard cars typically fetch $300–$500, while larger vehicles can be worth more. Contact us for a specific quote." },
       { question: "Can you remove a car with no engine?", answer: "Yes. We remove vehicles in any state — no engine, no wheels, no doors. If there's enough of the car to identify it, we'll take it." },
-      { question: "Do I need paperwork for a scrap car?", answer: "Just photo ID. Registration papers help but aren't essential. We handle all the deregistration and transfer paperwork for you." },
+      { question: "Do I need paperwork for a scrap car?", answer: "Bring current photo ID and any registration or ownership records you have. We provide a receipt and buyer details, and you complete the seller-side TMR steps that apply to a transfer, cancellation, or unregistered sale." },
       { question: "Is scrap car removal really free?", answer: "Yes. We do not charge for towing or removal, and we do not deduct towing costs from your agreed quote when the vehicle matches the details provided." }
     ],
     relatedServices: ["car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
@@ -222,7 +222,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Flood, Hail, and Storm Damage in South-East Queensland",
-        content: "Brisbane's weather is hard on cars. Summer hailstorms come through the north and western suburbs almost every year — we've bought hundreds of hail-dimpled cars from Chermside, The Gap, Ferny Grove, and Kenmore after major storms, and plenty more from Ipswich and Springfield. Flood damage is an even bigger issue for low-lying suburbs around Rocklea, Milton, West End, Fairfield, Oxley, and parts of Logan and Ipswich. Once a car has been through floodwater up to the dash, insurance companies will usually write it off because the wiring harness, ECUs, airbag modules, and interior trim are effectively ruined — even if the engine still runs on the day. Repairing a flood-damaged car is almost never economic; the car will develop electrical gremlins and mould problems for years. Selling it to a buyer who understands flood cars is almost always the right move. Caraway buys flood-affected vehicles as-is, no questions asked, and handles the disposal properly so the car doesn't end up being quietly on-sold to an unsuspecting buyer. The same applies to storm-damaged cars with fallen branches through the roof, vehicles caught in bushfires, and cars that have been broken into and stripped."
+        content: "Brisbane weather can be hard on vehicles, especially after hail, flood, and storm events. Flood exposure may affect wiring, electronics, safety systems, interior materials, and structural components even when an engine still runs. Caraway assesses flood- and storm-affected vehicles from the details provided, and vehicles intended for dismantling or recycling are directed to appropriate specialists."
       },
       {
         heading: "Insurance Write-Off vs Cash Sale: Which Makes Sense?",
@@ -262,7 +262,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "What Happens to Accident Cars After We Buy Them",
-        content: "Once we pay you and load the car onto our truck, the vehicle goes to one of our licensed wrecking and dismantling partners across South-East Queensland. From there, the process depends on the vehicle. Late-model cars with good running drivetrains but crashed bodies are often stripped for mechanical parts — engines, transmissions, diffs, ECUs, airbags, and suspension components — which go back into the used parts market to keep other cars on the road. Body panels, doors, bonnets, and interior trim are catalogued and listed for sale to panel beaters and DIY repairers. Cars that are too far gone mechanically get depolluted: fluids drained, batteries removed, tyres pulled off, refrigerant recovered from the air-con system, and any hazardous materials handled according to Queensland EPA regulations. The remaining shell is crushed and recycled into new steel. The whole process is documented, traceable, and compliant with the Written-Off Vehicle Register rules. You don't need to worry about the car turning up on Marketplace a month later being sold as a 'great little runner' to an unsuspecting buyer — it's gone for good, properly disposed of, and the paperwork is lodged with TMR on your behalf. That environmental and administrative peace of mind is part of what you're paying for when you sell to a licensed buyer instead of a backyard operator."
+        content: "Vehicles intended for parts recovery or recycling go to specialist operators across South-East Queensland. Usable components may return to the parts market, while end-of-life vehicles are depolluted before metals and other recoverable materials are processed. We provide a sale receipt and buyer details; the seller should complete and verify the applicable TMR transfer or cancellation steps and retain confirmation."
       }
     ],
     faqs: [
@@ -304,7 +304,7 @@ export const services: ServicePage[] = [
   {
     slug: "junk-cars-brisbane",
     title: "Junk Car Removal Brisbane | Cash for Junk Cars",
-    metaDescription: `Junk car removal in Brisbane with instant cash payment. We buy and remove junk cars free. Any condition accepted. Call Caraway on ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Junk car removal in Brisbane with payment confirmed at pickup. We assess vehicles in any condition and include towing when we buy. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Junk Car Removal Brisbane — Cash for Your Junk Car",
     intro: "Got a junk car cluttering up your property? Caraway turns junk into cash across Brisbane. We buy and remove junk cars in any condition — rusted out, engine blown, body damaged, missing parts — and pay you on the spot. Free removal, no strings attached.",
     sections: [
@@ -332,9 +332,9 @@ export const services: ServicePage[] = [
   {
     slug: "unregistered-cars-brisbane",
     title: "Sell Unregistered Cars Brisbane | No Rego Needed",
-    metaDescription: `Sell your unregistered car for cash in Brisbane. No rego, no RWC, no worries. Free pickup and instant payment. Call Caraway on ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell an unregistered car in Brisbane with a clear quote, free pickup when we buy, and payment confirmed at collection. Call Caraway on ${BUSINESS.phoneDisplay}.`,
     h1: "Sell Your Unregistered Car in Brisbane for Cash",
-    intro: "No registration? No problem. Caraway buys unregistered vehicles across Brisbane for instant cash. Whether your rego has expired, been cancelled, or your car was never registered in Queensland — we'll buy it and remove it for free. No RWC required, no paperwork headaches.",
+    intro: "No registration? Caraway assesses unregistered vehicles across Brisbane and includes pickup when we buy. Whether the registration expired, was cancelled, or the vehicle was never registered in Queensland, we can quote on it as-is and explain what sale records we need.",
     sections: [
       {
         heading: "Why Sell an Unregistered Car?",
@@ -342,7 +342,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "No Registration Hassles with Caraway",
-        content: "We don't care about your car's registration status. Expired rego, cancelled rego, interstate plates, no plates at all — it doesn't affect our offer. We buy the vehicle based on its intrinsic value (parts, materials, condition), not its registration status. We also handle all deregistration and transfer paperwork for you."
+        content: "Expired registration, cancelled registration, interstate registration, or no plates do not prevent us from assessing a vehicle. The offer is based on the vehicle's details, condition, completeness, location, and demand. We provide a receipt and buyer details; you retain confirmation of any seller-side TMR steps that apply."
       },
       {
         heading: "Common Unregistered Cars We Buy",
@@ -390,7 +390,7 @@ export const services: ServicePage[] = [
     title: "Insurance Write-Off Cars Brisbane | Caraway",
     metaDescription: "Sold your car to the insurance company but kept the salvage rights? We buy statutory and repairable write-offs across Brisbane. Free pickup, cash on the spot.",
     h1: "Insurance Write-Off Cars Brisbane",
-    intro: "If your insurer has declared your vehicle a total loss and left you with the wreck — or you've elected to retain salvage rights on an accident, flood, or fire claim — Caraway buys it directly for cash. We purchase both statutory and repairable write-offs across Greater Brisbane, handle all the paperwork with TMR, and come to you with free towing. Same- or next-day pickup is available seven days a week.",
+    intro: "If your insurer has declared your vehicle a total loss and you retain the salvage, Caraway can assess both statutory and repairable write-offs across Greater Brisbane. We include towing when we buy, provide a signed receipt and buyer details, and usually offer same- or next-day pickup subject to availability.",
     sections: [
       {
         heading: "Statutory vs Repairable Write-Offs Explained",
@@ -398,7 +398,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "How to Sell a Write-Off Car to Caraway",
-        content: "The process is the same as any other cash-for-cars sale, with a few small extras to keep the WOVR paperwork clean. Step one: call or fill out our online quote form with the make, model, year, damage description, and — if you know it — the WOVR classification. We'll give you a firm cash offer on the phone, usually within a few minutes. Step two: accept the quote and book a pickup time that suits you. Step three: our driver arrives at your property with a flatbed tow truck, inspects the vehicle, pays you in cash (or bank transfer for amounts over $10,000), and loads the car. We lodge the disposal notice with TMR on your behalf within the 14-day statutory window, which removes the vehicle from your name and ends your liability for any future tolls, fines, or administrative notices attached to the plate. You do not need a panel beater's quote, a police report, or an engineer's assessment to sell to us — the insurer's write-off decision is enough."
+        content: "Start with the make, model, year, damage description, and WOVR classification if known. If you accept the quote, we agree on a pickup window and payment method before dispatch. At pickup, the driver confirms the vehicle details, payment, and receipt. You then complete and retain confirmation of the seller-side TMR transfer or cancellation steps that apply."
       },
       {
         heading: "What Paperwork You Need",
@@ -406,9 +406,9 @@ export const services: ServicePage[] = [
       }
     ],
     faqs: [
-      { question: "Can I sell a car that's listed on the Written-Off Vehicle Register?", answer: "Yes. We buy both statutory and repairable write-offs listed on the WOVR. The WOVR flag doesn't prevent a sale to a licensed buyer — it just prevents the car from being re-registered in the case of a statutory write-off. Call us with the VIN and we'll give you a firm cash offer quickly — usually same or next day." },
+      { question: "Can I sell a car that's listed on the Written-Off Vehicle Register?", answer: "Yes. We assess both statutory and repairable write-offs. A statutory write-off cannot be re-registered, while repairable write-offs have separate inspection and registration requirements. Tell us the VIN and classification when requesting a quote." },
       { question: "Will your offer beat the insurance payout?", answer: "For newer vehicles on comprehensive cover, the insurance payout usually wins. For older cars (10+ years), or cars where the insurer has quoted a low market value, our offer is often competitive or better — plus you get the money in hours instead of waiting weeks for claim finalisation. We're happy to quote against your insurer's number without obligation." },
-      { question: "Do I need to do anything before the pickup?", answer: "Just gather your photo ID, any paperwork from the insurer, and the vehicle's registration certificate if you still have it. Remove personal belongings and take the number plates off before the truck leaves — in Queensland, plates belong to the registered owner, not the car. Everything else we handle." }
+      { question: "Do I need to do anything before the pickup?", answer: "Gather photo ID, insurer correspondence, and any registration or ownership records. Remove personal belongings and confirm whether the transaction is a registered transfer, cancellation, or unregistered sale. Standard plates usually stay with a registered vehicle during a normal transfer; cancellation and personalised plates follow different rules." }
     ],
     relatedServices: ["damaged-cars-brisbane", "accident-cars-brisbane", "cash-for-cars-brisbane", "scrap-car-removal-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane", "south-brisbane", "caboolture"]
@@ -458,7 +458,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "We Buy HiLuxes in Any Condition",
-        content: "Running or not, rego'd or not, pretty or rusted. We regularly buy HiLuxes with blown head gaskets, dropped diffs, rust through the chassis rails (a common N70 issue in coastal Queensland), accident damage, rolled cabs, hail dents, water damage from the 2022 floods, and plenty that are simply worn out after 400,000+ km of hard use. We also buy ex-mining, ex-fleet, and repairable write-off HiLuxes direct from the owner after the insurance claim closes. No RWC needed, no quotes from mechanics required."
+        content: "Running or not, registered or not, tidy or rusted, we assess HiLuxes with mechanical faults, accident damage, hail damage, water damage, or heavy wear. We can quote from the vehicle details without requiring you to obtain a mechanic's repair estimate first."
       },
       {
         heading: "How Much Is My HiLux Worth in Brisbane?",
@@ -466,11 +466,11 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Free Same-Day HiLux Pickup Across Greater Brisbane",
-        content: "Whether your HiLux is parked at a Logan workshop, bogged on a property in Ipswich, tucked behind a Redcliffe carport, or sitting on a Chermside driveway, we'll come to you with a flatbed, winch, and cash in hand. We handle all transfer paperwork on the spot and never charge for towing. Most Brisbane HiLux pickups happen the same or next business day."
+        content: "Whether your HiLux is at a Logan workshop, an Ipswich property, a Redcliffe carport, or a Chermside driveway, we arrange suitable towing equipment and include pickup when we buy. We provide a receipt and buyer details, and most booked pickups happen the same or next business day subject to availability."
       }
     ],
     faqs: [
-      { question: "Do you buy HiLuxes without rego?", answer: "Yes. We buy unregistered and long-deregistered HiLuxes every week across Brisbane. No RWC needed. Just photo ID on pickup day and we handle the deregistration paperwork for you." },
+      { question: "Do you buy HiLuxes without rego?", answer: "Yes. We assess unregistered and long-deregistered HiLuxes across Brisbane. Bring photo ID and any ownership or registration records available, and keep a signed receipt with the VIN and both parties' details." },
       { question: "My HiLux has chassis rust — will you still buy it?", answer: "Yes. Chassis rust is a known issue on 2005–2015 N70 HiLuxes in coastal Queensland and we buy them all the time. We value the car on its drivetrain, interior, and parts potential — not the chassis rails." },
       { question: "Do you buy repairable write-off HiLuxes?", answer: "Yes. If your HiLux is a WOVR repairable write-off, we buy them regularly. Mention the write-off status when you request your quote so we can factor it in from the start." },
       { question: "Will you pay more for a diesel HiLux than a petrol?", answer: "Usually, yes. Diesel HiLuxes — especially the 1KZ, 1KD, and 1GD turbodiesels — generally fetch higher prices because the drivetrain parts demand is stronger. But a clean, low-km 2.7L petrol can still pull a strong number." }
@@ -495,7 +495,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "We Buy Corollas in Any Condition",
-        content: "Running or not, rego'd or expired, pristine or panel-damaged. We buy Corollas with dead batteries after years in the driveway, blown head gaskets on the 1ZZ and 2ZZ engines, seized autos, flood-damaged interiors, and plenty of hail-dented examples. We also buy repairable write-offs and statutory write-offs direct from owners after insurance claims close. No RWC required and no mechanical reports needed."
+        content: "Running or not, registered or expired, tidy or panel-damaged, we assess Corollas with flat batteries, engine or transmission faults, flood damage, hail damage, and WOVR classifications. You can request a quote without first obtaining a mechanical repair report."
       },
       {
         heading: "Corolla Cash Price Ranges in Brisbane",
@@ -503,7 +503,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Greater Brisbane Corolla Pickup, Free and Fast",
-        content: "We collect Corollas from every corner of Greater Brisbane — Logan apartments, Indooroopilly carports, Ipswich properties, Redcliffe streets, and inner-city battle-axe blocks alike. Free towing always, cash paid before the car leaves your property, and all transfer paperwork handled on the spot. Most Brisbane Corolla pickups happen same or next business day."
+        content: "We collect Corollas across Greater Brisbane, including apartments, tight carports, and outer-suburban properties. Towing is included when we buy, payment is confirmed before the vehicle leaves, and we provide the receipt and buyer details needed for the applicable paperwork. Most booked pickups happen the same or next business day."
       }
     ],
     faqs: [
@@ -540,7 +540,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Free Brisbane-Wide Commodore Pickup",
-        content: "We collect Commodores from every Brisbane suburb. Logan and Ipswich have some of the highest concentrations in our pickup schedule — older Commodores are a fixture of those areas — but we service the northside, southside, east, west, and outer regions equally. Free towing, cash before the car leaves, all paperwork handled. Most pickups happen the same or next business day."
+        content: "We collect Commodores across Greater Brisbane, including Logan, Ipswich, the northside, southside, east, west, and outer regions. Towing is included when we buy, payment is confirmed before the vehicle leaves, and we provide a signed receipt. Most booked pickups happen the same or next business day."
       }
     ],
     faqs: [
@@ -557,7 +557,7 @@ export const services: ServicePage[] = [
     title: "Sell My Ford Falcon Brisbane | Cash for BA, BF, FG",
     metaDescription: `Sell your Ford Falcon for cash in Brisbane. AU, BA, BF, FG sedans, utes, XR6, XR8, G6E, Territory. Any condition. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Ford Falcon Brisbane — All Models & Conditions",
-    intro: "Ford Falcons were a staple of Queensland roads for decades, and a huge number of them are still parked at the back of Brisbane properties waiting to be moved on. Caraway pays fair cash for every Falcon generation, including XR6 and XR8 performance variants, utes, wagons, and the related Territory SUV. Free pickup, no RWC required, cash on the spot.",
+    intro: "Ford Falcons were a staple of Queensland roads for decades, and many are still parked on Brisbane properties waiting to be moved on. Caraway assesses every Falcon generation, including XR6 and XR8 performance variants, utes, wagons, and the related Territory SUV. Pickup is included when we buy, and cars are assessed as-is.",
     sections: [
       {
         heading: "Falcon Generations We Buy",
@@ -569,7 +569,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "We Buy Falcons in Every Condition",
-        content: "Running or not, rego'd or not, straight or accident-damaged. Common Falcon issues we see weekly include BA/BF auto transmission failures, thermo fan faults, AU Falcons dropped for scrap after years of storage, FG coil pack issues, Territory 4-spd auto failures, rusted EF/EL Falcons from long-term outdoor storage, and plenty of deceased-estate examples across the older suburbs. Flood-affected Falcons from the 2011 and 2022 events are a steady part of our purchase mix. No mechanical quote needed, no safety certificate required."
+        content: "Running or not, registered or not, straight or accident-damaged, we assess Falcons with transmission faults, cooling issues, rust, flood damage, or long-term storage wear. You can request a quote without first obtaining a mechanic's repair estimate."
       },
       {
         heading: "Falcon Cash Price Ranges in Brisbane",
@@ -577,7 +577,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Brisbane-Wide Falcon Pickup",
-        content: "We collect Falcons from every part of Greater Brisbane. Our busiest Falcon-pickup areas are Ipswich, Logan, Caboolture, and the outer north — all regions where older Falcons and wagons are still common. Free towing, cash on the spot, all transfer paperwork handled. No distance surcharges, no reduced offers for outer-suburb pickups."
+        content: "We collect Falcons across Greater Brisbane, including Ipswich, Logan, Caboolture, and the outer north. Towing is included when we buy, payment is confirmed at pickup, and we provide a signed receipt and buyer details. There are no distance surcharges within our confirmed service area."
       }
     ],
     faqs: [
@@ -614,7 +614,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Free Same- or Next-Day Ranger Pickup",
-        content: "Wherever your Ranger is — a Logan driveway, a Sunshine Coast–fringe property, an Ipswich farm, or a Brisbane CBD tower car park — we bring the right gear to load it. Free towing across Greater Brisbane, cash before the car leaves, transfer paperwork done on the spot."
+        content: "Wherever your Ranger is — a Logan driveway, an Ipswich property, or a Brisbane CBD car park — we confirm access and bring suitable loading equipment. Towing is included within the confirmed service area, payment is confirmed before the vehicle leaves, and we provide a signed receipt and buyer details."
       }
     ],
     faqs: [
@@ -651,7 +651,7 @@ export const services: ServicePage[] = [
       },
       {
         heading: "Brisbane-Wide LandCruiser Pickup",
-        content: "We'll come to you anywhere in Greater Brisbane — from inner-city car parks where a 200 Series is parked, to rural blocks in Ipswich or on the Sunshine Coast fringe where a Troopy has been working hard. We bring flatbeds suited to heavy 4WDs, winches, and extended ramps. Free towing, cash on the spot, paperwork handled. No mileage or condition surcharges."
+        content: "We collect LandCruisers across Greater Brisbane, from inner-city car parks to rural properties around Ipswich. We confirm access and arrange flatbeds, winches, or extended ramps suited to heavy 4WDs. Towing is included when we buy, payment is confirmed at pickup, and we provide a signed receipt."
       }
     ],
     faqs: [

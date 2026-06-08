@@ -22,7 +22,11 @@ export const AUTHORITY_OUTBOUND_LINKS = [
     href: "https://abr.business.gov.au/ABN/View?abn=62351619456",
   },
   {
-    label: "AUSTRAC — reporting cash transactions",
-    href: "https://www.austrac.gov.au/business/how-comply-and-report-guidance-and-resources",
+    label: "Safety certificates (Queensland Government)",
+    href: "https://www.qld.gov.au/transport/registration/roadworthy",
+  },
+  {
+    label: "Cancel vehicle registration (Queensland Government)",
+    href: "https://www.qld.gov.au/transport/registration/cancel",
   },
 ] as const;

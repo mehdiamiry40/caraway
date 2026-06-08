@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { LEGAL_DATES } from "@/lib/site";
+import { BUSINESS, LEGAL_DATES } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -23,7 +23,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Who we are</h2>
             <p>
-              Caraway (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates a vehicle buying and removal service in Queensland. This policy explains how we handle personal information under the{" "}
+              Caraway is a registered business name operated by {BUSINESS.legalName} as a sole trader, ABN {BUSINESS.abn} (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;), providing vehicle buying and removal services in Queensland. We use the Australian Privacy Principles as our privacy standard and comply with the{" "}
               <a
                 href="https://www.oaic.gov.au/privacy/the-privacy-act/"
                 className="text-primary underline underline-offset-2"
@@ -32,7 +32,7 @@ export default function Privacy() {
               >
                 Privacy Act 1988 (Cth)
               </a>{" "}
-              and the Australian Privacy Principles (APPs).
+              and Australian Privacy Principles (APPs) where they apply to us.
             </p>
           </section>
 
@@ -44,7 +44,7 @@ export default function Privacy() {
               <li><strong>Phone number</strong> — to contact you about your quote and coordinate pickup.</li>
               <li><strong>Email address</strong> — to send written quotes, receipts, and follow-up messages.</li>
               <li><strong>Vehicle details</strong> (make, model, year, condition, location, registration status) — to value your vehicle and arrange removal.</li>
-              <li><strong>Proof of ownership and photo ID</strong> at the time of pickup — to verify you are entitled to sell the vehicle.</li>
+              <li><strong>Authority-to-sell records and photo ID</strong> at pickup — we may sight or record details needed to verify the transaction, and retain a copy only where reasonably necessary.</li>
               <li><strong>Technical data</strong> such as browser type, device type and approximate region via standard web analytics.</li>
             </ul>
           </section>
@@ -62,7 +62,7 @@ export default function Privacy() {
             <ul className="list-styled mt-4">
               <li><strong>Quote delivery</strong> — to prepare and send you a valuation based on the details you provide.</li>
               <li><strong>Pickup coordination</strong> — to arrange a suitable time and location with you and our tow operator.</li>
-              <li><strong>Ownership transfer</strong> — to complete the Queensland Transport and Main Roads (TMR) transfer of registration.</li>
+              <li><strong>Transaction paperwork</strong> — to prepare receipts and assist with the Queensland Transport and Main Roads (TMR) steps relevant to the sale.</li>
               <li><strong>Follow-up</strong> — to confirm you were satisfied with our service and, where you consent, to request a review.</li>
               <li><strong>Legal and record-keeping obligations</strong> — including records required for vehicle transfer and tax.</li>
             </ul>
@@ -72,9 +72,10 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
             <ul className="list-styled mt-4">
-              <li><strong>Quote enquiries</strong> where no sale takes place: kept for up to <strong>90 days</strong>, then deleted or de-identified.</li>
-              <li><strong>Vehicle transfer records</strong> (receipts, TMR paperwork, ID verification): kept for <strong>7 years</strong> in line with Queensland record-keeping requirements and general tax law.</li>
-              <li><strong>Analytics data</strong>: kept in aggregated, anonymised form only.</li>
+              <li><strong>Quote enquiries</strong> where no sale takes place: kept only while reasonably needed for follow-up, fraud prevention, or dispute handling, then deleted or de-identified.</li>
+              <li><strong>Completed-sale records</strong>: kept only for the period reasonably needed for transaction, dispute, accounting, tax, and legal obligations.</li>
+              <li><strong>Identity information</strong>: minimised and deleted or de-identified when it is no longer reasonably required.</li>
+              <li><strong>Analytics data</strong>: retained according to the analytics provider&apos;s settings and privacy controls.</li>
             </ul>
           </section>
 
@@ -83,7 +84,7 @@ export default function Privacy() {
             <p>We may disclose your personal information to:</p>
             <ul className="list-styled mt-4">
               <li><strong>Tow operators and drivers</strong> who carry out the pickup — they receive your name, phone number and pickup address.</li>
-              <li><strong>The Queensland Department of Transport and Main Roads (TMR)</strong> for registration transfer and cancellation.</li>
+              <li><strong>The Queensland Department of Transport and Main Roads (TMR)</strong> where you ask us to assist with an applicable process or disclosure is otherwise permitted or required.</li>
               <li><strong>IT service providers</strong> who help us run the website, forms, SMS and email (listed below).</li>
               <li><strong>Professional advisors and regulators</strong> where we are required or permitted to by law.</li>
             </ul>
@@ -92,17 +93,17 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
             <p>
-              <strong>Yes, some personal information is disclosed overseas.</strong> Our website is hosted on <strong>Vercel</strong> in the <strong>United States</strong>, transactional emails to our team are sent through <strong>Resend</strong> in the <strong>United States</strong>, and address autocomplete in our quote form is provided by the <strong>Google Places API</strong> in the <strong>United States</strong>. Our analytics provider may also process data outside Australia. Where we disclose information overseas we take reasonable steps to ensure the recipient handles it consistently with the APPs, including through contractual protections and recipients&apos; own privacy frameworks.
+              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Resend, Google, and providers configured for form delivery or analytics. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
-              <li><strong>Vercel</strong> — website hosting and Vercel Analytics (United States).</li>
+              <li><strong>Vercel</strong> — website hosting, performance monitoring, and analytics.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
-                <strong>Resend</strong> (United States) — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
+                <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
                 <a
                   href="https://resend.com/legal/privacy-policy"
                   className="text-primary underline underline-offset-2"
@@ -114,7 +115,7 @@ export default function Privacy() {
                 .
               </li>
               <li>
-                <strong>Google Places API</strong> (United States) — address autocomplete in the quote form. When you type an address, the partial query (not your personal details) is sent to Google via our server. Privacy policy:{" "}
+                <strong>Google Places API</strong> — address autocomplete in the quote form. Address text you enter is sent to Google through our server to return suggestions. Privacy policy:{" "}
                 <a
                   href="https://policies.google.com/privacy"
                   className="text-primary underline underline-offset-2"
@@ -133,7 +134,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and analytics</h2>
             <p>
-              We use a small number of <strong>essential cookies</strong> needed for the site to function, and <strong>Vercel Analytics</strong>, which measures site performance and traffic in an anonymised form. Vercel Analytics does not use cookies and does not store personal identifiers such as your name, email or IP address in a way that identifies you.
+              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We also use Vercel Analytics and Speed Insights to understand traffic and performance. These tools are configured without advertising cookies, but they may process technical request and device information according to Vercel&apos;s current privacy terms.
             </p>
           </section>
 

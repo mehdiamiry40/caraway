@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "## Don't forget your plates and rego",
 
-    "In Queensland your number plates belong to you as the registered operator, not to the vehicle, so take them off before the ute is loaded onto the truck. You can transfer personalised plates onto your next vehicle or return standard plates to a TMR service centre. If there's registration left on the ute, you may be entitled to a partial refund of the unused rego and CTP once you've lodged the disposal — worth claiming, especially on a recently renewed ute. Strip out any tools, paperwork, gym memberships clipped to the visor, and that emergency stash of cash you forgot was in the centre console before pickup.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## How to get the best price for your ute",
 
@@ -35,7 +35,7 @@ export const post: RawBlogPostEntry = {
 
     "Once you accept an offer, you shouldn't be paying anything to get the ute removed — free towing across Greater Brisbane, Logan, Ipswich, Moreton Bay, and the Redlands is standard, and any fee should be disclosed up front, never sprung on you at the gate. We come to you, whether the ute is parked in a Logan driveway, sitting at an Ipswich worksite, or bogged at the back of an acreage block. Pickup is usually same- or next-day depending on truck availability, and the safe rule with payment is always the same: confirm the funds have actually cleared into your account, or count the cash, before the keys and the ute change hands.",
 
-    `Ready to sell your ute the easy way? Call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) for cash for any ute across Brisbane — running or not, any make and model, with free towing and the TMR paperwork sorted before the truck leaves.`,
+    `Ready to request an offer for your ute? Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses running and non-running utes, includes towing when we buy, and provides a signed receipt and buyer details.`,
   ],
   faqs: [
     {

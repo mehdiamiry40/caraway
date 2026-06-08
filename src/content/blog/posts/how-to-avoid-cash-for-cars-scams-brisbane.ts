@@ -31,13 +31,13 @@ export const post: RawBlogPostEntry = {
 
     "Scams aren't only about money — leaving the transfer half-done can cost you later. Under Queensland law, the seller must notify the Department of Transport and Main Roads (TMR) that the vehicle has been sold or disposed of. If a buyer takes your car but the disposal or transfer is never lodged, the vehicle stays registered in your name, and you can remain liable for tolls, infringements, and CTP obligations the new \"owner\" racks up. Always complete and keep a copy of the transfer or disposal paperwork on the day, and confirm in writing who is lodging it with TMR.",
 
-    "Remember to remove your number plates before the car is driven or towed away. In Queensland, plates belong to the registered operator, not the vehicle — handing them over with the car can leave them attached to a vehicle you no longer control. Return them to a TMR service centre or hold them to transfer onto your next car.",
+    "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
     "## Selling safely: a quick checklist",
 
     "Before the truck arrives, get two or three quotes so you know the realistic market range for your car and can recognise an inflated bait offer for what it is. Describe the vehicle honestly — make, model, year, kilometres, and anything that doesn't work — so there's no excuse to revise the price at pickup. Confirm that towing is free and that no fees come out of your payment. Insist on cleared funds before the car leaves. Complete the TMR paperwork and remove your plates. Done in that order, selling your car is genuinely low-risk.",
 
-    `If you'd rather skip the guesswork, deal with a buyer who quotes transparently and pays before collection. Call **${BUSINESS.phoneDisplay}** or [get a free instant quote](/#price-estimator) for cash for cars anywhere across Greater Brisbane — a firm offer, free towing, payment confirmed on the day, and the TMR paperwork sorted before the truck leaves your driveway.`,
+    `If you'd rather skip the guesswork, deal with a buyer who explains the quote, payment method, towing terms, and receipt before collection. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Complete and keep confirmation of the seller-side TMR steps that apply.`,
   ],
   faqs: [
     {

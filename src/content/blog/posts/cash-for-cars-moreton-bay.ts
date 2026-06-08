@@ -29,7 +29,7 @@ export const post: RawBlogPostEntry = {
 
     `## Queensland Paperwork — Don't Skip It`,
 
-    `Selling a vehicle in Queensland requires notifying the Department of Transport and Main Roads (TMR) that you've disposed of it. This is done via the TMR website or at a Transport and Motoring Centre, using the vehicle's plate number and the buyer's details. Completing a disposal notification within 14 days is important — it protects you from tolls, fines, or infringements recorded after the sale. Remember that Queensland plates belong to the owner, not the car. Remove them before the tow truck leaves and either return them to TMR or transfer them to another vehicle you own.`,
+    "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
     `## Rego: Timing and Refunds`,
 

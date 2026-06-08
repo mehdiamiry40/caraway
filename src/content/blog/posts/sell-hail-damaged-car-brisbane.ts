@@ -30,7 +30,7 @@ export const post: RawBlogPostEntry = {
 
     "## Paperwork and plates in QLD",
 
-    "The paperwork to sell a hail-damaged car in Brisbane is minimal. You need a current Queensland driver's licence or passport, and the registration certificate if you still have it — expired rego doesn't prevent the sale. The buyer lodges a vehicle disposal notice with the Department of Transport and Main Roads (TMR) within the 14-day window required under Queensland law, which removes the vehicle from your name and ends your liability for future tolls, CTP premiums, and infringement notices tied to that registration. Remove your number plates before the tow truck leaves: under Queensland rules, plates belong to the registered operator and must be returned to a TMR service centre or transferred to another vehicle you own.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## Three mistakes to avoid",
 

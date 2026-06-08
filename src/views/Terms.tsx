@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
-import { LEGAL_DATES } from "@/lib/site";
+import { BUSINESS, LEGAL_DATES } from "@/lib/site";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -23,7 +23,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Agreement</h2>
             <p>
-              By using this website or engaging Caraway to buy or remove your vehicle, you agree to these terms. If you do not agree, do not use the site or our services.
+              Caraway is a registered business name operated by {BUSINESS.legalName} as a sole trader, ABN {BUSINESS.abn}. By using this website or engaging Caraway to buy or remove your vehicle, you agree to these terms. If you do not agree, do not use the site or our services.
             </p>
           </section>
 
@@ -37,7 +37,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Quoted prices</h2>
             <p>
-              Prices quoted through our online estimator or over the phone are indicative, based on the information you provide. The final offer is confirmed at pickup after a visual inspection. Market conditions, vehicle condition, completeness, location, and undisclosed damage may affect the final offer. Selected vehicles may receive offers up to $9,999, while most older or scrap vehicles receive lower offers.
+              The online estimator is indicative. We review the information you provide and confirm an offer in writing before pickup is booked. At collection, we check that the vehicle matches the disclosed details. If there is a material difference, such as undisclosed damage or missing major components, we will explain any revised offer and you may reject it before the vehicle is loaded. Selected vehicles may receive offers up to $9,999, while most older or scrap vehicles receive lower offers.
             </p>
           </section>
 
@@ -57,20 +57,19 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Selling your car to us</h2>
             <p>
-              When you sell your vehicle to Caraway, you remain the registered owner until the Queensland Transport and Main Roads (TMR) register is updated. We will:
+              Queensland Transport and Main Roads (TMR) requirements depend on whether the vehicle is transferred with registration, sold unregistered, or has its registration cancelled. You remain responsible for completing the seller-side steps that apply and confirming the TMR record is updated. We will:
             </p>
             <ul className="list-styled mt-4">
               <li>Provide a receipt showing the sale price, your details, and the buyer&apos;s details</li>
-              <li>Lodge the TMR transfer paperwork within 14 days of pickup</li>
-              <li>Cancel the registration where you request (you may be entitled to a rego refund)</li>
-              <li>Provide photos of the pickup for your records</li>
+              <li>Provide the buyer details and transaction information needed for the applicable paperwork</li>
+              <li>Help identify whether the transaction requires a registration transfer, cancellation, or an unregistered-vehicle sale record</li>
             </ul>
             <p className="mt-3">You agree to:</p>
             <ul className="list-styled mt-4">
               <li>Present valid photo ID at pickup</li>
               <li>Remove personal belongings from the vehicle</li>
-              <li>Sign the transfer documentation provided</li>
-              <li>Surrender Queensland number plates if we request them</li>
+              <li>Sign and keep copies of the applicable transaction documentation</li>
+              <li>Handle Queensland number plates according to the transaction type and current TMR requirements</li>
             </ul>
           </section>
 
@@ -91,7 +90,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Dispute resolution</h2>
             <p>
-              If you are not satisfied with any aspect of your sale, please contact us within 24 hours at{" "}
+              If you are not satisfied with any aspect of your sale, contact us promptly at{" "}
               <a href="mailto:info@caraway.au" className="text-primary underline underline-offset-2">info@caraway.au</a>
               . We will work with you to resolve the issue, and if we cannot agree, you may refer the matter to the Queensland Civil and Administrative Tribunal (QCAT).
             </p>
@@ -100,7 +99,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Limitation of liability</h2>
             <p>
-              To the maximum extent permitted by the Australian Consumer Law and other applicable law, we exclude liability for indirect or consequential loss arising from use of this site or our services. Our liability for any claim related to services we provide is limited to resupplying the goods or services or paying the cost of having them supplied again, or otherwise as required by law.
+              To the extent permitted by law, we are not responsible for loss caused by inaccurate information supplied to us, unauthorised sale of a vehicle, or use of general website information without checking current official requirements. Nothing in these terms excludes or limits rights or remedies that cannot lawfully be excluded.
             </p>
           </section>
 

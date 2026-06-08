@@ -33,7 +33,7 @@ export const post: RawBlogPostEntry = {
 
     "## Queensland paperwork for a new year car sale",
 
-    "The paperwork requirements are minimal. You'll need current photo ID and the vehicle's registration papers if you have them — expired rego is not a barrier to the sale. Before the car is collected, remove your number plates: under Queensland TMR rules, plates belong to the registered operator and can be reused on another vehicle or returned to a TMR customer service centre. If rego is still current, cancel it through the TMR website or by phone after the sale to claim a refund on the unused portion. The cash-for-cars buyer lodges a disposal notice with TMR within 14 days of collection, removing the car from your name and ending your liability for CTP, tolls, and any future infringement notices.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## Two mistakes that reduce your payout",
 

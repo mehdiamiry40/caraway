@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "## Queensland paperwork when selling a damaged car",
 
-    "The paperwork requirements for selling a damaged car in Queensland are the same as for any private vehicle sale. You'll need a current Queensland driver's licence or other photo ID, and the vehicle's registration certificate if you have it — expired rego is not a problem. Before pickup, remove your number plates: under Queensland TMR rules, plates belong to the registered operator and stay with you, not the vehicle. If the car was previously assessed as a total loss by an insurer and recorded on the Written-Off Vehicle Register (WOVR), let the buyer know — it doesn't prevent the sale, but it affects pricing and the paperwork lodged with TMR. The cash-for-cars buyer files a disposal notice within 14 days of collection, which removes the vehicle from your name and clears you of any future liability for tolls, fines, or CTP premiums tied to that registration.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
     "## Can you sell a car that doesn't run?",
 

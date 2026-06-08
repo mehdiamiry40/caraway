@@ -365,7 +365,7 @@ export function QuoteForm() {
 
                   <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
                     <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
-                    <span>Free, no-obligation quote. We never share your info.</span>
+                    <span>Free quote. Your details are used to respond to this enquiry.</span>
                   </div>
 
                   <div className="flex items-start gap-3 pt-3 sm:pt-4">
@@ -396,7 +396,7 @@ export function QuoteForm() {
                           onClick={() => setErrorMessage(null)}
                           className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50 rounded-sm"
                         >
-                          Try again
+                          Dismiss
                         </button>
                       </div>
                     </div>

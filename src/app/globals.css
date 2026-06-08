@@ -458,21 +458,6 @@
   overflow: hidden;
 }
 
-@keyframes marquee-x {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
-}
-
-@utility marquee-mask {
-  overflow: hidden;
-}
-
-@utility marquee-track {
-  width: max-content;
-  animation: marquee-x 60s linear infinite;
-  will-change: transform;
-}
-
 /* ─── Hero atmosphere ──────────────────────────────────────────────────────── */
 /* Soft animated gradient orbs that sit behind hero / final-CTA copy. They
    render as ::before / ::after on a positioned parent so they never affect
@@ -537,14 +522,6 @@
   animation: float-y 6s ease-in-out infinite;
 }
 
-/* Star-rating row using inline SVGs with currentColor — no extra deps. */
-@utility star-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 1px;
-  color: hsl(var(--plate));
-}
-
 /* Subtle dotted timeline used to connect HowItWorks steps on desktop. */
 @utility step-timeline {
   background-image: radial-gradient(circle, hsl(var(--primary) / 0.35) 1.5px, transparent 1.5px);
@@ -561,10 +538,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none !important; }
-  /* When the marquee can't loop, the clone serves no purpose and just
-     reads as a duplicated block of testimonials — hide it. */
-  .marquee-clone { display: none !important; }
   .hero-atmosphere::before,
   .hero-atmosphere::after,
   .live-dot,

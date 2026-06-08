@@ -39,7 +39,7 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
                 ${result.quote.toLocaleString()}
               </p>
               <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-                Instant estimate · firm offer within 1 business day
+                Instant estimate · confirmed offer after review
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--on-dark))]">
                 Final offers depend on the vehicle details and a pickup inspection.
@@ -83,7 +83,7 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
               size="lg"
               className="group w-full sm:w-auto"
             >
-              Claim my quote
+              Request confirmed offer
               <ArrowRight
                 className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
                 aria-hidden="true"

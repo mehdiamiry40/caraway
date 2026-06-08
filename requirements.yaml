@@ -1,19 +1,34 @@
-packages:
-  "framer-motion": "For premium scroll and entry animations essential to the minimalist design"
-  "react-hook-form": "For robust form state management in the Get a Quote section"
-  "@hookform/resolvers": "For Zod schema validation with react-hook-form"
-  "clsx": "Utility for constructing className strings conditionally"
-  "tailwind-merge": "Utility for merging Tailwind CSS classes without style conflicts"
+project:
+  name: "Caraway"
+  purpose: "Brisbane vehicle-buying, quote, and lead-generation website"
+  deployment: "Vercel"
 
-images:
-  - path: "artifacts/caraway/public/images/logo.png"
-    description: "Minimalist, luxury typographic logo for 'Caraway', deep olive green text on transparent background, no extra icons, highly refined"
-    aspect_ratio: "16:9"
-  - path: "artifacts/caraway/public/images/abstract-accent.png"
-    description: "Subtle, minimalist abstract geometric shape in warm amber and soft beige tones, very light and airy, isolated on transparent background"
-    aspect_ratio: "1:1"
+runtime:
+  framework: "Next.js 16 App Router"
+  language: "TypeScript 6"
+  ui: "React 19 and Tailwind CSS 4"
+  forms: "react-hook-form with Zod validation"
 
-notes:
-  - Static marketing site with no backend requirements
-  - Quote form submissions will be simulated with a local delay and success state
-  - SEO meta tags will be dynamically injected into the document head
+capabilities:
+  - "Server-rendered service, location, company, legal, and blog pages"
+  - "Interactive price estimator and detailed quote form"
+  - "Contact form with webhook and Resend delivery fallbacks"
+  - "Google Places address autocomplete through a first-party API proxy"
+  - "Sitemap, robots, canonical metadata, and structured data"
+  - "Vercel Analytics, Speed Insights, and production-only Google Ads measurement"
+  - "Responsive layouts, keyboard navigation, reduced-motion support, and accessible form errors"
+
+quality_gates:
+  - "npm run lint"
+  - "npm run typecheck"
+  - "npm test"
+  - "npm run build"
+  - "npm audit --audit-level=moderate"
+  - "npm run audit:swarm"
+
+content_rules:
+  - "Use the current ABR entity details for the business identity"
+  - "Do not claim a motor-dealer licence unless a current licence number is verified"
+  - "Do not give blanket Queensland number-plate, registration-transfer, or safety-certificate instructions"
+  - "Link to current Queensland Government guidance for legal and registration processes"
+  - "Treat price, pickup timing, and payment statements as conditional rather than guaranteed"

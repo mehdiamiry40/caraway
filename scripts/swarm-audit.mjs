@@ -104,7 +104,7 @@ function auditConversionAgent() {
     'src/components/sections/HowItWorks.tsx',
     'src/components/sections/PriceEstimator.tsx',
     'src/components/sections/WhyUs.tsx',
-    'src/components/sections/Testimonials.tsx',
+    'src/components/sections/SellerSituations.tsx',
     'src/components/sections/ServiceAreas.tsx',
     'src/components/sections/FAQ.tsx',
     'src/components/sections/SellingSafelySection.tsx',
@@ -129,6 +129,18 @@ function auditConversionAgent() {
         name: 'CTA language density on homepage',
         status: ctaCount >= 5 ? 'pass' : 'warn',
         details: `Detected ${ctaCount} CTA keyword matches across the homepage component tree.`,
+      },
+    ],
+  };
+}
+
+function auditContentIntegrityAgent() {
+  return {
+    agent: 'Content Integrity Agent',
+    checks: [
+      {
+        name: 'Regulated-content claim scan',
+        ...runCommand('npm run check:content'),
       },
     ],
   };
@@ -182,6 +194,7 @@ const results = [
   auditSeoAgent(),
   auditAccessibilityAgent(),
   auditConversionAgent(),
+  auditContentIntegrityAgent(),
 ];
 
 const summary = summarize(results);

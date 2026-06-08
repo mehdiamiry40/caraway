@@ -81,7 +81,7 @@ export interface EstimateInput {
 }
 
 export interface EstimateResult {
-  /** Exact dollar quote shown to the customer — not a range. */
+  /** Exact dollar estimate shown to the customer before manual review. */
   quote: number;
   factors: string[];
 }

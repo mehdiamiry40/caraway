@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, MapPin, Phone, Star } from "lucide-react";
+import { ArrowRight, Check, MapPin, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const promises = [
-  "Instant estimate in 60 seconds",
-  "Free pickup across Brisbane",
-  "Cash on the spot",
+  "Estimate from four details",
+  "Pickup included when we buy",
+  "Payment confirmed at pickup",
 ];
 
 export function Hero() {
@@ -104,14 +104,10 @@ export function Hero() {
                 ))}
               </ul>
 
-              <div className="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-2 border border-on-dark-hi/20 bg-on-dark-hi/8 px-3 py-2 sm:mt-8">
-                <span className="star-row" aria-hidden="true">
-                  {[0, 1, 2, 3, 4].map((index) => (
-                    <Star key={index} className="h-4 w-4 fill-current" strokeWidth={0} />
-                  ))}
-                </span>
+              <div className="mt-7 inline-flex flex-wrap items-center gap-x-2 gap-y-2 border border-on-dark-hi/20 bg-on-dark-hi/8 px-3 py-2 sm:mt-8">
+                <MapPin className="h-4 w-4 text-cta-bright" aria-hidden="true" />
                 <span className="text-sm font-medium text-on-dark-hi">
-                  Trusted by Brisbane sellers
+                  Brisbane-based · ABN {BUSINESS.abn}
                 </span>
               </div>
             </div>

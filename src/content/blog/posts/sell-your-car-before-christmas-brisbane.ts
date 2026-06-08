@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "## Queensland paperwork when selling before Christmas",
 
-    "The admin is minimal. You need current photo ID and the vehicle's registration certificate if you have it. Before pickup, remove your number plates — in Queensland, plates belong to the registered operator and can be transferred to another vehicle or returned to a TMR customer service centre. If the rego is current, cancel it after the sale to claim a refund on the unused portion from TMR. The cash-for-cars buyer lodges a disposal notice with TMR within 14 days, clearing the vehicle from your name and ending your liability for CTP, tolls, and any future fines.",
+    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
     "## Two mistakes that cost Brisbane sellers money",
 

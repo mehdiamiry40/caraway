@@ -13,7 +13,7 @@ export const post: RawBlogPostEntry = {
 
       "## Certificate of registration",
 
-      "The certificate of registration is the first document buyers will ask for. TMR issues this to the registered operator and records the vehicle's VIN, make, model, and plate number. If the registration has lapsed, the certificate still proves ownership. If you've misplaced it, you can request a replacement through the TMR website or in person at a transport and motoring service centre — replacements cost around $18 in 2026.",
+      "The certificate of registration records the registered operator and vehicle details such as the VIN, make, model, and plate number. It is useful transaction evidence, but registration records are not a substitute for resolving a genuine ownership dispute. If the document is missing, check the current replacement and online-service options with TMR.",
 
       "## Proof of identity",
 
@@ -21,31 +21,31 @@ export const post: RawBlogPostEntry = {
 
       "## Safety certificate",
 
-      "In Queensland, a safety certificate — commonly called a roadworthy — is required when selling a registered vehicle to a private buyer. It's issued by an Approved Inspection Station (AIS) and confirms the car meets minimum safety standards. Safety certificates are valid for two months or 2,000 kilometres from the date of issue and typically cost $80–$130 depending on the vehicle and inspection station. One important exception: if you're selling the car unregistered, or selling to a licensed motor dealer, wrecker, or cash-for-cars buyer, no safety certificate is required.",
+      "Queensland generally requires a current safety certificate before disposing of a registered light vehicle, trailer, or motorcycle. Important exceptions include vehicles sold unregistered and vehicles sold to a licensed motor dealer. A cash-for-cars or wrecking business is not automatically a licensed motor dealer, so verify the buyer's licence and check the current [Queensland safety-certificate rules](https://www.qld.gov.au/transport/registration/roadworthy) for your transaction.",
 
       "## PPSR check and encumbrance",
 
-      "A PPSR (Personal Property Securities Register) check reveals whether any finance is still owing on the vehicle. If there's an encumbrance, you can either clear it before selling or use the sale proceeds to discharge the debt on settlement day. Selling a car with undisclosed finance is a breach of Queensland consumer law and can expose the buyer to repossession. A PPSR check costs $2 via the government website and takes under five minutes — run one before you advertise, and share the result with serious buyers.",
+      "A PPSR (Personal Property Securities Register) search can reveal a registered security interest, write-off record, or stolen-vehicle record. If finance is owing, obtain a current payout figure and agree on a settlement process that ensures the security interest is discharged. Buyers should run their own search using the official PPSR service.",
 
       "## Transfer of registration",
 
-      "The transfer of registration is the formal step that moves the vehicle into the buyer's name. In QLD, both seller and buyer sign TMR's Transfer of Registration form at the time of sale. The buyer then lodges the form with TMR and pays the transfer fee, currently around $35–$60 depending on vehicle type. Keep a signed copy for your own records — it's your evidence the transaction occurred if any dispute arises later.",
+      "The registration transfer moves the vehicle record to the buyer. Queensland offers online and paper pathways, depending on eligibility. The seller should complete the seller-side steps promptly, provide the buyer with the required transaction details, and keep a signed receipt and TMR confirmation.",
 
       "## Disposal notice — a step many sellers miss",
 
-      "The disposal notice is probably the most overlooked piece of paperwork when selling a car in QLD. Under Queensland transport law, the seller of a registered vehicle must notify TMR within 14 days of the sale that the vehicle has changed hands. This removes the car from your name for tolls, fines, and CTP liability — critical protection if the buyer delays lodging the transfer. You can submit the disposal notice online through My TMR or in person at a transport and motoring service centre. If you sell to a licensed cash-for-cars buyer, they file the disposal notice as part of their standard process, so you don't have to.",
+      "The seller-side TMR notification is one of the most important steps in a registered sale. Complete it through the eligible online or paper process, keep confirmation, and check that the vehicle is no longer recorded in your name. A buyer can provide transaction details or help prepare forms, but the seller should not delegate verification of this step.",
 
       "## WOVR and disclosure obligations",
 
-      "If your car has ever been declared a total loss by an insurer — whether from a collision, flood, hail, or fire — you need to disclose this. The [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide) status shows up in any PPSR check, which buyers routinely run before inspecting in person. Under Queensland consumer law, failing to disclose a write-off history, known flood damage, or significant structural repairs is a misrepresentation that creates legal liability after the sale.",
+      "If your car has been declared a total loss, provide accurate information about its condition and insurer status. The [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide) status appears in a PPSR search. Do not make false or misleading statements about known write-off, flood, or structural damage.",
 
       "## What if you're missing documents?",
 
-      "Missing the certificate of registration is the most common paperwork issue Brisbane sellers face. A replacement is straightforward to obtain from TMR, but if time is short, a licensed cash-for-cars buyer will usually proceed with just your ID and the vehicle's VIN, verifying ownership through their own TMR checks. Missing service history affects the offered price but doesn't block the sale.",
+      "If the certificate of registration is missing, use TMR's current services to confirm the registered-operator details and obtain any replacement document needed. Bring other evidence relevant to ownership, finance, an estate, or an insurer settlement. Missing service history may affect value, but unresolved authority to sell should be fixed before pickup.",
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      `When you sell to a licensed [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), the paperwork burden drops significantly. They handle the PPSR check, file the disposal notice with TMR, and provide a receipt on the spot. Your obligations reduce to three things: bring your Queensland driver's licence or photo ID, sign the transfer form, and remove your number plates before the tow truck departs — in QLD, plates belong to the registered owner, not the vehicle. The paperwork to sell a car in QLD really is that manageable when you have the right buyer. Free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside, with cash paid before the vehicle is loaded. Call **${BUSINESS.phoneDisplay}** or get a free online quote to get started.`,
+      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring photo ID and any registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR. Complete and retain confirmation of your seller-side transfer or cancellation steps. Standard plates usually stay with a registered vehicle during a normal transfer; cancellation and personalised plates follow different rules. Caraway offers free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
     ],
     date: "2026-04-16",
     category: "Guides",

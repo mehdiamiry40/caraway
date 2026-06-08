@@ -15,7 +15,7 @@ export const post: RawBlogPostEntry = {
 
       `Dealers love trade-ins because they make negotiating opaque. The trade-in figure, the new car price, the on-road costs, and the finance package all get bundled into one deal — making it hard to know exactly what you're being paid for your old car.`,
 
-      `In Brisbane, dealer trade-in valuations are typically 15–25% below private sale value and 5–15% below what a licensed cash-for-cars buyer will offer for a clean, registered vehicle. The dealer needs margin to recondition, advertise, and resell — and they usually claw it back somewhere in the deal, even if the trade-in figure looks generous on paper.`,
+      `A dealer trade-in, private sale, and direct cash offer use different pricing models. Compare the changeover price on the replacement car, fees, repair requirements, towing, payment timing, and the net amount you keep rather than relying on a generic percentage difference.`,
 
       `### The QLD stamp duty trade-in offset`,
 
@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
       `### Real numbers: a 2014 Hyundai i30`,
 
-      `Take a 2014 Hyundai i30 with 145,000 kilometres and a fresh service. Brisbane dealer trade-in offers in 2026 typically land between $5,500 and $7,000. A licensed cash-for-cars buyer will usually offer $6,500 to $8,000 for the same car — and sometimes more if it's a manual diesel that's in demand for export.`,
+      `For the same vehicle, offers can vary materially with condition, registration, tyres, service history, location, buyer inventory, and current demand. Obtain written figures close together in time and compare the net outcome rather than treating an example price as a valuation.`,
 
       `Curious what your own car would fetch? A free phone or online quote takes about two minutes and costs nothing — handy as a benchmark even if you end up taking the dealer offer.`,
 
@@ -49,7 +49,7 @@ export const post: RawBlogPostEntry = {
 
       `If your car is older than about eight years, has more than 150,000 kilometres on the clock, is unregistered, has body damage, or is a make the dealer doesn't stock, [selling for cash in Brisbane](/sell-my-car-brisbane) almost always pays more. Dealers wholesale these cars straight to auction at trade prices — the quote you're given reflects auction value minus a fat handling margin.`,
 
-      `Cash buyers cut out that middle step. Towing across Logan, Ipswich, Caboolture, and the Bayside is usually free, payment is on the spot, and the TMR disposal notice gets handled by the buyer — so liability for tolls, fines, and CTP transfers cleanly out of your name the same or next day.`,
+      `Cash buyers cut out the dealership trade-in step. Towing across Logan, Ipswich, Caboolture, and the Bayside may be included, and payment is confirmed at pickup. The seller should complete and retain confirmation of the applicable TMR transfer or cancellation steps.`,
 
       `**Pro Tip from the Caraway valuation team:** Always get a written cash offer before you walk into the dealership. Hand it over during negotiation. We see it work every week — most Brisbane dealers will quietly bump their trade-in figure by $500 to $1,500 to match, because they don't want to lose the sale of the new car. Either way, you walk away with more.`,
 

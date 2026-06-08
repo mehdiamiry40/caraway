@@ -260,7 +260,7 @@ export function ContactForm() {
         {/* Trust line below CTA */}
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
           <Shield className="w-3.5 h-3.5 text-primary/70 shrink-0" aria-hidden />
-          <span>Your information is safe and never shared.</span>
+          <span>Your details are used to respond to this enquiry.</span>
         </div>
 
         <div className="flex items-start gap-3">
@@ -291,7 +291,7 @@ export function ContactForm() {
                 onClick={() => setErrorMessage(null)}
                 className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50 rounded-sm"
               >
-                Try again
+                Dismiss
               </button>
             </div>
           </div>

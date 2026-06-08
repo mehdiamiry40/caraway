@@ -13,7 +13,7 @@ const features = [
   { title: "Fast pickup", desc: "Most pickups are same- or next-day once you accept our offer — we confirm a slot when you book." },
   { title: "All vehicles accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered." },
   { title: "Cash on the spot", desc: "You receive your cash payment before the car leaves your property. No delays." },
-  { title: "Responsible recycling", desc: "End-of-life cars go through licensed Queensland recyclers, meeting EPA requirements." },
+  { title: "Responsible recycling", desc: "End-of-life cars are directed to appropriate Queensland recycling specialists." },
   { title: "No pressure", desc: "Quotes are free and zero-obligation. If our offer doesn't work for you, no hard feelings." },
 ];
 
@@ -58,7 +58,7 @@ export default function About() {
                     I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary font-medium link-underline">{BUSINESS.email}</a>.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                    {BUSINESS.legalName} (ABN {BUSINESS.abn}) is a registered Australian company. All pickups are fully insured with public liability and goods-in-transit cover — if we scratch your car loading it, we wear the cost.
+                    Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, and the insurance details applicable to that job.
                   </p>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function About() {
               How we work
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we show up when we said we would, we pay what we agreed before the car leaves, and we use licensed recyclers when a car is at end of life.
+              We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we aim to arrive when agreed, confirm payment before the car leaves, and direct end-of-life vehicles to appropriate recycling specialists.
             </p>
           </div>
 

@@ -11,7 +11,8 @@ export const GOOGLE_ADS_TAG_ID = "AW-856495318";
 /** Centralised business contact details — import these instead of hard-coding. */
 export const BUSINESS = {
   name: "Caraway",
-  legalName: "Caraway Pty Ltd",
+  legalName: "Mehdi Emir",
+  businessStructure: "Sole trader",
   abn: "62 351 619 456",
   foundingYear: 2025,
   founder: "Mehdi Emir",
@@ -40,8 +41,8 @@ export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
 export const LEGAL_DATES = {
-  privacyLastUpdated: "April 2026",
-  termsLastUpdated: "March 2026",
+  privacyLastUpdated: "June 2026",
+  termsLastUpdated: "June 2026",
 } as const;
 
 /** The date the current content was deployed / last structurally changed.
@@ -53,7 +54,7 @@ export const PROMISE_POINTS = [
   "Fair offer based on details",
   "Same- or next-day pickup",
   "Free towing always",
-  "No RWC needed",
+  "Cars assessed as-is",
   "All makes & models",
   "7 days a week",
 ] as const;

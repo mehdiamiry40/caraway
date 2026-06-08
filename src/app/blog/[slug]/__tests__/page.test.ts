@@ -135,9 +135,14 @@ describe("generateMetadata (blog post route)", () => {
       expect(articleSchema.dateModified).toBe(indexablePost!.updatedAt);
       expect(articleSchema.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
       expect(articleSchema.isAccessibleForFree).toBe(true);
-      const author = articleSchema.author as { name: string; url: string };
-      expect(author.name).toBe("Sam Williams");
-      expect(author.url).toBe(`${SITE_URL}/author/sam-williams`);
+      const author = articleSchema.author as {
+        "@type": string;
+        name: string;
+        url: string;
+      };
+      expect(author["@type"]).toBe("Organization");
+      expect(author.name).toBe("Caraway");
+      expect(author.url).toBe(SITE_URL);
     });
 
     it("computes a non-zero wordCount", () => {

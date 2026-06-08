@@ -7,8 +7,8 @@ import { SITE_URL } from "@/lib/site";
 export { blogPostCanonicalUrl, calcWordCount, createBlogPost } from "@/lib/blog-post";
 
 const BLOG_AUTHOR = {
-  name: "Sam Williams",
-  url: `${SITE_URL}/author/sam-williams`,
+  name: "Caraway",
+  url: SITE_URL,
 } as const;
 
 const BLOG_IMAGE = {

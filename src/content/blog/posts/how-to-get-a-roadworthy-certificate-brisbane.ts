@@ -4,7 +4,7 @@ export const post: RawBlogPostEntry = {
   slug: "how-to-get-a-roadworthy-certificate-brisbane",
   title: "How to Get a Roadworthy Certificate in Brisbane (2026)",
   metaDescription:
-    "Get a Safety Certificate in Brisbane in 2026. What inspectors check, what it costs, when you need one, and when a cash sale lets you skip it entirely.",
+    "Queensland Safety Certificate guide: when a certificate is required, recognised exemptions, what inspectors check, and how to find an approved inspection station.",
   excerpt:
     "A Safety Certificate — Queensland's name for a roadworthy — is compulsory for some car sales but not all. Here's what Brisbane sellers need to know before booking an inspection.",
   content: [
@@ -12,15 +12,15 @@ export const post: RawBlogPostEntry = {
 
     "## What a Safety Certificate actually is",
 
-    "In Queensland, the official term is Safety Certificate — not roadworthy, though the two are used interchangeably. The document is issued by a licensed Vehicle Inspection Station (VIS) authorised by the Department of Transport and Main Roads (TMR). It confirms that a vehicle met the minimum safety standards on the day of inspection. It is not a mechanical warranty, a service record, or a guarantee that nothing will break next week. It simply means the inspector worked through roughly 150 defined safety items and the car passed. The certificate is valid for two months or 2,000 kilometres — whichever comes first — from the date of issue.",
+    "In Queensland, the official term is Safety Certificate, though roadworthy is commonly used. The document is issued by an approved inspection station and records that the vehicle met the applicable minimum safety standard at the inspection. It is not a mechanical warranty or service history. Certificate validity depends on who issues it and the sale circumstances, so check the current TMR guidance rather than relying on an old timeframe.",
 
     "## When you actually need one",
 
-    "In Queensland, a Safety Certificate is required when you sell or transfer the registration of a vehicle to another person — that is, a private sale of a registered car. If you're selling a registered car to a private buyer in Brisbane, you must provide a current Safety Certificate before the registration can be transferred. The buyer cannot legally put the car in their name at a TMR service centre without it. Get the certificate sorted before you advertise, not after a buyer agrees — nothing kills momentum on a sale faster than a last-minute roadworthy scramble.",
+    "Queensland generally requires a current Safety Certificate before a registered light vehicle, trailer, or motorcycle is offered for sale or disposed of. The exact timing and display requirements depend on the vehicle and sale method. Check the current [Queensland selling rules](https://www.qld.gov.au/transport/buying/rules/selling) before advertising or agreeing to a registered sale.",
 
     "## When you don't need one",
 
-    "There are clear exemptions under Queensland law, and they matter for a large number of Brisbane sellers. You do not need a Safety Certificate if the vehicle is unregistered, if you are selling to a licensed motor dealer, or if you are selling or disposing of the vehicle to a licensed wrecker or cash-for-cars buyer. This last exemption is why selling to a reputable cash-for-cars service in Brisbane typically requires zero paperwork on your end beyond proof of identity — the buyer holds the relevant licence, takes the vehicle without a certificate, and handles the TMR disposal notice themselves. For a car that's old, damaged, or unregistered, this single exemption often makes a cash sale the most practical route.",
+    "Recognised exceptions include selling the vehicle unregistered and selling it to a licensed motor dealer. A wrecking or cash-for-cars business is not automatically a licensed motor dealer. Verify any claimed motor-dealer licence through the Queensland register before relying on that exception.",
 
     "## What inspectors check",
 
@@ -36,11 +36,11 @@ export const post: RawBlogPostEntry = {
 
     "## When a cash sale is the smarter move",
 
-    "For a significant number of Brisbane sellers, the numbers simply don't stack up in favour of getting a Safety Certificate. If your car is more than 15 years old, has high kilometres, needs obvious work on tyres or brakes, or has any structural or mechanical issues, the combined cost of inspection plus likely repairs can easily reach $800–$1,500 — sometimes more than the car will fetch in a private sale. A [cash-for-cars buyer](/cash-for-cars-brisbane) purchases vehicles without a Safety Certificate, pays a competitive price based on parts and metal value, and offers free same-day or next-day pickup across Greater Brisbane from [Logan](/locations/logan) and Ipswich in the south to Caboolture and Redcliffe in the north. For a car in that situation, the cash route isn't just easier — it often leaves more money in your pocket.",
+    "For an older or damaged vehicle, compare the likely inspection and repair cost with an as-is offer. A [cash-for-cars buyer](/cash-for-cars-brisbane) can assess the vehicle without requiring a certificate merely to provide a quote, but the final sale must still follow the Queensland rules for its registration status and buyer type.",
 
     "## The bottom line",
 
-    "A Safety Certificate is a firm legal requirement for selling a registered car to a private buyer in Queensland, but it is not a universal step in every car transaction. Before you book an inspection, confirm whether your sale actually needs one. If you're selling to a private buyer, get the certificate early and price in the potential repair costs. If you're selling to a [cash-for-cars service](/sell-my-car-brisbane), a wrecker, or the car is unregistered, you can skip the process entirely — and sometimes save hundreds of dollars in the process.",
+    "A Safety Certificate is not universal, but the exception depends on facts such as registration status and whether the buyer is a licensed motor dealer. Confirm the pathway before advertising or disposal. If the vehicle will be sold unregistered, arrange lawful towing or permits rather than driving it after cancellation.",
   ],
   date: "2026-04-24",
   category: "Guides",

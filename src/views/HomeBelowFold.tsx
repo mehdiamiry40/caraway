@@ -3,7 +3,7 @@ import { Stats } from "@/components/sections/Stats";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { WhyUs } from "@/components/sections/WhyUs";
-import { Testimonials } from "@/components/sections/Testimonials";
+import { SellerSituations } from "@/components/sections/SellerSituations";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
@@ -17,7 +17,7 @@ export default function HomeBelowFold() {
       <HowItWorks />
       <PriceEstimator />
       <WhyUs />
-      <Testimonials />
+      <SellerSituations />
       <ServiceAreas />
       <FAQ />
       <SellingSafelySection />

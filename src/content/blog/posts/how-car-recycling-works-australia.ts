@@ -30,7 +30,7 @@ export const post: RawBlogPostEntry = {
 
     "## What you get paid for recycling your car in Brisbane",
 
-    "If you're looking to recycle a car in Brisbane, the process from your end is straightforward. Get a quote by providing the make, model, year, and condition. The buyer calculates an offer based on the vehicle's estimated scrap metal weight — typically 800–1,200 kg for a small car and 1,400–2,000 kg for a larger 4WD — plus the value of any salvageable parts. In 2026, [scrap steel prices in South East Queensland](/blog/scrap-metal-prices-brisbane-2026) typically sit in the $150–$230 per tonne range. A 2010 Toyota Corolla in average condition with a working engine and gearbox typically draws $400–$900; a similarly aged Hilux or Nissan Patrol often fetches $1,200–$2,500. Bring your Queensland driver's licence and registration certificate — the buyer lodges the disposal notice with TMR, removing the car from your name and ending your registration and CTP liability.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
   ],
   date: "2026-04-27",
   category: "Guides",

@@ -149,7 +149,7 @@ export function Footer() {
       {/* Legal bar */}
       <div className="border-t border-[hsl(var(--on-dark-hi)/0.2)] pb-safe">
         <div className="site-container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-on-dark-hi/80 font-medium">
-          <p>&copy; {year} {BUSINESS.legalName} · ABN {BUSINESS.abn}</p>
+          <p>&copy; {year} {BUSINESS.name} · ABN {BUSINESS.abn}</p>
           <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
             {legalLinks.map((link) => (
               <Link
