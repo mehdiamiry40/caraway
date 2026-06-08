@@ -17,7 +17,7 @@ export const post: RawBlogPostEntry = {
 
     "## Step 1: Get your payout figure",
 
-    "Before you do anything else, call your lender and ask for a payout figure (sometimes called a settlement figure). This is the exact amount needed to close the loan today, including any early-termination or discharge fees, which in 2026 typically run from $0 to around $400 depending on the lender and loan type. The payout figure is only valid for a set window — often seven to fourteen days — because daily interest keeps accruing, so don't request it weeks before you're ready to sell. Get it in writing, and ask how the lender wants the final payment made and how long it takes them to lift their interest off the PPSR afterwards.",
+    "Before you do anything else, call your lender and ask for a written payout or settlement figure. It should state the amount, any fees, the date until which it is valid, payment instructions, and the lender's process for discharging its PPSR security interest. These details vary by lender and loan, so use the current written figure rather than a general estimate.",
 
     "![Selling a financed car in Brisbane — free pickup and same-day settlement.](/images/tow-truck-hero.webp 800x800)",
 
@@ -63,6 +63,14 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-06-05",
+  updatedAt: "2026-06-08",
+  reviewedAt: "2026-06-08",
+  sources: [
+    {
+      title: "Australian Government PPSR — used car search",
+      url: "https://www.ppsr.gov.au/node/76",
+    },
+  ],
   category: "Guides",
   relatedServices: ["sell-my-car-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],

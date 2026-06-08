@@ -1,3 +1,8 @@
+export interface BlogSource {
+  title: string;
+  url: string;
+}
+
 export interface RawBlogPostEntry {
   slug: string;
   title: string;
@@ -11,6 +16,10 @@ export interface RawBlogPostEntry {
   }>;
   date: string;
   updatedAt?: string;
+  /** Date regulated or time-sensitive claims were reviewed against sources. */
+  reviewedAt?: string;
+  /** Primary sources used for regulated or time-sensitive claims. */
+  sources?: BlogSource[];
   category: string;
   relatedServices: string[];
   relatedSuburbs: string[];

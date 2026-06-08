@@ -164,6 +164,32 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               {renderBlogContent(post.content, { firstParagraphDropCap: true })}
             </div>
 
+            {post.sources && post.sources.length > 0 && (
+              <aside className="mt-12 rounded-xl border border-border/60 bg-muted/50 p-5 sm:p-6">
+                <p className="eyebrow mb-3">Sources and review</p>
+                {post.reviewedAt && (
+                  <p className="mb-3 text-sm text-muted-foreground">
+                    Regulatory information reviewed{" "}
+                    <time dateTime={post.reviewedAt}>{formatDate(post.reviewedAt)}</time>.
+                  </p>
+                )}
+                <ul className="space-y-2 text-sm">
+                  {post.sources.map((source) => (
+                    <li key={source.url}>
+                      <a
+                        href={source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
+                      >
+                        {source.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
+
             <aside className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10">
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
                 <div className="flex-1 min-w-0">

@@ -36,6 +36,8 @@ describe("GET /api/health", () => {
     await expect(response.json()).resolves.toEqual({
       status: "ok",
       fullyRedundant: false,
+      distributedRateLimit: false,
+      leadMonitorEnabled: false,
     });
   });
 
@@ -48,6 +50,8 @@ describe("GET /api/health", () => {
     await expect(response.json()).resolves.toEqual({
       status: "ok",
       fullyRedundant: false,
+      distributedRateLimit: false,
+      leadMonitorEnabled: false,
     });
   });
 
@@ -60,6 +64,8 @@ describe("GET /api/health", () => {
     await expect(response.json()).resolves.toEqual({
       status: "ok",
       fullyRedundant: true,
+      distributedRateLimit: false,
+      leadMonitorEnabled: false,
     });
   });
 
@@ -72,6 +78,8 @@ describe("GET /api/health", () => {
     await expect(response.json()).resolves.toEqual({
       status: "error",
       fullyRedundant: false,
+      distributedRateLimit: false,
+      leadMonitorEnabled: false,
     });
   });
 });

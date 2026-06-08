@@ -6,6 +6,7 @@ import {
   PLACES_SESSION_COOKIE,
   verifyPlacesSession,
 } from "@/lib/places-session";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 /**
  * Server-side proxy for Google Places API (New) autocomplete.
@@ -32,9 +33,6 @@ export const runtime = "nodejs";
 const PLACES_ENDPOINT = "https://places.googleapis.com/v1/places:autocomplete";
 const MIN_QUERY_LENGTH = 3;
 const MAX_QUERY_LENGTH = 200;
-const WINDOW_MS = 60_000;
-const MAX_REQUESTS = 30;
-const buckets = new Map<string, { count: number; reset: number }>();
 
 export interface AutocompleteSuggestion {
   placeId: string;
@@ -62,50 +60,6 @@ function noStoreHeaders(extra: Record<string, string> = {}) {
     "X-Robots-Tag": "noindex",
     ...extra,
   };
-}
-
-function getClientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim();
-    if (first) return first;
-  }
-
-  const realIp = request.headers.get("x-real-ip");
-  if (realIp) return realIp;
-
-  return "unknown";
-}
-
-function rateLimitResponse(request: Request): NextResponse | null {
-  const ip = getClientIp(request);
-  const now = Date.now();
-  const bucket = buckets.get(ip);
-
-  if (!bucket || bucket.reset < now) {
-    buckets.set(ip, { count: 1, reset: now + WINDOW_MS });
-  } else {
-    bucket.count += 1;
-    if (bucket.count > MAX_REQUESTS) {
-      return NextResponse.json(
-        { error: "too many requests" },
-        {
-          status: 429,
-          headers: noStoreHeaders({
-            "Retry-After": Math.max(1, Math.ceil((bucket.reset - now) / 1000)).toString(),
-          }),
-        },
-      );
-    }
-  }
-
-  if (buckets.size > 5000) {
-    for (const [key, value] of buckets.entries()) {
-      if (value.reset < now) buckets.delete(key);
-    }
-  }
-
-  return null;
 }
 
 function isFirstPartyFetch(request: Request): boolean {
@@ -142,8 +96,21 @@ async function hasValidPlacesSession(request: Request): Promise<boolean> {
 }
 
 export async function GET(request: Request) {
-  const limited = rateLimitResponse(request);
-  if (limited) return limited;
+  const rateLimitResult = await rateLimit("places", getClientIp(request));
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { error: "too many requests" },
+      {
+        status: 429,
+        headers: noStoreHeaders({
+          "Retry-After": Math.max(
+            1,
+            Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+          ).toString(),
+        }),
+      },
+    );
+  }
 
   if (!isFirstPartyFetch(request) || !(await hasValidPlacesSession(request))) {
     return NextResponse.json(

@@ -32,15 +32,23 @@ export const post: RawBlogPostEntry = {
 
       "A few scenarios are worth calling out. If you're selling to a [cash-for-cars buyer](/cash-for-cars-brisbane), decide before pickup whether the transaction will be a registered transfer, an unregistered sale, or a cancellation. Complete the TMR seller steps that apply and keep confirmation. If you're moving interstate, coordinate the Queensland cancellation with registration in the new state so you do not drive an unregistered vehicle.",
 
-      "Avoid these common mistakes. Do not cancel rego and then drive the car to a workshop — that counts as driving unregistered, with a fine of around $709 and zero CTP cover if you crash. Do not forget to cancel tolls and e-tags linked to the vehicle with Linkt on the same or next day. Do not throw your old plates in the bin; return them or you'll leave money on the table. And do not assume your insurance company has been notified — comprehensive insurance is a separate policy from CTP and needs to be cancelled directly with your insurer to get any unused premium back.",
+      "Avoid these common mistakes. Do not cancel rego and then drive the car unless the journey is lawful under the current permit and insurance rules. Remove the vehicle from toll accounts, follow TMR instructions for surrendering or retaining plates, and notify your insurer separately about any optional policy.",
 
       "## What to do with the car after rego is cancelled",
 
       "What happens to the car once the rego is gone? It cannot be driven on a Queensland road without the registration, permits, and insurance required for that journey. You can move it by tow truck or trailer, [sell it as an unregistered vehicle](/blog/how-to-sell-a-car-without-rego-brisbane), or book a cash-for-cars pickup. Keep a signed receipt with the VIN or chassis number, vehicle details, date, price, and both parties' details.",
 
-      "Cancelling car rego in QLD is a ten-minute job at any TMR centre, but timing makes the difference between a meaningful refund and a missed opportunity. If you know the car is not going back on the road, cancel it the same week you make that decision. Keep the receipt, return the plates, notify your insurer, and put the refund to work somewhere more useful than a driveway in Carindale or a carport in [Logan](/locations/logan).",
+      "The time required and any refund depend on your circumstances and how the application is lodged. If the car is not going back on the road, review the current TMR steps promptly, keep the cancellation receipt, handle the plates as directed, and notify your insurer.",
     ],
     date: "2026-04-11",
+    updatedAt: "2026-06-08",
+    reviewedAt: "2026-06-08",
+    sources: [
+      {
+        title: "Queensland Government — cancelling registration",
+        url: "https://www.qld.gov.au/transport/registration/cancel",
+      },
+    ],
     category: "Guides",
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane"],

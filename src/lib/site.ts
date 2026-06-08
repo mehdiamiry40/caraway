@@ -40,9 +40,35 @@ export const MIN_PRICE = 200;
 export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
+export const LEGAL_DATE_ISO = {
+  privacyLastUpdated: "2026-06-01",
+  termsLastUpdated: "2026-06-01",
+} as const;
+
+const LEGAL_MONTH_LABELS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+] as const;
+
+function legalDateLabel(iso: string): string {
+  const [year, month] = iso.split("-");
+  const monthLabel = LEGAL_MONTH_LABELS[Number(month) - 1];
+  return monthLabel && year ? `${monthLabel} ${year}` : iso;
+}
+
 export const LEGAL_DATES = {
-  privacyLastUpdated: "June 2026",
-  termsLastUpdated: "June 2026",
+  privacyLastUpdated: legalDateLabel(LEGAL_DATE_ISO.privacyLastUpdated),
+  termsLastUpdated: legalDateLabel(LEGAL_DATE_ISO.termsLastUpdated),
 } as const;
 
 /** The date the current content was deployed / last structurally changed.

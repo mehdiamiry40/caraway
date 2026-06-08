@@ -98,6 +98,18 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
+  updatedAt: "2026-06-08",
+  reviewedAt: "2026-06-08",
+  sources: [
+    {
+      title: "Queensland Government — registration transfer",
+      url: "https://www.qld.gov.au/transport/registration/transfer",
+    },
+    {
+      title: "Queensland Government — cancelling registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+  ],
   category: "Car Selling Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],

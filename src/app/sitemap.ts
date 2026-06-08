@@ -6,7 +6,7 @@ import {
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
-import { SITE_URL, LEGAL_DATES, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { SITE_URL, LEGAL_DATE_ISO, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -20,29 +20,6 @@ const HERO_IMAGE = [`${SITE_URL}/images/tow-truck-hero.webp`];
  * Date helpers — honest lastModified dates build crawler trust.  Using
  * "today" for pages that haven't changed erodes crawl budget over time.
  * -------------------------------------------------------------------------*/
-
-/** Resolve a "Month YYYY" string (e.g. "April 2026") to an ISO date. */
-function monthYearToISO(label: string): string {
-  const [monthLabel, year] = label.trim().split(/\s+/);
-  const monthNumber = {
-    January: "01",
-    February: "02",
-    March: "03",
-    April: "04",
-    May: "05",
-    June: "06",
-    July: "07",
-    August: "08",
-    September: "09",
-    October: "10",
-    November: "11",
-    December: "12",
-  }[monthLabel];
-
-  if (!monthNumber || !/^\d{4}$/.test(year ?? "")) return CONTENT_DEPLOY_DATE;
-
-  return `${year}-${monthNumber}-01`;
-}
 
 function validIsoDate(value: string | undefined, fallback = CONTENT_DEPLOY_DATE): string {
   if (value && /^\d{4}-\d{2}-\d{2}$/.test(value) && Number.isFinite(Date.parse(value))) {
@@ -127,13 +104,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/privacy`,
-      lastModified: monthYearToISO(LEGAL_DATES.privacyLastUpdated),
+      lastModified: LEGAL_DATE_ISO.privacyLastUpdated,
       changeFrequency: "yearly",
       priority: 0.2,
     },
     {
       url: `${SITE_URL}/terms`,
-      lastModified: monthYearToISO(LEGAL_DATES.termsLastUpdated),
+      lastModified: LEGAL_DATE_ISO.termsLastUpdated,
       changeFrequency: "yearly",
       priority: 0.2,
     },

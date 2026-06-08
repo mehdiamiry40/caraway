@@ -79,6 +79,18 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
+  updatedAt: "2026-06-08",
+  reviewedAt: "2026-06-08",
+  sources: [
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+    {
+      title: "Queensland Government — selling a used vehicle",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+  ],
   category: "Car Selling Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["south-brisbane", "logan", "ipswich"],

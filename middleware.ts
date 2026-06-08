@@ -1,55 +1,24 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
-// Simple in-memory token bucket for rate limiting.
-// Keyed by client IP, resets every 60s, 10 requests allowed per window.
-// Note: This is per-instance state and resets on cold starts — sufficient
-// as defence-in-depth in front of form endpoints, not a replacement for a
-// distributed rate limiter.
-const buckets = new Map<string, { count: number; reset: number }>();
-const WINDOW_MS = 60_000;
-const MAX_REQUESTS = 10;
-
-function getClientIp(request: NextRequest): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim();
-    if (first) return first;
-  }
-  const realIp = request.headers.get("x-real-ip");
-  if (realIp) return realIp;
-  return "unknown";
-}
-
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   if (request.method !== "POST") {
     return NextResponse.next();
   }
 
   // --- Rate limiting ---
-  const ip = getClientIp(request);
-  const now = Date.now();
-  const bucket = buckets.get(ip);
-
-  if (!bucket || bucket.reset < now) {
-    buckets.set(ip, { count: 1, reset: now + WINDOW_MS });
-  } else {
-    bucket.count += 1;
-    if (bucket.count > MAX_REQUESTS) {
-      return new NextResponse("Too many requests", {
-        status: 429,
-        headers: {
-          "Retry-After": Math.max(1, Math.ceil((bucket.reset - now) / 1000)).toString(),
-        },
-      });
-    }
-  }
-
-  // Opportunistic cleanup to keep the map bounded.
-  if (buckets.size > 5000) {
-    for (const [key, value] of buckets.entries()) {
-      if (value.reset < now) buckets.delete(key);
-    }
+  const rateLimitResult = await rateLimit("forms", getClientIp(request));
+  if (!rateLimitResult.success) {
+    return new NextResponse("Too many requests", {
+      status: 429,
+      headers: {
+        "Retry-After": Math.max(
+          1,
+          Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+        ).toString(),
+      },
+    });
   }
 
   // --- Origin validation ---

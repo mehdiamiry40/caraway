@@ -81,6 +81,18 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
+  updatedAt: "2026-06-08",
+  reviewedAt: "2026-06-08",
+  sources: [
+    {
+      title: "Queensland Government — transfer registration online",
+      url: "https://www.qld.gov.au/transport/registration/transfer/online",
+    },
+    {
+      title: "Queensland Government — cancelling registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+  ],
   category: "Car Selling Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "bayside-brisbane"],
