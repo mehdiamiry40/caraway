@@ -184,9 +184,15 @@ export const websiteSchema = {
 export function breadcrumbListSchema(
   items: Array<{ name: string; item: string }>,
 ) {
+  // The last crumb is the current page; anchor the list's @id to it so every
+  // page emits the same BreadcrumbList shape (see src/lib/breadcrumb-schema.ts,
+  // which adapts {label, href} call sites onto this builder).
+  const currentPageUrl = items[items.length - 1]?.item;
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    ...(currentPageUrl ? { "@id": `${currentPageUrl}#breadcrumbs` } : {}),
+    numberOfItems: items.length,
     itemListElement: items.map((it, i) => ({
       "@type": "ListItem",
       position: i + 1,

@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-moreton-bay",
   title: "Cash for Cars Moreton Bay 2026",
   metaDescription:
-    "Get cash for cars across Moreton Bay in 2026. Free same-day pickup from Caboolture to Redcliffe, cash on the spot, any make or condition.",
+    "Get cash for cars across Moreton Bay in 2026. Free same- or next-day pickup from Caboolture to Redcliffe, cash on the spot, any make or condition.",
   excerpt:
     "Moreton Bay is one of Queensland's fastest-growing regions — and Caraway covers every corner of it. Here's what to expect when selling your car for cash anywhere from Redcliffe to Bribie Island.",
   content: [

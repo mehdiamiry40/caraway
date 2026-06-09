@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sitemap",
     description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
-    images: ["/images/tow-truck-hero.webp"],
+    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

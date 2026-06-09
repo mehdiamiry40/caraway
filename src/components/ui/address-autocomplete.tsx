@@ -67,11 +67,13 @@ export function AddressAutocomplete({
   onPlaceSelected,
   onBlur,
   className,
+  "aria-describedby": ariaDescribedBy,
   ...rest
 }: AddressAutocompleteProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listboxId = useId();
+  const fallbackNoticeId = `${listboxId}-manual-fallback`;
 
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [open, setOpen] = useState(false);
@@ -246,12 +248,17 @@ export function AddressAutocomplete({
         aria-expanded={open}
         aria-controls={open ? listboxId : undefined}
         aria-activedescendant={activeOptionId}
+        aria-describedby={
+          [ariaDescribedBy, manualEntryActive ? fallbackNoticeId : null]
+            .filter(Boolean)
+            .join(" ") || undefined
+        }
         autoComplete="off"
         className={className}
         {...rest}
       />
       {manualEntryActive && (
-        <p className="sr-only" role="status" aria-live="polite">
+        <p id={fallbackNoticeId} className="sr-only" role="status" aria-live="polite">
           Address suggestions are unavailable. Continue typing the pickup address manually.
         </p>
       )}

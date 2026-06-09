@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-vs-wreckers-brisbane",
   title: "Wreckers vs Cash for Cars Brisbane: Which Pays More?",
   metaDescription:
-    "Wreckers vs cash for cars in Brisbane — compare payouts, towing fees, and speed so you get the most for an old or damaged car. Free same-day pickup.",
+    "Wreckers vs cash for cars in Brisbane — compare payouts, towing fees, and speed so you get the most for an old or damaged car. Free same- or next-day pickup.",
   excerpt:
     "Wreckers and cash-for-cars buyers can both take an unwanted vehicle off your hands, but the offer, the towing, and the paperwork can differ a lot. Here's how to tell which option pays more in Brisbane.",
   content: [
@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "A cash-for-cars service is built around speed and convenience. You describe the vehicle over the phone or through an online form, receive a firm offer, and — if you accept — the buyer arranges free pickup, usually same day or next day across Greater Brisbane. Payment is made in cash or by bank transfer before the car is loaded. Crucially, the offer values the whole vehicle at once: reusable parts, raw steel, aluminium, and recoverable fluids are all priced into a single number. There's no waiting on parts to sell and no separate towing bill eating into your return, which is why the cash-for-cars model often nets more in your pocket for the same car.",
 
-    "![Tow truck collecting a vehicle in Brisbane for a same-day cash-for-cars payment.](/images/tow-truck-hero.webp 800x800)",
+    "![Tow truck collecting a vehicle in Brisbane for a cash-for-cars payment on pickup.](/images/tow-truck-hero.webp 800x800)",
 
     "## Wreckers vs cash for cars: the real cost comparison",
 

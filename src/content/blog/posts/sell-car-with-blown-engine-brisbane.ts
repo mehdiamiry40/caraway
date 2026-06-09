@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "sell-car-with-blown-engine-brisbane",
   title: "Sell a Car With a Blown Engine in Brisbane (2026)",
   metaDescription:
-    "How to sell a car with a blown engine in Brisbane for cash. What a non-running car is worth, the paperwork, and how to get free same-day pickup.",
+    "How to sell a car with a blown engine in Brisbane for cash. What a non-running car is worth, the paperwork, and how to get free same- or next-day pickup.",
   excerpt:
     "A blown engine doesn't mean your car is worthless. Here's what a non-running car is really worth in Brisbane and how to sell it for cash without paying for a repair you'll never recoup.",
   content: [

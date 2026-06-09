@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "Before you do anything else, call your lender and ask for a written payout or settlement figure. It should state the amount, any fees, the date until which it is valid, payment instructions, and the lender's process for discharging its PPSR security interest. These details vary by lender and loan, so use the current written figure rather than a general estimate.",
 
-    "![Selling a financed car in Brisbane — free pickup and same-day settlement.](/images/tow-truck-hero.webp 800x800)",
+    "![Selling a financed car in Brisbane — free pickup and prompt settlement.](/images/tow-truck-hero.webp 800x800)",
 
     "## Step 2: Run a PPSR check",
 

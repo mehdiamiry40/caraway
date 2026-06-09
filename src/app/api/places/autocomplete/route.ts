@@ -164,16 +164,20 @@ export async function GET(request: Request) {
     });
 
     if (!upstream.ok) {
-      // Read the upstream body so the browser can see exactly what
-      // Google rejected — essential for debugging key/permission errors.
-      let upstreamBody = "";
-      try {
-        upstreamBody = await upstream.text();
-      } catch {
-        /* ignore */
+      // Google's error bodies can describe the API key's restrictions and
+      // quota configuration, so keep them out of routine logs. The status
+      // line is enough to alert ops; set DEBUG_PLACES=1 to log the body
+      // while actively debugging key/permission errors.
+      let detail = "";
+      if (process.env.DEBUG_PLACES === "1") {
+        try {
+          detail = `: ${(await upstream.text()).slice(0, 500)}`;
+        } catch {
+          /* ignore */
+        }
       }
       console.error(
-        `[places/autocomplete] upstream ${upstream.status} ${upstream.statusText}: ${upstreamBody.slice(0, 500)}`,
+        `[places/autocomplete] upstream ${upstream.status} ${upstream.statusText}${detail}`,
       );
       return NextResponse.json(
         { error: "places unavailable" },

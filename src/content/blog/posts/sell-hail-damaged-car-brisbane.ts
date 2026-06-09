@@ -4,7 +4,7 @@ export const post: RawBlogPostEntry = {
   slug: "sell-hail-damaged-car-brisbane",
   title: "Sell a Hail-Damaged Car Brisbane (2026 Guide)",
   metaDescription:
-    "Sell your hail-damaged car in Brisbane for fast cash. Learn what your car is worth, how insurance write-offs work in QLD, and how to get free same-day pickup.",
+    "Sell your hail-damaged car in Brisbane for fast cash. Learn what your car is worth, how QLD insurance write-offs work, and how free same- or next-day pickup works.",
   excerpt:
     "Hail events write off thousands of cars across Brisbane and South East Queensland every storm season. Here's what your hail-damaged car is actually worth and how to turn it into cash quickly.",
   content: [

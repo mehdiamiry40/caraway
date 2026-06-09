@@ -403,7 +403,7 @@ export function QuoteForm() {
                   )}
                   <p className="text-xs text-center text-muted-foreground leading-relaxed">
                     By submitting, you agree we may contact you about this enquiry. You can opt out anytime. See our{" "}
-                    <Link href="/privacy" className="text-primary/80 underline underline-offset-2 hover:text-primary transition-colors">
+                    <Link href="/privacy" className="text-primary underline underline-offset-2 hover:no-underline">
                       Privacy Policy
                     </Link>
                     .

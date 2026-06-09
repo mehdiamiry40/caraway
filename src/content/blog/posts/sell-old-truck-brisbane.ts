@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "sell-old-truck-brisbane",
   title: "Sell an Old Truck in Brisbane for Cash (2026)",
   metaDescription:
-    "Want to sell an old truck in Brisbane? Find out what your ute or truck is worth and how to get a same-day cash offer with free pickup across Greater Brisbane.",
+    "Want to sell an old truck in Brisbane? Find out what your ute or truck is worth and how to get a quick cash offer with free pickup across Greater Brisbane.",
   excerpt:
     "Old trucks hold their parts and scrap value longer than most vehicles. Here's how to sell yours in Brisbane quickly and walk away with a fair cash payment on the day.",
   content: [
@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "Trucks and utes command higher cash-for-cars quotes than passenger vehicles of the same era because parts demand from Queensland's large trades sector is consistently strong. A 2005–2012 dual-cab HiLux or Mitsubishi Triton in poor mechanical condition typically draws $1,500–$4,000 from Brisbane buyers. A late-1990s or early-2000s Land Cruiser 80 or 100 Series — even in rough shape — often fetches $1,200–$3,500, driven by steady demand for running gear, axles, interior trim, and body panels. Scrap weight also works in your favour: a full-size dual-cab weighs 1,800–2,200 kg, which puts the base steel value at $320–$570 at current Brisbane scrap rates of $180–$260 per tonne. Most buyers pay well above that because parts value is substantial.",
 
-    "![A tow truck collecting an old ute for same-day cash payment in Brisbane.](/images/tow-truck-hero.webp 800x800)",
+    "![A tow truck collecting an old ute for cash payment on pickup in Brisbane.](/images/tow-truck-hero.webp 800x800)",
 
     "## Why old trucks hold more end-of-life value than sedans",
 
