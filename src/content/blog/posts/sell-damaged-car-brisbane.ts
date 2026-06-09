@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "sell-damaged-car-brisbane",
   title: "Sell a Damaged Car in Brisbane | 2026 Guide",
   metaDescription:
-    "Get cash for your damaged car in Brisbane — mechanical faults, rust, hail, or high mileage. Free same-day pickup. Find out what your car is worth today.",
+    "Get cash for your damaged car in Brisbane — mechanical faults, rust, hail, or high mileage. Free same- or next-day pickup. See what your car is worth today.",
   excerpt:
     "A damaged car is worth more than you might think. Whether it's a blown engine, heavy rust, or costly mechanical repairs, Brisbane buyers will pay cash and collect it the same day.",
   content: [
@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "Pricing varies depending on the make, model, year, and which systems are affected. A 2012–2016 Toyota Camry or Honda Civic with a blown engine typically draws $800–$2,500 from a Brisbane cash buyer, because engines for these vehicles are plentiful in the dismantling market and the body and interior may still be in good shape. A 2010–2015 Holden Commodore with a known automatic transmission fault usually fetches $600–$1,800 — lower, because Commodore parts volumes are declining as the model ages out of the market. Utes and 4WDs hold up better even when mechanically damaged: a 2013 Ford Ranger with a seized diesel motor can still fetch $2,000–$5,000, because the driveline components, cab, and tray all have independent value to wreckers. Vehicles with significant structural rust or fire damage are generally priced on scrap-metal weight plus recoverable parts, which for a standard sedan amounts to $300–$1,000. Every quote is specific to your vehicle — descriptions over the phone are enough to generate a firm, obligation-free offer.",
 
-    "![A tow truck collecting a mechanically damaged car in Brisbane for same-day cash payment.](/images/tow-truck-hero.webp 800x800)",
+    "![A tow truck collecting a mechanically damaged car in Brisbane for cash payment on pickup.](/images/tow-truck-hero.webp 800x800)",
 
     "## Why private buyers won't touch most damaged cars",
 

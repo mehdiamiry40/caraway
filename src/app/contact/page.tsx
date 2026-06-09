@@ -6,7 +6,7 @@ import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us — Free Cash for Cars Quote Brisbane",
-  description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or use our online form. Brisbane-wide, 7 days a week — pickup usually same- or next-day, subject to truck availability.`,
+  description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or use our online form. Brisbane-wide, 7 days — pickup usually same- or next-day.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",

@@ -54,6 +54,14 @@ const prohibitedClaims = [
     pattern:
       /(?:cash|bank transfer)[^.\n]{0,100}(?:under|over|above|below) \$?10,?000|\$?10,?000[^.\n]{0,100}(?:cash|bank transfer)/i,
   },
+  {
+    // Pickup timing must read as conditional (requirements.yaml). Qualified
+    // forms like "same- or next-day pickup" and "same-day or next-day pickup"
+    // do not match because another word sits between "same(-)day" and the noun.
+    label: "unconditional same-day promise (use 'same- or next-day' or 'cash on pickup')",
+    pattern:
+      /same.day (?:car |scrap car |hilux )?(?:pickup|removal|collection|cash|payment|service|settlement)/i,
+  },
 ];
 
 const regulatedPosts = new Set([

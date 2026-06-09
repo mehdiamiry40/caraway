@@ -2,7 +2,7 @@ import type { RawBlogPostEntry } from "../types";
 
 export const post: RawBlogPostEntry = {
     slug: "cash-for-cars-caboolture-brisbane",
-    title: "Cash for Cars Caboolture: Same-Day Pickup 2026",
+    title: "Cash for Cars Caboolture: Same- or Next-Day Pickup 2026",
     metaDescription:
       "Get cash for cars in Caboolture with same- or next-day free pickup and instant payment. Any make, any condition — running, damaged, or unregistered. Serving all Moreton Bay suburbs.",
     excerpt:

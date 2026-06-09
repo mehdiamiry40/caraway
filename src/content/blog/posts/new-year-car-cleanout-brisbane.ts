@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "new-year-car-cleanout-brisbane",
   title: "New Year Car Cleanout Brisbane | Get Cash in 2026",
   metaDescription:
-    "Turn your unwanted car into cash this new year in Brisbane. Free same-day pickup across Greater Brisbane. Find out what your old car is worth today.",
+    "Turn your unwanted car into cash this new year in Brisbane. Free same- or next-day pickup across Greater Brisbane. Find out what your old car is worth today.",
   excerpt:
     "The new year is the perfect time to clear out that old car sitting in your Brisbane driveway — and convert it into real cash before the school year kicks off.",
   content: [
@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "## Two mistakes that reduce your payout",
 
-    "The most common mistake is waiting too long for a private buyer in January, then losing the window as the market settles and buyer activity tapers off by late February. Cash-for-cars buyers offer certain, same-day payment without the uncertainty of a private sale falling through at inspection. The second mistake is stripping parts before calling — removing an intact set of alloy wheels or a working battery typically reduces the overall offer by more than those parts fetch individually, because buyers price the vehicle as a complete unit and apply a discount for missing components. Leave the car as it is and let the buyer assess total value.",
+    "The most common mistake is waiting too long for a private buyer in January, then losing the window as the market settles and buyer activity tapers off by late February. Cash-for-cars buyers offer certain payment on pickup without the uncertainty of a private sale falling through at inspection. The second mistake is stripping parts before calling — removing an intact set of alloy wheels or a working battery typically reduces the overall offer by more than those parts fetch individually, because buyers price the vehicle as a complete unit and apply a discount for missing components. Leave the car as it is and let the buyer assess total value.",
 
     `January is the best time of year to turn an unwanted car into real cash. Whether your vehicle is a daily driver you've outgrown, a rough-running project, or a second car collecting dust, there's a firm offer waiting. Call **${BUSINESS.phoneDisplay}** or request a free quote online — describe the vehicle and its condition, and you'll have a price in minutes. Free same-day or next-day pickup is available across Greater Brisbane, with payment before the car leaves your driveway.`,
   ],

@@ -332,6 +332,12 @@
   html { scroll-behavior: smooth; }
 }
 
+/* Keep anchored content clear of the sticky mobile CTA bar (lg:hidden,
+   ~4.5rem tall plus its bottom inset) when jumping to in-page targets. */
+@media (max-width: 1023.98px) {
+  html { scroll-padding-bottom: 5.5rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

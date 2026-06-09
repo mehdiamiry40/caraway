@@ -9,7 +9,7 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
+    absolute: "Cash for Cars Brisbane | Sell My Car for Cash — Caraway",
   },
   description: `Get a fair cash offer for your unwanted car in Brisbane, with free towing and payment on pickup. Call Caraway on ${BUSINESS.phoneDisplay}.`,
   // Canonical is rendered manually in the JSX below. Next.js's metadata
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     url: `${SITE_URL}/`,
     type: "website",
-    title: "Cash for Cars Brisbane | Sell My Car for Cash Today — Caraway",
+    title: "Cash for Cars Brisbane | Sell My Car for Cash — Caraway",
     description:
       "Sell your car for cash in Brisbane today. Caraway gives fair offers with free towing and same- or next-day pickup. Any make, any condition.",
     images: [

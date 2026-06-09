@@ -2,6 +2,7 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { submitContact } from "@/actions/contact";
 import { submitQuote } from "@/actions/quote";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -26,6 +27,29 @@ function authorized(request: Request): boolean {
 }
 
 export async function GET(request: Request) {
+  // Throttle before the auth check so a leaked or brute-forced CRON_SECRET
+  // can't be used to spam synthetic leads. Keyed separately from the public
+  // form limit; Vercel Cron's once-per-interval call never gets close.
+  const rateLimitResult = await rateLimit(
+    "forms",
+    `lead-monitor:${getClientIp(request)}`,
+  );
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { status: "rate_limited" },
+      {
+        status: 429,
+        headers: {
+          ...headers,
+          "Retry-After": Math.max(
+            1,
+            Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+          ).toString(),
+        },
+      },
+    );
+  }
+
   if (!authorized(request)) {
     return NextResponse.json(
       { status: "unauthorized" },

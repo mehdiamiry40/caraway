@@ -232,6 +232,8 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
           <div
             className="mt-4 flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-xl px-4 py-3"
             role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
           >
             <p className="text-sm text-destructive font-medium">{submitError}</p>
           </div>

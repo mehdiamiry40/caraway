@@ -35,7 +35,7 @@ export interface SuburbPage {
 export const suburbs: SuburbPage[] = [
   {
     slug: "north-brisbane",
-    title: "Cash for Cars North Brisbane | Free Removal, Same-Day Cash",
+    title: "Cash for Cars North Brisbane | Free Removal, Cash on Pickup",
     metaDescription: `Cash for cars in North Brisbane. Free car removal across Chermside, Aspley, Kedron, Stafford & more. Same- or next-day cash payment. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars North Brisbane",
     intro: "Caraway provides fast, reliable cash for cars across North Brisbane. Whether you're in Chermside, Aspley, Kedron, Stafford, Nundah, or anywhere across Brisbane's northside — we'll come to you, pay cash on the spot, and tow your car away free.",
@@ -77,7 +77,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "south-brisbane",
-    title: "Cash for Cars South Brisbane | Same-Day Pickup & Payment",
+    title: "Cash for Cars South Brisbane | Free Pickup & Cash Payment",
     metaDescription: `Sell your car for cash in South Brisbane. Covering Woolloongabba, Annerley, Yeronga, Moorooka & surrounds. Free removal. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars South Brisbane",
     intro: "Selling a car in South Brisbane? Caraway offers instant cash for cars across Brisbane's southside — from Woolloongabba and Annerley to Yeronga, Moorooka, and beyond. Free same- or next-day removal, no towing charges, and cash paid before your car leaves.",
@@ -240,7 +240,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "caboolture",
-    title: "Cash for Cars Caboolture | Same-Day Car Removal",
+    title: "Cash for Cars Caboolture | Same- or Next-Day Removal",
     metaDescription: `Cash for cars in Caboolture. Free car removal across Caboolture, Morayfield, Bribie Island, Burpengary. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Caboolture",
     intro: "Caraway buys cars for cash across the Caboolture region — including Morayfield, Burpengary, Narangba, Bribie Island, and Wamuran. Free removal, same- or next-day payment, and no distance surcharges. We come to you, wherever you are in the Caboolture area.",
@@ -300,7 +300,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "north-lakes",
-    title: "Cash for Cars North Lakes | Same-Day Cash & Free Towing",
+    title: "Cash for Cars North Lakes | Cash on Pickup & Free Towing",
     metaDescription: `Cash for cars in North Lakes. Free car removal across North Lakes, Mango Hill, Kallangur, Petrie & Strathpine. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars North Lakes",
     intro: "Get cash for your car in North Lakes. Caraway services North Lakes, Mango Hill, Kallangur, Petrie, Strathpine, and the entire Pine Rivers corridor with instant cash offers, free car removal, and same- or next-day pickup. All makes, all conditions accepted.",
@@ -313,7 +313,7 @@ export const suburbs: SuburbPage[] = [
   {
     slug: "capalaba",
     title: "Cash for Cars Capalaba | Free Removal Across the Redlands",
-    metaDescription: `Cash for cars in Capalaba. Free car removal across Capalaba, Alexandra Hills, Thornlands, Birkdale & Cleveland. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Cash for cars in Capalaba. Free car removal across Capalaba, Alexandra Hills, Thornlands, Birkdale & Cleveland. Same- or next-day cash. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Capalaba",
     intro: "Selling a car in Capalaba? Caraway pays instant cash for cars across Capalaba and the wider Redlands — including Alexandra Hills, Thornlands, Birkdale, Wellington Point, and Cleveland. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway. All makes, all conditions accepted.",
     localContent: "Capalaba is the commercial heart of the Redlands, sitting at the junction of Old Cleveland Road and Moreton Bay Road with the Capalaba Park and Capalaba Central shopping precincts in the middle of it all. Our drivers run Capalaba pickups daily, collecting vehicles from the established residential streets around Degen Road and Redland Bay Road, the estates spreading out towards Sheldon and Burbank, and the light industrial area along Old Cleveland Road East where a lot of mechanics, panel beaters, and workshops end up with unwanted project cars and trade-in rejects. The suburb has been a strong Commodore, Falcon, and Hilux area for decades — plenty of older tradie utes and family sedans still sitting in carports and under Queenslanders — and we see a steady flow of 4WDs and boats that have come off trailers after years of service. The bayside location means salt air is a real factor: vehicles parked outside in Capalaba, Alexandra Hills, and Thornlands cop more underbody corrosion than inland suburbs, and we regularly buy cars that look tidy on top but have rust through exhausts, brake lines, and subframes. With Moreton Bay Road giving us fast access from Capalaba to Cleveland in one direction and Carindale in the other, we can reach most Redlands pickups within 25 to 30 minutes.",
@@ -336,7 +336,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "the-gap",
-    title: "Cash for Cars The Gap | Free Removal Across Brisbane's Western Suburbs",
+    title: "Cash for Cars The Gap | Free Removal, Brisbane's West",
     metaDescription: `Cash for cars The Gap. Free removal across The Gap, Ashgrove, Ferny Grove, Upper Kedron & Bardon. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars The Gap",
     intro: "Selling a car in The Gap? Caraway pays instant cash for cars across The Gap, Upper Kedron, Ferny Grove, Keperra, Bardon, and Ashgrove. Free removal, same- or next-day pickup, and cash on the spot before the car leaves your driveway. We handle the tight driveways, the steep blocks, and the bushy properties that come with Brisbane's western suburbs.",
@@ -348,7 +348,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "bulimba",
-    title: "Cash for Cars Bulimba | Free Removal & Same-Day Cash",
+    title: "Cash for Cars Bulimba | Free Removal & Cash on Pickup",
     metaDescription: `Cash for cars Bulimba. Free removal across Bulimba, Hawthorne, Balmoral & Morningside. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Bulimba",
     intro: "Selling a car in Bulimba? Caraway pays instant cash for cars across Bulimba, Hawthorne, Balmoral, Morningside, and Brisbane's inner east riverside corridor. Free removal, same- or next-day pickup, and cash in hand before the tow truck leaves your driveway.",
@@ -408,7 +408,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "stafford",
-    title: "Cash for Cars Stafford | Same-Day Cash, Free Removal",
+    title: "Cash for Cars Stafford | Cash on Pickup, Free Removal",
     metaDescription: `Cash for cars Stafford. Free removal across Stafford, Stafford Heights, Everton Park & Kedron. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Stafford",
     intro: "Caraway quotes on cars in Stafford, Stafford Heights, Everton Park, Kedron, and Brisbane's mid-northside. Pickup is included when we buy, with payment confirmed at collection.",
@@ -432,7 +432,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "new-farm",
-    title: "Cash for Cars New Farm | Same-Day Cash & Free Removal",
+    title: "Cash for Cars New Farm | Cash on Pickup & Free Removal",
     metaDescription: `Cash for cars New Farm. Free removal across New Farm, Teneriffe, Newstead & Fortitude Valley. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars New Farm",
     intro: "Selling a car in New Farm? Caraway pays instant cash for cars across New Farm, Teneriffe, Newstead, and Fortitude Valley. Free removal, same- or next-day pickup, and cash on the spot before the car leaves your apartment building, driveway, or street parking.",
@@ -444,7 +444,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "paddington",
-    title: "Cash for Cars Paddington | Free Pickup Across Brisbane's Inner West",
+    title: "Cash for Cars Paddington | Free Pickup, Inner West Brisbane",
     metaDescription: `Cash for cars Paddington. Free removal across Paddington, Red Hill, Bardon & Rosalie. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Paddington",
     intro: "Caraway pays cash for cars in Paddington, Red Hill, Bardon, Rosalie, and Brisbane's inner west character suburbs. Free removal, same- or next-day pickup, and cash on the spot — whether your car is parked on a narrow Paddington ridge or tucked behind a Bardon Queenslander.",
@@ -468,7 +468,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "wynnum",
-    title: "Cash for Cars Wynnum | Free Removal Across Brisbane's Bayside",
+    title: "Cash for Cars Wynnum | Free Removal, Brisbane Bayside",
     metaDescription: `Cash for cars Wynnum. Free removal across Wynnum, Manly, Lota & Tingalpa. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Wynnum",
     intro: "Caraway pays cash for cars in Wynnum, Manly, Lota, and Tingalpa along Brisbane's bayside. Free removal, same- or next-day pickup, and cash on the spot — whether your car is parked at a Wynnum waterfront Queenslander or tucked into a Tingalpa carport.",
@@ -480,7 +480,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "manly",
-    title: "Cash for Cars Manly | Same-Day Cash & Free Removal",
+    title: "Cash for Cars Manly | Cash on Pickup & Free Removal",
     metaDescription: `Cash for cars Manly Brisbane. Free removal across Manly, Wynnum, Lota & Manly West. Same- or next-day cash. Call Caraway ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Manly Brisbane",
     intro: "Selling a car in Manly? Caraway pays cash for cars across Manly, Manly West, Wynnum, and Lota on Brisbane's bayside. Free removal, same- or next-day pickup, and cash in hand before the car leaves your driveway or apartment carpark.",

@@ -23,7 +23,7 @@ export const post: RawBlogPostEntry = {
 
       "Value varies with make, model, year, kilometres, WOVR classification, completeness, location, and which structural or mechanical systems are damaged. Photos and an accurate description help, but a final offer may depend on confirming the VIN, damage, access, and whether key components are present.",
 
-      "![A flatbed tow truck loading an accident-damaged car for same-day pickup across Brisbane.](/images/tow-truck-hero.webp 800x800)",
+      "![A flatbed tow truck loading an accident-damaged car for same- or next-day pickup across Brisbane.](/images/tow-truck-hero.webp 800x800)",
 
       "## Private sale vs cash for cars",
 

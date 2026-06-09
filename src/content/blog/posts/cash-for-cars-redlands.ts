@@ -3,13 +3,13 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-redlands",
-  title: "Cash for Cars Redlands: Same-Day Pickup 2026",
+  title: "Cash for Cars Redlands: Same- or Next-Day Pickup 2026",
   metaDescription:
     "Get cash for cars in Redlands with free same- or next-day pickup and instant payment. Any make, any condition — running, damaged, or unregistered. Serving all Redlands City suburbs.",
   excerpt:
     "Need to sell an unwanted car in the Redlands bayside area? Here's how cash for cars works across Cleveland, Capalaba, Victoria Point, and the wider Redlands City Council region.",
   content: [
-    "The Redlands City Council area stretches along Brisbane's southeastern bayside — from Capalaba and Alexandra Hills in the north down through Cleveland, Thornlands, Victoria Point, and Redland Bay to the shoreline of Moreton Bay. It's a region of mix: suburban families, retirees, tradies running work utes between job sites across the bayside, and properties with a block size that tends to collect unwanted vehicles over the years. Cash for cars in Redlands is one of the fastest ways to turn a car that's stopped earning its place into a same-day cash payment — without private listing, tyre-kicker test drives, or repair bills.",
+    "The Redlands City Council area stretches along Brisbane's southeastern bayside — from Capalaba and Alexandra Hills in the north down through Cleveland, Thornlands, Victoria Point, and Redland Bay to the shoreline of Moreton Bay. It's a region of mix: suburban families, retirees, tradies running work utes between job sites across the bayside, and properties with a block size that tends to collect unwanted vehicles over the years. Cash for cars in Redlands is one of the fastest ways to turn a car that's stopped earning its place into a cash payment, often with same- or next-day pickup — without private listing, tyre-kicker test drives, or repair bills.",
 
     "## How cash for cars works in the Redlands area",
 

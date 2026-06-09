@@ -26,7 +26,7 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    title: "Cash for Cars Brisbane | Fair Offers, Same-Day Pickup",
+    title: "Cash for Cars Brisbane | Fair Offers, Fast Free Pickup",
     metaDescription: `Cash for cars Brisbane: get a fair cash offer based on your vehicle details. Free towing, payment on pickup, Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Brisbane — Get Paid Today",
     intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, giving fair offers for vehicles in any condition — up to $9,999 for selected vehicles. Whether your car is old, damaged, scrap, or running perfectly, we'll make you a clear cash offer and pick it up the same or next day, free of charge. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
@@ -44,7 +44,7 @@ export const services: ServicePage[] = [
         content: "We buy all types of vehicles across Brisbane — sedans, utes, 4WDs, SUVs, vans, trucks, and fleet vehicles. It doesn't matter if your car is running or not, registered or unregistered, crashed or flood-damaged. Old Commodores, Falcons, Camrys, Corollas, Hiluxes — we buy them all. We also purchase prestige and European vehicles, commercial vehicles, and motorcycles."
       },
       {
-        heading: "Same-Day Car Removal Across Brisbane",
+        heading: "Same- or Next-Day Car Removal Across Brisbane",
         content: "When you accept our offer, we can usually arrange same- or next-day pickup anywhere in Greater Brisbane. Our fleet covers all suburbs from Caboolture in the north to Beenleigh in the south, and from Ipswich in the west to Cleveland in the east. Weekend and after-hours pickups are available by arrangement. We work around your schedule, not the other way around."
       },
       {
@@ -68,9 +68,9 @@ export const services: ServicePage[] = [
   },
   {
     slug: "car-removal-brisbane",
-    title: "Free Car Removal Brisbane | Same-Day Pickup",
+    title: "Free Car Removal Brisbane | Same- or Next-Day Pickup",
     metaDescription: `Free car removal across Brisbane when we buy. Same- or next-day pickup is usually available, with payment confirmed at collection. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Free Car Removal Brisbane — Same-Day Service",
+    h1: "Free Car Removal Brisbane — Same- or Next-Day Service",
     intro: "Need a car removed from your property in Brisbane? Caraway offers free car removal across Greater Brisbane with same- or next-day pickup available 7 days a week. We don't just remove your car — we pay you cash for it. No towing fees, no hidden charges, no hassle.",
     sections: [
       {
@@ -102,7 +102,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-my-car-brisbane",
     title: "Sell My Car Brisbane | Instant Cash, No Hassle",
-    metaDescription: `Sell your car in Brisbane fast. Get an instant cash offer, free pickup, same- or next-day payment. No advertising, no tyre-kickers. Call Caraway on ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your car in Brisbane fast. Get an instant cash offer, free pickup, same- or next-day payment. No advertising, no tyre-kickers. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Sell My Car Brisbane — Instant Offer, No Hassle",
     intro: "Want to sell your car quickly in Brisbane without the hassle of private sales? Caraway makes selling your car effortless. Get an instant cash offer, skip the advertising and test drives, and get paid the same or next day. We buy all makes and models in any condition.",
     sections: [
@@ -135,7 +135,7 @@ export const services: ServicePage[] = [
   {
     slug: "scrap-car-removal-brisbane",
     title: "Scrap Car Removal Brisbane | Cash for Scrap Cars",
-    metaDescription: `Scrap car removal Brisbane. We pay cash for scrap cars and remove them free. End-of-life vehicles, wrecks, and junk cars. Same- or next-day service. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Scrap car removal Brisbane. Cash for scrap cars, wrecks, and junk cars — removed free. Same- or next-day service. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Scrap Car Removal Brisbane — Cash for Your Scrap Car",
     intro: "Got a scrap car taking up space on your property? Caraway pays cash for scrap cars across Brisbane and removes them free of charge. Whether your vehicle is completely wrecked, mechanically beyond repair, or simply reached end-of-life — we'll pay you and take it away today.",
     sections: [
@@ -152,7 +152,7 @@ export const services: ServicePage[] = [
         content: "We don't just dump scrap cars. Every vehicle we collect is processed at licensed recycling facilities in Queensland. We drain and safely dispose of all fluids — oil, coolant, brake fluid, and fuel. Batteries, tyres, and hazardous materials are handled according to EPA guidelines. Salvageable parts are refurbished for reuse, and remaining materials are recycled. We take environmental responsibility seriously."
       },
       {
-        heading: "Same-Day Scrap Car Pickup Brisbane",
+        heading: "Same- or Next-Day Scrap Car Pickup Brisbane",
         content: "Don't let that old wreck sit in your yard another week. Call us before midday and we can usually remove your scrap car the same afternoon. Our tow trucks are equipped to handle non-running vehicles, cars without wheels, and vehicles in difficult locations. We come to you — garage, driveway, paddock, or workshop."
       }
     ],
@@ -360,7 +360,7 @@ export const services: ServicePage[] = [
   {
     slug: "used-cars-brisbane",
     title: "Sell Used Cars Brisbane | Fair Cash Price Today",
-    metaDescription: `Sell your used car for a fair price in Brisbane. Skip private sales — get an instant cash offer from Caraway. Free pickup, same- or next-day payment. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your used car for a fair price in Brisbane. Skip private sales — get an instant cash offer. Free pickup, same- or next-day payment. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Sell Your Used Car in Brisbane — Fair Cash Offer",
     intro: "Selling a used car in Brisbane doesn't have to mean weeks of advertising and awkward test drives. Caraway offers a straightforward way to sell your used car — instant cash offers, free pickup, and same- or next-day payment. We buy all used vehicles in any condition.",
     sections: [
@@ -444,7 +444,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-toyota-hilux-brisbane",
     title: "Sell My Toyota HiLux Brisbane | Cash, Any Condition",
-    metaDescription: `Sell your Toyota HiLux for cash in Brisbane. All generations — KUN, GUN, SR5, Workmate, dual-cab, extra-cab. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Toyota HiLux for cash in Brisbane. All generations — KUN, GUN, SR5, Workmate, dual-cab, extra-cab. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Toyota HiLux Brisbane — Any Year, Any Condition",
     intro: "The Toyota HiLux is the best-selling vehicle in Australia for good reason, and Brisbane HiLux owners often find they can earn a strong cash price even when the ute is tired, accident-damaged, or off the road. Caraway pays competitive cash for HiLuxes across every generation and trim — Workmate, SR, SR5, Rugged X, and Rogue — with free same- or next-day pickup anywhere in Greater Brisbane.",
     sections: [
@@ -465,7 +465,7 @@ export const services: ServicePage[] = [
         content: "Offers depend on year, sub-model (4x2 vs 4x4, single cab vs dual cab), kilometres, completeness, and mechanical condition. Rough ranges: a 1998 Workmate 4x2 petrol, tired but running, typically fetches $800–$1,800. A 2005–2011 N70 SR5 4x4 diesel, running with average km, commonly lands $3,500–$7,500. A 2015+ GUN N80 dual cab, running, may pull $6,000–$9,999+ where condition and demand support it. Non-runners and scrap HiLuxes — even heavily damaged or incomplete — are valued on parts and scrap demand. Call us with the rego, kilometres, and a brief condition description and we'll quote on the phone."
       },
       {
-        heading: "Free Same-Day HiLux Pickup Across Greater Brisbane",
+        heading: "Free Same- or Next-Day HiLux Pickup Across Greater Brisbane",
         content: "Whether your HiLux is at a Logan workshop, an Ipswich property, a Redcliffe carport, or a Chermside driveway, we arrange suitable towing equipment and include pickup when we buy. We provide a receipt and buyer details, and most booked pickups happen the same or next business day subject to availability."
       }
     ],
@@ -481,7 +481,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-toyota-corolla-brisbane",
     title: "Sell My Toyota Corolla Brisbane | Cash, Any Year",
-    metaDescription: `Sell your Toyota Corolla for cash in Brisbane. Every generation — AE92, AE101, ZZE122, ZRE152, ZRE182, E210. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Toyota Corolla for cash in Brisbane. Every generation — AE92, AE101, ZZE122, ZRE152, ZRE182, E210. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Toyota Corolla Brisbane — Every Generation",
     intro: "The Toyota Corolla is one of the most common cars on Brisbane roads, and Caraway pays fair cash for Corollas of every generation, kilometres, and condition. Whether you're offloading a much-loved first car, clearing a deceased estate hatch, or getting rid of an accident-written-off sedan, we'll come to you with a firm cash offer and free same- or next-day pickup.",
     sections: [
@@ -518,7 +518,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-holden-commodore-brisbane",
     title: "Sell My Holden Commodore Brisbane | Cash for VT–VF",
-    metaDescription: `Sell your Holden Commodore for cash in Brisbane. VT to VF sedans, wagons, utes, SS, SV6, Calais. Any condition. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Holden Commodore for cash in Brisbane. VT to VF sedans, wagons, utes, SS, SV6, Calais. Any condition. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Holden Commodore Brisbane — Every Model",
     intro: "Holden Commodores are everywhere in Brisbane, and Caraway pays fair cash for them regardless of generation, condition, or kilometres. Whether it's a VT sedan that's been parked for years, a VE SS with accident damage, a VF ute that's worn out its clutch, or a Calais wagon on the way to scrap — we'll make a firm offer and pick it up for free same or next day.",
     sections: [
@@ -555,7 +555,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-ford-falcon-brisbane",
     title: "Sell My Ford Falcon Brisbane | Cash for BA, BF, FG",
-    metaDescription: `Sell your Ford Falcon for cash in Brisbane. AU, BA, BF, FG sedans, utes, XR6, XR8, G6E, Territory. Any condition. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Ford Falcon for cash in Brisbane. AU, BA, BF, FG sedans, utes, XR6, XR8, G6E, Territory. Any condition. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Ford Falcon Brisbane — All Models & Conditions",
     intro: "Ford Falcons were a staple of Queensland roads for decades, and many are still parked on Brisbane properties waiting to be moved on. Caraway assesses every Falcon generation, including XR6 and XR8 performance variants, utes, wagons, and the related Territory SUV. Pickup is included when we buy, and cars are assessed as-is.",
     sections: [
@@ -592,7 +592,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-ford-ranger-brisbane",
     title: "Sell My Ford Ranger Brisbane | Cash for PJ, PK, PX",
-    metaDescription: `Sell your Ford Ranger for cash in Brisbane. PJ, PK, PX, MkII, MkIII, Next-Gen. XL, XLT, Wildtrak, Raptor. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Ford Ranger for cash in Brisbane. PJ, PK, PX, MkII, MkIII, Next-Gen. XL, XLT, Wildtrak, Raptor. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Ford Ranger Brisbane — All Generations",
     intro: "The Ford Ranger has been one of Australia's top-selling vehicles for years, and Caraway pays strong cash for Rangers across every generation and trim. Whether you're offloading a tired PJ fleet ute, a rolled PX Wildtrak, or a Next-Gen Raptor being moved on, we'll quote on the phone and pick up free across Greater Brisbane.",
     sections: [
@@ -629,7 +629,7 @@ export const services: ServicePage[] = [
   {
     slug: "sell-toyota-landcruiser-brisbane",
     title: "Sell My Toyota LandCruiser Brisbane | All Series, Cash",
-    metaDescription: `Sell your Toyota LandCruiser for cash in Brisbane. 70–300 Series — Troop Carrier, Sahara, GXL, VX, Workmate. Same-day pickup. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your Toyota LandCruiser for cash in Brisbane. 70–300 Series — Troop Carrier, Sahara, GXL, VX, Workmate. Same- or next-day pickup. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Toyota LandCruiser Brisbane — 70, 80, 100, 200, 300 Series",
     intro: "Toyota LandCruisers hold their value better than almost anything else on Australian roads, and Caraway pays strong cash for every generation — 70, 80, 100, 200, and 300 Series — regardless of kilometres or condition. Whether it's a tired Troopy, an 80 Series with a blown head gasket, a 100 Series V8 that's been touring the country for 500,000 km, or a 200 Series with accident damage, we'll quote and pick up free across Greater Brisbane.",
     sections: [

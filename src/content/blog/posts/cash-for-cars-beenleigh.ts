@@ -5,9 +5,9 @@ export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-beenleigh",
   title: "Cash for Cars Beenleigh | Free Pickup 2026",
   metaDescription:
-    "Get instant cash for cars in Beenleigh with free same-day pickup. We buy all makes and conditions — running or not — across Beenleigh and surrounding suburbs.",
+    "Get cash for cars in Beenleigh with free same- or next-day pickup. We buy all makes and conditions — running or not — across Beenleigh and nearby suburbs.",
   excerpt:
-    "Selling your car in Beenleigh has never been simpler. We offer same-day cash and free pickup for any vehicle — no matter the age, make, or condition.",
+    "Selling your car in Beenleigh has never been simpler. We offer cash on pickup and free collection for any vehicle — no matter the age, make, or condition.",
   content: [
     "Beenleigh sits at the southern edge of the Greater Brisbane metro, right at the junction of the Pacific Motorway and the Mount Lindesay Highway, and it's one of the busiest areas in Southeast Queensland for used car transactions. Whether you're in central Beenleigh, nearby Eagleby, Bethania, or just across the border in Loganholme, there's a steady stream of vehicles changing hands every week — and plenty of owners who'd rather have instant cash than the drawn-out uncertainty of a private listing. Cash for cars Beenleigh services handle that transaction on the same day, with free towing and a firm offer before the truck arrives.",
 
@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "Cash for cars pricing depends on three main factors: the vehicle's make and year, its current condition, and parts demand in the local dismantling market. A running 2010–2018 sedan or hatchback in average condition typically draws $500–$2,500. A late-model ute or SUV — popular models like the Hilux, Ranger, or Pajero — can fetch $2,000–$8,000 or more depending on kilometres and damage. Non-running vehicles, stripped parts cars, or hail-damaged models are priced on scrap value plus reusable components, which generally comes to $300–$1,500 for a standard passenger car. Beenleigh's proximity to Logan and the southern industrial corridor means parts demand is consistently solid, which keeps offers competitive. Every quote is firm: you know the number before you agree to anything.",
 
-    "![Cash for cars pickup in Beenleigh — tow truck collecting a vehicle for same-day cash payment.](/images/tow-truck-hero.webp 800x800)",
+    "![Cash for cars pickup in Beenleigh — tow truck collecting a vehicle for cash payment on pickup.](/images/tow-truck-hero.webp 800x800)",
 
     "## What types of vehicles we buy",
 

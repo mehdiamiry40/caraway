@@ -42,7 +42,7 @@ overall success, so configuring both gives you redundancy.
 
 | Variable                   | Required        | Description                                                                 |
 | -------------------------- | --------------- | --------------------------------------------------------------------------- |
-| `SITE_URL`                 | yes (prod)      | Canonical site origin, e.g. `https://caraway.au`. Used for metadata + SEO.  |
+| `SITE_URL`                 | yes (prod)      | Canonical site origin — must match the canonical host, i.e. `https://www.caraway.au`. Used by the middleware Origin/Referer (CSRF) check; metadata/SEO URLs come from the constant in `src/lib/site.ts`. |
 | `QUOTE_ENDPOINT`           | quote channel A | HTTPS webhook URL the quote server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
 | `CONTACT_ENDPOINT`         | contact channel A | HTTPS webhook URL the contact server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
 | `ALLOWED_ENDPOINT_HOSTS`   | when webhooks set | Comma-separated allowlist of hostnames the server actions may call (SSRF). Required when using the webhook channel. |
