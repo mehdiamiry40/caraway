@@ -1,3 +1,4 @@
+import { post as postFreeCarRemoval } from "./free-car-removal-brisbane";
 import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
 import { post as postUte } from "./sell-my-ute-brisbane";
 import { post as postScamsGuide } from "./how-to-avoid-cash-for-cars-scams-brisbane";
@@ -43,6 +44,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postFreeCarRemoval,
   postWreckersVs,
   postUte,
   postScamsGuide,
