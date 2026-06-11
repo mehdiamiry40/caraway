@@ -14,8 +14,8 @@ export default function HomeBelowFold() {
     <>
       <TrustBadges />
       <Stats />
-      <PriceEstimator />
       <HowItWorks />
+      <PriceEstimator />
       <WhyUs />
       <SellerSituations />
       <ServiceAreas />

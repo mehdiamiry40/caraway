@@ -8,9 +8,9 @@ interface Reason {
 }
 
 const featureReason: Reason = {
-  title: "A confirmed price before the truck is booked",
+  title: "One quoted price, locked in writing",
   description:
-    "The agreed offer is written down before collection. If the vehicle matches the details you gave, towing is not used as a last-minute deduction.",
+    "The agreed offer is confirmed before the truck is booked. If the vehicle matches the details you gave, there are no surprise towing deductions on the day.",
   icon: BadgeCheck,
 };
 
@@ -18,7 +18,7 @@ const supportingReasons: Reason[] = [
   {
     title: "Pickup details confirmed",
     description:
-      "Timing, access notes, operator details, and the handover sequence are confirmed before collection.",
+      "We confirm the assigned operator, access plan, timing, and applicable insurance details before collection.",
     icon: ShieldCheck,
   },
   {
@@ -30,7 +30,7 @@ const supportingReasons: Reason[] = [
   {
     title: "Rough to written off",
     description:
-      "Old daily drivers, damaged vehicles, unregistered cars, scrap, and fleet stock. If it is not a fit, we say so upfront.",
+      "Old daily drivers, damaged, unregistered, scrap, fleet. If it's not a fit, we'll say so upfront.",
     icon: Wrench,
   },
 ];
@@ -49,11 +49,13 @@ export function WhyUs() {
             id="why-us-heading"
             className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]"
           >
-            Built for a sale that needs to be simple and documented.
+            One price.
+            <br />
+            One pickup. Done.
           </h2>
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            Private sales can stall. Trade-ins can bury the real value. Caraway keeps
-            the process direct: assessment, written offer, booked collection, paid handover.
+            Private buyers flake. Dealers lowball trade-ins. We&apos;re a buyer,
+            not an auction — just a straightforward offer and a truck at your door.
           </p>
         </div>
 
@@ -88,7 +90,14 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
   const Icon = reason.icon;
   return (
     <article className="relative h-full overflow-hidden border border-primary bg-primary p-7 text-on-dark-hi sm:p-9">
-      <span className="absolute inset-x-0 top-0 h-1 bg-cta" aria-hidden="true" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[hsl(var(--accent)/0.32)] blur-3xl"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-[hsl(var(--cta)/0.28)] blur-3xl"
+      />
       <div className="relative flex h-full flex-col">
         <span className="flex h-12 w-12 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.14)] text-on-dark-hi ring-1 ring-[hsl(var(--on-dark-hi)/0.18)]">
           <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
@@ -106,7 +115,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
           {["No bait-and-switch", "No tow deductions", "Confirmed in writing"].map((tag) => (
             <li
               key={tag}
-              className="inline-flex items-center border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
+              className="inline-flex items-center rounded-full border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
             >
               {tag}
             </li>
