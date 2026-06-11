@@ -58,9 +58,9 @@
   --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: -0.03em;
-  --tracking-tight: -0.015em;
-  --tracking-snug: -0.005em;
+  --tracking-display: 0;
+  --tracking-tight: 0;
+  --tracking-snug: 0;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
   --tracking-wider: 0.06em;
@@ -293,10 +293,6 @@
     border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
   }
 
-  .hero-edge {
-    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
   .wave-divider-bottom {
     position: relative;
   }
@@ -389,6 +385,16 @@
   min-height: min(100dvh, 620px);
 }
 
+@utility hero-viewport {
+  min-height: clamp(37rem, calc(100svh - var(--header-h) - 5.5rem), 48rem);
+}
+
+@supports (height: 100dvh) {
+  .hero-viewport {
+    min-height: clamp(37rem, calc(100dvh - var(--header-h) - 5.5rem), 48rem);
+  }
+}
+
 @utility focus-ring {
   &:focus-visible {
     outline: 2px solid hsl(var(--ring));
@@ -464,90 +470,11 @@
   overflow: hidden;
 }
 
-/* ─── Hero atmosphere ──────────────────────────────────────────────────────── */
-/* Soft animated gradient orbs that sit behind hero / final-CTA copy. They
-   render as ::before / ::after on a positioned parent so they never affect
-   layout and respect prefers-reduced-motion via the universal block below. */
-@keyframes orb-drift-a {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(3%, -2%, 0) scale(1.04); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-@keyframes orb-drift-b {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(-3%, 2%, 0) scale(1.03); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@utility hero-atmosphere {
-  position: relative;
-  isolation: isolate;
-}
-.hero-atmosphere::before,
-.hero-atmosphere::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 9999px;
-  filter: blur(80px);
-  will-change: transform;
-}
-.hero-atmosphere::before {
-  top: -10%;
-  left: -8%;
-  width: 50%;
-  height: 70%;
-  background: radial-gradient(closest-side, hsl(var(--accent) / 0.32), transparent 70%);
-  animation: orb-drift-a 18s ease-in-out infinite;
-}
-.hero-atmosphere::after {
-  bottom: -15%;
-  right: -10%;
-  width: 55%;
-  height: 75%;
-  background: radial-gradient(closest-side, hsl(var(--cta) / 0.28), transparent 70%);
-  animation: orb-drift-b 22s ease-in-out infinite;
-}
-
-/* Pulsing dot — used in the "Brisbane's friendly car buyers" pill / live tag. */
-@keyframes live-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--cta) / 0.55); }
-  60%      { box-shadow: 0 0 0 8px hsl(var(--cta) / 0); }
-}
-@utility live-dot {
-  animation: live-pulse 2.4s ease-out infinite;
-}
-
-/* Subtle vertical float — for hero floating tags. */
-@keyframes float-y {
-  0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
-  50%      { transform: translateY(-6px) rotate(var(--float-rot, 0deg)); }
-}
-@utility float-soft {
-  animation: float-y 6s ease-in-out infinite;
-}
-
-/* Subtle dotted timeline used to connect HowItWorks steps on desktop. */
-@utility step-timeline {
-  background-image: radial-gradient(circle, hsl(var(--primary) / 0.35) 1.5px, transparent 1.5px);
-  background-size: 16px 100%;
-  background-repeat: repeat-x;
-  background-position: 0 50%;
-}
-
 /* Header scroll-shadow — paired with HeaderFrame's data-scrolled attribute.
    Adds a soft drop shadow under the main nav once the user starts scrolling
    so it lifts away from the page content cleanly. */
 [data-scrolled="true"] {
   box-shadow: 0 8px 24px -16px hsl(var(--shadow-color) / 0.25);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-atmosphere::before,
-  .hero-atmosphere::after,
-  .live-dot,
-  .float-soft { animation: none !important; }
 }
 
 @utility quote-card {

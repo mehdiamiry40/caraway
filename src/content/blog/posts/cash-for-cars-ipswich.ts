@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "Free towing is included across the full Ipswich City Council area, wherever your car is parked. Whether it's at a Queenslander in Eastern Heights, a unit block in Goodna, a workshop in Carole Park, or a new-estate driveway in Springfield Lakes or Ripley, the truck comes to you at no extra charge. That removes the most awkward part of selling a non-running car — you don't need to organise a flatbed, pay a tow operator, or push the vehicle to the kerb. Many older Ipswich homes sit on sloping blocks or behind narrow side gates, so the driver will confirm access requirements at booking and bring winches or extended ramps where needed.",
 
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Removing the plates before the car leaves and lodging the disposal notice protects you from any tolls, fines, or SPER demands that could otherwise land back on your name.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Confirm the correct plate handling for your registration status and lodge the disposal notice so tolls, fines, or SPER demands do not land back on your name.",
 
     "## Why older cars in Ipswich are hard to sell privately",
 
@@ -51,7 +51,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "What paperwork do I need to sell my car in Ipswich?",
       answer:
-        "For a registered sale, complete the seller-side TMR transfer steps. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details. Remove your plates before the car leaves.",
+        "For a registered sale, complete the seller-side TMR transfer steps. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details. Check the current TMR plate requirements for your registration status before collection.",
     },
   ],
   date: "2026-06-11",
