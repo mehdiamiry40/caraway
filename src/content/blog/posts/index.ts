@@ -1,3 +1,4 @@
+import { post as postIpswich } from "./cash-for-cars-ipswich";
 import { post as postLogan } from "./cash-for-cars-logan";
 import { post as postFreeCarRemoval } from "./free-car-removal-brisbane";
 import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
@@ -45,6 +46,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postIpswich,
   postLogan,
   postFreeCarRemoval,
   postWreckersVs,
