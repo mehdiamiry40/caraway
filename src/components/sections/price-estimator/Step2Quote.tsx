@@ -35,7 +35,7 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
                 {year} {[make, model].filter(Boolean).join(" ")} ·{" "}
                 {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
               </p>
-              <p className="font-mono tabular-nums text-4xl sm:text-5xl font-medium text-[hsl(var(--on-dark-hi))] tracking-[-0.02em]">
+              <p className="font-mono tabular-nums text-4xl sm:text-5xl font-medium text-[hsl(var(--on-dark-hi))] tracking-normal">
                 ${result.quote.toLocaleString()}
               </p>
               <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
