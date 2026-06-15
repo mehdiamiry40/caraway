@@ -1,3 +1,4 @@
+import { post as postCapalaba } from "./cash-for-cars-capalaba";
 import { post as postNonRunning } from "./sell-non-running-car-brisbane";
 import { post as postWynnum } from "./cash-for-cars-wynnum";
 import { post as postRedcliffe } from "./cash-for-cars-redcliffe";
@@ -49,6 +50,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postCapalaba,
   postNonRunning,
   postWynnum,
   postRedcliffe,
