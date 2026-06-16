@@ -5,7 +5,7 @@ export const post: RawBlogPostEntry = {
   slug: "cash-for-cars-gold-coast",
   title: "Cash for Cars Gold Coast: Free Removal & Cash 2026",
   metaDescription:
-    "Get cash for cars on the Gold Coast with free pickup and payment at collection. Any make, any condition — running, damaged, or unregistered. Serving the northern Gold Coast and Coast suburbs.",
+    "Get cash for cars on the Gold Coast with free pickup and payment at collection. Any make, any condition — running, damaged, or unregistered. Same- or next-day pickup.",
   excerpt:
     "Have an unwanted car sitting in a Gold Coast driveway or carport? Here's how cash for cars works from Coomera and Pimpama through Southport, Robina, and Burleigh — and what your vehicle is realistically worth.",
   content: [
