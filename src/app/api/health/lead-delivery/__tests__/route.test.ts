@@ -15,7 +15,7 @@ const mockedSubmitContact = vi.mocked(submitContact);
 const mockedSubmitQuote = vi.mocked(submitQuote);
 
 function request(secret = "monitor-secret") {
-  return new Request("https://www.caraway.au/api/health/lead-delivery", {
+  return new Request("https://caraway.au/api/health/lead-delivery", {
     headers: { authorization: `Bearer ${secret}` },
   });
 }
@@ -33,7 +33,7 @@ afterEach(() => {
 
 describe("GET /api/health/lead-delivery", () => {
   it("rejects callers without the cron secret", async () => {
-    const response = await GET(new Request("https://www.caraway.au/api/health/lead-delivery"));
+    const response = await GET(new Request("https://caraway.au/api/health/lead-delivery"));
 
     expect(response.status).toBe(401);
     expect(mockedSubmitContact).not.toHaveBeenCalled();

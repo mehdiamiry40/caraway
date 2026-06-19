@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
-  // producing `https://www.caraway.au` instead of `https://www.caraway.au/`.
+  // producing `https://caraway.au` instead of `https://caraway.au/`.
   // That string mismatch is what GSC flags as "Alternative page with proper
   // canonical tag" against the slash-bearing URL Google actually crawls.
   openGraph: {

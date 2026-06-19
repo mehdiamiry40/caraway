@@ -21,7 +21,7 @@ describe("places session route", () => {
     const { POST } = await loadSessionRoute();
 
     const res = await POST(
-      new Request("https://www.caraway.au/api/places/session", {
+      new Request("https://caraway.au/api/places/session", {
         method: "POST",
         headers: {
           "sec-fetch-site": "same-origin",
@@ -45,7 +45,7 @@ describe("places session route", () => {
     const { POST } = await loadSessionRoute();
 
     const res = await POST(
-      new Request("https://www.caraway.au/api/places/session", {
+      new Request("https://caraway.au/api/places/session", {
         method: "POST",
       }),
     );
@@ -85,7 +85,7 @@ describe("places autocomplete route", () => {
 
     const { GET } = await loadAutocompleteRoute();
     const res = await GET(
-      new Request("https://www.caraway.au/api/places/autocomplete?q=brisbane", {
+      new Request("https://caraway.au/api/places/autocomplete?q=brisbane", {
         headers: {
           cookie: `caraway_places_session=${session.token}; caraway_places_nonce=${session.nonce}`,
           [PLACES_NONCE_HEADER]: session.nonce,

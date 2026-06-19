@@ -1,5 +1,5 @@
 /** Canonical public site origin (matches the live production redirect target). */
-export const SITE_URL = "https://www.caraway.au";
+export const SITE_URL = "https://caraway.au";
 
 /** Google Ads (gtag.js) conversion-measurement tag. This is a public
  *  identifier — it ships in client HTML by design. Loaded only on the live

@@ -96,8 +96,8 @@ describe("sitemap.ts — category pages", () => {
  * Page coverage — every route type is represented
  * ---------------------------------------------------------------------*/
 describe("sitemap.ts — page coverage", () => {
-  it("uses the deployed www host for canonical sitemap URLs", () => {
-    expect(SITE_URL).toBe("https://www.caraway.au");
+  it("uses the deployed apex host for canonical sitemap URLs", () => {
+    expect(SITE_URL).toBe("https://caraway.au");
   });
 
   it("includes the core static pages", () => {

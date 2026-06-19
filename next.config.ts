@@ -103,15 +103,13 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   redirects: async () => [
-    // Force canonical host: apex (caraway.au) → www.caraway.au with a
-    // permanent 308. Vercel's default assigned-domain redirect is a 307
-    // (temporary), which keeps `http://caraway.au/` in GSC's "Page with
-    // redirect" list indefinitely because temporary redirects don't
-    // consolidate link equity onto the canonical URL.
+    // Force canonical host: www.caraway.au → caraway.au with a permanent 308.
+    // Vercel now uses the apex domain as the production target, so keeping the
+    // old app-level apex → www redirect creates a redirect loop.
     {
       source: "/:path*",
-      has: [{ type: "host", value: "caraway.au" }],
-      destination: "https://www.caraway.au/:path*",
+      has: [{ type: "host", value: "www.caraway.au" }],
+      destination: "https://caraway.au/:path*",
       permanent: true,
     },
     // URLs GSC has tracked under indexing exclusions:
