@@ -12,6 +12,7 @@ import { trackEvent } from "@/lib/analytics";
 import { useScrollToQuote } from "@/hooks/use-scroll-to-quote";
 
 const navLinks = [
+  { label: "How it works", href: "/how-it-works" },
   { label: "Locations", href: "/locations" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },

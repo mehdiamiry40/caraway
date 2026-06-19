@@ -8,7 +8,7 @@ import { HeaderFrame } from "./HeaderFrame";
 import { BUSINESS } from "@/lib/site";
 
 const navLinks = [
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "How it works", href: "/how-it-works" },
   { label: "Locations", href: "/locations" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },

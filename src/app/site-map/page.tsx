@@ -33,6 +33,7 @@ const breadcrumbs = [
 ];
 
 const companyLinks = [
+  { label: "All Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },

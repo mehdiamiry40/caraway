@@ -90,6 +90,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/how-it-works`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/services`,
+      lastModified: CONTENT_DEPLOY_DATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/locations`,
       lastModified: CONTENT_DEPLOY_DATE,
       changeFrequency: "weekly",

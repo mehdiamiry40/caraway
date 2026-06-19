@@ -82,22 +82,22 @@ export default function HomePage() {
               {
                 name: "Tell us about your car",
                 text: "Use our online quote tool — make, model, year, condition, suburb. Photos help if you have them.",
-                url: `${SITE_URL}/#how-it-works`,
+                url: `${SITE_URL}/how-it-works`,
               },
               {
                 name: "Get a firm cash offer",
                 text: "We send a locked-in number without haggle games or bait-and-switch pricing. Accept it and book a time that suits you.",
-                url: `${SITE_URL}/#how-it-works`,
+                url: `${SITE_URL}/how-it-works`,
               },
               {
                 name: "We come to you",
                 text: "Our truck arrives at the booked slot anywhere in Greater Brisbane, with free towing included.",
-                url: `${SITE_URL}/#how-it-works`,
+                url: `${SITE_URL}/how-it-works`,
               },
               {
                 name: "Get paid on the spot",
                 text: "Receive the agreed payment before the vehicle leaves, plus a receipt and the buyer details needed for your records.",
-                url: `${SITE_URL}/#how-it-works`,
+                url: `${SITE_URL}/how-it-works`,
               },
             ],
             supply: ["Vehicle details (make, model, year, condition)"],

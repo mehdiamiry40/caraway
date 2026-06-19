@@ -106,6 +106,8 @@ describe("sitemap.ts — page coverage", () => {
       "/about",
       "/contact",
       "/faq",
+      "/how-it-works",
+      "/services",
       "/locations",
       "/blog",
       "/privacy",

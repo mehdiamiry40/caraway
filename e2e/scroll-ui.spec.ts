@@ -10,7 +10,7 @@ test.use({ viewport: { width: 390, height: 844 } });
 // The sticky CTA wrapper is the only fixed, full-width, bottom-pinned div.
 const STICKY_BAR = "div.fixed.inset-x-0.bottom-0";
 
-test("sticky mobile CTA appears past the hero and hides at the estimator", async ({
+test("sticky mobile CTA appears after the estimator and hides when returning to it", async ({
   page,
 }) => {
   await page.goto("/");
@@ -19,7 +19,18 @@ test("sticky mobile CTA appears past the hero and hides at the estimator", async
   // At the top of the page the bar is parked out of the accessibility tree.
   await expect(bar).toHaveAttribute("aria-hidden", "true");
 
-  await page.evaluate(() => window.scrollTo(0, 700));
+  await page.locator("#price-estimator").scrollIntoViewIfNeeded();
+  await page.evaluate(() => {
+    const estimator = document.getElementById("price-estimator");
+    if (!estimator) return;
+
+    const targetY =
+      estimator.getBoundingClientRect().bottom +
+      window.scrollY -
+      window.innerHeight * 0.1;
+
+    window.scrollTo(0, targetY);
+  });
   await expect(bar).toHaveAttribute("aria-hidden", "false");
 
   // Tapping the CTA scrolls to the estimator, which re-hides the bar.

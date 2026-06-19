@@ -6,6 +6,7 @@ import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 const serviceLinks = [
+  { label: "All Services", href: "/services" },
   { label: "Cash for Cars Brisbane", href: "/cash-for-cars-brisbane" },
   { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
   { label: "Sell My Car Brisbane", href: "/sell-my-car-brisbane" },

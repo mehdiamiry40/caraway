@@ -19,16 +19,12 @@ const GTAG_TRANSPORT_SRC = [
 
 export const legacyIndexingRedirects = [
   {
-    source: "/how-it-works",
-    destination: "/#how-it-works",
-  },
-  {
     source: "/privacy-policy.html",
     destination: "/privacy",
   },
   {
-    source: "/blog/sell-damaged-car-brisbane.html",
-    destination: "/damaged-cars-brisbane",
+    source: "/vehicles-we-buy/utes-vans",
+    destination: "/cash-for-cars-brisbane",
   },
   {
     source: "/blog/cash-for-cars-redcliffe-brisbane",
@@ -53,6 +49,41 @@ export const legacyIndexingRedirects = [
   {
     source: "/blog/cash-for-cars-gold-coast",
     destination: "/cash-for-cars-brisbane",
+  },
+] as const;
+
+export const legacyRenderedRewrites = [
+  {
+    source: "/index.html",
+    destination: "/",
+  },
+  {
+    source: "/cash-for-cars-sunnybank.html",
+    destination: "/locations/sunnybank",
+  },
+  {
+    source: "/blog/old-car-running-costs.html",
+    destination: "/old-cars-brisbane",
+  },
+  {
+    source: "/blog/cash-for-cars-vs-dealer-trade-in.html",
+    destination: "/blog/trade-in-vs-cash-for-cars-brisbane",
+  },
+  {
+    source: "/english-privacy-policy",
+    destination: "/privacy",
+  },
+  {
+    source: "/book-online",
+    destination: "/contact",
+  },
+  {
+    source: "/service-page/home-visit",
+    destination: "/car-removal-brisbane",
+  },
+  {
+    source: "/blog/sell-damaged-car-brisbane.html",
+    destination: "/damaged-cars-brisbane",
   },
 ] as const;
 
@@ -84,8 +115,9 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
     // URLs GSC has tracked under indexing exclusions:
-    // - `/how-it-works` is a homepage section anchor, not a standalone route.
     // - the `.html` URLs are legacy paths from an older site version.
+    // - retired vehicle/category paths now consolidate into live service
+    //   pages, including old "vehicles we buy" group pages.
     // - retired location articles either duplicated live Greater Brisbane
     //   landing pages or claimed service in markets Caraway does not cover.
     // Map each to its closest live equivalent so Google consolidates signals
@@ -96,6 +128,9 @@ const nextConfig: NextConfig = {
       permanent: true,
     })),
   ],
+  rewrites: async () => ({
+    beforeFiles: [...legacyRenderedRewrites],
+  }),
   headers: async () => [
     {
       source: "/(.*)",
