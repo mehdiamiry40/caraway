@@ -1,15 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { blogPosts } from "@/data/blog-posts";
-
-const RETIRED_SLUGS = [
-  "cash-for-cars-sunshine-coast",
-  "cash-for-cars-toowoomba",
-  "cash-for-cars-gold-coast",
-  "cash-for-cars-redcliffe-brisbane",
-  "cash-for-cars-ipswich-brisbane",
-  "cash-for-cars-logan-brisbane",
-];
+import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
 
 describe("getSmartRelatedPosts", () => {
   it("returns at most `limit` posts and defaults to 3", () => {
@@ -30,7 +22,7 @@ describe("getSmartRelatedPosts", () => {
 
   it("never includes retired posts", () => {
     const result = getSmartRelatedPosts("trade-in-vs-cash-for-cars-brisbane", 50);
-    for (const retired of RETIRED_SLUGS) {
+    for (const retired of RETIRED_BLOG_SLUGS) {
       expect(result.find((p) => p.slug === retired)).toBeUndefined();
       expect(blogPosts.find((p) => p.slug === retired)).toBeUndefined();
     }
@@ -60,7 +52,7 @@ describe("getSmartRelatedPosts", () => {
     const result = getSmartRelatedPosts("totally-unknown-slug-that-does-not-exist", 3);
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(3);
-    for (const retired of RETIRED_SLUGS) {
+    for (const retired of RETIRED_BLOG_SLUGS) {
       expect(result.find((p) => p.slug === retired)).toBeUndefined();
     }
   });

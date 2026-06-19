@@ -5,6 +5,14 @@ import { extname, join, relative } from "node:path";
 const repoRoot = process.cwd();
 const sourceRoot = join(repoRoot, "src");
 const sourceExtensions = new Set([".ts", ".tsx"]);
+const retiredBlogSlugs = new Set([
+  "cash-for-cars-gold-coast",
+  "cash-for-cars-ipswich-brisbane",
+  "cash-for-cars-logan-brisbane",
+  "cash-for-cars-redcliffe-brisbane",
+  "cash-for-cars-sunshine-coast",
+  "cash-for-cars-toowoomba",
+]);
 
 const prohibitedClaims = [
   {
@@ -89,11 +97,25 @@ const violations = [];
 for (const filePath of collectSourceFiles(sourceRoot)) {
   const source = readFileSync(filePath, "utf8");
   const lines = source.split("\n");
+  const relativePath = relative(repoRoot, filePath);
+
+  if (relativePath.startsWith("src/content/blog/posts/")) {
+    const slugMatch = source.match(/\bslug:\s*"([^"]+)"/);
+    const slug = slugMatch?.[1];
+    if (slug && retiredBlogSlugs.has(slug)) {
+      violations.push({
+        file: relativePath,
+        line: lines.findIndex((line) => /\bslug:\s*"/.test(line)) + 1,
+        label: "retired blog slug must stay redirected, not republished",
+      });
+    }
+  }
+
   for (const [index, line] of lines.entries()) {
     for (const claim of prohibitedClaims) {
       if (claim.pattern.test(line)) {
         violations.push({
-          file: relative(repoRoot, filePath),
+          file: relativePath,
           line: index + 1,
           label: claim.label,
         });
@@ -105,7 +127,7 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
   if (fileName && regulatedPosts.has(fileName)) {
     if (!/reviewedAt:\s*"\d{4}-\d{2}-\d{2}"/.test(source)) {
       violations.push({
-        file: relative(repoRoot, filePath),
+        file: relativePath,
         line: 1,
         label: "regulated article missing reviewedAt metadata",
       });
@@ -115,7 +137,7 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
       !/https:\/\/(?:www\.)?(?:qld\.gov\.au|ppsr\.gov\.au)\//.test(source)
     ) {
       violations.push({
-        file: relative(repoRoot, filePath),
+        file: relativePath,
         line: 1,
         label: "regulated article missing an official primary source",
       });

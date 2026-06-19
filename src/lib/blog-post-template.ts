@@ -19,6 +19,17 @@ const BLOG_IMAGE = {
   alt: "Caraway cash for cars Brisbane",
 } as const;
 
+export const RETIRED_BLOG_SLUGS = [
+  "cash-for-cars-gold-coast",
+  "cash-for-cars-ipswich-brisbane",
+  "cash-for-cars-logan-brisbane",
+  "cash-for-cars-redcliffe-brisbane",
+  "cash-for-cars-sunshine-coast",
+  "cash-for-cars-toowoomba",
+] as const;
+
+const retiredBlogSlugSet = new Set<string>(RETIRED_BLOG_SLUGS);
+
 export function buildMissingBlogPostMetadata(): Metadata {
   return {
     title: { absolute: "Post not found — Caraway" },
@@ -165,6 +176,10 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
 
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug)) {
     errors.push("slug must be lowercase kebab-case without slashes");
+  }
+
+  if (retiredBlogSlugSet.has(post.slug)) {
+    errors.push("slug is retired and must stay redirected, not republished");
   }
 
   if (post.canonicalUrl !== expectedCanonical) {

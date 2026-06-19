@@ -7,6 +7,7 @@ import {
 } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
+import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
 import { SITE_URL } from "@/lib/site";
 
 const entries = sitemap();
@@ -34,16 +35,7 @@ describe("sitemap.ts — blog post inclusion", () => {
   });
 
   it("excludes retired blog URLs that now consolidate elsewhere", () => {
-    const retiredSlugs = [
-      "cash-for-cars-sunshine-coast",
-      "cash-for-cars-toowoomba",
-      "cash-for-cars-gold-coast",
-      "cash-for-cars-redcliffe-brisbane",
-      "cash-for-cars-ipswich-brisbane",
-      "cash-for-cars-logan-brisbane",
-    ];
-
-    for (const slug of retiredSlugs) {
+    for (const slug of RETIRED_BLOG_SLUGS) {
       expect(urls.has(`${SITE_URL}/blog/${slug}`)).toBe(false);
     }
   });
