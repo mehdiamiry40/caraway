@@ -76,6 +76,21 @@ export function Hero() {
                 demand.
               </p>
 
+              <div className="mt-6 w-40 overflow-hidden rounded-sm border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm lg:hidden">
+                <picture>
+                  <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+                  <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
+                  <img
+                    src="/images/tow-truck-hero.webp"
+                    alt="Caraway tow truck collecting a customer's car in Brisbane"
+                    width={800}
+                    height={800}
+                    decoding="async"
+                    className="h-24 w-full object-cover"
+                  />
+                </picture>
+              </div>
+
               <div className="mt-7 flex max-w-xl flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
                 <Link
                   href="/#price-estimator"
