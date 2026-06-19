@@ -5,6 +5,7 @@ import {
   buildBlogPostMetadata,
   buildBlogPostSeoProps,
   createBlogPost,
+  RETIRED_BLOG_SLUGS,
   validateBlogPostSeo,
 } from "@/lib/blog-post-template";
 import { SITE_URL } from "@/lib/site";
@@ -43,6 +44,26 @@ describe("blog post template", () => {
       .filter(({ errors }) => errors.length > 0);
 
     expect(failures).toEqual([]);
+  });
+
+  it("rejects retired blog slugs that now redirect elsewhere", () => {
+    const post = createBlogPost({
+      slug: RETIRED_BLOG_SLUGS[0],
+      title: "Cash for Cars Gold Coast Redirected Topic",
+      metaDescription:
+        "This realistic metadata would otherwise be valid, but the slug is retired because it now consolidates into a live canonical page.",
+      excerpt:
+        "This realistic excerpt would otherwise be long enough, but the retired slug should prevent the post from being republished.",
+      content: ["Opening paragraph for the post.", "## Section heading"],
+      date: "2026-06-19",
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    expect(validateBlogPostSeo(post)).toContain(
+      "slug is retired and must stay redirected, not republished",
+    );
   });
 
   it("keeps materialized posts sorted from newest to oldest", () => {
