@@ -16,6 +16,7 @@ export function Hero() {
   preload("/images/tow-truck-hero.avif", {
     as: "image",
     fetchPriority: "high",
+    media: "(min-width: 1024px)",
     type: "image/avif",
   });
 
@@ -26,11 +27,12 @@ export function Hero() {
     >
       <div className="mt-header-safe mx-auto max-w-[96rem]">
         <div className="grid min-h-[34rem] grid-cols-1 lg:grid-cols-12">
-          <div className="relative order-2 min-h-[13rem] overflow-hidden sm:min-h-[24rem] lg:order-1 lg:col-span-7 lg:min-h-[34rem]">
+          <div className="relative hidden overflow-hidden lg:order-1 lg:col-span-7 lg:block lg:min-h-[34rem]">
             <picture>
-              <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+              <source media="(min-width: 1024px)" srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+              <source media="(min-width: 1024px)" srcSet="/images/tow-truck-hero.webp" type="image/webp" />
               <img
-                src="/images/tow-truck-hero.webp"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
                 alt="Caraway tow truck collecting a customer's car in Brisbane"
                 width={800}
                 height={800}
