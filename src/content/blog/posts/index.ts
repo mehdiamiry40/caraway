@@ -1,3 +1,4 @@
+import { post as postSpringwood } from "./cash-for-cars-springwood";
 import { post as postNorthLakes } from "./cash-for-cars-north-lakes";
 import { post as postHybridEv } from "./sell-hybrid-or-electric-car-brisbane";
 import { post as postDeceasedEstate } from "./sell-deceased-estate-car-qld";
@@ -53,6 +54,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postSpringwood,
   postNorthLakes,
   postHybridEv,
   postDeceasedEstate,
