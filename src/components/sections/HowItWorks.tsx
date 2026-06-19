@@ -57,7 +57,7 @@ export function HowItWorks() {
                 aria-hidden="true"
               />
               <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/25 sm:text-4xl">
+                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/60 sm:text-4xl">
                   {step.number}
                 </span>
                 <h3 className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">

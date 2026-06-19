@@ -60,7 +60,7 @@ export function Hero() {
                 Get a clear cash offer, free pickup across Greater Brisbane, and payment before
                 your vehicle leaves.
               </p>
-              <p className="mt-3 max-w-xl text-xs leading-relaxed text-on-dark-hi/70 sm:text-sm">
+              <p className="mt-3 max-w-xl text-xs leading-relaxed text-on-dark-hi/80 sm:text-sm">
                 Offers depend on make, model, condition, location, completeness, and current
                 demand.
               </p>
@@ -83,7 +83,7 @@ export function Hero() {
                   href={BUSINESS.phoneTel}
                   location="hero"
                   className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap px-2 text-sm font-medium text-on-dark-hi/90 underline decoration-cta/70 underline-offset-4 transition-colors hover:text-on-dark-hi hover:decoration-cta sm:px-0 sm:text-[0.9375rem]"
-                  ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+                  ariaLabel={`or call ${BUSINESS.phoneDisplay}`}
                 >
                   <Phone aria-hidden="true" className="h-4 w-4 text-cta-bright" />
                   or call {BUSINESS.phoneDisplay}

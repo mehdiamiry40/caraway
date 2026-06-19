@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Montserrat, Open_Sans } from "next/font/google";
+import { Montserrat, Open_Sans } from "next/font/google";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -15,12 +15,6 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-});
 import { JsonLd } from "@/components/JsonLd";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
@@ -142,13 +136,11 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${openSans.variable} ${montserrat.variable} ${jetbrainsMono.variable}`}
+      className={`${openSans.variable} ${montserrat.variable}`}
     >
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-        <link rel="preconnect" href="https://va.vercel-scripts.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://vitals.vercel-insights.com" crossOrigin="anonymous" />
         {loadGoogleTag && (
           <>
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
