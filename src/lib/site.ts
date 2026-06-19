@@ -1,13 +1,6 @@
 /** Canonical public site origin (matches the live production redirect target). */
 export const SITE_URL = "https://caraway.au";
 
-/** Google Ads (gtag.js) conversion-measurement tag. This is a public
- *  identifier — it ships in client HTML by design. Loaded only on the live
- *  production site (see RootLayout / GoogleTag) so preview and local builds
- *  don't fire real conversions. The gtag domains are allow-listed in the CSP
- *  (next.config.ts). */
-export const GOOGLE_ADS_TAG_ID = "AW-856495318";
-
 /** Centralised business contact details — import these instead of hard-coding. */
 export const BUSINESS = {
   name: "Caraway",

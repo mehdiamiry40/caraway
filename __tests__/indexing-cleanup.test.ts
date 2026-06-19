@@ -113,7 +113,7 @@ describe("Search Console indexing cleanup", () => {
     }
   });
 
-  it("allows Google Ads conversion endpoints in the production CSP", async () => {
+  it("keeps Google Ads conversion endpoints out of the production CSP", async () => {
     const headers = await getHeaderRules();
     const csp = headers
       .find((entry) => entry.source === "/(.*)")
@@ -121,18 +121,18 @@ describe("Search Console indexing cleanup", () => {
       ?.value;
 
     expect(csp).toBeDefined();
-    expect(cspDirective(csp!, "script-src")).toContain(
-      "https://googleads.g.doubleclick.net",
-    );
-    expect(cspDirective(csp!, "script-src")).toContain(
+    const disallowedHosts = [
+      "https://www.googletagmanager.com",
       "https://www.googleadservices.com",
-    );
-    expect(cspDirective(csp!, "connect-src")).toContain(
+      "https://googleads.g.doubleclick.net",
       "https://ad.doubleclick.net",
-    );
-    expect(cspDirective(csp!, "img-src")).toContain(
-      "https://ad.doubleclick.net",
-    );
+    ];
+
+    for (const host of disallowedHosts) {
+      expect(cspDirective(csp!, "script-src")).not.toContain(host);
+      expect(cspDirective(csp!, "connect-src")).not.toContain(host);
+      expect(cspDirective(csp!, "img-src")).not.toContain(host);
+    }
   });
 
   it("does not internally link to the stale URLs outside the redirect contract", () => {

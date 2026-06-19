@@ -24,9 +24,8 @@ import {
 } from "@/lib/json-ld-schemas";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { BUSINESS, GOOGLE_ADS_TAG_ID, SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL } from "@/lib/site";
 import { shouldNoindexSite } from "@/lib/noindex";
-import { GoogleTag } from "@/components/GoogleTag";
 import { Providers } from "./providers";
 import "./globals.css";
 
@@ -129,10 +128,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Only load the live Google Ads conversion tag on the real production site.
-  // Preview/staging and local builds (where shouldNoindexSite() is true) must
-  // not fire real conversions or pollute measurement data.
-  const loadGoogleTag = !shouldNoindexSite();
   return (
     <html
       lang="en-AU"
@@ -141,12 +136,6 @@ export default function RootLayout({
       <head>
         <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-        {loadGoogleTag && (
-          <>
-            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-            <link rel="preconnect" href="https://www.googletagmanager.com" />
-          </>
-        )}
       </head>
       <body className="min-h-screen">
         <a
@@ -162,7 +151,6 @@ export default function RootLayout({
         <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
         <Analytics />
         <SpeedInsights />
-        {loadGoogleTag && <GoogleTag id={GOOGLE_ADS_TAG_ID} />}
       </body>
     </html>
   );

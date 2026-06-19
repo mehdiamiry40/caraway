@@ -3,25 +3,6 @@ import path from "node:path";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-// Google Ads gtag.js (conversion measurement, see src/components/GoogleTag).
-// The bootstrap script is served from googletagmanager.com and can then load
-// conversion scripts from Google Ads / DoubleClick hosts. Conversion pings
-// use fetch/beacon and image pixels, so transport hosts are mirrored across
-// connect-src and img-src.
-const GTAG_SCRIPT_SRC = [
-  "https://www.googletagmanager.com",
-  "https://www.googleadservices.com",
-  "https://googleads.g.doubleclick.net",
-].join(" ");
-const GTAG_TRANSPORT_SRC = [
-  "https://www.googletagmanager.com",
-  "https://www.google.com",
-  "https://www.google.com.au",
-  "https://www.googleadservices.com",
-  "https://googleads.g.doubleclick.net",
-  "https://ad.doubleclick.net",
-].join(" ");
-
 export const legacyIndexingRedirects = [
   {
     source: "/privacy-policy.html",
@@ -152,12 +133,12 @@ const nextConfig: NextConfig = {
           value: [
             "default-src 'self'",
             isDev
-              ? `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`
-              : `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com ${GTAG_SCRIPT_SRC}`,
+              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
+              : "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",
-            `img-src 'self' data: blob: ${GTAG_TRANSPORT_SRC}`,
-            `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com ${GTAG_TRANSPORT_SRC}`,
+            "img-src 'self' data: blob:",
+            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
             "object-src 'none'",
             isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
             "base-uri 'self'",
