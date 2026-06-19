@@ -4,17 +4,22 @@ import path from "node:path";
 const isDev = process.env.NODE_ENV !== "production";
 
 // Google Ads gtag.js (conversion measurement, see src/components/GoogleTag).
-// The library is served from googletagmanager.com; conversion pings/pixels go
-// to the Google ad domains below — including the AU ccTLD, since the audience
-// is Australian. The transport hosts are mirrored across connect-src and
-// img-src because gtag sends data via both fetch/beacon and image pixels.
-const GTAG_SCRIPT_SRC = "https://www.googletagmanager.com";
+// The bootstrap script is served from googletagmanager.com and can then load
+// conversion scripts from Google Ads / DoubleClick hosts. Conversion pings
+// use fetch/beacon and image pixels, so transport hosts are mirrored across
+// connect-src and img-src.
+const GTAG_SCRIPT_SRC = [
+  "https://www.googletagmanager.com",
+  "https://www.googleadservices.com",
+  "https://googleads.g.doubleclick.net",
+].join(" ");
 const GTAG_TRANSPORT_SRC = [
   "https://www.googletagmanager.com",
   "https://www.google.com",
   "https://www.google.com.au",
   "https://www.googleadservices.com",
   "https://googleads.g.doubleclick.net",
+  "https://ad.doubleclick.net",
 ].join(" ");
 
 export const legacyIndexingRedirects = [

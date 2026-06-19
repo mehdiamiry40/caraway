@@ -45,6 +45,15 @@ function walkSourceFiles(dir: string): string[] {
   });
 }
 
+function cspDirective(csp: string, directiveName: string): string {
+  return (
+    csp
+      .split(";")
+      .map((directive) => directive.trim())
+      .find((directive) => directive.startsWith(`${directiveName} `)) ?? ""
+  );
+}
+
 describe("Search Console indexing cleanup", () => {
   it("keeps the known stale URLs on permanent redirects to live canonical targets", async () => {
     const redirects = await getRedirectRules();
@@ -102,6 +111,28 @@ describe("Search Console indexing cleanup", () => {
         ),
       ).toBe(false);
     }
+  });
+
+  it("allows Google Ads conversion endpoints in the production CSP", async () => {
+    const headers = await getHeaderRules();
+    const csp = headers
+      .find((entry) => entry.source === "/(.*)")
+      ?.headers.find((header) => header.key === "Content-Security-Policy")
+      ?.value;
+
+    expect(csp).toBeDefined();
+    expect(cspDirective(csp!, "script-src")).toContain(
+      "https://googleads.g.doubleclick.net",
+    );
+    expect(cspDirective(csp!, "script-src")).toContain(
+      "https://www.googleadservices.com",
+    );
+    expect(cspDirective(csp!, "connect-src")).toContain(
+      "https://ad.doubleclick.net",
+    );
+    expect(cspDirective(csp!, "img-src")).toContain(
+      "https://ad.doubleclick.net",
+    );
   });
 
   it("does not internally link to the stale URLs outside the redirect contract", () => {
