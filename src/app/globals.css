@@ -5,7 +5,7 @@
 @theme inline {
   --font-sans: var(--font-open-sans), "Open Sans", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-montserrat), "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
