@@ -13,22 +13,48 @@ import { BUSINESS } from "@/lib/site";
  * the homepage where visitors are most likely to convert. Hidden on
  * desktop (lg+) so the rest of the layout breathes.
  *
- * Visibility: appears after the user has scrolled past the hero so it
- * doesn't compete with the hero's primary CTA.
+ * Visibility: appears after the user has scrolled past the quote/form area so
+ * it doesn't cover the early mobile content or compete with local CTAs.
  */
 export function StickyMobileCTA() {
   const scrollToQuote = useScrollToQuote();
-  const [pastHero, setPastHero] = useState(false);
+  const [pastQuote, setPastQuote] = useState(false);
   const [quoteVisible, setQuoteVisible] = useState(false);
+  const [suppressingSectionVisible, setSuppressingSectionVisible] = useState(false);
 
   useEffect(() => {
     const HERO_OFFSET = 480;
+    const QUOTE_EXIT_OFFSET = 0.15;
+    const SUPPRESS_ENTER_OFFSET = 0.8;
     const onScroll = () => {
-      setPastHero(window.scrollY > HERO_OFFSET);
+      const quoteTarget =
+        document.getElementById("price-estimator") ||
+        document.getElementById("quote-form");
+      const suppressingTargets = [
+        ...document.querySelectorAll("[data-sticky-cta-suppress='true']"),
+        document.querySelector("footer"),
+      ].filter((target): target is Element => Boolean(target));
+
+      setPastQuote(
+        quoteTarget
+          ? quoteTarget.getBoundingClientRect().bottom < window.innerHeight * QUOTE_EXIT_OFFSET
+          : window.scrollY > HERO_OFFSET,
+      );
+      setSuppressingSectionVisible(
+        suppressingTargets.some((target) => {
+          const rect = target.getBoundingClientRect();
+          return rect.top < window.innerHeight * SUPPRESS_ENTER_OFFSET && rect.bottom > 0;
+        }),
+      );
     };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -45,7 +71,7 @@ export function StickyMobileCTA() {
     return () => observer.disconnect();
   }, []);
 
-  const shown = pastHero && !quoteVisible;
+  const shown = pastQuote && !quoteVisible && !suppressingSectionVisible;
 
   return (
     <div

@@ -10,7 +10,11 @@ import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 export function FinalCTA() {
   return (
-    <section className="bg-background py-12 sm:py-16" aria-label="Get your quote">
+    <section
+      className="bg-background py-12 sm:py-16"
+      aria-label="Get your quote"
+      data-sticky-cta-suppress="true"
+    >
       <div className="site-container">
         <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
           <div

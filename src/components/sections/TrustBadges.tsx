@@ -81,13 +81,13 @@ export function TrustBadges() {
             <li key={label}>
               <Link
                 href={href}
-                className="group grid min-h-0 h-full grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 border border-border bg-card p-4 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
+                className="group relative grid min-h-0 h-full grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-1 border border-border bg-card p-4 pr-10 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
               >
                 <Icon className="row-span-2 h-9 w-9 text-primary sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
-                <h3 className="font-display text-base font-semibold text-primary sm:mt-5">{label}</h3>
-                <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground sm:mt-1">{description}</p>
+                <h3 className="font-display text-base font-semibold leading-snug text-primary sm:mt-5">{label}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground sm:mt-1">{description}</p>
                 <ArrowRight
-                  className="row-span-2 h-4 w-4 text-accent-ink transition-transform group-hover:translate-x-1 sm:mt-auto sm:h-8 sm:pt-4"
+                  className="absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-accent-ink transition-transform group-hover:translate-x-1 sm:static sm:mt-auto sm:h-8 sm:translate-y-0 sm:pt-4"
                   aria-hidden="true"
                 />
               </Link>
