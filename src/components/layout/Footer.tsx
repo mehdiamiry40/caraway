@@ -58,7 +58,6 @@ export function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Link
               href="/"
-              aria-label="Caraway — Home"
               className="font-display font-bold text-2xl tracking-[0.08em] uppercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">Caraway</span>

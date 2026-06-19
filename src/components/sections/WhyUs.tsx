@@ -102,7 +102,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
         <span className="flex h-12 w-12 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.14)] text-on-dark-hi ring-1 ring-[hsl(var(--on-dark-hi)/0.18)]">
           <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
         </span>
-        <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/70">
+        <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
           The Caraway promise
         </p>
         <h3 className="mt-2 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi text-balance">

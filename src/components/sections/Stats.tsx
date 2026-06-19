@@ -1,9 +1,6 @@
-"use client";
-
 import type { LucideIcon } from "lucide-react";
 import { Banknote, ShieldCheck, Truck, Users } from "lucide-react";
 import { BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
-import { useIntersectionVisibility } from "@/hooks/use-intersection-visibility";
 
 interface StatDef {
   value: string;
@@ -28,18 +25,14 @@ const supportingStats: StatDef[] = [
 ];
 
 export function Stats() {
-  const [ref, inView] = useIntersectionVisibility<HTMLElement>({
-    threshold: 0.3,
-  });
-
   return (
-    <section ref={ref} className="relative bg-muted border-y border-border" aria-label="What to expect">
+    <section className="relative bg-muted border-y border-border" aria-label="What to expect">
       <div className="site-container py-10 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5">
-          <FeatureStatCard stat={featureStat} inView={inView} />
+          <FeatureStatCard stat={featureStat} />
           <ul className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
-            {supportingStats.map((stat, index) => (
-              <SupportStatItem key={stat.label} stat={stat} index={index} inView={inView} />
+            {supportingStats.map((stat) => (
+              <SupportStatItem key={stat.label} stat={stat} />
             ))}
           </ul>
         </div>
@@ -54,14 +47,12 @@ export function Stats() {
   );
 }
 
-function FeatureStatCard({ stat, inView }: { stat: StatDef; inView: boolean }) {
+function FeatureStatCard({ stat }: { stat: StatDef }) {
   const Icon = stat.icon;
 
   return (
     <article
-      className={`relative lg:col-span-5 overflow-hidden bg-primary text-on-dark-hi p-6 sm:p-8 ring-1 ring-[hsl(var(--on-dark-hi)/0.1)] transition-opacity duration-700 ${
-        inView ? "opacity-100" : "opacity-0"
-      } motion-reduce:opacity-100`}
+      className="relative lg:col-span-5 overflow-hidden bg-primary text-on-dark-hi p-6 sm:p-8 ring-1 ring-[hsl(var(--on-dark-hi)/0.1)]"
     >
       <span className="absolute inset-x-0 top-0 h-1 bg-cta" aria-hidden="true" />
       <div className="relative">
@@ -69,7 +60,7 @@ function FeatureStatCard({ stat, inView }: { stat: StatDef; inView: boolean }) {
           <span className="flex h-10 w-10 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.12)] ring-1 ring-[hsl(var(--on-dark-hi)/0.18)] text-on-dark-hi">
             <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
           </span>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/70">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
             Cash payouts
           </p>
         </div>
@@ -84,15 +75,12 @@ function FeatureStatCard({ stat, inView }: { stat: StatDef; inView: boolean }) {
   );
 }
 
-function SupportStatItem({ stat, index, inView }: { stat: StatDef; index: number; inView: boolean }) {
+function SupportStatItem({ stat }: { stat: StatDef }) {
   const Icon = stat.icon;
 
   return (
     <li
-      className={`group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 transition-[box-shadow,border-color,opacity,transform] duration-500 ease-[var(--ease-out-quint)] hover:border-primary/40 hover:shadow-md sm:flex sm:flex-col sm:p-5 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-      } motion-reduce:opacity-100 motion-reduce:translate-y-0`}
-      style={{ transitionDelay: inView ? `${index * 80}ms` : "0ms" }}
+      className="group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 transition-[box-shadow,border-color] duration-300 hover:border-primary/40 hover:shadow-md sm:flex sm:flex-col sm:p-5"
     >
       <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
