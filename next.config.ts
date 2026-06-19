@@ -83,6 +83,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 31536000,
   },
   experimental: {
     // optimizeCss removed: critters is abandoned upstream and breaks builds.
@@ -158,12 +159,12 @@ const nextConfig: NextConfig = {
         ]),
       ],
     },
-    // Unhashed image/icon URLs must stay revalidatable so in-place branding
-    // updates do not get pinned behind immutable browser caches.
+    // Image assets are versioned through deploys. Use long browser caching for
+    // PageSpeed and change filenames when replacing visual assets.
     {
       source: "/images/(.*)",
       headers: [
-        { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
       ],
     },
     {

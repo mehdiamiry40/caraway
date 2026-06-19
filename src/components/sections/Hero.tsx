@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { preload } from "react-dom";
 import { ArrowRight, Check, MapPin, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
@@ -13,6 +13,12 @@ const promises = [
 ];
 
 export function Hero() {
+  preload("/images/tow-truck-hero.avif", {
+    as: "image",
+    fetchPriority: "high",
+    type: "image/avif",
+  });
+
   return (
     <section
       className="relative w-full overflow-hidden bg-primary text-on-dark-hi"
@@ -21,15 +27,18 @@ export function Hero() {
       <div className="mt-header-safe mx-auto max-w-[96rem]">
         <div className="grid min-h-[34rem] grid-cols-1 lg:grid-cols-12">
           <div className="relative order-2 min-h-[13rem] overflow-hidden sm:min-h-[24rem] lg:order-1 lg:col-span-7 lg:min-h-[34rem]">
-            <Image
-              src="/images/tow-truck-hero.webp"
-              alt="Caraway tow truck collecting a customer's car in Brisbane"
-              fill
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover"
-              priority
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+              <img
+                src="/images/tow-truck-hero.webp"
+                alt="Caraway tow truck collecting a customer's car in Brisbane"
+                width={800}
+                height={800}
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </picture>
             <div
               className="absolute inset-0 bg-gradient-to-t from-ink-deep/45 via-transparent to-transparent lg:hidden"
               aria-hidden="true"
