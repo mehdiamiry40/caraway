@@ -1,18 +1,13 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { trackEvent } from "@/lib/analytics";
 
 /**
- * Thin client wrapper around an &lt;a&gt; that fires a "phone_click" analytics
- * event before navigation. Lets server components (Footer, etc.) embed a
- * trackable phone link without the parent itself becoming a client boundary.
+ * Kept as a compatibility wrapper for existing call sites. It renders a plain
+ * anchor so phone links do not create a client-side hydration boundary.
  */
 export function TrackedPhoneLink({
   href,
   className,
   ariaLabel,
-  location,
   children,
 }: {
   href: string;
@@ -24,7 +19,6 @@ export function TrackedPhoneLink({
   return (
     <a
       href={href}
-      onClick={() => trackEvent("phone_click", { location })}
       className={className}
       aria-label={ariaLabel}
     >

@@ -13,7 +13,7 @@ Built with Next.js 16 (App Router) and deployed on Vercel.
 - **Testing:** Vitest 4
 - **Linting:** ESLint 9 (`eslint-config-next`)
 - **Hosting:** Vercel (auto-deploy from `main`, PR previews)
-- **Monitoring:** Vercel Analytics, Speed Insights
+- **Monitoring:** first-party health checks and Vercel deployment logs
 
 ## Prerequisites
 

@@ -15,7 +15,7 @@ capabilities:
   - "Contact form with webhook and Resend delivery fallbacks"
   - "Google Places address autocomplete through a first-party API proxy"
   - "Sitemap, robots, canonical metadata, and structured data"
-  - "Vercel Analytics, Speed Insights, and production-only Google Ads measurement"
+  - "First-party health checks, sitemap, robots, canonical metadata, and structured data"
   - "Responsive layouts, keyboard navigation, reduced-motion support, and accessible form errors"
 
 quality_gates:

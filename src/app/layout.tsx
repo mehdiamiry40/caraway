@@ -1,32 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Open_Sans } from "next/font/google";
-
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-open-sans",
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
 
 import { JsonLd } from "@/components/JsonLd";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
 import {
   localBusinessSchema,
   organizationSchema,
   websiteSchema,
 } from "@/lib/json-ld-schemas";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 import { shouldNoindexSite } from "@/lib/noindex";
-import { Providers } from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -129,14 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en-AU"
-      className={`${openSans.variable} ${montserrat.variable}`}
-    >
-      <head>
-        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
-        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
-      </head>
+    <html lang="en-AU">
       <body className="min-h-screen">
         <a
           href="#main-content"
@@ -145,12 +119,8 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div aria-hidden="true" className="site-frame" />
-        <ErrorBoundary>
-          <Providers>{children}</Providers>
-        </ErrorBoundary>
+        {children}
         <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );

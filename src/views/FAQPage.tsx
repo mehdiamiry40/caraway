@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { Accordion } from "@/components/ui/accordion";
@@ -7,7 +5,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MessageCircle, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
-import { trackEvent } from "@/lib/analytics";
 import { faqCategories } from "@/lib/faq-data";
 
 const breadcrumbs = [
@@ -41,9 +38,6 @@ export default function FAQPage() {
             </div>
             <Accordion
               items={category.faqs.map(f => ({ question: f.question, answer: f.answer }))}
-              onItemToggle={(question, isOpening) => {
-                if (isOpening) trackEvent("faq_opened", { question });
-              }}
             />
           </div>
         ))}

@@ -1,13 +1,8 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { trackEvent } from "@/lib/analytics";
 
-/** External link that opens in a new tab and records `authority_link_click` (e.g. TMR or ABR). */
+/** External link that opens in a new tab. */
 export function TrackedOutboundLink({
   href,
-  label,
-  location,
   className,
   children,
 }: {
@@ -24,13 +19,6 @@ export function TrackedOutboundLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() =>
-        trackEvent("authority_link_click", {
-          href,
-          label,
-          location,
-        })
-      }
       className={className}
     >
       {children}

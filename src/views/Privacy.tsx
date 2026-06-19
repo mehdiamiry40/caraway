@@ -75,7 +75,7 @@ export default function Privacy() {
               <li><strong>Quote enquiries</strong> where no sale takes place: kept only while reasonably needed for follow-up, fraud prevention, or dispute handling, then deleted or de-identified.</li>
               <li><strong>Completed-sale records</strong>: kept only for the period reasonably needed for transaction, dispute, accounting, tax, and legal obligations.</li>
               <li><strong>Identity information</strong>: minimised and deleted or de-identified when it is no longer reasonably required.</li>
-              <li><strong>Analytics data</strong>: retained according to the analytics provider&apos;s settings and privacy controls.</li>
+              <li><strong>Technical server logs</strong>: retained only as reasonably needed for security, debugging, fraud prevention, and service reliability.</li>
             </ul>
           </section>
 
@@ -93,14 +93,14 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
             <p>
-              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Resend, Google, and providers configured for form delivery or analytics. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
+              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
-              <li><strong>Vercel</strong> — website hosting, performance monitoring, and analytics.</li>
+              <li><strong>Vercel</strong> — website hosting and delivery infrastructure.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
@@ -127,14 +127,14 @@ export default function Privacy() {
                 .
               </li>
               <li><strong>SMS and email providers</strong> — to deliver quotes, booking confirmations and follow-ups.</li>
-              <li><strong>Google Fonts</strong> — our fonts are self-hosted via <code>next/font</code>, so no request is made to Google when you visit the site.</li>
+              <li><strong>Fonts</strong> — the site uses system fonts, so no third-party font request is made when you visit.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and analytics</h2>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We also use Vercel Analytics and Speed Insights to understand traffic and performance. These tools are configured without advertising cookies, but they may process technical request and device information according to Vercel&apos;s current privacy terms.
+              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags or third-party analytics scripts.
             </p>
           </section>
 

@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/analytics";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 export function FinalCTA() {
@@ -36,7 +33,6 @@ export function FinalCTA() {
             <div className="lg:col-span-4 lg:text-right">
               <Link
                 href="/#price-estimator"
-                onClick={() => trackEvent("cta_click", { location: "final_cta" })}
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "group w-full px-8 sm:w-auto",

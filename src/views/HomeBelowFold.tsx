@@ -1,7 +1,7 @@
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { Stats } from "@/components/sections/Stats";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { PriceEstimator } from "@/components/sections/PriceEstimator";
+import { LazyPriceEstimator } from "@/components/sections/LazyPriceEstimator";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { SellerSituations } from "@/components/sections/SellerSituations";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
@@ -15,7 +15,7 @@ export default function HomeBelowFold() {
       <TrustBadges />
       <Stats />
       <HowItWorks />
-      <PriceEstimator />
+      <LazyPriceEstimator />
       <WhyUs />
       <SellerSituations />
       <ServiceAreas />

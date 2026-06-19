@@ -1,10 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { homepageFaqs } from "@/data/home-faqs";
-import { trackEvent } from "@/lib/analytics";
 
 export function FAQ() {
   return (
@@ -44,12 +41,7 @@ export function FAQ() {
           </div>
 
           <div className="lg:col-span-7">
-            <Accordion
-              items={homepageFaqs}
-              onItemToggle={(question, isOpening) => {
-                if (isOpening) trackEvent("faq_opened", { question });
-              }}
-            />
+            <Accordion items={homepageFaqs} />
           </div>
         </div>
       </div>

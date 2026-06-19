@@ -10,10 +10,9 @@ import {
 } from "@/lib/estimator-validators";
 import { type Step } from "@/lib/persisted-estimator-state";
 import { submitQuote } from "@/actions/quote";
-import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 import { useEstimatorPersistence } from "@/hooks/use-estimator-persistence";
-import { useEstimatorAnalytics } from "@/hooks/use-estimator-analytics";
 import { useEstimatorFocus } from "@/hooks/use-estimator-focus";
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -119,8 +118,6 @@ export function usePriceEstimator() {
     }, []),
   });
 
-  const analytics = useEstimatorAnalytics({ step, make, model, isSuccess });
-
   const {
     step1HeadingRef,
     step2HeadingRef,
@@ -130,7 +127,6 @@ export function usePriceEstimator() {
 
   const goToStep = useCallback((next: Step) => {
     setStep(next);
-    trackEvent("estimator_step_completed", { step: next - 1 });
   }, []);
 
   const handleEstimate = useCallback(() => {
@@ -147,14 +143,6 @@ export function usePriceEstimator() {
     window.setTimeout(() => {
       setIsCalculating(false);
       setStep(2);
-      trackEvent("estimator_step_completed", { step: 2 });
-      trackEvent("estimator_quote_shown", {
-        estimateQuote: est.quote,
-        make: make.trim(),
-        model: model.trim(),
-        year: yearNumber,
-        condition: condition || null,
-      });
     }, CALCULATE_DELAY_MS);
   }, [canCalculate, isCalculating, make, model, yearNumber, condition]);
 
@@ -219,23 +207,16 @@ export function usePriceEstimator() {
           year: yearNumber,
           condition,
         });
-        trackEvent("lead_submitted", {
-          source: "estimator",
-          estimate_quote: result.quote,
-        });
       } else {
-        const reason = res.message ?? "unknown";
         setSubmitError(
           res.message ??
             `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
         );
-        trackEvent("estimator_submit_failed", { reason });
       }
     } catch {
       setSubmitError(
         `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );
-      trackEvent("estimator_submit_failed", { reason: "transport_error" });
     } finally {
       setIsSubmitting(false);
     }
@@ -275,8 +256,7 @@ export function usePriceEstimator() {
     setHoneypot("");
     setSubmitError("");
     setIsSuccess(false);
-    analytics.resetStartedFlag();
-  }, [analytics]);
+  }, []);
 
   return {
     // Step

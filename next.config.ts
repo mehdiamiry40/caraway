@@ -133,12 +133,12 @@ const nextConfig: NextConfig = {
           value: [
             "default-src 'self'",
             isDev
-              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
-              : "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+              : "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",
             "img-src 'self' data: blob:",
-            "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+            "connect-src 'self'",
             "object-src 'none'",
             isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
             "base-uri 'self'",

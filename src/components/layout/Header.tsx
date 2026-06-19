@@ -3,9 +3,9 @@ import { CarFront, Clock, MapPin, Phone } from "lucide-react";
 import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
-import { GetMyQuoteButton } from "./GetMyQuoteButton";
 import { HeaderFrame } from "./HeaderFrame";
 import { BUSINESS } from "@/lib/site";
+import { buttonVariants } from "@/components/ui/button";
 
 const navLinks = [
   { label: "How it works", href: "/how-it-works" },
@@ -85,7 +85,9 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <GetMyQuoteButton size="sm">Get my quote</GetMyQuoteButton>
+            <Link href="/#price-estimator" className={buttonVariants({ size: "sm" })}>
+              Get my quote
+            </Link>
           </div>
 
           <MobileMenuClient serviceLinks={serviceLinks} />

@@ -1,5 +1,3 @@
-import { track } from "@vercel/analytics";
-
 type EventName =
   | "cta_click"
   | "estimator_started"
@@ -24,15 +22,6 @@ type EventName =
 type AllowedValue = string | number | boolean | null;
 
 export function trackEvent(name: EventName, props?: Record<string, AllowedValue>) {
-  try {
-    track(name, props);
-  } catch (err) {
-    if (typeof window !== "undefined") {
-      console.warn(
-        "[analytics] trackEvent failed",
-        name,
-        err instanceof Error ? err.message : String(err),
-      );
-    }
-  }
+  void name;
+  void props;
 }
