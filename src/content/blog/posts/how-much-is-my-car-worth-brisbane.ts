@@ -29,7 +29,7 @@ export const post: RawBlogPostEntry = {
 
     "## Does registration affect how much your car is worth?",
 
-    "For a private sale, yes — a car with several months of rego left is more appealing and commands a little more. For a cash-for-cars sale, registration status doesn't change the offer; buyers purchase unregistered, deregistered, and non-running vehicles every day. What does matter is the paperwork. If you're selling a registered car, complete the seller-side Transport and Main Roads (TMR) transfer steps and lodge the disposal notice. Remove your plates before the car leaves and keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details — that protects you from any tolls, fines, or SPER demands after the car is gone.",
+    "For a private sale, yes — a car with several months of rego left is more appealing and commands a little more. For a cash-for-cars sale, registration status doesn't change the offer; buyers purchase unregistered, deregistered, and non-running vehicles every day. What does matter is the paperwork. If you're selling a registered car, complete the seller-side Transport and Main Roads (TMR) transfer steps and lodge the disposal notice. Keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details, and follow TMR's guidance on whether to surrender or keep your plates for your situation — that paperwork protects you from any tolls, fines, or SPER demands after the car is gone.",
 
     "## How to get the most accurate quote",
 
@@ -55,7 +55,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Does my car need rego to get a quote?",
       answer:
-        "No. Cash-for-cars buyers value vehicles on condition, make, and scrap value, not on registration. An unregistered or deregistered car gets a quote just like a registered one. Remember to remove your plates before the car leaves and lodge the TMR disposal notice to protect yourself from future fines or tolls.",
+        "No. Cash-for-cars buyers value vehicles on condition, make, and scrap value, not on registration. An unregistered or deregistered car gets a quote just like a registered one. Remember to lodge the TMR disposal notice — and follow TMR's guidance on surrendering your plates — to protect yourself from future fines or tolls.",
     },
     {
       question: "Will a damaged car still be worth anything?",
