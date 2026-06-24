@@ -16,7 +16,6 @@ export function Hero() {
   preload("/images/tow-truck-hero.avif", {
     as: "image",
     fetchPriority: "high",
-    media: "(min-width: 1024px)",
     type: "image/avif",
   });
 
@@ -85,6 +84,7 @@ export function Hero() {
                     alt="Caraway tow truck collecting a customer's car in Brisbane"
                     width={800}
                     height={800}
+                    fetchPriority="high"
                     decoding="async"
                     className="h-36 w-full object-cover sm:h-40"
                   />
