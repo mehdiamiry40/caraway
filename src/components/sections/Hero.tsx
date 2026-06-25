@@ -75,7 +75,7 @@ export function Hero() {
                 demand.
               </p>
 
-              <div className="mt-6 w-64 max-w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm sm:w-72 lg:hidden">
+              <div className="mt-6 w-56 max-w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm sm:w-64 lg:hidden">
                 <picture>
                   <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
                   <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
@@ -86,7 +86,7 @@ export function Hero() {
                     height={800}
                     fetchPriority="high"
                     decoding="async"
-                    className="h-36 w-full object-cover sm:h-40"
+                    className="h-32 w-full object-cover sm:h-36"
                   />
                 </picture>
               </div>
