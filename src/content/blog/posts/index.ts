@@ -1,3 +1,4 @@
+import { post as postMoorooka } from "./cash-for-cars-moorooka";
 import { post as postIndooroopilly } from "./cash-for-cars-indooroopilly";
 import { post as postSunnybank } from "./cash-for-cars-sunnybank";
 import { post as postMountGravatt } from "./cash-for-cars-mount-gravatt";
@@ -63,6 +64,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postMoorooka,
   postIndooroopilly,
   postSunnybank,
   postMountGravatt,
