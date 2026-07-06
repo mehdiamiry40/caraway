@@ -101,6 +101,7 @@ export default function Privacy() {
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
               <li><strong>Vercel</strong> — website hosting and delivery infrastructure.</li>
+              <li><strong>Upstash</strong> — managed Redis we use for rate limiting on our forms and the address-autocomplete service. Your IP address is processed and stored briefly as a rate-limit counter to prevent abuse; no form contents or personal details are stored there.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}

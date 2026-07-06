@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     title: "Cash for Cars Brisbane FAQ — Questions Answered | Caraway",
     description:
       "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same- or next-day pickup.",
-    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cash for Cars Brisbane FAQ — Caraway",
     description:
       "Got questions about selling your car for cash in Brisbane? Find answers on pricing, towing, paperwork, and same- or next-day pickup.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

@@ -55,9 +55,9 @@ export const metadata: Metadata = {
       "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same- or next-day pickup, and payment on pickup.",
     images: [
       {
-        url: "/images/tow-truck-hero.webp",
+        url: "/images/og-card.jpg",
         width: 1200,
-        height: 800,
+        height: 630,
         alt: "Caraway tow truck — cash for cars Brisbane",
       },
     ],
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
       "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same- or next-day pickup, and payment on pickup.",
     images: [
       {
-        url: "/images/tow-truck-hero.webp",
+        url: "/images/og-card.jpg",
         width: 1200,
-        height: 800,
+        height: 630,
         alt: "Caraway tow truck — cash for cars Brisbane",
       },
     ],

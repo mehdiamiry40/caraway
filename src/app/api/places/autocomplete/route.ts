@@ -83,11 +83,13 @@ async function hasValidPlacesSession(request: Request): Promise<boolean> {
       }),
   );
 
-  const apiKey = getEnv().GOOGLE_PLACES_API_KEY;
+  const env = getEnv();
+  const apiKey = env.GOOGLE_PLACES_API_KEY;
   if (!apiKey) return false;
 
   return verifyPlacesSession({
-    secret: apiKey,
+    // Must mirror the issuing route: dedicated secret first, API key fallback.
+    secret: env.PLACES_SESSION_SECRET ?? apiKey,
     token: cookies.get(PLACES_SESSION_COOKIE),
     nonce: request.headers.get(PLACES_NONCE_HEADER) ?? cookies.get(PLACES_NONCE_COOKIE),
     clientIp: getClientIp(request),
@@ -109,6 +111,18 @@ export async function GET(request: Request) {
           ).toString(),
         }),
       },
+    );
+  }
+
+  // Site-wide circuit breaker: bounds total Google Places spend per minute
+  // even against IP-rotating abuse. Returns the generic 503 so the client
+  // quietly falls back to manual address entry.
+  const globalLimitResult = await rateLimit("places-global", "global");
+  if (!globalLimitResult.success) {
+    console.error("[places/autocomplete] global circuit breaker tripped");
+    return NextResponse.json(
+      { error: "places unavailable" },
+      { status: 503, headers: noStoreHeaders() },
     );
   }
 

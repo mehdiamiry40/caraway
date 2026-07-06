@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     url: "/site-map",
     title: "Sitemap",
     description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
-    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sitemap",
     description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

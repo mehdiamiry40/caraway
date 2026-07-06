@@ -35,7 +35,7 @@ const prohibitedClaims = [
   {
     label: "blanket instruction to remove Queensland plates",
     pattern:
-      /(?:remove|take off) (?:your |the )?(?:number )?plates? (?:before|when)|take (?:your |the )?(?:number )?plates? off before/i,
+      /(?:remov(?:e|ing)|tak(?:e|ing) off) (?:your |the )?(?:number )?plates? (?:before|when)|tak(?:e|ing) (?:your |the )?(?:number )?plates? off before/i,
   },
   {
     label: "unsupported motor-dealer licence claim",
@@ -74,6 +74,7 @@ const prohibitedClaims = [
 
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
+  "cash-for-cars-logan.ts",
   "how-to-cancel-car-rego-qld.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",
   "how-to-transfer-car-ownership-qld.ts",

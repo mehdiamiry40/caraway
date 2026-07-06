@@ -20,9 +20,9 @@ export const metadata: Metadata = {
       "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works.",
     images: [
       {
-        url: "/images/tow-truck-hero.webp",
+        url: "/images/og-card.jpg",
         width: 1200,
-        height: 800,
+        height: 630,
         alt: "Caraway cash for cars Brisbane",
       },
     ],
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Cash for Cars Brisbane Blog — Caraway",
     description:
       "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, paperwork you need, and how same- or next-day pickup works.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

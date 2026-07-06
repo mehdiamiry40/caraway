@@ -3,9 +3,6 @@ import { post as postMoorooka } from "./cash-for-cars-moorooka";
 import { post as postIndooroopilly } from "./cash-for-cars-indooroopilly";
 import { post as postSunnybank } from "./cash-for-cars-sunnybank";
 import { post as postMountGravatt } from "./cash-for-cars-mount-gravatt";
-import { post as postToowoomba } from "./cash-for-cars-toowoomba";
-import { post as postSunshineCoast } from "./cash-for-cars-sunshine-coast";
-import { post as postGoldCoast } from "./cash-for-cars-gold-coast";
 import { post as postBrownsPlains } from "./cash-for-cars-browns-plains";
 import { post as postChermside } from "./cash-for-cars-chermside";
 import { post as postCarWorth } from "./how-much-is-my-car-worth-brisbane";
@@ -70,9 +67,6 @@ export const rawBlogPosts = [
   postIndooroopilly,
   postSunnybank,
   postMountGravatt,
-  postToowoomba,
-  postSunshineCoast,
-  postGoldCoast,
   postBrownsPlains,
   postChermside,
   postCarWorth,

@@ -17,7 +17,12 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
     >
       {result && (
         <div className="p-5 sm:p-8">
-          <div className="quote-card p-4 sm:p-6 mb-6">
+          <div
+            className="quote-card p-4 sm:p-6 mb-6"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
               <span className="inline-flex items-center gap-2 text-[0.75rem] font-medium text-[hsl(var(--on-dark-hi))] border-b-2 border-[hsl(var(--primary))] pb-1">
                 Your estimate

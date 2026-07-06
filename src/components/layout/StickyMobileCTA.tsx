@@ -8,7 +8,10 @@ import { BUSINESS } from "@/lib/site";
  */
 export function StickyMobileCTA() {
   return (
-    <div className="lg:hidden fixed inset-x-0 bottom-0 z-40 pb-safe pl-safe pr-safe">
+    <div
+      data-testid="sticky-mobile-cta"
+      className="lg:hidden fixed inset-x-0 bottom-0 z-40 pb-safe pl-safe pr-safe"
+    >
       <div className="mx-auto max-w-md px-3 pb-3">
         <div className="flex items-center gap-2 rounded-full border border-border bg-card/95 p-1.5 shadow-[0_8px_24px_hsl(var(--shadow-color)/0.18)] backdrop-blur">
           <a

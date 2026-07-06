@@ -4,7 +4,7 @@ export const post: RawBlogPostEntry = {
   slug: "sell-my-suv-brisbane",
   title: "Sell My SUV in Brisbane for Cash (2026 Guide)",
   metaDescription:
-    "Sell my SUV in Brisbane for cash in 2026. See what RAV4, CX-5, X-Trail, and Kluger owners are getting, plus free pickup and same-day payment across South East QLD.",
+    "Sell my SUV in Brisbane for cash in 2026. See what RAV4, CX-5, X-Trail, and Kluger owners are getting, plus free pickup and payment at collection across South East QLD.",
   excerpt:
     "SUVs are the best-selling vehicles in Queensland, and that steady demand makes them easy to move on. Here's what your RAV4, CX-5, or Kluger is worth in Brisbane in 2026 — and how to sell it for cash without the hassle.",
   content: [

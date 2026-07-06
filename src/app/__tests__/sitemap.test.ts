@@ -8,7 +8,7 @@ import {
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
-import { SITE_URL } from "@/lib/site";
+import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
 
 const entries = sitemap();
 const urls = new Set(entries.map((e) => e.url));
@@ -129,11 +129,11 @@ describe("sitemap.ts — page coverage", () => {
     expect(staticEntry?.lastModified).not.toBe(today);
   });
 
-  it("uses the first day of the stated month for legal-page lastModified dates", () => {
+  it("uses the stated legal-update dates for legal-page lastModified", () => {
     const privacyEntry = entries.find((e) => e.url === `${SITE_URL}/privacy`);
     const termsEntry = entries.find((e) => e.url === `${SITE_URL}/terms`);
 
-    expect(privacyEntry?.lastModified).toBe("2026-06-01");
-    expect(termsEntry?.lastModified).toBe("2026-06-01");
+    expect(privacyEntry?.lastModified).toBe(LEGAL_DATE_ISO.privacyLastUpdated);
+    expect(termsEntry?.lastModified).toBe(LEGAL_DATE_ISO.termsLastUpdated);
   });
 });

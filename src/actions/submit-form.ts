@@ -1,4 +1,10 @@
-"use server";
+// Server-side webhook delivery helper, called only from the submitQuote /
+// submitContact server actions. Deliberately NOT a "use server" module: that
+// directive would register submitForm itself as a client-invocable action
+// endpoint, and it has no reason to be reachable from the browser. The
+// schema re-parse below stays as an internal invariant — it produces the
+// transformed payload that gets POSTed and keeps this safe to call from
+// any future code path.
 
 import type { ZodMiniType } from "zod/mini";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";

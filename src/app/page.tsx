@@ -26,9 +26,9 @@ export const metadata: Metadata = {
       "Sell your car for cash in Brisbane today. Caraway gives fair offers with free towing and same- or next-day pickup. Any make, any condition.",
     images: [
       {
-        url: "/images/tow-truck-hero.webp",
+        url: "/images/og-card.jpg",
         width: 1200,
-        height: 800,
+        height: 630,
         alt: "Caraway tow truck — cash for cars Brisbane",
       },
     ],

@@ -3,6 +3,10 @@ import { expect, test } from "@playwright/test";
 test("submits the homepage estimator lead flow", async ({ page }) => {
   await page.goto("/");
 
+  // The estimator hydrates lazily once it approaches the viewport
+  // (see LazyPriceEstimator), so bring it into view before interacting.
+  await page.locator("#price-estimator").scrollIntoViewIfNeeded();
+
   await page.locator("#est-make").selectOption("Toyota");
   await page.locator("#est-model").selectOption("Corolla");
   await page.locator("#est-year").selectOption("2015");

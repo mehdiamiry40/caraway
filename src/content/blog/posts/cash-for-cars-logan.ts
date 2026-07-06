@@ -25,11 +25,11 @@ export const post: RawBlogPostEntry = {
 
     "Free towing is included across the full Logan City Council area, wherever your car is parked. Whether it's at a house in Woodridge, a unit block in Springwood, a workshop in Slacks Creek, or a back paddock on an acreage in Greenbank, the truck comes to you at no extra charge. That removes the most awkward part of selling a non-running car — you don't need to organise a flatbed, pay a tow operator, or push the vehicle to the kerb. Plenty of Logan homes sit on battle-axe blocks with narrow access lanes, so the driver will confirm access requirements at booking and bring winches or extended ramps where needed.",
 
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Removing the plates before the car leaves and lodging the disposal notice protects you from any tolls, fines, or SPER demands that could otherwise land back on your name.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side [TMR transfer steps](https://www.qld.gov.au/transport/registration/transfer/online) and keep your confirmation. If you are cancelling the registration instead, follow the current [TMR cancellation guidance](https://www.qld.gov.au/transport/registration/cancel), which covers what happens to the plates in each situation. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Lodging the right transfer or disposal paperwork promptly is what protects you from tolls, fines, or SPER demands landing back on your name — and plate handling depends on the plate type and sale, so check the current TMR rules rather than assuming.",
 
     "## Why older cars in Logan are hard to sell privately",
 
-    "The private market is thin for anything old, unregistered, or visibly damaged. Buyers on Facebook Marketplace and Gumtree expect a steep discount or a fresh safety certificate, and the back-and-forth — no-shows, lowball offers, time-wasting test drives — can drag on for weeks. For a clean, late-model car, a private sale may still be worth the effort. For an older, high-kilometre, damaged, or non-running vehicle, [cash for cars Logan](/cash-for-cars-brisbane) skips the listing fees and repeated inspections entirely. Check the current Queensland safety-certificate rules for your registration status and sale type before you commit either way.",
+    "The private market is thin for anything old, unregistered, or visibly damaged. Buyers on Facebook Marketplace and Gumtree expect a steep discount or a fresh safety certificate, and the back-and-forth — no-shows, lowball offers, time-wasting test drives — can drag on for weeks. For a clean, late-model car, a private sale may still be worth the effort. For an older, high-kilometre, damaged, or non-running vehicle, [cash for cars Logan](/locations/logan) skips the listing fees and repeated inspections entirely. Check the current Queensland safety-certificate rules for your registration status and sale type before you commit either way.",
 
     "Timing matters too. Scrap steel prices move with global commodity markets, and those prices flow straight into what buyers can pay for end-of-life cars. Through 2026, Queensland scrap steel has stayed relatively steady, so current offers are reasonable. One thing most sellers underestimate is how fast a parked car loses value: flat tyres, a dead battery, seized brakes, and UV-cracked interior plastics all chip away at the offer week by week, so there's rarely an upside to leaving it sitting.",
 
@@ -38,6 +38,17 @@ export const post: RawBlogPostEntry = {
     `Whether your car is in Logan Central, Woodridge, Springwood, Marsden, Beenleigh, or anywhere else across the council area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway includes towing when we buy, confirms payment at pickup, and provides a signed receipt and buyer details.`,
   ],
   date: "2026-06-10",
+  reviewedAt: "2026-06-10",
+  sources: [
+    {
+      title: "Queensland Government — transfer registration online",
+      url: "https://www.qld.gov.au/transport/registration/transfer/online",
+    },
+    {
+      title: "Queensland Government — cancelling registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+  ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
   relatedSuburbs: ["logan", "springwood", "browns-plains"],

@@ -105,7 +105,7 @@ export function ServiceAreas() {
                       <span className="flex h-10 w-10 items-center justify-center bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-semibold text-cta-ink">
+                      <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-medium text-cta-ink">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
                         {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
                       </span>

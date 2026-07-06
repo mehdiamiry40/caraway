@@ -50,7 +50,8 @@ function isFirstPartyRequest(request: Request): boolean {
 }
 
 export async function POST(request: Request) {
-  const apiKey = getEnv().GOOGLE_PLACES_API_KEY;
+  const env = getEnv();
+  const apiKey = env.GOOGLE_PLACES_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
       { error: "places unavailable" },
@@ -66,20 +67,24 @@ export async function POST(request: Request) {
   }
 
   const session = await issuePlacesSession({
-    secret: apiKey,
+    // Prefer the dedicated signing secret; fall back to the API key so
+    // existing deploys keep working until PLACES_SESSION_SECRET is set.
+    secret: env.PLACES_SESSION_SECRET ?? apiKey,
     clientIp: getClientIp(request),
     userAgent: request.headers.get("user-agent") ?? "",
   });
   const expires = new Date(session.expiresAt);
   const response = new NextResponse(null, { status: 204, headers: noStoreHeaders() });
 
+  // Secure everywhere except local dev, where the site runs over plain http.
+  const secureCookies = process.env.NODE_ENV !== "development";
   response.cookies.set({
     name: PLACES_SESSION_COOKIE,
     value: session.token,
     expires,
     httpOnly: true,
     sameSite: "lax",
-    secure: !process.env.NODE_ENV || process.env.NODE_ENV === "production",
+    secure: secureCookies,
     path: "/",
   });
   response.cookies.set({
@@ -88,7 +93,7 @@ export async function POST(request: Request) {
     expires,
     httpOnly: false,
     sameSite: "lax",
-    secure: !process.env.NODE_ENV || process.env.NODE_ENV === "production",
+    secure: secureCookies,
     path: "/",
   });
 
