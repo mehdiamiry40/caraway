@@ -27,7 +27,7 @@ export const post: RawBlogPostEntry = {
 
     "## The Queensland paperwork",
 
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Removing the plates before the car leaves and lodging the disposal notice protects you from any tolls, fines, or SPER demands that could otherwise land back on your name — worth remembering in Springwood, where the Logan and Gateway motorway toll points are part of the daily commute.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Lodging the right transfer or disposal paperwork promptly — and following the current [TMR plate rules](https://www.qld.gov.au/transport/registration/cancel) for your sale type — is what protects you from tolls, fines, or SPER demands landing back on your name — worth remembering in Springwood, where the Logan and Gateway motorway toll points are part of the daily commute.",
 
     "## Why older cars in Springwood are hard to sell privately",
 

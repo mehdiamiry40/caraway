@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     title: "About Caraway — Brisbane Cash for Cars Team",
     description:
       "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
-    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "About Caraway — Brisbane Cash for Cars Team",
     description:
       "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
               "@type": "ImageObject",
               url: `${SITE_URL}/images/tow-truck-hero.webp`,
               width: 1200,
-              height: 800,
+              height: 630,
             },
           },
         ]}

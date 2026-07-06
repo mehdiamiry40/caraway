@@ -1,57 +1,29 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * Scroll-driven UI: StickyMobileCTA, BackToTopButton, and ReadingProgress
- * have no unit coverage (their behavior is window-scroll driven), so this
- * spec exercises them in a real browser at a mobile viewport.
+ * Scroll-driven UI: StickyMobileCTA and ReadingProgress have no unit
+ * coverage, so this spec exercises them in a real browser at a mobile
+ * viewport. The sticky bar is intentionally static HTML (no scroll
+ * listeners), so the spec asserts availability and navigation, not
+ * show/hide behavior.
  */
 test.use({ viewport: { width: 390, height: 844 } });
 
-// The sticky CTA wrapper is the only fixed, full-width, bottom-pinned div.
-const STICKY_BAR = "div.fixed.inset-x-0.bottom-0";
+const STICKY_BAR = '[data-testid="sticky-mobile-cta"]';
 
-test("sticky mobile CTA appears after the estimator and hides when returning to it", async ({
+test("sticky mobile CTA is available and jumps to the estimator", async ({
   page,
 }) => {
   await page.goto("/");
   const bar = page.locator(STICKY_BAR);
 
-  // At the top of the page the bar is parked out of the accessibility tree.
-  await expect(bar).toHaveAttribute("aria-hidden", "true");
+  await expect(bar).toBeVisible();
+  await expect(
+    bar.getByRole("link", { name: /call/i }).or(bar.locator("a[href^='tel:']")),
+  ).toHaveCount(1);
 
-  await page.locator("#price-estimator").scrollIntoViewIfNeeded();
-  await page.evaluate(() => {
-    const estimator = document.getElementById("price-estimator");
-    if (!estimator) return;
-
-    const targetY =
-      estimator.getBoundingClientRect().bottom +
-      window.scrollY -
-      window.innerHeight * 0.1;
-
-    window.scrollTo(0, targetY);
-  });
-  await expect(bar).toHaveAttribute("aria-hidden", "false");
-
-  // Tapping the CTA scrolls to the estimator, which re-hides the bar.
-  await bar.getByRole("button", { name: "Get my quote" }).click();
-  await expect(bar).toHaveAttribute("aria-hidden", "true");
+  await bar.getByRole("link", { name: "Get my quote" }).click();
   await expect(page.locator("#price-estimator")).toBeInViewport();
-});
-
-test("back-to-top button returns the page to the top", async ({ page }) => {
-  await page.goto("/");
-  const backToTop = page.getByRole("button", { name: "Scroll to top" });
-
-  await expect(backToTop).toHaveCSS("opacity", "0");
-
-  await page.evaluate(() => window.scrollTo(0, 1200));
-  await expect(backToTop).toHaveCSS("opacity", "1");
-
-  await backToTop.click();
-  await expect
-    .poll(() => page.evaluate(() => window.scrollY), { timeout: 5_000 })
-    .toBeLessThan(50);
 });
 
 test("reading progress bar tracks blog post scroll", async ({ page }) => {

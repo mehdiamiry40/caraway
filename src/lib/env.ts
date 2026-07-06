@@ -22,6 +22,11 @@ const envSchema = z.object({
   // Google Places proxy — used by /api/places/autocomplete to return
   // address suggestions without exposing the API key to the client.
   GOOGLE_PLACES_API_KEY: z.optional(z.string().check(z.minLength(1))),
+  // Dedicated HMAC secret for Places session tokens. Falls back to the
+  // API key when unset (back-compat) — prefer setting it so token signing
+  // is decoupled from API-key rotation and the key never doubles as a
+  // crypto secret.
+  PLACES_SESSION_SECRET: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
   NEXT_PUBLIC_NOINDEX: z.optional(z.enum(["1"])),
   VERCEL_ENV: z.optional(z.enum(["production", "preview", "development"])),

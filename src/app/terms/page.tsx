@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     title: "Terms of Service | Caraway",
     description:
       "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
-    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Terms of Service | Caraway",
     description:
       "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

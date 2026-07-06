@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     title: "Accessibility | Caraway",
     description:
       "Caraway's commitment to making our website accessible to everyone — WCAG 2.1 AA, keyboard navigation, and screen-reader support.",
-    images: [{ url: "/images/tow-truck-hero.webp", width: 1200, height: 800, alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Accessibility | Caraway",
     description:
       "Caraway's commitment to making our website accessible to everyone — WCAG 2.1 AA, keyboard navigation, and screen-reader support.",
-    images: [{ url: "/images/tow-truck-hero.webp", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

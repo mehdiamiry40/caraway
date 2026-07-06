@@ -34,7 +34,7 @@ export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-06-01",
+  privacyLastUpdated: "2026-06-11",
   termsLastUpdated: "2026-06-01",
 } as const;
 
@@ -72,7 +72,7 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
 export const PROMISE_POINTS = [
   "Fair offer based on details",
   "Same- or next-day pickup",
-  "Free towing always",
+  "Free towing included",
   "Cars assessed as-is",
   "All makes & models",
   "7 days a week",

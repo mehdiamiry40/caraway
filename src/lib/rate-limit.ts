@@ -1,7 +1,7 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-export type RateLimitScope = "forms" | "places";
+export type RateLimitScope = "forms" | "places" | "places-global";
 
 export interface RateLimitResult {
   success: boolean;
@@ -15,6 +15,10 @@ const WINDOW_MS = 60_000;
 const POLICIES: Record<RateLimitScope, { limit: number; prefix: string }> = {
   forms: { limit: 10, prefix: "caraway:ratelimit:forms" },
   places: { limit: 30, prefix: "caraway:ratelimit:places" },
+  // Site-wide circuit breaker for the Places proxy (identifier "global").
+  // Caps total upstream spend per minute no matter how many IPs an abuser
+  // rotates through; legitimate traffic rarely exceeds a few calls/min.
+  "places-global": { limit: 300, prefix: "caraway:ratelimit:places-global" },
 };
 
 const localBuckets = new Map<
@@ -46,22 +50,18 @@ function getDistributedLimiters(): Record<RateLimitScope, Ratelimit> | null {
     token: process.env.UPSTASH_REDIS_REST_TOKEN!,
   });
 
-  distributedLimiters = {
-    forms: new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(POLICIES.forms.limit, "1 m"),
-      analytics: false,
-      prefix: POLICIES.forms.prefix,
-      timeout: 1_500,
-    }),
-    places: new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(POLICIES.places.limit, "1 m"),
-      analytics: false,
-      prefix: POLICIES.places.prefix,
-      timeout: 1_500,
-    }),
-  };
+  distributedLimiters = Object.fromEntries(
+    (Object.keys(POLICIES) as RateLimitScope[]).map((scope) => [
+      scope,
+      new Ratelimit({
+        redis,
+        limiter: Ratelimit.slidingWindow(POLICIES[scope].limit, "1 m"),
+        analytics: false,
+        prefix: POLICIES[scope].prefix,
+        timeout: 1_500,
+      }),
+    ]),
+  ) as Record<RateLimitScope, Ratelimit>;
 
   return distributedLimiters;
 }

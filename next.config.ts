@@ -170,7 +170,7 @@ const nextConfig: NextConfig = {
     {
       source: "/favicon.svg",
       headers: [
-        { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
+        { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
       ],
     },
   ],

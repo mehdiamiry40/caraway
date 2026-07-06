@@ -10,6 +10,12 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:3100",
     trace: "retain-on-failure",
+    // Sandboxed environments can point at a pre-provisioned Chromium instead
+    // of downloading one (e.g. /opt/pw-browsers/chromium). Unset in normal
+    // CI, where `playwright install` provides the matching browser build.
+    ...(process.env.PW_CHROMIUM_EXECUTABLE
+      ? { launchOptions: { executablePath: process.env.PW_CHROMIUM_EXECUTABLE } }
+      : {}),
   },
   projects: [
     {

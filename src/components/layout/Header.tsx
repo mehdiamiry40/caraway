@@ -4,6 +4,7 @@ import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { HeaderFrame } from "./HeaderFrame";
+import { HeaderNavLinks } from "./HeaderNavLinks";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -73,15 +74,7 @@ export function Header() {
             className="hidden lg:flex items-center gap-0 flex-1 justify-center"
           >
             <ServicesDropdownClient serviceLinks={serviceLinks} />
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-semibold text-primary/85 hover:text-accent transition-colors duration-200 px-3 py-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                {link.label}
-              </Link>
-            ))}
+            <HeaderNavLinks links={navLinks} />
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">

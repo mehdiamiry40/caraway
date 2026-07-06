@@ -12,10 +12,10 @@ const BLOG_AUTHOR = {
 } as const;
 
 const BLOG_IMAGE = {
-  path: "/images/tow-truck-hero.webp",
-  url: `${SITE_URL}/images/tow-truck-hero.webp`,
+  path: "/images/og-card.jpg",
+  url: `${SITE_URL}/images/og-card.jpg`,
   width: 1200,
-  height: 800,
+  height: 630,
   alt: "Caraway cash for cars Brisbane",
 } as const;
 
