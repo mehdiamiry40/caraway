@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "A cash-for-cars service is built around speed and convenience. You describe the vehicle over the phone or through an online form, receive a firm offer, and — if you accept — the buyer arranges free pickup, usually same day or next day across Greater Brisbane. Payment is made in cash or by bank transfer before the car is loaded. Crucially, the offer values the whole vehicle at once: reusable parts, raw steel, aluminium, and recoverable fluids are all priced into a single number. There's no waiting on parts to sell and no separate towing bill eating into your return, which is why the cash-for-cars model often nets more in your pocket for the same car.",
 
-    "![Tow truck collecting a vehicle in Brisbane for a cash-for-cars payment on pickup.](/images/tow-truck-hero.webp 800x800)",
-
     "## Wreckers vs cash for cars: the real cost comparison",
 
     "The headline figure isn't the whole story — the costs around it matter just as much. A wrecking yard might quote $400 for a non-running sedan but expect you to cover towing, which can run $150 to $300 across Brisbane depending on distance from suburbs like Logan, Ipswich, or Caboolture. That same vehicle through a cash-for-cars buyer might be quoted at $500 to $600 with free pickup included, leaving you meaningfully better off once the towing maths is done. For running cars in average condition you can expect roughly $500 to $2,500 either way, while late-model utes and 4WDs such as the Ranger or LandCruiser can fetch $2,000 to $8,000 or more. Non-running or write-off vehicles are typically priced on scrap plus salvageable parts, generally landing between $300 and $1,500 for a standard passenger car.",

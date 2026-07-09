@@ -36,8 +36,6 @@ export const post: RawBlogPostEntry = {
 
       "## Paperwork and pickup in QLD",
 
-      "![Free flatbed pickup across Brisbane — your old 4WD loaded and gone the same or next day.](/images/tow-truck-hero.webp 800x800)",
-
       "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
       "Free pickup typically covers the entire Greater Brisbane footprint: from [Logan](/locations/logan) and Ipswich in the south and west, north to Caboolture and the [North Lakes](/locations/north-lakes) corridor, east across the Bayside, and out to the foothills around The Gap and Kenmore.",

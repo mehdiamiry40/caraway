@@ -23,8 +23,6 @@ export const post: RawBlogPostEntry = {
 
       "Value varies with make, model, year, kilometres, WOVR classification, completeness, location, and which structural or mechanical systems are damaged. Photos and an accurate description help, but a final offer may depend on confirming the VIN, damage, access, and whether key components are present.",
 
-      "![A flatbed tow truck loading an accident-damaged car for same- or next-day pickup across Brisbane.](/images/tow-truck-hero.webp 800x800)",
-
       "## Private sale vs cash for cars",
 
       "A private sale may involve inspections, repair estimates, negotiation, and buyer due diligence. Whatever route you choose, describe known accident, flood, and write-off information accurately and do not make misleading claims about the vehicle's condition. A [cash-for-cars buyer](/cash-for-cars-brisbane) can assess the vehicle as-is, but you still complete the seller-side records that apply.",

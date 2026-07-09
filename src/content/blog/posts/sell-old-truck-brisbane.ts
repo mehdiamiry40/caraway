@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "Trucks and utes command higher cash-for-cars quotes than passenger vehicles of the same era because parts demand from Queensland's large trades sector is consistently strong. A 2005–2012 dual-cab HiLux or Mitsubishi Triton in poor mechanical condition typically draws $1,500–$4,000 from Brisbane buyers. A late-1990s or early-2000s Land Cruiser 80 or 100 Series — even in rough shape — often fetches $1,200–$3,500, driven by steady demand for running gear, axles, interior trim, and body panels. Scrap weight also works in your favour: a full-size dual-cab weighs 1,800–2,200 kg, which puts the base steel value at $320–$570 at current Brisbane scrap rates of $180–$260 per tonne. Most buyers pay well above that because parts value is substantial.",
 
-    "![A tow truck collecting an old ute for cash payment on pickup in Brisbane.](/images/tow-truck-hero.webp 800x800)",
-
     "## Why old trucks hold more end-of-life value than sedans",
 
     "The trades and construction sector in Southeast Queensland runs largely on dual-cabs and working utes, and demand for second-hand components is high. When a tradie's HiLux throws a rod at 400,000 km, they need a good second-hand engine fast — not a new one. A truck with a blown motor, cracked chassis rail, or failed diff isn't just scrap steel; it's a parts vehicle with genuine demand. This is why cash-for-cars buyers in Brisbane pay a premium for old trucks: the components hold value even when the vehicle has stopped being useful as a whole. The same logic applies to Land Cruiser running gear, Triton diffs, and Ranger electrical components — all of which trade actively through Queensland dismantlers.",

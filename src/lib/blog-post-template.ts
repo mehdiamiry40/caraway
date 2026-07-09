@@ -11,14 +11,6 @@ const BLOG_AUTHOR = {
   url: SITE_URL,
 } as const;
 
-const BLOG_IMAGE = {
-  path: "/images/og-card.jpg",
-  url: `${SITE_URL}/images/og-card.jpg`,
-  width: 1200,
-  height: 630,
-  alt: "Caraway cash for cars Brisbane",
-} as const;
-
 export const RETIRED_BLOG_SLUGS = [
   "cash-for-cars-gold-coast",
   "cash-for-cars-ipswich-brisbane",
@@ -37,6 +29,10 @@ export function buildMissingBlogPostMetadata(): Metadata {
     openGraph: null,
     twitter: null,
   };
+}
+
+function absoluteImageUrl(src: string): string {
+  return src.startsWith("https://") ? src : `${SITE_URL}${src}`;
 }
 
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
@@ -63,10 +59,10 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       siteName: "Caraway",
       images: [
         {
-          url: BLOG_IMAGE.path,
-          width: BLOG_IMAGE.width,
-          height: BLOG_IMAGE.height,
-          alt: BLOG_IMAGE.alt,
+          url: post.image.src,
+          width: post.image.width,
+          height: post.image.height,
+          alt: post.image.alt,
         },
       ],
     },
@@ -76,10 +72,10 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       description: post.metaDescription,
       images: [
         {
-          url: BLOG_IMAGE.path,
-          width: BLOG_IMAGE.width,
-          height: BLOG_IMAGE.height,
-          alt: BLOG_IMAGE.alt,
+          url: post.image.src,
+          width: post.image.width,
+          height: post.image.height,
+          alt: post.image.alt,
         },
       ],
     },
@@ -127,7 +123,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     description: post.metaDescription,
     datePublished: post.date,
     dateModified: post.updatedAt,
-    image: BLOG_IMAGE.url,
+    image: absoluteImageUrl(post.image.src),
     wordCount,
     author: authorSchema,
     publisher: {
