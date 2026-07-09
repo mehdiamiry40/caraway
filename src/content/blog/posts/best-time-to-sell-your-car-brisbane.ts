@@ -25,8 +25,6 @@ export const post: RawBlogPostEntry = {
 
     "The end of the financial year on 30 June is well known as a dealership sales event, but it also affects the private market in a useful way. Sole traders, small business owners, and tradespeople who use vehicles as business assets often look to buy or replace work vehicles before 30 June to capture the tax deduction in the current financial year. This drives up demand for utes, vans, and commercial-style 4WDs in May and June. If you're selling a dual-cab ute, a van, or a large SUV that could plausibly serve as a work vehicle, listing it in late May gives you access to this motivated buyer segment before they disappear from the market on 1 July.",
 
-    "![A ute parked in a Brisbane driveway ready for sale.](/images/tow-truck-hero.webp 800x800)",
-
     "## The depreciation argument: don't wait too long",
 
     "Beyond seasonality, the most important timing factor for most sellers is depreciation — particularly the drop that happens when a vehicle crosses certain age or kilometre thresholds. In the Brisbane used car market, vehicles that cross the 150,000 km or 200,000 km mark see a meaningful step-down in private sale value, sometimes $1,000–$3,000 in a single transaction. The same step-down applies when a car turns 10 years old and loses access to competitive third-party finance for buyers — a factor that shrinks the buyer pool considerably. If your car is approaching either of those thresholds, selling before it crosses them typically returns more money than waiting until after.",

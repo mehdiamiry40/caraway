@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "Cash for cars pricing depends on three main factors: the vehicle's make and year, its current condition, and parts demand in the local dismantling market. A running 2010–2018 sedan or hatchback in average condition typically draws $500–$2,500. A late-model ute or SUV — popular models like the Hilux, Ranger, or Pajero — can fetch $2,000–$8,000 or more depending on kilometres and damage. Non-running vehicles, stripped parts cars, or hail-damaged models are priced on scrap value plus reusable components, which generally comes to $300–$1,500 for a standard passenger car. Beenleigh's proximity to Logan and the southern industrial corridor means parts demand is consistently solid, which keeps offers competitive. Every quote is firm: you know the number before you agree to anything.",
 
-    "![Cash for cars pickup in Beenleigh — tow truck collecting a vehicle for cash payment on pickup.](/images/tow-truck-hero.webp 800x800)",
-
     "## What types of vehicles we buy",
 
     "There's no vehicle that's automatically off the table. We buy sedans, wagons, hatchbacks, utes, vans, 4WDs, and light commercial vehicles across the Beenleigh area. Condition is not a barrier: running and roadworthy cars, unregistered vehicles that have been sitting for months, cars with mechanical faults (blown engines, failed transmissions, overheating), accident-damaged and hail-damaged vehicles, flood-affected cars, and insurance write-offs are all accepted. Age is similarly not an issue — we regularly collect vehicles from the late 1990s right through to recent models. If it's in your driveway and you want it gone, there's almost certainly a cash offer available.",

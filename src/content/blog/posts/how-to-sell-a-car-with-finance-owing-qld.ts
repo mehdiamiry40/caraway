@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "Before you do anything else, call your lender and ask for a written payout or settlement figure. It should state the amount, any fees, the date until which it is valid, payment instructions, and the lender's process for discharging its PPSR security interest. These details vary by lender and loan, so use the current written figure rather than a general estimate.",
 
-    "![Selling a financed car in Brisbane — free pickup and prompt settlement.](/images/tow-truck-hero.webp 800x800)",
-
     "## Step 2: Run a PPSR check",
 
     "A PPSR (Personal Property Securities Register) check confirms exactly what's registered against your car. It costs $2 through the government ppsr.gov.au website and takes under five minutes. Run one on your own vehicle so you can see precisely what a buyer will see — the financier's name and the registered security interest. Serious buyers in Brisbane routinely run this check before they hand over a cent, so there's no hiding an encumbrance. Being upfront and showing buyers you've got a clear plan to discharge the finance is what keeps the deal alive.",

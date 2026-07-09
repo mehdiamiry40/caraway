@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "Scrap value is driven largely by the vehicle's weight in steel and the current scrap metal price, which has been tracking between $180 and $260 per tonne in Brisbane in early 2026. A standard Toyota Corolla weighs around 1,200 kg, putting its raw scrap value at roughly $215–$310. In practice, most cash-for-cars buyers pay well above raw scrap because they strip reusable parts first — engines, transmissions, doors, glass, seats, and electronics all have secondary market value. A 2005–2012 Japanese sedan in junk condition typically draws $400–$1,200 in Brisbane. A large SUV or ute of the same vintage can reach $800–$2,500, depending on parts demand. Vehicles with an intact running engine, even one that needs work, generally command the upper end of that range.",
 
-    "![A junk car being loaded onto a tow truck for a cash-for-cars pickup in Brisbane.](/images/tow-truck-hero.webp 800x800)",
-
     "## Why private sale rarely works for junk cars",
 
     "Listing a junk car on Gumtree or Facebook Marketplace is technically possible, but the practical reality is discouraging. The buyer pool for genuinely junked vehicles is thin — mostly backyard mechanics, panel beaters after a parts car, or exporters targeting Pacific island markets. Negotiations drag, offers are low and unpredictable, and buyers who plan to fix and drive the vehicle regularly back out once they see the actual condition in person. Queensland consumer law requires sellers to disclose known defects, and a PPSR check costs just $2 — experienced buyers run one before showing up. For a vehicle that won't start or can't pass a roadworthy certificate, the private sale path rarely justifies the weeks of effort involved.",

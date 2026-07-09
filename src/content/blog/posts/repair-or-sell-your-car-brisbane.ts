@@ -19,8 +19,6 @@ export const post: RawBlogPostEntry = {
 
     "A useful guideline is the 50 per cent rule: if a single repair costs more than half the car's current value, selling usually makes more sense than fixing. A $1,200 timing-belt job on a car worth $8,000 is easy to justify. The same $1,200 on a car worth $2,000 rarely is — and that's before you factor in the next thing likely to fail. Older vehicles tend to need repairs in clusters: once the water pump goes, the radiator and hoses are often not far behind. Add up not just the quote in front of you, but the realistic cost of the next twelve months of ownership.",
 
-    "![Weighing up whether to repair or sell a car in Brisbane — a mechanic inspecting an older vehicle.](/images/tow-truck-hero.webp 800x800)",
-
     "## Roadworthy certificates and Queensland rego",
 
     "In Queensland, a safety certificate (roadworthy) is required to sell most registered light vehicles privately, and it's issued by an Approved Inspection Station. If your car has failed a roadworthy on items like ball joints, brakes, tyres, or rust, the cost of getting it to pass can run from a few hundred dollars to well over a thousand. For a late-model car, that's money worth spending. For an older vehicle already near the end of its life, a fresh list of roadworthy repairs is often the moment the sums stop adding up — and selling to a cash-for-cars buyer, which follows a different pathway, becomes the more sensible route.",
