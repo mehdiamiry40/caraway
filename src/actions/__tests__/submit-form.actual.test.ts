@@ -11,7 +11,6 @@ const baseValid = {
   condition: "running" as const,
   address: "12 George St, Brisbane",
   honeypot: "",
-  marketingConsent: false,
 };
 
 let warnSpy: ReturnType<typeof vi.spyOn>;

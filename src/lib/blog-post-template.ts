@@ -26,6 +26,25 @@ export const RETIRED_BLOG_SLUGS = [
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // Single-suburb posts consolidated into /locations/{suburb} pages (July
+  // 2026) so each suburb has one canonical URL instead of a near-duplicate
+  // blog/location pair — see legacyIndexingRedirects in next.config.ts.
+  "cash-for-cars-beenleigh",
+  "cash-for-cars-browns-plains",
+  "cash-for-cars-caboolture-brisbane",
+  "cash-for-cars-capalaba",
+  "cash-for-cars-carindale",
+  "cash-for-cars-chermside",
+  "cash-for-cars-indooroopilly",
+  "cash-for-cars-ipswich",
+  "cash-for-cars-logan",
+  "cash-for-cars-moorooka",
+  "cash-for-cars-mount-gravatt",
+  "cash-for-cars-north-lakes",
+  "cash-for-cars-redcliffe",
+  "cash-for-cars-springwood",
+  "cash-for-cars-sunnybank",
+  "cash-for-cars-wynnum",
 ] as const;
 
 const retiredBlogSlugSet = new Set<string>(RETIRED_BLOG_SLUGS);

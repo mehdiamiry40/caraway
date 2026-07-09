@@ -6,6 +6,7 @@ import {
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
+import { blogTotalPages } from "@/lib/blog-pagination";
 import { SITE_URL, LEGAL_DATE_ISO, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -114,6 +115,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    // Paginated blog index pages (page 1 is /blog itself).
+    ...Array.from({ length: Math.max(0, blogTotalPages() - 1) }, (_, i) => ({
+      url: `${SITE_URL}/blog/page/${i + 2}`,
+      lastModified: latestBlogDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.4,
+    })),
     {
       url: `${SITE_URL}/privacy`,
       lastModified: LEGAL_DATE_ISO.privacyLastUpdated,

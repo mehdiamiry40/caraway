@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
 import { JsonLd } from "@/components/JsonLd";
+import { SiteAnalytics } from "@/components/SiteAnalytics";
 import {
   localBusinessSchema,
   organizationSchema,
@@ -121,6 +122,7 @@ export default function RootLayout({
         <div aria-hidden="true" className="site-frame" />
         {children}
         <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
+        <SiteAnalytics />
       </body>
     </html>
   );

@@ -25,7 +25,6 @@ const baseValid: QuoteFormValues = {
   condition: "running" as const,
   address: "12 George St, Brisbane",
   honeypot: "" as const,
-  marketingConsent: false,
 };
 
 let warnSpy: ReturnType<typeof vi.spyOn>;

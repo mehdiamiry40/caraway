@@ -43,6 +43,33 @@ describe("estimatePrice", () => {
     expect(toyota.quote).toBeGreaterThan(bmw.quote);
   });
 
+  it("matches makes on whole words, not substrings (Mercedes AMG stays low tier)", () => {
+    // "amg" contains "mg" (a medium-tier make); a substring match would give
+    // Mercedes AMG the medium multiplier instead of low.
+    const amg = estimatePrice({
+      make: "Mercedes",
+      model: "AMG C63",
+      year: 2018,
+      condition: "running",
+    });
+    const bmw = estimatePrice({
+      make: "BMW",
+      model: "3 Series",
+      year: 2018,
+      condition: "running",
+    });
+    expect(amg.quote).toBe(bmw.quote);
+
+    // A genuine MG still matches its own tier as a whole word.
+    const mg = estimatePrice({
+      make: "MG",
+      model: "3",
+      year: 2018,
+      condition: "running",
+    });
+    expect(mg.quote).toBeGreaterThan(amg.quote);
+  });
+
   it("ranks newer cars above older cars for the same make and condition", () => {
     const newer = estimatePrice({
       make: "Mazda",

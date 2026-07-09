@@ -36,6 +36,74 @@ export const legacyIndexingRedirects = [
     source: "/blog/cash-for-cars-gold-coast",
     destination: "/cash-for-cars-brisbane",
   },
+  // July 2026 consolidation: single-suburb blog posts duplicated the
+  // /locations/{suburb} landing pages for the same suburbs. Each post now
+  // permanently redirects to its location page so one canonical URL
+  // accumulates the ranking signals.
+  {
+    source: "/blog/cash-for-cars-beenleigh",
+    destination: "/locations/beenleigh",
+  },
+  {
+    source: "/blog/cash-for-cars-browns-plains",
+    destination: "/locations/browns-plains",
+  },
+  {
+    source: "/blog/cash-for-cars-caboolture-brisbane",
+    destination: "/locations/caboolture",
+  },
+  {
+    source: "/blog/cash-for-cars-capalaba",
+    destination: "/locations/capalaba",
+  },
+  {
+    source: "/blog/cash-for-cars-carindale",
+    destination: "/locations/carindale",
+  },
+  {
+    source: "/blog/cash-for-cars-chermside",
+    destination: "/locations/chermside",
+  },
+  {
+    source: "/blog/cash-for-cars-indooroopilly",
+    destination: "/locations/indooroopilly",
+  },
+  {
+    source: "/blog/cash-for-cars-ipswich",
+    destination: "/locations/ipswich",
+  },
+  {
+    source: "/blog/cash-for-cars-logan",
+    destination: "/locations/logan",
+  },
+  {
+    source: "/blog/cash-for-cars-moorooka",
+    destination: "/locations/moorooka",
+  },
+  {
+    source: "/blog/cash-for-cars-mount-gravatt",
+    destination: "/locations/mount-gravatt",
+  },
+  {
+    source: "/blog/cash-for-cars-north-lakes",
+    destination: "/locations/north-lakes",
+  },
+  {
+    source: "/blog/cash-for-cars-redcliffe",
+    destination: "/locations/redcliffe",
+  },
+  {
+    source: "/blog/cash-for-cars-springwood",
+    destination: "/locations/springwood",
+  },
+  {
+    source: "/blog/cash-for-cars-sunnybank",
+    destination: "/locations/sunnybank",
+  },
+  {
+    source: "/blog/cash-for-cars-wynnum",
+    destination: "/locations/wynnum",
+  },
 ] as const;
 
 export const legacyRenderedRewrites = [
@@ -90,6 +158,12 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   redirects: async () => [
+    // Page 1 of the paginated blog index is /blog itself.
+    {
+      source: "/blog/page/1",
+      destination: "/blog",
+      permanent: true,
+    },
     // Force canonical host: www.caraway.au → caraway.au with a permanent 308.
     // Vercel now uses the apex domain as the production target, so keeping the
     // old app-level apex → www redirect creates a redirect loop.
@@ -133,8 +207,11 @@ const nextConfig: NextConfig = {
           // and frame-ancestors is relaxed for the Replit preview pane.
           value: [
             "default-src 'self'",
+            // In dev, Vercel Web Analytics loads its debug script from
+            // va.vercel-scripts.com; in production it is served same-origin
+            // from /_vercel/insights and needs no extra CSP source.
             isDev
-              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
               : "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",

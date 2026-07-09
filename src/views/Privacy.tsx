@@ -100,7 +100,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
-              <li><strong>Vercel</strong> — website hosting and delivery infrastructure.</li>
+              <li><strong>Vercel</strong> — website hosting and delivery infrastructure, plus Vercel Web Analytics: cookieless, aggregated page-view and interaction counts (for example, how many visitors reach each step of the quote tool). It does not use cookies or track you across other sites, and we do not send it your name, phone, email, or address.</li>
               <li><strong>Upstash</strong> — managed Redis we use for rate limiting on our forms and the address-autocomplete service. Your IP address is processed and stored briefly as a rate-limit counter to prevent abuse; no form contents or personal details are stored there.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
@@ -135,7 +135,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags or third-party analytics scripts.
+              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags, and our only analytics is cookieless Vercel Web Analytics (see &ldquo;Service providers we use&rdquo; above) — it sets no cookies and does not identify you.
             </p>
           </section>
 

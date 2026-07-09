@@ -90,7 +90,6 @@ export const quoteFormSchema = z.object({
   ),
   quoteAmount: z.optional(z.int().check(z.positive(), z.lte(1000000))),
   honeypot: honeypotField,
-  marketingConsent: z._default(z.optional(z.boolean()), false),
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;

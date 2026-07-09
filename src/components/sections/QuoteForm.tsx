@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   quoteFormSchema,
   type QuoteFormInput,
@@ -53,7 +52,6 @@ export function QuoteForm() {
     defaultValues: {
       address: "",
       honeypot: "",
-      marketingConsent: false,
     },
   });
 
@@ -131,7 +129,7 @@ export function QuoteForm() {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
+                    Our team will call or text you within 1 business day — please keep an eye on your phone.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
@@ -366,17 +364,6 @@ export function QuoteForm() {
                   <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
                     <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
                     <span>Free quote. Your details are used to respond to this enquiry.</span>
-                  </div>
-
-                  <div className="flex items-start gap-3 pt-3 sm:pt-4">
-                    <Checkbox
-                      id="quote-marketing-consent"
-                      className="mt-0.5"
-                      {...register("marketingConsent")}
-                    />
-                    <label htmlFor="quote-marketing-consent" className="block text-xs text-muted-foreground leading-relaxed cursor-pointer py-1 -my-1">
-                      I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
-                    </label>
                   </div>
 
                   {errorMessage && (

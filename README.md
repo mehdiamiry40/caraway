@@ -14,6 +14,10 @@ Built with Next.js 16 (App Router) and deployed on Vercel.
 - **Linting:** ESLint 9 (`eslint-config-next`)
 - **Hosting:** Vercel (auto-deploy from `main`, PR previews)
 - **Monitoring:** first-party health checks and Vercel deployment logs
+- **Analytics:** Vercel Web Analytics (cookieless, same-origin). Enable
+  **Web Analytics** in the Vercel project dashboard for data to flow;
+  custom funnel events (`trackEvent` in `src/lib/analytics.ts`) require a
+  Vercel plan with custom-event support.
 
 ## Prerequisites
 

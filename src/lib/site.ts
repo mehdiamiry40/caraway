@@ -34,7 +34,7 @@ export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-06-11",
+  privacyLastUpdated: "2026-07-09",
   termsLastUpdated: "2026-06-01",
 } as const;
 
@@ -67,7 +67,7 @@ export const LEGAL_DATES = {
 /** The date the current content was deployed / last structurally changed.
  *  Shared by sitemap and JSON-LD so `dateModified` stays stable across
  *  builds instead of drifting to "today" on every deploy. */
-export const CONTENT_DEPLOY_DATE = "2026-04-15";
+export const CONTENT_DEPLOY_DATE = "2026-07-08";
 
 export const PROMISE_POINTS = [
   "Fair offer based on details",

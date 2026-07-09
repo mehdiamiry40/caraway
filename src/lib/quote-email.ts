@@ -49,7 +49,6 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
       ? ([["Estimated quote", quoteAmountLabel]] as Array<[string, string]>)
       : []),
     ["Address", data.address || "—"],
-    ["Marketing consent", data.marketingConsent ? "opted in" : "no"],
   ];
 
   const text = [

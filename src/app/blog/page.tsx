@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { blogPosts } from "@/data/blog-posts";
+import { blogPagePosts, blogTotalPages } from "@/lib/blog-pagination";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -101,7 +102,7 @@ export default function BlogPage() {
           },
         ]}
       />
-      <Blog />
+      <Blog posts={blogPagePosts(1)} page={1} totalPages={blogTotalPages()} />
     </>
   );
 }

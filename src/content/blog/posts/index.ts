@@ -1,23 +1,9 @@
 import { post as postRepairOrSell } from "./repair-or-sell-your-car-brisbane";
-import { post as postCarindale } from "./cash-for-cars-carindale";
 import { post as postSuv } from "./sell-my-suv-brisbane";
-import { post as postMoorooka } from "./cash-for-cars-moorooka";
-import { post as postIndooroopilly } from "./cash-for-cars-indooroopilly";
-import { post as postSunnybank } from "./cash-for-cars-sunnybank";
-import { post as postMountGravatt } from "./cash-for-cars-mount-gravatt";
-import { post as postBrownsPlains } from "./cash-for-cars-browns-plains";
-import { post as postChermside } from "./cash-for-cars-chermside";
 import { post as postCarWorth } from "./how-much-is-my-car-worth-brisbane";
-import { post as postSpringwood } from "./cash-for-cars-springwood";
-import { post as postNorthLakes } from "./cash-for-cars-north-lakes";
 import { post as postHybridEv } from "./sell-hybrid-or-electric-car-brisbane";
 import { post as postDeceasedEstate } from "./sell-deceased-estate-car-qld";
-import { post as postCapalaba } from "./cash-for-cars-capalaba";
 import { post as postNonRunning } from "./sell-non-running-car-brisbane";
-import { post as postWynnum } from "./cash-for-cars-wynnum";
-import { post as postRedcliffe } from "./cash-for-cars-redcliffe";
-import { post as postIpswich } from "./cash-for-cars-ipswich";
-import { post as postLogan } from "./cash-for-cars-logan";
 import { post as postFreeCarRemoval } from "./free-car-removal-brisbane";
 import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
 import { post as postUte } from "./sell-my-ute-brisbane";
@@ -41,7 +27,6 @@ import { post as postHighIntent2 } from "./cancel-rego-after-selling-car-qld";
 import { post as postHighIntent3 } from "./sell-car-not-in-my-name-qld";
 import { post as postHighIntent4 } from "./number-plates-when-selling-car-qld";
 import { post as postHighIntent5 } from "./cash-for-cars-vs-private-sale";
-import { post as postNewest } from "./cash-for-cars-beenleigh";
 import { post as postLatest } from "./cash-for-cars-redlands";
 import { post as postNew } from "./sell-junk-car-brisbane";
 import { post as post0 } from "./cash-for-cars-moreton-bay";
@@ -55,7 +40,6 @@ import { post as post7 } from "./wovr-written-off-vehicle-register-qld-guide";
 import { post as post8 } from "./scrap-metal-prices-brisbane-2026";
 import { post as post9 } from "./how-to-cancel-car-rego-qld";
 import { post as post10 } from "./how-to-sell-a-car-without-rego-brisbane";
-import { post as post15 } from "./cash-for-cars-caboolture-brisbane";
 import { post as post18 } from "./how-to-transfer-car-ownership-qld";
 import { post as post19 } from "./how-much-is-my-car-worth-for-scrap-brisbane";
 import { post as post20 } from "./how-to-sell-your-car-for-cash-brisbane";
@@ -63,27 +47,17 @@ import { post as post21 } from "./what-happens-to-your-car-after-selling";
 import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
+// NOTE: single-suburb "cash for cars {suburb}" posts were consolidated into
+// their /locations/{suburb} pages in July 2026 (see legacyIndexingRedirects in
+// next.config.ts and RETIRED_BLOG_SLUGS). Only regional posts without a
+// matching location page (Redlands, Moreton Bay) remain as blog articles.
 export const rawBlogPosts = [
   postRepairOrSell,
-  postCarindale,
   postSuv,
-  postMoorooka,
-  postIndooroopilly,
-  postSunnybank,
-  postMountGravatt,
-  postBrownsPlains,
-  postChermside,
   postCarWorth,
-  postSpringwood,
-  postNorthLakes,
   postHybridEv,
   postDeceasedEstate,
-  postCapalaba,
   postNonRunning,
-  postWynnum,
-  postRedcliffe,
-  postIpswich,
-  postLogan,
   postFreeCarRemoval,
   postWreckersVs,
   postUte,
@@ -107,7 +81,6 @@ export const rawBlogPosts = [
   postHighIntent3,
   postHighIntent4,
   postHighIntent5,
-  postNewest,
   postLatest,
   postNew,
   post0,
@@ -121,7 +94,6 @@ export const rawBlogPosts = [
   post8,
   post9,
   post10,
-  post15,
   post18,
   post19,
   post20,

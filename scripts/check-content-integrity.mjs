@@ -12,6 +12,24 @@ const retiredBlogSlugs = new Set([
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // Single-suburb posts consolidated into /locations/{suburb} pages
+  // (July 2026) — see legacyIndexingRedirects in next.config.ts.
+  "cash-for-cars-beenleigh",
+  "cash-for-cars-browns-plains",
+  "cash-for-cars-caboolture-brisbane",
+  "cash-for-cars-capalaba",
+  "cash-for-cars-carindale",
+  "cash-for-cars-chermside",
+  "cash-for-cars-indooroopilly",
+  "cash-for-cars-ipswich",
+  "cash-for-cars-logan",
+  "cash-for-cars-moorooka",
+  "cash-for-cars-mount-gravatt",
+  "cash-for-cars-north-lakes",
+  "cash-for-cars-redcliffe",
+  "cash-for-cars-springwood",
+  "cash-for-cars-sunnybank",
+  "cash-for-cars-wynnum",
 ]);
 
 const prohibitedClaims = [
@@ -74,7 +92,6 @@ const prohibitedClaims = [
 
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
-  "cash-for-cars-logan.ts",
   "how-to-cancel-car-rego-qld.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",
   "how-to-transfer-car-ownership-qld.ts",

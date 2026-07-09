@@ -58,8 +58,12 @@ const PRICE_TABLE = {
 
 function getMakeTier(make: string): MakeTier {
   const lower = make.toLowerCase().trim();
+  // Match whole words only — a bare substring check lets short makes ("mg")
+  // fire inside longer words ("Mercedes AMG") and mis-tier the vehicle.
+  const hasMake = (m: string) =>
+    new RegExp(`(?:^|[^a-z])${m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:[^a-z]|$)`).test(lower);
   for (const [tier, makes] of Object.entries(MAKE_TIERS)) {
-    if (makes.some((m) => lower.includes(m))) return tier as MakeTier;
+    if (makes.some(hasMake)) return tier as MakeTier;
   }
   return "medium";
 }

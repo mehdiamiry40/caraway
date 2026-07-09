@@ -81,10 +81,12 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Exclude static assets and API routes. Server action POSTs to page routes
-// (including "/") still match, so the rate limit and origin check apply.
+// Exclude static assets, API routes, and Vercel platform endpoints (analytics
+// beacons POST to /_vercel/insights and must not consume the forms rate
+// limit). Server action POSTs to page routes (including "/") still match, so
+// the rate limit and origin check apply.
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|_next/data|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
+    "/((?!_next/static|_next/image|_next/data|_vercel/|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
   ],
 };

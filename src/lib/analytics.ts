@@ -1,3 +1,5 @@
+import { track } from "@vercel/analytics";
+
 type EventName =
   | "cta_click"
   | "estimator_started"
@@ -21,7 +23,27 @@ type EventName =
 
 type AllowedValue = string | number | boolean | null;
 
+/** Event names that static markup may request via `data-track-event`.
+ *  Kept as an allowlist so arbitrary DOM content can't mint event names. */
+const DATA_ATTRIBUTE_EVENTS = new Set<EventName>([
+  "cta_click",
+  "hero_cta_click",
+  "google_business_click",
+  "authority_link_click",
+  "internal_link_click",
+]);
+
+export function isDataAttributeEvent(name: string): name is EventName {
+  return DATA_ATTRIBUTE_EVENTS.has(name as EventName);
+}
+
+/** Send a conversion-funnel event to Vercel Web Analytics.
+ *  Must never throw — analytics failures cannot break the UI. */
 export function trackEvent(name: EventName, props?: Record<string, AllowedValue>) {
-  void name;
-  void props;
+  if (typeof window === "undefined") return;
+  try {
+    track(name, props);
+  } catch {
+    // Swallow: an ad blocker or unloaded script is not an app error.
+  }
 }

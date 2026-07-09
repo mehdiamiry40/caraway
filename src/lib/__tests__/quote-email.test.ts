@@ -11,7 +11,6 @@ const baseValid: QuoteFormValues = {
   condition: "running",
   address: "",
   honeypot: "",
-  marketingConsent: false,
 };
 
 describe("buildQuoteEmailContent", () => {
@@ -24,7 +23,6 @@ describe("buildQuoteEmailContent", () => {
     const { text } = buildQuoteEmailContent({
       ...baseValid,
       address: "12 Example St, Brisbane",
-      marketingConsent: true,
     });
     expect(text).toContain("Jane Doe");
     expect(text).toContain("0412345678");
@@ -33,7 +31,6 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toContain("2015");
     expect(text).toContain("Running");
     expect(text).toContain("12 Example St, Brisbane");
-    expect(text).toContain("opted in");
   });
 
   it("renders an em dash for empty address", () => {
@@ -53,9 +50,9 @@ describe("buildQuoteEmailContent", () => {
     expect(html).toContain("Toy&amp;ota");
   });
 
-  it("reports 'no' when marketing consent is not given", () => {
+  it("does not render a marketing-consent row (quote leads are phone-only)", () => {
     const { text } = buildQuoteEmailContent(baseValid);
-    expect(text).toMatch(/Marketing consent\s+no/);
+    expect(text).not.toContain("Marketing consent");
   });
 });
 

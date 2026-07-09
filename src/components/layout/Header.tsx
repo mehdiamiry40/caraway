@@ -40,6 +40,7 @@ export function Header() {
             </span>
             <a
               href={BUSINESS.phoneTel}
+              data-track-location="header"
               className="inline-flex items-center gap-1.5 pl-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
@@ -78,7 +79,12 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <Link href="/#price-estimator" className={buttonVariants({ size: "sm" })}>
+            <Link
+              href="/#price-estimator"
+              data-track-event="cta_click"
+              data-track-location="header"
+              className={buttonVariants({ size: "sm" })}
+            >
               Get my quote
             </Link>
           </div>

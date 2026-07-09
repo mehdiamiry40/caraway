@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { ExternalLink, Mail, Phone } from "lucide-react";
 import { AUTHORITY_OUTBOUND_LINKS } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
@@ -89,6 +89,16 @@ export function Footer() {
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
+              <TrackedOutboundLink
+                href={BUSINESS.googleBusinessUrl}
+                label="Google Business profile"
+                location="footer"
+                trackEvent="google_business_click"
+                className="inline-flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium underline underline-offset-2 decoration-[hsl(var(--on-dark-hi)/0.4)]"
+              >
+                Find us on Google
+                <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
+              </TrackedOutboundLink>
             </div>
           </div>
 
