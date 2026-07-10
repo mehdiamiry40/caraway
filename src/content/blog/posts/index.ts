@@ -1,3 +1,4 @@
+import { post as postHighKm } from "./sell-high-kilometre-car-brisbane";
 import { post as postNundah } from "./cash-for-cars-nundah";
 import { post as postRepairOrSell } from "./repair-or-sell-your-car-brisbane";
 import { post as postCarindale } from "./cash-for-cars-carindale";
@@ -65,6 +66,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postHighKm,
   postNundah,
   postRepairOrSell,
   postCarindale,
