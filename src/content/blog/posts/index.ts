@@ -1,3 +1,4 @@
+import { post as postGoldCoast } from "./cash-for-cars-gold-coast";
 import { post as postToowong } from "./cash-for-cars-toowong";
 import { post as postHighKm } from "./sell-high-kilometre-car-brisbane";
 import { post as postNundah } from "./cash-for-cars-nundah";
@@ -67,6 +68,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postGoldCoast,
   postToowong,
   postHighKm,
   postNundah,
