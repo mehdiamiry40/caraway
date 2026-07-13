@@ -1,3 +1,4 @@
+import { post as postKenmore } from "./cash-for-cars-kenmore";
 import { post as postStafford } from "./cash-for-cars-stafford";
 import { post as postToowong } from "./cash-for-cars-toowong";
 import { post as postHighKm } from "./sell-high-kilometre-car-brisbane";
@@ -68,6 +69,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postKenmore,
   postStafford,
   postToowong,
   postHighKm,
