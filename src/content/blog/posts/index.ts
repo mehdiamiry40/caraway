@@ -1,3 +1,4 @@
+import { post as postToowoomba } from "./cash-for-cars-toowoomba";
 import { post as postSunshineCoast } from "./cash-for-cars-sunshine-coast";
 import { post as postGoldCoast } from "./cash-for-cars-gold-coast";
 import { post as postKenmore } from "./cash-for-cars-kenmore";
@@ -71,6 +72,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postToowoomba,
   postSunshineCoast,
   postGoldCoast,
   postKenmore,
