@@ -45,6 +45,10 @@ export const legacyIndexingRedirects = [
     destination: "/locations/beenleigh",
   },
   {
+    source: "/blog/cash-for-cars-bulimba",
+    destination: "/locations/bulimba",
+  },
+  {
     source: "/blog/cash-for-cars-browns-plains",
     destination: "/locations/browns-plains",
   },

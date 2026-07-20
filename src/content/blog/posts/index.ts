@@ -1,3 +1,6 @@
+import { post as postSandgate } from "./cash-for-cars-sandgate";
+import { post as postStrathpine } from "./cash-for-cars-strathpine";
+import { post as postSellFast } from "./how-to-sell-a-car-fast-brisbane";
 import { post as postHighKm } from "./sell-high-kilometre-car-brisbane";
 import { post as postRepairOrSell } from "./repair-or-sell-your-car-brisbane";
 import { post as postSuv } from "./sell-my-suv-brisbane";
@@ -55,6 +58,9 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postSandgate,
+  postStrathpine,
+  postSellFast,
   postHighKm,
   postRepairOrSell,
   postSuv,

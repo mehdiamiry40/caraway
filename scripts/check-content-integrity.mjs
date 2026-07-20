@@ -15,6 +15,7 @@ const retiredBlogSlugs = new Set([
   // July 2026: suburb posts retired in favour of /locations/{suburb} pages.
   "cash-for-cars-beenleigh",
   "cash-for-cars-browns-plains",
+  "cash-for-cars-bulimba",
   "cash-for-cars-caboolture-brisbane",
   "cash-for-cars-capalaba",
   "cash-for-cars-carindale",
