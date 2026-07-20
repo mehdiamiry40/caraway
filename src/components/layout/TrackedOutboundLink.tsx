@@ -1,8 +1,13 @@
 import type { ReactNode } from "react";
 
-/** External link that opens in a new tab. */
+/**
+ * External link that opens in a new tab. Stays server-rendered; the
+ * layout-level AnalyticsListener reads the data-track-* attributes on click.
+ */
 export function TrackedOutboundLink({
   href,
+  label,
+  location,
   className,
   children,
 }: {
@@ -20,6 +25,8 @@ export function TrackedOutboundLink({
       target="_blank"
       rel="noopener noreferrer"
       className={className}
+      data-track-label={label}
+      data-track-location={location}
     >
       {children}
     </a>

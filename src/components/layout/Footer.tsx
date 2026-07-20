@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Star } from "lucide-react";
 import { AUTHORITY_OUTBOUND_LINKS } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
@@ -58,6 +58,7 @@ export function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Link
               href="/"
+              prefetch={false}
               className="font-display font-bold text-2xl tracking-[0.08em] uppercase inline-block transition-opacity duration-200 hover:opacity-80"
             >
               <span className="text-on-dark-hi">Caraway</span>
@@ -89,6 +90,15 @@ export function Footer() {
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
+              <TrackedOutboundLink
+                href={BUSINESS.googleBusinessUrl}
+                label="Google reviews"
+                location="footer"
+                className="inline-flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium min-h-11"
+              >
+                <Star aria-hidden="true" className="h-4 w-4 text-cta-bright" />
+                <span>Find us on Google — leave a review</span>
+              </TrackedOutboundLink>
             </div>
           </div>
 
@@ -98,7 +108,7 @@ export function Footer() {
             <ul className="space-y-0.5">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
+                  <Link href={link.href} prefetch={false} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -110,7 +120,7 @@ export function Footer() {
             <ul className="space-y-0.5">
               {locationLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
+                  <Link href={link.href} prefetch={false} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -122,7 +132,7 @@ export function Footer() {
             <ul className="space-y-0.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className={navLinkClasses}>{link.label}</Link>
+                  <Link href={link.href} prefetch={false} className={navLinkClasses}>{link.label}</Link>
                 </li>
               ))}
             </ul>
@@ -155,6 +165,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
+                prefetch={false}
                 className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center py-2.5 px-1 -mx-1 touch-manipulation"
               >
                 {link.label}

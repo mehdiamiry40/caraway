@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CarFront, Clock, MapPin, Phone } from "lucide-react";
-import { services } from "@/data/services";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { HeaderFrame } from "./HeaderFrame";
@@ -17,11 +16,22 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+/**
+ * Navigation shows only the six core services — the long-tail SEO pages
+ * (model- and situation-specific) stay reachable from /services and internal
+ * links, but 18 near-identical dropdown entries was choice overload.
+ */
+const coreServiceLinks = [
+  { label: "Cash for Cars", href: "/cash-for-cars-brisbane" },
+  { label: "Car Removal", href: "/car-removal-brisbane" },
+  { label: "Sell My Car", href: "/sell-my-car-brisbane" },
+  { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
+  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
+  { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
+];
+
 export function Header() {
-  const serviceLinks = services.map((s) => ({
-    label: s.title.split("|")[0].trim(),
-    href: `/${s.slug}`,
-  }));
+  const serviceLinks = coreServiceLinks;
 
   return (
     <HeaderFrame>

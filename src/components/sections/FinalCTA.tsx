@@ -25,8 +25,8 @@ export function FinalCTA() {
                 Find out what your car could be worth today.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
-                One form. Firm price. Free pickup across Greater Brisbane. Cash on the spot -
-                usually same- or next-day.
+                One form. A confirmed offer in writing. Free pickup across Greater Brisbane,
+                with payment on the spot — usually same- or next-day.
               </p>
             </div>
 

@@ -1,3 +1,5 @@
+import { track } from "@vercel/analytics";
+
 type EventName =
   | "cta_click"
   | "estimator_started"
@@ -21,7 +23,16 @@ type EventName =
 
 type AllowedValue = string | number | boolean | null;
 
+/**
+ * Custom-event bridge to Vercel Web Analytics. The beacon posts to
+ * `/_vercel/insights/*` on our own origin, so the strict
+ * `connect-src 'self'` CSP in next.config.ts needs no carve-out.
+ * `track` is a safe no-op outside the Vercel runtime (e.g. local dev).
+ */
 export function trackEvent(name: EventName, props?: Record<string, AllowedValue>) {
-  void name;
-  void props;
+  try {
+    track(name, props);
+  } catch {
+    // Analytics must never break the UI.
+  }
 }

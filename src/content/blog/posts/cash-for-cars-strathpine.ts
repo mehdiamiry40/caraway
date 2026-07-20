@@ -40,6 +40,12 @@ export const post: RawBlogPostEntry = {
     `Whether your car is in Strathpine, Bray Park, Lawnton, Petrie, Warner, or Cashmere, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway includes towing when we buy, confirms payment at pickup, and provides a signed receipt and buyer details.`,
   ],
   date: "2026-07-18",
+  image: {
+    src: "/images/blog/cash-for-cars-moreton-bay.webp",
+    alt: "Tow truck collecting a car in the Moreton Bay region",
+    width: 1600,
+    height: 900,
+  },
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
   relatedSuburbs: ["north-lakes", "stafford", "chermside"],

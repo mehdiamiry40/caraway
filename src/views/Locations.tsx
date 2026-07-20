@@ -23,7 +23,7 @@ export default function Locations() {
     <PageShell
       breadcrumbs={breadcrumbs}
       eyebrow="Locations"
-      title="Every corner of Greater Brisbane."
+      title="Cash for cars across Greater Brisbane."
       subtitle={
         <p>
           We buy cars for cash across Greater Brisbane. Find your local area below for suburb-specific service information, or <Link href="/#price-estimator" className="text-primary font-medium link-underline">get a free quote</Link> to get started.
@@ -33,7 +33,7 @@ export default function Locations() {
       <div className="site-container py-14 sm:py-20 lg:py-24">
         <LocationsFilter items={locationItems} />
 
-        <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">
+        <div className="mt-16 rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">
           <p className="eyebrow mb-3">Not sure?</p>
           <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
@@ -52,7 +52,7 @@ export default function Locations() {
               href="/#price-estimator"
               className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
             >
-              Get a free quote
+              Get my quote
             </Link>
           </div>
         </div>

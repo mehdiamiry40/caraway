@@ -122,7 +122,7 @@ export function QuoteForm() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="lg:col-span-7 rounded-md border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
@@ -357,18 +357,7 @@ export function QuoteForm() {
                     )}
                   </div>
 
-                  <div className="pt-1">
-                    <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
-                      {isSubmitting ? "Sending your details..." : "Get my free quote"}
-                    </Button>
-                  </div>
-
-                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
-                    <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
-                    <span>Free quote. Your details are used to respond to this enquiry.</span>
-                  </div>
-
-                  <div className="flex items-start gap-3 pt-3 sm:pt-4">
+                  <div className="flex items-start gap-3 pt-1">
                     <Checkbox
                       id="quote-marketing-consent"
                       className="mt-0.5"
@@ -377,6 +366,17 @@ export function QuoteForm() {
                     <label htmlFor="quote-marketing-consent" className="block text-xs text-muted-foreground leading-relaxed cursor-pointer py-1 -my-1">
                       I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
                     </label>
+                  </div>
+
+                  <div className="pt-1">
+                    <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
+                      {isSubmitting ? "Sending your details..." : "Get my quote"}
+                    </Button>
+                  </div>
+
+                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
+                    <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
+                    <span>Free quote. Your details are used to respond to this enquiry.</span>
                   </div>
 
                   {errorMessage && (

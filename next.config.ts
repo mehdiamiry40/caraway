@@ -36,6 +36,94 @@ export const legacyIndexingRedirects = [
     source: "/blog/cash-for-cars-gold-coast",
     destination: "/cash-for-cars-brisbane",
   },
+  // July 2026 consolidation: suburb-level "cash for cars {suburb}" posts
+  // competed with the /locations/{suburb} landing pages for identical
+  // queries (keyword cannibalization). Each post now 301s to its location
+  // page so Google consolidates ranking signals onto the money page.
+  {
+    source: "/blog/cash-for-cars-beenleigh",
+    destination: "/locations/beenleigh",
+  },
+  {
+    source: "/blog/cash-for-cars-bulimba",
+    destination: "/locations/bulimba",
+  },
+  {
+    source: "/blog/cash-for-cars-browns-plains",
+    destination: "/locations/browns-plains",
+  },
+  {
+    source: "/blog/cash-for-cars-caboolture-brisbane",
+    destination: "/locations/caboolture",
+  },
+  {
+    source: "/blog/cash-for-cars-capalaba",
+    destination: "/locations/capalaba",
+  },
+  {
+    source: "/blog/cash-for-cars-carindale",
+    destination: "/locations/carindale",
+  },
+  {
+    source: "/blog/cash-for-cars-chermside",
+    destination: "/locations/chermside",
+  },
+  {
+    source: "/blog/cash-for-cars-indooroopilly",
+    destination: "/locations/indooroopilly",
+  },
+  {
+    source: "/blog/cash-for-cars-ipswich",
+    destination: "/locations/ipswich",
+  },
+  {
+    source: "/blog/cash-for-cars-kenmore",
+    destination: "/locations/kenmore",
+  },
+  {
+    source: "/blog/cash-for-cars-logan",
+    destination: "/locations/logan",
+  },
+  {
+    source: "/blog/cash-for-cars-moorooka",
+    destination: "/locations/moorooka",
+  },
+  {
+    source: "/blog/cash-for-cars-mount-gravatt",
+    destination: "/locations/mount-gravatt",
+  },
+  {
+    source: "/blog/cash-for-cars-north-lakes",
+    destination: "/locations/north-lakes",
+  },
+  {
+    source: "/blog/cash-for-cars-nundah",
+    destination: "/locations/nundah",
+  },
+  {
+    source: "/blog/cash-for-cars-redcliffe",
+    destination: "/locations/redcliffe",
+  },
+  {
+    source: "/blog/cash-for-cars-springwood",
+    destination: "/locations/springwood",
+  },
+  {
+    source: "/blog/cash-for-cars-stafford",
+    destination: "/locations/stafford",
+  },
+  {
+    source: "/blog/cash-for-cars-sunnybank",
+    destination: "/locations/sunnybank",
+  },
+  {
+    source: "/blog/cash-for-cars-toowong",
+    destination: "/locations/toowong",
+  },
+  {
+    source: "/blog/cash-for-cars-wynnum",
+    destination: "/locations/wynnum",
+  },
 ] as const;
 
 export const legacyRenderedRewrites = [

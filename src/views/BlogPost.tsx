@@ -161,7 +161,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </div>
             </header>
 
-            <figure className="mb-12 overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-sm">
+            <figure className="mb-12 overflow-hidden rounded-md border border-border/60 bg-muted shadow-sm">
               <Image
                 src={post.image.src}
                 alt={post.image.alt}
@@ -203,7 +203,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </aside>
             )}
 
-            <aside className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10">
+            <aside className="mt-16 rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10">
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
@@ -295,7 +295,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             <footer className="mt-16 space-y-10">
-              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8">
+              <div className="rounded-md border border-border/60 bg-card p-6 sm:p-8">
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
@@ -367,7 +367,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
+              <div className="rounded-md bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
                   className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
@@ -392,7 +392,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href="/#price-estimator"
                     className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
                   >
-                    Get a free quote
+                    Get my quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </div>

@@ -57,6 +57,12 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-07-20",
+  image: {
+    src: "/images/blog/cash-for-cars-moreton-bay.webp",
+    alt: "Tow truck collecting a car in Brisbane's bayside suburbs",
+    width: 1600,
+    height: 900,
+  },
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["nundah", "redcliffe", "wynnum"],

@@ -4,7 +4,7 @@ export const post: RawBlogPostEntry = {
     slug: "how-to-sell-a-car-fast-brisbane",
     title: "How to Sell a Car Fast in Brisbane (2026)",
     metaDescription:
-      "Need to sell a car fast in Brisbane? Here's how to get a same-day cash offer, skip the usual delays, and get paid on pickup — plus what slows a sale down.",
+      "Need to sell a car fast in Brisbane? Here's how to get a fast cash offer, skip the usual delays, and get paid on pickup — plus what slows a sale down.",
     excerpt:
       "When you need to sell a car fast, the private-sale route can drag on for weeks. Here's how Brisbane sellers get a firm offer, arrange pickup, and get paid — often within a day.",
     content: [
@@ -16,9 +16,9 @@ export const post: RawBlogPostEntry = {
 
       "Start by getting a quote. Call or fill out an online form with your car's make, model, year, approximate kilometres, and honest condition. A reputable Brisbane buyer will give you a firm price over the phone or by message — no obligation, no inspection fee. Because the offer is based on real vehicle details, it holds when the truck arrives, provided the car matches what you described.",
 
-      "## Same-day and next-day pickup across Greater Brisbane",
+      "## Same- or next-day pickup across Greater Brisbane",
 
-      "The part that makes a sale genuinely fast is free pickup. Once you accept a quote, most buyers offer same-day or next-day collection right across the region — from [north-side](/locations/north-brisbane) suburbs like Chermside and Redcliffe, through the inner city and [south side](/locations/south-brisbane), out to [Logan](/locations/logan), Ipswich, Redlands, and Moreton Bay. Towing is included, so it does not matter if the car will not start, is unregistered, or has been sitting under a house for three years.",
+      "The part that makes a sale genuinely fast is free pickup. Once you accept a quote, most buyers offer same- or next-day collection (subject to truck availability) right across the region — from [north-side](/locations/north-brisbane) suburbs like Chermside and Redcliffe, through the inner city and [south side](/locations/south-brisbane), out to [Logan](/locations/logan), Ipswich, Redlands, and Moreton Bay. Towing is included, so it does not matter if the car will not start, is unregistered, or has been sitting under a house for three years.",
 
       "When the driver arrives, they do a quick check to confirm the car matches your description, then hand over the agreed amount and load it up. Because payment happens on collection, there is no waiting on a bank transfer to clear or chasing a buyer for the balance. That single detail — cash or instant transfer on pickup — is what turns \"I'll sell it eventually\" into \"it's gone.\"",
 
@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
       {
         question: "How quickly can I sell my car in Brisbane?",
         answer:
-          "With a cash-for-cars service you can often go from an initial quote to a completed sale within 24 to 48 hours. Once you accept an offer, same-day or next-day pickup is common across Greater Brisbane, and payment is made on collection.",
+          "With a cash-for-cars service you can often go from an initial quote to a completed sale within 24 to 48 hours. Once you accept an offer, same- or next-day pickup is common across Greater Brisbane, and payment is made on collection.",
       },
       {
         question: "Can I sell a car fast if it doesn't run or isn't registered?",
@@ -56,6 +56,12 @@ export const post: RawBlogPostEntry = {
       },
     ],
     date: "2026-07-17",
+    image: {
+      src: "/images/blog/how-to-sell-your-car-for-cash-brisbane.webp",
+      alt: "Tow truck collecting a car from a Brisbane driveway for a fast cash sale",
+      width: 1600,
+      height: 900,
+    },
     category: "Guides",
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],

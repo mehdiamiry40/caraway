@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const steps = [
   {
     number: "01",
     title: "Tell us about your car",
     description:
-      "Drop in your plate or share make, model and year. Photos help if you have them.",
+      "Share the make, model and year. Photos help if you have them.",
     timing: "60 seconds",
   },
   {
@@ -31,20 +32,31 @@ const steps = [
   },
 ] as const;
 
-export function HowItWorks() {
+interface HowItWorksProps {
+  /**
+   * Hide the section's own eyebrow/heading block when the page already
+   * introduces the process (e.g. /how-it-works renders it under a PageShell
+   * hero that carries the H1).
+   */
+  showHeader?: boolean;
+}
+
+export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
     <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
       <div className="site-container">
-        <div className="mb-10 max-w-2xl md:mb-14">
-          <p className="eyebrow mb-5">How it works</p>
-          <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
-            From quote to collection in four clear steps.
-          </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-            We buy the car directly. If we&apos;re not the right fit, we&apos;ll say so - we&apos;d
-            rather you know upfront than waste a day.
-          </p>
-        </div>
+        {showHeader && (
+          <div className="mb-10 max-w-2xl md:mb-14">
+            <p className="eyebrow mb-5">How it works</p>
+            <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
+              From quote to collection in four clear steps.
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
+              We buy the car directly. If we&apos;re not the right fit, we&apos;ll say so — we&apos;d
+              rather you know upfront than waste a day.
+            </p>
+          </div>
+        )}
 
         <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {steps.map((step) => (
@@ -79,8 +91,8 @@ export function HowItWorks() {
             href="/#price-estimator"
             className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
           >
-            Start with your plate
-            <span aria-hidden="true">-&gt;</span>
+            Start your quote
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

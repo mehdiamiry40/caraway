@@ -25,7 +25,7 @@ export default function FAQPage() {
       }
     >
       <div className="site-container py-14 sm:py-20 lg:py-24">
-        <div className="max-w-3xl space-y-14 sm:space-y-16">
+        <div className="max-w-3xl mx-auto space-y-14 sm:space-y-16">
           {faqCategories.map((category, idx) => (
           <div key={category.category}>
             <div className="flex items-baseline gap-3 mb-6">
@@ -42,7 +42,7 @@ export default function FAQPage() {
           </div>
         ))}
 
-        <div className="rounded-2xl border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center">
+        <div className="rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center">
           <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Still have questions?</h2>
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
             Our Brisbane team is happy to help. No obligation — just a quick chat.

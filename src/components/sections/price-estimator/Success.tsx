@@ -21,7 +21,7 @@ export function Success({ state }: { state: EstimatorState }) {
           aria-live="polite"
           aria-atomic="true"
         >
-          <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary/10 mx-auto mb-5">
+          <div className="flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-md bg-primary/10 mx-auto mb-5">
             <PartyPopper
               className="w-8 h-8 sm:w-10 sm:h-10 text-primary"
               strokeWidth={1.5}

@@ -94,7 +94,7 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
     <article className="mb-12 sm:mb-16">
       <Link
         href={`/blog/${post.slug}`}
-        className="group grid overflow-hidden rounded-2xl border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)]"
+        className="group grid overflow-hidden rounded-md border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)]"
         aria-label={`Read: ${post.title}`}
       >
         <div className="p-6 sm:p-8 lg:p-10">
