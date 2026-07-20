@@ -1,7 +1,7 @@
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { Stats } from "@/components/sections/Stats";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { LazyPriceEstimator } from "@/components/sections/LazyPriceEstimator";
+import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { SellerSituations } from "@/components/sections/SellerSituations";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
@@ -15,7 +15,11 @@ export default function HomeBelowFold() {
       <TrustBadges />
       <Stats />
       <HowItWorks />
-      <LazyPriceEstimator />
+      {/* Server-rendered with the page: the primary conversion surface must
+          exist in the HTML for crawlers, JS-off users, and #price-estimator
+          deep links — the previous ssr:false + IntersectionObserver gate
+          served all three an empty placeholder. */}
+      <PriceEstimator />
       <WhyUs />
       <SellerSituations />
       <ServiceAreas />

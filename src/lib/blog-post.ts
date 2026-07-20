@@ -36,7 +36,7 @@ function cleanTitleForAlt(title: string): string {
 function blogPostImage(slug: string, title: string, image?: BlogImage): BlogImage {
   const defaultImage = {
     src: `/images/blog/${slug}.webp`,
-    alt: `Ultra-realistic Brisbane car-selling scene for ${cleanTitleForAlt(title)}`,
+    alt: `Illustration: ${cleanTitleForAlt(title)}`,
     width: 1600,
     height: 900,
   };

@@ -1,6 +1,6 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import { SITE_URL, BUSINESS, PRICE_RANGE_LABEL } from "@/lib/site";
+import { SITE_URL, BUSINESS } from "@/lib/site";
 
 const NAP = {
   name: `${BUSINESS.name} — Cash for Cars Brisbane`,
@@ -47,7 +47,7 @@ export const localBusinessSchema = {
   image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: NAP.phone,
   email: NAP.email,
-  priceRange: PRICE_RANGE_LABEL,
+  priceRange: "$200–$9,999",
   currenciesAccepted: "AUD",
   paymentAccepted: "Cash, Bank Transfer",
   description: `Cash for cars Brisbane: Caraway gives fair cash offers based on vehicle details, with free towing and payment on pickup. Selected vehicles may receive offers up to $9,999. Call ${BUSINESS.phoneDisplay}.`,

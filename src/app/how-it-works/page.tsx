@@ -111,7 +111,7 @@ export default function HowItWorksPage() {
           </p>
         }
       >
-        <HowItWorks />
+        <HowItWorks showHeader={false} />
         <PriceEstimator />
         <FinalCTA />
       </PageShell>

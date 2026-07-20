@@ -93,7 +93,7 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="bg-card rounded-2xl p-4 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
+      <div className="bg-card rounded-md p-4 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
@@ -112,7 +112,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card rounded-2xl p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
+    <div className="bg-card rounded-md p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
       <h2 className="text-lg sm:text-xl font-display text-foreground mb-1 pt-1">Send us a message</h2>
       <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
@@ -244,6 +244,17 @@ export function ContactForm() {
           )}
         </div>
 
+        <div className="flex items-start gap-3">
+          <Checkbox
+            id="contact-marketing-consent"
+            className="mt-0.5"
+            {...register("marketingConsent")}
+          />
+          <label htmlFor="contact-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+            I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
+          </label>
+        </div>
+
         <div className="pt-1">
           <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
             {isSubmitting ? (
@@ -261,17 +272,6 @@ export function ContactForm() {
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
           <Shield className="w-3.5 h-3.5 text-primary/70 shrink-0" aria-hidden />
           <span>Your details are used to respond to this enquiry.</span>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <Checkbox
-            id="contact-marketing-consent"
-            className="mt-0.5"
-            {...register("marketingConsent")}
-          />
-          <label htmlFor="contact-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-            I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
-          </label>
         </div>
 
         {errorMessage && (

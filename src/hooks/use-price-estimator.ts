@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
 import { type QuoteCondition } from "@/lib/quote-schema";
 import {
@@ -125,7 +125,39 @@ export function usePriceEstimator() {
     successHeadingRef,
   } = useEstimatorFocus({ step, isSuccess });
 
+  // --- Funnel analytics -----------------------------------------------------
+  // `estimator_started` fires once per mount, on the first vehicle input.
+  const startedRef = useRef(false);
+  useEffect(() => {
+    if (!startedRef.current && (make || year || condition)) {
+      startedRef.current = true;
+      trackEvent("estimator_started");
+    }
+  }, [make, year, condition]);
+
+  // Best-effort abandonment beacon: user reached the quote (step >= 2) but
+  // left the page without submitting.
+  const funnelStateRef = useRef({ step, isSuccess });
+  funnelStateRef.current = { step, isSuccess };
+  useEffect(() => {
+    const onPageHide = () => {
+      const { step: s, isSuccess: done } = funnelStateRef.current;
+      if (!done && s >= 2) {
+        trackEvent("estimator_abandoned", { step: s });
+      }
+    };
+    window.addEventListener("pagehide", onPageHide);
+    return () => window.removeEventListener("pagehide", onPageHide);
+  }, []);
+
   const goToStep = useCallback((next: Step) => {
+    // funnelStateRef always holds the latest step, so this callback can stay
+    // dependency-free without firing events inside the state updater (which
+    // StrictMode double-invokes).
+    const current = funnelStateRef.current.step;
+    if (next > current) {
+      trackEvent("estimator_step_completed", { step: current });
+    }
     setStep(next);
   }, []);
 
@@ -139,6 +171,12 @@ export function usePriceEstimator() {
       condition,
     });
     setResult(est);
+    trackEvent("estimator_quote_shown", {
+      estimateQuote: est.quote,
+      make: make.trim(),
+      year: yearNumber,
+      condition,
+    });
     // Small artificial delay so the result feels deliberate, not random.
     window.setTimeout(() => {
       setIsCalculating(false);
@@ -207,13 +245,16 @@ export function usePriceEstimator() {
           year: yearNumber,
           condition,
         });
+        trackEvent("lead_submitted", { source: "estimator" });
       } else {
+        trackEvent("estimator_submit_failed", { reason: "server" });
         setSubmitError(
           res.message ??
             `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
         );
       }
     } catch {
+      trackEvent("estimator_submit_failed", { reason: "network" });
       setSubmitError(
         `Something went wrong. Please try again or call ${BUSINESS.phoneDisplay}.`,
       );

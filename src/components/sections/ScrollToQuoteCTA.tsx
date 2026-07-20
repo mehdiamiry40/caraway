@@ -22,7 +22,7 @@ export function ScrollToQuoteCTA({ source = "scroll_cta" }: ScrollToQuoteCTAProp
         }}
         className="group w-full touch-manipulation sm:w-auto"
       >
-        Get my free quote
+        Get my quote
         <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-200" />
       </Button>
     </div>

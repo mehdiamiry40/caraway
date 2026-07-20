@@ -3,6 +3,7 @@ import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DisclosureAutoClose } from "./DisclosureAutoClose";
 
 const navLinks = [
   { label: "How it works", href: "/how-it-works" },
@@ -30,7 +31,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         <Phone className="h-5 w-5" aria-hidden="true" />
       </a>
 
-      <details className="group">
+      <DisclosureAutoClose className="group">
         <summary
           className="min-h-11 min-w-11 -mr-1 inline-flex cursor-pointer list-none items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden"
           aria-label="Menu"
@@ -50,26 +51,24 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 />
               </summary>
               <ul className="flex list-none flex-col pl-3">
+                {serviceLinks.map((service) => (
+                  <li key={service.href}>
+                    <Link
+                      href={service.href}
+                      className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                    >
+                      {service.label}
+                    </Link>
+                  </li>
+                ))}
                 <li>
                   <Link
-                    href="/cash-for-cars-brisbane"
-                    className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                    href="/services"
+                    className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                   >
-                    Services overview
+                    All services
                   </Link>
                 </li>
-                {serviceLinks
-                  .filter((s) => s.href !== "/cash-for-cars-brisbane")
-                  .map((service) => (
-                    <li key={service.href}>
-                      <Link
-                        href={service.href}
-                        className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
-                      >
-                        {service.label}
-                      </Link>
-                    </li>
-                  ))}
               </ul>
             </details>
 
@@ -96,15 +95,15 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             <Link
               href="/#price-estimator"
               className={cn(
-                buttonVariants({ size: "lg", variant: "secondary" }),
+                buttonVariants({ size: "lg" }),
                 "h-14 w-full rounded-lg text-base sm:text-lg",
               )}
             >
-              Get your free cash offer
+              Get my quote
             </Link>
           </div>
         </div>
-      </details>
+      </DisclosureAutoClose>
     </div>
   );
 }

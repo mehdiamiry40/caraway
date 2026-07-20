@@ -1,7 +1,8 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Star } from "lucide-react";
+import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -44,7 +45,7 @@ export default function About() {
           </div>
 
           <div>
-            <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-card">
+            <div className="rounded-md border border-border/60 bg-card p-6 sm:p-8 shadow-card">
               <p className="eyebrow mb-3">Founder</p>
               <h2 className="text-2xl sm:text-3xl font-display text-foreground mb-5 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                 Meet the founder
@@ -59,6 +60,17 @@ export default function About() {
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                     Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, and the insurance details applicable to that job.
+                  </p>
+                  <p className="mt-4 text-base sm:text-lg">
+                    <TrackedOutboundLink
+                      href={BUSINESS.googleBusinessUrl}
+                      label="Google reviews"
+                      location="about_founder"
+                      className="inline-flex min-h-11 items-center gap-2 text-primary font-medium link-underline"
+                    >
+                      <Star className="h-4 w-4" aria-hidden="true" />
+                      Find Caraway on Google — read or leave a review
+                    </TrackedOutboundLink>
                   </p>
                 </div>
               </div>
@@ -84,7 +96,7 @@ export default function About() {
               <dl className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 {features.map(item => (
                   <div key={item.title}>
-                    <div className="group flex gap-3 rounded-2xl border border-border/60 bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-border hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.06)]">
+                    <div className="group flex gap-3 rounded-md border border-border/60 bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-border hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.06)]">
                       <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
                         <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
                       </span>

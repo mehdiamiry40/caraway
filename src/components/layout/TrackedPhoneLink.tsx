@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
 
 /**
- * Kept as a compatibility wrapper for existing call sites. It renders a plain
- * anchor so phone links do not create a client-side hydration boundary.
+ * Renders a plain anchor so phone links do not create a client-side hydration
+ * boundary; the layout-level AnalyticsListener reads data-track-location on
+ * click and fires the phone_click event.
  */
 export function TrackedPhoneLink({
   href,
   className,
   ariaLabel,
+  location,
   children,
 }: {
   href: string;
@@ -21,6 +23,7 @@ export function TrackedPhoneLink({
       href={href}
       className={className}
       aria-label={ariaLabel}
+      data-track-location={location}
     >
       {children}
     </a>

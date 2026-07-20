@@ -72,7 +72,7 @@ describe("QuoteForm", () => {
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^phone/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/pickup address/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /get my free quote/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /get my quote/i })).toBeInTheDocument();
   });
 
   it("submits the form, fires analytics, and shows the success state on success", async () => {
@@ -81,7 +81,7 @@ describe("QuoteForm", () => {
 
     render(<QuoteForm />);
     await fillRequiredFields(user);
-    await user.click(screen.getByRole("button", { name: /get my free quote/i }));
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
     await waitFor(() => {
       expect(submitQuoteMock).toHaveBeenCalledTimes(1);
@@ -95,7 +95,7 @@ describe("QuoteForm", () => {
     const user = userEvent.setup();
     render(<QuoteForm />);
 
-    await user.click(screen.getByRole("button", { name: /get my free quote/i }));
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
     expect(submitQuoteMock).not.toHaveBeenCalled();
     const alerts = await screen.findAllByRole("alert");
@@ -109,7 +109,7 @@ describe("QuoteForm", () => {
 
     const honeypot = document.getElementById("quote-website") as HTMLInputElement;
     await user.type(honeypot, "http://evil.example");
-    await user.click(screen.getByRole("button", { name: /get my free quote/i }));
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
     await waitFor(() => {
       expect(submitQuoteMock).not.toHaveBeenCalled();
@@ -123,7 +123,7 @@ describe("QuoteForm", () => {
 
     render(<QuoteForm />);
     await fillRequiredFields(user);
-    await user.click(screen.getByRole("button", { name: /get my free quote/i }));
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
     expect(await screen.findByText(/webhook failed/i)).toBeInTheDocument();
     expect(screen.queryByText(/thanks — we've got your details/i)).not.toBeInTheDocument();

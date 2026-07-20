@@ -12,7 +12,44 @@ const retiredBlogSlugs = new Set([
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // July 2026: suburb posts retired in favour of /locations/{suburb} pages.
+  "cash-for-cars-beenleigh",
+  "cash-for-cars-browns-plains",
+  "cash-for-cars-caboolture-brisbane",
+  "cash-for-cars-capalaba",
+  "cash-for-cars-carindale",
+  "cash-for-cars-chermside",
+  "cash-for-cars-indooroopilly",
+  "cash-for-cars-ipswich",
+  "cash-for-cars-kenmore",
+  "cash-for-cars-logan",
+  "cash-for-cars-moorooka",
+  "cash-for-cars-mount-gravatt",
+  "cash-for-cars-north-lakes",
+  "cash-for-cars-nundah",
+  "cash-for-cars-redcliffe",
+  "cash-for-cars-springwood",
+  "cash-for-cars-stafford",
+  "cash-for-cars-sunnybank",
+  "cash-for-cars-toowong",
+  "cash-for-cars-wynnum",
 ]);
+
+/**
+ * A blog post may never target the same "cash for cars {suburb}" query as a
+ * /locations/{suburb} landing page — that cannibalizes the money page.
+ * Suburb slugs are read from src/data/suburbs.ts so the guard tracks new
+ * location pages automatically.
+ */
+const suburbSlugs = (() => {
+  const suburbsSource = readFileSync(
+    join(repoRoot, "src", "data", "suburbs.ts"),
+    "utf8",
+  );
+  return new Set(
+    [...suburbsSource.matchAll(/\bslug:\s*"([^"]+)"/g)].map((m) => m[1]),
+  );
+})();
 
 const prohibitedClaims = [
   {
@@ -74,7 +111,6 @@ const prohibitedClaims = [
 
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
-  "cash-for-cars-logan.ts",
   "how-to-cancel-car-rego-qld.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",
   "how-to-transfer-car-ownership-qld.ts",
@@ -108,6 +144,15 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
         file: relativePath,
         line: lines.findIndex((line) => /\bslug:\s*"/.test(line)) + 1,
         label: "retired blog slug must stay redirected, not republished",
+      });
+    }
+    const suburbCollision =
+      slug?.match(/^cash-for-cars-(.+?)(?:-brisbane)?$/)?.[1];
+    if (suburbCollision && suburbSlugs.has(suburbCollision)) {
+      violations.push({
+        file: relativePath,
+        line: lines.findIndex((line) => /\bslug:\s*"/.test(line)) + 1,
+        label: `blog slug cannibalizes /locations/${suburbCollision} — cover the suburb on its location page instead`,
       });
     }
   }
