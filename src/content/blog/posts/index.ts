@@ -1,3 +1,4 @@
+import { post as postSandgate } from "./cash-for-cars-sandgate";
 import { post as postBulimba } from "./cash-for-cars-bulimba";
 import { post as postStrathpine } from "./cash-for-cars-strathpine";
 import { post as postSellFast } from "./how-to-sell-a-car-fast-brisbane";
@@ -75,6 +76,7 @@ import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
 import { post as post23 } from "./preparing-your-car-for-pickup";
 
 export const rawBlogPosts = [
+  postSandgate,
   postBulimba,
   postStrathpine,
   postSellFast,
