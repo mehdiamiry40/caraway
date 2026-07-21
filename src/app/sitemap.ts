@@ -6,7 +6,12 @@ import {
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
-import { SITE_URL, LEGAL_DATE_ISO, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import {
+  SITE_URL,
+  LEGAL_DATE_ISO,
+  CONTENT_DEPLOY_DATE,
+  HOW_IT_WORKS_CONTENT_UPDATED,
+} from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -91,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/how-it-works`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: HOW_IT_WORKS_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },

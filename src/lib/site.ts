@@ -69,6 +69,12 @@ export const LEGAL_DATES = {
  *  builds instead of drifting to "today" on every deploy. */
 export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
+/** /how-it-works was rewritten with page-unique content in July 2026 after
+ *  GSC clustered it as a duplicate of the homepage ("Google chose different
+ *  canonical than user"). Shared by the sitemap entry and the page's
+ *  WebPage.dateModified so the recrawl signal is honest and consistent. */
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-07-21";
+
 export const PROMISE_POINTS = [
   "Fair offer based on details",
   "Same- or next-day pickup",
