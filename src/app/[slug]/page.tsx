@@ -32,6 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `${SITE_URL}/${service.slug}` },
     openGraph: {
       type: "website",
+      siteName: "Caraway",
+      locale: "en_AU",
       title: service.title,
       description: service.metaDescription,
       url: `${SITE_URL}/${service.slug}`,
@@ -61,9 +63,10 @@ export default async function ServiceSlugPage({ params }: Props) {
             { name: "Home", item: `${SITE_URL}/` },
             { name: service.h1, item: canonicalUrl },
           ]),
-          faqPageSchema(service.faqs),
+          faqPageSchema(service.faqs, canonicalUrl),
           {
             "@type": "Service",
+            "@id": `${canonicalUrl}#service`,
             name: service.h1,
             description: service.metaDescription,
             provider: {

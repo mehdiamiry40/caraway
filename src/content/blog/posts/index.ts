@@ -46,7 +46,6 @@ import { post as post9 } from "./how-to-cancel-car-rego-qld";
 import { post as post10 } from "./how-to-sell-a-car-without-rego-brisbane";
 import { post as postRedlands } from "./cash-for-cars-redlands";
 import { post as post18 } from "./how-to-transfer-car-ownership-qld";
-import { post as post19 } from "./how-much-is-my-car-worth-for-scrap-brisbane";
 import { post as post20 } from "./how-to-sell-your-car-for-cash-brisbane";
 import { post as post21 } from "./what-happens-to-your-car-after-selling";
 import { post as post22 } from "./signs-your-car-is-worth-more-as-scrap";
@@ -107,7 +106,6 @@ export const rawBlogPosts = [
   post9,
   post10,
   post18,
-  post19,
   post20,
   post21,
   post22,

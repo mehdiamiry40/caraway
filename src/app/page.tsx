@@ -71,8 +71,9 @@ export default function HomePage() {
       <Home />
       <JsonLd
         data={[
-          faqPageSchema(homepageFaqs),
+          faqPageSchema(homepageFaqs, `${SITE_URL}/`),
           howToSchema({
+            id: `${SITE_URL}/#howto`,
             name: "How to Sell Your Car for Cash in Brisbane",
             description:
               "Four clear steps to sell your car to Caraway in Brisbane: share the vehicle details, get a firm offer, arrange free pickup, and get paid.",

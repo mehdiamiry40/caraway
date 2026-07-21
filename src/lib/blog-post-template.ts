@@ -18,6 +18,8 @@ export const RETIRED_BLOG_SLUGS = [
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // Duplicate of how-much-is-scrap-car-worth-brisbane (same query/intent).
+  "how-much-is-my-car-worth-for-scrap-brisbane",
 ] as const;
 
 const retiredBlogSlugSet = new Set<string>(RETIRED_BLOG_SLUGS);
@@ -117,6 +119,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${post.canonicalUrl}#article`,
     url: post.canonicalUrl,
     mainEntityOfPage: post.canonicalUrl,
     headline: post.title,
@@ -146,6 +149,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
       ? {
           "@context": "https://schema.org",
           "@type": "FAQPage",
+          "@id": `${post.canonicalUrl}#faq`,
           mainEntity: post.faqs.map((faq) => ({
             "@type": "Question",
             name: faq.question,

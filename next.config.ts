@@ -124,6 +124,19 @@ export const legacyIndexingRedirects = [
     source: "/blog/cash-for-cars-wynnum",
     destination: "/locations/wynnum",
   },
+  // July 2026 consolidation: two posts answered the identical "how much is a
+  // scrap car worth in Brisbane" query. The older, thinner post 301s into the
+  // newer guide so Google consolidates ranking signals onto one URL.
+  {
+    source: "/blog/how-much-is-my-car-worth-for-scrap-brisbane",
+    destination: "/blog/how-much-is-scrap-car-worth-brisbane",
+  },
+  // July 2026 consolidation: the "Car Selling Guides" blog category duplicated
+  // the "Guides" category; its posts now live under /blog/category/guides.
+  {
+    source: "/blog/category/car-selling-guides",
+    destination: "/blog/category/guides",
+  },
 ] as const;
 
 export const legacyRenderedRewrites = [

@@ -54,6 +54,7 @@ export default function HowItWorksPage() {
             { name: "How It Works", item: canonical },
           ]),
           howToSchema({
+            id: `${canonical}#howto`,
             name: "How to Sell Your Car for Cash in Brisbane",
             description:
               "Caraway's process for selling a car in Brisbane: share details, receive a confirmed offer, book free pickup, and get paid before the vehicle leaves.",

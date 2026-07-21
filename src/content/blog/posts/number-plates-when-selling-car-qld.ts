@@ -91,7 +91,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/registration/cancel",
     },
   ],
-  category: "Car Selling Guides",
+  category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
 };

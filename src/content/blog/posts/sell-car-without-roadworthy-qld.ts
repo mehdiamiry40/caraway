@@ -91,7 +91,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
   ],
-  category: "Car Selling Guides",
+  category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["south-brisbane", "logan", "ipswich"],
 };
