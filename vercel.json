@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "regions": ["syd1"],
+  "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
+  ],
   "crons": [
     {
       "path": "/api/health/lead-delivery",

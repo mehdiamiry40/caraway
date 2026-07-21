@@ -234,7 +234,7 @@ export const services: ServicePage[] = [
       { question: "Do you buy hail-damaged cars in Brisbane?", answer: "Absolutely. Hail damage is cosmetic and doesn't affect our ability to salvage parts. We pay fair prices for hail-damaged vehicles." },
       { question: "Can you remove a car that can't be driven?", answer: "Yes. Our tow trucks handle non-driveable vehicles. Your car doesn't need to start, steer, or brake. We load it and take it away." }
     ],
-    relatedServices: ["accident-cars-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
+    relatedServices: ["accident-cars-brisbane", "hail-damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "cash-for-cars-brisbane"],
     relatedSuburbs: ["sunnybank", "mount-gravatt", "toowong", "indooroopilly", "redcliffe"]
   },
   {
@@ -270,7 +270,7 @@ export const services: ServicePage[] = [
       { question: "Do I need a police report to sell an accident car?", answer: "No. We don't require police reports. We just need your photo ID and access to the vehicle." },
       { question: "Can I sell a statutory write-off?", answer: "Yes. We buy statutory write-offs (which can never be re-registered in Queensland) as well as repairable write-offs." }
     ],
-    relatedServices: ["damaged-cars-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
+    relatedServices: ["damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "hail-damaged-cars-brisbane", "cash-for-cars-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane", "south-brisbane", "caboolture"]
   },
   {
