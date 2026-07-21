@@ -204,10 +204,14 @@ export function breadcrumbListSchema(
 
 export function faqPageSchema(
   faqs: Array<{ question: string; answer: string }>,
+  pageUrl?: string,
 ) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    // Stable per-page entity id so repeated FAQPage blocks across the site
+    // stay distinct entities instead of anonymous duplicates.
+    ...(pageUrl ? { "@id": `${pageUrl}#faq` } : {}),
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.question,
@@ -219,6 +223,7 @@ export function faqPageSchema(
 type HowToStep = { name: string; text: string; url?: string };
 
 export function howToSchema(params: {
+  id?: string;
   name: string;
   description: string;
   totalTime?: string;
@@ -230,6 +235,7 @@ export function howToSchema(params: {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
+    ...(params.id ? { "@id": params.id } : {}),
     name: params.name,
     description: params.description,
     ...(params.totalTime ? { totalTime: params.totalTime } : {}),

@@ -32,6 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `${SITE_URL}/locations/${suburb.slug}` },
     openGraph: {
       type: "website",
+      siteName: "Caraway",
+      locale: "en_AU",
       title: suburb.title,
       description: suburb.metaDescription,
       url: `${SITE_URL}/locations/${suburb.slug}`,
@@ -62,6 +64,7 @@ export default async function SuburbSlugPage({ params }: Props) {
     ]),
     {
       "@type": "Service",
+      "@id": `${canonicalUrl}#service`,
       name: `Cash for Cars ${areaName}`,
       description: suburb.metaDescription,
       provider: {
@@ -91,7 +94,7 @@ export default async function SuburbSlugPage({ params }: Props) {
         closes: "19:00",
       },
     },
-    ...(suburb.localFaqs?.length ? [faqPageSchema(suburb.localFaqs)] : []),
+    ...(suburb.localFaqs?.length ? [faqPageSchema(suburb.localFaqs, canonicalUrl)] : []),
   ];
 
   return (

@@ -35,7 +35,7 @@ export default function FaqRoutePage() {
             { name: "Home", item: `${SITE_URL}/` },
             { name: "FAQ", item: `${SITE_URL}/faq` },
           ]),
-          faqPageSchema(allFaqs),
+          faqPageSchema(allFaqs, `${SITE_URL}/faq`),
         ]}
       />
       <FAQPage />

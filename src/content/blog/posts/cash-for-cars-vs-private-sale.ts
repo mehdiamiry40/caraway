@@ -88,7 +88,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
-  category: "Car Selling Guides",
+  category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["south-brisbane", "logan", "north-brisbane"],
 };

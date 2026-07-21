@@ -26,7 +26,7 @@ export const post: RawBlogPostEntry = {
 
     "## How cash for cars works for hail-damaged vehicles",
 
-    "The process is the same whether your car runs or not. Call or submit an online quote with the make, model, year, current kilometres, and a brief description of the hail damage — mentioning any broken glass, whether it still starts, and whether an insurer has already declared it a write-off helps the buyer quote accurately. You'll receive a firm offer within minutes. Accept, book a pickup time (same or next day across Greater Brisbane), and the tow truck arrives at the agreed hour. Payment is made in cash or bank transfer before the vehicle is loaded — not after it leaves your property. Towing is free across the full Brisbane metro, including [Logan](/locations/logan), Ipswich, Redcliffe, Caboolture, and the Bayside.",
+    "The process is the same whether your car runs or not — Caraway's [cash for hail damaged cars Brisbane](/hail-damaged-cars-brisbane) service covers both, along with typical price ranges by vehicle type. Call or submit an online quote with the make, model, year, current kilometres, and a brief description of the hail damage — mentioning any broken glass, whether it still starts, and whether an insurer has already declared it a write-off helps the buyer quote accurately. You'll receive a firm offer within minutes. Accept, book a pickup time (same or next day across Greater Brisbane), and the tow truck arrives at the agreed hour. Payment is made in cash or bank transfer before the vehicle is loaded — not after it leaves your property. Towing is free across the full Brisbane metro, including [Logan](/locations/logan), Ipswich, Redcliffe, Caboolture, and the Bayside.",
 
     "## Paperwork and plates in QLD",
 
@@ -39,7 +39,8 @@ export const post: RawBlogPostEntry = {
     "If your car caught one of Brisbane's hail events this season and the repair bill doesn't stack up, a [cash-for-cars buyer](/cash-for-cars-brisbane) is usually the fastest and cleanest exit. One phone call gets you a firm number, and most transactions wrap up within a day of that first contact.",
   ],
   date: "2026-04-29",
+  updatedAt: "2026-07-21",
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "damaged-cars-brisbane", "insurance-write-off-cars-brisbane"],
+  relatedServices: ["hail-damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "damaged-cars-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
 };

@@ -34,6 +34,8 @@ const retiredBlogSlugs = new Set([
   "cash-for-cars-sunnybank",
   "cash-for-cars-toowong",
   "cash-for-cars-wynnum",
+  // July 2026: duplicate of how-much-is-scrap-car-worth-brisbane.
+  "how-much-is-my-car-worth-for-scrap-brisbane",
 ]);
 
 /**
