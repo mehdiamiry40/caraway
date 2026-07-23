@@ -1,3 +1,4 @@
+import { post as postNoKeys } from "./sell-a-car-with-no-keys-brisbane";
 import { post as postBestPrice } from "./how-to-get-the-best-cash-for-cars-price-brisbane";
 import { post as postAuctionVs } from "./cash-for-cars-vs-car-auction-brisbane";
 import { post as postSandgate } from "./cash-for-cars-sandgate";
@@ -59,6 +60,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postNoKeys,
   postBestPrice,
   postAuctionVs,
   postSandgate,
