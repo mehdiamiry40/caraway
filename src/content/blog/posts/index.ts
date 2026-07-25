@@ -1,3 +1,4 @@
+import { post as postStreetParking } from "./park-unregistered-car-street-qld";
 import { post as postMovingInterstate } from "./how-to-sell-a-car-when-moving-interstate-brisbane";
 import { post as postNoKeys } from "./sell-a-car-with-no-keys-brisbane";
 import { post as postBestPrice } from "./how-to-get-the-best-cash-for-cars-price-brisbane";
@@ -61,6 +62,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postStreetParking,
   postMovingInterstate,
   postNoKeys,
   postBestPrice,
