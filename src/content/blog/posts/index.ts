@@ -1,3 +1,4 @@
+import { post as postInterstatePlates } from "./sell-interstate-registered-car-brisbane";
 import { post as postUnpaidTolls } from "./unpaid-tolls-selling-car-qld";
 import { post as postStreetParking } from "./park-unregistered-car-street-qld";
 import { post as postMovingInterstate } from "./how-to-sell-a-car-when-moving-interstate-brisbane";
@@ -63,6 +64,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postInterstatePlates,
   postUnpaidTolls,
   postStreetParking,
   postMovingInterstate,
