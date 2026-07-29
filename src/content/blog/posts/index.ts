@@ -1,3 +1,4 @@
+import { post as postDefectNotice } from "./car-defect-notice-qld";
 import { post as postInsuranceCancel } from "./cancel-car-insurance-after-selling-car-qld";
 import { post as postInterstatePlates } from "./sell-interstate-registered-car-brisbane";
 import { post as postUnpaidTolls } from "./unpaid-tolls-selling-car-qld";
@@ -65,6 +66,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postDefectNotice,
   postInsuranceCancel,
   postInterstatePlates,
   postUnpaidTolls,
