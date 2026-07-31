@@ -1,3 +1,4 @@
+import { post as postGasCertificate } from "./gas-certificate-qld-selling-lpg-car";
 import { post as postCarData } from "./delete-personal-data-from-car-before-selling";
 import { post as postDefectNotice } from "./car-defect-notice-qld";
 import { post as postInsuranceCancel } from "./cancel-car-insurance-after-selling-car-qld";
@@ -67,6 +68,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postGasCertificate,
   postCarData,
   postDefectNotice,
   postInsuranceCancel,
