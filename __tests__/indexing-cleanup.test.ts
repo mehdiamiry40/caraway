@@ -145,4 +145,35 @@ describe("Search Console indexing cleanup", () => {
       expect(matches).toEqual([]);
     }
   });
+
+  it("uses the canonical location prefix for links inside blog content", () => {
+    const staleSuburbLinks = blogPosts.flatMap((post) =>
+      post.content.flatMap((block) =>
+        [...block.matchAll(/\]\((\/suburbs\/[^)]+)\)/g)].map(
+          (match) => `${post.slug}: ${match[1]}`,
+        ),
+      ),
+    );
+
+    expect(staleSuburbLinks).toEqual([]);
+  });
+
+  it("publishes every blog image referenced by pages and the sitemap", () => {
+    const sitemapImages = new Set(
+      sitemap().flatMap((entry) => entry.images ?? []),
+    );
+
+    for (const post of blogPosts) {
+      expect(post.image.src, post.slug).toMatch(/^\/images\//);
+      expect(
+        fs.existsSync(
+          path.join(process.cwd(), "public", post.image.src.replace(/^\//, "")),
+        ),
+        `${post.slug}: missing ${post.image.src}`,
+      ).toBe(true);
+      expect(sitemapImages.has(`${SITE_URL}${post.image.src}`), post.slug).toBe(
+        true,
+      );
+    }
+  });
 });

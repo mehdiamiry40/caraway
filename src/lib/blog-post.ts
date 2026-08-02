@@ -1,6 +1,23 @@
 import type { BlogImage, BlogPost, RawBlogPostEntry } from "@/content/blog/types";
 import { SITE_URL } from "@/lib/site";
 
+// These new guides do not yet have dedicated artwork. Keep them on the
+// existing, crawlable social card instead of publishing made-up per-slug image
+// URLs that return 404 in the page, structured data, and image sitemap.
+const SHARED_BLOG_IMAGE_SLUGS = new Set([
+  "gas-certificate-qld-selling-lpg-car",
+  "delete-personal-data-from-car-before-selling",
+  "car-defect-notice-qld",
+  "cancel-car-insurance-after-selling-car-qld",
+  "sell-interstate-registered-car-brisbane",
+  "unpaid-tolls-selling-car-qld",
+  "park-unregistered-car-street-qld",
+  "how-to-sell-a-car-when-moving-interstate-brisbane",
+  "sell-a-car-with-no-keys-brisbane",
+  "how-to-get-the-best-cash-for-cars-price-brisbane",
+  "sell-high-kilometre-car-brisbane",
+]);
+
 /** Count words in a plain-text string by splitting on whitespace. */
 export function calcWordCount(content: string): number {
   return content.split(/\s+/).filter(Boolean).length;
@@ -34,12 +51,19 @@ function cleanTitleForAlt(title: string): string {
 }
 
 function blogPostImage(slug: string, title: string, image?: BlogImage): BlogImage {
-  const defaultImage = {
-    src: `/images/blog/${slug}.webp`,
-    alt: `Illustration: ${cleanTitleForAlt(title)}`,
-    width: 1600,
-    height: 900,
-  };
+  const defaultImage = SHARED_BLOG_IMAGE_SLUGS.has(slug)
+    ? {
+        src: "/images/og-card.jpg",
+        alt: "Caraway tow truck transporting a car",
+        width: 1200,
+        height: 630,
+      }
+    : {
+        src: `/images/blog/${slug}.webp`,
+        alt: `Illustration: ${cleanTitleForAlt(title)}`,
+        width: 1600,
+        height: 900,
+      };
 
   return {
     ...defaultImage,
