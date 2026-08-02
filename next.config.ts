@@ -137,9 +137,10 @@ export const legacyIndexingRedirects = [
     source: "/blog/category/car-selling-guides",
     destination: "/blog/category/guides",
   },
-] as const;
-
-export const legacyRenderedRewrites = [
+  // Legacy URLs surfaced by Search Console as 404s or alternative canonicals.
+  // These pages have moved permanently, so redirect them instead of serving
+  // duplicate 200 responses through rewrites. That gives crawlers one clear
+  // canonical URL and lets link equity consolidate onto the live page.
   {
     source: "/index.html",
     destination: "/",
@@ -150,7 +151,7 @@ export const legacyRenderedRewrites = [
   },
   {
     source: "/blog/old-car-running-costs.html",
-    destination: "/old-cars-brisbane",
+    destination: "/blog/repair-or-sell-your-car-brisbane",
   },
   {
     source: "/blog/cash-for-cars-vs-dealer-trade-in.html",
@@ -170,7 +171,7 @@ export const legacyRenderedRewrites = [
   },
   {
     source: "/blog/sell-damaged-car-brisbane.html",
-    destination: "/damaged-cars-brisbane",
+    destination: "/blog/sell-damaged-car-brisbane",
   },
 ] as const;
 
@@ -214,9 +215,6 @@ const nextConfig: NextConfig = {
       permanent: true,
     })),
   ],
-  rewrites: async () => ({
-    beforeFiles: [...legacyRenderedRewrites],
-  }),
   headers: async () => [
     {
       source: "/(.*)",
