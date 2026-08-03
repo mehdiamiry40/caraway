@@ -52,18 +52,16 @@ export function Hero() {
 
           <div className="relative z-10 order-1 flex items-center px-5 py-10 sm:px-8 sm:py-14 lg:order-2 lg:col-span-5 lg:px-10 xl:px-14">
             <div className="max-w-xl">
-              <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-cta-bright sm:mb-5 sm:text-sm">
-                <MapPin className="h-4 w-4" aria-hidden="true" />
-                Brisbane cash for cars
-              </p>
-
               <h1
                 id="hero-heading"
-                className="font-display text-[clamp(2.45rem,4.5vw,4.25rem)] font-bold leading-[1.04] tracking-display text-on-dark-hi text-balance"
+                /* text-pretty, not text-balance: with the line break below,
+                   balance evens out each sentence separately and strands
+                   "Cash for" alone on the first line at phone widths. */
+                className="font-display text-[clamp(2.45rem,4.5vw,4.25rem)] font-bold leading-[1.04] tracking-display text-on-dark-hi text-pretty"
               >
-                Sell your car.
+                Cash for cars Brisbane.
                 <br />
-                We&apos;ll handle the rest.
+                Sell any car, instant quote.
               </h1>
 
               {/* The three promises live in the checklist below — this line sets
