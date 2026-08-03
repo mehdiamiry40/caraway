@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { BadgeCheck, ShieldCheck, BanknoteArrowDown, Wrench } from "lucide-react";
+import { BadgeCheck, BanknoteArrowDown, Wrench } from "lucide-react";
 
 interface Reason {
   title: string;
@@ -10,21 +10,18 @@ interface Reason {
 const featureReason: Reason = {
   title: "One quoted price, locked in writing",
   description:
-    "The agreed offer is confirmed before the truck is booked. If the vehicle matches the details you gave, there are no surprise towing deductions on the day.",
+    "Confirmed before the truck is booked. If the vehicle matches the details you gave, nothing is deducted on the day.",
   icon: BadgeCheck,
 };
 
+/* Two supporting cards, not three: "Pickup details confirmed" repeated the
+   Stats card almost word for word, and dropping it also squares the grid —
+   the feature card spans two rows, so a third card left a half-empty one. */
 const supportingReasons: Reason[] = [
-  {
-    title: "Pickup details confirmed",
-    description:
-      "We confirm the assigned operator, access plan, timing, and applicable insurance details before collection.",
-    icon: ShieldCheck,
-  },
   {
     title: "Paid when we pick up",
     description:
-      "We don't drive away with your keys until you've been paid the agreed amount in your preferred method.",
+      "We don't drive away with your keys until you've been paid the agreed amount.",
     icon: BanknoteArrowDown,
   },
   {
@@ -54,8 +51,7 @@ export function WhyUs() {
             One pickup. Done.
           </h2>
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            Private buyers flake. Dealers lowball trade-ins. We&apos;re a buyer,
-            not an auction — just a straightforward offer and a truck at your door.
+            Private buyers flake. Dealers lowball. We&apos;re a buyer, not an auction.
           </p>
         </div>
 
@@ -66,16 +62,8 @@ export function WhyUs() {
               <FeatureReasonCard reason={featureReason} />
             </div>
 
-            {supportingReasons.map((reason, idx) => (
-              <div
-                key={reason.title}
-                className={
-                  // first two share a row on lg, third spans full width below
-                  idx < 2
-                    ? "lg:col-span-6"
-                    : "lg:col-span-6"
-                }
-              >
+            {supportingReasons.map((reason) => (
+              <div key={reason.title} className="lg:col-span-6">
                 <SupportingReasonCard reason={reason} />
               </div>
             ))}

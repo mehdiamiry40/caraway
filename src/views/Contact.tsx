@@ -18,7 +18,7 @@ export default function Contact() {
       title="Talk to a real Brisbane buyer."
       subtitle={
         <p>
-          Ready to sell your car for cash? Get in touch for a free, no-obligation quote. We&apos;re available 7 days a week across Greater Brisbane.
+          Free, no-obligation quotes — seven days a week across Greater Brisbane.
         </p>
       }
     >

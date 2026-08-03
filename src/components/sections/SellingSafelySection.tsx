@@ -1,46 +1,31 @@
-import {
-  BadgeDollarSign,
-  ClipboardCheck,
-  FileCheck2,
-  Phone,
-  ShieldCheck,
-  Truck,
-} from "lucide-react";
+import { ClipboardCheck, FileCheck2, Phone, Truck } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+/* Only what this section uniquely owns. "Price confirmed before pickup" and
+   "Paid before the vehicle leaves" were the same two promises WhyUs already
+   makes, one section up — pricing and payment are its job, paperwork and
+   records are this one's. */
 const trustPoints = [
-  {
-    icon: BadgeDollarSign,
-    title: "Price confirmed before pickup",
-    description:
-      "We confirm your price before the truck is booked, so there are no surprise deductions after arrival.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Paid before the vehicle leaves",
-    description:
-      "Your agreed payment is handled before your keys and vehicle leave your property.",
-  },
   {
     icon: FileCheck2,
     title: "QLD paperwork support",
     description:
-      "We help with the transfer details needed for a Queensland vehicle sale and keep the process clear.",
+      "We help with the transfer details a Queensland sale needs.",
   },
   {
     icon: ClipboardCheck,
     title: "Buyer details for your records",
     description:
-      "You receive buyer details and sale information so you can keep your own records after pickup.",
+      "You get the buyer and sale details to keep after pickup.",
   },
   {
     icon: Truck,
     title: "Free towing included",
     description:
-      "Pickup is included in the offer. We do not add hidden towing or call-out fees after arrival.",
+      "Pickup is in the offer. No hidden towing or call-out fees.",
   },
 ] as const;
 
@@ -58,10 +43,6 @@ export function SellingSafelySection() {
             >
               Selling safely with Caraway
             </h2>
-            <p className="text-foreground/80 text-base sm:text-lg leading-relaxed">
-              We make the car selling process clear from quote to pickup, so you know what to expect before your vehicle leaves.
-            </p>
-
             <div className="mt-7 border border-border bg-secondary p-5 sm:p-6">
               <p className="text-sm font-medium text-foreground">Questions before you book?</p>
               <TrackedPhoneLink
@@ -77,7 +58,7 @@ export function SellingSafelySection() {
           </div>
 
           <div className="lg:col-span-8">
-            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
               {trustPoints.map(({ icon: Icon, title, description }) => (
                 <li
                   key={title}
@@ -95,7 +76,7 @@ export function SellingSafelySection() {
             </ul>
 
             <p className="mt-5 border border-border bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
-              Vehicle transfer requirements can vary depending on the situation. Always keep your own sale records and follow current QLD Transport guidance.
+              Transfer requirements vary by situation. Keep your own sale records and follow current QLD Transport guidance.
             </p>
           </div>
         </div>

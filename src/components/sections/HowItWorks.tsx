@@ -5,29 +5,25 @@ const steps = [
   {
     number: "01",
     title: "Tell us about your car",
-    description:
-      "Share the make, model and year. Photos help if you have them.",
+    description: "Make, model, year. Photos help if you have them.",
     timing: "60 seconds",
   },
   {
     number: "02",
     title: "Get a confirmed offer",
-    description:
-      "We review the vehicle details and confirm the offer in writing before a pickup is booked.",
+    description: "In writing, before any pickup is booked.",
     timing: "Within 1 business day",
   },
   {
     number: "03",
     title: "We come to you",
-    description:
-      "Our truck arrives at the booked slot, anywhere in Greater Brisbane. Free towing, always.",
+    description: "Our truck arrives at the booked slot. Towing is included.",
     timing: "Usually same- or next-day",
   },
   {
     number: "04",
     title: "Get paid on the spot",
-    description:
-      "Payment confirmed before the wheels leave, with a signed receipt and buyer details for your records.",
+    description: "Payment lands before the wheels leave, with a signed receipt.",
     timing: "Paid that day",
   },
 ] as const;
@@ -45,16 +41,14 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
     <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
       <div className="site-container">
+        {/* No sub-paragraph under the heading: the four steps below already say
+            it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
         {showHeader && (
           <div className="mb-10 max-w-2xl md:mb-14">
             <p className="eyebrow mb-5">How it works</p>
             <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
               From quote to collection in four clear steps.
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-              We buy the car directly. If we&apos;re not the right fit, we&apos;ll say so — we&apos;d
-              rather you know upfront than waste a day.
-            </p>
           </div>
         )}
 
