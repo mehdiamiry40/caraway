@@ -5,6 +5,7 @@ import { SITE_URL } from "@/lib/site";
 // existing, crawlable social card instead of publishing made-up per-slug image
 // URLs that return 404 in the page, structured data, and image sitemap.
 const SHARED_BLOG_IMAGE_SLUGS = new Set([
+  "take-car-to-tip-brisbane",
   "gas-certificate-qld-selling-lpg-car",
   "delete-personal-data-from-car-before-selling",
   "car-defect-notice-qld",
