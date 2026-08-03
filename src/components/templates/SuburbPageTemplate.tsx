@@ -17,7 +17,7 @@ import { CheckCircle2, Phone } from "lucide-react";
 import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { cn } from "@/lib/utils";
-import { getLeadSentence } from "@/lib/content-summary";
+import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 
 export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const relatedServiceData = suburb.relatedServices
@@ -29,14 +29,27 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
     .filter((s): s is SuburbPage => s !== undefined);
 
   const relatedPosts = getPostsForSuburb(suburb.slug);
+  // The hero leads with the first sentence, so the body picks up from the
+  // second rather than repeating it.
   const heroIntro = getLeadSentence(suburb.intro);
+  const introRest = getBodyAfterLead(suburb.intro);
   const areaName = suburb.h1.replace("Cash for Cars ", "").replace(" — Free Removal & Instant Cash", "").replace(" — Sell Your Car Today", "").replace(" — Get Paid Today", "");
   const nearbyAreaNames = suburb.nearbyAreaNames ?? nearbySuburbData.map((s) => s.h1.replace("Cash for Cars ", ""));
-  const localSellingPoints = suburb.localSellingPoints ?? PROMISE_POINTS.slice(1, 5);
-  const internalLinks = suburb.internalLinks ?? [
-    ...relatedServiceData.slice(0, 2).map((s) => ({ label: s.h1, href: `/${s.slug}` })),
-    ...nearbySuburbData.slice(0, 3).map((s) => ({ label: s.h1, href: `/locations/${s.slug}` })),
-  ];
+
+  // Both of these used to fall back to content the page already shows. The
+  // selling-points default was a slice of PROMISE_POINTS, which the "Our
+  // promise" card in the sidebar renders in full; the internalLinks default was
+  // a subset of the service and nearby-suburb links rendered directly above it.
+  // Only genuinely local overrides are worth the space.
+  const localSellingPoints = suburb.localSellingPoints ?? [];
+
+  const linkedHrefs = new Set([
+    ...relatedServiceData.map((s) => `/${s.slug}`),
+    ...nearbySuburbData.map((s) => `/locations/${s.slug}`),
+  ]);
+  const extraLinks = (suburb.internalLinks ?? []).filter(
+    (link) => !linkedHrefs.has(link.href),
+  );
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -85,9 +98,11 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Car removal in {areaName} and nearby suburbs
                 </h2>
-                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                  {suburb.intro}
-                </p>
+                {introRest && (
+                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                    {introRest}
+                  </p>
+                )}
                 <p className="mt-5 text-muted-foreground leading-relaxed text-base sm:text-lg">
                   {suburb.localContent}
                 </p>
@@ -155,7 +170,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed mt-4">
-                    Examples only. Actual offers depend on vehicle condition, location, completeness, demand, and current market value.
+                    Examples only — actual offers depend on condition, completeness, location, demand, and market value.
                   </p>
                 </div>
               )}
@@ -183,7 +198,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-3 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Three steps to cash in hand.
                 </h2>
-                <p className="text-sm text-muted-foreground mb-8">Quote, confirm, pickup — nothing else to do.</p>
                 <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                   {[
                     { step: "01", title: "Get your quote", desc: "Use the online estimator or send us your car details." },
@@ -277,11 +291,11 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </nav>
               )}
 
-              {internalLinks.length > 0 && (
-                <nav aria-label="Nearby areas we service" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
-                  <h3 className="text-sm font-display mb-4 text-foreground">Nearby areas we service</h3>
+              {extraLinks.length > 0 && (
+                <nav aria-label="More from Caraway" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                  <h3 className="text-sm font-display mb-4 text-foreground">More from Caraway</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
-                    {internalLinks.map((link) => (
+                    {extraLinks.map((link) => (
                       <li key={link.href}>
                         <Link
                           href={link.href}

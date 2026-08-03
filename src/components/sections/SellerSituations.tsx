@@ -45,9 +45,10 @@ export function SellerSituations() {
           >
             What to prepare for common vehicle sales.
           </h2>
+          {/* The "not customer reviews" disclaimer stays — it's the one thing
+              here a reader can't infer from the cards. */}
           <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg">
-            These are example situations, not customer reviews. The details show what
-            helps produce an accurate quote and a cleaner pickup.
+            Example situations, not customer reviews.
           </p>
         </div>
 

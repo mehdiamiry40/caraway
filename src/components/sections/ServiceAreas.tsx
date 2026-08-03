@@ -87,8 +87,8 @@ export function ServiceAreas() {
             <br />
             Greater Brisbane.
           </h2>
+          {/* The region list that used to open this line is the grid below. */}
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            Brisbane, Ipswich, Logan, Redlands, and the Moreton Bay region.
             If you&apos;re a bit further out, ask — we usually make it work.
           </p>
         </div>

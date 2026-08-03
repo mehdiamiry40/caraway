@@ -36,11 +36,10 @@ export function Stats() {
             ))}
           </ul>
         </div>
+        {/* The offer-varies detail is already on the feature card above; this
+            strip is just the identity line. */}
         <div className="mt-7 sm:mt-9 pt-5 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
           <p>{BUSINESS.name} · ABN {BUSINESS.abn} · Brisbane-based vehicle buyer</p>
-          <p className="mt-1 text-xs sm:text-[11px] text-muted-foreground">
-            Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.
-          </p>
         </div>
       </div>
     </section>

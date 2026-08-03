@@ -62,8 +62,7 @@ export function TrustBadges() {
                 Local service across Greater Brisbane
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Same- or next-day pickup is available in most areas, subject to truck
-                availability.
+                Same- or next-day pickup in most areas, subject to truck availability.
               </p>
             </div>
           </div>

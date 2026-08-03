@@ -14,7 +14,7 @@ import { getPostsForService } from "@/data/blog-posts";
 import { Accordion } from "@/components/ui/accordion";
 import { CheckCircle2 } from "lucide-react";
 import { PROMISE_POINTS } from "@/lib/site";
-import { getLeadSentence } from "@/lib/content-summary";
+import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 
 export default function ServicePageTemplate({
   service,
@@ -30,7 +30,10 @@ export default function ServicePageTemplate({
     .filter((s): s is SuburbPage => s !== undefined);
 
   const relatedPosts = getPostsForService(service.slug);
+  // The hero leads with the first sentence, so the callout below picks up from
+  // the second rather than repeating it.
   const heroIntro = getLeadSentence(service.intro);
+  const introRest = getBodyAfterLead(service.intro);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -61,11 +64,13 @@ export default function ServicePageTemplate({
         <div className="site-container py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
-              <div className="border-l-4 border-accent bg-secondary px-5 py-5 sm:px-6">
-                <p className="text-foreground/80 leading-relaxed text-base sm:text-lg">
-                  {service.intro}
-                </p>
-              </div>
+              {introRest && (
+                <div className="border-l-4 border-accent bg-secondary px-5 py-5 sm:px-6">
+                  <p className="text-foreground/80 leading-relaxed text-base sm:text-lg">
+                    {introRest}
+                  </p>
+                </div>
+              )}
 
               {service.sections.map((section, i) => (
                 <div key={i}>
@@ -84,7 +89,6 @@ export default function ServicePageTemplate({
                   <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-2 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                     Frequently asked questions
                   </h2>
-                  <p className="text-muted-foreground mb-8">Common questions about this service.</p>
                   <Accordion items={service.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
                 </div>
               )}

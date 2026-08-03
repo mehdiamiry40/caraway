@@ -66,13 +66,11 @@ export function Hero() {
                 We&apos;ll handle the rest.
               </h1>
 
+              {/* The three promises live in the checklist below — this line sets
+                  scope instead of restating them, and the offer-varies detail is
+                  spelled out in Stats one section down. */}
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:mt-6 sm:text-lg">
-                Get a clear cash offer, free pickup across Greater Brisbane, and payment before
-                your vehicle leaves.
-              </p>
-              <p className="mt-3 max-w-xl text-xs leading-relaxed text-on-dark-hi/80 sm:text-sm">
-                Offers depend on make, model, condition, location, completeness, and current
-                demand.
+                Any make, any condition, anywhere in Greater Brisbane.
               </p>
 
               <div className="mt-6 w-56 max-w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm sm:w-64 lg:hidden">

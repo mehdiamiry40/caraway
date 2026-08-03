@@ -36,11 +36,8 @@ export default function About() {
             <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
               Who we are
             </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
-              Caraway is a Brisbane-based buyer — we pay cash for cars we want, and we organise pickup when we agree a price. No listings, no strangers at your door for test drives.
-            </p>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We&apos;re not a faceless national franchise or an online broker who subcontracts the work. Caraway is founder-led and Brisbane-based — we know the suburbs, we answer our own phone, and we take pride in providing a genuine, personal service.
+              Caraway is a Brisbane-based buyer — we pay cash for cars we want and organise pickup once we agree a price. No listings, no strangers at your door for test drives. We&apos;re founder-led, not a national franchise or a broker who subcontracts the work: we know the suburbs, and we answer our own phone.
             </p>
           </div>
 
@@ -116,7 +113,7 @@ export default function About() {
               Our service area
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We service the entire Greater Brisbane region — from Caboolture in the north to Beenleigh in the south, from Ipswich in the west to Cleveland in the east. This includes all suburbs across Brisbane City, Logan City, Ipswich City, Moreton Bay, and Redland City council areas. If you&apos;re not sure whether we cover your area, just call — we almost certainly do.
+              Caboolture to Beenleigh, Ipswich to Cleveland — every suburb across the Brisbane, Logan, Ipswich, Moreton Bay, and Redland council areas. Not sure about yours? Call and ask; we almost certainly cover it.
             </p>
           </div>
         </div>
