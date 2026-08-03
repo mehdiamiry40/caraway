@@ -37,18 +37,15 @@ export function PriceEstimator() {
         {liveMessage}
       </div>
       <div className="site-container">
-        <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Instant valuation</p>
           <h2 className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]">
             How much is your car worth?
           </h2>
-          <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed">
-            Answer four quick questions for an instant estimate, then request a confirmed offer
-            from our team — no account required.
-          </p>
-          <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-            Actual offers depend on condition, completeness, location, demand, and current market
-            value.
+          {/* The offer disclaimer lives where it matters — beside the number in
+              step 2 — and is already stated once on this page in Stats. */}
+          <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed text-balance">
+            Four quick questions for an instant estimate — no account needed.
           </p>
         </div>
 
