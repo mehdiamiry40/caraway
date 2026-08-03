@@ -73,7 +73,9 @@ export function Hero() {
                 Any make, any condition, anywhere in Greater Brisbane.
               </p>
 
-              <div className="mt-6 w-56 max-w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm sm:w-64 lg:hidden">
+              {/* Full width of the copy column below lg — as a 14rem thumbnail
+                  it read as an afterthought against the hero's width. */}
+              <div className="mt-6 w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm lg:hidden">
                 <picture>
                   <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
                   <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
@@ -84,7 +86,7 @@ export function Hero() {
                     height={800}
                     fetchPriority="high"
                     decoding="async"
-                    className="h-32 w-full object-cover sm:h-36"
+                    className="h-48 w-full object-cover sm:h-56"
                   />
                 </picture>
               </div>
