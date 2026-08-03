@@ -12,14 +12,14 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 export default function HomeBelowFold() {
   return (
     <>
-      <TrustBadges />
-      <Stats />
-      <HowItWorks />
       {/* Server-rendered with the page: the primary conversion surface must
           exist in the HTML for crawlers, JS-off users, and #price-estimator
           deep links — the previous ssr:false + IntersectionObserver gate
           served all three an empty placeholder. */}
       <PriceEstimator />
+      <TrustBadges />
+      <Stats />
+      <HowItWorks />
       <WhyUs />
       <SellerSituations />
       <ServiceAreas />
