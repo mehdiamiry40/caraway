@@ -1,3 +1,4 @@
+import { post as postTowCost } from "./tow-truck-cost-brisbane";
 import { post as postTipDisposal } from "./take-car-to-tip-brisbane";
 import { post as postGasCertificate } from "./gas-certificate-qld-selling-lpg-car";
 import { post as postCarData } from "./delete-personal-data-from-car-before-selling";
@@ -69,6 +70,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postTowCost,
   postTipDisposal,
   postGasCertificate,
   postCarData,
