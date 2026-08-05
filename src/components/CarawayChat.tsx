@@ -3,18 +3,22 @@
 import { useChat } from "@ai-sdk/react";
 import {
   ArrowUp,
+  BadgeDollarSign,
   Bot,
+  Check,
   ExternalLink,
   Loader2,
   MessageCircle,
   Phone,
   RotateCcw,
+  Square,
   X,
 } from "lucide-react";
 import Link from "next/link";
 import {
   type FormEvent,
   type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
   useEffect,
   useRef,
   useState,
@@ -31,6 +35,197 @@ const QUICK_ACTIONS = [
 ] as const;
 
 const MAX_INPUT_LENGTH = 1_000;
+const INLINE_MARKDOWN_RE =
+  /(\*\*([^*\n]+)\*\*)|(\*([^*\n]+)\*)|(`([^`\n]+)`)|(\[([^\]\n]+)\]\(([^)\s]+)\))/g;
+
+function isSafeChatHref(href: string): boolean {
+  return /^(https?:\/\/|mailto:|tel:)/i.test(href) || /^\/(?!\/)/.test(href);
+}
+
+function renderInlineMarkdown(text: string, keyPrefix: string): ReactNode[] {
+  const content: ReactNode[] = [];
+  let lastIndex = 0;
+  let tokenIndex = 0;
+
+  for (const match of text.matchAll(INLINE_MARKDOWN_RE)) {
+    const matchIndex = match.index ?? 0;
+    if (matchIndex > lastIndex) content.push(text.slice(lastIndex, matchIndex));
+
+    const key = `${keyPrefix}-${tokenIndex++}`;
+    if (match[1]) {
+      content.push(
+        <strong key={key} className="font-semibold text-foreground">
+          {match[2]}
+        </strong>,
+      );
+    } else if (match[3]) {
+      content.push(<em key={key}>{match[4]}</em>);
+    } else if (match[5]) {
+      content.push(
+        <code key={key} className="rounded bg-muted px-1 py-0.5 text-xs">
+          {match[6]}
+        </code>,
+      );
+    } else if (match[7]) {
+      const href = match[9];
+      content.push(
+        isSafeChatHref(href) ? (
+          <a
+            key={key}
+            href={href}
+            target={/^https?:\/\//i.test(href) ? "_blank" : undefined}
+            rel={/^https?:\/\//i.test(href) ? "noopener noreferrer" : undefined}
+            className="font-medium text-primary underline underline-offset-2"
+          >
+            {match[8]}
+          </a>
+        ) : (
+          match[8]
+        ),
+      );
+    }
+
+    lastIndex = matchIndex + match[0].length;
+  }
+
+  if (lastIndex < text.length) content.push(text.slice(lastIndex));
+  return content;
+}
+
+function AssistantMarkdown({ children }: { children: string }) {
+  const blocks = children.trim().split(/\n{2,}/);
+
+  return (
+    <>
+      {blocks.map((block, blockIndex) => {
+        const lines = block.split("\n").filter((line) => line.trim().length > 0);
+        const unorderedItems = lines.map((line) => line.match(/^\s*[-*]\s+(.+)$/));
+        const orderedItems = lines.map((line) => line.match(/^\s*\d+[.)]\s+(.+)$/));
+
+        if (lines.length > 0 && unorderedItems.every(Boolean)) {
+          return (
+            <ul
+              key={`block-${blockIndex}`}
+              className="mt-2 list-disc space-y-1 pl-4 first:mt-0"
+            >
+              {unorderedItems.map((item, itemIndex) => (
+                <li key={`block-${blockIndex}-item-${itemIndex}`}>
+                  {renderInlineMarkdown(
+                    item?.[1] ?? "",
+                    `block-${blockIndex}-item-${itemIndex}`,
+                  )}
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
+        if (lines.length > 0 && orderedItems.every(Boolean)) {
+          return (
+            <ol
+              key={`block-${blockIndex}`}
+              className="mt-2 list-decimal space-y-1 pl-4 first:mt-0"
+            >
+              {orderedItems.map((item, itemIndex) => (
+                <li key={`block-${blockIndex}-item-${itemIndex}`}>
+                  {renderInlineMarkdown(
+                    item?.[1] ?? "",
+                    `block-${blockIndex}-item-${itemIndex}`,
+                  )}
+                </li>
+              ))}
+            </ol>
+          );
+        }
+
+        return (
+          <p key={`block-${blockIndex}`} className="[&:not(:first-child)]:mt-2">
+            {lines.map((line, lineIndex) => (
+              <span key={`block-${blockIndex}-line-${lineIndex}`}>
+                {renderInlineMarkdown(
+                  line.replace(/^#{1,6}\s+/, ""),
+                  `block-${blockIndex}-line-${lineIndex}`,
+                )}
+                {lineIndex < lines.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+        );
+      })}
+    </>
+  );
+}
+
+function EstimateCard({
+  estimate,
+  onContinue,
+}: {
+  estimate: {
+    displayAmount: string;
+    vehicle: string;
+    condition: string;
+    factors: string[];
+    disclaimer: string;
+  };
+  onContinue: () => void;
+}) {
+  const condition = estimate.condition.replaceAll("_", " ");
+
+  return (
+    <div className="overflow-hidden rounded-sm border border-primary/25 bg-card shadow-sm">
+      <div className="bg-secondary/70 px-3.5 py-3">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
+          <BadgeDollarSign className="h-4 w-4" aria-hidden="true" />
+          Indicative estimate
+        </div>
+        <p className="mt-1 font-display text-3xl font-semibold leading-none text-primary">
+          {estimate.displayAmount}
+        </p>
+        <p className="mt-1.5 text-sm font-medium text-foreground">
+          {estimate.vehicle}
+          <span className="font-normal capitalize text-muted-foreground">
+            {` · ${condition}`}
+          </span>
+        </p>
+      </div>
+
+      <div className="space-y-3 px-3.5 py-3">
+        {estimate.factors.length > 0 && (
+          <ul className="space-y-1.5 text-xs leading-relaxed text-foreground">
+            {estimate.factors.map((factor) => (
+              <li key={factor} className="flex items-start gap-2">
+                <Check
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"
+                  aria-hidden="true"
+                />
+                <span>{factor}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <p className="text-[0.6875rem] leading-relaxed text-muted-foreground">
+          {estimate.disclaimer}
+        </p>
+        <div className="grid grid-cols-2 gap-2">
+          <Link
+            href="/#price-estimator"
+            onClick={onContinue}
+            className="inline-flex min-h-10 items-center justify-center rounded-sm bg-cta px-3 text-center text-xs font-semibold text-cta-foreground transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Confirm my quote
+          </Link>
+          <a
+            href={BUSINESS.phoneTel}
+            className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-sm border border-primary/30 px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+            Call Caraway
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function CarawayChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,25 +234,42 @@ export function CarawayChat() {
   const launcherRef = useRef<HTMLButtonElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const wasOpenRef = useRef(false);
-  const { messages, sendMessage, status, error, clearError, setMessages, stop } =
-    useChat<CarawayChatMessage>();
+  const {
+    messages,
+    sendMessage,
+    status,
+    error,
+    clearError,
+    setMessages,
+    stop,
+    regenerate,
+  } = useChat<CarawayChatMessage>();
 
   const isBusy = status === "submitted" || status === "streaming";
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      if (wasOpenRef.current) launcherRef.current?.focus();
+      return;
+    }
     inputRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
-        launcherRef.current?.focus();
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
+
+  useEffect(() => {
+    const textarea = inputRef.current;
+    if (!textarea) return;
+    textarea.style.height = "auto";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 112)}px`;
+  }, [input]);
 
   useEffect(() => {
     if (isOpen) {
@@ -75,7 +287,6 @@ export function CarawayChat() {
 
   function closeChat() {
     setIsOpen(false);
-    launcherRef.current?.focus();
   }
 
   async function send(text: string) {
@@ -107,6 +318,11 @@ export function CarawayChat() {
     inputRef.current?.focus();
   }
 
+  async function retryLastResponse() {
+    clearError();
+    await regenerate();
+  }
+
   return (
     <>
       {isOpen && (
@@ -115,7 +331,7 @@ export function CarawayChat() {
           role="dialog"
           aria-labelledby="caraway-chat-title"
           aria-describedby="caraway-chat-description"
-          className="fixed inset-x-3 bottom-[calc(9.75rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(38rem,calc(100dvh-11rem))] flex-col overflow-hidden rounded-md border border-border bg-card shadow-[0_20px_60px_hsl(var(--shadow-color)/0.28)] sm:inset-x-auto sm:right-6 sm:w-[25rem] lg:bottom-24"
+          className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(42rem,calc(100dvh-7rem))] flex-col overflow-hidden rounded-md border border-border bg-card shadow-[0_20px_60px_hsl(var(--shadow-color)/0.28)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[25rem]"
         >
           <header className="flex items-center gap-3 border-b border-primary/25 bg-primary px-4 py-3 text-primary-foreground">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-foreground/12">
@@ -132,7 +348,7 @@ export function CarawayChat() {
                 id="caraway-chat-description"
                 className="text-xs text-primary-foreground/80"
               >
-                Quotes and quick answers
+                AI quotes and quick answers
               </p>
             </div>
             {messages.length > 0 && (
@@ -157,7 +373,9 @@ export function CarawayChat() {
 
           <div
             className="flex-1 space-y-4 overflow-y-auto bg-muted/50 px-4 py-4 overscroll-contain"
+            role="log"
             aria-live="polite"
+            aria-relevant="additions text"
             aria-busy={isBusy}
           >
             <div className="flex items-start gap-2.5">
@@ -165,8 +383,8 @@ export function CarawayChat() {
                 <Bot className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="max-w-[85%] rounded-sm rounded-tl-none border border-border bg-card px-3.5 py-3 text-sm leading-relaxed text-foreground shadow-sm">
-                Hi — I’m Caraway’s virtual assistant. I can estimate your car’s
-                value or answer questions about selling and pickup in Greater
+                Hi — I’m Caraway’s AI assistant. I can estimate your car’s value
+                or answer questions about selling and pickup across Greater
                 Brisbane.
               </div>
             </div>
@@ -187,13 +405,15 @@ export function CarawayChat() {
             )}
 
             {messages.map((message) => {
-              const text = message.parts
-                .filter((part) => part.type === "text")
-                .map((part) => part.text)
-                .join("");
-              if (!text) return null;
-
               const isUser = message.role === "user";
+              const hasVisibleContent = message.parts.some(
+                (part) =>
+                  (part.type === "text" && part.text.length > 0) ||
+                  (part.type === "tool-estimateVehicle" &&
+                    part.state === "output-available"),
+              );
+              if (!hasVisibleContent) return null;
+
               return (
                 <div
                   key={message.id}
@@ -204,14 +424,43 @@ export function CarawayChat() {
                       <Bot className="h-4 w-4" aria-hidden="true" />
                     </span>
                   )}
-                  <div
-                    className={`max-w-[85%] whitespace-pre-wrap rounded-sm px-3.5 py-3 text-sm leading-relaxed shadow-sm ${
-                      isUser
-                        ? "rounded-tr-none bg-primary text-primary-foreground"
-                        : "rounded-tl-none border border-border bg-card text-foreground"
-                    }`}
-                  >
-                    {text}
+                  <div className={`max-w-[88%] ${isUser ? "" : "space-y-2.5"}`}>
+                    {message.parts.map((part, index) => {
+                      if (part.type === "text" && part.text.length > 0) {
+                        return (
+                          <div
+                            key={`${message.id}-text-${index}`}
+                            className={`rounded-sm px-3.5 py-3 text-sm leading-relaxed shadow-sm ${
+                              isUser
+                                ? "whitespace-pre-wrap rounded-tr-none bg-primary text-primary-foreground"
+                                : "rounded-tl-none border border-border bg-card text-foreground"
+                            }`}
+                          >
+                            {isUser ? (
+                              part.text
+                            ) : (
+                              <AssistantMarkdown>{part.text}</AssistantMarkdown>
+                            )}
+                          </div>
+                        );
+                      }
+
+                      if (
+                        !isUser &&
+                        part.type === "tool-estimateVehicle" &&
+                        part.state === "output-available"
+                      ) {
+                        return (
+                          <EstimateCard
+                            key={`${message.id}-estimate-${index}`}
+                            estimate={part.output}
+                            onContinue={closeChat}
+                          />
+                        );
+                      }
+
+                      return null;
+                    })}
                   </div>
                 </div>
               );
@@ -230,12 +479,22 @@ export function CarawayChat() {
             )}
 
             {error && (
-              <div className="rounded-sm border border-destructive/30 bg-destructive/5 px-3 py-2.5 text-sm text-foreground" role="alert">
-                Chat is temporarily unavailable. Please try again or call{" "}
-                <a className="font-semibold text-primary underline" href={BUSINESS.phoneTel}>
-                  {BUSINESS.phoneDisplay}
-                </a>
-                .
+              <div className="rounded-sm border border-destructive/30 bg-destructive/5 px-3 py-3 text-sm text-foreground" role="alert">
+                <p>
+                  Chat is temporarily unavailable. Try that message again or call{" "}
+                  <a className="font-semibold text-primary underline" href={BUSINESS.phoneTel}>
+                    {BUSINESS.phoneDisplay}
+                  </a>
+                  .
+                </p>
+                <button
+                  type="button"
+                  onClick={() => void retryLastResponse()}
+                  className="mt-2 inline-flex min-h-9 items-center gap-1.5 rounded-sm border border-primary/30 bg-card px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+                  Try again
+                </button>
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -256,23 +515,27 @@ export function CarawayChat() {
                 rows={1}
                 placeholder="Ask a question or describe your car…"
                 disabled={isBusy}
-                className="max-h-28 min-h-11 flex-1 resize-none rounded-sm border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
+                className="max-h-28 min-h-11 flex-1 resize-none overflow-y-auto rounded-sm border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
               />
               <button
-                type="submit"
-                disabled={isBusy || input.trim().length === 0}
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-cta text-cta-foreground shadow-sm transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                aria-label="Send message"
+                type={isBusy ? "button" : "submit"}
+                onClick={isBusy ? stop : undefined}
+                disabled={!isBusy && input.trim().length === 0}
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-cta-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                  isBusy ? "bg-primary hover:bg-primary/90" : "bg-cta hover:bg-cta/90"
+                }`}
+                aria-label={isBusy ? "Stop response" : "Send message"}
               >
                 {isBusy ? (
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  <Square className="h-4 w-4 fill-current" aria-hidden="true" />
                 ) : (
                   <ArrowUp className="h-5 w-5" aria-hidden="true" />
                 )}
               </button>
             </form>
             <div className="mt-2 flex items-center justify-between gap-3 text-[0.6875rem] text-muted-foreground">
-              <span>Indicative estimates only</span>
+              <span className="hidden sm:inline">Enter to send · Shift+Enter for a new line</span>
+              <span className="sm:hidden">Indicative estimates only</span>
               <span className="flex items-center gap-3">
                 <Link href="/#price-estimator" className="font-medium text-primary hover:underline">
                   Full quote <ExternalLink className="inline h-3 w-3" aria-hidden="true" />
@@ -287,22 +550,20 @@ export function CarawayChat() {
         </section>
       )}
 
-      <button
-        ref={launcherRef}
-        type="button"
-        onClick={isOpen ? closeChat : openChat}
-        aria-expanded={isOpen}
-        aria-controls="caraway-chat-panel"
-        className="fixed right-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[201] inline-flex min-h-12 items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transform-none sm:right-6 lg:bottom-6"
-        aria-label={isOpen ? "Close Caraway chat" : "Open Caraway chat"}
-      >
-        {isOpen ? (
-          <X className="h-5 w-5" aria-hidden="true" />
-        ) : (
+      {!isOpen && (
+        <button
+          ref={launcherRef}
+          type="button"
+          onClick={openChat}
+          aria-expanded="false"
+          aria-controls="caraway-chat-panel"
+          className="fixed right-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[201] inline-flex min-h-12 items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transform-none sm:right-6 sm:bottom-6"
+          aria-label="Open Caraway chat"
+        >
           <MessageCircle className="h-5 w-5" aria-hidden="true" />
-        )}
-        <span>{isOpen ? "Close" : "Ask Caraway"}</span>
-      </button>
+          <span>Ask Caraway</span>
+        </button>
+      )}
     </>
   );
 }
