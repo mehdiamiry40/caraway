@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 afterEach(() => {
   vi.unstubAllEnvs();
   vi.restoreAllMocks();
+  vi.doUnmock("ai");
   vi.resetModules();
 });
 
@@ -63,6 +64,35 @@ describe("chat API route", () => {
     await expect(response.json()).resolves.toEqual({
       error: "chat temporarily unavailable",
     });
+  });
+
+  it("accepts Vercel's runtime OIDC credential", async () => {
+    vi.stubEnv("AI_GATEWAY_API_KEY", undefined);
+    vi.stubEnv("VERCEL_OIDC_TOKEN", undefined);
+    const streamText = vi.fn(() => ({ stream: new ReadableStream() }));
+    vi.doMock("ai", async (importOriginal) => ({
+      ...(await importOriginal<typeof import("ai")>()),
+      streamText,
+    }));
+
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(
+      chatRequest(
+        {
+          messages: [
+            {
+              id: "message-1",
+              role: "user",
+              parts: [{ type: "text", text: "Do you buy damaged cars?" }],
+            },
+          ],
+        },
+        { "x-vercel-oidc-token": "runtime-oidc-token" },
+      ),
+    );
+
+    expect(response.status).toBe(200);
+    expect(streamText).toHaveBeenCalledOnce();
   });
 
   it("rejects oversized requests", async () => {

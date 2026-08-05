@@ -158,7 +158,15 @@ export async function POST(request: Request) {
     .filter((message) => message.parts.length > 0);
 
   const env = getEnv();
-  if (!env.AI_GATEWAY_API_KEY && !env.VERCEL_OIDC_TOKEN) {
+  // Vercel injects fresh OIDC credentials into Functions via the request
+  // context/header at runtime. The environment variable is primarily present
+  // during builds and local `vercel env pull` sessions.
+  const runtimeOidcToken = request.headers.get("x-vercel-oidc-token");
+  if (
+    !env.AI_GATEWAY_API_KEY &&
+    !env.VERCEL_OIDC_TOKEN &&
+    !runtimeOidcToken
+  ) {
     console.error("[chat] Vercel AI Gateway credentials are not configured");
     return jsonError("chat temporarily unavailable", 503);
   }

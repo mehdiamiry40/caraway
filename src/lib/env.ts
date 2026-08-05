@@ -28,7 +28,8 @@ const envSchema = z.object({
   // crypto secret.
   PLACES_SESSION_SECRET: z.optional(z.string().check(z.minLength(1))),
   // Vercel AI Gateway uses this key in local development. Production and
-  // preview deployments authenticate automatically with VERCEL_OIDC_TOKEN.
+  // preview Functions receive short-lived OIDC credentials in request context;
+  // VERCEL_OIDC_TOKEN is also available during builds and `vercel env pull`.
   AI_GATEWAY_API_KEY: z.optional(z.string().check(z.minLength(1))),
   VERCEL_OIDC_TOKEN: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
