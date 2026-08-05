@@ -14,6 +14,7 @@ capabilities:
   - "Interactive price estimator and detailed quote form"
   - "Contact form with webhook and Resend delivery fallbacks"
   - "Google Places address autocomplete through a first-party API proxy"
+  - "Vercel AI Gateway chatbot for vehicle estimates and customer questions"
   - "Sitemap, robots, canonical metadata, and structured data"
   - "First-party health checks, sitemap, robots, canonical metadata, and structured data"
   - "Responsive layouts, keyboard navigation, reduced-motion support, and accessible form errors"
