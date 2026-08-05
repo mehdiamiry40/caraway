@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
+import { CarawayChatLoader } from "@/components/CarawayChatLoader";
 import { JsonLd } from "@/components/JsonLd";
 import {
   localBusinessSchema,
@@ -122,6 +123,7 @@ export default function RootLayout({
         </a>
         <div aria-hidden="true" className="site-frame" />
         {children}
+        <CarawayChatLoader />
         <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
         <Analytics />
         <AnalyticsListener />

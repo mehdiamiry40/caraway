@@ -19,7 +19,9 @@ type EventName =
   | "hero_cta_click"
   | "scroll_to_quote_click"
   | "google_business_click"
-  | "authority_link_click";
+  | "authority_link_click"
+  | "chat_opened"
+  | "chat_message_sent";
 
 type AllowedValue = string | number | boolean | null;
 

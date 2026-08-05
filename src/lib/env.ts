@@ -27,6 +27,10 @@ const envSchema = z.object({
   // is decoupled from API-key rotation and the key never doubles as a
   // crypto secret.
   PLACES_SESSION_SECRET: z.optional(z.string().check(z.minLength(1))),
+  // Vercel AI Gateway uses this key in local development. Production and
+  // preview deployments authenticate automatically with VERCEL_OIDC_TOKEN.
+  AI_GATEWAY_API_KEY: z.optional(z.string().check(z.minLength(1))),
+  VERCEL_OIDC_TOKEN: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
   NEXT_PUBLIC_NOINDEX: z.optional(z.enum(["1"])),
   VERCEL_ENV: z.optional(z.enum(["production", "preview", "development"])),

@@ -1,7 +1,12 @@
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-export type RateLimitScope = "forms" | "places" | "places-global";
+export type RateLimitScope =
+  | "forms"
+  | "places"
+  | "places-global"
+  | "chat"
+  | "chat-global";
 
 export interface RateLimitResult {
   success: boolean;
@@ -19,6 +24,11 @@ const POLICIES: Record<RateLimitScope, { limit: number; prefix: string }> = {
   // Caps total upstream spend per minute no matter how many IPs an abuser
   // rotates through; legitimate traffic rarely exceeds a few calls/min.
   "places-global": { limit: 300, prefix: "caraway:ratelimit:places-global" },
+  // AI requests have a real per-call cost. Keep the visitor limit generous
+  // enough for a useful conversation, while the global circuit breaker caps
+  // spend even when an attacker rotates IP addresses.
+  chat: { limit: 12, prefix: "caraway:ratelimit:chat" },
+  "chat-global": { limit: 120, prefix: "caraway:ratelimit:chat-global" },
 };
 
 const localBuckets = new Map<
