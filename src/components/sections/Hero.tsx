@@ -59,16 +59,16 @@ export function Hero() {
                    "Cash for" alone on the first line at phone widths. */
                 className="font-display text-[clamp(2.45rem,4.5vw,4.25rem)] font-bold leading-[1.04] tracking-display text-on-dark-hi text-pretty"
               >
-                Cash for cars Brisbane.
+                A clearer way to sell your car.
                 <br />
-                Sell any car, instant quote.
+                Get an estimate in minutes.
               </h1>
 
               {/* The three promises live in the checklist below — this line sets
                   scope instead of restating them, and the offer-varies detail is
                   spelled out in Stats one section down. */}
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:mt-6 sm:text-lg">
-                Any make, any condition, anywhere in Greater Brisbane.
+                Vehicle buying and pickup across Greater Brisbane.
               </p>
 
               {/* Full width of the copy column below lg — as a 14rem thumbnail

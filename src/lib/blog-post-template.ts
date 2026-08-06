@@ -18,6 +18,8 @@ export const RETIRED_BLOG_SLUGS = [
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // Consolidated into the primary /car-removal-brisbane service page.
+  "free-car-removal-brisbane",
   // Duplicate of how-much-is-scrap-car-worth-brisbane (same query/intent).
   "how-much-is-my-car-worth-for-scrap-brisbane",
 ] as const;
@@ -91,6 +93,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     authorName === publisherSchema.name || authorName === "Caraway"
       ? {
           "@type": "Organization",
+          "@id": publisherSchema["@id"],
           name: authorName,
           url: SITE_URL,
         }
@@ -112,37 +115,12 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     dateModified: post.updatedAt,
     wordCount,
     author: authorSchema,
-    publisher: {
-      "@type": "Organization",
-      name: publisherSchema.name,
-      url: publisherSchema.url,
-      logo: {
-        "@type": "ImageObject",
-        url: (publisherSchema.logo as { url: string }).url,
-      },
-    },
+    publisher: publisherSchema,
     ...(post.sources?.length
       ? { citation: post.sources.map((source) => source.url) }
       : {}),
     isAccessibleForFree: true,
   };
-
-  const faqSchema =
-    post.faqs && post.faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "@id": `${post.canonicalUrl}#faq`,
-          mainEntity: post.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
 
   const breadcrumbItems = [
     { name: "Home", item: `${SITE_URL}/` },
@@ -150,7 +128,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     { name: post.title, item: post.canonicalUrl },
   ];
 
-  return { articleSchema, faqSchema, breadcrumbItems, wordCount, plainContent };
+  return { articleSchema, breadcrumbItems, wordCount, plainContent };
 }
 
 export function validateBlogPostSeo(post: BlogPost): string[] {

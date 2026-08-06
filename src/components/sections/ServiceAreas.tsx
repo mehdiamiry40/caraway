@@ -83,9 +83,9 @@ export function ServiceAreas() {
         <div className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
-            Free pickup across
+            Pickup included across
             <br />
-            Greater Brisbane.
+            Greater Brisbane when we buy.
           </h2>
           {/* The region list that used to open this line is the grid below. */}
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">

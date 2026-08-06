@@ -11,7 +11,6 @@ const serviceLinks = [
   { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
   { label: "Sell My Car Brisbane", href: "/sell-my-car-brisbane" },
   { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
   { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
 ];
 

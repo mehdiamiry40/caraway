@@ -27,8 +27,8 @@ const quickLinks = [
   },
   {
     icon: Truck,
-    label: "Free vehicle pickup",
-    description: "Across Greater Brisbane.",
+    label: "Pickup included",
+    description: "When Caraway buys the vehicle.",
     href: "/locations",
   },
   {
@@ -39,7 +39,7 @@ const quickLinks = [
   },
   {
     icon: CarFront,
-    label: "Any condition",
+    label: "Cash for cars Brisbane",
     description: "Running, damaged, old, or unregistered.",
     href: "/cash-for-cars-brisbane",
   },

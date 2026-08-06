@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
+import { breadcrumbListSchema, serviceSchema } from "@/lib/json-ld-schemas";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
 import { getServiceBySlug, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
@@ -63,30 +63,16 @@ export default async function ServiceSlugPage({ params }: Props) {
             { name: "Home", item: `${SITE_URL}/` },
             { name: service.h1, item: canonicalUrl },
           ]),
-          faqPageSchema(service.faqs, canonicalUrl),
-          {
-            "@type": "Service",
-            "@id": `${canonicalUrl}#service`,
+          serviceSchema({
+            id: `${canonicalUrl}#service`,
+            url: canonicalUrl,
             name: service.h1,
             description: service.metaDescription,
-            provider: {
-              "@type": "LocalBusiness",
-              "@id": `${SITE_URL}/#business`,
-              name: "Caraway — Cash for Cars Brisbane",
-            },
-            areaServed: { "@type": "City", name: "Brisbane" },
-            serviceType: "Cash for Cars",
-            url: canonicalUrl,
+            serviceType: service.slug.includes("removal")
+              ? "Vehicle removal service"
+              : "Vehicle buying service",
             image: `${SITE_URL}/images/tow-truck-hero.webp`,
-            offers: {
-              "@type": "AggregateOffer",
-              priceCurrency: "AUD",
-              lowPrice: "200",
-              highPrice: "9999",
-              description: "Offer depends on vehicle details, condition, completeness, location, and current market demand. Free car removal and towing included.",
-              availability: "https://schema.org/InStock",
-            },
-          },
+          }),
         ]}
       />
       <ServicePageTemplate service={service} />

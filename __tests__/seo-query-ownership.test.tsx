@@ -1,0 +1,58 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it } from "vitest";
+import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
+import { generateMetadata as generateServiceMetadata } from "@/app/[slug]/page";
+import { Hero } from "@/components/sections/Hero";
+import { getServiceBySlug } from "@/data/services";
+import { SITE_URL } from "@/lib/site";
+
+const CASH_QUERY = /cash for cars brisbane/i;
+const REMOVAL_QUERY = /car removal brisbane/i;
+
+describe("primary SEO query ownership", () => {
+  it("keeps the homepage as a brand hub instead of a competing exact-match page", () => {
+    const title = (homeMetadata.title as { absolute: string }).absolute;
+    const openGraphTitle = String(homeMetadata.openGraph?.title ?? "");
+    const hero = renderToStaticMarkup(<Hero />);
+    const h1 = hero.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "";
+    const webPageName = String(homeStructuredData[0]?.name ?? "");
+
+    expect(title).not.toMatch(CASH_QUERY);
+    expect(openGraphTitle).not.toMatch(CASH_QUERY);
+    expect(h1).not.toMatch(CASH_QUERY);
+    expect(webPageName).not.toMatch(CASH_QUERY);
+    expect(homeMetadata.keywords).toBeUndefined();
+  });
+
+  it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
+    const service = getServiceBySlug("cash-for-cars-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "cash-for-cars-brisbane" }),
+    });
+
+    expect(service).toBeDefined();
+    expect(service?.title).toMatch(CASH_QUERY);
+    expect(service?.h1).toMatch(CASH_QUERY);
+    expect(`${SITE_URL}/${service?.slug}`).toBe(
+      "https://caraway.au/cash-for-cars-brisbane",
+    );
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/cash-for-cars-brisbane",
+    );
+  });
+
+  it("assigns car removal Brisbane to one surviving service page", async () => {
+    const service = getServiceBySlug("car-removal-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "car-removal-brisbane" }),
+    });
+
+    expect(service).toBeDefined();
+    expect(service?.title).toMatch(REMOVAL_QUERY);
+    expect(service?.h1).toMatch(REMOVAL_QUERY);
+    expect(getServiceBySlug("unwanted-cars-brisbane")).toBeUndefined();
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/car-removal-brisbane",
+    );
+  });
+});

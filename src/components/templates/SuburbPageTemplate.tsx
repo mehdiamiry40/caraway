@@ -86,7 +86,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </TrackedPhoneLink>
             </div>
             <p className="text-sm text-foreground/70">
-              Free towing · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
+              Pickup included when we buy · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
             </p>
           </div>
         </section>
@@ -202,7 +202,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   {[
                     { step: "01", title: "Get your quote", desc: "Use the online estimator or send us your car details." },
                     { step: "02", title: "Lock the number", desc: "We confirm a firm price. Book a pickup window that suits you." },
-                    { step: "03", title: "Cash on pickup", desc: "Free tow anywhere in the area. Paid before the car leaves." },
+                    { step: "03", title: "Payment and pickup", desc: "Pickup is included when we buy. Payment is confirmed before the car leaves." },
                   ].map(item => (
                     <li key={item.step}>
                       <div className="font-mono text-xs font-medium tabular-nums tracking-[0.1em] text-primary mb-3">

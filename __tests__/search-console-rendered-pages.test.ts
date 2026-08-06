@@ -52,6 +52,8 @@ describe("Search Console canonical URL cleanup", () => {
       ["/english-privacy-policy", "/privacy"],
       ["/book-online", "/contact"],
       ["/service-page/home-visit", "/car-removal-brisbane"],
+      ["/unwanted-cars-brisbane", "/car-removal-brisbane"],
+      ["/blog/free-car-removal-brisbane", "/car-removal-brisbane"],
       ["/blog/sell-damaged-car-brisbane.html", "/blog/sell-damaged-car-brisbane"],
     ]);
 

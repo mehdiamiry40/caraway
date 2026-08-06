@@ -33,7 +33,7 @@ export const post: RawBlogPostEntry = {
 
     `## When the Tow Should Cost You Nothing`,
 
-    `If the car is at the end of its life rather than on its way to a mechanic, paying to tow it is the wrong move. A dead vehicle still holds several hundred kilograms of steel, plus aluminium in the wheels, a catalytic converter and parts with buyers behind them — enough that removal gets built into the offer instead of billed to you. [Free car removal in Brisbane](/blog/free-car-removal-brisbane) covers how that works, and [what a scrap car is worth in Brisbane](/blog/how-much-is-scrap-car-worth-brisbane) explains where the figure comes from.`,
+    `If the car is at the end of its life rather than on its way to a mechanic, paying to tow it is the wrong move. A dead vehicle still holds several hundred kilograms of steel, plus aluminium in the wheels, a catalytic converter and parts with buyers behind them — enough that removal gets built into the offer instead of billed to you. [Car removal in Brisbane](/car-removal-brisbane) covers how included pickup works, and [what a scrap car is worth in Brisbane](/blog/how-much-is-scrap-car-worth-brisbane) explains where the figure comes from.`,
 
     `The same logic applies to a car that won't start, has no keys, or hasn't been registered in years. Paying an operator to shift it to a yard, then paying storage, then paying again to dispose of it, is three bills for a vehicle someone else will collect for free. [Selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) is the shorter route, and if it's currently sitting out on the kerb, [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) sets out where you stand with the council in the meantime.`,
 

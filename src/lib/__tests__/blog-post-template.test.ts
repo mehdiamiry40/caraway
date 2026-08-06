@@ -82,6 +82,9 @@ describe("blog post template", () => {
       expect(metadata.openGraph?.url).toBe(post.canonicalUrl);
       expect(articleSchema.url).toBe(post.canonicalUrl);
       expect(articleSchema.mainEntityOfPage).toBe(post.canonicalUrl);
+      expect(articleSchema.publisher["@id"]).toBe(
+        `${SITE_URL}/#organization`,
+      );
       expect(breadcrumbItems.at(-1)?.item).toBe(post.canonicalUrl);
     }
   });

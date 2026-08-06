@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 /**
- * Navigation shows only the six core services — the long-tail SEO pages
+ * Navigation shows only the five core services — the long-tail SEO pages
  * (model- and situation-specific) stay reachable from /services and internal
  * links, but 18 near-identical dropdown entries was choice overload.
  */
@@ -26,7 +26,6 @@ const coreServiceLinks = [
   { label: "Car Removal", href: "/car-removal-brisbane" },
   { label: "Sell My Car", href: "/sell-my-car-brisbane" },
   { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
   { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
 ];
 
@@ -46,7 +45,7 @@ export function Header() {
             </span>
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Free pickup across Greater Brisbane
+              Pickup included when we buy
             </span>
             <a
               href={BUSINESS.phoneTel}

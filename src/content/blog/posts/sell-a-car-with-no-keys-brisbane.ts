@@ -56,6 +56,6 @@ export const post: RawBlogPostEntry = {
   ],
   date: "2026-07-23",
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "unwanted-cars-brisbane", "car-removal-brisbane"],
+  relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
 };

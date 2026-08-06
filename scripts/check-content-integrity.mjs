@@ -12,6 +12,8 @@ const retiredBlogSlugs = new Set([
   "cash-for-cars-redcliffe-brisbane",
   "cash-for-cars-sunshine-coast",
   "cash-for-cars-toowoomba",
+  // August 2026: consolidated into /car-removal-brisbane.
+  "free-car-removal-brisbane",
   // July 2026: suburb posts retired in favour of /locations/{suburb} pages.
   "cash-for-cars-beenleigh",
   "cash-for-cars-browns-plains",

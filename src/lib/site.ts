@@ -10,6 +10,7 @@ export const BUSINESS = {
   foundingYear: 2025,
   founder: "Mehdi Emir",
   phoneDisplay: "0481 438 444",
+  phoneE164: "+61481438444",
   phoneTel: "tel:0481438444",
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
@@ -69,6 +70,10 @@ export const LEGAL_DATES = {
  *  builds instead of drifting to "today" on every deploy. */
 export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
+/** Homepage metadata, H1, and entity focus were retargeted to a brand hub so
+ *  the dedicated service pages can own the two primary commercial queries. */
+export const HOME_CONTENT_UPDATED = "2026-08-07";
+
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
@@ -78,7 +83,7 @@ export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-07-21";
 export const PROMISE_POINTS = [
   "Fair offer based on details",
   "Same- or next-day pickup",
-  "Free towing included",
+  "Pickup included when we buy",
   "Cars assessed as-is",
   "All makes & models",
   "7 days a week",

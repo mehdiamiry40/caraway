@@ -81,7 +81,6 @@ export const post: RawBlogPostEntry = {
     "sell-my-car-brisbane",
     "car-removal-brisbane",
     "unregistered-cars-brisbane",
-    "unwanted-cars-brisbane",
   ],
   relatedSuburbs: ["wynnum", "paddington", "chermside", "springwood"],
 };

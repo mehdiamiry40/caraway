@@ -27,7 +27,7 @@ test("sticky mobile CTA is available and jumps to the estimator", async ({
 });
 
 test("reading progress bar tracks blog post scroll", async ({ page }) => {
-  await page.goto("/blog/free-car-removal-brisbane");
+  await page.goto("/blog/how-much-is-scrap-car-worth-brisbane");
   const progress = page.getByRole("progressbar", { name: "Reading progress" });
 
   await expect(progress).toHaveAttribute("aria-valuenow", "0");

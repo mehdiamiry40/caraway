@@ -23,7 +23,7 @@ const trustPoints = [
   },
   {
     icon: Truck,
-    title: "Free towing included",
+    title: "Pickup included when we buy",
     description:
       "Pickup is in the offer. No hidden towing or call-out fees.",
   },

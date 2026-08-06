@@ -39,30 +39,11 @@ export default function ContactPage() {
             url: canonical,
             name: "Contact Caraway",
             description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or fill out our form.`,
-            mainEntity: { "@id": `${SITE_URL}/#business` },
+            mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
             dateModified: CONTENT_DEPLOY_DATE,
-            about: {
-              "@type": "LocalBusiness",
-              "@id": `${SITE_URL}/#business`,
-            },
-            contactPoint: [
-              {
-                "@type": "ContactPoint",
-                contactType: "customer service",
-                telephone: BUSINESS.phoneDisplay,
-                email: BUSINESS.email,
-                areaServed: "AU",
-                availableLanguage: "English",
-                hoursAvailable: {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                  opens: "07:00",
-                  closes: "19:00",
-                },
-              },
-            ],
+            about: { "@id": `${SITE_URL}/#organization` },
           },
         ]}
       />

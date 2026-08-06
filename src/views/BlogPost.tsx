@@ -201,7 +201,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Get a real offer in under 60 seconds.
                   </p>
                   <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-md leading-relaxed">
-                    Same- or next-day pickup across Brisbane. Cars assessed as-is. Free towing. Payment confirmed at pickup.
+                    Same- or next-day pickup across Brisbane. Cars assessed as-is. Pickup included when we buy. Payment confirmed at pickup.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">

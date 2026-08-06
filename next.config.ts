@@ -169,6 +169,16 @@ export const legacyIndexingRedirects = [
     source: "/service-page/home-visit",
     destination: "/car-removal-brisbane",
   },
+  // August 2026 Search Console consolidation: these pages split the same
+  // Brisbane car-removal query across three URLs. Keep one indexable owner.
+  {
+    source: "/unwanted-cars-brisbane",
+    destination: "/car-removal-brisbane",
+  },
+  {
+    source: "/blog/free-car-removal-brisbane",
+    destination: "/car-removal-brisbane",
+  },
   {
     source: "/blog/sell-damaged-car-brisbane.html",
     destination: "/blog/sell-damaged-car-brisbane",

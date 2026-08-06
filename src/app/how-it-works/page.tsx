@@ -7,11 +7,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Accordion } from "@/components/ui/accordion";
-import {
-  breadcrumbListSchema,
-  faqPageSchema,
-  howToSchema,
-} from "@/lib/json-ld-schemas";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOW_IT_WORKS_CONTENT_UPDATED,
@@ -124,39 +120,6 @@ export default function HowItWorksPage() {
             { name: "Home", item: `${SITE_URL}/` },
             { name: "How It Works", item: canonical },
           ]),
-          howToSchema({
-            id: `${canonical}#howto`,
-            name: "How to Sell Your Car for Cash in Brisbane",
-            description:
-              "Caraway's process for selling a car in Brisbane: share details, receive a confirmed offer, book free pickup, and get paid before the vehicle leaves.",
-            totalTime: "PT1D",
-            estimatedCost: { currency: "AUD", value: "0" },
-            steps: [
-              {
-                name: "Tell us about your car",
-                text: "Share the make, model, year, condition, suburb, and photos if available.",
-                url: canonical,
-              },
-              {
-                name: "Get a confirmed offer",
-                text: "Caraway reviews the details and confirms the offer before pickup is booked.",
-                url: canonical,
-              },
-              {
-                name: "We come to you",
-                text: "A truck arrives at the booked time anywhere in Greater Brisbane, with towing included.",
-                url: canonical,
-              },
-              {
-                name: "Get paid on the spot",
-                text: "Payment is confirmed before the car leaves, with a signed receipt and buyer details for your records.",
-                url: canonical,
-              },
-            ],
-            supply: ["Vehicle details", "Photo ID", "Relevant ownership or registration documents"],
-            tool: ["Caraway online quote tool"],
-          }),
-          faqPageSchema(processFaqs, canonical),
           {
             "@context": "https://schema.org",
             "@type": "WebPage",

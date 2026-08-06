@@ -23,7 +23,6 @@ import { post as postCarWorth } from "./how-much-is-my-car-worth-brisbane";
 import { post as postHybridEv } from "./sell-hybrid-or-electric-car-brisbane";
 import { post as postDeceasedEstate } from "./sell-deceased-estate-car-qld";
 import { post as postNonRunning } from "./sell-non-running-car-brisbane";
-import { post as postFreeCarRemoval } from "./free-car-removal-brisbane";
 import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
 import { post as postUte } from "./sell-my-ute-brisbane";
 import { post as postScamsGuide } from "./how-to-avoid-cash-for-cars-scams-brisbane";
@@ -97,7 +96,6 @@ export const rawBlogPosts = [
   postHybridEv,
   postDeceasedEstate,
   postNonRunning,
-  postFreeCarRemoval,
   postWreckersVs,
   postUte,
   postScamsGuide,

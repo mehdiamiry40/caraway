@@ -10,6 +10,7 @@ import {
   SITE_URL,
   LEGAL_DATE_ISO,
   CONTENT_DEPLOY_DATE,
+  HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
 } from "@/lib/site";
 
@@ -71,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: HOME_CONTENT_UPDATED,
       changeFrequency: "weekly",
       priority: 1.0,
       images: HERO_IMAGE,
@@ -156,7 +157,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const servicePages: MetadataRoute.Sitemap = services.filter((s) => s.slug).map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
-    lastModified: CONTENT_DEPLOY_DATE,
+    lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
     priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
     images: HERO_IMAGE,

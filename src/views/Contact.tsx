@@ -71,7 +71,7 @@ export default function Contact() {
                   icon: Building2,
                   title: "Based in",
                   main: BUSINESS.addressFormatted,
-                  sub: "We don't operate a public yard — pickups are always at your location with free towing.",
+                  sub: "We don't operate a public yard — pickup is at your location and included when we buy.",
                 },
                 {
                   icon: MapPin,

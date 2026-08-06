@@ -20,6 +20,6 @@ export const post: RawBlogPostEntry = {
     date: "2025-02-10",
     updatedAt: "2026-06-09",
     category: "Tips",
-    relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
+    relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["sunnybank", "chermside", "indooroopilly"],
   };

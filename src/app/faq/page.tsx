@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { breadcrumbListSchema, faqPageSchema } from "@/lib/json-ld-schemas";
+import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import FAQPage from "@/views/FAQPage";
-import { allFaqs } from "@/lib/faq-data";
 import { BUSINESS, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -35,7 +34,6 @@ export default function FaqRoutePage() {
             { name: "Home", item: `${SITE_URL}/` },
             { name: "FAQ", item: `${SITE_URL}/faq` },
           ]),
-          faqPageSchema(allFaqs, `${SITE_URL}/faq`),
         ]}
       />
       <FAQPage />

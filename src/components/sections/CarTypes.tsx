@@ -7,7 +7,7 @@ const carTypes = [
   { label: "Damaged Cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident or storm damage" },
   { label: "Scrap Cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicles" },
   { label: "Used Cars", href: "/used-cars-brisbane", icon: Car, desc: "Running, registered or not" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane", icon: Ban, desc: "Any reason, we'll take it" },
+  { label: "Unwanted Cars", href: "/car-removal-brisbane", icon: Ban, desc: "Pickup included when we buy" },
   { label: "Accident Write-offs", href: "/accident-cars-brisbane", icon: AlertTriangle, desc: "Statutory or repairable" },
   { label: "Junk Cars", href: "/junk-cars-brisbane", icon: Truck, desc: "Non-running, rusted, stripped" },
   { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "No rego? No problem" },

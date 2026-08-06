@@ -8,7 +8,7 @@ import {
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
-import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
+import { HOME_CONTENT_UPDATED, LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
 
 const entries = sitemap();
 const urls = new Set(entries.map((e) => e.url));
@@ -110,9 +110,24 @@ describe("sitemap.ts — page coverage", () => {
     }
   });
 
+  it("uses the homepage's material rewrite date", () => {
+    expect(
+      entries.find((entry) => entry.url === `${SITE_URL}/`)?.lastModified,
+    ).toBe(HOME_CONTENT_UPDATED);
+  });
+
   it("includes every service page", () => {
     for (const s of services) {
       expect(urls.has(`${SITE_URL}/${s.slug}`)).toBe(true);
+    }
+  });
+
+  it("uses page-specific lastModified dates for rewritten services", () => {
+    for (const service of services.filter((item) => item.updatedAt)) {
+      const entry = entries.find(
+        (item) => item.url === `${SITE_URL}/${service.slug}`,
+      );
+      expect(entry?.lastModified).toBe(service.updatedAt);
     }
   });
 

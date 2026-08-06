@@ -13,6 +13,7 @@ export interface ServiceSection {
 
 export interface ServicePage {
   slug: string;
+  updatedAt?: string;
   title: string;
   metaDescription: string;
   h1: string;
@@ -26,77 +27,93 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    title: "Cash for Cars Brisbane | Fair Offers, Fast Free Pickup",
-    metaDescription: `Cash for cars Brisbane: get a fair cash offer based on your vehicle details. Free towing, payment on pickup, Greater Brisbane. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Cash for Cars Brisbane — Get Paid Today",
-    intro: "Looking to sell your car fast in Brisbane? Caraway is one of Brisbane's trusted cash for cars buyers, giving fair offers for vehicles in any condition — up to $9,999 for selected vehicles. Whether your car is old, damaged, scrap, or running perfectly, we'll make you a clear cash offer and pick it up the same or next day, free of charge. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
+    updatedAt: "2026-08-07",
+    title: "Cash for Cars Brisbane | Fair Offers & Free Pickup",
+    metaDescription: `Cash for cars Brisbane: get an offer based on your vehicle details, pickup included when we buy, and payment confirmed at collection. Call ${BUSINESS.phoneDisplay}.`,
+    h1: "Cash for Cars Brisbane — Vehicle Offers & Pickup",
+    intro: "Looking to sell a car for cash in Brisbane? Caraway makes offers from the vehicle details you provide and includes pickup when we buy. Selected vehicles may receive offers up to $9,999, while older, incomplete, damaged, or scrap vehicles usually receive less. Payment is confirmed before the vehicle leaves.",
     sections: [
       {
         heading: "How Our Cash for Cars Service Works",
-        content: "Selling your car for cash in Brisbane couldn't be simpler. Use our online price estimator or fill out our quote form with your car's details — make, model, year, and condition. We'll give you a no-obligation cash offer within minutes. If you accept, we'll arrange free pickup at a time that suits you — often the same or next day. Our driver arrives, pays you in cash on the spot, and tows your vehicle away at no cost. The entire process takes less than an hour from start to finish."
+        content: "Share the make, model, year, condition, suburb, and whether the vehicle starts, rolls, and is complete. We review those details and confirm a no-obligation offer. If you accept, we book a pickup window — often the same or next day, subject to truck availability, location, and access. At collection, the driver checks that the vehicle matches the description, confirms payment, and provides a signed receipt and buyer details."
       },
       {
         heading: "Why Brisbane Locals Choose Caraway",
-        content: "We focus on making the sale straightforward: cars are assessed as-is, there are no classified ads or stranger test drives, and towing is included when we buy. We provide a receipt and buyer details for the applicable Queensland paperwork, and payment is confirmed before the vehicle leaves. We're a Brisbane-based buyer — not a national lead broker."
+        content: "Caraway is a Brisbane-based vehicle buyer, not a national lead broker. We quote before dispatch, assess cars as described, include pickup when we buy, and confirm payment before loading. Sellers receive a signed receipt and buyer details for the Queensland paperwork that applies to their vehicle and sale."
       },
       {
         heading: "What Cars We Buy for Cash in Brisbane",
-        content: "We buy all types of vehicles across Brisbane — sedans, utes, 4WDs, SUVs, vans, trucks, and fleet vehicles. It doesn't matter if your car is running or not, registered or unregistered, crashed or flood-damaged. Old Commodores, Falcons, Camrys, Corollas, Hiluxes — we buy them all. We also purchase prestige and European vehicles, commercial vehicles, and motorcycles."
+        content: "We quote on sedans, hatchbacks, utes, 4WDs, SUVs, vans, light commercial vehicles, and fleet vehicles across Greater Brisbane. Running, non-running, registered, unregistered, damaged, and end-of-life vehicles can all be assessed. Tell us about missing parts, warning lights, accident damage, finance, or access issues so the offer and pickup plan are accurate."
       },
       {
         heading: "Same- or Next-Day Car Removal Across Brisbane",
-        content: "When you accept our offer, we can usually arrange same- or next-day pickup anywhere in Greater Brisbane. Our fleet covers all suburbs from Caboolture in the north to Beenleigh in the south, and from Ipswich in the west to Cleveland in the east. Weekend and after-hours pickups are available by arrangement. We work around your schedule, not the other way around."
+        content: "Pickup is often available the same or next day across Greater Brisbane, including Brisbane, Logan, Ipswich, Redlands, and Moreton Bay areas. Timing depends on truck availability, the vehicle's location, and safe access. We confirm the pickup window before dispatch rather than promising a time that cannot be met."
       },
       {
         heading: "How Much Cash Will I Get for My Car?",
-        content: "Offers may range from $200 to $9,999 depending on the vehicle. The amount we pay depends on your vehicle's make, model, year, condition, completeness, location, and the current market for parts and scrap metal. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. If you have another written quote, mention it — we'll see what we can do."
+        content: "There is no fixed price for a car from a web page alone. Offers depend on the make, model, year, kilometres, condition, completeness, location, access, and current resale, parts, or material demand. Selected vehicles may receive up to $9,999; most older, damaged, incomplete, or scrap vehicles receive lower offers. The quote is specific to the details supplied."
       },
       {
-        heading: "How We Calculate Your Car Offer",
-        content: "Your offer depends on the vehicle's make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand. Scrap vehicles usually receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers."
+        heading: "What to Have Ready for the Sale",
+        content: "Have current photo ID, all keys you hold, and any registration, finance, insurer, estate, or ownership documents relevant to the vehicle. Remove personal belongings and note any toll account linked to it. Queensland requirements vary by registration status and sale type, so complete the seller-side TMR steps that apply and keep the receipt and confirmation for your records."
       }
     ],
     faqs: [
       { question: "Will I really get up to $9,999 for my car?", answer: "Some selected vehicles may receive offers up to $9,999, but most older, damaged, or scrap vehicles receive lower offers. Your quote depends on the vehicle's make, model, year, condition, completeness, location, and current market demand." },
-      { question: "How quickly can I get cash for my car in Brisbane?", answer: "Most sellers receive same- or next-day payment. Once you accept our offer, we can often arrange pickup within a few hours. You're paid in cash before the car leaves your property." },
-      { question: "Do you buy cars without registration?", answer: "Yes, we buy unregistered, deregistered, and expired-registration vehicles across Brisbane. No current registration is required." },
-      { question: "Is your car removal really free?", answer: "Absolutely. There are no towing fees or hidden pickup costs. We do not deduct towing from your agreed quote when the vehicle matches the details provided." },
-      { question: "What areas of Brisbane do you cover?", answer: "We cover all of Greater Brisbane including North Brisbane, South Brisbane, East Brisbane, West Brisbane, Logan, Ipswich, Redland Bay, and Moreton Bay regions." }
+      { question: "How quickly can I sell my car in Brisbane?", answer: "Pickup is often available the same or next day, subject to truck availability, location, vehicle condition, and access. We confirm the timing and payment method when you book." },
+      { question: "Do you buy cars without registration?", answer: "We assess unregistered, deregistered, and expired-registration vehicles. Bring ID and any ownership records you have, follow the current Queensland requirements for your sale type, and keep a signed receipt." },
+      { question: "Is pickup included in my offer?", answer: "Yes. When Caraway buys the vehicle, pickup is included and is not deducted from the agreed offer when the vehicle and access match the details supplied." },
+      { question: "What areas of Brisbane do you cover?", answer: "We quote for pickups across Greater Brisbane, including Brisbane, Logan, Ipswich, Redlands, and Moreton Bay areas. Availability is confirmed from the exact suburb and access details." }
     ],
-    relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane"],
+    relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane", "scrap-car-removal-brisbane"],
     relatedSuburbs: ["north-brisbane", "south-brisbane", "logan", "ipswich", "redcliffe", "bayside-brisbane"]
   },
   {
     slug: "car-removal-brisbane",
-    title: "Free Car Removal Brisbane | Same- or Next-Day Pickup",
-    metaDescription: `Free car removal across Brisbane when we buy. Same- or next-day pickup is usually available, with payment confirmed at collection. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Free Car Removal Brisbane — Same- or Next-Day Service",
-    intro: "Need a car removed from your property in Brisbane? Caraway offers free car removal across Greater Brisbane with same- or next-day pickup available 7 days a week. We don't just remove your car — we pay you cash for it. No towing fees, no hidden charges, no hassle.",
+    updatedAt: "2026-08-07",
+    title: "Car Removal Brisbane | Free Pickup When We Buy",
+    metaDescription: `Car removal Brisbane: pickup is included when Caraway buys your vehicle. Same- or next-day collection is often available. Call ${BUSINESS.phoneDisplay}.`,
+    h1: "Car Removal Brisbane — Free Pickup When We Buy",
+    intro: "Need an old, damaged, non-running, or unwanted car removed in Brisbane? Caraway buys vehicles across Greater Brisbane and includes towing in the agreed offer. Same- or next-day pickup is often available, subject to truck availability, location, vehicle condition, and access.",
     sections: [
       {
         heading: "How Our Brisbane Car Removal Works",
-        content: "Our car removal process is straightforward. Contact us with your vehicle details for a free, no-obligation quote. Once you accept, our pickup driver comes at the agreed time with the towing equipment needed for non-running vehicles. We confirm the agreed payment before loading and provide a receipt and buyer details for the Queensland paperwork that applies."
+        content: "Share the vehicle's make, model, year, condition, suburb, and access details for a no-obligation quote. If you accept, we confirm a pickup window and the equipment required. At collection, the driver checks that the vehicle matches the description, confirms the agreed payment before loading, and provides a signed receipt and buyer details."
       },
       {
-        heading: "We Remove All Types of Vehicles",
-        content: "Our removal service covers all vehicle types and conditions. We remove old cars that have been sitting in driveways for years, accident-damaged vehicles, mechanically failed cars, flood-damaged cars, fire-damaged vehicles, and end-of-life scrap cars. We also remove commercial vehicles, vans, trucks, utes, and 4WDs. If it has wheels, we can remove it."
+        heading: "What Free Pickup Includes",
+        content: "When Caraway buys the vehicle, the agreed offer includes pickup and towing. There is no separate towing deduction when the vehicle and access match the details supplied. If the car cannot roll, has missing wheels, seized brakes, difficult access, or is in an underground car park, tell us before booking so we can confirm whether suitable recovery equipment is available."
       },
       {
-        heading: "Brisbane-Wide Coverage, No Exceptions",
-        content: "We operate across the entire Greater Brisbane region. Whether you're in the CBD, inner suburbs like West End and New Farm, northern suburbs like Chermside and North Lakes, southern suburbs like Logan and Springwood, or western areas like Ipswich and Springfield — our team will come to you. We never charge extra for distance."
+        heading: "Vehicles We Assess for Removal",
+        content: "We assess sedans, hatchbacks, utes, 4WDs, SUVs, vans, and light commercial vehicles in many conditions. That includes old or unwanted cars, mechanical failures, accident damage, flood or storm damage, unregistered vehicles, and end-of-life cars. The quote and recovery plan depend on the vehicle being complete, identifiable, accessible, and accurately described."
       },
       {
-        heading: "Why Choose Caraway for Car Removal?",
-        content: "Unlike many car removal services that charge towing fees, Caraway includes removal when we buy and provides a clear offer before dispatch. We're insured and Brisbane-based, and our drivers aim to be professional and punctual. Vehicles intended for dismantling or recycling are sent through appropriate specialist facilities."
+        heading: "Car Removal Across Greater Brisbane",
+        content: "We quote for pickups across Greater Brisbane, including Brisbane, Logan, Ipswich, Redlands, and Moreton Bay areas. Collection timing and availability depend on the exact suburb, traffic, truck scheduling, and access. We confirm the service area and pickup window before a truck is dispatched."
+      },
+      {
+        heading: "Why Cars Become Unwanted",
+        content: "A vehicle may be taking up space after an upgrade, sitting unused after a mechanical failure, awaiting an insurance decision, or forming part of an estate or fleet clean-out. Caraway provides one route to sell and collect it without arranging a separate private tow. Finance, insurer, estate, or ownership issues should be disclosed before the booking so the required authority can be confirmed."
+      },
+      {
+        heading: "Prepare the Car and Access for Pickup",
+        content: "Remove personal belongings, gather all keys, and have current photo ID plus any registration or ownership records available. Tell us about locked gates, height limits, steep driveways, soft ground, flat tyres, missing parts, or other access constraints. Clear a safe path for the truck where possible; accurate details prevent delays and protect the agreed quote."
+      },
+      {
+        heading: "Paperwork and What Happens Next",
+        content: "We provide a signed receipt and buyer details. You remain responsible for completing and retaining confirmation of the Queensland seller-side steps that apply, such as a registration transfer, cancellation, or evidence of an unregistered sale. Depending on its condition, the vehicle may be resold, used for parts, or sent to an appropriate specialist for dismantling and material recovery."
       }
     ],
     faqs: [
-      { question: "Is car removal really free in Brisbane?", answer: "Yes — 100% free. We never charge for towing or pickup. The price we quote is the full amount you receive in cash, with nothing deducted." },
-      { question: "How fast can you remove my car?", answer: "We offer same- or next-day car removal across most Brisbane suburbs. Contact us before midday and we can usually arrange afternoon pickup." },
-      { question: "Do you remove cars that don't run?", answer: "Yes. Our tow trucks can load non-running, broken-down, and immobile vehicles. Your car doesn't need to start or drive." },
-      { question: "Can you remove a car from a tight space?", answer: "Yes. Our experienced drivers can retrieve vehicles from garages, backyards, driveways, underground car parks, and other tight locations." }
+      { question: "Is car removal free in Brisbane?", answer: "Pickup is included when Caraway buys the vehicle. We do not deduct a separate towing fee from the agreed offer when the car and access match the details supplied." },
+      { question: "How fast can you remove my car?", answer: "Same- or next-day pickup is often available, subject to truck availability, your suburb, vehicle condition, and safe access. We confirm a pickup window at booking." },
+      { question: "Do you remove cars that do not run?", answer: "We assess non-running and mechanically failed vehicles. Tell us whether the car starts, rolls, steers, brakes, has all wheels, and can be reached safely so we can confirm the recovery plan." },
+      { question: "Can you remove a car from a tight space?", answer: "Possibly, depending on clearance, surface, slope, and truck access. Send photos and measurements for garages, backyards, apartment car parks, or other restricted locations before booking." },
+      { question: "What do I need at pickup?", answer: "Have current photo ID, all keys you hold, and relevant registration, finance, insurer, estate, or ownership documents. Remove personal belongings and complete the Queensland seller-side paperwork that applies." },
+      { question: "Do you collect unwanted and unregistered cars?", answer: "We assess unwanted and unregistered vehicles across Greater Brisbane. The vehicle must be accurately described, and you must have the authority and documents required to sell it." }
     ],
-    relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane", "junk-cars-brisbane"],
+    relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane"],
     relatedSuburbs: ["chermside", "carindale", "sunnybank", "mount-gravatt", "toowong", "north-lakes"]
   },
   {
@@ -162,44 +179,8 @@ export const services: ServicePage[] = [
       { question: "Do I need paperwork for a scrap car?", answer: "Bring current photo ID and any registration or ownership records you have. We provide a receipt and buyer details, and you complete the seller-side TMR steps that apply to a transfer, cancellation, or unregistered sale." },
       { question: "Is scrap car removal really free?", answer: "Yes. We do not charge for towing or removal, and we do not deduct towing costs from your agreed quote when the vehicle matches the details provided." }
     ],
-    relatedServices: ["car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane"],
+    relatedServices: ["car-removal-brisbane", "junk-cars-brisbane", "old-cars-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "caboolture", "browns-plains", "beenleigh"]
-  },
-  {
-    slug: "unwanted-cars-brisbane",
-    title: "Unwanted Car Removal Brisbane | Cash Paid Today",
-    metaDescription: `Got an unwanted car in Brisbane? We pay cash and remove it free. Any make, any condition. Same- or next-day pickup available. Call Caraway on ${BUSINESS.phoneDisplay}.`,
-    h1: "Unwanted Car Removal Brisbane — Turn It Into Cash",
-    intro: "That unwanted car sitting in your driveway, garage, or yard doesn't have to be a headache. Caraway turns unwanted vehicles into instant cash across Brisbane. We buy any unwanted car regardless of its age, condition, or registration status — and we remove it free.",
-    sections: [
-      {
-        heading: "Why Do Cars Become Unwanted?",
-        content: "Cars become unwanted for many reasons. Maybe you've upgraded and the old car is just taking up space. Perhaps it failed its safety inspection and isn't worth fixing. Maybe you've inherited a vehicle you don't need, or your car was damaged in an accident and you'd rather take the cash than repair it. Whatever the reason, Caraway is a straightforward way to turn that unwanted car into money."
-      },
-      {
-        heading: "We Buy All Unwanted Vehicles",
-        content: "Our service covers every type of unwanted vehicle in Brisbane. Old family cars, deceased estate vehicles, ex-company fleet cars, vehicles with mechanical problems, cars that have been sitting unused for years, and vehicles that simply aren't worth the hassle of selling privately. If you don't want it, we do — and we'll pay you for it."
-      },
-      {
-        heading: "Fast, Convenient Removal at Your Location",
-        content: "We come to you anywhere in Greater Brisbane. You don't need to drive the car anywhere or arrange independent towing. Our team arrives at your location with a flatbed tow truck, pays you cash, loads the vehicle, and leaves. The whole process takes about 30 minutes. We can even remove cars from backyards, sheds, and properties where there's limited access."
-      },
-      {
-        heading: "Unwanted Car Removal Across Every Brisbane Suburb",
-        content: "Our unwanted car removal service covers every postcode across Greater Brisbane, from Bracken Ridge and Bald Hills in the north through to Beenleigh, Loganholme, and Mount Warren Park in the south. We regularly run to the western suburbs along the Ipswich Motorway — Jindalee, Darra, Wacol, Goodna, and out to Ipswich itself — and we cover the bayside and Redlands from Wynnum through Capalaba to Victoria Point and Redland Bay. Rural properties on the fringes of the city are no problem either: our flatbed trucks can reach acreages around Samford, Dayboro, and the outer Moreton Bay region. Wherever the unwanted car is sitting, we'll make the trip. Our drivers know the quirks of Brisbane's road network — the tight streets of Paddington, the steep driveways of Kenmore, the apartment complexes along Coronation Drive, the industrial estates of Geebung and Rocklea — and they come prepared with the right equipment for the job. We don't charge distance surcharges and we never reduce a quote because of the suburb you're in. Whether you're inside the CBD or on the edge of the Scenic Rim, the cash offer is the same fair number on the phone as at pickup."
-      },
-      {
-        heading: "Why Unwanted Cars Cost You Money Every Day You Wait",
-        content: "An unwanted car isn't a neutral thing — it quietly costs you money and space every day it sits. If it's still registered, you're paying registration and CTP insurance for a vehicle you're not using: in Queensland that's around $840 per year for a standard four-cylinder private car. If you're storing it in a garage or carport, you're losing usable space on your own property. If it's outside, it's weathering — paint oxidising, seals perishing, upholstery fading, tyres going flat and cracking. Mice and possums get into the engine bay and chew wiring looms. Brake discs rust onto calipers. Fuel turns to varnish in the lines. Every month the car sits, it loses value you'll never recover. On top of the financial cost, Brisbane City Council and surrounding councils can issue abandoned vehicle infringements for derelict cars visible from the street — fines start around $330 and can climb quickly if the problem isn't addressed. Selling to Caraway stops the bleed immediately. You get the money, you get the space back, and you stop worrying about fines, rust, and rodents. Most of our customers say the hardest part was picking up the phone; after that, the car was gone in hours."
-      }
-    ],
-    faqs: [
-      { question: "What is an unwanted car worth in Brisbane?", answer: "Values range from $200 for end-of-life vehicles to several thousand dollars for newer unwanted cars in reasonable condition. Get a free quote using our online price estimator." },
-      { question: "Can you remove an unwanted car today?", answer: "In most cases, yes. Contact us in the morning and we can usually arrange same- or next-day removal across Brisbane suburbs." },
-      { question: "Do I need to be home for the pickup?", answer: "Ideally yes, as we pay cash in person and need your ID. However, we can make alternative arrangements if you're unable to be present — just ask." }
-    ],
-    relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "old-cars-brisbane", "junk-cars-brisbane"],
-    relatedSuburbs: ["north-brisbane", "south-brisbane", "chermside", "carindale", "moorooka"]
   },
   {
     slug: "damaged-cars-brisbane",
@@ -298,7 +279,7 @@ export const services: ServicePage[] = [
       { question: "Will you buy a car with over 300,000km?", answer: "Yes. High-kilometre vehicles still have value in parts and materials. We regularly buy cars with 300,000+ kilometres." },
       { question: "My old car hasn't been started in years — can you still buy it?", answer: "Absolutely. Non-running, non-starting old cars are among the most common vehicles we purchase. Our tow truck will collect it from wherever it's sitting." }
     ],
-    relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "unwanted-cars-brisbane", "junk-cars-brisbane"],
+    relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "car-removal-brisbane", "junk-cars-brisbane"],
     relatedSuburbs: ["moorooka", "browns-plains", "springwood", "mount-gravatt", "chermside"]
   },
   {
@@ -326,7 +307,7 @@ export const services: ServicePage[] = [
       { question: "Can you remove a junk car from a backyard?", answer: "Yes. Our drivers are experienced at retrieving vehicles from tight and difficult locations including backyards, garages, and rural properties." },
       { question: "What happens to junk cars after you buy them?", answer: "Usable parts are salvaged and resold. Remaining materials are recycled at licensed facilities. We dispose of all fluids and hazardous materials responsibly." }
     ],
-    relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "car-removal-brisbane", "unwanted-cars-brisbane"],
+    relatedServices: ["scrap-car-removal-brisbane", "old-cars-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["ipswich", "logan", "caboolture", "redcliffe", "beenleigh"]
   },
   {
@@ -354,7 +335,7 @@ export const services: ServicePage[] = [
       { question: "What ID do I need to sell an unregistered car?", answer: "Just your driver's licence or photo ID. If you have any ownership documents or previous registration papers, bring those too — but they're not essential." },
       { question: "How do you remove an unregistered car that can't be driven?", answer: "Our tow truck will come to your location and load the vehicle. Your car doesn't need to be roadworthy or driveable for us to remove it." }
     ],
-    relatedServices: ["cash-for-cars-brisbane", "old-cars-brisbane", "unwanted-cars-brisbane", "scrap-car-removal-brisbane"],
+    relatedServices: ["cash-for-cars-brisbane", "old-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
     relatedSuburbs: ["south-brisbane", "north-brisbane", "springwood", "toowong", "north-lakes"]
   },
   {
