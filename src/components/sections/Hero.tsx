@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { preload } from "react-dom";
-import { ArrowRight, Check, Phone } from "lucide-react";
-import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
-
-const assurances = [
-  "Any make or condition",
-  "Pickup included when we buy",
-  "Open seven days",
-] as const;
 
 export function Hero() {
   preload("/images/tow-truck-hero.avif", {
@@ -21,78 +13,51 @@ export function Hero() {
 
   return (
     <section
-      className="mt-header-safe overflow-hidden bg-secondary"
+      className="mt-header-safe relative min-h-[34rem] overflow-hidden bg-primary sm:min-h-[39rem]"
       aria-labelledby="hero-heading"
     >
-      <div className="site-container py-8 sm:py-12 lg:py-16">
-        <div className="grid items-center gap-9 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-6">
-            <p className="eyebrow mb-5">Brisbane vehicle buyers</p>
+      <picture className="absolute inset-0">
+        <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+        <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
+        <img
+          src="/images/tow-truck-hero.webp"
+          alt="Caraway tow truck collecting a customer's car in Brisbane"
+          width={800}
+          height={800}
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover object-center"
+        />
+      </picture>
+      <span className="absolute inset-0 bg-primary/20" aria-hidden="true" />
+
+      <div className="absolute inset-x-0 bottom-0">
+        <div className="w-full border-t border-on-dark-hi/90 bg-[hsl(var(--primary)/0.88)] px-5 py-8 text-on-dark-hi backdrop-blur-[2px] sm:w-[64%] sm:border-r sm:px-10 sm:py-10 lg:w-[52%] lg:px-12 lg:py-12">
             <h1
               id="hero-heading"
-              className="max-w-3xl font-display text-[clamp(2.8rem,6vw,5.25rem)] font-semibold leading-[0.98] tracking-display text-primary"
+              className="max-w-xl font-display text-[clamp(2.4rem,5vw,4rem)] font-medium leading-[1.05] tracking-display text-on-dark-hi"
             >
-              Cash for cars.
+              Cash for cars Brisbane.
               <br />
-              Handled with care.
+              Made clear and simple.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75 sm:text-xl">
-              A clear quote, pickup across Greater Brisbane, and payment
-              confirmed before your car leaves.
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
+              Sell any make or condition with a confirmed offer, pickup across
+              Greater Brisbane, and payment before your car leaves.
             </p>
-
-            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5">
-              <Link
-                href="/#price-estimator"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group w-full rounded-full px-8 sm:w-auto",
-                )}
-              >
-                Get my quote
-                <ArrowRight
-                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
-              <TrackedPhoneLink
-                href={BUSINESS.phoneTel}
-                location="hero"
-                className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent-ink sm:justify-start"
-                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {BUSINESS.phoneDisplay}
-              </TrackedPhoneLink>
-            </div>
-
-            <ul className="mt-8 flex flex-col gap-2 text-sm text-foreground/70 sm:flex-row sm:flex-wrap sm:gap-x-5">
-              {assurances.map((item) => (
-                <li key={item} className="inline-flex items-center gap-2">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cta/25 text-cta-ink">
-                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-6">
-            <picture>
-              <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
-              <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
-              <img
-                src="/images/tow-truck-hero.webp"
-                alt="Caraway tow truck collecting a customer's car in Brisbane"
-                width={800}
-                height={800}
-                fetchPriority="high"
-                decoding="async"
-                className="aspect-[4/3] w-full rounded-[1.75rem] object-cover lg:aspect-[5/6]"
+            <Link
+              href="/#price-estimator"
+              className={cn(
+                buttonVariants({ size: "default" }),
+                "group mt-7 rounded-none px-6",
+              )}
+            >
+              Get my quote
+              <ArrowRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
               />
-            </picture>
-          </div>
+            </Link>
         </div>
       </div>
     </section>
