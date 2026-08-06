@@ -47,20 +47,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${SITE_URL}/blog/category/${category}`,
       title,
       description,
-      images: [
-        {
-          url: "/images/og-card.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Caraway cash for cars Brisbane",
-        },
-      ],
+      // No images: the blog shares as a text-only preview. Declaring
+      // openGraph here also stops the root layout's card being inherited —
+      // Next replaces the parent object rather than merging it.
     },
     twitter: {
-      card: "summary_large_image",
+      // "summary", not "summary_large_image": there is no image to feature.
+      card: "summary",
       title,
       description,
-      images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
     },
   };
 }

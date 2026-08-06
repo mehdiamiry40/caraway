@@ -18,21 +18,16 @@ export const metadata: Metadata = {
     title: "Cash for Cars Brisbane Blog — Tips & Guides",
     description:
       "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works.",
-    images: [
-      {
-        url: "/images/og-card.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Caraway cash for cars Brisbane",
-      },
-    ],
+    // No images: the blog shares as a text-only preview. Declaring openGraph
+    // here also stops the root layout's card being inherited — Next replaces
+    // the parent object rather than merging it.
   },
   twitter: {
-    card: "summary_large_image",
+    // "summary", not "summary_large_image": there is no image to feature.
+    card: "summary",
     title: "Cash for Cars Brisbane Blog — Caraway",
     description:
       "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, paperwork you need, and how same- or next-day pickup works.",
-    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
 

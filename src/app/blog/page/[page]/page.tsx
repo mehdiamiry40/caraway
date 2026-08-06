@@ -38,7 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical },
     openGraph: { type: "website", url: canonical, title, description },
-    twitter: { card: "summary_large_image", title, description },
+    // "summary", not "summary_large_image": there is no image to feature.
+    twitter: { card: "summary", title, description },
   };
 }
 
