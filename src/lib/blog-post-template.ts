@@ -11,17 +11,6 @@ const BLOG_AUTHOR = {
   url: SITE_URL,
 } as const;
 
-// Blog posts carry no artwork of their own. Social previews and Article
-// structured data fall back to the site-wide card, the same one every other
-// page uses, so shared links and rich results keep an image without
-// reintroducing per-post images.
-const SOCIAL_CARD = {
-  url: "/images/og-card.jpg",
-  width: 1200,
-  height: 630,
-  alt: "Caraway cash for cars Brisbane",
-} as const;
-
 export const RETIRED_BLOG_SLUGS = [
   "cash-for-cars-gold-coast",
   "cash-for-cars-ipswich-brisbane",
@@ -42,10 +31,6 @@ export function buildMissingBlogPostMetadata(): Metadata {
     openGraph: null,
     twitter: null,
   };
-}
-
-function absoluteImageUrl(src: string): string {
-  return src.startsWith("https://") ? src : `${SITE_URL}${src}`;
 }
 
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
@@ -70,13 +55,15 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       tags: [post.category],
       locale: "en_AU",
       siteName: "Caraway",
-      images: [{ ...SOCIAL_CARD }],
+      // No images: posts are text-only, so shared links preview as text.
+      // Declaring openGraph here also stops the root layout's card being
+      // inherited — Next replaces the parent object rather than merging it.
     },
     twitter: {
-      card: "summary_large_image",
+      // "summary", not "summary_large_image": there is no image to feature.
+      card: "summary",
       title: post.title,
       description: post.metaDescription,
-      images: [{ ...SOCIAL_CARD }],
     },
     other: {
       "article:section": post.category,
@@ -123,7 +110,6 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     description: post.metaDescription,
     datePublished: post.date,
     dateModified: post.updatedAt,
-    image: absoluteImageUrl(SOCIAL_CARD.url),
     wordCount,
     author: authorSchema,
     publisher: {
