@@ -66,6 +66,18 @@ describe("generateMetadata (blog post route)", () => {
       expect(og?.url).toBe(`${SITE_URL}/blog/${INDEXABLE_SLUG}`);
       expect(og?.title).toBe(indexablePost!.title);
     });
+
+    it("shares as a text-only preview — no OpenGraph or Twitter image", async () => {
+      const meta = await generateMetadata(makeParams(INDEXABLE_SLUG));
+      const og = meta.openGraph as { images?: unknown } | undefined;
+      const twitter = meta.twitter as
+        | { card?: string; images?: unknown }
+        | undefined;
+      expect(og?.images).toBeUndefined();
+      expect(twitter?.images).toBeUndefined();
+      // summary_large_image would ask X to feature an image that isn't there.
+      expect(twitter?.card).toBe("summary");
+    });
   });
 
   describe("non-existent slug", () => {
@@ -115,6 +127,11 @@ describe("generateMetadata (blog post route)", () => {
       expect(author["@type"]).toBe("Organization");
       expect(author.name).toBe("Caraway");
       expect(author.url).toBe(SITE_URL);
+    });
+
+    it("omits image from articleSchema — posts have no artwork to cite", () => {
+      const { articleSchema } = buildBlogPostSeoProps(indexablePost!);
+      expect("image" in articleSchema).toBe(false);
     });
 
     it("computes a non-zero wordCount", () => {

@@ -192,7 +192,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: modified,
       changeFrequency: changeFreqByAge(modified),
       priority: CORNERSTONE_SLUGS.has(p.slug) ? 0.8 : 0.6,
-      images: [`${SITE_URL}${p.image.src}`],
     };
   });
 

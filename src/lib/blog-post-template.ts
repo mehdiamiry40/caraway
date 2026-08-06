@@ -33,10 +33,6 @@ export function buildMissingBlogPostMetadata(): Metadata {
   };
 }
 
-function absoluteImageUrl(src: string): string {
-  return src.startsWith("https://") ? src : `${SITE_URL}${src}`;
-}
-
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
   const authorName = post.author ?? BLOG_AUTHOR.name;
   return {
@@ -59,27 +55,15 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       tags: [post.category],
       locale: "en_AU",
       siteName: "Caraway",
-      images: [
-        {
-          url: post.image.src,
-          width: post.image.width,
-          height: post.image.height,
-          alt: post.image.alt,
-        },
-      ],
+      // No images: posts are text-only, so shared links preview as text.
+      // Declaring openGraph here also stops the root layout's card being
+      // inherited — Next replaces the parent object rather than merging it.
     },
     twitter: {
-      card: "summary_large_image",
+      // "summary", not "summary_large_image": there is no image to feature.
+      card: "summary",
       title: post.title,
       description: post.metaDescription,
-      images: [
-        {
-          url: post.image.src,
-          width: post.image.width,
-          height: post.image.height,
-          alt: post.image.alt,
-        },
-      ],
     },
     other: {
       "article:section": post.category,
@@ -126,7 +110,6 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     description: post.metaDescription,
     datePublished: post.date,
     dateModified: post.updatedAt,
-    image: absoluteImageUrl(post.image.src),
     wordCount,
     author: authorSchema,
     publisher: {

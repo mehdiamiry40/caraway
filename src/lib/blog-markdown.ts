@@ -1,8 +1,10 @@
 import { createElement, type ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
-const IMAGE_BLOCK_RE = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+(\d+)x(\d+))?\)$/;
+// Blog posts intentionally carry no artwork. Leftover markdown image syntax is
+// dropped rather than rendered, so a stray `![alt](src)` in a post can never
+// put an image back on the page.
+const IMAGE_BLOCK_RE = /^!\[[^\]]*\]\([^)\s]+(?:\s+\d+x\d+)?\)$/;
 const ORDERED_LIST_ITEM_RE = /^\s*\d+\.\s+(.+)$/;
 const UNORDERED_LIST_ITEM_RE = /^\s*[-*]\s+(.+)$/;
 const TABLE_ROW_RE = /^\s*\|(.+)\|\s*$/;
@@ -29,8 +31,15 @@ function parseInline(text: string, keyPrefix: string): ReactNode[] {
   let match: RegExpExecArray | null;
 
   while ((match = pattern.exec(text)) !== null) {
+    // `![alt](src)` is image syntax, not a link — drop it, bang included.
+    const isImage = !!match[5] && text[match.index - 1] === "!";
     if (match.index > lastIndex) {
-      nodes.push(text.slice(lastIndex, match.index));
+      const preceding = text.slice(lastIndex, match.index);
+      nodes.push(isImage ? preceding.slice(0, -1) : preceding);
+    }
+    if (isImage) {
+      lastIndex = pattern.lastIndex;
+      continue;
     }
     if (match[1]) {
       nodes.push(createElement("strong", { key: `${keyPrefix}-s-${i++}` }, match[2]));
@@ -106,6 +115,8 @@ export function renderBlogContent(
     const raw = paragraphs[i];
     const text = raw ?? "";
     const key = `b-${i}`;
+
+    if (IMAGE_BLOCK_RE.test(text.trim())) continue;
 
     const firstListItem = parseListItem(text);
     if (firstListItem) {
@@ -213,46 +224,6 @@ export function renderBlogContent(
           ),
         ),
       );
-      continue;
-    }
-
-    const imgMatch = text.trim().match(IMAGE_BLOCK_RE);
-    if (imgMatch) {
-      const alt = imgMatch[1];
-      const src = imgMatch[2];
-      const width = imgMatch[3] ? Number(imgMatch[3]) : 1600;
-      const height = imgMatch[4] ? Number(imgMatch[4]) : 900;
-      nodes.push(createElement(
-        "figure",
-        { key, className: "my-10" },
-        createElement(
-          "div",
-          {
-            key: `${key}-frame`,
-            className:
-              "relative overflow-hidden rounded-2xl border border-border/50 bg-muted shadow-sm",
-          },
-          createElement(Image, {
-            src,
-            alt,
-            width,
-            height,
-            sizes: "(max-width: 768px) 100vw, 720px",
-            className: "h-auto w-full object-cover",
-          }),
-        ),
-        alt
-          ? createElement(
-              "figcaption",
-              {
-                key: `${key}-cap`,
-                className:
-                  "mt-3 text-center text-xs sm:text-sm text-muted-foreground italic",
-              },
-              alt,
-            )
-          : null,
-      ));
       continue;
     }
 

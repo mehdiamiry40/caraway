@@ -3,13 +3,11 @@ export interface BlogSource {
   url: string;
 }
 
-export interface BlogImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
+/**
+ * Blog posts are text-only: no hero artwork, no per-post thumbnails, and no
+ * images inside `content`. Social previews and Article structured data use the
+ * site-wide card in `blog-post-template.ts`, so new posts need no image fields.
+ */
 export interface RawBlogPostEntry {
   slug: string;
   title: string;
@@ -27,14 +25,12 @@ export interface RawBlogPostEntry {
   reviewedAt?: string;
   /** Primary sources used for regulated or time-sensitive claims. */
   sources?: BlogSource[];
-  image?: BlogImage;
   category: string;
   relatedServices: string[];
   relatedSuburbs: string[];
 }
 
 export interface BlogPost extends RawBlogPostEntry {
-  image: BlogImage;
   /** Last-updated date (ISO 8601). Defaults to `date` when not overridden. */
   updatedAt: string;
   /** Fully-qualified, self-canonical URL for the post. */

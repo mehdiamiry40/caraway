@@ -158,22 +158,22 @@ describe("Search Console indexing cleanup", () => {
     expect(staleSuburbLinks).toEqual([]);
   });
 
-  it("publishes every blog image referenced by pages and the sitemap", () => {
-    const sitemapImages = new Set(
-      sitemap().flatMap((entry) => entry.images ?? []),
+  it("keeps blog posts free of images, in the sitemap and in the content", () => {
+    const blogEntries = sitemap().filter((entry) =>
+      entry.url.startsWith(`${SITE_URL}/blog`),
     );
 
-    for (const post of blogPosts) {
-      expect(post.image.src, post.slug).toMatch(/^\/images\//);
-      expect(
-        fs.existsSync(
-          path.join(process.cwd(), "public", post.image.src.replace(/^\//, "")),
-        ),
-        `${post.slug}: missing ${post.image.src}`,
-      ).toBe(true);
-      expect(sitemapImages.has(`${SITE_URL}${post.image.src}`), post.slug).toBe(
-        true,
-      );
+    expect(blogEntries.length).toBeGreaterThan(0);
+    for (const entry of blogEntries) {
+      expect(entry.images ?? [], entry.url).toEqual([]);
     }
+
+    const contentImages = blogPosts.flatMap((post) =>
+      post.content
+        .filter((block) => /!\[[^\]]*\]\([^)]+\)/.test(block))
+        .map((block) => `${post.slug}: ${block.slice(0, 60)}`),
+    );
+
+    expect(contentImages).toEqual([]);
   });
 });

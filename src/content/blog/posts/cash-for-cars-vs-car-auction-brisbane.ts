@@ -55,12 +55,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-07-21",
-  image: {
-    src: "/images/blog/cash-for-cars-vs-private-sale.webp",
-    alt: "Comparing a Brisbane car auction with a cash-for-cars sale",
-    width: 1600,
-    height: 900,
-  },
   category: "Insights",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
