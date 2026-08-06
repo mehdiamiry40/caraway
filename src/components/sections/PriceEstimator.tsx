@@ -27,7 +27,7 @@ export function PriceEstimator() {
   return (
     <section
       id="price-estimator"
-      className="section-y relative scroll-mt-header bg-secondary"
+      className="section-y relative scroll-mt-header bg-background"
       aria-label="Instant price estimate"
     >
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
@@ -53,7 +53,7 @@ export function PriceEstimator() {
               progressPercent={progressPercent}
             />
 
-            <div className="relative mt-5 overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-card-xl">
+            <div className="relative mt-5 overflow-hidden rounded-sm border border-border bg-card shadow-lg">
               <span className="absolute inset-x-0 top-0 h-1 bg-cta" aria-hidden="true" />
               <Honeypot value={honeypot} onChange={setHoneypot} />
               <Step1Vehicle state={state} />
