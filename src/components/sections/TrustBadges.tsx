@@ -2,104 +2,135 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeDollarSign,
-  Building2,
   CarFront,
   FileCheck2,
+  MapPin,
   Recycle,
-  ShieldCheck,
   Truck,
+  Wrench,
 } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+import type { LucideIcon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const credentials = [
-  { icon: ShieldCheck, label: "Pickup terms confirmed" },
-  { icon: Recycle, label: "Responsible recycling" },
-  { icon: Building2, label: `ABN ${BUSINESS.abn}` },
-] as const;
+interface ServicePath {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  href: string;
+}
 
-const pathways = [
+const services: ServicePath[] = [
   {
     icon: BadgeDollarSign,
-    label: "Get a cash quote",
-    description: "A clear estimate from four quick details.",
-    href: "/#price-estimator",
+    title: "Cash for cars",
+    description: "Offers for running, old, or end-of-life vehicles.",
+    href: "/cash-for-cars-brisbane",
   },
   {
     icon: Truck,
-    label: "Arrange free pickup",
-    description: "Coverage across Greater Brisbane.",
-    href: "/locations",
-  },
-  {
-    icon: FileCheck2,
-    label: "Understand the process",
-    description: "Simple guidance from quote to collection.",
-    href: "/how-it-works",
+    title: "Car removal",
+    description: "Pickup across Greater Brisbane when we buy.",
+    href: "/car-removal-brisbane",
   },
   {
     icon: CarFront,
-    label: "Sell any condition",
-    description: "Running, damaged, old, or unregistered.",
-    href: "/cash-for-cars-brisbane",
+    title: "Sell my car",
+    description: "A simple alternative to advertising privately.",
+    href: "/sell-my-car-brisbane",
   },
-] as const;
+  {
+    icon: Recycle,
+    title: "Scrap cars",
+    description: "Cash offers for complete scrap vehicles.",
+    href: "/scrap-car-removal-brisbane",
+  },
+  {
+    icon: FileCheck2,
+    title: "Unwanted cars",
+    description: "Turn an unused vehicle into a confirmed offer.",
+    href: "/unwanted-cars-brisbane",
+  },
+  {
+    icon: Wrench,
+    title: "Damaged cars",
+    description: "Accident, mechanical, flood, or hail damage.",
+    href: "/damaged-cars-brisbane",
+  },
+  {
+    icon: MapPin,
+    title: "Pickup areas",
+    description: "Check coverage across Greater Brisbane.",
+    href: "/locations",
+  },
+  {
+    icon: ArrowRight,
+    title: "How it works",
+    description: "Four clear steps from quote to payment.",
+    href: "/how-it-works",
+  },
+];
 
 export function TrustBadges() {
   return (
-    <section className="section-y bg-background" aria-labelledby="help-heading">
+    <section className="section-y bg-secondary" aria-labelledby="services-heading">
       <div className="site-container">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <p className="eyebrow mb-5">Your next step</p>
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="mb-5 flex items-center gap-2 text-sm font-bold text-foreground">
+              <span className="h-2 w-2 bg-cta" aria-hidden="true" />
+              Our services
+            </p>
             <h2
-              id="help-heading"
-              className="font-display text-[clamp(2.25rem,5vw,4rem)] font-semibold leading-[1.04] tracking-display text-primary"
+              id="services-heading"
+              className="max-w-xl font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-medium leading-[1.04] tracking-display text-primary"
             >
-              What can we help you with?
+              A better way to sell.
+              <br />
+              Delivered with care.
             </h2>
           </div>
-          <p className="max-w-xl text-base leading-relaxed text-foreground/70 lg:col-span-5 lg:text-lg">
-            Start with the option that matches what you need. Every path leads
-            to clear information and a simple next action.
+          <p className="max-w-2xl self-end text-base leading-relaxed text-foreground/75 lg:pb-1 lg:text-lg">
+            From instant car valuations to removal across Greater Brisbane, our
+            services are designed to make selling straightforward. Choose the
+            option that best matches your vehicle and situation.
           </p>
         </div>
 
-        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {pathways.map(({ icon: Icon, label, description, href }) => (
-            <li key={label}>
+        <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map(({ icon: Icon, title, description, href }) => (
+            <li key={title}>
               <Link
                 href={href}
-                className="group flex h-full min-h-56 flex-col rounded-[1.5rem] border border-border/80 bg-card p-6 transition-[transform,border-color,box-shadow] hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="group flex h-full min-h-48 flex-col bg-background p-6 transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary text-primary">
-                  <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
-                </span>
-                <h3 className="mt-8 font-display text-xl font-semibold text-primary">
-                  {label}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/65">
-                  {description}
-                </p>
-                <ArrowRight
-                  className="mt-auto h-10 w-5 pt-5 text-accent-ink transition-transform group-hover:translate-x-1"
+                <Icon
+                  className="h-8 w-8 text-cta"
+                  strokeWidth={1.5}
                   aria-hidden="true"
                 />
+                <h3 className="mt-7 font-display text-lg font-medium text-primary">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                  {description}
+                </p>
               </Link>
             </li>
           ))}
         </ul>
 
-        <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-border/70 pt-6">
-          {credentials.map(({ icon: Icon, label }) => (
-            <li
-              key={label}
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground"
-            >
-              <Icon className="h-4 w-4 text-accent-ink" aria-hidden="true" />
-              {label}
-            </li>
-          ))}
-        </ul>
+        <div className="mt-12 text-center">
+          <Link
+            href="/services"
+            className={cn(
+              buttonVariants({ size: "default" }),
+              "rounded-none px-7",
+            )}
+          >
+            View all services
+          </Link>
+        </div>
       </div>
     </section>
   );
