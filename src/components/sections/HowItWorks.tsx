@@ -36,7 +36,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
     <section
       id="how-it-works"
-      className="section-y scroll-mt-header bg-muted"
+      className="section-y scroll-mt-header bg-secondary"
       aria-labelledby={showHeader ? "process-heading" : undefined}
     >
       <div className="site-container">
