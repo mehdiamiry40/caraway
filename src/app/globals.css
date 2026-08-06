@@ -569,3 +569,55 @@
     background: hsl(var(--primary));
   }
 }
+
+/* Lumus-inspired homepage design scope */
+@layer components {
+  .lumus-home {
+    --background: 48 33% 98%;
+    --foreground: 215 24% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 24% 20%;
+    --primary: 217 58% 29%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 188 38% 93%;
+    --secondary-foreground: 217 45% 25%;
+    --muted: 210 24% 96%;
+    --muted-foreground: 215 12% 42%;
+    --border: 210 18% 87%;
+    --header-h: 4.5rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 1.75rem;
+  }
+
+  .lumus-home .section-y {
+    padding-block: clamp(5rem, 8vw, 8rem);
+  }
+
+  .lumus-home .section-y-tight {
+    padding-block: clamp(4rem, 6vw, 6rem);
+  }
+
+  .lumus-home main > section {
+    border-color: transparent;
+  }
+
+  .lumus-home main article {
+    box-shadow: none;
+  }
+
+  .lumus-home .eyebrow,
+  .lumus-home .eyebrow-on-dark {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (min-width: 640px) {
+  .lumus-home {
+    --header-h: 7rem;
+  }
+}
