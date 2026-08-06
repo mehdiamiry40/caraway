@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { preload } from "react-dom";
-import { ArrowRight, Check, MapPin, Phone } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const promises = [
-  "Estimate from four details",
+const assurances = [
+  "Any make or condition",
   "Pickup included when we buy",
-  "Payment confirmed at pickup",
-];
+  "Open seven days",
+] as const;
 
 export function Hero() {
   preload("/images/tow-truck-hero.avif", {
@@ -21,120 +21,77 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-primary text-on-dark-hi"
+      className="mt-header-safe overflow-hidden bg-secondary"
       aria-labelledby="hero-heading"
     >
-      <div className="mt-header-safe mx-auto max-w-[96rem]">
-        <div className="grid min-h-[34rem] grid-cols-1 lg:grid-cols-12">
-          <div className="relative hidden overflow-hidden lg:order-1 lg:col-span-7 lg:block lg:min-h-[34rem]">
+      <div className="site-container py-8 sm:py-12 lg:py-16">
+        <div className="grid items-center gap-9 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-6">
+            <p className="eyebrow mb-5">Brisbane vehicle buyers</p>
+            <h1
+              id="hero-heading"
+              className="max-w-3xl font-display text-[clamp(2.8rem,6vw,5.25rem)] font-semibold leading-[0.98] tracking-display text-primary"
+            >
+              Cash for cars.
+              <br />
+              Handled with care.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-foreground/75 sm:text-xl">
+              A clear quote, pickup across Greater Brisbane, and payment
+              confirmed before your car leaves.
+            </p>
+
+            <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <Link
+                href="/#price-estimator"
+                className={cn(
+                  buttonVariants({ size: "lg" }),
+                  "group w-full rounded-full px-8 sm:w-auto",
+                )}
+              >
+                Get my quote
+                <ArrowRight
+                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </Link>
+              <TrackedPhoneLink
+                href={BUSINESS.phoneTel}
+                location="hero"
+                className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-accent-ink sm:justify-start"
+                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {BUSINESS.phoneDisplay}
+              </TrackedPhoneLink>
+            </div>
+
+            <ul className="mt-8 flex flex-col gap-2 text-sm text-foreground/70 sm:flex-row sm:flex-wrap sm:gap-x-5">
+              {assurances.map((item) => (
+                <li key={item} className="inline-flex items-center gap-2">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-cta/25 text-cta-ink">
+                    <Check className="h-3 w-3" strokeWidth={3} aria-hidden="true" />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-6">
             <picture>
-              <source media="(min-width: 1024px)" srcSet="/images/tow-truck-hero.avif" type="image/avif" />
-              <source media="(min-width: 1024px)" srcSet="/images/tow-truck-hero.webp" type="image/webp" />
+              <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+              <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
               <img
-                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                src="/images/tow-truck-hero.webp"
                 alt="Caraway tow truck collecting a customer's car in Brisbane"
                 width={800}
                 height={800}
                 fetchPriority="high"
                 decoding="async"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="aspect-[4/3] w-full rounded-[1.75rem] object-cover lg:aspect-[5/6]"
               />
             </picture>
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-ink-deep/45 via-transparent to-transparent lg:hidden"
-              aria-hidden="true"
-            />
-            <div
-              className="hero-edge absolute inset-y-0 right-0 hidden w-16 bg-gradient-to-b from-cta via-accent to-primary lg:block"
-              aria-hidden="true"
-            />
-          </div>
-
-          <div className="relative z-10 order-1 flex items-center px-5 py-10 sm:px-8 sm:py-14 lg:order-2 lg:col-span-5 lg:px-10 xl:px-14">
-            <div className="max-w-xl">
-              <h1
-                id="hero-heading"
-                /* text-pretty, not text-balance: with the line break below,
-                   balance evens out each sentence separately and strands
-                   "Cash for" alone on the first line at phone widths. */
-                className="font-display text-[clamp(2.45rem,4.5vw,4.25rem)] font-bold leading-[1.04] tracking-display text-on-dark-hi text-pretty"
-              >
-                Cash for cars Brisbane.
-                <br />
-                Sell any car, instant quote.
-              </h1>
-
-              {/* The three promises live in the checklist below — this line sets
-                  scope instead of restating them, and the offer-varies detail is
-                  spelled out in Stats one section down. */}
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:mt-6 sm:text-lg">
-                Any make, any condition, anywhere in Greater Brisbane.
-              </p>
-
-              {/* Full width of the copy column below lg — as a 14rem thumbnail
-                  it read as an afterthought against the hero's width. */}
-              <div className="mt-6 w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm lg:hidden">
-                <picture>
-                  <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
-                  <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
-                  <img
-                    src="/images/tow-truck-hero.webp"
-                    alt="Caraway tow truck collecting a customer's car in Brisbane"
-                    width={800}
-                    height={800}
-                    fetchPriority="high"
-                    decoding="async"
-                    className="h-48 w-full object-cover sm:h-56"
-                  />
-                </picture>
-              </div>
-
-              <div className="mt-7 flex max-w-xl flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-                <Link
-                  href="/#price-estimator"
-                  className={cn(
-                    buttonVariants({ size: "lg" }),
-                    "group w-full px-8 sm:w-auto",
-                  )}
-                >
-                  Get my quote
-                  <ArrowRight
-                    className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-                    aria-hidden="true"
-                  />
-                </Link>
-                <TrackedPhoneLink
-                  href={BUSINESS.phoneTel}
-                  location="hero"
-                  className="inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap px-2 text-sm font-medium text-on-dark-hi/90 underline decoration-cta/70 underline-offset-4 transition-colors hover:text-on-dark-hi hover:decoration-cta sm:px-0 sm:text-[0.9375rem]"
-                  ariaLabel={`or call ${BUSINESS.phoneDisplay}`}
-                >
-                  <Phone aria-hidden="true" className="h-4 w-4 text-cta-bright" />
-                  or call {BUSINESS.phoneDisplay}
-                </TrackedPhoneLink>
-              </div>
-
-              <ul className="mt-7 grid max-w-xl gap-y-2.5 sm:mt-8">
-                {promises.map((promise) => (
-                  <li
-                    key={promise}
-                    className="flex items-start gap-2 text-sm font-semibold leading-5 text-on-dark-hi/90"
-                  >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-cta text-cta-foreground">
-                      <Check size={12} strokeWidth={3} aria-hidden="true" />
-                    </span>
-                    {promise}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-7 inline-flex flex-wrap items-center gap-x-2 gap-y-2 border border-on-dark-hi/20 bg-on-dark-hi/8 px-3 py-2 sm:mt-8">
-                <MapPin className="h-4 w-4 text-cta-bright" aria-hidden="true" />
-                <span className="text-sm font-medium text-on-dark-hi">
-                  Brisbane-based · ABN {BUSINESS.abn}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
