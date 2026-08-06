@@ -22,14 +22,12 @@ export function PriceEstimator() {
     setHoneypot,
   } = state;
 
-  if (isSuccess) {
-    return <Success state={state} />;
-  }
+  if (isSuccess) return <Success state={state} />;
 
   return (
     <section
       id="price-estimator"
-      className="section-y scroll-mt-header relative overflow-hidden border-y border-border bg-secondary"
+      className="section-y relative scroll-mt-header bg-secondary"
       aria-label="Instant price estimate"
     >
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
@@ -37,39 +35,43 @@ export function PriceEstimator() {
         {liveMessage}
       </div>
       <div className="site-container">
-        <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
-          <p className="eyebrow mb-4">Instant valuation</p>
-          <h2 className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]">
-            How much is your car worth?
-          </h2>
-          {/* The offer disclaimer lives where it matters — beside the number in
-              step 2 — and is already stated once on this page in Stats. */}
-          <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed text-balance">
-            Four quick questions for an instant estimate — no account needed.
-          </p>
-        </div>
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
+          <div className="lg:col-span-4 lg:pt-5">
+            <p className="eyebrow mb-5">Instant valuation</p>
+            <h2 className="font-display text-[clamp(2.25rem,5vw,4rem)] font-semibold leading-[1.04] tracking-display text-primary">
+              See what your car could be worth.
+            </h2>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-foreground/70 lg:text-lg">
+              Four quick questions. No account and no obligation.
+            </p>
+          </div>
 
-        <ProgressBar step={step} totalSteps={totalSteps} progressPercent={progressPercent} />
+          <div className="lg:col-span-8">
+            <ProgressBar
+              step={step}
+              totalSteps={totalSteps}
+              progressPercent={progressPercent}
+            />
 
-        <div className="max-w-3xl mx-auto">
-          <div className="relative overflow-hidden rounded-sm border border-border bg-card shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary">
-            <Honeypot value={honeypot} onChange={setHoneypot} />
+            <div className="relative mt-5 overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-card-xl">
+              <span className="absolute inset-x-0 top-0 h-1 bg-cta" aria-hidden="true" />
+              <Honeypot value={honeypot} onChange={setHoneypot} />
+              <Step1Vehicle state={state} />
 
-            <Step1Vehicle state={state} />
+              {isCalculating && (
+                <div
+                  className="flex flex-col items-center justify-center p-8 text-center sm:p-12"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <Loader2 className="mb-4 h-10 w-10 animate-spin text-primary" aria-hidden="true" />
+                  <p className="font-display text-foreground">Calculating your quote…</p>
+                </div>
+              )}
 
-            {isCalculating && (
-              <div
-                className="p-8 sm:p-12 flex flex-col items-center justify-center text-center"
-                role="status"
-                aria-live="polite"
-              >
-                <Loader2 className="w-10 h-10 text-primary animate-spin mb-4" aria-hidden="true" />
-                <p className="font-display text-foreground">Calculating your quote…</p>
-              </div>
-            )}
-
-            <Step2Quote state={state} />
-            <Step3Claim state={state} />
+              <Step2Quote state={state} />
+              <Step3Claim state={state} />
+            </div>
           </div>
         </div>
       </div>
