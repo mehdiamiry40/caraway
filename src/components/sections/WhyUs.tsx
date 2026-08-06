@@ -32,29 +32,32 @@ export function WhyUs() {
   return (
     <section
       id="why-us"
-      className="section-y scroll-mt-header bg-primary text-on-dark-hi"
+      className="section-y scroll-mt-header bg-background"
       aria-labelledby="why-us-heading"
     >
       <div className="site-container">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="eyebrow-on-dark mb-5">Why Caraway</p>
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="mb-5 flex items-center gap-2 text-sm font-bold text-foreground">
+              <span className="h-2 w-2 bg-cta" aria-hidden="true" />
+              Why Caraway
+            </p>
             <h2
               id="why-us-heading"
-              className="font-display text-[clamp(2.4rem,5.5vw,4.5rem)] font-semibold leading-[1.02] tracking-display text-on-dark-hi"
+              className="font-display text-[clamp(2.4rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-display text-primary"
             >
               Straight answers.
               <br />
               A fairer way to sell.
             </h2>
           </div>
-          <p className="max-w-md text-base leading-relaxed text-on-dark-hi/75 lg:col-span-4 lg:text-lg">
+          <p className="max-w-xl self-end text-base leading-relaxed text-foreground/75 lg:pb-1 lg:text-lg">
             We&apos;re a direct Brisbane buyer, not an auction or lead-selling
             marketplace.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {reasons.map((reason) => (
             <ReasonCard key={reason.title} reason={reason} />
           ))}
@@ -68,14 +71,12 @@ function ReasonCard({ reason }: { reason: Reason }) {
   const Icon = reason.icon;
 
   return (
-    <article className="rounded-[1.5rem] border border-[hsl(var(--on-dark-hi)/0.15)] bg-on-dark-hi/8 p-6 sm:p-8">
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cta text-cta-foreground">
-        <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
-      </span>
-      <h3 className="mt-8 font-display text-xl font-semibold leading-snug text-on-dark-hi sm:text-2xl">
+    <article className="bg-secondary p-7 sm:p-8">
+      <Icon className="h-8 w-8 text-cta" strokeWidth={1.5} aria-hidden="true" />
+      <h3 className="mt-8 font-display text-xl font-medium leading-snug text-primary sm:text-2xl">
         {reason.title}
       </h3>
-      <p className="mt-3 text-[0.9375rem] leading-relaxed text-on-dark-hi/75">
+      <p className="mt-3 text-[0.9375rem] leading-relaxed text-foreground/70">
         {reason.description}
       </p>
     </article>
