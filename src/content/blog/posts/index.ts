@@ -1,3 +1,4 @@
+import { post as postCarParts } from "./sell-car-for-parts-brisbane";
 import { post as postMotorbike } from "./sell-motorbike-brisbane";
 import { post as postTowCost } from "./tow-truck-cost-brisbane";
 import { post as postTipDisposal } from "./take-car-to-tip-brisbane";
@@ -71,6 +72,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // blocks new posts whose slug collides with a location page.
 
 export const rawBlogPosts = [
+  postCarParts,
   postMotorbike,
   postTowCost,
   postTipDisposal,
