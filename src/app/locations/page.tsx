@@ -13,23 +13,23 @@ const breadcrumbs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Cash for Cars Brisbane — All Suburbs Serviced",
+  title: "Greater Brisbane Vehicle Pickup Areas",
   description:
-    "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
+    "Explore Caraway's Greater Brisbane vehicle pickup areas. Coverage, access, and timing are confirmed for your exact address before collection.",
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/locations`,
-    title: "Cash for Cars Brisbane — All Suburbs Serviced | Caraway",
+    title: "Greater Brisbane Vehicle Pickup Areas | Caraway",
     description:
-      "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
+      "Explore Caraway's Greater Brisbane vehicle pickup areas and the details needed to confirm collection for your address.",
     images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cash for Cars Brisbane — All Suburbs | Caraway",
+    title: "Greater Brisbane Vehicle Pickup Areas | Caraway",
     description:
-      "Caraway services all Brisbane suburbs for cash for cars. Find your area — North Brisbane, South Brisbane, Logan, Ipswich, Redcliffe and more.",
+      "Explore Caraway's Greater Brisbane vehicle pickup areas and confirm coverage for your exact address.",
     images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
@@ -44,9 +44,9 @@ export default function LocationsPage() {
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            name: "Cash for Cars Brisbane Locations",
+            name: "Caraway Greater Brisbane vehicle pickup areas",
             description:
-              "Caraway services all Brisbane suburbs for cash for cars. Find your area.",
+              "A regional guide to Caraway vehicle pickup coverage across Greater Brisbane.",
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",

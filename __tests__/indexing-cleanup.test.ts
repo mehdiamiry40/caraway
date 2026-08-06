@@ -1,10 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import nextConfig, { legacyIndexingRedirects } from "../next.config";
+import nextConfig, {
+  legacyIndexingRedirects,
+  retiredLocationRedirects,
+} from "../next.config";
 import sitemap from "@/app/sitemap";
 import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
+import { suburbs } from "@/data/suburbs";
 import { SITE_URL } from "@/lib/site";
 
 type HeaderRule = {
@@ -79,7 +83,7 @@ describe("Search Console indexing cleanup", () => {
     const liveSlugs = new Set(blogPosts.map(({ slug }) => slug));
     const expected = new Map([
       ["/blog/cash-for-cars-redcliffe-brisbane", "/locations/redcliffe"],
-      ["/blog/cash-for-cars-ipswich-brisbane", "/locations/ipswich"],
+      ["/blog/cash-for-cars-ipswich-brisbane", "/locations"],
       ["/blog/cash-for-cars-logan-brisbane", "/locations/logan"],
       ["/blog/cash-for-cars-sunshine-coast", "/cash-for-cars-brisbane"],
       ["/blog/cash-for-cars-toowoomba", "/cash-for-cars-brisbane"],
@@ -95,6 +99,49 @@ describe("Search Console indexing cleanup", () => {
       const slug = source.replace("/blog/", "");
       expect(liveSlugs.has(slug)).toBe(false);
       expect(staticSlugs.has(slug)).toBe(false);
+    }
+  });
+
+  it("keeps only GSC-supported location pages and redirects retired URLs directly", async () => {
+    const redirects = await getRedirectRules();
+    const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    const liveLocationSlugs = new Set(suburbs.map((suburb) => suburb.slug));
+    const redirectSources = new Set(redirects.map((redirect) => redirect.source));
+
+    expect([...liveLocationSlugs].sort()).toEqual([
+      "beenleigh",
+      "capalaba",
+      "kenmore",
+      "logan",
+      "moorooka",
+      "redcliffe",
+      "springwood",
+      "toowong",
+    ]);
+    expect(retiredLocationRedirects).toHaveLength(26);
+
+    for (const suburb of suburbs) {
+      expect(suburb.title).not.toMatch(/\| Caraway$/);
+    }
+
+    for (const retired of retiredLocationRedirects) {
+      expect(liveLocationSlugs.has(retired.source.replace("/locations/", ""))).toBe(false);
+      expect(redirects.find((rule) => rule.source === retired.source)).toMatchObject({
+        destination: retired.destination,
+        permanent: true,
+      });
+      expect(sitemapUrls.has(`${SITE_URL}${retired.source}`)).toBe(false);
+      expect(sitemapUrls.has(`${SITE_URL}${liveTargetPath(retired.destination)}`)).toBe(true);
+      expect(redirectSources.has(retired.destination)).toBe(false);
+    }
+  });
+
+  it("keeps every legacy redirect on a final destination rather than a chain", async () => {
+    const redirects = await getRedirectRules();
+    const redirectSources = new Set(redirects.map((redirect) => redirect.source));
+
+    for (const legacy of legacyIndexingRedirects) {
+      expect(redirectSources.has(legacy.destination)).toBe(false);
     }
   });
 

@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
+import { metadata as locationsMetadata } from "@/app/locations/page";
 import { generateMetadata as generateServiceMetadata } from "@/app/[slug]/page";
 import { Hero } from "@/components/sections/Hero";
 import { getServiceBySlug } from "@/data/services";
@@ -22,6 +23,11 @@ describe("primary SEO query ownership", () => {
     expect(h1).not.toMatch(CASH_QUERY);
     expect(webPageName).not.toMatch(CASH_QUERY);
     expect(homeMetadata.keywords).toBeUndefined();
+  });
+
+  it("keeps the location hub from competing with the primary cash query", () => {
+    expect(String(locationsMetadata.title ?? "")).not.toMatch(CASH_QUERY);
+    expect(String(locationsMetadata.openGraph?.title ?? "")).not.toMatch(CASH_QUERY);
   });
 
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {

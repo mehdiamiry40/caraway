@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     "## Get a cash offer for your old truck today",
 
-    `If you have an old truck sitting unused anywhere across Greater Brisbane — including [Ipswich](/locations/ipswich), [Logan](/locations/logan), Redlands, or Caboolture — finding out what it's worth costs nothing. Call **${BUSINESS.phoneDisplay}** or use the online quote form, describe the vehicle in plain terms, and get a firm offer in minutes. Same- or next-day pickup is available across the region, with cash or bank transfer paid before the truck leaves your property. No call-out fees, no paperwork hassle.`,
+    `If you have an old truck sitting unused in Greater Brisbane — including the [western corridor](/locations), [Logan](/locations/logan), Redlands, or Moreton Bay — you can request a quote without committing to a sale. Call **${BUSINESS.phoneDisplay}** or use the online quote form and describe the vehicle, condition, ownership, and access in plain terms. If Caraway agrees to buy, the offer, payment method, and available pickup window are confirmed before collection.`,
   ],
   date: "2026-04-23",
   category: "Guides",

@@ -56,7 +56,7 @@ export const post: RawBlogPostEntry = {
   relatedServices: [
     "cash-for-cars-brisbane",
     "car-removal-brisbane",
-    "scrap-cars-brisbane",
+    "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "ipswich", "logan"],
 };

@@ -15,6 +15,7 @@ import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { canonicalLocationSlug } from "@/lib/location-consolidation";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -71,6 +72,20 @@ function formatDate(iso: string): string {
 }
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
+  const relatedServiceData = post.relatedServices
+    .map((slug) => services.find((service) => service.slug === slug))
+    .filter((service) => service !== undefined);
+  const canonicalRelatedSuburbSlugs = [
+    ...new Set(
+      post.relatedSuburbs
+        .map(canonicalLocationSlug)
+        .filter((slug): slug is string => slug !== null),
+    ),
+  ];
+  const relatedSuburbData = canonicalRelatedSuburbSlugs
+    .map((slug) => suburbs.find((suburb) => suburb.slug === slug))
+    .filter((suburb) => suburb !== undefined);
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
@@ -224,22 +239,19 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </div>
             </aside>
 
-            {(post.relatedServices.length > 0 || post.relatedSuburbs.length > 0) && (
+            {(relatedServiceData.length > 0 || relatedSuburbData.length > 0) && (
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {post.relatedServices.length > 0 && (
+                {relatedServiceData.length > 0 && (
                   <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Related services</p>
                     <ul className="space-y-1">
-                      {post.relatedServices.map((slug) => {
-                        const svc = services.find((s) => s.slug === slug);
-                        if (!svc) return null;
-                        return (
-                          <li key={slug}>
+                      {relatedServiceData.map((service) => (
+                          <li key={service.slug}>
                             <Link
-                              href={`/${slug}`}
+                              href={`/${service.slug}`}
                               className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
-                              <span>{svc.h1}</span>
+                              <span>{service.h1}</span>
                               <ArrowRight
                                 className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
@@ -247,25 +259,21 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                               />
                             </Link>
                           </li>
-                        );
-                      })}
+                        ))}
                     </ul>
                   </div>
                 )}
-                {post.relatedSuburbs.length > 0 && (
+                {relatedSuburbData.length > 0 && (
                   <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Areas we service</p>
                     <ul className="space-y-1">
-                      {post.relatedSuburbs.map((slug) => {
-                        const sub = suburbs.find((s) => s.slug === slug);
-                        if (!sub) return null;
-                        return (
-                          <li key={slug}>
+                      {relatedSuburbData.map((suburb) => (
+                          <li key={suburb.slug}>
                             <Link
-                              href={`/locations/${slug}`}
+                              href={`/locations/${suburb.slug}`}
                               className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
-                              <span>{sub.h1}</span>
+                              <span>{suburb.h1}</span>
                               <ArrowRight
                                 className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
@@ -273,8 +281,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                               />
                             </Link>
                           </li>
-                        );
-                      })}
+                        ))}
                     </ul>
                   </div>
                 )}

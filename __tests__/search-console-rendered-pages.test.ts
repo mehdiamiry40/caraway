@@ -40,7 +40,7 @@ describe("Search Console canonical URL cleanup", () => {
     const redirects = await getRedirects();
     const expected = new Map([
       ["/index.html", "/"],
-      ["/cash-for-cars-sunnybank.html", "/locations/sunnybank"],
+      ["/cash-for-cars-sunnybank.html", "/locations/moorooka"],
       [
         "/blog/old-car-running-costs.html",
         "/blog/repair-or-sell-your-car-brisbane",

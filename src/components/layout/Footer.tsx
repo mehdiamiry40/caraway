@@ -15,12 +15,11 @@ const serviceLinks = [
 ];
 
 const locationLinks = [
-  { label: "North Brisbane", href: "/locations/north-brisbane" },
-  { label: "South Brisbane", href: "/locations/south-brisbane" },
+  { label: "Toowong", href: "/locations/toowong" },
   { label: "Logan", href: "/locations/logan" },
-  { label: "Ipswich", href: "/locations/ipswich" },
   { label: "Redcliffe", href: "/locations/redcliffe" },
-  { label: "Caboolture", href: "/locations/caboolture" },
+  { label: "Moorooka", href: "/locations/moorooka" },
+  { label: "Capalaba", href: "/locations/capalaba" },
   { label: "All locations", href: "/locations" },
 ];
 

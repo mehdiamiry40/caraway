@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     `## No Business? Still Worth Selling Before June 30`,
 
-    `If you're not running a business, there's still a strong case for completing an end of financial year car sale before 30 June. Clearing a non-running or unwanted vehicle avoids another insurance and rego cycle, frees up driveway or garage space, and means you're starting the new financial year without the hassle of an asset you don't use. Across [Logan](/locations/logan), [Beenleigh](/locations/beenleigh), [Ipswich](/locations/ipswich), and the northern suburbs, free towing means the entire process costs you nothing out of pocket — you simply receive the cash.`,
+    `If you're not running a business, selling before 30 June may still help you avoid another insurance or registration cycle and clear space, but there is no universal tax benefit. Across [Logan](/locations/logan), [Beenleigh](/locations/beenleigh), the [western corridor](/locations), and northern suburbs, Caraway confirms the offer and collection availability for the exact vehicle and address. Pickup is included when Caraway buys, subject to the agreed access and schedule.`,
 
     `Don't let the end of financial year pass without getting a quote on your unwanted vehicle. Call Caraway on **${BUSINESS.phoneDisplay}** or request a free instant quote online. We cover all of Brisbane, Logan, Ipswich, Caboolture, the Bayside, and Greater Moreton Bay — same- or next-day pickup available, cash on the spot, and free towing included. The sooner you call before 30 June, the more scheduling options you'll have.`,
   ],

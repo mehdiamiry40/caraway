@@ -56,6 +56,23 @@ const suburbSlugs = (() => {
   );
 })();
 
+const retiredLocationSlugs = (() => {
+  const consolidationSource = readFileSync(
+    join(repoRoot, "src", "lib", "location-consolidation.ts"),
+    "utf8",
+  );
+  const objectBody = consolidationSource.match(
+    /RETIRED_LOCATION_DESTINATIONS\s*=\s*\{([\s\S]*?)\}\s*as const/,
+  )?.[1];
+  if (!objectBody) return new Set();
+
+  return new Set(
+    [...objectBody.matchAll(/^\s*(?:"([^"]+)"|([a-z][a-z0-9-]*)):\s*"\/locations/gm)]
+      .map((match) => match[1] ?? match[2])
+      .filter(Boolean),
+  );
+})();
+
 const prohibitedClaims = [
   {
     label: "incorrect proprietary-company identity",
@@ -114,6 +131,28 @@ const prohibitedClaims = [
   },
 ];
 
+const prohibitedLocationClaims = [
+  {
+    label: "unsupported location operating-history or reputation claim",
+    pattern:
+      /(?:serv(?:e|ed|ing)|collect(?:ed|ing)?)[^.\n]{0,80}for years|repeat customers?|repeat business|word-of-mouth|customer referrals?|hundreds of [^.\n]{0,80}(?:cars|vehicles|pickups)/i,
+  },
+  {
+    label: "unsupported location fleet, depot, or route-frequency claim",
+    pattern:
+      /our depot|our tow trucks?|our drivers|we (?:regularly|routinely) (?:collect|buy|pick up)|(?:collect|pick up) [^.\n]{0,80}(?:every day|daily|multiple times a week)/i,
+  },
+  {
+    label: "unsupported absolute location offer or pickup claim",
+    pattern:
+      /cash on the spot|instant cash|free towing regardless|no distance surcharge|same- or next-day (?:service|pickup) is standard/i,
+  },
+  {
+    label: "illustrative vehicle must not be presented as a completed local job",
+    pattern: /Example vehicles we buy|Example only/i,
+  },
+];
+
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
   "how-to-cancel-car-rego-qld.ts",
@@ -135,6 +174,16 @@ function collectSourceFiles(directory) {
 }
 
 const violations = [];
+
+for (const slug of suburbSlugs) {
+  if (retiredLocationSlugs.has(slug)) {
+    violations.push({
+      file: "src/data/suburbs.ts",
+      line: 1,
+      label: `retired location slug must stay redirected: ${slug}`,
+    });
+  }
+}
 
 for (const filePath of collectSourceFiles(sourceRoot)) {
   const source = readFileSync(filePath, "utf8");
@@ -170,6 +219,18 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
           line: index + 1,
           label: claim.label,
         });
+      }
+    }
+
+    if (relativePath === "src/data/suburbs.ts") {
+      for (const claim of prohibitedLocationClaims) {
+        if (claim.pattern.test(line)) {
+          violations.push({
+            file: relativePath,
+            line: index + 1,
+            label: claim.label,
+          });
+        }
       }
     }
   }

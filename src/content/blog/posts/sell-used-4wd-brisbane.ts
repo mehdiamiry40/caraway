@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
 
       "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
 
-      "Free pickup typically covers the entire Greater Brisbane footprint: from [Logan](/locations/logan) and Ipswich in the south and west, north to Caboolture and the [North Lakes](/locations/north-lakes) corridor, east across the Bayside, and out to the foothills around The Gap and Kenmore.",
+      "Caraway accepts 4WD enquiries across Greater Brisbane, including [Logan](/locations/logan), the western corridor, [Moreton Bay](/locations/redcliffe), the bayside, and the Kenmore area. Pickup is included when Caraway buys, but the exact address, vehicle condition, access, and available window are confirmed before collection.",
 
       "## Three mistakes to avoid",
 

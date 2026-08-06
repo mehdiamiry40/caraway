@@ -18,7 +18,7 @@ export const post: RawBlogPostEntry = {
 
       "## Same- or next-day pickup across Greater Brisbane",
 
-      "The part that makes a sale genuinely fast is free pickup. Once you accept a quote, most buyers offer same- or next-day collection (subject to truck availability) right across the region — from [north-side](/locations/north-brisbane) suburbs like Chermside and Redcliffe, through the inner city and [south side](/locations/south-brisbane), out to [Logan](/locations/logan), Ipswich, Redlands, and Moreton Bay. Towing is included, so it does not matter if the car will not start, is unregistered, or has been sitting under a house for three years.",
+      "Collection can remove the need to organise separate transport, but it still needs planning. Caraway checks the exact address and access across the [regional coverage area](/locations), [south side](/locations/moorooka), and [Logan](/locations/logan). If Caraway agrees to buy, pickup is included and same- or next-day collection may be available, subject to the vehicle, safe access, seller availability, and collection schedule.",
 
       "When the driver arrives, they do a quick check to confirm the car matches your description, then hand over the agreed amount and load it up. Because payment happens on collection, there is no waiting on a bank transfer to clear or chasing a buyer for the balance. That single detail — cash or instant transfer on pickup — is what turns \"I'll sell it eventually\" into \"it's gone.\"",
 

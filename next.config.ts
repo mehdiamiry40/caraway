@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
 
 const isDev = process.env.NODE_ENV !== "production";
+
+export const retiredLocationRedirects = Object.entries(
+  RETIRED_LOCATION_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/locations/${slug}`,
+  destination,
+}));
 
 export const legacyIndexingRedirects = [
   {
@@ -18,7 +26,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-ipswich-brisbane",
-    destination: "/locations/ipswich",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-logan-brisbane",
@@ -46,15 +54,15 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-bulimba",
-    destination: "/locations/bulimba",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-browns-plains",
-    destination: "/locations/browns-plains",
+    destination: "/locations/logan",
   },
   {
     source: "/blog/cash-for-cars-caboolture-brisbane",
-    destination: "/locations/caboolture",
+    destination: "/locations/redcliffe",
   },
   {
     source: "/blog/cash-for-cars-capalaba",
@@ -62,19 +70,19 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-carindale",
-    destination: "/locations/carindale",
+    destination: "/locations/capalaba",
   },
   {
     source: "/blog/cash-for-cars-chermside",
-    destination: "/locations/chermside",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-indooroopilly",
-    destination: "/locations/indooroopilly",
+    destination: "/locations/toowong",
   },
   {
     source: "/blog/cash-for-cars-ipswich",
-    destination: "/locations/ipswich",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-kenmore",
@@ -90,15 +98,15 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-mount-gravatt",
-    destination: "/locations/mount-gravatt",
+    destination: "/locations/moorooka",
   },
   {
     source: "/blog/cash-for-cars-north-lakes",
-    destination: "/locations/north-lakes",
+    destination: "/locations/redcliffe",
   },
   {
     source: "/blog/cash-for-cars-nundah",
-    destination: "/locations/nundah",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-redcliffe",
@@ -110,11 +118,11 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-stafford",
-    destination: "/locations/stafford",
+    destination: "/locations",
   },
   {
     source: "/blog/cash-for-cars-sunnybank",
-    destination: "/locations/sunnybank",
+    destination: "/locations/moorooka",
   },
   {
     source: "/blog/cash-for-cars-toowong",
@@ -122,7 +130,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-wynnum",
-    destination: "/locations/wynnum",
+    destination: "/locations/capalaba",
   },
   // July 2026 consolidation: two posts answered the identical "how much is a
   // scrap car worth in Brisbane" query. The older, thinner post 301s into the
@@ -147,7 +155,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/cash-for-cars-sunnybank.html",
-    destination: "/locations/sunnybank",
+    destination: "/locations/moorooka",
   },
   {
     source: "/blog/old-car-running-costs.html",
@@ -219,6 +227,11 @@ const nextConfig: NextConfig = {
     //   landing pages or claimed service in markets Caraway does not cover.
     // Map each to its closest live equivalent so Google consolidates signals
     // onto a canonical page rather than keeping stale URLs in the crawl queue.
+    ...retiredLocationRedirects.map(({ source, destination }) => ({
+      source,
+      destination,
+      permanent: true,
+    })),
     ...legacyIndexingRedirects.map(({ source, destination }) => ({
       source,
       destination,

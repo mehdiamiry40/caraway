@@ -12,6 +12,52 @@ const breadcrumbs = [
   { label: "Locations" }
 ];
 
+const coverageRegions = [
+  {
+    title: "Inner west and western Brisbane",
+    description:
+      "Use the Toowong guide for Auchenflower, Taringa, St Lucia, Indooroopilly, and Paddington. Use Kenmore for Chapel Hill, Fig Tree Pocket, Brookfield, Bellbowrie, and The Gap. Ipswich-corridor enquiries are checked against availability for the exact address.",
+    links: [
+      { label: "Toowong and inner west", href: "/locations/toowong" },
+      { label: "Kenmore and western Brisbane", href: "/locations/kenmore" },
+    ],
+  },
+  {
+    title: "South Brisbane and south-west",
+    description:
+      "The Moorooka guide covers southside enquiries from Annerley and Rocklea through Sunnybank and Mount Gravatt, including workshop, industrial, residential, and flood-affected vehicle access questions.",
+    links: [
+      { label: "Moorooka and South Brisbane", href: "/locations/moorooka" },
+    ],
+  },
+  {
+    title: "Logan corridor",
+    description:
+      "Logan, Springwood, and Beenleigh have separate guides because Search Console shows distinct local demand. Together they cover central, north-east, and southern Logan enquiries, including larger blocks and workshop sites.",
+    links: [
+      { label: "Logan", href: "/locations/logan" },
+      { label: "Springwood", href: "/locations/springwood" },
+      { label: "Beenleigh", href: "/locations/beenleigh" },
+    ],
+  },
+  {
+    title: "North Brisbane and Moreton Bay",
+    description:
+      "North Brisbane enquiries include Chermside, Nundah, Stafford, Everton Park, Ascot, Clayfield, New Farm, and Newstead. The Redcliffe guide also covers peninsula and wider Moreton Bay addresses such as North Lakes and Caboolture.",
+    links: [
+      { label: "Redcliffe and Moreton Bay", href: "/locations/redcliffe" },
+    ],
+  },
+  {
+    title: "East Brisbane, Redlands, and bayside",
+    description:
+      "The Capalaba guide covers eastern and bayside enquiries including Alexandra Hills, Birkdale, Wynnum, Manly, Carindale, Bulimba, and Hawthorne. Exact-address availability and access are confirmed before booking.",
+    links: [
+      { label: "Capalaba and Brisbane bayside", href: "/locations/capalaba" },
+    ],
+  },
+];
+
 export default function Locations() {
   const locationItems = suburbs.map((suburb) => ({
     slug: suburb.slug,
@@ -23,21 +69,63 @@ export default function Locations() {
     <PageShell
       breadcrumbs={breadcrumbs}
       eyebrow="Locations"
-      title="Cash for cars across Greater Brisbane."
+      title="Vehicle pickup areas across Greater Brisbane."
       subtitle={
         <p>
-          We buy cars for cash across Greater Brisbane. Find your local area below for suburb-specific service information, or <Link href="/#price-estimator" className="text-primary font-medium link-underline">get a free quote</Link> to get started.
+          Browse the retained local guides below or use the regional coverage
+          summary for a suburb that is not listed. Pickup is included when
+          Caraway buys; the exact address, access, vehicle details, payment
+          method, and available window are confirmed first. You can also{" "}
+          <Link href="/#price-estimator" className="text-primary font-medium link-underline">request a quote</Link>.
         </p>
       }
     >
       <div className="site-container py-14 sm:py-20 lg:py-24">
         <LocationsFilter items={locationItems} />
 
+        <section className="mt-16 sm:mt-20" aria-labelledby="regional-coverage-heading">
+          <p className="eyebrow mb-3">Regional coverage</p>
+          <h2
+            id="regional-coverage-heading"
+            className="text-2xl sm:text-3xl font-display text-foreground mb-4"
+            style={{ letterSpacing: "var(--tracking-tight)" }}
+          >
+            If your suburb does not have a separate page.
+          </h2>
+          <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">
+            These regions consolidate former near-duplicate suburb pages into
+            a smaller set of useful guides. They describe the coverage and
+            access information Caraway needs without implying a guaranteed
+            pickup time for every address.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {coverageRegions.map((region) => (
+              <article key={region.title} className="rounded-xl border border-border bg-card p-6">
+                <h3 className="font-display text-lg text-foreground mb-3">{region.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  {region.description}
+                </p>
+                <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                  {region.links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="text-sm font-medium text-primary link-underline">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <div className="mt-16 rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">
           <p className="eyebrow mb-3">Not sure?</p>
           <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
-            We service all of Greater Brisbane — even if your suburb isn&apos;t shown above. Call {BUSINESS.phoneDisplay} for local details, or use the price estimator.
+            Send the exact address and access details even if your suburb is not
+            shown above. Caraway will confirm whether purchase and pickup are
+            available for that vehicle and location. You can also call {BUSINESS.phoneDisplay}.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a

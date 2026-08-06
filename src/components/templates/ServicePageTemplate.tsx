@@ -15,6 +15,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { CheckCircle2 } from "lucide-react";
 import { PROMISE_POINTS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
+import { canonicalLocationSlug } from "@/lib/location-consolidation";
 
 export default function ServicePageTemplate({
   service,
@@ -25,7 +26,14 @@ export default function ServicePageTemplate({
     .map(slug => services.find(s => s.slug === slug))
     .filter((s): s is ServicePage => s !== undefined);
 
-  const relatedSuburbData = service.relatedSuburbs
+  const canonicalRelatedSuburbSlugs = [
+    ...new Set(
+      service.relatedSuburbs
+        .map(canonicalLocationSlug)
+        .filter((slug): slug is string => slug !== null),
+    ),
+  ];
+  const relatedSuburbData = canonicalRelatedSuburbSlugs
     .map(slug => suburbs.find(s => s.slug === slug))
     .filter((s): s is SuburbPage => s !== undefined);
 
