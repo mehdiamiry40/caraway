@@ -6,7 +6,7 @@ const steps = [
     number: "01",
     title: "Tell us about your car",
     description: "Make, model, year. Photos help if you have them.",
-    timing: "60 seconds",
+    timing: "About 60 seconds",
   },
   {
     number: "02",
@@ -29,66 +29,58 @@ const steps = [
 ] as const;
 
 interface HowItWorksProps {
-  /**
-   * Hide the section's own eyebrow/heading block when the page already
-   * introduces the process (e.g. /how-it-works renders it under a PageShell
-   * hero that carries the H1).
-   */
   showHeader?: boolean;
 }
 
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
-    <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
+    <section
+      id="how-it-works"
+      className="section-y scroll-mt-header bg-muted"
+      aria-labelledby={showHeader ? "process-heading" : undefined}
+    >
       <div className="site-container">
-        {/* No sub-paragraph under the heading: the four steps below already say
-            it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
         {showHeader && (
-          <div className="mb-10 max-w-2xl md:mb-14">
-            <p className="eyebrow mb-5">How it works</p>
-            <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
-              From quote to collection in four clear steps.
-            </h2>
+          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="eyebrow mb-5">How it works</p>
+              <h2
+                id="process-heading"
+                className="font-display text-[clamp(2.25rem,5vw,4rem)] font-semibold leading-[1.04] tracking-display text-primary"
+              >
+                From quote to collection, without the runaround.
+              </h2>
+            </div>
+            <div className="lg:col-span-4 lg:text-right">
+              <Link
+                href="/#price-estimator"
+                className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary transition-colors hover:text-accent-ink"
+              >
+                Start your quote
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+        <ol className="mt-12 grid grid-cols-1 gap-x-8 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
-            <li
-              key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
-            >
-              <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
-                aria-hidden="true"
-              />
-              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/75 sm:text-4xl">
-                  {step.number}
-                </span>
-                <h3 className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
-                  {step.description}
-                </p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink sm:mt-auto sm:pt-5">
-                  {step.timing}
-                </p>
-              </div>
+            <li key={step.number} className="border-t border-primary/25 pt-5">
+              <span className="font-mono text-sm font-semibold text-accent-ink">
+                {step.number}
+              </span>
+              <h3 className="mt-8 font-display text-xl font-semibold text-primary">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-foreground/65">
+                {step.description}
+              </p>
+              <p className="mt-5 text-xs font-bold uppercase tracking-[0.1em] text-muted-foreground">
+                {step.timing}
+              </p>
             </li>
           ))}
         </ol>
-
-        <div className="mt-8">
-          <Link
-            href="/#price-estimator"
-            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
-          >
-            Start your quote
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
       </div>
     </section>
   );
