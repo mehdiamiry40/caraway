@@ -1,56 +1,46 @@
 import Link from "next/link";
-import { CarFront, Clock, MapPin, Phone } from "lucide-react";
-import { ServicesDropdownClient } from "./ServicesDropdownClient";
-import { MobileMenuClient } from "./MobileMenuClient";
+import { MapPin, Phone } from "lucide-react";
 import { HeaderFrame } from "./HeaderFrame";
 import { HeaderNavLinks } from "./HeaderNavLinks";
-import { BUSINESS } from "@/lib/site";
+import { MobileMenuClient } from "./MobileMenuClient";
 import { buttonVariants } from "@/components/ui/button";
+import { BUSINESS } from "@/lib/site";
 
-const navLinks = [
+const mainLinks = [
+  { label: "Services", href: "/services" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Locations", href: "/locations" },
   { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
+];
+
+const utilityLinks = [
   { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
-/**
- * Navigation shows only the six core services — the long-tail SEO pages
- * (model- and situation-specific) stay reachable from /services and internal
- * links, but 18 near-identical dropdown entries was choice overload.
- */
-const coreServiceLinks = [
-  { label: "Cash for Cars", href: "/cash-for-cars-brisbane" },
-  { label: "Car Removal", href: "/car-removal-brisbane" },
-  { label: "Sell My Car", href: "/sell-my-car-brisbane" },
-  { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
-  { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
-];
-
 export function Header() {
-  const serviceLinks = coreServiceLinks;
-
   return (
     <HeaderFrame>
-      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
-
-      <div className="hidden sm:block w-full bg-background border-b border-border">
-        <div className="site-container flex items-center justify-end h-8 text-xs">
-          <div className="flex items-center divide-x divide-border">
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Open today · {BUSINESS.hours} · 7 days
-            </span>
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Free pickup across Greater Brisbane
-            </span>
+      <div className="hidden h-8 border-b border-border/70 bg-background sm:block">
+        <div className="site-container flex h-full items-center justify-between text-xs">
+          <span className="inline-flex items-center gap-2 text-muted-foreground">
+            <MapPin className="h-3.5 w-3.5 text-accent-ink" aria-hidden="true" />
+            Free pickup across Greater Brisbane
+          </span>
+          <div className="flex items-center gap-5">
+            {utilityLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex items-center gap-1.5 pl-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-1.5 font-semibold text-primary transition-colors hover:text-accent-ink"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
@@ -60,40 +50,35 @@ export function Header() {
         </div>
       </div>
 
-      <div className="bg-background border-b border-border">
-        <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
-          <Link
-            href="/"
-            className="flex items-center gap-3 group shrink-0"
-          >
-            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
-              <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+      <div className="border-b border-border/70 bg-background/95 backdrop-blur">
+        <div className="site-container flex h-[4.5rem] items-center justify-between gap-5 sm:h-20">
+          <Link href="/" className="group flex shrink-0 items-center gap-2.5">
+            <span className="font-display text-xl font-bold tracking-[0.06em] text-primary sm:text-2xl">
+              CARAWAY
             </span>
-            <span className="leading-none">
-              <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
-                CARAWAY
-              </span>
-              <span className="mt-1 block text-[0.58rem] sm:text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                Vehicle buying
-              </span>
-            </span>
+            <span
+              className="h-2.5 w-2.5 rounded-full bg-cta transition-transform group-hover:scale-125"
+              aria-hidden="true"
+            />
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-0 flex-1 justify-center"
+            className="hidden flex-1 items-center justify-center lg:flex"
           >
-            <ServicesDropdownClient serviceLinks={serviceLinks} />
-            <HeaderNavLinks links={navLinks} />
+            <HeaderNavLinks links={mainLinks} />
           </nav>
 
-          <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <Link href="/#price-estimator" className={buttonVariants({ size: "sm" })}>
+          <div className="hidden shrink-0 lg:block">
+            <Link
+              href="/#price-estimator"
+              className={buttonVariants({ size: "sm" })}
+            >
               Get my quote
             </Link>
           </div>
 
-          <MobileMenuClient serviceLinks={serviceLinks} />
+          <MobileMenuClient />
         </div>
       </div>
     </HeaderFrame>
