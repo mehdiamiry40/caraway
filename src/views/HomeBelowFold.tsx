@@ -1,30 +1,26 @@
-import { TrustBadges } from "@/components/sections/TrustBadges";
-import { Stats } from "@/components/sections/Stats";
+import { FAQ } from "@/components/sections/FAQ";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { PriceEstimator } from "@/components/sections/PriceEstimator";
-import { WhyUs } from "@/components/sections/WhyUs";
 import { SellerSituations } from "@/components/sections/SellerSituations";
-import { ServiceAreas } from "@/components/sections/ServiceAreas";
-import { FAQ } from "@/components/sections/FAQ";
 import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
-import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ServiceAreas } from "@/components/sections/ServiceAreas";
+import { Stats } from "@/components/sections/Stats";
+import { TrustBadges } from "@/components/sections/TrustBadges";
+import { WhyUs } from "@/components/sections/WhyUs";
 
 export default function HomeBelowFold() {
   return (
     <>
-      {/* Server-rendered with the page: the primary conversion surface must
-          exist in the HTML for crawlers, JS-off users, and #price-estimator
-          deep links — the previous ssr:false + IntersectionObserver gate
-          served all three an empty placeholder. */}
-      <PriceEstimator />
       <TrustBadges />
-      <Stats />
+      <PriceEstimator />
       <HowItWorks />
       <WhyUs />
-      <SellerSituations />
       <ServiceAreas />
-      <FAQ />
+      <SellerSituations />
+      <Stats />
       <SellingSafelySection />
+      <FAQ />
       <FinalCTA />
     </>
   );
