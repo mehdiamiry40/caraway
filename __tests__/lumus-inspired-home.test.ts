@@ -6,8 +6,8 @@ function source(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
 }
 
-describe("Lumus-inspired Caraway homepage", () => {
-  it("keeps the full homepage content while applying the new design scope", () => {
+describe("Lumus-matched Caraway homepage", () => {
+  it("keeps the full homepage content within the redesign scope", () => {
     const home = source("src/views/Home.tsx");
     const belowFold = source("src/views/HomeBelowFold.tsx");
 
@@ -28,16 +28,19 @@ describe("Lumus-inspired Caraway homepage", () => {
     }
   });
 
-  it("uses editorial hierarchy and a single-level navigation", () => {
+  it("matches the defining Lumus homepage composition", () => {
     const hero = source("src/components/sections/Hero.tsx");
     const header = source("src/components/layout/Header.tsx");
-    const menu = source("src/components/layout/MobileMenuClient.tsx");
+    const services = source("src/components/sections/TrustBadges.tsx");
     const styles = source("src/app/globals.css");
 
-    expect(hero).toContain("Cash for cars.");
-    expect(hero).toContain('rounded-[1.75rem]');
-    expect(header).not.toContain("ServicesDropdownClient");
-    expect(menu).not.toContain("ChevronDown");
-    expect(styles).toContain(".lumus-home");
+    expect(hero).toContain('picture className="absolute inset-0"');
+    expect(hero).toContain("border-t border-on-dark-hi/90");
+    expect(hero).toContain("sm:border-r");
+    expect(header).toContain("ServicesDropdownClient");
+    expect(header).toContain("bg-primary text-on-dark-hi");
+    expect(services).toContain("lg:grid-cols-4");
+    expect(services).toContain("View all services");
+    expect(styles).toContain("--radius-sm: 0.125rem");
   });
 });
