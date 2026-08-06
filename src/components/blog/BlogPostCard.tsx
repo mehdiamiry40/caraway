@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog-posts";
 import { ArrowRight, Clock, Sparkles } from "lucide-react";
@@ -34,16 +33,6 @@ export function BlogPostCard({
         href={`/blog/${post.slug}`}
         className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
       >
-        <div className="aspect-[16/9] w-full overflow-hidden bg-muted">
-          <Image
-            src={post.image.src}
-            alt=""
-            width={post.image.width}
-            height={post.image.height}
-            sizes={isCompact ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-        </div>
         <div className={`flex flex-1 flex-col ${isCompact ? "p-5" : "p-5 sm:p-6"}`}>
           <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
             {post.category}
@@ -94,7 +83,7 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
     <article className="mb-12 sm:mb-16">
       <Link
         href={`/blog/${post.slug}`}
-        className="group grid overflow-hidden rounded-md border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)]"
+        className="group block overflow-hidden rounded-md border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
         aria-label={`Read: ${post.title}`}
       >
         <div className="p-6 sm:p-8 lg:p-10">
@@ -133,16 +122,6 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
               />
             </span>
           </div>
-        </div>
-        <div className="relative order-first aspect-[16/9] bg-muted lg:order-last lg:aspect-auto lg:min-h-[21rem]">
-          <Image
-            src={post.image.src}
-            alt=""
-            fill
-            sizes="(max-width: 1024px) 100vw, 42vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            priority
-          />
         </div>
       </Link>
     </article>

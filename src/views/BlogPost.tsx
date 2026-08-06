@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
@@ -160,18 +159,6 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </Link>
               </div>
             </header>
-
-            <figure className="mb-12 overflow-hidden rounded-md border border-border/60 bg-muted shadow-sm">
-              <Image
-                src={post.image.src}
-                alt={post.image.alt}
-                width={post.image.width}
-                height={post.image.height}
-                sizes="(max-width: 768px) 100vw, 768px"
-                priority
-                className="h-auto w-full object-cover"
-              />
-            </figure>
 
             <div className="prose-body max-w-[65ch] mx-auto break-words [overflow-wrap:anywhere]">
               {renderBlogContent(post.content, { firstParagraphDropCap: true })}

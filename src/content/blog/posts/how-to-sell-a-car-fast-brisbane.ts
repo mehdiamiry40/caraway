@@ -56,12 +56,6 @@ export const post: RawBlogPostEntry = {
       },
     ],
     date: "2026-07-17",
-    image: {
-      src: "/images/blog/how-to-sell-your-car-for-cash-brisbane.webp",
-      alt: "Tow truck collecting a car from a Brisbane driveway for a fast cash sale",
-      width: 1600,
-      height: 900,
-    },
     category: "Guides",
     relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
