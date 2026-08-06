@@ -126,7 +126,7 @@
      The utility strip is hidden on mobile. Consumed by the
      mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
      three can never drift apart. */
-  --header-h: 4.25rem;
+  --header-h: 4.5rem;
 
   --ink: 216 55% 38%;
   --ink-deep: 214 55% 25%;
@@ -156,14 +156,14 @@
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 7.25rem;
+    --header-h: 5rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    --header-h: 7.25rem;
+    --header-h: 5rem;
   }
 }
 
