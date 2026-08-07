@@ -3,6 +3,8 @@ export interface BlogSource {
   url: string;
 }
 
+export type BlogInteractiveTool = "quote-comparison-worksheet";
+
 /**
  * Blog posts are text-only: no hero artwork, no per-post thumbnails, and no
  * images inside `content`. Social previews and Article structured data use the
@@ -15,6 +17,8 @@ export interface RawBlogPostEntry {
   excerpt: string;
   author?: string;
   content: string[];
+  /** Optional client-side utility rendered after the article body. */
+  interactiveTool?: BlogInteractiveTool;
   faqs?: Array<{
     question: string;
     answer: string;

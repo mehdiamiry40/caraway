@@ -41,7 +41,7 @@ export function Header() {
           <div className="flex items-center divide-x divide-border">
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Open today · {BUSINESS.hours} · 7 days
+              Collection windows confirmed per job
             </span>
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />

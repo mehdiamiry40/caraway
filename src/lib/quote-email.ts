@@ -49,13 +49,16 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
       ? ([["Estimated quote", quoteAmountLabel]] as Array<[string, string]>)
       : []),
     ["Address", data.address || "—"],
+    ...(data.details
+      ? ([["Vehicle/access details", data.details]] as Array<[string, string]>)
+      : []),
     ["Marketing consent", data.marketingConsent ? "opted in" : "no"],
   ];
 
   const text = [
     "New quote request from caraway.au",
     "",
-    ...rows.map(([k, v]) => `${k.padEnd(18)}${v}`),
+    ...rows.map(([key, value]) => `${key}: ${value}`),
   ].join("\n");
 
   const htmlRows = rows

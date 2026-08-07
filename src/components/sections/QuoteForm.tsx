@@ -27,6 +27,7 @@ const fieldIds = {
   year: "quote-year",
   condition: "quote-condition",
   address: "quote-address",
+  details: "quote-details",
 } as const;
 
 export function QuoteForm() {
@@ -51,6 +52,7 @@ export function QuoteForm() {
     mode: "onBlur",
     defaultValues: {
       address: "",
+      details: "",
       honeypot: "",
       marketingConsent: false,
     },
@@ -337,7 +339,7 @@ export function QuoteForm() {
                         void trigger("address");
                       }}
                       autoComplete="street-address"
-                      enterKeyHint="send"
+                      enterKeyHint="next"
                       placeholder="Start typing your pickup address..."
                       aria-required="true"
                       aria-invalid={!!errors.address}
@@ -346,7 +348,7 @@ export function QuoteForm() {
                       }
                     />
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-address-help">
-                      Brisbane pickup suburbs only. You can also type the full address manually.
+                      Enter the full address manually if needed. Availability is confirmed from the suburb, vehicle, and access details.
                     </p>
                     {errors.address && (
                       <p id={`${fieldIds.address}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
@@ -354,6 +356,33 @@ export function QuoteForm() {
                         {errors.address.message}
                       </p>
                     )}
+                  </div>
+
+                  <div>
+                    <label htmlFor={fieldIds.details} className="block text-sm text-foreground mb-2.5">
+                      Vehicle and access details <span className="text-muted-foreground">(optional)</span>
+                    </label>
+                    <textarea
+                      id={fieldIds.details}
+                      rows={4}
+                      maxLength={2000}
+                      placeholder="Kilometres; whether it starts, rolls, steers and brakes; damage or missing parts; driveway slope, clearance or obstacles."
+                      aria-invalid={!!errors.details}
+                      aria-describedby={
+                        errors.details ? `${fieldIds.details}-error quote-details-help` : "quote-details-help"
+                      }
+                      {...register("details")}
+                      className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    />
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-details-help">
+                      These details help us assess the vehicle and suitable collection access before follow-up.
+                    </p>
+                    {errors.details ? (
+                      <p id={`${fieldIds.details}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        {errors.details.message}
+                      </p>
+                    ) : null}
                   </div>
 
                   <div className="pt-1">

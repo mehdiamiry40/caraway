@@ -15,18 +15,14 @@ export const BUSINESS = {
   phoneTel: "tel:0481438444",
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
-  /** City-level NAP — we don't operate a public yard; pickups happen at the
-   *  customer's location, so we don't publish a street address. */
+  /** City-level contact location. Exact vehicle pickup details are agreed
+   *  for each accepted job rather than inferred from this label. */
   addressSuburb: "Brisbane",
   addressState: "QLD",
   addressFormatted: "Brisbane, QLD",
   /** Metro label — used with "Greater …" service-area copy. */
   location: "Brisbane, QLD",
   locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
-  hours: "7:00 AM – 7:00 PM",
-  /** Phone and quotes — pickup times are booked separately (see FAQ). */
-  hoursDetail:
-    "Seven days for calls and quotes. Collection timing is confirmed for each accepted job.",
   googleBusinessUrl: "https://share.google/n0D0gZyISx3hMNECL",
 } as const;
 

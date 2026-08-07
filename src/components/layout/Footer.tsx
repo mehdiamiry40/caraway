@@ -83,7 +83,7 @@ export function Footer() {
                 <span>{BUSINESS.email}</span>
               </a>
               <p className="text-on-dark-hi/85">
-                <span className="font-medium text-on-dark-hi">{BUSINESS.hours}</span> · seven days
+                Collection timing is confirmed for each accepted job.
               </p>
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}

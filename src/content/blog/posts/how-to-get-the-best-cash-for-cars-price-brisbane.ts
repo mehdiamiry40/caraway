@@ -36,7 +36,10 @@ export const post: RawBlogPostEntry = {
 
     "## The bottom line",
     "Comparing a cash-for-cars price in Brisbane is less about hard haggling than consistent information. A few written quotes, an honest description, and a clear view of pickup, deductions, payment, and revision conditions help you avoid comparing unlike offers.",
+
+    "Use the three-quote worksheet below to record the buyer identity, licence details, headline amount, deductions, assumptions, pickup terms, payment arrangement, and receipt commitment without sending those entries anywhere.",
   ],
+  interactiveTool: "quote-comparison-worksheet",
   faqs: [
     {
       question: "How many quotes should I get before selling my car for cash?",
@@ -56,6 +59,17 @@ export const post: RawBlogPostEntry = {
   ],
   date: "2026-07-22",
   updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Check a motor licence — Queensland Government",
+      url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence",
+    },
+    {
+      title: "Selling a used vehicle — Queensland Government",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+  ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich"],

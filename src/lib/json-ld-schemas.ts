@@ -2,13 +2,6 @@
 
 import { SITE_URL, BUSINESS } from "@/lib/site";
 
-const openingHours = {
-  "@type": "OpeningHoursSpecification" as const,
-  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-  opens: "07:00",
-  closes: "19:00",
-};
-
 const SAME_AS = [BUSINESS.googleBusinessUrl, BUSINESS.abrUrl];
 
 export const serviceAreas = [
@@ -46,7 +39,6 @@ export const organizationSchema = {
     contactType: "customer service",
     areaServed: serviceAreas,
     availableLanguage: "English",
-    hoursAvailable: openingHours,
   },
   sameAs: SAME_AS,
 };

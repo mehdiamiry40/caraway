@@ -42,6 +42,9 @@ describe("SEO structured-data policy", () => {
     expect(JSON.stringify(organizationSchema.contactPoint.areaServed)).not.toBe(
       '"AU"',
     );
+    expect(organizationSchema.contactPoint).not.toHaveProperty(
+      "hoursAvailable",
+    );
     expect(organizationSchema.sameAs).toContain(BUSINESS.abrUrl);
   });
 
@@ -87,6 +90,7 @@ describe("SEO structured-data policy", () => {
     ]) {
       expect(source).not.toContain(`"@type": "${type}"`);
     }
+    expect(source).not.toContain('"@type": "OpeningHoursSpecification"');
     expect(source).not.toContain(`${SITE_URL}/#business`);
   });
 });

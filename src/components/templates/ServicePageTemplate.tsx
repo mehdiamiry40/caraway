@@ -140,8 +140,7 @@ export default function ServicePageTemplate({
                 <h3 className="text-sm font-display mb-2 text-foreground">Registered Brisbane business</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   Caraway is the registered business name of {BUSINESS.legalName},
-                  a sole trader based in Brisbane, Queensland. Caraway is a
-                  service-area business and does not operate a public vehicle yard.
+                  a sole trader based in Brisbane, Queensland.
                 </p>
                 <ul className="mt-4 space-y-1 text-sm">
                   <li>

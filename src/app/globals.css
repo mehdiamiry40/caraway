@@ -375,6 +375,81 @@
   a[href]:after { content: " (" attr(href) ")"; font-size: 0.8em; }
   a[href^="/"]:after { content: " (caraway.au" attr(href) ")"; }
   img { max-width: 100% !important; }
+
+  body.quote-worksheet-printing > :not(.quote-worksheet-print-root) {
+    display: none !important;
+  }
+  body.quote-worksheet-printing > .quote-worksheet-print-root {
+    display: block !important;
+    width: auto;
+    margin: 0;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .quote-worksheet-print-root .worksheet-print-header {
+    display: block !important;
+    margin-bottom: 18pt;
+  }
+  .quote-worksheet-print-root .worksheet-print-header > p:first-child {
+    margin: 0 0 4pt;
+    color: #444;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .quote-worksheet-print-root h1 {
+    margin: 0 0 6pt;
+    font-size: 20pt;
+    line-height: 1.2;
+  }
+  .quote-worksheet-print-root h2 {
+    break-after: avoid-page;
+    margin: 0 0 7pt;
+    font-size: 14pt;
+  }
+  .quote-worksheet-print-root p {
+    margin: 0;
+  }
+  .quote-worksheet-print-root .worksheet-print-quote {
+    margin: 0 0 14pt;
+    padding: 10pt;
+    border: 1px solid #bbb;
+  }
+  .quote-worksheet-print-root dl,
+  .quote-worksheet-print-root dd {
+    margin: 0;
+  }
+  .quote-worksheet-print-root dl > div {
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: 8pt;
+    padding: 4pt 0;
+    border-top: 1px solid #ddd;
+  }
+  .quote-worksheet-print-root dt {
+    font-weight: 700;
+  }
+  .quote-worksheet-print-root dd {
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .quote-worksheet-print-root .worksheet-print-footer {
+    display: block !important;
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 1px solid #999;
+    font-size: 9pt;
+  }
+  .quote-worksheet-print-root .worksheet-print-footer a {
+    overflow-wrap: anywhere;
+  }
+  .quote-worksheet-print-root .worksheet-print-footer a:after {
+    content: none;
+  }
 }
 
 @utility pt-safe { padding-top: env(safe-area-inset-top, 0px); }

@@ -6,19 +6,19 @@ import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Caraway | Phone, Email and Quote Enquiries",
-  description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay}; enquiries are accepted seven days a week.`,
+  description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",
     url: "/contact",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
-    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay}; enquiries are accepted seven days a week.`,
+    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
     images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Contact Caraway in Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
-    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay}; enquiries are accepted seven days a week.`,
+    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
     images: [{ url: "/images/og-card.jpg", alt: "Contact Caraway in Brisbane" }],
   },
 };

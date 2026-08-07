@@ -72,6 +72,8 @@ describe("QuoteForm", () => {
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^phone/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/pickup address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/vehicle and access details/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Brisbane pickup suburbs only/i)).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /get my quote/i })).toBeInTheDocument();
   });
 
@@ -81,11 +83,20 @@ describe("QuoteForm", () => {
 
     render(<QuoteForm />);
     await fillRequiredFields(user);
+    await user.type(
+      screen.getByLabelText(/vehicle and access details/i),
+      "180,000 km; rolls and steers; narrow driveway.",
+    );
     await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
     await waitFor(() => {
       expect(submitQuoteMock).toHaveBeenCalledTimes(1);
     });
+    expect(submitQuoteMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        details: "180,000 km; rolls and steers; narrow driveway.",
+      }),
+    );
     expect(trackEventMock).toHaveBeenCalledWith("quote_form_submitted");
     expect(trackEventMock).toHaveBeenCalledWith("lead_submitted", { source: "quote_form" });
     expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();

@@ -47,6 +47,10 @@ export const services: ServicePage[] = [
         heading: "What Affects a Vehicle Offer",
         content:
           "The quote depends on the vehicle's identity, age, kilometres, mechanical and body condition, completeness, location, access, and current resale, parts, or material demand. Tell us about warning lights, missing components, accident or storm damage, finance, insurer involvement, and access constraints. The agreed offer may be revised only if the vehicle materially differs from the supplied description.",
+        supportLink: {
+          href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#compare-three-vehicle-buyer-quotes",
+          label: "Compare three written vehicle-buyer quotes",
+        },
       },
       {
         heading: "Vehicles and Conditions We Can Assess",
@@ -120,6 +124,10 @@ export const services: ServicePage[] = [
         heading: "What Included Pickup Means",
         content:
           "There is no separate towing deduction when Caraway buys the vehicle and the car and access match the supplied details. This is a vehicle-purchase service, not a general towing service. If we cannot buy the vehicle or safely arrange collection, we will tell you before a pickup is booked.",
+        supportLink: {
+          href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#compare-three-vehicle-buyer-quotes",
+          label: "Compare pickup costs and effective net offers",
+        },
       },
       {
         heading: "Non-Running and Difficult-to-Move Cars",

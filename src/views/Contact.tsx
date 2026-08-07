@@ -18,7 +18,7 @@ export default function Contact() {
       title="Talk to a real Brisbane buyer."
       subtitle={
         <p>
-          Free, no-obligation vehicle quotes — enquiries are accepted seven days a week.
+          Request a free, no-obligation assessment for your vehicle.
         </p>
       }
     >
@@ -50,7 +50,7 @@ export default function Contact() {
                   <span className="block font-display text-sm text-foreground">Phone</span>
                   <span className="block text-base font-medium text-primary">{BUSINESS.phoneDisplay}</span>
                   <span className="mt-0.5 block text-sm text-muted-foreground">
-                    {BUSINESS.hours}, seven days. The quickest way to reach a buyer.
+                    Call with the vehicle, location, and access details.
                   </span>
                 </span>
               </TrackedPhoneLink>
@@ -71,7 +71,7 @@ export default function Contact() {
                   icon: Building2,
                   title: "Based in",
                   main: BUSINESS.addressFormatted,
-                  sub: "We don't operate a public yard. Pickup is included when Caraway buys and the supplied vehicle and access details match.",
+                  sub: "Confirm the vehicle location and collection plan before travelling to any address.",
                 },
                 {
                   icon: MapPin,
@@ -81,9 +81,9 @@ export default function Contact() {
                 },
                 {
                   icon: Clock,
-                  title: "Operating hours",
-                  main: BUSINESS.hours,
-                  sub: BUSINESS.hoursDetail,
+                  title: "Response and collection",
+                  main: "Timing confirmed individually",
+                  sub: "Messages are reviewed during business hours; collection timing is agreed for each accepted job.",
                 },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4 rounded-md border border-border/60 bg-card p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)]">

@@ -96,6 +96,7 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/cash-for-cars-brisbane",
     );
+    expect(JSON.stringify(metadata.openGraph?.images)).toContain(service?.h1);
     expect(
       services.filter((item) => /^Cash for Cars Brisbane\b/i.test(item.h1)),
     ).toHaveLength(1);
@@ -114,6 +115,7 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/car-removal-brisbane",
     );
+    expect(JSON.stringify(metadata.openGraph?.images)).toContain(service?.h1);
     expect(
       services.filter((item) => /^Car Removal Brisbane\b/i.test(item.h1)),
     ).toHaveLength(1);
@@ -144,5 +146,29 @@ describe("primary SEO query ownership", () => {
         "Open the Queensland seller paperwork checklist",
       );
     }
+  });
+
+  it("links both primary service pages to the three-quote comparison worksheet", () => {
+    const expected =
+      "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#compare-three-vehicle-buyer-quotes";
+
+    for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
+      const service = getServiceBySlug(slug);
+      const section = service?.sections.find(
+        (candidate) => candidate.supportLink?.href === expected,
+      );
+
+      expect(section, slug).toBeDefined();
+      const markup = renderToStaticMarkup(
+        <ServiceSectionContent section={section!} />,
+      );
+      expect(markup, slug).toContain(`href="${expected}"`);
+      expect(markup, slug).toMatch(/Compare (?:three written vehicle-buyer quotes|pickup costs and effective net offers)/);
+    }
+
+    const worksheetPost = blogPosts.find(
+      (post) => post.slug === "how-to-get-the-best-cash-for-cars-price-brisbane",
+    );
+    expect(worksheetPost?.interactiveTool).toBe("quote-comparison-worksheet");
   });
 });

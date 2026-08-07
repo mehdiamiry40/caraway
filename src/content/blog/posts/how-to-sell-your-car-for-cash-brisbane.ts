@@ -27,7 +27,11 @@ export const post: RawBlogPostEntry = {
 
     "A useful article cannot state what an individual vehicle is worth. The quote changes with the exact vehicle, its condition and completeness, the lawful ownership position, current demand, location, and collection access. The factors to document are:",
 
-    "- **Identity and specification.** Make, model, variant, year, drivetrain, and body style distinguish vehicles that otherwise sound similar.\n- **Age and kilometres.** These provide context but do not replace the mechanical and body assessment.\n- **Condition and completeness.** State whether the car starts, rolls, steers, brakes, and has all wheels, keys, and major components.\n- **Location and access.** The suburb, surface, clearance, slope, and obstacles affect whether collection can be arranged safely.\n- **Current demand.** Resale, usable-component, and recoverable-material demand changes, so obtain an individual quote rather than relying on a generic web range.",
+    "- **Identity and specification.** Make, model, variant, year, drivetrain, and body style distinguish vehicles that otherwise sound similar.",
+    "- **Age and kilometres.** These provide context but do not replace the mechanical and body assessment.",
+    "- **Condition and completeness.** State whether the car starts, rolls, steers, brakes, and has all wheels, keys, and major components.",
+    "- **Location and access.** The suburb, surface, clearance, slope, and obstacles affect whether collection can be arranged safely.",
+    "- **Current demand.** Resale, usable-component, and recoverable-material demand changes, so obtain an individual quote rather than relying on a generic web range.",
 
     "Use our guides on [what affects a car's value in Brisbane](/blog/how-much-is-my-car-worth-brisbane) and [what affects a scrap-car quote](/blog/how-much-is-scrap-car-worth-brisbane) as checklists, not price promises. A parked car can also deteriorate through battery discharge, flat tyres, moisture, corrosion, or seized components, so record its current condition accurately.",
 
@@ -37,7 +41,10 @@ export const post: RawBlogPostEntry = {
 
     "Get at least two quotes, and compare like for like. The questions that matter:",
 
-    "- Is towing included, or deducted afterwards?\n- Is the offer confirmed in writing before the truck is booked?\n- When exactly do you get paid — before the car leaves, or \"processed later\"?\n- Do you get a receipt with the buyer's details?",
+    "- Is towing included, or deducted afterwards?",
+    "- Is the offer confirmed in writing before the truck is booked?",
+    "- When exactly do you get paid — before the car leaves, or \"processed later\"?",
+    "- Do you get a receipt with the buyer's details?",
 
     "A buyer may seek to revise a quote if the vehicle, missing components, location, or access differs from the information supplied. Reduce that risk by describing the car accurately, providing current photos, asking what could change the assessment, and getting the terms in writing before collection. Our guide to [avoiding cash-for-cars scams in Brisbane](/blog/how-to-avoid-cash-for-cars-scams-brisbane) lists identity, payment, and receipt checks. Caraway confirms its offer assumptions before pickup is booked and checks the vehicle against the supplied details at collection.",
 
@@ -45,7 +52,11 @@ export const post: RawBlogPostEntry = {
 
     "Before the truck arrives:",
 
-    "- **Photo ID.** The driver will sight it — a driver's licence is standard.\n- **Registration papers,** if the car is registered. Helpful, but not essential for unregistered vehicles.\n- **Clear out the car.** Check the glovebox, under seats, the boot, and behind the sun visors. Grab your toll tag and any garage remotes.\n- **Payout letter,** if there's finance owing — see [selling a car with finance owing in QLD](/blog/how-to-sell-a-car-with-finance-owing-qld) for how that works.\n- **Know your sale type.** Registered or unregistered changes the paperwork, not the sale itself. [What paperwork you need to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers both paths.",
+    "- **Photo ID.** The driver will sight it — a driver's licence is standard.",
+    "- **Registration papers,** if the car is registered. Helpful, but not essential for unregistered vehicles.",
+    "- **Clear out the car.** Check the glovebox, under seats, the boot, and behind the sun visors. Grab your toll tag and any garage remotes.",
+    "- **Payout letter,** if there's finance owing — see [selling a car with finance owing in QLD](/blog/how-to-sell-a-car-with-finance-owing-qld) for how that works.",
+    "- **Know your sale type.** Registered or unregistered changes the paperwork, not the sale itself. [What paperwork you need to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers both paths.",
 
     "For plates and registration, follow the current Transport and Main Roads (TMR) requirements for your sale type. A registered transfer, cancellation before sale, and the sale of an already-unregistered vehicle are different paths. If the car is registered and you decide not to transfer that registration, you can [cancel the rego](/blog/how-to-cancel-car-rego-qld) and may be eligible for a refund on the unused portion.",
 
@@ -71,7 +82,7 @@ export const post: RawBlogPostEntry = {
 
     "**How do I compare the financial outcome?** Be accurate about condition, have the relevant records ready, and compare the likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
 
-    `Ready to request an individual quote? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}** — seven days, ${BUSINESS.hours}. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
+    `Ready to request an individual quote? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}**. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
   ],
   faqs: [
     {

@@ -11,8 +11,10 @@ import { SITE_URL } from "@/lib/site";
 // Pick concrete fixtures from real data. Using slugs rather than array
 // indices keeps these tests stable as posts are added or reordered.
 const INDEXABLE_SLUG = "what-paperwork-to-sell-a-car-qld";
+const SALE_OPTIONS_SLUG = "how-to-sell-your-car-for-cash-brisbane";
 
 const indexablePost = blogPosts.find((p) => p.slug === INDEXABLE_SLUG);
+const saleOptionsPost = blogPosts.find((p) => p.slug === SALE_OPTIONS_SLUG);
 
 function makeParams(slug: string) {
   return { params: Promise.resolve({ slug }) };
@@ -115,6 +117,17 @@ describe("generateMetadata (blog post route)", () => {
       }
 
       expect(asElement(rendered[headingIndex + 3]).type).toBe("h2");
+    });
+
+    it("renders the cornerstone sale-options checklists as semantic lists", () => {
+      expect(saleOptionsPost).toBeDefined();
+      const lists = renderBlogContent(saleOptionsPost!.content)
+        .filter((node) => isValidElement(node) && node.type === "ul")
+        .map((node) => getChildren(asElement(node)).length);
+
+      expect(lists).toContain(5);
+      expect(lists).toContain(4);
+      expect(lists.filter((length) => length === 5)).toHaveLength(2);
     });
   });
 

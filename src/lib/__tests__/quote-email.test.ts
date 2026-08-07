@@ -24,6 +24,7 @@ describe("buildQuoteEmailContent", () => {
     const { text } = buildQuoteEmailContent({
       ...baseValid,
       address: "12 Example St, Brisbane",
+      details: "180,000 km; rolls and steers; narrow driveway.",
       marketingConsent: true,
     });
     expect(text).toContain("Jane Doe");
@@ -33,13 +34,22 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toContain("2015");
     expect(text).toContain("Running");
     expect(text).toContain("12 Example St, Brisbane");
+    expect(text).toContain(
+      "Vehicle/access details: 180,000 km; rolls and steers; narrow driveway.",
+    );
     expect(text).toContain("opted in");
   });
 
   it("renders an em dash for empty address", () => {
     const { text, html } = buildQuoteEmailContent({ ...baseValid, address: "" });
-    expect(text).toMatch(/Address\s+—/);
+    expect(text).toMatch(/Address:\s+—/);
     expect(html).toContain("—");
+  });
+
+  it("omits the optional details row when no details were supplied", () => {
+    const { text, html } = buildQuoteEmailContent(baseValid);
+    expect(text).not.toContain("Vehicle/access details");
+    expect(html).not.toContain("Vehicle/access details");
   });
 
   it("escapes HTML special characters in user-supplied values", () => {
@@ -55,7 +65,7 @@ describe("buildQuoteEmailContent", () => {
 
   it("reports 'no' when marketing consent is not given", () => {
     const { text } = buildQuoteEmailContent(baseValid);
-    expect(text).toMatch(/Marketing consent\s+no/);
+    expect(text).toMatch(/Marketing consent:\s+no/);
   });
 });
 

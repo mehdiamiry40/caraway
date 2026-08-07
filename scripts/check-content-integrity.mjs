@@ -82,6 +82,16 @@ const prohibitedClaims = [
     pattern: /Caraway Pty Ltd/i,
   },
   {
+    label: "unverified Caraway opening-hours claim",
+    pattern:
+      /\bOpen today\b|\bBUSINESS\.hours\b|hoursAvailable:\s*openingHours|Calls and quotes are available\s+\d|enquiries are accepted seven days/i,
+  },
+  {
+    label: "unverified Caraway public-yard claim",
+    pattern:
+      /Caraway[^.\n]{0,120}(?:does not operate|has no|without) (?:a )?public (?:vehicle |customer )?yard/i,
+  },
+  {
     label: "unsupported named employee persona",
     pattern: /Sam Williams|Senior Buyer/i,
   },
@@ -373,6 +383,7 @@ const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
   "how-much-is-my-car-worth-brisbane.ts",
   "how-to-get-a-roadworthy-certificate-brisbane.ts",
+  "how-to-get-the-best-cash-for-cars-price-brisbane.ts",
   "how-to-cancel-car-rego-qld.ts",
   "how-to-sell-your-car-for-cash-brisbane.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",

@@ -199,7 +199,8 @@ export default function HowItWorksPage() {
                   match the agreed terms. A non-running vehicle, height limit,
                   narrow driveway, gate, slope, soft ground, or missing wheel must
                   be disclosed so feasibility and equipment can be confirmed.
-                  Caraway does not operate a public vehicle yard.
+                  Do not move or deliver the vehicle to an address unless that
+                  location is part of the agreed collection plan.
                 </p>
               </div>
 

@@ -90,7 +90,7 @@ export const faqCategories = [
       {
         question: "Can I visit your office or drop my car off?",
         answer:
-          "Caraway does not operate a public customer yard or accept unarranged drop-offs. Vehicle location and collection access are confirmed as part of an accepted job.",
+          "Do not visit or deliver a vehicle to an address unless Caraway has confirmed the appointment and location in advance. Vehicle location and collection access are agreed as part of an accepted job.",
       },
       {
         question: "Which Brisbane areas do you service?",

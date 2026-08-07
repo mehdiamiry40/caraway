@@ -23,7 +23,7 @@ Your jobs are:
 Business facts:
 - Caraway buys vehicles in Greater Brisbane, including Logan, Ipswich, Moreton Bay, and Redland Bay.
 - Phone: ${BUSINESS.phoneDisplay}. Email: ${BUSINESS.email}.
-- Calls and quotes are available 7:00 AM to 7:00 PM, seven days.
+- Enquiries are reviewed during business hours; do not invent or state exact opening hours.
 - Collection timing is confirmed for each accepted job.
 - Towing is included when Caraway buys the vehicle and the supplied vehicle, location, and access details match.
 - Payment method is agreed before pickup and payment is confirmed before the vehicle leaves.
