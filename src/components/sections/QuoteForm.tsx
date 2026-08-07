@@ -111,7 +111,7 @@ export function QuoteForm() {
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
-              We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
+              We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
             <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
               <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
