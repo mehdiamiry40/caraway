@@ -10,8 +10,11 @@ const breadcrumbs = [
   { label: "Blog" },
 ];
 
-/** Grid posts per page (the newest post is featured on page 1 on top of this). */
-export const BLOG_PAGE_SIZE = 12;
+/** Grid posts per page (the newest post is featured on page 1 on top of this).
+ *  Sized to keep the archive at three pages: every archive page past the third
+ *  is a permanent redirect in next.config.ts, so a fourth page would strand its
+ *  posts behind that redirect. */
+export const BLOG_PAGE_SIZE = 13;
 
 /** Total number of blog index pages, for generateStaticParams and the pager. */
 export function blogPageCount(): number {
