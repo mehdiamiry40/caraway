@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
@@ -27,6 +28,22 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
         {section.content}
       </p>
+      {section.image && (
+        <figure className="mt-6 overflow-hidden border border-border bg-muted shadow-sm">
+          <Image
+            src={section.image.src}
+            alt={section.image.alt}
+            width={section.image.width}
+            height={section.image.height}
+            sizes="(max-width: 1023px) calc(100vw - 2rem), 760px"
+            loading="lazy"
+            className="h-auto w-full"
+          />
+          <figcaption className="border-t border-border bg-card px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-5">
+            {section.image.caption}
+          </figcaption>
+        </figure>
+      )}
       {section.checklistItems && section.checklistItems.length > 0 && (
         <ul
           aria-label={`${section.heading} checklist`}

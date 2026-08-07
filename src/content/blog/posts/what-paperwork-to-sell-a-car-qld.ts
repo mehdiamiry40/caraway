@@ -57,7 +57,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling an unregistered vehicle",
 
-      "An unregistered vehicle can be sold without a safety certificate, but both parties need a paper trail. Queensland Government says the signed record should include the VIN, chassis number, or engine number; the make and model; and the sale date. Keep a copy, and do not drive an unregistered vehicle on a road unless the required permit, CTP cover, and safety conditions are satisfied.",
+      "An unregistered vehicle can be sold without a safety certificate, but both parties need a paper trail. Queensland Government says the signed record should include the VIN, chassis number, or engine number; the make and model; and the sale date. Keep a copy. Before any road movement, check whether a permit is required and satisfy the current CTP, route, plate, vehicle-safety, and journey conditions; an unsafe vehicle may need professional transport.",
 
       "## Seller handover record",
 
@@ -81,7 +81,7 @@ export const post: RawBlogPostEntry = {
 
       "## WOVR and disclosure obligations",
 
-      "If your car has been declared a total loss, provide accurate information about its condition and insurer status. The [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide) status appears in a PPSR search. Do not make false or misleading statements about known write-off, flood, or structural damage.",
+      "If your car has been declared a total loss, provide accurate information about its condition and insurer status. A PPSR vehicle search usually includes recorded written-off status when NEVDIS data is available, but it is not a complete vehicle-history or ownership check. Review the [Written-Off Vehicle Register (WOVR) guide](/blog/wovr-written-off-vehicle-register-qld-guide) and do not make false or misleading statements about known write-off, flood, or structural damage.",
 
       "## What if you're missing documents?",
 
@@ -90,11 +90,18 @@ export const post: RawBlogPostEntry = {
       "## Selling to a cash-for-cars buyer in Brisbane",
 
       `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+
+      "Use the private Queensland seller builder below to turn the facts of a proposed transaction into a conservative checklist and a printable two-copy handover record. It does not send or save the details you enter, and it does not replace the official transfer, cancellation, licence, certificate, ownership, or legal checks that apply.",
     ],
+    interactiveTool: "qld-vehicle-sale-record-builder",
     date: "2026-04-16",
     updatedAt: "2026-08-07",
     reviewedAt: "2026-08-07",
     sources: [
+      {
+        title: "Queensland Government — selling a used vehicle",
+        url: "https://www.qld.gov.au/transport/buying/rules/selling",
+      },
       {
         title: "Queensland Government — transfer registration online",
         url: "https://www.qld.gov.au/transport/registration/transfer/online",
@@ -126,6 +133,14 @@ export const post: RawBlogPostEntry = {
       {
         title: "Queensland Government — selling and moving unregistered vehicles",
         url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+      },
+      {
+        title: "Queensland Government — unregistered vehicle permits",
+        url: "https://www.qld.gov.au/transport/buying/unregistered/uvp",
+      },
+      {
+        title: "Queensland Government — moving registration to or from Queensland",
+        url: "https://www.qld.gov.au/transport/registration/transfer/interstate",
       },
       {
         title: "Queensland Government — check a motor licence",

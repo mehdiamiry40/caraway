@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services } from "@/data/services";
+import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import {
   blogPosts,
@@ -158,12 +158,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "sell-my-car-brisbane",
   ]);
 
-  const servicePages: MetadataRoute.Sitemap = services.filter((s) => s.slug).map((s) => ({
-    url: `${SITE_URL}/${s.slug}`,
-    lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
-    changeFrequency: "monthly" as const,
-    priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
-  }));
+  const servicePages: MetadataRoute.Sitemap = services
+    .filter((s) => s.slug)
+    .map((s) => {
+      const preferredImage = getServicePreferredImage(s);
+      return {
+        url: `${SITE_URL}/${s.slug}`,
+        lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
+        changeFrequency: "monthly" as const,
+        priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
+        ...(preferredImage
+          ? { images: [`${SITE_URL}${preferredImage.src}`] }
+          : {}),
+      };
+    });
 
   /* -----------------------------------------------------------------------
    * 3. Location (suburb) pages

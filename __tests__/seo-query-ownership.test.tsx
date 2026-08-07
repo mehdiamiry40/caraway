@@ -18,7 +18,11 @@ import {
 import { Hero } from "@/components/sections/Hero";
 import { ServiceSectionContent } from "@/components/templates/ServicePageTemplate";
 import { blogPosts } from "@/data/blog-posts";
-import { getServiceBySlug, services } from "@/data/services";
+import {
+  getServiceBySlug,
+  getServicePreferredImage,
+  services,
+} from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 const CASH_QUERY = /cash for cars brisbane/i;
@@ -109,7 +113,13 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/cash-for-cars-brisbane",
     );
-    expect(JSON.stringify(metadata.openGraph?.images)).toContain(service?.h1);
+    const preferredImage = getServicePreferredImage(service!);
+    expect(metadata.openGraph?.images).toEqual([
+      expect.objectContaining({
+        url: preferredImage?.src,
+        alt: preferredImage?.alt,
+      }),
+    ]);
     expect(serviceOwnersOf(CASH_QUERY)).toEqual(["cash-for-cars-brisbane"]);
   });
 
@@ -126,7 +136,13 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/car-removal-brisbane",
     );
-    expect(JSON.stringify(metadata.openGraph?.images)).toContain(service?.h1);
+    const preferredImage = getServicePreferredImage(service!);
+    expect(metadata.openGraph?.images).toEqual([
+      expect.objectContaining({
+        url: preferredImage?.src,
+        alt: preferredImage?.alt,
+      }),
+    ]);
     expect(serviceOwnersOf(REMOVAL_QUERY)).toEqual(["car-removal-brisbane"]);
   });
 
@@ -135,6 +151,8 @@ describe("primary SEO query ownership", () => {
       const service = getServiceBySlug(slug)!;
       const canonical = `${SITE_URL}/${slug}`;
       const data = buildServiceStructuredData(service);
+      const preferredImage = getServicePreferredImage(service)!;
+      const absoluteImage = `${SITE_URL}${preferredImage.src}`;
       const breadcrumb = data[0] as Record<string, unknown>;
       const webPage = data[1] as Record<string, unknown>;
       const serviceEntity = data[2] as Record<string, unknown>;
@@ -162,10 +180,15 @@ describe("primary SEO query ownership", () => {
         breadcrumb: { "@id": `${canonical}#breadcrumbs` },
         mainEntity: { "@id": `${canonical}#service` },
         inLanguage: "en-AU",
+        primaryImageOfPage: expect.objectContaining({
+          "@type": "ImageObject",
+          url: absoluteImage,
+        }),
       });
       expect(serviceEntity).toMatchObject({
         "@id": `${canonical}#service`,
         url: canonical,
+        image: absoluteImage,
       });
       expect(serialized).not.toMatch(/FAQPage|aggregateRating|"offers"|"address"/i);
     }

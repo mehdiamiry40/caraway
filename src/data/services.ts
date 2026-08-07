@@ -6,10 +6,19 @@ export interface ServiceFAQ {
   answer: string;
 }
 
+export interface ServiceImage {
+  src: string;
+  alt: string;
+  caption: string;
+  width: number;
+  height: number;
+}
+
 export interface ServiceSection {
   heading: string;
   content: string;
   checklistItems?: string[];
+  image?: ServiceImage;
   supportLink?: {
     href: string;
     label: string;
@@ -53,6 +62,14 @@ export const services: ServicePage[] = [
           "Exact suburb plus driveway, garage, clearance, slope, surface, gate, or obstacle details.",
           "Current photos of every side, the interior, odometer, damage, missing parts, and collection access.",
         ],
+        image: {
+          src: "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
+          alt: "Vehicle quote-readiness diagram showing front, rear and side photos, the interior and odometer, visible damage, and driveway access",
+          caption:
+            "A complete set of current vehicle and access photos helps a buyer assess what is visible before confirming an individual quote.",
+          width: 1200,
+          height: 630,
+        },
         supportLink: {
           href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#give-buyers-the-full-picture",
           label: "See the full vehicle-detail and photo checklist",
@@ -175,6 +192,14 @@ export const services: ServicePage[] = [
           "Available width and height, driveway slope, ground surface, overhead clearance, and loading space.",
           "Photos from the access point to the vehicle, plus measurements wherever clearance is limited.",
         ],
+        image: {
+          src: "/images/car-removal-brisbane-access-readiness-v1.jpg",
+          alt: "Vehicle pickup-access diagram showing wheel and steering checks, gate width, height clearance, driveway slope and surface, turns, and obstacles",
+          caption:
+            "Show the full path from the street to the vehicle so the operator can assess movement, clearance, surface, turns, and obstacles before booking.",
+          width: 1200,
+          height: 630,
+        },
         supportLink: {
           href: "/blog/preparing-your-car-for-pickup#plates-rego-and-tow-truck-access",
           label: "Prepare the vehicle, documents, and access for pickup",
@@ -628,6 +653,12 @@ export const services: ServicePage[] = [
     relatedSuburbs: ["logan", "beenleigh", "springwood", "redcliffe"],
   },
 ];
+
+export function getServicePreferredImage(
+  service: ServicePage,
+): ServiceImage | undefined {
+  return service.sections.find((section) => section.image)?.image;
+}
 
 export const getServiceBySlug = cache(
   (slug: string): ServicePage | undefined =>

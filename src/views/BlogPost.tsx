@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { QuoteComparisonWorksheetLoader } from "@/components/blog/QuoteComparisonWorksheetLoader";
+import { QldVehicleSaleRecordBuilderLoader } from "@/components/blog/QldVehicleSaleRecordBuilderLoader";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { categorySlug } from "@/data/blog-posts";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
@@ -186,6 +187,10 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
             {post.interactiveTool === "quote-comparison-worksheet" ? (
               <QuoteComparisonWorksheetLoader />
+            ) : null}
+
+            {post.interactiveTool === "qld-vehicle-sale-record-builder" ? (
+              <QldVehicleSaleRecordBuilderLoader />
             ) : null}
 
             {post.sources && post.sources.length > 0 && (

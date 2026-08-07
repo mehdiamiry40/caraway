@@ -5,6 +5,7 @@ import { breadcrumbListSchema, serviceSchema } from "@/lib/json-ld-schemas";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
 import {
   getServiceBySlug,
+  getServicePreferredImage,
   services,
   type ServicePage,
 } from "@/data/services";
@@ -22,6 +23,10 @@ export function generateStaticParams() {
 export function buildServiceStructuredData(service: ServicePage) {
   const canonicalUrl = `${SITE_URL}/${service.slug}`;
   const serviceId = `${canonicalUrl}#service`;
+  const preferredImage = getServicePreferredImage(service);
+  const preferredImageUrl = preferredImage
+    ? `${SITE_URL}${preferredImage.src}`
+    : undefined;
 
   return [
     breadcrumbListSchema([
@@ -41,6 +46,21 @@ export function buildServiceStructuredData(service: ServicePage) {
       mainEntity: { "@id": serviceId },
       inLanguage: "en-AU",
       ...(service.updatedAt ? { dateModified: service.updatedAt } : {}),
+      ...(preferredImage && preferredImageUrl
+        ? {
+            primaryImageOfPage: {
+              "@type": "ImageObject",
+              "@id": `${canonicalUrl}#primaryimage`,
+              url: preferredImageUrl,
+              contentUrl: preferredImageUrl,
+              width: preferredImage.width,
+              height: preferredImage.height,
+              caption: preferredImage.caption,
+              representativeOfPage: true,
+            },
+            thumbnailUrl: preferredImageUrl,
+          }
+        : {}),
     },
     serviceSchema({
       id: serviceId,
@@ -50,6 +70,7 @@ export function buildServiceStructuredData(service: ServicePage) {
       serviceType: service.slug.includes("removal")
         ? "Vehicle removal service"
         : "Vehicle buying service",
+      image: preferredImageUrl,
     }),
   ];
 }
@@ -65,6 +86,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       twitter: null,
     };
   }
+  const preferredImage = getServicePreferredImage(service);
+  const metadataImage = preferredImage ?? {
+    src: "/images/og-card.jpg",
+    width: 1200,
+    height: 630,
+    alt: `${service.h1} — Caraway`,
+  };
   return {
     title: service.title,
     description: service.metaDescription,
@@ -76,13 +104,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: service.title,
       description: service.metaDescription,
       url: `${SITE_URL}/${service.slug}`,
-      images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: `${service.h1} — Caraway` }],
+      images: [
+        {
+          url: metadataImage.src,
+          width: metadataImage.width,
+          height: metadataImage.height,
+          alt: metadataImage.alt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: service.title,
       description: service.metaDescription,
-      images: [{ url: "/images/og-card.jpg", alt: `${service.h1} — Caraway` }],
+      images: [{ url: metadataImage.src, alt: metadataImage.alt }],
     },
   };
 }

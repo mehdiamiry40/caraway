@@ -399,6 +399,7 @@ const regulatedPosts = new Set([
   "how-to-sell-a-car-with-finance-owing-qld.ts",
   "how-to-transfer-car-ownership-qld.ts",
   "number-plates-when-selling-car-qld.ts",
+  "park-unregistered-car-street-qld.ts",
   "sell-car-not-in-my-name-qld.ts",
   "sell-car-without-roadworthy-qld.ts",
   "take-car-to-tip-brisbane.ts",

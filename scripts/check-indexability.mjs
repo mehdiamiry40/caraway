@@ -6,6 +6,16 @@ import { createServer } from "node:net";
 import { join } from "node:path";
 
 const routes = ["cash-for-cars-brisbane", "car-removal-brisbane"];
+const preferredImages = new Map([
+  [
+    "cash-for-cars-brisbane",
+    "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
+  ],
+  [
+    "car-removal-brisbane",
+    "/images/car-removal-brisbane-access-readiness-v1.jpg",
+  ],
+]);
 const failures = [];
 
 for (const route of routes) {
@@ -27,6 +37,10 @@ for (const route of routes) {
   }
 
   const canonical = `https://caraway.au/${route}`;
+  const preferredImage = preferredImages.get(route);
+  const absoluteImage = preferredImage
+    ? `https://caraway.au${preferredImage}`
+    : undefined;
   if (/name="robots" content="[^"]*noindex/i.test(html)) {
     failures.push(`${route}: built artifact contains a noindex robots meta tag`);
   }
@@ -38,6 +52,37 @@ for (const route of routes) {
   }
   if (!html.includes(`"mainEntity":{"@id":"${canonical}#service"}`)) {
     failures.push(`${route}: WebPage does not identify its Service main entity`);
+  }
+  if (!preferredImage || !absoluteImage) {
+    failures.push(`${route}: preferred-image policy is not configured`);
+    continue;
+  }
+  if (!html.includes(preferredImage)) {
+    failures.push(`${route}: visible or metadata image is missing from built HTML`);
+  }
+  if (!html.includes('"primaryImageOfPage":{"@type":"ImageObject"')) {
+    failures.push(`${route}: WebPage primaryImageOfPage is missing`);
+  }
+  if (!html.includes(`"image":"${absoluteImage}"`)) {
+    failures.push(`${route}: Service image does not match the preferred image`);
+  }
+  if (html.includes("qld-vehicle-sale-record-builder")) {
+    failures.push(`${route}: paperwork builder leaked onto a money page`);
+  }
+
+  try {
+    const asset = readFileSync(
+      join(process.cwd(), "public", preferredImage.replace(/^\//, "")),
+    );
+    if (asset.byteLength < 50_000 || asset.byteLength > 250_000) {
+      failures.push(
+        `${route}: preferred image is outside the 50–250 KB crawl/performance budget`,
+      );
+    }
+  } catch (error) {
+    failures.push(
+      `${route}: preferred image asset is unreadable (${error instanceof Error ? error.message : String(error)})`,
+    );
   }
 }
 
@@ -52,6 +97,71 @@ try {
 } catch (error) {
   failures.push(
     `robots.txt: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
+  );
+}
+
+try {
+  const sitemap = readFileSync(
+    join(process.cwd(), ".next", "server", "app", "sitemap.xml.body"),
+    "utf8",
+  );
+  for (const [route, preferredImage] of preferredImages) {
+    const absoluteImage = `https://caraway.au${preferredImage}`;
+    if (!sitemap.includes(`<image:loc>${absoluteImage}</image:loc>`)) {
+      failures.push(`${route}: preferred image is missing from sitemap.xml`);
+    }
+  }
+} catch (error) {
+  failures.push(
+    `sitemap.xml: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
+  );
+}
+
+try {
+  const paperworkHtml = readFileSync(
+    join(
+      process.cwd(),
+      ".next",
+      "server",
+      "app",
+      "blog",
+      "what-paperwork-to-sell-a-car-qld.html",
+    ),
+    "utf8",
+  );
+  if (!paperworkHtml.includes('id="qld-vehicle-sale-record-builder"')) {
+    failures.push("paperwork guide: builder anchor is missing from built HTML");
+  }
+  if (!paperworkHtml.includes('"@type":"BlogPosting"')) {
+    failures.push("paperwork guide: BlogPosting structured data is missing");
+  }
+  if (/"@type":"(?:Calculator|FAQPage|Product)"/.test(paperworkHtml)) {
+    failures.push("paperwork guide: unsupported tool rich-result type is present");
+  }
+} catch (error) {
+  failures.push(
+    `paperwork guide: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
+  );
+}
+
+try {
+  const unrelatedHtml = readFileSync(
+    join(
+      process.cwd(),
+      ".next",
+      "server",
+      "app",
+      "blog",
+      "tow-truck-cost-brisbane.html",
+    ),
+    "utf8",
+  );
+  if (unrelatedHtml.includes("qld-vehicle-sale-record-builder")) {
+    failures.push("unrelated guide: paperwork builder leaked into built HTML");
+  }
+} catch (error) {
+  failures.push(
+    `unrelated guide: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
   );
 }
 
@@ -203,5 +313,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Indexability checks passed for both primary service pages, robots.txt, preview hosts, and the canonical host.",
+  "Indexability checks passed for both primary service pages, their preferred images, robots.txt, preview hosts, and the canonical host.",
 );

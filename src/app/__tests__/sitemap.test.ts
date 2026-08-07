@@ -5,7 +5,7 @@ import {
   categoryMap,
   getPostsByCategory,
 } from "@/data/blog-posts";
-import { services } from "@/data/services";
+import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 import {
@@ -142,6 +142,23 @@ describe("sitemap.ts — page coverage", () => {
         (item) => item.url === `${SITE_URL}/${service.slug}`,
       );
       expect(entry?.lastModified).toBe(service.updatedAt);
+    }
+  });
+
+  it("publishes each primary target's visible preferred image", () => {
+    for (const slug of [
+      "cash-for-cars-brisbane",
+      "car-removal-brisbane",
+    ]) {
+      const service = services.find((item) => item.slug === slug);
+      expect(service).toBeDefined();
+      if (!service) continue;
+
+      const image = getServicePreferredImage(service);
+      expect(image).toBeDefined();
+      expect(
+        entries.find((item) => item.url === `${SITE_URL}/${slug}`)?.images,
+      ).toEqual(image ? [`${SITE_URL}${image.src}`] : undefined);
     }
   });
 

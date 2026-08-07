@@ -3,7 +3,9 @@ export interface BlogSource {
   url: string;
 }
 
-export type BlogInteractiveTool = "quote-comparison-worksheet";
+export type BlogInteractiveTool =
+  | "quote-comparison-worksheet"
+  | "qld-vehicle-sale-record-builder";
 
 /**
  * Blog posts are text-only: no hero artwork, no per-post thumbnails, and no
