@@ -205,6 +205,30 @@ describe("quoteFormSchema — address bounds", () => {
   });
 });
 
+describe("quoteFormSchema — optional vehicle and access details", () => {
+  it("accepts and trims optional details", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      details: "  180,000 km; rolls and steers; narrow driveway.  ",
+    });
+
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.details).toBe(
+        "180,000 km; rolls and steers; narrow driveway.",
+      );
+    }
+  });
+
+  it("rejects details longer than 2,000 characters", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      details: "x".repeat(2001),
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
 describe("quoteFormSchema — quoteAmount bounds", () => {
   it("succeeds when quoteAmount is omitted", () => {
     const result = quoteFormSchema.safeParse(baseValid);

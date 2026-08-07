@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Compass,
   MapPin,
   Mountain,
   Sailboat,
@@ -12,7 +11,7 @@ import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
-type RegionKey = "north" | "south" | "east" | "west" | "bayside" | "logan";
+type RegionKey = "north" | "south" | "west" | "bayside" | "logan";
 
 interface Region {
   key: RegionKey;
@@ -25,45 +24,38 @@ interface Region {
 const REGIONS: Region[] = [
   {
     key: "north",
-    label: "North",
-    description: "Chermside, Redcliffe, North Lakes, Caboolture",
+    label: "North & Moreton Bay",
+    description: "Redcliffe, Chermside, North Lakes, Caboolture",
     icon: Sunrise,
-    slugs: ["north-brisbane", "chermside", "north-lakes", "redcliffe", "caboolture"],
+    slugs: ["redcliffe"],
   },
   {
     key: "south",
     label: "South",
-    description: "Moorooka, Sunnybank, Mt Gravatt, Woolloongabba",
+    description: "Moorooka, Rocklea, Sunnybank, Mt Gravatt",
     icon: Sunset,
-    slugs: ["south-brisbane", "moorooka", "sunnybank", "mount-gravatt"],
-  },
-  {
-    key: "east",
-    label: "East",
-    description: "Carindale, Carina, Tingalpa",
-    icon: Compass,
-    slugs: ["carindale"],
+    slugs: ["moorooka"],
   },
   {
     key: "west",
     label: "West",
     description: "Toowong, Indooroopilly, Kenmore, The Gap",
     icon: Mountain,
-    slugs: ["toowong", "indooroopilly", "kenmore", "the-gap"],
+    slugs: ["toowong", "kenmore"],
   },
   {
     key: "bayside",
-    label: "Bayside",
-    description: "Wynnum, Manly, Cleveland, Capalaba",
+    label: "East & Bayside",
+    description: "Capalaba, Wynnum, Manly, Carindale",
     icon: Sailboat,
-    slugs: ["bayside-brisbane", "capalaba"],
+    slugs: ["capalaba"],
   },
   {
     key: "logan",
-    label: "Logan & Ipswich",
-    description: "Logan, Ipswich, Springwood, Browns Plains, Beenleigh",
+    label: "Logan",
+    description: "Logan Central, Springwood, Beenleigh, Browns Plains",
     icon: MapPin,
-    slugs: ["logan", "ipswich", "springwood", "browns-plains", "beenleigh"],
+    slugs: ["logan", "springwood", "beenleigh"],
   },
 ];
 
@@ -83,13 +75,14 @@ export function ServiceAreas() {
         <div className="max-w-2xl mb-12 md:mb-16">
           <p className="eyebrow mb-5">Service areas</p>
           <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
-            Free pickup across
+            Pickup included across
             <br />
-            Greater Brisbane.
+            Greater Brisbane when we buy.
           </h2>
           {/* The region list that used to open this line is the grid below. */}
           <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            If you&apos;re a bit further out, ask — we usually make it work.
+            If your suburb is not listed, ask. We confirm coverage from the
+            exact address, access, vehicle details, and collection schedule.
           </p>
         </div>
 
@@ -107,7 +100,7 @@ export function ServiceAreas() {
                       </span>
                       <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-medium text-cta-ink">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
-                        {hubs.length} {hubs.length === 1 ? "suburb" : "suburbs"}
+                        {hubs.length} {hubs.length === 1 ? "guide" : "guides"}
                       </span>
                     </div>
                     <h3 className="relative mt-5 font-display text-lg sm:text-xl text-foreground">
@@ -149,7 +142,7 @@ export function ServiceAreas() {
             href="/locations"
             className="inline-flex items-center gap-1.5 text-sm text-primary link-underline"
           >
-            View every suburb we cover
+            View regional coverage
             <ArrowUpRight className="h-4 w-4" aria-hidden />
           </Link>
           <p className="text-xs text-foreground/70 font-medium">
@@ -162,7 +155,7 @@ export function ServiceAreas() {
             >
               Call {BUSINESS.phoneDisplay}
             </TrackedPhoneLink>{" "}
-            — we cover most of South-East Queensland.
+            — we&apos;ll check availability for your address.
           </p>
         </div>
       </div>

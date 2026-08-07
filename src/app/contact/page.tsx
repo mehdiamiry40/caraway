@@ -5,21 +5,21 @@ import Contact from "@/views/Contact";
 import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us — Free Cash for Cars Quote Brisbane",
-  description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or use our online form. Brisbane-wide, 7 days — pickup usually same- or next-day.`,
+  title: "Contact Caraway | Phone, Email and Quote Enquiries",
+  description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     type: "website",
     url: "/contact",
-    title: "Contact Us — Free Cash for Cars Quote Brisbane | Caraway",
-    description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or use our online form. Brisbane-wide, 7 days — pickup usually same- or next-day.`,
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
+    title: "Contact Caraway | Phone, Email and Quote Enquiries",
+    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Contact Caraway in Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Caraway — Free Cash for Cars Quote Brisbane",
-    description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or use our online form. Brisbane-wide, 7 days — pickup usually same- or next-day.`,
-    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
+    title: "Contact Caraway | Phone, Email and Quote Enquiries",
+    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
+    images: [{ url: "/images/og-card.jpg", alt: "Contact Caraway in Brisbane" }],
   },
 };
 
@@ -38,31 +38,12 @@ export default function ContactPage() {
             "@type": "ContactPage",
             url: canonical,
             name: "Contact Caraway",
-            description: `Contact Caraway for a free cash quote on your car. Call ${BUSINESS.phoneDisplay} or fill out our form.`,
-            mainEntity: { "@id": `${SITE_URL}/#business` },
+            description: `Contact Caraway about a vehicle quote or pickup enquiry. Call ${BUSINESS.phoneDisplay} or fill out the online form.`,
+            mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
             dateModified: CONTENT_DEPLOY_DATE,
-            about: {
-              "@type": "LocalBusiness",
-              "@id": `${SITE_URL}/#business`,
-            },
-            contactPoint: [
-              {
-                "@type": "ContactPoint",
-                contactType: "customer service",
-                telephone: BUSINESS.phoneDisplay,
-                email: BUSINESS.email,
-                areaServed: "AU",
-                availableLanguage: "English",
-                hoursAvailable: {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                  opens: "07:00",
-                  closes: "19:00",
-                },
-              },
-            ],
+            about: { "@id": `${SITE_URL}/#organization` },
           },
         ]}
       />

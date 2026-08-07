@@ -10,11 +10,11 @@ const breadcrumbs = [
 ];
 
 const features = [
-  { title: "Genuinely free towing", desc: "We do not deduct towing costs from your agreed offer when the vehicle matches the details provided." },
-  { title: "Fast pickup", desc: "Most pickups are same- or next-day once you accept our offer — we confirm a slot when you book." },
-  { title: "All vehicles accepted", desc: "We buy cars in any condition — running, broken, damaged, scrap, unregistered." },
-  { title: "Cash on the spot", desc: "You receive your cash payment before the car leaves your property. No delays." },
-  { title: "Responsible recycling", desc: "End-of-life cars are directed to appropriate Queensland recycling specialists." },
+  { title: "Pickup included when we buy", desc: "The agreed offer includes collection when the vehicle, location, and access match the supplied details." },
+  { title: "Collection window confirmed", desc: "Timing depends on the vehicle, location, access, and operator availability and is agreed before dispatch." },
+  { title: "Vehicles assessed individually", desc: "Running, non-running, damaged, scrap, and unregistered vehicles can be assessed, but not every vehicle will receive an offer." },
+  { title: "Payment terms confirmed", desc: "The payment method and timing are agreed before collection, and you keep a record of the transaction." },
+  { title: "Buyer details and receipt", desc: "The collection plan includes the assigned operator, buyer details, and the records to retain." },
   { title: "No pressure", desc: "Quotes are free and zero-obligation. If our offer doesn't work for you, no hard feelings." },
 ];
 
@@ -26,7 +26,7 @@ export default function About() {
       title="A Brisbane buyer — not a broker."
       subtitle={
         <p>
-          We&apos;re a locally owned Brisbane business that makes selling your car for cash simple. No auctions, no listings, no time-wasters — just fair cash offers and same- or next-day pickup.
+          We&apos;re a locally owned Brisbane vehicle buyer. Request an individual offer, check the written pickup and payment terms, and decide whether the direct-buyer option suits you.
         </p>
       }
     >
@@ -37,7 +37,7 @@ export default function About() {
               Who we are
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              Caraway is a Brisbane-based buyer — we pay cash for cars we want and organise pickup once we agree a price. No listings, no strangers at your door for test drives. We&apos;re founder-led, not a national franchise or a broker who subcontracts the work: we know the suburbs, and we answer our own phone.
+              Caraway is a Brisbane-based direct buyer operated by {BUSINESS.legalName}. We assess each vehicle from the supplied details and, when we make an offer, confirm the collection, payment, and record-keeping terms before dispatch.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function About() {
                     I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary font-medium link-underline">{BUSINESS.email}</a>.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                    Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, and the insurance details applicable to that job.
+                    Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, payment arrangement, buyer details, and receipt requirements.
                   </p>
                   <p className="mt-4 text-base sm:text-lg">
                     <TrackedOutboundLink
@@ -66,7 +66,7 @@ export default function About() {
                       className="inline-flex min-h-11 items-center gap-2 text-primary font-medium link-underline"
                     >
                       <Star className="h-4 w-4" aria-hidden="true" />
-                      Find Caraway on Google — read or leave a review
+                      View Caraway on Google
                     </TrackedOutboundLink>
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export default function About() {
               How we work
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We&apos;re not going to publish vanity metrics here — vehicle markets move weekly. What we will say: we aim to arrive when agreed, confirm payment before the car leaves, and direct end-of-life vehicles to appropriate recycling specialists.
+              Vehicle markets and collection requirements change. We assess the individual vehicle, document the offer assumptions, confirm the collection and payment arrangements, and provide the buyer details you need for your sale record.
             </p>
           </div>
 

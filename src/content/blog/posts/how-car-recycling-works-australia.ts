@@ -2,37 +2,63 @@ import type { RawBlogPostEntry } from "../types";
 
 export const post: RawBlogPostEntry = {
   slug: "how-car-recycling-works-australia",
-  title: "How Car Recycling Works in Australia (2026)",
+  title: "How End-of-Life Vehicle Recycling Works in Australia",
   metaDescription:
-    "Learn how car recycling works in Australia — from depollution and parts salvage to metal shredding. Find out what your car is worth for recycling in Brisbane.",
+    "An evidence-based overview of end-of-life vehicle processing in Australia, including assessment, depollution, parts reuse, metal recovery, and sale records.",
   excerpt:
-    "From the tow truck pickup to the shredder, here's exactly how car recycling works in Australia — and how much you can get for your old vehicle in Brisbane in 2026.",
+    "End-of-life vehicles can follow different reuse, dismantling, and material-recovery paths. Here is what each stage may involve and what sellers should verify.",
   content: [
-    "Australia processes around 600,000 end-of-life vehicles every year, making car recycling one of the country's larger recycling streams by weight. In Queensland alone, tens of thousands of vehicles reach the end of their useful life annually — scrapped, written off, damaged beyond repair, or simply too old to justify another repair bill. If you've ever handed over the keys and wondered what actually happens to your car after the tow truck leaves, here's the full picture.",
+    "An end-of-life vehicle may be reused whole, dismantled for suitable components, processed for recoverable materials, or sent through a combination of those pathways. The Australian Government has identified end-of-life vehicle waste as a product-stewardship issue because valuable resources can still be lost to landfill. The actual outcome depends on the vehicle, its legal status, the receiving operator, and the downstream facilities involved.",
 
-    "## From your driveway to the dismantling yard",
+    "## Assessment and collection",
 
-    "It starts with collection. When you accept a quote from a Brisbane cash-for-cars buyer, a flatbed tow truck is dispatched to pick up the vehicle — usually within 24 hours. Payment changes hands before the car is loaded, and from that point it's transported to a licensed auto dismantling facility. Queensland requires dismantlers to hold an environmental authority under the Environment Protection Act 1994, which means the yard must have sealed surfaces, fluid containment systems, and proper waste disposal arrangements in place.",
+    "Before collection, a buyer should identify the vehicle, confirm the seller's authority, record its condition and completeness, and agree on the payment, pickup, and receipt terms. A vehicle may go to a buyer's premises or another operator, so sellers should not assume that every collector dismantles or recycles vehicles itself. Ask for the buyer's legal or trading name and keep a signed sale record.",
 
-    "## Depollution: draining every fluid safely",
+    "If the vehicle has been damaged by collision, flood, fire, corrosion, stripping, or dismantling, its written-off status may affect what can happen next. Queensland's Written-Off Vehicle Scheme explains when a notifiable vehicle becomes a repairable or statutory write-off and who must notify Transport and Main Roads. Check insurer records and an official vehicle-status search rather than inferring status from appearance alone.",
 
-    "The first step at any reputable car recycling yard is depollution — a methodical process of removing every hazardous fluid before the vehicle is stripped or crushed. Engine oil, transmission fluid, coolant, brake fluid, power steering fluid, and fuel are all extracted and directed to licensed waste handlers or recyclers. Air conditioning refrigerant (R134a in most pre-2017 vehicles, R1234yf in newer models) is recovered using certified equipment — venting refrigerant to atmosphere is illegal under Australian law. A typical passenger car contains 3–5 litres of engine oil, 1–2 litres of coolant, and sometimes 40–60 litres of fuel if it hasn't been run dry. The 12-volt battery is removed separately; lead-acid batteries are among the most successfully recycled products in Australia, with recovery rates above 95%.",
+    "## Depollution and hazardous components",
 
-    "## Salvaging parts: where the real value is",
+    "Before dismantling, cutting, or shredding, the receiving process should identify fuels, oils, coolants, brake fluid, batteries, air-conditioning refrigerant, and other components that need controlled handling. The exact process differs for combustion, hybrid, and electric vehicles, particularly where high-voltage batteries or damaged electrical systems are present.",
 
-    "After the fluids are out, trained dismantlers work through the vehicle looking for serviceable second-hand parts. Popular items include engines, gearboxes, alternators, starters, suspension components, alloy wheels, headlights, tail lights, door mirrors, and interior trim. In Brisbane's second-hand parts market, components from high-demand models — Toyota Hilux, Land Cruiser, Ford Ranger, Mazda 3 — command strong prices. A rebuildable engine from a late-model Hilux might be worth $2,000–$4,000 to the recycler; a set of factory alloys from a popular SUV might fetch $400–$800. The value of salvageable parts directly affects the cash offer you receive when you call — vehicles with more usable components return higher payouts.",
+    "Australian refrigerant rules require an appropriate Refrigerant Handling Licence for work with regulated refrigerant that could cause leakage, including decommissioning air-conditioning equipment. A seller should not attempt to drain fluids, open an air-conditioning system, or dismantle a high-voltage battery merely to prepare a vehicle for collection.",
 
-    "## Crushing, shredding, and metal separation",
+    "## Assessing components for reuse",
 
-    "Once every sellable part has been removed, the remaining shell — called a hulk — goes to the shredder. Industrial car shredders can reduce a full vehicle body to fist-sized fragments in about 45 seconds. The output then passes through magnetic and eddy-current separators that sort ferrous metals (steel and iron) from non-ferrous metals (aluminium, copper, zinc) and shredder residue (plastic, rubber, foam, glass). The steel is compacted into bales and sold to steelworks — much of Australia's scrap steel is exported to mills in South Korea and Vietnam. A typical car body yields roughly 600–900 kg of steel. Non-ferrous fractions go to specialist processors; the average car contains around 25–30 kg of aluminium and 15–20 kg of copper in its wiring looms, both of which have active recycling markets.",
+    "A dismantler may assess engines, transmissions, body panels, lights, wheels, electronics, interior items, and other components for reuse. Suitability depends on condition, provenance, demand, testing, storage, and the safety requirements that apply to the component. Reuse can extend a component's service life, but it should not be assumed that every removed part will be suitable or find a buyer.",
 
-    "Car recycling makes environmental sense beyond just keeping vehicles out of landfill. Producing steel from scrap uses approximately 75% less energy than making it from raw iron ore. Aluminium recycling is even more efficient — secondary smelting uses around 95% less energy than primary production from bauxite. Queensland's auto dismantling sector operates under strict environmental controls, meaning proper management of fluids, refrigerants, and residues is a legal requirement rather than a voluntary measure.",
+    "## Metal recovery and residual material",
 
-    "## What you get paid for recycling your car in Brisbane",
+    "After appropriate component removal and depollution, a remaining body may be baled, crushed, or shredded. Processing can separate ferrous metals from non-ferrous fractions for further recovery. Plastics, rubber, foam, glass, contamination, and mixed shredder residue have different end markets and may not all be recycled.",
 
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side TMR transfer steps and keep confirmation. For a cancellation, follow TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
+    "Recovering usable components and metals can reduce demand for virgin materials, but environmental outcomes depend on transport, processing, contamination control, and the final destination of each stream. Avoid claims that an entire vehicle is recycled or diverted from landfill unless the operator can substantiate that result for the particular vehicle.",
+
+    "## What Brisbane sellers should verify",
+
+    "Ask the buyer which entity is purchasing the vehicle, whether collection is included, what facts the assessment assumes, and what receipt and downstream information are available. A recycling pathway does not create a fixed vehicle price: make, model, condition, completeness, location, access, and current component or material demand can all affect an individual assessment.",
+
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads steps and keep confirmation. For a cancellation, follow the current registration and plate process. For an unregistered sale, both parties should keep a signed record identifying the vehicle and sale. The [Queensland car-sale paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates those pathways.",
   ],
   date: "2026-04-27",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Australian Government — end-of-life vehicle waste",
+      url: "https://www.dcceew.gov.au/sites/default/files/documents/npsif-factsheets-vehicle-waste.pdf",
+    },
+    {
+      title: "Australian Government — refrigerant rules for technicians",
+      url: "https://www.dcceew.gov.au/environment/protection/ozone/rac/technicians",
+    },
+    {
+      title: "Queensland Government — how the Written-off Vehicle Scheme works",
+      url: "https://www.qld.gov.au/transport/vehicle-safety/written-off-vehicles/how-scheme-works",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+  ],
   category: "Guides",
   relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "cash-for-cars-brisbane"],
   relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],

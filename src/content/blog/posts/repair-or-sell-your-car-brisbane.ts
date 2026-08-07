@@ -3,50 +3,54 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "repair-or-sell-your-car-brisbane",
-  title: "Repair or Sell Your Car? A Brisbane Guide 2026",
+  title: "Repair or Sell Your Car in Brisbane? A Decision Guide",
   metaDescription:
-    "Wondering whether to repair or sell your car in Brisbane? A practical guide to weighing repair costs against cash value, with local Queensland tips.",
+    "Deciding whether to repair or sell a car in Brisbane? Compare diagnosis, total repair cost, likely net sale value, safety, paperwork, and an as-is quote.",
   excerpt:
-    "When the repair bills start stacking up, is it worth fixing your car or selling it for cash? Here's how Brisbane owners can weigh the numbers.",
+    "A repair quote is only one side of the decision. Compare the diagnosis, total cost, post-repair value, time, risk, and an as-is offer before choosing.",
   content: [
-    "Every Brisbane driver eventually faces the same crossroads: the car needs work, the quote is uncomfortable, and you're left deciding whether to repair or sell your car. It might be a failed transmission, a tired engine burning oil, rust creeping through the sills, or a roadworthy inspection that turned up a list of faults longer than you expected. The right answer isn't always obvious, and it depends on the numbers as much as sentiment. This guide walks through how to weigh a repair against a sale so you can make a call you won't second-guess.",
+    "A major fault can make the repair-or-sell decision feel urgent, but a generic percentage rule is not reliable. Start with evidence for the individual car: a written diagnosis, an itemised repair estimate, its current condition, and realistic selling options. The correct answer changes with the vehicle, fault, safety risk, documents, and what you need next.",
 
-    "## Start with what the car is actually worth",
+    "## Get a written diagnosis before comparing numbers",
 
-    "Before you can decide whether to repair or sell your car, you need an honest figure for its current market value. Look up recent sold listings for the same make, model, year, and rough kilometres on Carsales and Facebook Marketplace — not the asking prices, which are always optimistic, but what comparable cars actually change hands for. A 2013 Hyundai i30 with 190,000 kilometres might realistically sit around $4,000–$6,000 in good order. If it needs a $3,500 gearbox, the maths shifts quickly. Knowing the baseline value is the anchor for every decision that follows.",
+    "Ask a qualified repairer to identify the fault, the work required now, and any related items that may reasonably be discovered during the job. Separate essential safety or drivability work from optional maintenance. If the estimate is uncertain, ask what would trigger additional cost and whether diagnosis or towing fees apply if you decline the repair.",
 
-    "## The repair-cost rule of thumb",
+    "## Compare total cost with likely net value",
 
-    "A useful guideline is the 50 per cent rule: if a single repair costs more than half the car's current value, selling usually makes more sense than fixing. A $1,200 timing-belt job on a car worth $8,000 is easy to justify. The same $1,200 on a car worth $2,000 rarely is — and that's before you factor in the next thing likely to fail. Older vehicles tend to need repairs in clusters: once the water pump goes, the radiator and hoses are often not far behind. Add up not just the quote in front of you, but the realistic cost of the next twelve months of ownership.",
+    "Do not compare the repair invoice with an advertised asking price alone. Include diagnostics, towing, parts, labour, registration, safety-certificate requirements, time without the vehicle, and the risk of another fault. Then compare the likely net proceeds from a lawful private sale or trade-in with an individual [as-is vehicle quote](/sell-my-car-brisbane). Advertised listings are context, not proof of completed-sale value.",
 
-    "## Roadworthy certificates and Queensland rego",
+    "## Condition and future use matter",
 
-    "In Queensland, a safety certificate (roadworthy) is required to sell most registered light vehicles privately, and it's issued by an Approved Inspection Station. If your car has failed a roadworthy on items like ball joints, brakes, tyres, or rust, the cost of getting it to pass can run from a few hundred dollars to well over a thousand. For a late-model car, that's money worth spending. For an older vehicle already near the end of its life, a fresh list of roadworthy repairs is often the moment the sums stop adding up — and selling to a cash-for-cars buyer, which follows a different pathway, becomes the more sensible route.",
+    "Repair may make sense when the diagnosis is clear, the rest of the vehicle is sound, and you plan to keep using it. An as-is sale may make sense when faults are recurring, structural corrosion or serious damage is present, the vehicle no longer suits your needs, or the time and uncertainty of repair outweigh the expected benefit. Neither route is automatically better for every old or high-kilometre car.",
 
-    "## Age, kilometres, and the Brisbane climate",
+    "## Request an as-is quote on accurate details",
 
-    "Condition isn't only about the last quote. A car past 250,000 kilometres is statistically due for major wear across the drivetrain, suspension, and cooling system, and parts availability starts to thin out for some models. Brisbane's climate plays a part too — bayside and coastal suburbs like Wynnum, Manly, and the Redlands see salt-driven corrosion on chassis rails and brake lines, while cars caught in past flooding around the river suburbs can carry hidden electrical and rust problems for years afterward. If corrosion is structural, no amount of mechanical repair changes the underlying picture.",
+    "Provide the make, model, variant, year, kilometres, registration status, written diagnosis where available, warning lights, body damage, missing components, suburb, and access. State whether the car starts, rolls, steers, brakes, and has all wheels. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details; the collection window and payment arrangement are confirmed before dispatch.",
 
-    "## When repairing is the smart move",
+    "## Check the Queensland sale pathway",
 
-    "Repairing usually wins when the car is otherwise sound, the fault is a one-off, and the vehicle still has years of service left. A reliable five-year-old Corolla or Ranger with a single failed component is almost always worth fixing — the repair buys far more value than it costs, and replacing the car with something comparable would cost tens of thousands. Regular servicing, a full history, and a body free of rust all tip the balance toward keeping and mending rather than moving on.",
+    "Registered transfer, registration cancellation, and an unregistered sale involve different seller steps. Check current Queensland guidance before advertising or agreeing to a sale, and keep a signed receipt plus evidence of the transfer or cancellation steps you complete. A vehicle buyer does not replace the seller's legal responsibilities.",
 
-    "## When selling for cash makes more sense",
-
-    "Selling makes more sense when repairs are recurring, the value is low, or the car no longer suits your needs. If you're staring at a blown engine in a car worth $2,500, chasing a private buyer for a non-running vehicle is slow and frustrating — the pool of people willing to take on someone else's mechanical project is thin, and the lowball offers are relentless. A cash-for-cars service values the whole vehicle at once, including usable parts and recyclable steel, and pays a firm price on pickup. Offers on the Brisbane market typically range from around $300 for a stripped older car up to several thousand for a complete, repairable, or in-demand model.",
-
-    "## How to get a cash offer",
-
-    "Getting a quote takes a couple of minutes by phone or online. Describe the make, model, year, approximate kilometres, and condition, and you'll get a firm offer. If it suits you, free pickup is arranged across Greater Brisbane — including Logan, Ipswich, Moreton Bay, and the Redlands — usually same- or next-day, with cash or bank transfer paid before the vehicle is loaded. There's no charge for towing and nothing to prepare; the car can be running or not.",
-
-    "## Sorting the paperwork",
-
-    "Whichever way you go, tidy up the Queensland paperwork. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. If you're cancelling registration instead, follow the TMR plate-surrender requirements. For an unregistered sale, keep a signed receipt showing the VIN, vehicle details, date, price, and both parties' names. Sorting out which pathway applies before pickup keeps the sale clean.",
-
-    `The honest test is simple: if fixing the car costs more than it's worth, or you'd be repairing it just to sell it, a cash sale is usually the better outcome. If you're weighing whether to repair or sell your car and want a real number to compare against the repair quote, ring **${BUSINESS.phoneDisplay}** or use the online form for a firm offer in minutes — no fees, no obligation.`,
+    `To compare an as-is option with a repair estimate, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). The quote depends on the individual vehicle and does not guarantee that selling will outperform repairing.`,
   ],
   date: "2026-07-08",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — selling a used vehicle",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+  ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane"],
-  relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
+  relatedServices: [
+    "cash-for-cars-brisbane",
+    "sell-my-car-brisbane",
+    "scrap-car-removal-brisbane",
+  ],
+  relatedSuburbs: ["toowong", "moorooka", "logan"],
 };

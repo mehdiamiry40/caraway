@@ -1,6 +1,8 @@
 import { rawBlogPosts } from "@/content/blog/posts";
 import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
+import { isRetiredBlogSlug } from "@/lib/blog-consolidation";
 import { createBlogPost } from "@/lib/blog-post";
+import { canonicalServiceSlug } from "@/lib/service-consolidation";
 
 export type { BlogPost };
 
@@ -31,7 +33,34 @@ function sortByNewest(a: BlogPost, b: BlogPost): number {
   return dateTime(b) - dateTime(a);
 }
 
-export const blogPosts: BlogPost[] = rawBlogPosts.map(materializePost).sort(sortByNewest);
+const accidentallyRepublishedPost = rawBlogPosts.find((post) =>
+  isRetiredBlogSlug(post.slug),
+);
+
+if (accidentallyRepublishedPost) {
+  throw new Error(
+    `Retired blog post must stay redirected: ${accidentallyRepublishedPost.slug}`,
+  );
+}
+
+export const blogPosts: BlogPost[] = rawBlogPosts
+  .map(materializePost)
+  .sort(sortByNewest);
+
+const serviceCornerstoneSlugs: Readonly<
+  Partial<Record<string, readonly string[]>>
+> = {
+  "cash-for-cars-brisbane": [
+    "how-to-sell-your-car-for-cash-brisbane",
+    "how-to-get-the-best-cash-for-cars-price-brisbane",
+    "how-much-is-my-car-worth-brisbane",
+  ],
+  "car-removal-brisbane": [
+    "tow-truck-cost-brisbane",
+    "preparing-your-car-for-pickup",
+    "sell-non-running-car-brisbane",
+  ],
+};
 
 /** Convert a category label to a URL-safe slug. */
 export function categorySlug(category: string): string {
@@ -53,14 +82,32 @@ export function getPostsByCategory(slug: string): BlogPost[] {
   return blogPosts.filter((p) => categorySlug(p.category) === slug);
 }
 
-/** Live posts whose relatedServices include the given service slug,
- *  sorted by most recently updated. Used to cross-link service pages to
- *  the blog for internal linking / topical clustering. */
+/** Live posts whose relatedServices include the given service slug.
+ *  Primary Brisbane service pages lead with stable cornerstone guides;
+ *  other services retain the most-recently-updated fallback. */
 export function getPostsForService(serviceSlug: string, limit = 3): BlogPost[] {
-  return blogPosts
-    .filter((p) => p.relatedServices.includes(serviceSlug))
-    .sort((a, b) => dateTime(b) - dateTime(a))
-    .slice(0, limit);
+  const recentPosts = blogPosts
+    .filter((p) =>
+      p.relatedServices.map(canonicalServiceSlug).includes(serviceSlug),
+    )
+    .sort((a, b) => dateTime(b) - dateTime(a));
+  const cornerstoneSlugs = serviceCornerstoneSlugs[serviceSlug];
+
+  if (!cornerstoneSlugs) return recentPosts.slice(0, limit);
+
+  const cornerstonePosts = cornerstoneSlugs
+    .map((slug) => blogPosts.find((post) => post.slug === slug))
+    .filter(
+      (post): post is BlogPost =>
+        post !== undefined &&
+        post.relatedServices.map(canonicalServiceSlug).includes(serviceSlug),
+    );
+  const cornerstoneSet = new Set(cornerstonePosts.map((post) => post.slug));
+
+  return [
+    ...cornerstonePosts,
+    ...recentPosts.filter((post) => !cornerstoneSet.has(post.slug)),
+  ].slice(0, limit);
 }
 
 /** Live posts whose relatedSuburbs include the given suburb slug,

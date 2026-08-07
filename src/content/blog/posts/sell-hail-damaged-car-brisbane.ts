@@ -2,31 +2,31 @@ import type { RawBlogPostEntry } from "../types";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-hail-damaged-car-brisbane",
-  title: "Sell a Hail-Damaged Car Brisbane (2026 Guide)",
+  title: "Hail Damage, Insurance and Sale Options in Brisbane",
   metaDescription:
-    "Sell your hail-damaged car in Brisbane for fast cash. Learn what your car is worth, how QLD insurance write-offs work, and how free same- or next-day pickup works.",
+    "Selling a hail-damaged car in Brisbane: document the damage, confirm insurer and ownership status, compare options, and prepare for pickup.",
   excerpt:
-    "Hail events write off thousands of cars across Brisbane and South East Queensland every storm season. Here's what your hail-damaged car is actually worth and how to turn it into cash quickly.",
+    "A practical guide to documenting hail damage, clarifying the insurance position, comparing quotes, and arranging collection safely.",
   content: [
-    "South East Queensland's storm season — roughly October through March — reliably produces hail events that write off thousands of vehicles across Brisbane, Ipswich, Logan, Moreton Bay, and the Gold Coast corridor. A single supercell can pepper a suburb with golf ball-sized hailstones, leaving panels dimpled, windscreens shattered, and bonnets looking like the surface of the moon. If your car caught one of those storms and you're wondering whether it's worth repairing or whether you should just sell the hail-damaged car and move on, this guide walks through the numbers and the process in plain terms.",
+    "Hail can leave cosmetic dents, broken glass, water entry, and damage that is unsafe to inspect without care. If you are comparing repair, an insurer settlement, salvage retention, or a direct sale, start by documenting the vehicle and clarifying who owns it. The correct next step depends on the individual damage, policy, finance position, and written-off status.",
 
     "## How hail damage affects your car's value",
 
-    "The impact on resale value depends heavily on damage severity and vehicle age. Light hail — small dents across the roof and bonnet with no glass damage — typically reduces a private-sale price by 20–35%. Moderate hail with cracked windscreens, broken rear glass, and significant panel dimpling knocks 40–60% off. Severe events that crumple the boot lid, cave in the roof, or shatter multiple panels can make a car economically unviable to repair even if it still drives. At that point, insurers almost always declare it a total loss, and the vehicle enters the Written-Off Vehicle Register (WOVR) as either a repairable or statutory write-off depending on the structural damage involved.",
+    "Photograph the roof, bonnet, boot, pillars, glass, each side, interior, odometer, and any water entry. Note warning lights, damaged lights, exposed edges, loose glass, and whether the car starts, rolls, steers, and brakes. An insurer's total-loss decision and any Written-Off Vehicle Register classification are separate determinations; do not infer either from dent severity alone.",
 
     "## Insurance write-off: take the payout or retain salvage?",
 
-    "When an insurer writes off your hail-damaged car, they'll offer a settlement based on the agreed or market value minus your excess, and they'll deduct the salvage value they expect to recover by on-selling the wreck at auction. For newer vehicles on comprehensive cover, that settlement is usually fair. For cars 10 or more years old, you sometimes come out ahead by retaining salvage rights, accepting a slightly reduced insurance payout, and selling the hail-damaged car directly to a cash-for-cars buyer. The combined total — reduced payout plus direct sale — can beat the straight settlement by $500–$2,000 depending on the model. Worth running the maths before you sign anything.",
+    "Read the policy and settlement documents before choosing between repair, settlement, and retaining salvage. Ask the insurer to confirm in writing who will own the vehicle, any reduced settlement, excess, registration consequences, and whether finance must be cleared. Do not assume that retaining and reselling salvage produces a better financial result.",
 
-    "## What a hail-damaged car is worth in Brisbane in 2026",
+    "## What affects a hail-damaged vehicle quote",
 
-    "Cash for cars pricing on hail-damaged vehicles comes down to three things: the make and model, the severity of the damage, and the parts demand in the local market. As a rough guide for 2026, a running hail-damaged 2015–2020 sedan (Toyota Corolla, Mazda 3, Hyundai i30) with light-to-moderate cosmetic damage typically draws $2,500–$6,000 from a cash buyer. The same damage on a popular 4WD or ute — a HiLux, Ranger, or Prado — can push $5,000–$14,000 because parts demand for those platforms across South East Queensland stays strong regardless of body condition. Non-running hail write-offs with severe structural damage usually quote in the $500–$2,500 range based on scrap metal weight and salvageable components.",
+    "The quote depends on the exact make, model, variant, year, kilometres, pre-storm condition, extent of panel and glass damage, water entry, mechanical state, completeness, written-off status, location, access, and current demand. Generic web price bands omit too many of those inputs to be dependable.",
 
-    "Repairable write-offs with moderate hail damage often attract the most competitive cash offers because a mechanic or rebuilder can straighten the panels, replace the glass, pass a written-off vehicle inspection, and put the car back on QLD roads. If your car falls into that category, expect offers toward the higher end of the range for your model.",
+    "If the vehicle has a written-off classification, share the insurer correspondence and confirm that you retained ownership and have authority to sell. Classification affects what can lawfully happen next and should be assessed from official records, not a buyer's assumption.",
 
-    "## How cash for cars works for hail-damaged vehicles",
+    "## Requesting a quote after hail damage",
 
-    "The process is the same whether your car runs or not — Caraway's [cash for hail damaged cars Brisbane](/hail-damaged-cars-brisbane) service covers both, along with typical price ranges by vehicle type. Call or submit an online quote with the make, model, year, current kilometres, and a brief description of the hail damage — mentioning any broken glass, whether it still starts, and whether an insurer has already declared it a write-off helps the buyer quote accurately. You'll receive a firm offer within minutes. Accept, book a pickup time (same or next day across Greater Brisbane), and the tow truck arrives at the agreed hour. Payment is made in cash or bank transfer before the vehicle is loaded — not after it leaves your property. Towing is free across the full Brisbane metro, including [Logan](/locations/logan), Ipswich, Redcliffe, Caboolture, and the Bayside.",
+    "Request an individual assessment through Caraway's [hail-damaged car service](/hail-damaged-cars-brisbane) after insurer, finance, and ownership status are clear. Provide the vehicle details, photos, broken-glass or water-entry information, mechanical state, suburb, and access. If Caraway makes an offer and you accept it, the collection window, payment arrangement, equipment, and included-pickup terms are confirmed before dispatch.",
 
     "## Paperwork and plates in QLD",
 
@@ -34,13 +34,20 @@ export const post: RawBlogPostEntry = {
 
     "## Three mistakes to avoid",
 
-    "A few things catch Brisbane sellers out. First, don't wait too long — hail-damaged cars left outside continue to deteriorate, especially if windows are broken and moisture gets into the interior. Rust, mould, and electrical damage compound quickly in Queensland's humidity, and every week you wait trims the offer. Second, don't drive a car that an insurer has already declared a write-off on public roads; once the policy is cancelled, you're uninsured if you have an incident on the way to the buyer. Third, get at least two quotes — prices vary by 10–20% across different buyers depending on their parts demand and current scrap metal rates.",
+    "Protect broken openings from further weather only when it is safe to do so, and do not handle loose glass without suitable precautions. Do not drive a damaged or written-off vehicle unless you have confirmed it is mechanically safe, registered, and insured as required for that journey. When comparing offers, give each buyer the same facts and compare written conditions as well as the number.",
 
-    "If your car caught one of Brisbane's hail events this season and the repair bill doesn't stack up, a [cash-for-cars buyer](/cash-for-cars-brisbane) is usually the fastest and cleanest exit. One phone call gets you a firm number, and most transactions wrap up within a day of that first contact.",
+    "A [cash-for-cars buyer](/cash-for-cars-brisbane) is one option after the insurer, finance, and ownership position is settled. Compare it with repair, private sale where lawful, trade-in, and the insurer's written options before deciding.",
   ],
   date: "2026-04-29",
-  updatedAt: "2026-07-21",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — how the Written-off Vehicle Scheme works",
+      url: "https://www.qld.gov.au/transport/vehicle-safety/written-off-vehicles/how-scheme-works",
+    },
+  ],
   category: "Guides",
-  relatedServices: ["hail-damaged-cars-brisbane", "insurance-write-off-cars-brisbane", "damaged-cars-brisbane"],
+  relatedServices: ["hail-damaged-cars-brisbane", "cash-for-cars-brisbane", "damaged-cars-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
 };

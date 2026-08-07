@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   quoteFormSchema,
   type QuoteFormInput,
@@ -28,9 +27,10 @@ const fieldIds = {
   year: "quote-year",
   condition: "quote-condition",
   address: "quote-address",
+  details: "quote-details",
 } as const;
 
-export function QuoteForm() {
+export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -52,6 +52,7 @@ export function QuoteForm() {
     mode: "onBlur",
     defaultValues: {
       address: "",
+      details: "",
       honeypot: "",
       marketingConsent: false,
     },
@@ -71,8 +72,8 @@ export function QuoteForm() {
     try {
       const result = await submitQuote(data);
       if (result.success) {
-        trackEvent("quote_form_submitted");
-        trackEvent("lead_submitted", { source: "quote_form" });
+        trackEvent("quote_form_submitted", { source });
+        trackEvent("lead_submitted", { source });
         setIsSuccess(true);
         reset();
         return;
@@ -112,7 +113,7 @@ export function QuoteForm() {
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
-              We&apos;ll call or text back with a straightforward price range and next steps — usually within one business day. No obligation, no follow-up pressure.
+              We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
             <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
               <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
@@ -131,7 +132,7 @@ export function QuoteForm() {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
+                    Our team will review the supplied details and contact you during business hours. Keep an eye on your phone, and check your spam folder if we reach out by email.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
@@ -158,7 +159,7 @@ export function QuoteForm() {
                     <span className="text-border">|</span>
                     <div className="flex items-center gap-1.5">
                       <Clock className="w-4 h-4 text-primary" aria-hidden />
-                      <span>Same-day reply</span>
+                      <span>Business-hours review</span>
                     </div>
                   </div>
 
@@ -338,7 +339,7 @@ export function QuoteForm() {
                         void trigger("address");
                       }}
                       autoComplete="street-address"
-                      enterKeyHint="send"
+                      enterKeyHint="next"
                       placeholder="Start typing your pickup address..."
                       aria-required="true"
                       aria-invalid={!!errors.address}
@@ -347,7 +348,7 @@ export function QuoteForm() {
                       }
                     />
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-address-help">
-                      Brisbane pickup suburbs only. You can also type the full address manually.
+                      Enter the full address manually if needed. Availability is confirmed from the suburb, vehicle, and access details.
                     </p>
                     {errors.address && (
                       <p id={`${fieldIds.address}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
@@ -357,15 +358,31 @@ export function QuoteForm() {
                     )}
                   </div>
 
-                  <div className="flex items-start gap-3 pt-1">
-                    <Checkbox
-                      id="quote-marketing-consent"
-                      className="mt-0.5"
-                      {...register("marketingConsent")}
-                    />
-                    <label htmlFor="quote-marketing-consent" className="block text-xs text-muted-foreground leading-relaxed cursor-pointer py-1 -my-1">
-                      I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
+                  <div>
+                    <label htmlFor={fieldIds.details} className="block text-sm text-foreground mb-2.5">
+                      Vehicle and access details <span className="text-muted-foreground">(optional)</span>
                     </label>
+                    <textarea
+                      id={fieldIds.details}
+                      rows={4}
+                      maxLength={2000}
+                      placeholder="Kilometres; whether it starts, rolls, steers and brakes; damage or missing parts; driveway slope, clearance or obstacles."
+                      aria-invalid={!!errors.details}
+                      aria-describedby={
+                        errors.details ? `${fieldIds.details}-error quote-details-help` : "quote-details-help"
+                      }
+                      {...register("details")}
+                      className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    />
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-details-help">
+                      These details help us assess the vehicle and suitable collection access before follow-up.
+                    </p>
+                    {errors.details ? (
+                      <p id={`${fieldIds.details}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        {errors.details.message}
+                      </p>
+                    ) : null}
                   </div>
 
                   <div className="pt-1">

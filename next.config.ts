@@ -1,7 +1,31 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { RETIRED_BLOG_DESTINATIONS } from "./src/lib/blog-consolidation";
+import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
+import { RETIRED_SERVICE_DESTINATIONS } from "./src/lib/service-consolidation";
 
 const isDev = process.env.NODE_ENV !== "production";
+
+export const retiredLocationRedirects = Object.entries(
+  RETIRED_LOCATION_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/locations/${slug}`,
+  destination,
+}));
+
+export const retiredServiceRedirects = Object.entries(
+  RETIRED_SERVICE_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/${slug}`,
+  destination,
+}));
+
+export const retiredBlogRedirects = Object.entries(
+  RETIRED_BLOG_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/blog/${slug}`,
+  destination,
+}));
 
 export const legacyIndexingRedirects = [
   {
@@ -12,130 +36,25 @@ export const legacyIndexingRedirects = [
     source: "/vehicles-we-buy/utes-vans",
     destination: "/cash-for-cars-brisbane",
   },
-  {
-    source: "/blog/cash-for-cars-redcliffe-brisbane",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-ipswich-brisbane",
-    destination: "/locations/ipswich",
-  },
-  {
-    source: "/blog/cash-for-cars-logan-brisbane",
-    destination: "/locations/logan",
-  },
-  {
-    source: "/blog/cash-for-cars-sunshine-coast",
-    destination: "/cash-for-cars-brisbane",
-  },
-  {
-    source: "/blog/cash-for-cars-toowoomba",
-    destination: "/cash-for-cars-brisbane",
-  },
-  {
-    source: "/blog/cash-for-cars-gold-coast",
-    destination: "/cash-for-cars-brisbane",
-  },
-  // July 2026 consolidation: suburb-level "cash for cars {suburb}" posts
-  // competed with the /locations/{suburb} landing pages for identical
-  // queries (keyword cannibalization). Each post now 301s to its location
-  // page so Google consolidates ranking signals onto the money page.
-  {
-    source: "/blog/cash-for-cars-beenleigh",
-    destination: "/locations/beenleigh",
-  },
-  {
-    source: "/blog/cash-for-cars-bulimba",
-    destination: "/locations/bulimba",
-  },
-  {
-    source: "/blog/cash-for-cars-browns-plains",
-    destination: "/locations/browns-plains",
-  },
-  {
-    source: "/blog/cash-for-cars-caboolture-brisbane",
-    destination: "/locations/caboolture",
-  },
-  {
-    source: "/blog/cash-for-cars-capalaba",
-    destination: "/locations/capalaba",
-  },
-  {
-    source: "/blog/cash-for-cars-carindale",
-    destination: "/locations/carindale",
-  },
-  {
-    source: "/blog/cash-for-cars-chermside",
-    destination: "/locations/chermside",
-  },
-  {
-    source: "/blog/cash-for-cars-indooroopilly",
-    destination: "/locations/indooroopilly",
-  },
-  {
-    source: "/blog/cash-for-cars-ipswich",
-    destination: "/locations/ipswich",
-  },
-  {
-    source: "/blog/cash-for-cars-kenmore",
-    destination: "/locations/kenmore",
-  },
-  {
-    source: "/blog/cash-for-cars-logan",
-    destination: "/locations/logan",
-  },
-  {
-    source: "/blog/cash-for-cars-moorooka",
-    destination: "/locations/moorooka",
-  },
-  {
-    source: "/blog/cash-for-cars-mount-gravatt",
-    destination: "/locations/mount-gravatt",
-  },
-  {
-    source: "/blog/cash-for-cars-north-lakes",
-    destination: "/locations/north-lakes",
-  },
-  {
-    source: "/blog/cash-for-cars-nundah",
-    destination: "/locations/nundah",
-  },
-  {
-    source: "/blog/cash-for-cars-redcliffe",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-springwood",
-    destination: "/locations/springwood",
-  },
-  {
-    source: "/blog/cash-for-cars-stafford",
-    destination: "/locations/stafford",
-  },
-  {
-    source: "/blog/cash-for-cars-sunnybank",
-    destination: "/locations/sunnybank",
-  },
-  {
-    source: "/blog/cash-for-cars-toowong",
-    destination: "/locations/toowong",
-  },
-  {
-    source: "/blog/cash-for-cars-wynnum",
-    destination: "/locations/wynnum",
-  },
-  // July 2026 consolidation: two posts answered the identical "how much is a
-  // scrap car worth in Brisbane" query. The older, thinner post 301s into the
-  // newer guide so Google consolidates ranking signals onto one URL.
-  {
-    source: "/blog/how-much-is-my-car-worth-for-scrap-brisbane",
-    destination: "/blog/how-much-is-scrap-car-worth-brisbane",
-  },
   // July 2026 consolidation: the "Car Selling Guides" blog category duplicated
   // the "Guides" category; its posts now live under /blog/category/guides.
   {
     source: "/blog/category/car-selling-guides",
     destination: "/blog/category/guides",
+  },
+  // Content consolidation reduced the archive from six paginated pages to
+  // three. Preserve former archive pages as one-hop redirects instead of 404s.
+  {
+    source: "/blog/page/6",
+    destination: "/blog",
+  },
+  {
+    source: "/blog/page/5",
+    destination: "/blog",
+  },
+  {
+    source: "/blog/page/4",
+    destination: "/blog",
   },
   // Legacy URLs surfaced by Search Console as 404s or alternative canonicals.
   // These pages have moved permanently, so redirect them instead of serving
@@ -147,7 +66,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/cash-for-cars-sunnybank.html",
-    destination: "/locations/sunnybank",
+    destination: "/locations/moorooka",
   },
   {
     source: "/blog/old-car-running-costs.html",
@@ -155,7 +74,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-vs-dealer-trade-in.html",
-    destination: "/blog/trade-in-vs-cash-for-cars-brisbane",
+    destination: "/blog/how-to-sell-your-car-for-cash-brisbane",
   },
   {
     source: "/english-privacy-policy",
@@ -171,15 +90,51 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/sell-damaged-car-brisbane.html",
-    destination: "/blog/sell-damaged-car-brisbane",
+    destination: "/damaged-cars-brisbane",
   },
 ] as const;
+
+const indexingRedirects = [
+  ...retiredServiceRedirects,
+  ...retiredLocationRedirects,
+  ...retiredBlogRedirects,
+  ...legacyIndexingRedirects,
+] as const;
+
+const wwwHost = [{ type: "host" as const, value: "www.caraway.au" }];
+
+const canonicalHostIndexingRedirects = indexingRedirects.flatMap(
+  ({ source, destination }) => [
+    {
+      source: `${source}/`,
+      has: wwwHost,
+      destination: `https://caraway.au${destination}`,
+      permanent: true,
+    },
+    {
+      source,
+      has: wwwHost,
+      destination: `https://caraway.au${destination}`,
+      permanent: true,
+    },
+  ],
+);
+
+const directIndexingRedirects = indexingRedirects.flatMap(
+  ({ source, destination }) => [
+    { source: `${source}/`, destination, permanent: true },
+    { source, destination, permanent: true },
+  ],
+);
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  // Custom slash rules let retired URLs on either canonical host resolve to
+  // their final destination in one hop instead of normalizing first.
+  skipTrailingSlashRedirect: true,
   outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ["image/avif", "image/webp"],
@@ -192,12 +147,21 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   redirects: async () => [
+    // Retired URLs on the old www host go straight to their final apex URL,
+    // including requests that carry a trailing slash.
+    ...canonicalHostIndexingRedirects,
     // Force canonical host: www.caraway.au → caraway.au with a permanent 308.
     // Vercel now uses the apex domain as the production target, so keeping the
     // old app-level apex → www redirect creates a redirect loop.
     {
+      source: "/:path+/",
+      has: wwwHost,
+      destination: "https://caraway.au/:path+",
+      permanent: true,
+    },
+    {
       source: "/:path*",
-      has: [{ type: "host", value: "www.caraway.au" }],
+      has: wwwHost,
       destination: "https://caraway.au/:path*",
       permanent: true,
     },
@@ -209,11 +173,14 @@ const nextConfig: NextConfig = {
     //   landing pages or claimed service in markets Caraway does not cover.
     // Map each to its closest live equivalent so Google consolidates signals
     // onto a canonical page rather than keeping stale URLs in the crawl queue.
-    ...legacyIndexingRedirects.map(({ source, destination }) => ({
-      source,
-      destination,
+    ...directIndexingRedirects,
+    // Preserve the site's no-trailing-slash policy after disabling Next's
+    // higher-priority automatic redirect above.
+    {
+      source: "/:path+/",
+      destination: "/:path+",
       permanent: true,
-    })),
+    },
   ],
   headers: async () => [
     {
@@ -224,7 +191,7 @@ const nextConfig: NextConfig = {
           // NOTE: script-src intentionally keeps 'unsafe-inline' because
           // Next.js App Router hydration injects inline bootstrap scripts
           // and we do not currently emit per-request nonces. Revisit once
-          // we adopt nonce-based CSP (requires a custom middleware/layout
+          // we adopt nonce-based CSP (requires a custom proxy/layout
           // integration). object-src 'none' is added as defence in depth
           // so plugins/applets cannot be embedded even if an injection
           // were to occur.

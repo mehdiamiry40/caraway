@@ -18,7 +18,7 @@ export default function Contact() {
       title="Talk to a real Brisbane buyer."
       subtitle={
         <p>
-          Free, no-obligation quotes — seven days a week across Greater Brisbane.
+          Request a free, no-obligation assessment for your vehicle.
         </p>
       }
     >
@@ -32,7 +32,7 @@ export default function Contact() {
                 <Link href="/#price-estimator" className="text-primary font-medium link-underline">
                   online estimator
                 </Link>
-                . Our Brisbane team will follow up with a confirmed quote and arrange same- or next-day pickup in most areas.
+                . Our Brisbane team will confirm the quote, collection terms, timing, and payment method for each accepted job.
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export default function Contact() {
                   <span className="block font-display text-sm text-foreground">Phone</span>
                   <span className="block text-base font-medium text-primary">{BUSINESS.phoneDisplay}</span>
                   <span className="mt-0.5 block text-sm text-muted-foreground">
-                    {BUSINESS.hours}, seven days. The quickest way to reach a buyer.
+                    Call with the vehicle, location, and access details.
                   </span>
                 </span>
               </TrackedPhoneLink>
@@ -62,7 +62,7 @@ export default function Contact() {
                 <div>
                   <h3 className="font-display text-sm text-foreground">Email</h3>
                   <p className="text-base font-medium text-primary">{BUSINESS.email}</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">We respond within 1 hour during business hours.</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Messages are reviewed during business hours.</p>
                 </div>
               </a>
 
@@ -71,19 +71,19 @@ export default function Contact() {
                   icon: Building2,
                   title: "Based in",
                   main: BUSINESS.addressFormatted,
-                  sub: "We don't operate a public yard — pickups are always at your location with free towing.",
+                  sub: "Confirm the vehicle location and collection plan before travelling to any address.",
                 },
                 {
                   icon: MapPin,
                   title: "Service area",
-                  main: `All of Greater ${BUSINESS.location}`,
-                  sub: BUSINESS.locationDetail,
+                  main: `Greater ${BUSINESS.location}`,
+                  sub: "Confirm your suburb and access details when requesting a quote.",
                 },
                 {
                   icon: Clock,
-                  title: "Operating hours",
-                  main: BUSINESS.hours,
-                  sub: BUSINESS.hoursDetail,
+                  title: "Response and collection",
+                  main: "Timing confirmed individually",
+                  sub: "Messages are reviewed during business hours; collection timing is agreed for each accepted job.",
                 },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4 rounded-md border border-border/60 bg-card p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)]">
@@ -109,9 +109,9 @@ export default function Contact() {
               <dl className="divide-y divide-border/60 border-t border-border/60 text-sm">
                 {[
                   { q: "What to have ready", a: "Your car's make, model, year, approximate kilometres, and a brief description of its condition." },
-                  { q: "What you'll need at pickup", a: "Photo ID (driver's licence). Registration papers if available, but not essential." },
-                  { q: "Payment method", a: "Cash on the spot. Paid before the car leaves your property." },
-                  { q: "Towing cost", a: "Free. Always. No exceptions." },
+                  { q: "What you'll need at pickup", a: "Current photo ID and the registration, finance, insurer, estate, or ownership records that apply to your sale." },
+                  { q: "Payment method", a: "The payment method and timing are confirmed for each accepted job before collection." },
+                  { q: "Pickup cost", a: "Included when Caraway buys and the supplied vehicle and access details match." },
                 ].map((item) => (
                   <div key={item.q} className="py-3.5 grid grid-cols-12 gap-4">
                     <dt className="col-span-12 sm:col-span-5 font-display text-foreground">{item.q}</dt>

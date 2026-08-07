@@ -2,6 +2,8 @@ import type { SVGProps } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { QuoteComparisonWorksheetLoader } from "@/components/blog/QuoteComparisonWorksheetLoader";
+import { QldVehicleSaleRecordBuilderLoader } from "@/components/blog/QldVehicleSaleRecordBuilderLoader";
 import type { BlogPost as BlogPostType } from "@/data/blog-posts";
 import { categorySlug } from "@/data/blog-posts";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
@@ -15,6 +17,8 @@ import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { canonicalLocationSlug } from "@/lib/location-consolidation";
+import { canonicalServiceSlug } from "@/lib/service-consolidation";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -71,6 +75,23 @@ function formatDate(iso: string): string {
 }
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
+  const canonicalRelatedServiceSlugs = [
+    ...new Set(post.relatedServices.map(canonicalServiceSlug)),
+  ];
+  const relatedServiceData = canonicalRelatedServiceSlugs
+    .map((slug) => services.find((service) => service.slug === slug))
+    .filter((service) => service !== undefined);
+  const canonicalRelatedSuburbSlugs = [
+    ...new Set(
+      post.relatedSuburbs
+        .map(canonicalLocationSlug)
+        .filter((slug): slug is string => slug !== null),
+    ),
+  ];
+  const relatedSuburbData = canonicalRelatedSuburbSlugs
+    .map((slug) => suburbs.find((suburb) => suburb.slug === slug))
+    .filter((suburb) => suburb !== undefined);
+
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
@@ -164,6 +185,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               {renderBlogContent(post.content, { firstParagraphDropCap: true })}
             </div>
 
+            {post.interactiveTool === "quote-comparison-worksheet" ? (
+              <QuoteComparisonWorksheetLoader />
+            ) : null}
+
+            {post.interactiveTool === "qld-vehicle-sale-record-builder" ? (
+              <QldVehicleSaleRecordBuilderLoader />
+            ) : null}
+
             {post.sources && post.sources.length > 0 && (
               <aside className="mt-12 rounded-xl border border-border/60 bg-muted/50 p-5 sm:p-6">
                 <p className="eyebrow mb-3">Sources and review</p>
@@ -198,10 +227,10 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-[1.1] text-balance"
                     style={{ letterSpacing: "var(--tracking-tight)" }}
                   >
-                    Get a real offer in under 60 seconds.
+                    Request an individual vehicle quote.
                   </p>
                   <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-md leading-relaxed">
-                    Same- or next-day pickup across Brisbane. Cars assessed as-is. Free towing. Payment confirmed at pickup.
+                    Share the vehicle, ownership, location, and access details. If Caraway makes an offer, the collection window, included-pickup terms, payment arrangement, and receipt details are confirmed before dispatch.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
@@ -224,22 +253,19 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </div>
             </aside>
 
-            {(post.relatedServices.length > 0 || post.relatedSuburbs.length > 0) && (
+            {(relatedServiceData.length > 0 || relatedSuburbData.length > 0) && (
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {post.relatedServices.length > 0 && (
+                {relatedServiceData.length > 0 && (
                   <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Related services</p>
                     <ul className="space-y-1">
-                      {post.relatedServices.map((slug) => {
-                        const svc = services.find((s) => s.slug === slug);
-                        if (!svc) return null;
-                        return (
-                          <li key={slug}>
+                      {relatedServiceData.map((service) => (
+                          <li key={service.slug}>
                             <Link
-                              href={`/${slug}`}
+                              href={`/${service.slug}`}
                               className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
-                              <span>{svc.h1}</span>
+                              <span>{service.h1}</span>
                               <ArrowRight
                                 className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
@@ -247,25 +273,21 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                               />
                             </Link>
                           </li>
-                        );
-                      })}
+                        ))}
                     </ul>
                   </div>
                 )}
-                {post.relatedSuburbs.length > 0 && (
+                {relatedSuburbData.length > 0 && (
                   <div className="rounded-xl border border-border/60 bg-card p-6">
                     <p className="eyebrow mb-4">Areas we service</p>
                     <ul className="space-y-1">
-                      {post.relatedSuburbs.map((slug) => {
-                        const sub = suburbs.find((s) => s.slug === slug);
-                        if (!sub) return null;
-                        return (
-                          <li key={slug}>
+                      {relatedSuburbData.map((suburb) => (
+                          <li key={suburb.slug}>
                             <Link
-                              href={`/locations/${slug}`}
+                              href={`/locations/${suburb.slug}`}
                               className="group flex items-center justify-between gap-3 py-2 text-sm text-foreground hover:text-primary transition-colors"
                             >
-                              <span>{sub.h1}</span>
+                              <span>{suburb.h1}</span>
                               <ArrowRight
                                 className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
                                 strokeWidth={1.75}
@@ -273,8 +295,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                               />
                             </Link>
                           </li>
-                        );
-                      })}
+                        ))}
                     </ul>
                   </div>
                 )}
@@ -362,8 +383,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   Ready to sell your car for cash?
                 </p>
                 <p className="text-primary-foreground/80 text-sm sm:text-base mt-4 mb-8 max-w-xl mx-auto leading-relaxed">
-                  Call {BUSINESS.phoneDisplay} or grab a free instant quote &mdash; same- or
-                  next-day pickup across Brisbane.
+                  Call {BUSINESS.phoneDisplay} or request a quote. Collection
+                  timing is confirmed from the vehicle, location, access, and
+                  operator availability.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <TrackedPhoneLink

@@ -11,17 +11,15 @@ const serviceLinks = [
   { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
   { label: "Sell My Car Brisbane", href: "/sell-my-car-brisbane" },
   { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
   { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
 ];
 
 const locationLinks = [
-  { label: "North Brisbane", href: "/locations/north-brisbane" },
-  { label: "South Brisbane", href: "/locations/south-brisbane" },
+  { label: "Toowong", href: "/locations/toowong" },
   { label: "Logan", href: "/locations/logan" },
-  { label: "Ipswich", href: "/locations/ipswich" },
   { label: "Redcliffe", href: "/locations/redcliffe" },
-  { label: "Caboolture", href: "/locations/caboolture" },
+  { label: "Moorooka", href: "/locations/moorooka" },
+  { label: "Capalaba", href: "/locations/capalaba" },
   { label: "All locations", href: "/locations" },
 ];
 
@@ -85,19 +83,19 @@ export function Footer() {
                 <span>{BUSINESS.email}</span>
               </a>
               <p className="text-on-dark-hi/85">
-                <span className="font-medium text-on-dark-hi">{BUSINESS.hours}</span> · seven days
+                Collection timing is confirmed for each accepted job.
               </p>
               <address className="not-italic text-on-dark-hi/85 leading-snug">
                 {BUSINESS.addressFormatted}
               </address>
               <TrackedOutboundLink
                 href={BUSINESS.googleBusinessUrl}
-                label="Google reviews"
+                label="Caraway on Google"
                 location="footer"
                 className="inline-flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium min-h-11"
               >
                 <Star aria-hidden="true" className="h-4 w-4 text-cta-bright" />
-                <span>Find us on Google — leave a review</span>
+                <span>View Caraway on Google</span>
               </TrackedOutboundLink>
             </div>
           </div>

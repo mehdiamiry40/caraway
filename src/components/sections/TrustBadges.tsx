@@ -6,7 +6,6 @@ import {
   CarFront,
   FileCheck2,
   MapPin,
-  Recycle,
   ShieldCheck,
   Truck,
 } from "lucide-react";
@@ -14,7 +13,7 @@ import { BUSINESS } from "@/lib/site";
 
 const credentials = [
   { icon: ShieldCheck, label: "Pickup terms confirmed" },
-  { icon: Recycle, label: "Responsible recycling" },
+  { icon: FileCheck2, label: "Buyer details provided" },
   { icon: Building2, label: `ABN ${BUSINESS.abn}` },
 ] as const;
 
@@ -22,14 +21,14 @@ const quickLinks = [
   {
     icon: BadgeDollarSign,
     label: "Get a cash quote",
-    description: "A clear estimate from four quick details.",
+    description: "An indicative estimate from vehicle details.",
     href: "/#price-estimator",
   },
   {
     icon: Truck,
-    label: "Free vehicle pickup",
-    description: "Across Greater Brisbane.",
-    href: "/locations",
+    label: "Pickup terms",
+    description: "Included when Caraway buys and supplied vehicle and access details match.",
+    href: "/car-removal-brisbane",
   },
   {
     icon: FileCheck2,
@@ -39,7 +38,7 @@ const quickLinks = [
   },
   {
     icon: CarFront,
-    label: "Any condition",
+    label: "Cash for cars Brisbane",
     description: "Running, damaged, old, or unregistered.",
     href: "/cash-for-cars-brisbane",
   },
@@ -62,7 +61,7 @@ export function TrustBadges() {
                 Local service across Greater Brisbane
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Same- or next-day pickup in most areas, subject to truck availability.
+                Collection timing and payment are confirmed for each accepted job.
               </p>
             </div>
           </div>
@@ -80,6 +79,7 @@ export function TrustBadges() {
             <li key={label}>
               <Link
                 href={href}
+                prefetch={href === "/#price-estimator" ? false : undefined}
                 className="group relative grid min-h-0 h-full grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-1 border border-border bg-card p-4 pr-10 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
               >
                 <Icon className="row-span-2 h-9 w-9 text-primary sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />

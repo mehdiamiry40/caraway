@@ -4,45 +4,22 @@ import { Analytics } from "@vercel/analytics/next";
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
 import { JsonLd } from "@/components/JsonLd";
-import {
-  localBusinessSchema,
-  organizationSchema,
-  websiteSchema,
-} from "@/lib/json-ld-schemas";
+import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SITE_URL } from "@/lib/site";
-import { shouldNoindexSite } from "@/lib/noindex";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Caraway — Cash for Cars Brisbane",
+    default: "Caraway | Brisbane Vehicle Buyer",
     template: "%s | Caraway",
   },
-  description: `Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same- or next-day pickup, and payment on pickup. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Get an estimate, a confirmed offer, and pickup included when we buy. Call ${BUSINESS.phoneDisplay}.`,
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
     { rel: "apple-touch-icon", url: "/icon-192.png", sizes: "192x192" },
     { rel: "icon", url: "/icon-512.png", sizes: "512x512", type: "image/png" },
-  ],
-  keywords: [
-    "cash for cars Brisbane",
-    "cash for cars brisbane today",
-    "sell car for cash Brisbane",
-    "sell my car online Brisbane",
-    "instant cash for cars Brisbane",
-    "car buyers near me Brisbane",
-    "car removal Brisbane",
-    "sell my car Brisbane",
-    "scrap car buyers Brisbane",
-    "cash for cars",
-    "car buyers Brisbane",
-    "junk car removal Brisbane",
-    "free car removal Brisbane",
-    "unwanted car removal Brisbane",
-    "cash for old cars Brisbane",
-    "cash for damaged cars Brisbane",
   ],
   applicationName: "Caraway",
   category: "Automotive Services",
@@ -53,29 +30,29 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_AU",
     siteName: "Caraway",
-    title: "Caraway — Cash for Cars Brisbane",
+    title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same- or next-day pickup, and payment on pickup.",
+      "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Caraway tow truck — cash for cars Brisbane",
+        alt: "Caraway vehicle pickup in Brisbane",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Caraway — Cash for Cars Brisbane",
+    title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Cash for cars Brisbane — get a fair cash offer for your unwanted car. Free car removal, same- or next-day pickup, and payment on pickup.",
+      "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Caraway tow truck — cash for cars Brisbane",
+        alt: "Caraway vehicle pickup in Brisbane",
       },
     ],
   },
@@ -83,20 +60,19 @@ export const metadata: Metadata = {
     "geo.region": "AU-QLD",
     "geo.placename": "Brisbane",
   },
-  robots:
-    shouldNoindexSite()
-      ? { index: false, follow: false }
-      : {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-          },
-        },
+  // Static artifacts remain safely promotable: the request proxy adds an
+  // X-Robots-Tag noindex directive on every non-canonical request host.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -124,7 +100,7 @@ export default function RootLayout({
         <div aria-hidden="true" className="site-frame" />
         {children}
         <CarawayChatLoader />
-        <JsonLd data={[localBusinessSchema, organizationSchema, websiteSchema]} />
+        <JsonLd data={[organizationSchema, websiteSchema]} />
         <Analytics />
         <AnalyticsListener />
       </body>

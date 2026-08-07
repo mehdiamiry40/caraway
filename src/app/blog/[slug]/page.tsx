@@ -17,14 +17,13 @@ export default async function BlogPostPage({ params }: Props) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const { articleSchema, faqSchema, breadcrumbItems } = buildBlogPostSeoProps(post);
+  const { articleSchema, breadcrumbItems } = buildBlogPostSeoProps(post);
 
   return (
     <>
       <JsonLd
         data={[
           articleSchema,
-          ...(faqSchema ? [faqSchema] : []),
           breadcrumbListSchema(breadcrumbItems),
         ]}
       />

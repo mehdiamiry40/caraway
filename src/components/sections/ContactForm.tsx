@@ -101,7 +101,7 @@ export function ContactForm() {
           </div>
           <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h2>
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-            We&apos;ll reply within 1 business day. If you don&apos;t see a response, please check your spam folder or call us directly.
+            We review messages during business hours. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
           <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
             Send another message

@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, CheckCircle2, Loader2, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RequiredMark } from "./RequiredMark";
@@ -34,8 +32,6 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
     setAddressTouched,
     addressError,
     setAddressError,
-    marketingConsent,
-    setMarketingConsent,
     isSubmitting,
     submitError,
     handleSubmit,
@@ -210,22 +206,6 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
               </p>
             )}
           </div>
-        </div>
-
-        <div className="mt-5 flex items-start gap-3">
-          <Checkbox
-            id="est-marketing-consent"
-            className="mt-0.5"
-            checked={marketingConsent}
-            onChange={(e) => setMarketingConsent(e.target.checked)}
-          />
-          <label htmlFor="est-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-            Email me occasional offers and tips (optional). See our{" "}
-            <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground">
-              privacy policy
-            </Link>
-            .
-          </label>
         </div>
 
         {submitError && (

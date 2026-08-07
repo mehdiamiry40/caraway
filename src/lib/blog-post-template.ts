@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { BlogPost } from "@/content/blog/types";
+import { isRetiredBlogSlug } from "@/lib/blog-consolidation";
 import { blogPostCanonicalUrl, calcWordCount } from "@/lib/blog-post";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
@@ -10,19 +11,6 @@ const BLOG_AUTHOR = {
   name: "Caraway",
   url: SITE_URL,
 } as const;
-
-export const RETIRED_BLOG_SLUGS = [
-  "cash-for-cars-gold-coast",
-  "cash-for-cars-ipswich-brisbane",
-  "cash-for-cars-logan-brisbane",
-  "cash-for-cars-redcliffe-brisbane",
-  "cash-for-cars-sunshine-coast",
-  "cash-for-cars-toowoomba",
-  // Duplicate of how-much-is-scrap-car-worth-brisbane (same query/intent).
-  "how-much-is-my-car-worth-for-scrap-brisbane",
-] as const;
-
-const retiredBlogSlugSet = new Set<string>(RETIRED_BLOG_SLUGS);
 
 export function buildMissingBlogPostMetadata(): Metadata {
   return {
@@ -91,6 +79,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     authorName === publisherSchema.name || authorName === "Caraway"
       ? {
           "@type": "Organization",
+          "@id": publisherSchema["@id"],
           name: authorName,
           url: SITE_URL,
         }
@@ -112,37 +101,12 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     dateModified: post.updatedAt,
     wordCount,
     author: authorSchema,
-    publisher: {
-      "@type": "Organization",
-      name: publisherSchema.name,
-      url: publisherSchema.url,
-      logo: {
-        "@type": "ImageObject",
-        url: (publisherSchema.logo as { url: string }).url,
-      },
-    },
+    publisher: publisherSchema,
     ...(post.sources?.length
       ? { citation: post.sources.map((source) => source.url) }
       : {}),
     isAccessibleForFree: true,
   };
-
-  const faqSchema =
-    post.faqs && post.faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "@id": `${post.canonicalUrl}#faq`,
-          mainEntity: post.faqs.map((faq) => ({
-            "@type": "Question",
-            name: faq.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.answer,
-            },
-          })),
-        }
-      : null;
 
   const breadcrumbItems = [
     { name: "Home", item: `${SITE_URL}/` },
@@ -150,7 +114,7 @@ export function buildBlogPostSeoProps(post: BlogPost) {
     { name: post.title, item: post.canonicalUrl },
   ];
 
-  return { articleSchema, faqSchema, breadcrumbItems, wordCount, plainContent };
+  return { articleSchema, breadcrumbItems, wordCount, plainContent };
 }
 
 export function validateBlogPostSeo(post: BlogPost): string[] {
@@ -161,7 +125,7 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
     errors.push("slug must be lowercase kebab-case without slashes");
   }
 
-  if (retiredBlogSlugSet.has(post.slug)) {
+  if (isRetiredBlogSlug(post.slug)) {
     errors.push("slug is retired and must stay redirected, not republished");
   }
 

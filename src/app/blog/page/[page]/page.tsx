@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page || page < 2 || page > blogPageCount()) return {};
 
   const canonical = `${SITE_URL}/blog/page/${page}`;
-  const title = `Cash for Cars Brisbane Blog — Page ${page}`;
+  const title = `Brisbane Car Selling Guides — Page ${page}`;
   const description =
-    "More tips and guides on selling your car for cash in Brisbane: pricing, paperwork, and how same- or next-day pickup works.";
+    "More practical Brisbane guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.";
 
   return {
     title,

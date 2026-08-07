@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "Cash for cars may suit you if the vehicle is damaged, old, scrap, unregistered, not roadworthy, flood affected, accident damaged, missing parts, or not worth repairing. It can also suit sellers who need the car removed quickly from a driveway, workshop, apartment car park, or rental property.",
 
-    "A service such as Caraway can quote the vehicle, arrange [car removal in Brisbane](/car-removal-brisbane), and pay on collection. That convenience can matter more than chasing a slightly higher price over several weeks.",
+    "A service such as Caraway can assess the vehicle and propose [car removal in Brisbane](/car-removal-brisbane), collection timing, and a payment method. Review and agree to those job-specific terms before collection. That convenience can matter more than chasing a potentially higher price over several weeks.",
 
     "## Price comparison",
 
@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
     "| Option | Best for | Main upside | Main tradeoff |",
     "| --- | --- | --- | --- |",
     "| Private sale | Clean, registered, roadworthy cars | May get a higher price | Takes more time, messages, inspections, and negotiation |",
-    "| Cash for cars | Damaged, unwanted, scrap, unregistered, or non-running cars | Faster and simpler, towing may be included, paid on pickup | Offer may be lower than private sale for clean cars |",
+    "| Cash for cars | Damaged, unwanted, scrap, unregistered, or non-running cars | Fewer listing tasks; collection may be included | Offer may be lower than private sale for clean cars |",
 
     "## Safety and paperwork",
 
@@ -54,7 +54,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want a simple Brisbane car sale?",
 
-    "Caraway buys unwanted, damaged, scrap, unregistered, and non-running vehicles across Brisbane. Use the [free quote form](/#price-estimator), [contact us](/contact), or call 0481 438 444. If the offer works for you, pickup and payment can be arranged on collection.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles from the details you supply. Use the [free, no-obligation quote form](/#price-estimator), [contact us](/contact), or call 0481 438 444. If Caraway buys and the supplied vehicle and access details match, pickup is included; collection timing and payment are confirmed for that job.",
 
     "## FAQ",
 

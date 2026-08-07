@@ -86,7 +86,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </TrackedPhoneLink>
             </div>
             <p className="text-sm text-foreground/70">
-              Free towing · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
+              Pickup included when we buy · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
             </p>
           </div>
         </section>
@@ -154,27 +154,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </p>
               </div>
 
-              {suburb.exampleVehiclesBought && suburb.exampleVehiclesBought.length > 0 && (
-                <div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-                    Example vehicles we buy in {areaName}
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {suburb.exampleVehiclesBought.map((item) => (
-                      <div key={`${item.vehicle}-${item.area}`} className="rounded-lg border border-border/60 bg-card p-4">
-                        <h3 className="font-display text-foreground mb-1">{item.vehicle}</h3>
-                        <p className="text-sm text-muted-foreground">{item.area}</p>
-                        <p className="text-sm text-foreground/80 mt-3">{item.condition}</p>
-                        {item.note && <p className="text-xs text-muted-foreground mt-3">{item.note}</p>}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mt-4">
-                    Examples only — actual offers depend on condition, completeness, location, demand, and market value.
-                  </p>
-                </div>
-              )}
-
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Why choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
@@ -202,7 +181,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   {[
                     { step: "01", title: "Get your quote", desc: "Use the online estimator or send us your car details." },
                     { step: "02", title: "Lock the number", desc: "We confirm a firm price. Book a pickup window that suits you." },
-                    { step: "03", title: "Cash on pickup", desc: "Free tow anywhere in the area. Paid before the car leaves." },
+                    { step: "03", title: "Payment and pickup", desc: "Pickup is included when we buy. Payment is confirmed before the car leaves." },
                   ].map(item => (
                     <li key={item.step}>
                       <div className="font-mono text-xs font-medium tabular-nums tracking-[0.1em] text-primary mb-3">

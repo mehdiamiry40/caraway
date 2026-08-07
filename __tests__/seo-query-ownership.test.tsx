@@ -1,0 +1,283 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { describe, expect, it } from "vitest";
+import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
+import { metadata as locationsMetadata } from "@/app/locations/page";
+import { metadata as faqMetadata } from "@/app/faq/page";
+import { metadata as contactMetadata } from "@/app/contact/page";
+import { metadata as blogMetadata } from "@/app/blog/page";
+import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
+import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
+import {
+  buildServiceStructuredData,
+  generateMetadata as generateServiceMetadata,
+} from "@/app/[slug]/page";
+import {
+  metadata as servicesMetadata,
+  SERVICE_HUB_HEADING,
+} from "@/app/services/page";
+import { Hero } from "@/components/sections/Hero";
+import { ServiceSectionContent } from "@/components/templates/ServicePageTemplate";
+import { blogPosts } from "@/data/blog-posts";
+import {
+  getServiceBySlug,
+  getServicePreferredImage,
+  services,
+} from "@/data/services";
+import { SITE_URL } from "@/lib/site";
+
+const CASH_QUERY = /cash for cars brisbane/i;
+const REMOVAL_QUERY = /car removal brisbane/i;
+
+function serviceOwnersOf(query: RegExp): string[] {
+  return services
+    .filter((service) =>
+      [service.title, service.h1, service.metaDescription].some((value) =>
+        query.test(value),
+      ),
+    )
+    .map((service) => service.slug);
+}
+
+describe("primary SEO query ownership", () => {
+  it("keeps the homepage as a brand hub instead of a competing exact-match page", () => {
+    const title = (homeMetadata.title as { absolute: string }).absolute;
+    const openGraphTitle = String(homeMetadata.openGraph?.title ?? "");
+    const hero = renderToStaticMarkup(<Hero />);
+    const h1 = hero.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "";
+    const webPageName = String(homeStructuredData[0]?.name ?? "");
+
+    expect(title).not.toMatch(CASH_QUERY);
+    expect(openGraphTitle).not.toMatch(CASH_QUERY);
+    expect(h1).not.toMatch(CASH_QUERY);
+    expect(webPageName).not.toMatch(CASH_QUERY);
+    expect(homeMetadata.keywords).toBeUndefined();
+  });
+
+  it("keeps the location hub from competing with the primary cash query", () => {
+    expect(String(locationsMetadata.title ?? "")).not.toMatch(CASH_QUERY);
+    expect(String(locationsMetadata.openGraph?.title ?? "")).not.toMatch(CASH_QUERY);
+  });
+
+  it("keeps the service hub neutral instead of competing with either owner", () => {
+    expect(String(servicesMetadata.title ?? "")).not.toMatch(CASH_QUERY);
+    expect(String(servicesMetadata.title ?? "")).not.toMatch(REMOVAL_QUERY);
+    expect(String(servicesMetadata.openGraph?.title ?? "")).not.toMatch(
+      CASH_QUERY,
+    );
+    expect(String(servicesMetadata.openGraph?.title ?? "")).not.toMatch(
+      REMOVAL_QUERY,
+    );
+    expect(SERVICE_HUB_HEADING).not.toMatch(CASH_QUERY);
+    expect(SERVICE_HUB_HEADING).not.toMatch(REMOVAL_QUERY);
+  });
+
+  it("keeps supporting hubs and paginated indexes from claiming either exact query", async () => {
+    const pageTwoMetadata = await generateBlogPageMetadata({
+      params: Promise.resolve({ page: "2" }),
+    });
+
+    for (const metadata of [
+      faqMetadata,
+      contactMetadata,
+      blogMetadata,
+      pageTwoMetadata,
+      howItWorksMetadata,
+    ]) {
+      for (const query of [CASH_QUERY, REMOVAL_QUERY]) {
+        expect(String(metadata.title ?? "")).not.toMatch(query);
+        expect(String(metadata.openGraph?.title ?? "")).not.toMatch(query);
+        expect(String(metadata.twitter?.title ?? "")).not.toMatch(query);
+      }
+    }
+  });
+
+  it("keeps blog titles from claiming either unmodified primary query", () => {
+    for (const post of blogPosts) {
+      expect(post.title, post.slug).not.toMatch(CASH_QUERY);
+      expect(post.title, post.slug).not.toMatch(REMOVAL_QUERY);
+    }
+  });
+
+  it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
+    const service = getServiceBySlug("cash-for-cars-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "cash-for-cars-brisbane" }),
+    });
+
+    expect(service).toBeDefined();
+    expect(service?.title).toMatch(CASH_QUERY);
+    expect(service?.h1).toMatch(CASH_QUERY);
+    expect(`${SITE_URL}/${service?.slug}`).toBe(
+      "https://caraway.au/cash-for-cars-brisbane",
+    );
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/cash-for-cars-brisbane",
+    );
+    const preferredImage = getServicePreferredImage(service!);
+    expect(metadata.openGraph?.images).toEqual([
+      expect.objectContaining({
+        url: preferredImage?.src,
+        alt: preferredImage?.alt,
+      }),
+    ]);
+    expect(serviceOwnersOf(CASH_QUERY)).toEqual(["cash-for-cars-brisbane"]);
+  });
+
+  it("assigns car removal Brisbane to one surviving service page", async () => {
+    const service = getServiceBySlug("car-removal-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "car-removal-brisbane" }),
+    });
+
+    expect(service).toBeDefined();
+    expect(service?.title).toMatch(REMOVAL_QUERY);
+    expect(service?.h1).toMatch(REMOVAL_QUERY);
+    expect(getServiceBySlug("unwanted-cars-brisbane")).toBeUndefined();
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/car-removal-brisbane",
+    );
+    const preferredImage = getServicePreferredImage(service!);
+    expect(metadata.openGraph?.images).toEqual([
+      expect.objectContaining({
+        url: preferredImage?.src,
+        alt: preferredImage?.alt,
+      }),
+    ]);
+    expect(serviceOwnersOf(REMOVAL_QUERY)).toEqual(["car-removal-brisbane"]);
+  });
+
+  it("connects each primary WebPage, breadcrumb, and Service entity without unsupported rich-result claims", () => {
+    for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
+      const service = getServiceBySlug(slug)!;
+      const canonical = `${SITE_URL}/${slug}`;
+      const data = buildServiceStructuredData(service);
+      const preferredImage = getServicePreferredImage(service)!;
+      const absoluteImage = `${SITE_URL}${preferredImage.src}`;
+      const breadcrumb = data[0] as Record<string, unknown>;
+      const webPage = data[1] as Record<string, unknown>;
+      const serviceEntity = data[2] as Record<string, unknown>;
+      const serialized = JSON.stringify(data);
+
+      expect(data.map((node) => node["@type"])).toEqual([
+        "BreadcrumbList",
+        "WebPage",
+        "Service",
+      ]);
+      expect(breadcrumb).toMatchObject({
+        "@id": `${canonical}#breadcrumbs`,
+        numberOfItems: 3,
+      });
+      expect(breadcrumb.itemListElement).toEqual([
+        expect.objectContaining({ position: 1, name: "Home", item: `${SITE_URL}/` }),
+        expect.objectContaining({ position: 2, name: "Services", item: `${SITE_URL}/services` }),
+        expect.objectContaining({ position: 3, name: service.h1, item: canonical }),
+      ]);
+      expect(webPage).toMatchObject({
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        dateModified: "2026-08-07",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        breadcrumb: { "@id": `${canonical}#breadcrumbs` },
+        mainEntity: { "@id": `${canonical}#service` },
+        inLanguage: "en-AU",
+        primaryImageOfPage: expect.objectContaining({
+          "@type": "ImageObject",
+          url: absoluteImage,
+        }),
+      });
+      expect(serviceEntity).toMatchObject({
+        "@id": `${canonical}#service`,
+        url: canonical,
+        image: absoluteImage,
+      });
+      expect(serialized).not.toMatch(/FAQPage|aggregateRating|"offers"|"address"/i);
+    }
+  });
+
+  it("renders useful pre-quote and access checklists as semantic lists", () => {
+    const cases = [
+      ["cash-for-cars-brisbane", "How to Request a Cash-for-Cars Quote", 6, "approximate kilometres"],
+      ["car-removal-brisbane", "Access Details to Confirm Before Booking", 5, "overhead clearance"],
+    ] as const;
+
+    for (const [slug, heading, count, distinctiveText] of cases) {
+      const section = getServiceBySlug(slug)?.sections.find(
+        (candidate) => candidate.heading === heading,
+      );
+      expect(section, slug).toBeDefined();
+      expect(section?.checklistItems).toHaveLength(count);
+
+      const markup = renderToStaticMarkup(
+        <ServiceSectionContent section={section!} />,
+      );
+      expect(markup, slug).toContain("<ul");
+      expect(markup.match(/<li/g), slug).toHaveLength(count);
+      expect(markup, slug).toContain(distinctiveText);
+    }
+  });
+
+  it("links removal logistics to the detailed towing and pickup guides", () => {
+    const service = getServiceBySlug("car-removal-brisbane")!;
+    const links = service.sections
+      .map((section) => section.supportLink?.href)
+      .filter(Boolean);
+
+    expect(links).toContain(
+      "/blog/tow-truck-cost-brisbane#when-a-vehicle-sale-can-include-pickup",
+    );
+    expect(links).toContain(
+      "/blog/preparing-your-car-for-pickup#plates-rego-and-tow-truck-access",
+    );
+  });
+
+  it("links both primary service pages to the canonical Queensland paperwork checklist", () => {
+    const expected =
+      "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist";
+
+    for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
+      const service = getServiceBySlug(slug);
+      const checklistLinks =
+        service?.sections
+          .map((section) => section.supportLink?.href)
+          .filter((href): href is string => href !== undefined) ?? [];
+
+      expect(checklistLinks, slug).toContain(expected);
+
+      const section = service?.sections.find(
+        (candidate) => candidate.supportLink?.href === expected,
+      );
+      expect(section, slug).toBeDefined();
+      const markup = renderToStaticMarkup(
+        <ServiceSectionContent section={section!} />,
+      );
+      expect(markup, slug).toContain(`href="${expected}"`);
+      expect(markup, slug).toContain(
+        "Open the Queensland seller paperwork checklist",
+      );
+    }
+  });
+
+  it("links both primary service pages to the three-quote comparison worksheet", () => {
+    const expected =
+      "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#compare-three-vehicle-buyer-quotes";
+
+    for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
+      const service = getServiceBySlug(slug);
+      const section = service?.sections.find(
+        (candidate) => candidate.supportLink?.href === expected,
+      );
+
+      expect(section, slug).toBeDefined();
+      const markup = renderToStaticMarkup(
+        <ServiceSectionContent section={section!} />,
+      );
+      expect(markup, slug).toContain(`href="${expected}"`);
+      expect(markup, slug).toMatch(/Compare (?:three written vehicle-buyer quotes|pickup costs and effective net offers)/);
+    }
+
+    const worksheetPost = blogPosts.find(
+      (post) => post.slug === "how-to-get-the-best-cash-for-cars-price-brisbane",
+    );
+    expect(worksheetPost?.interactiveTool).toBe("quote-comparison-worksheet");
+  });
+});

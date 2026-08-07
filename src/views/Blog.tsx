@@ -79,7 +79,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
       title="Selling a car in Brisbane, clearly explained."
       subtitle={
         <p>
-          Tips, guides, and field notes on selling your car for cash in Brisbane. Get the best price and learn how same- or next-day pickup actually works.
+          Practical guides to comparing selling options, documenting vehicle condition, checking collection terms, and completing Queensland paperwork.
         </p>
       }
     >

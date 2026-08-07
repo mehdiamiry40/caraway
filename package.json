@@ -9,6 +9,7 @@
     "typecheck": "node scripts/typecheck.mjs",
     "lint": "eslint . --max-warnings 0 && npm run check:content",
     "check:content": "node scripts/check-content-integrity.mjs",
+    "check:indexability": "node scripts/check-indexability.mjs",
     "check:bundle": "node scripts/check-bundle-budget.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 /**
- * Navigation shows only the six core services — the long-tail SEO pages
+ * Navigation shows only the five core services — the long-tail SEO pages
  * (model- and situation-specific) stay reachable from /services and internal
  * links, but 18 near-identical dropdown entries was choice overload.
  */
@@ -26,7 +26,6 @@ const coreServiceLinks = [
   { label: "Car Removal", href: "/car-removal-brisbane" },
   { label: "Sell My Car", href: "/sell-my-car-brisbane" },
   { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },
-  { label: "Unwanted Cars", href: "/unwanted-cars-brisbane" },
   { label: "Damaged Cars", href: "/damaged-cars-brisbane" },
 ];
 
@@ -42,11 +41,11 @@ export function Header() {
           <div className="flex items-center divide-x divide-border">
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Open today · {BUSINESS.hours} · 7 days
+              Collection windows confirmed per job
             </span>
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Free pickup across Greater Brisbane
+              Pickup included when we buy
             </span>
             <a
               href={BUSINESS.phoneTel}
@@ -64,6 +63,7 @@ export function Header() {
         <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
           <Link
             href="/"
+            prefetch={false}
             className="flex items-center gap-3 group shrink-0"
           >
             <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
@@ -88,7 +88,11 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <Link href="/#price-estimator" className={buttonVariants({ size: "sm" })}>
+            <Link
+              href="/#price-estimator"
+              prefetch={false}
+              className={buttonVariants({ size: "sm" })}
+            >
               Get my quote
             </Link>
           </div>

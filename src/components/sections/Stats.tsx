@@ -13,7 +13,7 @@ interface StatDef {
 const featureStat: StatDef = {
   value: PRICE_RANGE_LABEL,
   label:
-    "Actual offers depend on condition, completeness, location, demand, and current market value.",
+    "The assessment depends on condition, completeness, location, access, demand, and current market value.",
   icon: Banknote,
   feature: true,
 };
@@ -21,7 +21,7 @@ const featureStat: StatDef = {
 const supportingStats: StatDef[] = [
   { value: "Local team", label: "Reach a Brisbane buyer by phone — not a call centre", icon: Users },
   { value: "Pickup details", label: "Operator, timing, access, and applicable cover confirmed before collection", icon: ShieldCheck },
-  { value: "Same- or next-day", label: "Usually same- or next-day pickup, subject to truck availability", icon: Truck },
+  { value: "Job-specific timing", label: "The collection window is confirmed before dispatch", icon: Truck },
 ];
 
 export function Stats() {
@@ -60,7 +60,7 @@ function FeatureStatCard({ stat }: { stat: StatDef }) {
             <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
           </span>
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
-            Cash payouts
+            Quote assessment
           </p>
         </div>
         <p className="mt-5 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi">

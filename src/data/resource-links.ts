@@ -5,14 +5,21 @@
 
 export const FOOTER_INTERNAL_RESOURCES = [
   { label: "Cash for cars Brisbane", href: "/cash-for-cars-brisbane" },
-  { label: "Free car removal", href: "/car-removal-brisbane" },
+  { label: "Car removal when we buy", href: "/car-removal-brisbane" },
   { label: "Scrap & unwanted cars", href: "/scrap-car-removal-brisbane" },
   { label: "Damaged & written-off cars", href: "/damaged-cars-brisbane" },
   { label: "Blog & selling guides", href: "/blog" },
   { label: "All FAQs", href: "/faq" },
 ] as const;
 
+export const QLD_SELLING_GUIDANCE_URL =
+  "https://www.qld.gov.au/transport/buying/rules/selling";
+
 export const AUTHORITY_OUTBOUND_LINKS = [
+  {
+    label: "Selling a used vehicle (Queensland Government)",
+    href: QLD_SELLING_GUIDANCE_URL,
+  },
   {
     label: "Transfer vehicle registration (Queensland Government)",
     href: "https://www.qld.gov.au/transport/registration/transfer",

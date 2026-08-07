@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Scrap and non-running cars come with a wrinkle: a dead battery means no touchscreen, and no touchscreen means no factory reset. A jump pack for a few minutes is usually enough to bring the head unit up long enough to wipe it. If that isn't practical — a flooded car, a burnt-out loom, a vehicle that hasn't turned over since 2019 — take the SD cards and papers and re-code the garage opener instead. Infotainment modules do get pulled and resold out of wrecked cars, so run the reset whenever the car will still power up.`,
 
-    `Caraway buys unwanted, damaged and non-running cars across Greater Brisbane with [free car removal](/car-removal-brisbane) included, and we're happy to wait while you delete personal data from your car before it goes on the truck. Call **${BUSINESS.phoneDisplay}** or request a free online quote.`,
+    `Caraway can assess unwanted, damaged, and non-running cars from the details you supply. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Finish deleting personal data before the confirmed collection time. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; pickup timing and payment are confirmed for each accepted job.`,
   ],
   faqs: [
     {

@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
       "## What to do with the car after rego is cancelled",
 
-      "What happens to the car once the rego is gone? It cannot be driven on a Queensland road without the registration, permits, and insurance required for that journey. You can move it by tow truck or trailer, [sell it as an unregistered vehicle](/blog/how-to-sell-a-car-without-rego-brisbane), or book a cash-for-cars pickup. Keep a signed receipt with the VIN or chassis number, vehicle details, date, price, and both parties' details.",
+      "What happens to the car once the rego is gone? It cannot be driven on a Queensland road without the registration, permits, and insurance required for that journey. You can move it by tow truck or trailer, compare [unregistered-vehicle sale options](/unregistered-cars-brisbane), or arrange collection with a buyer. Keep a signed receipt with the VIN or chassis number, vehicle details, date, price, and both parties' details.",
 
       "The time required and any refund depend on your circumstances and how the application is lodged. If the car is not going back on the road, review the current TMR steps promptly, keep the cancellation receipt, handle the plates as directed, and notify your insurer.",
     ],

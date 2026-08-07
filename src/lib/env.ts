@@ -33,7 +33,6 @@ const envSchema = z.object({
   AI_GATEWAY_API_KEY: z.optional(z.string().check(z.minLength(1))),
   VERCEL_OIDC_TOKEN: z.optional(z.string().check(z.minLength(1))),
   SITE_URL: z.optional(z.url()),
-  NEXT_PUBLIC_NOINDEX: z.optional(z.enum(["1"])),
   VERCEL_ENV: z.optional(z.enum(["production", "preview", "development"])),
   VERCEL_GIT_COMMIT_SHA: z.optional(z.string()),
   VERCEL_REGION: z.optional(z.string()),
@@ -42,8 +41,8 @@ const envSchema = z.object({
 export type Env = z.infer<typeof envSchema>;
 
 // Lazy validation — deferred to first access to avoid module-level side
-// effects in Edge Runtime (middleware). Still early enough to catch
-// misconfiguration on the first form submission or middleware invocation.
+// effects in the request proxy. Still early enough to catch misconfiguration
+// on the first form submission or proxy invocation.
 let _env: Env | null = null;
 
 export function getEnv(): Env {

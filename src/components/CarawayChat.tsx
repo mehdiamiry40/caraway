@@ -8,7 +8,6 @@ import {
   Check,
   ExternalLink,
   Loader2,
-  MessageCircle,
   Phone,
   RotateCcw,
   Square,
@@ -27,6 +26,7 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import type { CarawayChatMessage } from "@/lib/chat-assistant";
 import { BUSINESS } from "@/lib/site";
+import { CarawayChatLauncher } from "@/components/CarawayChatLauncher";
 
 const QUICK_ACTIONS = [
   { label: "Get a car estimate", message: "Can you estimate what my car is worth?" },
@@ -209,6 +209,7 @@ function EstimateCard({
         <div className="grid grid-cols-2 gap-2">
           <Link
             href="/#price-estimator"
+            prefetch={false}
             onClick={onContinue}
             className="inline-flex min-h-10 items-center justify-center rounded-sm bg-cta px-3 text-center text-xs font-semibold text-cta-foreground transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
@@ -227,8 +228,8 @@ function EstimateCard({
   );
 }
 
-export function CarawayChat() {
-  const [isOpen, setIsOpen] = useState(false);
+export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(initiallyOpen);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -251,6 +252,10 @@ export function CarawayChat() {
     if (!isOpen) {
       if (wasOpenRef.current) launcherRef.current?.focus();
       return;
+    }
+    if (!wasOpenRef.current) {
+      wasOpenRef.current = true;
+      trackEvent("chat_opened");
     }
     inputRef.current?.focus();
 
@@ -279,10 +284,6 @@ export function CarawayChat() {
 
   function openChat() {
     setIsOpen(true);
-    if (!wasOpenRef.current) {
-      wasOpenRef.current = true;
-      trackEvent("chat_opened");
-    }
   }
 
   function closeChat() {
@@ -537,7 +538,11 @@ export function CarawayChat() {
               <span className="hidden sm:inline">Enter to send · Shift+Enter for a new line</span>
               <span className="sm:hidden">Indicative estimates only</span>
               <span className="flex items-center gap-3">
-                <Link href="/#price-estimator" className="font-medium text-primary hover:underline">
+                <Link
+                  href="/#price-estimator"
+                  prefetch={false}
+                  className="font-medium text-primary hover:underline"
+                >
                   Full quote <ExternalLink className="inline h-3 w-3" aria-hidden="true" />
                 </Link>
                 <a href={BUSINESS.phoneTel} className="font-medium text-primary hover:underline">
@@ -551,18 +556,7 @@ export function CarawayChat() {
       )}
 
       {!isOpen && (
-        <button
-          ref={launcherRef}
-          type="button"
-          onClick={openChat}
-          aria-expanded="false"
-          aria-controls="caraway-chat-panel"
-          className="fixed right-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[201] inline-flex min-h-12 items-center gap-2 rounded-full border border-primary/20 bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transform-none sm:right-6 sm:bottom-6"
-          aria-label="Open Caraway chat"
-        >
-          <MessageCircle className="h-5 w-5" aria-hidden="true" />
-          <span>Ask Caraway</span>
-        </button>
+        <CarawayChatLauncher buttonRef={launcherRef} onClick={openChat} />
       )}
     </>
   );

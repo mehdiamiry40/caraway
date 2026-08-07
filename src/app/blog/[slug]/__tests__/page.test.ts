@@ -1,19 +1,36 @@
 import { describe, expect, it } from "vitest";
+import { isValidElement, type ReactElement, type ReactNode } from "react";
 import {
   buildBlogPostSeoProps,
   generateMetadata,
 } from "@/app/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
+import { renderBlogContent } from "@/lib/blog-markdown";
 import { SITE_URL } from "@/lib/site";
 
 // Pick concrete fixtures from real data. Using slugs rather than array
 // indices keeps these tests stable as posts are added or reordered.
-const INDEXABLE_SLUG = "trade-in-vs-cash-for-cars-brisbane";
+const INDEXABLE_SLUG = "what-paperwork-to-sell-a-car-qld";
+const SALE_OPTIONS_SLUG = "how-to-sell-your-car-for-cash-brisbane";
 
 const indexablePost = blogPosts.find((p) => p.slug === INDEXABLE_SLUG);
+const saleOptionsPost = blogPosts.find((p) => p.slug === SALE_OPTIONS_SLUG);
 
 function makeParams(slug: string) {
   return { params: Promise.resolve({ slug }) };
+}
+
+function asElement(node: ReactNode): ReactElement {
+  if (!isValidElement(node)) {
+    throw new Error(`Expected React element, got ${typeof node}`);
+  }
+  return node;
+}
+
+function getChildren(element: ReactElement): ReactNode[] {
+  const children = (element.props as { children?: ReactNode }).children;
+  if (children == null) return [];
+  return Array.isArray(children) ? children : [children];
 }
 
 describe("generateMetadata (blog post route)", () => {
@@ -26,7 +43,7 @@ describe("generateMetadata (blog post route)", () => {
       const meta = await generateMetadata(makeParams(INDEXABLE_SLUG));
       expect(typeof meta.title).toBe("string");
       expect(meta.title).toBe(indexablePost!.title);
-      expect(String(meta.title)).toContain("Trade-In");
+      expect(String(meta.title)).toContain("Paperwork");
     });
 
     it("returns the post's metaDescription verbatim", async () => {
@@ -77,6 +94,40 @@ describe("generateMetadata (blog post route)", () => {
       expect(twitter?.images).toBeUndefined();
       // summary_large_image would ask X to feature an image that isn't there.
       expect(twitter?.card).toBe("summary");
+    });
+
+    it("renders the real seller checklist as one heading and eight list items", () => {
+      const rendered = renderBlogContent(indexablePost!.content);
+      const headingIndex = rendered.findIndex((node) => {
+        if (!isValidElement(node)) return false;
+        return (node.props as { id?: string }).id ===
+          "at-a-glance-queensland-seller-paperwork-checklist";
+      });
+      expect(headingIndex).toBeGreaterThanOrEqual(0);
+
+      const heading = asElement(rendered[headingIndex]);
+      expect(heading.type).toBe("h2");
+
+      const checklist = asElement(rendered[headingIndex + 2]);
+      expect(checklist.type).toBe("ul");
+      const items = getChildren(checklist);
+      expect(items).toHaveLength(8);
+      for (const item of items) {
+        expect(asElement(item).type).toBe("li");
+      }
+
+      expect(asElement(rendered[headingIndex + 3]).type).toBe("h2");
+    });
+
+    it("renders the cornerstone sale-options checklists as semantic lists", () => {
+      expect(saleOptionsPost).toBeDefined();
+      const lists = renderBlogContent(saleOptionsPost!.content)
+        .filter((node) => isValidElement(node) && node.type === "ul")
+        .map((node) => getChildren(asElement(node)).length);
+
+      expect(lists).toContain(5);
+      expect(lists).toContain(4);
+      expect(lists.filter((length) => length === 5)).toHaveLength(2);
     });
   });
 

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -16,6 +16,7 @@ const mocks = vi.hoisted(() => ({
   setMessages: vi.fn(),
   stop: vi.fn(),
   regenerate: vi.fn(),
+  trackEvent: vi.fn(),
 }));
 
 vi.mock("@ai-sdk/react", () => ({
@@ -31,7 +32,7 @@ vi.mock("@ai-sdk/react", () => ({
   }),
 }));
 
-vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
+vi.mock("@/lib/analytics", () => ({ trackEvent: mocks.trackEvent }));
 
 beforeEach(() => {
   mocks.messages = [];
@@ -42,11 +43,36 @@ beforeEach(() => {
   mocks.setMessages.mockReset();
   mocks.stop.mockReset();
   mocks.regenerate.mockReset().mockResolvedValue(undefined);
+  mocks.trackEvent.mockReset();
 });
 
 afterEach(() => cleanup());
 
 describe("CarawayChat", () => {
+  it("opens from the lazy loader, restores focus, and tracks only the first open", async () => {
+    const user = userEvent.setup();
+    render(<CarawayChat initiallyOpen />);
+
+    expect(screen.getByRole("dialog", { name: "Ask Caraway" })).not.toBeNull();
+    await waitFor(() => {
+      expect(document.activeElement).toBe(
+        screen.getByLabelText("Ask Caraway a question"),
+      );
+    });
+    expect(mocks.trackEvent).toHaveBeenCalledOnce();
+    expect(mocks.trackEvent).toHaveBeenCalledWith("chat_opened");
+
+    await user.click(screen.getByRole("button", { name: "Close chat" }));
+    await waitFor(() => {
+      expect(document.activeElement).toBe(
+        screen.getByRole("button", { name: "Open Caraway chat" }),
+      );
+    });
+
+    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    expect(mocks.trackEvent).toHaveBeenCalledOnce();
+  });
+
   it("opens an accessible chat panel from the global launcher", async () => {
     const user = userEvent.setup();
     render(<CarawayChat />);

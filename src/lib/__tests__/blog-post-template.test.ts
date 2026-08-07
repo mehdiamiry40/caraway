@@ -5,9 +5,9 @@ import {
   buildBlogPostMetadata,
   buildBlogPostSeoProps,
   createBlogPost,
-  RETIRED_BLOG_SLUGS,
   validateBlogPostSeo,
 } from "@/lib/blog-post-template";
+import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 import { SITE_URL } from "@/lib/site";
 
 describe("blog post template", () => {
@@ -82,6 +82,9 @@ describe("blog post template", () => {
       expect(metadata.openGraph?.url).toBe(post.canonicalUrl);
       expect(articleSchema.url).toBe(post.canonicalUrl);
       expect(articleSchema.mainEntityOfPage).toBe(post.canonicalUrl);
+      expect(articleSchema.publisher["@id"]).toBe(
+        `${SITE_URL}/#organization`,
+      );
       expect(breadcrumbItems.at(-1)?.item).toBe(post.canonicalUrl);
     }
   });

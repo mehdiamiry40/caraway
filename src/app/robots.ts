@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { shouldNoindexSite } from "@/lib/noindex";
 import { SITE_URL } from "@/lib/site";
 
 /**
@@ -33,13 +32,6 @@ const BLOCKED_BOTS = [
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {
-  if (shouldNoindexSite()) {
-    return {
-      rules: [{ userAgent: "*", disallow: "/" }],
-      sitemap: [],
-    };
-  }
-
   return {
     rules: [
       {

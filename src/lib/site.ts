@@ -7,35 +7,32 @@ export const BUSINESS = {
   legalName: "Mehdi Emir",
   businessStructure: "Sole trader",
   abn: "62 351 619 456",
+  abrUrl: "https://abr.business.gov.au/ABN/View?abn=62351619456",
   foundingYear: 2025,
   founder: "Mehdi Emir",
   phoneDisplay: "0481 438 444",
+  phoneE164: "+61481438444",
   phoneTel: "tel:0481438444",
   email: "info@caraway.au",
   emailHref: "mailto:info@caraway.au",
-  /** City-level NAP — we don't operate a public yard; pickups happen at the
-   *  customer's location, so we don't publish a street address. */
+  /** City-level contact location. Exact vehicle pickup details are agreed
+   *  for each accepted job rather than inferred from this label. */
   addressSuburb: "Brisbane",
   addressState: "QLD",
   addressFormatted: "Brisbane, QLD",
   /** Metro label — used with "Greater …" service-area copy. */
   location: "Brisbane, QLD",
-  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redland Bay",
-  hours: "7:00 AM – 7:00 PM",
-  /** Phone and quotes — pickup times are booked separately (see FAQ). */
-  hoursDetail:
-    "Seven days for calls and quotes. Pickup is usually same- or next-day (subject to truck availability) — we confirm when you book.",
-  insured: true,
-  googleBusinessUrl: "https://share.google/n0D0gZyISx3hMNECL",
+  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
+  googleBusinessUrl: "https://www.google.com/maps?cid=2357564394766220919",
 } as const;
 
 export const MIN_PRICE = 200;
 export const MAX_PRICE = 9999;
-export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
+export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
   privacyLastUpdated: "2026-06-11",
-  termsLastUpdated: "2026-06-01",
+  termsLastUpdated: "2026-08-07",
 } as const;
 
 const LEGAL_MONTH_LABELS = [
@@ -69,17 +66,30 @@ export const LEGAL_DATES = {
  *  builds instead of drifting to "today" on every deploy. */
 export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
+/** Homepage metadata, H1, and entity focus were retargeted to a brand hub so
+ *  the dedicated service pages can own the two primary commercial queries. */
+export const HOME_CONTENT_UPDATED = "2026-08-07";
+
+/** Business identity and operating-terms copy materially reviewed in August 2026. */
+export const ABOUT_CONTENT_UPDATED = "2026-08-07";
+
+/** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
+export const FAQ_CONTENT_UPDATED = "2026-08-07";
+
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
  *  WebPage.dateModified so the recrawl signal is honest and consistent. */
-export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-07-21";
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-07";
+
+/** Service catalogue materially consolidated and retitled in August 2026. */
+export const SERVICES_CONTENT_UPDATED = "2026-08-07";
 
 export const PROMISE_POINTS = [
-  "Fair offer based on details",
-  "Same- or next-day pickup",
-  "Free towing included",
-  "Cars assessed as-is",
-  "All makes & models",
-  "7 days a week",
+  "Offer based on supplied details",
+  "Collection window confirmed",
+  "Pickup included when we buy",
+  "Vehicle checked before loading",
+  "Payment arrangement confirmed",
+  "Receipt and buyer details",
 ] as const;

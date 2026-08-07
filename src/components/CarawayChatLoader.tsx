@@ -1,15 +1,45 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { useRef, useState } from "react";
 
-// The AI SDK is intentionally kept out of every route's initial JavaScript.
-// The small async chunk loads after hydration and still leaves the launcher
-// available globally without slowing the core quote experience.
-const CarawayChat = dynamic(
-  () => import("@/components/CarawayChat").then((module) => module.CarawayChat),
-  { ssr: false },
-);
+import { CarawayChatLauncher } from "@/components/CarawayChatLauncher";
+
+type ChatComponent = typeof import("@/components/CarawayChat").CarawayChat;
 
 export function CarawayChatLoader() {
-  return <CarawayChat />;
+  const [Chat, setChat] = useState<ChatComponent | null>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const loadPromiseRef = useRef<Promise<void> | null>(null);
+
+  function loadChat() {
+    if (Chat || loadPromiseRef.current) return;
+
+    setStatus("loading");
+    const loadPromise = import("@/components/CarawayChat")
+      .then((module) => {
+        setChat(() => module.CarawayChat);
+        setStatus("idle");
+      })
+      .catch(() => {
+        setStatus("error");
+      })
+      .finally(() => {
+        loadPromiseRef.current = null;
+      });
+    loadPromiseRef.current = loadPromise;
+  }
+
+  if (Chat) return <Chat initiallyOpen />;
+
+  return (
+    <CarawayChatLauncher
+      busy={status === "loading"}
+      errorMessage={
+        status === "error"
+          ? "Chat could not open. Please try again or call Caraway."
+          : undefined
+      }
+      onClick={loadChat}
+    />
+  );
 }

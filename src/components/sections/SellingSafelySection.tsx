@@ -3,6 +3,7 @@ import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { QLD_SELLING_GUIDANCE_URL } from "@/data/resource-links";
 
 /* Only what this section uniquely owns. "Price confirmed before pickup" and
    "Paid before the vehicle leaves" were the same two promises WhyUs already
@@ -23,9 +24,9 @@ const trustPoints = [
   },
   {
     icon: Truck,
-    title: "Free towing included",
+    title: "Pickup included when we buy",
     description:
-      "Pickup is in the offer. No hidden towing or call-out fees.",
+      "When Caraway buys and the details match, pickup is included without a separate towing deduction.",
   },
 ] as const;
 
@@ -76,7 +77,17 @@ export function SellingSafelySection() {
             </ul>
 
             <p className="mt-5 border border-border bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
-              Transfer requirements vary by situation. Keep your own sale records and follow current QLD Transport guidance.
+              Transfer requirements vary by situation. Keep your own sale records
+              and follow the current{" "}
+              <a
+                href={QLD_SELLING_GUIDANCE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-primary underline underline-offset-4"
+              >
+                Queensland vehicle-selling guidance
+              </a>
+              .
             </p>
           </div>
         </div>

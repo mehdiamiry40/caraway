@@ -22,7 +22,7 @@ export default defineConfig({
     globals: false,
     coverage: {
       provider: "v8",
-      include: ["src/lib/**", "src/actions/**", "middleware.ts"],
+      include: ["src/lib/**", "src/actions/**", "src/proxy.ts"],
       exclude: ["**/__tests__/**", "**/*.test.ts"],
       thresholds: {
         lines: 70,

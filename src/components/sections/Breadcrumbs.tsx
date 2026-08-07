@@ -40,6 +40,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                 {item.href ? (
                   <Link
                     href={item.href}
+                    prefetch={false}
                     className={cn(
                       "transition-colors duration-200 rounded-md px-1.5 py-1 -mx-1.5 -my-1 min-h-11 inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none font-medium",
                       light

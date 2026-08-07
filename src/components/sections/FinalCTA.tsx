@@ -25,7 +25,7 @@ export function FinalCTA() {
                 Find out what your car could be worth today.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
-                One form. A confirmed offer in writing. Free pickup across Greater Brisbane.
+                One form. A confirmed offer in writing. Pickup included when we buy.
               </p>
             </div>
 

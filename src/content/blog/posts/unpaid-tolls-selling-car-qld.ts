@@ -35,9 +35,9 @@ export const post: RawBlogPostEntry = {
 
     `Four things stop unpaid tolls when selling a car from following you home, and they go in this order. Complete your side of the TMR transfer and save the confirmation. Remove the vehicle from your Linkt account. Cancel the registration direct debit. Then write yourself a receipt with the date, the odometer reading, the VIN, the price, and both parties' details — that document is what settles any argument about which trips happened on whose watch. Our guide to [the paperwork for selling a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers the rest of the file.`,
 
-    `Selling to a wrecker or a cash-for-cars buyer changes the paperwork but not the principle. The car usually gets deregistered rather than transferred, so you'll want to [cancel the rego and claim the refund](/blog/how-to-cancel-car-rego-qld) on the unused portion — and still remove the plate from Linkt, because the account doesn't know or care that the car is now in pieces at Rocklea.`,
+    `Do not infer the registration path from labels such as wrecker or cash-for-cars buyer. If the vehicle is being sold for parts, Queensland says it must be deregistered before sale regardless of the buyer's label. If it is not a for-parts sale, confirm whether it is already unregistered or whether a registered transfer or direct licensed-dealer acquisition applies. Complete the applicable step and remove the sold vehicle from Linkt so later plate-based trips are not charged to your account.`,
 
-    `If the car is unregistered, unwanted, or simply not worth another year of rego, Caraway will quote on it where it sits and include [free car removal](/car-removal-brisbane) across Greater Brisbane. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll pay cash on pickup.`,
+    `If the car is unregistered, unwanted, or simply not worth another year of rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form.`,
   ],
   faqs: [
     {
@@ -62,7 +62,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-07-26",
-  reviewedAt: "2026-07-26",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — selling a used vehicle",
@@ -71,6 +72,14 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — registration transfer",
       url: "https://www.qld.gov.au/transport/registration/transfer",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+    {
+      title: "Queensland Government — cancel vehicle registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
     },
     {
       title: "Transport and Main Roads — toll roads",

@@ -88,6 +88,13 @@ export const quoteFormSchema = z.object({
     z.maxLength(500, "Address is too long"),
     z.overwrite(sanitizeLine),
   ),
+  details: z.optional(
+    z.string().check(
+      z.trim(),
+      z.maxLength(2000, "Vehicle and access details are too long"),
+      z.overwrite(sanitizeLine),
+    ),
+  ),
   quoteAmount: z.optional(z.int().check(z.positive(), z.lte(1000000))),
   honeypot: honeypotField,
   marketingConsent: z._default(z.optional(z.boolean()), false),

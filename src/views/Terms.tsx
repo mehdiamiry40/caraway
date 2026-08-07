@@ -30,21 +30,21 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Services</h2>
             <p>
-              We provide quotes, vehicle purchase, and towing where offered. Quotes are based on information you provide and market conditions; a final offer may be confirmed after inspection. We will not pressure you to accept an offer.
+              We provide free, no-obligation vehicle quotes, vehicle purchase, and collection where agreed. Quotes are based on the information you provide and current assessment inputs. Pickup is included when Caraway buys and the supplied vehicle, location, and access details match. We will not pressure you to accept an offer.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Quoted prices</h2>
             <p>
-              The online estimator is indicative. We review the information you provide and confirm an offer in writing before pickup is booked. At collection, we check that the vehicle matches the disclosed details. If there is a material difference, such as undisclosed damage or missing major components, we will explain any revised offer and you may reject it before the vehicle is loaded. Selected vehicles may receive offers up to $9,999, while most older or scrap vehicles receive lower offers.
+              The online estimator is indicative. We review the information you provide and confirm an offer in writing before pickup is booked. At collection, we check that the vehicle matches the disclosed details. If there is a material difference, such as undisclosed damage, missing major components, or different access conditions, we will explain any revised offer and you may reject it before the vehicle is loaded. No generic website amount guarantees the offer for an individual vehicle.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Pickup timing</h2>
             <p>
-              We aim to offer same- or next-day pickup where scheduling, location, and driver availability permit. Your confirmed pickup window is agreed when you book and may be the following day in some cases.
+              Collection timing depends on the vehicle, location, access, equipment, and availability. The pickup window and payment arrangement are confirmed for each accepted job before dispatch.
             </p>
           </section>
 
@@ -76,7 +76,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cooling-off and cancellation</h2>
             <p>
-              You may cancel a sale at any time before our driver arrives for pickup. Once the vehicle is loaded and payment has been made, the sale is final unless we agree otherwise in writing.
+              A quote is no-obligation until you accept it. If you accept and book collection, tell us promptly if your plans change. Any cancellation or completed-sale terms that apply to the job will be confirmed in writing; nothing in these terms removes rights that cannot lawfully be excluded.
             </p>
           </section>
 

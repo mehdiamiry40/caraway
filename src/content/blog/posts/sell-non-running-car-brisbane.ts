@@ -3,46 +3,47 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-non-running-car-brisbane",
-  title: "Sell a Non-Running Car in Brisbane: Cash 2026",
+  title: "Non-Running Cars in Brisbane: Repair, Sale and Collection Options",
   metaDescription:
-    "How to sell a non-running car in Brisbane for cash. What a car that won't start is worth, the paperwork, and how to get free same- or next-day pickup.",
+    "Compare repair and as-is sale options for a non-running car in Brisbane, then document the fault, prepare access, and check the Queensland paperwork.",
   excerpt:
-    "A car that won't start isn't worthless. Here's what a non-running car is realistically worth in Brisbane and how to sell it for cash without paying to fix it first.",
+    "Use the diagnosis, repair costs, likely net outcome, vehicle condition, and access details to compare repair, sale, and collection options.",
   content: [
-    "A non-running car has a way of becoming everyone's least favourite object on the property. It can't be driven, it can't easily be sold the normal way, and it slowly turns the carport or driveway into long-term storage. Whether it stopped because of a dead engine, a failed transmission, a flat battery that never came back, an electrical gremlin, or simply years of sitting deregistered, the question is the same: is it worth fixing, or is it time to move it on? If you want to sell a non-running car in Brisbane, this guide covers what it's realistically worth and the quickest way to turn it into cash.",
+    "A non-running car can become long-term driveway storage while its condition changes. Whether it stopped because of an engine or transmission fault, an electrical problem, a failed battery, or a long period off the road, the useful question is the same: does a documented repair case beat an as-is sale? This guide explains the information needed to compare those options and plan collection safely.",
 
     "## What counts as a non-running car",
 
-    "\"Non-running\" covers a wide range. Some cars won't start at all — a seized engine, a blown head gasket, a dead starter, or a battery that's been flat so long it won't hold charge. Others start but can't legally or safely be driven: an automatic that won't select gears, failed brakes, a snapped timing belt, or a car that's been off the road and unregistered for so long it would need a full safety certificate and a pile of repairs to return. From a buyer's point of view they're all in the same bucket — a vehicle that has to be picked up rather than driven away.",
+    "\"Non-running\" covers a wide range. Some cars will not start at all because of an engine, starter, battery, timing, or electrical fault. Others start but cannot move or stop safely. For a buyer, the practical questions are whether the vehicle rolls, steers, and brakes, and which loading equipment and access plan would be required if it cannot move safely under its own power.",
 
     "## What a non-running car is worth in Brisbane",
 
-    "The good news is that a non-running car is rarely worthless. Even a car that won't start carries real value in its parts, its catalytic converter, and its scrap steel and aluminium. Brisbane valuations for non-running vehicles may range from around $300 for a stripped or severely damaged shell up to several thousand dollars for a newer, complete, repairable car that simply has a mechanical fault. A non-running Holden Commodore or Ford Falcon with a tired drivetrain might pull $400 to $1,000, while a late-model Toyota Corolla or Hyundai i30 with a blown engine but clean panels and a full interior can fetch considerably more because the parts are in demand across South-East Queensland.",
+    "A non-running car may still have value, but a generic range is not reliable. The quote depends on the exact vehicle, known fault, completeness, mechanical and body condition, ownership status, location, access, and current resale, component, or material demand. Photos and an accurate description are more useful than a model-name price promise.",
 
-    "What lifts the offer is completeness and demand, not whether it runs. Utes and 4WDs — HiLuxes, Rangers, Patrols, and Prados — consistently attract stronger offers even when they're dead, because the parts market for them is deep and their heavier steel content adds value at the recycling stage. A complete car with all its panels, wheels, catalytic converter, and electronics will always beat a half-stripped one. If parts have already been pulled off, mention it upfront so the quote reflects reality.",
+    "Completeness is an important input. State whether the engine, transmission, catalytic converter, wheels, keys, panels, and electronics are present, and whether the car rolls, steers, and brakes. If components have already been removed, identify them before the quote is confirmed. For a non-running Toyota HiLux, the dedicated [HiLux assessment guide](/sell-toyota-hilux-brisbane) explains the variant, tray, accessory, and modification details to prepare.",
 
-    "## Why repairing first usually isn't worth it",
+    "## Compare repair with an as-is sale",
 
-    "It's tempting to think a quick fix will unlock a much bigger sale price, but the maths rarely works on an older car. A replacement engine or transmission fitted by a workshop can run into the thousands, and on a high-kilometre vehicle you'll seldom recoup that in the resale price. By the time you've paid for the repair, a fresh safety certificate, and any registration owing, you're often worse off than if you'd sold the car as-is. For a clean, late-model car the repair may be worth it; for most non-running cars in Brisbane, selling it in its current condition is the smarter call.",
+    "Before repairing, obtain a written diagnosis and repair estimate, then compare the likely post-repair net sale value with an as-is quote. Include towing, diagnostics, parts, labour, registration, safety-certificate requirements, time, and the risk of additional faults. The better option depends on the individual vehicle rather than its age alone.",
 
-    "## Free pickup across Brisbane",
+    "## Collection requirements for a non-running car",
 
-    "The biggest practical hurdle with a non-running car is simply moving it, and that's exactly the part you don't have to deal with. Free towing is included when we buy, wherever the car is parked — a driveway in Carindale, a unit block in Chermside, a workshop in Rocklea, or an acreage block out towards Samford. You don't need to organise a flatbed, pay a tow operator, or push the car to the kerb. Plenty of Brisbane homes have narrow side access or steep driveways, so the driver confirms access requirements at booking and brings winches or extended ramps where needed.",
+    "Tell the buyer whether the car rolls, steers, brakes, has all wheels, and can be reached by suitable loading equipment. Share photos and measurements for steep or narrow driveways, apartment parking, workshops, soft ground, or acreage access. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details; feasibility and equipment are confirmed before dispatch.",
 
     "## The paperwork in Queensland",
 
-    "Queensland paperwork depends on the car's status. If it's still registered, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. If you're cancelling registration, follow TMR's plate-surrender requirements before the car leaves. If the car is already unregistered, you don't need a safety certificate to sell it for parts or scrap — just keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Removing the plates and lodging the disposal notice protects you from any tolls, fines, or SPER demands that could otherwise land back on your name.",
+    "Queensland paperwork depends on the registration status and sale type. Check current Transport and Main Roads guidance for a registered transfer, cancellation, or unregistered sale. Keep a signed receipt recording the VIN, vehicle details, date, sale amount, and both parties' details, plus evidence of the seller steps you complete. Do not assume one plate or safety-certificate rule applies to every transaction.",
 
     "## How the sale works",
 
-    "The process is simple. Give the make, model, year, kilometres, registration status, access details, and an honest description of why the car isn't running. You'll get a quote, and if you accept it you confirm the pickup window and how you'll be paid before the truck is dispatched. At collection the driver checks the car against the quote, hands over payment, and provides a signed receipt. For most Brisbane suburbs that whole cycle can happen the same or next day, subject to truck availability.",
+    "Provide the make, model, year, kilometres, registration status, access details, and an honest description of why the car is not running. If an offer is made and accepted, confirm the collection window, payment method and timing, and required records before dispatch. At collection, the operator checks the car against the supplied description and provides the agreed buyer and receipt details.",
 
-    "A few practical tips. Be straight about the condition when you call — \"won't start, might be the engine\" is fine, but discrepancies found at pickup lead to revised offers and delays. Have your ID and registration papers ready. If the car has been sitting on flat tyres or soft ground, flag it so the right recovery gear turns up. And remember that a parked non-running car keeps losing value: seized brakes, rodent damage to wiring, and UV-cracked interior plastics all chip away at the offer, so there's rarely an upside to leaving it sitting.",
+    "Be specific about the condition when you call — \"won't start, cause unknown\" is more useful than guessing at a repair. Have your ID and any relevant vehicle records ready. If the car has been sitting on flat tyres or soft ground, flag it before dispatch. Stored vehicles can develop seized brakes, wiring damage, moisture problems, or deteriorated tyres and interiors, so recheck and photograph the current condition if you delay the decision.",
 
-    `Whether your non-running car is on the north side, the south side, or out towards Ipswich or Logan, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway buys cars that won't start, includes towing when we buy, confirms payment at pickup, and provides a signed receipt and buyer details.`,
+    `For a non-running vehicle within Caraway's confirmed service area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle and access, includes pickup when it buys, and confirms the payment arrangement and receipt details before collection.`,
   ],
   date: "2026-06-14",
+  updatedAt: "2026-08-07",
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane"],
+  relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "scrap-car-removal-brisbane", "sell-toyota-hilux-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
 };

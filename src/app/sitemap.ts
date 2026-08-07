@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services } from "@/data/services";
+import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import {
   blogPosts,
@@ -10,7 +10,11 @@ import {
   SITE_URL,
   LEGAL_DATE_ISO,
   CONTENT_DEPLOY_DATE,
+  ABOUT_CONTENT_UPDATED,
+  FAQ_CONTENT_UPDATED,
+  HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  SERVICES_CONTENT_UPDATED,
 } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -71,14 +75,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: HOME_CONTENT_UPDATED,
       changeFrequency: "weekly",
       priority: 1.0,
       images: HERO_IMAGE,
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: ABOUT_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.6,
     },
@@ -90,7 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/faq`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: FAQ_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -102,7 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/services`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: SERVICES_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -154,13 +158,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "sell-my-car-brisbane",
   ]);
 
-  const servicePages: MetadataRoute.Sitemap = services.filter((s) => s.slug).map((s) => ({
-    url: `${SITE_URL}/${s.slug}`,
-    lastModified: CONTENT_DEPLOY_DATE,
-    changeFrequency: "monthly" as const,
-    priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
-    images: HERO_IMAGE,
-  }));
+  const servicePages: MetadataRoute.Sitemap = services
+    .filter((s) => s.slug)
+    .map((s) => {
+      const preferredImage = getServicePreferredImage(s);
+      return {
+        url: `${SITE_URL}/${s.slug}`,
+        lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
+        changeFrequency: "monthly" as const,
+        priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
+        ...(preferredImage
+          ? { images: [`${SITE_URL}${preferredImage.src}`] }
+          : {}),
+      };
+    });
 
   /* -----------------------------------------------------------------------
    * 3. Location (suburb) pages
@@ -170,7 +181,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
     priority: 0.7,
-    images: HERO_IMAGE,
   }));
 
   /* -----------------------------------------------------------------------
@@ -178,11 +188,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * ---------------------------------------------------------------------*/
   const CORNERSTONE_SLUGS = new Set([
     "how-to-sell-your-car-for-cash-brisbane",
-    "how-to-sell-a-car-without-rego-brisbane",
+    "what-paperwork-to-sell-a-car-qld",
     "how-to-cancel-car-rego-qld",
     "how-to-transfer-car-ownership-qld",
     "wovr-written-off-vehicle-register-qld-guide",
-    "scrap-metal-prices-brisbane-2026",
+    "how-much-is-scrap-car-worth-brisbane",
   ]);
 
   const blogPages: MetadataRoute.Sitemap = blogPosts.filter((p) => p.slug).map((p) => {

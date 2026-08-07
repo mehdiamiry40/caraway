@@ -3,33 +3,37 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "how-to-sell-your-car-for-cash-brisbane",
-  title: "How to Sell Your Car for Cash in Brisbane: A Complete Guide",
+  title: "Ways to Sell a Car in Brisbane: Compare Your Options",
   metaDescription:
-    "The complete guide to selling your car for cash in Brisbane: compare your options, value your car, spot dodgy buyers, sort the QLD paperwork, and get paid on pickup.",
+    "Compare private sale, dealer trade-in, direct vehicle buyers, and wreckers in Brisbane, including preparation, written terms, pickup, and QLD paperwork.",
   excerpt:
-    "Private sale, trade-in, wrecker, or cash-for-cars buyer? This guide walks through the whole process — valuing your car, comparing quotes, the QLD paperwork, and what should happen on pickup day.",
+    "Compare Brisbane car-sale options by likely net return, preparation, collection, payment terms, and the Queensland seller steps that apply.",
   content: [
-    "Selling a car in Brisbane comes down to a trade-off between price, speed, and hassle. A clean, late-model car with fresh registration can be worth the effort of a private sale. An older, high-kilometre, damaged, or unregistered car usually isn't — the private market for those is thin, slow, and full of no-shows. This guide covers the whole process end to end: choosing the right selling channel, valuing your car realistically, comparing quotes without getting burned, the Queensland paperwork, and exactly what should happen on pickup day.",
+    "Selling a car in Brisbane involves trade-offs between the likely net return, time, preparation, appointments, and certainty. A clean, registered vehicle may suit a private listing, while a direct buyer may suit an owner who wants one quote and an agreed collection plan. This guide explains how to compare the channels, describe the vehicle accurately, assess written terms, and complete the Queensland seller steps that apply.",
 
-    "## First, pick the right way to sell",
+    "## Compare the main sale options",
 
     "You have four realistic channels, and the right one depends almost entirely on the car.",
 
-    "**Private sale** (Marketplace, Gumtree, Carsales) usually returns the highest price for a car buyers actually want: newer, registered, roadworthy, with service history. The cost is time — listing photos, enquiries, test drives, price hagglers — and for anything old or non-running, weeks can pass without a serious offer. Our comparison of [cash for cars vs a private sale](/blog/cash-for-cars-vs-private-sale) goes deeper on the numbers.",
+    "**Private sale** (through a marketplace or classified site) may produce a higher gross offer for a well-presented vehicle, but it also involves advertising, enquiries, inspections, test drives, negotiation, and the applicable safety-certificate and transfer steps. Our comparison of [cash for cars vs a private sale](/blog/cash-for-cars-vs-private-sale) explains the trade-offs.",
 
-    "**Dealer trade-in** is the most convenient option when you're buying your next car from the same dealer, but trade-in offers on older vehicles are routinely the lowest of the four channels — the dealer prices in reconditioning and resale risk. See [trade-in vs cash for cars](/blog/trade-in-vs-cash-for-cars-brisbane) for when each wins.",
+    "**Dealer trade-in** can be convenient when the next vehicle is coming from the same dealer. Compare the total changeover figure rather than the trade-in number alone, because the replacement-vehicle price, fees, and trade allowance all affect the result.",
 
-    "**Wreckers** buy end-of-life vehicles for parts and metal. Some pay fairly, but many quote low and expect you to arrange delivery to the yard. If your car is a genuine parts car, it's worth a call — compare with [how wreckers stack up against cash-for-cars buyers](/blog/cash-for-cars-vs-wreckers-brisbane).",
+    "**Auto wreckers** may assess an end-of-life vehicle for reusable components and recoverable materials. Collection, deductions, and downstream handling vary by operator, so compare the complete written transaction using our [buyer-versus-wrecker checklist](/blog/cash-for-cars-vs-wreckers-brisbane).",
 
-    "**A cash-for-cars buyer** like [Caraway](/cash-for-cars-brisbane) sits between the two: you get a quote from the vehicle details, the buyer comes to you with towing included, and payment is confirmed at pickup. It won't beat a strong private sale on a desirable car, but for older, damaged, unregistered, or non-running vehicles it's usually the best combination of price and effort — and the whole thing typically wraps up with same- or next-day collection.",
+    "**A cash-for-cars buyer** like [Caraway](/cash-for-cars-brisbane) provides a direct-buyer option. The quote is based on the details supplied, pickup is included when Caraway buys and the vehicle and access match those details, and the payment arrangement is confirmed before collection. Compare that offer with the likely net return and effort of your other options.",
 
     "## Step 1: Work out what your car is realistically worth",
 
-    "Brisbane offers may range from a few hundred dollars for a stripped or severely damaged vehicle up to $9,999 for selected complete, running cars. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers. The factors that move the number:",
+    "A useful article cannot state what an individual vehicle is worth. The quote changes with the exact vehicle, its condition and completeness, the lawful ownership position, current demand, location, and collection access. The factors to document are:",
 
-    "- **Make and model.** Parts demand matters more than badge prestige. HiLuxes, Rangers, Prados, Corollas, and Camrys hold value because their parts sell; older European prestige cars often quote lower than owners expect because parts demand is thin.\n- **Age and kilometres.** A 2015 car with 150,000 km and a 2005 car with 300,000 km sit in different brackets regardless of condition.\n- **Condition and completeness.** Running beats non-running; complete beats stripped. Missing engines, wheels, or catalytic converters cut the offer sharply.\n- **Location and access.** Easy pickup inside Greater Brisbane costs the buyer less than a winch job on acreage — though a good operator quotes both.\n- **Scrap steel prices.** For end-of-life cars, [current scrap metal prices](/blog/scrap-metal-prices-brisbane-2026) set the floor under every offer.",
+    "- **Identity and specification.** Make, model, variant, year, drivetrain, and body style distinguish vehicles that otherwise sound similar.",
+    "- **Age and kilometres.** These provide context but do not replace the mechanical and body assessment.",
+    "- **Condition and completeness.** State whether the car starts, rolls, steers, brakes, and has all wheels, keys, and major components.",
+    "- **Location and access.** The suburb, surface, clearance, slope, and obstacles affect whether collection can be arranged safely.",
+    "- **Current demand.** Resale, usable-component, and recoverable-material demand changes, so obtain an individual quote rather than relying on a generic web range.",
 
-    "If you want to sanity-check a number before talking to anyone, our guides on [what your car is worth in Brisbane](/blog/how-much-is-my-car-worth-brisbane) and [what a scrap car is worth](/blog/how-much-is-scrap-car-worth-brisbane) break down typical ranges by vehicle type. One more thing sellers underestimate: parked cars lose value week by week. Flat tyres, a dead battery, seized brakes, and creeping rust all chip away at the offer, so \"I'll deal with it next month\" usually costs money.",
+    "Use our guides on [what affects a car's value in Brisbane](/blog/how-much-is-my-car-worth-brisbane) and [what affects a scrap-car quote](/blog/how-much-is-scrap-car-worth-brisbane) as checklists, not price promises. A parked car can also deteriorate through battery discharge, flat tyres, moisture, corrosion, or seized components, so record its current condition accurately.",
 
     "## Step 2: Get quotes — and compare them properly",
 
@@ -37,67 +41,74 @@ export const post: RawBlogPostEntry = {
 
     "Get at least two quotes, and compare like for like. The questions that matter:",
 
-    "- Is towing included, or deducted afterwards?\n- Is the offer confirmed in writing before the truck is booked?\n- When exactly do you get paid — before the car leaves, or \"processed later\"?\n- Do you get a receipt with the buyer's details?",
+    "- Is towing included, or deducted afterwards?",
+    "- Is the offer confirmed in writing before the truck is booked?",
+    "- When exactly do you get paid — before the car leaves, or \"processed later\"?",
+    "- Do you get a receipt with the buyer's details?",
 
-    "The classic trap in this industry is the drive-down: a generous phone quote, then a driver who \"finds problems\" on arrival and offers half. You avoid it by being accurate up front, getting the number in writing, and refusing to hand over keys until the agreed amount is paid. Our guide to [avoiding cash-for-cars scams in Brisbane](/blog/how-to-avoid-cash-for-cars-scams-brisbane) lists the red flags in detail. Caraway's answer to this is simple: the offer is confirmed in writing before pickup is booked, and if the vehicle matches the details you gave, that's the number that gets paid.",
+    "A buyer may seek to revise a quote if the vehicle, missing components, location, or access differs from the information supplied. Reduce that risk by describing the car accurately, providing current photos, asking what could change the assessment, and getting the terms in writing before collection. Our guide to [avoiding cash-for-cars scams in Brisbane](/blog/how-to-avoid-cash-for-cars-scams-brisbane) lists identity, payment, and receipt checks. Caraway confirms its offer assumptions before pickup is booked and checks the vehicle against the supplied details at collection.",
 
     "## Step 3: Prepare the car and the paperwork",
 
     "Before the truck arrives:",
 
-    "- **Photo ID.** The driver will sight it — a driver's licence is standard.\n- **Registration papers,** if the car is registered. Helpful, but not essential for unregistered vehicles.\n- **Clear out the car.** Check the glovebox, under seats, the boot, and behind the sun visors. Grab your toll tag and any garage remotes.\n- **Payout letter,** if there's finance owing — see [selling a car with finance owing in QLD](/blog/how-to-sell-a-car-with-finance-owing-qld) for how that works.\n- **Know your sale type.** Registered or unregistered changes the paperwork, not the sale itself. [What paperwork you need to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers both paths.",
+    "- **Photo ID.** The driver will sight it — a driver's licence is standard.",
+    "- **Registration papers,** if the car is registered. Helpful, but not essential for unregistered vehicles.",
+    "- **Clear out the car.** Check the glovebox, under seats, the boot, and behind the sun visors. Grab your toll tag and any garage remotes.",
+    "- **Payout letter,** if there's finance owing — see [selling a car with finance owing in QLD](/blog/how-to-sell-a-car-with-finance-owing-qld) for how that works.",
+    "- **Know your sale type.** Registered or unregistered changes the paperwork, not the sale itself. [What paperwork you need to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers both paths.",
 
-    "For plates and registration, follow the current Transport and Main Roads (TMR) requirements for your sale type — the rules differ between transferring a registered vehicle and disposing of an unregistered one, and TMR's own pages are the source of truth. If the car is registered and you're not transferring it, you can [cancel the rego](/blog/how-to-cancel-car-rego-qld) and may be owed a refund on the unused portion.",
+    "For plates and registration, follow the current Transport and Main Roads (TMR) requirements for your sale type. A registered transfer, cancellation before sale, and the sale of an already-unregistered vehicle are different paths. If the car is registered and you decide not to transfer that registration, you can [cancel the rego](/blog/how-to-cancel-car-rego-qld) and may be eligible for a refund on the unused portion.",
 
     "## Step 4: Pickup day — what should happen",
 
-    "A professional pickup is quick and boring, in the best way. The driver arrives in the booked window, checks the vehicle against the details you gave, sights your ID, and completes payment **before** the car goes on the truck. You should walk away with the agreed amount, a signed receipt recording the vehicle details, VIN, date, and price, and the buyer's details for your records. If a driver wants to renegotiate a written offer on a car you described accurately, or load the vehicle before payment clears, stop the sale. That's not how a straight buyer operates. [What to expect when preparing for pickup](/blog/preparing-your-car-for-pickup) walks through the day in more detail.",
+    "At collection, the operator should check the vehicle against the supplied details and the parties should confirm the agreed payment arrangement before loading. Keep a signed receipt recording the vehicle, date, sale amount, and buyer details. If the vehicle differs materially from its description, you can consider a revised offer and are not required to proceed. [What to expect when preparing for pickup](/blog/preparing-your-car-for-pickup) provides a practical checklist.",
 
     "## Step 5: After the sale — protect yourself",
 
-    "The sale isn't finished when the truck leaves. Complete your seller-side TMR steps promptly for your sale type — transfer for a registered sale, or the disposal/cancellation path for an unregistered one — and keep your receipt and confirmation. This is what protects you if the car later collects tolls, parking fines, or SPER notices: the paper trail shows exactly when it stopped being yours. Our [QLD ownership-transfer guide](/blog/how-to-transfer-car-ownership-qld) covers the steps and timeframes.",
+    "The sale isn't finished when the truck leaves. For a registered sale, complete the applicable transfer steps; if you cancel current registration before the sale, complete that cancellation path; and for an already-unregistered vehicle, both parties should sign and retain a sale record with the VIN or chassis/engine number, make and model, and sale date. Keep the relevant confirmation and receipt. Our [QLD ownership-transfer guide](/blog/how-to-transfer-car-ownership-qld) covers registered transfers, while Queensland Government publishes the separate unregistered-sale requirements.",
 
-    "## Timing the market (and when not to bother)",
+    "## Decide when to act",
 
-    "Scrap and used-car prices move with commodity markets and seasonal demand — [the best time to sell a car in Brisbane](/blog/best-time-to-sell-your-car-brisbane) looks at the patterns. But for an already-parked car, timing rarely beats acting: depreciation and weather damage are constant, and the difference between a good week and an average week for scrap prices is smaller than three months of a car quietly rusting under a tree.",
+    "Used-vehicle, component, and material demand can change, but no calendar date guarantees a stronger result for an individual car. If you delay, consider registration, insurance, storage, further deterioration, and the expiry of any current quote. Compare fresh written terms when you are ready rather than relying on a seasonal rule.",
 
     "## Frequently asked questions",
 
-    "**Does the car need to run or be registered?** No. Cash-for-cars buyers purchase vehicles in any condition — non-running, unregistered, accident-damaged, written off, or simply old. Towing is included when Caraway buys.",
+    "**Does the car need to run or be registered?** Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys and the vehicle and access match the supplied details.",
 
-    "**Do I need a roadworthy certificate?** Requirements depend on your registration status and sale type — check the current Queensland safety-certificate rules before you commit either way. Selling to a buyer like Caraway is typically the path with the least paperwork friction for older and unregistered cars.",
+    "**Do I need a roadworthy certificate?** Requirements depend on registration status, sale type, and how the vehicle is offered. Check the current Queensland safety-certificate rules before committing; Caraway can assess the vehicle as-is but does not replace your seller obligations.",
 
-    "**How fast does it happen?** Quotes usually come back the same day you enquire, offers are confirmed in writing within one business day, and pickup is usually same- or next-day, subject to truck availability.",
+    "**How fast does it happen?** Quote response and collection timing depend on the vehicle information, location, access, and operator availability. Confirm the collection window before dispatch.",
 
-    "**How do I get the most money?** Be accurate about condition, have your papers ready, mention everything (a second vehicle, a trailer — bulk pickups often quote better per car), and compare at least two written offers.",
+    "**How do I compare the financial outcome?** Be accurate about condition, have the relevant records ready, and compare the likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
 
-    `Ready to put a number on your car? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}** — seven days, ${BUSINESS.hours}. Caraway confirms the offer in writing, includes towing when we buy, and completes payment before your vehicle leaves.`,
+    `Ready to request an individual quote? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}**. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
   ],
   faqs: [
     {
       question: "Does the car need to run or be registered to sell it for cash?",
       answer:
-        "No. Cash-for-cars buyers purchase vehicles in any condition — non-running, unregistered, accident-damaged, written off, or simply old. Towing is included when Caraway buys.",
+        "Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys and the vehicle and access match the supplied details.",
     },
     {
       question: "Do I need a roadworthy certificate to sell my car in Brisbane?",
       answer:
-        "Requirements depend on your registration status and sale type — check the current Queensland safety-certificate rules before you commit. Selling to a cash-for-cars buyer is typically the path with the least paperwork friction for older and unregistered cars.",
+        "Requirements depend on registration status, sale type, and how the vehicle is offered. Check the current Queensland safety-certificate rules before committing; a buyer does not replace your seller obligations.",
     },
     {
       question: "How fast can I sell my car for cash in Brisbane?",
       answer:
-        "Quotes usually come back the same day you enquire, offers are confirmed in writing within one business day, and pickup is usually same- or next-day, subject to truck availability.",
+        "Quote response and collection timing depend on the vehicle information, location, access, and operator availability. Confirm the collection window before dispatch.",
     },
     {
-      question: "How do I get the best price for my car?",
+      question: "How should I compare the financial outcome?",
       answer:
-        "Be accurate about the condition, have your ID and registration papers ready, mention any additional vehicles or trailers, and compare at least two written offers before committing.",
+        "Be accurate about the condition, gather the relevant records, and compare likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
     },
   ],
   date: "2025-03-15",
-  updatedAt: "2026-07-20",
-  reviewedAt: "2026-07-20",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Transfer vehicle registration — Queensland Government",
@@ -106,6 +117,10 @@ export const post: RawBlogPostEntry = {
     {
       title: "Cancel vehicle registration — Queensland Government",
       url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+    {
+      title: "Selling and moving unregistered vehicles — Queensland Government",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],
   category: "Guides",

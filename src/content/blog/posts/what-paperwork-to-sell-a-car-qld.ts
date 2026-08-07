@@ -5,23 +5,47 @@ export const post: RawBlogPostEntry = {
     slug: "what-paperwork-to-sell-a-car-qld",
     title: "Paperwork Needed to Sell a Car in QLD (2026)",
     metaDescription:
-      "What paperwork do you need to sell a car in QLD? Certificate of registration, safety certificate, PPSR check, disposal notice — the complete 2026 checklist.",
+      "QLD car-sale paperwork checklist for registered transfers, cancelled or unregistered vehicles. Compare certificates, TMR steps and seller records.",
     excerpt:
-      "Queensland's car-sale paperwork is simpler than most sellers expect. Here's exactly what you need to sell a car legally in QLD — whether you're selling privately, to a dealer, or for cash.",
+      "Choose the right Queensland transaction path, then prepare the authority, certificates, TMR confirmation and signed sale record that apply.",
     content: [
-      "Queensland has some of the clearest rules around buying and selling vehicles in Australia — but that doesn't mean every seller knows exactly what paperwork is required to sell a car in QLD. Whether you're selling privately through Gumtree or Facebook Marketplace, trading in at a dealership in Newmarket or Springwood, or calling a cash-for-cars buyer to collect a tired old vehicle from your driveway in Carindale, the documents you need are largely the same. Getting the paperwork right protects both parties and ensures the car transfers cleanly out of your name.",
+      "The paperwork needed to sell a car in Queensland depends on whether the vehicle is registered, whether its registration will transfer, the buyer type, and details such as finance, gas equipment, or written-off status. Use this as a transaction checklist, then confirm the current pathway with Transport and Main Roads (TMR) before committing to a sale.",
+
+      "## At-a-glance Queensland seller paperwork checklist",
+
+      "Use only the items that match your transaction. Start with the vehicle's registration status at handover, the intended registration outcome, the buyer type, and any finance, insurer, estate, company, gas-system, or written-off-vehicle complication.",
+
+      "- **Choose the transaction path.** Separate a [registered transfer](/blog/how-to-transfer-car-ownership-qld), [registration cancellation before sale](/blog/how-to-cancel-car-rego-qld), and an already-unregistered sale. A direct acquisition by a verified licensed motor dealer follows different certificate and notification rules from a private transfer or a buyer merely acting as an agent.",
+
+      "- **Confirm authority to sell.** Registration and PPSR records do not prove ownership. Resolve joint, company, finance, insurer, [estate](/blog/sell-deceased-estate-car-qld), representative, or [not-in-my-name](/blog/sell-car-not-in-my-name-qld) situations before handover.",
+
+      "- **Check the safety-certificate rule.** A registered vehicle generally needs a current safety certificate before disposal unless an exemption applies. An unregistered vehicle can be sold without one; direct disposal to a verified licensed motor dealer is another exception. Do not assume every cash-for-cars or wrecking business qualifies.",
+
+      "- **Check gas equipment separately.** A registered vehicle with a gas system can require a current gas inspection certificate, and not every gas-equipped transfer is eligible for the online pathway.",
+
+      "- **Resolve finance or security interests.** Obtain a current lender payout and an agreed discharge process. A PPSR search can report registered security interests and usually stolen or written-off status, but it does not identify the owner or prove authority to sell.",
+
+      "- **Gather the transfer details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, dutiable value, and odometer reading. In-person transfers use the signed Vehicle Registration Transfer Application (F3520).",
+
+      "- **Create the handover record.** Record the identifiable vehicle, date, parties, agreed amount and payment, registration status, keys or items handed over, and relevant condition disclosures. Both parties should sign and retain the record.",
+
+      "- **Finish the applicable seller step.** Submit the eligible online transfer or retain and, where necessary, lodge the signed seller copy; complete registration cancellation and the applicable plate-surrender, retention, or declaration step before a for-parts sale; or retain the signed unregistered-sale record. Save the TMR confirmation and check that the registration record is no longer in your name.",
 
       "## Certificate of registration",
 
-      "The certificate of registration records the registered operator and vehicle details such as the VIN, make, model, and plate number. It is useful transaction evidence, but registration records are not a substitute for resolving a genuine ownership dispute. If the document is missing, check the current replacement and online-service options with TMR.",
+      "A certificate of registration displays operator and vehicle details such as the VIN, make, model, and plate number, but TMR says the certificate does not prove ownership or even that the registration is current. Verify the current record and resolve any genuine authority dispute separately. If the document is missing, check the current replacement and online-service options with TMR.",
 
       "## Proof of identity",
 
-      "You'll need to prove you're the registered operator. A current Queensland driver's licence is the standard choice. If the vehicle is registered in a company name or jointly, buyers may ask for a second form of ID — a passport or Medicare card alongside the licence typically satisfies the requirement. Many private buyers also photograph the seller's licence as a record of the transaction.",
+      "The online and in-person TMR pathways have different identity and eligibility requirements. Confirm which evidence applies to the registered operator, buyer, and any company, joint owner, estate, or representative involved. Share only the identity details reasonably required for the transaction and official forms; both parties should keep the signed sale record and TMR confirmation.",
 
       "## Safety certificate",
 
       "Queensland generally requires a current safety certificate before disposing of a registered light vehicle, trailer, or motorcycle. Important exceptions include vehicles sold unregistered and vehicles sold to a licensed motor dealer. A cash-for-cars or wrecking business is not automatically a licensed motor dealer, so verify the buyer's licence and check the current [Queensland safety-certificate rules](https://www.qld.gov.au/transport/registration/roadworthy) for your transaction.",
+
+      "## LPG and other gas systems",
+
+      "A registered vehicle, trailer, or boat with a gas system generally needs an inspection by an authorised gas installer and a vehicle or vessel gas inspection certificate for the registration transfer. The certificate is valid for three months. Remote-area and individual exemptions exist, and gas-equipped registrations cannot use every online-transfer pathway, so check the [Queensland gas-system guidance](https://www.qld.gov.au/emergency/safety/home/gas/gas-fuelled-engines) before arranging the sale.",
 
       "## PPSR check and encumbrance",
 
@@ -31,13 +55,33 @@ export const post: RawBlogPostEntry = {
 
       "The registration transfer moves the vehicle record to the buyer. Queensland offers online and paper pathways, depending on eligibility. The seller should complete the seller-side steps promptly, provide the buyer with the required transaction details, and keep a signed receipt and TMR confirmation.",
 
+      "## Selling an unregistered vehicle",
+
+      "An unregistered vehicle can be sold without a safety certificate, but both parties need a paper trail. Queensland Government says the signed record should include the VIN, chassis number, or engine number; the make and model; and the sale date. Keep a copy. Before any road movement, check whether a permit is required and satisfy the current CTP, route, plate, vehicle-safety, and journey conditions; an unsafe vehicle may need professional transport.",
+
+      "## Seller handover record",
+
+      "A signed receipt is a recordkeeping aid, not a replacement for a TMR transfer, cancellation, dealer-acquisition notice, or other official step. For an already-unregistered sale, Queensland's stated minimum is both parties' signatures, a VIN, chassis, or engine identifier, the make and model, and the sale date. A practical handover record can also include:",
+
+      "- **Vehicle details:** plate number and odometer reading where applicable, plus the VIN or other identifying number.",
+
+      "- **Transaction details:** date and time, agreed amount, and confirmation of the payment method used.",
+
+      "- **Party details:** buyer and seller legal names, reasonable contact details, signatures, and the collecting business's legal or registered business name where relevant.",
+
+      "- **Handover details:** registration status, accurately described condition, keys, accessories, and other items transferred with the vehicle.",
+
+      "- **Official references:** applicable safety or gas certificate details and the transfer, cancellation, plate-surrender, or other TMR confirmation reference.",
+
+      "Sight identity evidence when the transaction requires it, but do not retain an unnecessary photo or scan of another person's identity document. Store the receipt and official confirmations securely.",
+
       "## Disposal notice — a step many sellers miss",
 
       "The seller-side TMR notification is one of the most important steps in a registered sale. Complete it through the eligible online or paper process, keep confirmation, and check that the vehicle is no longer recorded in your name. A buyer can provide transaction details or help prepare forms, but the seller should not delegate verification of this step.",
 
       "## WOVR and disclosure obligations",
 
-      "If your car has been declared a total loss, provide accurate information about its condition and insurer status. The [Written-Off Vehicle Register (WOVR)](/blog/wovr-written-off-vehicle-register-qld-guide) status appears in a PPSR search. Do not make false or misleading statements about known write-off, flood, or structural damage.",
+      "If your car has been declared a total loss, provide accurate information about its condition and insurer status. A PPSR vehicle search usually includes recorded written-off status when NEVDIS data is available, but it is not a complete vehicle-history or ownership check. Review the [Written-Off Vehicle Register (WOVR) guide](/blog/wovr-written-off-vehicle-register-qld-guide) and do not make false or misleading statements about known write-off, flood, or structural damage.",
 
       "## What if you're missing documents?",
 
@@ -45,15 +89,34 @@ export const post: RawBlogPostEntry = {
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring photo ID and any registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR. Complete and retain confirmation of your seller-side transfer or cancellation steps. Standard plates usually stay with a registered vehicle during a normal transfer; cancellation and personalised plates follow different rules. Caraway offers free pickup across Greater Brisbane, [Logan](/locations/logan), Ipswich, Caboolture, and the Bayside. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+
+      "Use the private Queensland seller builder below to turn the facts of a proposed transaction into a conservative checklist and a printable two-copy handover record. It does not send or save the details you enter, and it does not replace the official transfer, cancellation, licence, certificate, ownership, or legal checks that apply.",
     ],
+    interactiveTool: "qld-vehicle-sale-record-builder",
     date: "2026-04-16",
-    updatedAt: "2026-06-08",
-    reviewedAt: "2026-06-08",
+    updatedAt: "2026-08-07",
+    reviewedAt: "2026-08-07",
     sources: [
+      {
+        title: "Queensland Government — selling a used vehicle",
+        url: "https://www.qld.gov.au/transport/buying/rules/selling",
+      },
       {
         title: "Queensland Government — transfer registration online",
         url: "https://www.qld.gov.au/transport/registration/transfer/online",
+      },
+      {
+        title: "Queensland Government — transfer registration in person",
+        url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+      },
+      {
+        title: "Queensland Government — check vehicle registration",
+        url: "https://www.service.transport.qld.gov.au/checkrego/public/Welcome.xhtml",
+      },
+      {
+        title: "Queensland Government — cancel vehicle registration",
+        url: "https://www.qld.gov.au/transport/registration/cancel",
       },
       {
         title: "Queensland Government — safety certificates",
@@ -61,7 +124,31 @@ export const post: RawBlogPostEntry = {
       },
       {
         title: "Australian Government PPSR — used car search",
-        url: "https://www.ppsr.gov.au/node/76",
+        url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
+      },
+      {
+        title: "Queensland Government — gas fuelled engines",
+        url: "https://www.qld.gov.au/emergency/safety/home/gas/gas-fuelled-engines",
+      },
+      {
+        title: "Queensland Government — selling and moving unregistered vehicles",
+        url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+      },
+      {
+        title: "Queensland Government — unregistered vehicle permits",
+        url: "https://www.qld.gov.au/transport/buying/unregistered/uvp",
+      },
+      {
+        title: "Queensland Government — moving registration to or from Queensland",
+        url: "https://www.qld.gov.au/transport/registration/transfer/interstate",
+      },
+      {
+        title: "Queensland Government — check a motor licence",
+        url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence",
+      },
+      {
+        title: "Queensland legislation — Vehicle Registration Regulation 2021",
+        url: "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/sl-2021-0113",
       },
     ],
     category: "Guides",

@@ -3,63 +3,67 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-high-kilometre-car-brisbane",
-  title: "Sell a High-Kilometre Car Brisbane: 2026 Guide",
+  title: "Sell a High-Kilometre Car in Brisbane",
   metaDescription:
-    "Selling a high-kilometre car in Brisbane? See what a car with 200,000+ km is really worth, who buys them, and how to get cash with free pickup.",
+    "Selling a high-kilometre car in Brisbane? Document its service history and condition, compare sale options, check pickup terms, and complete the QLD paperwork.",
   excerpt:
-    "A car with 200,000 or 300,000 kilometres on the clock isn't worthless — it's just harder to sell privately. Here's what a high-kilometre car is realistically worth in Brisbane and the quickest way to turn it into cash.",
+    "Kilometres are only one input. Service history, faults, completeness, registration, demand, and access all shape the best selling route.",
   content: [
-    "Plenty of Brisbane cars are still running strong well past the odometer readings most buyers get nervous about. A Corolla that's commuted from Ipswich to the CBD for a decade, a HiLux that's clocked up 320,000 kilometres on job sites around Logan, or a Territory that's done the school run and the Sunshine Coast trip every holiday for years — all of them eventually reach the point where the kilometres scare off private buyers, even when the car drives fine. If you're trying to sell a high-kilometre car in Brisbane, the good news is that the vehicle still holds real value; the harder part is finding a buyer who'll pay it without weeks of haggling. A cash-for-cars buyer is usually that answer, because the offer is built on the car's parts and materials rather than its odometer reading.",
+    "A high odometer reading does not determine a vehicle's condition or value by itself. A regularly serviced car with documented maintenance differs from one with warning lights, leaks, accident history, or years of storage. Prepare the evidence before deciding between repair, private sale, trade-in, and a direct-buyer quote.",
 
-    "## What actually counts as high kilometres",
+    "## Record condition as well as kilometres",
 
-    "There's no fixed line, but the private market starts getting twitchy once a car passes 150,000 kilometres, and buyer interest thins out sharply beyond 200,000. Modern engines routinely last 300,000 kilometres or more with regular servicing, so a well-maintained car in that range can still be mechanically sound. What changes is perception: buyers assume a big timing-belt or transmission bill is around the corner, so they either walk away or offer far below what the car is worth. Diesel utes and 4WDs age differently again — a turbo-diesel HiLux or Ranger with 250,000 kilometres of highway running can be in better shape than a city hatchback with half that on stop-start traffic, but the number on the dash still drags the private price down.",
+    "Provide the exact make, model, variant, year, kilometres, service records, registration status, warning lights, known faults, tyre and battery condition, and body damage. State whether the car starts, rolls, steers, and brakes. Clear photos of the exterior, interior, odometer, engine bay, and damaged areas help a buyer assess the actual vehicle instead of relying on an age or mileage assumption.",
 
-    "## What a high-kilometre car is worth in Brisbane",
+    "## Compare the available selling routes",
 
-    "Value comes down to make, model, condition, and parts demand rather than kilometres alone. A running 2012–2016 sedan or hatch with 220,000 kilometres in tidy condition might draw somewhere around $1,500 to $3,500, depending on the model and service history. A high-kilometre but complete 4WD or ute from a popular range — HiLux, Ranger, Prado, Patrol — often holds far more, because the parts come off and sell fast across Brisbane's dismantling yards. At the other end, a high-kilometre car with a tired engine, a failed transmission, or a lapsed registration is priced closer to its scrap and salvageable-parts value, which for a standard passenger car generally lands somewhere from a few hundred dollars up. The only way to know your number is to describe the exact car and get a quote.",
+    "A private listing may suit a registered vehicle that can be safely demonstrated and supported by service records. A trade-in may suit an owner buying another vehicle from the same dealer. A direct buyer may suit a car with faults, difficult access, or an owner who prefers one quote and a collection plan. Compare net proceeds, preparation, appointments, documents, timing, and certainty rather than assuming one route always wins.",
 
-    "## Repair, sell privately, or sell for cash",
+    "## Repair only after an individual assessment",
 
-    "Three realistic paths exist for a high-kilometre car. Spending money on a major repair rarely pays off once a car is past 200,000 kilometres — a $2,500 transmission on a car worth $3,000 is money you'll never recover at sale. Selling privately can work if the car is clean, well-documented, and priced sharply, but expect the kilometres to dominate every conversation and drag the process out. Selling for cash is the fastest route: you get a firm offer up front, free pickup, and payment on collection, without repairing anything or fielding weeks of lowball messages. For most high-kilometre cars in Brisbane, the private premium simply isn't worth the time and uncertainty.",
+    "There is no universal kilometre threshold at which repair stops making sense. Obtain a written diagnosis and estimate, consider the rest of the vehicle's condition and intended use, and compare the likely post-repair net value with an as-is offer. Include towing, diagnostics, registration, safety-certificate requirements, time, and the risk of additional faults.",
 
-    "## Why private buyers shy away from the odometer",
+    "## Quote and pickup details",
 
-    "On Facebook Marketplace and Gumtree, the first question is almost always about kilometres, and a big number instantly triggers requests for a fresh roadworthy, service records, and a steep discount. Buyers of older, high-kilometre cars tend to be budget-driven and cautious, which means no-shows, drawn-out negotiations, and offers that don't reflect the genuine value sitting in the car's parts and steel. A cash-for-cars buyer sidesteps all of that by valuing the complete vehicle — reusable components, the drivetrain, and the scrap metal — and paying a single consolidated price on the day.",
+    "If requesting a quote, disclose all known faults and access constraints. When Caraway buys, pickup is included if the vehicle and access match the supplied details. The collection window, loading requirements, payment method and timing, and receipt details are confirmed before dispatch; a material difference at pickup may lead to a revised offer that you can decline.",
 
-    "## How selling a high-kilometre car for cash works",
+    "## Queensland paperwork",
 
-    "The process is quick. Give the make, model, year, kilometres, registration status, access details, and an honest description of the condition, and you'll get a quote. If you accept it, you confirm the pickup window and how you'll be paid before the truck is dispatched. Free towing is included across Brisbane, so it doesn't matter whether the car is still driving or hasn't turned over in months — the driver comes to your address, checks the vehicle against the quote, hands over payment, and provides a signed receipt. Across most of Greater Brisbane, from Chermside and the northern suburbs through to Springwood and Logan, pickup is usually same- or next-day once you've booked.",
+    "Kilometres do not change the seller steps. Registration status and sale type do. Check current Queensland guidance for a registered transfer, cancellation, or unregistered sale, and retain a signed receipt plus confirmation of the steps you complete.",
 
-    "## The Queensland paperwork",
-
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads (TMR) transfer steps and keep your confirmation. For a cancellation, follow TMR's plate-surrender requirements. For an unregistered sale, keep a signed receipt recording the VIN, vehicle details, date, price, and both parties' details. Lodging the right transfer or disposal paperwork promptly is what protects you from tolls, fines, or SPER demands later landing back on your name — worth remembering with a high-kilometre car that may have been sitting unregistered in the driveway for a while.",
-
-    "## Getting the best offer",
-
-    "A few things lift the offer on a high-kilometre car. Be upfront about condition when you call, because discrepancies found at pickup lead to revised offers and delays. Gather any service history you have — a documented cambelt change or recent major service can nudge the number up, since it signals the car was looked after. Mention extras like a second set of tyres, a tow bar, or a canopy on a ute. And don't leave it sitting: a parked car keeps losing value as tyres flatten, the battery dies, and rust creeps in, so a high-kilometre car that still starts is worth more today than it will be in three months.",
-
-    `Whether your high-kilometre car is in Brisbane's north, out towards Ipswich, or down through Logan, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Describe the car honestly and you'll have a firm offer in minutes, with free towing included and payment confirmed at pickup.`,
+    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band.`,
   ],
   faqs: [
     {
-      question: "Will you buy a car with over 300,000 kilometres?",
+      question: "Can Caraway assess a car with very high kilometres?",
       answer:
-        "Yes. Kilometres don't rule a car out — offers are based on the make, model, condition, and parts demand. A high-kilometre car that still runs, or even one that doesn't, holds value in its components and scrap metal, and free towing is included wherever it's parked in Brisbane.",
+        "Yes, subject to the vehicle's identity, condition, completeness, ownership status, location, and access. Kilometres are considered with the other details rather than used as an automatic exclusion.",
     },
     {
-      question: "Is it worth repairing a high-kilometre car before selling?",
+      question: "Should I repair a high-kilometre car before selling?",
       answer:
-        "Usually not. Once a car is past around 200,000 kilometres, a major repair like a transmission or engine rebuild rarely returns its cost at sale. It's generally smarter to sell the car as-is for a cash offer than to spend money you won't recover.",
+        "Obtain a written diagnosis and compare total repair cost and likely post-repair net value with an as-is quote. The answer depends on the individual vehicle and fault, not a universal odometer threshold.",
     },
     {
-      question: "Does high mileage affect the paperwork when I sell?",
+      question: "Does high mileage change the paperwork?",
       answer:
-        "No. The Queensland paperwork is the same regardless of kilometres. For a registered car, complete the seller-side TMR transfer and keep your confirmation; for an unregistered car, keep a signed receipt with the VIN, vehicle details, date, price, and both parties' details.",
+        "No. Registration status and sale type determine the Queensland seller steps. Keep a signed receipt and evidence of the transfer, cancellation, or unregistered-sale steps that apply.",
     },
   ],
   date: "2026-07-10",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — selling a used vehicle",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+  ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "old-cars-brisbane"],
-  relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
+  relatedServices: [
+    "cash-for-cars-brisbane",
+    "sell-my-car-brisbane",
+    "scrap-car-removal-brisbane",
+  ],
+  relatedSuburbs: ["toowong", "logan", "redcliffe"],
 };

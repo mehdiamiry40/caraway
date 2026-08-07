@@ -26,4 +26,5 @@ jobs:
           QUOTE_ENDPOINT: ${{ secrets.QUOTE_ENDPOINT }}
           CONTACT_ENDPOINT: ${{ secrets.CONTACT_ENDPOINT }}
           SITE_URL: https://caraway.au
+      - run: npm run check:indexability
       - run: npm run check:bundle

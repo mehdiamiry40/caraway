@@ -21,7 +21,7 @@ export const post: RawBlogPostEntry = {
 
     `## When It's Cheaper to Sell an Interstate-Registered Car`,
 
-    `Look at the repair list from the inspection first, because that's the number that swings the decision. A set of tyres and a windscreen is one conversation. Suspension, brakes, and a rust problem the inspector found in the sills is another, and on an older car it often costs more than the car will fetch afterwards. If you're going the other direction and leaving Queensland, [selling before you move](/blog/how-to-sell-a-car-when-moving-interstate-brisbane) is a shorter version of the same calculation.`,
+    `Look at the repair list from the inspection first, because that's the number that swings the decision. A set of tyres and a windscreen is one conversation. Suspension, brakes, and a rust problem the inspector found in the sills is another, and on an older car it may cost more than the car will fetch afterwards. If you're going the other direction and leaving Queensland, compare those costs with the practical steps for [selling your car in Brisbane](/sell-my-car-brisbane) before the move.`,
 
     `Private sale is also harder than most people expect. A Brisbane buyer looking at your NSW-plated Corolla inherits your exact problem — they need the Queensland safety certificate and the trip to the service centre themselves. Most work that out during the test drive and either discount hard or move on to something already wearing Queensland plates. Anyone trying to sell an interstate-registered car privately should price in that friction from the start.`,
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Write the sale down either way. Date, odometer reading, VIN, price, and both parties' details on a receipt, plus a copy of the disposal notice you lodged with the origin state. With two states' systems involved, that paper trail is doing more work than usual.`,
 
-    `If the car isn't worth another round of inspections and fees, Caraway will buy an interstate-registered car as it sits, plates and all, with [free car removal](/car-removal-brisbane) across Greater Brisbane. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll pay cash on pickup.`,
+    `If the car isn't worth another round of inspections and fees, Caraway can assess it from the registration, condition, location, and access details you supply. If Caraway buys the vehicle and those details match, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job.`,
   ],
   faqs: [
     {

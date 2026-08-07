@@ -1,24 +1,45 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import {
+  getRequestHostname,
+  shouldNoindexHostname,
+} from "@/lib/noindex";
 
-export async function middleware(request: NextRequest) {
+function withHostRobotsPolicy(
+  response: NextResponse,
+  request: NextRequest,
+): NextResponse {
+  const hostname = getRequestHostname(
+    request.headers,
+    request.nextUrl.hostname,
+  );
+  if (shouldNoindexHostname(hostname)) {
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+  return response;
+}
+
+export async function proxy(request: NextRequest) {
   if (request.method !== "POST") {
-    return NextResponse.next();
+    return withHostRobotsPolicy(NextResponse.next(), request);
   }
 
   // --- Rate limiting ---
   const rateLimitResult = await rateLimit("forms", getClientIp(request));
   if (!rateLimitResult.success) {
-    return new NextResponse("Too many requests", {
-      status: 429,
-      headers: {
-        "Retry-After": Math.max(
-          1,
-          Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
-        ).toString(),
-      },
-    });
+    return withHostRobotsPolicy(
+      new NextResponse("Too many requests", {
+        status: 429,
+        headers: {
+          "Retry-After": Math.max(
+            1,
+            Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+          ).toString(),
+        },
+      }),
+      request,
+    );
   }
 
   // --- Origin validation ---
@@ -43,10 +64,16 @@ export async function middleware(request: NextRequest) {
         ok = true;
       }
       if (!ok) {
-        return new NextResponse("Forbidden", { status: 403 });
+        return withHostRobotsPolicy(
+          new NextResponse("Forbidden", { status: 403 }),
+          request,
+        );
       }
     } catch {
-      return new NextResponse("Forbidden", { status: 403 });
+      return withHostRobotsPolicy(
+        new NextResponse("Forbidden", { status: 403 }),
+        request,
+      );
     }
   } else {
     // No Origin header — fall back to Referer for CSRF validation.
@@ -67,18 +94,27 @@ export async function middleware(request: NextRequest) {
           ok = true;
         }
         if (!ok) {
-          return new NextResponse("Forbidden", { status: 403 });
+          return withHostRobotsPolicy(
+            new NextResponse("Forbidden", { status: 403 }),
+            request,
+          );
         }
       } catch {
-        return new NextResponse("Forbidden", { status: 403 });
+        return withHostRobotsPolicy(
+          new NextResponse("Forbidden", { status: 403 }),
+          request,
+        );
       }
     } else {
       // Neither Origin nor Referer present on a POST — reject.
-      return new NextResponse("Forbidden", { status: 403 });
+      return withHostRobotsPolicy(
+        new NextResponse("Forbidden", { status: 403 }),
+        request,
+      );
     }
   }
 
-  return NextResponse.next();
+  return withHostRobotsPolicy(NextResponse.next(), request);
 }
 
 // Exclude static assets and API routes. Server action POSTs to page routes

@@ -3,58 +3,74 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-my-ute-brisbane",
-  title: "Sell My Ute Brisbane — Cash for Utes Fast (2026)",
+  title: "Selling a Ute in Brisbane: Condition, Value & Paperwork",
   metaDescription:
-    "Want to sell my ute Brisbane buyers pay well for? Get a firm cash offer for any ute — Hilux, Ranger, Triton — running or not, with free pickup across QLD.",
+    "Selling a ute in Brisbane? Record its variant, condition, accessories, ownership, and access, compare sale routes, and check the QLD paperwork.",
   excerpt:
-    "Utes hold their value better than almost anything else on Brisbane roads. Here's what your ute is really worth, how to sell it fast for cash, and what QLD paperwork you need to sort before pickup.",
+    "A useful ute assessment starts with the exact vehicle, condition, ownership, modifications, and collection access—not a generic price promise.",
   content: [
-    "Utes are everywhere on Brisbane roads, and for good reason — they're the backbone of trades, weekend trips up the Sunshine Coast, and just about every worksite from Ipswich to the bayside. That popularity is also why utes hold their value better than almost any other vehicle, which works in your favour when it's time to move one on. Whether you've upgraded the work fleet, the old dual-cab has finally given up, or you're clearing a deceased estate, knowing how to sell my ute Brisbane buyers actually want can be the difference between a quick fair offer and weeks of tyre-kickers in your inbox.",
+    "Selling a ute in Brisbane starts with identifying the exact vehicle and the outcome you want. A private listing, dealer trade-in, and direct-buyer quote involve different preparation, timing, and conditions. Compare the likely net proceeds and work involved rather than assuming one route is best for every ute.",
 
-    "## What's my ute worth in Brisbane?",
+    "## Record the exact ute and its condition",
 
-    "Strong resale is the headline with utes. A tidy, low-kilometre Toyota Hilux or Ford Ranger will always command a premium, but even high-kilometre, damaged, or non-running utes carry real value because their engines, gearboxes, diffs, and tubs are in constant demand for parts. The figure you'll be quoted depends on the make and model, the year, how many kilometres are on the clock, whether it runs and drives, and the condition of the body and tray. A common workhorse like a Hilux, Ranger, Mitsubishi Triton, Holden Colorado, or Mazda BT-50 tends to attract the most competitive offers simply because parts move so quickly. A complete, driveable ute will obviously fetch more than one that's been sitting on blocks, but don't write off a dead one — a written-off or blown-engine ute can still be worth several hundred dollars and sometimes a good deal more.",
+    "Provide the make, model, variant, year, cab and body style, engine, transmission, drivetrain, kilometres, registration status, and service history. Photograph the exterior, cabin, odometer, engine bay, tyres, tray or tub, and any damage. State whether the ute starts, rolls, steers, and brakes, and disclose warning lights, leaks, rust, accident history, flood exposure, or a written-off classification.",
 
-    "## Sell your ute in any condition",
+    "Canopies, bull bars, tow bars, toolboxes, drawer systems, aftermarket trays, suspension changes, and other modifications should be listed accurately. They may affect an individual buyer's assessment, but an accessory does not have a universal resale value. Include compliance or installation records where they are relevant.",
 
-    "You don't need a showroom-ready vehicle to get paid. We buy utes that are mechanically perfect and utes that haven't turned over in years. High kilometres aren't a problem, neither is a cracked windscreen, a rusted-through tray, hail damage, flood damage, or a transmission that's packed it in. If your ute has been in an accident or carries a Written-Off Vehicle Register (WOVR) flag, that's fine too — we deal with damaged and statutory write-offs regularly. Aftermarket extras like canopies, tow bars, bull bars, drawer systems, and trays can add to the offer, so mention them when you ask for a quote rather than assuming they don't count.",
+    "## Confirm ownership, finance, and authority",
 
-    "## The Queensland paperwork you need to sort",
+    "Before agreeing to a sale, resolve any finance or registered security interest and confirm that the seller has authority to dispose of the ute. For a business vehicle, identify the legal entity that owns it and the person authorised to sign for that entity; an ABN by itself is not proof of ownership or signing authority. Keep relevant company, finance, insurer, estate, or fleet records with the sale file.",
 
-    "Selling a ute in Queensland follows the same rules as any vehicle. As the registered operator you must notify the Department of Transport and Main Roads (TMR) that you've sold or disposed of it — this is what stops you being chased for the new owner's tolls, fines, and CTP obligations down the track. Have your photo ID and proof of ownership ready, and complete the transfer or disposal notice on the day the ute is collected. One ute-specific tip: plenty of trade utes are owned by a business or under an ABN, so make sure whoever signs is authorised to sell on the company's behalf, and keep the paperwork for your own GST and logbook records.",
+    "A buyer can run an official Personal Property Securities Register search using the VIN. If finance is owing, obtain a current payout figure and agree on a settlement process that results in the security interest being discharged.",
 
-    "## Don't forget your plates and rego",
+    "## Compare the selling routes",
 
-    "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
+    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
 
-    "## How to get the best price for your ute",
+    "## Check the Queensland seller steps",
 
-    "The single most effective thing you can do is get two or three quotes so you know the realistic market range and can spot a lowball — or an inflated bait offer that gets revised down at pickup. Describe the ute honestly: make, model, year, kilometres, whether it runs, and any damage. An accurate description means a firm offer that doesn't change when the truck arrives. Photos help, particularly of the engine bay, the tray, and any modifications. Because utes are in such high demand for both resale and parts across Greater Brisbane, a well-described ute usually attracts a competitive offer the same day you enquire.",
+    "Registration status and buyer type determine the Queensland requirements. For a registered transfer, complete the seller-side TMR process within the required period and keep confirmation. Check whether a current safety certificate is required for the particular transaction. For an unregistered sale, both parties should sign and keep a receipt identifying the vehicle and transaction; moving it on a road is a separate legal and safety question.",
 
-    "## Free ute pickup across Greater Brisbane",
+    "## Quote and pickup details",
 
-    "Once you accept an offer, you shouldn't be paying anything to get the ute removed — free towing across Greater Brisbane, Logan, Ipswich, Moreton Bay, and the Redlands is standard, and any fee should be disclosed up front, never sprung on you at the gate. We come to you, whether the ute is parked in a Logan driveway, sitting at an Ipswich worksite, or bogged at the back of an acreage block. Pickup is usually same- or next-day depending on truck availability, and the safe rule with payment is always the same: confirm the funds have actually cleared into your account, or count the cash, before the keys and the ute change hands.",
+    "Give every buyer the same accurate description and photos so the offers are comparable. Ask what could change the offer, whether pickup is included, which access assumptions apply, when payment is confirmed, and what receipt and buyer details will be supplied. Disclose gates, slopes, height limits, soft ground, seized wheels, missing keys, storage fees, or worksite restrictions before collection is scheduled.",
 
-    `Ready to request an offer for your ute? Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses running and non-running utes, includes towing when we buy, and provides a signed receipt and buyer details.`,
+    `To request an individual ute assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The available window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   faqs: [
     {
-      question: "Can I sell my ute in Brisbane if it doesn't run?",
+      question: "Can Caraway assess a non-running or damaged ute?",
       answer:
-        "Yes. Non-running, damaged, written-off, and high-kilometre utes are still worth money because the engine, gearbox, diff, and tub are in constant demand for parts. Describe the condition honestly and you'll get a firm offer with free pickup.",
+        "Yes, subject to the ute's identity, condition, completeness, ownership status, location, and access. Describe whether it starts, rolls, steers, and brakes so the quote and collection requirements can be assessed.",
     },
     {
-      question: "What paperwork do I need to sell a ute in Queensland?",
+      question: "What paperwork should I prepare for a Queensland ute sale?",
       answer:
-        "Photo ID, proof of ownership, and a completed TMR transfer or disposal notice lodged on the day of collection. If the ute is owned under an ABN, make sure whoever signs is authorised to sell on the business's behalf.",
+        "Prepare photo ID and the registration, ownership, finance, insurer, estate, or business-authority records that apply. Follow the current TMR steps for a registered transfer, cancellation, or unregistered sale and keep the resulting confirmation and receipt.",
     },
     {
-      question: "Do canopies, tow bars, and trays add to the offer?",
+      question: "Do canopies, tow bars, and trays increase the offer?",
       answer:
-        "They can. Aftermarket extras like canopies, bull bars, tow bars, drawer systems, and quality trays often add value, so mention them when you request a quote rather than assuming they're not counted.",
+        "They may affect an individual assessment depending on their type, condition, installation, and buyer demand. List and photograph each accessory rather than assuming a fixed addition to the ute's value.",
     },
   ],
   date: "2026-06-07",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — selling a used vehicle",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Australian Government PPSR — used car and vehicle search",
+      url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
+    },
+  ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
