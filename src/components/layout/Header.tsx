@@ -63,6 +63,7 @@ export function Header() {
         <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
           <Link
             href="/"
+            prefetch={false}
             className="flex items-center gap-3 group shrink-0"
           >
             <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
@@ -87,7 +88,11 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
-            <Link href="/#price-estimator" className={buttonVariants({ size: "sm" })}>
+            <Link
+              href="/#price-estimator"
+              prefetch={false}
+              className={buttonVariants({ size: "sm" })}
+            >
               Get my quote
             </Link>
           </div>

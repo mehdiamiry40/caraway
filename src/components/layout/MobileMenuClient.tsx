@@ -94,6 +94,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             </a>
             <Link
               href="/#price-estimator"
+              prefetch={false}
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "h-14 w-full rounded-lg text-base sm:text-lg",
