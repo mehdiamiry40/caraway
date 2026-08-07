@@ -8,7 +8,7 @@ export const post: RawBlogPostEntry = {
     excerpt:
       "Transferring car ownership in Queensland is straightforward once you know the steps. Here's exactly what buyers and sellers need to do to stay legal.",
     content: [
-      "Whether you're selling your car privately, through a dealer, or to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), you need to transfer ownership properly. Getting it wrong can leave you liable for fines, tolls, or even accidents after the car has left your hands. Here's how to handle it correctly in Queensland.",
+      "Whether you're selling your car privately, through a dealer, or to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), complete the registration-transfer steps that apply and keep confirmation. An incomplete transfer can leave the old operator dealing with toll, infringement, registration, or record disputes after the vehicle has changed hands.",
       "## The QLD transfer paperwork: forms and fees",
       "Queensland offers online and in-person transfer pathways. The seller must complete the seller side of the transfer within 14 days and keep the confirmation or seller's copy. For an in-person transfer, the current TMR form is the Vehicle Registration Transfer Application (F3520); online eligibility depends on the registration, buyer, and plate type.",
       "The buyer finalises the transfer and pays the current transfer fee and any vehicle registration duty that applies. These amounts can change and duty depends on the vehicle and transaction, so use the current TMR service or fee information rather than relying on an old flat-rate example.",
@@ -20,14 +20,14 @@ export const post: RawBlogPostEntry = {
       "If registration documents are missing, use TMR's current online or in-person services to confirm the record and determine what replacement evidence is needed. Resolve this before pickup rather than relying on an improvised declaration.",
       "## Cash-for-cars and written-off vehicles",
       "For a cash-for-cars transaction, ask for a signed receipt and the buyer details needed for TMR. Bring photo ID and complete the seller-side transfer, cancellation, or unregistered-sale records that apply. A buyer can help prepare information, but the seller should keep confirmation that the TMR record has been updated.",
-      "If you're selling a written-off vehicle, there are extra rules. [Statutory write-offs in Queensland](/blog/wovr-written-off-vehicle-register-qld-guide) cannot be re-registered — ever. Repairable write-offs can be re-registered, but only after passing a written-off vehicle inspection through TMR. Make sure you know which category your car falls into before listing it for sale.",
+      "If you're selling a written-off vehicle, there are extra rules. [Statutory write-offs in Queensland](/blog/wovr-written-off-vehicle-register-qld-guide) cannot be re-registered. A repairable write-off generally needs both a safety-certificate inspection and a written-off vehicle inspection before it can be re-registered; a qualifying hail-damaged vehicle may be exempt from the written-off vehicle inspection. Confirm the classification and current inspection pathway from the official record rather than relying on a listing description.",
       "## Avoiding common transfer mistakes",
       "A few final tips keep the transfer clean. Record the buyer details required by the TMR process, keep a signed receipt, and do not hand over the keys until payment is confirmed. Handle identity information carefully and collect only what you reasonably need for the transaction and official forms.",
       "Transferring car ownership in QLD is manageable, but skipping steps can create problems weeks or months later. Whether you're selling a near-new sedan in Paddington or an older ute in [Logan](/locations/logan), complete the seller-side process yourself and retain the TMR confirmation even if a buyer helps prepare the paperwork.",
     ],
     date: "2026-04-02",
-    updatedAt: "2026-06-08",
-    reviewedAt: "2026-06-08",
+    updatedAt: "2026-08-07",
+    reviewedAt: "2026-08-07",
     sources: [
       {
         title: "Queensland Government — transfer registration online",
@@ -36,6 +36,10 @@ export const post: RawBlogPostEntry = {
       {
         title: "Queensland Government — safety certificates",
         url: "https://www.qld.gov.au/transport/registration/roadworthy",
+      },
+      {
+        title: "Queensland Government — inspections for written-off vehicles",
+        url: "https://www.qld.gov.au/transport/vehicle-safety/written-off-vehicles/inspections",
       },
     ],
     category: "Guides",

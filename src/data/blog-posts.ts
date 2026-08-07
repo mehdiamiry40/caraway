@@ -1,5 +1,6 @@
 import { rawBlogPosts } from "@/content/blog/posts";
 import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
+import { isRetiredBlogSlug } from "@/lib/blog-consolidation";
 import { createBlogPost } from "@/lib/blog-post";
 import { canonicalServiceSlug } from "@/lib/service-consolidation";
 
@@ -32,7 +33,19 @@ function sortByNewest(a: BlogPost, b: BlogPost): number {
   return dateTime(b) - dateTime(a);
 }
 
-export const blogPosts: BlogPost[] = rawBlogPosts.map(materializePost).sort(sortByNewest);
+const accidentallyRepublishedPost = rawBlogPosts.find((post) =>
+  isRetiredBlogSlug(post.slug),
+);
+
+if (accidentallyRepublishedPost) {
+  throw new Error(
+    `Retired blog post must stay redirected: ${accidentallyRepublishedPost.slug}`,
+  );
+}
+
+export const blogPosts: BlogPost[] = rawBlogPosts
+  .map(materializePost)
+  .sort(sortByNewest);
 
 const serviceCornerstoneSlugs: Readonly<
   Partial<Record<string, readonly string[]>>

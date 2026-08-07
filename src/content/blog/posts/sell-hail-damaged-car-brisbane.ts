@@ -2,7 +2,7 @@ import type { RawBlogPostEntry } from "../types";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-hail-damaged-car-brisbane",
-  title: "Sell a Hail-Damaged Car Brisbane (2026 Guide)",
+  title: "Hail Damage, Insurance and Sale Options in Brisbane",
   metaDescription:
     "Selling a hail-damaged car in Brisbane: document the damage, confirm insurer and ownership status, compare options, and prepare for pickup.",
   excerpt:
@@ -24,7 +24,7 @@ export const post: RawBlogPostEntry = {
 
     "If the vehicle has a written-off classification, share the insurer correspondence and confirm that you retained ownership and have authority to sell. Classification affects what can lawfully happen next and should be assessed from official records, not a buyer's assumption.",
 
-    "## How cash for cars works for hail-damaged vehicles",
+    "## Requesting a quote after hail damage",
 
     "Request an individual assessment through Caraway's [hail-damaged car service](/hail-damaged-cars-brisbane) after insurer, finance, and ownership status are clear. Provide the vehicle details, photos, broken-glass or water-entry information, mechanical state, suburb, and access. If Caraway makes an offer and you accept it, the collection window, payment arrangement, equipment, and included-pickup terms are confirmed before dispatch.",
 

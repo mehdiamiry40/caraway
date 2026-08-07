@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { RETIRED_BLOG_DESTINATIONS } from "./src/lib/blog-consolidation";
 import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
 import { RETIRED_SERVICE_DESTINATIONS } from "./src/lib/service-consolidation";
 
@@ -19,6 +20,13 @@ export const retiredServiceRedirects = Object.entries(
   destination,
 }));
 
+export const retiredBlogRedirects = Object.entries(
+  RETIRED_BLOG_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/blog/${slug}`,
+  destination,
+}));
+
 export const legacyIndexingRedirects = [
   {
     source: "/privacy-policy.html",
@@ -28,130 +36,17 @@ export const legacyIndexingRedirects = [
     source: "/vehicles-we-buy/utes-vans",
     destination: "/cash-for-cars-brisbane",
   },
-  {
-    source: "/blog/cash-for-cars-redcliffe-brisbane",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-ipswich-brisbane",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-logan-brisbane",
-    destination: "/locations/logan",
-  },
-  {
-    source: "/blog/cash-for-cars-sunshine-coast",
-    destination: "/cash-for-cars-brisbane",
-  },
-  {
-    source: "/blog/cash-for-cars-toowoomba",
-    destination: "/cash-for-cars-brisbane",
-  },
-  {
-    source: "/blog/cash-for-cars-gold-coast",
-    destination: "/cash-for-cars-brisbane",
-  },
-  // July 2026 consolidation: suburb-level "cash for cars {suburb}" posts
-  // competed with the /locations/{suburb} landing pages for identical
-  // queries (keyword cannibalization). Each post now 301s to its location
-  // page so Google consolidates ranking signals onto the money page.
-  {
-    source: "/blog/cash-for-cars-beenleigh",
-    destination: "/locations/beenleigh",
-  },
-  {
-    source: "/blog/cash-for-cars-bulimba",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-browns-plains",
-    destination: "/locations/logan",
-  },
-  {
-    source: "/blog/cash-for-cars-caboolture-brisbane",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-capalaba",
-    destination: "/locations/capalaba",
-  },
-  {
-    source: "/blog/cash-for-cars-carindale",
-    destination: "/locations/capalaba",
-  },
-  {
-    source: "/blog/cash-for-cars-chermside",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-indooroopilly",
-    destination: "/locations/toowong",
-  },
-  {
-    source: "/blog/cash-for-cars-ipswich",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-kenmore",
-    destination: "/locations/kenmore",
-  },
-  {
-    source: "/blog/cash-for-cars-logan",
-    destination: "/locations/logan",
-  },
-  {
-    source: "/blog/cash-for-cars-moorooka",
-    destination: "/locations/moorooka",
-  },
-  {
-    source: "/blog/cash-for-cars-mount-gravatt",
-    destination: "/locations/moorooka",
-  },
-  {
-    source: "/blog/cash-for-cars-north-lakes",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-nundah",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-redcliffe",
-    destination: "/locations/redcliffe",
-  },
-  {
-    source: "/blog/cash-for-cars-springwood",
-    destination: "/locations/springwood",
-  },
-  {
-    source: "/blog/cash-for-cars-stafford",
-    destination: "/locations",
-  },
-  {
-    source: "/blog/cash-for-cars-sunnybank",
-    destination: "/locations/moorooka",
-  },
-  {
-    source: "/blog/cash-for-cars-toowong",
-    destination: "/locations/toowong",
-  },
-  {
-    source: "/blog/cash-for-cars-wynnum",
-    destination: "/locations/capalaba",
-  },
-  // July 2026 consolidation: two posts answered the identical "how much is a
-  // scrap car worth in Brisbane" query. The older, thinner post 301s into the
-  // newer guide so Google consolidates ranking signals onto one URL.
-  {
-    source: "/blog/how-much-is-my-car-worth-for-scrap-brisbane",
-    destination: "/blog/how-much-is-scrap-car-worth-brisbane",
-  },
   // July 2026 consolidation: the "Car Selling Guides" blog category duplicated
   // the "Guides" category; its posts now live under /blog/category/guides.
   {
     source: "/blog/category/car-selling-guides",
     destination: "/blog/category/guides",
+  },
+  // Retiring six posts reduced the archive from six paginated pages to five.
+  // Preserve the former final page as a one-hop redirect instead of a 404.
+  {
+    source: "/blog/page/6",
+    destination: "/blog",
   },
   // Legacy URLs surfaced by Search Console as 404s or alternative canonicals.
   // These pages have moved permanently, so redirect them instead of serving
@@ -185,12 +80,6 @@ export const legacyIndexingRedirects = [
     source: "/service-page/home-visit",
     destination: "/car-removal-brisbane",
   },
-  // August 2026 Search Console consolidation: the article split the same
-  // Brisbane car-removal query across multiple URLs. Keep one indexable owner.
-  {
-    source: "/blog/free-car-removal-brisbane",
-    destination: "/car-removal-brisbane",
-  },
   {
     source: "/blog/sell-damaged-car-brisbane.html",
     destination: "/blog/sell-damaged-car-brisbane",
@@ -200,6 +89,7 @@ export const legacyIndexingRedirects = [
 const indexingRedirects = [
   ...retiredServiceRedirects,
   ...retiredLocationRedirects,
+  ...retiredBlogRedirects,
   ...legacyIndexingRedirects,
 ] as const;
 

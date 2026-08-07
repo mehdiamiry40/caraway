@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import nextConfig, {
   legacyIndexingRedirects,
+  retiredBlogRedirects,
   retiredLocationRedirects,
   retiredServiceRedirects,
 } from "../next.config";
@@ -12,6 +13,7 @@ import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[sl
 import { blogPosts } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
+import { RETIRED_BLOG_DESTINATIONS } from "@/lib/blog-consolidation";
 import { RETIRED_SERVICE_DESTINATIONS } from "@/lib/service-consolidation";
 import { SITE_URL } from "@/lib/site";
 
@@ -111,6 +113,90 @@ describe("Search Console indexing cleanup", () => {
       const slug = source.replace("/blog/", "");
       expect(liveSlugs.has(slug)).toBe(false);
       expect(staticSlugs.has(slug)).toBe(false);
+    }
+  });
+
+  it("retires every canonical blog URL through a shared one-hop contract", async () => {
+    const redirects = await getRedirectRules();
+    const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    const staticSlugs = new Set(
+      (await generateBlogStaticParams()).map(({ slug }) => slug),
+    );
+    const liveSlugs = new Set(blogPosts.map(({ slug }) => slug));
+    const contractRedirects = [
+      ...retiredBlogRedirects,
+      ...retiredLocationRedirects,
+      ...retiredServiceRedirects,
+      ...legacyIndexingRedirects,
+    ];
+    const contractSources = contractRedirects.map(({ source }) => source);
+    const redirectSources = new Set(contractSources);
+
+    expect(retiredBlogRedirects).toHaveLength(
+      Object.keys(RETIRED_BLOG_DESTINATIONS).length,
+    );
+    expect(new Set(contractSources).size).toBe(contractSources.length);
+
+    for (const [slug, destination] of Object.entries(
+      RETIRED_BLOG_DESTINATIONS,
+    )) {
+      const source = `/blog/${slug}`;
+      expect(liveSlugs.has(slug)).toBe(false);
+      expect(staticSlugs.has(slug)).toBe(false);
+      expect(findPathRedirect(redirects, source)).toMatchObject({
+        destination,
+        permanent: true,
+      });
+      expect(
+        redirects.find(
+          (rule) => rule.source === `${source}/` && !rule.has,
+        ),
+      ).toMatchObject({ destination, permanent: true });
+      expect(
+        redirects.find(
+          (rule) =>
+            rule.source === source &&
+            rule.has?.some(
+              (condition) =>
+                condition.type === "host" &&
+                condition.value === "www.caraway.au",
+            ),
+        ),
+      ).toMatchObject({
+        destination: `${SITE_URL}${destination}`,
+        permanent: true,
+      });
+      expect(
+        redirects.find(
+          (rule) =>
+            rule.source === `${source}/` &&
+            rule.has?.some(
+              (condition) =>
+                condition.type === "host" &&
+                condition.value === "www.caraway.au",
+            ),
+        ),
+      ).toMatchObject({
+        destination: `${SITE_URL}${destination}`,
+        permanent: true,
+      });
+      expect(sitemapUrls.has(`${SITE_URL}${source}`)).toBe(false);
+      expect(sitemapUrls.has(`${SITE_URL}${liveTargetPath(destination)}`)).toBe(
+        true,
+      );
+      expect(redirectSources.has(destination)).toBe(false);
+    }
+  });
+
+  it("does not reference retired blog URLs outside their redirect contract", () => {
+    const sourceFiles = walkSourceFiles(path.join(process.cwd(), "src"));
+
+    for (const slug of Object.keys(RETIRED_BLOG_DESTINATIONS)) {
+      const retiredPath = `/blog/${slug}`;
+      const matches = sourceFiles.filter((file) =>
+        fs.readFileSync(file, "utf8").includes(retiredPath),
+      );
+      expect(matches, retiredPath).toEqual([]);
     }
   });
 

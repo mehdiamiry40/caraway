@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { blogPosts, getPostsForService } from "@/data/blog-posts";
-import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
+import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 
 describe("getPostsForService", () => {
   it("returns the cash-for-cars cornerstone guides in their curated order", () => {

@@ -3,67 +3,86 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-deceased-estate-car-qld",
-  title: "How to Sell a Deceased Estate Car in QLD (2026)",
+  title: "Selling a Deceased Estate Car in QLD: TMR Steps",
   metaDescription:
-    "How to sell a deceased estate car in Queensland: who can sell it, the TMR paperwork you need, whether probate is required, and the fastest way to a cash sale in Brisbane.",
+    "Selling or transferring a deceased estate car in Queensland? Check who can act, the F5296 documents, registration, duty, and sale records.",
   excerpt:
-    "Settling a loved one's estate often means dealing with their car. Here's who's allowed to sell a deceased estate car in Queensland, the paperwork involved, and how to turn it into cash without the stress.",
+    "Queensland's requirements depend on whether there is a grant, a valid will, or a next-of-kin application. Confirm the authority and registration path before agreeing to a sale.",
   content: [
-    "When someone passes away, their car is often one of the last things the family gets around to dealing with — and one of the more confusing. A deceased estate car in Queensland can't simply be sold the way you'd sell your own vehicle, because the registered owner is no longer alive to sign the transfer. The good news is that the process is well-established, the Department of Transport and Main Roads (TMR) has a clear path for it, and once the paperwork is sorted, selling the car itself can be quick and straightforward. This guide walks through who's allowed to sell a deceased estate car, what documents you'll need, and the fastest way to turn an unwanted vehicle into cash.",
+    "A vehicle registered to someone who has died cannot be handled as an ordinary sale until the person acting for the estate has confirmed their authority and the Department of Transport and Main Roads (TMR) requirements. The correct documents depend on whether probate or letters of administration have been granted, whether there is a valid will, and whether a next-of-kin pathway applies.",
 
-    "## Who can sell a deceased estate car",
+    "## Start with the TMR deceased-estate process",
 
-    "Only a person with legal authority over the estate can sell the car. Usually that's the executor named in the will, or — if there's no will — the administrator appointed through letters of administration. For larger estates, the Supreme Court of Queensland may have granted probate, which formally confirms the executor's authority. For smaller, simpler estates, a grant of probate isn't always required, and TMR can often process a transfer or disposal on the strength of the death certificate and a completed transfer form. If the Public Trustee or a solicitor is administering the estate, they'll typically handle the vehicle as part of the wider process.",
+    "Use TMR's current deceased-estate questionnaire before arranging a transfer or cancellation. TMR may already have placed a restriction on the deceased person's registration products and may require an original or certified copy of the death certificate or coroner's report. Keep any Registration Notice Individual Restriction letter, because it changes some of the evidence that must be produced.",
 
-    "## Do you need probate to sell the car?",
+    "The central form is the Application to Transact with Registration Products on behalf of a Deceased Person (F5296). It is used by an executor, administrator, or eligible next of kin to deal with vehicle registrations and number plates recorded in the deceased person's name. The form and supporting evidence should be checked against the current TMR instructions rather than an informal document list.",
 
-    "Not always. Whether probate is required depends on the size and complexity of the estate, not just the car. A modest vehicle that's part of a small estate can often be transferred or sold without a formal grant, provided you can prove the death and your authority to act. Higher-value estates, or any situation where ownership is disputed, will usually need probate or letters of administration first. Because the rules turn on the specifics, it's worth confirming your situation directly with TMR or the Public Trustee before you commit to a sale — a five-minute phone call can save a lot of back-and-forth later.",
+    "## Who can complete the process",
 
-    "## Paperwork you'll need",
+    "If probate or letters of administration have been granted, the executor or administrator provides the original or certified grant and completes F5296. If an application for a grant has been made but is still pending, TMR says the deceased person's registration products cannot be finalised until the grant is issued.",
 
-    "Before the car changes hands, gather the death certificate, the registration certificate (or the registration number if you can't find the papers), proof of your authority over the estate — the will and grant of probate, or letters of administration — and your own photo ID. If the estate qualifies for the simplified process, TMR may accept a completed vehicle transfer form together with the death certificate. Keep copies of everything. Estate administration involves accounting to beneficiaries, so a clear paper trail showing what the car was sold for and to whom is genuinely important, not just good practice.",
+    "Where there is no grant but there is a valid will, an executor named in the will may be able to proceed by providing the original or a certified copy of the will and completing F5296, including its statutory declaration. Where there is no will, grant, or letters of administration, an eligible next of kin may be able to use the F5296 next-of-kin pathway and statutory declaration. Disputed estates or uncertainty about who may act should be resolved with TMR and appropriate estate advice before the vehicle is sold.",
 
-    "## Transfer to family, or sell?",
+    "## Decide whether to transfer or cancel the registration",
 
-    "If a family member wants to keep the car, the estate can transfer the registration into their name through TMR, and ordinary duty and transfer rules apply from that point. If nobody wants it — which is common, especially with older or high-kilometre cars that have been sitting unused — selling is usually the cleaner option. A car that's been parked through a lengthy estate process often won't be registered or roadworthy any more: batteries go flat, tyres deflate, registration lapses, and a fresh safety certificate becomes another job nobody wants. That's exactly the kind of vehicle a cash-for-cars buyer is set up to take.",
+    "TMR allows an authorised person to transfer the registration to another person or, where administration is not yet complete, temporarily into the estate with a nominated second registered operator. If the registration is to be cancelled, TMR says it must first be transferred from the deceased operator into the estate or to another person so any registration refund is paid correctly. Complete the applicable transfer or cancellation steps and retain the confirmation.",
 
-    "## Selling a deceased estate car for cash",
+    "A transfer from a deceased estate to its personal representative or a person beneficially entitled to the vehicle may qualify for a vehicle-registration-duty exemption. A later sale to another buyer is a separate transaction, so check the current fees, duty, safety-certificate, and transfer requirements for that sale rather than assuming the estate exemption carries across.",
 
-    "Cash-for-cars buyers purchase vehicles in any condition — registered or not, running or not, late-model or decades old. For an estate, that removes most of the friction: there's no need to chase a roadworthy certificate, no advertising, no strangers coming to the house for test drives during an already difficult time, and no waiting weeks for a private buyer. You give the make, model, year, kilometres, and an honest description of the condition, accept the quote if it suits, and the vehicle is collected — often within a day across Brisbane, from the northside through Logan and out to Ipswich. Payment is confirmed at pickup and you get a signed receipt for the estate records.",
+    "## Prepare the vehicle and sale records",
 
-    "## What a deceased estate car is worth",
+    "Before requesting quotes, record the make, model, year, VIN, registration status, kilometres, condition, keys, location, and access. Confirm whether finance, an insurer settlement, a written-off classification, personalised plates, or another ownership issue affects the estate's authority to sell. Do not hand over the vehicle until the authorised person is satisfied with the documents, payment arrangement, and buyer details.",
 
-    "Valuations vary widely with the vehicle. A complete, running car in reasonable condition may fetch anywhere up to $9,999, while an older non-running sedan or a stripped vehicle might sit closer to $300 to $900. Utes and 4WDs — HiLuxes, Rangers, Patrols, and Prados — consistently attract stronger offers because parts demand is high and their heavier steel content adds value at the recycling stage. Be straight about the condition when you ask for a quote; discrepancies found at pickup lead to revised offers, and the last thing you want during an estate is a renegotiation on the day.",
+    "For a registered disposal, check whether a safety certificate is required for the particular buyer and transfer. An unregistered vehicle can be sold without a safety certificate, but the seller and buyer should sign and retain a receipt that identifies the vehicle and transaction. Transporting an unregistered or unsafe vehicle is a separate issue and may require a tow or the applicable permit and CTP cover.",
 
-    "## Cancel the registration and notify TMR",
+    "## Requesting a direct-buyer quote",
 
-    "Once the car is gone, deal with the registration so nothing lands back on the estate. Lodge the relevant transfer or disposal notification with TMR promptly. Queensland registration stays attached to the registered owner's record until that's done, so failing to notify TMR can leave the estate exposed to tolls, infringements, or SPER demands tied to a car it no longer owns. If the registration is still current, the estate may also be entitled to a refund of the unused portion — worth claiming as part of finalising the estate's finances. Standard plates go with the vehicle, but if the deceased held a personalised plate the family wants to keep, arrange to retain it through TMR ahead of the pickup.",
-
-    `Whether the car is in North Brisbane, Logan, Ipswich, or anywhere across Greater Brisbane, Caraway can help you sell a deceased estate car with a minimum of fuss. Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator) — we include free towing when we buy, confirm payment at pickup, and provide a signed receipt for the estate. For a full rundown of the documents involved in any sale, see our guide on [what paperwork you need to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld).`,
+    `Once the estate authority, registration status, finance, and insurer position are clear, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator) for an individual assessment. If Caraway makes an offer and the authorised person accepts it, the payment arrangement, available collection window, access requirements, included-pickup terms, receipt, and buyer details are confirmed before dispatch.`,
   ],
   faqs: [
     {
-      question: "Can I sell a deceased estate car that isn't registered?",
+      question: "Do I always need probate to deal with the vehicle?",
       answer:
-        "Yes. Cash-for-cars buyers purchase unregistered and non-running vehicles, which is common for estate cars that have been parked through a lengthy administration. You don't need a roadworthy certificate, and free towing is included.",
+        "No. TMR has different pathways for a granted estate, an executor named in a valid will without a grant, and eligible next of kin where there is no will or grant. If probate or letters of administration have been applied for but not yet granted, TMR says finalisation must wait for the grant.",
     },
     {
-      question: "Do I need a grant of probate to sell the car?",
+      question: "Which TMR form applies to a deceased person's vehicle?",
       answer:
-        "Not always. Smaller estates can often transfer or sell a vehicle on the death certificate and a completed transfer form, while larger or disputed estates usually need probate or letters of administration. Confirm your situation with TMR or the Public Trustee.",
+        "The core form is F5296, Application to Transact with Registration Products on behalf of a Deceased Person. Its supporting documents and statutory-declaration requirements depend on the estate pathway.",
     },
     {
-      question: "What records should I keep after the sale?",
+      question: "Can the estate cancel the registration immediately?",
       answer:
-        "Keep the signed receipt showing the VIN, vehicle details, sale price, date, and buyer details, plus a copy of the disposal notification to TMR. These records support the estate's accounting to beneficiaries.",
+        "TMR says the registration must first be transferred from the deceased operator into the estate or to another person before it is cancelled. This ensures any unused-registration refund is paid to the correct person.",
     },
   ],
   date: "2026-06-16",
-  reviewedAt: "2026-06-16",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Queensland Government — Transfer of vehicle registration",
-      url: "https://www.qld.gov.au/transport/registration/transfer",
+      title: "Queensland Government — transferring registration from a deceased registered operator",
+      url: "https://www.qld.gov.au/transport/registration/transfer/deceased-estate",
+    },
+    {
+      title: "Queensland Government — Application to Transact with Registration Products on behalf of a Deceased Person (F5296)",
+      url: "https://www.support.transport.qld.gov.au/qt/formsdat.nsf/forms/QF5296/$file/F5296_CFD.pdf",
+    },
+    {
+      title: "Queensland Government — cancelling registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+    {
+      title: "Queensland Government — vehicle registration duty exemptions",
+      url: "https://www.qld.gov.au/transport/registration/fees/duty/rebates",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
   ],
   category: "Guides",

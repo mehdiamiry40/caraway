@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { BlogPost } from "@/content/blog/types";
+import { isRetiredBlogSlug } from "@/lib/blog-consolidation";
 import { blogPostCanonicalUrl, calcWordCount } from "@/lib/blog-post";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
@@ -10,21 +11,6 @@ const BLOG_AUTHOR = {
   name: "Caraway",
   url: SITE_URL,
 } as const;
-
-export const RETIRED_BLOG_SLUGS = [
-  "cash-for-cars-gold-coast",
-  "cash-for-cars-ipswich-brisbane",
-  "cash-for-cars-logan-brisbane",
-  "cash-for-cars-redcliffe-brisbane",
-  "cash-for-cars-sunshine-coast",
-  "cash-for-cars-toowoomba",
-  // Consolidated into the primary /car-removal-brisbane service page.
-  "free-car-removal-brisbane",
-  // Duplicate of how-much-is-scrap-car-worth-brisbane (same query/intent).
-  "how-much-is-my-car-worth-for-scrap-brisbane",
-] as const;
-
-const retiredBlogSlugSet = new Set<string>(RETIRED_BLOG_SLUGS);
 
 export function buildMissingBlogPostMetadata(): Metadata {
   return {
@@ -139,7 +125,7 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
     errors.push("slug must be lowercase kebab-case without slashes");
   }
 
-  if (retiredBlogSlugSet.has(post.slug)) {
+  if (isRetiredBlogSlug(post.slug)) {
     errors.push("slug is retired and must stay redirected, not republished");
   }
 

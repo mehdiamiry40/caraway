@@ -7,7 +7,7 @@ import {
 } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
+import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 import {
   ABOUT_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,

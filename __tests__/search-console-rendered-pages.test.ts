@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import nextConfig, {
   legacyIndexingRedirects,
+  retiredBlogRedirects,
   retiredServiceRedirects,
 } from "../next.config";
 import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
@@ -43,6 +44,7 @@ describe("Search Console canonical URL cleanup", () => {
     const redirects = await getRedirects();
     const configuredIndexingRedirects = [
       ...legacyIndexingRedirects,
+      ...retiredBlogRedirects,
       ...retiredServiceRedirects,
     ];
     const expected = new Map([

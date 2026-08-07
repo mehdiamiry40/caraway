@@ -5,40 +5,26 @@ import { extname, join, relative } from "node:path";
 const repoRoot = process.cwd();
 const sourceRoot = join(repoRoot, "src");
 const sourceExtensions = new Set([".ts", ".tsx"]);
-const retiredBlogSlugs = new Set([
-  "cash-for-cars-gold-coast",
-  "cash-for-cars-ipswich-brisbane",
-  "cash-for-cars-logan-brisbane",
-  "cash-for-cars-redcliffe-brisbane",
-  "cash-for-cars-sunshine-coast",
-  "cash-for-cars-toowoomba",
-  // August 2026: consolidated into /car-removal-brisbane.
-  "free-car-removal-brisbane",
-  // July 2026: suburb posts retired in favour of /locations/{suburb} pages.
-  "cash-for-cars-beenleigh",
-  "cash-for-cars-browns-plains",
-  "cash-for-cars-bulimba",
-  "cash-for-cars-caboolture-brisbane",
-  "cash-for-cars-capalaba",
-  "cash-for-cars-carindale",
-  "cash-for-cars-chermside",
-  "cash-for-cars-indooroopilly",
-  "cash-for-cars-ipswich",
-  "cash-for-cars-kenmore",
-  "cash-for-cars-logan",
-  "cash-for-cars-moorooka",
-  "cash-for-cars-mount-gravatt",
-  "cash-for-cars-north-lakes",
-  "cash-for-cars-nundah",
-  "cash-for-cars-redcliffe",
-  "cash-for-cars-springwood",
-  "cash-for-cars-stafford",
-  "cash-for-cars-sunnybank",
-  "cash-for-cars-toowong",
-  "cash-for-cars-wynnum",
-  // July 2026: duplicate of how-much-is-scrap-car-worth-brisbane.
-  "how-much-is-my-car-worth-for-scrap-brisbane",
-]);
+const retiredBlogDestinations = JSON.parse(
+  readFileSync(
+    join(repoRoot, "src", "data", "retired-blog-destinations.json"),
+    "utf8",
+  ),
+);
+const retiredBlogSlugs = new Set(Object.keys(retiredBlogDestinations));
+
+function findStandalonePath(source, path) {
+  let offset = 0;
+  while (offset < source.length) {
+    const index = source.indexOf(path, offset);
+    if (index === -1) return -1;
+
+    const next = source[index + path.length];
+    if (!next || /[\s"'`)\]#?,]/.test(next)) return index;
+    offset = index + path.length;
+  }
+  return -1;
+}
 
 /**
  * A blog post may never target the same "cash for cars {suburb}" query as a
@@ -228,6 +214,11 @@ const featuredServiceSupportPosts = new Set([
   "sell-high-kilometre-car-brisbane.ts",
   "sell-non-running-car-brisbane.ts",
   "sell-hail-damaged-car-brisbane.ts",
+  // Search Console-supported long-tail guides that must remain useful and
+  // conditional instead of drifting back into sales-page promises.
+  "cash-for-cars-vs-wreckers-brisbane.ts",
+  "sell-deceased-estate-car-qld.ts",
+  "sell-my-ute-brisbane.ts",
 ]);
 
 const prohibitedSupportClaims = [
@@ -358,6 +349,18 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
         file: relativePath,
         line: lines.findIndex((line) => /\bslug:\s*"/.test(line)) + 1,
         label: `blog slug cannibalizes /locations/${suburbCollision} — cover the suburb on its location page instead`,
+      });
+    }
+  }
+
+  for (const slug of retiredBlogSlugs) {
+    const retiredPath = `/blog/${slug}`;
+    const matchIndex = findStandalonePath(source, retiredPath);
+    if (matchIndex !== -1) {
+      violations.push({
+        file: relativePath,
+        line: source.slice(0, matchIndex).split("\n").length,
+        label: `internal link must target the final destination instead of retired blog URL: ${retiredPath}`,
       });
     }
   }

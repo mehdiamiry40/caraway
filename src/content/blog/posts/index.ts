@@ -2,7 +2,6 @@ import { post as postCarParts } from "./sell-car-for-parts-brisbane";
 import { post as postMotorbike } from "./sell-motorbike-brisbane";
 import { post as postTowCost } from "./tow-truck-cost-brisbane";
 import { post as postTipDisposal } from "./take-car-to-tip-brisbane";
-import { post as postGasCertificate } from "./gas-certificate-qld-selling-lpg-car";
 import { post as postCarData } from "./delete-personal-data-from-car-before-selling";
 import { post as postDefectNotice } from "./car-defect-notice-qld";
 import { post as postInsuranceCancel } from "./cancel-car-insurance-after-selling-car-qld";
@@ -13,14 +12,11 @@ import { post as postMovingInterstate } from "./how-to-sell-a-car-when-moving-in
 import { post as postNoKeys } from "./sell-a-car-with-no-keys-brisbane";
 import { post as postBestPrice } from "./how-to-get-the-best-cash-for-cars-price-brisbane";
 import { post as postAuctionVs } from "./cash-for-cars-vs-car-auction-brisbane";
-import { post as postSandgate } from "./cash-for-cars-sandgate";
-import { post as postStrathpine } from "./cash-for-cars-strathpine";
 import { post as postSellFast } from "./how-to-sell-a-car-fast-brisbane";
 import { post as postHighKm } from "./sell-high-kilometre-car-brisbane";
 import { post as postRepairOrSell } from "./repair-or-sell-your-car-brisbane";
 import { post as postSuv } from "./sell-my-suv-brisbane";
 import { post as postCarWorth } from "./how-much-is-my-car-worth-brisbane";
-import { post as postHybridEv } from "./sell-hybrid-or-electric-car-brisbane";
 import { post as postDeceasedEstate } from "./sell-deceased-estate-car-qld";
 import { post as postNonRunning } from "./sell-non-running-car-brisbane";
 import { post as postWreckersVs } from "./cash-for-cars-vs-wreckers-brisbane";
@@ -46,7 +42,6 @@ import { post as postHighIntent3 } from "./sell-car-not-in-my-name-qld";
 import { post as postHighIntent4 } from "./number-plates-when-selling-car-qld";
 import { post as postHighIntent5 } from "./cash-for-cars-vs-private-sale";
 import { post as postNew } from "./sell-junk-car-brisbane";
-import { post as post0 } from "./cash-for-cars-moreton-bay";
 import { post as post1 } from "./end-of-financial-year-car-sale-brisbane";
 import { post as post2 } from "./what-paperwork-to-sell-a-car-qld";
 import { post as post3 } from "./sell-accident-car-brisbane";
@@ -57,7 +52,6 @@ import { post as post7 } from "./wovr-written-off-vehicle-register-qld-guide";
 import { post as post8 } from "./scrap-metal-prices-brisbane-2026";
 import { post as post9 } from "./how-to-cancel-car-rego-qld";
 import { post as post10 } from "./how-to-sell-a-car-without-rego-brisbane";
-import { post as postRedlands } from "./cash-for-cars-redlands";
 import { post as post18 } from "./how-to-transfer-car-ownership-qld";
 import { post as post20 } from "./how-to-sell-your-car-for-cash-brisbane";
 import { post as post21 } from "./what-happens-to-your-car-after-selling";
@@ -66,16 +60,14 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 
 // NOTE: suburb-level "cash for cars {suburb}" posts were retired in July 2026 —
 // they competed with the /locations/{suburb} landing pages for the same
-// queries. Each retired slug 301s to its location page (see
-// legacyIndexingRedirects in next.config.ts), and check-content-integrity.mjs
-// blocks new posts whose slug collides with a location page.
+// queries. Retired slugs use permanent redirects from the shared blog
+// consolidation contract, and check-content-integrity.mjs blocks republishing.
 
 export const rawBlogPosts = [
   postCarParts,
   postMotorbike,
   postTowCost,
   postTipDisposal,
-  postGasCertificate,
   postCarData,
   postDefectNotice,
   postInsuranceCancel,
@@ -86,14 +78,11 @@ export const rawBlogPosts = [
   postNoKeys,
   postBestPrice,
   postAuctionVs,
-  postSandgate,
-  postStrathpine,
   postSellFast,
   postHighKm,
   postRepairOrSell,
   postSuv,
   postCarWorth,
-  postHybridEv,
   postDeceasedEstate,
   postNonRunning,
   postWreckersVs,
@@ -118,9 +107,7 @@ export const rawBlogPosts = [
   postHighIntent3,
   postHighIntent4,
   postHighIntent5,
-  postRedlands,
   postNew,
-  post0,
   post1,
   post2,
   post3,
