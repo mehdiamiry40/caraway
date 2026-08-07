@@ -53,7 +53,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the included-pickup terms, collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
     ],
     date: "2026-04-16",
     updatedAt: "2026-08-07",

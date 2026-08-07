@@ -42,10 +42,18 @@ export const legacyIndexingRedirects = [
     source: "/blog/category/car-selling-guides",
     destination: "/blog/category/guides",
   },
-  // Retiring six posts reduced the archive from six paginated pages to five.
-  // Preserve the former final page as a one-hop redirect instead of a 404.
+  // Content consolidation reduced the archive from six paginated pages to
+  // three. Preserve former archive pages as one-hop redirects instead of 404s.
   {
     source: "/blog/page/6",
+    destination: "/blog",
+  },
+  {
+    source: "/blog/page/5",
+    destination: "/blog",
+  },
+  {
+    source: "/blog/page/4",
     destination: "/blog",
   },
   // Legacy URLs surfaced by Search Console as 404s or alternative canonicals.
@@ -66,7 +74,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/cash-for-cars-vs-dealer-trade-in.html",
-    destination: "/blog/trade-in-vs-cash-for-cars-brisbane",
+    destination: "/blog/how-to-sell-your-car-for-cash-brisbane",
   },
   {
     source: "/english-privacy-policy",
@@ -82,7 +90,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/blog/sell-damaged-car-brisbane.html",
-    destination: "/blog/sell-damaged-car-brisbane",
+    destination: "/damaged-cars-brisbane",
   },
 ] as const;
 

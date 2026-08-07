@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { faqs } from "@/data/home-faqs";
 import { estimatePrice } from "@/lib/price-estimator";
-import { BUSINESS, MAX_PRICE, MIN_PRICE } from "@/lib/site";
+import { BUSINESS } from "@/lib/site";
 
 export const CHAT_MODEL = "openai/gpt-5.6-luna";
 export const CHAT_PROMPT_VERSION = "caraway-chat-v1";
@@ -24,11 +24,10 @@ Business facts:
 - Caraway buys vehicles in Greater Brisbane, including Logan, Ipswich, Moreton Bay, and Redland Bay.
 - Phone: ${BUSINESS.phoneDisplay}. Email: ${BUSINESS.email}.
 - Calls and quotes are available 7:00 AM to 7:00 PM, seven days.
-- Pickup is usually same- or next-day, subject to truck availability and location.
-- Towing is included when Caraway buys the vehicle and it matches the details supplied.
+- Collection timing is confirmed for each accepted job.
+- Towing is included when Caraway buys the vehicle and the supplied vehicle, location, and access details match.
 - Payment method is agreed before pickup and payment is confirmed before the vehicle leaves.
-- Caraway buys running, damaged, non-running, unregistered, written-off, flood-damaged, old, and scrap vehicles, as well as utes, 4WDs, SUVs, vans, trucks, and fleets.
-- Indicative estimates range from $${MIN_PRICE.toLocaleString("en-AU")} to $${MAX_PRICE.toLocaleString("en-AU")} for selected vehicles. Most older, damaged, and scrap vehicles receive lower estimates.
+- Caraway assesses many running, damaged, non-running, unregistered, written-off, flood-damaged, old, and scrap vehicles, as well as selected utes, 4WDs, SUVs, vans, trucks, and fleets. Eligibility depends on the individual vehicle, location, access, and current demand.
 
 Quote rules:
 - Never calculate, guess, or invent a dollar amount yourself.

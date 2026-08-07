@@ -15,7 +15,7 @@ export const post: RawBlogPostEntry = {
 
     "The classic one is the bait-and-switch quote. A buyer offers a high price over the phone — well above what every other operator quoted — to lock in your booking. Then the tow truck arrives and the driver suddenly \"finds\" problems: the engine sounds worse than described, the body has rust, the tyres are bald. The offer drops by hundreds of dollars on the spot, and because the truck is already in your driveway and you've cleared your afternoon, the pressure to just accept is real. A genuine buyer's quote shouldn't move unless your description of the car was inaccurate.",
 
-    "Another is the towing-fee sting. The car is loaded, then you're told there's a collection or \"administration\" fee deducted from your payment. Reputable cash for cars services in Brisbane include free towing across Greater Brisbane and the bayside — you should never pay to have your vehicle removed, and any fee should be disclosed before you agree, never sprung on you at pickup.",
+    "Another is the towing-fee sting. The car is loaded, then you're told there's a collection or \"administration\" fee deducted from your payment. Ask what collection will cost, get any fee and access condition in writing, and make sure the agreed amount accounts for it before pickup. A buyer should not introduce an undisclosed fee after loading the vehicle.",
 
     "## Payment red flags to watch for",
 
@@ -35,15 +35,15 @@ export const post: RawBlogPostEntry = {
 
     "## Selling safely: a quick checklist",
 
-    "Before the truck arrives, get two or three quotes so you know the realistic market range for your car and can recognise an inflated bait offer for what it is. Describe the vehicle honestly — make, model, year, kilometres, and anything that doesn't work — so there's no excuse to revise the price at pickup. Confirm that towing is free and that no fees come out of your payment. Insist on cleared funds before the car leaves. Complete the TMR paperwork and remove your plates. Done in that order, selling your car is genuinely low-risk.",
+    "Before the truck arrives, get two or three quotes so you can compare how each buyer assessed the car. Describe the vehicle honestly — make, model, year, kilometres, and anything that doesn't work — and disclose the location and access conditions. Confirm the collection terms, any fees, timing, and payment method in writing. Do not release the car until the agreed payment is confirmed, and complete the seller-side TMR and plate steps that apply to the transaction.",
 
-    `If you'd rather skip the guesswork, deal with a buyer who explains the quote, payment method, towing terms, and receipt before collection. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Complete and keep confirmation of the seller-side TMR steps that apply.`,
+    `If you'd rather skip the guesswork, deal with a buyer who explains the quote, payment method, [car removal terms](/car-removal-brisbane), and receipt before collection. Caraway quotes are free and no-obligation; if Caraway buys and the supplied vehicle and access details match, pickup is included. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Collection timing and payment are confirmed for each accepted job, and you should complete and keep confirmation of the seller-side TMR steps that apply.`,
   ],
   faqs: [
     {
       question: "Is it safe to sell my car for cash in Brisbane?",
       answer:
-        "Yes, provided you take a few basic precautions: get more than one quote, confirm towing is free, make sure the payment has genuinely cleared before the car leaves your property, and complete the TMR transfer or disposal paperwork on the day.",
+        "It can be, provided you take a few basic precautions: compare quotes, confirm collection terms and any fee in writing, make sure the agreed payment has been confirmed before the car leaves, and complete the seller-side TMR steps that apply.",
     },
     {
       question: "What's the safest way to be paid when selling a car?",

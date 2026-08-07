@@ -40,7 +40,7 @@ export function Success({ state }: { state: EstimatorState }) {
             <strong className="text-foreground">
               {year} {[make, model].filter(Boolean).join(" ")}
             </strong>
-            . We&apos;ll confirm your final price within 1 business day.
+            . We&apos;ll review the supplied details and contact you about the assessment.
           </p>
           <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
             <div className="flex items-center">
@@ -67,7 +67,7 @@ export function Success({ state }: { state: EstimatorState }) {
               ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              Want it sorted today? Call {BUSINESS.phoneDisplay}
+              Call Caraway: {BUSINESS.phoneDisplay}
             </TrackedPhoneLink>
             <Button type="button" onClick={handleReset} variant="outline" size="lg" className="w-full sm:w-auto">
               <RotateCcw className="w-4 h-4" aria-hidden="true" />

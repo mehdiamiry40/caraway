@@ -4,12 +4,12 @@ export const faqs = [
   {
     question: "How does cash for cars work in Brisbane?",
     answer:
-      "Request a quote, agree on a payment method and pickup time, and complete the sale paperwork that applies to your vehicle. We arrange free towing across Greater Brisbane and confirm payment before the vehicle leaves your property.",
+      "Request a free, no-obligation quote, then agree on the collection terms, payment method, and pickup time before completing the sale paperwork that applies to your vehicle. When Caraway buys and the supplied vehicle and access details match, pickup is included. Timing and payment are confirmed for each accepted job.",
   },
   {
-    question: "Will I really get up to $9,999 for my car?",
+    question: "What affects the amount I may be offered?",
     answer:
-      "Some selected vehicles may receive offers up to $9,999, but most older, damaged, or scrap vehicles receive lower offers. Your quote depends on the vehicle's make, model, year, condition, completeness, location, and current market demand. If you have another written quote, tell us — we’ll see what we can do.",
+      "There is no fixed amount for every vehicle. A quote depends on the vehicle's make, model, year, condition, completeness, location, access, and current market demand. Supply accurate details so the buyer can explain the assessment before you decide.",
   },
   {
     question: "How do you calculate my car offer?",
@@ -17,19 +17,19 @@ export const faqs = [
       "Your offer depends on the vehicle's make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand. Scrap vehicles usually receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
   },
   {
-    question: "Do you really tow for free across Brisbane?",
+    question: "How are pickup costs handled?",
     answer:
-      "Yes — towing is free anywhere in Greater Brisbane, including Ipswich, Logan, Redland Bay, and Moreton Bay. We do not deduct towing costs from your agreed quote when the vehicle matches the details provided.",
+      "Pickup is included when Caraway buys the vehicle and the supplied vehicle, location, and access details match. Confirm the collection terms before accepting the quote; changed or undisclosed details may require a revised arrangement.",
   },
   {
     question: "How fast do I get paid for my car?",
     answer:
-      "Payment is confirmed at pickup before the vehicle leaves your property. Most booked pickups happen the same or next day, depending on truck availability, location, and the agreed payment method.",
+      "The payment method and timing are confirmed for each accepted job before collection. Do not release a vehicle until the agreed payment has been confirmed using the method set out for your sale.",
   },
   {
     question: "What types of cars do you buy in Brisbane?",
     answer:
-      "We buy all types of vehicles: old cars, damaged cars, scrap cars, accident write-offs, unregistered vehicles, flood-damaged cars, trucks, utes, 4WDs, SUVs, vans, and fleet vehicles. Running or not — if it has four wheels, we'll make you an offer.",
+      "Caraway assesses many old, damaged, scrap, unregistered, and non-running cars, as well as selected utes, 4WDs, SUVs, vans, trucks, and fleet vehicles. Whether Caraway can buy a particular vehicle depends on its details, location, access, and current demand.",
   },
   {
     question: "Do I need a Roadworthy Certificate (RWC) to sell?",
@@ -42,19 +42,19 @@ export const faqs = [
       "Bring current photo ID and any registration, finance, insurer, or ownership documents you have. We provide a receipt and buyer details, while you complete and retain confirmation of the seller-side TMR steps that apply.",
   },
   {
-    question: "Do you buy cars across all Brisbane suburbs?",
+    question: "Which Brisbane areas do you service?",
     answer:
-      "Yes. We cover all of Greater Brisbane including the inner city, north (Redcliffe, North Lakes, Strathpine), south (Logan, Beenleigh, Springwood), east (Capalaba, Cleveland, Wynnum), and west (Ipswich, Springfield, Forest Lake). If you're unsure, contact us — we likely service your area.",
+      "Caraway handles enquiries from Greater Brisbane, including the inner city, north, south, east, and west. Availability depends on the suburb, vehicle, site access, and truck scheduling, so confirm your location when requesting a quote.",
   },
   {
     question: "Can I sell a car that isn't registered or has no plates?",
     answer:
-      "Absolutely. Unregistered and de-registered vehicles are among the most common types we purchase. You do not need current registration to sell. We buy vehicles in all registration states across Queensland.",
+      "A vehicle does not need current registration to be assessed for purchase, but you must be entitled to sell it and complete the paperwork that applies. Caraway confirms eligibility from the vehicle, ownership, location, and access details you provide.",
   },
   {
     question: "Is there any obligation when I request a quote?",
     answer:
-      "None at all. Your quote is completely free and comes with zero obligation. If you're not happy with our offer, you're free to walk away — no fees, no pressure. We're confident our offers are competitive and our service will speak for itself.",
+      "No. Requesting a quote is free and does not oblige you to accept it. Review the proposed price, pickup terms, timing, and payment method before deciding whether to proceed.",
   },
   {
     question: "What happens to my car after you buy it?",
@@ -69,22 +69,22 @@ export const faqs = [
   {
     question: "Do I need to pay tax on the sale?",
     answer:
-      "For most private sellers offloading a personal vehicle in Queensland, there's no income tax or GST payable — the ATO doesn't treat a used family car as an income-generating asset. GST may apply if you're selling the car as part of a registered business or ABN-holding enterprise. Either way, we provide a receipt for every sale so you've got a clean paper trail for your own records or your accountant. For your specific situation, we recommend speaking to your accountant or checking the ATO website.",
+      "Tax treatment depends on how you owned and used the vehicle and whether the sale is private or connected with a business. Keep the sale receipt and ask a registered tax adviser or check current ATO guidance for advice that fits your circumstances.",
   },
   {
     question: "Can you pick up on weekends?",
     answer:
-      "Yes. We're available seven days a week for weekend pickups across Greater Brisbane. Pickup is usually same- or next-day, subject to truck availability — during busy periods it's worth calling earlier in the day so we can lock in a slot.",
+      "Weekend collection may be available. The pickup day and time depend on the location, access, and truck schedule and are confirmed for each accepted job.",
   },
   {
     question: "Can I change my mind after getting a quote?",
     answer:
-      "Absolutely. There's no contract and no cancellation fee. You can walk away anytime before our driver loads the vehicle onto the truck — even if we're already parked in your driveway. Once the car is loaded and you've been paid, the sale is final and the vehicle belongs to us, so make the call before the winch starts. No pressure, no hard sell.",
+      "A quote is free and no-obligation, so you do not have to accept it. If you accept and book a collection, tell Caraway promptly if your plans change and refer to the terms confirmed for that job.",
   },
   {
     question: "Do you buy multiple cars at once?",
     answer:
-      "Yes — bulk pickups are one of our favourite jobs. Deceased estates, tradies clearing a yard, rural properties with a row of old utes, fleet disposals: we handle them all. Mention the number of vehicles when you request your quote and we'll usually improve the per-car price because collecting two or three cars on a single run is cheaper for us than making separate trips.",
+      "Caraway can assess multi-vehicle enquiries such as estate, yard, or fleet clearances. Provide details and access information for every vehicle so eligibility, pricing, pickup terms, timing, and payment can be confirmed for the job.",
   },
 ];
 

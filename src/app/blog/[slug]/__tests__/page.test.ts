@@ -8,7 +8,7 @@ import { SITE_URL } from "@/lib/site";
 
 // Pick concrete fixtures from real data. Using slugs rather than array
 // indices keeps these tests stable as posts are added or reordered.
-const INDEXABLE_SLUG = "trade-in-vs-cash-for-cars-brisbane";
+const INDEXABLE_SLUG = "what-paperwork-to-sell-a-car-qld";
 
 const indexablePost = blogPosts.find((p) => p.slug === INDEXABLE_SLUG);
 
@@ -26,7 +26,7 @@ describe("generateMetadata (blog post route)", () => {
       const meta = await generateMetadata(makeParams(INDEXABLE_SLUG));
       expect(typeof meta.title).toBe("string");
       expect(meta.title).toBe(indexablePost!.title);
-      expect(String(meta.title)).toContain("Trade-In");
+      expect(String(meta.title)).toContain("Paperwork");
     });
 
     it("returns the post's metaDescription verbatim", async () => {

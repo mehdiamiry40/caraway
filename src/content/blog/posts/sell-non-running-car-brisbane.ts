@@ -3,11 +3,11 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-non-running-car-brisbane",
-  title: "Sell a Non-Running Car in Brisbane: 2026 Guide",
+  title: "Non-Running Cars in Brisbane: Repair, Sale and Collection Options",
   metaDescription:
-    "How to sell a non-running car in Brisbane: document the fault, compare repair and sale options, prepare access, and check the Queensland paperwork.",
+    "Compare repair and as-is sale options for a non-running car in Brisbane, then document the fault, prepare access, and check the Queensland paperwork.",
   excerpt:
-    "How to compare repair and as-is sale options for a non-running car in Brisbane, prepare accurate vehicle details, and plan safe collection.",
+    "Use the diagnosis, repair costs, likely net outcome, vehicle condition, and access details to compare repair, sale, and collection options.",
   content: [
     "A non-running car can become long-term driveway storage while its condition changes. Whether it stopped because of an engine or transmission fault, an electrical problem, a failed battery, or a long period off the road, the useful question is the same: does a documented repair case beat an as-is sale? This guide explains the information needed to compare those options and plan collection safely.",
 
@@ -27,7 +27,7 @@ export const post: RawBlogPostEntry = {
 
     "## Collection requirements for a non-running car",
 
-    "Tell the buyer whether the car rolls, steers, brakes, has all wheels, and can be reached by suitable loading equipment. Share photos and measurements for steep or narrow driveways, apartment parking, workshops, soft ground, or acreage access. Pickup is included when Caraway buys and the vehicle and access match the supplied details; feasibility and equipment are confirmed before dispatch.",
+    "Tell the buyer whether the car rolls, steers, brakes, has all wheels, and can be reached by suitable loading equipment. Share photos and measurements for steep or narrow driveways, apartment parking, workshops, soft ground, or acreage access. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details; feasibility and equipment are confirmed before dispatch.",
 
     "## The paperwork in Queensland",
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "Be specific about the condition when you call — \"won't start, cause unknown\" is more useful than guessing at a repair. Have your ID and any relevant vehicle records ready. If the car has been sitting on flat tyres or soft ground, flag it before dispatch. Stored vehicles can develop seized brakes, wiring damage, moisture problems, or deteriorated tyres and interiors, so recheck and photograph the current condition if you delay the decision.",
 
-    `For a non-running vehicle within Caraway's confirmed service area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle and access, includes pickup when we buy, and confirms the payment arrangement and receipt details before collection.`,
+    `For a non-running vehicle within Caraway's confirmed service area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle and access, includes pickup when it buys, and confirms the payment arrangement and receipt details before collection.`,
   ],
   date: "2026-06-14",
   updatedAt: "2026-08-07",

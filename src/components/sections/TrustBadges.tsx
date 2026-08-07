@@ -26,9 +26,9 @@ const quickLinks = [
   },
   {
     icon: Truck,
-    label: "Pickup included",
-    description: "When Caraway buys the vehicle.",
-    href: "/locations",
+    label: "Pickup terms",
+    description: "Included when Caraway buys and supplied vehicle and access details match.",
+    href: "/car-removal-brisbane",
   },
   {
     icon: FileCheck2,
@@ -61,7 +61,7 @@ export function TrustBadges() {
                 Local service across Greater Brisbane
               </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Same- or next-day pickup in most areas, subject to truck availability.
+                Collection timing and payment are confirmed for each accepted job.
               </p>
             </div>
           </div>

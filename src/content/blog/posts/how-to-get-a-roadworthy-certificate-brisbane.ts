@@ -2,13 +2,13 @@ import type { RawBlogPostEntry } from "../types";
 
 export const post: RawBlogPostEntry = {
   slug: "how-to-get-a-roadworthy-certificate-brisbane",
-  title: "How to Get a Roadworthy Certificate in Brisbane (2026)",
+  title: "Queensland Safety Certificates: A Brisbane Seller Guide",
   metaDescription:
     "Queensland Safety Certificate guide: when a certificate is required, recognised exemptions, what inspectors check, and how to find an approved inspection station.",
   excerpt:
-    "A Safety Certificate — Queensland's name for a roadworthy — is compulsory for some car sales but not all. Here's what Brisbane sellers need to know before booking an inspection.",
+    "Queensland calls the roadworthy document a Safety Certificate. Check when it is required, the official fee, recognised exceptions, and how to find an approved station.",
   content: [
-    "The word 'roadworthy' comes up constantly when Queenslanders talk about selling a car, yet a surprising number of Brisbane sellers don't know what the inspection actually involves, what it costs, or — crucially — when they don't need one at all. Getting clear on those three points before you list your car can save you $150–$300 in unnecessary inspection fees and weeks of frustrating delays.",
+    "Queensland calls the roadworthy document for most light vehicles a Safety Certificate. Whether one is required depends on the vehicle's registration status, buyer type, and any recognised exemption. Check the current Transport and Main Roads (TMR) pathway before disposing of the vehicle rather than relying on a buyer's general claim.",
 
     "## What a Safety Certificate actually is",
 
@@ -16,7 +16,7 @@ export const post: RawBlogPostEntry = {
 
     "## When you actually need one",
 
-    "Queensland generally requires a current Safety Certificate before a registered light vehicle, trailer, or motorcycle is offered for sale or disposed of. The exact timing and display requirements depend on the vehicle and sale method. Check the current [Queensland selling rules](https://www.qld.gov.au/transport/buying/rules/selling) before advertising or agreeing to a registered sale.",
+    "Queensland no longer requires a Safety Certificate before a registered vehicle is offered for sale, but a current certificate is generally required before it is disposed of other than to a licensed motor dealer. The seller must provide the current certificate or electronic certificate number to the new owner for an applicable registered transfer. Check the current [Queensland Safety Certificate rules](https://www.qld.gov.au/transport/registration/roadworthy) before agreeing to the transaction.",
 
     "## When you don't need one",
 
@@ -24,15 +24,15 @@ export const post: RawBlogPostEntry = {
 
     "## What inspectors check",
 
-    "The Safety Certificate inspection covers four broad areas: safety equipment, structural integrity, mechanical condition, and lighting. Inspectors examine tyre tread depth (the minimum in Queensland is 1.5mm — worn tyres are the most common single fail), brake components including pads, rotors, lines, and the handbrake, steering and suspension joints, all external lights, seat belts, windscreen condition, and fluid leaks. Cosmetic items — dents, faded paint, torn upholstery — are entirely irrelevant. A car can look rough and still pass; a clean-looking car can fail if a rear brake light is blown or the driver's tyre has 1.2mm of tread.",
+    "An approved examiner assesses the vehicle against the applicable Queensland inspection standard. The check covers safety-related items rather than providing a mechanical warranty, valuation, or complete vehicle-history report. Ask the station what vehicle category it is authorised to inspect and use any inspection report to identify work required before a certificate can be issued.",
 
-    "## What it costs in Brisbane in 2026",
+    "## The official inspection fee",
 
-    "Inspection fees at Brisbane stations generally run between $130 and $180 for a standard passenger vehicle in 2026. The fee covers the inspection itself — if the car fails, you pay for repairs separately and may need to pay a re-inspection fee, though many stations offer a free re-check within a set window if the work is straightforward. Factor in potential repair costs when you're deciding whether to pursue a private sale. Common fail items and their rough repair costs in Brisbane: tyre replacement ($180–$280 per tyre fitted), windscreen chip repair ($80–$120), cracked windscreen replacement ($350–$700), worn brake pads and rotors per axle ($250–$500), and a seized handbrake ($180–$350). On an older vehicle, those costs can add up quickly and eat heavily into your sale price.",
+    "Queensland Government lists the Safety Certificate inspection fee for a motor vehicle up to 4,500kg GVM as $102.70 from 1 July 2026, including GST. Government fees are indexed and can change, while repairs or other separately agreed work are additional. Confirm the current published fee and ask the station how a failed inspection or further work would be handled before booking.",
 
     "## How to find a licensed station",
 
-    "Only VIS stations authorised by TMR can issue Queensland Safety Certificates, and not every station is licensed for every vehicle type. If you're getting a certificate for a motorcycle, caravan, trailer, or heavy vehicle, confirm the station holds the correct authorisation before booking. The TMR website lists all licensed stations by suburb and vehicle category. When booking, ask whether same-day appointments are available — many Brisbane stations can fit in a standard passenger car within 24–48 hours. Bring your current registration certificate and Queensland driver's licence. The inspection itself typically takes 45 to 90 minutes depending on the vehicle and station workload.",
+    "Only a TMR-approved inspection station (AIS) can issue a Queensland Safety Certificate, and a station may be approved for only certain vehicle categories. Use the official [Find an AIS service](https://www.qld.gov.au/transport/buying/vehicleinspection/stations) and confirm the vehicle type, documents, appointment, fee, and any reinspection process with the station before attending.",
 
     "## When a cash sale is the smarter move",
 
@@ -43,6 +43,18 @@ export const post: RawBlogPostEntry = {
     "A Safety Certificate is not universal, but the exception depends on facts such as registration status and whether the buyer is a licensed motor dealer. Confirm the pathway before advertising or disposal. If the vehicle will be sold unregistered, arrange lawful towing or permits rather than driving it after cancellation.",
   ],
   date: "2026-04-24",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — Safety Certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+    {
+      title: "Queensland Government — approved inspection stations",
+      url: "https://www.qld.gov.au/transport/buying/vehicleinspection/stations",
+    },
+  ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],

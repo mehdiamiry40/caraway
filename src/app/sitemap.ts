@@ -163,7 +163,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
     priority: PRIMARY_SERVICE_SLUGS.has(s.slug) ? 0.9 : 0.8,
-    images: HERO_IMAGE,
   }));
 
   /* -----------------------------------------------------------------------
@@ -174,7 +173,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
     priority: 0.7,
-    images: HERO_IMAGE,
   }));
 
   /* -----------------------------------------------------------------------
@@ -182,11 +180,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * ---------------------------------------------------------------------*/
   const CORNERSTONE_SLUGS = new Set([
     "how-to-sell-your-car-for-cash-brisbane",
-    "how-to-sell-a-car-without-rego-brisbane",
+    "what-paperwork-to-sell-a-car-qld",
     "how-to-cancel-car-rego-qld",
     "how-to-transfer-car-ownership-qld",
     "wovr-written-off-vehicle-register-qld-guide",
-    "scrap-metal-prices-brisbane-2026",
+    "how-much-is-scrap-car-worth-brisbane",
   ]);
 
   const blogPages: MetadataRoute.Sitemap = blogPosts.filter((p) => p.slug).map((p) => {

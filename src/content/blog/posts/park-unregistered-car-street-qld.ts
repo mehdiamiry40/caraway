@@ -35,13 +35,13 @@ export const post: RawBlogPostEntry = {
 
     `## When Selling Beats Re-Registering`,
 
-    `Do the arithmetic honestly. Add the inspection, the repairs to pass it, and twelve months of rego and CTP, then compare that against what the car is realistically worth once it's back on the road. On anything older or high-kilometre, the total often lands above the vehicle's market value, and you've spent the money to keep an asset that keeps depreciating. That's the point at which most people stop renewing and start looking at [unregistered car buyers](/unregistered-cars-brisbane) instead.`,
+    `Do the arithmetic honestly. Add the inspection, the repairs to pass it, and twelve months of rego and CTP, then compare that against what the car is realistically worth once it's back on the road. On an older or high-kilometre vehicle, the total may exceed its market value. That is the point at which some owners consider [unregistered car buyers](/unregistered-cars-brisbane) instead.`,
 
-    `What an unregistered car fetches depends on its condition, not its rego status. A stripped or scrap-only vehicle is priced largely on weight and brings a few hundred dollars, while something complete, running, and in demand — a HiLux, a Ranger, a Prado — can be worth several thousand with no rego at all. [Car removal](/car-removal-brisbane) you'd otherwise pay for is included in the offer.`,
+    `What an unregistered car fetches depends on more than its rego status. Condition, completeness, make, model, current demand, location, and access can all affect an assessment. A stripped or scrap-only vehicle may be valued mainly for recoverable material, while a complete, repairable vehicle may be assessed for parts or resale. Ask what the proposed [car removal terms in Brisbane](/car-removal-brisbane) cover.`,
 
-    `Whichever way you go, deal with the registration side properly rather than assuming the car falls off the system on its own. If the rego is still current you may be able to [cancel it and claim a refund](/blog/how-to-cancel-car-rego-qld) on the unused portion, and if the plates and paperwork are long gone, our guide to [selling a car without rego](/blog/how-to-sell-a-car-without-rego-brisbane) covers what you need to show you're entitled to sell. Complete the seller-side TMR steps that apply to your situation and keep the confirmation — that's what stops tolls and infringements following the car back to you.`,
+    `Whichever way you go, deal with the registration side properly rather than assuming the car falls off the system on its own. If the rego is still current you may be able to [cancel it and claim a refund](/blog/how-to-cancel-car-rego-qld) on the unused portion. If the plates and paperwork are long gone, explain that when contacting an [unregistered car buyer](/unregistered-cars-brisbane) and be ready to show you are entitled to sell. Complete the seller-side TMR steps that apply to your situation and keep the confirmation — that's what stops tolls and infringements following the car back to you.`,
 
-    `If the car has been on the kerb for a while and you'd rather it was gone than fined, Caraway will quote on it as it sits. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll arrange free towing anywhere across Greater Brisbane with cash on pickup.`,
+    `If the car has been on the kerb for a while and you'd rather move it than risk enforcement, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote from Caraway. If Caraway buys and the supplied vehicle and access details match, pickup is included. Collection timing and payment are confirmed for each accepted job.`,
   ],
   faqs: [
     {
@@ -62,7 +62,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "How do I move an unregistered car without driving it?",
       answer:
-        "Use a tow truck, tilt tray, or registered trailer, or apply to TMR for an unregistered vehicle permit covering a specific journey such as a trip to an approved inspection station. A cash-for-cars buyer includes towing, so no permit is needed.",
+        "Use a tow truck, tilt tray, or registered trailer, or apply to TMR for an unregistered vehicle permit covering a specific journey such as a trip to an approved inspection station. A buyer may include collection in an accepted purchase, but confirm that term before relying on it.",
     },
   ],
   date: "2026-07-25",

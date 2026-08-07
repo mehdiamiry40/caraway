@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     `Selling to a wrecker or a cash-for-cars buyer changes the paperwork but not the principle. The car usually gets deregistered rather than transferred, so you'll want to [cancel the rego and claim the refund](/blog/how-to-cancel-car-rego-qld) on the unused portion — and still remove the plate from Linkt, because the account doesn't know or care that the car is now in pieces at Rocklea.`,
 
-    `If the car is unregistered, unwanted, or simply not worth another year of rego, Caraway will quote on it where it sits and include [free car removal](/car-removal-brisbane) across Greater Brisbane. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll pay cash on pickup.`,
+    `If the car is unregistered, unwanted, or simply not worth another year of rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form.`,
   ],
   faqs: [
     {

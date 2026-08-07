@@ -3,11 +3,11 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-flood-damaged-car-brisbane",
-  title: "Sell a Flood-Damaged Car in Brisbane (2026)",
+  title: "Flood-Damaged Cars in Brisbane: Safety, Insurance and Sale Options",
   metaDescription:
-    "Selling a flood-damaged car in Brisbane: document water exposure, confirm insurer and ownership status, compare options, and prepare safe collection access.",
+    "Review safety, insurer, ownership, written-off status, sale options, and collection access for a flood-damaged car in Brisbane.",
   excerpt:
-    "Start with safety, insurer and ownership status, and an accurate record of the water exposure before requesting a flood-damaged vehicle quote.",
+    "Start with safety and insurer instructions, then document the water exposure and confirm ownership and written-off status before comparing sale options.",
   content: [
     "Floodwater can affect mechanical, electrical, restraint, braking, interior, and structural systems, including damage that is not immediately visible. Do not start or drive a water-affected vehicle merely to test it. If it may be unsafe, ask a qualified person or insurer how it should be assessed and moved.",
 

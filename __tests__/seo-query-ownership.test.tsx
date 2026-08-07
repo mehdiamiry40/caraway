@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
 import { metadata as locationsMetadata } from "@/app/locations/page";
 import { metadata as faqMetadata } from "@/app/faq/page";
+import { metadata as contactMetadata } from "@/app/contact/page";
 import { metadata as blogMetadata } from "@/app/blog/page";
 import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
 import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
@@ -12,6 +13,7 @@ import {
   SERVICE_HUB_HEADING,
 } from "@/app/services/page";
 import { Hero } from "@/components/sections/Hero";
+import { blogPosts } from "@/data/blog-posts";
 import { getServiceBySlug, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
@@ -58,6 +60,7 @@ describe("primary SEO query ownership", () => {
 
     for (const metadata of [
       faqMetadata,
+      contactMetadata,
       blogMetadata,
       pageTwoMetadata,
       howItWorksMetadata,
@@ -67,6 +70,13 @@ describe("primary SEO query ownership", () => {
         expect(String(metadata.openGraph?.title ?? "")).not.toMatch(query);
         expect(String(metadata.twitter?.title ?? "")).not.toMatch(query);
       }
+    }
+  });
+
+  it("keeps blog titles from claiming either unmodified primary query", () => {
+    for (const post of blogPosts) {
+      expect(post.title, post.slug).not.toMatch(CASH_QUERY);
+      expect(post.title, post.slug).not.toMatch(REMOVAL_QUERY);
     }
   });
 

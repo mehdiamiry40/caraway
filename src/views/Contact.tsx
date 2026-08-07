@@ -18,7 +18,7 @@ export default function Contact() {
       title="Talk to a real Brisbane buyer."
       subtitle={
         <p>
-          Free, no-obligation quotes — seven days a week across Greater Brisbane.
+          Free, no-obligation vehicle quotes — enquiries are accepted seven days a week.
         </p>
       }
     >
@@ -32,7 +32,7 @@ export default function Contact() {
                 <Link href="/#price-estimator" className="text-primary font-medium link-underline">
                   online estimator
                 </Link>
-                . Our Brisbane team will follow up with a confirmed quote and arrange same- or next-day pickup in most areas.
+                . Our Brisbane team will confirm the quote, collection terms, timing, and payment method for each accepted job.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ export default function Contact() {
                 <div>
                   <h3 className="font-display text-sm text-foreground">Email</h3>
                   <p className="text-base font-medium text-primary">{BUSINESS.email}</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">We respond within 1 hour during business hours.</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">Messages are reviewed during business hours.</p>
                 </div>
               </a>
 
@@ -71,13 +71,13 @@ export default function Contact() {
                   icon: Building2,
                   title: "Based in",
                   main: BUSINESS.addressFormatted,
-                  sub: "We don't operate a public yard — pickup is at your location and included when we buy.",
+                  sub: "We don't operate a public yard. Pickup is included when Caraway buys and the supplied vehicle and access details match.",
                 },
                 {
                   icon: MapPin,
                   title: "Service area",
-                  main: `All of Greater ${BUSINESS.location}`,
-                  sub: BUSINESS.locationDetail,
+                  main: `Greater ${BUSINESS.location}`,
+                  sub: "Confirm your suburb and access details when requesting a quote.",
                 },
                 {
                   icon: Clock,
@@ -109,9 +109,9 @@ export default function Contact() {
               <dl className="divide-y divide-border/60 border-t border-border/60 text-sm">
                 {[
                   { q: "What to have ready", a: "Your car's make, model, year, approximate kilometres, and a brief description of its condition." },
-                  { q: "What you'll need at pickup", a: "Photo ID (driver's licence). Registration papers if available, but not essential." },
-                  { q: "Payment method", a: "Cash on the spot. Paid before the car leaves your property." },
-                  { q: "Towing cost", a: "Free. Always. No exceptions." },
+                  { q: "What you'll need at pickup", a: "Current photo ID and the registration, finance, insurer, estate, or ownership records that apply to your sale." },
+                  { q: "Payment method", a: "The payment method and timing are confirmed for each accepted job before collection." },
+                  { q: "Pickup cost", a: "Included when Caraway buys and the supplied vehicle and access details match." },
                 ].map((item) => (
                   <div key={item.q} className="py-3.5 grid grid-cols-12 gap-4">
                     <dt className="col-span-12 sm:col-span-5 font-display text-foreground">{item.q}</dt>

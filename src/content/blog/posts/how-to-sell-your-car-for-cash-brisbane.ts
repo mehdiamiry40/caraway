@@ -3,23 +3,23 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "how-to-sell-your-car-for-cash-brisbane",
-  title: "How to Sell Your Car for Cash in Brisbane: A Complete Guide",
+  title: "Ways to Sell a Car in Brisbane: Compare Your Options",
   metaDescription:
-    "A practical guide to selling a car for cash in Brisbane: compare options, assess quotes, check pickup terms, and complete the Queensland paperwork.",
+    "Compare private sale, dealer trade-in, direct vehicle buyers, and wreckers in Brisbane, including preparation, written terms, pickup, and QLD paperwork.",
   excerpt:
-    "Private sale, trade-in, wrecker, or cash-for-cars buyer? This guide walks through the whole process — valuing your car, comparing quotes, the QLD paperwork, and what should happen on pickup day.",
+    "Compare Brisbane car-sale options by likely net return, preparation, collection, payment terms, and the Queensland seller steps that apply.",
   content: [
     "Selling a car in Brisbane involves trade-offs between the likely net return, time, preparation, appointments, and certainty. A clean, registered vehicle may suit a private listing, while a direct buyer may suit an owner who wants one quote and an agreed collection plan. This guide explains how to compare the channels, describe the vehicle accurately, assess written terms, and complete the Queensland seller steps that apply.",
 
-    "## First, pick the right way to sell",
+    "## Compare the main sale options",
 
     "You have four realistic channels, and the right one depends almost entirely on the car.",
 
     "**Private sale** (through a marketplace or classified site) may produce a higher gross offer for a well-presented vehicle, but it also involves advertising, enquiries, inspections, test drives, negotiation, and the applicable safety-certificate and transfer steps. Our comparison of [cash for cars vs a private sale](/blog/cash-for-cars-vs-private-sale) explains the trade-offs.",
 
-    "**Dealer trade-in** can be convenient when the next vehicle is coming from the same dealer. Compare the changeover figure rather than the trade-in number alone, because vehicle price, fees, and trade allowance all affect the result. See [trade-in vs cash for cars](/blog/trade-in-vs-cash-for-cars-brisbane) for a structured comparison.",
+    "**Dealer trade-in** can be convenient when the next vehicle is coming from the same dealer. Compare the total changeover figure rather than the trade-in number alone, because the replacement-vehicle price, fees, and trade allowance all affect the result.",
 
-    "**Wreckers** buy end-of-life vehicles for parts and metal. Some pay fairly, but many quote low and expect you to arrange delivery to the yard. If your car is a genuine parts car, it's worth a call — compare with [how wreckers stack up against cash-for-cars buyers](/blog/cash-for-cars-vs-wreckers-brisbane).",
+    "**Auto wreckers** may assess an end-of-life vehicle for reusable components and recoverable materials. Collection, deductions, and downstream handling vary by operator, so compare the complete written transaction using our [buyer-versus-wrecker checklist](/blog/cash-for-cars-vs-wreckers-brisbane).",
 
     "**A cash-for-cars buyer** like [Caraway](/cash-for-cars-brisbane) provides a direct-buyer option. The quote is based on the details supplied, pickup is included when Caraway buys and the vehicle and access match those details, and the payment arrangement is confirmed before collection. Compare that offer with the likely net return and effort of your other options.",
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "- Is towing included, or deducted afterwards?\n- Is the offer confirmed in writing before the truck is booked?\n- When exactly do you get paid — before the car leaves, or \"processed later\"?\n- Do you get a receipt with the buyer's details?",
 
-    "The classic trap in this industry is the drive-down: a generous phone quote, then a driver who \"finds problems\" on arrival and offers half. You avoid it by being accurate up front, getting the number in writing, and refusing to hand over keys until the agreed amount is paid. Our guide to [avoiding cash-for-cars scams in Brisbane](/blog/how-to-avoid-cash-for-cars-scams-brisbane) lists the red flags in detail. Caraway's answer to this is simple: the offer is confirmed in writing before pickup is booked, and if the vehicle matches the details you gave, that's the number that gets paid.",
+    "A buyer may seek to revise a quote if the vehicle, missing components, location, or access differs from the information supplied. Reduce that risk by describing the car accurately, providing current photos, asking what could change the assessment, and getting the terms in writing before collection. Our guide to [avoiding cash-for-cars scams in Brisbane](/blog/how-to-avoid-cash-for-cars-scams-brisbane) lists identity, payment, and receipt checks. Caraway confirms its offer assumptions before pickup is booked and checks the vehicle against the supplied details at collection.",
 
     "## Step 3: Prepare the car and the paperwork",
 
@@ -57,19 +57,19 @@ export const post: RawBlogPostEntry = {
 
     "The sale isn't finished when the truck leaves. For a registered sale, complete the applicable transfer steps; if you cancel current registration before the sale, complete that cancellation path; and for an already-unregistered vehicle, both parties should sign and retain a sale record with the VIN or chassis/engine number, make and model, and sale date. Keep the relevant confirmation and receipt. Our [QLD ownership-transfer guide](/blog/how-to-transfer-car-ownership-qld) covers registered transfers, while Queensland Government publishes the separate unregistered-sale requirements.",
 
-    "## Timing the market (and when not to bother)",
+    "## Decide when to act",
 
-    "Scrap and used-car prices move with commodity markets and seasonal demand — [the best time to sell a car in Brisbane](/blog/best-time-to-sell-your-car-brisbane) looks at the patterns. But for an already-parked car, timing rarely beats acting: depreciation and weather damage are constant, and the difference between a good week and an average week for scrap prices is smaller than three months of a car quietly rusting under a tree.",
+    "Used-vehicle, component, and material demand can change, but no calendar date guarantees a stronger result for an individual car. If you delay, consider registration, insurance, storage, further deterioration, and the expiry of any current quote. Compare fresh written terms when you are ready rather than relying on a seasonal rule.",
 
     "## Frequently asked questions",
 
-    "**Does the car need to run or be registered?** Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys.",
+    "**Does the car need to run or be registered?** Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys and the vehicle and access match the supplied details.",
 
     "**Do I need a roadworthy certificate?** Requirements depend on registration status, sale type, and how the vehicle is offered. Check the current Queensland safety-certificate rules before committing; Caraway can assess the vehicle as-is but does not replace your seller obligations.",
 
     "**How fast does it happen?** Quote response and collection timing depend on the vehicle information, location, access, and operator availability. Confirm the collection window before dispatch.",
 
-    "**How do I get the most money?** Be accurate about condition, have your papers ready, mention everything (a second vehicle, a trailer — bulk pickups often quote better per car), and compare at least two written offers.",
+    "**How do I compare the financial outcome?** Be accurate about condition, have the relevant records ready, and compare the likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
 
     `Ready to request an individual quote? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}** — seven days, ${BUSINESS.hours}. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
   ],
@@ -77,7 +77,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Does the car need to run or be registered to sell it for cash?",
       answer:
-        "Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys.",
+        "Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys and the vehicle and access match the supplied details.",
     },
     {
       question: "Do I need a roadworthy certificate to sell my car in Brisbane?",
@@ -90,9 +90,9 @@ export const post: RawBlogPostEntry = {
         "Quote response and collection timing depend on the vehicle information, location, access, and operator availability. Confirm the collection window before dispatch.",
     },
     {
-      question: "How do I get the best price for my car?",
+      question: "How should I compare the financial outcome?",
       answer:
-        "Be accurate about the condition, have your ID and registration papers ready, mention any additional vehicles or trailers, and compare at least two written offers before committing.",
+        "Be accurate about the condition, gather the relevant records, and compare likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
     },
   ],
   date: "2025-03-15",

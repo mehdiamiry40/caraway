@@ -26,17 +26,17 @@ export const BUSINESS = {
   hours: "7:00 AM – 7:00 PM",
   /** Phone and quotes — pickup times are booked separately (see FAQ). */
   hoursDetail:
-    "Seven days for calls and quotes. Pickup is usually same- or next-day (subject to truck availability) — we confirm when you book.",
+    "Seven days for calls and quotes. Collection timing is confirmed for each accepted job.",
   googleBusinessUrl: "https://share.google/n0D0gZyISx3hMNECL",
 } as const;
 
 export const MIN_PRICE = 200;
 export const MAX_PRICE = 9999;
-export const PRICE_RANGE_LABEL = "Up to $9,999 for selected vehicles";
+export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
   privacyLastUpdated: "2026-06-11",
-  termsLastUpdated: "2026-06-01",
+  termsLastUpdated: "2026-08-07",
 } as const;
 
 const LEGAL_MONTH_LABELS = [

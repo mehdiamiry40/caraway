@@ -274,9 +274,88 @@ const prohibitedSupportClaims = [
   },
 ];
 
+// These high-conversion surfaces must use the same transaction contract:
+// quotes are free and no-obligation; pickup is included only when Caraway
+// buys and the supplied vehicle/access details match; timing and payment are
+// confirmed for the accepted job. Keep the scope explicit so informational
+// uses elsewhere do not create false positives.
+const truthConsistencyFiles = new Set([
+  "src/app/contact/page.tsx",
+  "src/app/terms/page.tsx",
+  "src/views/Contact.tsx",
+  "src/views/Terms.tsx",
+  "src/data/home-faqs.ts",
+  "src/lib/faq-data.ts",
+  "src/lib/site.ts",
+  "src/components/sections/TrustBadges.tsx",
+  "src/components/sections/Stats.tsx",
+  "src/components/sections/price-estimator/Success.tsx",
+  "src/components/sections/QuoteForm.tsx",
+  "src/components/sections/ContactForm.tsx",
+  "src/lib/chat-assistant.ts",
+  "src/content/blog/posts/cancel-car-insurance-after-selling-car-qld.ts",
+  "src/content/blog/posts/unpaid-tolls-selling-car-qld.ts",
+  "src/content/blog/posts/delete-personal-data-from-car-before-selling.ts",
+  "src/content/blog/posts/sell-motorbike-brisbane.ts",
+  "src/content/blog/posts/car-defect-notice-qld.ts",
+  "src/content/blog/posts/sell-interstate-registered-car-brisbane.ts",
+  "src/content/blog/posts/how-to-avoid-cash-for-cars-scams-brisbane.ts",
+  "src/content/blog/posts/how-to-sell-a-car-with-finance-owing-qld.ts",
+  "src/content/blog/posts/park-unregistered-car-street-qld.ts",
+  "src/content/blog/posts/cash-for-cars-vs-private-sale.ts",
+]);
+
+const prohibitedTruthConsistencyClaims = [
+  {
+    label: "legacy free-car-removal anchor overstates pickup terms",
+    pattern: /\[free car removal\]\(\/car-removal-brisbane\)/i,
+  },
+  {
+    label: "pickup inclusion is missing the purchase-and-details qualification",
+    pattern:
+      /\bfree (?:car removal|tow(?:ing)?|pickup|collection)\b|\b(?:pickup|collection|towing) (?:is|are) included\b|\]\(\/car-removal-brisbane\) is included\b|\binclude(?:s|d) (?:free )?(?:car removal|tow(?:ing)?|pickup|collection)\b/i,
+    allow:
+      /\b(?:when|if) Caraway buys\b[^\n]{0,240}\bmatch(?:es)?\b|\bmatch(?:es)?\b[^\n]{0,240}\b(?:when|if) Caraway buys\b/i,
+  },
+  {
+    label: "same-day or next-day timing is not confirmed per job",
+    pattern: /\b(?:same|next)[ -]?day\b/i,
+    allow:
+      /\b(?:timing|schedule|availability)\b[^\n]{0,120}\b(?:confirmed|varies|subject)\b|\b(?:confirmed|varies|subject)\b[^\n]{0,120}\b(?:timing|schedule|availability)\b/i,
+  },
+  {
+    label: "cash or payment-on-pickup promise is not confirmed per job",
+    pattern:
+      /\bcash on (?:the spot|pickup|collection)\b|\b(?:pay|paid|payment) on (?:pickup|collection)\b/i,
+    allow:
+      /\bpayment\b[^\n]{0,120}\bconfirmed\b[^\n]{0,80}\b(?:each|the|that) (?:accepted )?job\b/i,
+  },
+  {
+    label: "unsupported fixed quote or response time",
+    pattern:
+      /\b(?:respond|reply|quote|offer)[^\n]{0,30}\b(?:within|in|under)\s+(?:\d+|an?|one|two)\s*(?:seconds?|minutes?|hours?)\b/i,
+  },
+  {
+    label: "unsupported all-area pickup promise",
+    pattern:
+      /\banywhere across Greater Brisbane\b|\ball (?:of )?Greater Brisbane\b|\b(?:all|every) Brisbane (?:area|suburb)s?\b/i,
+  },
+  {
+    label: "unsupported universal vehicle-acceptance promise",
+    pattern:
+      /\b(?:we|Caraway) (?:buy|accept)s? (?:all|any) (?:cars?|vehicles?|makes?|models?|types?|conditions?)\b|\ball vehicles accepted\b|\bif it has four wheels\b/i,
+  },
+  {
+    label: "unsupported vehicle-price promise",
+    pattern:
+      /\b(?:we|Caraway)(?:'ll| will) (?:pay|offer)\b|\b(?:up to|as much as) \$\s*\d/i,
+  },
+];
+
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
   "how-much-is-my-car-worth-brisbane.ts",
+  "how-to-get-a-roadworthy-certificate-brisbane.ts",
   "how-to-cancel-car-rego-qld.ts",
   "how-to-sell-your-car-for-cash-brisbane.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",
@@ -391,6 +470,18 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
     if (relativePath === "src/data/services.ts") {
       for (const claim of prohibitedServiceClaims) {
         if (claim.pattern.test(line)) {
+          violations.push({
+            file: relativePath,
+            line: index + 1,
+            label: claim.label,
+          });
+        }
+      }
+    }
+
+    if (truthConsistencyFiles.has(relativePath)) {
+      for (const claim of prohibitedTruthConsistencyClaims) {
+        if (claim.pattern.test(line) && !claim.allow?.test(line)) {
           violations.push({
             file: relativePath,
             line: index + 1,

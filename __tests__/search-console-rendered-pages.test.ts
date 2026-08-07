@@ -28,13 +28,13 @@ describe("Search Console canonical URL cleanup", () => {
     expect(howItWorksMetadata.alternates?.canonical).toBe("/how-it-works");
   });
 
-  it("permanently redirects the legacy damaged-car HTML URL to the live article", async () => {
+  it("permanently redirects the legacy damaged-car HTML URL to the canonical service", async () => {
     const redirects = await getRedirects();
 
     expect(redirects).toContainEqual(
       expect.objectContaining({
         source: "/blog/sell-damaged-car-brisbane.html",
-        destination: "/blog/sell-damaged-car-brisbane",
+        destination: "/damaged-cars-brisbane",
         permanent: true,
       }),
     );
@@ -56,14 +56,17 @@ describe("Search Console canonical URL cleanup", () => {
       ],
       [
         "/blog/cash-for-cars-vs-dealer-trade-in.html",
-        "/blog/trade-in-vs-cash-for-cars-brisbane",
+        "/blog/how-to-sell-your-car-for-cash-brisbane",
       ],
       ["/english-privacy-policy", "/privacy"],
       ["/book-online", "/contact"],
       ["/service-page/home-visit", "/car-removal-brisbane"],
+      ["/blog/page/4", "/blog"],
+      ["/blog/page/5", "/blog"],
+      ["/blog/page/6", "/blog"],
       ["/unwanted-cars-brisbane", "/car-removal-brisbane"],
       ["/blog/free-car-removal-brisbane", "/car-removal-brisbane"],
-      ["/blog/sell-damaged-car-brisbane.html", "/blog/sell-damaged-car-brisbane"],
+      ["/blog/sell-damaged-car-brisbane.html", "/damaged-cars-brisbane"],
     ]);
 
     for (const [source, destination] of expected) {

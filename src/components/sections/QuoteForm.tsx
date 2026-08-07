@@ -130,7 +130,7 @@ export function QuoteForm() {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will call or text you within 1 business day. Please keep an eye on your phone — and check your spam folder if we reach out by email.
+                    Our team will review the supplied details and contact you during business hours. Keep an eye on your phone, and check your spam folder if we reach out by email.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
@@ -157,7 +157,7 @@ export function QuoteForm() {
                     <span className="text-border">|</span>
                     <div className="flex items-center gap-1.5">
                       <Clock className="w-4 h-4 text-primary" aria-hidden />
-                      <span>Same-day reply</span>
+                      <span>Business-hours review</span>
                     </div>
                   </div>
 

@@ -34,9 +34,9 @@ export const post: RawBlogPostEntry = {
 
     `Do the arithmetic before you commit to a rebuild. A bike that's sat three or four years typically wants two tyres, a chain and sprockets, a battery, fork seals and a full fluid change before it will pass an inspection, and on an older learner bike that bill can land above what the thing is worth running. Add twelve months of registration and CTP and the decision tends to make itself. [Repair or sell your car](/blog/repair-or-sell-your-car-brisbane) sets out the same calculation in more detail.`,
 
-    `If it's staying off the road, you can't legally ride an unregistered bike across town to a buyer — a borrowed ute and two tie-downs is the usual answer. Buyers who collect bring their own transport, which is the practical reason [free car removal](/car-removal-brisbane) and [unregistered vehicle buyers](/unregistered-cars-brisbane) exist: the bike never has to move under its own power, or yours.`,
+    `If it's staying off the road, you can't legally ride an unregistered bike across town to a buyer — a borrowed ute and two tie-downs is one option. A buyer may instead agree to collect it, so ask about [car removal in Brisbane](/car-removal-brisbane) and [unregistered vehicle buyers](/unregistered-cars-brisbane) before moving the bike under its own power.`,
 
-    `Caraway buys motorcycles alongside cars, utes and vans across Greater Brisbane, running or not. Call **${BUSINESS.phoneDisplay}** or send through the details for a free quote, and you'll know the number before you decide whether to sell a motorbike in Brisbane or spend another season getting it started.`,
+    `Caraway can assess a motorcycle from its make, model, condition, location, and access details. Call **${BUSINESS.phoneDisplay}** or send through those details for a free, no-obligation quote. If Caraway buys it, pickup is included when the supplied bike and access details match; collection timing and payment are confirmed for that job before you decide whether to sell or spend another season getting it started.`,
   ],
   faqs: [
     {

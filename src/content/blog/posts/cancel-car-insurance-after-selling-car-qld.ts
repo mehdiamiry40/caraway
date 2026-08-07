@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     `One thing you don't lose: your claims history follows you rather than the car. Insurers rate the driver, so the record you built up over years on the vehicle you've just sold carries into whatever you insure next.`,
 
-    `If the car is unregistered, unwanted, or simply not worth another year of premiums and rego, Caraway will quote on it where it sits and include [free car removal](/car-removal-brisbane) across Greater Brisbane. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll pay cash on pickup.`,
+    `If the car is unregistered, unwanted, or simply not worth another year of premiums and rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form.`,
   ],
   faqs: [
     {

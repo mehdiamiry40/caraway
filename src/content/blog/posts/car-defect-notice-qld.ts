@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Selling is a legitimate way out of a defect notice. Nothing obliges you to repair a car you no longer want, and a defected vehicle can still be sold. Be straight with the buyer about the notice and what's on it — Queensland sellers are expected to disclose known faults, and the notice itself is a document you hand over. A cash-for-cars buyer or a wrecker prices the car on its parts and metal rather than its roadworthiness, so a failed sill barely moves the number. If registration is being cancelled rather than transferred, our [rego cancellation guide](/blog/how-to-cancel-car-rego-qld) sets out that side of it.`,
 
-    `Caraway buys defected, unregistered and non-running cars right across Greater Brisbane, and quotes on the vehicle where it sits with [free car removal](/car-removal-brisbane) included. Call **${BUSINESS.phoneDisplay}** or request a free online quote, and we'll pay cash on pickup.`,
+    `Caraway can assess a defected, unregistered, or non-running car from the details you supply. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job.`,
   ],
   faqs: [
     {

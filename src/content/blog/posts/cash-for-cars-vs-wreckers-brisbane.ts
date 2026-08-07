@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "## Confirm pickup and access terms",
 
-    "Do not assume that either type of buyer always includes towing. Ask whether pickup is included in the accepted offer, which suburbs are covered, what equipment is proposed, and which access conditions could change the arrangement. Disclose height limits, steep driveways, soft ground, locked wheels, missing keys, storage yards, and release requirements before dispatch.",
+    "Do not assume that either type of buyer always includes towing. Ask whether [pickup is included](/car-removal-brisbane) in the accepted offer, which suburbs are covered, what equipment is proposed, and which access conditions could change the arrangement. Disclose height limits, steep driveways, soft ground, locked wheels, missing keys, storage yards, and release requirements before dispatch.",
 
     "Confirm when payment is considered complete and do not release the vehicle until the agreed payment condition is satisfied. Ask who will attend, what authority they have to collect for the buyer, and what signed receipt and buyer details will be provided.",
 

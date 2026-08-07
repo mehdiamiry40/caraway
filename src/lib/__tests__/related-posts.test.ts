@@ -63,11 +63,11 @@ describe("getPostsForService", () => {
 
 describe("getSmartRelatedPosts", () => {
   it("returns at most `limit` posts and defaults to 3", () => {
-    const defaultResult = getSmartRelatedPosts("trade-in-vs-cash-for-cars-brisbane");
+    const defaultResult = getSmartRelatedPosts("what-paperwork-to-sell-a-car-qld");
     expect(defaultResult.length).toBeLessThanOrEqual(3);
     expect(defaultResult.length).toBeGreaterThan(0);
 
-    const customResult = getSmartRelatedPosts("trade-in-vs-cash-for-cars-brisbane", 5);
+    const customResult = getSmartRelatedPosts("what-paperwork-to-sell-a-car-qld", 5);
     expect(customResult.length).toBeLessThanOrEqual(5);
     expect(customResult.length).toBeGreaterThanOrEqual(defaultResult.length);
   });
@@ -79,7 +79,7 @@ describe("getSmartRelatedPosts", () => {
   });
 
   it("never includes retired posts", () => {
-    const result = getSmartRelatedPosts("trade-in-vs-cash-for-cars-brisbane", 50);
+    const result = getSmartRelatedPosts("what-paperwork-to-sell-a-car-qld", 50);
     for (const retired of RETIRED_BLOG_SLUGS) {
       expect(result.find((p) => p.slug === retired)).toBeUndefined();
       expect(blogPosts.find((p) => p.slug === retired)).toBeUndefined();

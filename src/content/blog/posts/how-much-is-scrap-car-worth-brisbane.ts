@@ -1,4 +1,5 @@
 import type { RawBlogPostEntry } from "../types";
+import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "how-much-is-scrap-car-worth-brisbane",
@@ -9,11 +10,11 @@ export const post: RawBlogPostEntry = {
     "Scrap car offers are not one-size-fits-all. Brisbane buyers look at the vehicle itself, what can be reused, what it costs to collect, and what the parts and metal market is doing.",
   author: "Caraway",
   content: [
-    "A scrap car in Brisbane may be worth a small amount, a few hundred dollars, or more if it is newer, complete, repairable, or in demand for parts. Most older or scrap vehicles receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
+    "There is no reliable Brisbane-wide amount for a scrap car. An individual assessment depends on the exact vehicle, its condition and completeness, the lawful ownership position, location and access, and the buyer's current pathways for reuse, components, or recoverable materials.",
 
     "## Quick answer",
 
-    "The value depends on the make, model, age, condition, completeness, location, access for towing, and current demand for parts or recycled metal. A non-running Corolla, a damaged Hilux, and a stripped European sedan will not be priced the same way. The fastest way to know is to request a specific quote from a Brisbane buyer such as [Caraway cash for cars Brisbane](/cash-for-cars-brisbane).",
+    "The assessment depends on the make, model, age, condition, completeness, location, towing access, and current demand for reusable components or recoverable material. A non-running small car, a damaged ute, and a stripped shell do not present the same inputs. Request a written vehicle-specific quote from a Brisbane buyer such as [Caraway cash for cars Brisbane](/cash-for-cars-brisbane), and check its assumptions before accepting it.",
 
     "## Main factors that affect scrap car value",
 
@@ -26,33 +27,33 @@ export const post: RawBlogPostEntry = {
     "- Vehicle location and how easy it is to tow",
     "- Current metal and salvage market demand",
 
-    "Scrap value is not just about weight. A complete vehicle with usable panels, lights, interior parts, driveline components, and electronics may be worth more than a bare shell because there are more parts that can be reused.",
+    "A vehicle assessment is not based on weight alone. A buyer may also consider whether panels, lights, interior parts, driveline components, and electronics are suitable for reuse, along with the cost and feasibility of collection and downstream processing.",
 
     "## Why complete cars may be worth more",
 
-    "A complete car is usually easier to value and easier to recover. Missing parts can reduce an offer because the buyer has fewer components to resell or recycle and may face extra loading work. For example, a car with wheels, keys, battery, and catalytic converter present is generally more attractive than a shell sitting on blocks.",
+    "Completeness helps a buyer understand what is being assessed. Missing wheels, keys, battery, catalytic converter, driveline, or body parts can change the available reuse or recovery pathways and the loading plan. The effect on an offer depends on the particular vehicle and buyer; completeness does not create a fixed premium.",
 
     "If parts have already been removed, say so when requesting a quote. It is better to be upfront than to receive a revised offer at pickup because the vehicle is not as described.",
 
     "## Running vs non-running cars",
 
-    "A running scrap car may be worth more because it can be loaded easily and may have repairable value. A non-running car can still be valuable, especially if it is complete, a popular model, or has reusable parts. Caraway can arrange [car removal in Brisbane](/car-removal-brisbane) for vehicles that do not start or cannot be driven.",
+    "Running condition can affect the available sale and loading options, but it is only one input. A non-running car can still be assessed when the buyer knows whether it rolls, steers, brakes, has all wheels, and can be reached safely. Caraway can assess [car removal in Brisbane](/car-removal-brisbane) for vehicles that do not start or cannot be driven, subject to the vehicle, location, and access details.",
 
     "If the vehicle is unregistered or unsafe, do not drive it just to improve the quote. Tell the buyer the real condition and arrange towing if needed. You can also read our guide on whether you can [sell a car without a roadworthy in QLD](/blog/sell-car-without-roadworthy-qld).",
 
     "## Location and towing access",
 
-    "Where the car is parked can affect pickup time and cost. A car in a flat driveway in Moorooka is easier to collect than a car in a tight underground car park, behind another vehicle, or on a rural block outside normal coverage. Clear access, inflated tyres, and available keys can help the job go smoothly.",
+    "Where the car is parked can affect collection feasibility, equipment, and any disclosed cost. A flat accessible driveway presents different requirements from a tight underground car park, a blocked vehicle, soft ground, or a rural property outside an operator's coverage. Clear information about tyres, keys, obstacles, clearance, and surface conditions helps the buyer plan accurately.",
 
     "When requesting a quote, mention if the car is in a garage, backyard, workshop, apartment car park, storage yard, or roadside location. Photos of the access point can help avoid delays.",
 
     "## Why offers change with market demand",
 
-    "Parts and metal demand moves over time. Popular utes, 4WDs, Japanese small cars, and models with strong parts demand may attract better offers than low-demand cars in poor condition. Metal prices also move, so an offer made today may not be available weeks later.",
+    "Demand for particular components and recovered materials can change. A buyer's available resale, dismantling, or processing pathway can therefore change an assessment, and a written quote may have a stated validity period. Avoid assuming that a vehicle category or calendar date guarantees a stronger offer.",
 
     "This is why broad online estimates are often unreliable. A fair scrap car quote needs the vehicle details and the pickup situation.",
 
-    "## How to get a better quote",
+    "## How to request an accurate quote",
 
     "- Share the VIN or registration number if available",
     "- Provide make, model, year, kilometres, and transmission",
@@ -62,9 +63,9 @@ export const post: RawBlogPostEntry = {
     "- Be honest about flood, accident, fire, rust, or write-off history",
     "- Mention your Brisbane suburb and towing access",
 
-    "## Want a quick offer for your scrap car?",
+    "## Request an individual assessment",
 
-    "Caraway buys scrap, unwanted, damaged, unregistered, and non-running vehicles across Brisbane. Get a [free quote](/#price-estimator), [contact us](/contact), or call 0481 438 444. If the offer suits you, pickup and payment can be arranged on collection.",
+    `Caraway assesses scrap, unwanted, damaged, unregistered, and non-running vehicles in its confirmed Brisbane service area. [Request a quote](/#price-estimator), [contact us](/contact), or call ${BUSINESS.phoneDisplay}. If an offer is made and accepted, the pickup conditions, payment arrangement, and receipt details are confirmed before collection.`,
 
     "## FAQ",
 
@@ -89,15 +90,27 @@ export const post: RawBlogPostEntry = {
     {
       question: "Is a complete scrap car worth more?",
       answer:
-        "Often, yes. Complete vehicles may have more reusable parts and are usually easier to collect, although the final offer still depends on the model and condition.",
+        "It can affect the assessment because missing components may change reuse, recovery, and loading options. The result still depends on the specific vehicle, condition, location, access, and buyer.",
     },
     {
       question: "Do scrap car offers include towing?",
       answer:
-        "Caraway can include towing when buying cars across Brisbane, but sellers should confirm pickup details when accepting an offer.",
+        "Caraway can include towing when it buys within its confirmed service area, subject to the vehicle, location, and access details. Sellers should confirm the pickup terms when accepting an offer.",
     },
   ],
   date: "2026-04-26",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Australian Government — end-of-life vehicle waste",
+      url: "https://www.dcceew.gov.au/sites/default/files/documents/npsif-factsheets-vehicle-waste.pdf",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+  ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "scrap-car-removal-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
