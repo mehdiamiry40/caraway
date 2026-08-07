@@ -8,7 +8,14 @@ import {
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-post-template";
-import { HOME_CONTENT_UPDATED, LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
+import {
+  ABOUT_CONTENT_UPDATED,
+  FAQ_CONTENT_UPDATED,
+  HOME_CONTENT_UPDATED,
+  LEGAL_DATE_ISO,
+  SERVICES_CONTENT_UPDATED,
+  SITE_URL,
+} from "@/lib/site";
 
 const entries = sitemap();
 const urls = new Set(entries.map((e) => e.url));
@@ -116,6 +123,13 @@ describe("sitemap.ts — page coverage", () => {
     ).toBe(HOME_CONTENT_UPDATED);
   });
 
+  it("uses the service hub's material consolidation date", () => {
+    expect(
+      entries.find((entry) => entry.url === `${SITE_URL}/services`)
+        ?.lastModified,
+    ).toBe(SERVICES_CONTENT_UPDATED);
+  });
+
   it("includes every service page", () => {
     for (const s of services) {
       expect(urls.has(`${SITE_URL}/${s.slug}`)).toBe(true);
@@ -137,11 +151,16 @@ describe("sitemap.ts — page coverage", () => {
     }
   });
 
-  it("does not use today as lastModified for static pages", () => {
-    const today = new Date().toISOString().split("T")[0];
+  it("uses the declared material-update date for the About page", () => {
     const staticEntry = entries.find((e) => e.url === `${SITE_URL}/about`);
     expect(staticEntry).toBeDefined();
-    expect(staticEntry?.lastModified).not.toBe(today);
+    expect(staticEntry?.lastModified).toBe(ABOUT_CONTENT_UPDATED);
+  });
+
+  it("uses the declared material-update date for the FAQ page", () => {
+    const staticEntry = entries.find((e) => e.url === `${SITE_URL}/faq`);
+    expect(staticEntry).toBeDefined();
+    expect(staticEntry?.lastModified).toBe(FAQ_CONTENT_UPDATED);
   });
 
   it("uses the stated legal-update dates for legal-page lastModified", () => {

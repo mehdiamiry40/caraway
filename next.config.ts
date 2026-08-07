@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
+import { RETIRED_SERVICE_DESTINATIONS } from "./src/lib/service-consolidation";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -8,6 +9,13 @@ export const retiredLocationRedirects = Object.entries(
   RETIRED_LOCATION_DESTINATIONS,
 ).map(([slug, destination]) => ({
   source: `/locations/${slug}`,
+  destination,
+}));
+
+export const retiredServiceRedirects = Object.entries(
+  RETIRED_SERVICE_DESTINATIONS,
+).map(([slug, destination]) => ({
+  source: `/${slug}`,
   destination,
 }));
 
@@ -177,12 +185,8 @@ export const legacyIndexingRedirects = [
     source: "/service-page/home-visit",
     destination: "/car-removal-brisbane",
   },
-  // August 2026 Search Console consolidation: these pages split the same
-  // Brisbane car-removal query across three URLs. Keep one indexable owner.
-  {
-    source: "/unwanted-cars-brisbane",
-    destination: "/car-removal-brisbane",
-  },
+  // August 2026 Search Console consolidation: the article split the same
+  // Brisbane car-removal query across multiple URLs. Keep one indexable owner.
   {
     source: "/blog/free-car-removal-brisbane",
     destination: "/car-removal-brisbane",
@@ -193,11 +197,46 @@ export const legacyIndexingRedirects = [
   },
 ] as const;
 
+const indexingRedirects = [
+  ...retiredServiceRedirects,
+  ...retiredLocationRedirects,
+  ...legacyIndexingRedirects,
+] as const;
+
+const wwwHost = [{ type: "host" as const, value: "www.caraway.au" }];
+
+const canonicalHostIndexingRedirects = indexingRedirects.flatMap(
+  ({ source, destination }) => [
+    {
+      source: `${source}/`,
+      has: wwwHost,
+      destination: `https://caraway.au${destination}`,
+      permanent: true,
+    },
+    {
+      source,
+      has: wwwHost,
+      destination: `https://caraway.au${destination}`,
+      permanent: true,
+    },
+  ],
+);
+
+const directIndexingRedirects = indexingRedirects.flatMap(
+  ({ source, destination }) => [
+    { source: `${source}/`, destination, permanent: true },
+    { source, destination, permanent: true },
+  ],
+);
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  // Custom slash rules let retired URLs on either canonical host resolve to
+  // their final destination in one hop instead of normalizing first.
+  skipTrailingSlashRedirect: true,
   outputFileTracingRoot: path.join(__dirname),
   images: {
     formats: ["image/avif", "image/webp"],
@@ -210,12 +249,21 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
   redirects: async () => [
+    // Retired URLs on the old www host go straight to their final apex URL,
+    // including requests that carry a trailing slash.
+    ...canonicalHostIndexingRedirects,
     // Force canonical host: www.caraway.au → caraway.au with a permanent 308.
     // Vercel now uses the apex domain as the production target, so keeping the
     // old app-level apex → www redirect creates a redirect loop.
     {
+      source: "/:path+/",
+      has: wwwHost,
+      destination: "https://caraway.au/:path+",
+      permanent: true,
+    },
+    {
       source: "/:path*",
-      has: [{ type: "host", value: "www.caraway.au" }],
+      has: wwwHost,
       destination: "https://caraway.au/:path*",
       permanent: true,
     },
@@ -227,16 +275,14 @@ const nextConfig: NextConfig = {
     //   landing pages or claimed service in markets Caraway does not cover.
     // Map each to its closest live equivalent so Google consolidates signals
     // onto a canonical page rather than keeping stale URLs in the crawl queue.
-    ...retiredLocationRedirects.map(({ source, destination }) => ({
-      source,
-      destination,
+    ...directIndexingRedirects,
+    // Preserve the site's no-trailing-slash policy after disabling Next's
+    // higher-priority automatic redirect above.
+    {
+      source: "/:path+/",
+      destination: "/:path+",
       permanent: true,
-    })),
-    ...legacyIndexingRedirects.map(({ source, destination }) => ({
-      source,
-      destination,
-      permanent: true,
-    })),
+    },
   ],
   headers: async () => [
     {

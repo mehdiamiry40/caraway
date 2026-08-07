@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     `Testing means dropping the tank out of the car, and quotes run into the hundreds once labour is counted. Installers will often quote a replacement tank at a similar figure. On a 2004 Commodore that has done 300,000 kilometres, either number can exceed the gap between what the car fetches certified and what it fetches as-is — and that gap is the only number that matters.`,
 
-    `Brisbane has a lot of these cars because a lot of them were converted during the subsidised-conversion years, and the ex-taxi and ex-fleet sedans from that era are still circulating through Rocklea, Moorooka and Logan. Which is why [selling a Ford Falcon in Brisbane](/sell-ford-falcon-brisbane) so often arrives with a gas question attached. The refuelling network has thinned out too — fewer servos carry autogas than a decade ago, and that softens what a private buyer will pay even when the paperwork is spotless.`,
+    `Factory and converted LPG vehicles need extra paperwork attention when they are sold. If you are considering a direct sale, include the fuel system and certificate details when requesting a [Brisbane vehicle quote](/cash-for-cars-brisbane) so the car can be assessed accurately.`,
 
     `## When You Don't Need a Gas Certificate in QLD`,
 
@@ -78,8 +78,7 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "sell-ford-falcon-brisbane",
-    "sell-holden-commodore-brisbane",
+    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["rocklea", "moorooka", "logan", "springwood"],

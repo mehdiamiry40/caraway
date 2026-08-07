@@ -7,6 +7,7 @@ export const BUSINESS = {
   legalName: "Mehdi Emir",
   businessStructure: "Sole trader",
   abn: "62 351 619 456",
+  abrUrl: "https://abr.business.gov.au/ABN/View?abn=62351619456",
   foundingYear: 2025,
   founder: "Mehdi Emir",
   phoneDisplay: "0481 438 444",
@@ -21,12 +22,11 @@ export const BUSINESS = {
   addressFormatted: "Brisbane, QLD",
   /** Metro label — used with "Greater …" service-area copy. */
   location: "Brisbane, QLD",
-  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redland Bay",
+  locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
   hours: "7:00 AM – 7:00 PM",
   /** Phone and quotes — pickup times are booked separately (see FAQ). */
   hoursDetail:
     "Seven days for calls and quotes. Pickup is usually same- or next-day (subject to truck availability) — we confirm when you book.",
-  insured: true,
   googleBusinessUrl: "https://share.google/n0D0gZyISx3hMNECL",
 } as const;
 
@@ -74,17 +74,26 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
  *  the dedicated service pages can own the two primary commercial queries. */
 export const HOME_CONTENT_UPDATED = "2026-08-07";
 
+/** Business identity and operating-terms copy materially reviewed in August 2026. */
+export const ABOUT_CONTENT_UPDATED = "2026-08-07";
+
+/** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
+export const FAQ_CONTENT_UPDATED = "2026-08-07";
+
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
  *  WebPage.dateModified so the recrawl signal is honest and consistent. */
-export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-07-21";
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-07";
+
+/** Service catalogue materially consolidated and retitled in August 2026. */
+export const SERVICES_CONTENT_UPDATED = "2026-08-07";
 
 export const PROMISE_POINTS = [
-  "Fair offer based on details",
-  "Same- or next-day pickup",
+  "Offer based on supplied details",
+  "Collection window confirmed",
   "Pickup included when we buy",
-  "Cars assessed as-is",
-  "All makes & models",
-  "7 days a week",
+  "Vehicle checked before loading",
+  "Payment arrangement confirmed",
+  "Receipt and buyer details",
 ] as const;

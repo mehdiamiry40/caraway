@@ -5,44 +5,45 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { services } from "@/data/services";
-import { BUSINESS, CONTENT_DEPLOY_DATE, SITE_URL } from "@/lib/site";
+import { BUSINESS, SERVICES_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Cash for Cars Services Brisbane",
-  description: `Browse Caraway's Brisbane cash-for-cars services, including free car removal, damaged cars, old cars, scrap cars, unregistered cars, utes, 4WDs, and popular models. Call ${BUSINESS.phoneDisplay}.`,
+  title: "Vehicle Buying Services in Brisbane",
+  description: `Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/services" },
   openGraph: {
     type: "website",
     url: "/services",
-    title: "Cash for Cars Services Brisbane | Caraway",
+    title: "Vehicle Buying Services in Brisbane | Caraway",
     description:
-      "Browse Caraway's Brisbane cash-for-cars services, from free car removal to damaged, scrap, old, and unregistered vehicles.",
+      "Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
         width: 1200,
         height: 800,
-        alt: "Caraway cash for cars Brisbane services",
+        alt: "Vehicle buying services in Brisbane",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cash for Cars Services Brisbane | Caraway",
+    title: "Vehicle Buying Services in Brisbane | Caraway",
     description:
-      "Browse Caraway's Brisbane cash-for-cars services, from free car removal to damaged, scrap, old, and unregistered vehicles.",
+      "Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
-        alt: "Caraway cash for cars Brisbane services",
+        alt: "Vehicle buying services in Brisbane",
       },
     ],
   },
 };
 
 const canonical = `${SITE_URL}/services`;
+export const SERVICE_HUB_HEADING = "Vehicle buying options across Brisbane.";
 
 const iconForService = (slug: string) => {
   if (slug.includes("removal") || slug.includes("scrap") || slug.includes("junk")) {
@@ -68,11 +69,11 @@ export default function ServicesPage() {
             "@type": "CollectionPage",
             "@id": `${canonical}#webpage`,
             url: canonical,
-            name: "Cash for Cars Services Brisbane",
+            name: "Caraway vehicle buying services",
             description:
-              "Browse Caraway's Brisbane vehicle buying, free towing, and cash-for-cars services.",
+              "Browse Caraway's vehicle-buying and collection options across Greater Brisbane.",
             isPartOf: { "@id": `${SITE_URL}/#website` },
-            dateModified: CONTENT_DEPLOY_DATE,
+            dateModified: SERVICES_CONTENT_UPDATED,
             mainEntity: {
               "@type": "ItemList",
               itemListElement: services.map((service, index) => ({
@@ -91,11 +92,11 @@ export default function ServicesPage() {
           { label: "Services" },
         ]}
         eyebrow="Services"
-        title="Cash-for-cars services across Brisbane."
+        title={SERVICE_HUB_HEADING}
         subtitle={
           <p>
-            Find the right service for damaged, unwanted, old, scrap,
-            unregistered, or model-specific vehicles.
+            Find the right assessment path for a used, unwanted, damaged,
+            scrap, hail-damaged, or unregistered vehicle.
           </p>
         }
       >

@@ -4,11 +4,15 @@ import { describe, expect, it } from "vitest";
 import nextConfig, {
   legacyIndexingRedirects,
   retiredLocationRedirects,
+  retiredServiceRedirects,
 } from "../next.config";
 import sitemap from "@/app/sitemap";
+import { generateStaticParams as generateServiceStaticParams } from "@/app/[slug]/page";
 import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
+import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
+import { RETIRED_SERVICE_DESTINATIONS } from "@/lib/service-consolidation";
 import { SITE_URL } from "@/lib/site";
 
 type HeaderRule = {
@@ -20,6 +24,7 @@ type RedirectRule = {
   source: string;
   destination: string;
   permanent?: boolean;
+  has?: Array<{ type: string; value?: string }>;
 };
 
 async function getRedirectRules(): Promise<RedirectRule[]> {
@@ -32,6 +37,13 @@ async function getHeaderRules(): Promise<HeaderRule[]> {
   const headers = nextConfig.headers;
   if (typeof headers !== "function") return [];
   return (await headers()) as HeaderRule[];
+}
+
+function findPathRedirect(
+  redirects: RedirectRule[],
+  source: string,
+): RedirectRule | undefined {
+  return redirects.find((rule) => rule.source === source && !rule.has);
 }
 
 function liveTargetPath(destination: string): string {
@@ -64,7 +76,7 @@ describe("Search Console indexing cleanup", () => {
     const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
 
     for (const legacy of legacyIndexingRedirects) {
-      const redirect = redirects.find((rule) => rule.source === legacy.source);
+      const redirect = findPathRedirect(redirects, legacy.source);
       expect(redirect).toMatchObject({
         destination: legacy.destination,
         permanent: true,
@@ -91,7 +103,7 @@ describe("Search Console indexing cleanup", () => {
     ]);
 
     for (const [source, destination] of expected) {
-      expect(redirects.find((rule) => rule.source === source)).toMatchObject({
+      expect(findPathRedirect(redirects, source)).toMatchObject({
         destination,
         permanent: true,
       });
@@ -126,13 +138,98 @@ describe("Search Console indexing cleanup", () => {
 
     for (const retired of retiredLocationRedirects) {
       expect(liveLocationSlugs.has(retired.source.replace("/locations/", ""))).toBe(false);
-      expect(redirects.find((rule) => rule.source === retired.source)).toMatchObject({
+      expect(findPathRedirect(redirects, retired.source)).toMatchObject({
         destination: retired.destination,
         permanent: true,
       });
       expect(sitemapUrls.has(`${SITE_URL}${retired.source}`)).toBe(false);
       expect(sitemapUrls.has(`${SITE_URL}${liveTargetPath(retired.destination)}`)).toBe(true);
       expect(redirectSources.has(retired.destination)).toBe(false);
+    }
+  });
+
+  it("consolidates low-value service pages into eight distinct live intents", async () => {
+    const redirects = await getRedirectRules();
+    const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    const staticSlugs = new Set(
+      (await generateServiceStaticParams()).map(({ slug }) => slug),
+    );
+    const liveServiceSlugs = new Set(services.map((service) => service.slug));
+    const redirectSources = new Set(redirects.map((redirect) => redirect.source));
+
+    expect(services).toHaveLength(8);
+    expect(liveServiceSlugs.size).toBe(services.length);
+    expect([...liveServiceSlugs].sort()).toEqual([
+      "car-removal-brisbane",
+      "cash-for-cars-brisbane",
+      "damaged-cars-brisbane",
+      "hail-damaged-cars-brisbane",
+      "scrap-car-removal-brisbane",
+      "sell-my-car-brisbane",
+      "sell-toyota-hilux-brisbane",
+      "unregistered-cars-brisbane",
+    ]);
+    expect(retiredServiceRedirects).toHaveLength(11);
+
+    for (const [slug, destination] of Object.entries(
+      RETIRED_SERVICE_DESTINATIONS,
+    )) {
+      const source = `/${slug}`;
+      expect(liveServiceSlugs.has(slug)).toBe(false);
+      expect(staticSlugs.has(slug)).toBe(false);
+      expect(findPathRedirect(redirects, source)).toMatchObject({
+        destination,
+        permanent: true,
+      });
+      expect(
+        redirects.find(
+          (rule) =>
+            rule.source === source &&
+            rule.has?.some(
+              (condition) =>
+                condition.type === "host" &&
+                condition.value === "www.caraway.au",
+            ),
+        ),
+      ).toMatchObject({
+        destination: `${SITE_URL}${destination}`,
+        permanent: true,
+      });
+      expect(
+        redirects.find(
+          (rule) =>
+            rule.source === `${source}/` &&
+            rule.has?.some(
+              (condition) =>
+                condition.type === "host" &&
+                condition.value === "www.caraway.au",
+            ),
+        ),
+      ).toMatchObject({
+        destination: `${SITE_URL}${destination}`,
+        permanent: true,
+      });
+      expect(
+        redirects.find(
+          (rule) => rule.source === `${source}/` && !rule.has,
+        ),
+      ).toMatchObject({ destination, permanent: true });
+      expect(sitemapUrls.has(`${SITE_URL}${source}`)).toBe(false);
+      expect(sitemapUrls.has(`${SITE_URL}${destination}`)).toBe(true);
+      expect(redirectSources.has(destination)).toBe(false);
+    }
+  });
+
+  it("does not reference retired services outside their redirect contract", () => {
+    const sourceFiles = walkSourceFiles(path.join(process.cwd(), "src")).filter(
+      (file) => !file.endsWith("service-consolidation.ts"),
+    );
+
+    for (const slug of Object.keys(RETIRED_SERVICE_DESTINATIONS)) {
+      const matches = sourceFiles.filter((file) =>
+        fs.readFileSync(file, "utf8").includes(slug),
+      );
+      expect(matches, slug).toEqual([]);
     }
   });
 

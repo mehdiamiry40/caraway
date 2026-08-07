@@ -6,25 +6,25 @@ const steps = [
     number: "01",
     title: "Tell us about your car",
     description: "Make, model, year. Photos help if you have them.",
-    timing: "60 seconds",
+    timing: "A few key details",
   },
   {
     number: "02",
     title: "Get a confirmed offer",
     description: "In writing, before any pickup is booked.",
-    timing: "Within 1 business day",
+    timing: "After assessment",
   },
   {
     number: "03",
     title: "We come to you",
-    description: "Our truck arrives at the booked slot. Towing is included.",
-    timing: "Usually same- or next-day",
+    description: "Pickup is included when we buy and the supplied access details match.",
+    timing: "Window confirmed",
   },
   {
     number: "04",
-    title: "Get paid on the spot",
-    description: "Payment lands before the wheels leave, with a signed receipt.",
-    timing: "Paid that day",
+    title: "Complete payment and records",
+    description: "Use the agreed payment arrangement and retain the buyer and receipt details.",
+    timing: "Terms agreed first",
   },
 ] as const;
 

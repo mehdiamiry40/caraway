@@ -13,16 +13,20 @@ import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { getPostsForService } from "@/data/blog-posts";
 import { Accordion } from "@/components/ui/accordion";
 import { CheckCircle2 } from "lucide-react";
-import { PROMISE_POINTS } from "@/lib/site";
+import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
+import { canonicalServiceSlug } from "@/lib/service-consolidation";
 
 export default function ServicePageTemplate({
   service,
 }: {
   service: ServicePage;
 }) {
-  const relatedServiceData = service.relatedServices
+  const canonicalRelatedServiceSlugs = [
+    ...new Set(service.relatedServices.map(canonicalServiceSlug)),
+  ].filter((slug) => slug !== service.slug);
+  const relatedServiceData = canonicalRelatedServiceSlugs
     .map(slug => services.find(s => s.slug === slug))
     .filter((s): s is ServicePage => s !== undefined);
 
@@ -63,7 +67,7 @@ export default function ServicePageTemplate({
             <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
               {heroIntro}
             </p>
-            <ScrollToQuoteCTA />
+            <ScrollToQuoteCTA source={service.slug} />
           </div>
         </section>
 
@@ -104,8 +108,8 @@ export default function ServicePageTemplate({
 
             <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
               <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
-                <h3 className="text-sm font-display mb-1 text-foreground">Why Caraway</h3>
-                <p className="text-xs text-muted-foreground mb-5">Brisbane&apos;s cash-for-cars buyer</p>
+                <h3 className="text-sm font-display mb-1 text-foreground">What Caraway confirms</h3>
+                <p className="text-xs text-muted-foreground mb-5">Before a vehicle is collected</p>
                 <ul className="space-y-3.5">
                   {PROMISE_POINTS.map(item => (
                     <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
@@ -115,6 +119,45 @@ export default function ServicePageTemplate({
                       <span className="text-foreground/80">{item}</span>
                     </li>
                   ))}
+                </ul>
+              </div>
+
+              <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <h3 className="text-sm font-display mb-2 text-foreground">Registered Brisbane business</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Caraway is the registered business name of {BUSINESS.legalName},
+                  a sole trader based in Brisbane, Queensland. Caraway is a
+                  service-area business and does not operate a public vehicle yard.
+                </p>
+                <ul className="mt-4 space-y-1 text-sm">
+                  <li>
+                    <a
+                      href={BUSINESS.abrUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[44px] items-center text-primary underline-offset-4 hover:underline"
+                    >
+                      ABN {BUSINESS.abn}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={BUSINESS.googleBusinessUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[44px] items-center text-primary underline-offset-4 hover:underline"
+                    >
+                      View Caraway on Google
+                    </a>
+                  </li>
+                  <li className="flex min-h-[44px] items-center gap-3">
+                    <Link className="text-primary underline-offset-4 hover:underline" href="/about">
+                      About
+                    </Link>
+                    <Link className="text-primary underline-offset-4 hover:underline" href="/contact">
+                      Contact
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

@@ -2,9 +2,17 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
 import { metadata as locationsMetadata } from "@/app/locations/page";
+import { metadata as faqMetadata } from "@/app/faq/page";
+import { metadata as blogMetadata } from "@/app/blog/page";
+import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
+import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
 import { generateMetadata as generateServiceMetadata } from "@/app/[slug]/page";
+import {
+  metadata as servicesMetadata,
+  SERVICE_HUB_HEADING,
+} from "@/app/services/page";
 import { Hero } from "@/components/sections/Hero";
-import { getServiceBySlug } from "@/data/services";
+import { getServiceBySlug, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 const CASH_QUERY = /cash for cars brisbane/i;
@@ -30,6 +38,38 @@ describe("primary SEO query ownership", () => {
     expect(String(locationsMetadata.openGraph?.title ?? "")).not.toMatch(CASH_QUERY);
   });
 
+  it("keeps the service hub neutral instead of competing with either owner", () => {
+    expect(String(servicesMetadata.title ?? "")).not.toMatch(CASH_QUERY);
+    expect(String(servicesMetadata.title ?? "")).not.toMatch(REMOVAL_QUERY);
+    expect(String(servicesMetadata.openGraph?.title ?? "")).not.toMatch(
+      CASH_QUERY,
+    );
+    expect(String(servicesMetadata.openGraph?.title ?? "")).not.toMatch(
+      REMOVAL_QUERY,
+    );
+    expect(SERVICE_HUB_HEADING).not.toMatch(CASH_QUERY);
+    expect(SERVICE_HUB_HEADING).not.toMatch(REMOVAL_QUERY);
+  });
+
+  it("keeps supporting hubs and paginated indexes from claiming either exact query", async () => {
+    const pageTwoMetadata = await generateBlogPageMetadata({
+      params: Promise.resolve({ page: "2" }),
+    });
+
+    for (const metadata of [
+      faqMetadata,
+      blogMetadata,
+      pageTwoMetadata,
+      howItWorksMetadata,
+    ]) {
+      for (const query of [CASH_QUERY, REMOVAL_QUERY]) {
+        expect(String(metadata.title ?? "")).not.toMatch(query);
+        expect(String(metadata.openGraph?.title ?? "")).not.toMatch(query);
+        expect(String(metadata.twitter?.title ?? "")).not.toMatch(query);
+      }
+    }
+  });
+
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
     const service = getServiceBySlug("cash-for-cars-brisbane");
     const metadata = await generateServiceMetadata({
@@ -45,6 +85,9 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/cash-for-cars-brisbane",
     );
+    expect(
+      services.filter((item) => /^Cash for Cars Brisbane\b/i.test(item.h1)),
+    ).toHaveLength(1);
   });
 
   it("assigns car removal Brisbane to one surviving service page", async () => {
@@ -60,5 +103,8 @@ describe("primary SEO query ownership", () => {
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/car-removal-brisbane",
     );
+    expect(
+      services.filter((item) => /^Car Removal Brisbane\b/i.test(item.h1)),
+    ).toHaveLength(1);
   });
 });

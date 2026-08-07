@@ -8,16 +8,16 @@ import { SITE_URL } from "@/lib/site";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Cash for Cars Brisbane Blog — Tips & Guides",
+  title: "Brisbane Car Selling Guides",
   description:
-    "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works.",
+    "Practical Brisbane guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/blog`,
-    title: "Cash for Cars Brisbane Blog — Tips & Guides",
+    title: "Brisbane Car Selling Guides | Caraway",
     description:
-      "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, what paperwork you need, and how same- or next-day pickup works.",
+      "Practical guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
     // No images: the blog shares as a text-only preview. Declaring openGraph
     // here also stops the root layout's card being inherited — Next replaces
     // the parent object rather than merging it.
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   twitter: {
     // "summary", not "summary_large_image": there is no image to feature.
     card: "summary",
-    title: "Cash for Cars Brisbane Blog — Caraway",
+    title: "Brisbane Car Selling Guides | Caraway",
     description:
-      "Expert tips on selling your car for cash in Brisbane. Learn how to get the best price, paperwork you need, and how same- or next-day pickup works.",
+      "Practical guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
   },
 };
 

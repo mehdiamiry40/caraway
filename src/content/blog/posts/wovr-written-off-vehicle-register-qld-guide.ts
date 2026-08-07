@@ -26,7 +26,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling a written-off car for cash in Brisbane",
 
-      "For sellers, the key question is whether you can still sell the car once it has been written off. The process depends on the classification. A statutory write-off cannot be re-registered and is generally sold for parts or scrap. A repairable write-off may be sold to a buyer who understands the inspection and re-registration requirements, a rebuilder or mechanic, or a [cash-for-cars buyer](/insurance-write-off-cars-brisbane).",
+      "For sellers, the key question is whether you can still sell the car once it has been written off. The process depends on the classification. A statutory write-off cannot be re-registered and is generally sold for parts or scrap. A repairable write-off may be sold to a buyer who understands the inspection and re-registration requirements, a rebuilder or mechanic, or a [damaged-car buyer](/damaged-cars-brisbane).",
 
       "Before accepting an insurer settlement or retaining salvage, read the policy and settlement documents carefully. Excesses, ownership of the salvage, registration consequences, and any reduced settlement are policy-specific. Ask the insurer to confirm the options in writing and compare them with a documented salvage offer before deciding.",
 
@@ -56,6 +56,6 @@ export const post: RawBlogPostEntry = {
       },
     ],
     category: "Guides",
-    relatedServices: ["insurance-write-off-cars-brisbane", "damaged-cars-brisbane", "cash-for-cars-brisbane"],
+    relatedServices: ["damaged-cars-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
   };

@@ -44,6 +44,6 @@ export const post: RawBlogPostEntry = {
   ],
   date: "2026-07-06",
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "used-cars-brisbane"],
+  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "carindale", "redlands"],
 };

@@ -16,6 +16,7 @@ import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
+import { canonicalServiceSlug } from "@/lib/service-consolidation";
 
 function TwitterIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -72,7 +73,10 @@ function formatDate(iso: string): string {
 }
 
 export default function BlogPost({ post }: { post: BlogPostType }) {
-  const relatedServiceData = post.relatedServices
+  const canonicalRelatedServiceSlugs = [
+    ...new Set(post.relatedServices.map(canonicalServiceSlug)),
+  ];
+  const relatedServiceData = canonicalRelatedServiceSlugs
     .map((slug) => services.find((service) => service.slug === slug))
     .filter((service) => service !== undefined);
   const canonicalRelatedSuburbSlugs = [
@@ -213,10 +217,10 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     className="font-display text-2xl sm:text-3xl font-semibold text-foreground leading-[1.1] text-balance"
                     style={{ letterSpacing: "var(--tracking-tight)" }}
                   >
-                    Get a real offer in under 60 seconds.
+                    Request an individual vehicle quote.
                   </p>
                   <p className="text-sm sm:text-base text-muted-foreground mt-3 max-w-md leading-relaxed">
-                    Same- or next-day pickup across Brisbane. Cars assessed as-is. Pickup included when we buy. Payment confirmed at pickup.
+                    Share the vehicle, ownership, location, and access details. If Caraway makes an offer, the collection window, included-pickup terms, payment arrangement, and receipt details are confirmed before dispatch.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
@@ -369,8 +373,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   Ready to sell your car for cash?
                 </p>
                 <p className="text-primary-foreground/80 text-sm sm:text-base mt-4 mb-8 max-w-xl mx-auto leading-relaxed">
-                  Call {BUSINESS.phoneDisplay} or grab a free instant quote &mdash; same- or
-                  next-day pickup across Brisbane.
+                  Call {BUSINESS.phoneDisplay} or request a quote. Collection
+                  timing is confirmed from the vehicle, location, access, and
+                  operator availability.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <TrackedPhoneLink

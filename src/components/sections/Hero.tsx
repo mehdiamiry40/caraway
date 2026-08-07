@@ -32,7 +32,7 @@ export function Hero() {
               <source media="(min-width: 1024px)" srcSet="/images/tow-truck-hero.webp" type="image/webp" />
               <img
                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                alt="Caraway tow truck collecting a customer's car in Brisbane"
+                alt="Tilt-tray truck carrying a silver sedan"
                 width={800}
                 height={800}
                 fetchPriority="high"
@@ -79,7 +79,7 @@ export function Hero() {
                   <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
                   <img
                     src="/images/tow-truck-hero.webp"
-                    alt="Caraway tow truck collecting a customer's car in Brisbane"
+                    alt="Tilt-tray truck carrying a silver sedan"
                     width={800}
                     height={800}
                     fetchPriority="high"

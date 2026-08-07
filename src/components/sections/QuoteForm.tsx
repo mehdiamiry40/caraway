@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   quoteFormSchema,
   type QuoteFormInput,
@@ -355,17 +354,6 @@ export function QuoteForm() {
                         {errors.address.message}
                       </p>
                     )}
-                  </div>
-
-                  <div className="flex items-start gap-3 pt-1">
-                    <Checkbox
-                      id="quote-marketing-consent"
-                      className="mt-0.5"
-                      {...register("marketingConsent")}
-                    />
-                    <label htmlFor="quote-marketing-consent" className="block text-xs text-muted-foreground leading-relaxed cursor-pointer py-1 -my-1">
-                      I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
-                    </label>
                   </div>
 
                   <div className="pt-1">

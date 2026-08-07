@@ -71,7 +71,6 @@ export default async function ServiceSlugPage({ params }: Props) {
             serviceType: service.slug.includes("removal")
               ? "Vehicle removal service"
               : "Vehicle buying service",
-            image: `${SITE_URL}/images/tow-truck-hero.webp`,
           }),
         ]}
       />

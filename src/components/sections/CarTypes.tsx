@@ -1,16 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, Car, Wrench, Recycle, ShieldOff, AlertTriangle, Ban, Truck, Clock } from "lucide-react";
+import { ArrowRight, Car, Wrench, Recycle, ShieldOff, AlertTriangle, Ban } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const carTypes = [
-  { label: "Old Cars", href: "/old-cars-brisbane", icon: Clock, desc: "Any age, any make" },
-  { label: "Damaged Cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident or storm damage" },
-  { label: "Scrap Cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicles" },
-  { label: "Used Cars", href: "/used-cars-brisbane", icon: Car, desc: "Running, registered or not" },
+  { label: "Used Cars", href: "/sell-my-car-brisbane", icon: Car, desc: "Direct-buyer quote option" },
+  { label: "Damaged Cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident, flood or fire damage" },
+  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicle assessment" },
   { label: "Unwanted Cars", href: "/car-removal-brisbane", icon: Ban, desc: "Pickup included when we buy" },
-  { label: "Accident Write-offs", href: "/accident-cars-brisbane", icon: AlertTriangle, desc: "Statutory or repairable" },
-  { label: "Junk Cars", href: "/junk-cars-brisbane", icon: Truck, desc: "Non-running, rusted, stripped" },
-  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "No rego? No problem" },
+  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", icon: AlertTriangle, desc: "After insurer status is clear" },
+  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "Identity and document check" },
 ];
 
 const alsoAccepted = [
@@ -27,7 +25,7 @@ export function CarTypes() {
             What Cars We Buy in Brisbane
           </h2>
           <p className="mt-3 text-primary-foreground/90 text-sm sm:text-base max-w-xl mx-auto">
-            We purchase all vehicle types across Greater Brisbane — regardless of age, condition, or registration status.
+            We assess many vehicle types and conditions across Greater Brisbane. The quote depends on the individual car, ownership, location, and access.
           </p>
         </div>
 

@@ -2,27 +2,27 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import About from "@/views/About";
-import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { ABOUT_CONTENT_UPDATED, BUSINESS, SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "About Us — Brisbane Cash for Cars Team",
-  description: `Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, and same- or next-day pickup 7 days a week. Call ${BUSINESS.phoneDisplay}.`,
+  title: "About Caraway — Brisbane Vehicle Buyer",
+  description: `Caraway is the registered Brisbane vehicle-buying business operated by ${BUSINESS.legalName}. Review its identity, quote, collection, payment, and receipt process.`,
   alternates: { canonical: "/about" },
   openGraph: {
     type: "website",
     url: "/about",
-    title: "About Caraway — Brisbane Cash for Cars Team",
+    title: "About Caraway — Brisbane Vehicle Buyer",
     description:
-      "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
+      "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
     images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Caraway — Brisbane Cash for Cars Team",
+    title: "About Caraway — Brisbane Vehicle Buyer",
     description:
-      "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
+      "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
     images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
@@ -43,11 +43,11 @@ export default function AboutPage() {
             url: canonical,
             name: "About Caraway",
             description:
-              "Meet the Caraway team — a locally owned Brisbane cash for cars service. Fair offers, free towing, same- or next-day pickup 7 days a week.",
+              "Caraway's registered business identity and vehicle quote, conditional collection, payment, and receipt process.",
             mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: CONTENT_DEPLOY_DATE,
+            dateModified: ABOUT_CONTENT_UPDATED,
             primaryImageOfPage: {
               "@type": "ImageObject",
               url: `${SITE_URL}/images/tow-truck-hero.webp`,

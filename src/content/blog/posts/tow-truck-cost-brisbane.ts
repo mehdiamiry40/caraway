@@ -21,7 +21,7 @@ export const post: RawBlogPostEntry = {
 
     `Inside a regulated area you have the right to decide who tows your vehicle and where it goes. That matters at the roadside, where the first truck to turn up is not automatically the one you're obliged to use, and where nobody is at their most decisive.`,
 
-    `Storage is the part that catches people. If the car goes to a holding yard, storage fees can't be charged for the first 72 hours. After that a daily storage fee is allowed, and the operator has to give you written notice two days before those fees start. A car quietly accruing storage while an insurer takes its time deciding on a write-off is a common way for a small bill to turn into a large one, so the 72-hour clock is worth watching from day one.`,
+    `Storage is the part that catches people. For a standard crash tow in a declared regulated area, the published maximum charge includes the first 72 hours in the operator's holding yard. Queensland Government says written notice of the storage fee must be given two days before post-72-hour fees are charged. Private-property and other tow categories have their own regulated terms, while breakdown and trade towing are not covered by the crash-tow protection. Confirm the category and written authority rather than assuming every holding-yard stay has the same entitlement.`,
 
     `## What Drives the Price of a Breakdown Tow`,
 
@@ -31,15 +31,15 @@ export const post: RawBlogPostEntry = {
 
     `Get the quote as a total, not as a rate. "Call-out plus per kilometre plus winching" leaves too much open, and the gap between an estimate and the invoice has a habit of appearing after the car is already on the tray.`,
 
-    `## When the Tow Should Cost You Nothing`,
+    `## When a Vehicle Sale Can Include Pickup`,
 
-    `If the car is at the end of its life rather than on its way to a mechanic, paying to tow it is the wrong move. A dead vehicle still holds several hundred kilograms of steel, plus aluminium in the wheels, a catalytic converter and parts with buyers behind them — enough that removal gets built into the offer instead of billed to you. [Car removal in Brisbane](/car-removal-brisbane) covers how included pickup works, and [what a scrap car is worth in Brisbane](/blog/how-much-is-scrap-car-worth-brisbane) explains where the figure comes from.`,
+    `If the car is being sold rather than moved to a mechanic, ask whether collection is included in the purchase terms. A vehicle buyer may account for pickup within the individual offer, while a general tow operator charges to move the vehicle. [Car removal in Brisbane](/car-removal-brisbane) explains Caraway's conditional included-pickup terms, and [what affects a scrap-car quote](/blog/how-much-is-scrap-car-worth-brisbane) explains the other assessment inputs.`,
 
-    `The same logic applies to a car that won't start, has no keys, or hasn't been registered in years. Paying an operator to shift it to a yard, then paying storage, then paying again to dispose of it, is three bills for a vehicle someone else will collect for free. [Selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) is the shorter route, and if it's currently sitting out on the kerb, [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) sets out where you stand with the council in the meantime.`,
+    `The same comparison applies to a car that will not start, has no keys, or has been unregistered for years. Obtain a purchase-and-pickup quote before paying to move it to another site, and compare the written terms. [Selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) covers the details a buyer needs, while [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) explains the separate street-parking issue.`,
 
     `After a crash, the tow and the car's future are separate decisions, and they don't have to be made at the same time. Your insurer may cover the tow under the policy — that doesn't commit you to the repair path or to the salvage offer that follows it. [Selling an accident-damaged car in Brisbane](/blog/sell-accident-car-brisbane) covers the alternative if the repair quote comes back higher than the car is worth.`,
 
-    `Caraway buys unwanted, non-running and damaged cars across Greater Brisbane, with [free car removal](/car-removal-brisbane) included in the offer rather than deducted from it. Call **${BUSINESS.phoneDisplay}** or request a free online quote to see what yours is worth before you pay anyone to move it.`,
+    `Caraway assesses unwanted, non-running, and damaged vehicles across its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the details supplied. Call **${BUSINESS.phoneDisplay}** or request an online quote before paying to move the car elsewhere.`,
   ],
   faqs: [
     {
@@ -55,16 +55,17 @@ export const post: RawBlogPostEntry = {
     {
       question: "How long before a holding yard can charge me storage?",
       answer:
-        "Storage fees can't be charged for the first 72 hours after your vehicle is towed to a holding yard. A daily storage fee may apply after that, and the operator must give you written notice two days before those fees start.",
+        "For a standard crash tow in a declared regulated area, the maximum charge includes the first 72 hours of holding-yard storage, and Queensland Government says written notice is required two days before later storage fees are charged. Private-property, breakdown, trade, and other tow categories can differ, so check the written authority and current rules for the specific tow.",
     },
     {
       question: "Do I have to pay for towing when I sell a car for scrap?",
       answer:
-        "No. Removal is included when a cash-for-cars buyer purchases the vehicle, because the steel, catalytic converter and reusable parts cover the cost of collecting it. Paying a tow operator to move a car you're about to dispose of means paying for something a buyer would do for nothing.",
+        "Not as a separate charge when Caraway buys the vehicle and includes pickup in the agreed offer. Confirm the exact vehicle, suburb, access, equipment, and deductions before dispatch; this is different from a general towing service.",
     },
   ],
   date: "2026-08-04",
-  reviewedAt: "2026-08-04",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — crash towing",
@@ -84,8 +85,8 @@ export const post: RawBlogPostEntry = {
   relatedServices: [
     "car-removal-brisbane",
     "unregistered-cars-brisbane",
-    "accident-cars-brisbane",
-    "junk-cars-brisbane",
+    "damaged-cars-brisbane",
+    "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["carindale", "nundah", "logan", "everton-park"],
 };

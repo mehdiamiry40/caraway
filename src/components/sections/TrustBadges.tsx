@@ -6,7 +6,6 @@ import {
   CarFront,
   FileCheck2,
   MapPin,
-  Recycle,
   ShieldCheck,
   Truck,
 } from "lucide-react";
@@ -14,7 +13,7 @@ import { BUSINESS } from "@/lib/site";
 
 const credentials = [
   { icon: ShieldCheck, label: "Pickup terms confirmed" },
-  { icon: Recycle, label: "Responsible recycling" },
+  { icon: FileCheck2, label: "Buyer details provided" },
   { icon: Building2, label: `ABN ${BUSINESS.abn}` },
 ] as const;
 
@@ -22,7 +21,7 @@ const quickLinks = [
   {
     icon: BadgeDollarSign,
     label: "Get a cash quote",
-    description: "A clear estimate from four quick details.",
+    description: "An indicative estimate from vehicle details.",
     href: "/#price-estimator",
   },
   {

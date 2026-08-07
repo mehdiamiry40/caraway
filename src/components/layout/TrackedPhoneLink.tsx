@@ -10,12 +10,14 @@ export function TrackedPhoneLink({
   className,
   ariaLabel,
   location,
+  tabIndex,
   children,
 }: {
   href: string;
   className?: string;
   ariaLabel?: string;
   location: string;
+  tabIndex?: number;
   children: ReactNode;
 }) {
   return (
@@ -24,6 +26,7 @@ export function TrackedPhoneLink({
       className={className}
       aria-label={ariaLabel}
       data-track-location={location}
+      tabIndex={tabIndex}
     >
       {children}
     </a>

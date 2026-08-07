@@ -10,8 +10,11 @@ import {
   SITE_URL,
   LEGAL_DATE_ISO,
   CONTENT_DEPLOY_DATE,
+  ABOUT_CONTENT_UPDATED,
+  FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  SERVICES_CONTENT_UPDATED,
 } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -79,7 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/about`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: ABOUT_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.6,
     },
@@ -91,7 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/faq`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: FAQ_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -103,7 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/services`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: SERVICES_CONTENT_UPDATED,
       changeFrequency: "monthly",
       priority: 0.8,
     },

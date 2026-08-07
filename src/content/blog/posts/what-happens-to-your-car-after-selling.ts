@@ -20,6 +20,6 @@ export const post: RawBlogPostEntry = {
     ],
     date: "2025-02-28",
     category: "Insights",
-    relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "old-cars-brisbane"],
+    relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "cash-for-cars-brisbane"],
     relatedSuburbs: ["moorooka", "caboolture", "ipswich"],
   };

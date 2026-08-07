@@ -90,12 +90,12 @@ export function Footer() {
               </address>
               <TrackedOutboundLink
                 href={BUSINESS.googleBusinessUrl}
-                label="Google reviews"
+                label="Caraway on Google"
                 location="footer"
                 className="inline-flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium min-h-11"
               >
                 <Star aria-hidden="true" className="h-4 w-4 text-cta-bright" />
-                <span>Find us on Google — leave a review</span>
+                <span>View Caraway on Google</span>
               </TrackedOutboundLink>
             </div>
           </div>

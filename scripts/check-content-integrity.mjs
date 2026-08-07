@@ -73,6 +73,23 @@ const retiredLocationSlugs = (() => {
   );
 })();
 
+const retiredServiceSlugs = (() => {
+  const consolidationSource = readFileSync(
+    join(repoRoot, "src", "lib", "service-consolidation.ts"),
+    "utf8",
+  );
+  const objectBody = consolidationSource.match(
+    /RETIRED_SERVICE_DESTINATIONS\s*=\s*\{([\s\S]*?)\}\s*as const/,
+  )?.[1];
+  if (!objectBody) return new Set();
+
+  return new Set(
+    [...objectBody.matchAll(/^\s*"([^"]+)":\s*"\//gm)].map(
+      (match) => match[1],
+    ),
+  );
+})();
+
 const prohibitedClaims = [
   {
     label: "incorrect proprietary-company identity",
@@ -105,6 +122,22 @@ const prohibitedClaims = [
     label: "unsupported blanket insurance claim",
     pattern:
       /fully insured|public liability and goods-in-transit cover on every pickup|all pickups are insured/i,
+  },
+  {
+    label: "unsupported job-specific insurance confirmation",
+    pattern: /insurance details applicable to (?:that|every|the) job/i,
+  },
+  {
+    label: "unsupported universal vehicle acceptance",
+    pattern: /all vehicles accepted|we buy cars in any condition/i,
+  },
+  {
+    label: "unsupported fixed quote-response speed",
+    pattern: /(?:real )?offer in under \d+ seconds/i,
+  },
+  {
+    label: "unsupported claim that access cannot affect an offer",
+    pattern: /access details (?:do not|don't) change the offer/i,
   },
   {
     label: "seller responsibility delegated entirely to buyer",
@@ -153,14 +186,115 @@ const prohibitedLocationClaims = [
   },
 ];
 
+const prohibitedServiceClaims = [
+  {
+    label: "unsourced numerical service-page price claim",
+    pattern: /\$\s*\d/,
+  },
+  {
+    label: "unsupported service purchase-history or demand claim",
+    pattern:
+      /hundreds|every week|we (?:regularly|routinely) (?:buy|purchase|collect)|strongest? demand|highest demand/i,
+  },
+  {
+    label: "unsupported owned fleet, driver, or facility claim",
+    pattern: /our tow trucks?|our drivers|our fleet|our depot|our facilities/i,
+  },
+  {
+    label: "unsupported absolute service scope claim",
+    pattern:
+      /we buy (?:them )?all|all makes (?:and|&) models|any condition|regardless of (?:age|condition|kilometres|generation)/i,
+  },
+  {
+    label: "unsupported service timing or payment guarantee",
+    pattern:
+      /cash on the spot|instant cash|same- or next-day|same day or next day|before dinner|within (?:an? )?hours?/i,
+  },
+  {
+    label: "unsupported downstream processing claim",
+    pattern:
+      /licensed recycling facilit|we drain|every vehicle we collect/i,
+  },
+];
+
+const featuredServiceSupportPosts = new Set([
+  "how-to-sell-your-car-for-cash-brisbane.ts",
+  "how-to-get-the-best-cash-for-cars-price-brisbane.ts",
+  "how-much-is-my-car-worth-brisbane.ts",
+  "tow-truck-cost-brisbane.ts",
+  "preparing-your-car-for-pickup.ts",
+  "repair-or-sell-your-car-brisbane.ts",
+  "sell-flood-damaged-car-brisbane.ts",
+  "sell-high-kilometre-car-brisbane.ts",
+  "sell-non-running-car-brisbane.ts",
+  "sell-hail-damaged-car-brisbane.ts",
+]);
+
+const prohibitedSupportClaims = [
+  {
+    label: "featured service guide contains an unsourced vehicle price",
+    pattern: /\$\s*\d/,
+  },
+  {
+    label: "featured service guide contains an unsupported response or pickup time",
+    pattern:
+      /same-day offer|same or next day|same- or next-day|within minutes|within a day|\d+\s+to\s+\d+\s+minutes/i,
+  },
+  {
+    label: "featured service guide presents pickup as universally free",
+    pattern:
+      /free (?:car removal|tow|towing|collection|pickup)|collect[^.\n]{0,80}for free/i,
+  },
+  {
+    label: "featured service guide contains an unsourced percentage range",
+    pattern: /\d+\s*(?:–|-|to)\s*\d+\s*%/i,
+  },
+  {
+    label: "featured service guide presents universal vehicle acceptance",
+    pattern: /purchase vehicles in any condition|we buy [^.\n]{0,80}any condition/i,
+  },
+  {
+    label: "featured service guide overstates the 72-hour storage protection",
+    pattern: /storage fees (?:cannot|can't) be charged for the first 72 hours/i,
+  },
+  {
+    label: "featured service guide invents a universal scrap-price floor",
+    pattern: /scrap (?:steel|metal) price[^.\n]{0,80}(?:sets?|creates?) the floor/i,
+  },
+  {
+    label: "featured service guide contains an unsourced multi-thousand-dollar claim",
+    pattern: /worth several thousand dollars/i,
+  },
+  {
+    label: "featured service guide claims fuller details guarantee faster or firmer pricing",
+    pattern: /buyers price faster and firmer/i,
+  },
+  {
+    label: "featured service guide claims a cosmetic tidy-up raises the offer",
+    pattern: /tidy-up pays for itself|genuinely nudge an offer up/i,
+  },
+  {
+    label: "featured service guide claims seasonal buyer generosity",
+    pattern: /busier buyer is often a more generous one/i,
+  },
+  {
+    label: "featured service guide claims completeness always raises value",
+    pattern: /complete car is worth more/i,
+  },
+];
+
 const regulatedPosts = new Set([
   "cancel-rego-after-selling-car-qld.ts",
+  "how-much-is-my-car-worth-brisbane.ts",
   "how-to-cancel-car-rego-qld.ts",
+  "how-to-sell-your-car-for-cash-brisbane.ts",
   "how-to-sell-a-car-with-finance-owing-qld.ts",
   "how-to-transfer-car-ownership-qld.ts",
   "number-plates-when-selling-car-qld.ts",
   "sell-car-not-in-my-name-qld.ts",
   "sell-car-without-roadworthy-qld.ts",
+  "take-car-to-tip-brisbane.ts",
+  "tow-truck-cost-brisbane.ts",
   "what-paperwork-to-sell-a-car-qld.ts",
   "wovr-written-off-vehicle-register-qld-guide.ts",
 ]);
@@ -181,6 +315,23 @@ for (const slug of suburbSlugs) {
       file: "src/data/suburbs.ts",
       line: 1,
       label: `retired location slug must stay redirected: ${slug}`,
+    });
+  }
+}
+
+const serviceSource = readFileSync(
+  join(repoRoot, "src", "data", "services.ts"),
+  "utf8",
+);
+const liveServiceSlugs = new Set(
+  [...serviceSource.matchAll(/\bslug:\s*"([^"]+)"/g)].map((match) => match[1]),
+);
+for (const slug of retiredServiceSlugs) {
+  if (liveServiceSlugs.has(slug)) {
+    violations.push({
+      file: "src/data/services.ts",
+      line: 1,
+      label: `retired service slug must stay redirected: ${slug}`,
     });
   }
 }
@@ -233,9 +384,35 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
         }
       }
     }
+
+    if (relativePath === "src/data/services.ts") {
+      for (const claim of prohibitedServiceClaims) {
+        if (claim.pattern.test(line)) {
+          violations.push({
+            file: relativePath,
+            line: index + 1,
+            label: claim.label,
+          });
+        }
+      }
+    }
   }
 
   const fileName = filePath.split("/").at(-1);
+  if (fileName && featuredServiceSupportPosts.has(fileName)) {
+    for (const [index, line] of lines.entries()) {
+      for (const claim of prohibitedSupportClaims) {
+        if (claim.pattern.test(line)) {
+          violations.push({
+            file: relativePath,
+            line: index + 1,
+            label: claim.label,
+          });
+        }
+      }
+    }
+  }
+
   if (fileName && regulatedPosts.has(fileName)) {
     if (!/reviewedAt:\s*"\d{4}-\d{2}-\d{2}"/.test(source)) {
       violations.push({

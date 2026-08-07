@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import nextConfig, { legacyIndexingRedirects } from "../next.config";
+import nextConfig, {
+  legacyIndexingRedirects,
+  retiredServiceRedirects,
+} from "../next.config";
 import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
 
 type RedirectRule = {
@@ -38,6 +41,10 @@ describe("Search Console canonical URL cleanup", () => {
 
   it("permanently redirects every retired Search Console alias", async () => {
     const redirects = await getRedirects();
+    const configuredIndexingRedirects = [
+      ...legacyIndexingRedirects,
+      ...retiredServiceRedirects,
+    ];
     const expected = new Map([
       ["/index.html", "/"],
       ["/cash-for-cars-sunnybank.html", "/locations/moorooka"],
@@ -58,7 +65,10 @@ describe("Search Console canonical URL cleanup", () => {
     ]);
 
     for (const [source, destination] of expected) {
-      expect(legacyIndexingRedirects).toContainEqual({ source, destination });
+      expect(configuredIndexingRedirects).toContainEqual({
+        source,
+        destination,
+      });
       expect(redirects).toContainEqual(
         expect.objectContaining({
           source,

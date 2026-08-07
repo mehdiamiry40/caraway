@@ -7,7 +7,7 @@ import {
   serviceSchema,
   websiteSchema,
 } from "@/lib/json-ld-schemas";
-import { SITE_URL } from "@/lib/site";
+import { BUSINESS, SITE_URL } from "@/lib/site";
 
 function productionSourceFiles(directory: string): string[] {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -42,6 +42,7 @@ describe("SEO structured-data policy", () => {
     expect(JSON.stringify(organizationSchema.contactPoint.areaServed)).not.toBe(
       '"AU"',
     );
+    expect(organizationSchema.sameAs).toContain(BUSINESS.abrUrl);
   });
 
   it("keeps the WebSite entity brand-led and free of meta-keyword fields", () => {

@@ -9,7 +9,7 @@ const openingHours = {
   closes: "19:00",
 };
 
-const SAME_AS = [BUSINESS.googleBusinessUrl];
+const SAME_AS = [BUSINESS.googleBusinessUrl, BUSINESS.abrUrl];
 
 export const serviceAreas = [
   { "@type": "City" as const, name: "Brisbane" },

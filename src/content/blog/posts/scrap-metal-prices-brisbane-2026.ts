@@ -44,6 +44,6 @@ export const post: RawBlogPostEntry = {
     ],
     date: "2026-04-08",
     category: "Insights",
-    relatedServices: ["scrap-car-removal-brisbane", "junk-cars-brisbane", "cash-for-cars-brisbane"],
+    relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "cash-for-cars-brisbane"],
     relatedSuburbs: ["south-brisbane", "moorooka", "ipswich"],
   };
