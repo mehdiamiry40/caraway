@@ -9,6 +9,7 @@ export interface ServiceFAQ {
 export interface ServiceSection {
   heading: string;
   content: string;
+  checklistItems?: string[];
   supportLink?: {
     href: string;
     label: string;
@@ -18,6 +19,7 @@ export interface ServiceSection {
 export interface ServicePage {
   slug: string;
   updatedAt?: string;
+  reviewedAt?: string;
   title: string;
   metaDescription: string;
   h1: string;
@@ -32,6 +34,7 @@ export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
     updatedAt: "2026-08-07",
+    reviewedAt: "2026-08-07",
     title: "Cash for Cars Brisbane | Vehicle Quote & Pickup",
     metaDescription: `Cash for cars Brisbane: request an offer based on your vehicle details, with pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Cash for Cars Brisbane — Vehicle Quotes & Pickup",
@@ -42,6 +45,18 @@ export const services: ServicePage[] = [
         heading: "How to Request a Cash-for-Cars Quote",
         content:
           "Provide the make, model, year, kilometres, suburb, overall condition, and whether the car starts, rolls, steers, and has all of its wheels. Photos help us assess visible damage and completeness. We review those details before confirming a no-obligation offer; a web page or estimator cannot determine the final value of an individual vehicle.",
+        checklistItems: [
+          "Make, model, variant, year, approximate kilometres, and registration status.",
+          "Whether it starts, rolls, steers, brakes, and has all wheels and keys.",
+          "Known faults, warning lights, body damage, missing components, and modifications.",
+          "Finance, insurer, estate, or other ownership-authority details relevant to the sale.",
+          "Exact suburb plus driveway, garage, clearance, slope, surface, gate, or obstacle details.",
+          "Current photos of every side, the interior, odometer, damage, missing parts, and collection access.",
+        ],
+        supportLink: {
+          href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#give-buyers-the-full-picture",
+          label: "See the full vehicle-detail and photo checklist",
+        },
       },
       {
         heading: "What Affects a Vehicle Offer",
@@ -98,6 +113,16 @@ export const services: ServicePage[] = [
         answer:
           "Timing depends on location, vehicle condition, access, traffic, and operator availability. We provide a collection window after those details are confirmed.",
       },
+      {
+        question: "Who pays the most for cars in Brisbane?",
+        answer:
+          "No buyer pays the most for every vehicle. Give each buyer the same vehicle, condition, location, and access details, then compare the written net amount after deductions, pickup terms, payment timing, revision conditions, and buyer identity.",
+      },
+      {
+        question: "Where should I sell my car in Brisbane?",
+        answer:
+          "Compare a private listing, dealer trade-in, and direct vehicle buyer by likely net proceeds, preparation, fees, time, appointments, and certainty. A clean registered car may suit a private sale, while a direct buyer may suit an owner who prefers one quote and an agreed collection plan.",
+      },
     ],
     relatedServices: [
       "car-removal-brisbane",
@@ -109,6 +134,7 @@ export const services: ServicePage[] = [
   {
     slug: "car-removal-brisbane",
     updatedAt: "2026-08-07",
+    reviewedAt: "2026-08-07",
     title: "Car Removal Brisbane | Pickup Included When We Buy",
     metaDescription: `Car removal Brisbane for unwanted, damaged, and non-running vehicles. Pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Car Removal Brisbane — Pickup Included When We Buy",
@@ -119,6 +145,10 @@ export const services: ServicePage[] = [
         heading: "How Brisbane Car Removal Works",
         content:
           "Share the make, model, year, condition, suburb, and access details. We will assess whether we can buy the vehicle and confirm an offer, a collection window, and the equipment required. At pickup, the operator checks the vehicle against the description, confirms the agreed payment arrangement before loading, and provides a signed receipt and buyer details.",
+        supportLink: {
+          href: "/blog/tow-truck-cost-brisbane#when-a-vehicle-sale-can-include-pickup",
+          label: "Understand purchase pickup versus general towing",
+        },
       },
       {
         heading: "What Included Pickup Means",
@@ -138,6 +168,17 @@ export const services: ServicePage[] = [
         heading: "Access Details to Confirm Before Booking",
         content:
           "Photos and measurements are useful for underground car parks, steep or narrow driveways, backyards, soft ground, locked compounds, height limits, and vehicles blocked by other objects. Clear a safe path where possible. Accurate access details protect the agreed quote and reduce the risk of a failed collection.",
+        checklistItems: [
+          "Whether the vehicle starts, rolls, steers, brakes, and has keys.",
+          "All wheels and tyres, including flat or missing tyres, seized brakes, and loose components.",
+          "The exact vehicle position and path to it, including gates, turns, parked vehicles, and obstacles.",
+          "Available width and height, driveway slope, ground surface, overhead clearance, and loading space.",
+          "Photos from the access point to the vehicle, plus measurements wherever clearance is limited.",
+        ],
+        supportLink: {
+          href: "/blog/preparing-your-car-for-pickup#plates-rego-and-tow-truck-access",
+          label: "Prepare the vehicle, documents, and access for pickup",
+        },
       },
       {
         heading: "Car Removal Coverage Around Brisbane",
@@ -174,6 +215,11 @@ export const services: ServicePage[] = [
         question: "What do I need at pickup?",
         answer:
           "Have current photo ID, all keys you hold, and the relevant ownership, registration, finance, insurer, or estate documents. Remove personal belongings before the operator arrives.",
+      },
+      {
+        question: "What is the quickest lawful way to get rid of an old car in Brisbane?",
+        answer:
+          "There is no guaranteed quickest route. To reduce avoidable delay, have photo ID, keys, relevant ownership or registration records, condition photos, and accurate access details ready, then confirm the buyer identity, written sale terms, payment arrangement, and collection window before dispatch.",
       },
     ],
     relatedServices: [
@@ -250,31 +296,35 @@ export const services: ServicePage[] = [
   {
     slug: "scrap-car-removal-brisbane",
     updatedAt: "2026-08-07",
-    title: "Scrap Car Removal Brisbane | Old & Junk Vehicles",
-    metaDescription: `Scrap car removal Brisbane for old, junk, incomplete, and end-of-life vehicles. Request a quote and collection assessment. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Scrap Car Removal Brisbane — Old & Junk Cars",
+    title: "Scrap Vehicle Assessment Brisbane | Old & Junk Cars",
+    metaDescription: `Scrap vehicle assessment in Brisbane for old, junk, incomplete, and end-of-life cars. Request an individual purchase assessment. Call ${BUSINESS.phoneDisplay}.`,
+    h1: "Scrap Vehicle Assessment Brisbane — Old & Junk Cars",
     intro:
       "Caraway assesses old, junk, incomplete, and end-of-life vehicles for purchase and collection across Greater Brisbane. The quote depends on the identifiable vehicle, remaining components, condition, location, and access. Pickup is included when Caraway buys.",
     sections: [
       {
-        heading: "When a Car May Be Ready for Scrap Removal",
+        heading: "When a Vehicle May Be at the End of Its Useful Life",
         content:
           "An owner may consider a scrap-car sale when repair costs no longer make sense, the vehicle has major mechanical or structural damage, important parts are missing, or long storage has left it deteriorated. 'Old', 'junk', and 'scrap' describe overlapping conditions rather than fixed price categories. A vehicle can still have value, but that value cannot be determined from weight or age alone.",
       },
       {
-        heading: "How a Scrap Vehicle Is Assessed",
+        heading: "How an End-of-Life Vehicle Is Assessed",
         content:
           "We consider the make, model, year, identity, completeness, body and drivetrain condition, location, access, and current demand for usable components or recoverable material. Photos of the full vehicle and missing or damaged areas are important. We do not publish generic dollar bands because two apparently similar wrecks can have very different value and recovery costs.",
       },
       {
-        heading: "Cars With Missing Parts or Wheels",
+        heading: "Completeness: Missing Parts, Wheels, and Identification",
         content:
           "Disclose a missing engine, transmission, catalytic converter, doors, wheels, keys, or identification plates before a quote is confirmed. Tell us whether the car rolls, steers, and brakes. Collection may require different equipment or may not be possible from the current position; photos and accurate access measurements help us decide before dispatch.",
       },
       {
-        heading: "Old and Junk Car Pickup Around Brisbane",
+        heading: "Purchase and Collection Are Separate Checks",
         content:
-          "We assess vehicles at homes, businesses, workshops, and storage sites across the service area. Collection depends on safe access, vehicle condition, location, and operator availability. Pickup is included when Caraway buys and the vehicle and access match the supplied description.",
+          "We first assess whether Caraway can buy the identifiable vehicle and agree purchase terms. Collection feasibility is then checked from its condition, position, location, and safe operator and equipment access. Pickup is included when Caraway buys and the vehicle and access match the supplied description.",
+        supportLink: {
+          href: "/car-removal-brisbane",
+          label: "See Brisbane collection and access details",
+        },
       },
       {
         heading: "What May Happen to an End-of-Life Vehicle",

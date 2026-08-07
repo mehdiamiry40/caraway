@@ -27,6 +27,23 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
         {section.content}
       </p>
+      {section.checklistItems && section.checklistItems.length > 0 && (
+        <ul
+          aria-label={`${section.heading} checklist`}
+          className="mt-5 grid gap-3 text-sm sm:text-base text-foreground/80"
+        >
+          {section.checklistItems.map((item) => (
+            <li key={item} className="flex items-start gap-3 leading-relaxed">
+              <CheckCircle2
+                className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
       {section.supportLink && (
         <Link
           href={section.supportLink.href}
@@ -70,6 +87,7 @@ export default function ServicePageTemplate({
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
     { label: service.h1 }
   ];
 
@@ -89,10 +107,23 @@ export default function ServicePageTemplate({
               {heroIntro}
             </p>
             <ScrollToQuoteCTA source={service.slug} />
+            {service.reviewedAt && (
+              <p className="mt-4 text-xs text-foreground/65">
+                Content reviewed{" "}
+                <time dateTime={service.reviewedAt}>
+                  {new Intl.DateTimeFormat("en-AU", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                    timeZone: "UTC",
+                  }).format(new Date(`${service.reviewedAt}T00:00:00Z`))}
+                </time>
+              </p>
+            )}
           </div>
         </section>
 
-        <QuoteForm />
+        <QuoteForm source={service.slug} />
 
         <div className="site-container py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
@@ -120,7 +151,13 @@ export default function ServicePageTemplate({
               )}
             </div>
 
-            <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
+            <aside
+              aria-labelledby="service-sidebar-heading"
+              className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start"
+            >
+              <h2 id="service-sidebar-heading" className="sr-only">
+                Service details and related resources
+              </h2>
               <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
                 <h3 className="text-sm font-display mb-1 text-foreground">What Caraway confirms</h3>
                 <p className="text-xs text-muted-foreground mb-5">Before a vehicle is collected</p>

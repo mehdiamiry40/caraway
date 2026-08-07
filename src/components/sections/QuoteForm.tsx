@@ -30,7 +30,7 @@ const fieldIds = {
   details: "quote-details",
 } as const;
 
-export function QuoteForm() {
+export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -72,8 +72,8 @@ export function QuoteForm() {
     try {
       const result = await submitQuote(data);
       if (result.success) {
-        trackEvent("quote_form_submitted");
-        trackEvent("lead_submitted", { source: "quote_form" });
+        trackEvent("quote_form_submitted", { source });
+        trackEvent("lead_submitted", { source });
         setIsSuccess(true);
         reset();
         return;

@@ -191,7 +191,7 @@ const nextConfig: NextConfig = {
           // NOTE: script-src intentionally keeps 'unsafe-inline' because
           // Next.js App Router hydration injects inline bootstrap scripts
           // and we do not currently emit per-request nonces. Revisit once
-          // we adopt nonce-based CSP (requires a custom middleware/layout
+          // we adopt nonce-based CSP (requires a custom proxy/layout
           // integration). object-src 'none' is added as defence in depth
           // so plugins/applets cannot be embedded even if an injection
           // were to occur.

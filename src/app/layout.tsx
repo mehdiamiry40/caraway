@@ -6,7 +6,6 @@ import { CarawayChatLoader } from "@/components/CarawayChatLoader";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SITE_URL } from "@/lib/site";
-import { shouldNoindexSite } from "@/lib/noindex";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -61,20 +60,19 @@ export const metadata: Metadata = {
     "geo.region": "AU-QLD",
     "geo.placename": "Brisbane",
   },
-  robots:
-    shouldNoindexSite()
-      ? { index: false, follow: false }
-      : {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-          },
-        },
+  // Static artifacts remain safely promotable: the request proxy adds an
+  // X-Robots-Tag noindex directive on every non-canonical request host.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {

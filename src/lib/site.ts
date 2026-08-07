@@ -23,7 +23,7 @@ export const BUSINESS = {
   /** Metro label — used with "Greater …" service-area copy. */
   location: "Brisbane, QLD",
   locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
-  googleBusinessUrl: "https://share.google/n0D0gZyISx3hMNECL",
+  googleBusinessUrl: "https://www.google.com/maps?cid=2357564394766220919",
 } as const;
 
 export const MIN_PRICE = 200;

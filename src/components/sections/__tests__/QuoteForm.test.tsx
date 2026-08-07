@@ -97,9 +97,26 @@ describe("QuoteForm", () => {
         details: "180,000 km; rolls and steers; narrow driveway.",
       }),
     );
-    expect(trackEventMock).toHaveBeenCalledWith("quote_form_submitted");
+    expect(trackEventMock).toHaveBeenCalledWith("quote_form_submitted", { source: "quote_form" });
     expect(trackEventMock).toHaveBeenCalledWith("lead_submitted", { source: "quote_form" });
     expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
+  });
+
+  it("attributes successful service-page leads to the owning route", async () => {
+    submitQuoteMock.mockResolvedValue({ success: true });
+    const user = userEvent.setup();
+
+    render(<QuoteForm source="car-removal-brisbane" />);
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
+    expect(trackEventMock).toHaveBeenCalledWith("quote_form_submitted", {
+      source: "car-removal-brisbane",
+    });
+    expect(trackEventMock).toHaveBeenCalledWith("lead_submitted", {
+      source: "car-removal-brisbane",
+    });
   });
 
   it("does not call the server action when required fields are missing", async () => {

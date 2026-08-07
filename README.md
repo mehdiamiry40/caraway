@@ -42,7 +42,7 @@ overall success, so configuring both gives you redundancy.
 
 | Variable                   | Required        | Description                                                                 |
 | -------------------------- | --------------- | --------------------------------------------------------------------------- |
-| `SITE_URL`                 | yes (prod)      | Canonical site origin — must match the canonical host, i.e. `https://caraway.au`. Used by the middleware Origin/Referer (CSRF) check; metadata/SEO URLs come from the constant in `src/lib/site.ts`. |
+| `SITE_URL`                 | yes (prod)      | Canonical site origin — must match the canonical host, i.e. `https://caraway.au`. Used by the request proxy Origin/Referer (CSRF) check; metadata/SEO URLs come from the constant in `src/lib/site.ts`. |
 | `QUOTE_ENDPOINT`           | quote channel A | HTTPS webhook URL the quote server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
 | `CONTACT_ENDPOINT`         | contact channel A | HTTPS webhook URL the contact server action POSTs to. Pair with email for redundancy, or skip entirely and rely on email delivery alone. |
 | `ALLOWED_ENDPOINT_HOSTS`   | when webhooks set | Comma-separated allowlist of hostnames the server actions may call (SSRF). Required when using the webhook channel. |
@@ -51,15 +51,20 @@ overall success, so configuring both gives you redundancy.
 | `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`.       |
 | `CONTACT_NOTIFICATION_FROM`| contact channel B | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
 | `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
-| `NEXT_PUBLIC_NOINDEX`      | optional        | Set to `1` to force `noindex` metadata (staging/preview).                   |
 
 `/api/health` reports service availability and delivery redundancy. It
 returns HTTP 503 with `"error"` if either form has zero delivery channels.
 Otherwise it returns HTTP 200 with `"ok"`; `fullyRedundant` indicates
 whether both webhook and email delivery are configured for both forms.
 
-Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
-`noindex, nofollow` robots metadata and a `Disallow: /` robots.txt.
+Indexability is decided from the request host rather than the build environment.
+Static artifacts contain indexable canonical metadata, while the request proxy adds
+`X-Robots-Tag: noindex, nofollow` to every host except `caraway.au`. Preview
+URLs therefore remain excluded, and the same immutable deployment becomes
+indexable if it is later promoted to the canonical production hostname.
+`robots.txt` stays crawlable so bots can see the host-level directive.
+Only deployments built after this host-based policy was introduced are safe to
+promote; older preview artifacts may still contain a baked-in `noindex` tag.
 
 ## Scripts
 
@@ -70,6 +75,7 @@ Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
 | `npm run start`     | Serve the production build                      |
 | `npm run typecheck` | Run the project TypeScript checker              |
 | `npm run lint`      | ESLint with `--max-warnings 0`                  |
+| `npm run check:indexability` | Verify built SEO data and runtime host-indexing policy |
 | `npm test`          | Run the Vitest suite once                       |
 | `npm run test:watch`| Vitest in watch mode                            |
 | `npm run audit:swarm`| Run the internal swarm audit tooling            |
@@ -77,7 +83,7 @@ Non-production deploys (`VERCEL_ENV !== "production"`) automatically emit
 ## Testing
 
 The Vitest suite covers server actions, forms, API routes, SEO helpers,
-middleware, persistence, quote validation, and pricing. Run it with:
+the request proxy, persistence, quote validation, and pricing. Run it with:
 
 ```bash
 npm test
@@ -95,7 +101,7 @@ npm test
 - **Server actions** — form submissions (quote, contact) run as Next.js
   server actions that POST to the webhook endpoints with SSRF-safe hostname
   allowlisting.
-- **`middleware.ts`** — request-level security + rate-limiting headers.
+- **`src/proxy.ts`** — request-level security, rate limiting, and preview indexability headers.
 
 ## Deployment
 
@@ -112,6 +118,11 @@ npm test
 4. Click the `...` menu and choose **Promote to Production**.
 
 No redeploy is required — promotion is atomic.
+
+After any deployment or promotion, verify that both primary service URLs return
+without an `X-Robots-Tag: noindex` header on `caraway.au`; CI also checks that
+their immutable HTML artifacts contain the correct canonical and WebPage data,
+preview hosts receive `noindex`, and the canonical host does not.
 
 ### Health check
 

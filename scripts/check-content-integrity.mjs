@@ -115,6 +115,11 @@ const prohibitedClaims = [
       /fully licensed(?: and insured)?|our licensed driver|licensed (?:\[)?cash-for-cars buyer|licensed cash buyer|licensed buyer (?:gives|pays)|Caraway[^.\n]{0,120}licensed motor dealer/i,
   },
   {
+    label: "unsupported Caraway recycler or wrecker licence claim",
+    pattern:
+      /\b(?:Caraway\s+is\s+(?:an?\s+)?|Caraway,\s+(?:an?\s+)?|we(?:'re| are)\s+|our\s+)licen[cs]ed\s+(?:auto(?:motive)?\s+|car\s+|vehicle\s+)?(?:recycler|wrecker|dismantler)s?\b/i,
+  },
+  {
     label: "unsupported blanket insurance claim",
     pattern:
       /fully insured|public liability and goods-in-transit cover on every pickup|all pickups are insured/i,
@@ -199,6 +204,11 @@ const prohibitedLocationClaims = [
 ];
 
 const prohibitedServiceClaims = [
+  {
+    label: "unsupported service recycler or wrecker licence claim",
+    pattern:
+      /\blicen[cs]ed\s+(?:auto(?:motive)?\s+|car\s+|vehicle\s+)?(?:recycler|wrecker|dismantler)s?\b/i,
+  },
   {
     label: "unsourced numerical service-page price claim",
     pattern: /\$\s*\d/,
@@ -447,6 +457,16 @@ const claimGuardContractCases = [
   {
     label: "unsupported universal listed-vehicle purchase claim",
     line: "Some sellers compare quotes — Caraway buys unwanted, damaged, scrap, and unregistered vehicles.",
+    expected: true,
+  },
+  {
+    label: "unsupported Caraway recycler or wrecker licence claim",
+    line: "Caraway is a licensed recycler.",
+    expected: true,
+  },
+  {
+    label: "unsupported Caraway recycler or wrecker licence claim",
+    line: "We are licensed vehicle wreckers.",
     expected: true,
   },
 ];

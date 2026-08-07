@@ -46,6 +46,9 @@ describe("SEO structured-data policy", () => {
       "hoursAvailable",
     );
     expect(organizationSchema.sameAs).toContain(BUSINESS.abrUrl);
+    expect(organizationSchema.sameAs).toContain(
+      "https://www.google.com/maps?cid=2357564394766220919",
+    );
   });
 
   it("keeps the WebSite entity brand-led and free of meta-keyword fields", () => {

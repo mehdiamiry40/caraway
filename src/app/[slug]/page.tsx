@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema, serviceSchema } from "@/lib/json-ld-schemas";
 import ServicePageTemplate from "@/components/templates/ServicePageTemplate";
-import { getServiceBySlug, services } from "@/data/services";
+import {
+  getServiceBySlug,
+  services,
+  type ServicePage,
+} from "@/data/services";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 86400;
@@ -13,6 +17,41 @@ type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
+}
+
+export function buildServiceStructuredData(service: ServicePage) {
+  const canonicalUrl = `${SITE_URL}/${service.slug}`;
+  const serviceId = `${canonicalUrl}#service`;
+
+  return [
+    breadcrumbListSchema([
+      { name: "Home", item: `${SITE_URL}/` },
+      { name: "Services", item: `${SITE_URL}/services` },
+      { name: service.h1, item: canonicalUrl },
+    ]),
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: service.h1,
+      description: service.metaDescription,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      breadcrumb: { "@id": `${canonicalUrl}#breadcrumbs` },
+      mainEntity: { "@id": serviceId },
+      inLanguage: "en-AU",
+      ...(service.updatedAt ? { dateModified: service.updatedAt } : {}),
+    },
+    serviceSchema({
+      id: serviceId,
+      url: canonicalUrl,
+      name: service.h1,
+      description: service.metaDescription,
+      serviceType: service.slug.includes("removal")
+        ? "Vehicle removal service"
+        : "Vehicle buying service",
+    }),
+  ];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -53,27 +92,9 @@ export default async function ServiceSlugPage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const canonicalUrl = `${SITE_URL}/${service.slug}`;
-
   return (
     <>
-      <JsonLd
-        data={[
-          breadcrumbListSchema([
-            { name: "Home", item: `${SITE_URL}/` },
-            { name: service.h1, item: canonicalUrl },
-          ]),
-          serviceSchema({
-            id: `${canonicalUrl}#service`,
-            url: canonicalUrl,
-            name: service.h1,
-            description: service.metaDescription,
-            serviceType: service.slug.includes("removal")
-              ? "Vehicle removal service"
-              : "Vehicle buying service",
-          }),
-        ]}
-      />
+      <JsonLd data={buildServiceStructuredData(service)} />
       <ServicePageTemplate service={service} />
     </>
   );

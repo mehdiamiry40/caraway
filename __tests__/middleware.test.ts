@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 
-type MiddlewareModule = typeof import("../middleware");
+type ProxyModule = typeof import("../src/proxy");
 
-async function loadMiddleware(): Promise<MiddlewareModule["middleware"]> {
+async function loadProxy(): Promise<ProxyModule["proxy"]> {
   vi.resetModules();
-  const mod = (await import("../middleware")) as MiddlewareModule;
-  return mod.middleware;
+  const mod = (await import("../src/proxy")) as ProxyModule;
+  return mod.proxy;
 }
 
 function makeRequest(
@@ -30,19 +30,47 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("middleware", () => {
+describe("proxy", () => {
   describe("HTTP method handling", () => {
-    it("passes GET requests through without rate limiting or origin checks", async () => {
-      const middleware = await loadMiddleware();
+    it("passes GET requests through and noindexes non-canonical hosts", async () => {
+      const middleware = await loadProxy();
       const req = makeRequest("GET");
       const res = await middleware(req);
       // NextResponse.next() returns a 200 Response
       expect(res.status).toBe(200);
+      expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+    });
+
+    it("keeps the canonical apex host indexable", async () => {
+      const middleware = await loadProxy();
+      const req = makeRequest("GET", { host: "caraway.au" });
+      const res = await middleware(req);
+
+      expect(res.headers.get("x-robots-tag")).toBeNull();
+    });
+
+    it("accepts matching proxy hosts and noindexes conflicting ones", async () => {
+      const middleware = await loadProxy();
+      const canonical = await middleware(
+        makeRequest("GET", {
+          host: "caraway.au",
+          "x-forwarded-host": "caraway.au:443",
+        }),
+      );
+      const preview = await middleware(
+        makeRequest("GET", {
+          host: "caraway.au",
+          "x-forwarded-host": "caraway-git-example.vercel.app",
+        }),
+      );
+
+      expect(canonical.headers.get("x-robots-tag")).toBeNull();
+      expect(preview.headers.get("x-robots-tag")).toBe("noindex, nofollow");
     });
 
     it("does not set Places session cookies on HTML page requests", async () => {
       process.env.GOOGLE_PLACES_API_KEY = "places-test-secret";
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("GET", {
         accept: "text/html",
         "x-forwarded-for": "203.0.113.10",
@@ -57,17 +85,18 @@ describe("middleware", () => {
 
   describe("CSRF / origin validation", () => {
     it("rejects POST without Origin or Referer with 403", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("POST", {
         "x-forwarded-for": "1.1.1.1",
         host: "localhost",
       });
       const res = await middleware(req);
       expect(res.status).toBe(403);
+      expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
     });
 
     it("allows POST with matching Origin", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("POST", {
         "x-forwarded-for": "2.2.2.2",
         host: "localhost",
@@ -78,7 +107,7 @@ describe("middleware", () => {
     });
 
     it("rejects POST with mismatched Origin", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("POST", {
         "x-forwarded-for": "3.3.3.3",
         host: "localhost",
@@ -89,7 +118,7 @@ describe("middleware", () => {
     });
 
     it("falls back to Referer matching the request host", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("POST", {
         "x-forwarded-for": "4.4.4.4",
         host: "localhost",
@@ -100,7 +129,7 @@ describe("middleware", () => {
     });
 
     it("rejects POST when Referer host does not match", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const req = makeRequest("POST", {
         "x-forwarded-for": "5.5.5.5",
         host: "localhost",
@@ -113,7 +142,7 @@ describe("middleware", () => {
 
   describe("rate limiting", () => {
     it("allows up to 10 POSTs from the same IP, then 429s the 11th with Retry-After", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const headers = {
         "x-forwarded-for": "10.20.30.40",
         host: "localhost",
@@ -128,10 +157,11 @@ describe("middleware", () => {
       const res11 = await middleware(makeRequest("POST", headers));
       expect(res11.status).toBe(429);
       expect(res11.headers.get("Retry-After")).not.toBeNull();
+      expect(res11.headers.get("x-robots-tag")).toBe("noindex, nofollow");
     });
 
     it("does not rate-limit requests from different IPs", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       for (let i = 0; i < 11; i++) {
         const res = await middleware(
           makeRequest("POST", {
@@ -145,7 +175,7 @@ describe("middleware", () => {
     });
 
     it("uses only the first IP from a comma-separated x-forwarded-for", async () => {
-      const middleware = await loadMiddleware();
+      const middleware = await loadProxy();
       const headers = {
         "x-forwarded-for": "203.0.113.5, 198.51.100.1, 10.0.0.1",
         host: "localhost",

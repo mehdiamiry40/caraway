@@ -1,42 +1,67 @@
-import { afterEach, describe, expect, it } from "vitest";
-import { shouldNoindexSite } from "@/lib/noindex";
+import { describe, expect, it } from "vitest";
+import {
+  getRequestHostname,
+  normalizeRequestHostname,
+  shouldNoindexHostname,
+} from "@/lib/noindex";
 
-const originalNoindex = process.env.NEXT_PUBLIC_NOINDEX;
-const originalVercelEnv = process.env.VERCEL_ENV;
+function headers(values: Record<string, string>): Pick<Headers, "get"> {
+  return {
+    get(name: string) {
+      return values[name.toLowerCase()] ?? null;
+    },
+  };
+}
 
-afterEach(() => {
-  if (originalNoindex === undefined) {
-    delete process.env.NEXT_PUBLIC_NOINDEX;
-  } else {
-    process.env.NEXT_PUBLIC_NOINDEX = originalNoindex;
-  }
-
-  if (originalVercelEnv === undefined) {
-    delete process.env.VERCEL_ENV;
-  } else {
-    process.env.VERCEL_ENV = originalVercelEnv;
-  }
-});
-
-describe("shouldNoindexSite", () => {
-  it("forces noindex when NEXT_PUBLIC_NOINDEX=1 even in production", () => {
-    process.env.NEXT_PUBLIC_NOINDEX = "1";
-    process.env.VERCEL_ENV = "production";
-
-    expect(shouldNoindexSite()).toBe(true);
+describe("request-host indexability", () => {
+  it("normalizes ports, casing, trailing dots, and proxy chains", () => {
+    expect(normalizeRequestHostname("CARAWAY.AU.:443, proxy.internal")).toBe(
+      "caraway.au",
+    );
   });
 
-  it("keeps production indexable when the override is unset", () => {
-    delete process.env.NEXT_PUBLIC_NOINDEX;
-    process.env.VERCEL_ENV = "production";
-
-    expect(shouldNoindexSite()).toBe(false);
+  it("rejects malformed authority values", () => {
+    expect(normalizeRequestHostname("caraway.au/path")).toBeNull();
+    expect(normalizeRequestHostname("user@caraway.au")).toBeNull();
+    expect(normalizeRequestHostname(null)).toBeNull();
+    expect(shouldNoindexHostname("caraway.au.example.com")).toBe(true);
   });
 
-  it("noindexes non-production environments by default", () => {
-    delete process.env.NEXT_PUBLIC_NOINDEX;
-    process.env.VERCEL_ENV = "preview";
+  it("accepts matching proxy hosts and fails closed on conflicts", () => {
+    expect(
+      getRequestHostname(
+        headers({
+          "x-forwarded-host": "caraway.au:443",
+          host: "caraway.au",
+        }),
+        "localhost",
+      ),
+    ).toBe("caraway.au");
+    expect(
+      getRequestHostname(
+        headers({
+          "x-forwarded-host": "caraway.au",
+          host: "preview.example.vercel.app",
+        }),
+        "preview.example.vercel.app",
+      ),
+    ).toBeNull();
+    expect(
+      getRequestHostname(
+        headers({
+          host: "caraway.au/path",
+          "x-forwarded-host": "caraway.au",
+        }),
+        "caraway.au",
+      ),
+    ).toBeNull();
+    expect(getRequestHostname(headers({}), "localhost")).toBe("localhost");
+  });
 
-    expect(shouldNoindexSite()).toBe(true);
+  it("allows indexing only on the canonical apex hostname", () => {
+    expect(shouldNoindexHostname("caraway.au")).toBe(false);
+    expect(shouldNoindexHostname("www.caraway.au")).toBe(true);
+    expect(shouldNoindexHostname("preview.example.vercel.app")).toBe(true);
+    expect(shouldNoindexHostname(null)).toBe(true);
   });
 });
