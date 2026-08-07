@@ -5,15 +5,35 @@ export const post: RawBlogPostEntry = {
     slug: "what-paperwork-to-sell-a-car-qld",
     title: "Paperwork Needed to Sell a Car in QLD (2026)",
     metaDescription:
-      "Paperwork for selling a car in Queensland varies by transaction. Check ID, safety and gas certificates, transfer steps, PPSR and unregistered-sale records.",
+      "QLD car-sale paperwork checklist for registered transfers, cancelled or unregistered vehicles. Compare certificates, TMR steps and seller records.",
     excerpt:
-      "Use this Queensland car-sale paperwork overview to identify the documents that may apply to a registered transfer, dealer sale, or unregistered vehicle sale.",
+      "Choose the right Queensland transaction path, then prepare the authority, certificates, TMR confirmation and signed sale record that apply.",
     content: [
       "The paperwork needed to sell a car in Queensland depends on whether the vehicle is registered, whether its registration will transfer, the buyer type, and details such as finance, gas equipment, or written-off status. Use this as a transaction checklist, then confirm the current pathway with Transport and Main Roads (TMR) before committing to a sale.",
 
+      "## At-a-glance Queensland seller paperwork checklist",
+
+      "Use only the items that match your transaction. Start with the vehicle's registration status at handover, the intended registration outcome, the buyer type, and any finance, insurer, estate, company, gas-system, or written-off-vehicle complication.",
+
+      "- **Choose the transaction path.** Separate a [registered transfer](/blog/how-to-transfer-car-ownership-qld), [registration cancellation before sale](/blog/how-to-cancel-car-rego-qld), and an already-unregistered sale. A direct acquisition by a verified licensed motor dealer follows different certificate and notification rules from a private transfer or a buyer merely acting as an agent.",
+
+      "- **Confirm authority to sell.** Registration and PPSR records do not prove ownership. Resolve joint, company, finance, insurer, [estate](/blog/sell-deceased-estate-car-qld), representative, or [not-in-my-name](/blog/sell-car-not-in-my-name-qld) situations before handover.",
+
+      "- **Check the safety-certificate rule.** A registered vehicle generally needs a current safety certificate before disposal unless an exemption applies. An unregistered vehicle can be sold without one; direct disposal to a verified licensed motor dealer is another exception. Do not assume every cash-for-cars or wrecking business qualifies.",
+
+      "- **Check gas equipment separately.** A registered vehicle with a gas system can require a current gas inspection certificate, and not every gas-equipped transfer is eligible for the online pathway.",
+
+      "- **Resolve finance or security interests.** Obtain a current lender payout and an agreed discharge process. A PPSR search can report registered security interests and usually stolen or written-off status, but it does not identify the owner or prove authority to sell.",
+
+      "- **Gather the transfer details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, dutiable value, and odometer reading. In-person transfers use the signed Vehicle Registration Transfer Application (F3520).",
+
+      "- **Create the handover record.** Record the identifiable vehicle, date, parties, agreed amount and payment, registration status, keys or items handed over, and relevant condition disclosures. Both parties should sign and retain the record.",
+
+      "- **Finish the applicable seller step.** Submit the eligible online transfer or retain and, where necessary, lodge the signed seller copy; complete registration cancellation and the applicable plate-surrender, retention, or declaration step before a for-parts sale; or retain the signed unregistered-sale record. Save the TMR confirmation and check that the registration record is no longer in your name.",
+
       "## Certificate of registration",
 
-      "The certificate of registration records the registered operator and vehicle details such as the VIN, make, model, and plate number. It is useful transaction evidence, but registration records are not a substitute for resolving a genuine ownership dispute. If the document is missing, check the current replacement and online-service options with TMR.",
+      "A certificate of registration displays operator and vehicle details such as the VIN, make, model, and plate number, but TMR says the certificate does not prove ownership or even that the registration is current. Verify the current record and resolve any genuine authority dispute separately. If the document is missing, check the current replacement and online-service options with TMR.",
 
       "## Proof of identity",
 
@@ -38,6 +58,22 @@ export const post: RawBlogPostEntry = {
       "## Selling an unregistered vehicle",
 
       "An unregistered vehicle can be sold without a safety certificate, but both parties need a paper trail. Queensland Government says the signed record should include the VIN, chassis number, or engine number; the make and model; and the sale date. Keep a copy, and do not drive an unregistered vehicle on a road unless the required permit, CTP cover, and safety conditions are satisfied.",
+
+      "## Seller handover record",
+
+      "A signed receipt is a recordkeeping aid, not a replacement for a TMR transfer, cancellation, dealer-acquisition notice, or other official step. For an already-unregistered sale, Queensland's stated minimum is both parties' signatures, a VIN, chassis, or engine identifier, the make and model, and the sale date. A practical handover record can also include:",
+
+      "- **Vehicle details:** plate number and odometer reading where applicable, plus the VIN or other identifying number.",
+
+      "- **Transaction details:** date and time, agreed amount, and confirmation of the payment method used.",
+
+      "- **Party details:** buyer and seller legal names, reasonable contact details, signatures, and the collecting business's legal or registered business name where relevant.",
+
+      "- **Handover details:** registration status, accurately described condition, keys, accessories, and other items transferred with the vehicle.",
+
+      "- **Official references:** applicable safety or gas certificate details and the transfer, cancellation, plate-surrender, or other TMR confirmation reference.",
+
+      "Sight identity evidence when the transaction requires it, but do not retain an unnecessary photo or scan of another person's identity document. Store the receipt and official confirmations securely.",
 
       "## Disposal notice — a step many sellers miss",
 
@@ -64,6 +100,18 @@ export const post: RawBlogPostEntry = {
         url: "https://www.qld.gov.au/transport/registration/transfer/online",
       },
       {
+        title: "Queensland Government — transfer registration in person",
+        url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+      },
+      {
+        title: "Queensland Government — check vehicle registration",
+        url: "https://www.service.transport.qld.gov.au/checkrego/public/Welcome.xhtml",
+      },
+      {
+        title: "Queensland Government — cancel vehicle registration",
+        url: "https://www.qld.gov.au/transport/registration/cancel",
+      },
+      {
         title: "Queensland Government — safety certificates",
         url: "https://www.qld.gov.au/transport/registration/roadworthy",
       },
@@ -78,6 +126,14 @@ export const post: RawBlogPostEntry = {
       {
         title: "Queensland Government — selling and moving unregistered vehicles",
         url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+      },
+      {
+        title: "Queensland Government — check a motor licence",
+        url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence",
+      },
+      {
+        title: "Queensland legislation — Vehicle Registration Regulation 2021",
+        url: "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/sl-2021-0113",
       },
     ],
     category: "Guides",

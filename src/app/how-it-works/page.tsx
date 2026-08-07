@@ -230,9 +230,12 @@ export default function HowItWorksPage() {
                 ))}
               </ul>
               <p className={`${proseClasses} mt-5`}>
-                None of the documents beyond photo ID are essential for every
-                sale — we can look a vehicle up by VIN if the papers are long
-                gone. For a fuller rundown, see our guide to{" "}
+                An assessment can usually start from the vehicle details, VIN,
+                photos, and current identification. Completing a sale requires
+                the ownership authority and registration, finance, insurer,
+                estate, company, or other transaction records that apply; a VIN
+                lookup does not prove ownership or authority to sell. For a
+                fuller rundown, see our guide to{" "}
                 <Link
                   href="/blog/preparing-your-car-for-pickup"
                   className="text-primary underline underline-offset-4 hover:text-accent-ink"

@@ -17,7 +17,7 @@ export const post: RawBlogPostEntry = {
 
     `## Step 1: Check who owns the car`,
 
-    `Before you do anything else, confirm that you are authorised to sell the vehicle. A PPSR search can show registered security interests, write-off records, and stolen-vehicle records. If finance is owing, obtain a current payout figure and agree on a settlement process that ensures the security interest is discharged.`,
+    `Before you do anything else, confirm that you are authorised to sell the vehicle. A registration certificate and a PPSR result do not prove ownership. A PPSR search can show registered security interests and usually stolen or written-off status. If finance is owing, obtain a current payout figure and agree on a settlement process that ensures the security interest is discharged.`,
 
     `For a deceased-estate vehicle, the executor or administrator should provide the documents that establish authority to sell. The exact evidence depends on the estate and vehicle records, so resolve that authority before booking collection.`,
 
@@ -31,9 +31,9 @@ export const post: RawBlogPostEntry = {
 
     `Don't forget to check the car for anything else you want to keep: the spare tyre if it's in good condition, roof racks, aftermarket accessories, a dashcam, or a quality sound system you installed yourself. Once the car goes to the dismantler, retrieving anything becomes complicated.`,
 
-    `## Step 4: Complete the TMR disposal notice`,
+    `## Step 4: Complete the Applicable TMR Registration Step`,
 
-    `This is the critical administrative step. Complete the seller-side [TMR transfer process](https://www.qld.gov.au/transport/registration/transfer/online) that applies and keep confirmation that the vehicle is no longer recorded in your name. A buyer can provide their details or help prepare information, but the seller should verify the result.`,
+    `Queensland Government says a vehicle sold for parts must be deregistered before sale. If the vehicle is currently registered, ensure the [registration cancellation](https://www.qld.gov.au/transport/registration/cancel) and applicable plate-surrender, retention, or declaration step are complete before completing the for-parts sale or handing over the vehicle. Once it is unregistered, both parties should sign and retain a record containing both signatures, the VIN, chassis, or engine number, the make and model, and the sale date. Do not replace this pathway with a generic "disposal notice" or assume the collecting business will complete every seller step.`,
 
     `If you cancel the registration before collection, you may be eligible for a refund of part of the unused registration and CTP, less applicable fees. Check the current [TMR cancellation guidance](https://www.qld.gov.au/transport/registration/cancel) for eligibility, plate surrender, and processing options.`,
 
@@ -66,6 +66,10 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — selling and moving unregistered vehicles",
       url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
     {
       title: "Australian Government PPSR — used car search",

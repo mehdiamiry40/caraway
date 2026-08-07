@@ -45,7 +45,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want the car gone without driving it?",
 
-    "Caraway buys unwanted, damaged, scrap, unregistered, and non-running vehicles across Brisbane. Request a [free quote](/#price-estimator), [contact us](/contact), or call 0481 438 444. We can arrange pickup and payment on collection.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. Request a [free quote](/#price-estimator), [contact us](/contact), or call 0481 438 444. If Caraway makes an offer and you accept it, the collection window, payment arrangement, paperwork, and included-pickup conditions are confirmed before dispatch.",
 
     "## FAQ",
 
@@ -79,8 +79,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
-  updatedAt: "2026-06-08",
-  reviewedAt: "2026-06-08",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — vehicle registration number plates",

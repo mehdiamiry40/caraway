@@ -7,13 +7,13 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Selling your car? Learn how to spot and avoid cash for cars scams in Brisbane — the red flags, safe payment tips, and how to confirm a legitimate QLD buyer.",
   excerpt:
-    "Most cash for cars buyers in Brisbane are legitimate, but a few aren't. Here are the warning signs, the safe way to take payment, and how to protect yourself when selling your car.",
+    "Check the buyer's identity, written quote, collection terms, payment and Queensland paperwork before releasing a vehicle.",
   content: [
-    "Selling an unwanted vehicle should be one of the easiest transactions you'll ever make. You describe the car, you get an offer, the buyer collects it, and you walk away with money in your account. The vast majority of cash for cars buyers operating across Brisbane do exactly that — quickly and honestly. But like any industry that deals in quick payments and walk-in customers, it attracts a small number of operators who cut corners or, occasionally, set out to take advantage of sellers who haven't done this before. Knowing the warning signs ahead of time means you can sell with confidence and avoid the handful of traps that catch people out.",
+    "A direct vehicle sale combines an offer, payment, identity checks, paperwork, and collection in a short window. That makes it important to verify the buyer and written terms before the vehicle moves. The practical checks below apply whether the buyer describes itself as cash for cars, a dealer, a wrecker, or a removal service.",
 
     "## The most common cash for cars scams in Brisbane",
 
-    "The classic one is the bait-and-switch quote. A buyer offers a high price over the phone — well above what every other operator quoted — to lock in your booking. Then the tow truck arrives and the driver suddenly \"finds\" problems: the engine sounds worse than described, the body has rust, the tyres are bald. The offer drops by hundreds of dollars on the spot, and because the truck is already in your driveway and you've cleared your afternoon, the pressure to just accept is real. A genuine buyer's quote shouldn't move unless your description of the car was inaccurate.",
+    "A common warning sign is a high phone quote followed by pressure to accept a much lower amount at pickup. Before booking, ask which vehicle, condition, completeness, location, and access assumptions support the quote and which material differences could justify a revision. If the written assumptions were accurate, ask the buyer to explain any proposed change and remember that you can decline it before handover.",
 
     "Another is the towing-fee sting. The car is loaded, then you're told there's a collection or \"administration\" fee deducted from your payment. Ask what collection will cost, get any fee and access condition in writing, and make sure the agreed amount accounts for it before pickup. A buyer should not introduce an undisclosed fee after loading the vehicle.",
 
@@ -21,15 +21,15 @@ export const post: RawBlogPostEntry = {
 
     "How you get paid is where most real losses happen, so this is worth getting right. Be cautious of anyone who wants to take the car now and \"transfer the money later\", who offers a cheque from an unfamiliar business, or who sends a bank-transfer screenshot as \"proof\" while the funds never actually land. Screenshots are trivial to fake, and a pending transfer can be cancelled. The safe rule is simple: the car does not leave your property until the payment has genuinely cleared. With cash, count it before the vehicle is loaded. With a bank transfer, confirm the money has actually appeared in your account — not just that a receipt was shown to you — before you hand over the keys.",
 
-    "Also be wary of overpayment offers, which are almost always a scam. If a \"buyer\" sends more than the agreed amount and asks you to refund the difference, walk away — the original payment will later be reversed and you'll be out the refund you sent. No legitimate cash for cars operator overpays by accident.",
+    "Treat an unexpected overpayment followed by a request to send the difference elsewhere as a serious warning sign. Do not make a separate refund based only on a message, screenshot, or apparent incoming payment. Contact your bank through its official channel and resolve the original transaction before sending money or releasing the vehicle.",
 
     "## How to verify a legitimate buyer in Queensland",
 
-    "A few quick checks separate a real operator from a fly-by-night one. A legitimate Brisbane buyer has a working local phone number, a physical business presence, and a consistent business name across their website, quotes, and paperwork. They'll happily explain how payment works before you commit. Reading recent Google reviews takes two minutes and tells you a lot — look for comments about the offer changing at pickup or payment problems, not just the star rating. In Queensland, businesses that dismantle or on-sell vehicles should also be operating within the relevant licensing and environmental rules, so a buyer who is vague about who they are or how they handle the car after collection is worth a second look.",
+    "Check that the legal or registered business name, ABN, phone, website, quote, and receipt identify the same operator. A service-area business does not need a public storefront, but it should explain who is buying the vehicle, how payment works, and who will collect it. Verify any motor-dealer or wrecker licence claim through Queensland's public register rather than relying on a logo or website statement. Reviews can provide context, but they do not replace identity, licence, written-term, and payment checks.",
 
     "## Protect your paperwork and your liability",
 
-    "Scams aren't only about money — leaving the transfer half-done can cost you later. Under Queensland law, the seller must notify the Department of Transport and Main Roads (TMR) that the vehicle has been sold or disposed of. If a buyer takes your car but the disposal or transfer is never lodged, the vehicle stays registered in your name, and you can remain liable for tolls, infringements, and CTP obligations the new \"owner\" racks up. Always complete and keep a copy of the transfer or disposal paperwork on the day, and confirm in writing who is lodging it with TMR.",
+    "Scams are not only about money—an incomplete registration step can create later toll, infringement, or record disputes. Confirm whether the transaction is a registered transfer, cancellation before sale, direct dealer acquisition, or already-unregistered sale. Complete the applicable seller-side TMR step promptly and keep the confirmation. A licensed dealer acquiring a registered vehicle also has its own notification duty; do not treat that as a reason to discard your receipt or seller records.",
 
     "Confirm the registration pathway before pickup: a registered transfer, registration cancellation, or an unregistered sale. Complete the seller-side TMR steps that apply and retain the confirmation. Standard plates usually stay with a registered vehicle during a normal transfer, while cancellation and personalised plates follow different rules.",
 
@@ -53,10 +53,30 @@ export const post: RawBlogPostEntry = {
     {
       question: "What happens if the buyer doesn't lodge the transfer with TMR?",
       answer:
-        "The vehicle stays registered in your name and you can be held liable for the new owner's tolls, fines, and CTP obligations. Always lodge or confirm the disposal notice with Transport and Main Roads and keep a copy of the paperwork.",
+        "An incomplete transfer can leave the vehicle recorded in your name and create toll, infringement, or registration disputes. Complete the applicable seller-side step, retain the signed seller copy or online confirmation, and check the registration record. TMR says an in-person seller can lodge Part B if the buyer has not completed the transfer.",
     },
   ],
   date: "2026-06-06",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
+  sources: [
+    {
+      title: "Queensland Government — transfer registration online",
+      url: "https://www.qld.gov.au/transport/registration/transfer/online",
+    },
+    {
+      title: "Queensland Government — transfer registration in person",
+      url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+    },
+    {
+      title: "Queensland Government — check a motor licence",
+      url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence",
+    },
+    {
+      title: "Queensland legislation — Vehicle Registration Regulation 2021",
+      url: "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/sl-2021-0113",
+    },
+  ],
   category: "Tips",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "carindale"],

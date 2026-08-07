@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     `## Selling to a Wrecker or Removal Service`,
 
-    `A car headed for a wrecker usually never gets transferred at all. The registration is cancelled and the vehicle leaves on a tilt tray, which changes the order of operations. Your comprehensive policy still has to be cancelled by you, and there's often an extra week or two of exposure while pickup is being arranged. Waiting out those two weeks costs a few dollars in premium. Cancelling early can cost a great deal more — severe storm season in South East Queensland runs through the warmer months, and an [uninsured hail-damaged car](/blog/sell-hail-damaged-car-brisbane) is worth noticeably less than the one you were quoted on.`,
+    `Do not infer the registration path from labels such as wrecker or removal service. If the vehicle is being sold for parts, Queensland says it must be deregistered before sale regardless of the buyer's label. If it is not a for-parts sale, confirm whether it is already unregistered or whether a registered transfer or direct acquisition by a licensed dealer applies. Then time the private-policy cancellation against the actual handover so the vehicle is not left uninsured while it remains yours.`,
 
     `People who cancel car insurance after selling a car usually remember the policy and forget everything else bolted to the vehicle. Take the car off any [Linkt or toll account](/blog/unpaid-tolls-selling-car-qld) so trips the new owner takes aren't billed to your plate. Kill the registration direct debit. Check whether your roadside assistance is tied to the vehicle or to you, because a membership you keep for the next car may not be a membership that covers the next car.`,
 
@@ -62,7 +62,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-07-28",
-  reviewedAt: "2026-07-28",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — CTP insurance",
@@ -75,6 +76,10 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — selling a used vehicle",
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
   ],
   category: "Guides",

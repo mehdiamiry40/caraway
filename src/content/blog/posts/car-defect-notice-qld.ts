@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     `Meanwhile the vehicle has to sit somewhere. A defected car that can't legally be driven isn't welcome on a public road, and it's exactly the sort of thing a neighbour reports to council. Our guide to [parking an unregistered car on the street in QLD](/blog/park-unregistered-car-street-qld) covers where a car in that position can and can't legally be kept.`,
 
-    `Selling is a legitimate way out of a defect notice. Nothing obliges you to repair a car you no longer want, and a defected vehicle can still be sold. Be straight with the buyer about the notice and what's on it — Queensland sellers are expected to disclose known faults, and the notice itself is a document you hand over. A cash-for-cars buyer or a wrecker prices the car on its parts and metal rather than its roadworthiness, so a failed sill barely moves the number. If registration is being cancelled rather than transferred, our [rego cancellation guide](/blog/how-to-cancel-car-rego-qld) sets out that side of it.`,
+    `Selling may be an option if you do not want to repair the vehicle, but do not misrepresent its condition. Tell the buyer about the defect notice and listed problems, confirm any restrictions on moving the vehicle, and agree on the correct registration path before handover. If the vehicle will be sold for parts, Queensland says it must be deregistered before sale; our [rego cancellation guide](/blog/how-to-cancel-car-rego-qld) explains that pathway. An individual offer still depends on the vehicle, damage, completeness, authority to sell, location, and access.`,
 
     `Caraway can assess a defected, unregistered, or non-running car from the details you supply. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job.`,
   ],
@@ -60,11 +60,12 @@ export const post: RawBlogPostEntry = {
     {
       question: "Can I sell a car that has a defect notice on it?",
       answer:
-        "Yes. You are not required to repair a car you intend to sell, but you should disclose the notice and the listed defects to the buyer. Cash-for-cars buyers and wreckers price a vehicle on its parts and metal value rather than its roadworthiness, so an outstanding defect usually has little effect on the offer.",
+        "Selling may be an option, but describe the defect notice and vehicle condition accurately, follow any restriction on moving it, and confirm the registration pathway. A vehicle sold for parts must be deregistered before sale, and any offer depends on the individual vehicle and collection circumstances.",
     },
   ],
   date: "2026-07-29",
-  reviewedAt: "2026-07-29",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — defect notices",
@@ -78,6 +79,10 @@ export const post: RawBlogPostEntry = {
       title:
         "Department of Transport and Main Roads — defect vehicle and trailer inspections",
       url: "https://www.tmr.qld.gov.au/business-industry/accreditations/approved-inspection-station-scheme/inspection-certificates-online/ico-procedures/defect-vehicle-and-trailer-inspections",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
   ],
   category: "Guides",

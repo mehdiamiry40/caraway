@@ -5,9 +5,9 @@ export const post: RawBlogPostEntry = {
   slug: "sell-car-for-parts-brisbane",
   title: "Sell a Car for Parts in Brisbane: Is It Worth It?",
   metaDescription:
-    "Stripping a car yourself can beat the whole-car offer, or cost you money. What it really takes to sell a car for parts in Brisbane, piece by piece.",
+    "Compare selling a car for parts in Brisbane with a whole-vehicle offer, including labour, storage, safety, deregistration and shell collection.",
   excerpt:
-    "A dismantled car is worth more than a baled one — that's not in dispute. Whether it's worth more to you, after your weekends and your driveway are in the ledger, is a different question.",
+    "Separate components can produce more gross revenue, but time, tools, storage, safety, unsold stock and shell removal change the comparison.",
   author: "Caraway",
   content: [
     `A tidy set of alloys off an old Falcon will sell on Marketplace in a weekend. That's the fact that convinces people to sell a car for parts in Brisbane instead of taking one offer for the whole thing. The wheels are the easy bit. Everything after them is where the plan tends to come apart.`,
@@ -18,7 +18,7 @@ export const post: RawBlogPostEntry = {
 
     `Potentially saleable components include straight panels and doors, lights, alloy wheels, batteries, seats, and some four-wheel-drive accessories. Whether they sell, how long it takes, and what they return depends on the exact model, condition, proof of function, and current buyer demand.`,
 
-    `Everything else is slow. Suspension components, interior trim, engine ancillaries and body hardware all have a buyer somewhere, but that buyer turns up nine months later, wants it posted, and expects it tested. That's the line people leave out of the maths: parting a car out isn't a weekend, it's a small retail operation run from a shed for a year or two.`,
+    `Other components may take much longer to sell or may not sell at all. Suspension parts, interior trim, engine ancillaries, and body hardware can require compatibility research, proof of function, buyer enquiries, packaging, and storage. Treat dismantling as a small retail and disposal project rather than assuming every part has an immediate local buyer.`,
 
     `Two components need particular care. A catalytic converter contains valuable material, but removing it changes the vehicle's completeness and must be disclosed. Airbag and pretensioner components are pyrotechnic safety devices and should not be handled casually. If you are not trained and equipped to dismantle a vehicle safely, leave hazardous systems in place and use an appropriate specialist.`,
 
@@ -38,9 +38,9 @@ export const post: RawBlogPostEntry = {
 
     `For an ordinary sedan or hatch, list the specific components you could safely remove and the likely time and disposal costs. Compare that plan with a written whole-vehicle offer before committing to dismantling.`,
 
-    `## The Queensland Paperwork Doesn't Change`,
+    `## Deregister Before a For-Parts Sale`,
 
-    `Stripping a car alters nothing about what you owe Transport and Main Roads. It stays recorded in your name until the registration is transferred or cancelled, and the seller-side steps apply the same way whether it leaves whole or in pieces. Deal with that on the day the car goes, not the day you start pulling parts off it.`,
+    `Queensland Government says a vehicle sold for parts must be deregistered before it is sold. If the vehicle is currently registered, ensure the [registration cancellation](/blog/how-to-cancel-car-rego-qld) and applicable plate-surrender, retention, or declaration step are complete before completing the sale or handing over the vehicle. Then both parties should sign and retain an unregistered-sale record containing both signatures, the VIN, chassis, or engine number, the make and model, and the sale date. Moving the deregistered shell on a road is a separate question; it needs a lawful permit and CTP where eligible, or towing if it is unsafe to drive.`,
 
     `Caraway can assess complete and partly dismantled vehicles within its confirmed Greater Brisbane service area. State every missing component and show the vehicle's position and access. Call **${BUSINESS.phoneDisplay}** or send the details for an individual quote before removing more parts.`,
   ],
@@ -81,6 +81,18 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — selling a used vehicle",
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+    {
+      title: "Queensland Government — cancel vehicle registration",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],
   category: "Insights",

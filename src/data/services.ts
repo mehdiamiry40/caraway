@@ -9,6 +9,10 @@ export interface ServiceFAQ {
 export interface ServiceSection {
   heading: string;
   content: string;
+  supportLink?: {
+    href: string;
+    label: string;
+  };
 }
 
 export interface ServicePage {
@@ -63,6 +67,10 @@ export const services: ServicePage[] = [
         heading: "Documents to Have Ready",
         content:
           "Have current photo identification, every key you hold, and relevant registration, finance, insurer, estate, or ownership records. Remove personal belongings and deal with any toll account linked to the registration. You remain responsible for completing and retaining confirmation of the Queensland seller steps that apply to the sale.",
+        supportLink: {
+          href: "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist",
+          label: "Open the Queensland seller paperwork checklist",
+        },
       },
     ],
     faqs: [
@@ -101,7 +109,7 @@ export const services: ServicePage[] = [
     metaDescription: `Car removal Brisbane for unwanted, damaged, and non-running vehicles. Pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Car Removal Brisbane — Pickup Included When We Buy",
     intro:
-      "Caraway buys and arranges collection of unwanted, damaged, non-running, and end-of-life vehicles across Greater Brisbane. Pickup is included when Caraway buys the vehicle. Availability and equipment depend on the car's condition, exact location, and safe access.",
+      "Caraway assesses unwanted, damaged, non-running, and end-of-life vehicles across Greater Brisbane for purchase and collection. Pickup is included when Caraway buys the vehicle. Availability and equipment depend on the car's condition, exact location, and safe access.",
     sections: [
       {
         heading: "How Brisbane Car Removal Works",
@@ -132,6 +140,10 @@ export const services: ServicePage[] = [
         heading: "Paperwork and What Happens After Collection",
         content:
           "Bring current photo identification, all keys, and relevant registration, finance, insurer, estate, or ownership records. You remain responsible for the Queensland seller steps that apply. Depending on its condition and lawful status, a purchased vehicle may be resold, used for parts, or transferred to an appropriate downstream specialist.",
+        supportLink: {
+          href: "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist",
+          label: "Open the Queensland seller paperwork checklist",
+        },
       },
     ],
     faqs: [

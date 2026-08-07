@@ -122,6 +122,22 @@ const prohibitedClaims = [
     pattern: /(?:real )?offer in under \d+ seconds/i,
   },
   {
+    label: "unsupported fixed payment-on-collection promise",
+    scope: "clause",
+    pattern:
+      /\b(?:pay|paid|payment) on (?:pickup|collection)\b/i,
+    allow:
+      /\b(?:do|does|did|will|would|can|could|is|are|was|were)\s+not\s+(?:\w+[ -]?){0,2}\b(?:pay|paid|payment) on (?:pickup|collection)\b|\b(?:pay|paid|payment) on (?:pickup|collection)\b[^.\n]{0,30}\b(?:(?:is|are|will be) not|may|might|can|subject to)\b|\bif\s+(?:pay|paid|payment) on (?:pickup|collection)\b|\bpayment\b[^.\n]{0,120}\bconfirmed\b[^.\n]{0,80}\b(?:each|the|that) (?:accepted )?job\b/i,
+  },
+  {
+    label: "unsupported universal listed-vehicle purchase claim",
+    scope: "clause",
+    pattern:
+      /Caraway (?:buys|purchases)\b(?=[^.\n]{0,180}\b(?:unwanted|damaged|scrap|unregistered|non-running)\b[^.\n]{0,180}\b(?:unwanted|damaged|scrap|unregistered|non-running)\b)(?=[^.\n]{0,180}\b(?:vehicles|cars)\b)[^.\n]{0,180}/i,
+    allow:
+      /Caraway (?:buys|purchases)\b[^.\n]{0,80}\b(?:some|eligible|selected|qualifying)\b|Caraway (?:buys|purchases)\b[^.\n]{0,160}\b(?:subject to|depending on|only after|after (?:an? )?(?:individual )?assessment)\b/i,
+  },
+  {
     label: "unsupported claim that access cannot affect an offer",
     pattern: /access details (?:do not|don't) change the offer/i,
   },
@@ -219,6 +235,7 @@ const featuredServiceSupportPosts = new Set([
   "cash-for-cars-vs-wreckers-brisbane.ts",
   "sell-deceased-estate-car-qld.ts",
   "sell-my-ute-brisbane.ts",
+  "what-paperwork-to-sell-a-car-qld.ts",
 ]);
 
 const prohibitedSupportClaims = [
@@ -369,6 +386,69 @@ const regulatedPosts = new Set([
   "wovr-written-off-vehicle-register-qld-guide.ts",
 ]);
 
+function violatesClaim(claim, line) {
+  const scopes = claim.scope === "clause"
+    ? line.split(
+        /(?:[.!?;:]\s+|\s+[—–]\s+|,\s+(?=(?:but|while|however)\b))/i,
+      )
+    : [line];
+  return scopes.some(
+    (scope) => claim.pattern.test(scope) && !claim.allow?.test(scope),
+  );
+}
+
+const claimGuardContractCases = [
+  {
+    label: "unsupported fixed payment-on-collection promise",
+    line: "Payment on collection.",
+    expected: true,
+  },
+  {
+    label: "unsupported fixed payment-on-collection promise",
+    line: "We do not provide payment on collection.",
+    expected: false,
+  },
+  {
+    label: "unsupported fixed payment-on-collection promise",
+    line: "Do not accept a cheque; payment on collection.",
+    expected: true,
+  },
+  {
+    label: "unsupported fixed payment-on-collection promise",
+    line: "Do not accept a cheque — payment on collection.",
+    expected: true,
+  },
+  {
+    label: "unsupported universal listed-vehicle purchase claim",
+    line: "Caraway buys unwanted, damaged, scrap, and unregistered vehicles.",
+    expected: true,
+  },
+  {
+    label: "unsupported universal listed-vehicle purchase claim",
+    line: "Caraway buys some damaged and unregistered cars only after an individual assessment.",
+    expected: false,
+  },
+  {
+    label: "unsupported universal listed-vehicle purchase claim",
+    line: "Some sellers compare quotes. Caraway buys unwanted, damaged, scrap, and unregistered vehicles.",
+    expected: true,
+  },
+  {
+    label: "unsupported universal listed-vehicle purchase claim",
+    line: "Some sellers compare quotes — Caraway buys unwanted, damaged, scrap, and unregistered vehicles.",
+    expected: true,
+  },
+];
+
+for (const testCase of claimGuardContractCases) {
+  const claim = prohibitedClaims.find((item) => item.label === testCase.label);
+  if (!claim || violatesClaim(claim, testCase.line) !== testCase.expected) {
+    throw new Error(
+      `Content guard contract failed for ${testCase.label}: ${testCase.line}`,
+    );
+  }
+}
+
 function collectSourceFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     const path = join(directory, entry.name);
@@ -446,7 +526,7 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
 
   for (const [index, line] of lines.entries()) {
     for (const claim of prohibitedClaims) {
-      if (claim.pattern.test(line)) {
+      if (violatesClaim(claim, line)) {
         violations.push({
           file: relativePath,
           line: index + 1,
@@ -481,7 +561,7 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
 
     if (truthConsistencyFiles.has(relativePath)) {
       for (const claim of prohibitedTruthConsistencyClaims) {
-        if (claim.pattern.test(line) && !claim.allow?.test(line)) {
+        if (violatesClaim(claim, line)) {
           violations.push({
             file: relativePath,
             line: index + 1,

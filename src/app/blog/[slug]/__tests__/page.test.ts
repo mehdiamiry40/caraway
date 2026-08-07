@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
+import { isValidElement, type ReactElement, type ReactNode } from "react";
 import {
   buildBlogPostSeoProps,
   generateMetadata,
 } from "@/app/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
+import { renderBlogContent } from "@/lib/blog-markdown";
 import { SITE_URL } from "@/lib/site";
 
 // Pick concrete fixtures from real data. Using slugs rather than array
@@ -14,6 +16,19 @@ const indexablePost = blogPosts.find((p) => p.slug === INDEXABLE_SLUG);
 
 function makeParams(slug: string) {
   return { params: Promise.resolve({ slug }) };
+}
+
+function asElement(node: ReactNode): ReactElement {
+  if (!isValidElement(node)) {
+    throw new Error(`Expected React element, got ${typeof node}`);
+  }
+  return node;
+}
+
+function getChildren(element: ReactElement): ReactNode[] {
+  const children = (element.props as { children?: ReactNode }).children;
+  if (children == null) return [];
+  return Array.isArray(children) ? children : [children];
 }
 
 describe("generateMetadata (blog post route)", () => {
@@ -77,6 +92,29 @@ describe("generateMetadata (blog post route)", () => {
       expect(twitter?.images).toBeUndefined();
       // summary_large_image would ask X to feature an image that isn't there.
       expect(twitter?.card).toBe("summary");
+    });
+
+    it("renders the real seller checklist as one heading and eight list items", () => {
+      const rendered = renderBlogContent(indexablePost!.content);
+      const headingIndex = rendered.findIndex((node) => {
+        if (!isValidElement(node)) return false;
+        return (node.props as { id?: string }).id ===
+          "at-a-glance-queensland-seller-paperwork-checklist";
+      });
+      expect(headingIndex).toBeGreaterThanOrEqual(0);
+
+      const heading = asElement(rendered[headingIndex]);
+      expect(heading.type).toBe("h2");
+
+      const checklist = asElement(rendered[headingIndex + 2]);
+      expect(checklist.type).toBe("ul");
+      const items = getChildren(checklist);
+      expect(items).toHaveLength(8);
+      for (const item of items) {
+        expect(asElement(item).type).toBe("li");
+      }
+
+      expect(asElement(rendered[headingIndex + 3]).type).toBe("h2");
     });
   });
 

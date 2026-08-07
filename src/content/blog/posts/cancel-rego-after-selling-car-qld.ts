@@ -17,7 +17,7 @@ export const post: RawBlogPostEntry = {
 
     "## What usually happens when a registered vehicle is sold",
 
-    "In a normal registered vehicle sale, the seller and buyer usually complete the transfer process. The seller records the disposal and the buyer completes their side of the transfer. Our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld) explains the broader process.",
+    "In an eligible online registered transfer, the seller starts the process and the buyer finalises it. For an in-person transfer, both sign the form, the buyer lodges Part A, and the seller keeps Part B and may need to lodge it if the buyer does not finish. Our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld) explains the broader process.",
 
     "If the vehicle is sold to a licensed motor dealer, the process may differ from a standard private sale. A dismantler or car-removal business is not automatically a licensed motor dealer, so verify the licence and complete the seller-side TMR steps that apply.",
 
@@ -29,9 +29,9 @@ export const post: RawBlogPostEntry = {
 
     "## What to do if the vehicle is unregistered or being scrapped",
 
-    "If the vehicle is already unregistered, there may be no active rego to cancel. Still keep a receipt and sale record. If the vehicle is registered but is being scrapped, dismantled, or removed from the road, cancellation and plate handling may be part of the process.",
+    "If the vehicle is already unregistered, there is no active registration to cancel, but both parties should keep the signed unregistered-sale record. Queensland says a vehicle sold for parts must be deregistered before sale. If it is currently registered and the transaction is a for-parts sale, ensure the registration is cancelled and complete the applicable plate-surrender, retention, or declaration step before completing the sale or handing over the vehicle.",
 
-    "Caraway buys unwanted, damaged, scrap, unregistered, and non-running vehicles across Brisbane. If you are using [cash for cars in Brisbane](/cash-for-cars-brisbane), ask what records will be completed at pickup and keep your own copy.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. If you are using [cash for cars in Brisbane](/cash-for-cars-brisbane), confirm the buyer identity and transaction path before pickup and keep your own receipt and official confirmation.",
 
     "## What to do with number plates",
 
@@ -47,7 +47,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want help selling a car that is ready to go?",
 
-    "Caraway can quote unwanted, damaged, scrap, unregistered, and non-running vehicles across Brisbane. Use the [free quote form](/#price-estimator), [contact us](/contact), or call 0481 438 444 to arrange a quote and pickup with payment on collection.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. Use the [free quote form](/#price-estimator), [contact us](/contact), or call 0481 438 444. If Caraway makes an offer and you accept it, the collection window, payment arrangement, paperwork, and included-pickup conditions are confirmed before dispatch.",
 
     "## FAQ",
 
@@ -81,8 +81,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
-  updatedAt: "2026-06-08",
-  reviewedAt: "2026-06-08",
+  updatedAt: "2026-08-07",
+  reviewedAt: "2026-08-07",
   sources: [
     {
       title: "Queensland Government — transfer registration online",
@@ -91,6 +91,14 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — cancelling registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],
   category: "Guides",

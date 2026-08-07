@@ -13,6 +13,7 @@ import {
   SERVICE_HUB_HEADING,
 } from "@/app/services/page";
 import { Hero } from "@/components/sections/Hero";
+import { ServiceSectionContent } from "@/components/templates/ServicePageTemplate";
 import { blogPosts } from "@/data/blog-posts";
 import { getServiceBySlug, services } from "@/data/services";
 import { SITE_URL } from "@/lib/site";
@@ -116,5 +117,32 @@ describe("primary SEO query ownership", () => {
     expect(
       services.filter((item) => /^Car Removal Brisbane\b/i.test(item.h1)),
     ).toHaveLength(1);
+  });
+
+  it("links both primary service pages to the canonical Queensland paperwork checklist", () => {
+    const expected =
+      "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist";
+
+    for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
+      const service = getServiceBySlug(slug);
+      const checklistLinks =
+        service?.sections
+          .map((section) => section.supportLink?.href)
+          .filter((href): href is string => href !== undefined) ?? [];
+
+      expect(checklistLinks, slug).toContain(expected);
+
+      const section = service?.sections.find(
+        (candidate) => candidate.supportLink?.href === expected,
+      );
+      expect(section, slug).toBeDefined();
+      const markup = renderToStaticMarkup(
+        <ServiceSectionContent section={section!} />,
+      );
+      expect(markup, slug).toContain(`href="${expected}"`);
+      expect(markup, slug).toContain(
+        "Open the Queensland seller paperwork checklist",
+      );
+    }
   });
 });

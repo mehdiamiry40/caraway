@@ -7,7 +7,7 @@ import { TrustBadges } from "@/components/sections/TrustBadges";
 import { QuoteForm } from "@/components/sections/QuoteForm";
 import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { ScrollToQuoteCTA } from "@/components/sections/ScrollToQuoteCTA";
-import type { ServicePage } from "@/data/services";
+import type { ServicePage, ServiceSection } from "@/data/services";
 import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { getPostsForService } from "@/data/blog-posts";
@@ -17,6 +17,27 @@ import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
 import { canonicalServiceSlug } from "@/lib/service-consolidation";
+
+export function ServiceSectionContent({ section }: { section: ServiceSection }) {
+  return (
+    <div>
+      <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+        {section.heading}
+      </h2>
+      <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+        {section.content}
+      </p>
+      {section.supportLink && (
+        <Link
+          href={section.supportLink.href}
+          className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+        >
+          {section.supportLink.label}
+        </Link>
+      )}
+    </div>
+  );
+}
 
 export default function ServicePageTemplate({
   service,
@@ -84,15 +105,8 @@ export default function ServicePageTemplate({
                 </div>
               )}
 
-              {service.sections.map((section, i) => (
-                <div key={i}>
-                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-                    {section.heading}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-                    {section.content}
-                  </p>
-                </div>
+              {service.sections.map((section) => (
+                <ServiceSectionContent key={section.heading} section={section} />
               ))}
 
               {service.faqs.length > 0 && (
