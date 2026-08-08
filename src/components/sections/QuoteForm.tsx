@@ -2,16 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
-import {
-  quoteFormSchema,
-  type QuoteFormInput,
-} from "@/lib/quote-schema";
+import type { QuoteFormInput } from "@/lib/quote-schema";
+import { quoteFormResolver } from "@/lib/quote-client-validation";
 import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
@@ -48,7 +45,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
     setValue,
     trigger,
   } = useForm<QuoteFormInput>({
-    resolver: zodResolver(quoteFormSchema),
+    resolver: quoteFormResolver,
     mode: "onBlur",
     defaultValues: {
       address: "",
