@@ -68,7 +68,7 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
 /** Homepage metadata, H1, and entity focus were retargeted to a brand hub so
  *  the dedicated service pages can own the two primary commercial queries. */
-export const HOME_CONTENT_UPDATED = "2026-08-07";
+export const HOME_CONTENT_UPDATED = "2026-08-09";
 
 /** Business identity and operating-terms copy materially reviewed in August 2026. */
 export const ABOUT_CONTENT_UPDATED = "2026-08-07";
