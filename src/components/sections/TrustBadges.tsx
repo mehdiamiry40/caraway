@@ -10,6 +10,7 @@ import {
   Truck,
 } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
+import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 
 const credentials = [
   { icon: ShieldCheck, label: "Pickup terms confirmed" },
@@ -20,8 +21,8 @@ const credentials = [
 const quickLinks = [
   {
     icon: BadgeDollarSign,
-    label: "Get a cash quote",
-    description: "An indicative estimate from vehicle details.",
+    label: "Get a vehicle assessment",
+    description: "An indicative scrap/parts estimate or buyer review.",
     href: "/#price-estimator",
   },
   {
@@ -105,6 +106,24 @@ export function TrustBadges() {
             </li>
           ))}
         </ul>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm">
+          <TrackedOutboundLink
+            href={BUSINESS.googleBusinessUrl}
+            label="View Caraway on Google"
+            location="homepage_trust"
+            className="inline-flex min-h-11 items-center font-semibold text-primary link-underline"
+          >
+            View Caraway on Google
+          </TrackedOutboundLink>
+          <TrackedOutboundLink
+            href={BUSINESS.abrUrl}
+            label={`Verify ABN ${BUSINESS.abn}`}
+            location="homepage_trust"
+            className="inline-flex min-h-11 items-center font-semibold text-primary link-underline"
+          >
+            Verify our ABN on the ABR
+          </TrackedOutboundLink>
+        </div>
       </div>
     </section>
   );

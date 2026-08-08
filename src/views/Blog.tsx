@@ -4,22 +4,12 @@ import { PageShell } from "@/components/layout/PageShell";
 import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { BlogPostCard, FeaturedBlogPostCard } from "@/components/blog/BlogPostCard";
 import { cn } from "@/lib/utils";
+import { BLOG_PAGE_SIZE, blogPageCount } from "@/lib/blog-pagination";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Blog" },
 ];
-
-/** Grid posts per page (the newest post is featured on page 1 on top of this).
- *  Sized to keep the archive at three pages: every archive page past the third
- *  is a permanent redirect in next.config.ts, so a fourth page would strand its
- *  posts behind that redirect. */
-export const BLOG_PAGE_SIZE = 13;
-
-/** Total number of blog index pages, for generateStaticParams and the pager. */
-export function blogPageCount(): number {
-  return Math.max(1, Math.ceil((blogPosts.length - 1) / BLOG_PAGE_SIZE));
-}
 
 function blogPageHref(page: number): string {
   return page <= 1 ? "/blog" : `/blog/page/${page}`;

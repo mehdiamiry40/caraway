@@ -56,8 +56,8 @@ const estimateVehicleInput = z.object({
     .number()
     .int()
     .min(1950)
-    .max(new Date().getFullYear() + 1)
-    .describe("Four-digit model year"),
+    .max(new Date().getFullYear())
+    .describe("Four-digit year of manufacture"),
   condition: z
     .enum(["running", "needs_work", "damaged", "not_running", "scrap"])
     .describe("Best matching vehicle condition"),
@@ -67,20 +67,26 @@ export type ChatEstimateInput = z.infer<typeof estimateVehicleInput>;
 
 export function getChatEstimate(input: ChatEstimateInput) {
   const result = estimatePrice(input);
+  const displayAmount =
+    result.quote === null
+      ? "Manual review needed"
+      : new Intl.NumberFormat("en-AU", {
+          style: "currency",
+          currency: "AUD",
+          maximumFractionDigits: 0,
+        }).format(result.quote);
   return {
     currency: "AUD" as const,
     amount: result.quote,
-    displayAmount: new Intl.NumberFormat("en-AU", {
-      style: "currency",
-      currency: "AUD",
-      maximumFractionDigits: 0,
-    }).format(result.quote),
+    displayAmount,
     vehicle: `${input.year} ${input.make} ${input.model}`.trim(),
     condition: input.condition,
     factors: result.factors,
-    status: "indicative_estimate" as const,
+    status: result.status,
     disclaimer:
-      "Indicative estimate only. A confirmed offer depends on the vehicle matching the details supplied, completeness, location, accessibility, kilometres, and current demand.",
+      result.status === "manual_review"
+        ? "No automatic dollar value is shown for running vehicles. A buyer will review kilometres, variant, completeness, location, accessibility, and current demand."
+        : "Indicative scrap/parts estimate only. A confirmed offer depends on the vehicle matching the details supplied, completeness, location, accessibility, and current demand.",
   };
 }
 

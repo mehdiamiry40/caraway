@@ -22,7 +22,12 @@ test("sticky mobile CTA is available and jumps to the estimator", async ({
   await page.goto("/");
   const bar = page.locator(STICKY_BAR);
 
+  await expect(bar).toHaveAttribute("aria-hidden", "true");
+  await page.locator("#price-estimator").evaluate((estimator) => {
+    window.scrollTo(0, estimator.offsetTop + estimator.offsetHeight + 100);
+  });
   await expect(bar).toBeVisible();
+  await expect(bar).not.toHaveAttribute("aria-hidden", "true");
   await expect(
     bar.getByRole("link", { name: /call/i }).or(bar.locator("a[href^='tel:']")),
   ).toHaveCount(1);

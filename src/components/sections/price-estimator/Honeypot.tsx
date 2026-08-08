@@ -5,7 +5,7 @@ interface HoneypotProps {
 
 export function Honeypot({ value, onChange }: HoneypotProps) {
   return (
-    <div className="absolute -left-[9999px]" aria-hidden="true">
+    <div hidden aria-hidden="true">
       <label htmlFor="est-website">Website</label>
       <input
         type="text"

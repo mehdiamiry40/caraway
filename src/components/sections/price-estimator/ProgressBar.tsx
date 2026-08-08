@@ -39,7 +39,7 @@ export function ProgressBar({ step, totalSteps, progressPercent }: ProgressBarPr
             </div>
             <span
               className={cn(
-                "text-xs transition-colors hidden sm:inline",
+                "text-[0.6875rem] transition-colors sm:text-xs",
                 step >= s ? "text-foreground" : "text-foreground/70"
               )}
             >

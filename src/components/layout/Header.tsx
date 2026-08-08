@@ -37,7 +37,7 @@ export function Header() {
       <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
 
       <div className="hidden sm:block w-full bg-background border-b border-border">
-        <div className="site-container flex items-center justify-end h-8 text-xs">
+        <div className="site-container flex min-h-11 items-center justify-end text-xs">
           <div className="flex items-center divide-x divide-border">
             <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
               <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
@@ -49,7 +49,7 @@ export function Header() {
             </span>
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex items-center gap-1.5 pl-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex min-h-11 items-center gap-1.5 px-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function Header() {
               <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
                 CARAWAY
               </span>
-              <span className="mt-1 block text-[0.58rem] sm:text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+              <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                 Vehicle buying
               </span>
             </span>

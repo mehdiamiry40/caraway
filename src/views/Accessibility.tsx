@@ -21,7 +21,7 @@ export default function Accessibility() {
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
             Last reviewed{" "}
-            <time dateTime="2026-04-22">22 April 2026</time>. We review this
+            <time dateTime="2026-08-08">8 August 2026</time>. We review this
             statement whenever we ship a significant design or markup change,
             and at least every six months.
           </p>

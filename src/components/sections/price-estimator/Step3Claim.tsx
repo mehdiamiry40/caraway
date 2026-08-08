@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckCircle2, Loader2, Send } from "lucide-react";
@@ -34,7 +35,6 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
     setAddressError,
     isSubmitting,
     submitError,
-    handleSubmit,
     goToStep,
     validateName,
     validatePhone,
@@ -57,7 +57,9 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
               <p className="font-medium text-foreground truncate">
                 {year} {[make, model].filter(Boolean).join(" ")} ·{" "}
                 <span className="font-mono tabular-nums text-primary">
-                  ${result.quote.toLocaleString()}
+                  {result.quote === null
+                    ? "Manual review"
+                    : `$${result.quote.toLocaleString()}`}
                 </span>
               </p>
             </div>
@@ -230,7 +232,7 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
             <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
           </Button>
           <Button
-            onClick={handleSubmit}
+            type="submit"
             disabled={isSubmitting}
             variant="default"
             size="lg"
@@ -243,12 +245,22 @@ export function Step3Claim({ state }: { state: EstimatorState }) {
               </>
             ) : (
               <>
-                Request confirmed offer
+                {result?.status === "manual_review"
+                  ? "Request buyer assessment"
+                  : "Request confirmed offer"}
                 <CheckCircle2 className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
               </>
             )}
           </Button>
         </div>
+        <p className="mt-4 text-center text-xs leading-relaxed text-muted-foreground">
+          We use your details to assess and respond to this enquiry. Address suggestions are
+          matched using Google Places. See our{" "}
+          <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </div>
     </div>
   );

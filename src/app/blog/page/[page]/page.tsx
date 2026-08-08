@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
-import Blog, { blogPageCount } from "@/views/Blog";
+import Blog from "@/views/Blog";
+import { blogPageCount } from "@/lib/blog-pagination";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -30,8 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${SITE_URL}/blog/page/${page}`;
   const title = `Brisbane Car Selling Guides — Page ${page}`;
-  const description =
-    "More practical Brisbane guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.";
+  const description = `Page ${page} of Caraway's practical Brisbane guides to vehicle valuation, selling options, collection planning, and Queensland paperwork.`;
 
   return {
     title,

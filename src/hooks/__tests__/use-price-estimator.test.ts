@@ -85,7 +85,7 @@ describe("usePriceEstimator", () => {
     expect(result.current.canCalculate).toBe(false);
   });
 
-  it("produces an estimate and advances to step 2 after the reveal delay", () => {
+  it("produces a buyer assessment and advances to step 2 after the reveal delay", () => {
     const { result } = renderHook(() => usePriceEstimator());
     fillVehicle({ current: result.current });
 
@@ -101,7 +101,10 @@ describe("usePriceEstimator", () => {
     });
     expect(result.current.isCalculating).toBe(false);
     expect(result.current.step).toBe(2);
-    expect(result.current.result!.quote).toBeGreaterThan(0);
+    expect(result.current.result).toMatchObject({
+      status: "manual_review",
+      quote: null,
+    });
   });
 
   it("blocks submission and surfaces field errors when contact details are missing", async () => {
@@ -141,6 +144,7 @@ describe("usePriceEstimator", () => {
       condition: "running",
       honeypot: "",
     });
+    expect(mockedSubmitQuote.mock.calls[0][0]).not.toHaveProperty("quoteAmount");
     expect(result.current.isSuccess).toBe(true);
     expect(result.current.submitError).toBe("");
   });

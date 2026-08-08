@@ -161,6 +161,7 @@ function EstimateCard({
   onContinue,
 }: {
   estimate: {
+    status: "indicative_estimate" | "manual_review";
     displayAmount: string;
     vehicle: string;
     condition: string;
@@ -176,7 +177,7 @@ function EstimateCard({
       <div className="bg-secondary/70 px-3.5 py-3">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
           <BadgeDollarSign className="h-4 w-4" aria-hidden="true" />
-          Indicative estimate
+          {estimate.status === "manual_review" ? "Buyer assessment" : "Indicative estimate"}
         </div>
         <p className="mt-1 font-display text-3xl font-semibold leading-none text-primary">
           {estimate.displayAmount}
@@ -213,7 +214,7 @@ function EstimateCard({
             onClick={onContinue}
             className="inline-flex min-h-10 items-center justify-center rounded-sm bg-cta px-3 text-center text-xs font-semibold text-cta-foreground transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            Confirm my quote
+            {estimate.status === "manual_review" ? "Request assessment" : "Confirm my quote"}
           </Link>
           <a
             href={BUSINESS.phoneTel}
@@ -233,6 +234,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const wasOpenRef = useRef(false);
   const {
@@ -257,16 +259,51 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
       wasOpenRef.current = true;
       trackEvent("chat_opened");
     }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const backgroundElements = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        'body > a[href="#main-content"], #main-content, body header, body footer, [data-testid="sticky-mobile-cta"]',
+      ),
+    );
+    const previousInertValues = backgroundElements.map(
+      (element) => [element, element.inert] as const,
+    );
+    backgroundElements.forEach((element) => {
+      element.inert = true;
+    });
     inputRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const focusable = panelRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      previousInertValues.forEach(([element, wasInert]) => {
+        element.inert = wasInert;
+      });
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -328,8 +365,10 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
     <>
       {isOpen && (
         <section
+          ref={panelRef}
           id="caraway-chat-panel"
           role="dialog"
+          aria-modal="true"
           aria-labelledby="caraway-chat-title"
           aria-describedby="caraway-chat-description"
           className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(42rem,calc(100dvh-7rem))] flex-col overflow-hidden rounded-md border border-border bg-card shadow-[0_20px_60px_hsl(var(--shadow-color)/0.28)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[25rem]"

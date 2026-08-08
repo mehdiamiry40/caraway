@@ -114,13 +114,13 @@ describe("quoteFormSchema — year bounds", () => {
     expect(result.success).toBe(true);
   });
 
-  it("accepts current year + 1", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, year: currentYear + 1 });
+  it("accepts the current manufacture year", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, year: currentYear });
     expect(result.success).toBe(true);
   });
 
-  it("rejects current year + 2", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, year: currentYear + 2 });
+  it("rejects a future manufacture year", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, year: currentYear + 1 });
     expect(result.success).toBe(false);
   });
 });

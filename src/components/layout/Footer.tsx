@@ -69,7 +69,7 @@ export function Footer() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
                 location="footer"
-                className="inline-flex items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                className="inline-flex min-h-11 items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
@@ -77,7 +77,7 @@ export function Footer() {
               </TrackedPhoneLink>
               <a
                 href={BUSINESS.emailHref}
-                className="flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
+                className="flex min-h-11 items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
               >
                 <Mail aria-hidden="true" className="h-4 w-4" />
                 <span>{BUSINESS.email}</span>
@@ -164,7 +164,7 @@ export function Footer() {
                 key={link.href}
                 href={link.href}
                 prefetch={false}
-                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] inline-flex items-center py-2.5 px-1 -mx-1 touch-manipulation"
+                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center justify-center py-2.5 px-2 -mx-1 touch-manipulation"
               >
                 {link.label}
               </Link>

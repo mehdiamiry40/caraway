@@ -1,25 +1,18 @@
 import * as z from "zod/mini";
 import {
   auPhoneRegex,
-  quoteConditionValues,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
   sanitizeLine,
   stripPhone,
 } from "@/lib/quote-validation-rules";
+import { quoteConditionValues } from "@/lib/quote-condition";
 
-export { quoteConditionValues };
-
-export type QuoteCondition = (typeof quoteConditionValues)[number];
-
-/** Friendly labels for the condition enum — used by UI forms/selects. */
-export const CONDITION_LABELS: Record<QuoteCondition, string> = {
-  running: "Running — drives well, no major issues",
-  needs_work: "Needs work — runs but has issues",
-  not_running: "Not running — won't start or drive",
-  damaged: "Damaged — accident, flood, or major fault",
-  scrap: "Scrap — written off or end of life",
-};
+export {
+  CONDITION_LABELS,
+  quoteConditionValues,
+  type QuoteCondition,
+} from "@/lib/quote-condition";
 
 /** Honeypot field — present on every public form but hidden from real users. */
 const honeypotField = z.pipe(

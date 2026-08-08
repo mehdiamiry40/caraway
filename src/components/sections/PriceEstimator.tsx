@@ -20,6 +20,10 @@ export function PriceEstimator() {
     isSuccess,
     honeypot,
     setHoneypot,
+    setYearTouched,
+    handleEstimate,
+    goToStep,
+    handleSubmit,
   } = state;
 
   if (isSuccess) {
@@ -30,7 +34,8 @@ export function PriceEstimator() {
     <section
       id="price-estimator"
       className="section-y scroll-mt-header relative overflow-hidden border-y border-border bg-secondary"
-      aria-label="Instant price estimate"
+      aria-label="Vehicle price assessment"
+      data-chat-launcher-suppress="true"
     >
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
       <div className="sr-only" aria-live="polite" aria-atomic="true">
@@ -38,21 +43,35 @@ export function PriceEstimator() {
       </div>
       <div className="site-container">
         <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
-          <p className="eyebrow mb-4">Instant valuation</p>
+          <p className="eyebrow mb-4">Vehicle assessment</p>
           <h2 className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]">
             How much is your car worth?
           </h2>
-          {/* The offer disclaimer lives where it matters — beside the number in
-              step 2 — and is already stated once on this page in Stats. */}
+          {/* The offer disclaimer lives where it matters: beside the result in step 2. */}
           <p className="mt-4 text-foreground/80 text-base sm:text-lg leading-relaxed text-balance">
-            Four quick questions for an instant estimate — no account needed.
+            Four quick questions for an indicative scrap/parts estimate or buyer review — no account needed.
           </p>
         </div>
 
         <ProgressBar step={step} totalSteps={totalSteps} progressPercent={progressPercent} />
 
         <div className="max-w-3xl mx-auto">
-          <div className="relative overflow-hidden rounded-sm border border-border bg-card shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary">
+          <form
+            className="relative overflow-hidden rounded-sm border border-border bg-card shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
+            aria-label="Vehicle assessment"
+            noValidate
+            onSubmit={(event) => {
+              event.preventDefault();
+              if (step === 1) {
+                setYearTouched(true);
+                handleEstimate();
+              } else if (step === 2) {
+                goToStep(3);
+              } else {
+                void handleSubmit();
+              }
+            }}
+          >
             <Honeypot value={honeypot} onChange={setHoneypot} />
 
             <Step1Vehicle state={state} />
@@ -70,7 +89,7 @@ export function PriceEstimator() {
 
             <Step2Quote state={state} />
             <Step3Claim state={state} />
-          </div>
+          </form>
         </div>
       </div>
     </section>

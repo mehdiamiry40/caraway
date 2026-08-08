@@ -5,7 +5,7 @@ import {
   CONDITION_LABELS,
   quoteConditionValues,
   type QuoteCondition,
-} from "@/lib/quote-schema";
+} from "@/lib/quote-condition";
 import { Car, ArrowRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RequiredMark } from "./RequiredMark";
@@ -28,7 +28,6 @@ export function Step1Vehicle({ state }: { state: EstimatorState }) {
     condition,
     setCondition,
     canCalculate,
-    handleEstimate,
     step1HeadingRef,
   } = state;
 
@@ -120,10 +119,7 @@ export function Step1Vehicle({ state }: { state: EstimatorState }) {
 
         <div className="mt-7 sm:mt-9 flex sm:justify-end">
           <Button
-            onClick={() => {
-              setYearTouched(true);
-              handleEstimate();
-            }}
+            type="submit"
             disabled={!canCalculate || isCalculating}
             variant="default"
             size="lg"
