@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { unstable_doesMiddlewareMatch } from "next/experimental/testing/server";
 import { NextRequest } from "next/server";
 
 type ProxyModule = typeof import("../src/proxy");
@@ -31,6 +32,35 @@ afterEach(() => {
 });
 
 describe("proxy", () => {
+  describe("matcher scope", () => {
+    it("bypasses Vercel Analytics intake while retaining page POST protection", async () => {
+      const { config } = await import("../src/proxy");
+
+      for (const path of [
+        "/_vercel/insights/script.js",
+        "/_vercel/insights/view",
+        "/_vercel/insights/event",
+      ]) {
+        expect(
+          unstable_doesMiddlewareMatch({
+            config,
+            nextConfig: {},
+            url: `https://caraway.au${path}`,
+          }),
+          path,
+        ).toBe(false);
+      }
+
+      expect(
+        unstable_doesMiddlewareMatch({
+          config,
+          nextConfig: {},
+          url: "https://caraway.au/cash-for-cars-brisbane",
+        }),
+      ).toBe(true);
+    });
+  });
+
   describe("HTTP method handling", () => {
     it("passes GET requests through and noindexes non-canonical hosts", async () => {
       const middleware = await loadProxy();
