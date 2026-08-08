@@ -1,4 +1,7 @@
-import type { QuoteCondition } from "@/lib/quote-schema";
+import {
+  MANUAL_REVIEW_CONDITIONS,
+  type QuoteCondition,
+} from "@/lib/quote-condition";
 import { MAX_PRICE, MIN_PRICE } from "@/lib/site";
 
 /** Car makes grouped by demand tier — higher demand = higher price */
@@ -80,11 +83,17 @@ export interface EstimateInput {
   condition: string;
 }
 
-export interface EstimateResult {
-  /** Exact dollar estimate shown to the customer before manual review. */
+export type EstimateResult = {
+  status: "indicative_estimate";
+  /** Scrap/parts-focused indicative amount shown before manual review. */
   quote: number;
   factors: string[];
-}
+} | {
+  status: "manual_review";
+  /** Running vehicles need market inputs this lightweight tool does not collect. */
+  quote: null;
+  factors: string[];
+};
 
 function getBaseValueForAge(age: number): number {
   for (const bracket of PRICE_TABLE.ageBaseValues) {
@@ -101,10 +110,11 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
     !Number.isFinite(input.year) ||
     Number.isNaN(input.year) ||
     input.year < 1950 ||
-    input.year > currentYear + 1
+    input.year > currentYear
   ) {
     return {
-      quote: PRICE_TABLE.scrapFloor,
+      status: "manual_review",
+      quote: null,
       factors: ["Confirm vehicle details — we'll sharpen this quote on the call"],
     };
   }
@@ -115,6 +125,19 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
   const makeTier = makeIsEmpty ? "medium" : getMakeTier(makeString);
   const conditionMult =
     CONDITION_MULTIPLIER[input.condition as QuoteCondition] ?? 0.5;
+
+  if (MANUAL_REVIEW_CONDITIONS.has(input.condition as QuoteCondition)) {
+    const factors = [
+      "Running vehicles need kilometres, variant, completeness, and resale demand checked",
+    ];
+    if (makeTier === "high") {
+      factors.push("High-demand brand — local resale and parts demand will be reviewed");
+    } else if (makeTier === "low") {
+      factors.push("Specialty brand — local resale and parts demand will be reviewed");
+    }
+    if (age <= 5) factors.push("Late-model vehicle — a buyer will assess current market value");
+    return { status: "manual_review", quote: null, factors };
+  }
 
   const baseValue = getBaseValueForAge(age);
   const makeMult = PRICE_TABLE.makeMultipliers[makeTier];
@@ -145,5 +168,5 @@ export function estimatePrice(input: EstimateInput): EstimateResult {
   if (conditionMult >= 0.75) factors.push("Good condition boosts your offer significantly");
   else if (conditionMult <= 0.3) factors.push("Condition factored in — we still pay cash for non-running cars");
 
-  return { quote, factors };
+  return { status: "indicative_estimate", quote, factors };
 }

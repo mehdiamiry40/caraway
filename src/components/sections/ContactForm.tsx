@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
@@ -101,7 +102,7 @@ export function ContactForm() {
           </div>
           <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h2>
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-            We review messages during business hours. If you don&apos;t see a response, please check your spam folder or call us directly.
+            We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
           <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
             Send another message
@@ -120,7 +121,7 @@ export function ContactForm() {
       </p>
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
         {/* Honeypot — hidden from real users, traps bots */}
-        <div className="absolute -left-[9999px]" aria-hidden="true">
+        <div hidden aria-hidden="true">
           <label htmlFor="contact-website">Website</label>
           <input
             type="text"
@@ -269,9 +270,15 @@ export function ContactForm() {
         </div>
 
         {/* Trust line below CTA */}
-        <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+        <div className="flex flex-wrap items-center justify-center gap-2 text-center text-xs text-muted-foreground">
           <Shield className="w-3.5 h-3.5 text-primary/70 shrink-0" aria-hidden />
-          <span>Your details are used to respond to this enquiry.</span>
+          <span>
+            Your details are used to respond to this enquiry. See our{" "}
+            <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
+              Privacy Policy
+            </Link>
+            .
+          </span>
         </div>
 
         {errorMessage && (

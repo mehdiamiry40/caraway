@@ -115,11 +115,11 @@ export const MAKE_OPTIONS: { value: string; label: string }[] = POPULAR_MAKES.ma
   (m) => ({ value: m, label: m }),
 );
 
-/** Build Select-compatible year options from current year + 1 down to 1950. */
+/** Build Select-compatible manufacture-year options from the current year down to 1950. */
 export function getYearOptions(): { value: string; label: string }[] {
   const currentYear = new Date().getFullYear();
   const years: { value: string; label: string }[] = [];
-  for (let y = currentYear + 1; y >= 1950; y--) {
+  for (let y = currentYear; y >= 1950; y--) {
     years.push({ value: String(y), label: String(y) });
   }
   return years;

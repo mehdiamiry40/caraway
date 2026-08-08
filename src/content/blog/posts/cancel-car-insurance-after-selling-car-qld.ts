@@ -67,7 +67,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Queensland Government — CTP insurance",
-      url: "https://www.qld.gov.au/transport/registration/renew/ctp",
+      url: "https://www.qld.gov.au/transport/registration/cancel",
     },
     {
       title: "Queensland Government — cancel vehicle registration",

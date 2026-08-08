@@ -33,7 +33,7 @@ const coverageRegions = [
   {
     title: "Logan corridor",
     description:
-      "Logan, Springwood, and Beenleigh have separate guides because Search Console shows distinct local demand. Together they cover central, north-east, and southern Logan enquiries, including larger blocks and workshop sites.",
+      "Use the Logan, Springwood, and Beenleigh guides for central, north-east, and southern Logan enquiries, including larger blocks and workshop sites.",
     links: [
       { label: "Logan", href: "/locations/logan" },
       { label: "Springwood", href: "/locations/springwood" },
@@ -93,10 +93,9 @@ export default function Locations() {
             If your suburb does not have a separate page.
           </h2>
           <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">
-            These regions consolidate former near-duplicate suburb pages into
-            a smaller set of useful guides. They describe the coverage and
-            access information Caraway needs without implying a guaranteed
-            pickup time for every address.
+            Use these regional guides to check likely coverage and the access
+            details Caraway needs. Availability and collection timing are
+            confirmed for the exact vehicle and address before booking.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {coverageRegions.map((region) => (

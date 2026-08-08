@@ -62,7 +62,7 @@ export default function Contact() {
                 <div>
                   <h3 className="font-display text-sm text-foreground">Email</h3>
                   <p className="text-base font-medium text-primary">{BUSINESS.email}</p>
-                  <p className="text-sm text-muted-foreground mt-0.5">Messages are reviewed during business hours.</p>
+                  <p className="text-sm text-muted-foreground mt-0.5">We aim to reply within one business day.</p>
                 </div>
               </a>
 
@@ -82,8 +82,8 @@ export default function Contact() {
                 {
                   icon: Clock,
                   title: "Response and collection",
-                  main: "Timing confirmed individually",
-                  sub: "Messages are reviewed during business hours; collection timing is agreed for each accepted job.",
+                  main: "Replies within one business day",
+                  sub: "Collection timing is agreed individually for each accepted job.",
                 },
               ].map((item) => (
                 <div key={item.title} className="flex items-start gap-4 rounded-md border border-border/60 bg-card p-5 sm:p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)]">

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { estimatePrice, type EstimateResult } from "@/lib/price-estimator";
-import { type QuoteCondition } from "@/lib/quote-schema";
+import { type QuoteCondition } from "@/lib/quote-condition";
 import {
   validateName,
   validatePhone,
@@ -58,7 +58,7 @@ export function usePriceEstimator() {
       year !== "" &&
       Number.isFinite(yearNumber) &&
       yearNumber >= 1950 &&
-      yearNumber <= CURRENT_YEAR + 1,
+      yearNumber <= CURRENT_YEAR,
     [year, yearNumber]
   );
   const showYearError = useMemo(
@@ -231,7 +231,7 @@ export function usePriceEstimator() {
         year: yearNumber,
         condition,
         address: address.trim(),
-        quoteAmount: result.quote,
+        ...(result.quote === null ? {} : { quoteAmount: result.quote }),
         honeypot: "",
         marketingConsent,
       });

@@ -21,6 +21,8 @@ export function Hero() {
 
   return (
     <section
+      data-chat-launcher-suppress="true"
+      data-sticky-cta-suppress="true"
       className="relative w-full overflow-hidden bg-primary text-on-dark-hi"
       aria-labelledby="hero-heading"
     >
@@ -64,9 +66,8 @@ export function Hero() {
                 Get an estimate in minutes.
               </h1>
 
-              {/* The three promises live in the checklist below — this line sets
-                  scope instead of restating them, and the offer-varies detail is
-                  spelled out in Stats one section down. */}
+              {/* The three promises live in the checklist below, so this line
+                  sets scope instead of restating them. */}
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/90 sm:mt-6 sm:text-lg">
                 Vehicle buying and pickup across Greater Brisbane.
               </p>

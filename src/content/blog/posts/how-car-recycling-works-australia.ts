@@ -44,7 +44,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Australian Government — end-of-life vehicle waste",
-      url: "https://www.dcceew.gov.au/sites/default/files/documents/npsif-factsheets-vehicle-waste.pdf",
+      url: "https://www.dcceew.gov.au/environment/protection/waste/publications",
     },
     {
       title: "Australian Government — refrigerant rules for technicians",

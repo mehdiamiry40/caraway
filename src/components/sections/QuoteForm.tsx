@@ -137,7 +137,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
-                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <div hidden aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
                       type="text"
@@ -388,9 +388,15 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-0.5">
+                  <div className="flex flex-wrap items-center justify-center gap-2 text-center text-xs text-muted-foreground pt-0.5">
                     <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
-                    <span>Free quote. Your details are used to respond to this enquiry.</span>
+                    <span>
+                      Free quote. Your details are used to respond to this enquiry. See our{" "}
+                      <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
+                        Privacy Policy
+                      </Link>
+                      .
+                    </span>
                   </div>
 
                   {errorMessage && (

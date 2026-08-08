@@ -1,4 +1,4 @@
-import { quoteConditionValues, type QuoteCondition } from "@/lib/quote-schema";
+import { quoteConditionValues, type QuoteCondition } from "@/lib/quote-condition";
 
 export type Step = 1 | 2 | 3;
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CarFront, Truck, Wrench } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
+import { FinalCTA } from "@/components/sections/FinalCTA";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { services } from "@/data/services";
 import { BUSINESS, SERVICES_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
@@ -134,6 +135,7 @@ export default function ServicesPage() {
             </ul>
           </div>
         </section>
+        <FinalCTA />
       </PageShell>
     </>
   );

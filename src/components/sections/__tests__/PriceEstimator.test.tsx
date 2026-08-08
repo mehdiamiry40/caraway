@@ -92,11 +92,11 @@ describe("PriceEstimator", () => {
   }
 
   function getVisibleOfferRequestButton() {
-    const all = screen.getAllByRole("button", { name: /request confirmed offer/i });
+    const all = screen.getAllByRole("button", { name: /request (?:confirmed offer|buyer assessment)/i });
     const visible = all.filter(isInVisibleStep);
     if (visible.length !== 1) {
       throw new Error(
-        `Expected exactly one visible "Request confirmed offer" button; found ${visible.length}`
+        `Expected exactly one visible offer-request button; found ${visible.length}`
       );
     }
     return visible[0]!;

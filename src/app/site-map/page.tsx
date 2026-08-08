@@ -3,26 +3,27 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import { blogPosts } from "@/data/blog-posts";
+import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { blogPageCount } from "@/lib/blog-pagination";
 
 export const metadata: Metadata = {
   title: "Sitemap",
-  description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
+  description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
   alternates: { canonical: "/site-map" },
   openGraph: {
     type: "website",
     url: "/site-map",
     title: "Sitemap",
-    description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
+    description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
     images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Sitemap",
-    description: "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
+    description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
     images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
   },
 };
@@ -33,7 +34,10 @@ const breadcrumbs = [
 ];
 
 const companyLinks = [
+  { label: "Home", href: "/" },
   { label: "All Services", href: "/services" },
+  { label: "How it works", href: "/how-it-works" },
+  { label: "All locations", href: "/locations" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
@@ -60,7 +64,7 @@ export default function SiteMapPage() {
             url: canonical,
             name: "Sitemap | Caraway",
             description:
-              "Browse every page on caraway.au — all cash-for-cars services, Brisbane suburb coverage, step-by-step guides, and company information in one place.",
+              "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
             inLanguage: "en-AU",
             isPartOf: { "@id": `${SITE_URL}/#website` },
             publisher: { "@id": `${SITE_URL}/#organization` },
@@ -71,7 +75,7 @@ export default function SiteMapPage() {
       <PageShell
         breadcrumbs={breadcrumbs}
         title="Sitemap"
-        subtitle={<p>Every page on caraway.au — use this to quickly jump to any section.</p>}
+        subtitle={<p>Browse public pages on caraway.au and jump to the section you need.</p>}
       >
       <div className="site-container py-12 sm:py-16 lg:py-20 space-y-12">
         <section>
@@ -102,6 +106,18 @@ export default function SiteMapPage() {
 
         <section>
           <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Blog &amp; Guides</h2>
+          <ul className="mb-5 flex flex-wrap gap-x-6 gap-y-1">
+            {Object.entries(categoryMap).map(([slug, label]) => (
+              <li key={slug}>
+                <Link href={`/blog/category/${slug}`} className={linkCls}>{label}</Link>
+              </li>
+            ))}
+            {Array.from({ length: Math.max(0, blogPageCount() - 1) }, (_, index) => (
+              <li key={index}>
+                <Link href={`/blog/page/${index + 2}`} className={linkCls}>Blog page {index + 2}</Link>
+              </li>
+            ))}
+          </ul>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {blogPosts.map((p) => (
               <li key={p.slug}>

@@ -72,7 +72,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Brisbane City Council — resource recovery centres",
-      url: "https://www.brisbane.qld.gov.au/bins-waste-and-recycling/rubbish-tips-and-transfer-stations",
+      url: "https://www.brisbane.qld.gov.au/bins-waste-and-recycling/waste-and-recycling-facilities/resource-recovery-centres",
     },
     {
       title: "Brisbane City Council — hazardous waste disposal",

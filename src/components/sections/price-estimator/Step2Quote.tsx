@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CONDITION_LABELS } from "@/lib/quote-schema";
+import { CONDITION_LABELS } from "@/lib/quote-condition";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { EstimatorState } from "./types";
@@ -41,13 +41,19 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
                 {condition ? CONDITION_LABELS[condition].split(" — ")[0] : ""}
               </p>
               <p className="font-mono tabular-nums text-4xl sm:text-5xl font-medium text-[hsl(var(--on-dark-hi))] tracking-[-0.02em]">
-                ${result.quote.toLocaleString()}
+                {result.quote === null
+                  ? "Manual review needed"
+                  : `$${result.quote.toLocaleString()}`}
               </p>
               <p className="mt-1 text-[0.75rem] uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-                Instant estimate · confirmed offer after review
+                {result.status === "manual_review"
+                  ? "No automated dollar value for running vehicles"
+                  : "Indicative scrap/parts estimate · confirmed offer after review"}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--on-dark))]">
-                Final offers depend on the vehicle details and a pickup inspection.
+                {result.status === "manual_review"
+                  ? "A buyer will assess kilometres, variant, completeness, location, and current demand before confirming an offer."
+                  : "Final offers depend on the vehicle details, access, completeness, and a pickup inspection."}
               </p>
             </div>
           </div>
@@ -83,12 +89,14 @@ export function Step2Quote({ state }: { state: EstimatorState }) {
               <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Back
             </Button>
             <Button
-              onClick={() => goToStep(3)}
+              type="submit"
               variant="default"
               size="lg"
               className="group w-full sm:w-auto"
             >
-              Request confirmed offer
+              {result.status === "manual_review"
+                ? "Request buyer assessment"
+                : "Request confirmed offer"}
               <ArrowRight
                 className="w-4 h-4 group-hover:translate-x-0.5 transition-transform"
                 aria-hidden="true"

@@ -16,6 +16,7 @@ import {
   HOW_IT_WORKS_CONTENT_UPDATED,
   SERVICES_CONTENT_UPDATED,
 } from "@/lib/site";
+import { blogPageCount } from "@/lib/blog-pagination";
 
 export const revalidate = 3600;
 
@@ -221,12 +222,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
+  const paginationPages: MetadataRoute.Sitemap = Array.from(
+    { length: Math.max(0, blogPageCount() - 1) },
+    (_, index) => ({
+      url: `${SITE_URL}/blog/page/${index + 2}`,
+      lastModified: latestBlogDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
+    }),
+  );
+
   const entries = [
     ...staticPages,
     ...servicePages,
     ...suburbPages,
     ...blogPages,
     ...categoryPages,
+    ...paginationPages,
   ];
 
   return Array.from(new Map(entries.filter((entry) => entry.url.startsWith(SITE_URL)).map((entry) => [entry.url, entry])).values());

@@ -12,7 +12,7 @@ describe("Caraway chat assistant", () => {
     expect(CHAT_MODEL).toBe("openai/gpt-5.6-luna");
   });
 
-  it("uses the existing deterministic estimator for quote amounts", () => {
+  it("routes running vehicles to manual review", () => {
     const estimate = getChatEstimate({
       make: "Toyota",
       model: "Corolla",
@@ -20,8 +20,22 @@ describe("Caraway chat assistant", () => {
       condition: "running",
     });
 
-    expect(estimate.amount).toBe(1100);
-    expect(estimate.displayAmount).toBe("$1,100");
+    expect(estimate.amount).toBeNull();
+    expect(estimate.displayAmount).toBe("Manual review needed");
+    expect(estimate.status).toBe("manual_review");
+    expect(estimate.disclaimer).toContain("buyer will review");
+  });
+
+  it("uses the deterministic estimator for damaged-vehicle amounts", () => {
+    const estimate = getChatEstimate({
+      make: "Toyota",
+      model: "Corolla",
+      year: new Date().getFullYear() - 5,
+      condition: "damaged",
+    });
+
+    expect(estimate.amount).toBeTypeOf("number");
+    expect(estimate.displayAmount).toMatch(/^\$/);
     expect(estimate.status).toBe("indicative_estimate");
     expect(estimate.disclaimer).toContain("confirmed offer");
   });

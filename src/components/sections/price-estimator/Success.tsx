@@ -45,13 +45,19 @@ export function Success({ state }: { state: EstimatorState }) {
           <div className="quote-card max-w-xs mx-auto px-5 py-4 text-left mb-5">
             <div className="flex items-center">
               <span className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-[hsl(var(--on-dark))]">
-                Estimate submitted
+                {result?.status === "manual_review"
+                  ? "Buyer assessment requested"
+                  : "Estimate submitted"}
               </span>
             </div>
             <div className="mt-3 flex items-baseline justify-between">
-              <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">Your estimate</span>
+              <span className="text-[0.8125rem] text-[hsl(var(--on-dark))]">
+                {result?.status === "manual_review" ? "Assessment" : "Your estimate"}
+              </span>
               <span className="font-mono tabular-nums text-xl font-medium text-[hsl(var(--on-dark-hi))]">
-                ${result?.quote.toLocaleString()}
+                {result?.quote === null || result?.quote === undefined
+                  ? "Manual review"
+                  : `$${result.quote.toLocaleString()}`}
               </span>
             </div>
           </div>
@@ -71,7 +77,7 @@ export function Success({ state }: { state: EstimatorState }) {
             </TrackedPhoneLink>
             <Button type="button" onClick={handleReset} variant="outline" size="lg" className="w-full sm:w-auto">
               <RotateCcw className="w-4 h-4" aria-hidden="true" />
-              Estimate another
+              Assess another vehicle
             </Button>
           </div>
         </div>

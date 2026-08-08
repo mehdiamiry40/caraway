@@ -18,7 +18,7 @@ export const QUOTE_VALIDATION_LIMITS = {
   name: { min: 2, max: 200 },
   make: { min: 2, max: 200 },
   model: { min: 1, max: 200 },
-  year: { min: 1950, max: new Date().getFullYear() + 1 },
+  year: { min: 1950, max: new Date().getFullYear() },
   address: { min: 5, max: 500 },
   details: { max: 2000 },
   quoteAmount: { min: 1, max: 1_000_000 },
