@@ -29,7 +29,7 @@ describe("CarawayChatLoader", () => {
     expect(mocks.moduleLoads).toBe(0);
     expect(screen.queryByRole("dialog", { name: "Ask Caraway" })).toBeNull();
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
 
     expect(await screen.findByRole("dialog", { name: "Ask Caraway" })).not.toBeNull();
     expect(screen.getByText("Initially open")).not.toBeNull();

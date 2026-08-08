@@ -65,11 +65,11 @@ describe("CarawayChat", () => {
     await user.click(screen.getByRole("button", { name: "Close chat" }));
     await waitFor(() => {
       expect(document.activeElement).toBe(
-        screen.getByRole("button", { name: "Open Caraway chat" }),
+        screen.getByRole("button", { name: "Ask Caraway" }),
       );
     });
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
     expect(mocks.trackEvent).toHaveBeenCalledOnce();
   });
 
@@ -77,21 +77,21 @@ describe("CarawayChat", () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
 
     expect(screen.getByRole("dialog", { name: "Ask Caraway" })).not.toBeNull();
     expect(document.activeElement).toBe(
       screen.getByLabelText("Ask Caraway a question"),
     );
     expect(screen.getByText("Indicative estimates only")).not.toBeNull();
-    expect(screen.queryByRole("button", { name: "Open Caraway chat" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Ask Caraway" })).toBeNull();
   });
 
   it("sends a quote request from the suggested actions", async () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
     await user.click(screen.getByRole("button", { name: "Get a car estimate" }));
 
     expect(mocks.sendMessage).toHaveBeenCalledWith({
@@ -115,7 +115,7 @@ describe("CarawayChat", () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
 
     const emphasis = screen.getByText("make, model, year, and condition");
     expect(emphasis.tagName).toBe("STRONG");
@@ -156,7 +156,7 @@ describe("CarawayChat", () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
 
     expect(screen.getByText("$650")).not.toBeNull();
     expect(screen.getByText(/2012 Toyota Corolla/)).not.toBeNull();
@@ -171,7 +171,7 @@ describe("CarawayChat", () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
     await user.click(screen.getByRole("button", { name: "Stop response" }));
 
     expect(mocks.stop).toHaveBeenCalledOnce();
@@ -182,7 +182,7 @@ describe("CarawayChat", () => {
     const user = userEvent.setup();
     render(<CarawayChat />);
 
-    await user.click(screen.getByRole("button", { name: "Open Caraway chat" }));
+    await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
     await user.click(screen.getByRole("button", { name: "Try again" }));
 
     expect(mocks.clearError).toHaveBeenCalled();

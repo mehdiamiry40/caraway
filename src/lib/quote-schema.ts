@@ -1,15 +1,14 @@
 import * as z from "zod/mini";
+import {
+  auPhoneRegex,
+  quoteConditionValues,
+  QUOTE_VALIDATION_LIMITS,
+  QUOTE_VALIDATION_MESSAGES,
+  sanitizeLine,
+  stripPhone,
+} from "@/lib/quote-validation-rules";
 
-/** Matches Australian phone formats: mobiles, landlines, and common AU service numbers. */
-const auPhoneRegex = /^(?:\+?61|0)[2-478]\d{8}$|^1[38]00\d{6}$/;
-
-export const quoteConditionValues = [
-  "running",
-  "needs_work",
-  "not_running",
-  "damaged",
-  "scrap",
-] as const;
+export { quoteConditionValues };
 
 export type QuoteCondition = (typeof quoteConditionValues)[number];
 
@@ -22,22 +21,21 @@ export const CONDITION_LABELS: Record<QuoteCondition, string> = {
   scrap: "Scrap — written off or end of life",
 };
 
-const stripPhone = (v: string) => v.replace(/[\s\-()]/g, "");
-const sanitizeLine = (v: string) => v.replace(/[\r\n]+/g, " ");
-
 /** Honeypot field — present on every public form but hidden from real users. */
 const honeypotField = z.pipe(
   z.pipe(
     z.optional(z.string()),
     z.transform((value) => value?.trim() ?? ""),
   ),
-  z.string().check(z.refine((v) => v === "", "Invalid form submission")),
+  z.string().check(
+    z.refine((v) => v === "", QUOTE_VALIDATION_MESSAGES.honeypotInvalid),
+  ),
 );
 
 const requiredPhone = z.string().check(
   z.trim(),
   z.overwrite(stripPhone),
-  z.regex(auPhoneRegex, "Enter a valid Australian phone number"),
+  z.regex(auPhoneRegex, QUOTE_VALIDATION_MESSAGES.phoneInvalid),
   z.overwrite(sanitizeLine),
 );
 
@@ -49,7 +47,7 @@ const optionalPhone = z.pipe(
   z.string().check(
     z.refine(
       (v) => v === "" || auPhoneRegex.test(v),
-      "Enter a valid Australian phone number",
+      QUOTE_VALIDATION_MESSAGES.phoneInvalid,
     ),
     z.overwrite(sanitizeLine),
   ),
@@ -58,44 +56,81 @@ const optionalPhone = z.pipe(
 export const quoteFormSchema = z.object({
   name: z.string().check(
     z.trim(),
-    z.minLength(2, "Name is required"),
-    z.maxLength(200, "Name is too long"),
+    z.minLength(
+      QUOTE_VALIDATION_LIMITS.name.min,
+      QUOTE_VALIDATION_MESSAGES.nameRequired,
+    ),
+    z.maxLength(
+      QUOTE_VALIDATION_LIMITS.name.max,
+      QUOTE_VALIDATION_MESSAGES.nameTooLong,
+    ),
     z.overwrite(sanitizeLine),
   ),
   phone: requiredPhone,
   make: z.string().check(
     z.trim(),
-    z.minLength(2, "Car make is required"),
-    z.maxLength(200, "Car make is too long"),
+    z.minLength(
+      QUOTE_VALIDATION_LIMITS.make.min,
+      QUOTE_VALIDATION_MESSAGES.makeRequired,
+    ),
+    z.maxLength(
+      QUOTE_VALIDATION_LIMITS.make.max,
+      QUOTE_VALIDATION_MESSAGES.makeTooLong,
+    ),
     z.overwrite(sanitizeLine),
   ),
   model: z.string().check(
     z.trim(),
-    z.minLength(1, "Car model is required"),
-    z.maxLength(200, "Car model is too long"),
+    z.minLength(
+      QUOTE_VALIDATION_LIMITS.model.min,
+      QUOTE_VALIDATION_MESSAGES.modelRequired,
+    ),
+    z.maxLength(
+      QUOTE_VALIDATION_LIMITS.model.max,
+      QUOTE_VALIDATION_MESSAGES.modelTooLong,
+    ),
     z.overwrite(sanitizeLine),
   ),
   year: z.coerce.number().check(
-    z.gte(1950, "Invalid year"),
-    z.lte(new Date().getFullYear() + 1, "Invalid year"),
+    z.gte(
+      QUOTE_VALIDATION_LIMITS.year.min,
+      QUOTE_VALIDATION_MESSAGES.yearInvalid,
+    ),
+    z.lte(
+      QUOTE_VALIDATION_LIMITS.year.max,
+      QUOTE_VALIDATION_MESSAGES.yearInvalid,
+    ),
   ),
   condition: z.enum(quoteConditionValues, {
-    message: "Please select a condition",
+    message: QUOTE_VALIDATION_MESSAGES.conditionRequired,
   }),
   address: z.string().check(
     z.trim(),
-    z.minLength(5, "Please enter a full pickup address"),
-    z.maxLength(500, "Address is too long"),
+    z.minLength(
+      QUOTE_VALIDATION_LIMITS.address.min,
+      QUOTE_VALIDATION_MESSAGES.addressRequired,
+    ),
+    z.maxLength(
+      QUOTE_VALIDATION_LIMITS.address.max,
+      QUOTE_VALIDATION_MESSAGES.addressTooLong,
+    ),
     z.overwrite(sanitizeLine),
   ),
   details: z.optional(
     z.string().check(
       z.trim(),
-      z.maxLength(2000, "Vehicle and access details are too long"),
+      z.maxLength(
+        QUOTE_VALIDATION_LIMITS.details.max,
+        QUOTE_VALIDATION_MESSAGES.detailsTooLong,
+      ),
       z.overwrite(sanitizeLine),
     ),
   ),
-  quoteAmount: z.optional(z.int().check(z.positive(), z.lte(1000000))),
+  quoteAmount: z.optional(
+    z
+      .int()
+      .check(z.positive(), z.lte(QUOTE_VALIDATION_LIMITS.quoteAmount.max)),
+  ),
   honeypot: honeypotField,
   marketingConsent: z._default(z.optional(z.boolean()), false),
 });
@@ -106,8 +141,14 @@ export type QuoteFormInput = z.input<typeof quoteFormSchema>;
 export const contactFormSchema = z.object({
   name: z.string().check(
     z.trim(),
-    z.minLength(2, "Name is required"),
-    z.maxLength(200, "Name is too long"),
+    z.minLength(
+      QUOTE_VALIDATION_LIMITS.name.min,
+      QUOTE_VALIDATION_MESSAGES.nameRequired,
+    ),
+    z.maxLength(
+      QUOTE_VALIDATION_LIMITS.name.max,
+      QUOTE_VALIDATION_MESSAGES.nameTooLong,
+    ),
     z.overwrite(sanitizeLine),
   ),
   email: z.pipe(
