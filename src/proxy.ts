@@ -117,10 +117,11 @@ export async function proxy(request: NextRequest) {
   return withHostRobotsPolicy(NextResponse.next(), request);
 }
 
-// Exclude static assets and API routes. Server action POSTs to page routes
-// (including "/") still match, so the rate limit and origin check apply.
+// Exclude static assets, API routes, and Vercel's first-party analytics intake.
+// Server action POSTs to page routes (including "/") still match, so the form
+// rate limit and origin check apply only to requests owned by the application.
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|_next/data|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
+    "/((?!_next/static|_next/image|_next/data|_vercel/insights/|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
   ],
 };
