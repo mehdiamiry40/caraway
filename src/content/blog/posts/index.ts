@@ -1,3 +1,4 @@
+import { post as postVan } from "./sell-van-brisbane";
 import { post as postHybridElectric } from "./sell-hybrid-electric-car-brisbane";
 import { post as postCarParts } from "./sell-car-for-parts-brisbane";
 import { post as postMotorbike } from "./sell-motorbike-brisbane";
@@ -43,6 +44,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postVan,
   postHybridElectric,
   postCarParts,
   postMotorbike,
