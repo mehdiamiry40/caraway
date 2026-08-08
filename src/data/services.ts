@@ -42,7 +42,7 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-08-09",
     reviewedAt: "2026-08-07",
     title: "Cash for Cars Brisbane | Vehicle Quote & Pickup",
     metaDescription: `Cash for cars Brisbane: request an offer based on your vehicle details, with pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
@@ -98,6 +98,10 @@ export const services: ServicePage[] = [
         heading: "Payment and the Collection Check",
         content:
           "Before loading, the assigned pickup operator checks that the vehicle matches the description. Caraway confirms the agreed payment method and timing with you before collection. You receive a signed receipt and buyer details for your records. Never hand over a vehicle until the agreed payment arrangement and purchaser details are clear.",
+        supportLink: {
+          href: "/how-it-works",
+          label: "See how Caraway confirms an offer, pickup, payment, and records",
+        },
       },
       {
         heading: "Documents to Have Ready",
@@ -150,7 +154,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "car-removal-brisbane",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-08-09",
     reviewedAt: "2026-08-07",
     title: "Car Removal Brisbane | Pickup Included When We Buy",
     metaDescription: `Car removal Brisbane for unwanted, damaged, and non-running vehicles. Pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
@@ -209,6 +213,10 @@ export const services: ServicePage[] = [
         heading: "Car Removal Coverage Around Brisbane",
         content:
           "We assess pickups across Brisbane and surrounding parts of Logan, Ipswich, Redlands, and Moreton Bay. Scheduling depends on the suburb, vehicle condition, access, traffic, and operator availability. A collection window is confirmed before dispatch rather than assumed from a postcode alone.",
+        supportLink: {
+          href: "/how-it-works",
+          label: "See the complete assessment, collection, payment, and receipt process",
+        },
       },
       {
         heading: "Paperwork and What Happens After Collection",

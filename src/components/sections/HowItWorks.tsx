@@ -80,7 +80,16 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
           ))}
         </ol>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+          {showHeader && (
+            <Link
+              href="/how-it-works"
+              className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
+            >
+              Read the full quote, pickup and payment process
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          )}
           <Link
             href="/#price-estimator"
             className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"

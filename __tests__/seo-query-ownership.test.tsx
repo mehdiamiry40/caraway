@@ -158,6 +158,7 @@ describe("primary SEO query ownership", () => {
       const serviceEntity = data[2] as Record<string, unknown>;
       const serialized = JSON.stringify(data);
 
+      expect(service.updatedAt).toBe("2026-08-09");
       expect(data.map((node) => node["@type"])).toEqual([
         "BreadcrumbList",
         "WebPage",
@@ -175,7 +176,7 @@ describe("primary SEO query ownership", () => {
       expect(webPage).toMatchObject({
         "@id": `${canonical}#webpage`,
         url: canonical,
-        dateModified: "2026-08-07",
+        dateModified: service.updatedAt,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         breadcrumb: { "@id": `${canonical}#breadcrumbs` },
         mainEntity: { "@id": `${canonical}#service` },
