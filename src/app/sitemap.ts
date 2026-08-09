@@ -14,6 +14,7 @@ import {
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  LOCATIONS_CONTENT_UPDATED,
   SERVICES_CONTENT_UPDATED,
 } from "@/lib/site";
 import { blogPageCount } from "@/lib/blog-pagination";
@@ -113,7 +114,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/locations`,
-      lastModified: CONTENT_DEPLOY_DATE,
+      lastModified: LOCATIONS_CONTENT_UPDATED,
       changeFrequency: "weekly",
       priority: 0.9,
       images: HERO_IMAGE,
@@ -179,7 +180,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * ---------------------------------------------------------------------*/
   const suburbPages: MetadataRoute.Sitemap = suburbs.filter((s) => s.slug).map((s) => ({
     url: `${SITE_URL}/locations/${s.slug}`,
-    lastModified: CONTENT_DEPLOY_DATE,
+    lastModified: s.updatedAt ?? CONTENT_DEPLOY_DATE,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

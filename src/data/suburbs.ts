@@ -1,5 +1,6 @@
 export interface SuburbPage {
   slug: string;
+  updatedAt?: string;
   title: string;
   metaDescription: string;
   h1: string;
@@ -145,6 +146,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "kenmore",
+    updatedAt: "2026-08-09",
     title: "Car Buyers Kenmore | Cash for Cars & Pickup",
     metaDescription:
       "Looking for car buyers in Kenmore? Request a vehicle-specific quote from Caraway. Pickup is included when Caraway buys, subject to access and availability.",
@@ -313,19 +315,20 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "capalaba",
-    title: "Cash for Cars Capalaba & Brisbane Bayside",
+    updatedAt: "2026-08-10",
+    title: "Cash for Cars Redland City | Capalaba & Bayside",
     metaDescription:
-      "Request a vehicle quote in Capalaba, Redlands, or Brisbane's bayside. Pickup is included when Caraway buys, subject to access and availability.",
+      "Request a vehicle quote in Redland City or Capalaba. Pickup is included when Caraway buys, subject to the exact address, access, and availability.",
     h1: "Cash for Cars Capalaba and Brisbane Bayside",
     intro:
-      "Caraway accepts vehicle enquiries from Capalaba, Alexandra Hills, Birkdale, Wynnum, Manly, Carindale, and surrounding eastern or bayside areas. Coverage and collection availability are confirmed for the exact address before a purchase is agreed.",
+      "Caraway accepts vehicle quote requests from Redland City, Capalaba, and nearby eastern or bayside areas. Enquiries are welcome from Alexandra Hills, Birkdale, Cleveland, Wynnum, Manly, and Carindale. Coverage and collection availability are confirmed for the exact address before a purchase is agreed.",
     regionName: "Capalaba, Redlands, and Brisbane's bayside",
     localContent:
       "Eastern and bayside enquiries can involve suburban driveways, unit parking, commercial sites, workshop yards, and streets with limited loading room. Include the exact parking position and any gates, slopes, height limits, soft ground, or traffic constraints. If the vehicle has coastal corrosion, flood exposure, seized brakes, or has been stored for a long period, disclose that at the quote stage.",
     serviceDetails:
       "Caraway considers older, damaged, unregistered, high-kilometre, and non-running cars. The proposed offer reflects the make, model, year, condition, completeness, ownership information, location, and collection access. Photos should show all sides of the vehicle, the interior, visible damage, and the route from the car to the street.",
     whyUs:
-      "The seller receives a clear proposal before collection: the vehicle being purchased, the offer, payment method, pickup conditions, and available window. If Caraway buys, pickup is included where safe access is confirmed, and a receipt and buyer details are supplied for the seller's records.",
+      "When comparing cash-for-cars options for a Redland City vehicle, check the written net offer, pickup conditions, payment timing, revision conditions, and buyer identity. Caraway confirms the vehicle, offer and conditions, payment arrangement, and collection window before pickup. If the purchase proceeds, the seller receives a receipt and buyer details for their records.",
     nearbyAreaNames: [
       "Alexandra Hills",
       "Birkdale",

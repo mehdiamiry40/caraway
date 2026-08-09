@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import Locations from "@/views/Locations";
 import { suburbs } from "@/data/suburbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { LOCATIONS_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -34,41 +34,42 @@ export const metadata: Metadata = {
   },
 };
 
+const canonical = `${SITE_URL}/locations`;
+
+export const locationsStructuredData = [
+  breadcrumbListSchema(breadcrumbs, canonical),
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Caraway Greater Brisbane vehicle pickup areas",
+    description:
+      "A regional guide to Caraway vehicle pickup coverage across Greater Brisbane.",
+    url: canonical,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    inLanguage: "en-AU",
+    dateModified: LOCATIONS_CONTENT_UPDATED,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: suburbs.length,
+      itemListElement: suburbs.map((s, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        name: s.h1,
+        url: `${SITE_URL}/locations/${s.slug}`,
+      })),
+    },
+    hasPart: suburbs.map((s) => ({
+      "@type": "WebPage",
+      name: s.h1,
+      url: `${SITE_URL}/locations/${s.slug}`,
+    })),
+  },
+];
+
 export default function LocationsPage() {
-  const canonical = `${SITE_URL}/locations`;
   return (
     <>
-      <JsonLd
-        data={[
-          breadcrumbListSchema(breadcrumbs, canonical),
-          {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "Caraway Greater Brisbane vehicle pickup areas",
-            description:
-              "A regional guide to Caraway vehicle pickup coverage across Greater Brisbane.",
-            url: canonical,
-            isPartOf: { "@id": `${SITE_URL}/#website` },
-            inLanguage: "en-AU",
-            dateModified: CONTENT_DEPLOY_DATE,
-            mainEntity: {
-              "@type": "ItemList",
-              numberOfItems: suburbs.length,
-              itemListElement: suburbs.map((s, idx) => ({
-                "@type": "ListItem",
-                position: idx + 1,
-                name: s.h1,
-                url: `${SITE_URL}/locations/${s.slug}`,
-              })),
-            },
-            hasPart: suburbs.map((s) => ({
-              "@type": "WebPage",
-              name: s.h1,
-              url: `${SITE_URL}/locations/${s.slug}`,
-            })),
-          },
-        ]}
-      />
+      <JsonLd data={locationsStructuredData} />
       <Locations />
     </>
   );
