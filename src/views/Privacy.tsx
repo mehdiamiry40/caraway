@@ -45,7 +45,7 @@ export default function Privacy() {
               <li><strong>Email address</strong> — to send written quotes, receipts, and follow-up messages.</li>
               <li><strong>Vehicle details</strong> (make, model, year, condition, location, registration status) — to value your vehicle and arrange removal.</li>
               <li><strong>Authority-to-sell records and photo ID</strong> at pickup — we may sight or record details needed to verify the transaction, and retain a copy only where reasonably necessary.</li>
-              <li><strong>Technical data</strong> such as browser type, device type and approximate region via standard web analytics.</li>
+              <li><strong>Technical data</strong> such as the page path, external referrer, browser and device type, and approximate region through Vercel Web Analytics.</li>
             </ul>
           </section>
 
@@ -100,7 +100,18 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
-              <li><strong>Vercel</strong> — website hosting and delivery infrastructure.</li>
+              <li>
+                <strong>Vercel</strong> — website hosting, delivery infrastructure, and Web Analytics. Web Analytics measures aggregated page views and limited interaction events. Our custom analytics events do not include submitted names, phone numbers, email addresses, pickup addresses, or vehicle details. Learn more in Vercel&apos;s{" "}
+                <a
+                  href="https://vercel.com/docs/analytics/privacy-policy"
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Web Analytics privacy documentation
+                </a>
+                .
+              </li>
               <li><strong>Upstash</strong> — managed Redis we use for rate limiting on our forms and the address-autocomplete service. Your IP address is processed and stored briefly as a rate-limit counter to prevent abuse; no form contents or personal details are stored there.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
@@ -135,7 +146,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags or third-party analytics scripts.
+              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 

@@ -171,12 +171,7 @@ export function usePriceEstimator() {
       condition,
     });
     setResult(est);
-    trackEvent("estimator_quote_shown", {
-      estimateQuote: est.quote,
-      make: make.trim(),
-      year: yearNumber,
-      condition,
-    });
+    trackEvent("estimator_quote_shown");
     // Small artificial delay so the result feels deliberate, not random.
     window.setTimeout(() => {
       setIsCalculating(false);
@@ -238,13 +233,7 @@ export function usePriceEstimator() {
 
       if (res.success) {
         setIsSuccess(true);
-        trackEvent("estimator_submitted", {
-          estimateQuote: result.quote,
-          make: make.trim(),
-          model: model.trim(),
-          year: yearNumber,
-          condition,
-        });
+        trackEvent("estimator_submitted");
         trackEvent("lead_submitted", { source: "estimator" });
       } else {
         trackEvent("estimator_submit_failed", { reason: "server" });

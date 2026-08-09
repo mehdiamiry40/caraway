@@ -31,7 +31,7 @@ export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-06-11",
+  privacyLastUpdated: "2026-08-09",
   termsLastUpdated: "2026-08-07",
 } as const;
 
