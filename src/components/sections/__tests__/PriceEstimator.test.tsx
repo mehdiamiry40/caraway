@@ -123,6 +123,7 @@ describe("PriceEstimator", () => {
     await fillStep1(user);
     await user.click(screen.getByRole("button", { name: /see my quote/i }));
     await waitForStep(2);
+    expect(trackEventMock).toHaveBeenCalledWith("estimator_quote_shown");
 
     // Step 2 → Step 3 (uses the only visible offer-request CTA).
     await user.click(getVisibleOfferRequestButton());
@@ -138,10 +139,10 @@ describe("PriceEstimator", () => {
       expect(submitQuoteMock).toHaveBeenCalledTimes(1);
     });
     expect(await screen.findByText(/your offer request is in/i)).toBeInTheDocument();
-    expect(trackEventMock).toHaveBeenCalledWith(
-      "estimator_submitted",
-      expect.objectContaining({ make: "Toyota", model: "Corolla" })
-    );
+    expect(trackEventMock).toHaveBeenCalledWith("estimator_submitted");
+    expect(trackEventMock).toHaveBeenCalledWith("lead_submitted", {
+      source: "estimator",
+    });
   });
 
   it("blocks submission when the honeypot is filled", async () => {
