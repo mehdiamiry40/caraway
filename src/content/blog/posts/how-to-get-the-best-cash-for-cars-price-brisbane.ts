@@ -72,5 +72,5 @@ export const post: RawBlogPostEntry = {
   ],
   category: "Guides",
   relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
-  relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
+  relatedSuburbs: ["north-brisbane", "logan", "ipswich", "kenmore"],
 };

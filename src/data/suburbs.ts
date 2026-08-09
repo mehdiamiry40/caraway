@@ -145,19 +145,19 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "kenmore",
-    title: "Cash for Cars Kenmore | Western Brisbane Pickup",
+    title: "Car Buyers Kenmore | Cash for Cars & Pickup",
     metaDescription:
-      "Request a quote for a car in Kenmore or western Brisbane. Pickup is included when Caraway buys, subject to vehicle details, access, and availability.",
+      "Looking for car buyers in Kenmore? Request a vehicle-specific quote from Caraway. Pickup is included when Caraway buys, subject to access and availability.",
     h1: "Cash for Cars Kenmore",
     intro:
-      "Request a quote for a vehicle in Kenmore, Chapel Hill, Fig Tree Pocket, Brookfield, Bellbowrie, The Gap, or nearby western suburbs. Caraway confirms whether it can buy the vehicle and the available pickup arrangements before you accept.",
+      "Caraway accepts vehicle quote requests for Kenmore and nearby western suburbs. Enquiries are also welcome from Chapel Hill, Fig Tree Pocket, Brookfield, Bellbowrie, and The Gap. Caraway confirms whether it can buy the vehicle and the available pickup arrangements before you accept.",
     regionName: "Kenmore and western Brisbane",
     localContent:
       "Western-suburb properties can have sloping driveways, narrow approaches, low carports, or vehicles stored away from the street. Explain the access from the road to the car rather than supplying only the suburb. Photos showing the driveway, gates, overhead clearance, turning room, and any slope help Caraway assess whether collection is practical and what information is still needed.",
     serviceDetails:
       "Caraway can assess older, damaged, unregistered, high-kilometre, and non-running vehicles. The offer is based on the vehicle and market information available at the time, including condition, completeness, location, and access. If the car has flat tyres, no keys, locked steering, seized brakes, or cannot be reached from a firm driveway, include that in the first enquiry.",
     whyUs:
-      "The process is documented before pickup: Caraway confirms the vehicle being purchased, the offer, any conditions, the payment method, and the collection window. If the details supplied are accurate, the seller knows what has been agreed before the vehicle is loaded and receives a receipt and buyer details for their records.",
+      "When comparing car buyers for a Kenmore vehicle, check the written net offer, pickup conditions, payment timing, revision conditions, and buyer identity. Caraway confirms the vehicle being purchased, its offer and conditions, the payment arrangement, and the collection window before pickup. If the purchase proceeds, the seller receives a receipt and buyer details for their records.",
     nearbyAreaNames: [
       "Chapel Hill",
       "Fig Tree Pocket",
