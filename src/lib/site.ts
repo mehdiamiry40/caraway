@@ -71,7 +71,7 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
 export const HOME_CONTENT_UPDATED = "2026-08-09";
 
 /** Business identity and operating-terms copy materially reviewed in August 2026. */
-export const ABOUT_CONTENT_UPDATED = "2026-08-07";
+export const ABOUT_CONTENT_UPDATED = "2026-08-09";
 
 /** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
 export const FAQ_CONTENT_UPDATED = "2026-08-07";

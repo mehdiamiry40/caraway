@@ -42,6 +42,12 @@ describe("SEO structured-data policy", () => {
     expect(JSON.stringify(organizationSchema.contactPoint.areaServed)).not.toBe(
       '"AU"',
     );
+    expect(organizationSchema.areaServed).toEqual([
+      { "@type": "City", name: "Brisbane" },
+    ]);
+    expect(organizationSchema.contactPoint.areaServed).toEqual(
+      organizationSchema.areaServed,
+    );
     expect(organizationSchema.contactPoint).not.toHaveProperty(
       "hoursAvailable",
     );

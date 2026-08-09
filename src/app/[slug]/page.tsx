@@ -67,9 +67,7 @@ export function buildServiceStructuredData(service: ServicePage) {
       url: canonicalUrl,
       name: service.h1,
       description: service.metaDescription,
-      serviceType: service.slug.includes("removal")
-        ? "Vehicle removal service"
-        : "Vehicle buying service",
+      serviceType: service.serviceType,
       image: preferredImageUrl,
     }),
   ];
