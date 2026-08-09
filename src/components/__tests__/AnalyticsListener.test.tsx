@@ -89,4 +89,30 @@ describe("AnalyticsListener", () => {
 
     expect(trackEventMock).not.toHaveBeenCalled();
   });
+
+  it("tracks the review handoff without sending a URL or customer data", () => {
+    render(
+      <>
+        <AnalyticsListener />
+        <a
+          href={BUSINESS.googleBusinessUrl}
+          data-track-label="Caraway on Google"
+          data-track-location="review_handoff"
+          onClick={(event) => event.preventDefault()}
+        >
+          Open Caraway on Google
+        </a>
+      </>,
+    );
+
+    fireEvent.click(screen.getByText("Open Caraway on Google"));
+
+    expect(trackEventMock).toHaveBeenCalledOnce();
+    expect(trackEventMock).toHaveBeenCalledWith("google_business_click", {
+      location: "review_handoff",
+    });
+    expect(JSON.stringify(trackEventMock.mock.calls)).not.toMatch(
+      /cid=|https?:\/\/|phone|email|registration|vin/i,
+    );
+  });
 });
