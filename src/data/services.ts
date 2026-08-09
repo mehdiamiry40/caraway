@@ -27,6 +27,7 @@ export interface ServiceSection {
 
 export interface ServicePage {
   slug: string;
+  serviceType: string;
   updatedAt?: string;
   reviewedAt?: string;
   title: string;
@@ -42,6 +43,7 @@ export interface ServicePage {
 export const services: ServicePage[] = [
   {
     slug: "cash-for-cars-brisbane",
+    serviceType: "Vehicle buying service",
     updatedAt: "2026-08-09",
     reviewedAt: "2026-08-07",
     title: "Cash for Cars Brisbane | Vehicle Quote & Pickup",
@@ -154,6 +156,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "car-removal-brisbane",
+    serviceType: "Vehicle purchase and collection service",
     updatedAt: "2026-08-09",
     reviewedAt: "2026-08-07",
     title: "Car Removal Brisbane | Pickup Included When We Buy",
@@ -264,6 +267,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "sell-my-car-brisbane",
+    serviceType: "Vehicle buying service",
     updatedAt: "2026-08-07",
     title: "Sell My Car Brisbane | Direct Vehicle-Buyer Quote",
     metaDescription: `Sell your car in Brisbane with a direct vehicle-buyer quote and pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
@@ -328,6 +332,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "scrap-car-removal-brisbane",
+    serviceType: "End-of-life vehicle assessment and buying service",
     updatedAt: "2026-08-07",
     title: "Scrap Vehicle Assessment Brisbane | Old & Junk Cars",
     metaDescription: `Scrap vehicle assessment in Brisbane for old, junk, incomplete, and end-of-life cars. Request an individual purchase assessment. Call ${BUSINESS.phoneDisplay}.`,
@@ -401,6 +406,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "damaged-cars-brisbane",
+    serviceType: "Damaged vehicle buying service",
     updatedAt: "2026-08-07",
     title: "Damaged Cars Brisbane | Accident & Write-Off Quotes",
     metaDescription: `Sell a damaged car in Brisbane after an accident, flood, fire, or write-off decision. Quote and pickup assessment from Caraway. Call ${BUSINESS.phoneDisplay}.`,
@@ -470,6 +476,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "unregistered-cars-brisbane",
+    serviceType: "Unregistered vehicle buying service",
     updatedAt: "2026-08-07",
     title: "Sell an Unregistered Car Brisbane | Quote & Pickup",
     metaDescription: `Sell an unregistered car in Brisbane with an individual quote, document check, and pickup assessment. Call Caraway on ${BUSINESS.phoneDisplay}.`,
@@ -534,6 +541,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "hail-damaged-cars-brisbane",
+    serviceType: "Hail-damaged vehicle buying service",
     updatedAt: "2026-08-07",
     title: "Hail Damaged Cars Brisbane | Vehicle Quote & Pickup",
     metaDescription: `Sell a hail-damaged car in Brisbane after confirming insurer and ownership status. Request an individual quote from Caraway. Call ${BUSINESS.phoneDisplay}.`,
@@ -598,6 +606,7 @@ export const services: ServicePage[] = [
   },
   {
     slug: "sell-toyota-hilux-brisbane",
+    serviceType: "Toyota HiLux buying service",
     updatedAt: "2026-08-07",
     title: "Sell a Toyota HiLux Brisbane | Vehicle Quote",
     metaDescription: `Sell a Toyota HiLux in Brisbane with an individual quote based on model, condition, kilometres, and access. Call Caraway on ${BUSINESS.phoneDisplay}.`,

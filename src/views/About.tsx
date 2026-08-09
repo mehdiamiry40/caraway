@@ -113,7 +113,7 @@ export default function About() {
               Our service area
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              Caboolture to Beenleigh, Ipswich to Cleveland — every suburb across the Brisbane, Logan, Ipswich, Moreton Bay, and Redland council areas. Not sure about yours? Call and ask; we almost certainly cover it.
+              We assess Brisbane-area enquiries and confirm coverage for the exact address before a collection is booked. Share the suburb and access details with your quote request so availability can be checked.
             </p>
           </div>
         </div>

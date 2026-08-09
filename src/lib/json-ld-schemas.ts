@@ -6,10 +6,6 @@ const SAME_AS = [BUSINESS.googleBusinessUrl, BUSINESS.abrUrl];
 
 export const serviceAreas = [
   { "@type": "City" as const, name: "Brisbane" },
-  { "@type": "City" as const, name: "Ipswich" },
-  { "@type": "City" as const, name: "Logan" },
-  { "@type": "AdministrativeArea" as const, name: "Redlands" },
-  { "@type": "AdministrativeArea" as const, name: "Moreton Bay" },
 ];
 
 export const organizationSchema = {

@@ -189,10 +189,25 @@ describe("primary SEO query ownership", () => {
       expect(serviceEntity).toMatchObject({
         "@id": `${canonical}#service`,
         url: canonical,
+        serviceType: service.serviceType,
         image: absoluteImage,
       });
       expect(serialized).not.toMatch(/FAQPage|aggregateRating|"offers"|"address"/i);
     }
+  });
+
+  it("describes the removal target as purchase and collection rather than general towing", () => {
+    const service = getServiceBySlug("car-removal-brisbane")!;
+    const serviceEntity = buildServiceStructuredData(service)[2] as Record<
+      string,
+      unknown
+    >;
+
+    expect(service.serviceType).toBe(
+      "Vehicle purchase and collection service",
+    );
+    expect(serviceEntity.serviceType).toBe(service.serviceType);
+    expect(serviceEntity.serviceType).not.toBe("Vehicle removal service");
   });
 
   it("renders useful pre-quote and access checklists as semantic lists", () => {
