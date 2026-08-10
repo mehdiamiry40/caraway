@@ -101,7 +101,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     datePublished: VEHICLE_DATA_CONTENT_UPDATED,
     dateModified: VEHICLE_DATA_CONTENT_UPDATED,
     temporalCoverage: "2006/2024",
-    spatialCoverage: { "@type": "AdministrativeArea", name: "Queensland" },
+    spatialCoverage: { "@type": "Place", name: "Queensland" },
     variableMeasured: ["year", "fuel type", "registered cars"],
     measurementTechnique:
       "Filtered the official table to Vehicle Type = Cars and converted the 19 annual columns into one row per year and fuel type without estimating missing values.",
