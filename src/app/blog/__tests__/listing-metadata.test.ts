@@ -13,6 +13,7 @@ import {
   blogPageCount,
 } from "@/lib/blog-pagination";
 import { SITE_URL } from "@/lib/site";
+import { legacyIndexingRedirects } from "../../../../next.config";
 
 type SocialMeta = { images?: unknown; card?: string } | null | undefined;
 
@@ -52,19 +53,34 @@ describe("blog listing metadata", () => {
     expectTextOnlyPreview(meta);
   });
 
-  it("keeps the first retired page outside the live archive with one-post headroom", () => {
-    const livePagedRoutes = pagedStaticParams().map(({ page }) => Number(page));
-    const firstRetiredUrl = `${SITE_URL}/blog/page/${BLOG_ARCHIVE_PAGE_LIMIT + 1}`;
+  it("keeps live archive pages canonical and outside the retired redirect contract", async () => {
+    const staticParams = pagedStaticParams();
+    const livePaths = staticParams.map(({ page }) => `/blog/page/${page}`);
+    const sitemapPaths = sitemap()
+      .map((entry) => entry.url)
+      .filter((url) => url.startsWith(`${SITE_URL}/blog/page/`));
+    const redirectSources = new Set<string>(
+      legacyIndexingRedirects.map((redirect) => redirect.source),
+    );
 
     expect(blogPageCount()).toBeLessThanOrEqual(BLOG_ARCHIVE_PAGE_LIMIT);
     expect(blogPosts.length + 1).toBeLessThanOrEqual(
       1 + BLOG_ARCHIVE_PAGE_LIMIT * BLOG_PAGE_SIZE,
     );
-    expect(livePagedRoutes.every((page) => page <= BLOG_ARCHIVE_PAGE_LIMIT)).toBe(
-      true,
-    );
-    expect(
-      sitemap().some((entry) => entry.url === firstRetiredUrl),
-    ).toBe(false);
+    expect(staticParams).toEqual([{ page: "2" }, { page: "3" }]);
+    expect(sitemapPaths).toEqual([
+      `${SITE_URL}/blog/page/2`,
+      `${SITE_URL}/blog/page/3`,
+    ]);
+    expect(livePaths.filter((path) => redirectSources.has(path))).toEqual([]);
+
+    for (const { page } of staticParams) {
+      const metadata = await pagedMetadata({
+        params: Promise.resolve({ page }),
+      });
+      expect(metadata.alternates?.canonical).toBe(
+        `${SITE_URL}/blog/page/${page}`,
+      );
+    }
   });
 });
