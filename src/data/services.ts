@@ -157,7 +157,7 @@ export const services: ServicePage[] = [
   {
     slug: "car-removal-brisbane",
     serviceType: "Vehicle purchase and collection service",
-    updatedAt: "2026-08-09",
+    updatedAt: "2026-08-11",
     reviewedAt: "2026-08-07",
     title: "Car Removal Brisbane | Pickup Included When We Buy",
     metaDescription: `Car removal Brisbane for unwanted, damaged, and non-running vehicles. Pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
@@ -187,6 +187,10 @@ export const services: ServicePage[] = [
         heading: "Non-Running and Difficult-to-Move Cars",
         content:
           "Tell us whether the vehicle starts, rolls, steers, brakes, and has all wheels and keys. Also disclose seized brakes, flat or missing tyres, locked steering, loose parts, fire damage, or severe structural damage. Suitable loading equipment may be arranged after the condition and access are reviewed, but not every vehicle can be recovered from every position.",
+        supportLink: {
+          href: "/unregistered-cars-brisbane",
+          label: "Review unregistered-vehicle quote, document, and pickup requirements",
+        },
       },
       {
         heading: "Access Details to Confirm Before Booking",
@@ -483,10 +487,12 @@ export const services: ServicePage[] = [
   {
     slug: "unregistered-cars-brisbane",
     serviceType: "Unregistered vehicle buying service",
-    updatedAt: "2026-08-07",
-    title: "Sell an Unregistered Car Brisbane | Quote & Pickup",
-    metaDescription: `Sell an unregistered car in Brisbane with an individual quote, document check, and pickup assessment. Call Caraway on ${BUSINESS.phoneDisplay}.`,
-    h1: "Sell an Unregistered Car in Brisbane",
+    updatedAt: "2026-08-11",
+    reviewedAt: "2026-08-11",
+    title: "Unregistered Car Removal in Brisbane | Quote",
+    metaDescription:
+      "Unregistered car removal in Brisbane with a vehicle-specific quote, ownership document check and pickup assessment. Pickup is included when Caraway buys.",
+    h1: "Unregistered Car Removal in Brisbane",
     intro:
       "An expired or cancelled registration does not by itself determine whether Caraway can buy a vehicle. We assess the car, your authority to sell it, its location, and the collection requirements. Pickup is included when Caraway buys and the details are confirmed.",
     sections: [
@@ -509,6 +515,10 @@ export const services: ServicePage[] = [
         heading: "Collection From Private Property",
         content:
           "The vehicle must be somewhere it can lawfully and safely be collected. Tell us about apartment parking, height limits, steep driveways, locked gates, soft ground, missing wheels, or restricted access. A suitable pickup operator may be arranged only after the car and access details are reviewed.",
+        supportLink: {
+          href: "/blog/park-unregistered-car-street-qld#moving-an-unregistered-vehicle-check-the-exact-journey",
+          label: "Check Queensland movement rules for an unregistered vehicle",
+        },
       },
       {
         heading: "Queensland Seller Steps",
