@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import type { BlogPost } from "@/content/blog/types";
 import { isRetiredBlogSlug } from "@/lib/blog-consolidation";
+import {
+  BLOG_FAQ_ROLLOUT_DATE,
+  getRenderableBlogFaqs,
+  getRenderableBlogFaqTextBlocks,
+} from "@/lib/blog-faqs";
 import { blogPostCanonicalUrl, calcWordCount } from "@/lib/blog-post";
 import { publisherSchema } from "@/lib/json-ld-schemas";
 import { SITE_URL } from "@/lib/site";
@@ -64,7 +69,10 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
 }
 
 export function plainBlogPostContent(post: BlogPost): string {
-  return post.content
+  return [
+    ...post.content,
+    ...getRenderableBlogFaqTextBlocks(post),
+  ]
     .map((p) => p.replace(/^#{1,6}\s+/, "").replace(/\*\*(.*?)\*\*/g, "$1"))
     .join(" ")
     .replace(/\s+/g, " ")
@@ -165,7 +173,14 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
     errors.push("reviewedAt must be ISO yyyy-mm-dd");
   }
 
-  if (post.reviewedAt && Date.parse(post.reviewedAt) < Date.parse(post.updatedAt)) {
+  const isFaqVisibilityRollout =
+    post.updatedAt === BLOG_FAQ_ROLLOUT_DATE &&
+    getRenderableBlogFaqs(post).length > 0;
+  if (
+    post.reviewedAt &&
+    Date.parse(post.reviewedAt) < Date.parse(post.updatedAt) &&
+    !isFaqVisibilityRollout
+  ) {
     errors.push("reviewedAt must not be earlier than updatedAt");
   }
 

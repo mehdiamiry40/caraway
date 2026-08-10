@@ -5,6 +5,7 @@ import {
   buildBlogPostMetadata,
   buildBlogPostSeoProps,
   createBlogPost,
+  plainBlogPostContent,
   validateBlogPostSeo,
 } from "@/lib/blog-post-template";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
@@ -123,5 +124,135 @@ describe("blog post template", () => {
     expect(buildBlogPostSeoProps(post).articleSchema.citation).toEqual([
       "https://www.qld.gov.au/transport/registration/transfer",
     ]);
+  });
+
+  it("counts visible supplemental FAQs in read time and BlogPosting wordCount", () => {
+    const body = Array.from({ length: 190 }, () => "body").join(" ");
+    const answer = Array.from({ length: 100 }, () => "answer").join(" ");
+    const post = createBlogPost({
+      slug: "supplemental-faq-counting-guide",
+      title: "Supplemental FAQ Counting Guide",
+      metaDescription:
+        "This realistic metadata describes a supplemental FAQ counting guide and remains long enough for the shared blog metadata contract.",
+      excerpt:
+        "This realistic excerpt describes how supplemental questions contribute to visible blog copy and its calculated reading time.",
+      content: [body, "Second body block."],
+      faqs: [{ question: "Count this visible question?", answer }],
+      date: "2026-08-10",
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    const { plainContent, wordCount } = buildBlogPostSeoProps(post);
+
+    expect(post.readTime).toBe("2 min read");
+    expect(plainContent).toContain("Frequently asked questions");
+    expect(plainContent).toContain("Count this visible question?");
+    expect(plainContent).toContain(answer);
+    expect(wordCount).toBe(300);
+  });
+
+  it("does not double-count supplemental fields beside an authored FAQ section", () => {
+    const post = createBlogPost({
+      slug: "authored-faq-counting-guide",
+      title: "Authored FAQ Counting Guide for Sellers",
+      metaDescription:
+        "This realistic metadata describes an authored FAQ counting guide and remains long enough for the shared blog metadata contract.",
+      excerpt:
+        "This realistic excerpt explains that authored FAQ answers take precedence over supplemental fields when a blog post is rendered.",
+      content: [
+        "Opening article body.",
+        "## FAQ",
+        "### Authored question?",
+        "Authored answer.",
+      ],
+      faqs: [
+        {
+          question: "Suppressed duplicate question?",
+          answer: "Suppressed duplicate answer.",
+        },
+      ],
+      date: "2026-08-10",
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    const plainContent = plainBlogPostContent(post);
+
+    expect(plainContent).toContain("Authored question?");
+    expect(plainContent).not.toContain("Suppressed duplicate question?");
+    expect(buildBlogPostSeoProps(post).wordCount).toBe(8);
+    expect(post.readTime).toBe("1 min read");
+  });
+
+  it("keeps an earlier regulatory review date when the FAQ rollout changes dateModified", () => {
+    const post = blogPosts.find((item) => item.slug === "sell-van-brisbane");
+
+    expect(post).toBeDefined();
+    expect(post?.updatedAt).toBe("2026-08-10");
+    expect(post?.reviewedAt).toBe("2026-08-08");
+    expect(validateBlogPostSeo(post!)).toEqual([]);
+    expect(buildBlogPostSeoProps(post!).articleSchema.dateModified).toBe(
+      "2026-08-10",
+    );
+  });
+
+  it("rejects a stale review after a newer post-specific FAQ update", () => {
+    const post = createBlogPost({
+      slug: "newer-faq-review-guard",
+      title: "Newer FAQ Regulatory Review Guard",
+      metaDescription:
+        "This realistic metadata verifies that a later post-specific FAQ update still requires regulatory material to be reviewed again.",
+      excerpt:
+        "This realistic excerpt verifies that the one-time FAQ visibility rollout does not weaken future regulatory review safeguards.",
+      content: ["Opening article body.", "Second article body."],
+      faqs: [{ question: "A regulated question?", answer: "A regulated answer." }],
+      date: "2026-08-09",
+      updatedAt: "2026-08-11",
+      reviewedAt: "2026-08-10",
+      sources: [
+        {
+          title: "Queensland Government",
+          url: "https://www.qld.gov.au/transport",
+        },
+      ],
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    expect(validateBlogPostSeo(post)).toContain(
+      "reviewedAt must not be earlier than updatedAt",
+    );
+  });
+
+  it("retains the stale-review guard for posts without supplemental FAQs", () => {
+    const post = createBlogPost({
+      slug: "standard-regulatory-review-guard",
+      title: "Standard Regulatory Review Guard",
+      metaDescription:
+        "This realistic metadata verifies that ordinary article updates continue to require current review dates for sourced regulatory copy.",
+      excerpt:
+        "This realistic excerpt verifies that ordinary sourced article updates retain the existing regulatory review date safeguard.",
+      content: ["Opening article body.", "Second article body."],
+      date: "2026-08-08",
+      updatedAt: "2026-08-10",
+      reviewedAt: "2026-08-09",
+      sources: [
+        {
+          title: "Queensland Government",
+          url: "https://www.qld.gov.au/transport",
+        },
+      ],
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    expect(validateBlogPostSeo(post)).toContain(
+      "reviewedAt must not be earlier than updatedAt",
+    );
   });
 });

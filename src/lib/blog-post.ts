@@ -1,4 +1,8 @@
 import type { BlogPost, RawBlogPostEntry } from "@/content/blog/types";
+import {
+  applyBlogFaqRolloutDate,
+  getRenderableBlogFaqTextBlocks,
+} from "@/lib/blog-faqs";
 import { SITE_URL } from "@/lib/site";
 
 /** Count words in a plain-text string by splitting on whitespace. */
@@ -38,8 +42,14 @@ export function createBlogPost(
       )
     : [];
   const date = isIsoDate(post.date) ? post.date : "2025-01-01";
-  const updatedAt = isIsoDate(post.updatedAt) ? post.updatedAt : date;
+  const declaredUpdatedAt = isIsoDate(post.updatedAt) ? post.updatedAt : date;
   const title = post.title?.trim() || "Caraway car selling guide";
+  const faqSource = { content, faqs: post.faqs };
+  const updatedAt = applyBlogFaqRolloutDate(faqSource, declaredUpdatedAt);
+  const readableContent = [
+    ...content,
+    ...getRenderableBlogFaqTextBlocks(faqSource),
+  ];
 
   return {
     ...post,
@@ -62,6 +72,6 @@ export function createBlogPost(
       ? post.relatedSuburbs.filter(Boolean)
       : [],
     canonicalUrl: blogPostCanonicalUrl(slug),
-    readTime: calcReadTime(content),
+    readTime: calcReadTime(readableContent),
   };
 }
