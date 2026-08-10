@@ -33,6 +33,7 @@ const CASH_QUERY = /cash for cars brisbane/i;
 const REMOVAL_QUERY = /car removal brisbane/i;
 const OLD_UTE_QUERY = /cash for old utes/i;
 const FLOODED_CAR_QUERY = /cash for (?:flooded|flood[- ]damaged) cars?/i;
+const UNREGISTERED_REMOVAL_QUERY = /unregistered car removal/i;
 
 function serviceOwnersOf(query: RegExp): string[] {
   return services
@@ -174,6 +175,66 @@ describe("primary SEO query ownership", () => {
     expect(service?.reviewedAt).toBe("2026-08-11");
   });
 
+  it("assigns unregistered-car removal intent to one narrow service owner", async () => {
+    const service = getServiceBySlug("unregistered-cars-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "unregistered-cars-brisbane" }),
+    });
+    const movementSection = service?.sections.find(
+      ({ heading }) => heading === "Collection From Private Property",
+    );
+    const removalService = getServiceBySlug("car-removal-brisbane");
+    const contextualInboundLink = removalService?.sections.find(
+      ({ supportLink }) =>
+        supportLink?.href === "/unregistered-cars-brisbane",
+    );
+
+    expect(service).toBeDefined();
+    expect(serviceOwnersOf(UNREGISTERED_REMOVAL_QUERY)).toEqual([
+      "unregistered-cars-brisbane",
+    ]);
+    expect(
+      blogPosts
+        .filter((post) =>
+          [post.title, post.metaDescription].some((value) =>
+            UNREGISTERED_REMOVAL_QUERY.test(value),
+          ),
+        )
+        .map(({ slug }) => slug),
+    ).toEqual([]);
+    expect(service?.title).toMatch(UNREGISTERED_REMOVAL_QUERY);
+    expect(service?.h1).toMatch(UNREGISTERED_REMOVAL_QUERY);
+    expect(service?.metaDescription).toMatch(UNREGISTERED_REMOVAL_QUERY);
+    expect(String(metadata.description ?? "")).toMatch(
+      UNREGISTERED_REMOVAL_QUERY,
+    );
+    expect(String(metadata.openGraph?.title ?? "")).toMatch(
+      UNREGISTERED_REMOVAL_QUERY,
+    );
+    expect(String(metadata.twitter?.title ?? "")).toMatch(
+      UNREGISTERED_REMOVAL_QUERY,
+    );
+    expect(service?.title).not.toMatch(REMOVAL_QUERY);
+    expect(service?.h1).not.toMatch(REMOVAL_QUERY);
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/unregistered-cars-brisbane",
+    );
+    expect(movementSection?.supportLink).toEqual({
+      href: "/blog/park-unregistered-car-street-qld#moving-an-unregistered-vehicle-check-the-exact-journey",
+      label: "Check Queensland movement rules for an unregistered vehicle",
+    });
+    expect(contextualInboundLink?.supportLink?.label).toBe(
+      "Review unregistered-vehicle quote, document, and pickup requirements",
+    );
+    expect(
+      renderToStaticMarkup(
+        <ServiceSectionContent section={contextualInboundLink!} />,
+      ),
+    ).toContain('href="/unregistered-cars-brisbane"');
+    expect(service?.updatedAt).toBe("2026-08-11");
+    expect(service?.reviewedAt).toBe("2026-08-11");
+  });
+
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
     const service = getServiceBySlug("cash-for-cars-brisbane");
     const metadata = await generateServiceMetadata({
@@ -225,6 +286,8 @@ describe("primary SEO query ownership", () => {
   it("connects each primary WebPage, breadcrumb, and Service entity without unsupported rich-result claims", () => {
     for (const slug of ["cash-for-cars-brisbane", "car-removal-brisbane"]) {
       const service = getServiceBySlug(slug)!;
+      const expectedUpdatedAt =
+        slug === "car-removal-brisbane" ? "2026-08-11" : "2026-08-09";
       const canonical = `${SITE_URL}/${slug}`;
       const data = buildServiceStructuredData(service);
       const preferredImage = getServicePreferredImage(service)!;
@@ -234,7 +297,7 @@ describe("primary SEO query ownership", () => {
       const serviceEntity = data[2] as Record<string, unknown>;
       const serialized = JSON.stringify(data);
 
-      expect(service.updatedAt).toBe("2026-08-09");
+      expect(service.updatedAt).toBe(expectedUpdatedAt);
       expect(data.map((node) => node["@type"])).toEqual([
         "BreadcrumbList",
         "WebPage",
