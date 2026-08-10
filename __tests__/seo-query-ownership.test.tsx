@@ -31,6 +31,7 @@ import { SITE_URL } from "@/lib/site";
 
 const CASH_QUERY = /cash for cars brisbane/i;
 const REMOVAL_QUERY = /car removal brisbane/i;
+const OLD_UTE_QUERY = /cash for old utes/i;
 
 function serviceOwnersOf(query: RegExp): string[] {
   return services
@@ -104,6 +105,21 @@ describe("primary SEO query ownership", () => {
       expect(post.title, post.slug).not.toMatch(CASH_QUERY);
       expect(post.title, post.slug).not.toMatch(REMOVAL_QUERY);
     }
+  });
+
+  it("assigns the observed old-ute query to one supporting article", () => {
+    const owners = blogPosts.filter((post) => OLD_UTE_QUERY.test(post.title));
+    const post = owners[0];
+
+    expect(owners.map(({ slug }) => slug)).toEqual(["sell-my-ute-brisbane"]);
+    expect(post?.metaDescription).toMatch(/cash for an old ute in brisbane/i);
+    expect(post?.title).not.toMatch(CASH_QUERY);
+    expect(post?.title).not.toMatch(REMOVAL_QUERY);
+    expect(post?.content.join(" ")).toContain(
+      "[cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane)",
+    );
+    expect(post?.relatedServices).toContain("cash-for-cars-brisbane");
+    expect(post?.updatedAt).toBe("2026-08-11");
   });
 
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {

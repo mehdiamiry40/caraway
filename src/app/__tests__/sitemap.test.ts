@@ -74,11 +74,11 @@ describe("sitemap.ts — blog post inclusion", () => {
 
     expect(supplementalPosts).toHaveLength(22);
     for (const post of supplementalPosts) {
-      expect(post.updatedAt, post.slug).toBe(BLOG_FAQ_ROLLOUT_DATE);
+      expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
       expect(
         entries.find((entry) => entry.url === post.canonicalUrl)?.lastModified,
         post.slug,
-      ).toBe(BLOG_FAQ_ROLLOUT_DATE);
+      ).toBe(post.updatedAt);
     }
 
     const authoredPost = blogPosts.find(
@@ -88,6 +88,13 @@ describe("sitemap.ts — blog post inclusion", () => {
       entries.find((entry) => entry.url === authoredPost?.canonicalUrl)
         ?.lastModified,
     ).toBe("2026-04-26");
+
+    const utePost = blogPosts.find(
+      (post) => post.slug === "sell-my-ute-brisbane",
+    );
+    expect(
+      entries.find((entry) => entry.url === utePost?.canonicalUrl)?.lastModified,
+    ).toBe("2026-08-11");
   });
 });
 

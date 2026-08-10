@@ -84,7 +84,7 @@ describe("blog FAQ rendering guard", () => {
     }
   });
 
-  it("dates only the 22 posts gaining 80 visible supplemental FAQs", () => {
+  it("dates the 22 posts gaining 80 visible supplemental FAQs no earlier than rollout", () => {
     const supplementalPosts = blogPosts.filter(
       (post) => getRenderableBlogFaqs(post).length > 0,
     );
@@ -97,7 +97,7 @@ describe("blog FAQ rendering guard", () => {
       ),
     ).toBe(80);
     for (const post of supplementalPosts) {
-      expect(post.updatedAt, post.slug).toBe(BLOG_FAQ_ROLLOUT_DATE);
+      expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
     }
 
     const authoredPost = blogPosts.find(
@@ -110,6 +110,12 @@ describe("blog FAQ rendering guard", () => {
     );
     expect(reviewedPost?.updatedAt).toBe(BLOG_FAQ_ROLLOUT_DATE);
     expect(reviewedPost?.reviewedAt).toBe("2026-08-08");
+
+    const laterUpdatedPost = blogPosts.find(
+      (post) => post.slug === "sell-my-ute-brisbane",
+    );
+    expect(laterUpdatedPost?.updatedAt).toBe("2026-08-11");
+    expect(laterUpdatedPost?.reviewedAt).toBe("2026-08-11");
   });
 
   it("never rolls a genuinely newer modification date backwards", () => {
