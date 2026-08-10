@@ -1,7 +1,19 @@
 import { describe, expect, it } from "vitest";
 import { metadata as blogIndexMetadata } from "@/app/blog/page";
 import { generateMetadata as categoryMetadata } from "@/app/blog/category/[category]/page";
-import { generateMetadata as pagedMetadata } from "@/app/blog/page/[page]/page";
+import {
+  generateMetadata as pagedMetadata,
+  generateStaticParams as pagedStaticParams,
+} from "@/app/blog/page/[page]/page";
+import sitemap from "@/app/sitemap";
+import { blogPosts } from "@/data/blog-posts";
+import {
+  BLOG_ARCHIVE_PAGE_LIMIT,
+  BLOG_PAGE_SIZE,
+  blogPageCount,
+} from "@/lib/blog-pagination";
+import { SITE_URL } from "@/lib/site";
+import { legacyIndexingRedirects } from "../../../../next.config";
 
 type SocialMeta = { images?: unknown; card?: string } | null | undefined;
 
@@ -39,5 +51,36 @@ describe("blog listing metadata", () => {
     });
     expect(meta.openGraph).toBeDefined();
     expectTextOnlyPreview(meta);
+  });
+
+  it("keeps live archive pages canonical and outside the retired redirect contract", async () => {
+    const staticParams = pagedStaticParams();
+    const livePaths = staticParams.map(({ page }) => `/blog/page/${page}`);
+    const sitemapPaths = sitemap()
+      .map((entry) => entry.url)
+      .filter((url) => url.startsWith(`${SITE_URL}/blog/page/`));
+    const redirectSources = new Set<string>(
+      legacyIndexingRedirects.map((redirect) => redirect.source),
+    );
+
+    expect(blogPageCount()).toBeLessThanOrEqual(BLOG_ARCHIVE_PAGE_LIMIT);
+    expect(blogPosts.length + 1).toBeLessThanOrEqual(
+      1 + BLOG_ARCHIVE_PAGE_LIMIT * BLOG_PAGE_SIZE,
+    );
+    expect(staticParams).toEqual([{ page: "2" }, { page: "3" }]);
+    expect(sitemapPaths).toEqual([
+      `${SITE_URL}/blog/page/2`,
+      `${SITE_URL}/blog/page/3`,
+    ]);
+    expect(livePaths.filter((path) => redirectSources.has(path))).toEqual([]);
+
+    for (const { page } of staticParams) {
+      const metadata = await pagedMetadata({
+        params: Promise.resolve({ page }),
+      });
+      expect(metadata.alternates?.canonical).toBe(
+        `${SITE_URL}/blog/page/${page}`,
+      );
+    }
   });
 });
