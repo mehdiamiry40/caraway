@@ -94,7 +94,7 @@ describe("Queensland vehicle-data resource page", () => {
     });
     expect(fuelDataset).toMatchObject({
       temporalCoverage: "2006/2024",
-      spatialCoverage: { name: "Queensland" },
+      spatialCoverage: { "@type": "Place", name: "Queensland" },
       license: "https://creativecommons.org/licenses/by/4.0/",
       distribution: {
         "@type": "DataDownload",
@@ -105,6 +105,7 @@ describe("Queensland vehicle-data resource page", () => {
     expect(brisbaneDataset).toMatchObject({
       temporalCoverage: "2022-10-10/2022-10-10",
       spatialCoverage: {
+        "@type": "Place",
         name: "186 unambiguous suburb and postcode rows associated with Brisbane City",
       },
       license: "https://creativecommons.org/licenses/by/4.0/",
