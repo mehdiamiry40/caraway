@@ -3,13 +3,13 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
   slug: "sell-my-ute-brisbane",
-  title: "Selling a Ute in Brisbane: Condition, Value & Paperwork",
+  title: "Cash for Old Utes in Brisbane: Selling Guide",
   metaDescription:
-    "Selling a ute in Brisbane? Record its variant, condition, accessories, ownership, and access, compare sale routes, and check the QLD paperwork.",
+    "Looking for cash for an old ute in Brisbane? Compare written offers, condition, paperwork, pickup access and sale routes before accepting an offer.",
   excerpt:
-    "A useful ute assessment starts with the exact vehicle, condition, ownership, modifications, and collection access—not a generic price promise.",
+    "Compare written offers for an old ute using its exact condition, ownership, modifications, and pickup access—not a generic price promise.",
   content: [
-    "Selling a ute in Brisbane starts with identifying the exact vehicle and the outcome you want. A private listing, dealer trade-in, and direct-buyer quote involve different preparation, timing, and conditions. Compare the likely net proceeds and work involved rather than assuming one route is best for every ute.",
+    "If you are looking for cash for an old ute in Brisbane, start by identifying the exact vehicle, its condition, and the outcome you want. A private listing, dealer trade-in, and direct-buyer quote involve different preparation, timing, and conditions. Compare the likely net proceeds and work involved rather than assuming one route is best for every ute.",
 
     "## Record the exact ute and its condition",
 
@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "## Compare the selling routes",
 
-    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
+    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) or another direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
 
     "## Check the Queensland seller steps",
 
@@ -55,8 +55,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-06-07",
-  updatedAt: "2026-08-07",
-  reviewedAt: "2026-08-07",
+  updatedAt: "2026-08-11",
+  reviewedAt: "2026-08-11",
   sources: [
     {
       title: "Queensland Government — selling a used vehicle",
