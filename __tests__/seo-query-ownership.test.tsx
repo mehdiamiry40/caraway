@@ -8,6 +8,10 @@ import { metadata as blogMetadata } from "@/app/blog/page";
 import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
 import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
 import {
+  metadata as vehicleDataMetadata,
+  RESOURCE_HEADING,
+} from "@/app/resources/queensland-vehicle-data/page";
+import {
   buildServiceStructuredData,
   generateMetadata as generateServiceMetadata,
 } from "@/app/[slug]/page";
@@ -82,6 +86,7 @@ describe("primary SEO query ownership", () => {
       blogMetadata,
       pageTwoMetadata,
       howItWorksMetadata,
+      vehicleDataMetadata,
     ]) {
       for (const query of [CASH_QUERY, REMOVAL_QUERY]) {
         expect(String(metadata.title ?? "")).not.toMatch(query);
@@ -89,6 +94,9 @@ describe("primary SEO query ownership", () => {
         expect(String(metadata.twitter?.title ?? "")).not.toMatch(query);
       }
     }
+
+    expect(RESOURCE_HEADING).not.toMatch(CASH_QUERY);
+    expect(RESOURCE_HEADING).not.toMatch(REMOVAL_QUERY);
   });
 
   it("keeps blog titles from claiming either unmodified primary query", () => {

@@ -365,6 +365,20 @@ describe("Search Console indexing cleanup", () => {
     }
   });
 
+  it("allows the Vercel Analytics debug script in non-production previews", async () => {
+    const headers = await getHeaderRules();
+    const csp = headers
+      .find((entry) => entry.source === "/(.*)")
+      ?.headers.find((header) => header.key === "Content-Security-Policy")
+      ?.value;
+
+    expect(csp).toBeDefined();
+    expect(cspDirective(csp!, "script-src")).toContain(
+      "https://va.vercel-scripts.com",
+    );
+    expect(cspDirective(csp!, "connect-src")).toBe("connect-src 'self'");
+  });
+
   it("does not internally link to the stale URLs outside the redirect contract", () => {
     const sourceFiles = walkSourceFiles(path.join(process.cwd(), "src"));
 

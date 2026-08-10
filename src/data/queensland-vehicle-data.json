@@ -1,0 +1,1766 @@
+{
+  "title": "Queensland vehicle fuel trends and a Brisbane suburb snapshot",
+  "generatedAt": "2026-08-10",
+  "methodologyVersion": 2,
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "fuelTrend": {
+    "title": "Queensland cars by fuel type, 2006–2024",
+    "startYear": 2006,
+    "endYear": 2024,
+    "fuelTypes": [
+      "Diesel",
+      "Diesel/Electric",
+      "Diesel/Gas",
+      "Electric",
+      "Gas",
+      "Kerosine",
+      "Hydrogen",
+      "Petrol",
+      "Petrol/Electric",
+      "Petrol/Gas",
+      "Steam"
+    ],
+    "rows": [
+      {
+        "year": 2006,
+        "registrations": {
+          "Diesel": 105742,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 18,
+          "Electric": 1,
+          "Gas": 2974,
+          "Kerosine": 4,
+          "Hydrogen": 0,
+          "Petrol": 2034258,
+          "Petrol/Electric": 102,
+          "Petrol/Gas": 27223,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2007,
+        "registrations": {
+          "Diesel": 119607,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 75,
+          "Electric": 1,
+          "Gas": 3794,
+          "Kerosine": 4,
+          "Hydrogen": 0,
+          "Petrol": 2105709,
+          "Petrol/Electric": 393,
+          "Petrol/Gas": 28719,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2008,
+        "registrations": {
+          "Diesel": 138345,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 195,
+          "Electric": 10,
+          "Gas": 4511,
+          "Kerosine": 3,
+          "Hydrogen": 0,
+          "Petrol": 2165550,
+          "Petrol/Electric": 1129,
+          "Petrol/Gas": 30052,
+          "Steam": 0
+        }
+      },
+      {
+        "year": 2009,
+        "registrations": {
+          "Diesel": 155390,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 311,
+          "Electric": 16,
+          "Gas": 5177,
+          "Kerosine": 2,
+          "Hydrogen": 0,
+          "Petrol": 2196693,
+          "Petrol/Electric": 1775,
+          "Petrol/Gas": 30924,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2010,
+        "registrations": {
+          "Diesel": 178088,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 371,
+          "Electric": 16,
+          "Gas": 5439,
+          "Kerosine": 2,
+          "Hydrogen": 0,
+          "Petrol": 2213508,
+          "Petrol/Electric": 3091,
+          "Petrol/Gas": 30518,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2011,
+        "registrations": {
+          "Diesel": 201757,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 415,
+          "Electric": 35,
+          "Gas": 5197,
+          "Kerosine": 2,
+          "Hydrogen": 0,
+          "Petrol": 2237915,
+          "Petrol/Electric": 5642,
+          "Petrol/Gas": 30006,
+          "Steam": 0
+        }
+      },
+      {
+        "year": 2012,
+        "registrations": {
+          "Diesel": 231541,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 440,
+          "Electric": 50,
+          "Gas": 4787,
+          "Kerosine": 2,
+          "Hydrogen": 0,
+          "Petrol": 2270486,
+          "Petrol/Electric": 7856,
+          "Petrol/Gas": 28858,
+          "Steam": 2
+        }
+      },
+      {
+        "year": 2013,
+        "registrations": {
+          "Diesel": 263889,
+          "Diesel/Electric": 0,
+          "Diesel/Gas": 468,
+          "Electric": 76,
+          "Gas": 4437,
+          "Kerosine": 4,
+          "Hydrogen": 0,
+          "Petrol": 2304526,
+          "Petrol/Electric": 10447,
+          "Petrol/Gas": 27280,
+          "Steam": 2
+        }
+      },
+      {
+        "year": 2014,
+        "registrations": {
+          "Diesel": 293615,
+          "Diesel/Electric": 18,
+          "Diesel/Gas": 482,
+          "Electric": 102,
+          "Gas": 4054,
+          "Kerosine": 3,
+          "Hydrogen": 0,
+          "Petrol": 2328305,
+          "Petrol/Electric": 12485,
+          "Petrol/Gas": 25472,
+          "Steam": 2
+        }
+      },
+      {
+        "year": 2015,
+        "registrations": {
+          "Diesel": 319398,
+          "Diesel/Electric": 39,
+          "Diesel/Gas": 470,
+          "Electric": 170,
+          "Gas": 3609,
+          "Kerosine": 2,
+          "Hydrogen": 0,
+          "Petrol": 2346235,
+          "Petrol/Electric": 14528,
+          "Petrol/Gas": 23148,
+          "Steam": 2
+        }
+      },
+      {
+        "year": 2016,
+        "registrations": {
+          "Diesel": 347085,
+          "Diesel/Electric": 66,
+          "Diesel/Gas": 459,
+          "Electric": 281,
+          "Gas": 3295,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2382768,
+          "Petrol/Electric": 16576,
+          "Petrol/Gas": 21100,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2017,
+        "registrations": {
+          "Diesel": 375057,
+          "Diesel/Electric": 72,
+          "Diesel/Gas": 449,
+          "Electric": 445,
+          "Gas": 2913,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2408393,
+          "Petrol/Electric": 18175,
+          "Petrol/Gas": 18967,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2018,
+        "registrations": {
+          "Diesel": 402962,
+          "Diesel/Electric": 66,
+          "Diesel/Gas": 438,
+          "Electric": 706,
+          "Gas": 2534,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2438722,
+          "Petrol/Electric": 19713,
+          "Petrol/Gas": 16904,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2019,
+        "registrations": {
+          "Diesel": 424631,
+          "Diesel/Electric": 69,
+          "Diesel/Gas": 413,
+          "Electric": 969,
+          "Gas": 2206,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2456774,
+          "Petrol/Electric": 22765,
+          "Petrol/Gas": 14948,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2020,
+        "registrations": {
+          "Diesel": 441357,
+          "Diesel/Electric": 66,
+          "Diesel/Gas": 393,
+          "Electric": 2327,
+          "Gas": 1915,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2455655,
+          "Petrol/Electric": 29879,
+          "Petrol/Gas": 13206,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2021,
+        "registrations": {
+          "Diesel": 464127,
+          "Diesel/Electric": 71,
+          "Diesel/Gas": 375,
+          "Electric": 4571,
+          "Gas": 1705,
+          "Kerosine": 0,
+          "Hydrogen": 0,
+          "Petrol": 2502290,
+          "Petrol/Electric": 45348,
+          "Petrol/Gas": 12033,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2022,
+        "registrations": {
+          "Diesel": 483820,
+          "Diesel/Electric": 71,
+          "Diesel/Gas": 350,
+          "Electric": 9055,
+          "Gas": 1544,
+          "Kerosine": 1,
+          "Hydrogen": 0,
+          "Petrol": 2522079,
+          "Petrol/Electric": 61107,
+          "Petrol/Gas": 10697,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2023,
+        "registrations": {
+          "Diesel": 504683,
+          "Diesel/Electric": 75,
+          "Diesel/Gas": 333,
+          "Electric": 22981,
+          "Gas": 1399,
+          "Kerosine": 0,
+          "Hydrogen": 1,
+          "Petrol": 2559699,
+          "Petrol/Electric": 79245,
+          "Petrol/Gas": 9634,
+          "Steam": 1
+        }
+      },
+      {
+        "year": 2024,
+        "registrations": {
+          "Diesel": 525665,
+          "Diesel/Electric": 75,
+          "Diesel/Gas": 314,
+          "Electric": 44398,
+          "Gas": 1217,
+          "Kerosine": 0,
+          "Hydrogen": 3,
+          "Petrol": 2576141,
+          "Petrol/Electric": 110604,
+          "Petrol/Gas": 8560,
+          "Steam": 1
+        }
+      }
+    ],
+    "source": {
+      "title": "Queensland State of the Environment 2024 — Number of registered vehicles",
+      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
+      "dataUrl": "https://www.data.qld.gov.au/dataset/294bb52d-f920-4855-a738-362ef5d1a6a8/resource/20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28/archive/indicator-3-1-0-9-1.csv",
+      "packageId": "294bb52d-f920-4855-a738-362ef5d1a6a8",
+      "resourceId": "20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28",
+      "owner": "Queensland Department of Transport and Main Roads",
+      "publisher": "Environment, Tourism, Science and Innovation",
+      "reportPublished": "2025-09-02",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "94d012b8865e927c86dd36898f9abc9efa63765305d59b5331e85fb5fa6cfcbc",
+      "sourceRows": 70
+    }
+  },
+  "brisbaneSnapshot": {
+    "title": "Registered vehicles across 186 Brisbane City suburbs — historical snapshot, 10 October 2022",
+    "snapshotDate": "2022-10-10",
+    "rows": [
+      {
+        "suburb": "Acacia Ridge",
+        "sourceSuburb": "ACACIA RIDGE",
+        "postcode": "4110",
+        "registeredVehicles": 11730,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Albion",
+        "sourceSuburb": "ALBION",
+        "postcode": "4010",
+        "registeredVehicles": 4515,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Alderley",
+        "sourceSuburb": "ALDERLEY",
+        "postcode": "4051",
+        "registeredVehicles": 5193,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Algester",
+        "sourceSuburb": "ALGESTER",
+        "postcode": "4115",
+        "registeredVehicles": 7391,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Annerley",
+        "sourceSuburb": "ANNERLEY",
+        "postcode": "4103",
+        "registeredVehicles": 8504,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Anstead",
+        "sourceSuburb": "ANSTEAD",
+        "postcode": "4070",
+        "registeredVehicles": 2010,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Archerfield",
+        "sourceSuburb": "ARCHERFIELD",
+        "postcode": "4108",
+        "registeredVehicles": 4035,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Ascot",
+        "sourceSuburb": "ASCOT",
+        "postcode": "4007",
+        "registeredVehicles": 5350,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Ashgrove",
+        "sourceSuburb": "ASHGROVE",
+        "postcode": "4060",
+        "registeredVehicles": 10650,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Aspley",
+        "sourceSuburb": "ASPLEY",
+        "postcode": "4034",
+        "registeredVehicles": 11674,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Auchenflower",
+        "sourceSuburb": "AUCHENFLOWER",
+        "postcode": "4066",
+        "registeredVehicles": 6827,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bald Hills",
+        "sourceSuburb": "BALD HILLS",
+        "postcode": "4036",
+        "registeredVehicles": 6362,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Balmoral",
+        "sourceSuburb": "BALMORAL",
+        "postcode": "4171",
+        "registeredVehicles": 3212,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Banyo",
+        "sourceSuburb": "BANYO",
+        "postcode": "4014",
+        "registeredVehicles": 7270,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bardon",
+        "sourceSuburb": "BARDON",
+        "postcode": "4065",
+        "registeredVehicles": 7819,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bellbowrie",
+        "sourceSuburb": "BELLBOWRIE",
+        "postcode": "4070",
+        "registeredVehicles": 5041,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Belmont",
+        "sourceSuburb": "BELMONT",
+        "postcode": "4153",
+        "registeredVehicles": 4572,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Boondall",
+        "sourceSuburb": "BOONDALL",
+        "postcode": "4034",
+        "registeredVehicles": 9194,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bowen Hills",
+        "sourceSuburb": "BOWEN HILLS",
+        "postcode": "4006",
+        "registeredVehicles": 3957,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bracken Ridge",
+        "sourceSuburb": "BRACKEN RIDGE",
+        "postcode": "4017",
+        "registeredVehicles": 15716,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bridgeman Downs",
+        "sourceSuburb": "BRIDGEMAN DOWNS",
+        "postcode": "4035",
+        "registeredVehicles": 10125,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Brighton",
+        "sourceSuburb": "BRIGHTON",
+        "postcode": "4017",
+        "registeredVehicles": 9379,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Brisbane Airport",
+        "sourceSuburb": "BRISBANE AIRPORT",
+        "postcode": "4008",
+        "registeredVehicles": 21274,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Brisbane City",
+        "sourceSuburb": "BRISBANE CITY",
+        "postcode": "4000",
+        "registeredVehicles": 27432,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Brookfield",
+        "sourceSuburb": "BROOKFIELD",
+        "postcode": "4069",
+        "registeredVehicles": 3999,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Bulimba",
+        "sourceSuburb": "BULIMBA",
+        "postcode": "4171",
+        "registeredVehicles": 6544,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Burbank",
+        "sourceSuburb": "BURBANK",
+        "postcode": "4156",
+        "registeredVehicles": 1897,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Calamvale",
+        "sourceSuburb": "CALAMVALE",
+        "postcode": "4116",
+        "registeredVehicles": 12950,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Camp Hill",
+        "sourceSuburb": "CAMP HILL",
+        "postcode": "4152",
+        "registeredVehicles": 9972,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Cannon Hill",
+        "sourceSuburb": "CANNON HILL",
+        "postcode": "4170",
+        "registeredVehicles": 6938,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Carina",
+        "sourceSuburb": "CARINA",
+        "postcode": "4152",
+        "registeredVehicles": 9385,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Carina Heights",
+        "sourceSuburb": "CARINA HEIGHTS",
+        "postcode": "4152",
+        "registeredVehicles": 5616,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Carindale",
+        "sourceSuburb": "CARINDALE",
+        "postcode": "4152",
+        "registeredVehicles": 14006,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Carseldine",
+        "sourceSuburb": "CARSELDINE",
+        "postcode": "4034",
+        "registeredVehicles": 8127,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Chandler",
+        "sourceSuburb": "CHANDLER",
+        "postcode": "4155",
+        "registeredVehicles": 2558,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Chapel Hill",
+        "sourceSuburb": "CHAPEL HILL",
+        "postcode": "4069",
+        "registeredVehicles": 8164,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Chelmer",
+        "sourceSuburb": "CHELMER",
+        "postcode": "4068",
+        "registeredVehicles": 2590,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Chermside",
+        "sourceSuburb": "CHERMSIDE",
+        "postcode": "4032",
+        "registeredVehicles": 8302,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Chermside West",
+        "sourceSuburb": "CHERMSIDE WEST",
+        "postcode": "4032",
+        "registeredVehicles": 5869,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Clayfield",
+        "sourceSuburb": "CLAYFIELD",
+        "postcode": "4011",
+        "registeredVehicles": 8451,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Coopers Plains",
+        "sourceSuburb": "COOPERS PLAINS",
+        "postcode": "4108",
+        "registeredVehicles": 7747,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Coorparoo",
+        "sourceSuburb": "COORPAROO",
+        "postcode": "4151",
+        "registeredVehicles": 14687,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Corinda",
+        "sourceSuburb": "CORINDA",
+        "postcode": "4075",
+        "registeredVehicles": 4287,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Darra",
+        "sourceSuburb": "DARRA",
+        "postcode": "4076",
+        "registeredVehicles": 7073,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Deagon",
+        "sourceSuburb": "DEAGON",
+        "postcode": "4017",
+        "registeredVehicles": 3799,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Doolandella",
+        "sourceSuburb": "DOOLANDELLA",
+        "postcode": "4077",
+        "registeredVehicles": 5351,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Drewvale",
+        "sourceSuburb": "DREWVALE",
+        "postcode": "4116",
+        "registeredVehicles": 3636,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Durack",
+        "sourceSuburb": "DURACK",
+        "postcode": "4077",
+        "registeredVehicles": 5859,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Dutton Park",
+        "sourceSuburb": "DUTTON PARK",
+        "postcode": "4102",
+        "registeredVehicles": 1511,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Eagle Farm",
+        "sourceSuburb": "EAGLE FARM",
+        "postcode": "4009",
+        "registeredVehicles": 17609,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "East Brisbane",
+        "sourceSuburb": "EAST BRISBANE",
+        "postcode": "4169",
+        "registeredVehicles": 5177,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Eight Mile Plains",
+        "sourceSuburb": "EIGHT MILE PLAINS",
+        "postcode": "4113",
+        "registeredVehicles": 17882,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Ellen Grove",
+        "sourceSuburb": "ELLEN GROVE",
+        "postcode": "4078",
+        "registeredVehicles": 2660,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Enoggera",
+        "sourceSuburb": "ENOGGERA",
+        "postcode": "4051",
+        "registeredVehicles": 5604,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Enoggera Reservoir",
+        "sourceSuburb": "ENOGGERA RESERVOIR",
+        "postcode": "4520",
+        "registeredVehicles": 29,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Everton Park",
+        "sourceSuburb": "EVERTON PARK",
+        "postcode": "4053",
+        "registeredVehicles": 8462,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Fairfield",
+        "sourceSuburb": "FAIRFIELD",
+        "postcode": "4103",
+        "registeredVehicles": 2263,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Ferny Grove",
+        "sourceSuburb": "FERNY GROVE",
+        "postcode": "4055",
+        "registeredVehicles": 5071,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Fig Tree Pocket",
+        "sourceSuburb": "FIG TREE POCKET",
+        "postcode": "4069",
+        "registeredVehicles": 3821,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Fitzgibbon",
+        "sourceSuburb": "FITZGIBBON",
+        "postcode": "4018",
+        "registeredVehicles": 4362,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Forest Lake",
+        "sourceSuburb": "FOREST LAKE",
+        "postcode": "4078",
+        "registeredVehicles": 19285,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Fortitude Valley",
+        "sourceSuburb": "FORTITUDE VALLEY",
+        "postcode": "4006",
+        "registeredVehicles": 11381,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Gaythorne",
+        "sourceSuburb": "GAYTHORNE",
+        "postcode": "4051",
+        "registeredVehicles": 2890,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Geebung",
+        "sourceSuburb": "GEEBUNG",
+        "postcode": "4034",
+        "registeredVehicles": 8415,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Gordon Park",
+        "sourceSuburb": "GORDON PARK",
+        "postcode": "4031",
+        "registeredVehicles": 3497,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Graceville",
+        "sourceSuburb": "GRACEVILLE",
+        "postcode": "4075",
+        "registeredVehicles": 3563,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Grange",
+        "sourceSuburb": "GRANGE",
+        "postcode": "4051",
+        "registeredVehicles": 3641,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Greenslopes",
+        "sourceSuburb": "GREENSLOPES",
+        "postcode": "4120",
+        "registeredVehicles": 6254,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Gumdale",
+        "sourceSuburb": "GUMDALE",
+        "postcode": "4154",
+        "registeredVehicles": 2499,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Hamilton",
+        "sourceSuburb": "HAMILTON",
+        "postcode": "4007",
+        "registeredVehicles": 9248,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Hawthorne",
+        "sourceSuburb": "HAWTHORNE",
+        "postcode": "4171",
+        "registeredVehicles": 4504,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Heathwood",
+        "sourceSuburb": "HEATHWOOD",
+        "postcode": "4110",
+        "registeredVehicles": 4222,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Hemmant",
+        "sourceSuburb": "HEMMANT",
+        "postcode": "4174",
+        "registeredVehicles": 5758,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Hendra",
+        "sourceSuburb": "HENDRA",
+        "postcode": "4011",
+        "registeredVehicles": 6609,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Herston",
+        "sourceSuburb": "HERSTON",
+        "postcode": "4006",
+        "registeredVehicles": 1662,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Highgate Hill",
+        "sourceSuburb": "HIGHGATE HILL",
+        "postcode": "4101",
+        "registeredVehicles": 4220,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Holland Park",
+        "sourceSuburb": "HOLLAND PARK",
+        "postcode": "4121",
+        "registeredVehicles": 6490,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Holland Park West",
+        "sourceSuburb": "HOLLAND PARK WEST",
+        "postcode": "4121",
+        "registeredVehicles": 5482,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Inala",
+        "sourceSuburb": "INALA",
+        "postcode": "4077",
+        "registeredVehicles": 10040,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Indooroopilly",
+        "sourceSuburb": "INDOOROOPILLY",
+        "postcode": "4068",
+        "registeredVehicles": 9512,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Jamboree Heights",
+        "sourceSuburb": "JAMBOREE HEIGHTS",
+        "postcode": "4074",
+        "registeredVehicles": 2583,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Jindalee",
+        "sourceSuburb": "JINDALEE",
+        "postcode": "4074",
+        "registeredVehicles": 4843,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kalinga",
+        "sourceSuburb": "KALINGA",
+        "postcode": "4030",
+        "registeredVehicles": 1502,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kangaroo Point",
+        "sourceSuburb": "KANGAROO POINT",
+        "postcode": "4169",
+        "registeredVehicles": 7889,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Karana Downs",
+        "sourceSuburb": "KARANA DOWNS",
+        "postcode": "4306",
+        "registeredVehicles": 4438,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Karawatha",
+        "sourceSuburb": "KARAWATHA",
+        "postcode": "4117",
+        "registeredVehicles": 2791,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kedron",
+        "sourceSuburb": "KEDRON",
+        "postcode": "4031",
+        "registeredVehicles": 11680,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kelvin Grove",
+        "sourceSuburb": "KELVIN GROVE",
+        "postcode": "4059",
+        "registeredVehicles": 5426,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kenmore",
+        "sourceSuburb": "KENMORE",
+        "postcode": "4069",
+        "registeredVehicles": 8377,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kenmore Hills",
+        "sourceSuburb": "KENMORE HILLS",
+        "postcode": "4069",
+        "registeredVehicles": 2426,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Keperra",
+        "sourceSuburb": "KEPERRA",
+        "postcode": "4054",
+        "registeredVehicles": 5758,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kholo",
+        "sourceSuburb": "KHOLO",
+        "postcode": "4306",
+        "registeredVehicles": 552,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Kuraby",
+        "sourceSuburb": "KURABY",
+        "postcode": "4112",
+        "registeredVehicles": 6585,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Larapinta",
+        "sourceSuburb": "LARAPINTA",
+        "postcode": "4110",
+        "registeredVehicles": 1900,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Lota",
+        "sourceSuburb": "LOTA",
+        "postcode": "4179",
+        "registeredVehicles": 3194,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Lutwyche",
+        "sourceSuburb": "LUTWYCHE",
+        "postcode": "4030",
+        "registeredVehicles": 3373,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Lytton",
+        "sourceSuburb": "LYTTON",
+        "postcode": "4178",
+        "registeredVehicles": 1638,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Macgregor",
+        "sourceSuburb": "MACGREGOR",
+        "postcode": "4109",
+        "registeredVehicles": 4798,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mackenzie",
+        "sourceSuburb": "MACKENZIE",
+        "postcode": "4156",
+        "registeredVehicles": 1952,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Manly",
+        "sourceSuburb": "MANLY",
+        "postcode": "4179",
+        "registeredVehicles": 4598,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Manly West",
+        "sourceSuburb": "MANLY WEST",
+        "postcode": "4179",
+        "registeredVehicles": 11445,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mansfield",
+        "sourceSuburb": "MANSFIELD",
+        "postcode": "4122",
+        "registeredVehicles": 8403,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "McDowall",
+        "sourceSuburb": "MCDOWALL",
+        "postcode": "4053",
+        "registeredVehicles": 6635,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Middle Park",
+        "sourceSuburb": "MIDDLE PARK",
+        "postcode": "4074",
+        "registeredVehicles": 3176,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Milton",
+        "sourceSuburb": "MILTON",
+        "postcode": "4064",
+        "registeredVehicles": 7093,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mitchelton",
+        "sourceSuburb": "MITCHELTON",
+        "postcode": "4053",
+        "registeredVehicles": 6813,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Moggill",
+        "sourceSuburb": "MOGGILL",
+        "postcode": "4070",
+        "registeredVehicles": 4409,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Moorooka",
+        "sourceSuburb": "MOOROOKA",
+        "postcode": "4105",
+        "registeredVehicles": 11286,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Morningside",
+        "sourceSuburb": "MORNINGSIDE",
+        "postcode": "4170",
+        "registeredVehicles": 10756,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mount Coot-tha",
+        "sourceSuburb": "MOUNT COOT-THA",
+        "postcode": "4066",
+        "registeredVehicles": 60,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mount Crosby",
+        "sourceSuburb": "MOUNT CROSBY",
+        "postcode": "4306",
+        "registeredVehicles": 2323,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mount Gravatt",
+        "sourceSuburb": "MOUNT GRAVATT",
+        "postcode": "4122",
+        "registeredVehicles": 3417,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mount Gravatt East",
+        "sourceSuburb": "MOUNT GRAVATT EAST",
+        "postcode": "4122",
+        "registeredVehicles": 9346,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Mount Ommaney",
+        "sourceSuburb": "MOUNT OMMANEY",
+        "postcode": "4074",
+        "registeredVehicles": 2094,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Murarrie",
+        "sourceSuburb": "MURARRIE",
+        "postcode": "4172",
+        "registeredVehicles": 9140,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Nathan",
+        "sourceSuburb": "NATHAN",
+        "postcode": "4111",
+        "registeredVehicles": 992,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "New Farm",
+        "sourceSuburb": "NEW FARM",
+        "postcode": "4005",
+        "registeredVehicles": 8459,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Newmarket",
+        "sourceSuburb": "NEWMARKET",
+        "postcode": "4051",
+        "registeredVehicles": 3850,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Newstead",
+        "sourceSuburb": "NEWSTEAD",
+        "postcode": "4006",
+        "registeredVehicles": 9431,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Norman Park",
+        "sourceSuburb": "NORMAN PARK",
+        "postcode": "4170",
+        "registeredVehicles": 5507,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Northgate",
+        "sourceSuburb": "NORTHGATE",
+        "postcode": "4013",
+        "registeredVehicles": 6700,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Nudgee",
+        "sourceSuburb": "NUDGEE",
+        "postcode": "4014",
+        "registeredVehicles": 3950,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Nudgee Beach",
+        "sourceSuburb": "NUDGEE BEACH",
+        "postcode": "4014",
+        "registeredVehicles": 455,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Nundah",
+        "sourceSuburb": "NUNDAH",
+        "postcode": "4012",
+        "registeredVehicles": 10216,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Oxley",
+        "sourceSuburb": "OXLEY",
+        "postcode": "4075",
+        "registeredVehicles": 8020,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Paddington",
+        "sourceSuburb": "PADDINGTON",
+        "postcode": "4064",
+        "registeredVehicles": 7142,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Pallara",
+        "sourceSuburb": "PALLARA",
+        "postcode": "4110",
+        "registeredVehicles": 3945,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Parkinson",
+        "sourceSuburb": "PARKINSON",
+        "postcode": "4115",
+        "registeredVehicles": 9920,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Petrie Terrace",
+        "sourceSuburb": "PETRIE TERRACE",
+        "postcode": "4000",
+        "registeredVehicles": 919,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Pinjarra Hills",
+        "sourceSuburb": "PINJARRA HILLS",
+        "postcode": "4069",
+        "registeredVehicles": 638,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Pinkenba",
+        "sourceSuburb": "PINKENBA",
+        "postcode": "4008",
+        "registeredVehicles": 4839,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Port of Brisbane",
+        "sourceSuburb": "PORT OF BRISBANE",
+        "postcode": "4178",
+        "registeredVehicles": 2165,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Pullenvale",
+        "sourceSuburb": "PULLENVALE",
+        "postcode": "4069",
+        "registeredVehicles": 3708,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Ransome",
+        "sourceSuburb": "RANSOME",
+        "postcode": "4154",
+        "registeredVehicles": 803,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Red Hill",
+        "sourceSuburb": "RED HILL",
+        "postcode": "4059",
+        "registeredVehicles": 4041,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Richlands",
+        "sourceSuburb": "RICHLANDS",
+        "postcode": "4077",
+        "registeredVehicles": 5396,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Riverhills",
+        "sourceSuburb": "RIVERHILLS",
+        "postcode": "4074",
+        "registeredVehicles": 3469,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Robertson",
+        "sourceSuburb": "ROBERTSON",
+        "postcode": "4109",
+        "registeredVehicles": 3523,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Rochedale",
+        "sourceSuburb": "ROCHEDALE",
+        "postcode": "4123",
+        "registeredVehicles": 6119,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Rocklea",
+        "sourceSuburb": "ROCKLEA",
+        "postcode": "4106",
+        "registeredVehicles": 9028,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Runcorn",
+        "sourceSuburb": "RUNCORN",
+        "postcode": "4113",
+        "registeredVehicles": 10637,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Salisbury",
+        "sourceSuburb": "SALISBURY",
+        "postcode": "4107",
+        "registeredVehicles": 9166,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sandgate",
+        "sourceSuburb": "SANDGATE",
+        "postcode": "4017",
+        "registeredVehicles": 4582,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Seven Hills",
+        "sourceSuburb": "SEVEN HILLS",
+        "postcode": "4170",
+        "registeredVehicles": 2029,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Seventeen Mile Rocks",
+        "sourceSuburb": "SEVENTEEN MILE ROCKS",
+        "postcode": "4073",
+        "registeredVehicles": 3348,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sherwood",
+        "sourceSuburb": "SHERWOOD",
+        "postcode": "4075",
+        "registeredVehicles": 4637,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Shorncliffe",
+        "sourceSuburb": "SHORNCLIFFE",
+        "postcode": "4017",
+        "registeredVehicles": 2034,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sinnamon Park",
+        "sourceSuburb": "SINNAMON PARK",
+        "postcode": "4073",
+        "registeredVehicles": 5298,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "South Brisbane",
+        "sourceSuburb": "SOUTH BRISBANE",
+        "postcode": "4101",
+        "registeredVehicles": 9160,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Spring Hill",
+        "sourceSuburb": "SPRING HILL",
+        "postcode": "4000",
+        "registeredVehicles": 4974,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "St Lucia",
+        "sourceSuburb": "ST LUCIA",
+        "postcode": "4067",
+        "registeredVehicles": 6075,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Stafford",
+        "sourceSuburb": "STAFFORD",
+        "postcode": "4053",
+        "registeredVehicles": 6074,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Stafford Heights",
+        "sourceSuburb": "STAFFORD HEIGHTS",
+        "postcode": "4053",
+        "registeredVehicles": 5879,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Stones Corner",
+        "sourceSuburb": "STONES CORNER",
+        "postcode": "4120",
+        "registeredVehicles": 1639,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Stretton",
+        "sourceSuburb": "STRETTON",
+        "postcode": "4116",
+        "registeredVehicles": 3846,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sumner",
+        "sourceSuburb": "SUMNER",
+        "postcode": "4074",
+        "registeredVehicles": 2426,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sunnybank",
+        "sourceSuburb": "SUNNYBANK",
+        "postcode": "4109",
+        "registeredVehicles": 7392,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Sunnybank Hills",
+        "sourceSuburb": "SUNNYBANK HILLS",
+        "postcode": "4109",
+        "registeredVehicles": 13961,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Taigum",
+        "sourceSuburb": "TAIGUM",
+        "postcode": "4018",
+        "registeredVehicles": 5540,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Taringa",
+        "sourceSuburb": "TARINGA",
+        "postcode": "4068",
+        "registeredVehicles": 6208,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Tarragindi",
+        "sourceSuburb": "TARRAGINDI",
+        "postcode": "4121",
+        "registeredVehicles": 8946,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Teneriffe",
+        "sourceSuburb": "TENERIFFE",
+        "postcode": "4005",
+        "registeredVehicles": 4028,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Tennyson",
+        "sourceSuburb": "TENNYSON",
+        "postcode": "4105",
+        "registeredVehicles": 1261,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "The Gap",
+        "sourceSuburb": "THE GAP",
+        "postcode": "4061",
+        "registeredVehicles": 14660,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Tingalpa",
+        "sourceSuburb": "TINGALPA",
+        "postcode": "4173",
+        "registeredVehicles": 9733,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Toowong",
+        "sourceSuburb": "TOOWONG",
+        "postcode": "4066",
+        "registeredVehicles": 9176,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Upper Brookfield",
+        "sourceSuburb": "UPPER BROOKFIELD",
+        "postcode": "4069",
+        "registeredVehicles": 1157,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Upper Kedron",
+        "sourceSuburb": "UPPER KEDRON",
+        "postcode": "4055",
+        "registeredVehicles": 4779,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Upper Mount Gravatt",
+        "sourceSuburb": "UPPER MOUNT GRAVATT",
+        "postcode": "4122",
+        "registeredVehicles": 8733,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Virginia",
+        "sourceSuburb": "VIRGINIA",
+        "postcode": "4014",
+        "registeredVehicles": 4480,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wacol",
+        "sourceSuburb": "WACOL",
+        "postcode": "4076",
+        "registeredVehicles": 7775,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wakerley",
+        "sourceSuburb": "WAKERLEY",
+        "postcode": "4154",
+        "registeredVehicles": 7565,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wavell Heights",
+        "sourceSuburb": "WAVELL HEIGHTS",
+        "postcode": "4012",
+        "registeredVehicles": 8530,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "West End",
+        "sourceSuburb": "WEST END",
+        "postcode": "4101",
+        "registeredVehicles": 10302,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Westlake",
+        "sourceSuburb": "WESTLAKE",
+        "postcode": "4074",
+        "registeredVehicles": 4044,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Willawong",
+        "sourceSuburb": "WILLAWONG",
+        "postcode": "4110",
+        "registeredVehicles": 2199,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wilston",
+        "sourceSuburb": "WILSTON",
+        "postcode": "4051",
+        "registeredVehicles": 3097,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Windsor",
+        "sourceSuburb": "WINDSOR",
+        "postcode": "4030",
+        "registeredVehicles": 6517,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wishart",
+        "sourceSuburb": "WISHART",
+        "postcode": "4122",
+        "registeredVehicles": 8488,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Woolloongabba",
+        "sourceSuburb": "WOOLLOONGABBA",
+        "postcode": "4102",
+        "registeredVehicles": 7275,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wooloowin",
+        "sourceSuburb": "WOOLOOWIN",
+        "postcode": "4030",
+        "registeredVehicles": 2897,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wynnum",
+        "sourceSuburb": "WYNNUM",
+        "postcode": "4178",
+        "registeredVehicles": 14013,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Wynnum West",
+        "sourceSuburb": "WYNNUM WEST",
+        "postcode": "4178",
+        "registeredVehicles": 11075,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Yeerongpilly",
+        "sourceSuburb": "YEERONGPILLY",
+        "postcode": "4105",
+        "registeredVehicles": 1721,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Yeronga",
+        "sourceSuburb": "YERONGA",
+        "postcode": "4104",
+        "registeredVehicles": 5756,
+        "matchMethod": "bcc_property_postcode"
+      },
+      {
+        "suburb": "Zillmere",
+        "sourceSuburb": "ZILLMERE",
+        "postcode": "4034",
+        "registeredVehicles": 6911,
+        "matchMethod": "bcc_property_postcode"
+      }
+    ],
+    "joinAudit": {
+      "boundaryLocalities": 195,
+      "excludedMoretonBayLocalities": [
+        "BULWER",
+        "COWAN COWAN",
+        "KOORINGAL",
+        "MORETON BAY",
+        "MORETON ISLAND"
+      ],
+      "brisbaneBoundaryLocalities": 190,
+      "excludedCrossLgaLocalities": [
+        {
+          "suburb": "Banks Creek",
+          "sourceSuburb": "BANKS CREEK",
+          "postcode": "4306",
+          "registeredVehicles": 48,
+          "matchMethod": "unique_boundary_name",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        },
+        {
+          "suburb": "Chuwar",
+          "sourceSuburb": "CHUWAR",
+          "postcode": "4306",
+          "registeredVehicles": 2951,
+          "matchMethod": "bcc_property_postcode",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Ipswich City"
+          ]
+        },
+        {
+          "suburb": "England Creek",
+          "sourceSuburb": "ENGLAND CREEK",
+          "postcode": "4306",
+          "registeredVehicles": 72,
+          "matchMethod": "unique_boundary_name",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        },
+        {
+          "suburb": "Lake Manchester",
+          "sourceSuburb": "LAKE MANCHESTER",
+          "postcode": "4306",
+          "registeredVehicles": 36,
+          "matchMethod": "bcc_property_postcode",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        }
+      ],
+      "publishedUnambiguousSuburbs": 186,
+      "postcodeQualifiedMatches": 186,
+      "uniqueBoundaryNameMatches": 0,
+      "unmatchedBrisbaneSuburbs": 0,
+      "excludedSameNameOrPostcodeMismatchRows": 12,
+      "excludedRegistrationCount": 5265
+    },
+    "sources": {
+      "registrations": {
+        "title": "Queensland TMR — Vehicle registrations, by suburb",
+        "pageUrl": "https://www.data.qld.gov.au/dataset/vehicle-registrations",
+        "dataUrl": "https://www.data.qld.gov.au/dataset/6632a3a0-8cb2-41b6-9435-50f762850d72/resource/9c479cfb-8c19-4759-ad34-bc3123079b94/download/r44066_vehicle_trailers_reg_by_operator_add.csv",
+        "packageId": "6632a3a0-8cb2-41b6-9435-50f762850d72",
+        "resourceId": "9c479cfb-8c19-4759-ad34-bc3123079b94",
+        "snapshotDate": "2022-10-10",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceSha256": "b4be2e06b3cc4d5d1a6afcea1be509b58768149b2dfda09ad983ab72813f4b19",
+        "sourceRows": 6467
+      },
+      "boundaries": {
+        "title": "Brisbane City Council — Suburb Boundaries",
+        "pageUrl": "https://data.brisbane.qld.gov.au/explore/dataset/suburb-boundaries/information/",
+        "datasetId": "suburb-boundaries",
+        "updatedAt": "2025-10-19",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© Brisbane City Council 2025 © State of Queensland (Department of Resources) 2025",
+        "sourceLocalities": 195,
+        "sourceNameSha256": "1bbf221ecb637c0c821ea3c35f68196ac480524574b4bdf6947552c073881f42"
+      },
+      "postcodeReference": {
+        "title": "Brisbane City Council — Property Address locations",
+        "pageUrl": "https://data.brisbane.qld.gov.au/explore/dataset/property-address-locations/information/",
+        "datasetId": "property-address-locations",
+        "updatedAt": "2026-07-28",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© Brisbane City Council 2026",
+        "sourceSuburbPostcodePairs": 196,
+        "sourcePairSha256": "7113289420a0add0accf6c62626e124255c7fb6a7bd6b829560df4a110085339"
+      },
+      "administrativeBoundaries": {
+        "title": "Queensland Government — Administrative Boundaries, Locality layer",
+        "pageUrl": "https://www.data.qld.gov.au/dataset/locality-boundaries-queensland",
+        "dataUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer/2",
+        "packageId": "141c82e4-c1f7-4b5d-a528-e3202ae6ebaa",
+        "resourceId": "01ce1c06-ce2a-4528-8fa2-9265bdb2147d",
+        "layerName": "Locality",
+        "description": "The locality boundaries dataset is the spatial representation of bounded localities (includes suburbs) of Queensland.  These are the official locality names and boundaries used for addressing.",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development) 2026",
+        "sourceRecordsForBccNames": 200,
+        "sourcePairSha256": "949f8be8c708b8d6f39d82f6b7eb4ee2523e780b32e07de3786ae3818298f48b"
+      }
+    }
+  }
+}

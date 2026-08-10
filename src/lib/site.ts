@@ -88,6 +88,12 @@ export const SERVICES_CONTENT_UPDATED = "2026-08-07";
 /** Location hub cards and retained support pages materially updated in August 2026. */
 export const LOCATIONS_CONTENT_UPDATED = "2026-08-10";
 
+/** Official-data resource generated from fixed, source-audited inputs. */
+export const VEHICLE_DATA_CONTENT_UPDATED = "2026-08-10";
+
+/** Human-readable sitemap updated when the vehicle-data resource was added. */
+export const SITE_MAP_CONTENT_UPDATED = "2026-08-10";
+
 export const PROMISE_POINTS = [
   "Offer based on supplied details",
   "Collection window confirmed",

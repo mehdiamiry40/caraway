@@ -195,12 +195,15 @@ const nextConfig: NextConfig = {
           // integration). object-src 'none' is added as defence in depth
           // so plugins/applets cannot be embedded even if an injection
           // were to occur.
-          // In development, 'unsafe-eval' is needed for Next.js source maps
-          // and frame-ancestors is relaxed for the Replit preview pane.
+          // In development, 'unsafe-eval' is needed for Next.js source maps,
+          // Vercel Analytics loads its documented debug script from
+          // va.vercel-scripts.com, and frame-ancestors is relaxed for preview
+          // panes. Production Analytics is served from the same-origin
+          // /_vercel/insights path and does not need the external script host.
           value: [
             "default-src 'self'",
             isDev
-              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
               : "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",

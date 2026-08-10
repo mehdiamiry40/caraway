@@ -13,6 +13,8 @@ export const post: RawBlogPostEntry = {
 
     "That makes the first job description rather than negotiation. Write down what the pack has been through before you ask anyone for a number.",
 
+    "For non-commercial context, Caraway's [Queensland car fuel trends](/resources/queensland-vehicle-data#queensland-fuel-trends) charts official registered-car records from 2006 to 2024. It describes the registered fleet by fuel type, not vehicle prices, sales, demand, removals, or battery condition.",
+
     "## Describe the battery, not just the badge",
 
     "Two cars with the same badge, year, and kilometres can sit a long way apart on condition once the pack is accounted for. Record the model year and generation, the odometer reading, whether the car starts and drives, whether the hybrid or EV system warning light is lit, and whether it still takes and holds a charge. Note any stored fault codes, whether the 12-volt battery is flat, and whether the car has been sitting for months without being charged.",
@@ -63,7 +65,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-07",
-  reviewedAt: "2026-08-07",
+  updatedAt: "2026-08-10",
+  reviewedAt: "2026-08-10",
   sources: [
     {
       title: "Queensland Fire Department — electric vehicle fire safety",
@@ -80,6 +83,10 @@ export const post: RawBlogPostEntry = {
     {
       title: "Australian Government PPSR — used car and vehicle search",
       url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
+    },
+    {
+      title: "Queensland State of the Environment — number of registered vehicles",
+      url: "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
     },
   ],
   category: "Guides",

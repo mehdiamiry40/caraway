@@ -1,0 +1,162 @@
+{
+  "title": "Queensland vehicle fuel trends and a Brisbane suburb snapshot",
+  "generatedAt": "2026-08-10",
+  "methodologyVersion": 2,
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "buildScript": {
+    "path": "/data/build-queensland-vehicle-data.mjs",
+    "runtime": "Node.js 22 or later",
+    "sha256": "acdeee1285cc08369ed3aa34e6104660603376a87c444d9433325c76135511d0"
+  },
+  "fuelTrend": {
+    "filter": {
+      "vehicleType": "Cars",
+      "years": "2006–2024"
+    },
+    "source": {
+      "title": "Queensland State of the Environment 2024 — Number of registered vehicles",
+      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
+      "dataUrl": "https://www.data.qld.gov.au/dataset/294bb52d-f920-4855-a738-362ef5d1a6a8/resource/20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28/archive/indicator-3-1-0-9-1.csv",
+      "packageId": "294bb52d-f920-4855-a738-362ef5d1a6a8",
+      "resourceId": "20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28",
+      "owner": "Queensland Department of Transport and Main Roads",
+      "publisher": "Environment, Tourism, Science and Innovation",
+      "reportPublished": "2025-09-02",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sourceSha256": "94d012b8865e927c86dd36898f9abc9efa63765305d59b5331e85fb5fa6cfcbc",
+      "sourceRows": 70
+    },
+    "output": {
+      "path": "/data/queensland-car-registrations-by-fuel-2006-2024.csv",
+      "sha256": "a7b4fa5c9a5eed5bccc7c6748d16ea7aee9374b8b38e31e6f9901d151933d1ef",
+      "dataRows": 209
+    }
+  },
+  "brisbaneSnapshot": {
+    "filter": {
+      "state": "QLD",
+      "snapshotDate": "2022-10-10",
+      "geography": "Unambiguous suburb/postcode rows associated with Brisbane City"
+    },
+    "sources": {
+      "registrations": {
+        "title": "Queensland TMR — Vehicle registrations, by suburb",
+        "pageUrl": "https://www.data.qld.gov.au/dataset/vehicle-registrations",
+        "dataUrl": "https://www.data.qld.gov.au/dataset/6632a3a0-8cb2-41b6-9435-50f762850d72/resource/9c479cfb-8c19-4759-ad34-bc3123079b94/download/r44066_vehicle_trailers_reg_by_operator_add.csv",
+        "packageId": "6632a3a0-8cb2-41b6-9435-50f762850d72",
+        "resourceId": "9c479cfb-8c19-4759-ad34-bc3123079b94",
+        "snapshotDate": "2022-10-10",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "sourceSha256": "b4be2e06b3cc4d5d1a6afcea1be509b58768149b2dfda09ad983ab72813f4b19",
+        "sourceRows": 6467
+      },
+      "boundaries": {
+        "title": "Brisbane City Council — Suburb Boundaries",
+        "pageUrl": "https://data.brisbane.qld.gov.au/explore/dataset/suburb-boundaries/information/",
+        "datasetId": "suburb-boundaries",
+        "updatedAt": "2025-10-19",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© Brisbane City Council 2025 © State of Queensland (Department of Resources) 2025",
+        "sourceLocalities": 195,
+        "sourceNameSha256": "1bbf221ecb637c0c821ea3c35f68196ac480524574b4bdf6947552c073881f42"
+      },
+      "postcodeReference": {
+        "title": "Brisbane City Council — Property Address locations",
+        "pageUrl": "https://data.brisbane.qld.gov.au/explore/dataset/property-address-locations/information/",
+        "datasetId": "property-address-locations",
+        "updatedAt": "2026-07-28",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© Brisbane City Council 2026",
+        "sourceSuburbPostcodePairs": 196,
+        "sourcePairSha256": "7113289420a0add0accf6c62626e124255c7fb6a7bd6b829560df4a110085339"
+      },
+      "administrativeBoundaries": {
+        "title": "Queensland Government — Administrative Boundaries, Locality layer",
+        "pageUrl": "https://www.data.qld.gov.au/dataset/locality-boundaries-queensland",
+        "dataUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer/2",
+        "packageId": "141c82e4-c1f7-4b5d-a528-e3202ae6ebaa",
+        "resourceId": "01ce1c06-ce2a-4528-8fa2-9265bdb2147d",
+        "layerName": "Locality",
+        "description": "The locality boundaries dataset is the spatial representation of bounded localities (includes suburbs) of Queensland.  These are the official locality names and boundaries used for addressing.",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development) 2026",
+        "sourceRecordsForBccNames": 200,
+        "sourcePairSha256": "949f8be8c708b8d6f39d82f6b7eb4ee2523e780b32e07de3786ae3818298f48b"
+      }
+    },
+    "joinAudit": {
+      "boundaryLocalities": 195,
+      "excludedMoretonBayLocalities": [
+        "BULWER",
+        "COWAN COWAN",
+        "KOORINGAL",
+        "MORETON BAY",
+        "MORETON ISLAND"
+      ],
+      "brisbaneBoundaryLocalities": 190,
+      "excludedCrossLgaLocalities": [
+        {
+          "suburb": "Banks Creek",
+          "sourceSuburb": "BANKS CREEK",
+          "postcode": "4306",
+          "registeredVehicles": 48,
+          "matchMethod": "unique_boundary_name",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        },
+        {
+          "suburb": "Chuwar",
+          "sourceSuburb": "CHUWAR",
+          "postcode": "4306",
+          "registeredVehicles": 2951,
+          "matchMethod": "bcc_property_postcode",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Ipswich City"
+          ]
+        },
+        {
+          "suburb": "England Creek",
+          "sourceSuburb": "ENGLAND CREEK",
+          "postcode": "4306",
+          "registeredVehicles": 72,
+          "matchMethod": "unique_boundary_name",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        },
+        {
+          "suburb": "Lake Manchester",
+          "sourceSuburb": "LAKE MANCHESTER",
+          "postcode": "4306",
+          "registeredVehicles": 36,
+          "matchMethod": "bcc_property_postcode",
+          "localGovernmentAreas": [
+            "Brisbane City",
+            "Somerset Regional"
+          ]
+        }
+      ],
+      "publishedUnambiguousSuburbs": 186,
+      "postcodeQualifiedMatches": 186,
+      "uniqueBoundaryNameMatches": 0,
+      "unmatchedBrisbaneSuburbs": 0,
+      "excludedSameNameOrPostcodeMismatchRows": 12,
+      "excludedRegistrationCount": 5265
+    },
+    "output": {
+      "path": "/data/brisbane-registered-vehicles-by-suburb-2022.csv",
+      "sha256": "56999ccba1dbba7c5a7d07d6233bf5169e54e9d3b07b5eccf2c01d00035ca563",
+      "dataRows": 186
+    }
+  }
+}

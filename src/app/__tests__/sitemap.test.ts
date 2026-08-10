@@ -8,6 +8,7 @@ import {
 } from "@/data/blog-posts";
 import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
+import { VEHICLE_DATA_ROUTE } from "@/data/queensland-vehicle-data";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 import {
   ABOUT_CONTENT_UPDATED,
@@ -16,7 +17,9 @@ import {
   LEGAL_DATE_ISO,
   LOCATIONS_CONTENT_UPDATED,
   SERVICES_CONTENT_UPDATED,
+  SITE_MAP_CONTENT_UPDATED,
   SITE_URL,
+  VEHICLE_DATA_CONTENT_UPDATED,
 } from "@/lib/site";
 
 const entries = sitemap();
@@ -119,6 +122,19 @@ describe("sitemap.ts — page coverage", () => {
     }
   });
 
+  it("includes the official-data resource with its honest fixed date", () => {
+    const entry = entries.find(
+      (item) => item.url === `${SITE_URL}${VEHICLE_DATA_ROUTE}`,
+    );
+
+    expect(entry).toMatchObject({
+      url: `${SITE_URL}${VEHICLE_DATA_ROUTE}`,
+      lastModified: VEHICLE_DATA_CONTENT_UPDATED,
+      changeFrequency: "yearly",
+      priority: 0.7,
+    });
+  });
+
   it("uses the homepage's material rewrite date", () => {
     expect(
       entries.find((entry) => entry.url === `${SITE_URL}/`)?.lastModified,
@@ -217,5 +233,12 @@ describe("sitemap.ts — page coverage", () => {
 
     expect(privacyEntry?.lastModified).toBe(LEGAL_DATE_ISO.privacyLastUpdated);
     expect(termsEntry?.lastModified).toBe(LEGAL_DATE_ISO.termsLastUpdated);
+  });
+
+  it("updates the human sitemap when the resource link is added", () => {
+    expect(
+      entries.find((entry) => entry.url === `${SITE_URL}/site-map`)
+        ?.lastModified,
+    ).toBe(SITE_MAP_CONTENT_UPDATED);
   });
 });

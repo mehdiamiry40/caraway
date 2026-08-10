@@ -28,6 +28,7 @@ const companyLinks = [
   { label: "Contact", href: "/contact" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
+  { label: "Vehicle data", href: "/resources/queensland-vehicle-data" },
   { label: "Get a quote", href: "/#price-estimator" },
 ];
 
