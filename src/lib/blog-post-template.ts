@@ -173,9 +173,12 @@ export function validateBlogPostSeo(post: BlogPost): string[] {
     errors.push("reviewedAt must be ISO yyyy-mm-dd");
   }
 
+  const reviewDoesNotPredatePublication =
+    !post.reviewedAt || Date.parse(post.reviewedAt) >= Date.parse(post.date);
   const isFaqVisibilityRollout =
     post.updatedAt === BLOG_FAQ_ROLLOUT_DATE &&
-    getRenderableBlogFaqs(post).length > 0;
+    getRenderableBlogFaqs(post).length > 0 &&
+    reviewDoesNotPredatePublication;
   if (
     post.reviewedAt &&
     Date.parse(post.reviewedAt) < Date.parse(post.updatedAt) &&

@@ -9,6 +9,7 @@ import {
   validateBlogPostSeo,
 } from "@/lib/blog-post-template";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
+import { BLOG_FAQ_ROLLOUT_DATE } from "@/lib/blog-faqs";
 import { SITE_URL } from "@/lib/site";
 
 describe("blog post template", () => {
@@ -223,6 +224,35 @@ describe("blog post template", () => {
       relatedSuburbs: [],
     });
 
+    expect(validateBlogPostSeo(post)).toContain(
+      "reviewedAt must not be earlier than updatedAt",
+    );
+  });
+
+  it("does not let the FAQ rollout excuse a review that predates publication", () => {
+    const post = createBlogPost({
+      slug: "faq-publication-review-guard",
+      title: "FAQ Publication Review Guard for Sellers",
+      metaDescription:
+        "This realistic metadata verifies that the FAQ rollout cannot excuse a regulatory review date that predates article publication.",
+      excerpt:
+        "This realistic excerpt verifies that published sourced guidance must have been reviewed no earlier than its publication date.",
+      content: ["Opening article body.", "Second article body."],
+      faqs: [{ question: "A regulated question?", answer: "A regulated answer." }],
+      date: "2026-08-10",
+      reviewedAt: "2026-08-09",
+      sources: [
+        {
+          title: "Queensland Government",
+          url: "https://www.qld.gov.au/transport",
+        },
+      ],
+      category: "Guides",
+      relatedServices: [],
+      relatedSuburbs: [],
+    });
+
+    expect(post.updatedAt).toBe(BLOG_FAQ_ROLLOUT_DATE);
     expect(validateBlogPostSeo(post)).toContain(
       "reviewedAt must not be earlier than updatedAt",
     );
