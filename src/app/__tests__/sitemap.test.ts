@@ -95,6 +95,15 @@ describe("sitemap.ts — blog post inclusion", () => {
     expect(
       entries.find((entry) => entry.url === utePost?.canonicalUrl)?.lastModified,
     ).toBe("2026-08-11");
+
+    const paperworkPost = blogPosts.find(
+      (post) => post.slug === "what-paperwork-to-sell-a-car-qld",
+    );
+    expect(paperworkPost?.updatedAt).toBe("2026-08-11");
+    expect(
+      entries.find((entry) => entry.url === paperworkPost?.canonicalUrl)
+        ?.lastModified,
+    ).toBe("2026-08-11");
   });
 });
 

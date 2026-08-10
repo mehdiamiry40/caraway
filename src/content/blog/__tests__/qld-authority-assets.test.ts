@@ -26,9 +26,28 @@ describe("Queensland authority assets", () => {
     expect(paperwork?.content.join(" ")).toContain(
       "not a complete vehicle-history or ownership check",
     );
+    expect(paperwork).toMatchObject({
+      title: "Selling a Car in QLD: Paperwork & Seller Steps",
+      metaDescription:
+        "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
+      updatedAt: "2026-08-11",
+      reviewedAt: "2026-08-11",
+    });
+    expect(paperwork?.content[0]).toMatch(/^Selling a car in Queensland/);
+    expect(paperwork?.content.join(" ")).toContain(
+      "For a registered transfer, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520)",
+    );
+    expect(paperwork?.content.join(" ")).toContain(
+      "have the buyer sign it on the day of sale, even if they intend to transfer the registration online",
+    );
+    expect(paperwork?.content).toContain(
+      "## Seller-side transfer notification — a step many sellers miss",
+    );
+    expect(paperwork?.content.join(" ")).not.toContain("Disposal notice");
     expect(paperwork?.sources?.map((source) => source.url)).toEqual(
       expect.arrayContaining([
         "https://www.qld.gov.au/transport/buying/rules/selling",
+        "https://www.qld.gov.au/transport/registration/transfer/rego",
         "https://www.qld.gov.au/transport/buying/unregistered/uvp",
       ]),
     );

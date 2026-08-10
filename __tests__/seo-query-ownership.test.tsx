@@ -6,6 +6,10 @@ import { metadata as faqMetadata } from "@/app/faq/page";
 import { metadata as contactMetadata } from "@/app/contact/page";
 import { metadata as blogMetadata } from "@/app/blog/page";
 import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
+import {
+  buildBlogPostSeoProps,
+  generateMetadata as generateBlogPostMetadata,
+} from "@/app/blog/[slug]/metadata";
 import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
 import {
   metadata as vehicleDataMetadata,
@@ -35,6 +39,8 @@ const OLD_UTE_QUERY = /cash for old utes/i;
 const FLOODED_CAR_QUERY = /cash for (?:flooded|flood[- ]damaged) cars?/i;
 const UNREGISTERED_REMOVAL_QUERY = /unregistered car removal/i;
 const SCRAP_REMOVAL_QUERY = /scrap car removals?(?: in)? brisbane/i;
+const QLD_SELLER_QUERY =
+  /^(?:selling|how to sell) (?:a )?(?:car|vehicle)(?: in)? (?:qld|queensland)\b/i;
 
 function serviceOwnersOf(query: RegExp): string[] {
   return services
@@ -123,6 +129,77 @@ describe("primary SEO query ownership", () => {
     );
     expect(post?.relatedServices).toContain("cash-for-cars-brisbane");
     expect(post?.updatedAt).toBe("2026-08-11");
+  });
+
+  it("assigns generic Queensland seller intent to the established paperwork guide", async () => {
+    const owners = blogPosts.filter((post) =>
+      [post.title, post.metaDescription].some((value) =>
+        QLD_SELLER_QUERY.test(value),
+      ),
+    );
+    const post = owners[0];
+
+    expect(owners.map(({ slug }) => slug)).toEqual([
+      "what-paperwork-to-sell-a-car-qld",
+    ]);
+    expect(post).toBeDefined();
+    if (!post) return;
+
+    const metadata = await generateBlogPostMetadata({
+      params: Promise.resolve({ slug: post.slug }),
+    });
+    const { articleSchema } = buildBlogPostSeoProps(post);
+
+    expect(post.title).toBe(
+      "Selling a Car in QLD: Paperwork & Seller Steps",
+    );
+    expect(post.metaDescription).toBe(
+      "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
+    );
+    expect(post.content[0]).toMatch(/^Selling a car in Queensland/);
+    expect(post.title).not.toMatch(CASH_QUERY);
+    expect(post.title).not.toMatch(REMOVAL_QUERY);
+    expect(post.metaDescription).not.toMatch(CASH_QUERY);
+    expect(post.metaDescription).not.toMatch(REMOVAL_QUERY);
+    expect(metadata).toMatchObject({
+      title: post.title,
+      description: post.metaDescription,
+      alternates: { canonical: post.canonicalUrl },
+      openGraph: {
+        url: post.canonicalUrl,
+        title: post.title,
+        description: post.metaDescription,
+        modifiedTime: "2026-08-11",
+      },
+      twitter: {
+        title: post.title,
+        description: post.metaDescription,
+      },
+    });
+    expect(articleSchema).toMatchObject({
+      headline: post.title,
+      description: post.metaDescription,
+      dateModified: "2026-08-11",
+      citation: expect.arrayContaining([
+        "https://www.qld.gov.au/transport/buying/rules/selling",
+        "https://www.qld.gov.au/transport/registration/transfer/rego",
+      ]),
+    });
+    expect(post.updatedAt).toBe("2026-08-11");
+    expect(post.reviewedAt).toBe("2026-08-11");
+    expect(post.interactiveTool).toBe("qld-vehicle-sale-record-builder");
+    expect(post.content.join(" ")).toContain(
+      "[cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane)",
+    );
+    expect(post.content.join(" ")).toContain(
+      "[included-pickup terms](/car-removal-brisbane)",
+    );
+    expect(post.relatedServices).toEqual(
+      expect.arrayContaining([
+        "cash-for-cars-brisbane",
+        "car-removal-brisbane",
+      ]),
+    );
   });
 
   it("assigns the observed flooded-car query to the existing damaged-car owner", async () => {
