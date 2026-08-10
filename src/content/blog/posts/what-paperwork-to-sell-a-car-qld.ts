@@ -3,13 +3,13 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
     slug: "what-paperwork-to-sell-a-car-qld",
-    title: "Paperwork Needed to Sell a Car in QLD (2026)",
+    title: "Selling a Car in QLD: Paperwork & Seller Steps",
     metaDescription:
-      "QLD car-sale paperwork checklist for registered transfers, cancelled or unregistered vehicles. Compare certificates, TMR steps and seller records.",
+      "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
     excerpt:
       "Choose the right Queensland transaction path, then prepare the authority, certificates, TMR confirmation and signed sale record that apply.",
     content: [
-      "The paperwork needed to sell a car in Queensland depends on whether the vehicle is registered, whether its registration will transfer, the buyer type, and details such as finance, gas equipment, or written-off status. Use this as a transaction checklist, then confirm the current pathway with Transport and Main Roads (TMR) before committing to a sale.",
+      "Selling a car in Queensland starts with choosing the transaction path that applies: a registered transfer, a sale after registration cancellation, an already-unregistered sale, or a direct sale to a verified licensed motor dealer. Certificates, TMR steps, authority checks, and seller records differ by path. Use this checklist for your situation, then confirm the current requirements with Transport and Main Roads (TMR) before handover.",
 
       "## At-a-glance Queensland seller paperwork checklist",
 
@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
       "- **Resolve finance or security interests.** Obtain a current lender payout and an agreed discharge process. A PPSR search can report registered security interests and usually stolen or written-off status, but it does not identify the owner or prove authority to sell.",
 
-      "- **Gather the transfer details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, dutiable value, and odometer reading. In-person transfers use the signed Vehicle Registration Transfer Application (F3520).",
+      "- **Gather the transfer details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, dutiable value, and odometer reading. For a registered transfer, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520) and have the buyer sign it on the day of sale, even if they intend to transfer the registration online. For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B.",
 
       "- **Create the handover record.** Record the identifiable vehicle, date, parties, agreed amount and payment, registration status, keys or items handed over, and relevant condition disclosures. Both parties should sign and retain the record.",
 
@@ -75,7 +75,7 @@ export const post: RawBlogPostEntry = {
 
       "Sight identity evidence when the transaction requires it, but do not retain an unnecessary photo or scan of another person's identity document. Store the receipt and official confirmations securely.",
 
-      "## Disposal notice — a step many sellers miss",
+      "## Seller-side transfer notification — a step many sellers miss",
 
       "The seller-side TMR notification is one of the most important steps in a registered sale. Complete it through the eligible online or paper process, keep confirmation, and check that the vehicle is no longer recorded in your name. A buyer can provide transaction details or help prepare forms, but the seller should not delegate verification of this step.",
 
@@ -95,8 +95,8 @@ export const post: RawBlogPostEntry = {
     ],
     interactiveTool: "qld-vehicle-sale-record-builder",
     date: "2026-04-16",
-    updatedAt: "2026-08-07",
-    reviewedAt: "2026-08-07",
+    updatedAt: "2026-08-11",
+    reviewedAt: "2026-08-11",
     sources: [
       {
         title: "Queensland Government — selling a used vehicle",
