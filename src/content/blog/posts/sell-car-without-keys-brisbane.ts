@@ -10,31 +10,31 @@ export const post: RawBlogPostEntry = {
     "A missing key is a logistics problem before it is a money problem. Here is what it does to the collection, the quote, and the replace-or-sell maths.",
   author: "Caraway",
   content: [
-    "A missing key is a logistics problem before it becomes a money problem. You can sell a car without keys in Queensland — the transfer paperwork and the ownership record do not care how many keys are in the drawer. What changes is how the car gets off your property, and how a buyer prices replacing what has gone missing.",
+    "A missing key is a logistics problem before it becomes a money problem. Queensland's published transfer and unregistered-sale guidance does not list a working key as a transaction document. That does not prove a particular person is entitled to sell the vehicle; the seller still needs the authority and records required for their situation. What changes is how the car gets off the property and how a buyer assesses the missing key.",
 
     "## What Changes When You Sell a Car Without Keys",
 
-    "It helps to know what a key actually is on anything built in the last two decades. Behind the cut blade sits a transponder chip, and on newer cars a proximity fob talking to a receiver in the dash. The immobiliser will not release the engine unless it recognises that chip. A locksmith can cut a blank to match your barrel in a few minutes, and it will still do nothing but turn the lock.",
+    "On many modern vehicles, the cut blade and the electronic authorisation are separate. A newly cut blade may open or turn a lock while the transponder, fob or immobiliser still needs vehicle-specific programming. The available replacement method depends on the exact make, model year, variant and security system, so ask a qualified locksmith or dealer for written advice about the particular vehicle.",
 
     "So a buyer is pricing two things at once: the vehicle itself, and the cost of either coding a new key or moving the car without one. Neither is a fixed deduction — it depends on the make, the model year, and where the car is parked.",
 
     "## Replace the Key or Sell the Car As-Is",
 
-    "An all-keys-lost job is a different service from copying a spare. With one working key, a Brisbane auto locksmith can usually add a second at the kerb. With none, someone has to reach the immobiliser or body module, establish entitlement to the vehicle, and teach it new keys from nothing. On some European and late-model Japanese cars that means security data only the manufacturer's network will release, which puts the job at a dealership rather than a mobile van. Quotes vary widely by make, build year and variant, so get a written one for your exact car.",
+    "An all-keys-lost job may require different equipment and access from copying a working spare. A mobile locksmith may be able to handle some vehicles, while other security systems require a specialist or dealership process. Ask the provider what evidence of entitlement they require, what the quote includes, and whether the work can be completed where the car is parked. Quotes vary by make, build year and variant, so get a written one for the exact car.",
 
     "Then put that quote next to a whole-vehicle offer, because the choice to sell a car without keys usually turns on that one comparison. Replacing the key only makes sense on a car with a future in it. If the vehicle also needs tyres, a battery, a timing belt or rust work, a new key is the first of several bills rather than the last one. [Repair or sell your car in Brisbane](/blog/repair-or-sell-your-car-brisbane) works through that comparison, with the key cost added to the repair side of the ledger.",
 
     "## Getting a Keyless Car Off a Brisbane Driveway",
 
-    "This is where a missing key does its real damage. No key usually means the steering lock is engaged, an automatic is stuck in Park, and an electronic park brake has no way to release. The car will not roll or steer, so it cannot be pushed onto a flatbed. It has to be winched, often lifted onto skates first so the locked wheels will move at all.",
+    "This is where a missing key can complicate collection. Depending on the vehicle, the steering lock, transmission position or electronic park brake may stop it rolling or steering freely. A collection provider may need a winch, wheel skates or other equipment, but the method must be assessed for the exact vehicle and access rather than assumed in advance.",
 
     "Brisbane's housing stock makes that harder than it sounds. An under-house garage in Paddington, a battle-axe driveway in The Gap, a shared drive in Toowong or a basement car park in West End with a height limit can each rule out the tilt tray that would handle the same job on a flat block at Springwood. Measure the gate width and the overhead clearance, note the slope and the surface, and say plainly that the car has no keys before anyone is dispatched. [What a tow truck costs in Brisbane](/blog/tow-truck-cost-brisbane) explains how access and equipment feed into that number.",
 
     "## Proving the Car Is Yours to Sell",
 
-    "A key has never been proof of ownership, and its absence is not evidence of anything either. What a buyer checks is the registration record and your identification, exactly as they would with a full set of keys on the table. Confirm the current Queensland requirements for your situation, because a registered transfer, a registration cancellation and a sale of an already-unregistered vehicle each have their own steps. The [paperwork needed to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) sets those paths out separately.",
+    "A key is not proof of authority to sell, and neither is a Queensland registration certificate or registration record. Registration identifies the registered operator, not the legal owner. Resolve any joint, company, finance, insurer, estate or representative issue before handover and retain the records supporting the transaction. A PPSR search can report registered security interests and may report whether the vehicle is recorded as stolen or written off, but it does not identify the owner or prove authority to sell. Confirm the current Queensland requirements for your situation, because a registered transfer, registration cancellation and sale of an already-unregistered vehicle each have different steps. The [paperwork needed to sell a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) sets those paths out separately.",
 
-    "A car that has sat long enough to lose its keys has often lost its registration and its will to start as well. Those are separate assessments, and [selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) covers the condition details a buyer needs when the engine is part of the story.",
+    "A car with missing keys may also be unregistered or non-running. Those are separate assessments, and [selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) covers the condition details a buyer needs when the engine is part of the story.",
 
     "## What to Tell a Buyer Up Front",
 
@@ -50,7 +50,7 @@ export const post: RawBlogPostEntry = {
 
     "- Anything already removed from the vehicle, including the battery or wheels",
 
-    "Give every buyer the same description so the offers are comparable, and ask what would change the number once someone is standing in the driveway. Anyone quoting on a car without keys is quoting the access as much as the vehicle, so a quote missing that detail gets revised on the day.",
+    "Give every buyer the same description so the offers are comparable, and ask what would change the number once someone is standing in the driveway. Anyone quoting on a car without keys is assessing the access as well as the vehicle, so a quote missing that detail may be revised on the day.",
 
     `If you want Caraway to assess a car without keys, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle details, authority to sell, access, collection window and payment arrangement are confirmed for that job before anyone is dispatched.`,
   ],
@@ -58,7 +58,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Can I sell a car in Queensland if I have lost all the keys?",
       answer:
-        "Yes. Keys are not part of the ownership record, so a lost key does not stop a sale. You still need to complete the correct Queensland process for your situation — a registered transfer, a cancellation, or an unregistered sale — and prove you are entitled to sell the vehicle.",
+        "Queensland's published transfer and unregistered-sale guidance does not list a working key as a required transaction document. A missing key does not establish authority to sell, though: the seller must still resolve ownership, finance or representative issues and complete the correct registered-transfer, cancellation or unregistered-sale steps.",
     },
     {
       question: "Does a missing key lower what I am offered?",
@@ -68,15 +68,38 @@ export const post: RawBlogPostEntry = {
     {
       question: "How is a car with no keys moved?",
       answer:
-        "Usually by winching it onto a tilt tray, often after lifting the locked wheels onto skates. A steering lock, an automatic stuck in Park, or an electronic park brake that cannot release all mean the car will not roll freely, so access width, clearance and slope matter more than they would for a driveable car.",
+        "The collection provider must assess the exact vehicle and site. A steering lock, transmission position or electronic park brake may stop the car rolling freely, so a winch, wheel skates or other equipment may be needed. Access width, clearance, slope and surface should be disclosed before dispatch.",
     },
     {
       question: "Is it worth replacing the key before selling?",
       answer:
-        "Compare a written replacement quote for your exact make, model year and variant against a whole-vehicle offer as it stands. On a car that also needs tyres, a battery or major repairs, the key is rarely the last bill, so the replacement often costs more than it returns.",
+        "Compare a written replacement quote for your exact make, model year and variant against a whole-vehicle offer as it stands. On a car that also needs tyres, a battery or major repairs, a replacement key can cost more than it adds to the offer.",
     },
   ],
   date: "2026-08-10",
+  reviewedAt: "2026-08-10",
+  sources: [
+    {
+      title: "Queensland Government — selling a used vehicle",
+      url: "https://www.qld.gov.au/transport/buying/rules/selling",
+    },
+    {
+      title: "Queensland Government — transfer registration in person",
+      url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+    },
+    {
+      title: "Queensland Government — check vehicle registration",
+      url: "https://www.service.transport.qld.gov.au/checkrego/public/Welcome.xhtml",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Australian Government PPSR — used car and vehicle search",
+      url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
+    },
+  ],
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
