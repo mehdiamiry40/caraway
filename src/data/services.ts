@@ -407,9 +407,11 @@ export const services: ServicePage[] = [
   {
     slug: "damaged-cars-brisbane",
     serviceType: "Damaged vehicle buying service",
-    updatedAt: "2026-08-07",
-    title: "Damaged Cars Brisbane | Accident & Write-Off Quotes",
-    metaDescription: `Sell a damaged car in Brisbane after an accident, flood, fire, or write-off decision. Quote and pickup assessment from Caraway. Call ${BUSINESS.phoneDisplay}.`,
+    updatedAt: "2026-08-11",
+    reviewedAt: "2026-08-11",
+    title: "Cash for Flooded Cars in Brisbane | Vehicle Quotes",
+    metaDescription:
+      "Cash for flooded cars in Brisbane, plus accident, fire and write-off vehicles. Request a quote after checking ownership, insurance and written-off status.",
     h1: "Sell a Damaged Car in Brisbane",
     intro:
       "Caraway assesses accident-damaged, storm-affected, flood-damaged, fire-damaged, mechanically failed, and written-off vehicles in Brisbane. The quote and collection plan depend on the damage, vehicle identity, ownership authority, insurer or finance status, and safe access.",
@@ -428,6 +430,10 @@ export const services: ServicePage[] = [
         heading: "Flood, Fire, and Mechanical Damage",
         content:
           "Floodwater, fire, electrical faults, engine or transmission failure, and long-term exposure can create hidden hazards and change the value substantially. Describe water level, fire area, contamination, missing parts, and any professional assessment you have. Do not start a flood- or fire-affected vehicle unless a qualified person has said it is safe.",
+        supportLink: {
+          href: "/blog/sell-flood-damaged-car-brisbane#document-the-water-exposure",
+          label: "Review flood-damage safety, insurer, and sale steps",
+        },
       },
       {
         heading: "How Damage Affects the Offer",

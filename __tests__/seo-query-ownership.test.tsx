@@ -32,6 +32,7 @@ import { SITE_URL } from "@/lib/site";
 const CASH_QUERY = /cash for cars brisbane/i;
 const REMOVAL_QUERY = /car removal brisbane/i;
 const OLD_UTE_QUERY = /cash for old utes/i;
+const FLOODED_CAR_QUERY = /cash for (?:flooded|flood[- ]damaged) cars?/i;
 
 function serviceOwnersOf(query: RegExp): string[] {
   return services
@@ -120,6 +121,57 @@ describe("primary SEO query ownership", () => {
     );
     expect(post?.relatedServices).toContain("cash-for-cars-brisbane");
     expect(post?.updatedAt).toBe("2026-08-11");
+  });
+
+  it("assigns the observed flooded-car query to the existing damaged-car owner", async () => {
+    const service = getServiceBySlug("damaged-cars-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "damaged-cars-brisbane" }),
+    });
+    const floodSection = service?.sections.find(
+      ({ heading }) => heading === "Flood, Fire, and Mechanical Damage",
+    );
+
+    expect(service).toBeDefined();
+    expect(serviceOwnersOf(FLOODED_CAR_QUERY)).toEqual([
+      "damaged-cars-brisbane",
+    ]);
+    expect(
+      blogPosts
+        .filter((post) =>
+          [post.title, post.metaDescription].some((value) =>
+            FLOODED_CAR_QUERY.test(value),
+          ),
+        )
+        .map(({ slug }) => slug),
+    ).toEqual([]);
+    expect(service?.title).toMatch(FLOODED_CAR_QUERY);
+    expect(service?.metaDescription).toMatch(FLOODED_CAR_QUERY);
+    expect(String(metadata.description ?? "")).toMatch(FLOODED_CAR_QUERY);
+    expect(service?.h1).toBe("Sell a Damaged Car in Brisbane");
+    expect(service?.title).not.toMatch(CASH_QUERY);
+    expect(service?.title).not.toMatch(REMOVAL_QUERY);
+    expect(String(metadata.openGraph?.title ?? "")).toMatch(
+      FLOODED_CAR_QUERY,
+    );
+    expect(String(metadata.twitter?.title ?? "")).toMatch(
+      FLOODED_CAR_QUERY,
+    );
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/damaged-cars-brisbane",
+    );
+    expect(floodSection?.supportLink).toEqual({
+      href: "/blog/sell-flood-damaged-car-brisbane#document-the-water-exposure",
+      label: "Review flood-damage safety, insurer, and sale steps",
+    });
+    const floodSectionMarkup = renderToStaticMarkup(
+      <ServiceSectionContent section={floodSection!} />,
+    );
+    expect(floodSectionMarkup).toContain(
+      'href="/blog/sell-flood-damaged-car-brisbane#document-the-water-exposure"',
+    );
+    expect(service?.updatedAt).toBe("2026-08-11");
+    expect(service?.reviewedAt).toBe("2026-08-11");
   });
 
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
