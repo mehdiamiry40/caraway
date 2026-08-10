@@ -15,7 +15,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:watch": "vitest",
-    "audit:swarm": "node scripts/swarm-audit.mjs"
+    "audit:swarm": "node scripts/swarm-audit.mjs",
+    "data:vehicle": "node scripts/build-queensland-vehicle-data.mjs"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.55",

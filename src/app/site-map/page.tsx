@@ -6,8 +6,9 @@ import { suburbs } from "@/data/suburbs";
 import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import { SITE_URL, SITE_MAP_CONTENT_UPDATED } from "@/lib/site";
 import { blogPageCount } from "@/lib/blog-pagination";
+import { VEHICLE_DATA_ROUTE } from "@/data/queensland-vehicle-data";
 
 export const metadata: Metadata = {
   title: "Sitemap",
@@ -68,7 +69,7 @@ export default function SiteMapPage() {
             inLanguage: "en-AU",
             isPartOf: { "@id": `${SITE_URL}/#website` },
             publisher: { "@id": `${SITE_URL}/#organization` },
-            dateModified: CONTENT_DEPLOY_DATE,
+            dateModified: SITE_MAP_CONTENT_UPDATED,
           },
         ]}
       />
@@ -101,6 +102,17 @@ export default function SiteMapPage() {
                 </Link>
               </li>
             ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-5">Resources</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+            <li>
+              <Link href={VEHICLE_DATA_ROUTE} className={linkCls}>
+                Queensland vehicle fuel trends and Brisbane suburb snapshot
+              </Link>
+            </li>
           </ul>
         </section>
 
