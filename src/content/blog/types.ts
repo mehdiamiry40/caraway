@@ -21,13 +21,23 @@ export interface RawBlogPostEntry {
   content: string[];
   /** Optional client-side utility rendered after the article body. */
   interactiveTool?: BlogInteractiveTool;
+  /**
+   * Supplemental visible FAQs. They render after the article body only when
+   * `content` does not already contain an H2 named FAQ, FAQs, or Frequently
+   * asked questions. Blank or malformed runtime entries are ignored. This
+   * field never creates FAQPage structured data.
+   */
   faqs?: Array<{
     question: string;
     answer: string;
   }>;
   date: string;
   updatedAt?: string;
-  /** Date regulated or time-sensitive claims were reviewed against sources. */
+  /**
+   * Date regulated or time-sensitive claims were reviewed against sources.
+   * The validator normally requires this to cover `updatedAt`; a deliberately
+   * guarded presentation rollout may preserve the earlier truthful review date.
+   */
   reviewedAt?: string;
   /** Primary sources used for regulated or time-sensitive claims. */
   sources?: BlogSource[];

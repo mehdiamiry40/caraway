@@ -11,6 +11,10 @@ import { suburbs } from "@/data/suburbs";
 import { VEHICLE_DATA_ROUTE } from "@/data/queensland-vehicle-data";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 import {
+  BLOG_FAQ_ROLLOUT_DATE,
+  getRenderableBlogFaqs,
+} from "@/lib/blog-faqs";
+import {
   ABOUT_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
@@ -61,6 +65,29 @@ describe("sitemap.ts — blog post inclusion", () => {
     expect(entry?.lastModified).toBe(
       examplePost!.updatedAt || examplePost!.date,
     );
+  });
+
+  it("uses the FAQ rollout date only for posts gaining visible supplemental FAQs", () => {
+    const supplementalPosts = blogPosts.filter(
+      (post) => getRenderableBlogFaqs(post).length > 0,
+    );
+
+    expect(supplementalPosts).toHaveLength(22);
+    for (const post of supplementalPosts) {
+      expect(post.updatedAt, post.slug).toBe(BLOG_FAQ_ROLLOUT_DATE);
+      expect(
+        entries.find((entry) => entry.url === post.canonicalUrl)?.lastModified,
+        post.slug,
+      ).toBe(BLOG_FAQ_ROLLOUT_DATE);
+    }
+
+    const authoredPost = blogPosts.find(
+      (post) => post.slug === "cash-for-cars-vs-private-sale",
+    );
+    expect(
+      entries.find((entry) => entry.url === authoredPost?.canonicalUrl)
+        ?.lastModified,
+    ).toBe("2026-04-26");
   });
 });
 

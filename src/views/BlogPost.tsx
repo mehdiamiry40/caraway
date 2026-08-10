@@ -15,7 +15,9 @@ import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { CopyLinkButton } from "@/components/blog/CopyLinkButton";
+import { Accordion } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
+import { getRenderableBlogFaqs } from "@/lib/blog-faqs";
 import { cn } from "@/lib/utils";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
 import { canonicalServiceSlug } from "@/lib/service-consolidation";
@@ -101,6 +103,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const canonical = post.canonicalUrl;
   const shareText = post.title;
   const relatedPosts = getSmartRelatedPosts(post.slug, 3);
+  const renderableFaqs = getRenderableBlogFaqs(post);
   const showUpdated =
     post.updatedAt &&
     post.updatedAt !== post.date &&
@@ -192,6 +195,23 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             {post.interactiveTool === "qld-vehicle-sale-record-builder" ? (
               <QldVehicleSaleRecordBuilderLoader />
             ) : null}
+
+            {renderableFaqs.length > 0 && (
+              <section
+                aria-labelledby="blog-post-faq-heading"
+                className="mt-12 border-t border-border/60 pt-10"
+              >
+                <p className="eyebrow mb-4">FAQ</p>
+                <h2
+                  id="blog-post-faq-heading"
+                  className="mb-2 font-display text-2xl leading-[1.15] text-foreground sm:text-3xl lg:text-[2rem]"
+                  style={{ letterSpacing: "var(--tracking-tight)" }}
+                >
+                  Frequently asked questions
+                </h2>
+                <Accordion items={renderableFaqs} />
+              </section>
+            )}
 
             {post.sources && post.sources.length > 0 && (
               <aside className="mt-12 rounded-xl border border-border/60 bg-muted/50 p-5 sm:p-6">
