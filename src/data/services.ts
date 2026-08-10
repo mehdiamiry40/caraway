@@ -337,10 +337,11 @@ export const services: ServicePage[] = [
   {
     slug: "scrap-car-removal-brisbane",
     serviceType: "End-of-life vehicle assessment and buying service",
-    updatedAt: "2026-08-07",
-    title: "Scrap Vehicle Assessment Brisbane | Old & Junk Cars",
-    metaDescription: `Scrap vehicle assessment in Brisbane for old, junk, incomplete, and end-of-life cars. Request an individual purchase assessment. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Scrap Vehicle Assessment Brisbane — Old & Junk Cars",
+    updatedAt: "2026-08-11",
+    title: "Scrap Car Removal in Brisbane | Old & Junk Cars",
+    metaDescription:
+      "Scrap car removal in Brisbane for old, junk, incomplete, and end-of-life vehicles. Request a vehicle-specific quote; pickup is included when Caraway buys.",
+    h1: "Scrap Car Removal in Brisbane — Old & Junk Cars",
     intro:
       "Caraway assesses old, junk, incomplete, and end-of-life vehicles for purchase and collection across Greater Brisbane. The quote depends on the identifiable vehicle, remaining components, condition, location, and access. Pickup is included when Caraway buys.",
     sections: [

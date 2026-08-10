@@ -34,6 +34,7 @@ const REMOVAL_QUERY = /car removal brisbane/i;
 const OLD_UTE_QUERY = /cash for old utes/i;
 const FLOODED_CAR_QUERY = /cash for (?:flooded|flood[- ]damaged) cars?/i;
 const UNREGISTERED_REMOVAL_QUERY = /unregistered car removal/i;
+const SCRAP_REMOVAL_QUERY = /scrap car removals?(?: in)? brisbane/i;
 
 function serviceOwnersOf(query: RegExp): string[] {
   return services
@@ -233,6 +234,56 @@ describe("primary SEO query ownership", () => {
     ).toContain('href="/unregistered-cars-brisbane"');
     expect(service?.updatedAt).toBe("2026-08-11");
     expect(service?.reviewedAt).toBe("2026-08-11");
+  });
+
+  it("assigns measured scrap-car removal intent to one narrow service owner", async () => {
+    const service = getServiceBySlug("scrap-car-removal-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "scrap-car-removal-brisbane" }),
+    });
+    const collectionSection = service?.sections.find(
+      ({ heading }) => heading === "Purchase and Collection Are Separate Checks",
+    );
+
+    expect(service).toBeDefined();
+    expect(serviceOwnersOf(SCRAP_REMOVAL_QUERY)).toEqual([
+      "scrap-car-removal-brisbane",
+    ]);
+    expect(
+      blogPosts
+        .filter((post) =>
+          [post.title, post.metaDescription].some((value) =>
+            SCRAP_REMOVAL_QUERY.test(value),
+          ),
+        )
+        .map(({ slug }) => slug),
+    ).toEqual([]);
+
+    for (const value of [
+      service?.title,
+      service?.h1,
+      service?.metaDescription,
+    ]) {
+      expect(value).toMatch(SCRAP_REMOVAL_QUERY);
+      expect(value).not.toMatch(REMOVAL_QUERY);
+    }
+
+    expect(String(metadata.description ?? "")).toBe(service?.metaDescription);
+    expect(String(metadata.openGraph?.title ?? "")).toBe(service?.title);
+    expect(String(metadata.twitter?.title ?? "")).toBe(service?.title);
+    expect(metadata.alternates?.canonical).toBe(
+      "https://caraway.au/scrap-car-removal-brisbane",
+    );
+    expect(service?.serviceType).toBe(
+      "End-of-life vehicle assessment and buying service",
+    );
+    expect(collectionSection?.supportLink).toEqual({
+      href: "/car-removal-brisbane",
+      label: "See Brisbane collection and access details",
+    });
+    expect(service?.relatedServices).toContain("car-removal-brisbane");
+    expect(service?.updatedAt).toBe("2026-08-11");
+    expect(service?.reviewedAt).toBeUndefined();
   });
 
   it("assigns cash for cars Brisbane to one self-canonical service page", async () => {
