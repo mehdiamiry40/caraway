@@ -34,9 +34,10 @@ export interface SuburbPage {
 export const suburbs: SuburbPage[] = [
   {
     slug: "toowong",
-    title: "Cash for Cars Toowong | Pickup Included When We Buy",
+    updatedAt: "2026-08-10",
+    title: "Car Removal Toowong | Cash for Cars & Pickup",
     metaDescription:
-      "Request a cash-for-cars quote in Toowong and Brisbane's inner west. Pickup is included when Caraway buys, subject to access and availability.",
+      "Car removal Toowong for unregistered, damaged, or non-running cars. Request a quote; pickup is included when Caraway buys, subject to access and availability.",
     h1: "Cash for Cars Toowong",
     intro:
       "Request a quote for a car in Toowong, Auchenflower, Taringa, St Lucia, Indooroopilly, or nearby inner-west suburbs. If Caraway agrees to buy the vehicle, pickup is included and the timing and payment method are confirmed before collection.",

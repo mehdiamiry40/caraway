@@ -190,6 +190,7 @@ describe("sitemap.ts — page coverage", () => {
     const rewrittenSuburbDates = {
       kenmore: "2026-08-09",
       capalaba: "2026-08-10",
+      toowong: "2026-08-10",
     } as const;
 
     for (const [slug, updatedAt] of Object.entries(rewrittenSuburbDates)) {
