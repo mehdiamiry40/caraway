@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
+import { locationsStructuredData } from "@/app/locations/page";
 import {
   blogPosts,
   categoryMap,
@@ -13,6 +14,7 @@ import {
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   LEGAL_DATE_ISO,
+  LOCATIONS_CONTENT_UPDATED,
   SERVICES_CONTENT_UPDATED,
   SITE_URL,
 } from "@/lib/site";
@@ -166,6 +168,35 @@ describe("sitemap.ts — page coverage", () => {
     for (const s of suburbs) {
       expect(urls.has(`${SITE_URL}/locations/${s.slug}`)).toBe(true);
     }
+  });
+
+  it("uses page-specific lastModified dates for rewritten suburb pages", () => {
+    const rewrittenSuburbDates = {
+      kenmore: "2026-08-09",
+      capalaba: "2026-08-10",
+    } as const;
+
+    for (const [slug, updatedAt] of Object.entries(rewrittenSuburbDates)) {
+      expect(suburbs.find((item) => item.slug === slug)?.updatedAt).toBe(
+        updatedAt,
+      );
+      const entry = entries.find(
+        (item) => item.url === `${SITE_URL}/locations/${slug}`,
+      );
+      expect(entry?.lastModified).toBe(updatedAt);
+    }
+  });
+
+  it("uses the location hub's material-update date", () => {
+    expect(
+      entries.find((entry) => entry.url === `${SITE_URL}/locations`)
+        ?.lastModified,
+    ).toBe(LOCATIONS_CONTENT_UPDATED);
+
+    const collectionPage = locationsStructuredData.find(
+      (node) => node["@type"] === "CollectionPage",
+    ) as Record<string, unknown> | undefined;
+    expect(collectionPage?.dateModified).toBe(LOCATIONS_CONTENT_UPDATED);
   });
 
   it("uses the declared material-update date for the About page", () => {

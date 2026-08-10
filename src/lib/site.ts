@@ -85,6 +85,9 @@ export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-07";
 /** Service catalogue materially consolidated and retitled in August 2026. */
 export const SERVICES_CONTENT_UPDATED = "2026-08-07";
 
+/** Location hub cards and retained support pages materially updated in August 2026. */
+export const LOCATIONS_CONTENT_UPDATED = "2026-08-10";
+
 export const PROMISE_POINTS = [
   "Offer based on supplied details",
   "Collection window confirmed",
