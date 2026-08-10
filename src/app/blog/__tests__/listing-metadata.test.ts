@@ -1,7 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { metadata as blogIndexMetadata } from "@/app/blog/page";
 import { generateMetadata as categoryMetadata } from "@/app/blog/category/[category]/page";
-import { generateMetadata as pagedMetadata } from "@/app/blog/page/[page]/page";
+import {
+  generateMetadata as pagedMetadata,
+  generateStaticParams as pagedStaticParams,
+} from "@/app/blog/page/[page]/page";
+import sitemap from "@/app/sitemap";
+import { blogPosts } from "@/data/blog-posts";
+import {
+  BLOG_ARCHIVE_PAGE_LIMIT,
+  BLOG_PAGE_SIZE,
+  blogPageCount,
+} from "@/lib/blog-pagination";
+import { SITE_URL } from "@/lib/site";
 
 type SocialMeta = { images?: unknown; card?: string } | null | undefined;
 
@@ -39,5 +50,21 @@ describe("blog listing metadata", () => {
     });
     expect(meta.openGraph).toBeDefined();
     expectTextOnlyPreview(meta);
+  });
+
+  it("keeps the first retired page outside the live archive with one-post headroom", () => {
+    const livePagedRoutes = pagedStaticParams().map(({ page }) => Number(page));
+    const firstRetiredUrl = `${SITE_URL}/blog/page/${BLOG_ARCHIVE_PAGE_LIMIT + 1}`;
+
+    expect(blogPageCount()).toBeLessThanOrEqual(BLOG_ARCHIVE_PAGE_LIMIT);
+    expect(blogPosts.length + 1).toBeLessThanOrEqual(
+      1 + BLOG_ARCHIVE_PAGE_LIMIT * BLOG_PAGE_SIZE,
+    );
+    expect(livePagedRoutes.every((page) => page <= BLOG_ARCHIVE_PAGE_LIMIT)).toBe(
+      true,
+    );
+    expect(
+      sitemap().some((entry) => entry.url === firstRetiredUrl),
+    ).toBe(false);
   });
 });

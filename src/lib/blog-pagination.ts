@@ -1,5 +1,8 @@
 import { blogPosts } from "@/data/blog-posts";
 
+/** Archive pages beyond this limit are retired Search Console aliases. */
+export const BLOG_ARCHIVE_PAGE_LIMIT = 3;
+
 /** Grid posts per page; the newest article is featured separately on page 1. */
 export const BLOG_PAGE_SIZE = 14;
 
