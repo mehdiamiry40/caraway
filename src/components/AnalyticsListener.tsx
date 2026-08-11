@@ -29,7 +29,10 @@ export function AnalyticsListener() {
         trackEvent("email_click", { location });
         return;
       }
-      if (href === BUSINESS.googleBusinessUrl) {
+      if (
+        href === BUSINESS.googleBusinessUrl ||
+        href === BUSINESS.googleReviewUrl
+      ) {
         trackEvent("google_business_click", { location });
         return;
       }
