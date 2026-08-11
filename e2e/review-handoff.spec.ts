@@ -1,9 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-const googleProfileUrl =
-  "https://www.google.com/maps?cid=2357564394766220919";
+const googleReviewUrl =
+  "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b9145f7c7992573:0x20b7c0537d263e77!12e1";
 
-test("review handoff is unlisted, neutral and points to the configured profile", async ({
+test("review handoff is unlisted, neutral and points to the verified review action", async ({
   page,
 }) => {
   const response = await page.goto("/review", { waitUntil: "networkidle" });
@@ -32,8 +32,8 @@ test("review handoff is unlisted, neutral and points to the configured profile",
     "summary",
   );
 
-  const handoff = page.getByRole("link", { name: "Open Caraway on Google" });
-  await expect(handoff).toHaveAttribute("href", googleProfileUrl);
+  const handoff = page.getByRole("link", { name: "Write a review on Google" });
+  await expect(handoff).toHaveAttribute("href", googleReviewUrl);
   await expect(handoff).toHaveAttribute("target", "_blank");
   await expect(handoff).toHaveAttribute("rel", "noopener noreferrer");
   await expect(handoff).toHaveAttribute(

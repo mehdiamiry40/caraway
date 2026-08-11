@@ -95,24 +95,24 @@ describe("AnalyticsListener", () => {
       <>
         <AnalyticsListener />
         <a
-          href={BUSINESS.googleBusinessUrl}
-          data-track-label="Caraway on Google"
+          href={BUSINESS.googleReviewUrl}
+          data-track-label="Google review"
           data-track-location="review_handoff"
           onClick={(event) => event.preventDefault()}
         >
-          Open Caraway on Google
+          Write a review on Google
         </a>
       </>,
     );
 
-    fireEvent.click(screen.getByText("Open Caraway on Google"));
+    fireEvent.click(screen.getByText("Write a review on Google"));
 
     expect(trackEventMock).toHaveBeenCalledOnce();
     expect(trackEventMock).toHaveBeenCalledWith("google_business_click", {
       location: "review_handoff",
     });
     expect(JSON.stringify(trackEventMock.mock.calls)).not.toMatch(
-      /cid=|https?:\/\/|phone|email|registration|vin/i,
+      /cid=|!1s|https?:\/\/|phone|email|registration|vin/i,
     );
   });
 });

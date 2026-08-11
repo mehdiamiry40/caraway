@@ -75,21 +75,21 @@ export default function ReviewPage() {
 
           <div className="rounded-md border border-border/60 bg-background p-6 sm:p-8">
             <h2 className="font-display text-2xl leading-tight text-foreground">
-              Open the Caraway profile
+              Review Caraway on Google
             </h2>
             <ol className="mt-5 list-decimal space-y-3 pl-5 leading-relaxed text-muted-foreground marker:font-semibold marker:text-primary">
-              <li>Open Caraway&apos;s listing on Google.</li>
-              <li>Use the review option on the listing and sign in if asked.</li>
+              <li>Open Google&apos;s review form for Caraway.</li>
+              <li>Sign in to your Google Account if asked.</li>
               <li>Describe only your own genuine experience.</li>
             </ol>
 
             <TrackedOutboundLink
-              href={BUSINESS.googleBusinessUrl}
-              label="Caraway on Google"
+              href={BUSINESS.googleReviewUrl}
+              label="Google review"
               location="review_handoff"
               className={`${buttonVariants({ size: "lg" })} mt-7 inline-flex gap-2`}
             >
-              Open Caraway on Google
+              Write a review on Google
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only">(opens in a new tab)</span>
             </TrackedOutboundLink>

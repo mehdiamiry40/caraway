@@ -24,6 +24,9 @@ export const BUSINESS = {
   location: "Brisbane, QLD",
   locationDetail: "Including Logan, Ipswich, Moreton Bay & Redlands",
   googleBusinessUrl: "https://www.google.com/maps?cid=2357564394766220919",
+  /** Official Google Maps writeAReviewUri for the same listing/CID. */
+  googleReviewUrl:
+    "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b9145f7c7992573:0x20b7c0537d263e77!12e1",
 } as const;
 
 export const MIN_PRICE = 200;
@@ -31,7 +34,7 @@ export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-08-09",
+  privacyLastUpdated: "2026-08-11",
   termsLastUpdated: "2026-08-07",
 } as const;
 

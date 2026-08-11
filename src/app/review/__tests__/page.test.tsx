@@ -44,16 +44,31 @@ describe("review handoff", () => {
     expect(urls).not.toContain(`${SITE_URL}/review`);
   });
 
-  it("uses the configured Google profile as a safe, tracked handoff", () => {
+  it("uses the verified Google review action as a safe, tracked handoff", () => {
     const markup = renderToStaticMarkup(<ReviewPage />);
 
-    expect(markup).toContain(`href="${BUSINESS.googleBusinessUrl}"`);
+    expect(markup).toContain(`href="${BUSINESS.googleReviewUrl}"`);
     expect(markup).toContain('target="_blank"');
     expect(markup).toContain('rel="noopener noreferrer"');
     expect(markup).toContain('data-track-location="review_handoff"');
-    expect(markup).toContain("Open Caraway on Google");
+    expect(markup).toContain("Write a review on Google");
     expect(markup).toContain("(opens in a new tab)");
-    expect(new URL(BUSINESS.googleBusinessUrl).protocol).toBe("https:");
+
+    const reviewUrl = new URL(BUSINESS.googleReviewUrl);
+    expect(reviewUrl.protocol).toBe("https:");
+    expect(reviewUrl.hostname).toBe("www.google.com");
+    expect(reviewUrl.pathname).toMatch(/^\/maps\/place\/\/data=/);
+    expect(reviewUrl.pathname).toMatch(/!12e1$/);
+
+    const featureId = BUSINESS.googleReviewUrl.match(
+      /!1s0x[0-9a-f]+:0x([0-9a-f]+)!12e1$/i,
+    );
+    const configuredCid = new URL(BUSINESS.googleBusinessUrl).searchParams.get(
+      "cid",
+    );
+    expect(featureId).not.toBeNull();
+    expect(configuredCid).not.toBeNull();
+    expect(BigInt(`0x${featureId?.[1]}`).toString()).toBe(configuredCid);
   });
 
   it("asks neutrally for genuine feedback and protects customer privacy", () => {

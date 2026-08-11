@@ -63,7 +63,7 @@ export default function Privacy() {
               <li><strong>Quote delivery</strong> — to prepare and send you a valuation based on the details you provide.</li>
               <li><strong>Pickup coordination</strong> — to arrange a suitable time and location with you and our tow operator.</li>
               <li><strong>Transaction paperwork</strong> — to prepare receipts and assist with the Queensland Transport and Main Roads (TMR) steps relevant to the sale.</li>
-              <li><strong>Follow-up</strong> — to confirm you were satisfied with our service and, where you consent, to request a review.</li>
+              <li><strong>Follow-up</strong> — to confirm the transaction is complete and, where you consent, invite eligible completed customers to share honest feedback. We do not condition the invitation on satisfaction or ask for a particular rating.</li>
               <li><strong>Legal and record-keeping obligations</strong> — including records required for vehicle transfer and tax.</li>
             </ul>
             <p className="mt-3">We do not sell your personal information.</p>
