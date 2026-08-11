@@ -74,6 +74,28 @@ describe("Queensland authority assets", () => {
     );
   });
 
+  it("keeps the dedicated transfer guide aligned with current F3520 advice", () => {
+    const transfer = blogPosts.find(
+      (post) => post.slug === "how-to-transfer-car-ownership-qld",
+    );
+    const content = transfer?.content.join(" ") ?? "";
+
+    expect(transfer).toMatchObject({
+      updatedAt: "2026-08-11",
+      reviewedAt: "2026-08-11",
+    });
+    expect(content).toContain(
+      "Even if the seller intends to transfer the registration online, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520)",
+    );
+    expect(content).toContain("have the buyer sign it on the day of sale");
+    expect(content).toContain(
+      "For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B",
+    );
+    expect(transfer?.sources?.map((source) => source.url)).toContain(
+      "https://www.qld.gov.au/transport/registration/transfer/rego",
+    );
+  });
+
   it("source-reviews the unregistered-street-parking guidance", () => {
     const parking = blogPosts.find(
       (post) => post.slug === "park-unregistered-car-street-qld",
