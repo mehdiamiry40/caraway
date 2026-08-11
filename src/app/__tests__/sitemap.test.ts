@@ -72,7 +72,7 @@ describe("sitemap.ts — blog post inclusion", () => {
       (post) => getRenderableBlogFaqs(post).length > 0,
     );
 
-    expect(supplementalPosts).toHaveLength(22);
+    expect(supplementalPosts).toHaveLength(23);
     for (const post of supplementalPosts) {
       expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
       expect(

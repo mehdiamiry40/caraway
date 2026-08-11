@@ -84,18 +84,18 @@ describe("blog FAQ rendering guard", () => {
     }
   });
 
-  it("dates the 22 posts gaining 80 visible supplemental FAQs no earlier than rollout", () => {
+  it("dates every post with visible supplemental FAQs no earlier than rollout", () => {
     const supplementalPosts = blogPosts.filter(
       (post) => getRenderableBlogFaqs(post).length > 0,
     );
 
-    expect(supplementalPosts).toHaveLength(22);
+    expect(supplementalPosts).toHaveLength(23);
     expect(
       supplementalPosts.reduce(
         (count, post) => count + getRenderableBlogFaqs(post).length,
         0,
       ),
-    ).toBe(80);
+    ).toBe(84);
     for (const post of supplementalPosts) {
       expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
     }

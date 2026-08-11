@@ -1,3 +1,4 @@
+import { post as postTowAccess } from "./tow-truck-access-brisbane";
 import { post as postNoKeys } from "./sell-car-without-keys-brisbane";
 import { post as post4wd } from "./sell-4wd-brisbane";
 import { post as postVan } from "./sell-van-brisbane";
@@ -46,6 +47,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postTowAccess,
   postNoKeys,
   post4wd,
   postVan,
