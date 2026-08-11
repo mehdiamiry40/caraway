@@ -10,7 +10,7 @@ export const post: RawBlogPostEntry = {
     content: [
       "The everyday phrase 'transfer car ownership' usually refers to changing the Queensland registration record, but a registration certificate or record is not proof of legal ownership. Caraway's [historical Brisbane suburb registration snapshot](/resources/queensland-vehicle-data#brisbane-suburb-snapshot) is an aggregate example of that distinction: it counts registered-vehicle rows, not owners, sales, or transfers. Whether you're selling privately, directly to a dealer, or to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), confirm the transaction path, authority to sell, and registration steps that apply. An incomplete record change can leave the old operator dealing with toll, infringement, registration, or other disputes after handover.",
       "## The QLD transfer paperwork: forms and fees",
-      "Queensland offers online and in-person transfer pathways. In the eligible online process, the seller transfers the registration out first and TMR says this must be done within 14 days; the buyer then finalises it. For an in-person transfer, both parties sign the Vehicle Registration Transfer Application (F3520), the buyer lodges Part A, and the seller keeps Part B. TMR recommends the seller lodge Part B if the buyer does not finish the transfer. Online eligibility depends on the registration, buyer, and plate type.",
+      "Queensland offers online and in-person transfer pathways. In the eligible online process, the seller transfers the registration out of their name first and the buyer then finalises it. TMR says the registration must be transferred within 14 days of sale. Even if the seller intends to transfer the registration online, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520) and have the buyer sign it on the day of sale. For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B. If the buyer does not finish the transfer, TMR recommends that the seller lodge Part B in person or use the online transfer if eligible. Online eligibility depends on the registration, buyer, and plate type.",
       "The buyer finalises the transfer and pays the current transfer fee and any vehicle registration duty that applies. These amounts can change and duty depends on the vehicle and transaction, so use the current TMR service or fee information rather than relying on an old flat-rate example.",
       "A current safety certificate is generally needed to transfer a registered light vehicle unless an exemption applies or the vehicle is being sold through a pathway that does not require one. The seller is responsible for obtaining and giving the required certificate; the buyer should not be told to sort it out after a normal registered private sale.",
       "## What the seller needs to hand over",
@@ -26,8 +26,8 @@ export const post: RawBlogPostEntry = {
       "Transferring car ownership in QLD is manageable, but skipping steps can create problems weeks or months later. Whether you're selling a near-new sedan in Paddington or an older ute in [Logan](/locations/logan), complete the seller-side process yourself and retain the TMR confirmation even if a buyer helps prepare the paperwork.",
     ],
     date: "2026-04-02",
-    updatedAt: "2026-08-10",
-    reviewedAt: "2026-08-10",
+    updatedAt: "2026-08-11",
+    reviewedAt: "2026-08-11",
     sources: [
       {
         title: "Queensland Government — transfer registration online",
