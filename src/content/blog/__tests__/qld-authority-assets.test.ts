@@ -122,4 +122,41 @@ describe("Queensland authority assets", () => {
     expect(content).not.toContain("Queensland Government says it is an offence");
     expect(content).not.toMatch(/demerit points/i);
   });
+
+  it("keeps recovered-stolen-vehicle guidance qualified and source-backed", () => {
+    const recovered = blogPosts.find(
+      (post) => post.slug === "stolen-car-recovered-qld",
+    );
+    const content = recovered?.content.join(" ") ?? "";
+
+    expect(recovered?.reviewedAt).toBe("2026-08-13");
+    expect(recovered?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.police.qld.gov.au/stolen-vehicles",
+        "https://www.police.qld.gov.au/initiatives/towing-motor-vehicles-scheme",
+        "https://www.police.qld.gov.au/initiatives/towing-of-motor-vehicles-scheme/towing-of-motor-vehicles-scheme-faqs",
+        "https://www.police.qld.gov.au/initiatives/towing-motor-vehicles-scheme/towing-reimbursement-form",
+        "https://www.qld.gov.au/transport/vehicle-safety/written-off-vehicles/how-scheme-works",
+        "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search/concerned-used-car-search-result",
+      ]),
+    );
+    expect(content).toContain(
+      "do not place every insurer-assessed loss on the written-off vehicle register",
+    );
+    expect(content).toContain(
+      "If a search still reports the vehicle as stolen after recovery",
+    );
+    expect(content).toContain(
+      "does not cover storage after two business days following release",
+    );
+    expect(content).toContain(
+      "remain active, meaning it has not been withdrawn",
+    );
+    expect(content).not.toMatch(/Most turn up|almost none/i);
+    expect(content).not.toMatch(/rarely comes back the way it left/i);
+    expect(content).not.toContain("Toowong car park");
+    expect(content).not.toContain(
+      "A stolen car recovered in poor shape starts costing money the day",
+    );
+  });
 });
