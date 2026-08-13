@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Privacy from "@/views/Privacy";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
+import {
+  LEGAL_DATE_ISO,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -15,14 +19,21 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Caraway",
     description:
       "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
+    images: [
+      {
+        url: "/images/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: SHARED_PICKUP_IMAGE_ALT,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Privacy Policy | Caraway",
     description:
       "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
-    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

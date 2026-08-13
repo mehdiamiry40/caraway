@@ -6,7 +6,12 @@ import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { services } from "@/data/services";
-import { BUSINESS, SERVICES_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
+import {
+  BUSINESS,
+  SERVICES_CONTENT_UPDATED,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -23,9 +28,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/tow-truck-hero.webp",
-        width: 1200,
+        width: 800,
         height: 800,
-        alt: "Vehicle buying services in Brisbane",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/tow-truck-hero.webp",
-        alt: "Vehicle buying services in Brisbane",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },

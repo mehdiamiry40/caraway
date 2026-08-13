@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import About from "@/views/About";
-import { ABOUT_CONTENT_UPDATED, BUSINESS, SITE_URL } from "@/lib/site";
+import {
+  ABOUT_CONTENT_UPDATED,
+  BUSINESS,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -16,14 +21,21 @@ export const metadata: Metadata = {
     title: "About Caraway — Brisbane Vehicle Buyer",
     description:
       "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
+    images: [
+      {
+        url: "/images/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: SHARED_PICKUP_IMAGE_ALT,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "About Caraway — Brisbane Vehicle Buyer",
     description:
       "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
-    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 
@@ -51,8 +63,8 @@ export default function AboutPage() {
             primaryImageOfPage: {
               "@type": "ImageObject",
               url: `${SITE_URL}/images/tow-truck-hero.webp`,
-              width: 1200,
-              height: 630,
+              width: 800,
+              height: 800,
             },
           },
         ]}

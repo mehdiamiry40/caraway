@@ -1,6 +1,10 @@
 /** Canonical public site origin (matches the live production redirect target). */
 export const SITE_URL = "https://caraway.au";
 
+/** Literal description of the shared flatbed social image. */
+export const SHARED_PICKUP_IMAGE_ALT =
+  "Silver sedan being transported on a flatbed truck";
+
 /** Centralised business contact details — import these instead of hard-coding. */
 export const BUSINESS = {
   name: "Caraway",
@@ -73,8 +77,8 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
  *  the dedicated service pages can own the two primary commercial queries. */
 export const HOME_CONTENT_UPDATED = "2026-08-09";
 
-/** Business identity and operating-terms copy materially reviewed in August 2026. */
-export const ABOUT_CONTENT_UPDATED = "2026-08-09";
+/** About-page identity copy and primary-image schema last reviewed in August 2026. */
+export const ABOUT_CONTENT_UPDATED = "2026-08-13";
 
 /** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
 export const FAQ_CONTENT_UPDATED = "2026-08-07";

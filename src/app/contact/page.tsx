@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Contact from "@/views/Contact";
-import { BUSINESS, SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import {
+  BUSINESS,
+  CONTENT_DEPLOY_DATE,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Caraway | Phone, Email and Quote Enquiries",
@@ -13,13 +18,20 @@ export const metadata: Metadata = {
     url: "/contact",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
     description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Contact Caraway in Brisbane" }],
+    images: [
+      {
+        url: "/images/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: SHARED_PICKUP_IMAGE_ALT,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
     description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
-    images: [{ url: "/images/og-card.jpg", alt: "Contact Caraway in Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 
