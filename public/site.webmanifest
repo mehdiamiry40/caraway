@@ -1,7 +1,7 @@
 {
-  "name": "Caraway — Cash for Cars Brisbane",
+  "name": "Caraway — Brisbane Vehicle Buyer",
   "short_name": "Caraway",
-  "description": "Cash for cars Brisbane: fair quotes, free removal, and payment on pickup.",
+  "description": "Brisbane vehicle buyer offering vehicle-specific quotes. Pickup is included when Caraway buys, subject to vehicle details, access, and availability.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
