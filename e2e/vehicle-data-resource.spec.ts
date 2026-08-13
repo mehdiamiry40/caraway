@@ -6,6 +6,10 @@ const socialImage =
   "https://caraway.au/images/queensland-vehicle-data-open-data-v1.png";
 const brisbanePreview =
   "https://caraway.au/images/brisbane-registered-vehicle-snapshot-v1.png";
+const VEHICLE_DATA_SOCIAL_IMAGE_ALT =
+  "Caraway open-data graphic for Queensland registered cars by fuel type, 2006–2024. Electric records increase from 1 to 44,398 and Petrol/Electric records from 102 to 110,604.";
+const BRISBANE_REUSE_IMAGE_ALT =
+  "Caraway open-data graphic for a historical Brisbane City registered-vehicle snapshot dated 10 October 2022, containing 186 unambiguous suburb and postcode rows.";
 
 test("vehicle-data resource is indexable, self-canonical, and downloadable", async ({
   page,
@@ -53,13 +57,46 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
       name: "Download historical Brisbane suburb-snapshot graphic (PNG, 800 × 800)",
     }),
   ).toHaveAttribute("download", "");
+  const imageReuseSection = page.locator("#image-reuse-license");
+  await expect(imageReuseSection).toBeVisible();
+  await expect(imageReuseSection.locator("img")).toHaveCount(2);
+  await expect(
+    imageReuseSection.locator(`img[alt="${VEHICLE_DATA_SOCIAL_IMAGE_ALT}"]`),
+  ).toBeVisible();
+  await expect(
+    imageReuseSection.locator(`img[alt="${BRISBANE_REUSE_IMAGE_ALT}"]`),
+  ).toBeVisible();
+  await expect(
+    imageReuseSection.getByRole("link", {
+      name: "Creative Commons Attribution 4.0",
+    }),
+  ).toHaveAttribute("href", "https://creativecommons.org/licenses/by/4.0/");
 
   const jsonLd = await page
     .locator('script[type="application/ld+json"]')
     .allTextContents();
   const combinedJsonLd = jsonLd.join("\n");
+  const structuredNodes = jsonLd.flatMap((value) => {
+    const parsed = JSON.parse(value) as
+      | Record<string, unknown>
+      | Record<string, unknown>[];
+    return Array.isArray(parsed) ? parsed : [parsed];
+  });
+  const resourceImages = structuredNodes.filter(
+    (node) =>
+      node["@type"] === "ImageObject" &&
+      String(node["@id"]).startsWith(`${canonical}#`),
+  );
   expect(combinedJsonLd).toContain('"@type":"CollectionPage"');
   expect(combinedJsonLd.match(/"@type":"Dataset"/g)).toHaveLength(2);
+  expect(resourceImages).toHaveLength(2);
+  expect(combinedJsonLd).toContain(
+    `"acquireLicensePage":"${canonical}#image-reuse-license"`,
+  );
+  expect(combinedJsonLd).toContain(
+    '"license":"https://creativecommons.org/licenses/by/4.0/"',
+  );
+  expect(combinedJsonLd).toContain('"creditText":"Caraway graphic.');
   expect(combinedJsonLd).not.toMatch(/"@type":"(?:Service|LocalBusiness|FAQPage)"/);
 
   const fuelCsv = await page.request.get(

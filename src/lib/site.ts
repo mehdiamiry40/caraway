@@ -98,7 +98,7 @@ export const LOCATIONS_CONTENT_UPDATED = "2026-08-10";
 /** Official-data resource first published from its fixed source-audited inputs. */
 export const VEHICLE_DATA_CONTENT_PUBLISHED = "2026-08-10";
 
-/** Official-data resource page last materially updated. Dataset dates remain data-owned. */
+/** Official-data resource page and derived-dataset packaging last materially updated. */
 export const VEHICLE_DATA_CONTENT_UPDATED = "2026-08-13";
 
 /** Human-readable sitemap updated when the vehicle-data resource was added. */

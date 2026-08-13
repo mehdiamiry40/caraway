@@ -108,9 +108,19 @@ describe("Queensland vehicle-data resource page", () => {
     );
     expect(markup).toContain("historical 10 October 2022");
     expect(markup).toContain("not a current fleet estimate");
+    expect(markup).toContain('id="image-reuse-license"');
+    expect(markup.match(/<img\b/g)).toHaveLength(2);
     for (const image of [VEHICLE_DATA_SOCIAL_IMAGE, BRISBANE_REUSE_THUMBNAIL]) {
       expect(markup).toContain(`href="${image.src}" download=""`);
+      expect(markup).toContain(`alt="${image.alt}"`);
+      expect(markup).toContain(`width="${image.width}"`);
+      expect(markup).toContain(`height="${image.height}"`);
     }
+    expect(markup).toContain("Caraway releases these two PNG summaries under");
+    expect(markup).toContain("Fuel-trends graphic:");
+    expect(markup).toContain("Brisbane snapshot graphic:");
+    expect(markup).toContain("credit Caraway and the named source licensors");
+    expect(markup).toContain("changes made");
     expect(markup).toContain("--output-root /path/to/caraway");
     expect(markup).toContain("Bulwer, Cowan Cowan, Kooringal, Moreton Bay");
     expect(markup).toContain("alternative same-name or postcode-mismatch");
@@ -118,43 +128,71 @@ describe("Queensland vehicle-data resource page", () => {
     expect(markup).toContain('rel="noopener noreferrer"');
   });
 
-  it("emits one CollectionPage and two independently scoped Dataset nodes", () => {
+  it("emits licensed ImageObjects and two independently scoped Dataset nodes", () => {
     expect(vehicleDataStructuredData.map((node) => node["@type"])).toEqual([
       "BreadcrumbList",
       "CollectionPage",
+      "ImageObject",
+      "ImageObject",
       "Dataset",
       "Dataset",
     ]);
 
     const collection = vehicleDataStructuredData[1];
-    const fuelDataset = vehicleDataStructuredData[2];
-    const brisbaneDataset = vehicleDataStructuredData[3];
+    const fuelImage = vehicleDataStructuredData[2];
+    const brisbaneImage = vehicleDataStructuredData[3];
+    const fuelDataset = vehicleDataStructuredData[4];
+    const brisbaneDataset = vehicleDataStructuredData[5];
     expect(collection).toMatchObject({
       "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#webpage`,
       url: `${SITE_URL}${VEHICLE_DATA_ROUTE}`,
       datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
       dateModified: VEHICLE_DATA_CONTENT_UPDATED,
       primaryImageOfPage: {
-        "@type": "ImageObject",
-        "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#primaryimage`,
-        url: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
-        contentUrl: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
-        width: VEHICLE_DATA_SOCIAL_IMAGE.width,
-        height: VEHICLE_DATA_SOCIAL_IMAGE.height,
-        caption: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+        "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#queensland-fuel-image`,
       },
+      image: [
+        { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#queensland-fuel-image` },
+        { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#brisbane-suburb-image` },
+      ],
       thumbnailUrl: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
       hasPart: [
         { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#queensland-fuel-dataset` },
         { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#brisbane-suburb-dataset` },
       ],
     });
+    for (const [imageNode, image, id] of [
+      [fuelImage, VEHICLE_DATA_SOCIAL_IMAGE, "queensland-fuel-image"],
+      [brisbaneImage, BRISBANE_REUSE_THUMBNAIL, "brisbane-suburb-image"],
+    ] as const) {
+      expect(imageNode).toMatchObject({
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#${id}`,
+        url: `${SITE_URL}${image.src}`,
+        contentUrl: `${SITE_URL}${image.src}`,
+        encodingFormat: "image/png",
+        width: image.width,
+        height: image.height,
+        caption: image.alt,
+        creator: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#organization`,
+          name: "Caraway",
+        },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        acquireLicensePage: `${SITE_URL}${VEHICLE_DATA_ROUTE}#image-reuse-license`,
+      });
+      expect(String(imageNode.creditText)).toContain("Caraway graphic");
+      expect(String(imageNode.creditText)).toContain("changes made");
+    }
     expect(fuelDataset).toMatchObject({
       datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
       dateModified: VEHICLE_DATA_CONTENT_UPDATED,
       temporalCoverage: "2006/2024",
       spatialCoverage: { "@type": "Place", name: "Queensland" },
       license: "https://creativecommons.org/licenses/by/4.0/",
+      keywords:
+        "Queensland vehicle registrations, registered cars by fuel type, electric cars, historical vehicle data",
       distribution: {
         "@type": "DataDownload",
         encodingFormat: "text/csv",
@@ -170,6 +208,8 @@ describe("Queensland vehicle-data resource page", () => {
         name: "186 unambiguous suburb and postcode rows associated with Brisbane City",
       },
       license: "https://creativecommons.org/licenses/by/4.0/",
+      keywords:
+        "Brisbane registered vehicles by suburb, postcode, historical 2022 registration snapshot",
       distribution: {
         "@type": "DataDownload",
         encodingFormat: "text/csv",

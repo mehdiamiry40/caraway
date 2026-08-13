@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Download, ExternalLink, FileJson } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
@@ -66,8 +67,16 @@ export const RESOURCE_HEADING =
 
 const canonical = `${SITE_URL}${VEHICLE_DATA_ROUTE}`;
 const socialImageUrl = `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`;
+const brisbaneImageUrl = `${SITE_URL}${BRISBANE_REUSE_THUMBNAIL.src}`;
 const fuelDatasetId = `${canonical}#queensland-fuel-dataset`;
 const brisbaneDatasetId = `${canonical}#brisbane-suburb-dataset`;
+const fuelImageId = `${canonical}#queensland-fuel-image`;
+const brisbaneImageId = `${canonical}#brisbane-suburb-image`;
+const imageReuseLicenseUrl = `${canonical}#image-reuse-license`;
+const fuelImageCredit =
+  "Caraway graphic. Source vehicle data © The State of Queensland (Department of Transport and Main Roads); filtered and reshaped under CC BY 4.0; changes made.";
+const brisbaneImageCredit =
+  "Caraway graphic. Vehicle data © The State of Queensland (Department of Transport and Main Roads). Geography references © Brisbane City Council and © State of Queensland; adapted under CC BY 4.0; changes made. Full department attribution is listed below.";
 const numberFormat = new Intl.NumberFormat("en-AU");
 const firstFuelRow = fuelTrendRows[0];
 const previousFuelRow = fuelTrendRows.at(-2)!;
@@ -130,17 +139,48 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     breadcrumb: { "@id": `${canonical}#breadcrumbs` },
     datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
     dateModified: VEHICLE_DATA_CONTENT_UPDATED,
-    primaryImageOfPage: {
-      "@type": "ImageObject",
-      "@id": `${canonical}#primaryimage`,
-      url: socialImageUrl,
-      contentUrl: socialImageUrl,
-      width: VEHICLE_DATA_SOCIAL_IMAGE.width,
-      height: VEHICLE_DATA_SOCIAL_IMAGE.height,
-      caption: VEHICLE_DATA_SOCIAL_IMAGE.alt,
-    },
+    primaryImageOfPage: { "@id": fuelImageId },
+    image: [{ "@id": fuelImageId }, { "@id": brisbaneImageId }],
     thumbnailUrl: socialImageUrl,
     hasPart: [{ "@id": fuelDatasetId }, { "@id": brisbaneDatasetId }],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "@id": fuelImageId,
+    url: socialImageUrl,
+    contentUrl: socialImageUrl,
+    encodingFormat: "image/png",
+    width: VEHICLE_DATA_SOCIAL_IMAGE.width,
+    height: VEHICLE_DATA_SOCIAL_IMAGE.height,
+    caption: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+    creator: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Caraway",
+    },
+    creditText: fuelImageCredit,
+    license: vehicleData.licenseUrl,
+    acquireLicensePage: imageReuseLicenseUrl,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "@id": brisbaneImageId,
+    url: brisbaneImageUrl,
+    contentUrl: brisbaneImageUrl,
+    encodingFormat: "image/png",
+    width: BRISBANE_REUSE_THUMBNAIL.width,
+    height: BRISBANE_REUSE_THUMBNAIL.height,
+    caption: BRISBANE_REUSE_THUMBNAIL.alt,
+    creator: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Caraway",
+    },
+    creditText: brisbaneImageCredit,
+    license: vehicleData.licenseUrl,
+    acquireLicensePage: imageReuseLicenseUrl,
   },
   {
     "@context": "https://schema.org",
@@ -163,6 +203,8 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     dateModified: VEHICLE_DATA_CONTENT_UPDATED,
     temporalCoverage: "2006/2024",
     spatialCoverage: { "@type": "Place", name: "Queensland" },
+    keywords:
+      "Queensland vehicle registrations, registered cars by fuel type, electric cars, historical vehicle data",
     variableMeasured: ["year", "fuel type", "registered cars"],
     measurementTechnique:
       "Filtered the official table to Vehicle Type = Cars and converted the 19 annual columns into one row per year and fuel type without estimating missing values.",
@@ -198,6 +240,8 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
       "@type": "Place",
       name: "186 unambiguous suburb and postcode rows associated with Brisbane City",
     },
+    keywords:
+      "Brisbane registered vehicles by suburb, postcode, historical 2022 registration snapshot",
     variableMeasured: ["suburb", "postcode", "registered vehicles"],
     measurementTechnique:
       "Started with Brisbane City Council boundary names, excluded the five separately listed Moreton Bay locality records, and matched Queensland TMR suburb and postcode rows to the remaining 190 names using property-address postcodes. Four cross-LGA-ambiguous rows and 12 alternative same-name or postcode-mismatch rows were then excluded.",
@@ -557,7 +601,11 @@ export default function QueenslandVehicleDataPage() {
             </div>
           </section>
 
-          <section aria-labelledby="editorial-images-heading" className="pt-20">
+          <section
+            id="image-reuse-license"
+            aria-labelledby="editorial-images-heading"
+            className="scroll-mt-header pt-20"
+          >
             <h2
               id="editorial-images-heading"
               className="text-3xl font-display font-bold text-primary sm:text-4xl"
@@ -570,6 +618,59 @@ export default function QueenslandVehicleDataPage() {
               datasets; the Brisbane graphic is a historical 10 October 2022
               snapshot, not a current fleet estimate.
             </p>
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+                <Image
+                  src={VEHICLE_DATA_SOCIAL_IMAGE.src}
+                  alt={VEHICLE_DATA_SOCIAL_IMAGE.alt}
+                  width={VEHICLE_DATA_SOCIAL_IMAGE.width}
+                  height={VEHICLE_DATA_SOCIAL_IMAGE.height}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-auto w-full rounded-sm border border-border"
+                />
+                <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Queensland registered-car fuel trends, kept separate from the
+                  historical Brisbane suburb snapshot.
+                </figcaption>
+              </figure>
+              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+                <Image
+                  src={BRISBANE_REUSE_THUMBNAIL.src}
+                  alt={BRISBANE_REUSE_THUMBNAIL.alt}
+                  width={BRISBANE_REUSE_THUMBNAIL.width}
+                  height={BRISBANE_REUSE_THUMBNAIL.height}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="mx-auto h-auto w-full max-w-xl rounded-sm border border-border"
+                />
+                <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Historical Brisbane City suburb snapshot — 10 October 2022,
+                  not current.
+                </figcaption>
+              </figure>
+            </div>
+            <div className="mt-6 rounded-md border border-border bg-secondary p-5 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                Caraway releases these two PNG summaries under{" "}
+                <SourceLink
+                  href={vehicleData.licenseUrl}
+                  label="Creative Commons Attribution 4.0"
+                  location="vehicle_data_image_license"
+                />
+                . When reusing either image, retain the source context, credit
+                Caraway and the named source licensors, link to the licence, and
+                state whether changes were made.
+              </p>
+              <ul className="mt-4 list-disc space-y-3 pl-5">
+                <li>
+                  <strong className="text-foreground">Fuel-trends graphic:</strong>{" "}
+                  {fuelImageCredit}
+                </li>
+                <li>
+                  <strong className="text-foreground">Brisbane snapshot graphic:</strong>{" "}
+                  {brisbaneImageCredit}
+                </li>
+              </ul>
+            </div>
             <div className="mt-6 flex flex-wrap gap-4">
               <a
                 href={VEHICLE_DATA_SOCIAL_IMAGE.src}
