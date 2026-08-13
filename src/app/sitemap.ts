@@ -19,7 +19,10 @@ import {
   SITE_MAP_CONTENT_UPDATED,
   VEHICLE_DATA_CONTENT_UPDATED,
 } from "@/lib/site";
-import { VEHICLE_DATA_ROUTE } from "@/data/queensland-vehicle-data";
+import {
+  VEHICLE_DATA_ROUTE,
+  VEHICLE_DATA_SOCIAL_IMAGE,
+} from "@/data/queensland-vehicle-data";
 import { blogPageCount } from "@/lib/blog-pagination";
 
 export const revalidate = 3600;
@@ -133,6 +136,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: VEHICLE_DATA_CONTENT_UPDATED,
       changeFrequency: "yearly",
       priority: 0.7,
+      images: [`${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`],
     },
     {
       url: `${SITE_URL}/privacy`,

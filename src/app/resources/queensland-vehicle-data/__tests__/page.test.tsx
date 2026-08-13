@@ -8,11 +8,16 @@ import QueenslandVehicleDataPage, {
 import {
   BRISBANE_DATA_DOWNLOAD,
   FUEL_DATA_DOWNLOAD,
+  VEHICLE_DATA_SOCIAL_IMAGE,
   VEHICLE_DATA_BUILD_SCRIPT,
   VEHICLE_DATA_ROUTE,
   VEHICLE_DATA_SOURCE_MANIFEST,
 } from "@/data/queensland-vehicle-data";
-import { SITE_URL, VEHICLE_DATA_CONTENT_UPDATED } from "@/lib/site";
+import {
+  SITE_URL,
+  VEHICLE_DATA_CONTENT_PUBLISHED,
+  VEHICLE_DATA_CONTENT_UPDATED,
+} from "@/lib/site";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/resources/queensland-vehicle-data",
@@ -32,9 +37,22 @@ describe("Queensland vehicle-data resource page", () => {
     expect(String(metadata.openGraph?.title)).toContain("Queensland Vehicle Data");
     expect(String(metadata.twitter?.title)).toContain("Queensland Vehicle Data");
     expect(metadata.openGraph?.url).toBe(VEHICLE_DATA_ROUTE);
-    expect(metadata.openGraph?.images).toBeUndefined();
-    expect(twitter.card).toBe("summary");
-    expect(twitter.images).toBeUndefined();
+    expect(metadata.openGraph?.images).toEqual([
+      {
+        url: VEHICLE_DATA_SOCIAL_IMAGE.src,
+        width: VEHICLE_DATA_SOCIAL_IMAGE.width,
+        height: VEHICLE_DATA_SOCIAL_IMAGE.height,
+        alt: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+        type: "image/png",
+      },
+    ]);
+    expect(twitter.card).toBe("summary_large_image");
+    expect(twitter.images).toEqual([
+      {
+        url: VEHICLE_DATA_SOCIAL_IMAGE.src,
+        alt: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+      },
+    ]);
     expect(metadata.description).toMatch(/2006–2024/);
     expect(metadata.description).toMatch(/2022 snapshot/);
   });
@@ -85,14 +103,26 @@ describe("Queensland vehicle-data resource page", () => {
     expect(collection).toMatchObject({
       "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#webpage`,
       url: `${SITE_URL}${VEHICLE_DATA_ROUTE}`,
-      datePublished: VEHICLE_DATA_CONTENT_UPDATED,
+      datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
       dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#primaryimage`,
+        url: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
+        contentUrl: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
+        width: VEHICLE_DATA_SOCIAL_IMAGE.width,
+        height: VEHICLE_DATA_SOCIAL_IMAGE.height,
+        caption: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+      },
+      thumbnailUrl: `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
       hasPart: [
         { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#queensland-fuel-dataset` },
         { "@id": `${SITE_URL}${VEHICLE_DATA_ROUTE}#brisbane-suburb-dataset` },
       ],
     });
     expect(fuelDataset).toMatchObject({
+      datePublished: "2026-08-10",
+      dateModified: "2026-08-10",
       temporalCoverage: "2006/2024",
       spatialCoverage: { "@type": "Place", name: "Queensland" },
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -103,6 +133,8 @@ describe("Queensland vehicle-data resource page", () => {
       },
     });
     expect(brisbaneDataset).toMatchObject({
+      datePublished: "2026-08-10",
+      dateModified: "2026-08-10",
       temporalCoverage: "2022-10-10/2022-10-10",
       spatialCoverage: {
         "@type": "Place",

@@ -16,7 +16,8 @@
     "test:e2e": "playwright test",
     "test:watch": "vitest",
     "audit:swarm": "node scripts/swarm-audit.mjs",
-    "data:vehicle": "node scripts/build-queensland-vehicle-data.mjs"
+    "data:vehicle": "node scripts/build-queensland-vehicle-data.mjs",
+    "data:vehicle-images": "node scripts/build-vehicle-data-social-images.mjs"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.55",

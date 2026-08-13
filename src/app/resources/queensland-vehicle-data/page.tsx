@@ -8,6 +8,7 @@ import { VehicleFuelTrendChart } from "@/components/resources/VehicleFuelTrendCh
 import {
   BRISBANE_DATA_DOWNLOAD,
   FUEL_DATA_DOWNLOAD,
+  VEHICLE_DATA_SOCIAL_IMAGE,
   VEHICLE_DATA_BUILD_SCRIPT,
   VEHICLE_DATA_ROUTE,
   VEHICLE_DATA_SOURCE_MANIFEST,
@@ -20,6 +21,7 @@ import {
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
   SITE_URL,
+  VEHICLE_DATA_CONTENT_PUBLISHED,
   VEHICLE_DATA_CONTENT_UPDATED,
 } from "@/lib/site";
 
@@ -34,12 +36,27 @@ export const metadata: Metadata = {
     title: "Queensland Vehicle Data | Fuel Trends & Brisbane Snapshot",
     description:
       "Two separate official-data views: Queensland cars by fuel type and a historical Brisbane City suburb snapshot.",
+    images: [
+      {
+        url: VEHICLE_DATA_SOCIAL_IMAGE.src,
+        width: VEHICLE_DATA_SOCIAL_IMAGE.width,
+        height: VEHICLE_DATA_SOCIAL_IMAGE.height,
+        alt: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Queensland Vehicle Data | Fuel Trends & Brisbane Snapshot",
     description:
       "Two separate official-data views: Queensland cars by fuel type and a historical Brisbane City suburb snapshot.",
+    images: [
+      {
+        url: VEHICLE_DATA_SOCIAL_IMAGE.src,
+        alt: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+      },
+    ],
   },
 };
 
@@ -47,6 +64,7 @@ export const RESOURCE_HEADING =
   "Queensland vehicle fuel trends and a Brisbane suburb snapshot";
 
 const canonical = `${SITE_URL}${VEHICLE_DATA_ROUTE}`;
+const socialImageUrl = `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`;
 const fuelDatasetId = `${canonical}#queensland-fuel-dataset`;
 const brisbaneDatasetId = `${canonical}#brisbane-suburb-dataset`;
 const numberFormat = new Intl.NumberFormat("en-AU");
@@ -77,8 +95,18 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     breadcrumb: { "@id": `${canonical}#breadcrumbs` },
-    datePublished: VEHICLE_DATA_CONTENT_UPDATED,
+    datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
     dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      "@id": `${canonical}#primaryimage`,
+      url: socialImageUrl,
+      contentUrl: socialImageUrl,
+      width: VEHICLE_DATA_SOCIAL_IMAGE.width,
+      height: VEHICLE_DATA_SOCIAL_IMAGE.height,
+      caption: VEHICLE_DATA_SOCIAL_IMAGE.alt,
+    },
+    thumbnailUrl: socialImageUrl,
     hasPart: [{ "@id": fuelDatasetId }, { "@id": brisbaneDatasetId }],
   },
   {
@@ -98,8 +126,8 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     license: vehicleData.licenseUrl,
     isAccessibleForFree: true,
     inLanguage: "en-AU",
-    datePublished: VEHICLE_DATA_CONTENT_UPDATED,
-    dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+    datePublished: vehicleData.generatedAt,
+    dateModified: vehicleData.generatedAt,
     temporalCoverage: "2006/2024",
     spatialCoverage: { "@type": "Place", name: "Queensland" },
     variableMeasured: ["year", "fuel type", "registered cars"],
@@ -130,8 +158,8 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     license: vehicleData.licenseUrl,
     isAccessibleForFree: true,
     inLanguage: "en-AU",
-    datePublished: VEHICLE_DATA_CONTENT_UPDATED,
-    dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+    datePublished: vehicleData.generatedAt,
+    dateModified: vehicleData.generatedAt,
     temporalCoverage: "2022-10-10/2022-10-10",
     spatialCoverage: {
       "@type": "Place",
