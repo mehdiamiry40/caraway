@@ -1,3 +1,4 @@
+import { post as postStolenRecovered } from "./stolen-car-recovered-qld";
 import { post as postMovingOverseas } from "./sell-car-moving-overseas-brisbane";
 import { post as postTowAccess } from "./tow-truck-access-brisbane";
 import { post as postNoKeys } from "./sell-car-without-keys-brisbane";
@@ -48,6 +49,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postStolenRecovered,
   postMovingOverseas,
   postTowAccess,
   postNoKeys,
