@@ -376,6 +376,70 @@
   a[href^="/"]:after { content: " (caraway.au" attr(href) ")"; }
   img { max-width: 100% !important; }
 
+  /* The customer-feedback card is intentionally a single, uncluttered print
+     artifact. Its route has no site header/footer, and these rules also keep
+     global chat/dialog UI and screen-only operating instructions off paper. */
+  .review-card-screen-only,
+  body:has(.review-card-print-root) [role="dialog"] {
+    display: none !important;
+  }
+  .review-card-print-root {
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+  .review-card-sheet {
+    page: review-card;
+    width: 142mm !important;
+    height: 203mm !important;
+    min-height: 203mm !important;
+    max-height: 203mm !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10mm 12mm !important;
+    border: 1px solid #222 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    overflow: hidden;
+  }
+  .review-card-qr {
+    width: 46mm !important;
+    height: 46mm !important;
+    max-width: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .review-card-title {
+    margin-top: 5mm !important;
+    font-size: 27pt !important;
+    line-height: 1.08 !important;
+  }
+  .review-card-intro {
+    margin-top: 4mm !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  .review-card-code {
+    margin-top: 5mm !important;
+    margin-bottom: 5mm !important;
+  }
+  .review-card-closing {
+    row-gap: 4mm !important;
+  }
+  .review-card-terms {
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+  .review-card-later {
+    font-size: 17pt !important;
+    line-height: 1.2 !important;
+  }
+  .review-card-privacy {
+    padding-top: 4mm !important;
+    font-size: 8pt !important;
+    line-height: 1.4 !important;
+  }
+
   body.quote-worksheet-printing > :not(.quote-worksheet-print-root) {
     display: none !important;
   }
@@ -536,6 +600,11 @@
     color: #333;
     font-size: 8.5pt;
   }
+}
+
+@page review-card {
+  size: A5 portrait;
+  margin: 3mm;
 }
 
 @utility pt-safe { padding-top: env(safe-area-inset-top, 0px); }
