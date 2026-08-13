@@ -70,6 +70,22 @@ describe("Queensland vehicle-data resource page", () => {
     expect(markup).toContain("Cross-LGA-ambiguous rows excluded");
   });
 
+  it("publishes citation-ready changes from the final two source years", () => {
+    expect(markup).toContain("Change in the published records, 2023–2024");
+    expect(markup).toContain("+88,927");
+    expect(markup).toContain("+2.8%");
+    expect(markup).toContain("3,178,051 → 3,266,978");
+    expect(markup).toContain("+21,417");
+    expect(markup).toContain("+93.2%");
+    expect(markup).toContain("22,981 → 44,398");
+    expect(markup).toContain("+31,359");
+    expect(markup).toContain("+39.6%");
+    expect(markup).toContain("79,245 → 110,604");
+    expect(markup).toContain("source cleansing");
+    expect(markup).toContain("not sales, market share, demand, removals");
+    expect(markup).toContain("BEV/PHEV classifications");
+  });
+
   it("publishes both CSV downloads, the source manifest, and safe external links", () => {
     for (const path of [
       FUEL_DATA_DOWNLOAD,

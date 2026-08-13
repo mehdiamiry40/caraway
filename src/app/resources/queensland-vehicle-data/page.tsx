@@ -70,7 +70,39 @@ const fuelDatasetId = `${canonical}#queensland-fuel-dataset`;
 const brisbaneDatasetId = `${canonical}#brisbane-suburb-dataset`;
 const numberFormat = new Intl.NumberFormat("en-AU");
 const firstFuelRow = fuelTrendRows[0];
+const previousFuelRow = fuelTrendRows.at(-2)!;
 const latestFuelRow = fuelTrendRows.at(-1)!;
+const publishedFuelChanges = [
+  {
+    label: "All 11 source fuel labels",
+    previous: previousFuelRow.totalRegisteredCars,
+    current: latestFuelRow.totalRegisteredCars,
+  },
+  {
+    label: 'Source label “Electric”',
+    previous: previousFuelRow.registrations.Electric,
+    current: latestFuelRow.registrations.Electric,
+  },
+  {
+    label: 'Source label “Petrol/Electric”',
+    previous: previousFuelRow.registrations["Petrol/Electric"],
+    current: latestFuelRow.registrations["Petrol/Electric"],
+  },
+].map((metric) => ({
+  ...metric,
+  difference: metric.current - metric.previous,
+  percentageDifference: ((metric.current - metric.previous) / metric.previous) * 100,
+}));
+
+function formatSigned(value: number) {
+  const sign = value > 0 ? "+" : "";
+  return `${sign}${numberFormat.format(value)}`;
+}
+
+function formatSignedPercentage(value: number) {
+  const sign = value > 0 ? "+" : "";
+  return `${sign}${value.toFixed(1)}%`;
+}
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -339,6 +371,42 @@ export default function QueenslandVehicleDataPage() {
                 </dd>
               </div>
             </dl>
+
+            <div className="mt-10 rounded-md border border-border bg-card p-6 shadow-sm">
+              <h3 className="text-2xl font-semibold text-primary">
+                Change in the published records, {previousFuelRow.year}–{latestFuelRow.year}
+              </h3>
+              <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
+                This compares the final two annual columns in the source. The fuel
+                labels remain separate and literal. Differences can reflect both
+                registration activity and source cleansing; they are not sales,
+                market share, demand, removals, or BEV/PHEV classifications.
+              </p>
+              <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+                {publishedFuelChanges.map((metric) => (
+                  <div key={metric.label} className="rounded-md bg-secondary p-5">
+                    <dt className="text-sm font-semibold text-muted-foreground">
+                      {metric.label}
+                    </dt>
+                    <dd className="mt-2 text-2xl font-bold tabular-nums text-primary">
+                      {formatSigned(metric.difference)} ({formatSignedPercentage(
+                        metric.percentageDifference,
+                      )})
+                    </dd>
+                    <dd className="mt-2 text-sm tabular-nums text-muted-foreground">
+                      {numberFormat.format(metric.previous)} → {numberFormat.format(
+                        metric.current,
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                When reusing these figures, describe them as Queensland
+                registered-car records under the source&apos;s literal fuel labels,
+                link to this panel, and cite the official source below.
+              </p>
+            </div>
 
             <div className="mt-10">
               <VehicleFuelTrendChart rows={fuelTrendRows} />
