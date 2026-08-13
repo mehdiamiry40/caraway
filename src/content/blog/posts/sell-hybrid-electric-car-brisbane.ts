@@ -65,8 +65,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-07",
-  updatedAt: "2026-08-10",
-  reviewedAt: "2026-08-10",
+  updatedAt: "2026-08-13",
+  reviewedAt: "2026-08-13",
   sources: [
     {
       title: "Queensland Fire Department — electric vehicle fire safety",
@@ -86,7 +86,7 @@ export const post: RawBlogPostEntry = {
     },
     {
       title: "Queensland State of the Environment — number of registered vehicles",
-      url: "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
+      url: "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles",
     },
   ],
   category: "Guides",

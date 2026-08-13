@@ -8,7 +8,7 @@ const SCRIPT_DIRECTORY = dirname(BUILD_SCRIPT_PATH);
 const OUTPUT_ROOT_FLAG = "--output-root";
 const ROOT = resolveOutputRoot();
 await validateOutputRoot(ROOT);
-const GENERATED_AT = "2026-08-10";
+const GENERATED_AT = "2026-08-13";
 const RESOURCE_PAGE_URL = "https://caraway.au/resources/queensland-vehicle-data";
 const YEARS = Array.from({ length: 19 }, (_, index) => String(2006 + index));
 
@@ -16,7 +16,7 @@ const SOE_RESOURCE_ID = "20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28";
 const SOE_DATA_URL =
   "https://www.data.qld.gov.au/dataset/294bb52d-f920-4855-a738-362ef5d1a6a8/resource/20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28/archive/indicator-3-1-0-9-1.csv";
 const SOE_PAGE_URL =
-  "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles";
+  "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles";
 
 const TMR_PACKAGE_ID = "6632a3a0-8cb2-41b6-9435-50f762850d72";
 const TMR_RESOURCE_ID = "9c479cfb-8c19-4759-ad34-bc3123079b94";
@@ -33,10 +33,11 @@ const BCC_ADDRESS_URL =
   "https://data.brisbane.qld.gov.au/explore/dataset/property-address-locations/information/";
 const QLD_LOCALITY_LAYER_URL =
   "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer/2";
+const QLD_LOCALITY_REST_URL =
+  "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer";
 const QLD_LOCALITY_CATALOG_URL =
   "https://www.data.qld.gov.au/dataset/locality-boundaries-queensland";
 const QLD_LOCALITY_PACKAGE_ID = "141c82e4-c1f7-4b5d-a528-e3202ae6ebaa";
-const QLD_LOCALITY_RESOURCE_ID = "01ce1c06-ce2a-4528-8fa2-9265bdb2147d";
 const CC_BY_4 = "https://creativecommons.org/licenses/by/4.0/";
 
 const MORETON_BAY_LOCALITIES = [
@@ -390,12 +391,18 @@ async function buildBrisbaneSnapshot() {
   invariant(addressMeta.metas.default.license === "CC BY 4.0", "BCC address licence changed");
   invariant(localityPackage.success, "Queensland locality package metadata is unavailable");
   invariant(localityPackage.result.license_url === CC_BY_4, "Queensland locality licence changed");
-  invariant(
-    localityPackage.result.resources.some(
-      (resource) => resource.id === QLD_LOCALITY_RESOURCE_ID,
-    ),
-    "Queensland locality REST resource is missing",
+  const localityRestResources = localityPackage.result.resources.filter(
+    (resource) =>
+      resource.name === "Locality boundaries - Queensland - REST Service" &&
+      resource.format === "REST" &&
+      resource.state === "active" &&
+      resource.url === QLD_LOCALITY_REST_URL,
   );
+  invariant(
+    localityRestResources.length === 1,
+    "Expected exactly one Queensland locality REST resource",
+  );
+  const [localityRestResource] = localityRestResources;
 
   const sourceRows = parseCsv(sourceText);
   const header = sourceRows.shift();
@@ -623,7 +630,7 @@ async function buildBrisbaneSnapshot() {
         pageUrl: QLD_LOCALITY_CATALOG_URL,
         dataUrl: QLD_LOCALITY_LAYER_URL,
         packageId: QLD_LOCALITY_PACKAGE_ID,
-        resourceId: QLD_LOCALITY_RESOURCE_ID,
+        resourceId: localityRestResource.id,
         layerName: localityLayerMeta.name,
         description: localityLayerMeta.description,
         license: "CC BY 4.0",

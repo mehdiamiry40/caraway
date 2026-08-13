@@ -121,8 +121,8 @@ describe("Queensland vehicle-data resource page", () => {
       ],
     });
     expect(fuelDataset).toMatchObject({
-      datePublished: "2026-08-10",
-      dateModified: "2026-08-10",
+      datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
+      dateModified: VEHICLE_DATA_CONTENT_UPDATED,
       temporalCoverage: "2006/2024",
       spatialCoverage: { "@type": "Place", name: "Queensland" },
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -133,8 +133,8 @@ describe("Queensland vehicle-data resource page", () => {
       },
     });
     expect(brisbaneDataset).toMatchObject({
-      datePublished: "2026-08-10",
-      dateModified: "2026-08-10",
+      datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
+      dateModified: VEHICLE_DATA_CONTENT_UPDATED,
       temporalCoverage: "2022-10-10/2022-10-10",
       spatialCoverage: {
         "@type": "Place",

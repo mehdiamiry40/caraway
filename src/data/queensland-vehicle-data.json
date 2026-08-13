@@ -1,6 +1,6 @@
 {
   "title": "Queensland vehicle fuel trends and a Brisbane suburb snapshot",
-  "generatedAt": "2026-08-10",
+  "generatedAt": "2026-08-13",
   "methodologyVersion": 2,
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
@@ -329,7 +329,7 @@
     ],
     "source": {
       "title": "Queensland State of the Environment 2024 — Number of registered vehicles",
-      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
+      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles",
       "dataUrl": "https://www.data.qld.gov.au/dataset/294bb52d-f920-4855-a738-362ef5d1a6a8/resource/20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28/archive/indicator-3-1-0-9-1.csv",
       "packageId": "294bb52d-f920-4855-a738-362ef5d1a6a8",
       "resourceId": "20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28",
@@ -1752,7 +1752,7 @@
         "pageUrl": "https://www.data.qld.gov.au/dataset/locality-boundaries-queensland",
         "dataUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer/2",
         "packageId": "141c82e4-c1f7-4b5d-a528-e3202ae6ebaa",
-        "resourceId": "01ce1c06-ce2a-4528-8fa2-9265bdb2147d",
+        "resourceId": "9a20e7d5-e34a-4bcb-922e-dbfe0f6aa9dc",
         "layerName": "Locality",
         "description": "The locality boundaries dataset is the spatial representation of bounded localities (includes suburbs) of Queensland.  These are the official locality names and boundaries used for addressing.",
         "license": "CC BY 4.0",

@@ -640,6 +640,20 @@ for (const filePath of collectSourceFiles(sourceRoot)) {
   }
 }
 
+const manifestPath = join(repoRoot, "public", "site.webmanifest");
+const manifestSource = readFileSync(manifestPath, "utf8");
+for (const [index, line] of manifestSource.split("\n").entries()) {
+  for (const claim of prohibitedClaims) {
+    if (violatesClaim(claim, line)) {
+      violations.push({
+        file: relative(repoRoot, manifestPath),
+        line: index + 1,
+        label: claim.label,
+      });
+    }
+  }
+}
+
 if (violations.length > 0) {
   console.error("Content integrity check failed:");
   for (const violation of violations) {

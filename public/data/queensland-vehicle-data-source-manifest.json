@@ -1,13 +1,13 @@
 {
   "title": "Queensland vehicle fuel trends and a Brisbane suburb snapshot",
-  "generatedAt": "2026-08-10",
+  "generatedAt": "2026-08-13",
   "methodologyVersion": 2,
   "license": "CC BY 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
   "buildScript": {
     "path": "/data/build-queensland-vehicle-data.mjs",
     "runtime": "Node.js 22 or later",
-    "sha256": "acdeee1285cc08369ed3aa34e6104660603376a87c444d9433325c76135511d0"
+    "sha256": "ff229d4f463c058b4dcd3c0d8453c5dcc7fa93c189464a62ba14f129214808d0"
   },
   "fuelTrend": {
     "filter": {
@@ -16,7 +16,7 @@
     },
     "source": {
       "title": "Queensland State of the Environment 2024 — Number of registered vehicles",
-      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/pollution/air-quality/number-of-registered-vehicles",
+      "pageUrl": "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles",
       "dataUrl": "https://www.data.qld.gov.au/dataset/294bb52d-f920-4855-a738-362ef5d1a6a8/resource/20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28/archive/indicator-3-1-0-9-1.csv",
       "packageId": "294bb52d-f920-4855-a738-362ef5d1a6a8",
       "resourceId": "20c5c7c4-1a76-44b8-b3cb-ea4a37e57d28",
@@ -30,7 +30,7 @@
     },
     "output": {
       "path": "/data/queensland-car-registrations-by-fuel-2006-2024.csv",
-      "sha256": "a7b4fa5c9a5eed5bccc7c6748d16ea7aee9374b8b38e31e6f9901d151933d1ef",
+      "sha256": "11fca1acfa3b5b542807c3c93cc6214fb25da53434bb1888d3e2447f621cbc09",
       "dataRows": 209
     }
   },
@@ -80,7 +80,7 @@
         "pageUrl": "https://www.data.qld.gov.au/dataset/locality-boundaries-queensland",
         "dataUrl": "https://spatial-gis.information.qld.gov.au/arcgis/rest/services/Boundaries/AdministrativeBoundaries/MapServer/2",
         "packageId": "141c82e4-c1f7-4b5d-a528-e3202ae6ebaa",
-        "resourceId": "01ce1c06-ce2a-4528-8fa2-9265bdb2147d",
+        "resourceId": "9a20e7d5-e34a-4bcb-922e-dbfe0f6aa9dc",
         "layerName": "Locality",
         "description": "The locality boundaries dataset is the spatial representation of bounded localities (includes suburbs) of Queensland.  These are the official locality names and boundaries used for addressing.",
         "license": "CC BY 4.0",

@@ -34,16 +34,18 @@ const brisbaneCsv = publicFile(BRISBANE_DATA_DOWNLOAD);
 const sourceManifest = JSON.parse(
   publicFile(VEHICLE_DATA_SOURCE_MANIFEST),
 ) as {
+  generatedAt: string;
   methodologyVersion: number;
   fuelTrend: {
     filter: { vehicleType: string; years: string };
+    source: { pageUrl: string };
     output: { sha256: string };
   };
   brisbaneSnapshot: {
     filter: { state: string; snapshotDate: string; geography: string };
     output: { sha256: string };
     sources: {
-      administrativeBoundaries: { licenseUrl: string };
+      administrativeBoundaries: { licenseUrl: string; resourceId: string };
     };
   };
   buildScript: { path: string; runtime: string; sha256: string };
@@ -51,12 +53,15 @@ const sourceManifest = JSON.parse(
 
 describe("Queensland vehicle-data artifact", () => {
   it("keeps the coherent statewide fuel series complete and source-shaped", () => {
-    expect(vehicleData.generatedAt).toBe("2026-08-10");
+    expect(vehicleData.generatedAt).toBe("2026-08-13");
     expect(vehicleData.methodologyVersion).toBe(2);
     expect(vehicleData.licenseUrl).toBe(
       "https://creativecommons.org/licenses/by/4.0/",
     );
     expect(vehicleData.fuelTrend.fuelTypes).toHaveLength(11);
+    expect(vehicleData.fuelTrend.source.pageUrl).toBe(
+      "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles",
+    );
     expect(fuelTrendRows.map((row) => row.year)).toEqual(
       Array.from({ length: 19 }, (_, index) => 2006 + index),
     );
@@ -152,11 +157,15 @@ describe("Queensland vehicle-data artifact", () => {
   });
 
   it("records source hashes, filters, outputs, and no row-level identifiers", () => {
+    expect(sourceManifest.generatedAt).toBe("2026-08-13");
     expect(sourceManifest.methodologyVersion).toBe(2);
     expect(sourceManifest.fuelTrend.filter).toEqual({
       vehicleType: "Cars",
       years: "2006–2024",
     });
+    expect(sourceManifest.fuelTrend.source.pageUrl).toBe(
+      "https://www.stateoftheenvironment.detsi.qld.gov.au/climate-change/indicators/number-of-registered-vehicles",
+    );
     expect(sourceManifest.brisbaneSnapshot.filter).toMatchObject({
       state: "QLD",
       snapshotDate: "2022-10-10",
@@ -169,6 +178,16 @@ describe("Queensland vehicle-data artifact", () => {
       sourceManifest.brisbaneSnapshot.sources.administrativeBoundaries
         .licenseUrl,
     ).toBe("https://creativecommons.org/licenses/by/4.0/");
+    expect(
+      sourceManifest.brisbaneSnapshot.sources.administrativeBoundaries
+        .resourceId,
+    ).toBe(
+      vehicleData.brisbaneSnapshot.sources.administrativeBoundaries.resourceId,
+    );
+    expect(
+      sourceManifest.brisbaneSnapshot.sources.administrativeBoundaries
+        .resourceId,
+    ).toMatch(/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/);
     const buildScript = publicFile(VEHICLE_DATA_BUILD_SCRIPT);
     expect(sourceManifest.buildScript).toMatchObject({
       path: VEHICLE_DATA_BUILD_SCRIPT,
@@ -181,12 +200,23 @@ describe("Queensland vehicle-data artifact", () => {
         "utf8",
       ),
     );
+    expect(buildScript).toContain(
+      'resource.name === "Locality boundaries - Queensland - REST Service"',
+    );
+    expect(buildScript).toContain('resource.format === "REST"');
+    expect(buildScript).not.toContain("const QLD_LOCALITY_RESOURCE_ID");
 
     const serializedOutputs = `${fuelCsv}\n${brisbaneCsv}\n${buildScript}\n${JSON.stringify(
       sourceManifest,
     )}`;
     expect(serializedOutputs).not.toMatch(
       /OPEN_DATA_VEHICLE_IDENTIFIER|\bVIN\b|chassis|engine_number/i,
+    );
+    expect(serializedOutputs).not.toContain(
+      "/pollution/air-quality/number-of-registered-vehicles",
+    );
+    expect(serializedOutputs).not.toContain(
+      "01ce1c06-ce2a-4528-8fa2-9265bdb2147d",
     );
   });
 
