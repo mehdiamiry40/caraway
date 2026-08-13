@@ -7,6 +7,7 @@ import QueenslandVehicleDataPage, {
 } from "@/app/resources/queensland-vehicle-data/page";
 import {
   BRISBANE_DATA_DOWNLOAD,
+  BRISBANE_REUSE_THUMBNAIL,
   FUEL_DATA_DOWNLOAD,
   VEHICLE_DATA_SOCIAL_IMAGE,
   VEHICLE_DATA_BUILD_SCRIPT,
@@ -75,6 +76,8 @@ describe("Queensland vehicle-data resource page", () => {
       BRISBANE_DATA_DOWNLOAD,
       VEHICLE_DATA_SOURCE_MANIFEST,
       VEHICLE_DATA_BUILD_SCRIPT,
+      VEHICLE_DATA_SOCIAL_IMAGE.src,
+      BRISBANE_REUSE_THUMBNAIL.src,
     ]) {
       expect(markup).toContain(`href="${path}"`);
     }
@@ -82,6 +85,16 @@ describe("Queensland vehicle-data resource page", () => {
     expect(markup).toContain("Download 186 suburb rows (CSV)");
     expect(markup).toContain("Download source manifest (JSON)");
     expect(markup).toContain("Download the source-audited build script");
+    expect(markup).toContain("Editorial preview images");
+    expect(markup).toContain("Download Queensland fuel-trends graphic (PNG, 1200 × 630)");
+    expect(markup).toContain(
+      "Download historical Brisbane suburb-snapshot graphic (PNG, 800 × 800)",
+    );
+    expect(markup).toContain("historical 10 October 2022");
+    expect(markup).toContain("not a current fleet estimate");
+    for (const image of [VEHICLE_DATA_SOCIAL_IMAGE, BRISBANE_REUSE_THUMBNAIL]) {
+      expect(markup).toContain(`href="${image.src}" download=""`);
+    }
     expect(markup).toContain("--output-root /path/to/caraway");
     expect(markup).toContain("Bulwer, Cowan Cowan, Kooringal, Moreton Bay");
     expect(markup).toContain("alternative same-name or postcode-mismatch");

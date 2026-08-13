@@ -9,6 +9,7 @@ import {
 import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import {
+  BRISBANE_REUSE_THUMBNAIL,
   VEHICLE_DATA_ROUTE,
   VEHICLE_DATA_SOCIAL_IMAGE,
 } from "@/data/queensland-vehicle-data";
@@ -178,7 +179,10 @@ describe("sitemap.ts — page coverage", () => {
       lastModified: VEHICLE_DATA_CONTENT_UPDATED,
       changeFrequency: "yearly",
       priority: 0.7,
-      images: [`${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`],
+      images: [
+        `${SITE_URL}${VEHICLE_DATA_SOCIAL_IMAGE.src}`,
+        `${SITE_URL}${BRISBANE_REUSE_THUMBNAIL.src}`,
+      ],
     });
   });
 

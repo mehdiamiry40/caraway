@@ -7,6 +7,7 @@ import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { VehicleFuelTrendChart } from "@/components/resources/VehicleFuelTrendChart";
 import {
   BRISBANE_DATA_DOWNLOAD,
+  BRISBANE_REUSE_THUMBNAIL,
   FUEL_DATA_DOWNLOAD,
   VEHICLE_DATA_SOCIAL_IMAGE,
   VEHICLE_DATA_BUILD_SCRIPT,
@@ -485,6 +486,39 @@ export default function QueenslandVehicleDataPage() {
                 label="Open the official TMR snapshot source"
                 location="vehicle_data_brisbane_source"
               />
+            </div>
+          </section>
+
+          <section aria-labelledby="editorial-images-heading" className="pt-20">
+            <h2
+              id="editorial-images-heading"
+              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+            >
+              Editorial preview images
+            </h2>
+            <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
+              These Caraway-created PNG summaries are available for editorial or
+              research reference alongside this resource. They summarize separate
+              datasets; the Brisbane graphic is a historical 10 October 2022
+              snapshot, not a current fleet estimate.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href={VEHICLE_DATA_SOCIAL_IMAGE.src}
+                download
+                className={downloadClasses}
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download Queensland fuel-trends graphic (PNG, 1200 × 630)
+              </a>
+              <a
+                href={BRISBANE_REUSE_THUMBNAIL.src}
+                download
+                className={downloadClasses}
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download historical Brisbane suburb-snapshot graphic (PNG, 800 × 800)
+              </a>
             </div>
           </section>
 

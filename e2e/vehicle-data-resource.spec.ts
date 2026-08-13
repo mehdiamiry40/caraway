@@ -4,6 +4,8 @@ const route = "/resources/queensland-vehicle-data";
 const canonical = `https://caraway.au${route}`;
 const socialImage =
   "https://caraway.au/images/queensland-vehicle-data-open-data-v1.png";
+const brisbanePreview =
+  "https://caraway.au/images/brisbane-registered-vehicle-snapshot-v1.png";
 
 test("vehicle-data resource is indexable, self-canonical, and downloadable", async ({
   page,
@@ -41,6 +43,16 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
   ).toBeVisible();
   await expect(page.locator('svg[role="img"]')).toHaveCount(1);
   await expect(page.locator("table")).toHaveCount(3);
+  await expect(
+    page.getByRole("link", {
+      name: "Download Queensland fuel-trends graphic (PNG, 1200 × 630)",
+    }),
+  ).toHaveAttribute("download", "");
+  await expect(
+    page.getByRole("link", {
+      name: "Download historical Brisbane suburb-snapshot graphic (PNG, 800 × 800)",
+    }),
+  ).toHaveAttribute("download", "");
 
   const jsonLd = await page
     .locator('script[type="application/ld+json"]')
@@ -72,17 +84,21 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
   expect(sitemap.ok()).toBe(true);
   expect(await sitemap.text()).toContain(canonical);
   expect(await sitemap.text()).toContain(socialImage);
+  expect(await sitemap.text()).toContain(brisbanePreview);
 
-  const socialImageResponse = await page.request.get(
-    "/images/queensland-vehicle-data-open-data-v1.png",
-  );
-  expect(socialImageResponse.ok()).toBe(true);
-  expect(socialImageResponse.headers()["content-type"]).toContain("image/png");
-  expect(socialImageResponse.headers()["cross-origin-resource-policy"]).toBe(
-    "cross-origin",
-  );
-  expect(socialImageResponse.headers()["access-control-allow-origin"]).toBe("*");
-  expect(socialImageResponse.headers()["cache-control"]).toContain("immutable");
+  for (const imagePath of [
+    new URL(socialImage).pathname,
+    new URL(brisbanePreview).pathname,
+  ]) {
+    const imageResponse = await page.request.get(imagePath);
+    expect(imageResponse.ok()).toBe(true);
+    expect(imageResponse.headers()["content-type"]).toContain("image/png");
+    expect(imageResponse.headers()["cross-origin-resource-policy"]).toBe(
+      "cross-origin",
+    );
+    expect(imageResponse.headers()["access-control-allow-origin"]).toBe("*");
+    expect(imageResponse.headers()["cache-control"]).toContain("immutable");
+  }
 });
 
 test("vehicle-data resource avoids horizontal overflow on mobile", async ({ page }) => {
