@@ -2,6 +2,8 @@ import { expect, test } from "@playwright/test";
 
 const route = "/resources/queensland-vehicle-data";
 const canonical = `https://caraway.au${route}`;
+const socialImage =
+  "https://caraway.au/images/queensland-vehicle-data-open-data-v1.png";
 
 test("vehicle-data resource is indexable, self-canonical, and downloadable", async ({
   page,
@@ -19,6 +21,18 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
     /index, follow/i,
+  );
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    socialImage,
+  );
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+    "content",
+    "summary_large_image",
+  );
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+    "content",
+    socialImage,
   );
   await expect(
     page.getByText("Historical snapshot — not current · 10 October 2022", {
@@ -57,6 +71,18 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
   const sitemap = await page.request.get("/sitemap.xml");
   expect(sitemap.ok()).toBe(true);
   expect(await sitemap.text()).toContain(canonical);
+  expect(await sitemap.text()).toContain(socialImage);
+
+  const socialImageResponse = await page.request.get(
+    "/images/queensland-vehicle-data-open-data-v1.png",
+  );
+  expect(socialImageResponse.ok()).toBe(true);
+  expect(socialImageResponse.headers()["content-type"]).toContain("image/png");
+  expect(socialImageResponse.headers()["cross-origin-resource-policy"]).toBe(
+    "cross-origin",
+  );
+  expect(socialImageResponse.headers()["access-control-allow-origin"]).toBe("*");
+  expect(socialImageResponse.headers()["cache-control"]).toContain("immutable");
 });
 
 test("vehicle-data resource avoids horizontal overflow on mobile", async ({ page }) => {

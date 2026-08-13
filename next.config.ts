@@ -236,6 +236,25 @@ const nextConfig: NextConfig = {
         { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
       ],
     },
+    // These two open-data graphics are intended for editorial reuse and for
+    // embedding in Brisbane Open Data's approved reuse card. Keep every other
+    // site image under the stricter same-origin resource policy above.
+    {
+      source: "/images/queensland-vehicle-data-open-data-v1.png",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+        { key: "Access-Control-Allow-Origin", value: "*" },
+      ],
+    },
+    {
+      source: "/images/brisbane-registered-vehicle-snapshot-v1.png",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+        { key: "Access-Control-Allow-Origin", value: "*" },
+      ],
+    },
     {
       source: "/favicon.svg",
       headers: [

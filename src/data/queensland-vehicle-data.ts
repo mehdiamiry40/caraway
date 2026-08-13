@@ -10,6 +10,20 @@ export const VEHICLE_DATA_SOURCE_MANIFEST =
 export const VEHICLE_DATA_BUILD_SCRIPT =
   "/data/build-queensland-vehicle-data.mjs";
 
+export const VEHICLE_DATA_SOCIAL_IMAGE = {
+  src: "/images/queensland-vehicle-data-open-data-v1.png",
+  width: 1200,
+  height: 630,
+  alt: "Caraway open-data graphic for Queensland registered cars by fuel type, 2006–2024. Electric records increase from 1 to 44,398 and Petrol/Electric records from 102 to 110,604.",
+} as const;
+
+export const BRISBANE_REUSE_THUMBNAIL = {
+  src: "/images/brisbane-registered-vehicle-snapshot-v1.png",
+  width: 800,
+  height: 800,
+  alt: "Caraway open-data graphic for a historical Brisbane City registered-vehicle snapshot dated 10 October 2022, containing 186 unambiguous suburb and postcode rows.",
+} as const;
+
 export type FuelType =
   | "Diesel"
   | "Diesel/Electric"
