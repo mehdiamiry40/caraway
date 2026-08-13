@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Terms from "@/views/Terms";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
-import { LEGAL_DATE_ISO, SITE_URL } from "@/lib/site";
+import {
+  LEGAL_DATE_ISO,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -15,14 +19,21 @@ export const metadata: Metadata = {
     title: "Terms of Service | Caraway",
     description:
       "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
+    images: [
+      {
+        url: "/images/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: SHARED_PICKUP_IMAGE_ALT,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Terms of Service | Caraway",
     description:
       "Terms governing use of the Caraway website and our vehicle purchase and removal services in Queensland, Australia.",
-    images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

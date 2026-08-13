@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema, serviceSchema } from "@/lib/json-ld-schemas";
 import SuburbPageTemplate from "@/components/templates/SuburbPageTemplate";
 import { getSuburbBySlug, suburbs } from "@/data/suburbs";
-import { SITE_URL } from "@/lib/site";
+import { SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 
 export const revalidate = 86400;
 export const dynamicParams = false;
@@ -37,13 +37,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: suburb.title,
       description: suburb.metaDescription,
       url: `${SITE_URL}/locations/${suburb.slug}`,
-      images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Caraway cash for cars Brisbane" }],
+      images: [
+        {
+          url: "/images/og-card.jpg",
+          width: 1200,
+          height: 630,
+          alt: SHARED_PICKUP_IMAGE_ALT,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: suburb.title,
       description: suburb.metaDescription,
-      images: [{ url: "/images/og-card.jpg", alt: "Caraway cash for cars Brisbane" }],
+      images: [
+        { url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT },
+      ],
     },
   };
 }

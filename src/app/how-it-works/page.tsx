@@ -11,6 +11,7 @@ import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
 
@@ -29,9 +30,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/tow-truck-hero.webp",
-        width: 1200,
+        width: 800,
         height: 800,
-        alt: "Caraway cash for cars Brisbane pickup",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/tow-truck-hero.webp",
-        alt: "Caraway cash for cars Brisbane pickup",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },

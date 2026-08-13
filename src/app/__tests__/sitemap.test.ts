@@ -265,6 +265,7 @@ describe("sitemap.ts — page coverage", () => {
 
   it("uses the declared material-update date for the About page", () => {
     const staticEntry = entries.find((e) => e.url === `${SITE_URL}/about`);
+    expect(ABOUT_CONTENT_UPDATED).toBe("2026-08-13");
     expect(staticEntry).toBeDefined();
     expect(staticEntry?.lastModified).toBe(ABOUT_CONTENT_UPDATED);
   });

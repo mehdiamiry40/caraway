@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { serviceSchema } from "@/lib/json-ld-schemas";
-import { BUSINESS, HOME_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
+import {
+  BUSINESS,
+  HOME_CONTENT_UPDATED,
+  SHARED_PICKUP_IMAGE_ALT,
+  SITE_URL,
+} from "@/lib/site";
 import Home from "@/views/Home";
 
 export const revalidate = 3600;
@@ -28,7 +33,7 @@ export const metadata: Metadata = {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Caraway vehicle pickup in Brisbane",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },

@@ -5,7 +5,7 @@ import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
-import { BUSINESS, SITE_URL } from "@/lib/site";
+import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Caraway vehicle pickup in Brisbane",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Caraway vehicle pickup in Brisbane",
+        alt: SHARED_PICKUP_IMAGE_ALT,
       },
     ],
   },

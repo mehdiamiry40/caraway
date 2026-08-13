@@ -9,7 +9,7 @@ import {
   services,
   type ServicePage,
 } from "@/data/services";
-import { SITE_URL } from "@/lib/site";
+import { SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 
 export const revalidate = 86400;
 export const dynamicParams = false;
@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     src: "/images/og-card.jpg",
     width: 1200,
     height: 630,
-    alt: `${service.h1} — Caraway`,
+    alt: SHARED_PICKUP_IMAGE_ALT,
   };
   return {
     title: service.title,
