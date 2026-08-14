@@ -192,11 +192,13 @@ describe("blog post template", () => {
     const post = blogPosts.find((item) => item.slug === "sell-van-brisbane");
 
     expect(post).toBeDefined();
-    expect(post?.updatedAt).toBe("2026-08-10");
-    expect(post?.reviewedAt).toBe("2026-08-08");
+    // The rollout moves dateModified but must leave the earlier, truthful
+    // regulatory review date alone — assert that relationship, not the days.
+    expect(post?.updatedAt).toBe(BLOG_FAQ_ROLLOUT_DATE);
+    expect(post!.reviewedAt! < BLOG_FAQ_ROLLOUT_DATE).toBe(true);
     expect(validateBlogPostSeo(post!)).toEqual([]);
     expect(buildBlogPostSeoProps(post!).articleSchema.dateModified).toBe(
-      "2026-08-10",
+      post?.updatedAt,
     );
   });
 

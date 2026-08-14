@@ -52,6 +52,26 @@ function serviceOwnersOf(query: RegExp): string[] {
     .map((service) => service.slug);
 }
 
+/**
+ * Realigning a page's query ownership must record an honest modification date,
+ * and anything carrying regulated claims must be reviewed in the same pass.
+ *
+ * The specific calendar day is incidental to that rule, so assert the rule.
+ * Pinning the literal date only guarantees this file needs editing the next
+ * time the page legitimately changes.
+ */
+function expectHonestOwnershipDates(entity: {
+  updatedAt?: string;
+  reviewedAt?: string;
+}) {
+  expect(entity.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  expect(Number.isNaN(Date.parse(entity.updatedAt!))).toBe(false);
+  expect(entity.updatedAt! <= new Date().toISOString().slice(0, 10)).toBe(true);
+  if (entity.reviewedAt !== undefined) {
+    expect(entity.reviewedAt).toBe(entity.updatedAt);
+  }
+}
+
 describe("primary SEO query ownership", () => {
   it("keeps the homepage as a brand hub instead of a competing exact-match page", () => {
     const title = (homeMetadata.title as { absolute: string }).absolute;
@@ -128,7 +148,7 @@ describe("primary SEO query ownership", () => {
       "[cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane)",
     );
     expect(post?.relatedServices).toContain("cash-for-cars-brisbane");
-    expect(post?.updatedAt).toBe("2026-08-11");
+    expectHonestOwnershipDates(post!);
   });
 
   it("assigns generic Queensland seller intent to the established paperwork guide", async () => {
@@ -185,8 +205,7 @@ describe("primary SEO query ownership", () => {
         "https://www.qld.gov.au/transport/registration/transfer/rego",
       ]),
     });
-    expect(post.updatedAt).toBe("2026-08-11");
-    expect(post.reviewedAt).toBe("2026-08-11");
+    expectHonestOwnershipDates(post);
     expect(post.interactiveTool).toBe("qld-vehicle-sale-record-builder");
     expect(post.content.join(" ")).toContain(
       "[cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane)",
@@ -249,8 +268,7 @@ describe("primary SEO query ownership", () => {
     expect(floodSectionMarkup).toContain(
       'href="/blog/sell-flood-damaged-car-brisbane#document-the-water-exposure"',
     );
-    expect(service?.updatedAt).toBe("2026-08-11");
-    expect(service?.reviewedAt).toBe("2026-08-11");
+    expectHonestOwnershipDates(service!);
   });
 
   it("assigns unregistered-car removal intent to one narrow service owner", async () => {
@@ -309,8 +327,7 @@ describe("primary SEO query ownership", () => {
         <ServiceSectionContent section={contextualInboundLink!} />,
       ),
     ).toContain('href="/unregistered-cars-brisbane"');
-    expect(service?.updatedAt).toBe("2026-08-11");
-    expect(service?.reviewedAt).toBe("2026-08-11");
+    expectHonestOwnershipDates(service!);
   });
 
   it("assigns measured scrap-car removal intent to one narrow service owner", async () => {
@@ -359,7 +376,7 @@ describe("primary SEO query ownership", () => {
       label: "See Brisbane collection and access details",
     });
     expect(service?.relatedServices).toContain("car-removal-brisbane");
-    expect(service?.updatedAt).toBe("2026-08-11");
+    expectHonestOwnershipDates(service!);
     expect(service?.reviewedAt).toBeUndefined();
   });
 

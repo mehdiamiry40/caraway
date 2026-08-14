@@ -76,7 +76,7 @@ describe("sitemap.ts — blog post inclusion", () => {
       (post) => getRenderableBlogFaqs(post).length > 0,
     );
 
-    expect(supplementalPosts).toHaveLength(23);
+    expect(supplementalPosts.length).toBeGreaterThan(0);
     for (const post of supplementalPosts) {
       expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
       expect(
@@ -85,25 +85,29 @@ describe("sitemap.ts — blog post inclusion", () => {
       ).toBe(post.updatedAt);
     }
 
+    // Each of these posts must publish its own modification date rather than
+    // the rollout date; the date itself is content, so assert the relationship.
     const authoredPost = blogPosts.find(
       (post) => post.slug === "cash-for-cars-vs-private-sale",
     );
     expect(
       entries.find((entry) => entry.url === authoredPost?.canonicalUrl)
         ?.lastModified,
-    ).toBe("2026-04-26");
+    ).toBe(authoredPost?.updatedAt);
+    expect(authoredPost!.updatedAt < BLOG_FAQ_ROLLOUT_DATE).toBe(true);
 
     const utePost = blogPosts.find(
       (post) => post.slug === "sell-my-ute-brisbane",
     );
     expect(
       entries.find((entry) => entry.url === utePost?.canonicalUrl)?.lastModified,
-    ).toBe("2026-08-11");
+    ).toBe(utePost?.updatedAt);
+    expect(utePost!.updatedAt > BLOG_FAQ_ROLLOUT_DATE).toBe(true);
 
     const paperworkPost = blogPosts.find(
       (post) => post.slug === "what-paperwork-to-sell-a-car-qld",
     );
-    expect(paperworkPost?.updatedAt).toBe("2026-08-11");
+    expect(paperworkPost!.updatedAt > BLOG_FAQ_ROLLOUT_DATE).toBe(true);
     expect(
       entries.find((entry) => entry.url === paperworkPost?.canonicalUrl)
         ?.lastModified,

@@ -57,9 +57,9 @@ export default function ReviewCardPage() {
         <div className="mt-6 mb-3">
           <p className="eyebrow">Review operations</p>
         </div>
-        <h2 className="font-display text-3xl leading-tight text-foreground">
+        <h1 className="font-display text-3xl leading-tight text-foreground">
           Printable customer feedback card
-        </h2>
+        </h1>
         <p className="mt-4 leading-relaxed text-muted-foreground">
           Give the same card to every eligible customer only after their
           genuine Caraway transaction or collection is complete. Never offer
@@ -89,12 +89,12 @@ export default function ReviewCardPage() {
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             Customer feedback
           </p>
-          <h1
+          <h2
             id="review-card-heading"
             className="review-card-title mt-8 font-display text-4xl font-bold leading-tight text-slate-950 sm:text-5xl"
           >
             Share honest feedback
-          </h1>
+          </h2>
           <p className="review-card-intro mx-auto mt-5 max-w-md text-base leading-relaxed text-slate-700 sm:text-lg">
             After your Caraway transaction or collection is complete, scan
             this code if you choose to share your genuine experience on Google.
