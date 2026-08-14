@@ -89,33 +89,38 @@ describe("blog FAQ rendering guard", () => {
       (post) => getRenderableBlogFaqs(post).length > 0,
     );
 
-    expect(supplementalPosts).toHaveLength(23);
-    expect(
-      supplementalPosts.reduce(
-        (count, post) => count + getRenderableBlogFaqs(post).length,
-        0,
-      ),
-    ).toBe(84);
+    // Guard the rule, not the current tally, so adding a post with FAQs does
+    // not require editing this file. The length check only keeps the loop
+    // below from passing vacuously.
+    expect(supplementalPosts.length).toBeGreaterThan(0);
     for (const post of supplementalPosts) {
       expect(post.updatedAt >= BLOG_FAQ_ROLLOUT_DATE, post.slug).toBe(true);
+      expect(getRenderableBlogFaqs(post).length, post.slug).toBeGreaterThan(0);
     }
 
+    // A post that authors its own FAQ section renders no supplemental fields,
+    // so the rollout must leave its modification date alone.
     const authoredPost = blogPosts.find(
       (post) => post.slug === "cash-for-cars-vs-private-sale",
     );
-    expect(authoredPost?.updatedAt).toBe("2026-04-26");
+    expect(getRenderableBlogFaqs(authoredPost!)).toHaveLength(0);
+    expect(authoredPost?.updatedAt).not.toBe(BLOG_FAQ_ROLLOUT_DATE);
+    expect(authoredPost!.updatedAt < BLOG_FAQ_ROLLOUT_DATE).toBe(true);
 
+    // Gaining visible FAQs moves the modification date but must not invent a
+    // newer review date for the regulated claims.
     const reviewedPost = blogPosts.find(
       (post) => post.slug === "sell-van-brisbane",
     );
     expect(reviewedPost?.updatedAt).toBe(BLOG_FAQ_ROLLOUT_DATE);
-    expect(reviewedPost?.reviewedAt).toBe("2026-08-08");
+    expect(reviewedPost!.reviewedAt! < BLOG_FAQ_ROLLOUT_DATE).toBe(true);
 
+    // A post genuinely updated after the rollout keeps its own later dates.
     const laterUpdatedPost = blogPosts.find(
       (post) => post.slug === "sell-my-ute-brisbane",
     );
-    expect(laterUpdatedPost?.updatedAt).toBe("2026-08-11");
-    expect(laterUpdatedPost?.reviewedAt).toBe("2026-08-11");
+    expect(laterUpdatedPost!.updatedAt > BLOG_FAQ_ROLLOUT_DATE).toBe(true);
+    expect(laterUpdatedPost?.reviewedAt).toBe(laterUpdatedPost?.updatedAt);
   });
 
   it("never rolls a genuinely newer modification date backwards", () => {

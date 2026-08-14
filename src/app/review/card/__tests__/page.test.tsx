@@ -73,4 +73,21 @@ describe("printable review card", () => {
 
     expect(decoded?.data).toBe(REVIEW_CARD_DESTINATION);
   });
+
+  it("opens its document outline with the page h1 before any lower heading", () => {
+    const markup = renderToStaticMarkup(<ReviewCardPage />);
+    const levels = [...markup.matchAll(/<h([1-6])\b/g)].map((match) =>
+      Number(match[1]),
+    );
+
+    expect(levels.filter((level) => level === 1)).toHaveLength(1);
+    expect(levels[0]).toBe(1);
+    for (let i = 1; i < levels.length; i += 1) {
+      expect(levels[i] - levels[i - 1]).toBeLessThanOrEqual(1);
+    }
+
+    // The printed sheet is still labelled by its own heading.
+    expect(markup).toContain('aria-labelledby="review-card-heading"');
+    expect(markup).toMatch(/<h2[^>]*id="review-card-heading"/);
+  });
 });

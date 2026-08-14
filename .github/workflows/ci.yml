@@ -28,3 +28,8 @@ jobs:
           SITE_URL: https://caraway.au
       - run: npm run check:indexability
       - run: npm run check:bundle
+      - run: npm run check:headings
+      # Cited government sources move without notice, and unit tests only pin
+      # the strings. Non-blocking so third-party outages cannot redden a PR.
+      - run: npm run check:sources -- --report
+        continue-on-error: true

@@ -157,7 +157,8 @@ describe("Queensland vehicle-data artifact", () => {
   });
 
   it("records source hashes, filters, outputs, and no row-level identifiers", () => {
-    expect(sourceManifest.generatedAt).toBe("2026-08-13");
+    // Provenance: the manifest must describe the dataset actually committed.
+    expect(sourceManifest.generatedAt).toBe(vehicleData.generatedAt);
     expect(sourceManifest.methodologyVersion).toBe(2);
     expect(sourceManifest.fuelTrend.filter).toEqual({
       vehicleType: "Cars",
