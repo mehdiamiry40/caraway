@@ -66,10 +66,6 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Queensland Government — CTP insurance",
-      url: "https://www.qld.gov.au/transport/registration/cancel",
-    },
-    {
       title: "Queensland Government — cancel vehicle registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
     },

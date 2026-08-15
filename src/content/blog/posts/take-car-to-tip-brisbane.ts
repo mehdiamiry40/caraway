@@ -80,7 +80,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.brisbane.qld.gov.au/bins-waste-and-recycling/reducing-waste-at-home/hazardous-waste-disposal",
     },
     {
-      title: "Selling and moving unregistered vehicles — Queensland Government",
+      title: "Queensland Government — selling and moving unregistered vehicles",
       url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],

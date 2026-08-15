@@ -47,7 +47,7 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Queensland Government — Safety Certificates",
+      title: "Queensland Government — safety certificates",
       url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
     {

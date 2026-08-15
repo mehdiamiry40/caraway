@@ -68,11 +68,11 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Selling a used vehicle — Queensland Government",
+      title: "Queensland Government — selling a used vehicle",
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
-      title: "Selling and moving unregistered vehicles — Queensland Government",
+      title: "Queensland Government — selling and moving unregistered vehicles",
       url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],
