@@ -65,7 +65,7 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Australian Government PPSR — used car search",
+      title: "Australian Government PPSR — used car and vehicle search",
       url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
     },
     {

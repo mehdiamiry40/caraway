@@ -64,16 +64,16 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-15",
   sources: [
     {
-      title: "Queensland Government — Gas fuelled engines",
+      title: "Queensland Government — gas fuelled engines",
       url: "https://www.qld.gov.au/emergency/safety/home/gas/gas-fuelled-engines",
     },
     {
-      title: "Queensland Government — Selling a used vehicle",
+      title: "Queensland Government — selling a used vehicle",
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
       title:
-        "Queensland Government — Transfer a Queensland registered vehicle in person",
+        "Queensland Government — transfer registration in person",
       url: "https://www.qld.gov.au/transport/registration/transfer/rego",
     },
   ],

@@ -69,7 +69,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.support.transport.qld.gov.au/qt/formsdat.nsf/forms/QF5296/$file/F5296_CFD.pdf",
     },
     {
-      title: "Queensland Government — cancelling registration",
+      title: "Queensland Government — cancel vehicle registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
     },
     {

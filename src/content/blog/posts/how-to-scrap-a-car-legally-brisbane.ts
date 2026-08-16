@@ -72,7 +72,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
     {
-      title: "Australian Government PPSR — used car search",
+      title: "Australian Government PPSR — used car and vehicle search",
       url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
     },
   ],

@@ -111,15 +111,15 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Transfer vehicle registration — Queensland Government",
+      title: "Queensland Government — registration transfer",
       url: "https://www.qld.gov.au/transport/registration/transfer",
     },
     {
-      title: "Cancel vehicle registration — Queensland Government",
+      title: "Queensland Government — cancel vehicle registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
     },
     {
-      title: "Selling and moving unregistered vehicles — Queensland Government",
+      title: "Queensland Government — selling and moving unregistered vehicles",
       url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],

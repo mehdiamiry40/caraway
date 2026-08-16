@@ -68,7 +68,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title:
-        "Queensland Government — changing your registration, moving a vehicle to or from Queensland",
+        "Queensland Government — moving registration to or from Queensland",
       url: "https://www.qld.gov.au/transport/registration/transfer/interstate",
     },
     {

@@ -106,7 +106,7 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/registration/transfer",
     },
     {
-      title: "Queensland Government — cancelling registration",
+      title: "Queensland Government — cancel vehicle registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
     },
   ],

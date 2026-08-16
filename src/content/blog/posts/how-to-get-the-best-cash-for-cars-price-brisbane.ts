@@ -62,11 +62,11 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Check a motor licence — Queensland Government",
+      title: "Queensland Government — check a motor licence",
       url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence",
     },
     {
-      title: "Selling a used vehicle — Queensland Government",
+      title: "Queensland Government — selling a used vehicle",
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
   ],
