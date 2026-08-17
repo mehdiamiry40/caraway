@@ -77,10 +77,6 @@ export const post: RawBlogPostEntry = {
       url: "https://www.police.qld.gov.au/initiatives/road-safety/vehicle-impoundment/early-release-supporting-documents",
     },
     {
-      title: "Queensland Police Service — disposal of impounded motor vehicles",
-      url: "https://www.police.qld.gov.au/qps-corporate-documents/public-notices-lost-found-or-seized-property/disposal-of-impounded-motor-vehicles",
-    },
-    {
       title: "Queensland Government — hooning",
       url: "https://www.qld.gov.au/law/crime-and-police/types-of-crime/hooning",
     },
