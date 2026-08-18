@@ -52,7 +52,6 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ...(data.details
       ? ([["Vehicle/access details", data.details]] as Array<[string, string]>)
       : []),
-    ["Marketing consent", data.marketingConsent ? "opted in" : "no"],
   ];
 
   const text = [

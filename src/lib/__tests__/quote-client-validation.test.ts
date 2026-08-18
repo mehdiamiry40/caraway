@@ -57,7 +57,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
       details: "  Rolls and steers.\r\nNarrow driveway.  ",
       quoteAmount: 1_000_000,
       honeypot: "   ",
-      marketingConsent: true,
       ignoredBySchema: "discard me",
     },
   ],
@@ -83,7 +82,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["details too long", { ...baseValid, details: "x".repeat(2001) }],
   ["invalid quote amount", { ...baseValid, quoteAmount: 1.5 }],
   ["filled honeypot", { ...baseValid, honeypot: "bot" }],
-  ["invalid marketing consent", { ...baseValid, marketingConsent: "yes" }],
 ];
 
 describe("quote client validation parity", () => {
@@ -110,7 +108,6 @@ describe("quote client validation parity", () => {
       expect.objectContaining({
         year: 2015,
         honeypot: "",
-        marketingConsent: false,
       }),
     );
 

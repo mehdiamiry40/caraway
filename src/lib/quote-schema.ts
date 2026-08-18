@@ -125,7 +125,6 @@ export const quoteFormSchema = z.object({
       .check(z.positive(), z.lte(QUOTE_VALIDATION_LIMITS.quoteAmount.max)),
   ),
   honeypot: honeypotField,
-  marketingConsent: z._default(z.optional(z.boolean()), false),
 });
 
 export type QuoteFormValues = z.infer<typeof quoteFormSchema>;

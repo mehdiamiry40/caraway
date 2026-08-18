@@ -51,7 +51,6 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       address: "",
       details: "",
       honeypot: "",
-      marketingConsent: false,
     },
   });
 

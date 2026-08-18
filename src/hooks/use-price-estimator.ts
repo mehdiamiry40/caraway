@@ -44,7 +44,6 @@ export function usePriceEstimator() {
   const [address, setAddress] = useState("");
   const [addressTouched, setAddressTouched] = useState(false);
   const [addressError, setAddressError] = useState<string | null>(null);
-  const [marketingConsent, setMarketingConsent] = useState(false);
   const [honeypot, setHoneypot] = useState("");
 
   // Submission
@@ -228,7 +227,6 @@ export function usePriceEstimator() {
         address: address.trim(),
         ...(result.quote === null ? {} : { quoteAmount: result.quote }),
         honeypot: "",
-        marketingConsent,
       });
 
       if (res.success) {
@@ -261,7 +259,6 @@ export function usePriceEstimator() {
     make,
     model,
     yearNumber,
-    marketingConsent,
   ]);
 
   const handleReset = useCallback(() => {
@@ -282,7 +279,6 @@ export function usePriceEstimator() {
     setAddress("");
     setAddressTouched(false);
     setAddressError(null);
-    setMarketingConsent(false);
     setHoneypot("");
     setSubmitError("");
     setIsSuccess(false);
@@ -332,8 +328,6 @@ export function usePriceEstimator() {
     setAddressTouched,
     addressError,
     setAddressError,
-    marketingConsent,
-    setMarketingConsent,
     honeypot,
     setHoneypot,
     // Submit
