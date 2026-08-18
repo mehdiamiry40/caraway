@@ -229,44 +229,6 @@ describe("quoteFormSchema — optional vehicle and access details", () => {
   });
 });
 
-describe("quoteFormSchema — quoteAmount bounds", () => {
-  it("succeeds when quoteAmount is omitted", () => {
-    const result = quoteFormSchema.safeParse(baseValid);
-    expect(result.success).toBe(true);
-  });
-
-  it("rejects quoteAmount of 0", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 0 });
-    expect(result.success).toBe(false);
-  });
-
-  it("rejects negative quoteAmount", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: -1 });
-    expect(result.success).toBe(false);
-  });
-
-  it("accepts quoteAmount of 1", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 1 });
-    expect(result.success).toBe(true);
-  });
-
-  it("accepts quoteAmount of 999999", () => {
-    const result = quoteFormSchema.safeParse({
-      ...baseValid,
-      quoteAmount: 999999,
-    });
-    expect(result.success).toBe(true);
-  });
-
-  it("rejects quoteAmount above 1,000,000", () => {
-    const result = quoteFormSchema.safeParse({
-      ...baseValid,
-      quoteAmount: 1000001,
-    });
-    expect(result.success).toBe(false);
-  });
-});
-
 describe("quoteFormSchema — CRLF sanitization", () => {
   it("strips CRLF from name", () => {
     const result = quoteFormSchema.safeParse({

@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "No online article can determine the value of an individual car. Use it to prepare the facts, then compare the likely net result, time, documents, pickup terms, and certainty of each selling option. A direct-buyer quote is one option, not a guarantee that it will outperform a private sale or trade-in.",
 
-    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway confirms the offer, included-pickup terms, payment arrangement, and receipt details before collection.`,
+    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway confirms the offer, included-pickup terms, payment arrangement, and receipt details before collection.`,
   ],
   faqs: [
     {

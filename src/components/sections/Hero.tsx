@@ -92,7 +92,7 @@ export function Hero() {
 
               <div className="mt-7 flex max-w-xl flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
                 <Link
-                  href="/#price-estimator"
+                  href="/#quote-form"
                   className={cn(
                     buttonVariants({ size: "lg" }),
                     "group w-full px-8 sm:w-auto",

@@ -1,6 +1,6 @@
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { PriceEstimator } from "@/components/sections/PriceEstimator";
+import { QuoteForm } from "@/components/sections/QuoteForm";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
@@ -11,10 +11,9 @@ export default function HomeBelowFold() {
   return (
     <>
       {/* Server-rendered with the page: the primary conversion surface must
-          exist in the HTML for crawlers, JS-off users, and #price-estimator
-          deep links — the previous ssr:false + IntersectionObserver gate
-          served all three an empty placeholder. */}
-      <PriceEstimator />
+          exist in the HTML for crawlers, JS-off users, and #quote-form deep
+          links. */}
+      <QuoteForm source="home" />
       <TrustBadges />
       <HowItWorks />
       <WhyUs />

@@ -55,7 +55,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
       year: "2015",
       address: "  12 George St,\r\nBrisbane  ",
       details: "  Rolls and steers.\r\nNarrow driveway.  ",
-      quoteAmount: 1_000_000,
       honeypot: "   ",
       ignoredBySchema: "discard me",
     },
@@ -80,7 +79,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["address too short", { ...baseValid, address: "abcd" }],
   ["address too long", { ...baseValid, address: "x".repeat(501) }],
   ["details too long", { ...baseValid, details: "x".repeat(2001) }],
-  ["invalid quote amount", { ...baseValid, quoteAmount: 1.5 }],
   ["filled honeypot", { ...baseValid, honeypot: "bot" }],
 ];
 

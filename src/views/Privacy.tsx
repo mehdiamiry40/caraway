@@ -146,7 +146,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The estimator may use essential browser storage to remember non-sensitive vehicle selections on your device. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
+              The quote form sets a short-lived, essential cookie so address autocomplete can group your keystrokes into one lookup. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 

@@ -54,7 +54,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want a simple Brisbane car sale?",
 
-    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles from the details you supply. Use the [free, no-obligation quote form](/#price-estimator), [contact us](/contact), or call 0481 438 444. If Caraway buys and the supplied vehicle and access details match, pickup is included; collection timing and payment are confirmed for that job.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles from the details you supply. Use the [free, no-obligation quote form](/#quote-form), [contact us](/contact), or call 0481 438 444. If Caraway buys and the supplied vehicle and access details match, pickup is included; collection timing and payment are confirmed for that job.",
 
     "## FAQ",
 

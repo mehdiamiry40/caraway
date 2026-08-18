@@ -28,7 +28,7 @@ describe("HowItWorks internal links", () => {
     ).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /start your quote/i })).toHaveAttribute(
       "href",
-      "/#price-estimator",
+      "/#quote-form",
     );
   });
 

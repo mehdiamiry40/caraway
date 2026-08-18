@@ -29,7 +29,7 @@ const companyLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "Vehicle data", href: "/resources/queensland-vehicle-data" },
-  { label: "Get a quote", href: "/#price-estimator" },
+  { label: "Get a quote", href: "/#quote-form" },
 ];
 
 const legalLinks = [

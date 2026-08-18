@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     "Whichever route you take, have the paperwork together before the final week: photo identification, the registration details, finance payout confirmation where it applies, and the signed sale record both parties keep. The [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates what changes between a registered transfer, an unregistered sale and a cancellation.",
 
-    `If you are selling your car before moving overseas, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator) with the vehicle details, condition and pickup address. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment arrangement and sale record are confirmed before dispatch.`,
+    `If you are selling your car before moving overseas, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) with the vehicle details, condition and pickup address. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment arrangement and sale record are confirmed before dispatch.`,
   ],
   date: "2026-08-12",
   reviewedAt: "2026-08-12",

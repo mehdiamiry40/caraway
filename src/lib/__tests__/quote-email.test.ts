@@ -67,22 +67,11 @@ describe("buildQuoteEmailContent", () => {
   });
 });
 
-describe("buildQuoteEmailContent — quoteAmount handling", () => {
-  it("includes an Estimated quote row when quoteAmount is set", () => {
-    const { text, html } = buildQuoteEmailContent({
-      ...baseValid,
-      quoteAmount: 1500,
-    });
-    expect(text).toContain("Estimated quote");
-    expect(text).toContain("$1,500");
-    expect(html).toContain("Estimated quote");
-    expect(html).toContain("$1,500");
-  });
-
-  it("omits the Estimated quote row when quoteAmount is undefined", () => {
+describe("buildQuoteEmailContent — no automated quote", () => {
+  it("never reports an estimated amount — offers are made by a person", () => {
     const { text, html } = buildQuoteEmailContent(baseValid);
-    expect(text).not.toContain("Estimated quote");
-    expect(html).not.toContain("Estimated quote");
+    expect(text).not.toMatch(/Estimated quote/i);
+    expect(html).not.toMatch(/Estimated quote/i);
   });
 });
 

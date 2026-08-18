@@ -255,7 +255,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </div>
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
                   <Link
-                    href="/#price-estimator"
+                    href="/#quote-form"
                     className={cn(buttonVariants({ variant: "primary" }), "w-full md:w-auto")}
                   >
                     Get my quote
@@ -418,7 +418,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Call {BUSINESS.phoneDisplay}
                   </TrackedPhoneLink>
                   <Link
-                    href="/#price-estimator"
+                    href="/#quote-form"
                     className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
                   >
                     Get my quote

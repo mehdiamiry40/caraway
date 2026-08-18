@@ -56,7 +56,7 @@ export default function FAQPage() {
               Call {BUSINESS.phoneDisplay}
             </a>
             <Link
-              href="/#price-estimator"
+              href="/#quote-form"
               className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
             >
               Get my quote

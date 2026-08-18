@@ -65,7 +65,7 @@ export const post: RawBlogPostEntry = {
 
     "## Request an individual assessment",
 
-    `Caraway assesses scrap, unwanted, damaged, unregistered, and non-running vehicles in its confirmed Brisbane service area. [Request a quote](/#price-estimator), [contact us](/contact), or call ${BUSINESS.phoneDisplay}. If an offer is made and accepted, the pickup conditions, payment arrangement, and receipt details are confirmed before collection.`,
+    `Caraway assesses scrap, unwanted, damaged, unregistered, and non-running vehicles in its confirmed Brisbane service area. [Request a quote](/#quote-form), [contact us](/contact), or call ${BUSINESS.phoneDisplay}. If an offer is made and accepted, the pickup conditions, payment arrangement, and receipt details are confirmed before collection.`,
 
     "## FAQ",
 

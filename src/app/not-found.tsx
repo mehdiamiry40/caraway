@@ -78,7 +78,7 @@ export default function NotFound() {
             <p className="text-sm text-muted-foreground">
               Need help?{" "}
               <Link
-                href="/#price-estimator"
+                href="/#quote-form"
                 className="text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
               >
                 <Calculator className="h-3.5 w-3.5" />

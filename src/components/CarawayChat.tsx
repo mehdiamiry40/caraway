@@ -3,9 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import {
   ArrowUp,
-  BadgeDollarSign,
   Bot,
-  Check,
   ExternalLink,
   Loader2,
   Phone,
@@ -29,7 +27,7 @@ import { BUSINESS } from "@/lib/site";
 import { CarawayChatLauncher } from "@/components/CarawayChatLauncher";
 
 const QUICK_ACTIONS = [
-  { label: "Get a car estimate", message: "Can you estimate what my car is worth?" },
+  { label: "How do I get a quote?", message: "How do I get a quote for my car?" },
   { label: "Is towing free?", message: "Is towing free, and what areas do you cover?" },
   { label: "What cars do you buy?", message: "What types of vehicles do you buy?" },
 ] as const;
@@ -153,79 +151,6 @@ function AssistantMarkdown({ children }: { children: string }) {
         );
       })}
     </>
-  );
-}
-
-function EstimateCard({
-  estimate,
-  onContinue,
-}: {
-  estimate: {
-    status: "indicative_estimate" | "manual_review";
-    displayAmount: string;
-    vehicle: string;
-    condition: string;
-    factors: string[];
-    disclaimer: string;
-  };
-  onContinue: () => void;
-}) {
-  const condition = estimate.condition.replaceAll("_", " ");
-
-  return (
-    <div className="overflow-hidden rounded-sm border border-primary/25 bg-card shadow-sm">
-      <div className="bg-secondary/70 px-3.5 py-3">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
-          <BadgeDollarSign className="h-4 w-4" aria-hidden="true" />
-          {estimate.status === "manual_review" ? "Buyer assessment" : "Indicative estimate"}
-        </div>
-        <p className="mt-1 font-display text-3xl font-semibold leading-none text-primary">
-          {estimate.displayAmount}
-        </p>
-        <p className="mt-1.5 text-sm font-medium text-foreground">
-          {estimate.vehicle}
-          <span className="font-normal capitalize text-muted-foreground">
-            {` · ${condition}`}
-          </span>
-        </p>
-      </div>
-
-      <div className="space-y-3 px-3.5 py-3">
-        {estimate.factors.length > 0 && (
-          <ul className="space-y-1.5 text-xs leading-relaxed text-foreground">
-            {estimate.factors.map((factor) => (
-              <li key={factor} className="flex items-start gap-2">
-                <Check
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"
-                  aria-hidden="true"
-                />
-                <span>{factor}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <p className="text-[0.6875rem] leading-relaxed text-muted-foreground">
-          {estimate.disclaimer}
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          <Link
-            href="/#price-estimator"
-            prefetch={false}
-            onClick={onContinue}
-            className="inline-flex min-h-10 items-center justify-center rounded-sm bg-cta px-3 text-center text-xs font-semibold text-cta-foreground transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {estimate.status === "manual_review" ? "Request assessment" : "Confirm my quote"}
-          </Link>
-          <a
-            href={BUSINESS.phoneTel}
-            className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-sm border border-primary/30 px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-            Call Caraway
-          </a>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -447,10 +372,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             {messages.map((message) => {
               const isUser = message.role === "user";
               const hasVisibleContent = message.parts.some(
-                (part) =>
-                  (part.type === "text" && part.text.length > 0) ||
-                  (part.type === "tool-estimateVehicle" &&
-                    part.state === "output-available"),
+                (part) => part.type === "text" && part.text.length > 0,
               );
               if (!hasVisibleContent) return null;
 
@@ -482,20 +404,6 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                               <AssistantMarkdown>{part.text}</AssistantMarkdown>
                             )}
                           </div>
-                        );
-                      }
-
-                      if (
-                        !isUser &&
-                        part.type === "tool-estimateVehicle" &&
-                        part.state === "output-available"
-                      ) {
-                        return (
-                          <EstimateCard
-                            key={`${message.id}-estimate-${index}`}
-                            estimate={part.output}
-                            onContinue={closeChat}
-                          />
                         );
                       }
 
@@ -575,10 +483,10 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             </form>
             <div className="mt-2 flex items-center justify-between gap-3 text-[0.6875rem] text-muted-foreground">
               <span className="hidden sm:inline">Enter to send · Shift+Enter for a new line</span>
-              <span className="sm:hidden">Indicative estimates only</span>
+              <span className="sm:hidden">Quotes come from the form</span>
               <span className="flex items-center gap-3">
                 <Link
-                  href="/#price-estimator"
+                  href="/#quote-form"
                   prefetch={false}
                   className="font-medium text-primary hover:underline"
                 >

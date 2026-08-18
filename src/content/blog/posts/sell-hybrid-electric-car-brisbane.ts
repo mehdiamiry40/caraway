@@ -45,7 +45,7 @@ export const post: RawBlogPostEntry = {
 
     "Resolve finance or any registered security interest before you agree to a sale—a buyer can run a Personal Property Securities Register search on the VIN, and an undischarged interest will stall the handover. [The Queensland paperwork checklist](/blog/what-paperwork-to-sell-a-car-qld) walks through each document in order.",
 
-    `To have a hybrid or electric vehicle assessed individually, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Describe the battery condition, any water, fire, or collision history, and the access at the pickup address. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the available window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `To have a hybrid or electric vehicle assessed individually, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Describe the battery condition, any water, fire, or collision history, and the access at the pickup address. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the available window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   faqs: [
     {

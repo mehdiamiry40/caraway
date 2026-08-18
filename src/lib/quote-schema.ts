@@ -119,11 +119,6 @@ export const quoteFormSchema = z.object({
       z.overwrite(sanitizeLine),
     ),
   ),
-  quoteAmount: z.optional(
-    z
-      .int()
-      .check(z.positive(), z.lte(QUOTE_VALIDATION_LIMITS.quoteAmount.max)),
-  ),
   honeypot: honeypotField,
 });
 

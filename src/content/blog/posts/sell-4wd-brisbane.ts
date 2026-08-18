@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "The Queensland end of the job is no different when you sell a 4WD in Brisbane than for any other vehicle. The [seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) covers the registered transfer, cancellation and unregistered-sale pathways and what each one needs from you, and it is worth reading before you agree on a figure rather than after.",
 
-    `For an individual assessment of a modified or coastal-used four-wheel drive, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `For an individual assessment of a modified or coastal-used four-wheel drive, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   faqs: [
     {

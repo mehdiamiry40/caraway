@@ -91,7 +91,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
             </Link>
           )}
           <Link
-            href="/#price-estimator"
+            href="/#quote-form"
             className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
           >
             Start your quote

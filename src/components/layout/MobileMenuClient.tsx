@@ -93,7 +93,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               Call {BUSINESS.phoneDisplay}
             </a>
             <Link
-              href="/#price-estimator"
+              href="/#quote-form"
               prefetch={false}
               className={cn(
                 buttonVariants({ size: "lg" }),

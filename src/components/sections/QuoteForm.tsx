@@ -98,7 +98,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   };
 
   return (
-    <section id="quote-form" className="section-y scroll-mt-header bg-background">
+    <section
+      id="quote-form"
+      className="section-y scroll-mt-header bg-background"
+      aria-label="Request a quote"
+      data-chat-launcher-suppress="true"
+    >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
-const QUOTE_TARGET_IDS = ["price-estimator", "quote-form", "quote-section"] as const;
+const QUOTE_TARGET_IDS = ["quote-form", "quote-section"] as const;
 
 export function findQuoteTarget(doc: Pick<Document, "getElementById"> = document) {
   for (const id of QUOTE_TARGET_IDS) {
@@ -16,10 +16,9 @@ export function findQuoteTarget(doc: Pick<Document, "getElementById"> = document
 /**
  * Returns a callback that scrolls the user to the quote form.
  *
- * - On the home page, scrolls to the #price-estimator section.
- * - On other pages, tries to find an embedded quote section
- *   before falling back to
- *   navigating home with a hash.
+ * - On the home page, scrolls to the #quote-form section.
+ * - On other pages, tries to find an embedded quote section before
+ *   falling back to navigating home with a hash.
  */
 export function useScrollToQuote() {
   const router = useRouter();
@@ -35,7 +34,7 @@ export function useScrollToQuote() {
         block: "start",
       });
     } else {
-      router.push("/#price-estimator");
+      router.push("/#quote-form");
     }
   }, [router]);
 }

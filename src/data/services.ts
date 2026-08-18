@@ -55,7 +55,7 @@ export const services: ServicePage[] = [
       {
         heading: "How to Request a Cash-for-Cars Quote",
         content:
-          "Provide the make, model, year, kilometres, suburb, overall condition, and whether the car starts, rolls, steers, and has all of its wheels. Photos help us assess visible damage and completeness. We review those details before confirming a no-obligation offer; a web page or estimator cannot determine the final value of an individual vehicle.",
+          "Provide the make, model, year, kilometres, suburb, overall condition, and whether the car starts, rolls, steers, and has all of its wheels. Photos help us assess visible damage and completeness. We review those details before confirming a no-obligation offer; a web page cannot determine the final value of an individual vehicle.",
         checklistItems: [
           "Make, model, variant, year, approximate kilometres, and registration status.",
           "Whether it starts, rolls, steers, brakes, and has all wheels and keys.",

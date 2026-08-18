@@ -23,7 +23,7 @@ const quickLinks = [
     icon: BadgeDollarSign,
     label: "Get a vehicle assessment",
     description: "An indicative scrap/parts estimate or buyer review.",
-    href: "/#price-estimator",
+    href: "/#quote-form",
   },
   {
     icon: Truck,
@@ -80,7 +80,7 @@ export function TrustBadges() {
             <li key={label}>
               <Link
                 href={href}
-                prefetch={href === "/#price-estimator" ? false : undefined}
+                prefetch={href === "/#quote-form" ? false : undefined}
                 className="group relative grid min-h-0 h-full grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-1 border border-border bg-card p-4 pr-10 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
               >
                 <Icon className="row-span-2 h-9 w-9 text-primary sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />

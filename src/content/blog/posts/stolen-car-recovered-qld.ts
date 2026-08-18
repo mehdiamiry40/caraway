@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "Because another person may have had access to the vehicle, check whether documents, keys, a garage remote, paired phones, or saved navigation addresses need to be removed, replaced, or reset. Work through [clearing personal data before handover](/blog/delete-personal-data-from-car-before-selling), and if you decide to move the vehicle on, the [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) covers the transfer, cancellation, and unregistered-sale paths.",
 
-    `If the car has come back in a state you don't want to repair, describe the theft damage, the keys situation and where the vehicle is being held when you ask for a figure. Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `If the car has come back in a state you don't want to repair, describe the theft damage, the keys situation and where the vehicle is being held when you ask for a figure. Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   date: "2026-08-13",
   reviewedAt: "2026-08-13",

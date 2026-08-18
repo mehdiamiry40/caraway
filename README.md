@@ -83,7 +83,7 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 ## Testing
 
 The Vitest suite covers server actions, forms, API routes, SEO helpers,
-the request proxy, persistence, quote validation, and pricing. Run it with:
+the request proxy, and quote validation. Run it with:
 
 ```bash
 npm test
@@ -97,7 +97,7 @@ npm test
   - `locations/`, `blog/`, `faq/`, `about/`, `contact/`, `privacy/`, `terms/`, `accessibility/`
   - `api/health/route.ts` — liveness/version endpoint for uptime checks
   - `robots.ts`, `sitemap.ts` — SEO metadata
-- **`src/lib/`** — shared modules (schemas, analytics, JSON-LD, price estimator).
+- **`src/lib/`** — shared modules (schemas, analytics, JSON-LD, email builders).
 - **Server actions** — form submissions (quote, contact) run as Next.js
   server actions that POST to the webhook endpoints with SSRF-safe hostname
   allowlisting.

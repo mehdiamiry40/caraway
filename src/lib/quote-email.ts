@@ -33,10 +33,6 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
   );
 
   const conditionLabel = CONDITION_LABELS[data.condition] ?? data.condition;
-  const quoteAmountLabel =
-    typeof data.quoteAmount === "number"
-      ? `$${data.quoteAmount.toLocaleString()}`
-      : null;
 
   const rows: Array<[string, string]> = [
     ["Name", data.name],
@@ -45,9 +41,6 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ["Model", data.model],
     ["Year", String(data.year)],
     ["Condition", conditionLabel],
-    ...(quoteAmountLabel
-      ? ([["Estimated quote", quoteAmountLabel]] as Array<[string, string]>)
-      : []),
     ["Address", data.address || "—"],
     ...(data.details
       ? ([["Vehicle/access details", data.details]] as Array<[string, string]>)
