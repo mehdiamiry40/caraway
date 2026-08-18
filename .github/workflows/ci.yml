@@ -9,6 +9,9 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    # Nothing here legitimately runs this long. Without it a hung step burns
+    # the default 6h job limit before anyone notices.
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -19,7 +22,29 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run test:coverage
-      - run: npx playwright install --with-deps chromium
+
+      # Browsers are keyed on the resolved Playwright version, so the cache
+      # invalidates exactly when the browser build would change.
+      - id: pw-version
+        run: echo "version=$(node -p "require('@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+      - id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw-version.outputs.version }}-chromium
+
+      # This step has hung repeatedly on the browser download / apt mirrors,
+      # taking ~20min against a ~80s norm. The timeout turns an open-ended
+      # hang into a fast, re-runnable failure; the cache above means most runs
+      # skip the download entirely.
+      - if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+        timeout-minutes: 5
+      # Browsers are cached but apt packages are not — each run is a fresh VM.
+      - if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+        timeout-minutes: 5
+
       - run: npm run test:e2e
       - run: npm run build
         env:
