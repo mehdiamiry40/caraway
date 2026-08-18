@@ -179,7 +179,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </h2>
                 <ol className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
                   {[
-                    { step: "01", title: "Get your quote", desc: "Use the online estimator or send us your car details." },
+                    { step: "01", title: "Get your quote", desc: "Send us your car details through the quote form." },
                     { step: "02", title: "Lock the number", desc: "We confirm a firm price. Book a pickup window that suits you." },
                     { step: "03", title: "Payment and pickup", desc: "Pickup is included when we buy. Payment is confirmed before the car leaves." },
                   ].map(item => (

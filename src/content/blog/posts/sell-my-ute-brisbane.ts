@@ -35,7 +35,7 @@ export const post: RawBlogPostEntry = {
 
     "Give every buyer the same accurate description and photos so the offers are comparable. Ask what could change the offer, whether pickup is included, which access assumptions apply, when payment is confirmed, and what receipt and buyer details will be supplied. Disclose gates, slopes, height limits, soft ground, seized wheels, missing keys, storage fees, or worksite restrictions before collection is scheduled.",
 
-    `To request an individual ute assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The available window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `To request an individual ute assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The available window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   faqs: [
     {

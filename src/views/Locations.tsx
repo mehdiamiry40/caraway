@@ -76,7 +76,7 @@ export default function Locations() {
           summary for a suburb that is not listed. Pickup is included when
           Caraway buys; the exact address, access, vehicle details, payment
           method, and available window are confirmed first. You can also{" "}
-          <Link href="/#price-estimator" className="text-primary font-medium link-underline">request a quote</Link>.
+          <Link href="/#quote-form" className="text-primary font-medium link-underline">request a quote</Link>.
         </p>
       }
     >
@@ -136,7 +136,7 @@ export default function Locations() {
               Call {BUSINESS.phoneDisplay}
             </a>
             <Link
-              href="/#price-estimator"
+              href="/#quote-form"
               className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
             >
               Get my quote

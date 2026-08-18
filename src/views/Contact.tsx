@@ -29,8 +29,8 @@ export default function Contact() {
               <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>Get in touch</h2>
               <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
                 The fastest way to get a cash offer is the{" "}
-                <Link href="/#price-estimator" className="text-primary font-medium link-underline">
-                  online estimator
+                <Link href="/#quote-form" className="text-primary font-medium link-underline">
+                  online quote form
                 </Link>
                 . Our Brisbane team will confirm the quote, collection terms, timing, and payment method for each accepted job.
               </p>

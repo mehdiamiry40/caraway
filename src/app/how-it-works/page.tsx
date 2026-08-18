@@ -4,7 +4,7 @@ import { CheckCircle2 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { PriceEstimator } from "@/components/sections/PriceEstimator";
+import { QuoteForm } from "@/components/sections/QuoteForm";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Accordion } from "@/components/ui/accordion";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
@@ -284,7 +284,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        <PriceEstimator />
+        <QuoteForm source="how-it-works" />
         <FinalCTA />
       </PageShell>
     </>

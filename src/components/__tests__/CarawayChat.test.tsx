@@ -83,7 +83,7 @@ describe("CarawayChat", () => {
     expect(document.activeElement).toBe(
       screen.getByLabelText("Ask Caraway a question"),
     );
-    expect(screen.getByText("Indicative estimates only")).not.toBeNull();
+    expect(screen.getByText("Quotes come from the form")).not.toBeNull();
     expect(screen.queryByRole("button", { name: "Ask Caraway" })).toBeNull();
   });
 
@@ -92,10 +92,10 @@ describe("CarawayChat", () => {
     render(<CarawayChat />);
 
     await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
-    await user.click(screen.getByRole("button", { name: "Get a car estimate" }));
+    await user.click(screen.getByRole("button", { name: "How do I get a quote?" }));
 
     expect(mocks.sendMessage).toHaveBeenCalledWith({
-      text: "Can you estimate what my car is worth?",
+      text: "How do I get a quote for my car?",
     });
   });
 
@@ -123,32 +123,15 @@ describe("CarawayChat", () => {
     expect(screen.queryByRole("link", { name: "Unsafe" })).toBeNull();
   });
 
-  it("shows an actionable card for an indicative estimate", async () => {
+  it("points a quote request at the quote form instead of pricing it", async () => {
     mocks.messages = [
       {
         id: "assistant-quote",
         role: "assistant",
         parts: [
           {
-            type: "tool-estimateVehicle",
-            toolCallId: "quote-1",
-            state: "output-available",
-            input: {
-              make: "Toyota",
-              model: "Corolla",
-              year: 2012,
-              condition: "running",
-            },
-            output: {
-              currency: "AUD",
-              amount: 650,
-              displayAmount: "$650",
-              vehicle: "2012 Toyota Corolla",
-              condition: "running",
-              factors: ["High-demand brand — parts are sought after in Brisbane"],
-              status: "indicative_estimate",
-              disclaimer: "Indicative estimate only. A confirmed offer depends on inspection.",
-            },
+            type: "text",
+            text: "A Caraway buyer reviews every vehicle, so fill in the quote form and we'll call you back.",
           },
         ],
       },
@@ -158,12 +141,10 @@ describe("CarawayChat", () => {
 
     await user.click(screen.getByRole("button", { name: "Ask Caraway" }));
 
-    expect(screen.getByText("$650")).not.toBeNull();
-    expect(screen.getByText(/2012 Toyota Corolla/)).not.toBeNull();
+    expect(screen.getByText(/A Caraway buyer reviews every vehicle/)).not.toBeNull();
     expect(
-      screen.getByRole("link", { name: "Confirm my quote" }).getAttribute("href"),
-    ).toBe("/#price-estimator");
-    expect(screen.getByRole("link", { name: "Call Caraway" })).not.toBeNull();
+      screen.getByRole("link", { name: /Full quote/ }).getAttribute("href"),
+    ).toBe("/#quote-form");
   });
 
   it("lets a visitor stop a response in progress", async () => {

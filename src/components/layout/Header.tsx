@@ -89,7 +89,7 @@ export function Header() {
 
           <div className="hidden lg:flex items-center shrink-0 gap-2">
             <Link
-              href="/#price-estimator"
+              href="/#quote-form"
               prefetch={false}
               className={buttonVariants({ size: "sm" })}
             >

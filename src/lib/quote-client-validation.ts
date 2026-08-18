@@ -153,19 +153,6 @@ export function validateQuoteFormForClient(
     }
   }
 
-  if (raw.quoteAmount !== undefined) {
-    if (
-      typeof raw.quoteAmount !== "number" ||
-      !Number.isInteger(raw.quoteAmount) ||
-      raw.quoteAmount < QUOTE_VALIDATION_LIMITS.quoteAmount.min ||
-      raw.quoteAmount > QUOTE_VALIDATION_LIMITS.quoteAmount.max
-    ) {
-      setError(errors, "quoteAmount", QUOTE_VALIDATION_MESSAGES.invalidInput);
-    } else {
-      normalized.quoteAmount = raw.quoteAmount;
-    }
-  }
-
   if (raw.honeypot === undefined) {
     normalized.honeypot = "";
   } else if (typeof raw.honeypot !== "string") {

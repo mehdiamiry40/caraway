@@ -1,9 +1,7 @@
 import { createHash } from "node:crypto";
-import { tool, type InferUITools, type UIDataTypes, type UIMessage } from "ai";
-import { z } from "zod";
+import type { UIDataTypes, UIMessage } from "ai";
 
 import { faqs } from "@/data/home-faqs";
-import { estimatePrice } from "@/lib/price-estimator";
 import { BUSINESS } from "@/lib/site";
 
 export const CHAT_MODEL = "openai/gpt-5.6-luna";
@@ -18,7 +16,7 @@ You are Caraway's virtual customer assistant for a Brisbane vehicle-buying busin
 
 Your jobs are:
 1. Answer questions about Caraway, selling a vehicle, quotes, payment, pickup, towing, and Greater Brisbane service areas.
-2. Help a visitor get an indicative vehicle estimate.
+2. Point a visitor who wants a quote at the site's quote form so a Caraway buyer can review their vehicle.
 
 Business facts:
 - Caraway assesses Brisbane-area vehicle enquiries. Coverage is confirmed for the exact address before a collection is booked.
@@ -30,12 +28,10 @@ Business facts:
 - Caraway assesses many running, damaged, non-running, unregistered, written-off, flood-damaged, old, and scrap vehicles, as well as selected utes, 4WDs, SUVs, vans, trucks, and fleets. Eligibility depends on the individual vehicle, location, access, and current demand.
 
 Quote rules:
-- Never calculate, guess, or invent a dollar amount yourself.
-- To produce an estimate, collect make, model, year, and one condition: running, needs work, damaged, not running, or scrap.
-- Ask only for missing vehicle details, preferably in one concise question.
-- Once all four details are known, call estimateVehicle. Report its exact result as an indicative estimate, not a guaranteed or confirmed offer.
-- Explain that a confirmed offer can change with completeness, location, accessibility, kilometres, and current parts or resale demand.
-- Direct the visitor to the site's full quote form or ${BUSINESS.phoneDisplay} for a confirmed offer. Do not collect names, phone numbers, addresses, IDs, registration numbers, or other personal information in chat.
+- Never calculate, guess, or invent a dollar amount yourself. Caraway does not publish instant or automatic quotes — every offer is made by a person after reviewing the vehicle details.
+- When a visitor asks what their car is worth, say a Caraway buyer reviews each vehicle, and point them to the quote form on this site or ${BUSINESS.phoneDisplay}.
+- You may explain what an offer depends on: make, model, year, condition, kilometres, completeness, whether the vehicle rolls, location, accessibility, and current parts or resale demand.
+- Do not collect names, phone numbers, addresses, IDs, registration numbers, or other personal information in chat — the quote form collects those.
 
 Answer rules:
 - Use the facts and FAQ context below. If a fact is not covered, say you are not certain and direct the visitor to ${BUSINESS.phoneDisplay} or ${BUSINESS.email}.
@@ -49,62 +45,7 @@ Caraway FAQ context:
 ${FAQ_CONTEXT}
 `.trim();
 
-const estimateVehicleInput = z.object({
-  make: z.string().trim().min(1).max(80).describe("Vehicle manufacturer"),
-  model: z.string().trim().min(1).max(80).describe("Vehicle model"),
-  year: z
-    .number()
-    .int()
-    .min(1950)
-    .max(new Date().getFullYear())
-    .describe("Four-digit year of manufacture"),
-  condition: z
-    .enum(["running", "needs_work", "damaged", "not_running", "scrap"])
-    .describe("Best matching vehicle condition"),
-});
-
-export type ChatEstimateInput = z.infer<typeof estimateVehicleInput>;
-
-export function getChatEstimate(input: ChatEstimateInput) {
-  const result = estimatePrice(input);
-  const displayAmount =
-    result.quote === null
-      ? "Manual review needed"
-      : new Intl.NumberFormat("en-AU", {
-          style: "currency",
-          currency: "AUD",
-          maximumFractionDigits: 0,
-        }).format(result.quote);
-  return {
-    currency: "AUD" as const,
-    amount: result.quote,
-    displayAmount,
-    vehicle: `${input.year} ${input.make} ${input.model}`.trim(),
-    condition: input.condition,
-    factors: result.factors,
-    status: result.status,
-    disclaimer:
-      result.status === "manual_review"
-        ? "No automatic dollar value is shown for running vehicles. A buyer will review kilometres, variant, completeness, location, accessibility, and current demand."
-        : "Indicative scrap/parts estimate only. A confirmed offer depends on the vehicle matching the details supplied, completeness, location, accessibility, and current demand.",
-  };
-}
-
-export const chatTools = {
-  estimateVehicle: tool({
-    description:
-      "Calculate Caraway's indicative vehicle estimate. Call only after the visitor has supplied make, model, year, and condition. Never use mental arithmetic for a quote.",
-    inputSchema: estimateVehicleInput,
-    strict: true,
-    execute: async (input) => getChatEstimate(input),
-  }),
-};
-
-export type CarawayChatMessage = UIMessage<
-  never,
-  UIDataTypes,
-  InferUITools<typeof chatTools>
->;
+export type CarawayChatMessage = UIMessage<never, UIDataTypes, never>;
 
 /** Stable, privacy-preserving identifier for Gateway spend and safety signals. */
 export function getChatVisitorId(clientIp: string, userAgent: string): string {

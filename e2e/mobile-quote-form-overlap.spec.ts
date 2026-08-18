@@ -5,7 +5,7 @@ test.use({
   reducedMotion: "reduce",
 });
 
-test("fixed controls do not obstruct the mobile estimator", async ({ page }) => {
+test("fixed controls do not obstruct the mobile quote form", async ({ page }) => {
   await page.goto("/");
 
   const chatLauncher = page.getByTestId("chat-launcher");
@@ -14,13 +14,13 @@ test("fixed controls do not obstruct the mobile estimator", async ({ page }) => 
   await expect(stickyCta).toHaveAttribute("aria-hidden", "true");
 
   await page.getByRole("link", { name: "Get my quote" }).first().click();
-  await expect(page.locator("#price-estimator")).toBeInViewport();
+  await expect(page.locator("#quote-form")).toBeInViewport();
   await expect(chatLauncher).toHaveAttribute("aria-hidden", "true");
   await expect(stickyCta).toHaveAttribute("aria-hidden", "true");
   await expect(page.getByRole("textbox", { name: "Website" })).toHaveCount(0);
 
-  await page.locator("#est-make").selectOption("Toyota");
-  const model = page.locator("#est-model");
+  await page.locator("#quote-make").selectOption("Toyota");
+  const model = page.locator("#quote-model");
   await expect(model).toBeVisible();
   await model.scrollIntoViewIfNeeded();
   await expect(chatLauncher).toHaveAttribute("aria-hidden", "true");
@@ -31,5 +31,5 @@ test("fixed controls do not obstruct the mobile estimator", async ({ page }) => 
     ({ x, y }) => document.elementFromPoint(x, y)?.id,
     { x: box!.x + box!.width / 2, y: box!.y + box!.height / 2 },
   );
-  expect(topElementId).toBe("est-model");
+  expect(topElementId).toBe("quote-model");
 });

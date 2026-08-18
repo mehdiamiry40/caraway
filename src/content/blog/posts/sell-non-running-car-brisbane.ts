@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "Be specific about the condition when you call — \"won't start, cause unknown\" is more useful than guessing at a repair. Have your ID and any relevant vehicle records ready. If the car has been sitting on flat tyres or soft ground, flag it before dispatch. Stored vehicles can develop seized brakes, wiring damage, moisture problems, or deteriorated tyres and interiors, so recheck and photograph the current condition if you delay the decision.",
 
-    `For a non-running vehicle within Caraway's confirmed service area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle and access, includes pickup when it buys, and confirms the payment arrangement and receipt details before collection.`,
+    `For a non-running vehicle within Caraway's confirmed service area, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway assesses the vehicle and access, includes pickup when it buys, and confirms the payment arrangement and receipt details before collection.`,
   ],
   date: "2026-06-14",
   updatedAt: "2026-08-07",

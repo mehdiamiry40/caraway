@@ -45,7 +45,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want a quick offer for your car?",
 
-    "Use the [free quote form](/#price-estimator) or [contact Caraway](/contact) with your vehicle details. If Caraway makes an offer and you accept it, the collection window, payment arrangement, paperwork, and included-pickup conditions are confirmed before dispatch. You can also call 0481 438 444 if you would rather talk it through.",
+    "Use the [free quote form](/#quote-form) or [contact Caraway](/contact) with your vehicle details. If Caraway makes an offer and you accept it, the collection window, payment arrangement, paperwork, and included-pickup conditions are confirmed before dispatch. You can also call 0481 438 444 if you would rather talk it through.",
 
     "## FAQ",
 

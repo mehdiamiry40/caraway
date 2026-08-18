@@ -64,7 +64,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want to check whether Caraway can quote it?",
 
-    "Use the [free quote form](/#price-estimator), [contact Caraway](/contact), or call 0481 438 444. Tell us who owns the vehicle, who will be present at pickup, and what authority documents are available so we can advise what may be needed before collection.",
+    "Use the [free quote form](/#quote-form), [contact Caraway](/contact), or call 0481 438 444. Tell us who owns the vehicle, who will be present at pickup, and what authority documents are available so we can advise what may be needed before collection.",
 
     "## FAQ",
 

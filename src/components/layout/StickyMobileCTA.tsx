@@ -21,7 +21,7 @@ export function StickyMobileCTA() {
 
   useEffect(() => {
     const targets = document.querySelectorAll(
-      "[data-sticky-cta-suppress], #price-estimator, #quote-form",
+      "[data-sticky-cta-suppress], #quote-form",
     );
     if (targets.length === 0) return;
 

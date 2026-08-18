@@ -33,8 +33,6 @@ export const BUSINESS = {
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b9145f7c7992573:0x20b7c0537d263e77!12e1",
 } as const;
 
-export const MIN_PRICE = 200;
-export const MAX_PRICE = 9999;
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {

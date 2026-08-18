@@ -21,7 +21,6 @@ export const QUOTE_VALIDATION_LIMITS = {
   year: { min: 1950, max: new Date().getFullYear() },
   address: { min: 5, max: 500 },
   details: { max: 2000 },
-  quoteAmount: { min: 1, max: 1_000_000 },
 } as const;
 
 export const QUOTE_VALIDATION_MESSAGES = {

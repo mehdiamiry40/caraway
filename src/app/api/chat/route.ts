@@ -1,7 +1,6 @@
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
-  isStepCount,
   safeValidateUIMessages,
   streamText,
   toUIMessageStream,
@@ -12,7 +11,6 @@ import {
   CHAT_MODEL,
   CHAT_PROMPT_VERSION,
   type CarawayChatMessage,
-  chatTools,
   getChatVisitorId,
 } from "@/lib/chat-assistant";
 import { getEnv } from "@/lib/env";
@@ -116,7 +114,6 @@ export async function POST(request: Request) {
       : undefined;
   const validated = await safeValidateUIMessages<CarawayChatMessage>({
     messages,
-    tools: chatTools,
   });
 
   if (!validated.success) {
@@ -148,8 +145,8 @@ export async function POST(request: Request) {
   }
 
   // The browser replays prior assistant messages on each turn. Preserve their
-  // visible text, but never trust client-replayed tool results or reasoning as
-  // authoritative input; quote tools execute fresh on the server when needed.
+  // visible text, but never trust client-replayed reasoning as authoritative
+  // input.
   const textOnlyMessages = validated.data
     .map((message) => ({
       ...message,
@@ -180,8 +177,6 @@ export async function POST(request: Request) {
     model: CHAT_MODEL,
     instructions: CHAT_INSTRUCTIONS,
     messages: await convertToModelMessages(textOnlyMessages),
-    tools: chatTools,
-    stopWhen: isStepCount(3),
     reasoning: "low",
     maxOutputTokens: 500,
     providerOptions: {
@@ -208,7 +203,6 @@ export async function POST(request: Request) {
     headers: responseHeaders(),
     stream: toUIMessageStream({
       stream: result.stream,
-      tools: chatTools,
       originalMessages: validated.data,
       sendReasoning: false,
       onError: () => "I couldn't answer that just now. Please try again or call Caraway on 0481 438 444.",

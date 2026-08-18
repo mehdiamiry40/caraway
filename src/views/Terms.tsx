@@ -37,7 +37,7 @@ export default function Terms() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Quoted prices</h2>
             <p>
-              The online estimator is indicative. We review the information you provide and confirm an offer in writing before pickup is booked. At collection, we check that the vehicle matches the disclosed details. If there is a material difference, such as undisclosed damage, missing major components, or different access conditions, we will explain any revised offer and you may reject it before the vehicle is loaded. No generic website amount guarantees the offer for an individual vehicle.
+              Caraway does not publish an automatic or instant quote. We review the information you provide and confirm an offer in writing before pickup is booked. At collection, we check that the vehicle matches the disclosed details. If there is a material difference, such as undisclosed damage, missing major components, or different access conditions, we will explain any revised offer and you may reject it before the vehicle is loaded. No generic website amount guarantees the offer for an individual vehicle.
             </p>
           </section>
 
