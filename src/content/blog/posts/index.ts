@@ -1,3 +1,4 @@
+import { post as postExpiredRego } from "./expired-rego-qld";
 import { post as postImpounded } from "./car-impounded-qld";
 import { post as postFamilyGift } from "./gifting-car-family-member-qld";
 import { post as postLpgCar } from "./sell-lpg-car-brisbane";
@@ -53,6 +54,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postExpiredRego,
   postImpounded,
   postFamilyGift,
   postLpgCar,
