@@ -75,7 +75,6 @@ export async function GET(request: Request) {
       condition: "running",
       address: "1 Queen Street, Brisbane QLD 4000",
       honeypot: "",
-      marketingConsent: false,
     }),
     submitContact({
       name: "Caraway Delivery Monitor",

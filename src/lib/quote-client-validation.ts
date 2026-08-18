@@ -182,18 +182,6 @@ export function validateQuoteFormForClient(
     normalized.honeypot = honeypot;
   }
 
-  if (raw.marketingConsent === undefined) {
-    normalized.marketingConsent = false;
-  } else if (typeof raw.marketingConsent !== "boolean") {
-    setError(
-      errors,
-      "marketingConsent",
-      QUOTE_VALIDATION_MESSAGES.invalidInput,
-    );
-  } else {
-    normalized.marketingConsent = raw.marketingConsent;
-  }
-
   if (Object.keys(errors).length > 0) {
     return { success: false, errors };
   }
