@@ -82,8 +82,8 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/unregistered/uvp",
     },
     {
-      title: "Motor Accident Insurance Commission — about CTP insurance",
-      url: "https://maic.qld.gov.au/for-drivers/about-ctp-insurance/",
+      title: "Motor Accident Insurance Commission — what is CTP insurance",
+      url: "https://maic.qld.gov.au/about-ctp-insurance/what-is-ctp-insurance/",
     },
     {
       title:
