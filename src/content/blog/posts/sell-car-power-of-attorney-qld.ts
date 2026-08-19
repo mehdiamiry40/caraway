@@ -71,7 +71,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Queensland Government — power of attorney",
-      url: "https://www.qld.gov.au/law/legal-mediation-and-justice-of-the-peace/power-of-attorney-and-making-decisions-for-others/power-of-attorney",
+      url: "https://www.qld.gov.au/justice/powers-attorney-guardianship",
     },
     {
       title:
