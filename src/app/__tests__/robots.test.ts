@@ -25,7 +25,7 @@ describe("robots.txt", () => {
 
     expect(publicRule).toBeDefined();
     expect(publicRule?.allow).toBe("/");
-    expect(publicRule?.disallow).toEqual(["/api/", "/private/"]);
+    expect(publicRule?.disallow).toEqual(["/admin/", "/api/", "/private/"]);
     expect(publicRule?.disallow).not.toContain("/_next/");
   });
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { generateMetadata as generateLocationMetadata } from "@/app/locations/[slug]/page";
+import { generateMetadata as generateLocationMetadata } from "@/app/(frontend)/locations/[slug]/page";
 import { getPostsForSuburb } from "@/data/blog-posts";
 import { getSuburbBySlug, suburbs } from "@/data/suburbs";
 

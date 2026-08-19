@@ -1,28 +1,28 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { metadata as homeMetadata, homeStructuredData } from "@/app/page";
-import { metadata as locationsMetadata } from "@/app/locations/page";
-import { metadata as faqMetadata } from "@/app/faq/page";
-import { metadata as contactMetadata } from "@/app/contact/page";
-import { metadata as blogMetadata } from "@/app/blog/page";
-import { generateMetadata as generateBlogPageMetadata } from "@/app/blog/page/[page]/page";
+import { metadata as homeMetadata, homeStructuredData } from "@/app/(frontend)/page";
+import { metadata as locationsMetadata } from "@/app/(frontend)/locations/page";
+import { metadata as faqMetadata } from "@/app/(frontend)/faq/page";
+import { metadata as contactMetadata } from "@/app/(frontend)/contact/page";
+import { metadata as blogMetadata } from "@/app/(frontend)/blog/page";
+import { generateMetadata as generateBlogPageMetadata } from "@/app/(frontend)/blog/page/[page]/page";
 import {
   buildBlogPostSeoProps,
   generateMetadata as generateBlogPostMetadata,
-} from "@/app/blog/[slug]/metadata";
-import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
+} from "@/app/(frontend)/blog/[slug]/metadata";
+import { metadata as howItWorksMetadata } from "@/app/(frontend)/how-it-works/page";
 import {
   metadata as vehicleDataMetadata,
   RESOURCE_HEADING,
-} from "@/app/resources/queensland-vehicle-data/page";
+} from "@/app/(frontend)/resources/queensland-vehicle-data/page";
 import {
   buildServiceStructuredData,
   generateMetadata as generateServiceMetadata,
-} from "@/app/[slug]/page";
+} from "@/app/(frontend)/[slug]/page";
 import {
   metadata as servicesMetadata,
   SERVICE_HUB_HEADING,
-} from "@/app/services/page";
+} from "@/app/(frontend)/services/page";
 import { Hero } from "@/components/sections/Hero";
 import { ServiceSectionContent } from "@/components/templates/ServicePageTemplate";
 import { blogPosts } from "@/data/blog-posts";

@@ -1,7 +1,7 @@
 # Color system
 
 This project uses **semantic tokens only**. The website palette is defined in
-`src/app/globals.css` as CSS custom properties and exposed to Tailwind via
+`src/app/(frontend)/globals.css` as CSS custom properties and exposed to Tailwind via
 `@theme inline`. Components should consume Tailwind utilities like
 `bg-primary`, `text-foreground`, `border-border`, `bg-cta`, and `text-cta` —
 not raw hex, rgb, hsl, or palette-scale utilities like `bg-blue-500`.
@@ -79,7 +79,7 @@ supporting icons or text.
 ### Don't
 - **No hardcoded hex, rgb, or hsl literals in components.** Exceptions:
   the two email templates (`src/lib/quote-email.ts`,
-  `src/lib/contact-email.ts`) and `src/app/global-error.tsx` must use inline
+  `src/lib/contact-email.ts`) and `src/app/(frontend)/global-error.tsx` must use inline
   hex because CSS variables are not available in those contexts.
 - **No `bg-white`, `text-white`, `bg-black`, or `text-black`.** Use
   `bg-card`, `text-primary-foreground`, or the relevant semantic foreground.
@@ -102,15 +102,15 @@ added later, define the full token set under a `.dark` selector in
 Anything not using semantic tokens is listed here so it can be audited when the
 palette changes.
 
-| File                                   | Why hardcoded                                |
-| -------------------------------------- | -------------------------------------------- |
-| `src/app/globals.css`                  | Source of truth (semantic tokens)            |
-| `src/app/layout.tsx`                   | `themeColor` metadata (browser chrome)       |
-| `src/app/global-error.tsx`             | Inline styles — Tailwind may not have loaded |
-| `src/lib/quote-email.ts`               | HTML email body — no CSS variable support    |
-| `src/lib/contact-email.ts`             | HTML email body — no CSS variable support    |
-| `public/site.webmanifest`              | PWA theme / splash colours                   |
-| `public/favicon.svg`                   | Inline SVG with literal fills                |
+| File                                  | Why hardcoded                                |
+| ------------------------------------- | -------------------------------------------- |
+| `src/app/(frontend)/globals.css`      | Source of truth (semantic tokens)            |
+| `src/app/(frontend)/layout.tsx`       | `themeColor` metadata (browser chrome)       |
+| `src/app/(frontend)/global-error.tsx` | Inline styles — Tailwind may not have loaded |
+| `src/lib/quote-email.ts`              | HTML email body — no CSS variable support    |
+| `src/lib/contact-email.ts`            | HTML email body — no CSS variable support    |
+| `public/site.webmanifest`             | PWA theme / splash colours                   |
+| `public/favicon.svg`                  | Inline SVG with literal fills                |
 
 When the palette changes, update all seven files above in lockstep.
 

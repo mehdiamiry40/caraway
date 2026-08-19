@@ -39,7 +39,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         // Google needs Next build assets (fonts/CSS/JS under /_next/static)
         // to render pages accurately.
-        disallow: ["/api/", "/private/"],
+        disallow: ["/admin/", "/api/", "/private/"],
       },
       ...BLOCKED_BOTS.map((bot) => ({
         userAgent: bot,

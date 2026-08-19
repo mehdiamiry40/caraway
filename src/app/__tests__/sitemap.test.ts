@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
-import { locationsStructuredData } from "@/app/locations/page";
+import { locationsStructuredData } from "@/app/(frontend)/locations/page";
 import {
   blogPosts,
   categoryMap,

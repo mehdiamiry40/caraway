@@ -317,8 +317,8 @@ const prohibitedSupportClaims = [
 // confirmed for the accepted job. Keep the scope explicit so informational
 // uses elsewhere do not create false positives.
 const truthConsistencyFiles = new Set([
-  "src/app/contact/page.tsx",
-  "src/app/terms/page.tsx",
+  "src/app/(frontend)/contact/page.tsx",
+  "src/app/(frontend)/terms/page.tsx",
   "src/views/Contact.tsx",
   "src/views/Terms.tsx",
   "src/data/home-faqs.ts",

@@ -2,24 +2,24 @@ import type { Metadata } from "next";
 import { join } from "node:path";
 import sharp from "sharp";
 import { describe, expect, it } from "vitest";
-import { metadata as rootMetadata } from "@/app/layout";
-import { metadata as homeMetadata } from "@/app/page";
-import { metadata as aboutMetadata } from "@/app/about/page";
-import { metadata as accessibilityMetadata } from "@/app/accessibility/page";
-import { metadata as contactMetadata } from "@/app/contact/page";
-import { metadata as faqMetadata } from "@/app/faq/page";
-import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
+import { metadata as rootMetadata } from "@/app/(frontend)/layout";
+import { metadata as homeMetadata } from "@/app/(frontend)/page";
+import { metadata as aboutMetadata } from "@/app/(frontend)/about/page";
+import { metadata as accessibilityMetadata } from "@/app/(frontend)/accessibility/page";
+import { metadata as contactMetadata } from "@/app/(frontend)/contact/page";
+import { metadata as faqMetadata } from "@/app/(frontend)/faq/page";
+import { metadata as howItWorksMetadata } from "@/app/(frontend)/how-it-works/page";
 import {
   generateMetadata as generateLocationMetadata,
-} from "@/app/locations/[slug]/page";
-import { metadata as locationsMetadata } from "@/app/locations/page";
-import { metadata as privacyMetadata } from "@/app/privacy/page";
-import { metadata as servicesMetadata } from "@/app/services/page";
-import { metadata as siteMapMetadata } from "@/app/site-map/page";
-import { metadata as termsMetadata } from "@/app/terms/page";
+} from "@/app/(frontend)/locations/[slug]/page";
+import { metadata as locationsMetadata } from "@/app/(frontend)/locations/page";
+import { metadata as privacyMetadata } from "@/app/(frontend)/privacy/page";
+import { metadata as servicesMetadata } from "@/app/(frontend)/services/page";
+import { metadata as siteMapMetadata } from "@/app/(frontend)/site-map/page";
+import { metadata as termsMetadata } from "@/app/(frontend)/terms/page";
 import {
   generateMetadata as generateServiceMetadata,
-} from "@/app/[slug]/page";
+} from "@/app/(frontend)/[slug]/page";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { SHARED_PICKUP_IMAGE_ALT } from "@/lib/site";

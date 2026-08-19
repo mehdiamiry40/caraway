@@ -8,8 +8,8 @@ import nextConfig, {
   retiredServiceRedirects,
 } from "../next.config";
 import sitemap from "@/app/sitemap";
-import { generateStaticParams as generateServiceStaticParams } from "@/app/[slug]/page";
-import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
+import { generateStaticParams as generateServiceStaticParams } from "@/app/(frontend)/[slug]/page";
+import { generateStaticParams as generateBlogStaticParams } from "@/app/(frontend)/blog/[slug]/metadata";
 import { blogPosts } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";

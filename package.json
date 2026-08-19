@@ -2,10 +2,14 @@
   "name": "caraway",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
     "typecheck": "node scripts/typecheck.mjs",
     "lint": "eslint . --max-warnings 0 && npm run check:content",
     "check:content": "node scripts/check-content-integrity.mjs",
@@ -24,18 +28,25 @@
   "dependencies": {
     "@ai-sdk/react": "^4.0.55",
     "@hookform/resolvers": "5.2.2",
+    "@payloadcms/db-vercel-postgres": "^3.88.0",
+    "@payloadcms/next": "^3.88.0",
+    "@payloadcms/richtext-lexical": "^3.88.0",
+    "@payloadcms/storage-vercel-blob": "^3.88.0",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.0",
     "@vercel/analytics": "^2.0.1",
     "ai": "^7.0.52",
     "class-variance-authority": "^0.7.1",
     "clsx": "2.1.1",
+    "graphql": "^16.14.2",
     "lucide-react": "^1.31.0",
     "next": "16.3.0",
+    "payload": "^3.88.0",
     "react": "19.2.5",
     "react-dom": "19.2.5",
     "react-hook-form": "7.72.1",
     "resend": "^6.12.4",
+    "sharp": "^0.35.3",
     "tailwind-merge": "3.5.0",
     "zod": "4.4.3"
   },
@@ -65,12 +76,12 @@
     "jsdom": "^29.0.2",
     "jsqr": "^1.4.0",
     "postcss": "8.5.25",
-    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.3",
     "typescript": "6.0.3",
     "vitest": "^4.1.4"
   },
   "overrides": {
+    "@swc/helpers": "^0.5.23",
     "postcss": "8.5.25"
   }
 }

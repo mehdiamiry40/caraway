@@ -4,7 +4,7 @@ import nextConfig, {
   retiredBlogRedirects,
   retiredServiceRedirects,
 } from "../next.config";
-import { metadata as howItWorksMetadata } from "@/app/how-it-works/page";
+import { metadata as howItWorksMetadata } from "@/app/(frontend)/how-it-works/page";
 
 type RedirectRule = {
   source: string;

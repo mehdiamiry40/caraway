@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { withPayload } from "@payloadcms/next/withPayload";
 import { RETIRED_BLOG_DESTINATIONS } from "./src/lib/blog-consolidation";
 import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
 import { RETIRED_SERVICE_DESTINATIONS } from "./src/lib/service-consolidation";
@@ -207,7 +208,9 @@ const nextConfig: NextConfig = {
               : "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline'",
             "font-src 'self'",
-            "img-src 'self' data: blob:",
+            // Vercel Blob serves Payload media uploads (admin thumbnails
+            // and anything the site renders from the media collection).
+            "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
             "connect-src 'self'",
             "object-src 'none'",
             isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
@@ -264,4 +267,7 @@ const nextConfig: NextConfig = {
   ],
 };
 
-export default nextConfig;
+// withPayload externalizes Payload's server-only dependencies and applies the
+// sass/tracing settings the admin bundle needs. It preserves the config above,
+// including poweredByHeader: false and the headers() rules.
+export default withPayload(nextConfig);

@@ -1,7 +1,7 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { buildBlogPostSeoProps } from "@/app/blog/[slug]/metadata";
+import { buildBlogPostSeoProps } from "@/app/(frontend)/blog/[slug]/metadata";
 import { QldVehicleSaleRecordBuilder } from "@/components/blog/QldVehicleSaleRecordBuilder";
 import { blogPosts } from "@/data/blog-posts";
 

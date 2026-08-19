@@ -20,7 +20,20 @@ function withHostRobotsPolicy(
   return response;
 }
 
+function isPayloadAdminPath(pathname: string): boolean {
+  return pathname === "/admin" || pathname.startsWith("/admin/");
+}
+
 export async function proxy(request: NextRequest) {
+  // The Payload admin panel authenticates its own requests and ships its own
+  // CSRF protection, so it must not be metered by the public form rate limit
+  // or rejected by the form origin check. It is never indexable, on any host.
+  if (isPayloadAdminPath(request.nextUrl.pathname)) {
+    const response = NextResponse.next();
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return response;
+  }
+
   if (request.method !== "POST") {
     return withHostRobotsPolicy(NextResponse.next(), request);
   }

@@ -13,8 +13,9 @@ async function loadProxy(): Promise<ProxyModule["proxy"]> {
 function makeRequest(
   method: string,
   headers: Record<string, string> = {},
+  path = "/",
 ): NextRequest {
-  return new NextRequest(new URL("http://localhost/"), {
+  return new NextRequest(new URL(path, "http://localhost"), {
     method,
     headers,
   });
@@ -229,6 +230,60 @@ describe("proxy", () => {
         }),
       );
       expect(res12.status).toBe(200);
+    });
+  });
+  describe("Payload admin", () => {
+    it("never lets the admin panel be indexed, even on the canonical host", async () => {
+      const middleware = await loadProxy();
+      const res = await middleware(
+        makeRequest("GET", { host: "caraway.au" }, "/admin"),
+      );
+
+      expect(res.status).toBe(200);
+      expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+    });
+
+    it("lets admin POSTs through without the public form origin check", async () => {
+      const middleware = await loadProxy();
+      // Payload runs its own CSRF protection; the form check would 403 this.
+      const res = await middleware(
+        makeRequest(
+          "POST",
+          { "x-forwarded-for": "198.51.100.7", host: "localhost" },
+          "/admin/collections/users",
+        ),
+      );
+
+      expect(res.status).toBe(200);
+    });
+
+    it("does not meter admin POSTs against the public form rate limit", async () => {
+      const middleware = await loadProxy();
+      const headers = {
+        "x-forwarded-for": "198.51.100.8",
+        host: "localhost",
+        origin: "http://localhost",
+      };
+
+      for (let i = 0; i < 12; i++) {
+        const res = await middleware(
+          makeRequest("POST", headers, "/admin/collections/media"),
+        );
+        expect(res.status).toBe(200);
+      }
+    });
+
+    it("still protects public routes that merely start with 'admin'", async () => {
+      const middleware = await loadProxy();
+      const res = await middleware(
+        makeRequest(
+          "POST",
+          { "x-forwarded-for": "198.51.100.9", host: "localhost" },
+          "/administration",
+        ),
+      );
+
+      expect(res.status).toBe(403);
     });
   });
 });

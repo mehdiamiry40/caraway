@@ -10,6 +10,12 @@ const statsPath = join(
 );
 
 const defaultBudget = 1_250_000;
+
+// The Payload admin panel is a private authoring tool behind a login, not a
+// page Google measures. Its bundle is Payload's to size, not ours, so it is
+// excluded rather than given an inflated budget that would hide regressions.
+const exemptRoutes = new Set(["/admin/[[...segments]]"]);
+
 const routeBudgets = new Map([
   ["/", 1_200_000],
   ["/contact", 1_200_000],
@@ -42,6 +48,10 @@ for (const entry of stats) {
     continue;
   }
 
+  if (exemptRoutes.has(entry.route)) {
+    continue;
+  }
+
   const budget = routeBudgets.get(entry.route) ?? defaultBudget;
   if (entry.firstLoadUncompressedJsBytes > budget) {
     failures.push({
@@ -63,7 +73,11 @@ if (failures.length > 0) {
 }
 
 const largest = [...stats]
-  .filter((entry) => typeof entry?.firstLoadUncompressedJsBytes === "number")
+  .filter(
+    (entry) =>
+      typeof entry?.firstLoadUncompressedJsBytes === "number" &&
+      !exemptRoutes.has(entry.route),
+  )
   .sort(
     (a, b) =>
       b.firstLoadUncompressedJsBytes - a.firstLoadUncompressedJsBytes,
