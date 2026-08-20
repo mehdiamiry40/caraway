@@ -1,3 +1,4 @@
+import { post as postFireDamaged } from "./sell-fire-damaged-car-brisbane";
 import { post as postPowerOfAttorney } from "./sell-car-power-of-attorney-qld";
 import { post as postExpiredRego } from "./expired-rego-qld";
 import { post as postImpounded } from "./car-impounded-qld";
@@ -55,6 +56,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postFireDamaged,
   postPowerOfAttorney,
   postExpiredRego,
   postImpounded,
