@@ -13,6 +13,7 @@
     "check:bundle": "node scripts/check-bundle-budget.mjs",
     "check:headings": "node scripts/check-heading-order.mjs",
     "check:sources": "node scripts/check-source-links.mjs",
+    "seo:indexnow": "node scripts/indexnow-submit.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",

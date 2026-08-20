@@ -1,16 +1,39 @@
 /** Site-wide JSON-LD objects (same semantics as former SEO.tsx global injection). */
 
-import { SITE_URL, BUSINESS } from "@/lib/site";
+import {
+  SITE_URL,
+  BUSINESS,
+  BUSINESS_GEO,
+  OPENING_HOURS,
+  PRICE_RANGE_LABEL,
+  SERVICE_AREA_NAMES,
+} from "@/lib/site";
 
 const SAME_AS = [BUSINESS.googleBusinessUrl, BUSINESS.abrUrl];
 
-export const serviceAreas = [
-  { "@type": "City" as const, name: "Brisbane" },
-];
+export const serviceAreas = SERVICE_AREA_NAMES.map((name) => ({
+  "@type": "City" as const,
+  name,
+}));
+
+/**
+ * Emitted only when OPENING_HOURS is populated. An empty array is left off the
+ * entity entirely rather than published as "no hours", which reads to a parser
+ * as permanently closed.
+ */
+const openingHoursSpecification = OPENING_HOURS.map((entry) => ({
+  "@type": "OpeningHoursSpecification" as const,
+  dayOfWeek: entry.dayOfWeek,
+  opens: entry.opens,
+  closes: entry.closes,
+}));
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  // AutoDealer is a LocalBusiness subtype, so this one node carries both the
+  // publisher identity (referenced by @id elsewhere) and the local-business
+  // signals. Organization is kept explicitly for consumers that match on it.
+  "@type": ["Organization", "AutoDealer"],
   "@id": `${SITE_URL}/#organization`,
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,
@@ -26,9 +49,29 @@ export const organizationSchema = {
     width: 512,
     height: 279,
   },
+  image: `${SITE_URL}/images/tow-truck-hero.webp`,
   telephone: BUSINESS.phoneE164,
   email: BUSINESS.email,
+  foundingDate: String(BUSINESS.foundingYear),
+  // City-level only. Caraway collects vehicles rather than receiving them at a
+  // counter, so there is no streetAddress to publish and none is invented.
+  address: {
+    "@type": "PostalAddress" as const,
+    addressLocality: BUSINESS.addressSuburb,
+    addressRegion: BUSINESS.addressState,
+    addressCountry: "AU",
+  },
+  geo: {
+    "@type": "GeoCoordinates" as const,
+    latitude: BUSINESS_GEO.latitude,
+    longitude: BUSINESS_GEO.longitude,
+  },
+  priceRange: PRICE_RANGE_LABEL,
+  currenciesAccepted: "AUD",
   areaServed: serviceAreas,
+  ...(openingHoursSpecification.length > 0
+    ? { openingHoursSpecification }
+    : {}),
   contactPoint: {
     "@type": "ContactPoint",
     telephone: BUSINESS.phoneE164,

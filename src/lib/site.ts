@@ -33,6 +33,43 @@ export const BUSINESS = {
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b9145f7c7992573:0x20b7c0537d263e77!12e1",
 } as const;
 
+/**
+ * City-level coordinates for Brisbane, matching the city-level address above.
+ * Caraway collects vehicles rather than receiving them, so this is the centre
+ * of the service area, NOT a storefront a customer can visit — which is why no
+ * streetAddress is published alongside it.
+ */
+export const BUSINESS_GEO = {
+  latitude: -27.4698,
+  longitude: 153.0251,
+} as const;
+
+/**
+ * Regions named in the public service-area copy. Kept here so the JSON-LD
+ * areaServed and the on-page wording cannot drift apart.
+ */
+export const SERVICE_AREA_NAMES = [
+  "Brisbane",
+  "Logan",
+  "Ipswich",
+  "Moreton Bay",
+  "Redlands",
+] as const;
+
+/**
+ * Published trading hours, mirrored into JSON-LD as openingHoursSpecification.
+ *
+ * Deliberately empty: Caraway publishes no trading hours, and inventing them
+ * would put a claim in structured data that nothing on the site or the Google
+ * Business Profile backs. Populate from the Google Business Profile — the two
+ * must agree — and the schema picks them up with no further changes.
+ */
+export const OPENING_HOURS: ReadonlyArray<{
+  dayOfWeek: readonly string[];
+  opens: string;
+  closes: string;
+}> = [];
+
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
