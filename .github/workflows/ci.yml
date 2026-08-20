@@ -58,6 +58,11 @@ jobs:
       # discovery path there is. Runs against built HTML, so it sees the links a
       # crawler actually gets.
       - run: npm run check:links
+      # Crawl the built production server exactly as a bot would: every
+      # submitted page must be a direct, indexable, self-canonical 200; every
+      # emitted same-site target must resolve; and the known GSC aliases must
+      # remain on permanent redirects to their final canonical pages.
+      - run: npm run check:crawl
       # Cited government sources move without notice, and unit tests only pin
       # the strings. Non-blocking so third-party outages cannot redden a PR.
       - run: npm run check:sources -- --report
