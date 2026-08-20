@@ -76,6 +76,7 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | `npm run typecheck` | Run the project TypeScript checker              |
 | `npm run lint`      | ESLint with `--max-warnings 0`                  |
 | `npm run check:indexability` | Verify built SEO data and runtime host-indexing policy |
+| `npm run check:crawl` | Crawl the built production server for sitemap, canonical, link, asset and legacy-redirect regressions |
 | `npm run check:links` | Fail on indexable pages with no inbound internal link (run after build) |
 | `npm run seo:indexnow` | Submit recently-changed sitemap URLs to IndexNow (run after build) |
 | `npm test`          | Run the Vitest suite once                       |
@@ -126,6 +127,15 @@ their `.meta` sidecar.
 Pages reachable *only* from `/blog/page/N` are reported as a non-blocking
 warning. Deep pagination is crawled infrequently, so a link from a hub or a
 related-posts block discovers them sooner.
+
+**Production SEO crawl** (`npm run check:crawl`) starts the built app with
+`next start` and verifies the HTTP behavior a crawler receives. Every sitemap
+page must be a direct indexable `200` with an exact self-canonical; every
+same-site URL emitted through an anchor, image, stylesheet, script, preload or
+`srcset` must return a direct `200`; and the Search Console legacy aliases must
+remain permanent redirects to their final apex-host pages. It also blocks the
+old `www` host and the retired deployment-specific asset hashes from leaking
+back into rendered HTML.
 
 **Structured data.** One entity, `${SITE_URL}/#organization`, typed as both
 `Organization` and `AutoDealer`, carries the publisher identity and the
