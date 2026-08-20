@@ -54,6 +54,10 @@ jobs:
       - run: npm run check:indexability
       - run: npm run check:bundle
       - run: npm run check:headings
+      # Orphaned pages are reachable only via the sitemap, which is the slowest
+      # discovery path there is. Runs against built HTML, so it sees the links a
+      # crawler actually gets.
+      - run: npm run check:links
       # Cited government sources move without notice, and unit tests only pin
       # the strings. Non-blocking so third-party outages cannot redden a PR.
       - run: npm run check:sources -- --report
