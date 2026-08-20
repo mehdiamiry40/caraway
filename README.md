@@ -12,6 +12,7 @@ Built with Next.js 16 (App Router) and deployed on Vercel.
 - **Forms / validation:** react-hook-form + zod
 - **Testing:** Vitest 4
 - **Linting:** ESLint 9 (`eslint-config-next`)
+- **Build orchestration:** Turborepo 2 (local and Vercel remote caching)
 - **Hosting:** Vercel (auto-deploy from `main`, PR previews)
 - **Monitoring:** first-party health checks and Vercel deployment logs
 
@@ -71,7 +72,10 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | Script              | What it does                                    |
 | ------------------- | ----------------------------------------------- |
 | `npm run dev`       | Start the Next.js dev server                    |
-| `npm run build`     | Production build (used by Vercel)               |
+| `npm run build`     | Run a direct Next.js production build           |
+| `npm run turbo:check` | Run lint, typecheck and coverage tests through Turbo |
+| `npm run turbo:build` | Run the cached production build used by Vercel |
+| `npm run turbo:verify` | Build once, then run all artifact-based SEO checks |
 | `npm run start`     | Serve the production build                      |
 | `npm run typecheck` | Run the project TypeScript checker              |
 | `npm run lint`      | ESLint with `--max-warnings 0`                  |
@@ -82,6 +86,25 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | `npm test`          | Run the Vitest suite once                       |
 | `npm run test:watch`| Vitest in watch mode                            |
 | `npm run audit:swarm`| Run the internal swarm audit tooling            |
+
+## Turborepo
+
+This repository is intentionally a single-package Turborepo. The Next.js app
+stays at the repository root, so adopting Turbo does not change import paths,
+the Vercel root directory, or deployment URLs. `turbo.json` defines the task
+graph and caches `.next` build output (excluding Next.js's own incremental
+cache) plus test coverage output.
+
+Use `npm run turbo:check` for the independent code-quality gates and
+`npm run turbo:verify` for the production build and all checks that inspect its
+artifacts. A second unchanged run should report cache hits. Local cache data is
+stored in the ignored `.turbo/` directory.
+
+Vercel runs `turbo run build` from `vercel.json`; Vercel automatically connects
+that build to the project's Remote Cache. GitHub Actions also persists `.turbo`
+with `actions/cache`, so CI receives caching without requiring a long-lived
+Vercel token. If the repository later gains another app or shared package, it
+can be moved under `apps/` or `packages/` without replacing this task model.
 
 ## Testing
 
@@ -210,7 +233,7 @@ Wire this to your uptime monitor of choice.
 2. Make your changes and keep commits focused.
 3. Ensure the full CI gate passes locally:
    ```bash
-   npm run lint && npm run typecheck && npm test && npm run build
+   npm run turbo:check && npm run test:e2e && npm run turbo:verify
    ```
 4. Open a pull request. CI (see `.github/workflows/ci.yml`) must be green
    before merge. Dependabot handles routine dependency PRs weekly.
