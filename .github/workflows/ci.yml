@@ -54,7 +54,20 @@ jobs:
       - run: npm run check:indexability
       - run: npm run check:bundle
       - run: npm run check:headings
+      # Orphaned pages are reachable only via the sitemap, which is the slowest
+      # discovery path there is. Runs against built HTML, so it sees the links a
+      # crawler actually gets.
+      - run: npm run check:links
       # Cited government sources move without notice, and unit tests only pin
       # the strings. Non-blocking so third-party outages cannot redden a PR.
       - run: npm run check:sources -- --report
+        continue-on-error: true
+
+      # Tell IndexNow-participating engines (Bing, Yandex, Seznam, Naver) which
+      # pages changed. Google ignores IndexNow, so this supplements rather than
+      # replaces sitemap/Search Console discovery. Push-to-main only: a preview
+      # build must never announce URLs as live. Non-blocking so a third-party
+      # outage cannot redden main.
+      - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npm run seo:indexnow
         continue-on-error: true

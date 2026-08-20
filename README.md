@@ -76,6 +76,8 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | `npm run typecheck` | Run the project TypeScript checker              |
 | `npm run lint`      | ESLint with `--max-warnings 0`                  |
 | `npm run check:indexability` | Verify built SEO data and runtime host-indexing policy |
+| `npm run check:links` | Fail on indexable pages with no inbound internal link (run after build) |
+| `npm run seo:indexnow` | Submit recently-changed sitemap URLs to IndexNow (run after build) |
 | `npm test`          | Run the Vitest suite once                       |
 | `npm run test:watch`| Vitest in watch mode                            |
 | `npm run audit:swarm`| Run the internal swarm audit tooling            |
@@ -88,6 +90,59 @@ the request proxy, and quote validation. Run it with:
 ```bash
 npm test
 ```
+
+## Search engine discovery
+
+**Sitemap and Search Console** remain the discovery path for Google. `src/app/sitemap.ts`
+emits honest per-page `lastModified` dates; do not widen them to "today" on
+deploy, since accurate dates are what make the recrawl signal worth anything.
+
+**IndexNow** (`npm run seo:indexnow`) pushes changed URLs to Bing, Yandex,
+Seznam and Naver. **Google does not consume IndexNow** — it supplements Google
+discovery, it does not replace it. CI runs the submission automatically after a
+successful build on pushes to `main`, and never from a pull request, so a
+preview build cannot announce URLs as live. Failures are non-blocking.
+
+The script reads the built sitemap at `.next/server/app/sitemap.xml.body` and
+submits only pages whose `lastmod` falls inside a rolling window (3 days by
+default, `--days=N` to widen). `--dry-run` prints the batch without sending it.
+
+The key in `src/lib/indexnow.ts` must match the filename and contents of the
+`public/<key>.txt` file that proves ownership of the host; a unit test pins them
+together, because a mismatch fails every submission silently.
+
+**Internal linking** (`npm run check:links`) fails the build on an indexable
+page that nothing links to. An orphan is reachable only through the sitemap,
+which is the slowest discovery path there is, and the usual cause is a new post
+that no hub or related-posts block picked up.
+
+It reads built HTML, so it counts the links a crawler actually receives —
+including nav and footer — rather than what the source appears to render. Two
+kinds of page are exempt, both detected from the build rather than an
+allowlist: pages that declare their own `noindex` (unlisted on purpose), and
+prerendered redirect stubs for retired URLs, identified by a 3xx `status` in
+their `.meta` sidecar.
+
+Pages reachable *only* from `/blog/page/N` are reported as a non-blocking
+warning. Deep pagination is crawled infrequently, so a link from a hub or a
+related-posts block discovers them sooner.
+
+**Structured data.** One entity, `${SITE_URL}/#organization`, typed as both
+`Organization` and `AutoDealer`, carries the publisher identity and the
+local-business signals. Claims are limited to what the business can back:
+
+- City-level `address` and `geo` only — vehicles are collected, not dropped off,
+  so there is no storefront and no `streetAddress` is published.
+- `openingHoursSpecification` comes from `OPENING_HOURS` in `src/lib/site.ts`
+  (currently Monday–Friday, 08:00–17:00). It must stay identical to the Google
+  Business Profile — Google treats the listing as the authority, so a mismatch
+  costs trust. Change both together. An empty array is omitted rather than
+  emitted, since a parser reads "no hours" as permanently closed.
+- `areaServed` is generated from `SERVICE_AREA_NAMES`, which mirrors the public
+  service-area copy.
+
+`src/lib/__tests__/seo-structured-data-policy.test.ts` locks this down and is
+the place to record any change of policy.
 
 ## Architecture overview
 
