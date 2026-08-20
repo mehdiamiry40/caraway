@@ -116,10 +116,11 @@ local-business signals. Claims are limited to what the business can back:
 
 - City-level `address` and `geo` only — vehicles are collected, not dropped off,
   so there is no storefront and no `streetAddress` is published.
-- `openingHoursSpecification` is emitted only when `OPENING_HOURS` in
-  `src/lib/site.ts` is populated. It is empty by default. Fill it from the
-  Google Business Profile so the two agree; conflicting hours are worse than
-  none.
+- `openingHoursSpecification` comes from `OPENING_HOURS` in `src/lib/site.ts`
+  (currently Monday–Friday, 08:00–17:00). It must stay identical to the Google
+  Business Profile — Google treats the listing as the authority, so a mismatch
+  costs trust. Change both together. An empty array is omitted rather than
+  emitted, since a parser reads "no hours" as permanently closed.
 - `areaServed` is generated from `SERVICE_AREA_NAMES`, which mirrors the public
   service-area copy.
 

@@ -59,16 +59,22 @@ export const SERVICE_AREA_NAMES = [
 /**
  * Published trading hours, mirrored into JSON-LD as openingHoursSpecification.
  *
- * Deliberately empty: Caraway publishes no trading hours, and inventing them
- * would put a claim in structured data that nothing on the site or the Google
- * Business Profile backs. Populate from the Google Business Profile — the two
- * must agree — and the schema picks them up with no further changes.
+ * These must stay identical to the hours on the Google Business Profile. Where
+ * the two disagree, Google treats the listing as the authority and the mismatch
+ * costs trust — so change both together, or neither. 24-hour times, because
+ * schema.org expects ISO 8601 and "8am" is not valid there.
  */
 export const OPENING_HOURS: ReadonlyArray<{
   dayOfWeek: readonly string[];
   opens: string;
   closes: string;
-}> = [];
+}> = [
+  {
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
+];
 
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 

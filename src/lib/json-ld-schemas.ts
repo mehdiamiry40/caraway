@@ -30,10 +30,11 @@ const openingHoursSpecification = OPENING_HOURS.map((entry) => ({
 
 export const organizationSchema = {
   "@context": "https://schema.org",
-  // AutoDealer is a LocalBusiness subtype, so this one node carries both the
-  // publisher identity (referenced by @id elsewhere) and the local-business
-  // signals. Organization is kept explicitly for consumers that match on it.
-  "@type": ["Organization", "AutoDealer"],
+  // One node carries the publisher identity (referenced by @id elsewhere) and
+  // the local-business signals. AutoDealer already implies LocalBusiness, which
+  // implies Organization; all three are listed because consumers that match on
+  // a literal type string are common and the redundancy costs nothing.
+  "@type": ["Organization", "LocalBusiness", "AutoDealer"],
   "@id": `${SITE_URL}/#organization`,
   name: BUSINESS.name,
   legalName: BUSINESS.legalName,

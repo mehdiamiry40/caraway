@@ -29,7 +29,7 @@ function productionSourceFiles(directory: string): string[] {
 describe("SEO structured-data policy", () => {
   it("uses one truthful, exact-name entity typed for a local auto business", () => {
     expect(organizationSchema).toMatchObject({
-      "@type": ["Organization", "AutoDealer"],
+      "@type": ["Organization", "LocalBusiness", "AutoDealer"],
       "@id": `${SITE_URL}/#organization`,
       name: "Caraway",
     });
@@ -99,9 +99,22 @@ describe("SEO structured-data policy", () => {
     expect(spec).toHaveLength(OPENING_HOURS.length);
     for (const entry of spec) {
       expect(entry["@type"]).toBe("OpeningHoursSpecification");
+      // schema.org wants ISO 8601 times; "8am" or "8:00" would be silently
+      // dropped by consumers rather than reported as an error.
       expect(entry.opens).toMatch(/^\d{2}:\d{2}$/);
       expect(entry.closes).toMatch(/^\d{2}:\d{2}$/);
     }
+
+    // Pin the published hours so a stray edit cannot widen them past what the
+    // Google Business Profile advertises.
+    expect(spec).toEqual([
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "17:00",
+      },
+    ]);
   });
 
   it("keeps the WebSite entity brand-led and free of meta-keyword fields", () => {
@@ -137,18 +150,12 @@ describe("SEO structured-data policy", () => {
       .map((file) => fs.readFileSync(file, "utf8"))
       .join("\n");
 
-    // AutoDealer (a LocalBusiness subtype) is now carried by the single
-    // #organization node. These remain banned: FAQPage/HowTo were retired after
-    // Google dropped the rich results, generic LocalBusiness/AutomotiveBusiness
-    // would duplicate the entity, and AggregateOffer implies pricing we do not
+    // LocalBusiness is deliberately allowed: the #organization node carries it
+    // alongside AutoDealer. These remain banned — FAQPage and HowTo were retired
+    // after Google dropped those rich results, AutomotiveBusiness would only
+    // restate a parent type, and AggregateOffer implies pricing we do not
     // publish.
-    for (const type of [
-      "FAQPage",
-      "HowTo",
-      "LocalBusiness",
-      "AutomotiveBusiness",
-      "AggregateOffer",
-    ]) {
+    for (const type of ["FAQPage", "HowTo", "AutomotiveBusiness", "AggregateOffer"]) {
       expect(source).not.toContain(`"@type": "${type}"`);
     }
     // A second business node would split the entity across two @ids.
