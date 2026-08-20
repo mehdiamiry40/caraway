@@ -2,9 +2,13 @@
   "name": "caraway",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "npm@11.6.2",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "turbo:check": "turbo run lint typecheck test:coverage",
+    "turbo:build": "turbo run build",
+    "turbo:verify": "turbo run check:indexability check:bundle check:headings check:links check:crawl",
     "start": "next start",
     "typecheck": "node scripts/typecheck.mjs",
     "lint": "eslint . --max-warnings 0 && npm run check:content",
@@ -70,6 +74,7 @@
     "postcss": "8.5.25",
     "sharp": "^0.35.3",
     "tailwindcss": "^4.3.3",
+    "turbo": "2.10.11",
     "typescript": "6.0.3",
     "vitest": "^4.1.4"
   },

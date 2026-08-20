@@ -18,10 +18,16 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
       - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run test:coverage
+      # Turbo runs independent static checks in parallel and restores unchanged
+      # results from the repository-local cache above.
+      - run: npm run turbo:check
 
       # Browsers are keyed on the resolved Playwright version, so the cache
       # invalidates exactly when the browser build would change.
@@ -46,23 +52,14 @@ jobs:
         timeout-minutes: 5
 
       - run: npm run test:e2e
-      - run: npm run build
+      # Each SEO check depends on the same production build in turbo.json.
+      # One invocation keeps the build environment and cache key identical,
+      # then fans the artifact checks out in parallel after Next.js completes.
+      - run: npm run turbo:verify
         env:
           QUOTE_ENDPOINT: ${{ secrets.QUOTE_ENDPOINT }}
           CONTACT_ENDPOINT: ${{ secrets.CONTACT_ENDPOINT }}
           SITE_URL: https://caraway.au
-      - run: npm run check:indexability
-      - run: npm run check:bundle
-      - run: npm run check:headings
-      # Orphaned pages are reachable only via the sitemap, which is the slowest
-      # discovery path there is. Runs against built HTML, so it sees the links a
-      # crawler actually gets.
-      - run: npm run check:links
-      # Crawl the built production server exactly as a bot would: every
-      # submitted page must be a direct, indexable, self-canonical 200; every
-      # emitted same-site target must resolve; and the known GSC aliases must
-      # remain on permanent redirects to their final canonical pages.
-      - run: npm run check:crawl
       # Cited government sources move without notice, and unit tests only pin
       # the strings. Non-blocking so third-party outages cannot redden a PR.
       - run: npm run check:sources -- --report

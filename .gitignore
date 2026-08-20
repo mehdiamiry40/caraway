@@ -3,6 +3,7 @@
 # compiled output
 dist
 .next
+.turbo
 tmp
 out-tsc
 *.tsbuildinfo
