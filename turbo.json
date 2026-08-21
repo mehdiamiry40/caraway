@@ -25,9 +25,9 @@
         "UPSTASH_REDIS_REST_URL",
         "VERCEL_ENV",
         "VERCEL_GIT_COMMIT_SHA",
-        "VERCEL_OIDC_TOKEN",
         "VERCEL_REGION"
-      ]
+      ],
+      "passThroughEnv": ["VERCEL_OIDC_TOKEN"]
     },
     "lint": {},
     "typecheck": {},
