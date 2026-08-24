@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CarFront, Clock, MapPin, Phone } from "lucide-react";
+import { CarFront, Phone } from "lucide-react";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { HeaderFrame } from "./HeaderFrame";
@@ -10,10 +10,7 @@ import { buttonVariants } from "@/components/ui/button";
 const navLinks = [
   { label: "How it works", href: "/how-it-works" },
   { label: "Locations", href: "/locations" },
-  { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 /**
@@ -34,22 +31,17 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
-
-      <div className="hidden sm:block w-full bg-background border-b border-border">
-        <div className="site-container flex min-h-11 items-center justify-end text-xs">
-          <div className="flex items-center divide-x divide-border">
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Collection windows confirmed per job
-            </span>
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Pickup included when we buy
-            </span>
+      <div className="hidden min-h-9 bg-ink-deep text-on-dark-hi sm:block">
+        <div className="site-container flex min-h-9 items-center justify-end text-xs font-semibold">
+          <div className="flex items-center gap-6">
+            <span>Greater Brisbane vehicle buyers</span>
+            <span className="text-on-dark-hi/35" aria-hidden="true">|</span>
+            <Link href="/about" className="transition hover:text-cta-bright">About</Link>
+            <Link href="/faq" className="transition hover:text-cta-bright">Seller FAQs</Link>
+            <Link href="/blog" className="transition hover:text-cta-bright">Guides</Link>
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex min-h-11 items-center gap-1.5 px-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 transition hover:text-cta-bright"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-3.5 w-3.5" aria-hidden="true" />
@@ -59,29 +51,30 @@ export function Header() {
         </div>
       </div>
 
-      <div className="bg-background border-b border-border">
-        <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
+      <div className="border-b border-border bg-background">
+        <div className="site-container flex h-[76px] items-center justify-between gap-3 lg:gap-6 sm:h-[88px]">
           <Link
             href="/"
             prefetch={false}
             className="flex items-center gap-3 group shrink-0"
           >
-            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
+            <span className="relative flex h-12 w-12 items-center justify-center overflow-hidden bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep sm:h-14 sm:w-14">
               <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+              <span className="absolute inset-x-0 bottom-0 h-1.5 bg-accent" aria-hidden="true" />
             </span>
             <span className="leading-none">
-              <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
+              <span className="block font-display text-xl font-semibold tracking-[0.08em] text-primary sm:text-2xl">
                 CARAWAY
               </span>
-              <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Vehicle buying
+              <span className="mt-1 block text-[0.65rem] font-bold uppercase tracking-[0.16em] text-accent-ink">
+                Brisbane vehicle buyers
               </span>
             </span>
           </Link>
 
           <nav
             aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-0 flex-1 justify-center"
+            className="hidden h-full flex-1 items-stretch justify-center lg:flex"
           >
             <ServicesDropdownClient serviceLinks={serviceLinks} />
             <HeaderNavLinks links={navLinks} />

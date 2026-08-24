@@ -100,31 +100,41 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   return (
     <section
       id="quote-form"
-      className="section-y scroll-mt-header bg-background"
+      className="section-y scroll-mt-header bg-secondary"
       aria-label="Request a quote"
       data-chat-launcher-suppress="true"
     >
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
-              Your quote
+        <div className="grid items-start gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:pt-4">
+            <p className="t-index text-accent-ink">
+              Start here
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">
-              Tell us about the car.
+            <h2 className="mt-5 max-w-[12ch] font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground text-balance sm:text-5xl">
+              Tell us about the car. We&apos;ll take it from here.
             </h2>
-            <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
               We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
-            <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
-              <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
-              </p>
-            </div>
+            <dl className="mt-10 border-y border-accent/25">
+              {[
+                ["Business-hours review", "We assess the details and contact you with the next step."],
+                ["No obligation", "Review any offer and decide in your own time."],
+                ["Pickup included", "When Caraway buys and the supplied vehicle and access details match."],
+              ].map(([term, detail]) => (
+                <div key={term} className="grid gap-1 border-b border-accent/25 py-5 last:border-b-0 sm:grid-cols-[10rem_1fr] sm:gap-6">
+                  <dt className="font-display text-lg font-semibold text-foreground">{term}</dt>
+                  <dd className="text-sm leading-relaxed text-muted-foreground">{detail}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
-          <div className="lg:col-span-7 rounded-md border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="carbase-shadow rounded-md border border-accent/25 bg-card p-6 sm:p-8">
+              <div className="mb-7 border-b border-border pb-5">
+                <p className="t-index text-accent-ink">Free · No obligation</p>
+                <h3 className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl">Request your quote</h3>
+              </div>
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
@@ -155,7 +165,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   <div className="flex items-center gap-3 text-sm text-muted-foreground pb-1 lg:hidden">
                     <div className="flex items-center gap-1.5">
                       <Shield className="w-4 h-4 text-primary" aria-hidden />
-                      <span>No obligation</span>
+                        <span>No obligation</span>
                     </div>
                     <span className="text-border">|</span>
                     <div className="flex items-center gap-1.5">
@@ -166,7 +176,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.make} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.make} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Make
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -189,7 +199,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.model} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.model} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Model
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -214,7 +224,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.year} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.year} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Year
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -235,7 +245,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.condition} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.condition} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Condition
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -265,7 +275,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.name} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Your name
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -289,7 +299,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.phone} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                         Phone
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -321,7 +331,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2.5 cursor-pointer">
+                    <label htmlFor={fieldIds.address} className="mb-1.5 block cursor-pointer text-[13px] font-semibold text-foreground">
                       Pickup address
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
@@ -360,7 +370,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.details} className="block text-sm text-foreground mb-2.5">
+                    <label htmlFor={fieldIds.details} className="mb-1.5 block text-[13px] font-semibold text-foreground">
                       Vehicle and access details <span className="text-muted-foreground">(optional)</span>
                     </label>
                     <textarea
@@ -373,7 +383,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         errors.details ? `${fieldIds.details}-error quote-details-help` : "quote-details-help"
                       }
                       {...register("details")}
-                      className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="w-full resize-y rounded-md border border-input bg-background px-4 py-3 text-[15px] leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-accent focus-visible:ring-2 focus-visible:ring-ring/15"
                     />
                     <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-details-help">
                       These details help us assess the vehicle and suitable collection access before follow-up.

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Caraway",
     description:
       "Learn how Caraway collects, uses, and protects your personal information for our Brisbane cash for cars services.",
-    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

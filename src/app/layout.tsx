@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { Barlow, Open_Sans } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -7,6 +8,19 @@ import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  variable: "--font-barlow",
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,7 +49,7 @@ export const metadata: Metadata = {
       "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -49,7 +63,7 @@ export const metadata: Metadata = {
       "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -80,7 +94,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#2C5697",
+  themeColor: "#0A2F68",
 };
 
 export default function RootLayout({
@@ -89,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className={`${openSans.variable} ${barlow.variable}`}>
       <body className="min-h-screen">
         <a
           href="#main-content"

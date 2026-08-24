@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
-    "font-display font-semibold tracking-[-0.005em]",
+    "font-sans font-bold tracking-normal",
     "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
@@ -14,7 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-cta text-cta-foreground border border-cta hover:bg-cta/88 hover:border-cta/88 active:translate-y-px",
+          "bg-cta text-cta-foreground border border-cta hover:bg-accent-ink hover:border-accent-ink active:translate-y-px",
         primary:
           "bg-primary text-primary-foreground border border-primary hover:bg-ink-deep hover:border-ink-deep active:translate-y-px",
         secondary:

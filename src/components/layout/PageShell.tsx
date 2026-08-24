@@ -34,21 +34,29 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
+              ? "relative overflow-hidden border-b border-border bg-ink-deep bg-cover bg-center py-16 text-on-dark-hi lg:py-20"
               : "bg-background py-8 sm:py-12 lg:py-14"
           }
+          style={
+            isAurora
+              ? {
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(6,26,57,.94), rgba(10,47,104,.76) 62%, rgba(69,5,22,.26)), url('/images/tow-truck-hero.webp')",
+                }
+              : undefined
+          }
         >
-          <div className="site-container relative">
-            <Breadcrumbs items={breadcrumbs} />
-            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
+          <div className="site-container relative z-10">
+            <Breadcrumbs items={breadcrumbs} light={isAurora} />
+            {eyebrow && <p className={isAurora ? "t-index mt-6 text-cta-bright" : "t-index mt-6 text-accent-ink"}>{eyebrow}</p>}
             <h1
-              className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.08] text-primary text-balance max-w-3xl mt-4 mb-5"
+              className={`font-display text-[clamp(2.25rem,5.5vw,3.75rem)] font-medium leading-[1.04] text-balance max-w-3xl mt-5 mb-5 ${isAurora ? "text-on-dark-hi" : "text-foreground"}`}
               style={{ letterSpacing: "var(--tracking-display)" }}
             >
               {title}
             </h1>
             {subtitle && (
-              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
+              <div className={`text-lg sm:text-xl leading-relaxed max-w-2xl ${isAurora ? "text-on-dark-hi/80" : "text-muted-foreground"}`}>
                 {subtitle}
               </div>
             )}

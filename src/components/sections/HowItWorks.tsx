@@ -39,37 +39,34 @@ interface HowItWorksProps {
 
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
-    <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
+    <section id="how-it-works" className="section-y scroll-mt-header relative bg-muted">
       <div className="site-container">
         {/* No sub-paragraph under the heading: the four steps below already say
             it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
         {showHeader && (
-          <div className="mb-10 max-w-2xl md:mb-14">
-            <p className="eyebrow mb-5">How it works</p>
-            <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
-              From quote to collection in four clear steps.
+          <div className="mb-12 max-w-3xl">
+            <p className="t-index text-accent-ink">Four straightforward steps</p>
+            <h2 className="mt-5 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground text-balance sm:text-5xl">
+              From first details to final pickup.
             </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">A clear process, so you always know what happens next.</p>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+        <ol className="relative grid grid-cols-1 gap-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {steps.map((step) => (
             <li
               key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
+              className="group relative flex h-full flex-col overflow-hidden border border-accent/25 bg-card transition-[border-color,box-shadow] duration-300 hover:border-accent hover:shadow-md"
             >
-              <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
-                aria-hidden="true"
-              />
-              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/75 sm:text-4xl">
+              <div className="grid flex-1 grid-cols-[3.5rem_1fr] gap-x-4 p-7 sm:flex sm:flex-col">
+                <span className="row-span-3 flex h-14 w-14 items-center justify-center bg-accent font-mono text-sm font-bold text-accent-foreground">
                   {step.number}
                 </span>
-                <h3 className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">
+                <h3 className="font-display text-xl font-semibold leading-snug text-foreground sm:mt-5">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>
                 <p className="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink sm:mt-auto sm:pt-5">
@@ -80,7 +77,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
           ))}
         </ol>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2">
           {showHeader && (
             <Link
               href="/how-it-works"

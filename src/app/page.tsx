@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,

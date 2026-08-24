@@ -2,60 +2,52 @@ import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
-import { cn } from "@/lib/utils";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 export function FinalCTA() {
   return (
     <section
-      className="bg-background py-12 sm:py-16"
+      className="relative min-h-[440px] overflow-hidden bg-ink-deep text-on-dark-hi"
       aria-label="Get your quote"
       data-sticky-cta-suppress="true"
     >
-      <div className="site-container">
-        <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
-          <div
-            className="h-1 bg-gradient-to-r from-cta via-accent to-white"
-            aria-hidden="true"
-          />
-          <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
-            <div className="lg:col-span-8">
-              <p className="eyebrow-on-dark mb-5">Ready when you are</p>
-              <h2 className="font-display text-[clamp(2.1rem,5vw,3.5rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
-                Find out what your car could be worth today.
-              </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
-                One form. A confirmed offer in writing. Pickup included when we buy.
-              </p>
-            </div>
+      <picture>
+        <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
+        <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
+        <img
+          src="/images/tow-truck-hero.webp"
+          alt="Tilt-tray truck transporting a car"
+          width={800}
+          height={800}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </picture>
+      <span className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,26,57,0.94),rgba(10,47,104,0.74)_62%,rgba(69,5,22,0.34))]" aria-hidden="true" />
 
-            <div className="lg:col-span-4 lg:text-right">
-              <Link
-                href="/#quote-form"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group w-full px-8 sm:w-auto",
-                )}
-              >
-                Get my quote
-                <ArrowRight
-                  className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
-              <div className="mt-5 text-sm text-on-dark-hi/75">
-                or{" "}
-                <TrackedPhoneLink
-                  href={BUSINESS.phoneTel}
-                  location="final_cta"
-                  className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline decoration-cta underline-offset-4 hover:text-cta-bright"
-                  ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
-                >
-                  <Phone aria-hidden="true" className="h-4 w-4" />
-                  call {BUSINESS.phoneDisplay}
-                </TrackedPhoneLink>
-              </div>
-            </div>
+      <div className="site-container relative z-10 flex min-h-[440px] items-center py-16 lg:py-24">
+        <div className="max-w-3xl">
+          <p className="t-index w-fit border-b border-on-dark-hi/70 pb-3 text-cta-bright">Ready when you are</p>
+          <h2 className="mt-6 font-display text-4xl font-medium leading-[1.04] tracking-tight text-on-dark-hi text-balance sm:text-6xl">
+            Find out what your car could be worth today.
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-dark-hi/80">
+            One form. A clear offer. Pickup included across Greater Brisbane when Caraway buys.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Link href="/#quote-form" className={buttonVariants({ size: "lg" })}>
+              Get my quote <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            </Link>
+            <TrackedPhoneLink
+              href={BUSINESS.phoneTel}
+              location="final_cta"
+              className="inline-flex min-h-14 items-center justify-center gap-2 border border-on-dark-hi px-8 text-base font-bold text-on-dark-hi transition hover:bg-on-dark-hi hover:text-ink-deep"
+              ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+            >
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              Call {BUSINESS.phoneDisplay}
+            </TrackedPhoneLink>
           </div>
         </div>
       </div>

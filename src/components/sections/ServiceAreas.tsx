@@ -68,42 +68,42 @@ function hubsFor(region: Region) {
 export function ServiceAreas() {
   return (
     <section
-      className="section-y bg-secondary border-t border-b border-border"
+      className="section-y bg-background border-t border-b border-border"
       aria-label="Cash for cars service areas Brisbane"
     >
       <div className="site-container">
-        <div className="max-w-2xl mb-12 md:mb-16">
-          <p className="eyebrow mb-5">Service areas</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
-            Pickup included across
-            <br />
-            Greater Brisbane when we buy.
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-16">
+          <div>
+          <p className="t-index text-accent-ink">Our service area</p>
+          <h2 className="mt-5 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground text-balance sm:text-5xl">
+            Focused on Greater Brisbane.
           </h2>
+          </div>
           {/* The region list that used to open this line is the grid below. */}
-          <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
             If your suburb is not listed, ask. We confirm coverage from the
             exact address, access, vehicle details, and collection schedule.
           </p>
         </div>
 
         <div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {REGIONS.map((region) => {
               const Icon = region.icon;
               const hubs = hubsFor(region);
               return (
                 <li key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col overflow-hidden border border-border bg-card p-5 sm:p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-md hover:border-primary/40">
+                  <article className="group relative flex h-full flex-col overflow-hidden border border-accent/25 bg-secondary p-6 transition-[box-shadow,border-color] duration-300 hover:border-accent hover:shadow-md sm:p-7">
                     <div className="relative flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
+                      <span className="flex h-12 w-12 items-center justify-center bg-accent text-accent-foreground transition-colors duration-300 group-hover:bg-primary">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-medium text-cta-ink">
-                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
+                      <span className="inline-flex items-center gap-1.5 border border-accent/25 bg-background px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-medium text-accent-ink">
+                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
                         {hubs.length} {hubs.length === 1 ? "guide" : "guides"}
                       </span>
                     </div>
-                    <h3 className="relative mt-5 font-display text-lg sm:text-xl text-foreground">
+                    <h3 className="relative mt-5 font-display text-xl font-semibold text-foreground">
                       {region.label}
                     </h3>
                     <p className="relative mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">

@@ -1,82 +1,49 @@
 import Link from "next/link";
-import { ArrowRight, Car, Wrench, Recycle, ShieldOff, AlertTriangle, Ban } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { AlertTriangle, Ban, Car, Recycle, ShieldOff, Wrench } from "lucide-react";
 
 const carTypes = [
-  { label: "Used Cars", href: "/sell-my-car-brisbane", icon: Car, desc: "Direct-buyer quote option" },
-  { label: "Damaged Cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident, flood or fire damage" },
-  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicle assessment" },
-  { label: "Unwanted Cars", href: "/car-removal-brisbane", icon: Ban, desc: "Pickup included when we buy" },
-  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", icon: AlertTriangle, desc: "After insurer status is clear" },
-  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "Identity and document check" },
-];
-
-const alsoAccepted = [
-  "Fleet Vehicles", "Utes & 4x4s", "SUVs", "Vans & Trucks",
-  "Flood-Damaged Cars", "Non-Running Cars", "Classic Cars",
-];
+  { label: "Used cars", href: "/sell-my-car-brisbane", icon: Car, desc: "Daily drivers, second cars and high-kilometre vehicles." },
+  { label: "Damaged cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident, flood, fire or mechanical damage." },
+  { label: "Old and scrap cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicles assessed for parts or recycling." },
+  { label: "Unwanted cars", href: "/car-removal-brisbane", icon: Ban, desc: "Cars taking up space at home, work or storage." },
+  { label: "Hail-damaged cars", href: "/hail-damaged-cars-brisbane", icon: AlertTriangle, desc: "Vehicles ready to sell after insurer status is clear." },
+  { label: "Unregistered cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "Subject to identity, ownership and document checks." },
+] as const;
 
 export function CarTypes() {
   return (
-    <section className="section-y bg-primary text-primary-foreground" aria-label="Types of cars we buy in Brisbane">
+    <section className="bg-background py-16 lg:py-24" aria-label="Types of cars Caraway buys in Brisbane">
       <div className="site-container">
-        <div className="text-center mb-10 sm:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display leading-tight">
-            What Cars We Buy in Brisbane
-          </h2>
-          <p className="mt-3 text-primary-foreground/90 text-sm sm:text-base max-w-xl mx-auto">
-            We assess many vehicle types and conditions across Greater Brisbane. The quote depends on the individual car, ownership, location, and access.
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end lg:gap-16">
+          <div>
+            <p className="t-index text-accent-ink">What we buy</p>
+            <h2 className="mt-5 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground sm:text-5xl">
+              Every make. Every model. Almost every condition.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
+            From a reliable car you no longer need to a vehicle that cannot leave the driveway, send us the details. You do not need to repair, detail, or advertise it first.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-          {carTypes.map((type) => {
-            const Icon = type.icon;
-            return (
-              <Link
-                key={type.label}
-                href={type.href}
-                className={cn(
-                  "group relative flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-xl",
-                  "bg-primary-foreground/[0.08] border border-primary-foreground/20",
-                  "hover:border-primary-foreground/50 hover:bg-primary-foreground/[0.12]",
-                  "hover:-translate-y-0.5 transition-all duration-300",
-                  "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
-                  "touch-manipulation min-h-[116px] sm:min-h-[136px]"
-                )}
-              >
-                <div className={cn(
-                  "flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl mb-3",
-                  "bg-accent/20 text-accent",
-                  "transition-all duration-300"
-                )}>
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true" />
+        <ul className="mt-12 grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+          {carTypes.map(({ label, href, icon: Icon, desc }, index) => (
+            <li key={label} className="min-h-60 border-b border-r border-border">
+              <Link href={href} className="group flex h-full flex-col p-7 transition hover:bg-secondary sm:p-8">
+                <div className="flex items-start justify-between gap-5">
+                  <span className="flex h-16 w-16 items-center justify-center bg-accent text-accent-foreground transition group-hover:bg-primary">
+                    <Icon className="h-8 w-8" strokeWidth={1.7} aria-hidden="true" />
+                  </span>
+                  <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
                 </div>
-                <span className="font-display text-sm sm:text-base leading-tight mb-1">
-                  {type.label}
-                </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/85 leading-tight">
-                  {type.desc}
-                </span>
-                <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />
+                <h3 className="mt-8 font-display text-2xl font-semibold text-foreground transition-colors group-hover:text-accent-ink">
+                  {label}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
               </Link>
-            );
-          })}
-        </div>
-
-        <div className="mt-8 sm:mt-10 text-center">
-          <p className="text-xs uppercase tracking-wider text-primary-foreground/90 mb-3">Also accepted</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {alsoAccepted.map((type) => (
-              <span
-                key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-primary-foreground/25 text-xs sm:text-sm text-primary-foreground/90 font-medium"
-              >
-                {type}
-              </span>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

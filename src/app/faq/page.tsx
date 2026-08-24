@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       "Practical answers about vehicle quotes, collection terms, payment records, and Queensland seller paperwork.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Vehicle Selling FAQs for Brisbane | Caraway",
     description:
       "Practical answers about vehicle quotes, collection terms, payment records, and Queensland seller paperwork.",
-    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 
