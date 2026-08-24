@@ -65,7 +65,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
 
   const html =
     `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#303030;margin:0;padding:24px;background:#FFFFFF">` +
-    `<h2 style="margin:0 0 12px;font-size:18px;color:#2C5696">New quote request</h2>` +
+    `<h2 style="margin:0 0 12px;font-size:18px;color:#242424">New quote request</h2>` +
     `<p style="margin:0 0 16px;color:#59636E">Submitted via the caraway.au quote form.</p>` +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px">` +
     htmlRows +

@@ -82,26 +82,30 @@
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 0 0% 19%;
+  --foreground: 0 0% 13%;
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 19%;
+  --card-foreground: 0 0% 13%;
 
-  --primary: 216 55% 38%;              /* #2C5697 */
+  /* Corporate charcoal carries structure: headings, dark bands, footer, nav.
+     Red is the brand accent and is spent sparingly — see --accent / --cta. */
+  --primary: 0 0% 14%;                 /* #242424 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 198 57% 95%;            /* #EAF5FA */
-  --secondary-foreground: 216 48% 29%;
+  --secondary: 0 0% 95%;               /* #F2F2F2 */
+  --secondary-foreground: 0 0% 14%;
 
-  --muted: 200 17% 97%;
-  --muted-foreground: 210 11% 39%;
+  --muted: 0 0% 97%;                   /* #F7F7F7 */
+  --muted-foreground: 0 0% 35%;        /* #595959 — 7.0:1 on white */
 
-  --accent: 187 54% 38%;               /* #2D8795 */
+  --accent: 350 87% 43%;               /* #CE0E2D — brand red */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 51%;            /* #DC2626 */
+  /* Warmer, darker than the brand red so error states stay distinguishable
+     from red CTAs. Status colour is never the sole signal (icon + text). */
+  --destructive: 4 76% 40%;            /* #B42318 */
   --destructive-foreground: 0 0% 100%;
 
-  /* Status green for success toasts/banners — distinct from --cta action green. */
+  /* Status green for success toasts/banners — the only non-red positive signal. */
   --success: 142 76% 36%;              /* #16A34A — emerald */
   --success-foreground: 0 0% 100%;
 
@@ -111,13 +115,13 @@
   --info: 200 98% 39%;                 /* #0284C7 */
   --info-foreground: 0 0% 100%;
 
-  --border: 210 12% 85%;
+  --border: 0 0% 87%;                  /* #DEDEDE */
   /* Form-control borders need >= 3:1 against white (WCAG 1.4.11 non-text
-     contrast); decorative --border stays lighter. 207 14% 58% = 3.08:1. */
-  --input: 207 14% 58%;
-  --ring: 216 55% 38%;
+     contrast); decorative --border stays lighter. 0 0% 58% = 3.03:1. */
+  --input: 0 0% 58%;                   /* #949494 */
+  --ring: 350 87% 43%;
 
-  --shadow-color: 216 35% 22%;
+  --shadow-color: 0 0% 12%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
@@ -128,25 +132,25 @@
      three can never drift apart. */
   --header-h: 4.25rem;
 
-  --ink: 216 55% 38%;
-  --ink-deep: 214 55% 25%;
-  --ink-raised: 212 42% 46%;
-  --on-dark: 205 35% 91%;
+  --ink: 0 0% 14%;                     /* #242424 */
+  --ink-deep: 0 0% 7%;                 /* #121212 */
+  --ink-raised: 0 0% 24%;              /* #3D3D3D */
+  --on-dark: 0 0% 84%;                 /* #D6D6D6 */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 72 59% 54%;
-  --plate-foreground: 216 48% 23%;
-  --cta: 72 59% 54%;                   /* #B5D145 */
-  --cta-foreground: 216 48% 23%;
+  --plate: 350 87% 43%;
+  --plate-foreground: 0 0% 100%;
+  --cta: 350 87% 43%;                  /* #CE0E2D — 5.6:1 with white */
+  --cta-foreground: 0 0% 100%;
 
-  /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
-     pass AA only as backgrounds (paired with plum -foreground); as text on
-     white they're ~2.4–2.8:1. These darker variants are for labels/links/text
-     on light surfaces, and the brighter ones for emphasis on dark bands. */
-  --cta-ink: 72 66% 27%;
-  --accent-ink: 187 62% 28%;
-  --cta-bright: 72 72% 70%;
-  --accent-on-dark: 187 65% 82%;
+  /* Brand red at 43% L clears AA both as a surface (white text, 5.6:1) and as
+     text on white (5.6:1). --cta-ink / --accent-ink go a shade darker for small
+     text and links; --cta-bright / --accent-on-dark are the tints that carry
+     red emphasis on charcoal bands, where the 43% red would fall below AA. */
+  --cta-ink: 350 87% 37%;              /* #B00C26 — 7.2:1 on white */
+  --accent-ink: 350 87% 37%;
+  --cta-bright: 350 100% 78%;          /* #FF8F98 — 6.9:1 on charcoal */
+  --accent-on-dark: 350 100% 85%;
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
