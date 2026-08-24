@@ -13,15 +13,15 @@ export function FinalCTA() {
       data-sticky-cta-suppress="true"
     >
       <div className="site-container">
-        <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
+        <div className="relative overflow-hidden border border-ink-deep bg-ink-deep text-on-dark-hi">
           <div
-            className="h-1 bg-gradient-to-r from-cta via-accent to-white"
+            className="h-1 bg-cta"
             aria-hidden="true"
           />
           <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
             <div className="lg:col-span-8">
               <p className="eyebrow-on-dark mb-5">Ready when you are</p>
-              <h2 className="font-display text-[clamp(2.1rem,5vw,3.5rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
+              <h2 className="font-display text-[clamp(2.4rem,5vw,4.2rem)] font-semibold leading-[1.02] tracking-display text-on-dark-hi">
                 Find out what your car could be worth today.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">

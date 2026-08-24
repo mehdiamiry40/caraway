@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CarFront, Clock, MapPin, Phone } from "lucide-react";
+import { ArrowRight, CarFront, Phone } from "lucide-react";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { HeaderFrame } from "./HeaderFrame";
@@ -13,7 +13,6 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 /**
@@ -34,70 +33,64 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
+      <div className="h-1 bg-cta" aria-hidden="true" />
 
-      <div className="hidden sm:block w-full bg-background border-b border-border">
-        <div className="site-container flex min-h-11 items-center justify-end text-xs">
-          <div className="flex items-center divide-x divide-border">
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Collection windows confirmed per job
-            </span>
-            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
-              Pickup included when we buy
-            </span>
-            <a
-              href={BUSINESS.phoneTel}
-              className="inline-flex min-h-11 items-center gap-1.5 px-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              aria-label={`Call ${BUSINESS.phoneDisplay}`}
-            >
-              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-              {BUSINESS.phoneDisplay}
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-background border-b border-border">
-        <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
+      <div className="border-b border-border bg-background">
+        <div className="site-container flex h-[4.5rem] items-center justify-between gap-3 sm:h-[4.75rem] lg:gap-8">
           <Link
             href="/"
             prefetch={false}
-            className="flex items-center gap-3 group shrink-0"
+            className="group flex shrink-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
           >
-            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
-              <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            <span className="flex h-10 w-10 items-center justify-center border border-primary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground sm:h-11 sm:w-11">
+              <CarFront className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
             </span>
             <span className="leading-none">
-              <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
+              <span className="block font-display text-lg font-bold tracking-[0.1em] text-primary sm:text-xl">
                 CARAWAY
               </span>
-              <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Vehicle buying
+              <span className="mt-1.5 block text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Brisbane vehicle buyer
               </span>
             </span>
           </Link>
 
-          <nav
-            aria-label="Primary navigation"
-            className="hidden lg:flex items-center gap-0 flex-1 justify-center"
-          >
-            <ServicesDropdownClient serviceLinks={serviceLinks} />
-            <HeaderNavLinks links={navLinks} />
-          </nav>
-
-          <div className="hidden lg:flex items-center shrink-0 gap-2">
+          <div className="hidden items-center gap-5 lg:flex">
+            <a
+              href={BUSINESS.phoneTel}
+              className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              {BUSINESS.phoneDisplay}
+            </a>
             <Link
               href="/#quote-form"
               prefetch={false}
-              className={buttonVariants({ size: "sm" })}
+              className={buttonVariants({ size: "sm", variant: "primary" })}
             >
               Get my quote
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
 
           <MobileMenuClient serviceLinks={serviceLinks} />
+        </div>
+      </div>
+
+      <div className="hidden bg-ink-deep text-on-dark-hi lg:block">
+        <div className="site-container flex h-11 items-center justify-between">
+          <nav aria-label="Primary navigation" className="flex h-full items-stretch">
+            <ServicesDropdownClient serviceLinks={serviceLinks} />
+            <HeaderNavLinks links={navLinks} />
+          </nav>
+          <Link
+            href="/contact"
+            className="group inline-flex min-h-11 items-center gap-2 border-l border-[hsl(var(--on-dark-hi)/0.2)] pl-6 text-sm font-semibold text-on-dark-hi/90 transition-colors hover:text-on-dark-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.55)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-deep"
+          >
+            Contact us
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
         </div>
       </div>
     </HeaderFrame>

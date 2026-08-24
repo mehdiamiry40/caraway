@@ -39,40 +39,40 @@ interface HowItWorksProps {
 
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
-    <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
+    <section id="how-it-works" className="section-y scroll-mt-header relative border-b border-border bg-background">
       <div className="site-container">
         {/* No sub-paragraph under the heading: the four steps below already say
             it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
         {showHeader && (
-          <div className="mb-10 max-w-2xl md:mb-14">
+          <div className="mb-12 max-w-3xl md:mb-16">
             <p className="eyebrow mb-5">How it works</p>
-            <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
+            <h2 className="font-display text-[clamp(2.7rem,5vw,4.5rem)] font-semibold leading-[1.02] tracking-display text-foreground">
               From quote to collection in four clear steps.
             </h2>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+        <ol className="grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
             <li
               key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
+              className="group relative flex min-h-64 flex-col overflow-hidden bg-card transition-colors duration-300 hover:bg-muted"
             >
               <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
+                className="hidden"
                 aria-hidden="true"
               />
-              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/75 sm:text-4xl">
+              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-6 sm:flex sm:flex-col sm:p-7">
+                <span className="row-span-3 font-mono text-xs font-semibold leading-none tracking-[0.12em] text-primary">
                   {step.number}
                 </span>
-                <h3 className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">
+                <h3 className="font-display text-xl font-semibold leading-snug text-foreground sm:mt-12">
                   {step.title}
                 </h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
                   {step.description}
                 </p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink sm:mt-auto sm:pt-5">
+                <p className="mt-3 text-[0.625rem] font-bold uppercase tracking-[0.12em] text-accent-ink sm:mt-auto sm:pt-8">
                   {step.timing}
                 </p>
               </div>

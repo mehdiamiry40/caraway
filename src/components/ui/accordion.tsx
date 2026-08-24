@@ -38,7 +38,7 @@ export function Accordion({
                   {item.question}
                 </span>
               </HeadingTag>
-              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-border bg-secondary text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] group-open:rotate-45 group-open:border-primary/50 group-open:bg-primary/15 group-open:text-primary motion-reduce:transition-none motion-reduce:duration-0">
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center border border-border bg-background text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] group-open:rotate-45 group-open:border-primary/50 group-open:bg-primary group-open:text-primary-foreground motion-reduce:transition-none motion-reduce:duration-0">
                 <Plus className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
               </span>
             </summary>

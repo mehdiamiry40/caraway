@@ -36,15 +36,15 @@ export function WhyUs() {
   return (
     <section
       id="why-us"
-      className="section-y scroll-mt-header bg-secondary border-t border-b border-border"
+      className="section-y scroll-mt-header border-b border-border bg-muted"
       aria-labelledby="why-us-heading"
     >
       <div className="site-container">
-        <div className="mb-12 max-w-2xl md:mb-16">
+        <div className="mb-12 max-w-3xl md:mb-16">
           <p className="eyebrow mb-5">Why Caraway</p>
           <h2
             id="why-us-heading"
-            className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]"
+            className="font-display text-[clamp(2.7rem,5vw,4.5rem)] font-semibold leading-[1.02] tracking-display text-foreground"
           >
             One price.
             <br />
@@ -56,7 +56,7 @@ export function WhyUs() {
         </div>
 
         <div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 gap-px border border-border bg-border lg:grid-cols-12">
             {/* Featured card spans the full row on mobile, half on desktop */}
             <div className="lg:col-span-6 lg:row-span-2">
               <FeatureReasonCard reason={featureReason} />
@@ -77,17 +77,17 @@ export function WhyUs() {
 function FeatureReasonCard({ reason }: { reason: Reason }) {
   const Icon = reason.icon;
   return (
-    <article className="relative h-full overflow-hidden border border-primary bg-primary p-7 text-on-dark-hi sm:p-9">
+    <article className="relative h-full min-h-80 overflow-hidden bg-primary p-7 text-on-dark-hi sm:p-10">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[hsl(var(--accent)/0.32)] blur-3xl"
+        className="hidden"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-[hsl(var(--cta)/0.28)] blur-3xl"
+        className="hidden"
       />
       <div className="relative flex h-full flex-col">
-        <span className="flex h-12 w-12 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.14)] text-on-dark-hi ring-1 ring-[hsl(var(--on-dark-hi)/0.18)]">
+        <span className="flex h-12 w-12 items-center justify-center border border-[hsl(var(--on-dark-hi)/0.28)] text-on-dark-hi">
           <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
         </span>
         <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
@@ -103,7 +103,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
           {["No bait-and-switch", "No tow deductions", "Confirmed in writing"].map((tag) => (
             <li
               key={tag}
-              className="inline-flex items-center rounded-full border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
+              className="inline-flex items-center border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
             >
               {tag}
             </li>
@@ -117,7 +117,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
 function SupportingReasonCard({ reason }: { reason: Reason }) {
   const Icon = reason.icon;
   return (
-    <article className="group relative h-full overflow-hidden border border-border bg-card p-6 transition-[box-shadow,border-color] duration-300 hover:border-primary hover:shadow-md sm:p-7">
+    <article className="group relative flex h-full min-h-40 items-center overflow-hidden bg-card p-6 transition-colors duration-300 hover:bg-background sm:p-8">
       <div className="flex items-start gap-4 sm:gap-5">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary transition-colors duration-300 group-hover:bg-primary/15 sm:h-12 sm:w-12">
           <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />

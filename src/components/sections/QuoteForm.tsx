@@ -100,31 +100,31 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   return (
     <section
       id="quote-form"
-      className="section-y scroll-mt-header bg-background"
+      className="section-y scroll-mt-header border-b border-border bg-muted"
       aria-label="Request a quote"
       data-chat-launcher-suppress="true"
     >
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:col-span-5 lg:pt-4">
+            <p className="eyebrow mb-6">
               Your quote
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">
+            <h2 className="mb-6 font-display text-[clamp(2.7rem,5vw,4.5rem)] font-semibold leading-[1.02] tracking-display text-foreground">
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
               We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
-            <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
-              <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
+            <div className="mt-8 max-w-md border-l-2 border-primary bg-background p-5">
+              <h3 className="mb-2 font-display text-sm text-foreground">How we calculate your car offer</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-7 rounded-md border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="border border-border border-t-4 border-t-primary bg-card p-6 sm:p-8 lg:col-span-7 lg:p-10">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">

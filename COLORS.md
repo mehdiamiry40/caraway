@@ -13,8 +13,9 @@ emails, browser chrome, and app icons.
 
 ## Current palette
 
-Clean white canvas, utility blue brand surfaces, teal emphasis, pale blue
-supporting washes, and lime-green primary actions. Light mode only.
+Clean white canvas, charcoal navigation and footer surfaces, Caraway blue and
+teal emphasis, neutral supporting washes, and lime-green primary actions.
+Light mode only.
 
 | Token                      | Hex      | HSL              | Role                                           |
 | -------------------------- | -------- | ---------------- | ---------------------------------------------- |
@@ -24,9 +25,9 @@ supporting washes, and lime-green primary actions. Light mode only.
 | `--card-foreground`        | `#303030` | `0 0% 19%`      | Text on cards                                  |
 | `--primary`                | `#2C5696` | `216 55% 38%`   | Brand blue / dominant brand surfaces           |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                            |
-| `--secondary`              | `#EBF5FA` | `198 57% 95%`   | Low-emphasis pale blue surface                 |
+| `--secondary`              | `#F6F7F8` | `210 20% 97%`   | Low-emphasis neutral surface                   |
 | `--secondary-foreground`   | `#26436D` | `216 48% 29%`   | Text on `--secondary`                          |
-| `--muted`                  | `#F6F8F9` | `200 17% 97%`   | Subtle backgrounds (code, fills)               |
+| `--muted`                  | `#F4F5F6` | `210 14% 96%`   | Subtle backgrounds (code, fills)               |
 | `--muted-foreground`       | `#59636E` | `210 11% 39%`   | Secondary / helper text                        |
 | `--accent`                 | `#2D8995` | `187 54% 38%`   | Teal emphasis / supporting action surfaces     |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                             |
@@ -42,22 +43,22 @@ supporting washes, and lime-green primary actions. Light mode only.
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                            |
 | `--info`                   | `#0284C7` | `200 98% 39%`   | Neutral notices                                |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                               |
-| `--border`                 | `#D4D9DD` | `210 12% 85%`   | Default border / divider                       |
+| `--border`                 | `#D5D6D7` | `210 8% 84%`    | Default border / divider                       |
 | `--input`                  | `#BEC8CF` | `207 15% 78%`   | Form field border                              |
 | `--ring`                   | `#2C5696` | `216 55% 38%`   | Focus ring                                     |
 
 ### Dark Band Tokens
 
-These tokens support blue hero/footer bands and dark quote-result surfaces.
+These tokens support the charcoal navigation/footer bands and dark content surfaces.
 
 | Token                 | Hex      | HSL              | Role                             |
 | --------------------- | -------- | ---------------- | -------------------------------- |
-| `--ink`               | `#2C5696` | `216 55% 38%`   | Primary blue dark surface        |
-| `--ink-deep`          | `#1D3B63` | `214 55% 25%`   | Deeper blue shadow / dark depth  |
-| `--ink-raised`        | `#4472A7` | `212 42% 46%`   | Raised dark surface              |
-| `--on-dark`           | `#E0E9F0` | `205 35% 91%`   | Secondary text on dark surfaces  |
+| `--ink`               | `#303030` | `0 0% 19%`      | Primary charcoal dark surface    |
+| `--ink-deep`          | `#212121` | `0 0% 13%`      | Deeper navigation/footer surface |
+| `--ink-raised`        | `#474747` | `0 0% 28%`      | Raised dark surface              |
+| `--on-dark`           | `#E3E5E6` | `210 10% 90%`   | Secondary text on dark surfaces  |
 | `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
-| `--shadow-color`      | `#24344C` | `216 35% 22%`   | Blue-tinted shadows              |
+| `--shadow-color`      | `#292929` | `0 0% 16%`      | Neutral shadows                  |
 
 ### WCAG contrast
 
