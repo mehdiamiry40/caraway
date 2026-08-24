@@ -34,7 +34,7 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
+              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-0.5 before:bg-cta"
               : "bg-background py-8 sm:py-12 lg:py-14"
           }
         >

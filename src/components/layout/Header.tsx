@@ -34,7 +34,7 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
+      <div className="h-0.5 bg-cta" aria-hidden="true" />
 
       <div className="hidden sm:block w-full bg-background border-b border-border">
         <div className="site-container flex min-h-11 items-center justify-end text-xs">

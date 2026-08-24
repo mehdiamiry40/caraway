@@ -59,7 +59,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
               className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
             >
               <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
+                className="h-0.5 bg-cta"
                 aria-hidden="true"
               />
               <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">

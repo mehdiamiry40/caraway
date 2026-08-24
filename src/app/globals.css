@@ -3,8 +3,8 @@
 /* Caraway utility design system: clear, civic, practical, Queensland-focused. */
 
 @theme inline {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: var(--font-sans-family), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-display-family), Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
@@ -58,9 +58,9 @@
   --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: -0.03em;
-  --tracking-tight: -0.015em;
-  --tracking-snug: -0.005em;
+  --tracking-display: -0.018em;
+  --tracking-tight: -0.01em;
+  --tracking-snug: -0.003em;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
   --tracking-wider: 0.06em;
@@ -69,55 +69,63 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  --radius-xs: 0.125rem;
-  --radius-sm: 0.1875rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.25rem;
-  --radius-xl: 0.3125rem;
-  --radius-2xl: 0.375rem;
-  --radius-3xl: 0.5rem;
-  --radius-4xl: 0.625rem;
+  --radius-xs: 0.0625rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.125rem;
+  --radius-xl: 0.1875rem;
+  --radius-2xl: 0.1875rem;
+  --radius-3xl: 0.25rem;
+  --radius-4xl: 0.25rem;
   --radius-full: 9999px;
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 19%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 19%;
+  /* Warm paper canvas — not pure white. Gives the ink and brass somewhere
+     quiet to sit and reads as stock rather than screen. */
+  --background: 40 37% 97%;            /* #FAF8F4 */
+  --foreground: 45 7% 11%;             /* #1E1D1A */
+  --card: 0 0% 100%;                   /* #FFFFFF — cards lift off the paper */
+  --card-foreground: 45 7% 11%;
 
-  --primary: 216 55% 38%;              /* #2C5697 */
+  /* Near-black ink is the brand's dominant surface: hero band, footer,
+     headings. Institutional weight without the corporate-blue cliche. */
+  --primary: 40 6% 10%;                /* #1A1917 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 198 57% 95%;            /* #EAF5FA */
-  --secondary-foreground: 216 48% 29%;
+  --secondary: 39 33% 92%;             /* #F1ECE3 — warm sand wash */
+  --secondary-foreground: 38 16% 20%;  /* #3A342A */
 
-  --muted: 200 17% 97%;
-  --muted-foreground: 210 11% 39%;
+  --muted: 37 31% 95%;                 /* #F6F3EE */
+  --muted-foreground: 37 9% 38%;       /* #6B6459 */
 
-  --accent: 187 54% 38%;               /* #2D8795 */
+  /* Deep racing green — the supporting emphasis hue. Pairs with brass and
+     near-black the way bound leather and hardware do, and stays automotive. */
+  --accent: 149 26% 25%;               /* #2E4F3E */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 51%;            /* #DC2626 */
+  --destructive: 4 74% 37%;            /* #A32218 */
   --destructive-foreground: 0 0% 100%;
 
-  /* Status green for success toasts/banners — distinct from --cta action green. */
-  --success: 142 76% 36%;              /* #16A34A — emerald */
+  /* Status green for success toasts/banners — distinct from --accent green. */
+  --success: 155 57% 26%;              /* #1D6A4A */
   --success-foreground: 0 0% 100%;
 
-  --warning: 38 92% 50%;               /* #F59E0B */
+  /* Pushed orange-ward so it never reads as the brass action colour. */
+  --warning: 28 94% 31%;               /* #9A4A05 */
   --warning-foreground: 0 0% 100%;
 
-  --info: 200 98% 39%;                 /* #0284C7 */
+  --info: 204 64% 33%;                 /* #1F5F8B */
   --info-foreground: 0 0% 100%;
 
-  --border: 210 12% 85%;
-  /* Form-control borders need >= 3:1 against white (WCAG 1.4.11 non-text
-     contrast); decorative --border stays lighter. 207 14% 58% = 3.08:1. */
-  --input: 207 14% 58%;
-  --ring: 216 55% 38%;
+  --border: 39 23% 85%;                /* #E2DCD1 */
+  /* Form-control borders need >= 3:1 against both card and paper (WCAG
+     1.4.11 non-text contrast); decorative --border stays lighter.
+     34 9% 52% = 3.62:1 on card, 3.42:1 on paper. */
+  --input: 34 9% 52%;                  /* #8F8578 */
+  --ring: 40 55% 35%;
 
-  --shadow-color: 216 35% 22%;
+  --shadow-color: 37 20% 14%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
@@ -128,25 +136,25 @@
      three can never drift apart. */
   --header-h: 4.25rem;
 
-  --ink: 216 55% 38%;
-  --ink-deep: 214 55% 25%;
-  --ink-raised: 212 42% 46%;
-  --on-dark: 205 35% 91%;
+  --ink: 40 6% 10%;                    /* #1A1917 */
+  --ink-deep: 30 7% 6%;                /* #100F0E */
+  --ink-raised: 37 9% 18%;             /* #33302B */
+  --on-dark: 39 18% 81%;               /* #D8D2C7 */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 72 59% 54%;
-  --plate-foreground: 216 48% 23%;
-  --cta: 72 59% 54%;                   /* #B5D145 */
-  --cta-foreground: 216 48% 23%;
+  /* Brass is the action colour: warm, metallic, legible on paper and on ink. */
+  --plate: 40 55% 35%;
+  --plate-foreground: 0 0% 100%;
+  --cta: 40 55% 35%;                   /* #8A6A28 */
+  --cta-foreground: 0 0% 100%;
 
-  /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
-     pass AA only as backgrounds (paired with plum -foreground); as text on
-     white they're ~2.4–2.8:1. These darker variants are for labels/links/text
-     on light surfaces, and the brighter ones for emphasis on dark bands. */
-  --cta-ink: 72 66% 27%;
-  --accent-ink: 187 62% 28%;
-  --cta-bright: 72 72% 70%;
-  --accent-on-dark: 187 65% 82%;
+  /* Accessible TEXT variants of the two brand hues. --cta/--accent pass AA as
+     surfaces (paired with white); these darker/lighter variants are for
+     labels, links and text — the -ink pair on paper, the bright pair on ink. */
+  --cta-ink: 38 55% 28%;               /* #6E5220 */
+  --accent-ink: 150 28% 23%;           /* #2A4A3A */
+  --cta-bright: 40 58% 67%;            /* #DCBB7A */
+  --accent-on-dark: 141 19% 74%;       /* #AFC9B8 */
 
   --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
@@ -185,6 +193,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply font-semibold;
+    font-optical-sizing: auto;
     letter-spacing: var(--tracking-tight);
     text-wrap: balance;
     color: hsl(var(--primary));
@@ -256,17 +265,17 @@
      --accent-ink on light (the bright --accent is ~2.5:1 as small text). */
   .eyebrow {
     display: inline-block;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: hsl(var(--accent-ink));
+    color: hsl(var(--cta-ink));
   }
   .eyebrow-on-dark {
     display: inline-block;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: hsl(var(--cta-bright));
   }
@@ -674,13 +683,8 @@
     content: "";
     position: absolute;
     inset: 0 0 auto;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--cta)),
-      hsl(var(--accent)),
-      hsl(var(--primary))
-    );
+    height: 2px;
+    background: hsl(var(--cta));
   }
 }
 
@@ -730,7 +734,7 @@
   left: -8%;
   width: 50%;
   height: 70%;
-  background: radial-gradient(closest-side, hsl(var(--accent) / 0.32), transparent 70%);
+  background: radial-gradient(closest-side, hsl(var(--cta) / 0.10), transparent 70%);
   animation: orb-drift-a 18s ease-in-out infinite;
 }
 .hero-atmosphere::after {
@@ -738,7 +742,7 @@
   right: -10%;
   width: 55%;
   height: 75%;
-  background: radial-gradient(closest-side, hsl(var(--cta) / 0.28), transparent 70%);
+  background: radial-gradient(closest-side, hsl(var(--on-dark-hi) / 0.06), transparent 70%);
   animation: orb-drift-b 22s ease-in-out infinite;
 }
 
@@ -786,7 +790,7 @@
   background: hsl(var(--ink));
   color: hsl(var(--on-dark-hi));
   border: 1px solid hsl(var(--on-dark-hi) / 0.08);
-  border-radius: 0.375rem;
+  border-radius: 0.125rem;
   position: relative;
   overflow: hidden;
   box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.08), 0 16px 40px hsl(var(--primary) / 0.15);
@@ -795,7 +799,7 @@
     content: "";
     position: absolute;
     inset: 0 0 auto 0;
-    height: 4px;
-    background: hsl(var(--primary));
+    height: 2px;
+    background: hsl(var(--cta));
   }
 }

@@ -15,7 +15,7 @@ export function FinalCTA() {
       <div className="site-container">
         <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
           <div
-            className="h-1 bg-gradient-to-r from-cta via-accent to-white"
+            className="h-0.5 bg-cta"
             aria-hidden="true"
           />
           <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">

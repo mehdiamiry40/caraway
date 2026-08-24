@@ -13,51 +13,80 @@ emails, browser chrome, and app icons.
 
 ## Current palette
 
-Clean white canvas, utility blue brand surfaces, teal emphasis, pale blue
-supporting washes, and lime-green primary actions. Light mode only.
+Premium and institutional: a warm paper canvas, near-black ink as the dominant
+brand surface, brass as the single action colour, and deep racing green for
+supporting emphasis. Light mode only.
 
-| Token                      | Hex      | HSL              | Role                                           |
-| -------------------------- | -------- | ---------------- | ---------------------------------------------- |
-| `--background`             | `#FFFFFF` | `0 0% 100%`     | Page canvas                                    |
-| `--foreground`             | `#303030` | `0 0% 19%`      | Default body text                              |
+The identity is deliberately near-monochrome — brass and green are used
+sparingly, as trim rather than as fill.
+
+| Token                      | Hex       | HSL             | Role                                           |
+| -------------------------- | --------- | --------------- | ---------------------------------------------- |
+| `--background`             | `#FAF8F4` | `40 37% 97%`    | Warm paper canvas                              |
+| `--foreground`             | `#1E1D1A` | `45 7% 11%`     | Default body text                              |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)     |
-| `--card-foreground`        | `#303030` | `0 0% 19%`      | Text on cards                                  |
-| `--primary`                | `#2C5696` | `216 55% 38%`   | Brand blue / dominant brand surfaces           |
+| `--card-foreground`        | `#1E1D1A` | `45 7% 11%`     | Text on cards                                  |
+| `--primary`                | `#1A1917` | `40 6% 10%`     | Near-black ink / dominant brand surfaces       |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                            |
-| `--secondary`              | `#EBF5FA` | `198 57% 95%`   | Low-emphasis pale blue surface                 |
-| `--secondary-foreground`   | `#26436D` | `216 48% 29%`   | Text on `--secondary`                          |
-| `--muted`                  | `#F6F8F9` | `200 17% 97%`   | Subtle backgrounds (code, fills)               |
-| `--muted-foreground`       | `#59636E` | `210 11% 39%`   | Secondary / helper text                        |
-| `--accent`                 | `#2D8995` | `187 54% 38%`   | Teal emphasis / supporting action surfaces     |
+| `--secondary`              | `#F1ECE3` | `39 33% 92%`    | Warm sand supporting wash                      |
+| `--secondary-foreground`   | `#3A342A` | `38 16% 20%`    | Text on `--secondary`                          |
+| `--muted`                  | `#F6F3EE` | `37 31% 95%`    | Subtle backgrounds (code, fills)               |
+| `--muted-foreground`       | `#6B6459` | `37 9% 38%`     | Secondary / helper text                        |
+| `--accent`                 | `#2E4F3E` | `149 26% 25%`   | Deep racing green / supporting emphasis        |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                             |
-| `--cta`                    | `#B3CF44` | `72 59% 54%`    | Lime primary CTA buttons and action accents    |
-| `--cta-foreground`         | `#1E3557` | `216 48% 23%`   | Text on `--cta`                                |
-| `--plate`                  | `#B3CF44` | `72 59% 54%`    | Vehicle plate / estimate accent                |
-| `--plate-foreground`       | `#1E3557` | `216 48% 23%`   | Text on `--plate`                              |
-| `--destructive`            | `#DC2626` | `0 72% 51%`     | Errors, destructive actions                    |
+| `--cta`                    | `#8A6A28` | `40 55% 35%`    | Brass primary CTA buttons and action accents   |
+| `--cta-foreground`         | `#FFFFFF` | `0 0% 100%`     | Text on `--cta`                                |
+| `--plate`                  | `#8A6A28` | `40 55% 35%`    | Vehicle plate / estimate accent                |
+| `--plate-foreground`       | `#FFFFFF` | `0 0% 100%`     | Text on `--plate`                              |
+| `--destructive`            | `#A32218` | `4 74% 37%`     | Errors, destructive actions                    |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                        |
-| `--success`                | `#16A34A` | `142 76% 36%`   | Success signal (distinct from CTA green)       |
+| `--success`                | `#1D6A4A` | `155 57% 26%`   | Success signal (distinct from `--accent`)      |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                            |
-| `--warning`                | `#F59E0B` | `38 92% 50%`    | Warning signal                                 |
+| `--warning`                | `#9A4A05` | `28 94% 31%`    | Warning signal (kept orange-ward off brass)    |
 | `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                            |
-| `--info`                   | `#0284C7` | `200 98% 39%`   | Neutral notices                                |
+| `--info`                   | `#1F5F8B` | `204 64% 33%`   | Neutral notices                                |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                               |
-| `--border`                 | `#D4D9DD` | `210 12% 85%`   | Default border / divider                       |
-| `--input`                  | `#BEC8CF` | `207 15% 78%`   | Form field border                              |
-| `--ring`                   | `#2C5696` | `216 55% 38%`   | Focus ring                                     |
+| `--border`                 | `#E2DCD1` | `39 23% 85%`    | Default border / divider                       |
+| `--input`                  | `#8F8578` | `34 9% 52%`     | Form field border                              |
+| `--ring`                   | `#8A6A28` | `40 55% 35%`    | Focus ring                                     |
+
+### Text variants of the brand hues
+
+`--cta` and `--accent` pass AA as *surfaces* (paired with white). As small text
+on paper they do not, so each has a text-safe variant: the `-ink` pair for
+light surfaces, the bright pair for dark bands.
+
+| Token               | Hex       | HSL            | Role                              |
+| ------------------- | --------- | -------------- | --------------------------------- |
+| `--cta-ink`         | `#6E5220` | `38 55% 28%`   | Brass as text on paper (6.85:1)   |
+| `--accent-ink`      | `#2A4A3A` | `150 28% 23%`  | Green as text on paper (9.26:1)   |
+| `--cta-bright`      | `#DCBB7A` | `40 58% 67%`   | Brass as text on ink (9.56:1)     |
+| `--accent-on-dark`  | `#AFC9B8` | `141 19% 74%`  | Green as text on ink (9.93:1)     |
 
 ### Dark Band Tokens
 
-These tokens support blue hero/footer bands and dark quote-result surfaces.
+These tokens support the ink hero/footer bands and dark quote-result surfaces.
 
-| Token                 | Hex      | HSL              | Role                             |
-| --------------------- | -------- | ---------------- | -------------------------------- |
-| `--ink`               | `#2C5696` | `216 55% 38%`   | Primary blue dark surface        |
-| `--ink-deep`          | `#1D3B63` | `214 55% 25%`   | Deeper blue shadow / dark depth  |
-| `--ink-raised`        | `#4472A7` | `212 42% 46%`   | Raised dark surface              |
-| `--on-dark`           | `#E0E9F0` | `205 35% 91%`   | Secondary text on dark surfaces  |
-| `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
-| `--shadow-color`      | `#24344C` | `216 35% 22%`   | Blue-tinted shadows              |
+| Token                 | Hex       | HSL            | Role                             |
+| --------------------- | --------- | -------------- | -------------------------------- |
+| `--ink`               | `#1A1917` | `40 6% 10%`    | Primary ink dark surface         |
+| `--ink-deep`          | `#100F0E` | `30 7% 6%`     | Deeper shadow / dark depth       |
+| `--ink-raised`        | `#33302B` | `37 9% 18%`    | Raised dark surface              |
+| `--on-dark`           | `#D8D2C7` | `39 18% 81%`   | Secondary text on dark surfaces  |
+| `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`    | Primary text on dark surfaces    |
+| `--shadow-color`      | —         | `37 20% 14%`   | Warm-tinted shadows              |
+
+### Typography
+
+| Token             | Family                          | Role                                  |
+| ----------------- | ------------------------------- | ------------------------------------- |
+| `--font-display`  | Source Serif 4 → Georgia, serif | Headings, editorial display type      |
+| `--font-sans`     | Inter → system-ui               | Body copy, UI labels, button labels    |
+
+Both are variable fonts loaded through `next/font/google` in
+`src/app/layout.tsx`, which self-hosts them at build time — no external request
+at runtime and no layout shift. Buttons use the sans, not the serif: the serif
+muddies at small sizes and under semibold.
 
 ### WCAG contrast
 

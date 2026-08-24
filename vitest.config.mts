@@ -10,6 +10,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
+      // Compiler-handled module; see the mock for why it needs stubbing here.
+      "next/font/google": resolve(__dirname, "./__mocks__/next-font-google.ts"),
     },
   },
   test: {

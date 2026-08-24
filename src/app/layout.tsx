@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
@@ -7,6 +8,22 @@ import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+/* Editorial serif for display, neutral grotesque for body — the pairing that
+   carries the "premium and institutional" identity. Both are variable fonts,
+   self-hosted by next/font at build time, so there is no external request and
+   no layout shift. */
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-display-family",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans-family",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -80,7 +97,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#2C5697",
+  themeColor: "#1A1917",
 };
 
 export default function RootLayout({
@@ -89,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className={`${inter.variable} ${sourceSerif.variable}`}>
       <body className="min-h-screen">
         <a
           href="#main-content"

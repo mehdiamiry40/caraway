@@ -47,7 +47,7 @@ export function Hero() {
               aria-hidden="true"
             />
             <div
-              className="hero-edge absolute inset-y-0 right-0 hidden w-16 bg-gradient-to-b from-cta via-accent to-primary lg:block"
+              className="hero-edge absolute inset-y-0 right-0 hidden w-16 bg-cta lg:block"
               aria-hidden="true"
             />
           </div>
