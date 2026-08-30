@@ -4,6 +4,7 @@ import { serviceSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOME_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   // That string mismatch is what GSC flags as "Alternative page with proper
   // canonical tag" against the slash-bearing URL Google actually crawls.
   openGraph: {
-    url: `${SITE_URL}/`,
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     title: "Caraway | Brisbane Vehicle Buyer & Pickup",
     description:
@@ -77,6 +78,7 @@ export default function HomePage() {
   return (
     <>
       <link rel="canonical" href={`${SITE_URL}/`} />
+      <meta property="og:url" content={`${SITE_URL}/`} />
       <Home />
       <JsonLd data={homeStructuredData} />
     </>

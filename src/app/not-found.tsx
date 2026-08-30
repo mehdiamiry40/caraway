@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: { absolute: "Page not found — Caraway" },
   description:
     "The page you requested could not be found. Return to Caraway's home page to request a cash offer.",
+  // Explicitly override the root index directive; Next also injects a noindex
+  // tag for 404 responses, and both signals must agree.
   robots: { index: false, follow: true },
 };
 

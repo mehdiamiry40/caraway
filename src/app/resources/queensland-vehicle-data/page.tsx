@@ -22,6 +22,7 @@ import {
 } from "@/data/queensland-vehicle-data";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
+  OPEN_GRAPH_DEFAULTS,
   SITE_URL,
   VEHICLE_DATA_CONTENT_PUBLISHED,
   VEHICLE_DATA_CONTENT_UPDATED,
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
     "Explore Queensland car fuel records from 2006–2024 and a clearly dated 2022 snapshot of registered vehicles across 186 Brisbane City suburbs.",
   alternates: { canonical: VEHICLE_DATA_ROUTE },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: VEHICLE_DATA_ROUTE,
     title: "Queensland Vehicle Data | Fuel Trends & Brisbane Snapshot",

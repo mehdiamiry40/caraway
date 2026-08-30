@@ -8,9 +8,9 @@
  * /accessibility page commits to, and they are only observable in the built
  * markup rather than in any single component's unit test.
  *
- * Skipped heading ranks (h1 → h3) are reported but do not fail the build. Card
- * grids and the global footer currently jump straight to <h3>, so enforcing it
- * would mean restructuring shared components rather than catching regressions.
+ * Skipped heading ranks (for example, h1 → h3) fail the build. Shared card
+ * grids and navigation labels are structured so every public page can maintain
+ * a continuous outline without changing its visual hierarchy.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -48,10 +48,9 @@ function auditHeadings(route, html) {
   const levels = [...html.matchAll(HEADING_PATTERN)].map((match) =>
     Number(match[1]),
   );
-  if (levels.length === 0) return { problems: [], warnings: [] };
+  if (levels.length === 0) return { problems: [] };
 
   const problems = [];
-  const warnings = [];
   const h1Count = levels.filter((level) => level === 1).length;
 
   if (h1Count === 0) {
@@ -77,10 +76,10 @@ function auditHeadings(route, html) {
     }
   }
   for (const skip of skips) {
-    warnings.push(`${route}: heading level skips ${skip}`);
+    problems.push(`${route}: heading level skips ${skip}`);
   }
 
-  return { problems, warnings };
+  return { problems };
 }
 
 try {
@@ -102,13 +101,6 @@ const audited = files.map((file) =>
   auditHeadings(routeFor(file), readFileSync(file, "utf8")),
 );
 const failures = audited.flatMap((result) => result.problems);
-const warnings = audited.flatMap((result) => result.warnings);
-
-if (warnings.length > 0) {
-  console.warn(`Heading-rank skips (not blocking) on ${warnings.length} page(s):`);
-  for (const warning of warnings) console.warn(`  - ${warning}`);
-  console.warn("");
-}
 
 if (failures.length > 0) {
   console.error("Heading-order check failed:");

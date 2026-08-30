@@ -48,6 +48,7 @@ describe("Search Console canonical URL cleanup", () => {
       ...retiredServiceRedirects,
     ];
     const expected = new Map([
+      ["/blog/page/1", "/blog"],
       ["/index.html", "/"],
       ["/cash-for-cars-sunnybank.html", "/locations/moorooka"],
       [

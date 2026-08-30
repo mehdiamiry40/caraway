@@ -17,7 +17,7 @@ export default function FAQPage() {
     <PageShell
       breadcrumbs={breadcrumbs}
       eyebrow="FAQ"
-      title="Every question, answered."
+      title="Vehicle selling questions, answered."
       subtitle={
         <p>
           Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? <Link href="/contact" className="text-primary font-medium link-underline">Contact us</Link>.

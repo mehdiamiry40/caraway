@@ -28,6 +28,12 @@ export const retiredBlogRedirects = Object.entries(
 }));
 
 export const legacyIndexingRedirects = [
+  // /blog is the only canonical URL for the first archive page. Keeping this
+  // in the redirect table lets both apex and www requests resolve in one hop.
+  {
+    source: "/blog/page/1",
+    destination: "/blog",
+  },
   {
     source: "/privacy-policy.html",
     destination: "/privacy",

@@ -22,6 +22,7 @@ const MAX_BODY_BYTES = 12 * 1024 * 1024;
 const CONCURRENCY = 8;
 
 const legacyRedirects = new Map([
+  ["/blog/page/1", "/blog"],
   ["/cash-for-cars-sunnybank.html", "/locations/moorooka"],
   [
     "/blog/old-car-running-costs.html",

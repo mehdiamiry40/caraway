@@ -81,6 +81,7 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | `npm run lint`      | ESLint with `--max-warnings 0`                  |
 | `npm run check:indexability` | Verify built SEO data and runtime host-indexing policy |
 | `npm run check:crawl` | Crawl the built production server for sitemap, canonical, link, asset and legacy-redirect regressions |
+| `npm run check:headings` | Fail on missing, duplicate, out-of-order, or skipped heading levels in built pages |
 | `npm run check:links` | Fail on indexable pages with no inbound internal link (run after build) |
 | `npm run seo:indexnow` | Submit recently-changed sitemap URLs to IndexNow (run after build) |
 | `npm test`          | Run the Vitest suite once                       |

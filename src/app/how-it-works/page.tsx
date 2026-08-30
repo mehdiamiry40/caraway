@@ -11,6 +11,7 @@ import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -18,10 +19,11 @@ import {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "How Selling to Caraway Works",
+  title: "How Our Vehicle Buying Process Works",
   description: `See how Caraway assesses a Brisbane vehicle, documents an offer, confirms conditional pickup and payment terms, and records the sale. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/how-it-works" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/how-it-works",
     title: "How Selling to Caraway Works | Brisbane",
