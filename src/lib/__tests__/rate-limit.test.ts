@@ -2,12 +2,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   limit: vi.fn(),
+  redisConfig: undefined as unknown,
   redisConstructorError: false,
 }));
 
 vi.mock("@upstash/redis", () => ({
   Redis: class Redis {
-    constructor(_config: unknown) {
+    constructor(config: unknown) {
+      mocks.redisConfig = config;
       if (mocks.redisConstructorError) throw new Error("redis init failed");
     }
   },
@@ -28,9 +30,12 @@ vi.mock("@upstash/ratelimit", () => ({
 beforeEach(() => {
   vi.resetModules();
   mocks.limit.mockReset();
+  mocks.redisConfig = undefined;
   mocks.redisConstructorError = false;
   vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://redis.example.com");
   vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "test-token");
+  vi.stubEnv("KV_REST_API_URL", undefined);
+  vi.stubEnv("KV_REST_API_TOKEN", undefined);
 });
 
 afterEach(() => {
@@ -56,6 +61,44 @@ describe("rateLimit", () => {
       reset: 123,
       mode: "distributed",
     });
+  });
+
+  it("uses the Vercel Marketplace credential names when configured", async () => {
+    vi.stubEnv("UPSTASH_REDIS_REST_URL", undefined);
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", undefined);
+    vi.stubEnv("KV_REST_API_URL", "https://marketplace-redis.example.com");
+    vi.stubEnv("KV_REST_API_TOKEN", "marketplace-test-token");
+    mocks.limit.mockResolvedValue({
+      success: true,
+      limit: 10,
+      remaining: 9,
+      reset: 123,
+      pending: Promise.resolve(),
+    });
+    const { rateLimit } = await import("@/lib/rate-limit");
+
+    await expect(rateLimit("forms", "203.0.113.1")).resolves.toMatchObject({
+      success: true,
+      mode: "distributed",
+    });
+    expect(mocks.redisConfig).toEqual({
+      url: "https://marketplace-redis.example.com",
+      token: "marketplace-test-token",
+    });
+  });
+
+  it("does not combine partial credentials from different sources", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", undefined);
+    vi.stubEnv("KV_REST_API_URL", undefined);
+    vi.stubEnv("KV_REST_API_TOKEN", "marketplace-test-token");
+    const { rateLimit } = await import("@/lib/rate-limit");
+
+    await expect(rateLimit("forms-global", "global")).resolves.toMatchObject({
+      success: false,
+      mode: "unavailable",
+    });
+    expect(mocks.redisConfig).toBeUndefined();
   });
 
   it("keeps ordinary distributed quota exhaustion distinct from unavailability", async () => {

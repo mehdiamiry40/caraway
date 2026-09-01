@@ -52,8 +52,8 @@ overall success, so configuring both gives you redundancy.
 | `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`.       |
 | `CONTACT_NOTIFICATION_FROM`| contact channel B | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
 | `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
-| `UPSTASH_REDIS_REST_URL`    | yes (deployed)  | Upstash REST URL for deployment-wide form, chat, and Places limits. Local fallback is development/test only. |
-| `UPSTASH_REDIS_REST_TOKEN`  | yes (deployed)  | Upstash REST token paired with the URL above. Protected work fails closed when shared enforcement is unavailable. |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | yes (deployed) | Preferred complete pair set automatically by the Vercel Upstash Marketplace integration for deployment-wide form, chat, and Places limits. |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | alternative | Complete pair for direct Upstash setups. Protected work fails closed when neither complete pair is available. |
 
 `/api/health` reports required configuration and delivery redundancy. It
 returns HTTP 503 with `"error"` if either form has zero delivery channels or a

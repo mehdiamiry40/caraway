@@ -19,6 +19,11 @@ const distributedEnv = {
   UPSTASH_REDIS_REST_TOKEN: "test-token",
 };
 
+const marketplaceDistributedEnv = {
+  KV_REST_API_URL: "https://marketplace-redis.example.com",
+  KV_REST_API_TOKEN: "marketplace-test-token",
+};
+
 function stubProductionEnv(values: Record<string, string | undefined>) {
   vi.stubEnv("NODE_ENV", "production");
   vi.stubEnv("VERCEL_ENV", "production");
@@ -27,6 +32,7 @@ function stubProductionEnv(values: Record<string, string | undefined>) {
     ...Object.keys(webhookEnv),
     ...Object.keys(emailEnv),
     ...Object.keys(distributedEnv),
+    ...Object.keys(marketplaceDistributedEnv),
   ]) {
     vi.stubEnv(key, values[key]);
   }
@@ -64,6 +70,18 @@ describe("GET /api/health", () => {
       fullyRedundant: false,
       distributedRateLimitConfigured: true,
       leadMonitorEnabled: false,
+    });
+  });
+
+  it("accepts the Vercel Marketplace distributed limiter settings", async () => {
+    stubProductionEnv({ ...emailEnv, ...marketplaceDistributedEnv });
+
+    const response = await GET();
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({
+      status: "ok",
+      distributedRateLimitConfigured: true,
     });
   });
 

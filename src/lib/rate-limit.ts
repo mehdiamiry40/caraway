@@ -45,29 +45,54 @@ let distributedLimiters:
   | null
   | undefined;
 
-export function isDistributedRateLimitConfigured(): boolean {
-  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
-  if (!url || !token) return false;
+interface DistributedRateLimitCredentials {
+  url: string;
+  token: string;
+}
+
+function getCompleteCredentialPair(
+  url: string | undefined,
+  token: string | undefined,
+): DistributedRateLimitCredentials | null {
+  if (!url || !token) return null;
+  return { url, token };
+}
+
+function getDistributedRateLimitCredentials(): DistributedRateLimitCredentials | null {
+  const explicit = getCompleteCredentialPair(
+    process.env.UPSTASH_REDIS_REST_URL?.trim(),
+    process.env.UPSTASH_REDIS_REST_TOKEN?.trim(),
+  );
+  const marketplace = getCompleteCredentialPair(
+    process.env.KV_REST_API_URL?.trim(),
+    process.env.KV_REST_API_TOKEN?.trim(),
+  );
+  const credentials = explicit ?? marketplace;
+
+  if (!credentials) return null;
 
   try {
-    return new URL(url).protocol === "https:";
+    if (new URL(credentials.url).protocol !== "https:") return null;
   } catch {
-    return false;
+    return null;
   }
+
+  return credentials;
+}
+
+export function isDistributedRateLimitConfigured(): boolean {
+  return getDistributedRateLimitCredentials() !== null;
 }
 
 function getDistributedLimiters(): Record<RateLimitScope, Ratelimit> | null {
   if (distributedLimiters !== undefined) return distributedLimiters;
-  if (!isDistributedRateLimitConfigured()) {
+  const credentials = getDistributedRateLimitCredentials();
+  if (!credentials) {
     distributedLimiters = null;
     return distributedLimiters;
   }
 
-  const redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-  });
+  const redis = new Redis(credentials);
 
   distributedLimiters = Object.fromEntries(
     (Object.keys(POLICIES) as RateLimitScope[]).map((scope) => [

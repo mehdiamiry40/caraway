@@ -25,6 +25,8 @@ beforeEach(() => {
   delete process.env.GOOGLE_PLACES_API_KEY;
   delete process.env.UPSTASH_REDIS_REST_URL;
   delete process.env.UPSTASH_REDIS_REST_TOKEN;
+  delete process.env.KV_REST_API_URL;
+  delete process.env.KV_REST_API_TOKEN;
 });
 
 afterEach(() => {

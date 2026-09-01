@@ -13,6 +13,8 @@
         "CRON_SECRET",
         "DEBUG_PLACES",
         "GOOGLE_PLACES_API_KEY",
+        "KV_REST_API_TOKEN",
+        "KV_REST_API_URL",
         "LEAD_MONITOR_ENABLED",
         "NEXT_PUBLIC_*",
         "PLACES_SESSION_SECRET",
