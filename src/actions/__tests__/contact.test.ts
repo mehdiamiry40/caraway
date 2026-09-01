@@ -1,5 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+const securityMocks = vi.hoisted(() => ({
+  rateLimit: vi.fn(),
+}));
+
+vi.mock("@/lib/rate-limit", () => ({
+  rateLimit: securityMocks.rateLimit,
+}));
+
 vi.mock("@/actions/submit-form", () => ({
   submitForm: vi.fn(),
 }));
@@ -29,6 +37,14 @@ let warnSpy: ReturnType<typeof vi.spyOn>;
 let errorSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
+  securityMocks.rateLimit.mockReset();
+  securityMocks.rateLimit.mockResolvedValue({
+    success: true,
+    limit: 100,
+    remaining: 99,
+    reset: Date.now() + 60_000,
+    mode: "distributed",
+  });
   mockedSubmitForm.mockReset();
   mockedSendEmail.mockReset();
   warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
@@ -51,6 +67,10 @@ describe("submitContact", () => {
     await expect(submitContact(validContact)).resolves.toEqual({
       success: true,
     });
+    expect(securityMocks.rateLimit).toHaveBeenCalledWith(
+      "forms-global",
+      "global",
+    );
     expect(errorSpy).toHaveBeenCalledWith(
       "[submit-contact] webhook delivery failed:",
       "webhook unavailable",
@@ -80,6 +100,7 @@ describe("submitContact", () => {
     expect(result).toEqual({ success: true });
     expect(mockedSubmitForm).not.toHaveBeenCalled();
     expect(mockedSendEmail).not.toHaveBeenCalled();
+    expect(securityMocks.rateLimit).not.toHaveBeenCalled();
     expect(warnSpy).toHaveBeenCalled();
   });
 
@@ -95,5 +116,6 @@ describe("submitContact", () => {
     });
     expect(mockedSubmitForm).not.toHaveBeenCalled();
     expect(mockedSendEmail).not.toHaveBeenCalled();
+    expect(securityMocks.rateLimit).not.toHaveBeenCalled();
   });
 });

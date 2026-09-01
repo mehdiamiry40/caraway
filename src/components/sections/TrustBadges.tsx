@@ -22,7 +22,7 @@ const quickLinks = [
   {
     icon: BadgeDollarSign,
     label: "Get a vehicle assessment",
-    description: "An indicative scrap/parts estimate or buyer review.",
+    description: "A human-reviewed vehicle assessment.",
     href: "/#quote-form",
   },
   {

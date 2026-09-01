@@ -55,7 +55,17 @@ jobs:
       # Each SEO check depends on the same production build in turbo.json.
       # One invocation keeps the build environment and cache key identical,
       # then fans the artifact checks out in parallel after Next.js completes.
-      - run: npm run turbo:verify
+      # Pull-request code must never execute with production delivery secrets.
+      - name: Verify production artifacts without secrets
+        if: github.event_name == 'pull_request'
+        run: npm run turbo:verify
+        env:
+          SITE_URL: https://caraway.au
+      # Main still verifies the real webhook configuration after reviewed code
+      # lands, preserving the production-only configuration check.
+      - name: Verify production artifacts on main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npm run turbo:verify
         env:
           QUOTE_ENDPOINT: ${{ secrets.QUOTE_ENDPOINT }}
           CONTACT_ENDPOINT: ${{ secrets.CONTACT_ENDPOINT }}

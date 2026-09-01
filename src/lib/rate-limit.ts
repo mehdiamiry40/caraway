@@ -3,6 +3,7 @@ import { Redis } from "@upstash/redis";
 
 export type RateLimitScope =
   | "forms"
+  | "forms-global"
   | "places"
   | "places-global"
   | "chat"
@@ -13,12 +14,15 @@ export interface RateLimitResult {
   limit: number;
   remaining: number;
   reset: number;
-  mode: "distributed" | "local";
+  mode: "distributed" | "local" | "unavailable";
 }
 
 const WINDOW_MS = 60_000;
 const POLICIES: Record<RateLimitScope, { limit: number; prefix: string }> = {
   forms: { limit: 10, prefix: "caraway:ratelimit:forms" },
+  // Deployment-wide ceiling for schema-valid lead attempts. This is consumed
+  // once immediately before email/webhook work, not by malformed requests.
+  "forms-global": { limit: 100, prefix: "caraway:ratelimit:forms-global" },
   places: { limit: 30, prefix: "caraway:ratelimit:places" },
   // Site-wide circuit breaker for the Places proxy (identifier "global").
   // Caps total upstream spend per minute no matter how many IPs an abuser
@@ -42,10 +46,15 @@ let distributedLimiters:
   | undefined;
 
 export function isDistributedRateLimitConfigured(): boolean {
-  return Boolean(
-    process.env.UPSTASH_REDIS_REST_URL?.trim() &&
-      process.env.UPSTASH_REDIS_REST_TOKEN?.trim(),
-  );
+  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+  if (!url || !token) return false;
+
+  try {
+    return new URL(url).protocol === "https:";
+  } catch {
+    return false;
+  }
 }
 
 function getDistributedLimiters(): Record<RateLimitScope, Ratelimit> | null {
@@ -112,20 +121,41 @@ function localLimit(scope: RateLimitScope, identifier: string): RateLimitResult 
   };
 }
 
+export function isLocalRateLimitFallbackAllowed(): boolean {
+  return (
+    process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test"
+  );
+}
+
+function fallbackOrUnavailable(
+  scope: RateLimitScope,
+  identifier: string,
+): RateLimitResult {
+  if (isLocalRateLimitFallbackAllowed()) return localLimit(scope, identifier);
+
+  return {
+    success: false,
+    limit: POLICIES[scope].limit,
+    remaining: 0,
+    reset: 0,
+    mode: "unavailable",
+  };
+}
+
 export async function rateLimit(
   scope: RateLimitScope,
   identifier: string,
 ): Promise<RateLimitResult> {
-  const limiters = getDistributedLimiters();
-  if (!limiters) return localLimit(scope, identifier);
-
   try {
+    const limiters = getDistributedLimiters();
+    if (!limiters) return fallbackOrUnavailable(scope, identifier);
+
     const result = await limiters[scope].limit(identifier);
     if (result.reason === "timeout") {
       console.error(
-        `[rate-limit] ${scope} distributed check timed out; using local fallback`,
+        `[rate-limit] ${scope} distributed check timed out`,
       );
-      return localLimit(scope, identifier);
+      return fallbackOrUnavailable(scope, identifier);
     }
     return {
       success: result.success,
@@ -136,10 +166,10 @@ export async function rateLimit(
     };
   } catch (error) {
     console.error(
-      `[rate-limit] ${scope} distributed check failed; using local fallback:`,
+      `[rate-limit] ${scope} distributed check failed:`,
       error instanceof Error ? error.message : String(error),
     );
-    return localLimit(scope, identifier);
+    return fallbackOrUnavailable(scope, identifier);
   }
 }
 

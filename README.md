@@ -52,11 +52,16 @@ overall success, so configuring both gives you redundancy.
 | `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`.       |
 | `CONTACT_NOTIFICATION_FROM`| contact channel B | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
 | `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
+| `UPSTASH_REDIS_REST_URL`    | yes (deployed)  | Upstash REST URL for deployment-wide form, chat, and Places limits. Local fallback is development/test only. |
+| `UPSTASH_REDIS_REST_TOKEN`  | yes (deployed)  | Upstash REST token paired with the URL above. Protected work fails closed when shared enforcement is unavailable. |
 
-`/api/health` reports service availability and delivery redundancy. It
-returns HTTP 503 with `"error"` if either form has zero delivery channels.
-Otherwise it returns HTTP 200 with `"ok"`; `fullyRedundant` indicates
-whether both webhook and email delivery are configured for both forms.
+`/api/health` reports required configuration and delivery redundancy. It
+returns HTTP 503 with `"error"` if either form has zero delivery channels or a
+deployed runtime lacks valid distributed rate-limit settings. It does not make
+network calls, so
+`distributedRateLimitConfigured` means the HTTPS URL/token are present, not
+that Redis is currently reachable. Runtime failures fail closed and are verified
+by the separately protected synthetic delivery check.
 
 Indexability is decided from the request host rather than the build environment.
 Static artifacts contain indexable canonical metadata, while the request proxy adds
@@ -215,18 +220,22 @@ preview hosts receive `noindex`, and the canonical host does not.
 
 ### Health check
 
-`GET /api/health` returns:
+`GET /api/health` is a configuration check. It does not contact Redis, Resend,
+or a webhook, so keep the authenticated synthetic lead-delivery monitor enabled
+to verify the real path. Production returns:
 
 ```json
 {
   "status": "ok",
-  "commit": "abc1234",
-  "region": "syd1",
-  "timestamp": "2026-04-11T00:00:00.000Z"
+  "fullyRedundant": true,
+  "checkType": "configuration",
+  "distributedRateLimitConfigured": true,
+  "leadMonitorEnabled": true
 }
 ```
 
-Wire this to your uptime monitor of choice.
+Wire this to an uptime monitor as a configuration signal, and alert separately
+on the authenticated synthetic route and runtime dependency errors.
 
 ## Contributing
 

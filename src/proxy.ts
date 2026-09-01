@@ -28,16 +28,22 @@ export async function proxy(request: NextRequest) {
   // --- Rate limiting ---
   const rateLimitResult = await rateLimit("forms", getClientIp(request));
   if (!rateLimitResult.success) {
+    const unavailable = rateLimitResult.mode === "unavailable";
     return withHostRobotsPolicy(
-      new NextResponse("Too many requests", {
-        status: 429,
-        headers: {
-          "Retry-After": Math.max(
-            1,
-            Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
-          ).toString(),
+      new NextResponse(
+        unavailable ? "Service unavailable" : "Too many requests",
+        {
+          status: unavailable ? 503 : 429,
+          headers: unavailable
+            ? undefined
+            : {
+                "Retry-After": Math.max(
+                  1,
+                  Math.ceil((rateLimitResult.reset - Date.now()) / 1000),
+                ).toString(),
+              },
         },
-      }),
+      ),
       request,
     );
   }

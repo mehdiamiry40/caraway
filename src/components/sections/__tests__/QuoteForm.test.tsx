@@ -99,7 +99,11 @@ describe("QuoteForm", () => {
     );
     expect(trackEventMock).toHaveBeenCalledWith("quote_form_submitted", { source: "quote_form" });
     expect(trackEventMock).toHaveBeenCalledWith("lead_submitted", { source: "quote_form" });
-    expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
+    const successHeading = await screen.findByText(/thanks — we've got your details/i);
+    expect(successHeading).toBeInTheDocument();
+    const successStatus = successHeading.closest('[role="status"]');
+    expect(successStatus).toHaveTextContent(/contact you by phone during business hours/i);
+    expect(successStatus).not.toHaveTextContent(/spam|email/i);
   });
 
   it("attributes successful service-page leads to the owning route", async () => {

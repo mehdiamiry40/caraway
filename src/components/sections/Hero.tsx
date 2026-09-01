@@ -7,7 +7,7 @@ import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const promises = [
-  "Estimate from four details",
+  "Human-reviewed vehicle assessment",
   "Pickup included when we buy",
   "Payment confirmed at pickup",
 ];
@@ -63,7 +63,7 @@ export function Hero() {
               >
                 A clearer way to sell your car.
                 <br />
-                Get an estimate in minutes.
+                Request an assessment in minutes.
               </h1>
 
               {/* The three promises live in the checklist below, so this line

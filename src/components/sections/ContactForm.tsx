@@ -3,14 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  contactFormSchema,
-  type ContactFormInput,
-} from "@/lib/quote-schema";
+import type { ContactFormInput } from "@/lib/quote-schema";
+import { contactFormResolver } from "@/lib/contact-client-validation";
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
@@ -42,7 +39,7 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormInput>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: contactFormResolver,
     mode: "onBlur",
     defaultValues: {
       honeypot: "",
@@ -214,8 +211,6 @@ export function ContactForm() {
             </label>
             <span
               className={`text-xs tabular-nums ${counterClass}`}
-              aria-live="polite"
-              aria-atomic="true"
               id={`${fieldIds.message}-counter`}
             >
               {messageLength}/{CONTACT_MESSAGE_MAX}

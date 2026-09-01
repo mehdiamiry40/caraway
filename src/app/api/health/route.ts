@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { isDistributedRateLimitConfigured } from "@/lib/rate-limit";
+import {
+  isDistributedRateLimitConfigured,
+  isLocalRateLimitFallbackAllowed,
+} from "@/lib/rate-limit";
 import { validateEndpoint } from "@/lib/validate-endpoint";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +19,9 @@ export const dynamic = "force-dynamic";
  * zero channels the lead capture is broken end-to-end and we fail the
  * check with HTTP 503. Optional failover coverage is reported separately
  * through `fullyRedundant`; lacking a backup channel does not make an
- * otherwise operational service unhealthy.
+ * otherwise operational service unhealthy. Deployed runtimes also require the
+ * distributed limiter because accepted leads and paid upstream calls fail
+ * closed when shared enforcement is unavailable.
  *
  * Intentionally does not make outbound network requests — configuration
  * validation only — to avoid cost and DoS abuse vectors against /api/health.
@@ -54,7 +59,8 @@ export async function GET() {
     contactChannels.email &&
     quoteChannels.webhook &&
     quoteChannels.email;
-  const distributedRateLimit = isDistributedRateLimitConfigured();
+  const distributedRateLimitConfigured = isDistributedRateLimitConfigured();
+  const distributedRateLimitRequired = !isLocalRateLimitFallbackAllowed();
   const leadMonitorEnabled =
     process.env.LEAD_MONITOR_ENABLED === "1" &&
     Boolean(process.env.CRON_SECRET?.trim());
@@ -69,14 +75,16 @@ export async function GET() {
     isProduction
       ? {
           status,
+          checkType: "configuration" as const,
           fullyRedundant,
-          distributedRateLimit,
+          distributedRateLimitConfigured,
           leadMonitorEnabled,
         }
       : {
           status,
+          checkType: "configuration" as const,
           fullyRedundant,
-          distributedRateLimit,
+          distributedRateLimitConfigured,
           leadMonitorEnabled,
           checks: { contact: contactChannels, quote: quoteChannels },
         };
@@ -86,7 +94,11 @@ export async function GET() {
     "Cache-Control": "no-store",
   } as const;
 
-  if (!contactOk || !quoteOk) {
+  if (
+    !contactOk ||
+    !quoteOk ||
+    (distributedRateLimitRequired && !distributedRateLimitConfigured)
+  ) {
     return NextResponse.json(body("error"), { status: 503, headers });
   }
 

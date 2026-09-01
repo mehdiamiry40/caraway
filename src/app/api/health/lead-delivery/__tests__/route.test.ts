@@ -1,5 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+const securityMocks = vi.hoisted(() => ({
+  rateLimit: vi.fn(),
+}));
+
+vi.mock("@/lib/rate-limit", () => ({
+  getClientIp: () => "203.0.113.10",
+  rateLimit: securityMocks.rateLimit,
+}));
+
 vi.mock("@/actions/contact", () => ({
   submitContact: vi.fn(),
 }));
@@ -25,6 +34,14 @@ beforeEach(() => {
   vi.stubEnv("LEAD_MONITOR_ENABLED", "1");
   mockedSubmitContact.mockReset();
   mockedSubmitQuote.mockReset();
+  securityMocks.rateLimit.mockReset();
+  securityMocks.rateLimit.mockResolvedValue({
+    success: true,
+    limit: 10,
+    remaining: 9,
+    reset: Date.now() + 60_000,
+    mode: "distributed",
+  });
 });
 
 afterEach(() => {
@@ -32,6 +49,23 @@ afterEach(() => {
 });
 
 describe("GET /api/health/lead-delivery", () => {
+  it("returns 503 when shared enforcement is unavailable", async () => {
+    securityMocks.rateLimit.mockResolvedValue({
+      success: false,
+      limit: 10,
+      remaining: 0,
+      reset: 0,
+      mode: "unavailable",
+    });
+
+    const response = await GET(request());
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toEqual({ status: "unavailable" });
+    expect(mockedSubmitContact).not.toHaveBeenCalled();
+    expect(mockedSubmitQuote).not.toHaveBeenCalled();
+  });
+
   it("rejects callers without the cron secret", async () => {
     const response = await GET(new Request("https://caraway.au/api/health/lead-delivery"));
 

@@ -100,6 +100,12 @@ async function hasValidPlacesSession(request: Request): Promise<boolean> {
 export async function GET(request: Request) {
   const rateLimitResult = await rateLimit("places", getClientIp(request));
   if (!rateLimitResult.success) {
+    if (rateLimitResult.mode === "unavailable") {
+      return NextResponse.json(
+        { error: "places unavailable" },
+        { status: 503, headers: noStoreHeaders() },
+      );
+    }
     return NextResponse.json(
       { error: "too many requests" },
       {
@@ -111,18 +117,6 @@ export async function GET(request: Request) {
           ).toString(),
         }),
       },
-    );
-  }
-
-  // Site-wide circuit breaker: bounds total Google Places spend per minute
-  // even against IP-rotating abuse. Returns the generic 503 so the client
-  // quietly falls back to manual address entry.
-  const globalLimitResult = await rateLimit("places-global", "global");
-  if (!globalLimitResult.success) {
-    console.error("[places/autocomplete] global circuit breaker tripped");
-    return NextResponse.json(
-      { error: "places unavailable" },
-      { status: 503, headers: noStoreHeaders() },
     );
   }
 
@@ -152,6 +146,19 @@ export async function GET(request: Request) {
   const apiKey = getEnv().GOOGLE_PLACES_API_KEY;
   if (!apiKey) {
     console.warn("[places/autocomplete] GOOGLE_PLACES_API_KEY is not set");
+    return NextResponse.json(
+      { error: "places unavailable" },
+      { status: 503, headers: noStoreHeaders() },
+    );
+  }
+
+  // Reserve deployment-wide Places capacity only after the signed session,
+  // query, and credential checks prove this request can reach Google.
+  const globalLimitResult = await rateLimit("places-global", "global");
+  if (!globalLimitResult.success) {
+    console.error(
+      "[places/autocomplete] global circuit breaker unavailable or exhausted",
+    );
     return NextResponse.json(
       { error: "places unavailable" },
       { status: 503, headers: noStoreHeaders() },

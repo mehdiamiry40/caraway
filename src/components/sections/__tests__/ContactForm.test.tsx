@@ -36,6 +36,20 @@ describe("ContactForm", () => {
     expect(screen.getByRole("button", { name: /send message/i })).toBeInTheDocument();
   });
 
+  it("keeps the message counter descriptive without announcing every keystroke", () => {
+    render(<ContactForm />);
+
+    const message = screen.getByLabelText(/^message/i);
+    const counter = document.getElementById("contact-message-counter");
+    expect(counter).toHaveTextContent("0/5000");
+    expect(counter).not.toHaveAttribute("aria-live");
+    expect(counter).not.toHaveAttribute("aria-atomic");
+    expect(message).toHaveAttribute(
+      "aria-describedby",
+      "contact-message-counter",
+    );
+  });
+
   it("submits the form, fires analytics, and shows the success state on a successful response", async () => {
     submitContactMock.mockResolvedValue({ success: true });
     const user = userEvent.setup();
@@ -74,8 +88,8 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText(/^email/i), "bot@example.com");
     await user.type(screen.getByLabelText(/^message/i), "spam spam spam spam spam");
 
-    // Honeypot is visually hidden but reachable via its DOM id. Zod rejects
-    // any non-empty value, so the server action must never be invoked.
+    // Honeypot is visually hidden but reachable via its DOM id. Client
+    // validation rejects any non-empty value, so the action is never invoked.
     const honeypot = document.getElementById("contact-website") as HTMLInputElement;
     await user.type(honeypot, "http://evil.example");
 

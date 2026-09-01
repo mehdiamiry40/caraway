@@ -86,7 +86,7 @@ export const OPENING_HOURS: ReadonlyArray<{
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-08-11",
+  privacyLastUpdated: "2026-09-01",
   termsLastUpdated: "2026-08-07",
 } as const;
 

@@ -72,6 +72,22 @@ function cspDirective(csp: string, directiveName: string): string {
   );
 }
 
+function containsInternalPathReference(source: string, pathname: string): boolean {
+  if (
+    [SITE_URL, "https://www.caraway.au"].some((origin) =>
+      source.includes(`${origin}${pathname}`),
+    )
+  ) {
+    return true;
+  }
+
+  const escapedPath = pathname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(
+    `(?:^|["'\\x60(])${escapedPath}(?=$|["'\\x60?#/)])`,
+    "m",
+  ).test(source);
+}
+
 describe("Search Console indexing cleanup", () => {
   it("keeps the known stale URLs on permanent redirects to live canonical targets", async () => {
     const redirects = await getRedirectRules();
@@ -384,7 +400,10 @@ describe("Search Console indexing cleanup", () => {
 
     for (const legacy of legacyIndexingRedirects) {
       const matches = sourceFiles.filter((file) =>
-        fs.readFileSync(file, "utf8").includes(legacy.source),
+        containsInternalPathReference(
+          fs.readFileSync(file, "utf8"),
+          legacy.source,
+        ),
       );
       expect(matches).toEqual([]);
     }

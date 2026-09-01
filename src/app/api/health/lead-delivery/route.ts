@@ -35,6 +35,12 @@ export async function GET(request: Request) {
     `lead-monitor:${getClientIp(request)}`,
   );
   if (!rateLimitResult.success) {
+    if (rateLimitResult.mode === "unavailable") {
+      return NextResponse.json(
+        { status: "unavailable" },
+        { status: 503, headers },
+      );
+    }
     return NextResponse.json(
       { status: "rate_limited" },
       {

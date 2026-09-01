@@ -1,5 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+const securityMocks = vi.hoisted(() => ({
+  rateLimit: vi.fn(),
+}));
+
+vi.mock("@/lib/rate-limit", () => ({
+  rateLimit: securityMocks.rateLimit,
+}));
+
 vi.mock("@/actions/submit-form", () => ({
   submitForm: vi.fn(),
 }));
@@ -31,6 +39,14 @@ let warnSpy: ReturnType<typeof vi.spyOn>;
 let errorSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
+  securityMocks.rateLimit.mockReset();
+  securityMocks.rateLimit.mockResolvedValue({
+    success: true,
+    limit: 100,
+    remaining: 99,
+    reset: Date.now() + 60_000,
+    mode: "distributed",
+  });
   mockedSubmitForm.mockReset();
   mockedSendEmail.mockReset();
   warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
@@ -52,6 +68,10 @@ describe("submitQuote", () => {
     expect(result).toEqual({ success: true });
     expect(mockedSubmitForm).toHaveBeenCalledTimes(1);
     expect(mockedSendEmail).toHaveBeenCalledTimes(1);
+    expect(securityMocks.rateLimit).toHaveBeenCalledWith(
+      "forms-global",
+      "global",
+    );
     expect(errorSpy).not.toHaveBeenCalled();
   });
 
@@ -108,6 +128,7 @@ describe("submitQuote", () => {
     expect(result).toEqual({ success: true });
     expect(mockedSubmitForm).not.toHaveBeenCalled();
     expect(mockedSendEmail).not.toHaveBeenCalled();
+    expect(securityMocks.rateLimit).not.toHaveBeenCalled();
     expect(warnSpy).toHaveBeenCalled();
     const warned = warnSpy.mock.calls.map((c: unknown[]) => c.join(" ")).join("\n");
     expect(warned).toContain("[honeypot]");
@@ -125,5 +146,6 @@ describe("submitQuote", () => {
     }
     expect(mockedSubmitForm).not.toHaveBeenCalled();
     expect(mockedSendEmail).not.toHaveBeenCalled();
+    expect(securityMocks.rateLimit).not.toHaveBeenCalled();
   });
 });

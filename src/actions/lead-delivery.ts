@@ -1,3 +1,4 @@
+import { rateLimit } from "@/lib/rate-limit";
 import type { submitForm } from "./submit-form";
 
 type WebhookResult = Awaited<ReturnType<typeof submitForm>>;
@@ -46,6 +47,19 @@ export async function deliverLead(options: {
   webhook: () => Promise<WebhookResult>;
   email: () => Promise<{ sent: boolean }>;
 }): Promise<LeadDeliveryResult> {
+  // Both public actions validate before reaching this shared boundary. Consume
+  // one deployment-wide unit per accepted lead attempt, not one per delivery
+  // channel, so rotating IPs cannot create unbounded inbox/CRM work.
+  const admission = await rateLimit("forms-global", "global");
+  if (!admission.success) {
+    console.error(
+      `[${options.logTag}] lead delivery admission ${
+        admission.mode === "unavailable" ? "unavailable" : "exhausted"
+      }`,
+    );
+    return { success: false as const, message: FAILURE_MESSAGE };
+  }
+
   const [webhookResult, emailResult] = await Promise.allSettled([
     options.webhook(),
     options.email(),

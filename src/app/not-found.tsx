@@ -84,7 +84,7 @@ export default function NotFound() {
                 className="text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
               >
                 <Calculator className="h-3.5 w-3.5" />
-                Get an instant quote
+                Request a quote
               </Link>
             </p>
           </div>

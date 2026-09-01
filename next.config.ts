@@ -70,6 +70,33 @@ export const legacyIndexingRedirects = [
     source: "/index.html",
     destination: "/",
   },
+  // Legacy route names observed in production request logs. Keep these in the
+  // shared one-hop redirect contract so apex/www and trailing-slash variants
+  // all resolve directly to the current canonical destination.
+  {
+    source: "/about-us",
+    destination: "/about",
+  },
+  {
+    source: "/contact-us",
+    destination: "/contact",
+  },
+  {
+    source: "/suburbs/logan",
+    destination: "/locations/logan",
+  },
+  {
+    source: "/suburbs/beenleigh",
+    destination: "/locations/beenleigh",
+  },
+  {
+    source: "/suburbs/ipswich",
+    destination: "/locations",
+  },
+  {
+    source: "/cash-for-cars-caboolture.html",
+    destination: "/locations/redcliffe",
+  },
   {
     source: "/cash-for-cars-sunnybank.html",
     destination: "/locations/moorooka",
@@ -202,10 +229,10 @@ const nextConfig: NextConfig = {
           // so plugins/applets cannot be embedded even if an injection
           // were to occur.
           // In development, 'unsafe-eval' is needed for Next.js source maps,
-          // Vercel Analytics loads its documented debug script from
-          // va.vercel-scripts.com, and frame-ancestors is relaxed for preview
-          // panes. Production Analytics is served from the same-origin
-          // /_vercel/insights path and does not need the external script host.
+          // Vercel Analytics and Speed Insights load their documented debug
+          // scripts from va.vercel-scripts.com, and frame-ancestors is relaxed
+          // for preview panes. Production telemetry is served from same-origin
+          // /_vercel paths and does not need the external script host.
           value: [
             "default-src 'self'",
             isDev

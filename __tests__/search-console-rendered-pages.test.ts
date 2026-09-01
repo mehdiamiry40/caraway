@@ -50,6 +50,12 @@ describe("Search Console canonical URL cleanup", () => {
     const expected = new Map([
       ["/blog/page/1", "/blog"],
       ["/index.html", "/"],
+      ["/about-us", "/about"],
+      ["/contact-us", "/contact"],
+      ["/suburbs/logan", "/locations/logan"],
+      ["/suburbs/beenleigh", "/locations/beenleigh"],
+      ["/suburbs/ipswich", "/locations"],
+      ["/cash-for-cars-caboolture.html", "/locations/redcliffe"],
       ["/cash-for-cars-sunnybank.html", "/locations/moorooka"],
       [
         "/blog/old-car-running-costs.html",

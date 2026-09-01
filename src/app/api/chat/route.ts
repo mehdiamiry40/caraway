@@ -5,6 +5,7 @@ import {
   streamText,
   toUIMessageStream,
 } from "ai";
+import { getVercelOidcToken } from "@vercel/oidc";
 
 import {
   CHAT_INSTRUCTIONS,
@@ -77,18 +78,15 @@ export async function POST(request: Request) {
   const clientIp = getClientIp(request);
   const visitorLimit = await rateLimit("chat", clientIp);
   if (!visitorLimit.success) {
+    if (visitorLimit.mode === "unavailable") {
+      return jsonError("chat temporarily unavailable", 503);
+    }
     return jsonError("too many requests", 429, {
       "Retry-After": Math.max(
         1,
         Math.ceil((visitorLimit.reset - Date.now()) / 1000),
       ).toString(),
     });
-  }
-
-  const globalLimit = await rateLimit("chat-global", "global");
-  if (!globalLimit.success) {
-    console.error("[chat] global circuit breaker tripped");
-    return jsonError("chat temporarily unavailable", 503);
   }
 
   const contentLength = Number(request.headers.get("content-length") ?? 0);
@@ -155,28 +153,39 @@ export async function POST(request: Request) {
     .filter((message) => message.parts.length > 0);
 
   const env = getEnv();
-  // Vercel injects fresh OIDC credentials into Functions via the request
-  // context/header at runtime. The environment variable is primarily present
-  // during builds and local `vercel env pull` sessions.
-  const runtimeOidcToken = request.headers.get("x-vercel-oidc-token");
-  if (
-    !env.AI_GATEWAY_API_KEY &&
-    !env.VERCEL_OIDC_TOKEN &&
-    !runtimeOidcToken
-  ) {
-    console.error("[chat] Vercel AI Gateway credentials are not configured");
-    return jsonError("chat temporarily unavailable", 503);
+  if (!env.AI_GATEWAY_API_KEY) {
+    try {
+      // Validate the same request-context/environment token that AI Gateway
+      // will use. A raw request-header presence check would accept malformed
+      // or expired tokens and spend shared capacity before auth fails.
+      await getVercelOidcToken({ expirationBufferMs: 30_000 });
+    } catch (error) {
+      console.error(
+        "[chat] Vercel AI Gateway credentials are unavailable:",
+        error instanceof Error ? error.message : String(error),
+      );
+      return jsonError("chat temporarily unavailable", 503);
+    }
   }
 
   const visitorId = getChatVisitorId(
     clientIp,
     request.headers.get("user-agent") ?? "unknown",
   );
+  const modelMessages = await convertToModelMessages(textOnlyMessages);
+
+  // Reserve deployment-wide AI capacity only after this request is known to
+  // be structurally valid and immediately eligible for the paid upstream.
+  const globalLimit = await rateLimit("chat-global", "global");
+  if (!globalLimit.success) {
+    console.error("[chat] global circuit breaker unavailable or exhausted");
+    return jsonError("chat temporarily unavailable", 503);
+  }
 
   const result = streamText({
     model: CHAT_MODEL,
     instructions: CHAT_INSTRUCTIONS,
-    messages: await convertToModelMessages(textOnlyMessages),
+    messages: modelMessages,
     reasoning: "low",
     maxOutputTokens: 500,
     providerOptions: {

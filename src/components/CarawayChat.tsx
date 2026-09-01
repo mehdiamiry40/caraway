@@ -176,8 +176,32 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   const isBusy = status === "submitted" || status === "streaming";
 
   useEffect(() => {
+    const closeWhenMobileMenuOpens = () => {
+      if (document.body.dataset.mobileMenuOpen === "true") {
+        setIsOpen(false);
+      }
+    };
+    closeWhenMobileMenuOpens();
+    window.addEventListener(
+      "caraway:mobile-menu-change",
+      closeWhenMobileMenuOpens,
+    );
+    return () => {
+      window.removeEventListener(
+        "caraway:mobile-menu-change",
+        closeWhenMobileMenuOpens,
+      );
+    };
+  }, []);
+
+  useEffect(() => {
     if (!isOpen) {
-      if (wasOpenRef.current) launcherRef.current?.focus();
+      if (
+        wasOpenRef.current &&
+        document.body.dataset.mobileMenuOpen !== "true"
+      ) {
+        launcherRef.current?.focus();
+      }
       return;
     }
     if (!wasOpenRef.current) {
@@ -190,7 +214,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
       document.querySelectorAll<HTMLElement>(
         'body > a[href="#main-content"], #main-content, body header, body footer, [data-testid="sticky-mobile-cta"]',
       ),
-    );
+    ).filter((element) => !panelRef.current?.contains(element));
     const previousInertValues = backgroundElements.map(
       (element) => [element, element.inert] as const,
     );
@@ -313,7 +337,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 id="caraway-chat-description"
                 className="text-xs text-primary-foreground/80"
               >
-                AI quotes and quick answers
+                AI answers · offers reviewed by people
               </p>
             </div>
             {messages.length > 0 && (
@@ -348,9 +372,9 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 <Bot className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="max-w-[85%] rounded-sm rounded-tl-none border border-border bg-card px-3.5 py-3 text-sm leading-relaxed text-foreground shadow-sm">
-                Hi — I’m Caraway’s AI assistant. I can estimate your car’s value
-                or answer questions about selling and pickup across Greater
-                Brisbane.
+                Hi — I’m Caraway’s AI assistant. I can explain what affects an
+                offer and answer questions about selling and pickup across
+                Greater Brisbane. Every offer is reviewed by a Caraway buyer.
               </div>
             </div>
 
@@ -449,6 +473,22 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           </div>
 
           <footer className="border-t border-border bg-card p-3">
+            <p
+              id="caraway-chat-privacy-note"
+              className="mb-2 rounded-sm border border-border/70 bg-muted/60 px-2.5 py-2 text-[0.6875rem] leading-relaxed text-muted-foreground"
+            >
+              AI chat is for general questions only. Do not enter names, phone
+              numbers, addresses, registration numbers, VINs or ID details. See
+              our{" "}
+              <Link
+                href="/privacy"
+                onClick={() => setIsOpen(false)}
+                className="font-medium text-primary underline underline-offset-2"
+              >
+                privacy policy
+              </Link>
+              .
+            </p>
             <form onSubmit={handleSubmit} className="flex items-end gap-2">
               <label htmlFor="caraway-chat-input" className="sr-only">
                 Ask Caraway a question
@@ -463,6 +503,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 rows={1}
                 placeholder="Ask a question or describe your car…"
                 disabled={isBusy}
+                aria-describedby="caraway-chat-privacy-note"
                 className="max-h-28 min-h-11 flex-1 resize-none overflow-y-auto rounded-sm border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
               />
               <button

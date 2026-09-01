@@ -1,4 +1,13 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+const mocks = vi.hoisted(() => ({
+  rateLimit: vi.fn(),
+}));
+
+vi.mock("@/lib/rate-limit", () => ({
+  rateLimit: mocks.rateLimit,
+}));
+
 import {
   deliverLead,
   isHoneypotHit,
@@ -15,6 +24,14 @@ let warnSpy: ReturnType<typeof vi.spyOn>;
 let errorSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
+  mocks.rateLimit.mockReset();
+  mocks.rateLimit.mockResolvedValue({
+    success: true,
+    limit: 100,
+    remaining: 99,
+    reset: Date.now() + 60_000,
+    mode: "distributed",
+  });
   warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
   errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 });
@@ -37,7 +54,54 @@ describe("deliverLead", () => {
     });
 
     expect(result).toEqual({ success: true });
+    expect(mocks.rateLimit).toHaveBeenCalledWith("forms-global", "global");
     expect(errorSpy).not.toHaveBeenCalled();
+  });
+
+  it("does not invoke either channel when the global delivery budget is exhausted", async () => {
+    const webhook = vi.fn(() => Promise.resolve(webhookOk));
+    const email = vi.fn(() => Promise.resolve(emailOk));
+    mocks.rateLimit.mockResolvedValue({
+      success: false,
+      limit: 100,
+      remaining: 0,
+      reset: Date.now() + 30_000,
+      mode: "distributed",
+    });
+
+    const result = await deliverLead({
+      logTag: "submit-test",
+      webhook,
+      email,
+    });
+
+    expect(result.success).toBe(false);
+    expect(webhook).not.toHaveBeenCalled();
+    expect(email).not.toHaveBeenCalled();
+    expect(loggedErrors()).toContain("lead delivery admission exhausted");
+  });
+
+  it("does not invoke either channel when shared enforcement is unavailable", async () => {
+    const webhook = vi.fn(() => Promise.resolve(webhookOk));
+    const email = vi.fn(() => Promise.resolve(emailOk));
+    mocks.rateLimit.mockResolvedValue({
+      success: false,
+      limit: 100,
+      remaining: 0,
+      reset: 0,
+      mode: "unavailable",
+    });
+
+    const result = await deliverLead({
+      logTag: "submit-test",
+      webhook,
+      email,
+    });
+
+    expect(result.success).toBe(false);
+    expect(webhook).not.toHaveBeenCalled();
+    expect(email).not.toHaveBeenCalled();
+    expect(loggedErrors()).toContain("lead delivery admission unavailable");
   });
 
   it("succeeds but logs when the webhook fails with a message", async () => {
