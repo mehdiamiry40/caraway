@@ -6,6 +6,8 @@ const socialImage =
   "https://caraway.au/images/queensland-vehicle-data-open-data-v1.png";
 const brisbanePreview =
   "https://caraway.au/images/brisbane-registered-vehicle-snapshot-v1.png";
+const brisbaneCouncilShowcase =
+  "https://data.brisbane.qld.gov.au/explore/assets/brisbane-registered-vehicle-suburb-snapshot/";
 const VEHICLE_DATA_SOCIAL_IMAGE_ALT =
   "Caraway open-data graphic for Queensland registered cars by fuel type, 2006–2024. Electric records increase from 1 to 44,398 and Petrol/Electric records from 102 to 110,604.";
 const BRISBANE_REUSE_IMAGE_ALT =
@@ -45,6 +47,11 @@ test("vehicle-data resource is indexable, self-canonical, and downloadable", asy
       exact: true,
     }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("link", {
+      name: /Brisbane City Council’s Open Data showcase/,
+    }),
+  ).toHaveAttribute("href", brisbaneCouncilShowcase);
   await expect(page.locator('svg[role="img"]')).toHaveCount(1);
   await expect(page.locator("table")).toHaveCount(3);
   await expect(
