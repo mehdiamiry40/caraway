@@ -34,9 +34,9 @@ function responseHeaders(extra: Record<string, string> = {}) {
   };
 }
 
-function jsonError(message: string, status: number, headers = {}) {
+function jsonError(message: string, status: number, headers = {}, code?: string) {
   return Response.json(
-    { error: message },
+    { error: message, ...(code ? { code } : {}) },
     { status, headers: responseHeaders(headers) },
   );
 }
@@ -91,12 +91,12 @@ export async function POST(request: Request) {
 
   const contentLength = Number(request.headers.get("content-length") ?? 0);
   if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
-    return jsonError("request too large", 413);
+    return jsonError("request too large", 413, {}, "conversation_limit_reached");
   }
 
   const rawBody = await request.text();
   if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
-    return jsonError("request too large", 413);
+    return jsonError("request too large", 413, {}, "conversation_limit_reached");
   }
 
   let payload: unknown;
@@ -119,7 +119,6 @@ export async function POST(request: Request) {
   }
 
   if (
-    validated.data.length > MAX_MESSAGES ||
     validated.data.some(
       (message) => message.role !== "user" && message.role !== "assistant",
     ) ||
@@ -136,10 +135,21 @@ export async function POST(request: Request) {
               part.type === "text" &&
               part.text.length > MAX_USER_MESSAGE_CHARACTERS,
           )),
-    ) ||
+    )
+  ) {
+    return jsonError("invalid messages", 400);
+  }
+
+  if (
+    validated.data.length > MAX_MESSAGES ||
     countTextCharacters(validated.data) > MAX_TEXT_CHARACTERS
   ) {
-    return jsonError("conversation limit reached", 400);
+    return jsonError(
+      "conversation limit reached",
+      400,
+      {},
+      "conversation_limit_reached",
+    );
   }
 
   // The browser replays prior assistant messages on each turn. Preserve their

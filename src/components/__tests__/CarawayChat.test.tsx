@@ -222,4 +222,44 @@ describe("CarawayChat", () => {
     expect(mocks.clearError).toHaveBeenCalled();
     expect(mocks.regenerate).toHaveBeenCalledOnce();
   });
+
+  it("starts a fresh conversation after a permanent history limit", async () => {
+    mocks.messages = [{
+      id: "user-before-limit",
+      role: "user",
+      parts: [{ type: "text", text: "Question in the exhausted conversation" }],
+    }];
+    mocks.error = new Error(JSON.stringify({
+      error: "conversation limit reached",
+      code: "conversation_limit_reached",
+    }));
+    mocks.status = "error";
+    mocks.clearError.mockImplementation(() => {
+      mocks.error = undefined;
+      mocks.status = "ready";
+    });
+    mocks.setMessages.mockImplementation((messages: CarawayChatMessage[]) => {
+      mocks.messages = messages;
+    });
+    const user = userEvent.setup();
+    const { rerender } = render(<CarawayChat initiallyOpen />);
+
+    expect(screen.getByRole("alert").textContent).toContain("conversation has reached its limit");
+    expect(screen.queryByRole("button", { name: "Try again" })).toBeNull();
+    expect((screen.getByLabelText("Ask Caraway a question") as HTMLTextAreaElement).disabled).toBe(true);
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Start a new chat" }));
+
+    await user.click(screen.getByRole("button", { name: "Start a new chat" }));
+    rerender(<CarawayChat initiallyOpen />);
+
+    expect(mocks.setMessages).toHaveBeenCalledWith([]);
+    expect(mocks.clearError).toHaveBeenCalledOnce();
+    expect(mocks.regenerate).not.toHaveBeenCalled();
+    expect(screen.queryByText("Question in the exhausted conversation")).toBeNull();
+    expect(screen.queryByRole("alert")).toBeNull();
+    expect(document.activeElement).toBe(screen.getByLabelText("Ask Caraway a question"));
+    await user.type(screen.getByLabelText("Ask Caraway a question"), "Is towing included?");
+    await user.click(screen.getByRole("button", { name: "Send message" }));
+    expect(mocks.sendMessage).toHaveBeenCalledWith({ text: "Is towing included?" });
+  });
 });

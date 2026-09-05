@@ -87,6 +87,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
             <ul className="list-styled mt-4">
+              <li><strong>Website delivery records</strong>: a copy of each quote or contact enquiry, its submission identifier and delivery status is stored in Upstash for recovery and duplicate prevention. This website copy expires automatically seven days after capture. Copies received by our team or delivery providers follow the enquiry and business-record retention described below.</li>
               <li><strong>Quote enquiries</strong> where no sale takes place: kept only while reasonably needed for follow-up, fraud prevention, or dispute handling, then deleted or de-identified.</li>
               <li><strong>Completed-sale records</strong>: kept only for the period reasonably needed for transaction, dispute, accounting, tax, and legal obligations.</li>
               <li><strong>Identity information</strong>: minimised and deleted or de-identified when it is no longer reasonably required.</li>
@@ -108,7 +109,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
             <p>
-              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, OpenAI, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
+              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Upstash, OpenAI, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
             </p>
           </section>
 
@@ -139,7 +140,7 @@ export default function Privacy() {
                 </a>
                 .
               </li>
-              <li><strong>Upstash</strong> — managed Redis we use for rate limiting on our forms, AI chat, and the address-autocomplete service. Your IP address is processed and stored briefly as a rate-limit counter to prevent abuse; no form or chat contents are stored there.</li>
+              <li><strong>Upstash</strong> — managed Redis stores quote and contact enquiries and their delivery status for seven days so we can recover interrupted delivery and avoid duplicate submissions. It also briefly processes IP-address counters to prevent abuse of our forms, AI chat and address autocomplete. Chat messages are not stored in Redis.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
@@ -173,7 +174,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The quote form sets a short-lived, essential cookie so address autocomplete can group your keystrokes into one lookup. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
+              The quote form uses short-lived essential cookies to authorize address suggestions. Address lookups are sent to Google through our server. We also keep an opaque enquiry identifier in per-tab session storage while a form outcome is unresolved, so a retry can be matched to the same enquiry. Form values are not kept in that browser storage, and the identifier is cleared when we confirm receipt. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 

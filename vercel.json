@@ -11,6 +11,10 @@
   ],
   "crons": [
     {
+      "path": "/api/cron/lead-delivery",
+      "schedule": "*/5 * * * *"
+    },
+    {
       "path": "/api/health/lead-delivery",
       "schedule": "0 21 * * *"
     }

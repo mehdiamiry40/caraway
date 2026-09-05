@@ -15,6 +15,8 @@ import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
 import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
+import { LeadForm } from "./LeadForm";
+import { useSubmissionId } from "@/hooks/use-submission-id";
 
 const fieldIds = {
   name: "quote-name",
@@ -28,6 +30,7 @@ const fieldIds = {
 } as const;
 
 export function QuoteForm({ source = "quote_form" }: { source?: string }) {
+  const submission = useSubmissionId("quote");
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -66,11 +69,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       return;
     }
     try {
-      const result = await submitQuote(data);
+      const result = await submitQuote(data, await submission.getId());
       if (result.success) {
         trackEvent("quote_form_submitted", { source });
         trackEvent("lead_submitted", { source });
         setIsSuccess(true);
+        submission.reset();
         reset();
         return;
       }
@@ -140,7 +144,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
+                <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
                   <div hidden aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -432,7 +436,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </Link>
                     .
                   </p>
-                </form>
+                </LeadForm>
               )}
           </div>
         </div>

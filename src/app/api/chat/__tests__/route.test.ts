@@ -209,6 +209,94 @@ describe("chat API route", () => {
     );
 
     expect(response.status).toBe(413);
+    await expect(response.json()).resolves.toEqual({
+      error: "request too large",
+      code: "conversation_limit_reached",
+    });
+  });
+
+  it.each([
+    {
+      limit: "message count",
+      messages: Array.from({ length: 17 }, (_, index) => ({
+        id: `message-${index}`,
+        role: index % 2 === 0 ? "user" : "assistant",
+        parts: [{ type: "text", text: "A short message" }],
+      })),
+    },
+    {
+      limit: "total text length",
+      messages: [
+        { id: "assistant", role: "assistant", parts: [{ type: "text", text: "a".repeat(7_001) }] },
+        { id: "user", role: "user", parts: [{ type: "text", text: "b".repeat(1_000) }] },
+      ],
+    },
+  ])("identifies the $limit limit as requiring a new conversation", async ({ messages }) => {
+    const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
+    const streamText = vi.fn();
+    vi.doMock("@/lib/rate-limit", () => ({
+      getClientIp: () => "203.0.113.10",
+      rateLimit,
+    }));
+    vi.doMock("ai", async (importOriginal) => ({
+      ...(await importOriginal<typeof import("ai")>()),
+      streamText,
+    }));
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(chatRequest({ messages }));
+
+    expect(response.status).toBe(400);
+    await expect(response.json()).resolves.toEqual({
+      error: "conversation limit reached",
+      code: "conversation_limit_reached",
+    });
+    expect(streamText).not.toHaveBeenCalled();
+    expect(rateLimit.mock.calls).toEqual([["chat", "203.0.113.10"]]);
+  });
+
+  it("uses a reset response for an oversized Unicode history without a content-length header", async () => {
+    const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
+    vi.doMock("@/lib/rate-limit", () => ({
+      getClientIp: () => "203.0.113.10",
+      rateLimit,
+    }));
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(chatRequest({
+      messages: [{ id: "history", role: "assistant", parts: [{ type: "text", text: "車".repeat(8_000) }] }],
+    }));
+
+    expect(response.status).toBe(413);
+    expect((await response.json()).code).toBe("conversation_limit_reached");
+    expect(rateLimit.mock.calls).toEqual([["chat", "203.0.113.10"]]);
+  });
+
+  it("still accepts a history at the message and text limits", async () => {
+    vi.stubEnv("AI_GATEWAY_API_KEY", "test-key");
+    const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
+    const streamText = vi.fn(() => ({ stream: new ReadableStream() }));
+    vi.doMock("@/lib/rate-limit", () => ({
+      getClientIp: () => "203.0.113.10",
+      rateLimit,
+    }));
+    vi.doMock("ai", async (importOriginal) => ({
+      ...(await importOriginal<typeof import("ai")>()),
+      streamText,
+    }));
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(chatRequest({
+      messages: Array.from({ length: 16 }, (_, index) => ({
+        id: `message-${index}`,
+        role: index % 2 === 0 ? "assistant" : "user",
+        parts: [{ type: "text", text: "a".repeat(500) }],
+      })),
+    }));
+
+    expect(response.status).toBe(200);
+    expect(streamText).toHaveBeenCalledOnce();
+    expect(rateLimit.mock.calls).toEqual([
+      ["chat", "203.0.113.10"],
+      ["chat-global", "global"],
+    ]);
   });
 
   it("rejects user-supplied files before they reach the model", async () => {
@@ -233,7 +321,7 @@ describe("chat API route", () => {
 
     expect(response.status).toBe(400);
     await expect(response.json()).resolves.toEqual({
-      error: "conversation limit reached",
+      error: "invalid messages",
     });
   });
 });

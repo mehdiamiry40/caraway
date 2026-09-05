@@ -14,7 +14,7 @@ export const post: RawBlogPostEntry = {
 
     "## What Changes on the Due Date",
 
-    "Transport and Main Roads puts it plainly: renew on or before the due date, or the vehicle cannot legally be driven, and a late fee is charged when you do pay. Nothing about the car itself changes overnight. What changes is its status — for driving, for parking, and for the insurance that sits behind the registration.",
+    "Transport and Main Roads puts it plainly: renew on or before the due date, or the vehicle cannot legally be driven, and a late fee is charged when you do pay. Registration expiry changes whether you can drive or park on a road. CTP insurance has separate statutory grace rules, explained below, which do not extend your permission to drive.",
 
     "That status has teeth close to home. Brisbane City Council's Health, Safety and Amenity Local Law 2021 makes it an offence to park an unregistered vehicle on a road, and Council treats one left on a road or road-related area as unmanaged. The kerb outside a Wynnum or Annerley house is not somewhere to leave the car while you think about it. Inside the property boundary is a different question, and our guide to [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) works through both.",
 
@@ -30,11 +30,11 @@ export const post: RawBlogPostEntry = {
 
     "Getting the car to that inspection is its own step. TMR allows some limited registration-related journeys without a permit and requires an unregistered vehicle permit for others, with conditions attached to both. A vehicle that fails the relevant inspection cannot then be driven or towed on its own wheels and has to be transported, so the tow is a real line in the budget rather than a footnote.",
 
-    "## The Cover That Lapses With It",
+    "## CTP Cover After Registration Expires",
 
-    "Compulsory Third Party insurance is bundled into Queensland registration — the premium is collected with the registration and passed to the licensed CTP insurer. When the registration ends, that cover ends with it. The Nominal Defendant exists as the insurer of last resort for uninsured vehicles, and the Motor Accident Insurance Act 1994 gives it a right of recourse against the owner or driver of an uninsured vehicle for what it pays out.",
+    "CTP premiums are paid with Queensland registration, but cover does not necessarily end on the expiry date. Section 23 of the Motor Accident Insurance Act 1994 provides a limited grace period of up to 30 days, ending earlier on renewal or the grant of an unregistered vehicle permit. Cancellation and special-plate exceptions can remove or shorten that grace period. Renewing after the grace period does not retrospectively insure the gap, even when registration is backdated.",
 
-    "That is the part that separates expired rego in QLD from ordinary paperwork drift. A fine for driving unregistered is a known quantity. A personal-injury claim behind a lapsed CTP policy is not, and a short trip to the shops is exactly how people find that out.",
+    "The CTP grace period is not permission to drive an unregistered vehicle. Confirm your vehicle's cover and relevant dates with your CTP insurer or the Motor Accident Insurance Commission (MAIC), and check TMR's conditions before any registration-related journey. Driving uninsured can leave you personally liable for injury claims. Comprehensive and property-damage insurance are separate policies whose terms you also need to check.",
 
     "## Deciding Between Renewing and Selling",
 
@@ -58,7 +58,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Am I still insured if my registration has expired?",
       answer:
-        "Not for CTP. The compulsory third party premium is collected with Queensland registration, so the cover ends when the registration does. The Nominal Defendant acts as insurer of last resort for uninsured vehicles, and the Motor Accident Insurance Act 1994 gives it a right of recourse against the owner or driver for costs it incurs.",
+        "CTP may continue for a limited grace period under section 23 of the Motor Accident Insurance Act 1994, generally up to 30 days with earlier-ending events and exceptions. This is not permission to drive unregistered. Ask your CTP insurer or MAIC to confirm cover; check other insurance policies separately. A later renewal does not retrospectively cover an uninsured gap.",
     },
     {
       question: "Do I need to renew the registration before selling the car?",
@@ -67,7 +67,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-18",
-  reviewedAt: "2026-08-18",
+  updatedAt: "2026-09-05",
+  reviewedAt: "2026-09-05",
   sources: [
     {
       title: "Queensland legislation — Vehicle Registration Regulation 2021",
@@ -87,8 +88,8 @@ export const post: RawBlogPostEntry = {
     },
     {
       title:
-        "Motor Accident Insurance Act 1994 (Qld) s 60 — Nominal Defendant's rights of recourse for uninsured vehicles",
-      url: "https://classic.austlii.edu.au/au/legis/qld/consol_act/maia1994243/s60.html",
+        "Queensland legislation — Motor Accident Insurance Act 1994, section 23",
+      url: "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/act-1994-009#sec.23",
     },
   ],
   category: "Guides",
