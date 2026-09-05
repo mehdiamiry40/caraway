@@ -31,6 +31,6 @@ test("submits the contact form", async ({ page }) => {
   await page.getByRole("button", { name: "Send message" }).click();
 
   await expect(
-    page.getByRole("heading", { name: "Message sent — thanks!" }),
+    page.getByRole("heading", { name: "Message received — thanks!" }),
   ).toBeVisible();
 });

@@ -8,10 +8,17 @@ vi.mock("next/navigation", () => ({
 }));
 
 describe("Privacy review-request disclosure", () => {
+  it("discloses saved enquiry recovery and limits browser storage to an opaque ID", () => {
+    const markup = renderToStaticMarkup(<Privacy />).toLowerCase();
+    expect(markup).toContain("quote and contact enquiries and their delivery status for seven days");
+    expect(markup).toContain("form values are not kept in that browser storage");
+    expect(markup).not.toContain("no form or chat contents are stored there");
+    expect(markup).not.toContain("group your keystrokes into one lookup");
+  });
   it("documents a neutral invitation for eligible completed customers", () => {
     const markup = renderToStaticMarkup(<Privacy />).toLowerCase();
 
-    expect(LEGAL_DATE_ISO.privacyLastUpdated).toBe("2026-09-01");
+    expect(LEGAL_DATE_ISO.privacyLastUpdated).toBe("2026-09-05");
     expect(markup).toContain("eligible completed customers");
     expect(markup).toContain("share honest feedback");
     expect(markup).toContain("do not condition the invitation on satisfaction");

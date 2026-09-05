@@ -20,6 +20,9 @@ type EventName =
 type AllowedValue = string | number | boolean | null;
 
 /**
+ * Form success events mean the enquiry was captured by the website, not that
+ * email reached an inbox or a CRM completed processing. Event names remain
+ * stable for existing dashboards; no submission ID or form values are sent.
  * Custom-event bridge to Vercel Web Analytics. The beacon posts to
  * `/_vercel/insights/*` on our own origin, so the strict
  * `connect-src 'self'` CSP in next.config.ts needs no carve-out.

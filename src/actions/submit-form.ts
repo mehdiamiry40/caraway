@@ -8,17 +8,17 @@
 
 import type { ZodMiniType } from "zod/mini";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
-import { getEnv } from "@/lib/env";
-import { validateEndpoint } from "@/lib/validate-endpoint";
+import { getLeadConfiguration } from "@/lib/lead-config";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
 type AllowedEndpoint = (typeof ALLOWED_ENDPOINTS)[number];
 
-interface SubmitFormOptions {
+export interface SubmitFormOptions {
   schema: ZodMiniType;
   data: unknown;
   endpointEnvVar: AllowedEndpoint;
   label: string;
+  idempotencyKey?: string;
 }
 
 /**
@@ -33,16 +33,20 @@ interface SubmitFormOptions {
  * - `{ success: false, message }` — a real failure (schema rejection,
  *   allowlist violation, network/HTTP error). The parent action should
  *   log and fall back if possible, or surface the error.
+ * - `ambiguous: true` means a request was attempted without a confirmed
+ *   acceptance. Retry with the same idempotency key; a receiver may have
+ *   processed the payload even when its response failed.
  */
 export async function submitForm({
   schema,
   data,
   endpointEnvVar,
   label,
+  idempotencyKey,
 }: SubmitFormOptions): Promise<
   | { success: true }
-  | { success: false; skipped: true }
-  | { success: false; message: string }
+  | { success: false; skipped: true; ambiguous: false }
+  | { success: false; message: string; ambiguous: boolean }
 > {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
@@ -54,18 +58,19 @@ export async function submitForm({
         ts: new Date().toISOString(),
       });
     }
-    return { success: false, message: "Invalid form data" };
+    return { success: false, message: "Invalid form data", ambiguous: false };
   }
 
   if (!ALLOWED_ENDPOINTS.includes(endpointEnvVar)) {
-    return { success: false, message: "Invalid endpoint" };
+    return { success: false, message: "Invalid endpoint", ambiguous: false };
   }
 
-  const env = getEnv();
-  const endpoint = env[endpointEnvVar]?.trim();
-  const isDev = process.env.NODE_ENV === "development";
+  const { webhook } = getLeadConfiguration(
+    endpointEnvVar === "QUOTE_ENDPOINT" ? "quote" : "contact",
+  );
+  const isDev = process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
 
-  if (!endpoint) {
+  if (webhook.status === "disabled") {
     if (isDev) {
       // Dev mock mode: no endpoint configured → fake success so local
       // testing works without a real webhook URL.
@@ -79,17 +84,25 @@ export async function submitForm({
     // configured (operator chose email-only delivery). Quiet skip with
     // no error log — the parent action will try the email channel
     // before surfacing an error to the user.
-    return { success: false, skipped: true };
+    return { success: false, skipped: true, ambiguous: false };
+  }
+
+  if (webhook.status === "invalid") {
+    console.error(`[submit-form] ${label} endpoint configuration is invalid`);
+    return {
+      success: false,
+      message: "We couldn't send your request. Please try again or use the form below.",
+      ambiguous: false,
+    };
   }
 
   try {
-    if (!validateEndpoint(endpoint)) {
-      throw new Error(`${label} endpoint failed URL allowlist validation`);
-    }
-
-    const response = await fetch(endpoint, {
+    const response = await fetch(webhook.endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
+      },
       body: JSON.stringify(parsed.data),
       signal: AbortSignal.timeout(FORM_FETCH_TIMEOUT_MS),
       redirect: "error",
@@ -100,14 +113,14 @@ export async function submitForm({
     }
 
     return { success: true };
-  } catch (error) {
-    console.error(
-      `[submit-form] ${label} failed:`,
-      error instanceof Error ? error.message : String(error),
-    );
+  } catch {
+    // Upstream exception text can contain URLs or submitted data. The caller
+    // receives the delivery state; logs retain only the channel label.
+    console.error(`[submit-form] ${label} failed after a delivery attempt`);
     return {
       success: false,
       message: `We couldn't send your request. Please try again or use the form below.`,
+      ambiguous: true,
     };
   }
 }

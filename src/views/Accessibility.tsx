@@ -34,7 +34,7 @@ export default function Accessibility() {
             <li>Sufficient color contrast (4.5:1 for text, 3:1 for UI components)</li>
             <li>Reduced motion support via <code>prefers-reduced-motion</code></li>
             <li>Skip-to-content link at the top of every page</li>
-            <li>Large touch targets (44×44px minimum)</li>
+            <li>Primary quote and call buttons sized for touch interaction</li>
             <li>Text resize support up to 200% without loss of content</li>
           </ul>
 

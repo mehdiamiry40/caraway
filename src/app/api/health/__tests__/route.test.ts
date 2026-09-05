@@ -54,6 +54,7 @@ describe("GET /api/health", () => {
       checkType: "configuration",
       fullyRedundant: false,
       distributedRateLimitConfigured: true,
+      leadCaptureConfigured: true,
       leadMonitorEnabled: false,
     });
   });
@@ -69,6 +70,7 @@ describe("GET /api/health", () => {
       checkType: "configuration",
       fullyRedundant: false,
       distributedRateLimitConfigured: true,
+      leadCaptureConfigured: true,
       leadMonitorEnabled: false,
     });
   });
@@ -82,6 +84,7 @@ describe("GET /api/health", () => {
     await expect(response.json()).resolves.toMatchObject({
       status: "ok",
       distributedRateLimitConfigured: true,
+      leadCaptureConfigured: true,
     });
   });
 
@@ -96,6 +99,7 @@ describe("GET /api/health", () => {
       checkType: "configuration",
       fullyRedundant: true,
       distributedRateLimitConfigured: true,
+      leadCaptureConfigured: true,
       leadMonitorEnabled: false,
     });
   });
@@ -114,6 +118,7 @@ describe("GET /api/health", () => {
       checkType: "configuration",
       fullyRedundant: false,
       distributedRateLimitConfigured: true,
+      leadCaptureConfigured: true,
       leadMonitorEnabled: false,
     });
   });
@@ -129,6 +134,7 @@ describe("GET /api/health", () => {
       checkType: "configuration",
       fullyRedundant: false,
       distributedRateLimitConfigured: false,
+      leadCaptureConfigured: false,
       leadMonitorEnabled: false,
     });
   });
@@ -146,6 +152,7 @@ describe("GET /api/health", () => {
         status: "error",
         checkType: "configuration",
         distributedRateLimitConfigured: false,
+        leadCaptureConfigured: false,
       });
     },
   );
@@ -164,6 +171,7 @@ describe("GET /api/health", () => {
       status: "error",
       checkType: "configuration",
       distributedRateLimitConfigured: false,
+      leadCaptureConfigured: false,
     });
   });
 });

@@ -63,6 +63,7 @@ export default function Locations() {
     slug: suburb.slug,
     h1: suburb.h1,
     summary: suburb.metaDescription,
+    nearbyAreaNames: suburb.nearbyAreaNames,
   }));
 
   return (

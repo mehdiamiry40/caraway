@@ -3,7 +3,7 @@ import {
   isDistributedRateLimitConfigured,
   isLocalRateLimitFallbackAllowed,
 } from "@/lib/rate-limit";
-import { validateEndpoint } from "@/lib/validate-endpoint";
+import { getLeadConfiguration } from "@/lib/lead-config";
 
 export const dynamic = "force-dynamic";
 
@@ -27,28 +27,15 @@ export const dynamic = "force-dynamic";
  * validation only — to avoid cost and DoS abuse vectors against /api/health.
  */
 export async function GET() {
-  const has = (value: unknown): value is string =>
-    typeof value === "string" && value.length > 0;
-  const isValidEmail = (value: unknown): boolean =>
-    has(value) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  const isValidWebhook = (value: unknown): boolean =>
-    has(value) && validateEndpoint(value);
-
-  const resendApiKeyOk = has(process.env.RESEND_API_KEY);
-
+  const contactConfiguration = getLeadConfiguration("contact");
+  const quoteConfiguration = getLeadConfiguration("quote");
   const contactChannels = {
-    webhook: isValidWebhook(process.env.CONTACT_ENDPOINT),
-    email:
-      resendApiKeyOk &&
-      has(process.env.CONTACT_NOTIFICATION_FROM) &&
-      isValidEmail(process.env.CONTACT_NOTIFICATION_TO),
+    webhook: contactConfiguration.webhook.status === "ready",
+    email: contactConfiguration.email.status === "ready",
   };
   const quoteChannels = {
-    webhook: isValidWebhook(process.env.QUOTE_ENDPOINT),
-    email:
-      resendApiKeyOk &&
-      has(process.env.QUOTE_NOTIFICATION_FROM) &&
-      isValidEmail(process.env.QUOTE_NOTIFICATION_TO),
+    webhook: quoteConfiguration.webhook.status === "ready",
+    email: quoteConfiguration.email.status === "ready",
   };
 
   const contactOk = contactChannels.webhook || contactChannels.email;
@@ -78,6 +65,7 @@ export async function GET() {
           checkType: "configuration" as const,
           fullyRedundant,
           distributedRateLimitConfigured,
+          leadCaptureConfigured: distributedRateLimitConfigured,
           leadMonitorEnabled,
         }
       : {
@@ -85,6 +73,7 @@ export async function GET() {
           checkType: "configuration" as const,
           fullyRedundant,
           distributedRateLimitConfigured,
+          leadCaptureConfigured: distributedRateLimitConfigured,
           leadMonitorEnabled,
           checks: { contact: contactChannels, quote: quoteChannels },
         };

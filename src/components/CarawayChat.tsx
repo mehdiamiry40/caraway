@@ -36,6 +36,22 @@ const MAX_INPUT_LENGTH = 1_000;
 const INLINE_MARKDOWN_RE =
   /(\*\*([^*\n]+)\*\*)|(\*([^*\n]+)\*)|(`([^`\n]+)`)|(\[([^\]\n]+)\]\(([^)\s]+)\))/g;
 
+function isConversationLimitError(error: Error | undefined): boolean {
+  if (!error) return false;
+  // The SDK's HTTP transport exposes a failed response body as error.message.
+  try {
+    const payload: unknown = JSON.parse(error.message);
+    return (
+      typeof payload === "object" &&
+      payload !== null &&
+      "code" in payload &&
+      payload.code === "conversation_limit_reached"
+    );
+  } catch {
+    return false;
+  }
+}
+
 function isSafeChatHref(href: string): boolean {
   return /^(https?:\/\/|mailto:|tel:)/i.test(href) || /^\/(?!\/)/.test(href);
 }
@@ -158,6 +174,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   const [isOpen, setIsOpen] = useState(initiallyOpen);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const errorActionRef = useRef<HTMLButtonElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -174,6 +191,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   } = useChat<CarawayChatMessage>();
 
   const isBusy = status === "submitted" || status === "streaming";
+  const conversationLimitReached = isConversationLimitError(error);
 
   useEffect(() => {
     const closeWhenMobileMenuOpens = () => {
@@ -263,6 +281,12 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   }, [input]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    if (conversationLimitReached) errorActionRef.current?.focus();
+    else inputRef.current?.focus();
+  }, [isOpen, conversationLimitReached]);
+
+  useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView?.({ block: "nearest" });
     }
@@ -278,7 +302,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
 
   async function send(text: string) {
     const message = text.trim();
-    if (!message || isBusy) return;
+    if (!message || isBusy || conversationLimitReached) return;
     clearError();
     setInput("");
     trackEvent("chat_message_sent");
@@ -340,7 +364,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 AI answers · offers reviewed by people
               </p>
             </div>
-            {messages.length > 0 && (
+            {messages.length > 0 && !conversationLimitReached && (
               <button
                 type="button"
                 onClick={resetChat}
@@ -453,19 +477,22 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             {error && (
               <div className="rounded-sm border border-destructive/30 bg-destructive/5 px-3 py-3 text-sm text-foreground" role="alert">
                 <p>
-                  Chat is temporarily unavailable. Try that message again or call{" "}
+                  {conversationLimitReached
+                    ? "This conversation has reached its limit. Start a new chat to keep asking questions, or call "
+                    : "Chat is temporarily unavailable. Try that message again or call "}
                   <a className="font-semibold text-primary underline" href={BUSINESS.phoneTel}>
                     {BUSINESS.phoneDisplay}
                   </a>
                   .
                 </p>
                 <button
+                  ref={errorActionRef}
                   type="button"
-                  onClick={() => void retryLastResponse()}
+                  onClick={conversationLimitReached ? resetChat : () => void retryLastResponse()}
                   className="mt-2 inline-flex min-h-9 items-center gap-1.5 rounded-sm border border-primary/30 bg-card px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                  Try again
+                  {conversationLimitReached ? "Start a new chat" : "Try again"}
                 </button>
               </div>
             )}
@@ -502,14 +529,14 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 maxLength={MAX_INPUT_LENGTH}
                 rows={1}
                 placeholder="Ask a question or describe your car…"
-                disabled={isBusy}
+                disabled={isBusy || conversationLimitReached}
                 aria-describedby="caraway-chat-privacy-note"
                 className="max-h-28 min-h-11 flex-1 resize-none overflow-y-auto rounded-sm border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
               />
               <button
                 type={isBusy ? "button" : "submit"}
                 onClick={isBusy ? stop : undefined}
-                disabled={!isBusy && input.trim().length === 0}
+                disabled={!isBusy && (conversationLimitReached || input.trim().length === 0)}
                 className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-cta-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
                   isBusy ? "bg-primary hover:bg-primary/90" : "bg-cta hover:bg-cta/90"
                 }`}

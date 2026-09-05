@@ -40,12 +40,24 @@ const envSchema = z.object({
 
 export type Env = z.infer<typeof envSchema>;
 
-// Lazy validation — deferred to first access to avoid module-level side
-// effects in the request proxy. Still early enough to catch misconfiguration
-// on the first form submission or proxy invocation.
-let _env: Env | null = null;
+/** Server-only configuration read; blank optional values are absent. */
+export function readOptionalEnv(key: string): string | undefined {
+  return process.env[key]?.trim() || undefined;
+}
+
+// Validate only the field a caller actually uses. A broken lead webhook or
+// notification address must not prevent Places or chat from reading their
+// own credentials. Read current values lazily instead of caching credentials.
+const lazyEnv = Object.defineProperties(
+  {},
+  Object.fromEntries(
+    Object.entries(envSchema.shape).map(([key, schema]) => [
+      key,
+      { enumerable: true, get: () => schema.parse(readOptionalEnv(key)) },
+    ]),
+  ),
+) as Env;
 
 export function getEnv(): Env {
-  if (!_env) _env = envSchema.parse(process.env);
-  return _env;
+  return lazyEnv;
 }
