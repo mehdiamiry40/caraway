@@ -1,3 +1,4 @@
+import { post as postBuyerNoTransfer } from "./buyer-not-transferred-rego-qld";
 import { post as postRepairerLien } from "./mechanic-wont-release-car-qld";
 import { post as postTruck } from "./sell-truck-brisbane";
 import { post as postImportedCar } from "./sell-imported-car-brisbane";
@@ -64,6 +65,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postBuyerNoTransfer,
   postRepairerLien,
   postTruck,
   postImportedCar,
