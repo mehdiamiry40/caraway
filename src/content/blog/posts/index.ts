@@ -1,3 +1,4 @@
+import { post as postRustyCar } from "./rusty-car-brisbane";
 import { post as postCatalyticConverter } from "./stolen-catalytic-converter-brisbane";
 import { post as postTestDrive } from "./test-drive-private-car-sale-qld";
 import { post as postBuyerNoTransfer } from "./buyer-not-transferred-rego-qld";
@@ -67,6 +68,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postRustyCar,
   postCatalyticConverter,
   postTestDrive,
   postBuyerNoTransfer,
