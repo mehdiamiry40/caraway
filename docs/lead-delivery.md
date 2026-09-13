@@ -17,10 +17,13 @@ This is a recovery window, not a permanent CRM or a promise of final inbox recei
   outbound provider. Never invent a webhook or change recipients to make health green.
 - Keep `CRON_SECRET` configured. `/api/cron/lead-delivery` runs every five minutes;
   this schedule needs Vercel Pro (the current team plan was checked as Pro).
-- Keep `LEAD_MONITOR_ENABLED=1` only when recipients expect labeled synthetic
-  enquiries. The daily monitor calls the same capture/processor path and verifies
-  every configured channel reached provider acceptance. Its IDs are stable per
-  day and derived with the cron secret, so public callers cannot predict/reserve them.
+- The synthetic monitor is not scheduled: recipients asked to stop the daily
+  labeled enquiries, so `/api/health/lead-delivery` runs only when called by
+  hand with the cron secret. Keep `LEAD_MONITOR_ENABLED=1` only when recipients
+  expect those messages. The monitor calls the same capture/processor path and
+  verifies every configured channel reached provider acceptance. Its IDs are
+  stable per day and derived with the cron secret, so public callers cannot
+  predict/reserve them.
 - Before release, run the clean-install quality gates, verify preview namespaces,
   confirm production storage settings, then arrange a specifically approved live
   receipt test. No real email/CRM submission is required for unit or browser tests.
@@ -70,9 +73,14 @@ settings are present/valid, not that writes or notifications currently work.
 
 The worker requires `Authorization: Bearer <CRON_SECRET>`. Its uncached response
 reports processed, pending, attention and failure counts, and uses HTTP 503 for
-storage/processing errors or records requiring attention. The daily monitor also
-requires the secret and reports HTTP 503 when capture or configured-channel
+storage/processing errors or records requiring attention. The on-demand monitor
+also requires the secret and reports HTTP 503 when capture or configured-channel
 acceptance cannot be verified. Neither proves final inbox receipt.
+
+With the monitor unscheduled, nothing now exercises capture and delivery
+end to end on its own. The five-minute worker still surfaces failures for real
+enquiries, but a broken provider is only detected once a customer submits a
+form. Run the monitor by hand, or restore its schedule, when that gap matters.
 
 Configure an external uptime/log alert for failures **and missing runs**, with a
 named owner. A scheduled request alone does not establish that an alert exists.

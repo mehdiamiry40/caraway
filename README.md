@@ -240,8 +240,9 @@ preview hosts receive `noindex`, and the canonical host does not.
 ### Health check
 
 `GET /api/health` is a configuration check. It does not contact Redis, Resend,
-or a webhook, so keep the authenticated synthetic lead-delivery monitor enabled
-to verify the real path. Production returns:
+or a webhook. The authenticated synthetic lead-delivery monitor verifies the
+real path, but it is no longer scheduled — call it by hand when you need that
+proof. Production returns:
 
 ```json
 {
@@ -255,7 +256,8 @@ to verify the real path. Production returns:
 ```
 
 Wire this to an uptime monitor as a configuration signal, and alert separately
-on the authenticated synthetic route and runtime dependency errors.
+on runtime dependency errors. The synthetic route no longer runs on a schedule,
+so it raises nothing on its own.
 
 ## Contributing
 
