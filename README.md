@@ -251,9 +251,13 @@ proof. Production returns:
   "checkType": "configuration",
   "distributedRateLimitConfigured": true,
   "leadCaptureConfigured": true,
-  "leadMonitorEnabled": true
+  "leadMonitorEnabled": false
 }
 ```
+
+`leadMonitorEnabled` is `false` because `LEAD_MONITOR_ENABLED` is off in
+production: the synthetic enquiries it generated are no longer wanted. Set it
+back to `1` and redeploy if you reinstate the check.
 
 Wire this to an uptime monitor as a configuration signal, and alert separately
 on runtime dependency errors. The synthetic route no longer runs on a schedule,
