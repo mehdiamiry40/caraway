@@ -1,3 +1,4 @@
+import { post as postNovatedLease } from "./sell-car-novated-lease-qld";
 import { post as postTwoNames } from "./car-registered-two-names-qld";
 import { post as postRustyCar } from "./rusty-car-brisbane";
 import { post as postCatalyticConverter } from "./stolen-catalytic-converter-brisbane";
@@ -69,6 +70,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postNovatedLease,
   postTwoNames,
   postRustyCar,
   postCatalyticConverter,
