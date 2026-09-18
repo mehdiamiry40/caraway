@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 overflow-x-clip pb-[5.5rem] md:pb-0 focus-visible:outline-none">
+      <main id="main-content" tabIndex={-1} className="flex-1 overflow-x-clip pb-[5.5rem] lg:pb-0 focus-visible:outline-none">
         <Hero />
         <HomeBelowFold />
       </main>

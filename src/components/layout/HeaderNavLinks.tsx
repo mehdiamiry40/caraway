@@ -31,10 +31,10 @@ export function HeaderNavLinks({ links }: { links: readonly HeaderNavLink[] }) {
             href={link.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "inline-flex min-w-28 items-center justify-center border-r border-border px-5 text-sm font-semibold transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+              "text-sm font-semibold transition-colors duration-200 px-3 py-3 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               isActive
-                ? "bg-secondary text-accent-ink"
-                : "text-primary hover:bg-secondary hover:text-accent-ink",
+                ? "text-primary underline underline-offset-8 decoration-2 decoration-accent"
+                : "text-primary/85 hover:text-accent",
             )}
           >
             {link.label}
