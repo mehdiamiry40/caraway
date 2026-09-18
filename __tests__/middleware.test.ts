@@ -25,9 +25,12 @@ beforeEach(() => {
   delete process.env.GOOGLE_PLACES_API_KEY;
   delete process.env.UPSTASH_REDIS_REST_URL;
   delete process.env.UPSTASH_REDIS_REST_TOKEN;
+  delete process.env.KV_REST_API_URL;
+  delete process.env.KV_REST_API_TOKEN;
 });
 
 afterEach(() => {
+  vi.unstubAllEnvs();
   vi.restoreAllMocks();
 });
 
@@ -171,6 +174,21 @@ describe("proxy", () => {
   });
 
   describe("rate limiting", () => {
+    it("returns 503 when distributed enforcement is unavailable outside dev/test", async () => {
+      vi.stubEnv("NODE_ENV", "production");
+      const middleware = await loadProxy();
+      const res = await middleware(
+        makeRequest("POST", {
+          "x-forwarded-for": "10.20.30.40",
+          host: "localhost",
+          origin: "http://localhost",
+        }),
+      );
+
+      expect(res.status).toBe(503);
+      expect(res.headers.get("Retry-After")).toBeNull();
+    });
+
     it("allows up to 10 POSTs from the same IP, then 429s the 11th with Retry-After", async () => {
       const middleware = await loadProxy();
       const headers = {

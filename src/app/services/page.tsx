@@ -8,6 +8,7 @@ import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import { services } from "@/data/services";
 import {
   BUSINESS,
+  OPEN_GRAPH_DEFAULTS,
   SERVICES_CONTENT_UPDATED,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
   description: `Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/services" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/services",
     title: "Vehicle Buying Services in Brisbane | Caraway",

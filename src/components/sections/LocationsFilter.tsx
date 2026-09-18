@@ -8,6 +8,7 @@ export interface LocationFilterItem {
   slug: string;
   h1: string;
   summary: string;
+  nearbyAreaNames: string[];
 }
 
 export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
@@ -25,7 +26,8 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
     return items.filter(
       (s) =>
         s.h1.toLowerCase().includes(q) ||
-        s.slug.toLowerCase().includes(q)
+        s.slug.toLowerCase().includes(q) ||
+        s.nearbyAreaNames.some((name) => name.toLowerCase().includes(q))
     );
   }, [items, query]);
 
@@ -43,6 +45,11 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
         />
       </div>
 
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {filtered.length} location {filtered.length === 1 ? "guide" : "guides"} found
+        {query.trim() ? ` for “${query.trim()}”` : ""}.
+      </p>
+
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
@@ -52,17 +59,15 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             No suburbs match &ldquo;{query}&rdquo;
           </p>
           <p className="text-muted-foreground text-sm">
-            We likely still service your area —{" "}
+            Send your suburb and vehicle details —{" "}
             <Link href="/contact" className="text-primary underline underline-offset-2">
               contact us
             </Link>{" "}
-            to check.
+            to check availability.
           </p>
         </div>
       ) : (
-        <>
-        <span className="sr-only" aria-live="polite">{filtered.length} results</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6" aria-live="polite">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
@@ -86,7 +91,6 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             </Link>
           ))}
         </div>
-        </>
       )}
     </>
   );

@@ -38,6 +38,8 @@ interface HowItWorksProps {
 }
 
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
+  const StepHeading = showHeader ? "h3" : "h2";
+
   return (
     <section id="how-it-works" className="section-y scroll-mt-header relative bg-muted">
       <div className="site-container">
@@ -63,9 +65,9 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
                 <span className="row-span-3 flex h-14 w-14 items-center justify-center bg-accent font-mono text-sm font-bold text-accent-foreground">
                   {step.number}
                 </span>
-                <h3 className="font-display text-xl font-semibold leading-snug text-foreground sm:mt-5">
+                <StepHeading className="font-display text-xl font-semibold leading-snug text-foreground sm:mt-5">
                   {step.title}
-                </h3>
+                </StepHeading>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted-foreground">
                   {step.description}
                 </p>

@@ -27,7 +27,6 @@ export function buildMissingBlogPostMetadata(): Metadata {
 }
 
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
-  const authorName = post.author ?? BLOG_AUTHOR.name;
   return {
     title: post.title,
     description: post.metaDescription,
@@ -44,7 +43,8 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.updatedAt,
-      authors: [authorName],
+      authors: [`${SITE_URL}/about`],
+      section: post.category,
       tags: [post.category],
       locale: "en_AU",
       siteName: "Caraway",
@@ -57,13 +57,6 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       card: "summary",
       title: post.title,
       description: post.metaDescription,
-    },
-    other: {
-      "article:section": post.category,
-      "article:tag": post.category,
-      "article:published_time": post.date,
-      "article:modified_time": post.updatedAt,
-      "article:author": authorName,
     },
   };
 }

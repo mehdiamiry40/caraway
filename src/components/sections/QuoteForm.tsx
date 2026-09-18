@@ -15,6 +15,8 @@ import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
 import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
+import { LeadForm } from "./LeadForm";
+import { useSubmissionId } from "@/hooks/use-submission-id";
 
 const fieldIds = {
   name: "quote-name",
@@ -28,6 +30,7 @@ const fieldIds = {
 } as const;
 
 export function QuoteForm({ source = "quote_form" }: { source?: string }) {
+  const submission = useSubmissionId("quote");
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -66,11 +69,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       return;
     }
     try {
-      const result = await submitQuote(data);
+      const result = await submitQuote(data, await submission.getId());
       if (result.success) {
         trackEvent("quote_form_submitted", { source });
         trackEvent("lead_submitted", { source });
         setIsSuccess(true);
+        submission.reset();
         reset();
         return;
       }
@@ -143,14 +147,14 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will review the supplied details and contact you during business hours. Keep an eye on your phone, and check your spam folder if we reach out by email.
+                    Our team will review the supplied details and contact you by phone during business hours.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
+                <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
                   <div hidden aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -442,7 +446,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </Link>
                     .
                   </p>
-                </form>
+                </LeadForm>
               )}
           </div>
         </div>

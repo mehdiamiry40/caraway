@@ -30,6 +30,12 @@ describe("HowItWorks internal links", () => {
       "href",
       "/#quote-form",
     );
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Tell us about your car" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Tell us about your car" }),
+    ).not.toBeInTheDocument();
   });
 
   it.each(["cash-for-cars-brisbane", "car-removal-brisbane"])(

@@ -1,12 +1,15 @@
 import * as z from "zod/mini";
 import {
   auPhoneRegex,
+  CONTACT_VALIDATION_LIMITS,
+  CONTACT_VALIDATION_MESSAGES,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
   sanitizeLine,
   stripPhone,
 } from "@/lib/quote-validation-rules";
 import { quoteConditionValues } from "@/lib/quote-condition";
+import { CONTACT_MESSAGE_MAX } from "@/data/constants";
 
 export {
   CONDITION_LABELS,
@@ -140,16 +143,22 @@ export const contactFormSchema = z.object({
   ),
   email: z.pipe(
     z.string().check(z.trim()),
-    z.email("Enter a valid email address").check(
-      z.maxLength(320, "Email is too long"),
+    z.email(CONTACT_VALIDATION_MESSAGES.emailInvalid).check(
+      z.maxLength(
+        CONTACT_VALIDATION_LIMITS.email.max,
+        CONTACT_VALIDATION_MESSAGES.emailTooLong,
+      ),
       z.overwrite(sanitizeLine),
     ),
   ),
   phone: optionalPhone,
   message: z.string().check(
     z.trim(),
-    z.minLength(5, "Please add a short note (at least 5 characters)"),
-    z.maxLength(5000, "Message is too long"),
+    z.minLength(
+      CONTACT_VALIDATION_LIMITS.message.min,
+      CONTACT_VALIDATION_MESSAGES.messageTooShort,
+    ),
+    z.maxLength(CONTACT_MESSAGE_MAX, CONTACT_VALIDATION_MESSAGES.messageTooLong),
   ),
   honeypot: honeypotField,
   marketingConsent: z._default(z.optional(z.boolean()), false),

@@ -1,5 +1,6 @@
-import { Resend } from "resend";
-import { getEnv } from "./env";
+import { Resend, type CreateEmailRequestOptions } from "resend";
+import { getLeadConfiguration } from "./lead-config";
+import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import { CONDITION_LABELS, type QuoteFormValues } from "./quote-schema";
 
 /**
@@ -7,14 +8,16 @@ import { CONDITION_LABELS, type QuoteFormValues } from "./quote-schema";
  *
  * - `sent: true`  → Resend accepted the message.
  * - `sent: false` → Email delivery was intentionally skipped because the
- *                   RESEND_API_KEY / QUOTE_NOTIFICATION_* env vars are not
- *                   configured. This is not an error — the webhook channel
+ *                   QUOTE_NOTIFICATION_* addresses are not configured.
+ *                   This is not an error — the webhook channel
  *                   may still be delivering the lead.
  *
- * Hard failures (API errors, network errors) are thrown so the caller can
+ * Invalid configuration and hard failures are thrown so the caller can
  * decide how to log them alongside the webhook channel.
  */
-export type QuoteEmailResult = { sent: boolean };
+export type QuoteEmailResult =
+  | { sent: true; providerId: string }
+  | { sent: false };
 
 interface QuoteEmailContent {
   subject: string;
@@ -78,43 +81,48 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
 /**
  * Send the quote notification email to the business inbox via Resend.
  *
- * If email delivery is not configured (missing RESEND_API_KEY /
- * QUOTE_NOTIFICATION_FROM / QUOTE_NOTIFICATION_TO), this resolves with
- * `{ sent: false }` instead of throwing — dev mode and webhook-only
- * deployments should continue to work unchanged.
+ * No notification addresses means `{ sent: false }`. Partial or malformed
+ * configuration is rejected before sending; provider acceptance requires an ID.
  */
 export async function sendQuoteNotificationEmail(
   data: QuoteFormValues,
+  options: { idempotencyKey?: string } = {},
 ): Promise<QuoteEmailResult> {
-  const env = getEnv();
-  const apiKey = env.RESEND_API_KEY;
-  const from = env.QUOTE_NOTIFICATION_FROM;
-  const to = env.QUOTE_NOTIFICATION_TO;
-
-  if (!apiKey || !from || !to) {
+  const { email } = getLeadConfiguration("quote");
+  if (email.status === "disabled") {
     return { sent: false };
   }
+  if (email.status === "invalid") {
+    throw new Error("Quote email configuration is invalid");
+  }
+  const { apiKey, from, to } = email;
 
   const { subject, text, html } = buildQuoteEmailContent(data);
 
   const resend = new Resend(apiKey);
+  // The installed SDK forwards request options to fetch, although its public
+  // type currently omits RequestInit.signal.
+  const requestOptions: CreateEmailRequestOptions & Pick<RequestInit, "signal"> = {
+    idempotencyKey: options.idempotencyKey,
+    signal: AbortSignal.timeout(FORM_FETCH_TIMEOUT_MS),
+  };
   const result = await resend.emails.send({
     from,
     to,
     subject,
     text,
     html,
-  });
+  }, requestOptions);
 
   if (result.error) {
-    const message =
-      typeof result.error === "object" && result.error !== null && "message" in result.error
-        ? String((result.error as { message: unknown }).message)
-        : String(result.error);
-    throw new Error(`Resend error: ${message}`);
+    throw new Error("Quote email provider did not confirm acceptance");
   }
 
-  return { sent: true };
+  const providerId = result.data?.id;
+  if (typeof providerId !== "string" || !providerId.trim()) {
+    throw new Error("Quote email provider did not return a delivery ID");
+  }
+  return { sent: true, providerId };
 }
 
 function escapeHtml(value: string): string {

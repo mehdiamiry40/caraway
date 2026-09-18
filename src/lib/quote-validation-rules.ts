@@ -40,6 +40,18 @@ export const QUOTE_VALIDATION_MESSAGES = {
   honeypotInvalid: "Invalid form submission",
 } as const;
 
+export const CONTACT_VALIDATION_LIMITS = {
+  email: { max: 320 },
+  message: { min: 5 },
+} as const;
+
+export const CONTACT_VALIDATION_MESSAGES = {
+  emailInvalid: "Enter a valid email address",
+  emailTooLong: "Email is too long",
+  messageTooShort: "Please add a short note (at least 5 characters)",
+  messageTooLong: "Message is too long",
+} as const;
+
 export function stripPhone(value: string): string {
   return value.replace(/[\s\-()]/g, "");
 }

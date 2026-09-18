@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
   LEGAL_DATE_ISO,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "Read the terms governing Caraway vehicle quotes, purchases, collection arrangements, payment, seller responsibilities, and website use in Queensland.",
   alternates: { canonical: "/terms" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/terms",
     title: "Terms of Service | Caraway",

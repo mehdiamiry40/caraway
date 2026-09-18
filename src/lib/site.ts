@@ -1,6 +1,13 @@
 /** Canonical public site origin (matches the live production redirect target). */
 export const SITE_URL = "https://caraway.au";
 
+/** Shared identity fields for route-level Open Graph metadata. Next replaces
+ * nested metadata objects, so child routes spread these values explicitly. */
+export const OPEN_GRAPH_DEFAULTS = {
+  siteName: "Caraway",
+  locale: "en_AU",
+} as const;
+
 /** Literal description of the shared flatbed social image. */
 export const SHARED_PICKUP_IMAGE_ALT =
   "Silver sedan being transported on a flatbed truck";
@@ -79,7 +86,7 @@ export const OPENING_HOURS: ReadonlyArray<{
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-08-11",
+  privacyLastUpdated: "2026-09-05",
   termsLastUpdated: "2026-08-07",
 } as const;
 
@@ -118,17 +125,20 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
  *  the dedicated service pages can own the two primary commercial queries. */
 export const HOME_CONTENT_UPDATED = "2026-08-09";
 
-/** About-page identity copy and primary-image schema last reviewed in August 2026. */
-export const ABOUT_CONTENT_UPDATED = "2026-08-13";
+/** About-page identity copy, metadata, and primary-image schema last reviewed. */
+export const ABOUT_CONTENT_UPDATED = "2026-08-30";
 
-/** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
-export const FAQ_CONTENT_UPDATED = "2026-08-07";
+/** FAQ metadata, primary heading, and collection/payment wording last reviewed. */
+export const FAQ_CONTENT_UPDATED = "2026-08-30";
 
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
  *  WebPage.dateModified so the recrawl signal is honest and consistent. */
-export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-07";
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-30";
+
+/** Blog category metadata, summaries, and structured-data template last updated. */
+export const BLOG_CATEGORY_CONTENT_UPDATED = "2026-08-30";
 
 /** Service catalogue materially consolidated and retitled in August 2026. */
 export const SERVICES_CONTENT_UPDATED = "2026-08-07";
@@ -139,8 +149,11 @@ export const LOCATIONS_CONTENT_UPDATED = "2026-08-10";
 /** Official-data resource first published from its fixed source-audited inputs. */
 export const VEHICLE_DATA_CONTENT_PUBLISHED = "2026-08-10";
 
-/** Official-data resource page and derived-dataset packaging last materially updated. */
-export const VEHICLE_DATA_CONTENT_UPDATED = "2026-08-13";
+/** Official-data resource page copy and presentation last materially updated. */
+export const VEHICLE_DATA_CONTENT_UPDATED = "2026-09-04";
+
+/** Derived vehicle datasets and their downloadable packaging last updated. */
+export const VEHICLE_DATA_DATASET_UPDATED = "2026-08-13";
 
 /** Human-readable sitemap updated when the vehicle-data resource was added. */
 export const SITE_MAP_CONTENT_UPDATED = "2026-08-10";

@@ -3,14 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  contactFormSchema,
-  type ContactFormInput,
-} from "@/lib/quote-schema";
+import type { ContactFormInput } from "@/lib/quote-schema";
+import { contactFormResolver } from "@/lib/contact-client-validation";
 import { submitContact } from "@/actions/contact";
 import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
@@ -18,6 +15,8 @@ import { BUSINESS } from "@/lib/site";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckCircle2, Send, Shield } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
+import { LeadForm } from "./LeadForm";
+import { useSubmissionId } from "@/hooks/use-submission-id";
 
 const fieldIds = {
   name: "contact-name",
@@ -27,6 +26,7 @@ const fieldIds = {
 } as const;
 
 export function ContactForm() {
+  const submission = useSubmissionId("contact");
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<ContactFormInput>({
-    resolver: zodResolver(contactFormSchema),
+    resolver: contactFormResolver,
     mode: "onBlur",
     defaultValues: {
       honeypot: "",
@@ -66,11 +66,12 @@ export function ContactForm() {
       return;
     }
     try {
-      const result = await submitContact(data);
+      const result = await submitContact(data, await submission.getId());
       if (result.success) {
         trackEvent("contact_form_submitted");
         trackEvent("lead_submitted", { source: "contact" });
         setIsSuccess(true);
+        submission.reset();
         reset();
         return;
       }
@@ -100,7 +101,7 @@ export function ContactForm() {
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
-          <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message sent — thanks!</h2>
+          <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message received — thanks!</h2>
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
             We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
@@ -119,7 +120,7 @@ export function ContactForm() {
       <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
-      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
+      <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
         {/* Honeypot — hidden from real users, traps bots */}
         <div hidden aria-hidden="true">
           <label htmlFor="contact-website">Website</label>
@@ -214,8 +215,6 @@ export function ContactForm() {
             </label>
             <span
               className={`text-xs tabular-nums ${counterClass}`}
-              aria-live="polite"
-              aria-atomic="true"
               id={`${fieldIds.message}-counter`}
             >
               {messageLength}/{CONTACT_MESSAGE_MAX}
@@ -303,7 +302,7 @@ export function ContactForm() {
             </div>
           </div>
         )}
-      </form>
+      </LeadForm>
     </div>
   );
 }

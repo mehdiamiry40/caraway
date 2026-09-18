@@ -4,6 +4,7 @@ import { serviceSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOME_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "Caraway | Brisbane Vehicle Buyer & Pickup",
   },
-  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Get an estimate, a confirmed offer, and pickup included when we buy. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Request a human-reviewed assessment, receive a confirmed offer, and arrange pickup when we buy. Call ${BUSINESS.phoneDisplay}.`,
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
@@ -23,11 +24,11 @@ export const metadata: Metadata = {
   // That string mismatch is what GSC flags as "Alternative page with proper
   // canonical tag" against the slash-bearing URL Google actually crawls.
   openGraph: {
-    url: `${SITE_URL}/`,
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     title: "Caraway | Brisbane Vehicle Buyer & Pickup",
     description:
-      "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
+      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/og.png",
@@ -47,7 +48,7 @@ export const homeStructuredData = [
       url: `${SITE_URL}/`,
       name: "Caraway | Brisbane Vehicle Buyer",
       description:
-        "Caraway is a Brisbane-based vehicle buyer offering estimates, confirmed offers, and pickup across Greater Brisbane.",
+        "Caraway is a Brisbane-based vehicle buyer reviewing vehicle enquiries, confirming offers, and arranging pickup across Greater Brisbane.",
       dateModified: HOME_CONTENT_UPDATED,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#vehicle-buying-service` },
@@ -68,7 +69,7 @@ export const homeStructuredData = [
       url: `${SITE_URL}/`,
       name: "Caraway vehicle buying and pickup",
       description:
-        "Vehicle estimates, confirmed offers, and pickup when Caraway buys across Greater Brisbane.",
+        "Human-reviewed vehicle assessments, confirmed offers, and pickup when Caraway buys across Greater Brisbane.",
       serviceType: "Vehicle buying and pickup",
     }),
 ];
@@ -77,6 +78,7 @@ export default function HomePage() {
   return (
     <>
       <link rel="canonical" href={`${SITE_URL}/`} />
+      <meta property="og:url" content={`${SITE_URL}/`} />
       <Home />
       <JsonLd data={homeStructuredData} />
     </>

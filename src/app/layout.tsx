@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Barlow, Open_Sans } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     default: "Caraway | Brisbane Vehicle Buyer",
     template: "%s | Caraway",
   },
-  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Get an estimate, a confirmed offer, and pickup included when we buy. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Request a human-reviewed assessment, receive a confirmed offer, and arrange pickup when we buy. Call ${BUSINESS.phoneDisplay}.`,
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Caraway",
     title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
+      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/og.png",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Get a vehicle estimate, a confirmed offer, and pickup included when Caraway buys across Greater Brisbane.",
+      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/og.png",
@@ -116,6 +117,7 @@ export default function RootLayout({
         <CarawayChatLoader />
         <JsonLd data={[organizationSchema, websiteSchema]} />
         <Analytics />
+        <SpeedInsights />
         <AnalyticsListener />
       </body>
     </html>

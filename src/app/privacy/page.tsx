@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
   LEGAL_DATE_ISO,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "Learn how Caraway collects, uses, and protects your personal information. Read our privacy policy for our Brisbane cash for cars and vehicle removal services.",
   alternates: { canonical: "/privacy" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/privacy",
     title: "Privacy Policy | Caraway",

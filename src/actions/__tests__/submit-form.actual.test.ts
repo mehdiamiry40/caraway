@@ -35,8 +35,7 @@ afterEach(() => {
 describe("submitForm — mock mode", () => {
   it("returns success in development when no endpoint is configured", async () => {
     vi.stubEnv("NODE_ENV", "development");
-    // env.ts's zod schema rejects empty-string URLs, so we need to fully
-    // remove QUOTE_ENDPOINT (not just stub it to "") to trigger mock mode.
+    // An absent endpoint enables the explicitly development-only mock mode.
     const previous = process.env.QUOTE_ENDPOINT;
     delete process.env.QUOTE_ENDPOINT;
 
@@ -72,6 +71,7 @@ describe("submitForm — schema failures", () => {
     expect(result.success).toBe(false);
     if (!result.success && "message" in result) {
       expect(result.message).toBe("Invalid form data");
+      expect(result.ambiguous).toBe(false);
     } else {
       throw new Error("expected schema failure to carry a message");
     }
@@ -148,6 +148,7 @@ describe("submitForm — endpoint failures", () => {
     });
 
     expect(result.success).toBe(false);
+    expect(result).toMatchObject({ ambiguous: false });
     expect(errorSpy).toHaveBeenCalled();
   });
 
@@ -172,11 +173,12 @@ describe("submitForm — endpoint failures", () => {
     });
 
     expect(result.success).toBe(false);
+    expect(result).toMatchObject({ ambiguous: true });
     expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(errorSpy).toHaveBeenCalled();
   });
 
-  it("returns success when the endpoint responds with 200", async () => {
+  it("uses the delivery key, deadline and redirect protection when the endpoint accepts", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("QUOTE_ENDPOINT", "https://hooks.example.com/webhook");
     vi.stubEnv("ALLOWED_ENDPOINT_HOSTS", "");
@@ -194,10 +196,18 @@ describe("submitForm — endpoint failures", () => {
       data: baseValid,
       endpointEnvVar: "QUOTE_ENDPOINT",
       label: "Quote submission",
+      idempotencyKey: "lead-webhook-123",
     });
 
     expect(result).toEqual({ success: true });
     expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledWith("https://hooks.example.com/webhook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Idempotency-Key": "lead-webhook-123" },
+      body: JSON.stringify(baseValid),
+      signal: expect.any(AbortSignal),
+      redirect: "error",
+    });
   });
 
   it("fails gracefully when the fetch aborts via AbortSignal timeout", async () => {
@@ -223,6 +233,7 @@ describe("submitForm — endpoint failures", () => {
     expect(result.success).toBe(false);
     if (!result.success && "message" in result) {
       expect(result.message).toMatch(/couldn't send/i);
+      expect(result.ambiguous).toBe(true);
     } else {
       throw new Error("expected timeout to surface a user-facing message");
     }
@@ -250,6 +261,7 @@ describe("submitForm — endpoint failures", () => {
     });
 
     expect(result.success).toBe(false);
+    expect(result).toMatchObject({ ambiguous: true });
     expect(errorSpy).toHaveBeenCalled();
   });
 
@@ -272,8 +284,8 @@ describe("submitForm — endpoint failures", () => {
     });
 
     expect(result.success).toBe(false);
+    expect(result).toMatchObject({ ambiguous: false });
     expect(fetchMock).not.toHaveBeenCalled();
     expect(errorSpy).toHaveBeenCalled();
   });
 });
-

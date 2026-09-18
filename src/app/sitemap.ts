@@ -11,6 +11,7 @@ import {
   LEGAL_DATE_ISO,
   CONTENT_DEPLOY_DATE,
   ABOUT_CONTENT_UPDATED,
+  BLOG_CATEGORY_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
@@ -231,9 +232,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (slug) => {
       const postsInCategory = getPostsByCategory(slug);
       const latestInCategory = newestDate(postsInCategory, (p) => p.updatedAt || p.date);
+      const lastModified =
+        latestInCategory > BLOG_CATEGORY_CONTENT_UPDATED
+          ? latestInCategory
+          : BLOG_CATEGORY_CONTENT_UPDATED;
       return {
         url: `${SITE_URL}/blog/category/${slug}`,
-        lastModified: latestInCategory,
+        lastModified,
         changeFrequency: "monthly" as const,
         priority: 0.5,
       };

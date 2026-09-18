@@ -1,9 +1,20 @@
+"use client";
+
 import Link from "next/link";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { BUSINESS } from "@/lib/site";
+import {
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
 import { buttonVariants } from "@/components/ui/button";
+import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { DisclosureAutoClose } from "./DisclosureAutoClose";
+
+const MOBILE_MENU_CHANGE_EVENT = "caraway:mobile-menu-change";
 
 const navLinks = [
   { label: "How it works", href: "/how-it-works" },
@@ -20,9 +31,124 @@ interface Props {
   serviceLinks: ServiceLink[];
 }
 
+const focusableSelector = [
+  "a[href]",
+  "button:not([disabled])",
+  "summary",
+  'input:not([disabled]):not([type="hidden"])',
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
 export function MobileMenuClient({ serviceLinks }: Props) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousMenuState = document.body.dataset.mobileMenuOpen;
+    document.body.style.overflow = "hidden";
+    document.body.dataset.mobileMenuOpen = "true";
+    window.dispatchEvent(new Event(MOBILE_MENU_CHANGE_EVENT));
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      if (previousMenuState === undefined) {
+        delete document.body.dataset.mobileMenuOpen;
+      } else {
+        document.body.dataset.mobileMenuOpen = previousMenuState;
+      }
+      window.dispatchEvent(new Event(MOBILE_MENU_CHANGE_EVENT));
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (typeof window.matchMedia !== "function") return;
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeAtDesktopBreakpoint = () => {
+      const dialog = dialogRef.current;
+      if (desktop.matches && dialog?.open) dialog.close();
+    };
+    desktop.addEventListener("change", closeAtDesktopBreakpoint);
+    return () => {
+      desktop.removeEventListener("change", closeAtDesktopBreakpoint);
+    };
+  }, []);
+
+  function openMenu() {
+    const dialog = dialogRef.current;
+    if (!dialog || dialog.open) return;
+
+    setIsOpen(true);
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      // Defensive fallback for older embedded browsers. Current supported
+      // browsers use showModal(), which also makes the page behind it inert.
+      dialog.setAttribute("open", "");
+    }
+    closeButtonRef.current?.focus();
+  }
+
+  function closeMenu() {
+    const dialog = dialogRef.current;
+    if (!dialog?.open) return;
+
+    if (typeof dialog.close === "function") {
+      dialog.close();
+    } else {
+      dialog.removeAttribute("open");
+      setIsOpen(false);
+      triggerRef.current?.focus();
+    }
+  }
+
+  function handleDialogClose() {
+    setIsOpen(false);
+    triggerRef.current?.focus();
+  }
+
+  function handleDialogKeyDown(event: ReactKeyboardEvent<HTMLDialogElement>) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+    if (event.key !== "Tab") return;
+
+    const dialog = dialogRef.current;
+    const focusable = dialog?.querySelectorAll<HTMLElement>(focusableSelector);
+    if (!dialog || !focusable?.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (
+      event.shiftKey &&
+      (document.activeElement === first || !dialog.contains(document.activeElement))
+    ) {
+      event.preventDefault();
+      last.focus();
+    } else if (
+      !event.shiftKey &&
+      (document.activeElement === last || !dialog.contains(document.activeElement))
+    ) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function handleBackdropClick(event: ReactMouseEvent<HTMLDialogElement>) {
+    if (event.target === event.currentTarget) closeMenu();
+  }
+
   return (
-    <div className="lg:hidden flex items-center gap-1">
+    <div className="flex items-center gap-1 lg:hidden">
       <a
         href={BUSINESS.phoneTel}
         className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -31,16 +157,45 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         <Phone className="h-5 w-5" aria-hidden="true" />
       </a>
 
-      <DisclosureAutoClose className="group">
-        <summary
-          className="min-h-11 min-w-11 -mr-1 inline-flex cursor-pointer list-none items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden"
-          aria-label="Menu"
-        >
-          <Menu aria-hidden="true" className="h-6 w-6 group-open:hidden" />
-          <X aria-hidden="true" className="hidden h-6 w-6 group-open:block" />
-        </summary>
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={openMenu}
+        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        aria-label="Menu"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-controls="mobile-navigation-dialog"
+      >
+        <Menu aria-hidden="true" className="h-6 w-6" />
+      </button>
 
-        <div className="fixed inset-0 top-[var(--header-h)] z-[100] overflow-y-auto overscroll-contain border-t border-border bg-card px-5 py-3 shadow-lg sm:px-8 lg:hidden">
+      <dialog
+        ref={dialogRef}
+        id="mobile-navigation-dialog"
+        aria-modal="true"
+        aria-labelledby="mobile-navigation-title"
+        onClose={handleDialogClose}
+        onKeyDown={handleDialogKeyDown}
+        onClick={handleBackdropClick}
+        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t border-border bg-card p-0 text-foreground shadow-lg backdrop:bg-ink-deep/45 lg:hidden"
+      >
+        <div className="min-h-full px-5 py-5 sm:px-6">
+          <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border pb-2">
+            <p id="mobile-navigation-title" className="font-display text-lg font-semibold text-foreground">
+              Menu
+            </p>
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={closeMenu}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label="Close menu"
+            >
+              <X aria-hidden="true" className="h-6 w-6" />
+            </button>
+          </div>
+
           <nav className="flex flex-col gap-0.5" aria-label="Mobile primary navigation">
             <details className="group/services">
               <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between rounded-lg border-b border-border px-2 py-3.5 font-display text-base font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
@@ -55,7 +210,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                   <li key={service.href}>
                     <Link
                       href={service.href}
-                      className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                      onClick={closeMenu}
+                      className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                     >
                       {service.label}
                     </Link>
@@ -64,7 +220,8 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 <li>
                   <Link
                     href="/services"
-                    className="flex min-h-11 items-center rounded-lg -mx-2 px-2 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                    onClick={closeMenu}
+                    className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                   >
                     All services
                   </Link>
@@ -76,6 +233,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={closeMenu}
                 className="-mx-2 flex min-h-[52px] items-center rounded-lg border-b border-border px-2 py-3.5 font-display text-base font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               >
                 {link.label}
@@ -86,6 +244,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
           <div className="mt-8 flex flex-col gap-3 border-t border-border/30 pt-6">
             <a
               href={BUSINESS.phoneTel}
+              onClick={closeMenu}
               className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg border-[1.5px] border-primary text-base text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
@@ -95,6 +254,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             <Link
               href="/#quote-form"
               prefetch={false}
+              onClick={closeMenu}
               className={cn(
                 buttonVariants({ size: "lg" }),
                 "h-14 w-full rounded-lg text-base sm:text-lg",
@@ -104,7 +264,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             </Link>
           </div>
         </div>
-      </DisclosureAutoClose>
+      </dialog>
     </div>
   );
 }

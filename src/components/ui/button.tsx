@@ -18,7 +18,7 @@ const buttonVariants = cva(
         primary:
           "bg-primary text-primary-foreground border border-primary hover:bg-ink-deep hover:border-ink-deep active:translate-y-px",
         secondary:
-          "bg-accent text-accent-foreground border border-accent hover:bg-accent/90 active:translate-y-px",
+          "bg-accent-ink text-accent-foreground border border-accent-ink hover:bg-accent-ink/90 active:translate-y-px",
         outline:
           "border-2 border-primary bg-card text-primary hover:bg-primary hover:text-primary-foreground active:translate-y-px",
         ghost:

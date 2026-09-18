@@ -116,7 +116,7 @@ export function Footer() {
 
           {/* Services */}
           <nav aria-label="Services" className="md:col-span-1 lg:col-span-3">
-            <h3 className={columnHeadingClasses}>Services</h3>
+            <p className={columnHeadingClasses}>Services</p>
             <ul className="space-y-0.5">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
@@ -128,7 +128,7 @@ export function Footer() {
 
           {/* Locations */}
           <nav aria-label="Locations" className="md:col-span-1 lg:col-span-3">
-            <h3 className={columnHeadingClasses}>Locations</h3>
+            <p className={columnHeadingClasses}>Locations</p>
             <ul className="space-y-0.5">
               {locationLinks.map((link) => (
                 <li key={link.href}>
@@ -140,7 +140,7 @@ export function Footer() {
 
           {/* Company */}
           <nav aria-label="Company" className="sm:col-span-2 md:col-span-1 lg:col-span-2">
-            <h3 className={columnHeadingClasses}>Company</h3>
+            <p className={columnHeadingClasses}>Company</p>
             <ul className="space-y-0.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>

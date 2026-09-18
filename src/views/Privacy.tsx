@@ -45,14 +45,15 @@ export default function Privacy() {
               <li><strong>Email address</strong> — to send written quotes, receipts, and follow-up messages.</li>
               <li><strong>Vehicle details</strong> (make, model, year, condition, location, registration status) — to value your vehicle and arrange removal.</li>
               <li><strong>Authority-to-sell records and photo ID</strong> at pickup — we may sight or record details needed to verify the transaction, and retain a copy only where reasonably necessary.</li>
-              <li><strong>Technical data</strong> such as the page path, external referrer, browser and device type, and approximate region through Vercel Web Analytics.</li>
+              <li><strong>Technical data</strong> such as the page path, external referrer, browser and device type, approximate region, and performance measurements such as Core Web Vitals through Vercel Web Analytics and Speed Insights.</li>
+              <li><strong>AI chat data</strong> — messages you send in the optional chat and a pseudonymous identifier made by hashing your IP address together with your browser user-agent string.</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How we collect it</h2>
             <p>
-              We collect personal information directly from you through our website quote forms, by phone, by SMS, and by email. We may also collect information from our tow operators at the time of pickup (for example, photos of the vehicle and a signed receipt).
+              We collect personal information directly from you through our website quote forms and AI chat, by phone, by SMS, and by email. We may also collect information from our tow operators at the time of pickup (for example, photos of the vehicle and a signed receipt).
             </p>
           </section>
 
@@ -62,6 +63,7 @@ export default function Privacy() {
             <ul className="list-styled mt-4">
               <li><strong>Quote delivery</strong> — to prepare and send you a valuation based on the details you provide.</li>
               <li><strong>Pickup coordination</strong> — to arrange a suitable time and location with you and our tow operator.</li>
+              <li><strong>AI chat</strong> — to answer general questions, maintain safety and abuse controls, and manage service reliability and usage. The chat does not calculate or issue vehicle offers.</li>
               <li><strong>Transaction paperwork</strong> — to prepare receipts and assist with the Queensland Transport and Main Roads (TMR) steps relevant to the sale.</li>
               <li><strong>Follow-up</strong> — to confirm the transaction is complete and, where you consent, invite eligible completed customers to share honest feedback. We do not condition the invitation on satisfaction or ask for a particular rating.</li>
               <li><strong>Legal and record-keeping obligations</strong> — including records required for vehicle transfer and tax.</li>
@@ -70,8 +72,22 @@ export default function Privacy() {
           </section>
 
           <section>
+            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">AI chat processing</h2>
+            <p>
+              Caraway&apos;s optional chat is an automated AI service for general questions. When you use it, the conversation messages needed to generate a reply are sent through Vercel AI Gateway to OpenAI. We also create a pseudonymous, 32-character identifier by applying a one-way SHA-256 hash to the combination of your IP address and browser user-agent string. That identifier is sent as a service-usage and safety identifier; your raw IP address and user-agent string are not included in the model message.
+            </p>
+            <p className="mt-3">
+              We instruct OpenAI not to store the model response by sending the request with <code>store: false</code>. This setting does not stop the providers from processing the message to answer it, and it is not a promise that no limited provider logs or temporary retention will occur for security, abuse prevention, legal compliance, or service operation. Provider policies and subprocessors apply, and this processing may occur outside Australia, including in the United States.
+            </p>
+            <p className="mt-3">
+              Do not put names, phone numbers, addresses, registration numbers, VINs, identity-document details, or other sensitive personal information in the chat. Use the quote form or call us when you want a human-reviewed vehicle assessment.
+            </p>
+          </section>
+
+          <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
             <ul className="list-styled mt-4">
+              <li><strong>Website delivery records</strong>: a copy of each quote or contact enquiry, its submission identifier and delivery status is stored in Upstash for recovery and duplicate prevention. This website copy expires automatically seven days after capture. Copies received by our team or delivery providers follow the enquiry and business-record retention described below.</li>
               <li><strong>Quote enquiries</strong> where no sale takes place: kept only while reasonably needed for follow-up, fraud prevention, or dispute handling, then deleted or de-identified.</li>
               <li><strong>Completed-sale records</strong>: kept only for the period reasonably needed for transaction, dispute, accounting, tax, and legal obligations.</li>
               <li><strong>Identity information</strong>: minimised and deleted or de-identified when it is no longer reasonably required.</li>
@@ -93,7 +109,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
             <p>
-              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
+              Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Upstash, OpenAI, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
             </p>
           </section>
 
@@ -101,7 +117,7 @@ export default function Privacy() {
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
             <ul className="list-styled mt-4">
               <li>
-                <strong>Vercel</strong> — website hosting, delivery infrastructure, and Web Analytics. Web Analytics measures aggregated page views and limited interaction events. Our custom analytics events do not include submitted names, phone numbers, email addresses, pickup addresses, or vehicle details. Learn more in Vercel&apos;s{" "}
+                <strong>Vercel</strong> — website hosting, delivery infrastructure, Web Analytics, Speed Insights, and AI Gateway. Web Analytics measures aggregated page views and limited interaction events. Speed Insights measures page-performance signals including Core Web Vitals. Our custom analytics events and performance measurements do not include submitted names, phone numbers, email addresses, pickup addresses, vehicle details, or chat messages. AI Gateway routes chat messages and the pseudonymous usage and safety identifier described above to OpenAI. Learn more in Vercel&apos;s{" "}
                 <a
                   href="https://vercel.com/docs/analytics/privacy-policy"
                   className="text-primary underline underline-offset-2"
@@ -112,7 +128,19 @@ export default function Privacy() {
                 </a>
                 .
               </li>
-              <li><strong>Upstash</strong> — managed Redis we use for rate limiting on our forms and the address-autocomplete service. Your IP address is processed and stored briefly as a rate-limit counter to prevent abuse; no form contents or personal details are stored there.</li>
+              <li>
+                <strong>OpenAI</strong> — provides the AI model used to answer general chat questions. OpenAI receives chat messages and the pseudonymous usage and safety identifier described above. We send <code>store: false</code>, subject to the limitations described in the AI chat section. Privacy policy:{" "}
+                <a
+                  href="https://openai.com/policies/privacy-policy/"
+                  className="text-primary underline underline-offset-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  openai.com/policies/privacy-policy
+                </a>
+                .
+              </li>
+              <li><strong>Upstash</strong> — managed Redis stores quote and contact enquiries and their delivery status for seven days so we can recover interrupted delivery and avoid duplicate submissions. It also briefly processes IP-address counters to prevent abuse of our forms, AI chat and address autocomplete. Chat messages are not stored in Redis.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
@@ -146,7 +174,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The quote form sets a short-lived, essential cookie so address autocomplete can group your keystrokes into one lookup. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
+              The quote form uses short-lived essential cookies to authorize address suggestions. Address lookups are sent to Google through our server. We also keep an opaque enquiry identifier in per-tab session storage while a form outcome is unresolved, so a retry can be matched to the same enquiry. Form values are not kept in that browser storage, and the identifier is cleared when we confirm receipt. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 

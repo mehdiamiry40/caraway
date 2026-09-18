@@ -101,7 +101,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
         {pagePosts.length > 0 && (
           <section>
             <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-              <p className="eyebrow">All articles</p>
+              <h2 className="eyebrow">All articles</h2>
               <p className="text-xs font-medium text-muted-foreground">
                 {totalPages > 1
                   ? `Page ${currentPage} of ${totalPages} · ${rest.length} articles`

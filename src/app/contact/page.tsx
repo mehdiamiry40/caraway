@@ -5,15 +5,19 @@ import Contact from "@/views/Contact";
 import {
   BUSINESS,
   CONTENT_DEPLOY_DATE,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Caraway | Phone, Email and Quote Enquiries",
+  title: {
+    absolute: "Contact Caraway | Phone, Email and Quote Enquiries",
+  },
   description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
   alternates: { canonical: "/contact" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/contact",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",

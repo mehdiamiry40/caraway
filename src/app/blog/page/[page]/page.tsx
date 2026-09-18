@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { blogPageCount } from "@/lib/blog-pagination";
-import { SITE_URL } from "@/lib/site";
+import { OPEN_GRAPH_DEFAULTS, SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -37,7 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical },
-    openGraph: { type: "website", url: canonical, title, description },
+    openGraph: {
+      ...OPEN_GRAPH_DEFAULTS,
+      type: "website",
+      url: canonical,
+      title,
+      description,
+    },
     // "summary", not "summary_large_image": there is no image to feature.
     twitter: { card: "summary", title, description },
   };
@@ -48,7 +54,7 @@ export default async function BlogIndexPage({ params }: Props) {
   const page = parsePage(raw);
   if (!page) notFound();
   // Page 1 lives at /blog — never serve the same content on two URLs.
-  if (page === 1) redirect("/blog");
+  if (page === 1) permanentRedirect("/blog");
   if (page > blogPageCount()) notFound();
 
   return (

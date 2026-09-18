@@ -13,6 +13,8 @@
         "CRON_SECRET",
         "DEBUG_PLACES",
         "GOOGLE_PLACES_API_KEY",
+        "KV_REST_API_TOKEN",
+        "KV_REST_API_URL",
         "LEAD_MONITOR_ENABLED",
         "NEXT_PUBLIC_*",
         "PLACES_SESSION_SECRET",
@@ -25,6 +27,7 @@
         "UPSTASH_REDIS_REST_URL",
         "VERCEL_ENV",
         "VERCEL_GIT_COMMIT_SHA",
+        "VERCEL_GIT_COMMIT_REF",
         "VERCEL_REGION"
       ],
       "passThroughEnv": ["VERCEL_OIDC_TOKEN"]

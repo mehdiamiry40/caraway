@@ -7,6 +7,7 @@ import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_MAP_CONTENT_UPDATED,
   SITE_URL,
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
   description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
   alternates: { canonical: "/site-map" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/site-map",
     title: "Sitemap",
