@@ -62,15 +62,21 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <LocationViewTracker suburb={suburb.slug} />
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
-          <div className="site-container relative">
-            <Breadcrumbs items={breadcrumbs} />
-            <p className="eyebrow mt-5 mb-3">Location</p>
-            <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[1.06] text-primary text-balance max-w-4xl mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
+      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none md:pb-0">
+        <section
+          className="relative overflow-hidden bg-ink-deep bg-cover bg-center py-16 text-on-dark-hi lg:py-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(6,26,57,.94), rgba(10,47,104,.76) 62%, rgba(69,5,22,.26)), url('/images/tow-truck-hero.webp')",
+          }}
+        >
+          <div className="site-container relative z-10">
+            <Breadcrumbs items={breadcrumbs} light />
+            <p className="t-index mt-5 text-cta-bright">Location</p>
+            <h1 className="mt-5 mb-4 max-w-4xl font-display text-[clamp(2rem,5vw,3.5rem)] font-medium leading-[1.04] text-on-dark-hi text-balance" style={{ letterSpacing: "var(--tracking-display)" }}>
               {suburb.h1}
             </h1>
-            <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
+            <p className="mb-7 max-w-2xl text-base leading-relaxed text-on-dark-hi/80 sm:text-lg">
               {heroIntro}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:items-center mb-4">
@@ -79,13 +85,13 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 href={BUSINESS.phoneTel}
                 location={`location_hero_${suburb.slug}`}
                 ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                className={cn(buttonVariants({ size: "lg", variant: "inkOutline" }), "w-full sm:w-auto")}
               >
                 <Phone className="h-5 w-5" aria-hidden="true" />
                 Call {BUSINESS.phoneDisplay}
               </TrackedPhoneLink>
             </div>
-            <p className="text-sm text-foreground/70">
+            <p className="text-sm text-on-dark-hi/70">
               Pickup included when we buy · Payment confirmed at pickup · Cars assessed as-is · Brisbane-based
             </p>
           </div>

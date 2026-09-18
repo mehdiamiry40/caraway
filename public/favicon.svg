@@ -1,11 +1,12 @@
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180" rx="36" fill="#5B3FBE"/>
+  <rect width="180" height="180" fill="#0A2F68"/>
   <path d="M44 104 L52 74 C54 66 61 61 69 61 L111 61 C119 61 126 66 128 74 L136 104 L136 124 C136 127 134 129 131 129 L124 129 C121 129 119 127 119 124 L119 118 L61 118 L61 124 C61 127 59 129 56 129 L49 129 C46 129 44 127 44 124 Z" fill="#FFFFFF"/>
-  <path d="M62 76 C63 73 66 71 69 71 L111 71 C114 71 117 73 118 76 L123 94 L57 94 Z" fill="#5B3FBE"/>
-  <circle cx="64" cy="118" r="11" fill="#5B3FBE"/>
+  <path d="M62 76 C63 73 66 71 69 71 L111 71 C114 71 117 73 118 76 L123 94 L57 94 Z" fill="#0A2F68"/>
+  <circle cx="64" cy="118" r="11" fill="#0A2F68"/>
   <circle cx="64" cy="118" r="5" fill="#FFFFFF"/>
-  <circle cx="116" cy="118" r="11" fill="#5B3FBE"/>
+  <circle cx="116" cy="118" r="11" fill="#0A2F68"/>
   <circle cx="116" cy="118" r="5" fill="#FFFFFF"/>
   <rect x="48" y="100" width="10" height="6" rx="2" fill="#FFFFFF"/>
   <rect x="122" y="100" width="10" height="6" rx="2" fill="#FFFFFF"/>
+  <rect x="44" y="132" width="92" height="10" fill="#DC1F4B"/>
 </svg>

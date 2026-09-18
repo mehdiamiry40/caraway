@@ -151,7 +151,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
     <div className="flex items-center gap-1 lg:hidden">
       <a
         href={BUSINESS.phoneTel}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label={`Call ${BUSINESS.phoneDisplay}`}
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
@@ -161,7 +161,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         ref={triggerRef}
         type="button"
         onClick={openMenu}
-        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label="Menu"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
@@ -181,15 +181,15 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t border-border bg-card p-0 text-foreground shadow-lg backdrop:bg-ink-deep/45 lg:hidden"
       >
         <div className="min-h-full px-5 py-5 sm:px-6">
-          <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border/30 pb-2">
-            <p id="mobile-navigation-title" className="font-display text-lg text-foreground">
+          <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border pb-2">
+            <p id="mobile-navigation-title" className="font-display text-lg font-semibold text-foreground">
               Menu
             </p>
             <button
               ref={closeButtonRef}
               type="button"
               onClick={closeMenu}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               aria-label="Close menu"
             >
               <X aria-hidden="true" className="h-6 w-6" />
@@ -198,7 +198,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
 
           <nav className="flex flex-col gap-0.5" aria-label="Mobile primary navigation">
             <details className="group/services">
-              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between rounded-lg border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
+              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between rounded-lg border-b border-border px-2 py-3.5 font-display text-base font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
                 <span>Services</span>
                 <ChevronDown
                   aria-hidden="true"
@@ -211,7 +211,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                     <Link
                       href={service.href}
                       onClick={closeMenu}
-                      className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                      className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                     >
                       {service.label}
                     </Link>
@@ -234,7 +234,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
-                className="-mx-2 flex min-h-[52px] items-center rounded-lg border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+                className="-mx-2 flex min-h-[52px] items-center rounded-lg border-b border-border px-2 py-3.5 font-display text-base font-semibold text-foreground transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               >
                 {link.label}
               </Link>

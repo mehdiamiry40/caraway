@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
     description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
-    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

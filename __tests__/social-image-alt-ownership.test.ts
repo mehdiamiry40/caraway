@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { join } from "node:path";
 import sharp from "sharp";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
+vi.mock("next/font/google", () => ({
+  Open_Sans: () => ({ variable: "--font-open-sans" }),
+  Barlow: () => ({ variable: "--font-barlow" }),
+}));
 import { metadata as rootMetadata } from "@/app/layout";
 import { metadata as homeMetadata } from "@/app/page";
 import { metadata as aboutMetadata } from "@/app/about/page";
@@ -28,10 +33,12 @@ const CASH_QUERY = /cash for cars brisbane/i;
 const REMOVAL_QUERY = /car removal brisbane/i;
 const PRIMARY_QUERIES = /cash for cars brisbane|car removal brisbane/i;
 const SHARED_IMAGE_PATHS = [
+  "/og.png",
   "/images/og-card.jpg",
   "/images/tow-truck-hero.webp",
 ] as const;
 const SHARED_IMAGE_DIMENSIONS = new Map([
+  ["/og.png", { width: 1200, height: 630 }],
   ["/images/og-card.jpg", { width: 1200, height: 630 }],
   ["/images/tow-truck-hero.webp", { width: 800, height: 800 }],
 ]);

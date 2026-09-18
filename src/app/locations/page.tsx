@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       "Explore Caraway's Greater Brisbane vehicle pickup areas and the details needed to confirm collection for your address.",
     images: [
       {
-        url: "/images/og-card.jpg",
+        url: "/og.png",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Greater Brisbane Vehicle Pickup Areas | Caraway",
     description:
       "Explore Caraway's Greater Brisbane vehicle pickup areas and confirm coverage for your exact address.",
-    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

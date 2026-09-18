@@ -6,6 +6,7 @@ import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { FAQ } from "@/components/sections/FAQ";
 import { SellingSafelySection } from "@/components/sections/SellingSafelySection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { CarTypes } from "@/components/sections/CarTypes";
 
 export default function HomeBelowFold() {
   return (
@@ -15,8 +16,9 @@ export default function HomeBelowFold() {
           links. */}
       <QuoteForm source="home" />
       <TrustBadges />
-      <HowItWorks />
+      <CarTypes />
       <WhyUs />
+      <HowItWorks />
       <ServiceAreas />
       <FAQ />
       <SellingSafelySection />

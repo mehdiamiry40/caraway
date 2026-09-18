@@ -112,20 +112,26 @@ export default function ServicePageTemplate({
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
-          <div className="site-container relative">
-            <Breadcrumbs items={breadcrumbs} />
-            <p className="eyebrow mt-5 mb-3">Service</p>
-            <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[1.06] text-primary text-balance max-w-4xl mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
+      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none md:pb-0">
+        <section
+          className="relative overflow-hidden bg-ink-deep bg-cover bg-center py-16 text-on-dark-hi lg:py-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(90deg, rgba(6,26,57,.94), rgba(10,47,104,.76) 62%, rgba(69,5,22,.26)), url('/images/tow-truck-hero.webp')",
+          }}
+        >
+          <div className="site-container relative z-10">
+            <Breadcrumbs items={breadcrumbs} light />
+            <p className="t-index mt-5 text-cta-bright">Service</p>
+            <h1 className="mt-5 mb-4 max-w-4xl font-display text-[clamp(2rem,5vw,3.5rem)] font-medium leading-[1.04] text-on-dark-hi text-balance" style={{ letterSpacing: "var(--tracking-display)" }}>
               {service.h1}
             </h1>
-            <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
+            <p className="mb-7 max-w-2xl text-base leading-relaxed text-on-dark-hi/80 sm:text-lg">
               {heroIntro}
             </p>
             <ScrollToQuoteCTA source={service.slug} />
             {service.reviewedAt && (
-              <p className="mt-4 text-xs text-foreground/65">
+              <p className="mt-4 text-xs text-on-dark-hi/65">
                 Content reviewed{" "}
                 <time dateTime={service.reviewedAt}>
                   {new Intl.DateTimeFormat("en-AU", {
