@@ -9,11 +9,11 @@ vi.mock("react-dom", async (importOriginal) => {
 });
 
 describe("Hero assessment copy", () => {
-  it("describes a clear offer rather than an instant estimate", () => {
+  it("describes a requested human review rather than an instant estimate", () => {
     const markup = renderToStaticMarkup(<Hero />);
 
-    expect(markup).toContain("A simpler way to sell your car in Brisbane.");
-    expect(markup).toContain("receive a clear offer");
+    expect(markup).toContain("Request an assessment in minutes");
+    expect(markup).toContain("Human-reviewed vehicle assessment");
     expect(markup).not.toContain("Estimate from four details");
     expect(markup).not.toContain("Get an estimate in minutes");
   });

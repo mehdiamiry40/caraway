@@ -10,8 +10,8 @@ interface Props {
 
 export function ServicesDropdownClient({ serviceLinks }: Props) {
   return (
-    <DisclosureAutoClose className="group relative h-full border-l border-border">
-      <summary className="flex h-full min-w-28 cursor-pointer list-none items-center justify-center gap-1 rounded-sm border-r border-border px-5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset [&::-webkit-details-marker]:hidden">
+    <DisclosureAutoClose className="group relative h-full">
+      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-sm px-3 py-3 text-sm font-semibold text-primary/85 transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
         Services
         <ChevronDown
           aria-hidden="true"
@@ -24,7 +24,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
           <li key={item.href}>
             <Link
               href={item.href}
-              className="block border-l-2 border-transparent px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-150 hover:border-accent hover:bg-secondary hover:text-accent-ink focus-visible:bg-secondary focus-visible:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset"
+              className="block border-l-2 border-transparent px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-secondary/70 hover:text-primary focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {item.label}
             </Link>

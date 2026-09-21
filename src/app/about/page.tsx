@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
     images: [
       {
-        url: "/og.png",
+        url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "About Caraway — Brisbane Vehicle Buyer",
     description:
       "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
-    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 

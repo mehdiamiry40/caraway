@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Mail, Phone, Star } from "lucide-react";
+import { Mail, Phone, Star } from "lucide-react";
 import { AUTHORITY_OUTBOUND_LINKS } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
-import { buttonVariants } from "@/components/ui/button";
 
 const serviceLinks = [
   { label: "All Services", href: "/services" },
@@ -41,29 +40,17 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-on-dark-hi/70 hover:text-cta-bright transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
+  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "border-b border-on-dark-hi/25 pb-3 font-display text-xl font-semibold text-on-dark-hi";
+  "font-display text-xs text-on-dark-hi mb-5 tracking-[0.12em] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-0.5 before:bg-cta";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-ink-deep text-on-dark pl-safe pr-safe">
-      <div className="border-b border-on-dark-hi/20">
-        <div className="site-container flex flex-col gap-7 py-10 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="t-index text-cta-bright">Ready when you are</p>
-            <h2 className="mt-3 font-display text-3xl font-medium text-on-dark-hi sm:text-4xl">
-              Start with a free, no-obligation quote.
-            </h2>
-          </div>
-          <Link href="/#quote-form" className={buttonVariants({ size: "default" })}>
-            Tell us about your car <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
-      </div>
+    <footer className="relative bg-ink text-on-dark pl-safe pr-safe">
+      <div className="h-1 bg-gradient-to-r from-cta via-accent to-white" aria-hidden="true" />
       <div className="site-container py-14 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10">
           {/* Brand + contact */}
@@ -86,7 +73,7 @@ export function Footer() {
                 className="inline-flex min-h-11 items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                 ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
-              <Phone aria-hidden="true" className="h-4 w-4 text-cta-bright" />
+                <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
                 <span>{BUSINESS.phoneDisplay}</span>
               </TrackedPhoneLink>
               <a

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
     images: [
       {
-        url: "/og.png",
+        url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
         alt: SHARED_PICKUP_IMAGE_ALT,
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sitemap",
     description: "Browse public pages on caraway.au — services, Brisbane coverage, practical guides, and company information in one place.",
-    images: [{ url: "/og.png", alt: SHARED_PICKUP_IMAGE_ALT }],
+    images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
 
