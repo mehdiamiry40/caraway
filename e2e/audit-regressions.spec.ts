@@ -55,12 +55,19 @@ for (const path of ["/", "/contact"]) {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto(`${baseURL}${path}`);
-    const form = page.locator("form");
-    await expect(form).toHaveAttribute("method", "post");
-    await expect(form).toHaveAttribute("action", "/api/forms/unavailable");
-    await expect(form.locator("fieldset")).toHaveAttribute("disabled", "");
-    await expect(form.locator('button[type="submit"]')).toBeDisabled();
-    await expect(form.getByRole("link", { name: /call 0481/i })).toBeVisible();
+    // The home page carries both the hero form and the full quote form, so
+    // every lead form on the page has to degrade the same way.
+    const forms = page.locator("form");
+    const formCount = await forms.count();
+    expect(formCount).toBeGreaterThan(0);
+    for (let i = 0; i < formCount; i++) {
+      const form = forms.nth(i);
+      await expect(form).toHaveAttribute("method", "post");
+      await expect(form).toHaveAttribute("action", "/api/forms/unavailable");
+      await expect(form.locator("fieldset")).toHaveAttribute("disabled", "");
+      await expect(form.locator('button[type="submit"]')).toBeDisabled();
+      await expect(form.getByRole("link", { name: /call 0481/i })).toBeVisible();
+    }
     const response = await request.post("/api/forms/unavailable", {
       form: {
         name: "Synthetic fixture",
