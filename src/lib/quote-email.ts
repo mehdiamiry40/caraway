@@ -3,6 +3,14 @@ import { getLeadConfiguration } from "./lead-config";
 import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import { CONDITION_LABELS, type QuoteFormValues } from "./quote-schema";
 
+/** Expected price is captured in whole dollars, so no cents are rendered. */
+const AUD_FORMATTER = new Intl.NumberFormat("en-AU", {
+  style: "currency",
+  currency: "AUD",
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0,
+});
+
 /**
  * Outcome of an email notification attempt.
  *
@@ -45,6 +53,12 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ["Year", String(data.year)],
     ["Condition", conditionLabel],
     ["Address", data.address || "—"],
+    [
+      "Expected price",
+      data.expectedPrice === undefined
+        ? "Not supplied"
+        : AUD_FORMATTER.format(data.expectedPrice),
+    ],
     ...(data.details
       ? ([["Vehicle/access details", data.details]] as Array<[string, string]>)
       : []),

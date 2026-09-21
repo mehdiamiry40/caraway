@@ -12,6 +12,7 @@ test("submits the homepage quote form", async ({ page }) => {
   await page.locator("#quote-name").fill("Browser Monitor");
   await page.locator("#quote-phone").fill("0400000000");
   await page.locator("#quote-address").fill("1 Queen Street, Brisbane QLD 4000");
+  await page.locator("#quote-expected-price").fill("3500");
   await page.getByRole("button", { name: "Get my quote" }).click();
 
   await expect(

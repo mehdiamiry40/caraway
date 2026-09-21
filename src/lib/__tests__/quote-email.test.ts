@@ -89,3 +89,25 @@ describe("buildQuoteEmailContent — header injection protection", () => {
     expect(subject).toContain("Bcc: attacker@x"); // sanitized to a single line
   });
 });
+
+describe("buildQuoteEmailContent — expected price", () => {
+  it("formats a supplied amount as whole Australian dollars", () => {
+    const { text, html } = buildQuoteEmailContent({
+      ...baseValid,
+      expectedPrice: 3500,
+    });
+    expect(text).toMatch(/Expected price: \$3,500$/m);
+    expect(html).toContain("$3,500");
+  });
+
+  it("marks the row as not supplied when the seller left it blank", () => {
+    const { text, html } = buildQuoteEmailContent(baseValid);
+    expect(text).toMatch(/Expected price: Not supplied$/m);
+    expect(html).toContain("Not supplied");
+  });
+
+  it("renders a zero asking price rather than treating it as missing", () => {
+    const { text } = buildQuoteEmailContent({ ...baseValid, expectedPrice: 0 });
+    expect(text).toMatch(/Expected price: \$0$/m);
+  });
+});

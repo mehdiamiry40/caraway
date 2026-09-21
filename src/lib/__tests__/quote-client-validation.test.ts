@@ -80,6 +80,17 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["address too long", { ...baseValid, address: "x".repeat(501) }],
   ["details too long", { ...baseValid, details: "x".repeat(2001) }],
   ["filled honeypot", { ...baseValid, honeypot: "bot" }],
+  ["blank expected price", { ...baseValid, expectedPrice: "" }],
+  ["whitespace expected price", { ...baseValid, expectedPrice: "   " }],
+  ["expected price supplied", { ...baseValid, expectedPrice: "3500" }],
+  ["expected price with $ and commas", { ...baseValid, expectedPrice: "$3,500" }],
+  ["expected price as a number", { ...baseValid, expectedPrice: 3500 }],
+  ["zero expected price", { ...baseValid, expectedPrice: "0" }],
+  ["non-numeric expected price", { ...baseValid, expectedPrice: "about 3500" }],
+  ["fractional expected price", { ...baseValid, expectedPrice: "3500.50" }],
+  ["negative expected price", { ...baseValid, expectedPrice: "-1" }],
+  ["expected price at the limit", { ...baseValid, expectedPrice: "1000000" }],
+  ["expected price above the limit", { ...baseValid, expectedPrice: "1000001" }],
 ];
 
 describe("quote client validation parity", () => {
