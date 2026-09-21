@@ -3,6 +3,7 @@ import {
   auPhoneRegex,
   CONTACT_VALIDATION_LIMITS,
   CONTACT_VALIDATION_MESSAGES,
+  normalizeExpectedPrice,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
   sanitizeLine,
@@ -25,6 +26,35 @@ const honeypotField = z.pipe(
   ),
   z.string().check(
     z.refine((v) => v === "", QUOTE_VALIDATION_MESSAGES.honeypotInvalid),
+  ),
+);
+
+/**
+ * Seller's asking price in whole AUD. Optional: a blank entry stays absent
+ * from the payload rather than being recorded as $0.
+ */
+const optionalExpectedPrice = z.pipe(
+  z.pipe(
+    z.optional(z.union([z.string(), z.number()])),
+    z.transform((value: string | number | undefined) =>
+      normalizeExpectedPrice(value),
+    ),
+  ),
+  z.optional(
+    z.number(QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid).check(
+      z.refine(
+        (v) => Number.isInteger(v),
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      ),
+      z.gte(
+        QUOTE_VALIDATION_LIMITS.expectedPrice.min,
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      ),
+      z.lte(
+        QUOTE_VALIDATION_LIMITS.expectedPrice.max,
+        QUOTE_VALIDATION_MESSAGES.expectedPriceTooHigh,
+      ),
+    ),
   ),
 );
 
@@ -122,6 +152,7 @@ export const quoteFormSchema = z.object({
       z.overwrite(sanitizeLine),
     ),
   ),
+  expectedPrice: optionalExpectedPrice,
   honeypot: honeypotField,
 });
 

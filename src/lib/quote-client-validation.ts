@@ -7,6 +7,7 @@ import type {
 import type { QuoteFormInput } from "@/lib/quote-schema";
 import {
   auPhoneRegex,
+  normalizeExpectedPrice,
   quoteConditionValues,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
@@ -150,6 +151,30 @@ export function validateQuoteFormForClient(
         setError(errors, "details", QUOTE_VALIDATION_MESSAGES.detailsTooLong);
       }
       normalized.details = sanitizeLine(trimmed);
+    }
+  }
+
+  // A blank expected price stays absent from the payload rather than being
+  // normalized to $0.
+  const expectedPrice = normalizeExpectedPrice(raw.expectedPrice);
+  if (expectedPrice !== undefined) {
+    if (
+      !Number.isInteger(expectedPrice) ||
+      expectedPrice < QUOTE_VALIDATION_LIMITS.expectedPrice.min
+    ) {
+      setError(
+        errors,
+        "expectedPrice",
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      );
+    } else if (expectedPrice > QUOTE_VALIDATION_LIMITS.expectedPrice.max) {
+      setError(
+        errors,
+        "expectedPrice",
+        QUOTE_VALIDATION_MESSAGES.expectedPriceTooHigh,
+      );
+    } else {
+      normalized.expectedPrice = expectedPrice;
     }
   }
 

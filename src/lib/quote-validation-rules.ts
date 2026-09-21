@@ -21,6 +21,7 @@ export const QUOTE_VALIDATION_LIMITS = {
   year: { min: 1950, max: new Date().getFullYear() },
   address: { min: 5, max: 500 },
   details: { max: 2000 },
+  expectedPrice: { min: 0, max: 1_000_000 },
 } as const;
 
 export const QUOTE_VALIDATION_MESSAGES = {
@@ -37,6 +38,8 @@ export const QUOTE_VALIDATION_MESSAGES = {
   addressRequired: "Please enter a full pickup address",
   addressTooLong: "Address is too long",
   detailsTooLong: "Vehicle and access details are too long",
+  expectedPriceInvalid: "Enter a whole dollar amount, e.g. 3500",
+  expectedPriceTooHigh: "Enter an amount up to $1,000,000",
   honeypotInvalid: "Invalid form submission",
 } as const;
 
@@ -58,4 +61,19 @@ export function stripPhone(value: string): string {
 
 export function sanitizeLine(value: string): string {
   return value.replace(/[\r\n]+/g, " ");
+}
+
+/**
+ * Expected price is optional, so a blank entry means "not supplied" rather
+ * than zero. People type the amount with a dollar sign and thousands
+ * separators, which are stripped before parsing; anything still unparseable
+ * becomes NaN so the caller reports it as an invalid amount.
+ */
+export function normalizeExpectedPrice(value: unknown): number | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (typeof value === "number") return value;
+  if (typeof value !== "string") return Number.NaN;
+  const cleaned = value.trim().replace(/^\$/, "").replace(/,/g, "").trim();
+  if (cleaned === "") return undefined;
+  return Number(cleaned);
 }

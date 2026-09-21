@@ -79,6 +79,7 @@ describe("QuoteForm", () => {
     expect(screen.getByLabelText(/^phone/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/pickup address/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/vehicle and access details/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/expected price/i)).toBeInTheDocument();
     expect(screen.queryByText(/Brisbane pickup suburbs only/i)).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /get my quote/i })).toBeInTheDocument();
   });
@@ -195,6 +196,43 @@ describe("QuoteForm", () => {
     expect(issuerFetchMock).toHaveBeenCalledTimes(1);
     expect(JSON.parse(sessionStorage.getItem("caraway:submission:quote")!)).toEqual({ id: issuedId });
     expect(trackEventMock).not.toHaveBeenCalled();
+  });
+
+  it("sends the expected price as a number and keeps a blank entry out of the payload", async () => {
+    submitQuoteMock.mockResolvedValue({ success: true });
+    const user = userEvent.setup();
+
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+    await user.type(screen.getByLabelText(/expected price/i), "$3,500");
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
+    expect(submitQuoteMock.mock.calls[0][0]).toMatchObject({ expectedPrice: 3500 });
+
+    cleanup();
+    submitQuoteMock.mockReset().mockResolvedValue({ success: true });
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
+    expect(submitQuoteMock.mock.calls[0][0]).not.toHaveProperty("expectedPrice");
+  });
+
+  it("rejects an unusable expected price without calling the server action", async () => {
+    const user = userEvent.setup();
+
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+    await user.type(screen.getByLabelText(/expected price/i), "about 3500");
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    expect(
+      await screen.findByText(/enter a whole dollar amount/i),
+    ).toBeInTheDocument();
+    expect(submitQuoteMock).not.toHaveBeenCalled();
+    expect(issuerFetchMock).not.toHaveBeenCalled();
   });
 
   it("does not invoke the action or discard input if the ID issuer fails", async () => {

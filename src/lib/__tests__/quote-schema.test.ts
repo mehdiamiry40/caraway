@@ -320,3 +320,68 @@ describe("quoteFormSchema — condition enum", () => {
     expect(result.success).toBe(false);
   });
 });
+
+describe("quoteFormSchema — expected price", () => {
+  it("leaves the field absent when it is omitted or blank", () => {
+    for (const expectedPrice of [undefined, "", "   "]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBeUndefined();
+      }
+    }
+  });
+
+  it("coerces a typed amount to a number", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: "3500" });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.expectedPrice).toBe(3500);
+    }
+  });
+
+  it("accepts a dollar sign and thousands separators", () => {
+    for (const input of ["$3500", "3,500", "$3,500", " $3,500 "]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: input });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBe(3500);
+      }
+    }
+  });
+
+  it("accepts zero and the upper limit", () => {
+    for (const [input, parsed] of [["0", 0], ["1000000", 1_000_000]] as const) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: input });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBe(parsed);
+      }
+    }
+  });
+
+  it("rejects non-numeric, fractional and negative amounts", () => {
+    for (const expectedPrice of ["about 3500", "3500.50", "-1"]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues[0].message).toBe(
+          "Enter a whole dollar amount, e.g. 3500",
+        );
+      }
+    }
+  });
+
+  it("rejects an amount above the upper limit", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      expectedPrice: "1000001",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues[0].message).toBe(
+        "Enter an amount up to $1,000,000",
+      );
+    }
+  });
+});

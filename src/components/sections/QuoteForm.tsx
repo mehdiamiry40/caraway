@@ -25,6 +25,7 @@ const fieldIds = {
   model: "quote-model",
   year: "quote-year",
   condition: "quote-condition",
+  expectedPrice: "quote-expected-price",
   address: "quote-address",
   details: "quote-details",
 } as const;
@@ -53,6 +54,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
     defaultValues: {
       address: "",
       details: "",
+      expectedPrice: "",
       honeypot: "",
     },
   });
@@ -265,6 +267,46 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         </p>
                       )}
                     </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor={fieldIds.expectedPrice} className="block text-sm text-foreground mb-2.5">
+                      Expected price <span className="text-muted-foreground">(optional)</span>
+                    </label>
+                    <div className="relative">
+                      <span
+                        className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-base text-muted-foreground"
+                        aria-hidden
+                      >
+                        $
+                      </span>
+                      <Input
+                        type="text"
+                        inputMode="numeric"
+                        autoComplete="off"
+                        enterKeyHint="next"
+                        maxLength={12}
+                        placeholder="3500"
+                        className="pl-8"
+                        aria-invalid={!!errors.expectedPrice}
+                        aria-describedby={
+                          errors.expectedPrice
+                            ? `${fieldIds.expectedPrice}-error quote-expected-price-help`
+                            : "quote-expected-price-help"
+                        }
+                        {...register("expectedPrice")}
+                        id={fieldIds.expectedPrice}
+                      />
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-expected-price-help">
+                      Whole Australian dollars. Tell us what you hope to get and we&apos;ll say whether it is realistic — leave it blank if you&apos;d rather we suggest a figure.
+                    </p>
+                    {errors.expectedPrice && (
+                      <p id={`${fieldIds.expectedPrice}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        {errors.expectedPrice.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
