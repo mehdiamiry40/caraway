@@ -46,7 +46,13 @@ test("known surrounding suburbs resolve and zero results are announced", async (
   await expect(page.getByRole("status")).toContainText("0");
 });
 
-for (const path of ["/", "/contact"]) {
+// The home page carries both the hero form and the full quote form; every
+// other page has one. Pinning the count catches a form that stopped rendering
+// as well as one that degrades wrongly.
+for (const [path, expectedForms] of [
+  ["/", 2],
+  ["/contact", 1],
+] as const) {
   test(`no-JavaScript ${path} keeps form values out of URLs`, async ({
     browser,
     baseURL,
@@ -55,12 +61,10 @@ for (const path of ["/", "/contact"]) {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto(`${baseURL}${path}`);
-    // The home page carries both the hero form and the full quote form, so
-    // every lead form on the page has to degrade the same way.
+    // Every lead form on the page has to degrade the same way.
     const forms = page.locator("form");
-    const formCount = await forms.count();
-    expect(formCount).toBeGreaterThan(0);
-    for (let i = 0; i < formCount; i++) {
+    await expect(forms).toHaveCount(expectedForms);
+    for (let i = 0; i < expectedForms; i++) {
       const form = forms.nth(i);
       await expect(form).toHaveAttribute("method", "post");
       await expect(form).toHaveAttribute("action", "/api/forms/unavailable");
