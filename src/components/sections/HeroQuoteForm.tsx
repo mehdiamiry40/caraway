@@ -45,9 +45,9 @@ const CONDITION_OPTIONS = [
 ];
 
 /** 16px text keeps iOS from zooming on focus; only the box shrinks. */
-const controlClass = "h-11 sm:h-11 px-3";
+const controlClass = "h-10 sm:h-10 px-2.5";
 // py-0: the shared select sets py-3, which clips its text at this height.
-const selectClass = "h-11 sm:h-11 py-0 pl-3 pr-9";
+const selectClass = "h-10 sm:h-10 py-0 pl-2.5 pr-8";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
@@ -125,13 +125,12 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
   return (
     // The card sits on the dark hero band, which sets white text: without an
     // explicit card foreground, inputs and selects render white on white.
-    <div className="w-full max-w-md rounded-lg border border-border bg-card p-4 text-left text-card-foreground shadow-[0_28px_56px_-30px_hsl(var(--shadow-color)/0.85)] sm:p-5">
-      <h2 className="font-display text-lg font-bold leading-tight text-foreground sm:text-xl">
+    <div className="w-full max-w-sm rounded-lg border border-border bg-card p-3.5 text-left text-card-foreground shadow-[0_28px_56px_-30px_hsl(var(--shadow-color)/0.85)] sm:p-4">
+      <h2 className="font-display text-base font-bold leading-tight text-foreground sm:text-lg">
         Get a free quote
       </h2>
-      <p className="mt-1 text-xs leading-snug text-muted-foreground">
-        Seven details, no obligation. We review every enquiry and reply during
-        business hours.
+      <p className="mt-0.5 text-xs leading-snug text-muted-foreground">
+        Seven details, no obligation. We reply in business hours.
       </p>
 
       {isSuccess ? (
@@ -139,15 +138,15 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="mt-4 flex flex-col items-center gap-3 py-6 text-center"
+          className="mt-3 flex flex-col items-center gap-2.5 py-5 text-center"
         >
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-            <CheckCircle2 className="h-6 w-6 text-accent" aria-hidden />
+          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10">
+            <CheckCircle2 className="h-5 w-5 text-accent" aria-hidden />
           </span>
-          <h3 className="font-display text-lg text-primary">
+          <h3 className="font-display text-base text-primary">
             Thanks — we&apos;ve got your details
           </h3>
-          <p className="text-sm leading-relaxed text-foreground/80">
+          <p className="text-xs leading-relaxed text-foreground/80">
             Our team will review the supplied details and contact you by phone
             during business hours.
           </p>
@@ -164,7 +163,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
         </div>
       ) : (
         <>
-          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-4 space-y-3">
+          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-3 space-y-2">
             <div hidden aria-hidden="true">
               <label htmlFor="hero-quote-website">Website</label>
               <input
@@ -176,7 +175,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               />
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.name} className="sr-only">
                   Your name (required)
@@ -218,7 +217,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2 sm:gap-3">
+            <div className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.make} className="sr-only">
                   Car make (required)
@@ -258,7 +257,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2 sm:gap-3">
+            <div className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.year} className="sr-only">
                   Year (required)
@@ -327,7 +326,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               <FieldError id={`${fieldIds.address}-error`} message={errors.address?.message} />
             </div>
 
-            <Button type="submit" className="w-full" isLoading={isSubmitting}>
+            <Button type="submit" className="h-11 w-full text-[0.9375rem]" isLoading={isSubmitting}>
               {isSubmitting ? "Sending your details..." : "Get a free quote"}
             </Button>
 
@@ -357,7 +356,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             )}
 
-            <p className="text-center text-xs leading-snug text-muted-foreground">
+            <p className="text-center text-[0.6875rem] leading-snug text-muted-foreground">
               By submitting, you agree we may contact you about this enquiry. See
               our{" "}
               <Link
@@ -370,7 +369,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
             </p>
           </LeadForm>
 
-          <p className="mt-3 text-center text-xs leading-snug text-muted-foreground">
+          <p className="mt-2.5 text-center text-[0.6875rem] leading-snug text-muted-foreground">
             Want to add a price expectation or access notes?{" "}
             <Link
               href="/#quote-form"
