@@ -19,9 +19,10 @@ import type { QuoteFormInput } from "@/lib/quote-schema";
 import { BUSINESS } from "@/lib/site";
 
 /**
- * Compact hero version of the quote form. It carries only the fields the
- * quote schema requires — expected price and the free-text vehicle notes stay
- * on the full form below the fold — so the card fits beside the hero copy.
+ * Compact hero version of the quote form, and the home page's only quote
+ * surface. It carries only the fields the quote schema requires — expected
+ * price and the free-text vehicle notes are collected on the full form used by
+ * the service and suburb pages — so the card fits beside the hero copy.
  *
  * Labels are visually hidden and the placeholder names the field: at this size
  * a label row per field doubles the card's height.
@@ -362,16 +363,6 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </Link>
             </p>
           </LeadForm>
-
-          <p className="mt-2 text-center text-[0.6875rem] leading-snug text-muted-foreground">
-            <Link
-              href="/#quote-form"
-              prefetch={false}
-              className="font-medium text-primary underline underline-offset-2"
-            >
-              Get my quote on the full form
-            </Link>
-          </p>
         </>
       )}
     </div>
