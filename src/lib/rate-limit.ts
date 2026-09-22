@@ -4,8 +4,6 @@ import { Redis } from "@upstash/redis";
 export type RateLimitScope =
   | "forms"
   | "forms-global"
-  | "places"
-  | "places-global"
   | "chat"
   | "chat-global";
 
@@ -23,11 +21,6 @@ const POLICIES: Record<RateLimitScope, { limit: number; prefix: string }> = {
   // Deployment-wide ceiling for schema-valid lead attempts. This is consumed
   // once immediately before email/webhook work, not by malformed requests.
   "forms-global": { limit: 100, prefix: "caraway:ratelimit:forms-global" },
-  places: { limit: 30, prefix: "caraway:ratelimit:places" },
-  // Site-wide circuit breaker for the Places proxy (identifier "global").
-  // Caps total upstream spend per minute no matter how many IPs an abuser
-  // rotates through; legitimate traffic rarely exceeds a few calls/min.
-  "places-global": { limit: 300, prefix: "caraway:ratelimit:places-global" },
   // AI requests have a real per-call cost. Keep the visitor limit generous
   // enough for a useful conversation, while the global circuit breaker caps
   // spend even when an attacker rotates IP addresses.
