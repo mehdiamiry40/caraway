@@ -130,15 +130,15 @@ export const quoteFormSchema = z.object({
   condition: z.enum(quoteConditionValues, {
     message: QUOTE_VALIDATION_MESSAGES.conditionRequired,
   }),
-  address: z.string().check(
+  suburb: z.string().check(
     z.trim(),
     z.minLength(
-      QUOTE_VALIDATION_LIMITS.address.min,
-      QUOTE_VALIDATION_MESSAGES.addressRequired,
+      QUOTE_VALIDATION_LIMITS.suburb.min,
+      QUOTE_VALIDATION_MESSAGES.suburbRequired,
     ),
     z.maxLength(
-      QUOTE_VALIDATION_LIMITS.address.max,
-      QUOTE_VALIDATION_MESSAGES.addressTooLong,
+      QUOTE_VALIDATION_LIMITS.suburb.max,
+      QUOTE_VALIDATION_MESSAGES.suburbTooLong,
     ),
     z.overwrite(sanitizeLine),
   ),

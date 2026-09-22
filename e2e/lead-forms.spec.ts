@@ -11,9 +11,8 @@ test("submits the homepage hero quote form", async ({ page }) => {
   await page.locator("#hero-quote-condition").selectOption("running");
   await page.locator("#hero-quote-name").fill("Browser Monitor");
   await page.locator("#hero-quote-phone").fill("0400000000");
-  await page
-    .locator("#hero-quote-address")
-    .fill("1 Queen Street, Brisbane QLD 4000");
+  await page.locator("#hero-quote-suburb").fill("Brisbane");
+  await page.locator("#hero-quote-expected-price").fill("3500");
   await page.getByRole("button", { name: "Submit" }).click();
 
   await expect(
@@ -22,7 +21,7 @@ test("submits the homepage hero quote form", async ({ page }) => {
 });
 
 // The full quote form is no longer on the home page; a service page is the
-// remaining surface that carries expected price and the vehicle notes.
+// remaining surface that carries the free-text vehicle notes.
 test("submits the full quote form on a service page", async ({ page }) => {
   await page.goto("/cash-for-cars-brisbane");
 
@@ -34,7 +33,7 @@ test("submits the full quote form on a service page", async ({ page }) => {
   await page.locator("#quote-condition").selectOption("running");
   await page.locator("#quote-name").fill("Browser Monitor");
   await page.locator("#quote-phone").fill("0400000000");
-  await page.locator("#quote-address").fill("1 Queen Street, Brisbane QLD 4000");
+  await page.locator("#quote-suburb").fill("Brisbane");
   await page.locator("#quote-expected-price").fill("3500");
   // The service hero has its own "Get my quote" button, so scope the submit
   // to the quote form section.

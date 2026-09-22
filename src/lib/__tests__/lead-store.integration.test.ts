@@ -40,7 +40,7 @@ describe.skipIf(!enabled)("Redis lead store atomicity", () => {
         model: "Fixture",
         year: 2000,
         condition: "running",
-        address: "Synthetic test address",
+        suburb: "Brisbane",
         honeypot: "",
       },
       channels: {

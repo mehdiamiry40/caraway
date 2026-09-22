@@ -14,7 +14,7 @@ vi.mock("@/lib/lead-processor", async (importOriginal) => ({
 
 const quote: QuoteFormValues = {
   name: "Jane Doe", phone: "0412345678", make: "Toyota", model: "Hilux", year: 2015,
-  condition: "running", address: "12 Example St, Brisbane", honeypot: "",
+  condition: "running", suburb: "Brisbane", honeypot: "",
 };
 let delivery: typeof import("@/actions/lead-delivery");
 let storage: typeof import("@/lib/lead-store");

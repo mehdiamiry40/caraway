@@ -17,32 +17,6 @@ vi.mock("@/lib/analytics", () => ({
   trackEvent: (...args: unknown[]) => trackEventMock(...args),
 }));
 
-// AddressAutocomplete owns network/cookie/Places logic that's tested
-// elsewhere. For form-level tests, swap it for a plain input.
-vi.mock("@/components/ui/address-autocomplete", () => ({
-  AddressAutocomplete: ({
-    id,
-    value,
-    onChange,
-    onBlur,
-    placeholder,
-  }: {
-    id?: string;
-    value: string;
-    onChange: (next: string) => void;
-    onBlur?: () => void;
-    placeholder?: string;
-  }) => (
-    <input
-      id={id}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-      onBlur={onBlur}
-    />
-  ),
-}));
-
 import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
 
 beforeEach(() => {
@@ -67,10 +41,7 @@ async function fillRequiredFields(user: ReturnType<typeof userEvent.setup>) {
   await user.selectOptions(screen.getByLabelText(/^condition/i), "running");
   await user.type(screen.getByLabelText(/your name/i), "Jane Smith");
   await user.type(screen.getByLabelText(/^phone/i), "0412345678");
-  await user.type(
-    screen.getByLabelText(/pickup address/i),
-    "123 Smith St, Brisbane QLD 4000",
-  );
+  await user.type(screen.getByLabelText(/^suburb/i), "Toowong");
 }
 
 describe("HeroQuoteForm", () => {
@@ -83,10 +54,10 @@ describe("HeroQuoteForm", () => {
     expect(screen.getByLabelText(/car model/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^year/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^condition/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/pickup address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^suburb/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/expected price/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /^submit$/i })).toBeInTheDocument();
-    // Expected price and vehicle notes stay on the full form below the fold.
-    expect(screen.queryByLabelText(/expected price/i)).not.toBeInTheDocument();
+    // The free-text vehicle notes stay on the full form below the fold.
     expect(
       screen.queryByLabelText(/vehicle and access details/i),
     ).not.toBeInTheDocument();
@@ -109,7 +80,7 @@ describe("HeroQuoteForm", () => {
         model: "Corolla",
         year: 2015,
         condition: "running",
-        address: "123 Smith St, Brisbane QLD 4000",
+        suburb: "Toowong",
       }),
       issuedId,
     );
@@ -124,7 +95,7 @@ describe("HeroQuoteForm", () => {
     ).toBeInTheDocument();
     expect(sessionStorage.getItem("caraway:submission:quote")).toBeNull();
     const analytics = JSON.stringify(trackEventMock.mock.calls);
-    for (const personalValue of ["Jane Smith", "0412345678", "123 Smith St", issuedId]) {
+    for (const personalValue of ["Jane Smith", "0412345678", "Toowong", issuedId]) {
       expect(analytics).not.toContain(personalValue);
     }
   });

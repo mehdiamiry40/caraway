@@ -5,7 +5,7 @@ import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 
 const quote = {
   name: "Jane Doe", phone: "0412345678", make: "Toyota", model: "Hilux", year: 2015,
-  condition: "running" as const, address: "12 Example St, Brisbane", honeypot: "",
+  condition: "running" as const, suburb: "Brisbane", honeypot: "",
 };
 const contact = {
   name: "Jane Doe", email: "jane@example.com", phone: "0412345678",

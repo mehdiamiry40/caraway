@@ -43,7 +43,7 @@ export default function Privacy() {
               <li><strong>Name</strong> — to address you personally and to complete ownership transfer paperwork.</li>
               <li><strong>Phone number</strong> — to contact you about your quote and coordinate pickup.</li>
               <li><strong>Email address</strong> — to send written quotes, receipts, and follow-up messages.</li>
-              <li><strong>Vehicle details</strong> (make, model, year, condition, location, registration status) — to value your vehicle and arrange removal.</li>
+              <li><strong>Vehicle details</strong> (make, model, year, condition, suburb, registration status) — to value your vehicle and arrange removal.</li>
               <li><strong>Authority-to-sell records and photo ID</strong> at pickup — we may sight or record details needed to verify the transaction, and retain a copy only where reasonably necessary.</li>
               <li><strong>Technical data</strong> such as the page path, external referrer, browser and device type, approximate region, and performance measurements such as Core Web Vitals through Vercel Web Analytics and Speed Insights.</li>
               <li><strong>AI chat data</strong> — messages you send in the optional chat and a pseudonymous identifier made by hashing your IP address together with your browser user-agent string.</li>
@@ -140,7 +140,7 @@ export default function Privacy() {
                 </a>
                 .
               </li>
-              <li><strong>Upstash</strong> — managed Redis stores quote and contact enquiries and their delivery status for seven days so we can recover interrupted delivery and avoid duplicate submissions. It also briefly processes IP-address counters to prevent abuse of our forms, AI chat and address autocomplete. Chat messages are not stored in Redis.</li>
+              <li><strong>Upstash</strong> — managed Redis stores quote and contact enquiries and their delivery status for seven days so we can recover interrupted delivery and avoid duplicate submissions. It also briefly processes IP-address counters to prevent abuse of our forms and AI chat. Chat messages are not stored in Redis.</li>
               <li><strong>Webhook processor</strong> — receives form submissions from the site and forwards them securely to our team.</li>
               <li>
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
@@ -154,18 +154,6 @@ export default function Privacy() {
                 </a>
                 .
               </li>
-              <li>
-                <strong>Google Places API</strong> — address autocomplete in the quote form. Address text you enter is sent to Google through our server to return suggestions. Privacy policy:{" "}
-                <a
-                  href="https://policies.google.com/privacy"
-                  className="text-primary underline underline-offset-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  policies.google.com/privacy
-                </a>
-                .
-              </li>
               <li><strong>SMS and email providers</strong> — to deliver quotes, booking confirmations and follow-ups.</li>
               <li><strong>Fonts</strong> — the site uses system fonts, so no third-party font request is made when you visit.</li>
             </ul>
@@ -174,7 +162,7 @@ export default function Privacy() {
           <section>
             <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
             <p>
-              The quote form uses short-lived essential cookies to authorize address suggestions. Address lookups are sent to Google through our server. We also keep an opaque enquiry identifier in per-tab session storage while a form outcome is unresolved, so a retry can be matched to the same enquiry. Form values are not kept in that browser storage, and the identifier is cleared when we confirm receipt. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
+              We keep an opaque enquiry identifier in per-tab session storage while a form outcome is unresolved, so a retry can be matched to the same enquiry. Form values are not kept in that browser storage, and the identifier is cleared when we confirm receipt. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 

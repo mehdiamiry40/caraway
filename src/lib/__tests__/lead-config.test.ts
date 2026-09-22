@@ -102,25 +102,23 @@ describe("independent lead delivery configuration", () => {
 });
 
 describe("lazy environment fields", () => {
-  it("lets Places and chat read their credentials when unrelated settings are malformed", () => {
+  it("lets chat read its credential when unrelated settings are malformed", () => {
     vi.stubEnv("QUOTE_ENDPOINT", "not-a-url");
     vi.stubEnv("CONTACT_NOTIFICATION_TO", "not-an-email");
     vi.stubEnv("SITE_URL", "not-a-url");
-    vi.stubEnv("GOOGLE_PLACES_API_KEY", "places_test_key");
     vi.stubEnv("AI_GATEWAY_API_KEY", "gateway_test_key");
     const env = getEnv();
 
-    expect(env.GOOGLE_PLACES_API_KEY).toBe("places_test_key");
     expect(env.AI_GATEWAY_API_KEY).toBe("gateway_test_key");
     expect(() => env.QUOTE_ENDPOINT).toThrow();
     expect(env.CONTACT_ENDPOINT).toBeUndefined();
   });
 
   it("normalizes blank values and reads updated credentials without a module reset", () => {
-    vi.stubEnv("GOOGLE_PLACES_API_KEY", " ");
+    vi.stubEnv("AI_GATEWAY_API_KEY", " ");
     const env = getEnv();
-    expect(env.GOOGLE_PLACES_API_KEY).toBeUndefined();
-    vi.stubEnv("GOOGLE_PLACES_API_KEY", "new_places_test_key");
-    expect(env.GOOGLE_PLACES_API_KEY).toBe("new_places_test_key");
+    expect(env.AI_GATEWAY_API_KEY).toBeUndefined();
+    vi.stubEnv("AI_GATEWAY_API_KEY", "new_gateway_test_key");
+    expect(env.AI_GATEWAY_API_KEY).toBe("new_gateway_test_key");
   });
 });

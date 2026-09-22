@@ -7,7 +7,6 @@ import { CheckCircle2 } from "lucide-react";
 
 import { submitQuote } from "@/actions/quote";
 import { LeadForm } from "@/components/sections/LeadForm";
-import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -20,8 +19,8 @@ import { BUSINESS } from "@/lib/site";
 
 /**
  * Compact hero version of the quote form, and the home page's only quote
- * surface. It carries only the fields the quote schema requires — expected
- * price and the free-text vehicle notes are collected on the full form used by
+ * surface. It carries every field the quote schema requires plus the optional
+ * expected price — the free-text vehicle notes stay on the full form used by
  * the service and suburb pages — so the card fits beside the hero copy.
  *
  * Labels are visually hidden and the placeholder names the field: at this size
@@ -34,7 +33,8 @@ const fieldIds = {
   model: "hero-quote-model",
   year: "hero-quote-year",
   condition: "hero-quote-condition",
-  address: "hero-quote-address",
+  suburb: "hero-quote-suburb",
+  expectedPrice: "hero-quote-expected-price",
 } as const;
 
 const CONDITION_OPTIONS = [
@@ -47,6 +47,8 @@ const CONDITION_OPTIONS = [
 
 /** 16px text keeps iOS from zooming on focus; only the box shrinks. */
 const controlClass = "h-10 sm:h-9 px-2.5";
+/** Same box as controlClass, with room for the leading "$" prefix. */
+const pricePrefixClass = "h-10 sm:h-9 pl-6 pr-2.5";
 // py-0: the shared select sets py-3, which clips its text at this height.
 const selectClass = "h-10 sm:h-9 py-0 pl-2.5 pr-8";
 
@@ -76,18 +78,17 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
     reset,
     control,
     setValue,
-    trigger,
   } = useForm<QuoteFormInput>({
     resolver: quoteFormResolver,
     mode: "onBlur",
     defaultValues: {
-      address: "",
+      suburb: "",
+      expectedPrice: "",
       honeypot: "",
     },
   });
 
   const selectedMake = useWatch({ control, name: "make" });
-  const addressValue = useWatch({ control, name: "address" }) ?? "";
 
   const onSubmit = async (data: QuoteFormInput) => {
     setErrorMessage(null);
@@ -294,33 +295,58 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div>
-              <label htmlFor={fieldIds.address} className="sr-only">
-                Pickup address (required)
-              </label>
-              <AddressAutocomplete
-                id={fieldIds.address}
-                name="address"
-                value={addressValue}
-                onChange={(next) => {
-                  setValue("address", next, {
-                    shouldDirty: true,
-                    shouldTouch: true,
-                    shouldValidate: !!errors.address,
-                  });
-                }}
-                onBlur={() => {
-                  void trigger("address");
-                }}
-                autoComplete="street-address"
-                enterKeyHint="go"
-                placeholder="Pickup address*"
-                className={controlClass}
-                aria-required="true"
-                aria-invalid={!!errors.address}
-                aria-describedby={errors.address ? `${fieldIds.address}-error` : undefined}
-              />
-              <FieldError id={`${fieldIds.address}-error`} message={errors.address?.message} />
+            <div className="grid grid-cols-1 gap-1.5 min-[360px]:grid-cols-2">
+              <div>
+                <label htmlFor={fieldIds.suburb} className="sr-only">
+                  Suburb (required)
+                </label>
+                <Input
+                  autoComplete="address-level2"
+                  inputMode="text"
+                  enterKeyHint="next"
+                  maxLength={100}
+                  placeholder="Suburb*"
+                  className={controlClass}
+                  aria-required="true"
+                  aria-invalid={!!errors.suburb}
+                  aria-describedby={errors.suburb ? `${fieldIds.suburb}-error` : undefined}
+                  {...register("suburb")}
+                  id={fieldIds.suburb}
+                />
+                <FieldError id={`${fieldIds.suburb}-error`} message={errors.suburb?.message} />
+              </div>
+              <div>
+                <label htmlFor={fieldIds.expectedPrice} className="sr-only">
+                  Expected price in Australian dollars (optional)
+                </label>
+                <div className="relative">
+                  <span
+                    className="pointer-events-none absolute inset-y-0 left-2.5 flex items-center text-sm text-muted-foreground"
+                    aria-hidden
+                  >
+                    $
+                  </span>
+                  <Input
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="off"
+                    enterKeyHint="go"
+                    maxLength={12}
+                    placeholder="Price you want"
+                    className={pricePrefixClass}
+                    aria-invalid={!!errors.expectedPrice}
+                    aria-describedby={
+                      errors.expectedPrice ? `${fieldIds.expectedPrice}-error` : undefined
+                    }
+                    {...register("expectedPrice")}
+                    id={fieldIds.expectedPrice}
+                  />
+                </div>
+                <FieldError
+                  id={`${fieldIds.expectedPrice}-error`}
+                  message={errors.expectedPrice?.message}
+                />
+              </div>
             </div>
 
             <Button type="submit" className="h-10 w-full text-[0.9375rem]" isLoading={isSubmitting}>

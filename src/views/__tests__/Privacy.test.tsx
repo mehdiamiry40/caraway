@@ -15,6 +15,15 @@ describe("Privacy review-request disclosure", () => {
     expect(markup).not.toContain("no form or chat contents are stored there");
     expect(markup).not.toContain("group your keystrokes into one lookup");
   });
+
+  it("describes suburb-only quote collection without Google Places processing", () => {
+    const markup = renderToStaticMarkup(<Privacy />).toLowerCase();
+
+    expect(markup).toContain("suburb");
+    expect(markup).not.toContain("google places api");
+    expect(markup).not.toContain("address lookups are sent to google");
+    expect(markup).not.toContain("authorize address suggestions");
+  });
   it("documents a neutral invitation for eligible completed customers", () => {
     const markup = renderToStaticMarkup(<Privacy />).toLowerCase();
 
