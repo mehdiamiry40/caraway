@@ -156,7 +156,7 @@ export default function HowItWorksPage() {
           aria-labelledby="process-detail-heading"
           className="bg-background"
         >
-          <div className="site-container max-w-4xl py-14 lg:py-20 space-y-12 sm:space-y-14">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20 space-y-12 sm:space-y-14">
             <div>
               <h2 id="process-detail-heading" className={h2Classes}>
                 What actually happens at each step

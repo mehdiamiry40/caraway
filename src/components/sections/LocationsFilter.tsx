@@ -72,7 +72,7 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group rounded-xl border border-border bg-card p-5 sm:p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200"
+              className="group border border-border bg-card p-5 sm:p-6 hover:border-primary/50 card-lift"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">

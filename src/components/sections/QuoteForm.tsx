@@ -110,7 +110,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
+            <p className="eyebrow mb-5">
               Your quote
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">

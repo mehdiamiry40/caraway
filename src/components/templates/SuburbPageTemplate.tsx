@@ -111,7 +111,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     <h3 className="text-sm font-display text-foreground mb-3">Nearby suburbs covered</h3>
                     <ul className="flex flex-wrap gap-2">
                       {nearbyAreaNames.map((name) => (
-                        <li key={name} className="border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
+                        <li key={name} className="rounded-full border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
                           {name}
                         </li>
                       ))}
@@ -172,7 +172,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </div>
               )}
 
-              <div className="border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
+              <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-card">
                 <p className="eyebrow mb-3">How it works</p>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-3 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                   Three steps to cash in hand.
@@ -219,7 +219,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
             </div>
 
             <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+              <div className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                 <h3 className="text-sm font-display mb-1 text-foreground">Our promise</h3>
                 <p className="text-xs text-muted-foreground mb-5">What you get with every sale</p>
                 <ul className="space-y-3.5">
@@ -235,7 +235,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Our services" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Our services" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Our services</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedServiceData.map(s => (
@@ -253,7 +253,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {nearbySuburbData.length > 0 && (
-                <nav aria-label="Nearby areas" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Nearby areas" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Nearby areas</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {nearbySuburbData.map(s => (
@@ -271,7 +271,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {extraLinks.length > 0 && (
-                <nav aria-label="More from Caraway" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="More from Caraway" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">More from Caraway</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {extraLinks.map((link) => (
@@ -289,7 +289,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               {relatedPosts.length > 0 && (
-                <nav aria-label="Related articles" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Related articles" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedPosts.map(p => (

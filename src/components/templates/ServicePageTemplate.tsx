@@ -29,7 +29,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
         {section.content}
       </p>
       {section.image && (
-        <figure className="mt-6 overflow-hidden border border-border bg-muted shadow-sm">
+        <figure className="mt-6 overflow-hidden rounded-xl border border-border bg-muted shadow-sm">
           <Image
             src={section.image.src}
             alt={section.image.alt}
@@ -175,7 +175,7 @@ export default function ServicePageTemplate({
               <h2 id="service-sidebar-heading" className="sr-only">
                 Service details and related resources
               </h2>
-              <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+              <div className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                 <h3 className="text-sm font-display mb-1 text-foreground">What Caraway confirms</h3>
                 <p className="text-xs text-muted-foreground mb-5">Before a vehicle is collected</p>
                 <ul className="space-y-3.5">
@@ -190,7 +190,7 @@ export default function ServicePageTemplate({
                 </ul>
               </div>
 
-              <div className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+              <div className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                 <h3 className="text-sm font-display mb-2 text-foreground">Registered Brisbane business</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   Caraway is the registered business name of {BUSINESS.legalName},
@@ -229,7 +229,7 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Related services" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Related services" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related services</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedServiceData.map(s => (
@@ -247,7 +247,7 @@ export default function ServicePageTemplate({
               )}
 
               {relatedSuburbData.length > 0 && (
-                <nav aria-label="Service areas" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Service areas" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Service areas</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedSuburbData.map(s => (
@@ -265,7 +265,7 @@ export default function ServicePageTemplate({
               )}
 
               {relatedPosts.length > 0 && (
-                <nav aria-label="Related articles" className="bg-card border border-border p-5 sm:p-6 shadow-sm">
+                <nav aria-label="Related articles" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
                   <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
                   <ul className="divide-y divide-border/60 border-t border-border/60">
                     {relatedPosts.map(p => (
