@@ -46,11 +46,11 @@ test("known surrounding suburbs resolve and zero results are announced", async (
   await expect(page.getByRole("status")).toContainText("0");
 });
 
-// The home page carries both the hero form and the full quote form; every
-// other page has one. Pinning the count catches a form that stopped rendering
-// as well as one that degrades wrongly.
+// One lead form per page: the hero form on the home page, the contact form on
+// /contact. Pinning the count catches a form that stopped rendering as well as
+// one that degrades wrongly.
 for (const [path, expectedForms] of [
-  ["/", 2],
+  ["/", 1],
   ["/contact", 1],
 ] as const) {
   test(`no-JavaScript ${path} keeps form values out of URLs`, async ({

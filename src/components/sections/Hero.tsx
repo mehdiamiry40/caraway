@@ -71,8 +71,10 @@ export function Hero() {
               </p>
 
               {/* The hero form is the primary call to action: a standalone
-                  button would only scroll to the same fields. */}
-              <div className="mt-6">
+                  button would only scroll to the same fields. It carries the
+                  #quote-form id so every "get a quote" link on the site still
+                  lands on a form. */}
+              <div id="quote-form" className="mt-6 scroll-mt-header">
                 <HeroQuoteForm />
               </div>
 
