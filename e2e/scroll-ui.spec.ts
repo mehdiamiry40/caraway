@@ -23,12 +23,15 @@ test("sticky mobile CTA is available and jumps to the quote form", async ({
   const bar = page.locator(STICKY_BAR);
 
   await expect(bar).toHaveAttribute("aria-hidden", "true");
-  // getBoundingClientRect, not offsetTop: #quote-form now sits inside the
-  // hero's positioned column, so offsetTop is not document-relative.
-  await page.locator("#quote-form").evaluate((quoteForm) => {
-    const rect = quoteForm.getBoundingClientRect();
-    window.scrollTo(0, window.scrollY + rect.bottom + 100);
-  });
+  // The hero carries both #quote-form and data-sticky-cta-suppress, so the
+  // bar only appears once the whole hero is off screen.
+  await page
+    .locator("[data-sticky-cta-suppress]")
+    .first()
+    .evaluate((hero) => {
+      const rect = hero.getBoundingClientRect();
+      window.scrollTo(0, window.scrollY + rect.bottom + 100);
+    });
   await expect(bar).toBeVisible();
   await expect(bar).not.toHaveAttribute("aria-hidden", "true");
   await expect(

@@ -36,7 +36,12 @@ test("submits the full quote form on a service page", async ({ page }) => {
   await page.locator("#quote-phone").fill("0400000000");
   await page.locator("#quote-address").fill("1 Queen Street, Brisbane QLD 4000");
   await page.locator("#quote-expected-price").fill("3500");
-  await page.getByRole("button", { name: "Get my quote" }).click();
+  // The service hero has its own "Get my quote" button, so scope the submit
+  // to the quote form section.
+  await page
+    .getByLabel("Request a quote")
+    .getByRole("button", { name: "Get my quote" })
+    .click();
 
   await expect(
     page.getByRole("heading", { name: "Thanks — we've got your details" }),
