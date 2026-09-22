@@ -52,7 +52,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     ["Model", data.model],
     ["Year", String(data.year)],
     ["Condition", conditionLabel],
-    ["Address", data.address || "—"],
+    ["Suburb", data.suburb || "—"],
     [
       "Expected price",
       data.expectedPrice === undefined

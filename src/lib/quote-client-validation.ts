@@ -131,15 +131,15 @@ export function validateQuoteFormForClient(
     normalized.condition = raw.condition;
   }
 
-  const address = readString(raw, errors, "address");
-  if (address !== null) {
-    const trimmed = address.trim();
-    if (trimmed.length < QUOTE_VALIDATION_LIMITS.address.min) {
-      setError(errors, "address", QUOTE_VALIDATION_MESSAGES.addressRequired);
-    } else if (trimmed.length > QUOTE_VALIDATION_LIMITS.address.max) {
-      setError(errors, "address", QUOTE_VALIDATION_MESSAGES.addressTooLong);
+  const suburb = readString(raw, errors, "suburb");
+  if (suburb !== null) {
+    const trimmed = suburb.trim();
+    if (trimmed.length < QUOTE_VALIDATION_LIMITS.suburb.min) {
+      setError(errors, "suburb", QUOTE_VALIDATION_MESSAGES.suburbRequired);
+    } else if (trimmed.length > QUOTE_VALIDATION_LIMITS.suburb.max) {
+      setError(errors, "suburb", QUOTE_VALIDATION_MESSAGES.suburbTooLong);
     }
-    normalized.address = sanitizeLine(trimmed);
+    normalized.suburb = sanitizeLine(trimmed);
   }
 
   if (raw.details !== undefined) {

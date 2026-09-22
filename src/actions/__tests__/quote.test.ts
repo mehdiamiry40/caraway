@@ -8,7 +8,7 @@ vi.mock("next/server", () => ({ after: mocks.after }));
 vi.mock("@/lib/rate-limit", () => ({ rateLimit: mocks.rateLimit }));
 const quote: QuoteFormInput = {
   name: "Jane Doe", phone: "0412345678", make: "Toyota", model: "Hilux", year: 2015,
-  condition: "running", address: "12 Example St, Brisbane", honeypot: "",
+  condition: "running", suburb: "Brisbane", honeypot: "",
 };
 let submitQuote: typeof import("@/actions/quote").submitQuote;
 let store: LeadStore;

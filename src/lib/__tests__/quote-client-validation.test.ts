@@ -13,7 +13,7 @@ const baseValid = {
   model: "Hilux",
   year: 2015,
   condition: "running",
-  address: "12 George St, Brisbane",
+  suburb: "Brisbane",
 } satisfies Record<string, unknown>;
 
 function firstServerMessages(input: Record<string, unknown>) {
@@ -53,7 +53,7 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
       make: "  Toy\r\nota  ",
       model: "  Hi\r\nlux  ",
       year: "2015",
-      address: "  12 George St,\r\nBrisbane  ",
+      suburb: "  West\r\nEnd  ",
       details: "  Rolls and steers.\r\nNarrow driveway.  ",
       honeypot: "   ",
       ignoredBySchema: "discard me",
@@ -62,7 +62,7 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["all required values missing", {}],
   [
     "blank required strings",
-    { ...baseValid, name: "", phone: "", make: "", model: "", address: "" },
+    { ...baseValid, name: "", phone: "", make: "", model: "", suburb: "" },
   ],
   ["name too long", { ...baseValid, name: "x".repeat(201) }],
   ["invalid phone", { ...baseValid, phone: "5551234567" }],
@@ -76,8 +76,8 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
     { ...baseValid, year: new Date().getFullYear() + 2 },
   ],
   ["unknown condition", { ...baseValid, condition: "mint" }],
-  ["address too short", { ...baseValid, address: "abcd" }],
-  ["address too long", { ...baseValid, address: "x".repeat(501) }],
+  ["suburb too short", { ...baseValid, suburb: "a" }],
+  ["suburb too long", { ...baseValid, suburb: "x".repeat(101) }],
   ["details too long", { ...baseValid, details: "x".repeat(2001) }],
   ["filled honeypot", { ...baseValid, honeypot: "bot" }],
   ["blank expected price", { ...baseValid, expectedPrice: "" }],

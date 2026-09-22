@@ -8,7 +8,7 @@ const baseValid = {
   model: "Hilux",
   year: 2015,
   condition: "running" as const,
-  address: "12 George St, Brisbane",
+  suburb: "Brisbane",
   honeypot: "",
 };
 
@@ -157,50 +157,50 @@ describe("quoteFormSchema — model is required", () => {
   });
 });
 
-describe("quoteFormSchema — address bounds", () => {
-  it("accepts a manually typed Brisbane pickup address without Google place metadata", () => {
+describe("quoteFormSchema — suburb bounds", () => {
+  it("accepts a hyphenated multi-word suburb without place metadata", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "Unit 2/14 Boundary St, West End QLD 4101",
+      suburb: "Fig Tree Pocket",
     });
 
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.address).toBe("Unit 2/14 Boundary St, West End QLD 4101");
+      expect(result.data.suburb).toBe("Fig Tree Pocket");
       expect("placeId" in result.data).toBe(false);
     }
   });
 
-  it("rejects an address shorter than 5 chars", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcd" });
+  it("rejects a suburb shorter than 2 chars", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, suburb: "a" });
     expect(result.success).toBe(false);
   });
 
-  it("accepts a 5-character address", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcde" });
+  it("accepts a 2-character suburb", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, suburb: "ab" });
     expect(result.success).toBe(true);
   });
 
-  it("accepts an address of exactly 500 chars", () => {
+  it("accepts a suburb of exactly 100 chars", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "x".repeat(500),
+      suburb: "x".repeat(100),
     });
     expect(result.success).toBe(true);
   });
 
-  it("rejects an address longer than 500 chars", () => {
+  it("rejects a suburb longer than 100 chars", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "x".repeat(501),
+      suburb: "x".repeat(101),
     });
     expect(result.success).toBe(false);
   });
 
-  it("rejects a missing address", () => {
-    const { address: _address, ...withoutAddress } = baseValid;
-    void _address;
-    const result = quoteFormSchema.safeParse(withoutAddress);
+  it("rejects a missing suburb", () => {
+    const { suburb: _suburb, ...withoutSuburb } = baseValid;
+    void _suburb;
+    const result = quoteFormSchema.safeParse(withoutSuburb);
     expect(result.success).toBe(false);
   });
 });

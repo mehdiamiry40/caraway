@@ -5,7 +5,6 @@ import { useForm, useWatch } from "react-hook-form";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import type { QuoteFormInput } from "@/lib/quote-schema";
 import { quoteFormResolver } from "@/lib/quote-client-validation";
@@ -26,7 +25,7 @@ const fieldIds = {
   year: "quote-year",
   condition: "quote-condition",
   expectedPrice: "quote-expected-price",
-  address: "quote-address",
+  suburb: "quote-suburb",
   details: "quote-details",
 } as const;
 
@@ -47,12 +46,11 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
     reset,
     control,
     setValue,
-    trigger,
   } = useForm<QuoteFormInput>({
     resolver: quoteFormResolver,
     mode: "onBlur",
     defaultValues: {
-      address: "",
+      suburb: "",
       details: "",
       expectedPrice: "",
       honeypot: "",
@@ -62,7 +60,6 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   // `useWatch` is the React Compiler-safe alternative to the `watch()`
   // function returned by `useForm()`, which cannot be memoized safely.
   const selectedMake = useWatch({ control, name: "make" });
-  const addressValue = useWatch({ control, name: "address" }) ?? "";
 
   const onSubmit = async (data: QuoteFormInput) => {
     setErrorMessage(null);
@@ -367,40 +364,31 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2.5 cursor-pointer">
-                      Pickup address
+                    <label htmlFor={fieldIds.suburb} className="block text-sm text-foreground mb-2.5 cursor-pointer">
+                      Suburb
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
-                    <AddressAutocomplete
-                      id={fieldIds.address}
-                      name="address"
-                      value={addressValue}
-                      onChange={(next) => {
-                        setValue("address", next, {
-                          shouldDirty: true,
-                          shouldTouch: true,
-                          shouldValidate: !!errors.address,
-                        });
-                      }}
-                      onBlur={() => {
-                        void trigger("address");
-                      }}
-                      autoComplete="street-address"
+                    <Input
+                      autoComplete="address-level2"
+                      inputMode="text"
                       enterKeyHint="next"
-                      placeholder="Start typing your pickup address..."
+                      maxLength={100}
+                      placeholder="Toowong"
                       aria-required="true"
-                      aria-invalid={!!errors.address}
+                      aria-invalid={!!errors.suburb}
                       aria-describedby={
-                        errors.address ? `${fieldIds.address}-error quote-address-help` : "quote-address-help"
+                        errors.suburb ? `${fieldIds.suburb}-error quote-suburb-help` : "quote-suburb-help"
                       }
+                      {...register("suburb")}
+                      id={fieldIds.suburb}
                     />
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-address-help">
-                      Enter the full address manually if needed. Availability is confirmed from the suburb, vehicle, and access details.
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-suburb-help">
+                      Where the car is right now. Availability is confirmed from the suburb, vehicle, and access details; we take the exact address once an offer is agreed.
                     </p>
-                    {errors.address && (
-                      <p id={`${fieldIds.address}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                    {errors.suburb && (
+                      <p id={`${fieldIds.suburb}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
                         <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-                        {errors.address.message}
+                        {errors.suburb.message}
                       </p>
                     )}
                   </div>

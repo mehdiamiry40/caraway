@@ -17,32 +17,6 @@ vi.mock("@/lib/analytics", () => ({
   trackEvent: (...args: unknown[]) => trackEventMock(...args),
 }));
 
-// AddressAutocomplete owns network/cookie/Places logic that's tested
-// elsewhere. For form-level tests, swap it for a plain input.
-vi.mock("@/components/ui/address-autocomplete", () => ({
-  AddressAutocomplete: ({
-    id,
-    value,
-    onChange,
-    onBlur,
-    placeholder,
-  }: {
-    id?: string;
-    value: string;
-    onChange: (next: string) => void;
-    onBlur?: () => void;
-    placeholder?: string;
-  }) => (
-    <input
-      id={id}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-      onBlur={onBlur}
-    />
-  ),
-}));
-
 import { QuoteForm } from "@/components/sections/QuoteForm";
 
 beforeEach(() => {
@@ -65,7 +39,7 @@ async function fillRequiredFields(user: ReturnType<typeof userEvent.setup>) {
   await user.selectOptions(screen.getByLabelText(/^condition/i), "running");
   await user.type(screen.getByLabelText(/your name/i), "Jane Smith");
   await user.type(screen.getByLabelText(/^phone/i), "0412345678");
-  await user.type(screen.getByLabelText(/pickup address/i), "123 Smith St, Brisbane QLD 4000");
+  await user.type(screen.getByLabelText(/^suburb/i), "Toowong");
 }
 
 describe("QuoteForm", () => {
@@ -77,7 +51,7 @@ describe("QuoteForm", () => {
     expect(screen.getByLabelText(/^condition/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^phone/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/pickup address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^suburb/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/vehicle and access details/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/expected price/i)).toBeInTheDocument();
     expect(screen.queryByText(/Brisbane pickup suburbs only/i)).not.toBeInTheDocument();
@@ -117,7 +91,7 @@ describe("QuoteForm", () => {
     });
     expect(sessionStorage.getItem("caraway:submission:quote")).toBeNull();
     const analytics = JSON.stringify(trackEventMock.mock.calls);
-    for (const personalValue of ["Jane Smith", "0412345678", "123 Smith St", "narrow driveway", issuedId]) {
+    for (const personalValue of ["Jane Smith", "0412345678", "Toowong", "narrow driveway", issuedId]) {
       expect(analytics).not.toContain(personalValue);
     }
   });

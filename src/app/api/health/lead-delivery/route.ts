@@ -93,7 +93,7 @@ export async function GET(request: Request) {
         model: `Synthetic monitor ${timestamp}`,
         year: new Date().getFullYear(),
         condition: "running",
-        address: "1 Queen Street, Brisbane QLD 4000",
+        suburb: "Brisbane",
         honeypot: "",
       },
       quoteId,

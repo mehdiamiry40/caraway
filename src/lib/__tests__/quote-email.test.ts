@@ -9,7 +9,7 @@ const baseValid: QuoteFormValues = {
   model: "Hilux",
   year: 2015,
   condition: "running",
-  address: "",
+  suburb: "",
   honeypot: "",
 };
 
@@ -22,7 +22,7 @@ describe("buildQuoteEmailContent", () => {
   it("includes every captured field in the plain-text body", () => {
     const { text } = buildQuoteEmailContent({
       ...baseValid,
-      address: "12 Example St, Brisbane",
+      suburb: "West End",
       details: "180,000 km; rolls and steers; narrow driveway.",
     });
     expect(text).toContain("Jane Doe");
@@ -31,15 +31,15 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toContain("Hilux");
     expect(text).toContain("2015");
     expect(text).toContain("Running");
-    expect(text).toContain("12 Example St, Brisbane");
+    expect(text).toContain("West End");
     expect(text).toContain(
       "Vehicle/access details: 180,000 km; rolls and steers; narrow driveway.",
     );
   });
 
-  it("renders an em dash for empty address", () => {
-    const { text, html } = buildQuoteEmailContent({ ...baseValid, address: "" });
-    expect(text).toMatch(/Address:\s+—/);
+  it("renders an em dash for an empty suburb", () => {
+    const { text, html } = buildQuoteEmailContent({ ...baseValid, suburb: "" });
+    expect(text).toMatch(/Suburb:\s+—/);
     expect(html).toContain("—");
   });
 
