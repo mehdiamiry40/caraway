@@ -31,7 +31,7 @@ export function BlogPostCard({
     <article className="h-full">
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-md"
+        className="group flex h-full flex-col overflow-hidden border border-border bg-card hover:border-primary/50 card-lift"
       >
         <div className={`flex flex-1 flex-col ${isCompact ? "p-5" : "p-5 sm:p-6"}`}>
           <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
@@ -83,7 +83,7 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
     <article className="mb-12 sm:mb-16">
       <Link
         href={`/blog/${post.slug}`}
-        className="group block overflow-hidden rounded-md border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+        className="group block overflow-hidden rounded-2xl border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-card-hover"
         aria-label={`Read: ${post.title}`}
       >
         <div className="p-6 sm:p-8 lg:p-10">

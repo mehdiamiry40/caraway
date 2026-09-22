@@ -44,7 +44,7 @@ export function SellingSafelySection() {
             >
               Selling safely with Caraway
             </h2>
-            <div className="mt-7 border border-border bg-secondary p-5 sm:p-6">
+            <div className="mt-7 rounded-xl border border-border bg-secondary p-5 sm:p-6">
               <p className="text-sm font-medium text-foreground">Questions before you book?</p>
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
@@ -76,7 +76,7 @@ export function SellingSafelySection() {
               ))}
             </ul>
 
-            <p className="mt-5 border border-border bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-5 rounded-xl border border-border bg-muted px-5 py-4 text-sm leading-relaxed text-muted-foreground">
               Transfer requirements vary by situation. Keep your own sale records
               and follow the current{" "}
               <a

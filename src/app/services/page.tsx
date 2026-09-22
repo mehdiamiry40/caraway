@@ -117,7 +117,7 @@ export default function ServicesPage() {
                   <li key={service.slug}>
                     <Link
                       href={`/${service.slug}`}
-                      className="group flex h-full flex-col border border-border bg-card p-5 transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:p-6"
+                      className="group flex h-full flex-col border border-border bg-card p-5 hover:border-primary/50 card-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:p-6"
                     >
                       <span className="flex h-11 w-11 items-center justify-center bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                         <Icon className="h-5 w-5" aria-hidden="true" />
