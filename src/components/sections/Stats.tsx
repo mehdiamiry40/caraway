@@ -79,7 +79,7 @@ function SupportStatItem({ stat }: { stat: StatDef }) {
 
   return (
     <li
-      className="group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 transition-[box-shadow,border-color] duration-300 hover:border-primary/40 hover:shadow-md sm:flex sm:flex-col sm:p-5"
+      className="group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 hover:border-primary/40 card-lift sm:flex sm:flex-col sm:p-5"
     >
       <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />

@@ -117,7 +117,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
 function SupportingReasonCard({ reason }: { reason: Reason }) {
   const Icon = reason.icon;
   return (
-    <article className="group relative h-full overflow-hidden border border-border bg-card p-6 transition-[box-shadow,border-color] duration-300 hover:border-primary hover:shadow-md sm:p-7">
+    <article className="group relative h-full overflow-hidden border border-border bg-card p-6 hover:border-primary/60 sm:p-7 card-lift">
       <div className="flex items-start gap-4 sm:gap-5">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary transition-colors duration-300 group-hover:bg-primary/15 sm:h-12 sm:w-12">
           <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />

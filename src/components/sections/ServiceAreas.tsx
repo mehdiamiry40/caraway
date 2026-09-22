@@ -93,7 +93,7 @@ export function ServiceAreas() {
               const hubs = hubsFor(region);
               return (
                 <li key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col overflow-hidden border border-border bg-card p-5 sm:p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-md hover:border-primary/40">
+                  <article className="group relative flex h-full flex-col overflow-hidden border border-border bg-card p-5 sm:p-6 hover:border-primary/40 card-lift">
                     <div className="relative flex items-center justify-between">
                       <span className="flex h-10 w-10 items-center justify-center bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
                         <Icon size={18} strokeWidth={2} aria-hidden="true" />

@@ -63,9 +63,9 @@ export function SellingSafelySection() {
               {trustPoints.map(({ icon: Icon, title, description }) => (
                 <li
                   key={title}
-                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 sm:block sm:p-5"
+                  className="grid grid-cols-[2.5rem_1fr] gap-x-4 rounded-xl border border-border bg-card p-4 shadow-card sm:block sm:p-5"
                 >
-                  <div className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta sm:mb-4 sm:h-11 sm:w-11">
+                  <div className="row-span-2 flex h-10 w-10 items-center justify-center rounded-lg bg-cta/15 text-cta-ink sm:mb-4 sm:h-11 sm:w-11">
                     <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
                   </div>
                   <h3 className="mb-1 font-display text-base leading-snug text-primary sm:mb-2 sm:text-lg">{title}</h3>
