@@ -48,7 +48,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
         {showHeader && (
           <div className="mb-10 max-w-2xl md:mb-14">
             <p className="eyebrow mb-5">How it works</p>
-            <h2 className="font-display text-[clamp(2.15rem,5vw,3.4rem)] font-bold leading-[1.08] tracking-display text-primary text-balance">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-bold leading-[1.1] text-primary text-balance">
               From quote to collection in four clear steps.
             </h2>
           </div>
@@ -58,7 +58,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
           {steps.map((step) => (
             <li
               key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card transition-[border-color,box-shadow] duration-300 hover:border-primary hover:shadow-md"
+              className="group relative flex flex-col overflow-hidden border border-border bg-card hover:border-primary/60 card-lift"
             >
               <div
                 className="h-1 bg-gradient-to-r from-cta via-accent to-primary"

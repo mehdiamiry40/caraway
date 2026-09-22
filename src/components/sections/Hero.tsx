@@ -86,7 +86,7 @@ export function Hero() {
                     key={promise}
                     className="flex items-start gap-2 text-sm font-semibold leading-5 text-on-dark-hi/90"
                   >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-cta text-cta-foreground">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cta text-cta-foreground">
                       <Check size={12} strokeWidth={3} aria-hidden="true" />
                     </span>
                     {promise}
@@ -105,7 +105,7 @@ export function Hero() {
                   or call {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
 
-                <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-2 border border-on-dark-hi/20 bg-on-dark-hi/8 px-3 py-2">
+                <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-2 rounded-full border border-on-dark-hi/20 bg-on-dark-hi/8 px-3.5 py-1.5">
                   <MapPin className="h-4 w-4 text-cta-bright" aria-hidden="true" />
                   <span className="text-sm font-medium text-on-dark-hi">
                     Brisbane-based · ABN {BUSINESS.abn}
@@ -115,7 +115,7 @@ export function Hero() {
 
               {/* Below lg the photo closes the hero instead of pushing the
                   form down the page. */}
-              <div className="mt-7 w-full overflow-hidden rounded-md border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm lg:hidden">
+              <div className="mt-7 w-full overflow-hidden rounded-xl border border-on-dark-hi/20 bg-on-dark-hi/10 shadow-sm lg:hidden">
                 <picture>
                   <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
                   <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />

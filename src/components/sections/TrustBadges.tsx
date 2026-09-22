@@ -52,9 +52,9 @@ export function TrustBadges() {
       aria-label="Trust and credentials"
     >
       <div className="site-container py-9 sm:py-14">
-        <div className="border border-border bg-card p-5 sm:p-6 lg:flex lg:items-center lg:justify-between lg:gap-8">
+        <div className="rounded-xl border border-border bg-card p-5 shadow-card sm:p-6 lg:flex lg:items-center lg:justify-between lg:gap-8">
           <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-secondary text-primary">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary">
               <MapPin className="h-6 w-6" aria-hidden="true" />
             </span>
             <div>
@@ -81,7 +81,7 @@ export function TrustBadges() {
               <Link
                 href={href}
                 prefetch={href === "/#quote-form" ? false : undefined}
-                className="group relative grid min-h-0 h-full grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-1 border border-border bg-card p-4 pr-10 transition-[border-color,box-shadow] hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
+                className="group relative grid min-h-0 h-full grid-cols-[2.5rem_1fr] items-center gap-x-4 gap-y-1 border border-border bg-card p-4 pr-10 hover:border-primary/60 card-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:flex sm:min-h-40 sm:flex-col sm:items-start sm:p-5"
               >
                 <Icon className="row-span-2 h-9 w-9 text-primary sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
                 <h3 className="font-display text-base font-semibold leading-snug text-primary sm:mt-5">{label}</h3>
