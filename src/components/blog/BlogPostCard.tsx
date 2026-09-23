@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { BlogPost } from "@/data/blog-posts";
-import { ArrowRight, Clock, Sparkles } from "lucide-react";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-AU", {
@@ -25,16 +24,16 @@ export function BlogPostCard({
 }: BlogPostCardProps) {
   const Heading = headingLevel;
   const isCompact = variant === "compact";
-  const headingClass = `font-display ${isCompact ? "text-lg" : "text-lg sm:text-xl"} font-semibold leading-[1.2] text-foreground text-balance group-hover:text-primary transition-colors`;
+  const headingClass = "text-base font-semibold leading-snug text-foreground text-balance underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:decoration-foreground/40";
 
   return (
     <article className="h-full">
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col overflow-hidden border border-border bg-card hover:border-primary/50 card-lift"
+        className="group flex h-full flex-col border-t border-border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
-        <div className={`flex flex-1 flex-col ${isCompact ? "p-5" : "p-5 sm:p-6"}`}>
-          <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
+        <div className="flex flex-1 flex-col py-5">
+          <span className="eyebrow mb-2">
             {post.category}
           </span>
           <Heading
@@ -44,12 +43,12 @@ export function BlogPostCard({
             {post.title}
           </Heading>
           {!isCompact && (
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
               {post.excerpt}
             </p>
           )}
-          <div className="mt-auto pt-5">
-            <div className="pt-4 border-t border-border/60 flex items-center gap-3 text-xs text-muted-foreground">
+          <div className="mt-auto pt-3">
+            <div className="flex items-center gap-3 text-xs text-muted-foreground">
               {showDate && (
                 <>
                   <time dateTime={post.date} className="tabular-nums">
@@ -59,16 +58,7 @@ export function BlogPostCard({
                 </>
               )}
               <span className="inline-flex items-center gap-1">
-                <Clock className="h-3 w-3" strokeWidth={1.75} aria-hidden />
                 {post.readTime}
-              </span>
-              <span className="ml-auto inline-flex items-center gap-1 font-medium text-accent-ink transition-all group-hover:gap-1.5">
-                Read
-                <ArrowRight
-                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                  strokeWidth={1.75}
-                  aria-hidden
-                />
               </span>
             </div>
           </div>
@@ -83,44 +73,25 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
     <article className="mb-12 sm:mb-16">
       <Link
         href={`/blog/${post.slug}`}
-        className="group block overflow-hidden rounded-2xl border border-border/60 bg-secondary/60 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-card-hover"
+        className="group block border-y border-border py-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label={`Read: ${post.title}`}
       >
-        <div className="p-6 sm:p-8 lg:p-10">
-          <div className="flex flex-wrap items-center gap-2 mb-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
-              <Sparkles className="h-3 w-3" strokeWidth={2} aria-hidden />
-              Featured
-            </span>
-            <span className="inline-flex items-center rounded-full border border-border/80 bg-card px-3 py-1 text-[11px] font-medium text-muted-foreground">
-              {post.category}
-            </span>
-          </div>
+        <div>
+          <p className="eyebrow mb-4">Featured · {post.category}</p>
           <h2
-            className="font-display text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold leading-[1.08] text-foreground text-balance group-hover:text-primary transition-colors"
-            style={{ letterSpacing: "var(--tracking-display)" }}
+            className="max-w-3xl text-3xl font-semibold leading-[1.15] text-foreground text-balance underline decoration-transparent underline-offset-[6px] transition-colors duration-150 group-hover:decoration-foreground/30"
+            style={{ letterSpacing: "var(--tracking-tight)" }}
           >
             {post.title}
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-[62ch]">
+          <p className="mt-4 max-w-[62ch] text-base text-muted-foreground">
             {post.excerpt}
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
             <time dateTime={post.date} className="tabular-nums">
               {formatDate(post.date)}
             </time>
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
-              {post.readTime}
-            </span>
-            <span className="sm:ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-              Read the feature
-              <ArrowRight
-                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                strokeWidth={1.75}
-                aria-hidden
-              />
-            </span>
+            <span>{post.readTime}</span>
           </div>
         </div>
       </Link>

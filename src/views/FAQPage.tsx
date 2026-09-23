@@ -3,7 +3,6 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Accordion } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { faqCategories } from "@/lib/faq-data";
 
@@ -29,7 +28,7 @@ export default function FAQPage() {
         </p>
       }
     >
-      <div className="site-container py-12 sm:py-16 lg:py-20">
+      <div className="site-container py-16 sm:py-20 lg:py-28">
         <div className="lg:grid lg:grid-cols-12 lg:gap-12">
           {/* Topic jump links: a swipeable chip row on phones, a sticky
               sidebar on desktop so the 18 questions stay navigable. */}
@@ -44,9 +43,9 @@ export default function FAQPage() {
                   <li key={category.category} className="shrink-0">
                     <a
                       href={`#${topicId(category.category)}`}
-                      className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary lg:w-full lg:rounded-lg lg:border-transparent lg:bg-transparent lg:px-3 lg:hover:bg-secondary"
+                      className="group inline-flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded border border-border px-4 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground lg:w-full lg:border-0 lg:px-0"
                     >
-                      <span className="tabular-nums text-xs font-semibold text-muted-foreground group-hover:text-primary">
+                      <span className="tabular-nums text-xs text-muted-foreground">
                         {String(idx + 1).padStart(2, "0")}
                       </span>
                       {category.category}
@@ -71,14 +70,13 @@ export default function FAQPage() {
                 aria-labelledby={`${topicId(category.category)}-heading`}
                 className="scroll-mt-header"
               >
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-sm font-semibold tabular-nums text-primary">
+                <div className="mb-6 flex items-baseline gap-4">
+                  <span className="text-sm tabular-nums text-muted-foreground">
                     {String(idx + 1).padStart(2, "0")}
                   </span>
                   <h2
                     id={`${topicId(category.category)}-heading`}
-                    className="text-2xl sm:text-3xl font-display text-foreground leading-[1.15]"
-                    style={{ letterSpacing: "var(--tracking-tight)" }}
+                    className="text-2xl font-semibold tracking-[-0.02em] text-foreground"
                   >
                     {category.category}
                   </h2>
@@ -89,31 +87,28 @@ export default function FAQPage() {
               </section>
             ))}
 
-            <div className="rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10 text-center">
-              <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Still have questions?</h2>
-              <p className="text-muted-foreground mb-7 max-w-md mx-auto">
+            <div className="border-t border-border pt-10">
+              <h2 className="mb-3 text-xl font-semibold tracking-[-0.02em] text-foreground">Still have questions?</h2>
+              <p className="mb-6 max-w-md text-base text-muted-foreground">
                 Our Brisbane team is happy to help. No obligation — just a quick chat.
               </p>
-              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
+              <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
                 <Link
                   href="/#quote-form"
                   className={cn(buttonVariants({ variant: "default", size: "sm" }))}
                 >
                   Get my quote
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <a
                   href={BUSINESS.phoneTel}
                   className={cn(buttonVariants({ variant: "link", size: "sm" }))}
                 >
-                  <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </a>
                 <Link
                   href="/contact"
                   className={cn(buttonVariants({ variant: "link", size: "sm" }))}
                 >
-                  <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
                   Contact us
                 </Link>
               </div>

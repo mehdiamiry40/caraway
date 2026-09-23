@@ -258,7 +258,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
 ];
 
 const downloadClasses =
-  "inline-flex min-h-11 items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-11 items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 function SourceLink({
   href,
@@ -291,7 +291,7 @@ function DataTable({
   caption: string;
 }) {
   return (
-    <div className="overflow-x-auto rounded-md border border-border bg-card shadow-sm">
+    <div className="overflow-x-auto rounded-md border border-border bg-card">
       <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <thead className="bg-secondary text-primary">
@@ -348,7 +348,7 @@ export default function QueenslandVehicleDataPage() {
           <nav aria-label="On this page" className="grid gap-4 md:grid-cols-2">
             <a
               href="#queensland-fuel-trends"
-              className="rounded-md border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="rounded-md border border-border bg-card p-5 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <span className="eyebrow">Panel 1 · Queensland</span>
               <span className="mt-2 block text-lg font-semibold text-primary">
@@ -360,7 +360,7 @@ export default function QueenslandVehicleDataPage() {
             </a>
             <a
               href="#brisbane-suburb-snapshot"
-              className="rounded-md border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="rounded-md border border-border bg-card p-5 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <span className="eyebrow">Panel 2 · Brisbane City</span>
               <span className="mt-2 block text-lg font-semibold text-primary">
@@ -380,7 +380,7 @@ export default function QueenslandVehicleDataPage() {
             <p className="eyebrow">Panel 1 · Statewide annual data</p>
             <h2
               id="queensland-fuel-heading"
-              className="mt-3 text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="mt-3 text-3xl font-display font-bold text-foreground sm:text-4xl"
             >
               Queensland cars by fuel type, 2006–2024
             </h2>
@@ -420,8 +420,8 @@ export default function QueenslandVehicleDataPage() {
               </div>
             </dl>
 
-            <div className="mt-10 rounded-md border border-border bg-card p-6 shadow-sm">
-              <h3 className="text-2xl font-semibold text-primary">
+            <div className="mt-10 rounded-md border border-border bg-card p-6">
+              <h3 className="text-2xl font-semibold text-foreground">
                 Change in the published records, {previousFuelRow.year}–{latestFuelRow.year}
               </h3>
               <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
@@ -460,7 +460,7 @@ export default function QueenslandVehicleDataPage() {
               <VehicleFuelTrendChart rows={fuelTrendRows} />
             </div>
 
-            <div className="mt-8 overflow-x-auto rounded-md border border-border bg-card shadow-sm">
+            <div className="mt-8 overflow-x-auto rounded-md border border-border bg-card">
               <table className="w-full min-w-[38rem] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   Annual Queensland registered electric and petrol-electric cars,
@@ -522,7 +522,7 @@ export default function QueenslandVehicleDataPage() {
             <p className="eyebrow">Panel 2 · Historical local snapshot</p>
             <h2
               id="brisbane-snapshot-heading"
-              className="mt-3 text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="mt-3 text-3xl font-display font-bold text-foreground sm:text-4xl"
             >
               Registered vehicles across 186 Brisbane City suburbs
             </h2>
@@ -538,7 +538,7 @@ export default function QueenslandVehicleDataPage() {
 
             <aside
               aria-label="Brisbane City Council showcase recognition"
-              className="mt-8 rounded-md border border-primary/25 bg-secondary p-5 shadow-sm sm:p-6"
+              className="mt-8 rounded-md border border-primary/25 bg-secondary p-5 sm:p-6"
             >
               <p className="eyebrow">Brisbane Open Data</p>
               <p className="mt-2 text-lg font-semibold text-primary sm:text-xl">
@@ -592,7 +592,7 @@ export default function QueenslandVehicleDataPage() {
             </dl>
 
             <div className="mt-10">
-              <h3 className="text-2xl font-semibold text-primary">
+              <h3 className="text-2xl font-semibold text-foreground">
                 Ten largest published rows in the snapshot
               </h3>
               <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
@@ -640,7 +640,7 @@ export default function QueenslandVehicleDataPage() {
           >
             <h2
               id="editorial-images-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="text-3xl font-display font-bold text-foreground sm:text-4xl"
             >
               Editorial preview images
             </h2>
@@ -651,7 +651,7 @@ export default function QueenslandVehicleDataPage() {
               snapshot, not a current fleet estimate.
             </p>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
-              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+              <figure className="rounded-md border border-border bg-card p-4">
                 <Image
                   src={VEHICLE_DATA_SOCIAL_IMAGE.src}
                   alt={VEHICLE_DATA_SOCIAL_IMAGE.alt}
@@ -665,7 +665,7 @@ export default function QueenslandVehicleDataPage() {
                   historical Brisbane suburb snapshot.
                 </figcaption>
               </figure>
-              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+              <figure className="rounded-md border border-border bg-card p-4">
                 <Image
                   src={BRISBANE_REUSE_THUMBNAIL.src}
                   alt={BRISBANE_REUSE_THUMBNAIL.alt}
@@ -729,13 +729,13 @@ export default function QueenslandVehicleDataPage() {
           >
             <h2
               id="methodology-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="text-3xl font-display font-bold text-foreground sm:text-4xl"
             >
               Methodology, exclusions, and build checks
             </h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-md border border-border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-primary">
+              <div className="rounded-md border border-border bg-card p-6">
+                <h3 className="text-xl font-semibold text-foreground">
                   Queensland fuel panel
                 </h3>
                 <ol className="mt-4 list-decimal space-y-3 pl-5 leading-relaxed text-muted-foreground">
@@ -745,8 +745,8 @@ export default function QueenslandVehicleDataPage() {
                   <li>Convert the wide official table to a downloadable long-form CSV.</li>
                 </ol>
               </div>
-              <div className="rounded-md border border-border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-primary">
+              <div className="rounded-md border border-border bg-card p-6">
+                <h3 className="text-xl font-semibold text-foreground">
                   Brisbane suburb panel
                 </h3>
                 <ol className="mt-4 list-decimal space-y-3 pl-5 leading-relaxed text-muted-foreground">
@@ -776,7 +776,7 @@ export default function QueenslandVehicleDataPage() {
             </div>
 
             <div className="mt-8 rounded-md border border-border bg-secondary p-6">
-              <h3 className="text-xl font-semibold text-primary">
+              <h3 className="text-xl font-semibold text-foreground">
                 Important limits
               </h3>
               <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed text-muted-foreground">
@@ -841,7 +841,7 @@ export default function QueenslandVehicleDataPage() {
           <section aria-labelledby="sources-heading" className="pt-20">
             <h2
               id="sources-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="text-3xl font-display font-bold text-foreground sm:text-4xl"
             >
               Official sources and attribution
             </h2>
@@ -889,7 +889,7 @@ export default function QueenslandVehicleDataPage() {
               </li>
             </ul>
 
-            <div className="mt-8 space-y-4 rounded-md border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground shadow-sm">
+            <div className="mt-8 space-y-4 rounded-md border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground">
               <p>
                 Source vehicle data © The State of Queensland (Department of
                 Transport and Main Roads), used under CC BY 4.0. Caraway filtered,

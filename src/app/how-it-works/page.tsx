@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -108,11 +107,11 @@ const paperworkGuides = [
 ];
 
 const h2Classes =
-  "text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]";
+  "mb-4 text-3xl font-semibold tracking-[-0.02em] text-foreground";
 
-const h3Classes = "font-display text-lg font-semibold text-primary mb-2";
+const h3Classes = "mb-2 text-base font-semibold text-foreground";
 
-const proseClasses = "text-muted-foreground leading-relaxed text-base sm:text-lg";
+const proseClasses = "text-base text-muted-foreground";
 
 export default function HowItWorksPage() {
   return (
@@ -221,14 +220,10 @@ export default function HowItWorksPage() {
 
             <div>
               <h2 className={h2Classes}>What to have ready on pickup day</h2>
-              <ul className="mt-2 space-y-3">
+              <ul className="mt-2 border-t border-border">
                 {pickupChecklist.map((item) => (
-                  <li key={item} className="flex gap-3 text-base text-foreground/80 sm:text-lg">
-                    <CheckCircle2
-                      className="mt-1 h-5 w-5 shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
+                  <li key={item} className="border-b border-border py-3 text-base text-foreground">
+                    {item}
                   </li>
                 ))}
               </ul>

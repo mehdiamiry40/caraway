@@ -40,7 +40,7 @@ export function CarTypes() {
                   "group relative flex flex-col items-center text-center p-4 sm:p-5 md:p-6 rounded-xl",
                   "bg-primary-foreground/[0.08] border border-primary-foreground/20",
                   "hover:border-primary-foreground/50 hover:bg-primary-foreground/[0.12]",
-                  "hover:-translate-y-0.5 transition-all duration-300",
+                  " transition-all duration-300",
                   "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                   "touch-manipulation min-h-[116px] sm:min-h-[136px]"
                 )}
@@ -55,7 +55,7 @@ export function CarTypes() {
                 <span className="font-display text-sm sm:text-base leading-tight mb-1">
                   {type.label}
                 </span>
-                <span className="text-[11px] sm:text-xs text-primary-foreground/85 leading-tight">
+                <span className="text-xs sm:text-xs text-primary-foreground/85 leading-tight">
                   {type.desc}
                 </span>
                 <ArrowRight className="absolute top-3 right-3 w-3.5 h-3.5 opacity-0 group-hover:opacity-60 transition-opacity duration-200" aria-hidden />

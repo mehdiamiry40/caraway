@@ -6,14 +6,14 @@ import {
 
 function ScenarioCard({ scenario }: { scenario: SellerScenario }) {
   return (
-    <article className="flex h-full flex-col border border-border bg-card p-5 shadow-sm hover:border-primary/60 sm:p-7 card-lift">
+    <article className="flex h-full flex-col border border-border bg-card p-5 hover:border-primary/60 sm:p-7">
       <span className="flex h-11 w-11 items-center justify-center bg-secondary text-primary">
         <ClipboardCheck className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>
-      <h3 className="mt-5 font-display text-xl font-semibold leading-snug text-primary">
+      <h3 className="mt-5 font-display text-xl font-semibold leading-snug text-foreground">
         {scenario.title}
       </h3>
-      <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-foreground/80">
+      <p className="mt-3 flex-1 text-sm leading-relaxed text-foreground/80">
         {scenario.description}
       </p>
       <footer className="mt-6 border-t border-border pt-4">
@@ -41,7 +41,7 @@ export function SellerSituations() {
           <p className="eyebrow mb-5">Seller situations</p>
           <h2
             id="seller-situations-heading"
-            className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]"
+            className="font-display text-3xl font-bold leading-[1.1] text-foreground text-balance sm:text-4xl md:text-3xl"
           >
             What to prepare for common vehicle sales.
           </h2>

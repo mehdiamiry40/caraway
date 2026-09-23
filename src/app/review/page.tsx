@@ -55,7 +55,7 @@ export default function ReviewPage() {
     >
       <section className="site-container py-14 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-3xl space-y-8">
-          <div className="rounded-md border border-border/60 bg-card p-6 shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04)] sm:p-8">
+          <div className="rounded-md border border-border/60 bg-card p-6 sm:p-8">
             <div className="flex items-start gap-4">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                 <MessageSquareText className="h-5 w-5" aria-hidden="true" />

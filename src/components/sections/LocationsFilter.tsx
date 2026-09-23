@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { MapPin, ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 
 export interface LocationFilterItem {
   slug: string;
@@ -33,14 +33,14 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
 
   return (
     <>
-      <div className="relative max-w-full sm:max-w-lg mb-10 sm:mb-12">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-[18px] w-[18px] text-muted-foreground/60 pointer-events-none" aria-hidden="true" />
+      <div className="relative mb-12 max-w-full sm:max-w-md">
+        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} aria-hidden="true" />
         <input
           type="search"
           placeholder="Search your suburb..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full h-12 sm:h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
+          className="h-11 w-full rounded border border-input bg-white pl-9 pr-3 text-base text-foreground transition-colors duration-150 placeholder:text-muted-foreground focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/25 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>
@@ -51,45 +51,35 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
       </p>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-20">
-          <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
-            <Search className="h-6 w-6 text-muted-foreground/60" aria-hidden="true" />
-          </div>
-          <p className="text-muted-foreground text-lg mb-2">
+        <div className="border-t border-border py-12">
+          <p className="mb-2 text-lg text-foreground">
             No suburbs match &ldquo;{query}&rdquo;
           </p>
           <p className="text-muted-foreground text-sm">
             Send your suburb and vehicle details —{" "}
-            <Link href="/contact" className="text-primary underline underline-offset-2">
+            <Link href="/contact" className="text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary">
               contact us
             </Link>{" "}
             to check availability.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group flex flex-col border border-border bg-card p-4 sm:p-6 hover:border-primary/50 card-lift"
+              className="group flex flex-col border-t border-border py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <div className="flex items-center gap-3 sm:mb-4">
-                <div className="w-9 h-9 shrink-0 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MapPin className="h-4 w-4 text-accent-ink" aria-hidden="true" />
-                </div>
-                <h2 className="flex-1 text-base font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+              <div className="flex items-baseline justify-between gap-4">
+                <h2 className="text-base font-semibold text-foreground underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:decoration-foreground/40">
                   {suburb.h1}
                 </h2>
-                {/* Phones drop the "View details" row; the arrow carries it. */}
-                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary sm:hidden" aria-hidden="true" />
+                <ArrowRight className="h-4 w-4 shrink-0 translate-y-0.5 text-muted-foreground transition-colors duration-150 group-hover:text-foreground" strokeWidth={1.5} aria-hidden="true" />
               </div>
-              <p className="mt-2 pl-12 text-sm text-muted-foreground leading-relaxed line-clamp-2 sm:mt-0 sm:mb-5 sm:pl-0 sm:line-clamp-3">
+              <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">
                 {suburb.summary}
               </p>
-              <span className="mt-auto hidden text-sm text-accent-ink items-center gap-1.5 group-hover:gap-2.5 transition-all sm:flex">
-                View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </span>
             </Link>
           ))}
         </div>

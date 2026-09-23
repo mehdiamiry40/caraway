@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
 import { suburbs } from "@/data/suburbs";
@@ -81,34 +80,33 @@ export default function Locations() {
         </p>
       }
     >
-      <div className="site-container py-14 sm:py-20 lg:py-24">
+      <div className="site-container py-16 sm:py-20 lg:py-28">
         <LocationsFilter items={locationItems} />
 
-        <section className="mt-16 sm:mt-20" aria-labelledby="regional-coverage-heading">
-          <p className="eyebrow mb-3">Regional coverage</p>
+        <section className="mt-20 border-t border-border pt-16 sm:mt-28 sm:pt-20" aria-labelledby="regional-coverage-heading">
+          <p className="eyebrow mb-4">Regional coverage</p>
           <h2
             id="regional-coverage-heading"
-            className="text-2xl sm:text-3xl font-display text-foreground mb-4"
-            style={{ letterSpacing: "var(--tracking-tight)" }}
+            className="mb-4 text-3xl font-semibold tracking-[-0.02em] text-foreground"
           >
             If your suburb does not have a separate page.
           </h2>
-          <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">
+          <p className="mb-10 max-w-[65ch] text-base text-muted-foreground">
             Use these regional guides to check likely coverage and the access
             details Caraway needs. Availability and collection timing are
             confirmed for the exact vehicle and address before booking.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-x-10 md:grid-cols-2">
             {coverageRegions.map((region) => (
-              <article key={region.title} className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
-                <h3 className="font-display text-lg text-foreground mb-3">{region.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+              <article key={region.title} className="border-t border-border py-6">
+                <h3 className="mb-2 text-base font-semibold text-foreground">{region.title}</h3>
+                <p className="mb-3 text-sm text-muted-foreground">
                   {region.description}
                 </p>
-                <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                <ul className="flex flex-wrap gap-x-5">
                   {region.links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className="text-sm font-medium text-primary link-underline">
+                      <Link href={link.href} className="inline-flex min-h-11 items-center text-sm text-primary link-underline">
                         {link.label}
                       </Link>
                     </li>
@@ -119,28 +117,26 @@ export default function Locations() {
           </div>
         </section>
 
-        <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10 text-center max-w-2xl mx-auto">
-          <p className="eyebrow mb-3">Not sure?</p>
-          <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
-          <p className="text-muted-foreground mb-7 max-w-md mx-auto">
+        <div className="mt-20 border-t border-border pt-16 sm:mt-28">
+          <p className="eyebrow mb-4">Not sure?</p>
+          <h2 className="mb-3 text-xl font-semibold tracking-[-0.02em] text-foreground">Your suburb not listed?</h2>
+          <p className="mb-6 max-w-[65ch] text-base text-muted-foreground">
             Send the exact address and access details even if your suburb is not
             shown above. Caraway will confirm whether purchase and pickup are
             available for that vehicle and location. You can also call {BUSINESS.phoneDisplay}.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <Link
               href="/#quote-form"
               className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
             >
               Get my quote
-              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <a
               href={BUSINESS.phoneTel}
-              className={cn(buttonVariants({ variant: "link" }), "w-full sm:w-auto")}
+              className={buttonVariants({ variant: "link" })}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
-              <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
               Call {BUSINESS.phoneDisplay}
             </a>
           </div>

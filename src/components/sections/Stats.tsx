@@ -59,14 +59,14 @@ function FeatureStatCard({ stat }: { stat: StatDef }) {
           <span className="flex h-10 w-10 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.12)] ring-1 ring-[hsl(var(--on-dark-hi)/0.18)] text-on-dark-hi">
             <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
           </span>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-on-dark-hi/80">
             Quote assessment
           </p>
         </div>
         <p className="mt-5 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi">
           {stat.value}
         </p>
-        <p className="mt-3 max-w-md text-sm sm:text-[0.9375rem] leading-relaxed text-on-dark-hi/85">
+        <p className="mt-3 max-w-md text-sm sm:text-sm leading-relaxed text-on-dark-hi/85">
           {stat.label}
         </p>
       </div>
@@ -79,7 +79,7 @@ function SupportStatItem({ stat }: { stat: StatDef }) {
 
   return (
     <li
-      className="group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 hover:border-primary/40 card-lift sm:flex sm:flex-col sm:p-5"
+      className="group relative grid grid-cols-[2.5rem_1fr] gap-x-4 border border-border bg-card p-4 hover:border-primary/40 sm:flex sm:flex-col sm:p-5"
     >
       <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />

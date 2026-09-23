@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CarFront, Truck, Wrench } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
-import { cn } from "@/lib/utils";
 import { services } from "@/data/services";
 import {
   BUSINESS,
@@ -54,16 +53,6 @@ export const metadata: Metadata = {
 const canonical = `${SITE_URL}/services`;
 export const SERVICE_HUB_HEADING = "Vehicle buying options across Brisbane.";
 
-const iconForService = (slug: string) => {
-  if (slug.includes("removal") || slug.includes("scrap") || slug.includes("junk")) {
-    return Truck;
-  }
-  if (slug.includes("damaged") || slug.includes("accident") || slug.includes("write-off")) {
-    return Wrench;
-  }
-  return CarFront;
-};
-
 export default function ServicesPage() {
   return (
     <>
@@ -109,70 +98,31 @@ export default function ServicesPage() {
           </p>
         }
       >
-        <section className="bg-background py-12 sm:py-16 lg:py-20">
+        <section className="py-16 sm:py-20 lg:py-28">
           <div className="site-container">
-            <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, index) => {
-                const Icon = iconForService(service.slug);
-                // The first (primary) service spans two columns on desktop as
-                // a dark feature card; with eight services that also fills
-                // the 3-column grid's last row.
-                const featured = index === 0;
-                return (
-                  <li key={service.slug} className={featured ? "lg:col-span-2" : undefined}>
-                    <Link
-                      href={`/${service.slug}`}
-                      className={cn(
-                        "group flex h-full flex-col border p-5 card-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:p-6",
-                        featured
-                          ? "border-primary bg-primary text-on-dark-hi lg:p-8"
-                          : "border-border bg-card hover:border-primary/50",
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          "flex h-11 w-11 items-center justify-center rounded-xl transition-colors",
-                          featured
-                            ? "bg-cta text-cta-foreground"
-                            : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground",
-                        )}
-                      >
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <h2
-                        className={cn(
-                          "mt-5 font-display font-semibold leading-snug",
-                          featured ? "text-xl text-on-dark-hi sm:text-2xl" : "text-lg text-primary",
-                        )}
-                      >
+            <ul className="grid grid-cols-1 gap-x-10 md:grid-cols-2">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/${service.slug}`}
+                    className="group flex h-full flex-col border-t border-border py-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <div className="flex items-baseline justify-between gap-4">
+                      <h2 className="text-lg font-semibold text-foreground underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:decoration-foreground/40">
                         {service.h1}
                       </h2>
-                      <p
-                        className={cn(
-                          "mt-3 text-sm leading-relaxed",
-                          featured
-                            ? "line-clamp-4 max-w-2xl text-on-dark-hi/85 sm:text-base"
-                            : "line-clamp-3 text-muted-foreground",
-                        )}
-                      >
-                        {service.intro}
-                      </p>
-                      <span
-                        className={cn(
-                          "mt-5 inline-flex items-center gap-1.5 text-sm font-semibold",
-                          featured ? "text-cta-bright" : "text-primary",
-                        )}
-                      >
-                        View service
-                        <ArrowRight
-                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
+                      <ArrowRight
+                        className="h-4 w-4 shrink-0 translate-y-0.5 text-muted-foreground transition-colors duration-150 group-hover:text-foreground"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <p className="mt-2 line-clamp-2 max-w-[60ch] text-sm text-muted-foreground">
+                      {service.intro}
+                    </p>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </section>

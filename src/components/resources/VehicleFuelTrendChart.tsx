@@ -40,7 +40,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
 
   return (
     <figure>
-      <div className="rounded-md border border-border bg-card p-3 sm:p-5 shadow-sm">
+      <div className="rounded-md border border-border bg-card p-3 sm:p-5">
         <svg
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
           role="img"
@@ -73,7 +73,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
                   x={MARGIN.left - 12}
                   y={y + 4}
                   textAnchor="end"
-                  className="fill-muted-foreground text-[12px]"
+                  className="fill-muted-foreground text-xs"
                 >
                   {compactNumber.format(tick)}
                 </text>
@@ -90,7 +90,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
                 x={x}
                 y={HEIGHT - 16}
                 textAnchor="middle"
-                className="fill-muted-foreground text-[12px]"
+                className="fill-muted-foreground text-xs"
               >
                 {row.year}
               </text>

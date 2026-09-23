@@ -30,7 +30,7 @@ export default function Error({
       <Header />
       <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
-          <h1 className="text-3xl font-display text-primary mb-3">
+          <h1 className="mb-3 text-3xl font-semibold tracking-[-0.02em] text-foreground">
             We couldn&apos;t load this post
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">

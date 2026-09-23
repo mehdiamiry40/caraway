@@ -502,7 +502,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           <footer className="border-t border-border bg-card p-3">
             <p
               id="caraway-chat-privacy-note"
-              className="mb-2 rounded-sm border border-border/70 bg-muted/60 px-2.5 py-2 text-[0.6875rem] leading-relaxed text-muted-foreground"
+              className="mb-2 rounded-sm border border-border/70 bg-muted/60 px-2.5 py-2 text-xs leading-relaxed text-muted-foreground"
             >
               AI chat is for general questions only. Do not enter names, phone
               numbers, addresses, registration numbers, VINs or ID details. See
@@ -549,7 +549,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 )}
               </button>
             </form>
-            <div className="mt-2 flex items-center justify-between gap-3 text-[0.6875rem] text-muted-foreground">
+            <div className="mt-2 flex items-center justify-between gap-3 text-xs text-muted-foreground">
               <span className="hidden sm:inline">Enter to send · Shift+Enter for a new line</span>
               <span className="sm:hidden">Quotes come from the form</span>
               <span className="flex items-center gap-3">

@@ -149,7 +149,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-semibold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border text-xs text-foreground"
                   >
                     {authorInitials}
                   </span>
@@ -177,7 +177,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </span>
                 <Link
                   href={`/blog/category/${categorySlug(post.category)}`}
-                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink hover:bg-accent/15 transition-colors"
+                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent-ink hover:bg-accent/15 transition-colors"
                 >
                   {post.category}
                 </Link>
@@ -204,7 +204,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <p className="eyebrow mb-4">FAQ</p>
                 <h2
                   id="blog-post-faq-heading"
-                  className="mb-2 font-display text-2xl leading-[1.15] text-foreground sm:text-3xl lg:text-[2rem]"
+                  className="mb-2 font-display text-2xl leading-[1.15] text-foreground sm:text-3xl lg:text-3xl"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
                 >
                   Frequently asked questions
@@ -214,7 +214,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             {post.sources && post.sources.length > 0 && (
-              <aside className="mt-12 rounded-2xl border border-border/60 bg-muted/50 p-5 sm:p-6">
+              <aside className="mt-12 border-t border-border pt-6">
                 <p className="eyebrow mb-3">Sources and review</p>
                 {post.reviewedAt && (
                   <p className="mb-3 text-sm text-muted-foreground">
@@ -239,7 +239,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </aside>
             )}
 
-            <aside className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10">
+            <aside className="mt-16 border-y border-border py-10">
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
@@ -276,7 +276,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             {(relatedServiceData.length > 0 || relatedSuburbData.length > 0) && (
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {relatedServiceData.length > 0 && (
-                  <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-card">
+                  <div className="border-t border-border pt-6">
                     <p className="eyebrow mb-4">Related services</p>
                     <ul className="space-y-1">
                       {relatedServiceData.map((service) => (
@@ -287,7 +287,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                             >
                               <span>{service.h1}</span>
                               <ArrowRight
-                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:text-primary"
                                 strokeWidth={1.75}
                                 aria-hidden
                               />
@@ -298,7 +298,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </div>
                 )}
                 {relatedSuburbData.length > 0 && (
-                  <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-card">
+                  <div className="border-t border-border pt-6">
                     <p className="eyebrow mb-4">Areas we service</p>
                     <ul className="space-y-1">
                       {relatedSuburbData.map((suburb) => (
@@ -309,7 +309,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                             >
                               <span>{suburb.h1}</span>
                               <ArrowRight
-                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
+                                className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:text-primary"
                                 strokeWidth={1.75}
                                 aria-hidden
                               />
@@ -323,11 +323,11 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             <footer className="mt-16 space-y-10">
-              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-card">
+              <div className="border-t border-border pt-8">
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
+                    className="h-12 w-12 shrink-0 rounded-full border border-border flex items-center justify-center text-sm text-foreground"
                   >
                     {authorInitials}
                   </div>
@@ -365,7 +365,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={xShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex min-h-11 items-center gap-2 rounded border border-border px-4 text-xs text-foreground hover:border-foreground/40 transition-colors"
                     aria-label="Share on X"
                   >
                     <TwitterIcon className="h-3.5 w-3.5" aria-hidden />
@@ -375,7 +375,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={fbShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex min-h-11 items-center gap-2 rounded border border-border px-4 text-xs text-foreground hover:border-foreground/40 transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <FacebookIcon className="h-3.5 w-3.5" aria-hidden />
@@ -385,7 +385,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={liShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex min-h-11 items-center gap-2 rounded border border-border px-4 text-xs text-foreground hover:border-foreground/40 transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />
@@ -395,33 +395,31 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
+              <div className="border-t border-border pt-10">
                 <p
-                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
+                  className="max-w-xl text-3xl font-semibold leading-[1.15] text-foreground text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
                 >
                   Ready to sell your car for cash?
                 </p>
-                <p className="text-primary-foreground/80 text-sm sm:text-base mt-4 mb-8 max-w-xl mx-auto leading-relaxed">
+                <p className="mt-4 mb-8 max-w-xl text-base text-muted-foreground">
                   Call {BUSINESS.phoneDisplay} or request a quote. Collection
                   timing is confirmed from the vehicle, location, access, and
                   operator availability.
                 </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
                   <Link
                     href="/#quote-form"
                     className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
                   >
                     Get my quote
-                    <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <TrackedPhoneLink
                     href={BUSINESS.phoneTel}
                     location="blog_post_footer"
-                    className={cn(buttonVariants({ variant: "link" }), "w-full sm:w-auto")}
+                    className={buttonVariants({ variant: "link" })}
                     ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
-                    <Phone className="h-4 w-4" aria-hidden />
                     Call {BUSINESS.phoneDisplay}
                   </TrackedPhoneLink>
                 </div>

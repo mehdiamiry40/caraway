@@ -324,13 +324,13 @@ export function QldVehicleSaleRecordBuilder() {
       <section
         id="qld-vehicle-sale-record-builder"
         aria-labelledby="qld-sale-record-heading"
-        className="scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 shadow-sm sm:p-7"
+        className="scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 sm:p-7"
       >
         <div className="border-b border-border/70 pb-6">
           <p className="eyebrow mb-3">Private, local-only tool</p>
           <h2
             id="qld-sale-record-heading"
-            className="font-display text-2xl text-primary sm:text-3xl"
+            className="font-display text-2xl text-foreground sm:text-3xl"
           >
             Build a Queensland seller checklist and handover record
           </h2>
