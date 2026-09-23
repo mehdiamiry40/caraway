@@ -13,6 +13,9 @@ export default defineConfig({
     },
   },
   test: {
+    alias: {
+      "next/font/google": resolve(__dirname, "./__tests__/stubs/next-font-google.ts"),
+    },
     environment: "node",
     include: [
       "src/**/*.test.{ts,tsx}",
