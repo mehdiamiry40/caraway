@@ -234,7 +234,7 @@ export function QuoteComparisonWorksheet() {
             href={LICENCE_REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+            className="font-medium text-primary underline underline-offset-4 hover:text-primary"
           >
             Check Queensland&apos;s public motor-licence register
           </a>

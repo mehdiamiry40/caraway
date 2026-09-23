@@ -325,7 +325,6 @@ const truthConsistencyFiles = new Set([
   "src/lib/faq-data.ts",
   "src/lib/site.ts",
   "src/components/sections/TrustBadges.tsx",
-  "src/components/sections/Stats.tsx",
   "src/components/sections/QuoteForm.tsx",
   "src/components/sections/ContactForm.tsx",
   "src/lib/chat-assistant.ts",

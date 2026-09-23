@@ -236,7 +236,7 @@ export default function HowItWorksPage() {
                 fuller rundown, see our guide to{" "}
                 <Link
                   href="/blog/preparing-your-car-for-pickup"
-                  className="text-primary underline underline-offset-4 hover:text-accent-ink"
+                  className="text-primary underline underline-offset-4 hover:text-primary"
                 >
                   preparing your car for pickup
                 </Link>
@@ -264,7 +264,7 @@ export default function HowItWorksPage() {
                   <li key={guide.href}>
                     <Link
                       href={guide.href}
-                      className="inline-flex min-h-11 items-center text-base font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+                      className="inline-flex min-h-11 items-center text-base font-medium text-primary underline underline-offset-4 hover:text-primary"
                     >
                       {guide.label}
                     </Link>

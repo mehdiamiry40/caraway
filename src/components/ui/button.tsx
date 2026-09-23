@@ -17,7 +17,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "whitespace-nowrap rounded bg-primary text-primary-foreground hover:bg-ink-deep",
+          "whitespace-nowrap rounded bg-primary text-primary-foreground hover:bg-primary-hover",
         // Inline with copy: keeps a 44px hit area, no horizontal padding.
         link:
           "justify-start text-left rounded-sm text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary",

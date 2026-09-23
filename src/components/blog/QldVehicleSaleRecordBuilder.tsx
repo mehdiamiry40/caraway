@@ -506,7 +506,7 @@ export function QldVehicleSaleRecordBuilder() {
                     href={QLD_SALE_SOURCE_URLS[key]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary"
                   >
                     {QLD_SALE_SOURCE_LABELS[key]}
                   </a>

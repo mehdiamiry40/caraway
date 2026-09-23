@@ -177,7 +177,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </span>
                 <Link
                   href={`/blog/category/${categorySlug(post.category)}`}
-                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent-ink hover:bg-accent/15 transition-colors"
+                  className="ml-auto inline-flex items-center rounded-full bg-secondary px-3 py-1 text-xs font-medium text-primary hover:bg-secondary transition-colors"
                 >
                   {post.category}
                 </Link>

@@ -46,19 +46,7 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--primary));
 
-  /* Legacy aliases, all resolved onto the single accent or the neutrals so
-     templates not yet rewritten can't reintroduce extra hues. */
-  --color-accent: hsl(var(--primary));
-  --color-accent-foreground: hsl(var(--primary-foreground));
-  --color-accent-ink: hsl(var(--primary));
-  --color-cta: hsl(var(--primary));
-  --color-cta-foreground: hsl(var(--primary-foreground));
-  --color-cta-ink: hsl(var(--primary));
-  --color-cta-bright: hsl(var(--primary-foreground));
-  --color-ink: hsl(var(--primary));
-  --color-ink-deep: hsl(var(--primary-hover));
-  --color-on-dark: hsl(0 0% 88%);
-  --color-on-dark-hi: hsl(0 0% 100%);
+  --color-primary-hover: hsl(var(--primary-hover));
   --color-success: hsl(var(--success));
   --color-success-foreground: hsl(0 0% 100%);
 
@@ -105,6 +93,8 @@
   --primary-foreground: 0 0% 100%;
   --destructive: 0 65% 42%;
   --success: 150 45% 30%;
+  /* Elevation colour, for overlays only (chat panel, popovers). */
+  --shadow-color: 0 0% 7%;
 
   --site-frame-max-width: 70rem;
   --site-frame-gutter: 1.25rem;
@@ -182,18 +172,8 @@
     @apply py-12 sm:py-16 lg:py-20;
   }
 
-  .section-y-hero {
-    @apply py-12 sm:py-16 lg:py-20;
-  }
-
   .site-container {
     @apply mx-auto w-full max-w-(--container-site) px-5 sm:px-8;
-  }
-
-  .container-prose {
-    max-width: 65ch;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .text-balance {
@@ -209,15 +189,6 @@
     text-transform: uppercase;
     color: hsl(var(--muted-foreground));
   }
-  .eyebrow-on-dark {
-    display: inline-block;
-    font-size: var(--text-xs);
-    font-weight: 400;
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    color: hsl(0 0% 100% / 0.75);
-  }
-
   .link-underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -228,13 +199,6 @@
   .link-underline:hover,
   .link-underline:focus-visible {
     text-decoration-color: currentColor;
-  }
-
-  /* Retired: interactive cards no longer lift. Kept as a no-op border
-     transition until every call site is rewritten. */
-  .card-lift {
-    border-radius: var(--radius);
-    transition: border-color 150ms var(--ease-out);
   }
 
   .hairline {
@@ -547,33 +511,11 @@
 @utility pl-safe { padding-left: env(safe-area-inset-left, 0px); }
 @utility pr-safe { padding-right: env(safe-area-inset-right, 0px); }
 
-@utility bottom-safe {
-  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
-}
-
-@utility min-h-hero {
-  min-height: min(100vh, 620px);
-  min-height: min(100dvh, 620px);
-}
-
-@utility focus-ring {
-  &:focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
-    box-shadow: none;
-  }
-}
-
 @utility scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
 }
-
-/* Legacy elevation utilities, flattened: hairlines replace shadows. */
-@utility shadow-card { box-shadow: none; }
-@utility shadow-card-hover { box-shadow: none; }
-@utility shadow-card-xl { box-shadow: none; }
 
 @utility mt-header-safe {
   /* Offsets the fixed-header height (single source: --header-h). */
@@ -584,16 +526,4 @@
   /* Header height + 1rem breathing gap so anchored sections land just below
      the fixed header rather than flush against it. */
   scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
-}
-
-@utility min-h-screen-safe {
-  min-height: 100vh;
-  min-height: 100dvh;
-}
-
-/* Inner-page intro band: flat, separated by a hairline. */
-@utility aurora-surface {
-  position: relative;
-  background-color: hsl(var(--background));
-  border-bottom: 1px solid hsl(var(--border));
 }

@@ -129,7 +129,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
               axisMaximum,
             )}
             fill="none"
-            className="stroke-accent-ink"
+            className="stroke-primary"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -142,7 +142,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
             Electric
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="h-1 w-6 rounded-full bg-accent-ink" aria-hidden="true" />
+            <span className="h-1 w-6 rounded-full bg-primary" aria-hidden="true" />
             Petrol/Electric
           </span>
         </div>

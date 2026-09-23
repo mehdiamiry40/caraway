@@ -537,8 +537,8 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 type={isBusy ? "button" : "submit"}
                 onClick={isBusy ? stop : undefined}
                 disabled={!isBusy && (conversationLimitReached || input.trim().length === 0)}
-                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-cta-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
-                  isBusy ? "bg-primary hover:bg-primary/90" : "bg-cta hover:bg-cta/90"
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-primary-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
+                  isBusy ? "bg-primary hover:bg-primary/90" : "bg-primary hover:bg-primary-hover"
                 }`}
                 aria-label={isBusy ? "Stop response" : "Send message"}
               >

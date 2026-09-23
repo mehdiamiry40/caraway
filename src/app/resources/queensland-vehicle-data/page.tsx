@@ -258,7 +258,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
 ];
 
 const downloadClasses =
-  "inline-flex min-h-11 items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-11 items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 function SourceLink({
   href,
@@ -274,7 +274,7 @@ function SourceLink({
       href={href}
       label={label}
       location={location}
-      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span>{label}</span>
       <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -547,7 +547,7 @@ export default function QueenslandVehicleDataPage() {
                   href={BRISBANE_OPEN_DATA_SHOWCASE_URL}
                   label="Brisbane City Council Open Data showcase"
                   location="vehicle_data_council_showcase"
-                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   Brisbane City Council’s Open Data showcase
                   <ExternalLink
@@ -916,27 +916,27 @@ export default function QueenslandVehicleDataPage() {
 
           <section
             aria-labelledby="related-services-heading"
-            className="mt-20 rounded-md bg-ink px-6 py-8 text-on-dark sm:px-8"
+            className="mt-20 rounded-md bg-primary px-6 py-8 text-primary-foreground/85 sm:px-8"
           >
             <h2
               id="related-services-heading"
-              className="text-2xl font-semibold text-on-dark-hi"
+              className="text-2xl font-semibold text-primary-foreground"
             >
               Vehicle-selling information
             </h2>
-            <p className="mt-3 max-w-3xl leading-relaxed text-on-dark-hi/85">
+            <p className="mt-3 max-w-3xl leading-relaxed text-primary-foreground/85">
               This resource does not estimate an individual vehicle. For commercial
               service information, see Caraway&apos;s{" "}
               <Link
                 href="/cash-for-cars-brisbane"
-                className="font-semibold text-cta-bright underline underline-offset-4 hover:text-on-dark-hi"
+                className="font-semibold text-primary-foreground underline underline-offset-4 hover:text-primary-foreground"
               >
                 Brisbane vehicle-buyer quote service
               </Link>{" "}
               and{" "}
               <Link
                 href="/car-removal-brisbane"
-                className="font-semibold text-cta-bright underline underline-offset-4 hover:text-on-dark-hi"
+                className="font-semibold text-primary-foreground underline underline-offset-4 hover:text-primary-foreground"
               >
                 vehicle purchase and collection information
               </Link>.
