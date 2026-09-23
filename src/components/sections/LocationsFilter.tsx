@@ -72,20 +72,22 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group border border-border bg-card p-5 sm:p-6 hover:border-primary/50 card-lift"
+              className="group flex flex-col border border-border bg-card p-4 sm:p-6 hover:border-primary/50 card-lift"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+              <div className="flex items-center gap-3 sm:mb-4">
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
+                  <MapPin className="h-4 w-4 text-accent-ink" aria-hidden="true" />
                 </div>
-                <h2 className="text-base font-display text-foreground group-hover:text-primary transition-colors">
+                <h2 className="flex-1 text-base font-display font-semibold text-foreground group-hover:text-primary transition-colors">
                   {suburb.h1}
                 </h2>
+                {/* Phones drop the "View details" row; the arrow carries it. */}
+                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary sm:hidden" aria-hidden="true" />
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5">
+              <p className="mt-2 pl-12 text-sm text-muted-foreground leading-relaxed line-clamp-2 sm:mt-0 sm:mb-5 sm:pl-0 sm:line-clamp-3">
                 {suburb.summary}
               </p>
-              <span className="text-sm text-accent-ink flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              <span className="mt-auto hidden text-sm text-accent-ink items-center gap-1.5 group-hover:gap-2.5 transition-all sm:flex">
                 View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>

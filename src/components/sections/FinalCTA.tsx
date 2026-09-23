@@ -13,7 +13,7 @@ export function FinalCTA() {
       data-sticky-cta-suppress="true"
     >
       <div className="site-container">
-        <div className="relative overflow-hidden border border-primary bg-primary text-on-dark-hi">
+        <div className="relative overflow-hidden rounded-2xl border border-primary bg-primary text-on-dark-hi">
           <div
             className="h-1 bg-gradient-to-r from-cta via-accent to-white"
             aria-hidden="true"

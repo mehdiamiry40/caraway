@@ -1,7 +1,10 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
-import { CheckCircle2, Star } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, MapPin, Star } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 
 const breadcrumbs = [
@@ -90,11 +93,11 @@ export default function About() {
               </h2>
             </div>
             <div>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                 {features.map(item => (
-                  <div key={item.title} className="group relative border border-border/60 bg-card p-5 pl-15 sm:p-6 sm:pl-16 hover:border-primary/40 card-lift">
+                  <div key={item.title} className="group relative border border-border/60 bg-card p-4 pl-14 sm:p-6 sm:pl-16 hover:border-primary/40 card-lift">
                     <dt className="font-display text-base font-semibold text-foreground">
-                      <span className="absolute left-5 top-5.5 sm:left-6 sm:top-6.5 flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <span className="absolute left-4 top-4.5 sm:left-6 sm:top-6.5 flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
                         <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
                       </span>
                       {item.title}
@@ -113,6 +116,16 @@ export default function About() {
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               We assess Brisbane-area enquiries and confirm coverage for the exact address before a collection is booked. Share the suburb and access details with your quote request so availability can be checked.
             </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link href="/#quote-form" className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}>
+                Get my quote
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link href="/locations" className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}>
+                <MapPin className="h-4 w-4" aria-hidden="true" />
+                See pickup areas
+              </Link>
+            </div>
           </div>
         </div>
       </div>
