@@ -110,13 +110,13 @@
   --site-frame-gutter: 1.25rem;
 
   /* Single source of truth for the fixed-header height. */
-  --header-h: 4rem;
+  --header-h: calc(4rem + 1px);
 }
 
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 2rem;
-    --header-h: 4.5rem;
+    --header-h: calc(4.5rem + 1px);
   }
 }
 
