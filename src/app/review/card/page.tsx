@@ -70,7 +70,7 @@ export default function ReviewCardPage() {
           <PrintReviewCardButton />
           <Link
             href="/review"
-            className={`${buttonVariants({ variant: "outline", size: "lg" })} inline-flex gap-2`}
+            className={`${buttonVariants({ variant: "link", size: "lg" })} inline-flex gap-2`}
           >
             Open customer handoff
             <ExternalLink className="h-4 w-4" aria-hidden="true" />

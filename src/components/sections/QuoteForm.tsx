@@ -138,7 +138,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
                     Our team will review the supplied details and contact you by phone during business hours.
                   </p>
-                  <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
+                  <Button onClick={() => resetMutation()} variant="link" className="w-full sm:w-auto">
                     Submit another vehicle
                   </Button>
                 </div>

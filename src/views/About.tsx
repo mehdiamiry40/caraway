@@ -121,7 +121,7 @@ export default function About() {
                 Get my quote
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link href="/locations" className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}>
+              <Link href="/locations" className={cn(buttonVariants({ variant: "link" }), "w-full sm:w-auto")}>
                 <MapPin className="h-4 w-4" aria-hidden="true" />
                 See pickup areas
               </Link>

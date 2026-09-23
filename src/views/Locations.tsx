@@ -137,7 +137,7 @@ export default function Locations() {
             </Link>
             <a
               href={BUSINESS.phoneTel}
-              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
+              className={cn(buttonVariants({ variant: "link" }), "w-full sm:w-auto")}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />

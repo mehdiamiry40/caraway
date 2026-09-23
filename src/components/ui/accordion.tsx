@@ -30,19 +30,21 @@ export function Accordion({
         return (
           <details
             key={`${index}-${item.question}`}
-            className="group border-b border-border transition-colors duration-200 open:border-primary/40"
+            className="group border-b border-border"
           >
-            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 py-5 text-left touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-4 sm:py-6 [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-6 py-5 text-left touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
               <HeadingTag className="m-0 contents">
-                <span className="font-display text-base text-foreground break-words transition-colors duration-200 [overflow-wrap:anywhere] group-hover:text-primary sm:text-lg">
+                <span className="text-base font-semibold text-foreground break-words [overflow-wrap:anywhere]">
                   {item.question}
                 </span>
               </HeadingTag>
-              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-border bg-secondary text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] group-open:rotate-45 group-open:border-primary/50 group-open:bg-primary/15 group-open:text-primary motion-reduce:transition-none motion-reduce:duration-0">
-                <Plus className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              </span>
+              <Plus
+                className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-150 group-open:rotate-45 motion-reduce:transition-none"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
             </summary>
-            <div className="pb-6 pt-0 pr-10 text-[0.9375rem] leading-relaxed text-foreground/80 break-words [overflow-wrap:anywhere] sm:text-base">
+            <div className="max-w-[65ch] pb-6 pr-10 text-base text-muted-foreground break-words [overflow-wrap:anywhere]">
               {item.answer}
             </div>
           </details>

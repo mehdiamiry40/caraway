@@ -104,14 +104,14 @@ export default function FAQPage() {
                 </Link>
                 <a
                   href={BUSINESS.phoneTel}
-                  className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+                  className={cn(buttonVariants({ variant: "link", size: "sm" }))}
                 >
                   <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </a>
                 <Link
                   href="/contact"
-                  className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                  className={cn(buttonVariants({ variant: "link", size: "sm" }))}
                 >
                   <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
                   Contact us

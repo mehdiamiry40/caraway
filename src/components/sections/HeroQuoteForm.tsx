@@ -153,7 +153,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               setIsSuccess(false);
               setErrorMessage(null);
             }}
-            variant="outline"
+            variant="link"
             size="sm"
           >
             Submit another vehicle

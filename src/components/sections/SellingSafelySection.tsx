@@ -49,7 +49,7 @@ export function SellingSafelySection() {
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
                 location="selling_safely"
-                className={cn(buttonVariants({ variant: "primary" }), "mt-3")}
+                className={cn(buttonVariants({ variant: "default" }), "mt-3")}
                 ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />

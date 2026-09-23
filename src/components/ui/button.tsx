@@ -2,37 +2,36 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+/**
+ * Two variants only: a solid accent button for the primary action, and a
+ * text link for everything secondary. No gradients, glows or lift.
+ */
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full",
-    "font-display font-semibold tracking-[-0.005em]",
-    "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold",
+    "transition-colors duration-150 ease-(--ease-out)",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "disabled:pointer-events-none disabled:opacity-50",
   ].join(" "),
   {
     variants: {
       variant: {
         default:
-          "bg-cta text-cta-foreground border border-cta hover:bg-cta/88 hover:border-cta/88 active:translate-y-px",
-        primary:
-          "bg-primary text-primary-foreground border border-primary hover:bg-ink-deep hover:border-ink-deep active:translate-y-px",
-        secondary:
-          "bg-accent-ink text-accent-foreground border border-accent-ink hover:bg-accent-ink/90 active:translate-y-px",
-        outline:
-          "border-2 border-primary bg-card text-primary hover:bg-primary hover:text-primary-foreground active:translate-y-px",
-        ghost:
-          "bg-transparent text-primary hover:bg-primary/8",
-        inkOutline:
-          "border-2 border-on-dark-hi bg-transparent text-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
+          "rounded bg-primary text-primary-foreground hover:bg-ink-deep",
+        link:
+          "rounded-sm text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary",
       },
       size: {
-        default: "h-12 px-6 text-[0.9375rem]",
-        sm: "h-10 px-5 text-sm",
-        lg: "h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg",
-        icon: "h-12 w-12",
+        default: "h-11 px-5 text-sm",
+        sm: "h-10 px-4 text-sm",
+        lg: "h-12 px-6 text-base",
+        icon: "h-11 w-11",
       },
     },
+    compoundVariants: [
+      // Text links sit inline with copy: keep a 44px hit area, drop the padding.
+      { variant: "link", size: ["default", "sm", "lg"], class: "px-0" },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
@@ -57,7 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span className="mr-2 h-5 w-5 animate-spin motion-reduce:animate-none rounded-full border-[2.5px] border-current border-t-transparent" aria-hidden="true" />
+          <span className="h-4 w-4 animate-spin motion-reduce:animate-none rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
         ) : null}
         {children}
       </button>

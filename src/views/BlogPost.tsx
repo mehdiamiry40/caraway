@@ -256,14 +256,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex flex-col gap-2.5 shrink-0 w-full md:w-auto">
                   <Link
                     href="/#quote-form"
-                    className={cn(buttonVariants({ variant: "primary" }), "w-full md:w-auto")}
+                    className={cn(buttonVariants({ variant: "default" }), "w-full md:w-auto")}
                   >
                     Get my quote
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                   <a
                     href={BUSINESS.phoneTel}
-                    className={cn(buttonVariants({ variant: "outline" }), "w-full md:w-auto")}
+                    className={cn(buttonVariants({ variant: "link" }), "w-full md:w-auto")}
                     aria-label={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
@@ -418,7 +418,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   <TrackedPhoneLink
                     href={BUSINESS.phoneTel}
                     location="blog_post_footer"
-                    className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
+                    className={cn(buttonVariants({ variant: "link" }), "w-full sm:w-auto")}
                     ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />

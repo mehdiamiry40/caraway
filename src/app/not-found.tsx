@@ -48,7 +48,7 @@ export default function NotFound() {
             <Link
               href="/cash-for-cars-brisbane"
               className={cn(
-                buttonVariants({ variant: "outline" }),
+                buttonVariants({ variant: "link" }),
                 "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
               )}
             >
@@ -58,7 +58,7 @@ export default function NotFound() {
             <Link
               href="/locations"
               className={cn(
-                buttonVariants({ variant: "outline" }),
+                buttonVariants({ variant: "link" }),
                 "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
               )}
             >
@@ -68,7 +68,7 @@ export default function NotFound() {
             <Link
               href="/contact"
               className={cn(
-                buttonVariants({ variant: "outline" }),
+                buttonVariants({ variant: "link" }),
                 "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
               )}
             >

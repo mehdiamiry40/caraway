@@ -79,7 +79,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 href={BUSINESS.phoneTel}
                 location={`location_hero_${suburb.slug}`}
                 ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                className={cn(buttonVariants({ size: "lg", variant: "default" }), "w-full sm:w-auto")}
               >
                 <Phone className="h-5 w-5" aria-hidden="true" />
                 Call {BUSINESS.phoneDisplay}
@@ -208,7 +208,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                       href={BUSINESS.phoneTel}
                       location={`location_final_${suburb.slug}`}
                       ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                      className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                      className={cn(buttonVariants({ size: "lg", variant: "default" }), "w-full sm:w-auto")}
                     >
                       <Phone className="h-5 w-5" aria-hidden="true" />
                       Call {BUSINESS.phoneDisplay}

@@ -105,7 +105,7 @@ export function ContactForm() {
           <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
             We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
-          <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
+          <Button onClick={() => setIsSuccess(false)} variant="link" className="w-full sm:w-auto transition-all duration-200">
             Send another message
           </Button>
         </div>

@@ -9,13 +9,11 @@ const Textarea = React.forwardRef<
   return (
     <textarea
       className={cn(
-        "flex min-h-[136px] sm:min-h-[160px] w-full resize-y rounded-md border border-input bg-card px-4 py-3 text-base ring-offset-background transition-all duration-200 motion-reduce:transition-none",
+        "flex min-h-32 w-full resize-y rounded border border-input bg-white px-3 py-2.5 text-base text-foreground transition-colors duration-150",
         "placeholder:text-muted-foreground",
-        "hover:border-primary/40",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:border-primary focus-visible:shadow-[0_0_0_4px_hsl(var(--accent)/0.12)]",
-        "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-input",
-        "aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/[0.04] aria-[invalid=true]:focus-visible:ring-destructive/30 aria-[invalid=true]:focus-visible:border-destructive",
-        "[&:-webkit-autofill]:shadow-[0_0_0_1000px_hsl(var(--card))_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:hsl(var(--foreground))]",
+        "focus-visible:outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/25",
+        "disabled:cursor-not-allowed disabled:opacity-50",
+        "aria-[invalid=true]:border-destructive aria-[invalid=true]:focus-visible:ring-destructive/25",
         className
       )}
       ref={ref}
