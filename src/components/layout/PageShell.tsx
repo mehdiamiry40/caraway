@@ -34,21 +34,18 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
-              : "bg-background py-8 sm:py-12 lg:py-14"
+              ? "border-b border-border py-12 sm:py-16 lg:py-24"
+              : "py-10 sm:py-14 lg:py-16"
           }
         >
-          <div className="site-container relative">
+          <div className="site-container">
             <Breadcrumbs items={breadcrumbs} />
-            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
-            <h1
-              className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.08] text-primary text-balance max-w-4xl mt-4 mb-5"
-              style={{ letterSpacing: "var(--tracking-display)" }}
-            >
+            {eyebrow && <p className="eyebrow mt-8 mb-4">{eyebrow}</p>}
+            <h1 className="mt-4 mb-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-foreground text-balance sm:text-5xl">
               {title}
             </h1>
             {subtitle && (
-              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
+              <div className="max-w-[40rem] text-lg text-muted-foreground">
                 {subtitle}
               </div>
             )}

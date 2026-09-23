@@ -14,7 +14,7 @@ interface BreadcrumbsProps {
 export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
   return (
     <div className="relative">
-      <nav aria-label="Breadcrumb" className="text-xs sm:text-sm overflow-x-auto scrollbar-none">
+      <nav aria-label="Breadcrumb" className="text-xs overflow-x-auto scrollbar-none">
         <ol className="flex items-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap">
           {items.map((item, i) => {
             const isLast = i === items.length - 1;
@@ -31,7 +31,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                     aria-hidden="true"
                     className={cn(
                       "text-xs select-none shrink-0",
-                      light ? "text-primary-foreground/80" : "text-foreground/50"
+                      light ? "text-primary-foreground/80" : "text-muted-foreground/60"
                     )}
                   >
                     /
@@ -42,10 +42,10 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                     href={item.href}
                     prefetch={false}
                     className={cn(
-                      "transition-colors duration-200 rounded-md px-1.5 py-1 -mx-1.5 -my-1 min-h-11 inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none font-medium",
+                      "transition-colors duration-150 rounded-sm px-1.5 py-1 -mx-1.5 -my-1 min-h-11 inline-flex items-center touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                       light
                         ? "text-primary-foreground/85 hover:text-primary-foreground"
-                        : "text-foreground/75 hover:text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {item.label}
@@ -54,7 +54,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                   <span
                     aria-current="page"
                     className={cn(
-                      "font-medium px-1.5 py-1 -mx-1.5 -my-1 rounded-md",
+                      "px-1.5 py-1 -mx-1.5 -my-1",
                       isLast && "block max-w-[16rem] sm:max-w-[28rem] md:max-w-none truncate",
                       light ? "text-primary-foreground" : "text-foreground"
                     )}

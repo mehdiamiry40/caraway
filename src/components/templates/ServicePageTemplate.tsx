@@ -13,7 +13,6 @@ import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { getPostsForService } from "@/data/blog-posts";
 import { Accordion } from "@/components/ui/accordion";
-import { CheckCircle2 } from "lucide-react";
 import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
@@ -22,14 +21,14 @@ import { canonicalServiceSlug } from "@/lib/service-consolidation";
 export function ServiceSectionContent({ section }: { section: ServiceSection }) {
   return (
     <div>
-      <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+      <h2 className="mb-4 text-2xl font-semibold tracking-[-0.02em] text-foreground">
         {section.heading}
       </h2>
-      <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+      <p className="text-base text-muted-foreground">
         {section.content}
       </p>
       {section.image && (
-        <figure className="mt-6 overflow-hidden rounded-xl border border-border bg-muted shadow-sm">
+        <figure className="mt-6 overflow-hidden rounded border border-border bg-secondary">
           <Image
             src={section.image.src}
             alt={section.image.alt}
@@ -39,7 +38,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
             loading="lazy"
             className="h-auto w-full"
           />
-          <figcaption className="border-t border-border bg-card px-4 py-3 text-sm leading-relaxed text-muted-foreground sm:px-5">
+          <figcaption className="border-t border-border px-4 py-3 text-sm text-muted-foreground">
             {section.image.caption}
           </figcaption>
         </figure>
@@ -47,16 +46,11 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       {section.checklistItems && section.checklistItems.length > 0 && (
         <ul
           aria-label={`${section.heading} checklist`}
-          className="mt-5 grid gap-3 text-sm sm:text-base text-foreground/80"
+          className="mt-5 border-t border-border text-base text-muted-foreground"
         >
           {section.checklistItems.map((item) => (
-            <li key={item} className="flex items-start gap-3 leading-relaxed">
-              <CheckCircle2
-                className="mt-0.5 h-5 w-5 shrink-0 text-primary"
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-              <span>{item}</span>
+            <li key={item} className="border-b border-border py-3">
+              {item}
             </li>
           ))}
         </ul>
@@ -64,7 +58,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       {section.supportLink && (
         <Link
           href={section.supportLink.href}
-          className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+          className="mt-3 inline-flex min-h-11 items-center text-sm text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary"
         >
           {section.supportLink.label}
         </Link>
@@ -113,19 +107,19 @@ export default function ServicePageTemplate({
       <Header />
 
       <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
-          <div className="site-container relative">
+        <section className="border-b border-border py-12 sm:py-16 lg:py-24">
+          <div className="site-container">
             <Breadcrumbs items={breadcrumbs} />
-            <p className="eyebrow mt-5 mb-3">Service</p>
-            <h1 className="font-display font-bold text-[clamp(2rem,5vw,3.5rem)] leading-[1.06] text-primary text-balance max-w-4xl mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
+            <p className="eyebrow mt-8 mb-4">Service</p>
+            <h1 className="mb-5 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-[-0.02em] text-foreground text-balance sm:text-5xl">
               {service.h1}
             </h1>
-            <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-7">
+            <p className="mb-8 max-w-[40rem] text-lg text-muted-foreground">
               {heroIntro}
             </p>
             <ScrollToQuoteCTA source={service.slug} />
             {service.reviewedAt && (
-              <p className="mt-4 text-xs text-foreground/65">
+              <p className="mt-6 text-xs text-muted-foreground">
                 Content reviewed{" "}
                 <time dateTime={service.reviewedAt}>
                   {new Intl.DateTimeFormat("en-AU", {
@@ -142,12 +136,12 @@ export default function ServicePageTemplate({
 
         <QuoteForm source={service.slug} />
 
-        <div className="site-container py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
+        <div className="site-container border-t border-border py-16 sm:py-20 lg:py-28">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+            <div className="max-w-[65ch] space-y-16 lg:col-span-8">
               {introRest && (
-                <div className="border-l-4 border-accent bg-secondary px-5 py-5 sm:px-6">
-                  <p className="text-foreground/80 leading-relaxed text-base sm:text-lg">
+                <div>
+                  <p className="text-lg text-foreground">
                     {introRest}
                   </p>
                 </div>
@@ -158,9 +152,9 @@ export default function ServicePageTemplate({
               ))}
 
               {service.faqs.length > 0 && (
-                <div className="pt-6 border-t border-border/60">
+                <div>
                   <p className="eyebrow mb-4">FAQ</p>
-                  <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-2 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+                  <h2 className="mb-2 text-2xl font-semibold tracking-[-0.02em] text-foreground">
                     Frequently asked questions
                   </h2>
                   <Accordion items={service.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
@@ -170,29 +164,25 @@ export default function ServicePageTemplate({
 
             <aside
               aria-labelledby="service-sidebar-heading"
-              className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start"
+              className="space-y-10 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:self-start"
             >
               <h2 id="service-sidebar-heading" className="sr-only">
                 Service details and related resources
               </h2>
-              <div className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
-                <h3 className="text-sm font-display mb-1 text-foreground">What Caraway confirms</h3>
-                <p className="text-xs text-muted-foreground mb-5">Before a vehicle is collected</p>
-                <ul className="space-y-3.5">
+              <div>
+                <h3 className="eyebrow mb-3">What Caraway confirms</h3>
+                <ul className="border-t border-border">
                   {PROMISE_POINTS.map(item => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="flex h-5 w-5 items-center justify-center bg-primary/10 text-primary shrink-0">
-                        <CheckCircle2 className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      <span className="text-foreground/80">{item}</span>
+                    <li key={item} className="border-b border-border py-2.5 text-sm text-foreground">
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
-                <h3 className="text-sm font-display mb-2 text-foreground">Registered Brisbane business</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+              <div>
+                <h3 className="eyebrow mb-3">Registered Brisbane business</h3>
+                <p className="text-sm text-muted-foreground">
                   Caraway is the registered business name of {BUSINESS.legalName},
                   a sole trader based in Brisbane, Queensland.
                 </p>
@@ -202,7 +192,7 @@ export default function ServicePageTemplate({
                       href={BUSINESS.abrUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] items-center text-primary underline-offset-4 hover:underline"
+                      className="inline-flex min-h-11 items-center text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary"
                     >
                       ABN {BUSINESS.abn}
                     </a>
@@ -212,16 +202,16 @@ export default function ServicePageTemplate({
                       href={BUSINESS.googleBusinessUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-[44px] items-center text-primary underline-offset-4 hover:underline"
+                      className="inline-flex min-h-11 items-center text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary"
                     >
                       View Caraway on Google
                     </a>
                   </li>
                   <li className="flex min-h-[44px] items-center gap-3">
-                    <Link className="text-primary underline-offset-4 hover:underline" href="/about">
+                    <Link className="text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary" href="/about">
                       About
                     </Link>
-                    <Link className="text-primary underline-offset-4 hover:underline" href="/contact">
+                    <Link className="text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary" href="/contact">
                       Contact
                     </Link>
                   </li>
@@ -229,14 +219,14 @@ export default function ServicePageTemplate({
               </div>
 
               {relatedServiceData.length > 0 && (
-                <nav aria-label="Related services" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
-                  <h3 className="text-sm font-display mb-4 text-foreground">Related services</h3>
-                  <ul className="divide-y divide-border/60 border-t border-border/60">
+                <nav aria-label="Related services">
+                  <h3 className="eyebrow mb-3">Related services</h3>
+                  <ul className="divide-y divide-border border-y border-border">
                     {relatedServiceData.map(s => (
                       <li key={s.slug}>
                         <Link
                           href={`/${s.slug}`}
-                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
+                          className="flex min-h-11 items-center py-2.5 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
                         >
                           {s.h1}
                         </Link>
@@ -247,14 +237,14 @@ export default function ServicePageTemplate({
               )}
 
               {relatedSuburbData.length > 0 && (
-                <nav aria-label="Service areas" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
-                  <h3 className="text-sm font-display mb-4 text-foreground">Service areas</h3>
-                  <ul className="divide-y divide-border/60 border-t border-border/60">
+                <nav aria-label="Service areas">
+                  <h3 className="eyebrow mb-3">Service areas</h3>
+                  <ul className="divide-y divide-border border-y border-border">
                     {relatedSuburbData.map(s => (
                       <li key={s.slug}>
                         <Link
                           href={`/locations/${s.slug}`}
-                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
+                          className="flex min-h-11 items-center py-2.5 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
                         >
                           {s.h1}
                         </Link>
@@ -265,14 +255,14 @@ export default function ServicePageTemplate({
               )}
 
               {relatedPosts.length > 0 && (
-                <nav aria-label="Related articles" className="rounded-xl bg-card border border-border p-5 sm:p-6 shadow-card">
-                  <h3 className="text-sm font-display mb-4 text-foreground">Related articles</h3>
-                  <ul className="divide-y divide-border/60 border-t border-border/60">
+                <nav aria-label="Related articles">
+                  <h3 className="eyebrow mb-3">Related articles</h3>
+                  <ul className="divide-y divide-border border-y border-border">
                     {relatedPosts.map(p => (
                       <li key={p.slug}>
                         <Link
                           href={`/blog/${p.slug}`}
-                          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px] py-2.5"
+                          className="flex min-h-11 items-center py-2.5 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
                         >
                           {p.title}
                         </Link>
