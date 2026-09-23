@@ -1,15 +1,9 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  MapPin,
-  Mountain,
-  Sailboat,
-  Sunrise,
-  Sunset,
-} from "lucide-react";
 import { suburbs } from "@/data/suburbs";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type RegionKey = "north" | "south" | "west" | "bayside" | "logan";
 
@@ -17,7 +11,6 @@ interface Region {
   key: RegionKey;
   label: string;
   description: string;
-  icon: typeof MapPin;
   slugs: string[];
 }
 
@@ -26,35 +19,30 @@ const REGIONS: Region[] = [
     key: "north",
     label: "North & Moreton Bay",
     description: "Redcliffe, Chermside, North Lakes, Caboolture",
-    icon: Sunrise,
     slugs: ["redcliffe"],
   },
   {
     key: "south",
     label: "South",
     description: "Moorooka, Rocklea, Sunnybank, Mt Gravatt",
-    icon: Sunset,
     slugs: ["moorooka"],
   },
   {
     key: "west",
     label: "West",
     description: "Toowong, Indooroopilly, Kenmore, The Gap",
-    icon: Mountain,
     slugs: ["toowong", "kenmore"],
   },
   {
     key: "bayside",
     label: "East & Bayside",
     description: "Capalaba, Wynnum, Manly, Carindale",
-    icon: Sailboat,
     slugs: ["capalaba"],
   },
   {
     key: "logan",
     label: "Logan",
     description: "Logan Central, Springwood, Beenleigh, Browns Plains",
-    icon: MapPin,
     slugs: ["logan", "springwood", "beenleigh"],
   },
 ];
@@ -68,95 +56,57 @@ function hubsFor(region: Region) {
 export function ServiceAreas() {
   return (
     <section
-      className="section-y bg-secondary border-t border-b border-border"
+      className="section-y border-t border-border"
       aria-label="Cash for cars service areas Brisbane"
     >
-      <div className="site-container">
-        <div className="max-w-2xl mb-12 md:mb-16">
-          <p className="eyebrow mb-5">Service areas</p>
-          <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
-            Pickup included across
-            <br />
-            Greater Brisbane when we buy.
+      <div className="site-container grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-4">
+          <p className="eyebrow mb-4">Service areas</p>
+          <h2 className="text-3xl font-semibold leading-[1.15] tracking-[-0.02em] text-foreground text-balance">
+            Pickup included across Greater Brisbane when we buy.
           </h2>
-          {/* The region list that used to open this line is the grid below. */}
-          <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            If your suburb is not listed, ask. We confirm coverage from the
-            exact address, access, vehicle details, and collection schedule.
-          </p>
-        </div>
-
-        <div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {REGIONS.map((region) => {
-              const Icon = region.icon;
-              const hubs = hubsFor(region);
-              return (
-                <li key={region.key} className="h-full">
-                  <article className="group relative flex h-full flex-col overflow-hidden border border-border bg-card p-5 sm:p-6 hover:border-primary/40 card-lift">
-                    <div className="relative flex items-center justify-between">
-                      <span className="flex h-10 w-10 items-center justify-center bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary/15">
-                        <Icon size={18} strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 bg-cta/15 px-2.5 py-1 font-mono text-[0.6875rem] tabular-nums tracking-[0.08em] font-medium text-cta-ink">
-                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cta" />
-                        {hubs.length} {hubs.length === 1 ? "guide" : "guides"}
-                      </span>
-                    </div>
-                    <h3 className="relative mt-5 font-display text-lg sm:text-xl text-foreground">
-                      {region.label}
-                    </h3>
-                    <p className="relative mt-1 text-[0.9375rem] text-foreground/80 leading-relaxed">
-                      {region.description}
-                    </p>
-                    <ul className="relative mt-4 hidden flex-wrap gap-1.5 sm:flex">
-                      {hubs.map((hub) => (
-                        <li key={hub.slug}>
-                          <Link
-                            href={`/locations/${hub.slug}`}
-                            className="inline-flex min-h-11 items-center gap-1 rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
-                          >
-                            {hub.h1.replace("Cash for Cars ", "")}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                    {hubs[0] && (
-                      <Link
-                        href={`/locations/${hubs[0].slug}`}
-                        className="relative mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary sm:hidden"
-                      >
-                        View {region.label} areas
-                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                      </Link>
-                    )}
-                  </article>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-
-        <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3">
-          <Link
-            href="/locations"
-            className="inline-flex items-center gap-1.5 text-sm text-primary link-underline"
-          >
-            View regional coverage
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </Link>
-          <p className="text-xs text-foreground/70 font-medium">
+          <p className="mt-5 text-base text-muted-foreground">
             Not listed?{" "}
             <TrackedPhoneLink
               href={BUSINESS.phoneTel}
               location="service_areas"
-              className="rounded-sm text-primary underline decoration-primary/70 underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="rounded-sm text-foreground tabular-nums underline decoration-foreground/30 underline-offset-4 hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
               Call {BUSINESS.phoneDisplay}
             </TrackedPhoneLink>{" "}
-            — we&apos;ll check availability for your address.
+            and we&apos;ll check your address.
           </p>
+        </div>
+
+        <div className="lg:col-span-8">
+          <ul className="grid grid-cols-1 gap-x-10 gap-y-8 border-t border-border pt-8 sm:grid-cols-2 md:grid-cols-3">
+            {REGIONS.map((region) => {
+              const hubs = hubsFor(region);
+              return (
+                <li key={region.key}>
+                  <h3 className="text-base font-semibold text-foreground">{region.label}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{region.description}</p>
+                  <ul className="mt-2">
+                    {hubs.map((hub) => (
+                      <li key={hub.slug}>
+                        <Link
+                          href={`/locations/${hub.slug}`}
+                          className="inline-flex min-h-11 items-center rounded-sm text-sm text-primary underline decoration-primary/35 underline-offset-4 transition-colors duration-150 hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        >
+                          {hub.h1.replace("Cash for Cars ", "")}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+
+          <Link href="/locations" className={cn(buttonVariants({ variant: "link" }), "mt-8")}>
+            View regional coverage
+          </Link>
         </div>
       </div>
     </section>

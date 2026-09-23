@@ -1,30 +1,26 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 const steps = [
   {
     number: "01",
     title: "Tell us about your car",
-    description: "Make, model, year. Photos help if you have them.",
-    timing: "A few key details",
+    description: "Make, model, year and condition.",
   },
   {
     number: "02",
     title: "Get a confirmed offer",
     description: "In writing, before any pickup is booked.",
-    timing: "After assessment",
   },
   {
     number: "03",
     title: "We come to you",
-    description: "Pickup is included when we buy and the supplied access details match.",
-    timing: "Window confirmed",
+    description: "Pickup is included when we buy.",
   },
   {
     number: "04",
     title: "Complete payment and records",
-    description: "Use the agreed payment arrangement and retain the buyer and receipt details.",
-    timing: "Terms agreed first",
+    description: "Paid as agreed. You keep the receipt.",
   },
 ] as const;
 
@@ -41,64 +37,45 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   const StepHeading = showHeader ? "h3" : "h2";
 
   return (
-    <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
-      <div className="site-container">
-        {/* No sub-paragraph under the heading: the four steps below already say
-            it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
+    <section id="how-it-works" className="section-y scroll-mt-header border-t border-border">
+      <div className="site-container grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
         {showHeader && (
-          <div className="mb-10 max-w-2xl md:mb-14">
-            <p className="eyebrow mb-5">How it works</p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-bold leading-[1.1] text-primary text-balance">
+          <div className="lg:col-span-4">
+            <p className="eyebrow mb-4">How it works</p>
+            <h2 className="text-3xl font-semibold leading-[1.15] tracking-[-0.02em] text-foreground text-balance">
               From quote to collection in four clear steps.
             </h2>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {steps.map((step) => (
-            <li
-              key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card hover:border-primary/60 card-lift"
-            >
-              <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
-                aria-hidden="true"
-              />
-              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/75 sm:text-4xl">
-                  {step.number}
-                </span>
-                <StepHeading className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">
+        <div className={showHeader ? "lg:col-span-8" : "lg:col-span-12"}>
+          <ol className="border-t border-border">
+            {steps.map((step) => (
+              <li
+                key={step.number}
+                className="grid grid-cols-[3rem_1fr] gap-x-4 border-b border-border py-6 sm:grid-cols-[4rem_1fr_1.25fr] sm:gap-x-8"
+              >
+                <span className="text-sm text-muted-foreground tabular-nums">{step.number}</span>
+                <StepHeading className="text-base font-semibold text-foreground">
                   {step.title}
                 </StepHeading>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
+                <p className="col-start-2 mt-1 text-base text-muted-foreground sm:col-start-3 sm:mt-0">
                   {step.description}
                 </p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink sm:mt-auto sm:pt-5">
-                  {step.timing}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+              </li>
+            ))}
+          </ol>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
-          {showHeader && (
-            <Link
-              href="/how-it-works"
-              className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
-            >
-              Read the full quote, pickup and payment process
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          <div className="mt-6 flex flex-wrap items-center gap-x-6">
+            <Link href="/#quote-form" className={buttonVariants({ variant: "link" })}>
+              Start your quote
             </Link>
-          )}
-          <Link
-            href="/#quote-form"
-            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
-          >
-            Start your quote
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
+            {showHeader && (
+              <Link href="/how-it-works" className={buttonVariants({ variant: "link" })}>
+                Read the full quote, pickup and payment process
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </section>

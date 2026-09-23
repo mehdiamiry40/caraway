@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
  */
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold",
+    "inline-flex items-center justify-center gap-2 font-semibold",
     "transition-colors duration-150 ease-(--ease-out)",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     "disabled:pointer-events-none disabled:opacity-50",
@@ -17,20 +17,22 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "rounded bg-primary text-primary-foreground hover:bg-ink-deep",
+          "whitespace-nowrap rounded bg-primary text-primary-foreground hover:bg-ink-deep",
+        // Inline with copy: keeps a 44px hit area, no horizontal padding.
         link:
-          "rounded-sm text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary",
+          "justify-start text-left rounded-sm text-primary underline decoration-primary/35 underline-offset-4 hover:decoration-primary",
       },
       size: {
-        default: "h-11 px-5 text-sm",
-        sm: "h-10 px-4 text-sm",
-        lg: "h-12 px-6 text-base",
+        default: "h-11 text-sm",
+        sm: "h-10 text-sm",
+        lg: "h-12 text-base",
         icon: "h-11 w-11",
       },
     },
     compoundVariants: [
-      // Text links sit inline with copy: keep a 44px hit area, drop the padding.
-      { variant: "link", size: ["default", "sm", "lg"], class: "px-0" },
+      { variant: "default", size: "default", class: "px-5" },
+      { variant: "default", size: "sm", class: "px-4" },
+      { variant: "default", size: "lg", class: "px-6" },
     ],
     defaultVariants: {
       variant: "default",

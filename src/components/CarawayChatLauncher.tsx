@@ -75,7 +75,7 @@ export function CarawayChatLauncher({
       {errorMessage && (
         <p
           role="alert"
-          className="max-w-64 rounded-sm border border-destructive/30 bg-card px-3 py-2 text-xs text-foreground shadow-md"
+          className="max-w-64 rounded border border-destructive/40 bg-background px-3 py-2 text-xs text-foreground"
         >
           {errorMessage}
         </p>
@@ -90,9 +90,9 @@ export function CarawayChatLauncher({
         aria-expanded="false"
         aria-controls="caraway-chat-panel"
         aria-label={label}
-        className="inline-flex h-12 min-w-12 items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary p-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-80 motion-reduce:transform-none sm:h-auto sm:min-h-12 sm:px-4"
+        className="inline-flex h-11 min-w-11 items-center justify-center gap-2 rounded border border-border bg-background px-3 text-sm text-foreground transition-colors duration-150 hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-60"
       >
-        <MessageCircle className="h-5 w-5" aria-hidden="true" />
+        <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
         <span className="hidden sm:inline">
           {busy ? "Opening chat…" : errorMessage ? "Try chat again" : "Ask Caraway"}
         </span>
