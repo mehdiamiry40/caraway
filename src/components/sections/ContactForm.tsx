@@ -95,8 +95,8 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="bg-card rounded-md p-4 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
+      <div className="bg-card rounded-2xl p-5 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden />
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
@@ -114,9 +114,9 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card rounded-md p-4 sm:p-8 border border-border/60 shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.42)] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1 bg-accent" aria-hidden />
-      <h2 className="text-lg sm:text-xl font-display text-foreground mb-1 pt-1">Send us a message</h2>
+    <div className="bg-card rounded-2xl p-5 sm:p-8 border border-border/70 shadow-[0_28px_56px_-30px_hsl(var(--shadow-color)/0.6)] relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden />
+      <h2 className="text-xl sm:text-2xl font-display text-primary mb-1 pt-1">Send us a message</h2>
       <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>

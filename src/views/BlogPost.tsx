@@ -214,7 +214,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             {post.sources && post.sources.length > 0 && (
-              <aside className="mt-12 rounded-xl border border-border/60 bg-muted/50 p-5 sm:p-6">
+              <aside className="mt-12 rounded-2xl border border-border/60 bg-muted/50 p-5 sm:p-6">
                 <p className="eyebrow mb-3">Sources and review</p>
                 {post.reviewedAt && (
                   <p className="mb-3 text-sm text-muted-foreground">
@@ -239,7 +239,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               </aside>
             )}
 
-            <aside className="mt-16 rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10">
+            <aside className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10">
               <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
                 <div className="flex-1 min-w-0">
                   <p className="eyebrow mb-3">Selling your car?</p>
@@ -276,7 +276,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             {(relatedServiceData.length > 0 || relatedSuburbData.length > 0) && (
               <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {relatedServiceData.length > 0 && (
-                  <div className="rounded-xl border border-border/60 bg-card p-6">
+                  <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-card">
                     <p className="eyebrow mb-4">Related services</p>
                     <ul className="space-y-1">
                       {relatedServiceData.map((service) => (
@@ -298,7 +298,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </div>
                 )}
                 {relatedSuburbData.length > 0 && (
-                  <div className="rounded-xl border border-border/60 bg-card p-6">
+                  <div className="rounded-2xl border border-border/60 bg-card p-6 shadow-card">
                     <p className="eyebrow mb-4">Areas we service</p>
                     <ul className="space-y-1">
                       {relatedSuburbData.map((suburb) => (
@@ -323,7 +323,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             )}
 
             <footer className="mt-16 space-y-10">
-              <div className="rounded-md border border-border/60 bg-card p-6 sm:p-8">
+              <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-card">
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
@@ -395,7 +395,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </div>
               </div>
 
-              <div className="rounded-md bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
+              <div className="rounded-2xl bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-14 text-center">
                 <p
                   className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
                   style={{ letterSpacing: "var(--tracking-tight)" }}
@@ -408,22 +408,22 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   operator availability.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <Link
+                    href="/#quote-form"
+                    className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+                  >
+                    Get my quote
+                    <ArrowRight className="h-4 w-4" aria-hidden />
+                  </Link>
                   <TrackedPhoneLink
                     href={BUSINESS.phoneTel}
                     location="blog_post_footer"
-                    className={cn(buttonVariants({ variant: "secondary" }), "w-full sm:w-auto")}
+                    className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
                     ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                   >
                     <Phone className="h-4 w-4" aria-hidden />
                     Call {BUSINESS.phoneDisplay}
                   </TrackedPhoneLink>
-                  <Link
-                    href="/#quote-form"
-                    className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
-                  >
-                    Get my quote
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </Link>
                 </div>
               </div>
             </footer>
