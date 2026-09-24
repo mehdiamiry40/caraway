@@ -4,8 +4,8 @@ import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT } from "@/lib/site";
 
-/* 4x AI-upscaled from the 1200px original, then resampled to two widths so
-   phones fetch the small file and wide or high-density screens stay sharp. */
+/* AI-enhanced photograph exported at two widths so phones fetch the
+   small file and wide or high-density screens use the larger version. */
 const HERO_AVIF_SRCSET =
   "/images/hero-pickup-1280.avif 1280w, /images/hero-pickup-2560.avif 2560w";
 const HERO_WEBP_SRCSET =
