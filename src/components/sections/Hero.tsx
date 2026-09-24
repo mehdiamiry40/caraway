@@ -4,6 +4,13 @@ import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT } from "@/lib/site";
 
+/* 4x AI-upscaled from the 1200px original, then resampled to two widths so
+   phones fetch the small file and wide or high-density screens stay sharp. */
+const HERO_AVIF_SRCSET =
+  "/images/hero-pickup-1280.avif 1280w, /images/hero-pickup-2560.avif 2560w";
+const HERO_WEBP_SRCSET =
+  "/images/hero-pickup-1280.webp 1280w, /images/hero-pickup-2560.webp 2560w";
+
 const promises = [
   "Human-reviewed vehicle assessment",
   "Pickup included when we buy",
@@ -11,10 +18,12 @@ const promises = [
 ];
 
 export function Hero() {
-  preload("/images/hero-pickup.avif", {
+  preload("/images/hero-pickup-2560.avif", {
     as: "image",
     fetchPriority: "high",
     type: "image/avif",
+    imageSrcSet: HERO_AVIF_SRCSET,
+    imageSizes: "100vw",
   });
 
   return (
@@ -25,13 +34,13 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       <picture>
-        <source srcSet="/images/hero-pickup.avif" type="image/avif" />
-        <source srcSet="/images/hero-pickup.webp" type="image/webp" />
+        <source srcSet={HERO_AVIF_SRCSET} sizes="100vw" type="image/avif" />
+        <source srcSet={HERO_WEBP_SRCSET} sizes="100vw" type="image/webp" />
         <img
-          src="/images/hero-pickup.webp"
+          src="/images/hero-pickup-1280.webp"
           alt={SHARED_PICKUP_IMAGE_ALT}
-          width={1200}
-          height={630}
+          width={2560}
+          height={1344}
           fetchPriority="high"
           decoding="async"
           className="hero-drift absolute inset-0 -z-20 h-full w-full object-cover object-[35%_center]"

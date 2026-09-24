@@ -22,7 +22,7 @@ const banners = [
     label: "Pickup terms",
     description: "Included when Caraway buys and supplied vehicle and access details match.",
     href: "/car-removal-brisbane",
-    image: "/images/hero-pickup",
+    image: "/images/hero-pickup-1280",
   },
   {
     label: "Cash for cars Brisbane",
