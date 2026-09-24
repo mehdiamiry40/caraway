@@ -25,7 +25,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
     <div className="lg:hidden flex items-center gap-1">
       <a
         href={BUSINESS.phoneTel}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-on-dark-hi hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70"
         aria-label={`Call ${BUSINESS.phoneDisplay}`}
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
@@ -33,7 +33,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
 
       <DisclosureAutoClose className="group">
         <summary
-          className="min-h-11 min-w-11 -mr-1 inline-flex cursor-pointer list-none items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden"
+          className="min-h-11 min-w-11 -mr-1 inline-flex cursor-pointer list-none items-center justify-center rounded-md text-on-dark-hi transition-colors duration-200 hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70 [&::-webkit-details-marker]:hidden"
           aria-label="Menu"
         >
           <Menu aria-hidden="true" className="h-6 w-6 group-open:hidden" />
@@ -86,7 +86,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
           <div className="mt-8 flex flex-col gap-3 border-t border-border/30 pt-6">
             <a
               href={BUSINESS.phoneTel}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg border-[1.5px] border-primary text-base text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-primary text-base font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -97,7 +97,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               prefetch={false}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-14 w-full rounded-lg text-base sm:text-lg",
+                "h-14 w-full text-base sm:text-lg",
               )}
             >
               Get my quote

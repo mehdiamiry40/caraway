@@ -10,6 +10,9 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 export default function HomeBelowFold() {
   return (
     <>
+      {/* Sand intro and the navy promise panel sit between the photo hero and
+          the estimator, as the opening story of the page. */}
+      <WhyUs />
       {/* Server-rendered with the page: the primary conversion surface must
           exist in the HTML for crawlers, JS-off users, and #price-estimator
           deep links — the previous ssr:false + IntersectionObserver gate
@@ -17,7 +20,6 @@ export default function HomeBelowFold() {
       <PriceEstimator />
       <TrustBadges />
       <HowItWorks />
-      <WhyUs />
       <ServiceAreas />
       <FAQ />
       <SellingSafelySection />

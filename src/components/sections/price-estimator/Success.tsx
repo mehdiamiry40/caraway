@@ -16,7 +16,7 @@ export function Success({ state }: { state: EstimatorState }) {
       <span id="quote-form" className="absolute top-0 scroll-mt-header" aria-hidden="true" />
       <div className="site-container">
         <div
-          className="relative mx-auto max-w-3xl overflow-hidden rounded-sm border border-border bg-card p-6 text-center shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary sm:p-10"
+          className="relative mx-auto max-w-3xl overflow-hidden rounded-sm border border-border bg-card p-6 text-center shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent sm:p-10"
           role="status"
           aria-live="polite"
           aria-atomic="true"

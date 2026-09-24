@@ -33,7 +33,7 @@ export function PriceEstimator() {
   return (
     <section
       id="price-estimator"
-      className="section-y scroll-mt-header relative overflow-hidden border-y border-border bg-secondary"
+      className="section-y scroll-mt-header relative overflow-hidden bg-background"
       aria-label="Vehicle price assessment"
       data-chat-launcher-suppress="true"
     >
@@ -44,7 +44,7 @@ export function PriceEstimator() {
       <div className="site-container">
         <div className="text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
           <p className="eyebrow mb-4">Vehicle assessment</p>
-          <h2 className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]">
+          <h2 className="font-display text-[clamp(2rem,3.4vw,2.9rem)] leading-[1.15] text-primary text-balance">
             How much is your car worth?
           </h2>
           {/* The offer disclaimer lives where it matters: beside the result in step 2. */}
@@ -57,7 +57,7 @@ export function PriceEstimator() {
 
         <div className="max-w-3xl mx-auto">
           <form
-            className="relative overflow-hidden rounded-sm border border-border bg-card shadow-md before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
+            className="relative overflow-hidden border border-border bg-card shadow-card-xl before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent"
             aria-label="Vehicle assessment"
             noValidate
             onSubmit={(event) => {

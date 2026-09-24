@@ -13,51 +13,56 @@ emails, browser chrome, and app icons.
 
 ## Current palette
 
-Clean white canvas, utility blue brand surfaces, teal emphasis, pale blue
-supporting washes, and lime-green primary actions. Light mode only.
+Navy, sand and coral. Navy carries the header, footer and feature panels; sand
+is the warm secondary ground; coral is the action colour (pill buttons) and the
+decorative accent (rules under headings, the starburst, arches). Headings use
+Marcellus (display serif, single weight), body text uses Lato. Light mode only.
 
-| Token                      | Hex      | HSL              | Role                                           |
-| -------------------------- | -------- | ---------------- | ---------------------------------------------- |
-| `--background`             | `#FFFFFF` | `0 0% 100%`     | Page canvas                                    |
-| `--foreground`             | `#303030` | `0 0% 19%`      | Default body text                              |
-| `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)     |
-| `--card-foreground`        | `#303030` | `0 0% 19%`      | Text on cards                                  |
-| `--primary`                | `#2C5696` | `216 55% 38%`   | Brand blue / dominant brand surfaces           |
-| `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                            |
-| `--secondary`              | `#EBF5FA` | `198 57% 95%`   | Low-emphasis pale blue surface                 |
-| `--secondary-foreground`   | `#26436D` | `216 48% 29%`   | Text on `--secondary`                          |
-| `--muted`                  | `#F6F8F9` | `200 17% 97%`   | Subtle backgrounds (code, fills)               |
-| `--muted-foreground`       | `#59636E` | `210 11% 39%`   | Secondary / helper text                        |
-| `--accent`                 | `#2D8995` | `187 54% 38%`   | Teal emphasis / supporting action surfaces     |
-| `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                             |
-| `--cta`                    | `#B3CF44` | `72 59% 54%`    | Lime primary CTA buttons and action accents    |
-| `--cta-foreground`         | `#1E3557` | `216 48% 23%`   | Text on `--cta`                                |
-| `--plate`                  | `#B3CF44` | `72 59% 54%`    | Vehicle plate / estimate accent                |
-| `--plate-foreground`       | `#1E3557` | `216 48% 23%`   | Text on `--plate`                              |
-| `--destructive`            | `#DC2626` | `0 72% 51%`     | Errors, destructive actions                    |
-| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                        |
-| `--success`                | `#16A34A` | `142 76% 36%`   | Success signal (distinct from CTA green)       |
-| `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                            |
-| `--warning`                | `#F59E0B` | `38 92% 50%`    | Warning signal                                 |
-| `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                            |
-| `--info`                   | `#0284C7` | `200 98% 39%`   | Neutral notices                                |
-| `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                               |
-| `--border`                 | `#D4D9DD` | `210 12% 85%`   | Default border / divider                       |
-| `--input`                  | `#BEC8CF` | `207 15% 78%`   | Form field border                              |
-| `--ring`                   | `#2C5696` | `216 55% 38%`   | Focus ring                                     |
+| Token                      | Hex       | HSL              | Role                                           |
+| -------------------------- | --------- | ---------------- | ---------------------------------------------- |
+| `--background`             | `#FFFFFF` | `0 0% 100%`      | Page canvas                                    |
+| `--foreground`             | `#1E2B45` | `220 39% 19%`    | Default body text                              |
+| `--card`                   | `#FFFFFF` | `0 0% 100%`      | Elevated surface (cards, popovers, inputs)     |
+| `--card-foreground`        | `#1E2B45` | `220 39% 19%`    | Text on cards                                  |
+| `--primary`                | `#041C44` | `218 89% 14%`    | Navy: headings, header, feature panels         |
+| `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`      | Text on `--primary`                            |
+| `--secondary`              | `#EBE6E0` | `33 22% 90%`     | Sand: warm section ground                      |
+| `--secondary-foreground`   | `#041C44` | `218 89% 14%`    | Text on `--secondary`                          |
+| `--muted`                  | `#F5F2EE` | `34 26% 95%`     | Subtle warm fills                              |
+| `--muted-foreground`       | `#5A6275` | `222 13% 41%`    | Secondary / helper text                        |
+| `--accent`                 | `#DD6650` | `9 67% 59%`      | Decorative coral: rules, starburst, arches     |
+| `--accent-foreground`      | `#041C44` | `218 89% 14%`    | Text on `--accent` (4.9:1)                     |
+| `--cta`                    | `#C24E3A` | `9 54% 49%`      | Coral pill buttons and action accents          |
+| `--cta-foreground`         | `#FFFFFF` | `0 0% 100%`      | Text on `--cta` (4.7:1)                        |
+| `--cta-ink` / `--accent-ink` | `#9C3B2A` | `9 58% 39%`    | Coral as text on light surfaces                |
+| `--cta-bright`             | `#E98A76` | `10 72% 69%`     | Coral as text/icons on navy (6.7:1)            |
+| `--plate`                  | `#C24E3A` | `9 54% 49%`      | Vehicle plate / estimate accent                |
+| `--plate-foreground`       | `#FFFFFF` | `0 0% 100%`      | Text on `--plate`                              |
+| `--destructive`            | `#DC2626` | `0 72% 51%`      | Errors, destructive actions                    |
+| `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`      | Text on `--destructive`                        |
+| `--success`                | `#16A34A` | `142 76% 36%`    | Success signal                                 |
+| `--success-foreground`     | `#FFFFFF` | `0 0% 100%`      | Text on `--success`                            |
+| `--warning`                | `#F59E0B` | `38 92% 50%`     | Warning signal                                 |
+| `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`      | Text on `--warning`                            |
+| `--info`                   | `#0284C7` | `200 98% 39%`    | Neutral notices                                |
+| `--info-foreground`        | `#FFFFFF` | `0 0% 100%`      | Text on `--info`                               |
+| `--border`                 | `#D9D1C7` | `33 19% 82%`     | Default border / divider                       |
+| `--input`                  | `#90857A` | `30 9% 52%`      | Form field border (3.6:1 on white)             |
+| `--ring`                   | `#041C44` | `218 89% 14%`    | Focus ring                                     |
 
 ### Dark Band Tokens
 
-These tokens support blue hero/footer bands and dark quote-result surfaces.
+These tokens support the navy header, footer, feature panels and quote-result
+surfaces.
 
-| Token                 | Hex      | HSL              | Role                             |
-| --------------------- | -------- | ---------------- | -------------------------------- |
-| `--ink`               | `#2C5696` | `216 55% 38%`   | Primary blue dark surface        |
-| `--ink-deep`          | `#1D3B63` | `214 55% 25%`   | Deeper blue shadow / dark depth  |
-| `--ink-raised`        | `#4472A7` | `212 42% 46%`   | Raised dark surface              |
-| `--on-dark`           | `#E0E9F0` | `205 35% 91%`   | Secondary text on dark surfaces  |
-| `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
-| `--shadow-color`      | `#24344C` | `216 35% 22%`   | Blue-tinted shadows              |
+| Token                 | Hex       | HSL              | Role                             |
+| --------------------- | --------- | ---------------- | -------------------------------- |
+| `--ink`               | `#041C44` | `218 89% 14%`    | Navy dark surface                |
+| `--ink-deep`          | `#02132F` | `217 92% 10%`    | Deeper navy                      |
+| `--ink-raised`        | `#1A3357` | `215 54% 22%`    | Footer and photo-banner wash     |
+| `--on-dark`           | `#E0E4EA` | `216 24% 90%`    | Secondary text on dark surfaces  |
+| `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`      | Primary text on dark surfaces    |
+| `--shadow-color`      | `#102443` | `218 60% 16%`    | Navy-tinted shadows              |
 
 ### WCAG contrast
 

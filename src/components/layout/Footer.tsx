@@ -4,6 +4,7 @@ import { AUTHORITY_OUTBOUND_LINKS } from "@/data/resource-links";
 import { BUSINESS } from "@/lib/site";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
+import { Logo } from "@/components/layout/Logo";
 
 const serviceLinks = [
   { label: "All Services", href: "/services" },
@@ -40,69 +41,69 @@ const legalLinks = [
 ];
 
 const navLinkClasses =
-  "text-on-dark-hi/90 hover:text-on-dark-hi transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-3 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none touch-manipulation";
+  "text-on-dark-hi/90 hover:text-cta-bright transition-colors duration-200 text-sm font-medium inline-flex items-center min-h-[44px] py-2.5 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised focus-visible:outline-none touch-manipulation";
 
 const columnHeadingClasses =
-  "font-display text-xs text-on-dark-hi mb-5 tracking-[0.12em] uppercase font-bold flex items-center gap-2 before:content-[''] before:inline-block before:w-6 before:h-0.5 before:bg-cta";
+  "mb-4 border-b border-accent pb-3 font-display text-lg text-on-dark-hi";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-ink text-on-dark pl-safe pr-safe">
-      <div className="h-1 bg-gradient-to-r from-cta via-accent to-white" aria-hidden="true" />
-      <div className="site-container py-14 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-x-6 sm:gap-x-8 gap-y-10">
-          {/* Brand + contact */}
-          <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
-            <Link
-              href="/"
-              prefetch={false}
-              className="font-display font-bold text-2xl tracking-[0.08em] uppercase inline-block transition-opacity duration-200 hover:opacity-80"
+    <footer className="relative bg-ink-raised text-on-dark pl-safe pr-safe">
+      <div className="site-container py-16 sm:py-20">
+        {/* Brand + contact, centred */}
+        <div className="flex flex-col items-center text-center">
+          <Link
+            href="/"
+            prefetch={false}
+            aria-label="Caraway home"
+            className="rounded-sm transition-opacity duration-200 hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised"
+          >
+            <Logo tone="light" size="lg" />
+          </Link>
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-on-dark-hi/85">
+            Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center gap-1 text-[0.9375rem]">
+            <TrackedPhoneLink
+              href={BUSINESS.phoneTel}
+              location="footer"
+              className="inline-flex min-h-11 items-center gap-2 text-on-dark-hi hover:text-cta-bright transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised"
+              ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
-              <span className="text-on-dark-hi">Caraway</span>
-            </Link>
-            <p className="mt-4 max-w-sm text-sm text-on-dark-hi/85 leading-relaxed">
-              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
+              <Phone aria-hidden="true" className="h-4 w-4 text-cta-bright" />
+              <span>{BUSINESS.phoneDisplay}</span>
+            </TrackedPhoneLink>
+            <a
+              href={BUSINESS.emailHref}
+              className="flex min-h-11 items-center gap-2 text-on-dark-hi/90 hover:text-cta-bright transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised"
+            >
+              <Mail aria-hidden="true" className="h-4 w-4 text-cta-bright" />
+              <span>{BUSINESS.email}</span>
+            </a>
+            <address className="mt-2 not-italic text-on-dark-hi/85 leading-snug">
+              {BUSINESS.addressFormatted}
+            </address>
+            <p className="mt-1 text-sm text-on-dark-hi/70">
+              Collection timing is confirmed for each accepted job.
             </p>
-
-            <div className="mt-6 space-y-2.5 text-sm">
-              <TrackedPhoneLink
-                href={BUSINESS.phoneTel}
-                location="footer"
-                className="inline-flex min-h-11 items-center gap-2 text-on-dark-hi hover:opacity-90 transition-opacity duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-                ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
-              >
-                <Phone aria-hidden="true" className="h-4 w-4 text-accent" />
-                <span>{BUSINESS.phoneDisplay}</span>
-              </TrackedPhoneLink>
-              <a
-                href={BUSINESS.emailHref}
-                className="flex min-h-11 items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium"
-              >
-                <Mail aria-hidden="true" className="h-4 w-4" />
-                <span>{BUSINESS.email}</span>
-              </a>
-              <p className="text-on-dark-hi/85">
-                Collection timing is confirmed for each accepted job.
-              </p>
-              <address className="not-italic text-on-dark-hi/85 leading-snug">
-                {BUSINESS.addressFormatted}
-              </address>
-              <TrackedOutboundLink
-                href={BUSINESS.googleBusinessUrl}
-                label="Caraway on Google"
-                location="footer"
-                className="inline-flex items-center gap-2 text-on-dark-hi/85 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink font-medium min-h-11"
-              >
-                <Star aria-hidden="true" className="h-4 w-4 text-cta-bright" />
-                <span>View Caraway on Google</span>
-              </TrackedOutboundLink>
-            </div>
+            <TrackedOutboundLink
+              href={BUSINESS.googleBusinessUrl}
+              label="Caraway on Google"
+              location="footer"
+              className="mt-2 inline-flex items-center gap-2 text-on-dark-hi/90 hover:text-cta-bright transition-colors duration-200 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised min-h-11"
+            >
+              <Star aria-hidden="true" className="h-4 w-4 text-cta-bright" />
+              <span>View Caraway on Google</span>
+            </TrackedOutboundLink>
           </div>
+        </div>
 
+        <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-10 border-t border-[hsl(var(--on-dark-hi)/0.2)] pt-12 sm:grid-cols-3">
           {/* Services */}
-          <nav aria-label="Services" className="md:col-span-1 lg:col-span-3">
+          <nav aria-label="Services">
             <h3 className={columnHeadingClasses}>Services</h3>
             <ul className="space-y-0.5">
               {serviceLinks.map((link) => (
@@ -114,7 +115,7 @@ export function Footer() {
           </nav>
 
           {/* Locations */}
-          <nav aria-label="Locations" className="md:col-span-1 lg:col-span-3">
+          <nav aria-label="Locations">
             <h3 className={columnHeadingClasses}>Locations</h3>
             <ul className="space-y-0.5">
               {locationLinks.map((link) => (
@@ -126,7 +127,7 @@ export function Footer() {
           </nav>
 
           {/* Company */}
-          <nav aria-label="Company" className="sm:col-span-2 md:col-span-1 lg:col-span-2">
+          <nav aria-label="Company">
             <h3 className={columnHeadingClasses}>Company</h3>
             <ul className="space-y-0.5">
               {companyLinks.map((link) => (
@@ -147,7 +148,7 @@ export function Footer() {
               href={item.href}
               label={item.label}
               location="footer_references"
-              className="inline-flex items-center min-h-11 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none"
+              className="inline-flex items-center min-h-11 hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised focus-visible:outline-none"
             >
               {item.label}
             </TrackedOutboundLink>
@@ -165,7 +166,7 @@ export function Footer() {
                 key={link.href}
                 href={link.href}
                 prefetch={false}
-                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center justify-center py-2.5 px-2 -mx-1 touch-manipulation"
+                className="hover:text-on-dark-hi transition-colors duration-200 rounded-sm focus-visible:ring-2 focus-visible:ring-[hsl(var(--on-dark-hi)/0.4)] focus-visible:ring-offset-2 focus-visible:ring-offset-ink-raised focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center justify-center py-2.5 px-2 -mx-1 touch-manipulation"
               >
                 {link.label}
               </Link>

@@ -83,7 +83,7 @@ export default function ReviewCardPage() {
         className="review-card-sheet mx-auto flex min-h-[210mm] w-full max-w-[148mm] flex-col items-center justify-between border border-slate-300 bg-white px-8 py-10 text-center text-slate-950 shadow-xl sm:px-12 sm:py-14"
       >
         <div className="review-card-copy w-full">
-          <p className="text-sm font-bold tracking-[0.24em] text-[#2C5697]">
+          <p className="text-sm font-bold tracking-[0.24em] text-[#041C44]">
             CARAWAY
           </p>
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
@@ -126,7 +126,7 @@ export default function ReviewCardPage() {
             Positive, neutral and critical feedback are welcome. There is no
             obligation, no incentive, and no requested rating or wording.
           </p>
-          <p className="review-card-later font-display text-2xl font-semibold text-[#2C5697]">
+          <p className="review-card-later font-display text-2xl font-semibold text-[#041C44]">
             Review later, in your own time.
           </p>
           <p className="review-card-privacy border-t border-slate-200 pt-5 text-xs leading-relaxed text-slate-500">
