@@ -7,7 +7,14 @@ import {
   serviceSchema,
   websiteSchema,
 } from "@/lib/json-ld-schemas";
-import { BUSINESS, SITE_URL } from "@/lib/site";
+import {
+  BUSINESS,
+  BUSINESS_GEO,
+  OPENING_HOURS,
+  PRICE_RANGE_LABEL,
+  SERVICE_AREA_NAMES,
+  SITE_URL,
+} from "@/lib/site";
 
 function productionSourceFiles(directory: string): string[] {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -20,31 +27,26 @@ function productionSourceFiles(directory: string): string[] {
 }
 
 describe("SEO structured-data policy", () => {
-  it("uses one truthful, exact-name organization without a storefront address", () => {
+  it("uses one truthful, exact-name entity typed for a local auto business", () => {
     expect(organizationSchema).toMatchObject({
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness", "AutoDealer"],
       "@id": `${SITE_URL}/#organization`,
       name: "Caraway",
     });
     expect(publisherSchema.name).toBe("Caraway");
 
-    for (const property of [
-      "address",
-      "geo",
-      "serviceArea",
-      "priceRange",
-      "hasOfferCatalog",
-      "keywords",
-    ]) {
+    // Speculative commerce markup stays out: there is no catalogue, no
+    // inventory, and no keyword stuffing on the entity.
+    for (const property of ["hasOfferCatalog", "keywords", "makesOffer"]) {
       expect(organizationSchema).not.toHaveProperty(property);
     }
 
     expect(JSON.stringify(organizationSchema.contactPoint.areaServed)).not.toBe(
       '"AU"',
     );
-    expect(organizationSchema.areaServed).toEqual([
-      { "@type": "City", name: "Brisbane" },
-    ]);
+    expect(organizationSchema.areaServed).toEqual(
+      SERVICE_AREA_NAMES.map((name) => ({ "@type": "City", name })),
+    );
     expect(organizationSchema.contactPoint.areaServed).toEqual(
       organizationSchema.areaServed,
     );
@@ -55,6 +57,64 @@ describe("SEO structured-data policy", () => {
     expect(organizationSchema.sameAs).toContain(
       "https://www.google.com/maps?cid=2357564394766220919",
     );
+  });
+
+  it("publishes a city-level location and never invents a storefront", () => {
+    // Vehicles are collected, not dropped off, so there is no address a
+    // customer could visit. Publishing a streetAddress would be a claim the
+    // business cannot honour.
+    expect(organizationSchema.address).toEqual({
+      "@type": "PostalAddress",
+      addressLocality: "Brisbane",
+      addressRegion: "QLD",
+      addressCountry: "AU",
+    });
+    expect(organizationSchema.address).not.toHaveProperty("streetAddress");
+    expect(organizationSchema.address).not.toHaveProperty("postalCode");
+
+    expect(organizationSchema.geo).toEqual({
+      "@type": "GeoCoordinates",
+      latitude: BUSINESS_GEO.latitude,
+      longitude: BUSINESS_GEO.longitude,
+    });
+    expect(organizationSchema.priceRange).toBe(PRICE_RANGE_LABEL);
+  });
+
+  it("only advertises trading hours that are actually published", () => {
+    // OPENING_HOURS is the single source of truth and is empty until the hours
+    // on the Google Business Profile are mirrored into it. An empty array must
+    // be omitted, not emitted — a parser reads "no hours" as permanently closed.
+    if (OPENING_HOURS.length === 0) {
+      expect(organizationSchema).not.toHaveProperty(
+        "openingHoursSpecification",
+      );
+      return;
+    }
+
+    const spec = (
+      organizationSchema as unknown as {
+        openingHoursSpecification: Array<Record<string, unknown>>;
+      }
+    ).openingHoursSpecification;
+    expect(spec).toHaveLength(OPENING_HOURS.length);
+    for (const entry of spec) {
+      expect(entry["@type"]).toBe("OpeningHoursSpecification");
+      // schema.org wants ISO 8601 times; "8am" or "8:00" would be silently
+      // dropped by consumers rather than reported as an error.
+      expect(entry.opens).toMatch(/^\d{2}:\d{2}$/);
+      expect(entry.closes).toMatch(/^\d{2}:\d{2}$/);
+    }
+
+    // Pin the published hours so a stray edit cannot widen them past what the
+    // Google Business Profile advertises.
+    expect(spec).toEqual([
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "17:00",
+      },
+    ]);
   });
 
   it("keeps the WebSite entity brand-led and free of meta-keyword fields", () => {
@@ -90,16 +150,15 @@ describe("SEO structured-data policy", () => {
       .map((file) => fs.readFileSync(file, "utf8"))
       .join("\n");
 
-    for (const type of [
-      "FAQPage",
-      "HowTo",
-      "LocalBusiness",
-      "AutomotiveBusiness",
-      "AggregateOffer",
-    ]) {
+    // LocalBusiness is deliberately allowed: the #organization node carries it
+    // alongside AutoDealer. These remain banned — FAQPage and HowTo were retired
+    // after Google dropped those rich results, AutomotiveBusiness would only
+    // restate a parent type, and AggregateOffer implies pricing we do not
+    // publish.
+    for (const type of ["FAQPage", "HowTo", "AutomotiveBusiness", "AggregateOffer"]) {
       expect(source).not.toContain(`"@type": "${type}"`);
     }
-    expect(source).not.toContain('"@type": "OpeningHoursSpecification"');
+    // A second business node would split the entity across two @ids.
     expect(source).not.toContain(`${SITE_URL}/#business`);
   });
 });

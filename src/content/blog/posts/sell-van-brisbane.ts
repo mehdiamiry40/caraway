@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     "Access matters more than it does for a sedan. A high roof or a ladder rack rules out plenty of height-limited apartment basements, and industrial estates around Rocklea, Acacia Ridge and Darra can be tight for a transporter on a weekday afternoon. If the van doesn't start, steer or roll, say so up front, because the collection method changes and so do the arrangements around it.",
 
-    `For an individual assessment of a work van, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `For an individual assessment of a work van, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch.`,
   ],
   faqs: [
     {

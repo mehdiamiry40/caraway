@@ -5,6 +5,7 @@ import { suburbs } from "@/data/suburbs";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
   LOCATIONS_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     "Explore Caraway's Greater Brisbane vehicle pickup areas. Coverage, access, and timing are confirmed for your exact address before collection.",
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: `${SITE_URL}/locations`,
     title: "Greater Brisbane Vehicle Pickup Areas | Caraway",

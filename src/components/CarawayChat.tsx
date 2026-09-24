@@ -3,9 +3,7 @@
 import { useChat } from "@ai-sdk/react";
 import {
   ArrowUp,
-  BadgeDollarSign,
   Bot,
-  Check,
   ExternalLink,
   Loader2,
   Phone,
@@ -29,7 +27,7 @@ import { BUSINESS } from "@/lib/site";
 import { CarawayChatLauncher } from "@/components/CarawayChatLauncher";
 
 const QUICK_ACTIONS = [
-  { label: "Get a car estimate", message: "Can you estimate what my car is worth?" },
+  { label: "How do I get a quote?", message: "How do I get a quote for my car?" },
   { label: "Is towing free?", message: "Is towing free, and what areas do you cover?" },
   { label: "What cars do you buy?", message: "What types of vehicles do you buy?" },
 ] as const;
@@ -37,6 +35,22 @@ const QUICK_ACTIONS = [
 const MAX_INPUT_LENGTH = 1_000;
 const INLINE_MARKDOWN_RE =
   /(\*\*([^*\n]+)\*\*)|(\*([^*\n]+)\*)|(`([^`\n]+)`)|(\[([^\]\n]+)\]\(([^)\s]+)\))/g;
+
+function isConversationLimitError(error: Error | undefined): boolean {
+  if (!error) return false;
+  // The SDK's HTTP transport exposes a failed response body as error.message.
+  try {
+    const payload: unknown = JSON.parse(error.message);
+    return (
+      typeof payload === "object" &&
+      payload !== null &&
+      "code" in payload &&
+      payload.code === "conversation_limit_reached"
+    );
+  } catch {
+    return false;
+  }
+}
 
 function isSafeChatHref(href: string): boolean {
   return /^(https?:\/\/|mailto:|tel:)/i.test(href) || /^\/(?!\/)/.test(href);
@@ -156,83 +170,11 @@ function AssistantMarkdown({ children }: { children: string }) {
   );
 }
 
-function EstimateCard({
-  estimate,
-  onContinue,
-}: {
-  estimate: {
-    status: "indicative_estimate" | "manual_review";
-    displayAmount: string;
-    vehicle: string;
-    condition: string;
-    factors: string[];
-    disclaimer: string;
-  };
-  onContinue: () => void;
-}) {
-  const condition = estimate.condition.replaceAll("_", " ");
-
-  return (
-    <div className="overflow-hidden rounded-sm border border-primary/25 bg-card shadow-sm">
-      <div className="bg-secondary/70 px-3.5 py-3">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
-          <BadgeDollarSign className="h-4 w-4" aria-hidden="true" />
-          {estimate.status === "manual_review" ? "Buyer assessment" : "Indicative estimate"}
-        </div>
-        <p className="mt-1 font-display text-3xl font-semibold leading-none text-primary">
-          {estimate.displayAmount}
-        </p>
-        <p className="mt-1.5 text-sm font-medium text-foreground">
-          {estimate.vehicle}
-          <span className="font-normal capitalize text-muted-foreground">
-            {` · ${condition}`}
-          </span>
-        </p>
-      </div>
-
-      <div className="space-y-3 px-3.5 py-3">
-        {estimate.factors.length > 0 && (
-          <ul className="space-y-1.5 text-xs leading-relaxed text-foreground">
-            {estimate.factors.map((factor) => (
-              <li key={factor} className="flex items-start gap-2">
-                <Check
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"
-                  aria-hidden="true"
-                />
-                <span>{factor}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <p className="text-[0.6875rem] leading-relaxed text-muted-foreground">
-          {estimate.disclaimer}
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          <Link
-            href="/#price-estimator"
-            prefetch={false}
-            onClick={onContinue}
-            className="inline-flex min-h-10 items-center justify-center rounded-sm bg-cta px-3 text-center text-xs font-semibold text-cta-foreground transition-colors hover:bg-cta/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {estimate.status === "manual_review" ? "Request assessment" : "Confirm my quote"}
-          </Link>
-          <a
-            href={BUSINESS.phoneTel}
-            className="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-sm border border-primary/30 px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
-            Call Caraway
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(initiallyOpen);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const errorActionRef = useRef<HTMLButtonElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -249,10 +191,35 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   } = useChat<CarawayChatMessage>();
 
   const isBusy = status === "submitted" || status === "streaming";
+  const conversationLimitReached = isConversationLimitError(error);
+
+  useEffect(() => {
+    const closeWhenMobileMenuOpens = () => {
+      if (document.body.dataset.mobileMenuOpen === "true") {
+        setIsOpen(false);
+      }
+    };
+    closeWhenMobileMenuOpens();
+    window.addEventListener(
+      "caraway:mobile-menu-change",
+      closeWhenMobileMenuOpens,
+    );
+    return () => {
+      window.removeEventListener(
+        "caraway:mobile-menu-change",
+        closeWhenMobileMenuOpens,
+      );
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
-      if (wasOpenRef.current) launcherRef.current?.focus();
+      if (
+        wasOpenRef.current &&
+        document.body.dataset.mobileMenuOpen !== "true"
+      ) {
+        launcherRef.current?.focus();
+      }
       return;
     }
     if (!wasOpenRef.current) {
@@ -265,7 +232,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
       document.querySelectorAll<HTMLElement>(
         'body > a[href="#main-content"], #main-content, body header, body footer, [data-testid="sticky-mobile-cta"]',
       ),
-    );
+    ).filter((element) => !panelRef.current?.contains(element));
     const previousInertValues = backgroundElements.map(
       (element) => [element, element.inert] as const,
     );
@@ -314,6 +281,12 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
   }, [input]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    if (conversationLimitReached) errorActionRef.current?.focus();
+    else inputRef.current?.focus();
+  }, [isOpen, conversationLimitReached]);
+
+  useEffect(() => {
     if (isOpen) {
       messagesEndRef.current?.scrollIntoView?.({ block: "nearest" });
     }
@@ -329,7 +302,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
 
   async function send(text: string) {
     const message = text.trim();
-    if (!message || isBusy) return;
+    if (!message || isBusy || conversationLimitReached) return;
     clearError();
     setInput("");
     trackEvent("chat_message_sent");
@@ -388,10 +361,10 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 id="caraway-chat-description"
                 className="text-xs text-primary-foreground/80"
               >
-                AI quotes and quick answers
+                AI answers · offers reviewed by people
               </p>
             </div>
-            {messages.length > 0 && (
+            {messages.length > 0 && !conversationLimitReached && (
               <button
                 type="button"
                 onClick={resetChat}
@@ -423,9 +396,9 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 <Bot className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="max-w-[85%] rounded-sm rounded-tl-none border border-border bg-card px-3.5 py-3 text-sm leading-relaxed text-foreground shadow-sm">
-                Hi — I’m Caraway’s AI assistant. I can estimate your car’s value
-                or answer questions about selling and pickup across Greater
-                Brisbane.
+                Hi — I’m Caraway’s AI assistant. I can explain what affects an
+                offer and answer questions about selling and pickup across
+                Greater Brisbane. Every offer is reviewed by a Caraway buyer.
               </div>
             </div>
 
@@ -447,10 +420,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             {messages.map((message) => {
               const isUser = message.role === "user";
               const hasVisibleContent = message.parts.some(
-                (part) =>
-                  (part.type === "text" && part.text.length > 0) ||
-                  (part.type === "tool-estimateVehicle" &&
-                    part.state === "output-available"),
+                (part) => part.type === "text" && part.text.length > 0,
               );
               if (!hasVisibleContent) return null;
 
@@ -485,20 +455,6 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                         );
                       }
 
-                      if (
-                        !isUser &&
-                        part.type === "tool-estimateVehicle" &&
-                        part.state === "output-available"
-                      ) {
-                        return (
-                          <EstimateCard
-                            key={`${message.id}-estimate-${index}`}
-                            estimate={part.output}
-                            onContinue={closeChat}
-                          />
-                        );
-                      }
-
                       return null;
                     })}
                   </div>
@@ -521,19 +477,22 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             {error && (
               <div className="rounded-sm border border-destructive/30 bg-destructive/5 px-3 py-3 text-sm text-foreground" role="alert">
                 <p>
-                  Chat is temporarily unavailable. Try that message again or call{" "}
+                  {conversationLimitReached
+                    ? "This conversation has reached its limit. Start a new chat to keep asking questions, or call "
+                    : "Chat is temporarily unavailable. Try that message again or call "}
                   <a className="font-semibold text-primary underline" href={BUSINESS.phoneTel}>
                     {BUSINESS.phoneDisplay}
                   </a>
                   .
                 </p>
                 <button
+                  ref={errorActionRef}
                   type="button"
-                  onClick={() => void retryLastResponse()}
+                  onClick={conversationLimitReached ? resetChat : () => void retryLastResponse()}
                   className="mt-2 inline-flex min-h-9 items-center gap-1.5 rounded-sm border border-primary/30 bg-card px-3 text-xs font-semibold text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                  Try again
+                  {conversationLimitReached ? "Start a new chat" : "Try again"}
                 </button>
               </div>
             )}
@@ -541,6 +500,22 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           </div>
 
           <footer className="border-t border-border bg-card p-3">
+            <p
+              id="caraway-chat-privacy-note"
+              className="mb-2 rounded-sm border border-border/70 bg-muted/60 px-2.5 py-2 text-[0.6875rem] leading-relaxed text-muted-foreground"
+            >
+              AI chat is for general questions only. Do not enter names, phone
+              numbers, addresses, registration numbers, VINs or ID details. See
+              our{" "}
+              <Link
+                href="/privacy"
+                onClick={() => setIsOpen(false)}
+                className="font-medium text-primary underline underline-offset-2"
+              >
+                privacy policy
+              </Link>
+              .
+            </p>
             <form onSubmit={handleSubmit} className="flex items-end gap-2">
               <label htmlFor="caraway-chat-input" className="sr-only">
                 Ask Caraway a question
@@ -554,13 +529,14 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 maxLength={MAX_INPUT_LENGTH}
                 rows={1}
                 placeholder="Ask a question or describe your car…"
-                disabled={isBusy}
+                disabled={isBusy || conversationLimitReached}
+                aria-describedby="caraway-chat-privacy-note"
                 className="max-h-28 min-h-11 flex-1 resize-none overflow-y-auto rounded-sm border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-60"
               />
               <button
                 type={isBusy ? "button" : "submit"}
                 onClick={isBusy ? stop : undefined}
-                disabled={!isBusy && input.trim().length === 0}
+                disabled={!isBusy && (conversationLimitReached || input.trim().length === 0)}
                 className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-cta-foreground shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${
                   isBusy ? "bg-primary hover:bg-primary/90" : "bg-cta hover:bg-cta/90"
                 }`}
@@ -575,10 +551,10 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             </form>
             <div className="mt-2 flex items-center justify-between gap-3 text-[0.6875rem] text-muted-foreground">
               <span className="hidden sm:inline">Enter to send · Shift+Enter for a new line</span>
-              <span className="sm:hidden">Indicative estimates only</span>
+              <span className="sm:hidden">Quotes come from the form</span>
               <span className="flex items-center gap-3">
                 <Link
-                  href="/#price-estimator"
+                  href="/#quote-form"
                   prefetch={false}
                   className="font-medium text-primary hover:underline"
                 >

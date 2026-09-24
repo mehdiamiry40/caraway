@@ -14,8 +14,8 @@ const credentials = [
 const banners = [
   {
     label: "Get a vehicle assessment",
-    description: "An indicative scrap/parts estimate or buyer review.",
-    href: "/#price-estimator",
+    description: "A human-reviewed vehicle assessment.",
+    href: "/#quote-form",
     image: "/images/banners/cars-lined-up",
   },
   {
@@ -49,7 +49,7 @@ export function TrustBadges() {
           <li key={banner.href}>
             <Link
               href={banner.href}
-              prefetch={banner.href === "/#price-estimator" ? false : undefined}
+              prefetch={banner.href === "/#quote-form" ? false : undefined}
               className="group relative isolate flex min-h-[13rem] items-center overflow-hidden bg-ink-raised text-on-dark-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-on-dark-hi sm:min-h-[16rem] lg:min-h-[20rem]"
             >
               <picture>

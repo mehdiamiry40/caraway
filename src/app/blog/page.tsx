@@ -3,7 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import Blog from "@/views/Blog";
 import { blogPosts } from "@/data/blog-posts";
-import { SITE_URL } from "@/lib/site";
+import { OPEN_GRAPH_DEFAULTS, SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
 
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     "Practical Brisbane guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: `${SITE_URL}/blog`,
     title: "Brisbane Car Selling Guides | Caraway",

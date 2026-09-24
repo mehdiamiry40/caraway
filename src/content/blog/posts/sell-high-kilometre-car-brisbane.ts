@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "Kilometres do not change the seller steps. Registration status and sale type do. Check current Queensland guidance for a registered transfer, cancellation, or unregistered sale, and retain a signed receipt plus confirmation of the steps you complete.",
 
-    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band.`,
+    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band.`,
   ],
   faqs: [
     {

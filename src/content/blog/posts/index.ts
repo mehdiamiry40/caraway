@@ -1,3 +1,24 @@
+import { post as postClassicCar } from "./sell-classic-car-brisbane";
+import { post as postTrailer } from "./sell-trailer-brisbane";
+import { post as postProjectCar } from "./sell-project-car-brisbane";
+import { post as postRideshare } from "./sell-rideshare-car-brisbane";
+import { post as postNovatedLease } from "./sell-car-novated-lease-qld";
+import { post as postTwoNames } from "./car-registered-two-names-qld";
+import { post as postRustyCar } from "./rusty-car-brisbane";
+import { post as postCatalyticConverter } from "./stolen-catalytic-converter-brisbane";
+import { post as postTestDrive } from "./test-drive-private-car-sale-qld";
+import { post as postBuyerNoTransfer } from "./buyer-not-transferred-rego-qld";
+import { post as postRepairerLien } from "./mechanic-wont-release-car-qld";
+import { post as postTruck } from "./sell-truck-brisbane";
+import { post as postImportedCar } from "./sell-imported-car-brisbane";
+import { post as postPrivateSaleRefund } from "./private-car-sale-refund-qld";
+import { post as postLostRegoPapers } from "./lost-rego-papers-qld";
+import { post as postCompanyCar } from "./sell-company-car-qld";
+import { post as postFailedRoadworthy } from "./car-failed-roadworthy-qld";
+import { post as postCaravan } from "./sell-caravan-brisbane";
+import { post as postFireDamaged } from "./sell-fire-damaged-car-brisbane";
+import { post as postPowerOfAttorney } from "./sell-car-power-of-attorney-qld";
+import { post as postExpiredRego } from "./expired-rego-qld";
 import { post as postImpounded } from "./car-impounded-qld";
 import { post as postFamilyGift } from "./gifting-car-family-member-qld";
 import { post as postLpgCar } from "./sell-lpg-car-brisbane";
@@ -53,6 +74,27 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postClassicCar,
+  postTrailer,
+  postProjectCar,
+  postRideshare,
+  postNovatedLease,
+  postTwoNames,
+  postRustyCar,
+  postCatalyticConverter,
+  postTestDrive,
+  postBuyerNoTransfer,
+  postRepairerLien,
+  postTruck,
+  postImportedCar,
+  postPrivateSaleRefund,
+  postLostRegoPapers,
+  postCompanyCar,
+  postFailedRoadworthy,
+  postCaravan,
+  postFireDamaged,
+  postPowerOfAttorney,
+  postExpiredRego,
   postImpounded,
   postFamilyGift,
   postLpgCar,

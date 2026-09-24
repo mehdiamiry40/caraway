@@ -87,6 +87,29 @@ for (const route of routes) {
 }
 
 try {
+  const homeHtml = readFileSync(
+    join(process.cwd(), ".next", "server", "app", "index.html"),
+    "utf8",
+  );
+  const canonicalMatches = homeHtml.match(
+    /<link rel="canonical" href="https:\/\/caraway\.au\/"/g,
+  );
+  const openGraphUrlMatches = homeHtml.match(
+    /<meta property="og:url" content="https:\/\/caraway\.au\/"/g,
+  );
+  if (canonicalMatches?.length !== 1) {
+    failures.push("homepage: slash-bearing canonical must appear exactly once");
+  }
+  if (openGraphUrlMatches?.length !== 1) {
+    failures.push("homepage: slash-bearing Open Graph URL must appear exactly once");
+  }
+} catch (error) {
+  failures.push(
+    `homepage: could not read built HTML (${error instanceof Error ? error.message : String(error)})`,
+  );
+}
+
+try {
   const robots = readFileSync(
     join(process.cwd(), ".next", "server", "app", "robots.txt.body"),
     "utf8",
@@ -313,5 +336,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  "Indexability checks passed for both primary service pages, their preferred images, robots.txt, preview hosts, and the canonical host.",
+  "Indexability checks passed for the homepage, both primary service pages, their preferred images, robots.txt, preview hosts, and the canonical host.",
 );

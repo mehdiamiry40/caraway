@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
 import { suburbs } from "@/data/suburbs";
@@ -63,6 +63,7 @@ export default function Locations() {
     slug: suburb.slug,
     h1: suburb.h1,
     summary: suburb.metaDescription,
+    nearbyAreaNames: suburb.nearbyAreaNames,
   }));
 
   return (
@@ -76,7 +77,7 @@ export default function Locations() {
           summary for a suburb that is not listed. Pickup is included when
           Caraway buys; the exact address, access, vehicle details, payment
           method, and available window are confirmed first. You can also{" "}
-          <Link href="/#price-estimator" className="text-primary font-medium link-underline">request a quote</Link>.
+          <Link href="/#quote-form" className="text-primary font-medium link-underline">request a quote</Link>.
         </p>
       }
     >
@@ -99,7 +100,7 @@ export default function Locations() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {coverageRegions.map((region) => (
-              <article key={region.title} className="rounded-xl border border-border bg-card p-6">
+              <article key={region.title} className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
                 <h3 className="font-display text-lg text-foreground mb-3">{region.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                   {region.description}
@@ -118,7 +119,7 @@ export default function Locations() {
           </div>
         </section>
 
-        <div className="mt-16 rounded-md border border-border/60 bg-secondary/60 p-8 sm:p-10 text-center max-w-2xl mx-auto">
+        <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10 text-center max-w-2xl mx-auto">
           <p className="eyebrow mb-3">Not sure?</p>
           <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
           <p className="text-muted-foreground mb-7 max-w-md mx-auto">
@@ -127,20 +128,21 @@ export default function Locations() {
             available for that vehicle and location. You can also call {BUSINESS.phoneDisplay}.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/#quote-form"
+              className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+            >
+              Get my quote
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
             <a
               href={BUSINESS.phoneTel}
-              className={cn(buttonVariants({ variant: "primary" }), "w-full sm:w-auto")}
+              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden />
               Call {BUSINESS.phoneDisplay}
             </a>
-            <Link
-              href="/#price-estimator"
-              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
-            >
-              Get my quote
-            </Link>
           </div>
         </div>
       </div>

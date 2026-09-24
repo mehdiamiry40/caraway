@@ -7,6 +7,7 @@ import QueenslandVehicleDataPage, {
 } from "@/app/resources/queensland-vehicle-data/page";
 import {
   BRISBANE_DATA_DOWNLOAD,
+  BRISBANE_OPEN_DATA_SHOWCASE_URL,
   BRISBANE_REUSE_THUMBNAIL,
   FUEL_DATA_DOWNLOAD,
   VEHICLE_DATA_SOCIAL_IMAGE,
@@ -18,6 +19,7 @@ import {
   SITE_URL,
   VEHICLE_DATA_CONTENT_PUBLISHED,
   VEHICLE_DATA_CONTENT_UPDATED,
+  VEHICLE_DATA_DATASET_UPDATED,
 } from "@/lib/site";
 
 vi.mock("next/navigation", () => ({
@@ -65,6 +67,12 @@ describe("Queensland vehicle-data resource page", () => {
     expect(markup).toContain("fuel-trend-chart-title");
     expect(markup.match(/<table\b/g)).toHaveLength(3);
     expect(markup).toContain("Historical snapshot — not current");
+    expect(markup).toContain("Featured in");
+    expect(markup).toContain("Brisbane City Council’s Open Data showcase");
+    expect(markup).toContain(`href="${BRISBANE_OPEN_DATA_SHOWCASE_URL}"`);
+    expect(markup).toContain(
+      'data-track-location="vehicle_data_council_showcase"',
+    );
     expect(markup).toContain("1,176,619");
     expect(markup).toContain("View all 186 unambiguous suburb rows");
     expect(markup).toContain("Cross-LGA-ambiguous rows excluded");
@@ -187,7 +195,7 @@ describe("Queensland vehicle-data resource page", () => {
     }
     expect(fuelDataset).toMatchObject({
       datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
-      dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+      dateModified: VEHICLE_DATA_DATASET_UPDATED,
       temporalCoverage: "2006/2024",
       spatialCoverage: { "@type": "Place", name: "Queensland" },
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -201,7 +209,7 @@ describe("Queensland vehicle-data resource page", () => {
     });
     expect(brisbaneDataset).toMatchObject({
       datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
-      dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+      dateModified: VEHICLE_DATA_DATASET_UPDATED,
       temporalCoverage: "2022-10-10/2022-10-10",
       spatialCoverage: {
         "@type": "Place",

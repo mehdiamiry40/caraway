@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
+  "buildCommand": "turbo run build",
   "regions": ["syd1"],
   "headers": [
     {
@@ -10,8 +11,8 @@
   ],
   "crons": [
     {
-      "path": "/api/health/lead-delivery",
-      "schedule": "0 21 * * *"
+      "path": "/api/cron/lead-delivery",
+      "schedule": "*/5 * * * *"
     }
   ]
 }

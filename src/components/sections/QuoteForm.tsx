@@ -5,7 +5,6 @@ import { useForm, useWatch } from "react-hook-form";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { AddressAutocomplete } from "@/components/ui/address-autocomplete";
 import { Button } from "@/components/ui/button";
 import type { QuoteFormInput } from "@/lib/quote-schema";
 import { quoteFormResolver } from "@/lib/quote-client-validation";
@@ -15,6 +14,8 @@ import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
 import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
+import { LeadForm } from "./LeadForm";
+import { useSubmissionId } from "@/hooks/use-submission-id";
 
 const fieldIds = {
   name: "quote-name",
@@ -23,11 +24,13 @@ const fieldIds = {
   model: "quote-model",
   year: "quote-year",
   condition: "quote-condition",
-  address: "quote-address",
+  expectedPrice: "quote-expected-price",
+  suburb: "quote-suburb",
   details: "quote-details",
 } as const;
 
 export function QuoteForm({ source = "quote_form" }: { source?: string }) {
+  const submission = useSubmissionId("quote");
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const errorAlertRef = useRef<HTMLDivElement>(null);
@@ -43,13 +46,13 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
     reset,
     control,
     setValue,
-    trigger,
   } = useForm<QuoteFormInput>({
     resolver: quoteFormResolver,
     mode: "onBlur",
     defaultValues: {
-      address: "",
+      suburb: "",
       details: "",
+      expectedPrice: "",
       honeypot: "",
     },
   });
@@ -57,7 +60,6 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   // `useWatch` is the React Compiler-safe alternative to the `watch()`
   // function returned by `useForm()`, which cannot be memoized safely.
   const selectedMake = useWatch({ control, name: "make" });
-  const addressValue = useWatch({ control, name: "address" }) ?? "";
 
   const onSubmit = async (data: QuoteFormInput) => {
     setErrorMessage(null);
@@ -66,11 +68,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       return;
     }
     try {
-      const result = await submitQuote(data);
+      const result = await submitQuote(data, await submission.getId());
       if (result.success) {
         trackEvent("quote_form_submitted", { source });
         trackEvent("lead_submitted", { source });
         setIsSuccess(true);
+        submission.reset();
         reset();
         return;
       }
@@ -98,11 +101,16 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
   };
 
   return (
-    <section id="quote-form" className="section-y scroll-mt-header bg-background">
+    <section
+      id="quote-form"
+      className="section-y scroll-mt-header bg-background"
+      aria-label="Request a quote"
+      data-chat-launcher-suppress="true"
+    >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="mb-5 text-xs uppercase tracking-[0.18em] text-foreground/75">
+            <p className="eyebrow mb-5">
               Your quote
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">
@@ -128,14 +136,14 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
                   <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
                   <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
-                    Our team will review the supplied details and contact you during business hours. Keep an eye on your phone, and check your spam folder if we reach out by email.
+                    Our team will review the supplied details and contact you by phone during business hours.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
                     Submit another vehicle
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6" noValidate>
+                <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
                   <div hidden aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -258,6 +266,46 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </div>
                   </div>
 
+                  <div>
+                    <label htmlFor={fieldIds.expectedPrice} className="block text-sm text-foreground mb-2.5">
+                      Expected price <span className="text-muted-foreground">(optional)</span>
+                    </label>
+                    <div className="relative">
+                      <span
+                        className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-base text-muted-foreground"
+                        aria-hidden
+                      >
+                        $
+                      </span>
+                      <Input
+                        type="text"
+                        inputMode="numeric"
+                        autoComplete="off"
+                        enterKeyHint="next"
+                        maxLength={12}
+                        placeholder="3500"
+                        className="pl-8"
+                        aria-invalid={!!errors.expectedPrice}
+                        aria-describedby={
+                          errors.expectedPrice
+                            ? `${fieldIds.expectedPrice}-error quote-expected-price-help`
+                            : "quote-expected-price-help"
+                        }
+                        {...register("expectedPrice")}
+                        id={fieldIds.expectedPrice}
+                      />
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-expected-price-help">
+                      Whole Australian dollars. Tell us what you hope to get and we&apos;ll say whether it is realistic — leave it blank if you&apos;d rather we suggest a figure.
+                    </p>
+                    {errors.expectedPrice && (
+                      <p id={`${fieldIds.expectedPrice}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        {errors.expectedPrice.message}
+                      </p>
+                    )}
+                  </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                     <div>
                       <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
@@ -316,40 +364,31 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.address} className="block text-sm text-foreground mb-2.5 cursor-pointer">
-                      Pickup address
+                    <label htmlFor={fieldIds.suburb} className="block text-sm text-foreground mb-2.5 cursor-pointer">
+                      Suburb
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
-                    <AddressAutocomplete
-                      id={fieldIds.address}
-                      name="address"
-                      value={addressValue}
-                      onChange={(next) => {
-                        setValue("address", next, {
-                          shouldDirty: true,
-                          shouldTouch: true,
-                          shouldValidate: !!errors.address,
-                        });
-                      }}
-                      onBlur={() => {
-                        void trigger("address");
-                      }}
-                      autoComplete="street-address"
+                    <Input
+                      autoComplete="address-level2"
+                      inputMode="text"
                       enterKeyHint="next"
-                      placeholder="Start typing your pickup address..."
+                      maxLength={100}
+                      placeholder="Toowong"
                       aria-required="true"
-                      aria-invalid={!!errors.address}
+                      aria-invalid={!!errors.suburb}
                       aria-describedby={
-                        errors.address ? `${fieldIds.address}-error quote-address-help` : "quote-address-help"
+                        errors.suburb ? `${fieldIds.suburb}-error quote-suburb-help` : "quote-suburb-help"
                       }
+                      {...register("suburb")}
+                      id={fieldIds.suburb}
                     />
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-address-help">
-                      Enter the full address manually if needed. Availability is confirmed from the suburb, vehicle, and access details.
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-suburb-help">
+                      Where the car is right now. Availability is confirmed from the suburb, vehicle, and access details; we take the exact address once an offer is agreed.
                     </p>
-                    {errors.address && (
-                      <p id={`${fieldIds.address}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
+                    {errors.suburb && (
+                      <p id={`${fieldIds.suburb}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
                         <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
-                        {errors.address.message}
+                        {errors.suburb.message}
                       </p>
                     )}
                   </div>
@@ -427,7 +466,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </Link>
                     .
                   </p>
-                </form>
+                </LeadForm>
               )}
           </div>
         </div>

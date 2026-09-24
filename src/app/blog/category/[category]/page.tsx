@@ -10,13 +10,61 @@ import {
   categorySlug,
   getPostsByCategory,
   blogPosts,
+  type BlogPost,
 } from "@/data/blog-posts";
-import { SITE_URL, CONTENT_DEPLOY_DATE } from "@/lib/site";
+import {
+  BLOG_CATEGORY_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
+  SITE_URL,
+} from "@/lib/site";
 import { ArrowLeft } from "lucide-react";
 
 export const dynamicParams = false;
 
 type Props = { params: Promise<{ category: string }> };
+
+const CATEGORY_SEO: Record<
+  string,
+  { title: string; heading: string; description: string }
+> = {
+  guides: {
+    title: "Caraway Blog: Guides",
+    heading: "Guides articles",
+    description:
+      "Browse the Guides archive for articles on Queensland paperwork, ownership, registration, condition, safety, and Brisbane collection planning.",
+  },
+  insights: {
+    title: "Caraway Blog: Insights",
+    heading: "Insights articles",
+    description:
+      "Browse the Insights archive to compare buyer types, whole-car versus parts decisions, fees, pickup terms, and the work behind each sale path.",
+  },
+  tips: {
+    title: "Caraway Blog: Tips",
+    heading: "Tips articles",
+    description:
+      "Browse the Tips archive for practical seller safety and privacy articles, from checking payment terms to clearing personal data before handover.",
+  },
+};
+
+function categorySeo(category: string, label: string) {
+  return (
+    CATEGORY_SEO[category] ?? {
+      title: `Caraway Blog: ${label}`,
+      heading: `${label} articles`,
+      description: `Browse Caraway's ${label.toLowerCase()} about Queensland vehicle selling and Brisbane collection planning.`,
+    }
+  );
+}
+
+export function latestCategoryModifiedDate(
+  posts: readonly BlogPost[],
+): string {
+  return posts.reduce((latest, post) => {
+    const stamp = post.updatedAt || post.date;
+    return stamp > latest ? stamp : latest;
+  }, BLOG_CATEGORY_CONTENT_UPDATED);
+}
 
 export async function generateStaticParams() {
   const slugs = new Set(blogPosts.map((p) => categorySlug(p.category)));
@@ -35,14 +83,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${label} — Caraway Blog`;
-  const description = `Browse all ${label.toLowerCase()} on the Caraway blog — expert articles about selling your car for cash in Brisbane.`;
+  const { title, description } = categorySeo(category, label);
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `${SITE_URL}/blog/category/${category}` },
     openGraph: {
+      ...OPEN_GRAPH_DEFAULTS,
       type: "website",
       url: `${SITE_URL}/blog/category/${category}`,
       title,
@@ -67,6 +115,8 @@ export default async function BlogCategoryPage({ params }: Props) {
 
   const posts = getPostsByCategory(category);
   const canonical = `${SITE_URL}/blog/category/${category}`;
+  const seo = categorySeo(category, label);
+  const latestModified = latestCategoryModifiedDate(posts);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -90,12 +140,12 @@ export default async function BlogCategoryPage({ params }: Props) {
           {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            name: `${label} — Caraway Blog`,
-            description: `All ${label.toLowerCase()} articles on the Caraway blog.`,
+            name: seo.title,
+            description: seo.description,
             url: canonical,
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",
-            dateModified: CONTENT_DEPLOY_DATE,
+            dateModified: latestModified,
             mainEntity: {
               "@type": "ItemList",
               numberOfItems: posts.length,
@@ -111,6 +161,7 @@ export default async function BlogCategoryPage({ params }: Props) {
               headline: post.title,
               url: post.canonicalUrl,
               datePublished: post.date,
+              dateModified: post.updatedAt || post.date,
             })),
           },
         ]}
@@ -118,11 +169,9 @@ export default async function BlogCategoryPage({ params }: Props) {
       <PageShell
         breadcrumbs={breadcrumbs}
         eyebrow="Blog category"
-        title={label}
+        title={seo.heading}
         subtitle={
-          <p>
-            Browse all {label.toLowerCase()} about selling your car for cash in Brisbane.
-          </p>
+          <p>{seo.description}</p>
         }
       >
         <div className="site-container py-14 sm:py-20 lg:py-24">

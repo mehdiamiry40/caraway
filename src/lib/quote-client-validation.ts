@@ -7,6 +7,7 @@ import type {
 import type { QuoteFormInput } from "@/lib/quote-schema";
 import {
   auPhoneRegex,
+  normalizeExpectedPrice,
   quoteConditionValues,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
@@ -130,15 +131,15 @@ export function validateQuoteFormForClient(
     normalized.condition = raw.condition;
   }
 
-  const address = readString(raw, errors, "address");
-  if (address !== null) {
-    const trimmed = address.trim();
-    if (trimmed.length < QUOTE_VALIDATION_LIMITS.address.min) {
-      setError(errors, "address", QUOTE_VALIDATION_MESSAGES.addressRequired);
-    } else if (trimmed.length > QUOTE_VALIDATION_LIMITS.address.max) {
-      setError(errors, "address", QUOTE_VALIDATION_MESSAGES.addressTooLong);
+  const suburb = readString(raw, errors, "suburb");
+  if (suburb !== null) {
+    const trimmed = suburb.trim();
+    if (trimmed.length < QUOTE_VALIDATION_LIMITS.suburb.min) {
+      setError(errors, "suburb", QUOTE_VALIDATION_MESSAGES.suburbRequired);
+    } else if (trimmed.length > QUOTE_VALIDATION_LIMITS.suburb.max) {
+      setError(errors, "suburb", QUOTE_VALIDATION_MESSAGES.suburbTooLong);
     }
-    normalized.address = sanitizeLine(trimmed);
+    normalized.suburb = sanitizeLine(trimmed);
   }
 
   if (raw.details !== undefined) {
@@ -153,16 +154,27 @@ export function validateQuoteFormForClient(
     }
   }
 
-  if (raw.quoteAmount !== undefined) {
+  // A blank expected price stays absent from the payload rather than being
+  // normalized to $0.
+  const expectedPrice = normalizeExpectedPrice(raw.expectedPrice);
+  if (expectedPrice !== undefined) {
     if (
-      typeof raw.quoteAmount !== "number" ||
-      !Number.isInteger(raw.quoteAmount) ||
-      raw.quoteAmount < QUOTE_VALIDATION_LIMITS.quoteAmount.min ||
-      raw.quoteAmount > QUOTE_VALIDATION_LIMITS.quoteAmount.max
+      !Number.isInteger(expectedPrice) ||
+      expectedPrice < QUOTE_VALIDATION_LIMITS.expectedPrice.min
     ) {
-      setError(errors, "quoteAmount", QUOTE_VALIDATION_MESSAGES.invalidInput);
+      setError(
+        errors,
+        "expectedPrice",
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      );
+    } else if (expectedPrice > QUOTE_VALIDATION_LIMITS.expectedPrice.max) {
+      setError(
+        errors,
+        "expectedPrice",
+        QUOTE_VALIDATION_MESSAGES.expectedPriceTooHigh,
+      );
     } else {
-      normalized.quoteAmount = raw.quoteAmount;
+      normalized.expectedPrice = expectedPrice;
     }
   }
 

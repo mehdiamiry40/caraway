@@ -1,6 +1,13 @@
 /** Canonical public site origin (matches the live production redirect target). */
 export const SITE_URL = "https://caraway.au";
 
+/** Shared identity fields for route-level Open Graph metadata. Next replaces
+ * nested metadata objects, so child routes spread these values explicitly. */
+export const OPEN_GRAPH_DEFAULTS = {
+  siteName: "Caraway",
+  locale: "en_AU",
+} as const;
+
 /** Literal description of the shared flatbed social image. */
 export const SHARED_PICKUP_IMAGE_ALT =
   "Silver sedan being transported on a flatbed truck";
@@ -33,12 +40,53 @@ export const BUSINESS = {
     "https://www.google.com/maps/place//data=!4m3!3m2!1s0x6b9145f7c7992573:0x20b7c0537d263e77!12e1",
 } as const;
 
-export const MIN_PRICE = 200;
-export const MAX_PRICE = 9999;
+/**
+ * City-level coordinates for Brisbane, matching the city-level address above.
+ * Caraway collects vehicles rather than receiving them, so this is the centre
+ * of the service area, NOT a storefront a customer can visit — which is why no
+ * streetAddress is published alongside it.
+ */
+export const BUSINESS_GEO = {
+  latitude: -27.4698,
+  longitude: 153.0251,
+} as const;
+
+/**
+ * Regions named in the public service-area copy. Kept here so the JSON-LD
+ * areaServed and the on-page wording cannot drift apart.
+ */
+export const SERVICE_AREA_NAMES = [
+  "Brisbane",
+  "Logan",
+  "Ipswich",
+  "Moreton Bay",
+  "Redlands",
+] as const;
+
+/**
+ * Published trading hours, mirrored into JSON-LD as openingHoursSpecification.
+ *
+ * These must stay identical to the hours on the Google Business Profile. Where
+ * the two disagree, Google treats the listing as the authority and the mismatch
+ * costs trust — so change both together, or neither. 24-hour times, because
+ * schema.org expects ISO 8601 and "8am" is not valid there.
+ */
+export const OPENING_HOURS: ReadonlyArray<{
+  dayOfWeek: readonly string[];
+  opens: string;
+  closes: string;
+}> = [
+  {
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
+];
+
 export const PRICE_RANGE_LABEL = "Vehicle-specific quotes";
 
 export const LEGAL_DATE_ISO = {
-  privacyLastUpdated: "2026-08-11",
+  privacyLastUpdated: "2026-09-05",
   termsLastUpdated: "2026-08-07",
 } as const;
 
@@ -77,17 +125,20 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
  *  the dedicated service pages can own the two primary commercial queries. */
 export const HOME_CONTENT_UPDATED = "2026-08-09";
 
-/** About-page identity copy and primary-image schema last reviewed in August 2026. */
-export const ABOUT_CONTENT_UPDATED = "2026-08-13";
+/** About-page identity copy, metadata, and primary-image schema last reviewed. */
+export const ABOUT_CONTENT_UPDATED = "2026-08-30";
 
-/** FAQ metadata and collection/payment wording materially reviewed in August 2026. */
-export const FAQ_CONTENT_UPDATED = "2026-08-07";
+/** FAQ metadata, primary heading, and collection/payment wording last reviewed. */
+export const FAQ_CONTENT_UPDATED = "2026-08-30";
 
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
  *  WebPage.dateModified so the recrawl signal is honest and consistent. */
-export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-07";
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-30";
+
+/** Blog category metadata, summaries, and structured-data template last updated. */
+export const BLOG_CATEGORY_CONTENT_UPDATED = "2026-08-30";
 
 /** Service catalogue materially consolidated and retitled in August 2026. */
 export const SERVICES_CONTENT_UPDATED = "2026-08-07";
@@ -98,8 +149,11 @@ export const LOCATIONS_CONTENT_UPDATED = "2026-08-10";
 /** Official-data resource first published from its fixed source-audited inputs. */
 export const VEHICLE_DATA_CONTENT_PUBLISHED = "2026-08-10";
 
-/** Official-data resource page and derived-dataset packaging last materially updated. */
-export const VEHICLE_DATA_CONTENT_UPDATED = "2026-08-13";
+/** Official-data resource page copy and presentation last materially updated. */
+export const VEHICLE_DATA_CONTENT_UPDATED = "2026-09-04";
+
+/** Derived vehicle datasets and their downloadable packaging last updated. */
+export const VEHICLE_DATA_DATASET_UPDATED = "2026-08-13";
 
 /** Human-readable sitemap updated when the vehicle-data resource was added. */
 export const SITE_MAP_CONTENT_UPDATED = "2026-08-10";

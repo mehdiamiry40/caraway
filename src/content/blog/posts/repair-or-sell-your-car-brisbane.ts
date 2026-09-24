@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "Registered transfer, registration cancellation, and an unregistered sale involve different seller steps. Check current Queensland guidance before advertising or agreeing to a sale, and keep a signed receipt plus evidence of the transfer or cancellation steps you complete. A vehicle buyer does not replace the seller's legal responsibilities.",
 
-    `To compare an as-is option with a repair estimate, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator). The quote depends on the individual vehicle and does not guarantee that selling will outperform repairing.`,
+    `To compare an as-is option with a repair estimate, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). The quote depends on the individual vehicle and does not guarantee that selling will outperform repairing.`,
   ],
   date: "2026-07-08",
   updatedAt: "2026-08-07",

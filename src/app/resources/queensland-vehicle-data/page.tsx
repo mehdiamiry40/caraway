@@ -8,6 +8,7 @@ import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { VehicleFuelTrendChart } from "@/components/resources/VehicleFuelTrendChart";
 import {
   BRISBANE_DATA_DOWNLOAD,
+  BRISBANE_OPEN_DATA_SHOWCASE_URL,
   BRISBANE_REUSE_THUMBNAIL,
   FUEL_DATA_DOWNLOAD,
   VEHICLE_DATA_SOCIAL_IMAGE,
@@ -22,9 +23,11 @@ import {
 } from "@/data/queensland-vehicle-data";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
+  OPEN_GRAPH_DEFAULTS,
   SITE_URL,
   VEHICLE_DATA_CONTENT_PUBLISHED,
   VEHICLE_DATA_CONTENT_UPDATED,
+  VEHICLE_DATA_DATASET_UPDATED,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -33,6 +36,7 @@ export const metadata: Metadata = {
     "Explore Queensland car fuel records from 2006–2024 and a clearly dated 2022 snapshot of registered vehicles across 186 Brisbane City suburbs.",
   alternates: { canonical: VEHICLE_DATA_ROUTE },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: VEHICLE_DATA_ROUTE,
     title: "Queensland Vehicle Data | Fuel Trends & Brisbane Snapshot",
@@ -200,7 +204,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     isAccessibleForFree: true,
     inLanguage: "en-AU",
     datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
-    dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+    dateModified: VEHICLE_DATA_DATASET_UPDATED,
     temporalCoverage: "2006/2024",
     spatialCoverage: { "@type": "Place", name: "Queensland" },
     keywords:
@@ -234,7 +238,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     isAccessibleForFree: true,
     inLanguage: "en-AU",
     datePublished: VEHICLE_DATA_CONTENT_PUBLISHED,
-    dateModified: VEHICLE_DATA_CONTENT_UPDATED,
+    dateModified: VEHICLE_DATA_DATASET_UPDATED,
     temporalCoverage: "2022-10-10/2022-10-10",
     spatialCoverage: {
       "@type": "Place",
@@ -531,6 +535,34 @@ export default function QueenslandVehicleDataPage() {
               They exclude seasonal registrations and do not represent cars,
               households, owners, roadworthiness, or today&apos;s fleet.
             </p>
+
+            <aside
+              aria-label="Brisbane City Council showcase recognition"
+              className="mt-8 rounded-md border border-primary/25 bg-secondary p-5 shadow-sm sm:p-6"
+            >
+              <p className="eyebrow">Brisbane Open Data</p>
+              <p className="mt-2 text-lg font-semibold text-primary sm:text-xl">
+                Featured in{" "}
+                <TrackedOutboundLink
+                  href={BRISBANE_OPEN_DATA_SHOWCASE_URL}
+                  label="Brisbane City Council Open Data showcase"
+                  location="vehicle_data_council_showcase"
+                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  Brisbane City Council’s Open Data showcase
+                  <ExternalLink
+                    className="ml-1 inline h-4 w-4 align-[-0.125em]"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </TrackedOutboundLink>
+                .
+              </p>
+              <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
+                Council’s public listing links directly to this resource and
+                describes the historical snapshot, methodology, and exclusions.
+              </p>
+            </aside>
 
             <dl className="mt-8 grid gap-4 sm:grid-cols-3">
               <div className="rounded-md border border-border bg-secondary p-5">

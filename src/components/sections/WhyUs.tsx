@@ -46,8 +46,9 @@ export function WhyUs() {
             <p>Private buyers flake. Dealers lowball. We&apos;re a buyer, not an auction.</p>
             <p>
               Caraway buys vehicles across Greater Brisbane, from daily drivers to
-              cars that haven&apos;t moved in years. You get an estimate from a few
-              details, then a confirmed offer in writing before any pickup is booked.
+              cars that haven&apos;t moved in years. Send a few details for a
+              human-reviewed assessment, then get a confirmed offer in writing
+              before any pickup is booked.
             </p>
             <p>
               Brisbane-based, ABN {BUSINESS.abn}.{" "}
@@ -79,7 +80,7 @@ export function WhyUs() {
             ))}
           </ul>
           <Link
-            href="/#price-estimator"
+            href="/#quote-form"
             prefetch={false}
             className={cn(
               buttonVariants(),

@@ -16,16 +16,22 @@ const TARGET_SERVICE_PATHS = [
   "/car-removal-brisbane",
 ] as const;
 
-test("sticky mobile CTA is available and jumps to the estimator", async ({
+test("sticky mobile CTA is available and jumps to the quote form", async ({
   page,
 }) => {
   await page.goto("/");
   const bar = page.locator(STICKY_BAR);
 
   await expect(bar).toHaveAttribute("aria-hidden", "true");
-  await page.locator("#price-estimator").evaluate((estimator) => {
-    window.scrollTo(0, estimator.offsetTop + estimator.offsetHeight + 100);
-  });
+  // The hero carries both #quote-form and data-sticky-cta-suppress, so the
+  // bar only appears once the whole hero is off screen.
+  await page
+    .locator("[data-sticky-cta-suppress]")
+    .first()
+    .evaluate((hero) => {
+      const rect = hero.getBoundingClientRect();
+      window.scrollTo(0, window.scrollY + rect.bottom + 100);
+    });
   await expect(bar).toBeVisible();
   await expect(bar).not.toHaveAttribute("aria-hidden", "true");
   await expect(
@@ -33,7 +39,7 @@ test("sticky mobile CTA is available and jumps to the estimator", async ({
   ).toHaveCount(1);
 
   await bar.getByRole("button", { name: "Get my quote" }).click();
-  await expect(page.locator("#price-estimator")).toBeInViewport();
+  await expect(page.locator("#quote-form")).toBeInViewport();
 });
 
 for (const path of TARGET_SERVICE_PATHS) {

@@ -2,12 +2,6 @@ import { track } from "@vercel/analytics";
 
 type EventName =
   | "cta_click"
-  | "estimator_started"
-  | "estimator_step_completed"
-  | "estimator_quote_shown"
-  | "estimator_submitted"
-  | "estimator_submit_failed"
-  | "estimator_abandoned"
   | "quote_form_submitted"
   | "contact_form_submitted"
   | "lead_submitted"
@@ -26,6 +20,9 @@ type EventName =
 type AllowedValue = string | number | boolean | null;
 
 /**
+ * Form success events mean the enquiry was captured by the website, not that
+ * email reached an inbox or a CRM completed processing. Event names remain
+ * stable for existing dashboards; no submission ID or form values are sent.
  * Custom-event bridge to Vercel Web Analytics. The beacon posts to
  * `/_vercel/insights/*` on our own origin, so the strict
  * `connect-src 'self'` CSP in next.config.ts needs no carve-out.

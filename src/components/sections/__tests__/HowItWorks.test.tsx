@@ -28,8 +28,14 @@ describe("HowItWorks internal links", () => {
     ).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /start your quote/i })).toHaveAttribute(
       "href",
-      "/#price-estimator",
+      "/#quote-form",
     );
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Tell us about your car" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Tell us about your car" }),
+    ).not.toBeInTheDocument();
   });
 
   it.each(["cash-for-cars-brisbane", "car-removal-brisbane"])(

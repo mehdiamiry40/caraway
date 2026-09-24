@@ -29,7 +29,7 @@ export function FinalCTA() {
 
             <div className="lg:col-span-4 lg:text-right">
               <Link
-                href="/#price-estimator"
+                href="/#quote-form"
                 className={cn(
                   buttonVariants({ size: "lg" }),
                   "group w-full px-8 sm:w-auto",

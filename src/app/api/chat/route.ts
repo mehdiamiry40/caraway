@@ -1,18 +1,17 @@
 import {
   convertToModelMessages,
   createUIMessageStreamResponse,
-  isStepCount,
   safeValidateUIMessages,
   streamText,
   toUIMessageStream,
 } from "ai";
+import { getVercelOidcToken } from "@vercel/oidc";
 
 import {
   CHAT_INSTRUCTIONS,
   CHAT_MODEL,
   CHAT_PROMPT_VERSION,
   type CarawayChatMessage,
-  chatTools,
   getChatVisitorId,
 } from "@/lib/chat-assistant";
 import { getEnv } from "@/lib/env";
@@ -35,9 +34,9 @@ function responseHeaders(extra: Record<string, string> = {}) {
   };
 }
 
-function jsonError(message: string, status: number, headers = {}) {
+function jsonError(message: string, status: number, headers = {}, code?: string) {
   return Response.json(
-    { error: message },
+    { error: message, ...(code ? { code } : {}) },
     { status, headers: responseHeaders(headers) },
   );
 }
@@ -79,6 +78,9 @@ export async function POST(request: Request) {
   const clientIp = getClientIp(request);
   const visitorLimit = await rateLimit("chat", clientIp);
   if (!visitorLimit.success) {
+    if (visitorLimit.mode === "unavailable") {
+      return jsonError("chat temporarily unavailable", 503);
+    }
     return jsonError("too many requests", 429, {
       "Retry-After": Math.max(
         1,
@@ -87,20 +89,14 @@ export async function POST(request: Request) {
     });
   }
 
-  const globalLimit = await rateLimit("chat-global", "global");
-  if (!globalLimit.success) {
-    console.error("[chat] global circuit breaker tripped");
-    return jsonError("chat temporarily unavailable", 503);
-  }
-
   const contentLength = Number(request.headers.get("content-length") ?? 0);
   if (Number.isFinite(contentLength) && contentLength > MAX_BODY_BYTES) {
-    return jsonError("request too large", 413);
+    return jsonError("request too large", 413, {}, "conversation_limit_reached");
   }
 
   const rawBody = await request.text();
   if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
-    return jsonError("request too large", 413);
+    return jsonError("request too large", 413, {}, "conversation_limit_reached");
   }
 
   let payload: unknown;
@@ -116,7 +112,6 @@ export async function POST(request: Request) {
       : undefined;
   const validated = await safeValidateUIMessages<CarawayChatMessage>({
     messages,
-    tools: chatTools,
   });
 
   if (!validated.success) {
@@ -124,7 +119,6 @@ export async function POST(request: Request) {
   }
 
   if (
-    validated.data.length > MAX_MESSAGES ||
     validated.data.some(
       (message) => message.role !== "user" && message.role !== "assistant",
     ) ||
@@ -141,15 +135,26 @@ export async function POST(request: Request) {
               part.type === "text" &&
               part.text.length > MAX_USER_MESSAGE_CHARACTERS,
           )),
-    ) ||
+    )
+  ) {
+    return jsonError("invalid messages", 400);
+  }
+
+  if (
+    validated.data.length > MAX_MESSAGES ||
     countTextCharacters(validated.data) > MAX_TEXT_CHARACTERS
   ) {
-    return jsonError("conversation limit reached", 400);
+    return jsonError(
+      "conversation limit reached",
+      400,
+      {},
+      "conversation_limit_reached",
+    );
   }
 
   // The browser replays prior assistant messages on each turn. Preserve their
-  // visible text, but never trust client-replayed tool results or reasoning as
-  // authoritative input; quote tools execute fresh on the server when needed.
+  // visible text, but never trust client-replayed reasoning as authoritative
+  // input.
   const textOnlyMessages = validated.data
     .map((message) => ({
       ...message,
@@ -158,30 +163,39 @@ export async function POST(request: Request) {
     .filter((message) => message.parts.length > 0);
 
   const env = getEnv();
-  // Vercel injects fresh OIDC credentials into Functions via the request
-  // context/header at runtime. The environment variable is primarily present
-  // during builds and local `vercel env pull` sessions.
-  const runtimeOidcToken = request.headers.get("x-vercel-oidc-token");
-  if (
-    !env.AI_GATEWAY_API_KEY &&
-    !env.VERCEL_OIDC_TOKEN &&
-    !runtimeOidcToken
-  ) {
-    console.error("[chat] Vercel AI Gateway credentials are not configured");
-    return jsonError("chat temporarily unavailable", 503);
+  if (!env.AI_GATEWAY_API_KEY) {
+    try {
+      // Validate the same request-context/environment token that AI Gateway
+      // will use. A raw request-header presence check would accept malformed
+      // or expired tokens and spend shared capacity before auth fails.
+      await getVercelOidcToken({ expirationBufferMs: 30_000 });
+    } catch (error) {
+      console.error(
+        "[chat] Vercel AI Gateway credentials are unavailable:",
+        error instanceof Error ? error.message : String(error),
+      );
+      return jsonError("chat temporarily unavailable", 503);
+    }
   }
 
   const visitorId = getChatVisitorId(
     clientIp,
     request.headers.get("user-agent") ?? "unknown",
   );
+  const modelMessages = await convertToModelMessages(textOnlyMessages);
+
+  // Reserve deployment-wide AI capacity only after this request is known to
+  // be structurally valid and immediately eligible for the paid upstream.
+  const globalLimit = await rateLimit("chat-global", "global");
+  if (!globalLimit.success) {
+    console.error("[chat] global circuit breaker unavailable or exhausted");
+    return jsonError("chat temporarily unavailable", 503);
+  }
 
   const result = streamText({
     model: CHAT_MODEL,
     instructions: CHAT_INSTRUCTIONS,
-    messages: await convertToModelMessages(textOnlyMessages),
-    tools: chatTools,
-    stopWhen: isStepCount(3),
+    messages: modelMessages,
     reasoning: "low",
     maxOutputTokens: 500,
     providerOptions: {
@@ -208,7 +222,6 @@ export async function POST(request: Request) {
     headers: responseHeaders(),
     stream: toUIMessageStream({
       stream: result.stream,
-      tools: chatTools,
       originalMessages: validated.data,
       sendReasoning: false,
       onError: () => "I couldn't answer that just now. Please try again or call Caraway on 0481 438 444.",

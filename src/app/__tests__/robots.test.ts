@@ -35,11 +35,22 @@ describe("robots.txt", () => {
     expect(rules).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ userAgent: "GPTBot", disallow: ["/"] }),
+        expect.objectContaining({ userAgent: "Google-Extended", disallow: ["/"] }),
+        expect.objectContaining({ userAgent: "Applebot-Extended", disallow: ["/"] }),
         expect.objectContaining({ userAgent: "ClaudeBot", disallow: ["/"] }),
         expect.objectContaining({ userAgent: "CCBot", disallow: ["/"] }),
       ]),
     );
   });
+
+  it.each(["Googlebot", "Applebot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot"])(
+    "keeps %s search and retrieval under the public crawl rule",
+    (userAgent) => {
+      const rules = rulesArray(robots().rules);
+      expect(rules.some((rule) => rule.userAgent === userAgent)).toBe(false);
+      expect(rules.find((rule) => rule.userAgent === "*")?.allow).toBe("/");
+    },
+  );
 
   it("always advertises the canonical sitemap so crawlers can read host-level noindex headers", () => {
     const output = robots();

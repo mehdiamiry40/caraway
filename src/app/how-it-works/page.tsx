@@ -4,13 +4,14 @@ import { CheckCircle2 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { PriceEstimator } from "@/components/sections/PriceEstimator";
+import { QuoteForm } from "@/components/sections/QuoteForm";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Accordion } from "@/components/ui/accordion";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
 import {
   BUSINESS,
   HOW_IT_WORKS_CONTENT_UPDATED,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -18,10 +19,11 @@ import {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "How Selling to Caraway Works",
+  title: "How Our Vehicle Buying Process Works",
   description: `See how Caraway assesses a Brisbane vehicle, documents an offer, confirms conditional pickup and payment terms, and records the sale. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/how-it-works" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/how-it-works",
     title: "How Selling to Caraway Works | Brisbane",
@@ -154,7 +156,7 @@ export default function HowItWorksPage() {
           aria-labelledby="process-detail-heading"
           className="bg-background"
         >
-          <div className="site-container max-w-4xl py-14 lg:py-20 space-y-12 sm:space-y-14">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20 space-y-12 sm:space-y-14">
             <div>
               <h2 id="process-detail-heading" className={h2Classes}>
                 What actually happens at each step
@@ -168,15 +170,14 @@ export default function HowItWorksPage() {
               <div className="mt-8">
                 <h3 className={h3Classes}>1. Tell us about the car</h3>
                 <p className={proseClasses}>
-                  The quote starts with four details: make, model, year, and an
-                  honest description of condition. Use the quote tool below or
-                  call {BUSINESS.phoneDisplay}. Add your suburb so we can plan
-                  the pickup, and mention anything that affects loading — a flat
-                  battery, missing wheels, a car that won&apos;t roll, or parking in
-                  a basement or behind a gate. Clear photos of the exterior,
-                  interior, access, and any damage help the assessment. Accurate
-                  details reduce the chance that the offer or collection plan
-                  needs to change later.
+                  The assessment starts with the vehicle, condition, contact,
+                  and pickup details requested in the quote tool below, or you
+                  can call {BUSINESS.phoneDisplay}. Mention anything that affects
+                  loading — a flat battery, missing wheels, a car that won&apos;t
+                  roll, or parking in a basement or behind a gate. Clear photos
+                  of the exterior, interior, access, and any damage help the
+                  assessment. Accurate details reduce the chance that the offer
+                  or collection plan needs to change later.
                 </p>
               </div>
 
@@ -284,7 +285,7 @@ export default function HowItWorksPage() {
           </div>
         </section>
 
-        <PriceEstimator />
+        <QuoteForm source="how-it-works" />
         <FinalCTA />
       </PageShell>
     </>

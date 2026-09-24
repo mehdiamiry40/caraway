@@ -8,7 +8,7 @@ const baseValid = {
   model: "Hilux",
   year: 2015,
   condition: "running" as const,
-  address: "12 George St, Brisbane",
+  suburb: "Brisbane",
   honeypot: "",
 };
 
@@ -157,50 +157,50 @@ describe("quoteFormSchema — model is required", () => {
   });
 });
 
-describe("quoteFormSchema — address bounds", () => {
-  it("accepts a manually typed Brisbane pickup address without Google place metadata", () => {
+describe("quoteFormSchema — suburb bounds", () => {
+  it("accepts a hyphenated multi-word suburb without place metadata", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "Unit 2/14 Boundary St, West End QLD 4101",
+      suburb: "Fig Tree Pocket",
     });
 
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.address).toBe("Unit 2/14 Boundary St, West End QLD 4101");
+      expect(result.data.suburb).toBe("Fig Tree Pocket");
       expect("placeId" in result.data).toBe(false);
     }
   });
 
-  it("rejects an address shorter than 5 chars", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcd" });
+  it("rejects a suburb shorter than 2 chars", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, suburb: "a" });
     expect(result.success).toBe(false);
   });
 
-  it("accepts a 5-character address", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, address: "abcde" });
+  it("accepts a 2-character suburb", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, suburb: "ab" });
     expect(result.success).toBe(true);
   });
 
-  it("accepts an address of exactly 500 chars", () => {
+  it("accepts a suburb of exactly 100 chars", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "x".repeat(500),
+      suburb: "x".repeat(100),
     });
     expect(result.success).toBe(true);
   });
 
-  it("rejects an address longer than 500 chars", () => {
+  it("rejects a suburb longer than 100 chars", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
-      address: "x".repeat(501),
+      suburb: "x".repeat(101),
     });
     expect(result.success).toBe(false);
   });
 
-  it("rejects a missing address", () => {
-    const { address: _address, ...withoutAddress } = baseValid;
-    void _address;
-    const result = quoteFormSchema.safeParse(withoutAddress);
+  it("rejects a missing suburb", () => {
+    const { suburb: _suburb, ...withoutSuburb } = baseValid;
+    void _suburb;
+    const result = quoteFormSchema.safeParse(withoutSuburb);
     expect(result.success).toBe(false);
   });
 });
@@ -224,44 +224,6 @@ describe("quoteFormSchema — optional vehicle and access details", () => {
     const result = quoteFormSchema.safeParse({
       ...baseValid,
       details: "x".repeat(2001),
-    });
-    expect(result.success).toBe(false);
-  });
-});
-
-describe("quoteFormSchema — quoteAmount bounds", () => {
-  it("succeeds when quoteAmount is omitted", () => {
-    const result = quoteFormSchema.safeParse(baseValid);
-    expect(result.success).toBe(true);
-  });
-
-  it("rejects quoteAmount of 0", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 0 });
-    expect(result.success).toBe(false);
-  });
-
-  it("rejects negative quoteAmount", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: -1 });
-    expect(result.success).toBe(false);
-  });
-
-  it("accepts quoteAmount of 1", () => {
-    const result = quoteFormSchema.safeParse({ ...baseValid, quoteAmount: 1 });
-    expect(result.success).toBe(true);
-  });
-
-  it("accepts quoteAmount of 999999", () => {
-    const result = quoteFormSchema.safeParse({
-      ...baseValid,
-      quoteAmount: 999999,
-    });
-    expect(result.success).toBe(true);
-  });
-
-  it("rejects quoteAmount above 1,000,000", () => {
-    const result = quoteFormSchema.safeParse({
-      ...baseValid,
-      quoteAmount: 1000001,
     });
     expect(result.success).toBe(false);
   });
@@ -356,5 +318,70 @@ describe("quoteFormSchema — condition enum", () => {
   it("rejects arbitrary strings", () => {
     const result = quoteFormSchema.safeParse({ ...baseValid, condition: "mint" });
     expect(result.success).toBe(false);
+  });
+});
+
+describe("quoteFormSchema — expected price", () => {
+  it("leaves the field absent when it is omitted or blank", () => {
+    for (const expectedPrice of [undefined, "", "   "]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBeUndefined();
+      }
+    }
+  });
+
+  it("coerces a typed amount to a number", () => {
+    const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: "3500" });
+    expect(result.success).toBe(true);
+    if (result.success) {
+      expect(result.data.expectedPrice).toBe(3500);
+    }
+  });
+
+  it("accepts a dollar sign and thousands separators", () => {
+    for (const input of ["$3500", "3,500", "$3,500", " $3,500 "]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: input });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBe(3500);
+      }
+    }
+  });
+
+  it("accepts zero and the upper limit", () => {
+    for (const [input, parsed] of [["0", 0], ["1000000", 1_000_000]] as const) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice: input });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.expectedPrice).toBe(parsed);
+      }
+    }
+  });
+
+  it("rejects non-numeric, fractional and negative amounts", () => {
+    for (const expectedPrice of ["about 3500", "3500.50", "-1"]) {
+      const result = quoteFormSchema.safeParse({ ...baseValid, expectedPrice });
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues[0].message).toBe(
+          "Enter a whole dollar amount, e.g. 3500",
+        );
+      }
+    }
+  });
+
+  it("rejects an amount above the upper limit", () => {
+    const result = quoteFormSchema.safeParse({
+      ...baseValid,
+      expectedPrice: "1000001",
+    });
+    expect(result.success).toBe(false);
+    if (!result.success) {
+      expect(result.error.issues[0].message).toBe(
+        "Enter an amount up to $1,000,000",
+      );
+    }
   });
 });

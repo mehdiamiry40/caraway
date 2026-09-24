@@ -91,6 +91,21 @@ describe("blog post template", () => {
     }
   });
 
+  it("emits one canonical Open Graph article identity without duplicate custom tags", () => {
+    const post = blogPosts[0];
+    const metadata = buildBlogPostMetadata(post);
+    const openGraph = metadata.openGraph as {
+      authors?: string[];
+      section?: string;
+      tags?: string[];
+    };
+
+    expect(openGraph.authors).toEqual([`${SITE_URL}/about`]);
+    expect(openGraph.section).toBe(post.category);
+    expect(openGraph.tags).toEqual([post.category]);
+    expect(metadata.other).toBeUndefined();
+  });
+
   it("does not emit noindex metadata for any live blog post", () => {
     for (const post of blogPosts) {
       const metadata = buildBlogPostMetadata(post);

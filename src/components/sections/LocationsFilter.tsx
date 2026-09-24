@@ -8,6 +8,7 @@ export interface LocationFilterItem {
   slug: string;
   h1: string;
   summary: string;
+  nearbyAreaNames: string[];
 }
 
 export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
@@ -25,7 +26,8 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
     return items.filter(
       (s) =>
         s.h1.toLowerCase().includes(q) ||
-        s.slug.toLowerCase().includes(q)
+        s.slug.toLowerCase().includes(q) ||
+        s.nearbyAreaNames.some((name) => name.toLowerCase().includes(q))
     );
   }, [items, query]);
 
@@ -43,6 +45,11 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
         />
       </div>
 
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {filtered.length} location {filtered.length === 1 ? "guide" : "guides"} found
+        {query.trim() ? ` for “${query.trim()}”` : ""}.
+      </p>
+
       {filtered.length === 0 ? (
         <div className="text-center py-20">
           <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
@@ -52,41 +59,40 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             No suburbs match &ldquo;{query}&rdquo;
           </p>
           <p className="text-muted-foreground text-sm">
-            We likely still service your area —{" "}
+            Send your suburb and vehicle details —{" "}
             <Link href="/contact" className="text-primary underline underline-offset-2">
               contact us
             </Link>{" "}
-            to check.
+            to check availability.
           </p>
         </div>
       ) : (
-        <>
-        <span className="sr-only" aria-live="polite">{filtered.length} results</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6" aria-live="polite">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group rounded-xl border border-border bg-card p-5 sm:p-6 hover:border-primary/50 hover:shadow-md transition-all duration-200"
+              className="group flex flex-col border border-border bg-card p-4 sm:p-6 hover:border-primary/50 card-lift"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MapPin className="h-4 w-4 text-accent" aria-hidden="true" />
+              <div className="flex items-center gap-3 sm:mb-4">
+                <div className="w-9 h-9 shrink-0 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
+                  <MapPin className="h-4 w-4 text-accent-ink" aria-hidden="true" />
                 </div>
-                <h2 className="text-base font-display text-foreground group-hover:text-primary transition-colors">
+                <h2 className="flex-1 text-base font-display font-semibold text-foreground group-hover:text-primary transition-colors">
                   {suburb.h1}
                 </h2>
+                {/* Phones drop the "View details" row; the arrow carries it. */}
+                <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary sm:hidden" aria-hidden="true" />
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-5">
+              <p className="mt-2 pl-12 text-sm text-muted-foreground leading-relaxed line-clamp-2 sm:mt-0 sm:mb-5 sm:pl-0 sm:line-clamp-3">
                 {suburb.summary}
               </p>
-              <span className="text-sm text-accent-ink flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+              <span className="mt-auto hidden text-sm text-accent-ink items-center gap-1.5 group-hover:gap-2.5 transition-all sm:flex">
                 View details <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
               </span>
             </Link>
           ))}
         </div>
-        </>
       )}
     </>
   );

@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "## Requesting a direct-buyer quote",
 
-    `Once the estate authority, registration status, finance, and insurer position are clear, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#price-estimator) for an individual assessment. If Caraway makes an offer and the authorised person accepts it, the payment arrangement, available collection window, access requirements, included-pickup terms, receipt, and buyer details are confirmed before dispatch.`,
+    `Once the estate authority, registration status, finance, and insurer position are clear, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) for an individual assessment. If Caraway makes an offer and the authorised person accepts it, the payment arrangement, available collection window, access requirements, included-pickup terms, receipt, and buyer details are confirmed before dispatch.`,
   ],
   faqs: [
     {

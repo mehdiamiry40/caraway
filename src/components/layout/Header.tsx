@@ -65,7 +65,7 @@ export function Header() {
         </a>
 
         <Link
-          href="/#price-estimator"
+          href="/#quote-form"
           prefetch={false}
           className={cn(
             buttonVariants({ size: "sm" }),

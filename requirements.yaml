@@ -11,10 +11,10 @@ runtime:
 
 capabilities:
   - "Server-rendered service, location, company, legal, and blog pages"
-  - "Interactive price estimator and detailed quote form"
+  - "Quote form delivered to the business inbox by email, with a webhook fallback"
   - "Contact form with webhook and Resend delivery fallbacks"
   - "Google Places address autocomplete through a first-party API proxy"
-  - "Vercel AI Gateway chatbot for vehicle estimates and customer questions"
+  - "Vercel AI Gateway chatbot for customer questions, which never prices a vehicle"
   - "Sitemap, robots, canonical metadata, and structured data"
   - "First-party health checks, sitemap, robots, canonical metadata, and structured data"
   - "Responsive layouts, keyboard navigation, reduced-motion support, and accessible form errors"

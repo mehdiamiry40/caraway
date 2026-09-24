@@ -1,6 +1,8 @@
 import rawVehicleData from "./queensland-vehicle-data.json";
 
 export const VEHICLE_DATA_ROUTE = "/resources/queensland-vehicle-data";
+export const BRISBANE_OPEN_DATA_SHOWCASE_URL =
+  "https://data.brisbane.qld.gov.au/explore/assets/brisbane-registered-vehicle-suburb-snapshot/";
 export const FUEL_DATA_DOWNLOAD =
   "/data/queensland-car-registrations-by-fuel-2006-2024.csv";
 export const BRISBANE_DATA_DOWNLOAD =

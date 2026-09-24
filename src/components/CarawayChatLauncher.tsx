@@ -16,7 +16,19 @@ export function CarawayChatLauncher({
   errorMessage,
   onClick,
 }: CarawayChatLauncherProps) {
-  const [suppressed, setSuppressed] = useState(false);
+  const [nearLeadForm, setNearLeadForm] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const update = () => {
+      setMenuOpen(document.body.dataset.mobileMenuOpen === "true");
+    };
+    update();
+    window.addEventListener("caraway:mobile-menu-change", update);
+    return () => {
+      window.removeEventListener("caraway:mobile-menu-change", update);
+    };
+  }, []);
 
   useEffect(() => {
     if (
@@ -30,7 +42,7 @@ export function CarawayChatLauncher({
       document.querySelectorAll<HTMLElement>("[data-chat-launcher-suppress]"),
     );
     const visibleTargets = new Set<Element>();
-    const update = () => setSuppressed(media.matches && visibleTargets.size > 0);
+    const update = () => setNearLeadForm(media.matches && visibleTargets.size > 0);
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) visibleTargets.add(entry.target);
@@ -46,6 +58,8 @@ export function CarawayChatLauncher({
       media.removeEventListener("change", update);
     };
   }, []);
+
+  const suppressed = nearLeadForm || menuOpen;
 
   const label = busy
     ? "Opening Caraway chat"

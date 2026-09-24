@@ -3,19 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { findQuoteTarget } from "@/hooks/use-scroll-to-quote";
 
 describe("findQuoteTarget", () => {
-  it("prefers the homepage estimator when it is present", () => {
-    const estimator = document.createElement("section");
-    estimator.id = "price-estimator";
-    const form = document.createElement("section");
-    form.id = "quote-form";
-    document.body.append(estimator, form);
-
-    expect(findQuoteTarget()).toBe(estimator);
-
-    document.body.replaceChildren();
-  });
-
-  it("finds the embedded quote form used by service and suburb pages", () => {
+  it("finds the quote form used by the homepage, service and suburb pages", () => {
     const form = document.createElement("section");
     form.id = "quote-form";
     document.body.append(form);
@@ -25,10 +13,20 @@ describe("findQuoteTarget", () => {
     document.body.replaceChildren();
   });
 
+  it("falls back to a legacy quote section id", () => {
+    const section = document.createElement("section");
+    section.id = "quote-section";
+    document.body.append(section);
+
+    expect(findQuoteTarget()).toBe(section);
+
+    document.body.replaceChildren();
+  });
+
   it("returns null when no quote target exists", () => {
     const getElementById = vi.fn().mockReturnValue(null);
 
     expect(findQuoteTarget({ getElementById })).toBeNull();
-    expect(getElementById).toHaveBeenCalledTimes(3);
+    expect(getElementById).toHaveBeenCalledTimes(2);
   });
 });

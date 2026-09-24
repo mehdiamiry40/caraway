@@ -10,8 +10,3 @@ export const CONDITION_LABELS: Record<QuoteCondition, string> = {
   damaged: "Damaged — accident, flood, or major fault",
   scrap: "Scrap — written off or end of life",
 };
-
-export const MANUAL_REVIEW_CONDITIONS = new Set<QuoteCondition>([
-  "running",
-  "needs_work",
-]);

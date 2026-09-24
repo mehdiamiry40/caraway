@@ -19,14 +19,6 @@ const envSchema = z.object({
   QUOTE_NOTIFICATION_TO: z.optional(z.email()),
   CONTACT_NOTIFICATION_FROM: z.optional(z.string().check(z.minLength(1))),
   CONTACT_NOTIFICATION_TO: z.optional(z.email()),
-  // Google Places proxy — used by /api/places/autocomplete to return
-  // address suggestions without exposing the API key to the client.
-  GOOGLE_PLACES_API_KEY: z.optional(z.string().check(z.minLength(1))),
-  // Dedicated HMAC secret for Places session tokens. Falls back to the
-  // API key when unset (back-compat) — prefer setting it so token signing
-  // is decoupled from API-key rotation and the key never doubles as a
-  // crypto secret.
-  PLACES_SESSION_SECRET: z.optional(z.string().check(z.minLength(1))),
   // Vercel AI Gateway uses this key in local development. Production and
   // preview Functions receive short-lived OIDC credentials in request context;
   // VERCEL_OIDC_TOKEN is also available during builds and `vercel env pull`.
@@ -40,12 +32,24 @@ const envSchema = z.object({
 
 export type Env = z.infer<typeof envSchema>;
 
-// Lazy validation — deferred to first access to avoid module-level side
-// effects in the request proxy. Still early enough to catch misconfiguration
-// on the first form submission or proxy invocation.
-let _env: Env | null = null;
+/** Server-only configuration read; blank optional values are absent. */
+export function readOptionalEnv(key: string): string | undefined {
+  return process.env[key]?.trim() || undefined;
+}
+
+// Validate only the field a caller actually uses. A broken lead webhook or
+// notification address must not prevent chat from reading its own credential.
+// Read current values lazily instead of caching credentials.
+const lazyEnv = Object.defineProperties(
+  {},
+  Object.fromEntries(
+    Object.entries(envSchema.shape).map(([key, schema]) => [
+      key,
+      { enumerable: true, get: () => schema.parse(readOptionalEnv(key)) },
+    ]),
+  ),
+) as Env;
 
 export function getEnv(): Env {
-  if (!_env) _env = envSchema.parse(process.env);
-  return _env;
+  return lazyEnv;
 }

@@ -1,18 +1,21 @@
 import { describe, expect, it } from "vitest";
 import { metadata as blogIndexMetadata } from "@/app/blog/page";
-import { generateMetadata as categoryMetadata } from "@/app/blog/category/[category]/page";
+import {
+  generateMetadata as categoryMetadata,
+  latestCategoryModifiedDate,
+} from "@/app/blog/category/[category]/page";
 import {
   generateMetadata as pagedMetadata,
   generateStaticParams as pagedStaticParams,
 } from "@/app/blog/page/[page]/page";
 import sitemap from "@/app/sitemap";
-import { blogPosts } from "@/data/blog-posts";
+import { blogPosts, getPostsByCategory } from "@/data/blog-posts";
 import {
   BLOG_ARCHIVE_PAGE_LIMIT,
   BLOG_PAGE_SIZE,
   blogPageCount,
 } from "@/lib/blog-pagination";
-import { SITE_URL } from "@/lib/site";
+import { BLOG_CATEGORY_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
 import { legacyIndexingRedirects } from "../../../../next.config";
 
 type SocialMeta = { images?: unknown; card?: string } | null | undefined;
@@ -43,6 +46,21 @@ describe("blog listing metadata", () => {
     });
     expect(meta.openGraph).toBeDefined();
     expectTextOnlyPreview(meta);
+  });
+
+  it("uses unique category metadata and the latest child update date", async () => {
+    const guides = getPostsByCategory("guides");
+    const meta = await categoryMetadata({
+      params: Promise.resolve({ category: "guides" }),
+    });
+    const expectedLatest = guides.reduce((latest, post) => {
+      const stamp = post.updatedAt || post.date;
+      return stamp > latest ? stamp : latest;
+    }, BLOG_CATEGORY_CONTENT_UPDATED);
+
+    expect(meta.title).toEqual({ absolute: "Caraway Blog: Guides" });
+    expect(String(meta.description)).not.toMatch(/expert/i);
+    expect(latestCategoryModifiedDate(guides)).toBe(expectedLatest);
   });
 
   it("gives paginated blog pages a text-only share preview", async () => {

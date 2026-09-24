@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbListSchema } from "@/lib/breadcrumb-schema";
 import {
   CONTENT_DEPLOY_DATE,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     "Caraway's commitment to making our website accessible to everyone — WCAG 2.1 AA, keyboard navigation, screen-reader support, and how to report issues.",
   alternates: { canonical: "/accessibility" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/accessibility",
     title: "Accessibility | Caraway",

@@ -9,7 +9,7 @@ const baseValid: QuoteFormValues = {
   model: "Hilux",
   year: 2015,
   condition: "running",
-  address: "",
+  suburb: "",
   honeypot: "",
 };
 
@@ -22,7 +22,7 @@ describe("buildQuoteEmailContent", () => {
   it("includes every captured field in the plain-text body", () => {
     const { text } = buildQuoteEmailContent({
       ...baseValid,
-      address: "12 Example St, Brisbane",
+      suburb: "West End",
       details: "180,000 km; rolls and steers; narrow driveway.",
     });
     expect(text).toContain("Jane Doe");
@@ -31,15 +31,15 @@ describe("buildQuoteEmailContent", () => {
     expect(text).toContain("Hilux");
     expect(text).toContain("2015");
     expect(text).toContain("Running");
-    expect(text).toContain("12 Example St, Brisbane");
+    expect(text).toContain("West End");
     expect(text).toContain(
       "Vehicle/access details: 180,000 km; rolls and steers; narrow driveway.",
     );
   });
 
-  it("renders an em dash for empty address", () => {
-    const { text, html } = buildQuoteEmailContent({ ...baseValid, address: "" });
-    expect(text).toMatch(/Address:\s+—/);
+  it("renders an em dash for an empty suburb", () => {
+    const { text, html } = buildQuoteEmailContent({ ...baseValid, suburb: "" });
+    expect(text).toMatch(/Suburb:\s+—/);
     expect(html).toContain("—");
   });
 
@@ -67,22 +67,11 @@ describe("buildQuoteEmailContent", () => {
   });
 });
 
-describe("buildQuoteEmailContent — quoteAmount handling", () => {
-  it("includes an Estimated quote row when quoteAmount is set", () => {
-    const { text, html } = buildQuoteEmailContent({
-      ...baseValid,
-      quoteAmount: 1500,
-    });
-    expect(text).toContain("Estimated quote");
-    expect(text).toContain("$1,500");
-    expect(html).toContain("Estimated quote");
-    expect(html).toContain("$1,500");
-  });
-
-  it("omits the Estimated quote row when quoteAmount is undefined", () => {
+describe("buildQuoteEmailContent — no automated quote", () => {
+  it("never reports an estimated amount — offers are made by a person", () => {
     const { text, html } = buildQuoteEmailContent(baseValid);
-    expect(text).not.toContain("Estimated quote");
-    expect(html).not.toContain("Estimated quote");
+    expect(text).not.toMatch(/Estimated quote/i);
+    expect(html).not.toMatch(/Estimated quote/i);
   });
 });
 
@@ -98,5 +87,27 @@ describe("buildQuoteEmailContent — header injection protection", () => {
     expect(subject).not.toMatch(/[\r\n]/);
     expect(subject).toContain("Toyota");
     expect(subject).toContain("Bcc: attacker@x"); // sanitized to a single line
+  });
+});
+
+describe("buildQuoteEmailContent — expected price", () => {
+  it("formats a supplied amount as whole Australian dollars", () => {
+    const { text, html } = buildQuoteEmailContent({
+      ...baseValid,
+      expectedPrice: 3500,
+    });
+    expect(text).toMatch(/Expected price: \$3,500$/m);
+    expect(html).toContain("$3,500");
+  });
+
+  it("marks the row as not supplied when the seller left it blank", () => {
+    const { text, html } = buildQuoteEmailContent(baseValid);
+    expect(text).toMatch(/Expected price: Not supplied$/m);
+    expect(html).toContain("Not supplied");
+  });
+
+  it("renders a zero asking price rather than treating it as missing", () => {
+    const { text } = buildQuoteEmailContent({ ...baseValid, expectedPrice: 0 });
+    expect(text).toMatch(/Expected price: \$0$/m);
   });
 });

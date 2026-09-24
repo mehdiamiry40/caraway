@@ -3,6 +3,7 @@
 # compiled output
 dist
 .next
+.turbo
 tmp
 out-tsc
 *.tsbuildinfo
@@ -56,3 +57,5 @@ Thumbs.db
 /redesign
 /reports
 /attached_assets
+.env*
+!.env.example

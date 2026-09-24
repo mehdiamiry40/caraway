@@ -5,6 +5,7 @@ import About from "@/views/About";
 import {
   ABOUT_CONTENT_UPDATED,
   BUSINESS,
+  OPEN_GRAPH_DEFAULTS,
   SHARED_PICKUP_IMAGE_ALT,
   SITE_URL,
 } from "@/lib/site";
@@ -12,10 +13,11 @@ import {
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "About Caraway — Brisbane Vehicle Buyer",
+  title: { absolute: "About Caraway — Brisbane Vehicle Buyer" },
   description: `Caraway is the registered Brisbane vehicle-buying business operated by ${BUSINESS.legalName}. Review its identity, quote, collection, payment, and receipt process.`,
   alternates: { canonical: "/about" },
   openGraph: {
+    ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/about",
     title: "About Caraway — Brisbane Vehicle Buyer",

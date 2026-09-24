@@ -39,6 +39,8 @@ interface HowItWorksProps {
 }
 
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
+  const StepHeading = showHeader ? "h3" : "h2";
+
   return (
     <section
       id="how-it-works"
@@ -73,9 +75,9 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
                 <span className="block border-b border-primary pb-3 font-display text-2xl leading-none text-primary">
                   {step.number}
                 </span>
-                <h3 className="mt-5 font-display text-[1.3rem] leading-snug text-primary">
+                <StepHeading className="mt-5 font-display text-[1.3rem] leading-snug text-primary">
                   {step.title}
-                </h3>
+                </StepHeading>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-foreground/80">
                   {step.description}
                 </p>
@@ -89,7 +91,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
 
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3">
           <Link
-            href="/#price-estimator"
+            href="/#quote-form"
             className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-cta px-7 font-bold text-[0.9375rem] text-cta-foreground transition-colors hover:bg-cta-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             Start your quote

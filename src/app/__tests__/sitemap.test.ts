@@ -20,6 +20,7 @@ import {
 } from "@/lib/blog-faqs";
 import {
   ABOUT_CONTENT_UPDATED,
+  BLOG_CATEGORY_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   LEGAL_DATE_ISO,
@@ -127,7 +128,7 @@ describe("sitemap.ts — category pages", () => {
     }
   });
 
-  it("uses per-category latest date, not a global date", () => {
+  it("uses the latest of each category's posts and its shared template", () => {
     const categorySlugs = Object.keys(categoryMap);
     for (const slug of categorySlugs) {
       const postsInCat = getPostsByCategory(slug);
@@ -142,7 +143,11 @@ describe("sitemap.ts — category pages", () => {
         (e) => e.url === `${SITE_URL}/blog/category/${slug}`,
       );
       expect(entry).toBeDefined();
-      expect(entry?.lastModified).toBe(expectedDate);
+      expect(entry?.lastModified).toBe(
+        expectedDate > BLOG_CATEGORY_CONTENT_UPDATED
+          ? expectedDate
+          : BLOG_CATEGORY_CONTENT_UPDATED,
+      );
     }
   });
 });
@@ -273,7 +278,7 @@ describe("sitemap.ts — page coverage", () => {
 
   it("uses the declared material-update date for the About page", () => {
     const staticEntry = entries.find((e) => e.url === `${SITE_URL}/about`);
-    expect(ABOUT_CONTENT_UPDATED).toBe("2026-08-13");
+    expect(ABOUT_CONTENT_UPDATED).toBe("2026-08-30");
     expect(staticEntry).toBeDefined();
     expect(staticEntry?.lastModified).toBe(ABOUT_CONTENT_UPDATED);
   });

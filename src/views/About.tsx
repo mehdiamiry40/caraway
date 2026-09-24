@@ -1,7 +1,10 @@
 import { PageShell } from "@/components/layout/PageShell";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
-import { CheckCircle2, Star } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, MapPin, Star } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 
 const breadcrumbs = [
@@ -30,8 +33,8 @@ export default function About() {
         </p>
       }
     >
-      <div className="site-container py-14 sm:py-20 lg:py-24">
-        <div className="max-w-3xl space-y-14 sm:space-y-16">
+      <div className="site-container py-14 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-3xl space-y-14 sm:space-y-16">
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
               Who we are
@@ -42,7 +45,7 @@ export default function About() {
           </div>
 
           <div>
-            <div className="rounded-md border border-border/60 bg-card p-6 sm:p-8 shadow-card">
+            <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-card">
               <p className="eyebrow mb-3">Founder</p>
               <h2 className="text-2xl sm:text-3xl font-display text-foreground mb-5 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
                 Meet the founder
@@ -90,18 +93,16 @@ export default function About() {
               </h2>
             </div>
             <div>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
                 {features.map(item => (
-                  <div key={item.title}>
-                    <div className="group flex gap-3 rounded-md border border-border/60 bg-card p-5 sm:p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[var(--ease-out-quint)] hover:-translate-y-0.5 hover:border-border hover:shadow-[0_1px_2px_hsl(var(--shadow-color)/0.04),0_4px_8px_hsl(var(--shadow-color)/0.06)]">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div key={item.title} className="group relative border border-border/60 bg-card p-4 pl-14 sm:p-6 sm:pl-16 hover:border-primary/40 card-lift">
+                    <dt className="font-display text-base font-semibold text-foreground">
+                      <span className="absolute left-4 top-4.5 sm:left-6 sm:top-6.5 flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
                         <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
                       </span>
-                      <div>
-                        <dt className="font-display text-sm text-foreground">{item.title}</dt>
-                        <dd className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</dd>
-                      </div>
-                    </div>
+                      {item.title}
+                    </dt>
+                    <dd className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</dd>
                   </div>
                 ))}
               </dl>
@@ -115,6 +116,16 @@ export default function About() {
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
               We assess Brisbane-area enquiries and confirm coverage for the exact address before a collection is booked. Share the suburb and access details with your quote request so availability can be checked.
             </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Link href="/#quote-form" className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}>
+                Get my quote
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link href="/locations" className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}>
+                <MapPin className="h-4 w-4" aria-hidden="true" />
+                See pickup areas
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -1,12 +1,16 @@
 import * as z from "zod/mini";
 import {
   auPhoneRegex,
+  CONTACT_VALIDATION_LIMITS,
+  CONTACT_VALIDATION_MESSAGES,
+  normalizeExpectedPrice,
   QUOTE_VALIDATION_LIMITS,
   QUOTE_VALIDATION_MESSAGES,
   sanitizeLine,
   stripPhone,
 } from "@/lib/quote-validation-rules";
 import { quoteConditionValues } from "@/lib/quote-condition";
+import { CONTACT_MESSAGE_MAX } from "@/data/constants";
 
 export {
   CONDITION_LABELS,
@@ -22,6 +26,35 @@ const honeypotField = z.pipe(
   ),
   z.string().check(
     z.refine((v) => v === "", QUOTE_VALIDATION_MESSAGES.honeypotInvalid),
+  ),
+);
+
+/**
+ * Seller's asking price in whole AUD. Optional: a blank entry stays absent
+ * from the payload rather than being recorded as $0.
+ */
+const optionalExpectedPrice = z.pipe(
+  z.pipe(
+    z.optional(z.union([z.string(), z.number()])),
+    z.transform((value: string | number | undefined) =>
+      normalizeExpectedPrice(value),
+    ),
+  ),
+  z.optional(
+    z.number(QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid).check(
+      z.refine(
+        (v) => Number.isInteger(v),
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      ),
+      z.gte(
+        QUOTE_VALIDATION_LIMITS.expectedPrice.min,
+        QUOTE_VALIDATION_MESSAGES.expectedPriceInvalid,
+      ),
+      z.lte(
+        QUOTE_VALIDATION_LIMITS.expectedPrice.max,
+        QUOTE_VALIDATION_MESSAGES.expectedPriceTooHigh,
+      ),
+    ),
   ),
 );
 
@@ -97,15 +130,15 @@ export const quoteFormSchema = z.object({
   condition: z.enum(quoteConditionValues, {
     message: QUOTE_VALIDATION_MESSAGES.conditionRequired,
   }),
-  address: z.string().check(
+  suburb: z.string().check(
     z.trim(),
     z.minLength(
-      QUOTE_VALIDATION_LIMITS.address.min,
-      QUOTE_VALIDATION_MESSAGES.addressRequired,
+      QUOTE_VALIDATION_LIMITS.suburb.min,
+      QUOTE_VALIDATION_MESSAGES.suburbRequired,
     ),
     z.maxLength(
-      QUOTE_VALIDATION_LIMITS.address.max,
-      QUOTE_VALIDATION_MESSAGES.addressTooLong,
+      QUOTE_VALIDATION_LIMITS.suburb.max,
+      QUOTE_VALIDATION_MESSAGES.suburbTooLong,
     ),
     z.overwrite(sanitizeLine),
   ),
@@ -119,11 +152,7 @@ export const quoteFormSchema = z.object({
       z.overwrite(sanitizeLine),
     ),
   ),
-  quoteAmount: z.optional(
-    z
-      .int()
-      .check(z.positive(), z.lte(QUOTE_VALIDATION_LIMITS.quoteAmount.max)),
-  ),
+  expectedPrice: optionalExpectedPrice,
   honeypot: honeypotField,
 });
 
@@ -145,16 +174,22 @@ export const contactFormSchema = z.object({
   ),
   email: z.pipe(
     z.string().check(z.trim()),
-    z.email("Enter a valid email address").check(
-      z.maxLength(320, "Email is too long"),
+    z.email(CONTACT_VALIDATION_MESSAGES.emailInvalid).check(
+      z.maxLength(
+        CONTACT_VALIDATION_LIMITS.email.max,
+        CONTACT_VALIDATION_MESSAGES.emailTooLong,
+      ),
       z.overwrite(sanitizeLine),
     ),
   ),
   phone: optionalPhone,
   message: z.string().check(
     z.trim(),
-    z.minLength(5, "Please add a short note (at least 5 characters)"),
-    z.maxLength(5000, "Message is too long"),
+    z.minLength(
+      CONTACT_VALIDATION_LIMITS.message.min,
+      CONTACT_VALIDATION_MESSAGES.messageTooShort,
+    ),
+    z.maxLength(CONTACT_MESSAGE_MAX, CONTACT_VALIDATION_MESSAGES.messageTooLong),
   ),
   honeypot: honeypotField,
   marketingConsent: z._default(z.optional(z.boolean()), false),

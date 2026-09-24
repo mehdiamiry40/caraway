@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "Before the truck arrives, get two or three quotes so you can compare how each buyer assessed the car. Describe the vehicle honestly — make, model, year, kilometres, and anything that doesn't work — and disclose the location and access conditions. Confirm the collection terms, any fees, timing, and payment method in writing. Do not release the car until the agreed payment is confirmed, and complete the seller-side TMR and plate steps that apply to the transaction.",
 
-    `If you'd rather skip the guesswork, deal with a buyer who explains the quote, payment method, [car removal terms](/car-removal-brisbane), and receipt before collection. Caraway quotes are free and no-obligation; if Caraway buys and the supplied vehicle and access details match, pickup is included. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#price-estimator). Collection timing and payment are confirmed for each accepted job, and you should complete and keep confirmation of the seller-side TMR steps that apply.`,
+    `If you'd rather skip the guesswork, deal with a buyer who explains the quote, payment method, [car removal terms](/car-removal-brisbane), and receipt before collection. Caraway quotes are free and no-obligation; if Caraway buys and the supplied vehicle and access details match, pickup is included. Call **${BUSINESS.phoneDisplay}** or [request a quote](/#quote-form). Collection timing and payment are confirmed for each accepted job, and you should complete and keep confirmation of the seller-side TMR steps that apply.`,
   ],
   faqs: [
     {

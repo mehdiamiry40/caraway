@@ -82,7 +82,7 @@ export const post: RawBlogPostEntry = {
 
     "**How do I compare the financial outcome?** Be accurate about condition, have the relevant records ready, and compare the likely net proceeds after preparation, advertising, repairs, fees, collection, and any disclosed deductions.",
 
-    `Ready to request an individual quote? Use the [online quote tool](/#price-estimator) or call **${BUSINESS.phoneDisplay}**. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
+    `Ready to request an individual quote? Use the [online quote tool](/#quote-form) or call **${BUSINESS.phoneDisplay}**. Caraway confirms the offer, included-pickup terms, and payment arrangement before collection.`,
   ],
   faqs: [
     {

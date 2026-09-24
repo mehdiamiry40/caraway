@@ -42,7 +42,7 @@ export function PageShell({
             <Breadcrumbs items={breadcrumbs} />
             {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
             <h1
-              className="font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.12] text-primary text-balance max-w-3xl mt-5 mb-5"
+              className="font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.12] text-primary text-balance max-w-4xl mt-5 mb-5"
               style={{ letterSpacing: "var(--tracking-display)" }}
             >
               {title}

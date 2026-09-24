@@ -1,9 +1,7 @@
 "use server";
 
-import { sendContactNotificationEmail } from "@/lib/contact-email";
 import { contactFormSchema, type ContactFormInput } from "@/lib/quote-schema";
 import { deliverLead, rejectInvalidLead } from "./lead-delivery";
-import { submitForm } from "./submit-form";
 
 /**
  * Submit a contact request through two parallel delivery channels:
@@ -15,21 +13,11 @@ import { submitForm } from "./submit-form";
  * Matches the dual-channel pattern used by submitQuote so that both
  * public forms share the same reliability story.
  */
-export async function submitContact(data: ContactFormInput) {
+export async function submitContact(data: ContactFormInput, submissionId?: string) {
   const parsed = contactFormSchema.safeParse(data);
   if (!parsed.success) {
     return rejectInvalidLead("contact", parsed.error);
   }
 
-  return deliverLead({
-    logTag: "submit-contact",
-    webhook: () =>
-      submitForm({
-        schema: contactFormSchema,
-        data: parsed.data,
-        endpointEnvVar: "CONTACT_ENDPOINT",
-        label: "Contact submission",
-      }),
-    email: () => sendContactNotificationEmail(parsed.data),
-  });
+  return deliverLead("contact", parsed.data, submissionId);
 }

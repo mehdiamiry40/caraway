@@ -30,7 +30,7 @@ const companyLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "Vehicle data", href: "/resources/queensland-vehicle-data" },
-  { label: "Get a quote", href: "/#price-estimator" },
+  { label: "Get a quote", href: "/#quote-form" },
 ];
 
 const legalLinks = [
@@ -104,7 +104,7 @@ export function Footer() {
         <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-10 border-t border-[hsl(var(--on-dark-hi)/0.2)] pt-12 sm:grid-cols-3">
           {/* Services */}
           <nav aria-label="Services">
-            <h3 className={columnHeadingClasses}>Services</h3>
+            <p className={columnHeadingClasses}>Services</p>
             <ul className="space-y-0.5">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
@@ -116,7 +116,7 @@ export function Footer() {
 
           {/* Locations */}
           <nav aria-label="Locations">
-            <h3 className={columnHeadingClasses}>Locations</h3>
+            <p className={columnHeadingClasses}>Locations</p>
             <ul className="space-y-0.5">
               {locationLinks.map((link) => (
                 <li key={link.href}>
@@ -128,7 +128,7 @@ export function Footer() {
 
           {/* Company */}
           <nav aria-label="Company">
-            <h3 className={columnHeadingClasses}>Company</h3>
+            <p className={columnHeadingClasses}>Company</p>
             <ul className="space-y-0.5">
               {companyLinks.map((link) => (
                 <li key={link.href}>
