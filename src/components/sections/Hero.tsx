@@ -43,7 +43,7 @@ export function Hero() {
           height={1062}
           fetchPriority="high"
           decoding="async"
-          className="hero-drift absolute inset-0 -z-20 h-full w-full object-cover object-[35%_center]"
+          className="hero-drift absolute inset-0 -z-20 h-[34rem] w-full object-cover object-[12%_center] [mask-image:linear-gradient(to_bottom,#000_85%,transparent)] sm:h-full sm:object-[35%_center] sm:[mask-image:none]"
         />
       </picture>
       {/* Navy wash: darker at the top so the overlaid header stays legible,
