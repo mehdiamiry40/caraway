@@ -2,14 +2,14 @@ import { preload } from "react-dom";
 import { Phone } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
-import { BUSINESS, SHARED_PICKUP_IMAGE_ALT } from "@/lib/site";
+import { BUSINESS } from "@/lib/site";
 
-/* AI-enhanced photograph exported at two widths so phones fetch the
+/* Cash-and-cars artwork exported at two widths so phones fetch the
    small file and wide or high-density screens use the larger version. */
 const HERO_AVIF_SRCSET =
-  "/images/hero-pickup-1280.avif 1280w, /images/hero-pickup-2560.avif 2560w";
+  "/images/hero-cash-cars-1280.avif 1280w, /images/hero-cash-cars-2560.avif 2560w";
 const HERO_WEBP_SRCSET =
-  "/images/hero-pickup-1280.webp 1280w, /images/hero-pickup-2560.webp 2560w";
+  "/images/hero-cash-cars-1280.webp 1280w, /images/hero-cash-cars-2560.webp 2560w";
 
 const promises = [
   "Human-reviewed vehicle assessment",
@@ -18,7 +18,7 @@ const promises = [
 ];
 
 export function Hero() {
-  preload("/images/hero-pickup-2560.avif", {
+  preload("/images/hero-cash-cars-2560.avif", {
     as: "image",
     fetchPriority: "high",
     type: "image/avif",
@@ -37,13 +37,13 @@ export function Hero() {
         <source srcSet={HERO_AVIF_SRCSET} sizes="100vw" type="image/avif" />
         <source srcSet={HERO_WEBP_SRCSET} sizes="100vw" type="image/webp" />
         <img
-          src="/images/hero-pickup-1280.webp"
-          alt={SHARED_PICKUP_IMAGE_ALT}
+          src="/images/hero-cash-cars-1280.webp"
+          alt="Three cars with Australian cash and car keys on a simple blue background"
           width={2560}
-          height={1344}
+          height={1062}
           fetchPriority="high"
           decoding="async"
-          className="hero-drift absolute inset-0 -z-20 h-full w-full object-cover object-[35%_center]"
+          className="hero-drift absolute inset-0 -z-20 h-[34rem] w-full object-cover object-[12%_center] [mask-image:linear-gradient(to_bottom,#000_85%,transparent)] sm:h-full sm:object-[35%_center] sm:[mask-image:none]"
         />
       </picture>
       {/* Navy wash: darker at the top so the overlaid header stays legible,
