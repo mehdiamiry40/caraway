@@ -1,3 +1,4 @@
+import { post as postHeadGasket } from "./sell-car-blown-head-gasket-brisbane";
 import { post as postOpenRecall } from "./sell-car-open-recall-qld";
 import { post as postServiceHistory } from "./sell-car-without-service-history-brisbane";
 import { post as postClassicCar } from "./sell-classic-car-brisbane";
@@ -76,6 +77,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postHeadGasket,
   postOpenRecall,
   postServiceHistory,
   postClassicCar,
