@@ -64,5 +64,5 @@ export const post: RawBlogPostEntry = {
     "sell-my-car-brisbane",
     "cash-for-cars-brisbane",
   ],
-  relatedSuburbs: ["kenmore", "toowong", "springwood"],
+  relatedSuburbs: ["toowong", "springwood", "logan"],
 };
