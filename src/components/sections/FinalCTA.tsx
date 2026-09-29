@@ -3,23 +3,25 @@ import { ArrowRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { Starburst } from "@/components/decor/Starburst";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
 export function FinalCTA() {
   return (
     <section
-      className="bg-background pb-16 sm:pb-20"
+      className="bg-background py-12 sm:py-16"
       aria-label="Get your quote"
       data-sticky-cta-suppress="true"
     >
       <div className="site-container">
-        <div className="relative overflow-hidden bg-primary text-on-dark-hi">
-          <Starburst className="pointer-events-none absolute -right-24 -bottom-32 w-[26rem] opacity-25 [&_circle:last-child]:fill-primary" />
+        <div className="relative overflow-hidden rounded-2xl border border-primary bg-primary text-on-dark-hi">
+          <div
+            className="h-1 bg-gradient-to-r from-cta via-accent to-white"
+            aria-hidden="true"
+          />
           <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
             <div className="lg:col-span-8">
               <p className="eyebrow-on-dark mb-5">Ready when you are</p>
-              <h2 className="font-display text-[clamp(2.1rem,4.2vw,3.25rem)] leading-[1.12] text-on-dark-hi text-balance">
+              <h2 className="font-display text-[clamp(2.1rem,5vw,3.5rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
                 Find out what your car could be worth today.
               </h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
@@ -46,7 +48,7 @@ export function FinalCTA() {
                 <TrackedPhoneLink
                   href={BUSINESS.phoneTel}
                   location="final_cta"
-                  className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline decoration-accent underline-offset-4 hover:text-cta-bright"
+                  className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline decoration-cta underline-offset-4 hover:text-cta-bright"
                   ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                 >
                   <Phone aria-hidden="true" className="h-4 w-4" />

@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { CarFront, Clock, MapPin, Phone } from "lucide-react";
 import { ServicesDropdownClient } from "./ServicesDropdownClient";
 import { MobileMenuClient } from "./MobileMenuClient";
 import { HeaderFrame } from "./HeaderFrame";
 import { HeaderNavLinks } from "./HeaderNavLinks";
-import { Logo } from "./Logo";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "How it works", href: "/how-it-works" },
@@ -36,46 +34,71 @@ export function Header() {
 
   return (
     <HeaderFrame>
-      <div className="site-container relative flex h-[var(--header-h)] items-center justify-between lg:flex-col lg:justify-center lg:gap-3">
-        <Link
-          href="/"
-          prefetch={false}
-          aria-label="Caraway home"
-          className="shrink-0 rounded-sm transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-        >
-          <Logo tone="light" size="sm" className="lg:hidden" />
-          <Logo tone="light" size="md" className="hidden lg:inline-flex" />
-        </Link>
+      <div className="h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden="true" />
 
-        <nav
-          aria-label="Primary navigation"
-          className="hidden lg:flex items-center justify-center gap-1"
-        >
-          <ServicesDropdownClient serviceLinks={serviceLinks} />
-          <HeaderNavLinks links={navLinks} />
-        </nav>
+      <div className="hidden sm:block w-full bg-background border-b border-border">
+        <div className="site-container flex min-h-11 items-center justify-end text-xs">
+          <div className="flex items-center divide-x divide-border">
+            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
+              <Clock className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+              Collection windows confirmed per job
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+              Pickup included when we buy
+            </span>
+            <a
+              href={BUSINESS.phoneTel}
+              className="inline-flex min-h-11 items-center gap-1.5 px-4 text-primary font-semibold hover:text-accent transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              aria-label={`Call ${BUSINESS.phoneDisplay}`}
+            >
+              <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+              {BUSINESS.phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
 
-        <a
-          href={BUSINESS.phoneTel}
-          className="absolute left-8 top-8 hidden items-center gap-2 rounded-sm text-sm text-on-dark-hi/90 transition-colors hover:text-on-dark-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70 lg:inline-flex"
-          aria-label={`Call ${BUSINESS.phoneDisplay}`}
-        >
-          <Phone className="h-4 w-4 text-cta-bright" aria-hidden="true" />
-          {BUSINESS.phoneDisplay}
-        </a>
+      <div className="bg-background border-b border-border">
+        <div className="site-container flex items-center justify-between h-16 sm:h-20 gap-3 lg:gap-6">
+          <Link
+            href="/"
+            prefetch={false}
+            className="flex items-center gap-3 group shrink-0"
+          >
+            <span className="flex h-11 w-11 sm:h-13 sm:w-13 items-center justify-center bg-primary text-primary-foreground transition-colors group-hover:bg-ink-deep">
+              <CarFront className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <span className="leading-none">
+              <span className="block font-display font-bold text-lg sm:text-xl tracking-[0.08em] text-primary">
+                CARAWAY
+              </span>
+              <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                Vehicle buying
+              </span>
+            </span>
+          </Link>
 
-        <Link
-          href="/#quote-form"
-          prefetch={false}
-          className={cn(
-            buttonVariants({ size: "sm" }),
-            "absolute right-8 top-7 hidden lg:inline-flex",
-          )}
-        >
-          Get my quote
-        </Link>
+          <nav
+            aria-label="Primary navigation"
+            className="hidden lg:flex items-center gap-0 flex-1 justify-center"
+          >
+            <ServicesDropdownClient serviceLinks={serviceLinks} />
+            <HeaderNavLinks links={navLinks} />
+          </nav>
 
-        <MobileMenuClient serviceLinks={serviceLinks} />
+          <div className="hidden lg:flex items-center shrink-0 gap-2">
+            <Link
+              href="/#quote-form"
+              prefetch={false}
+              className={buttonVariants({ size: "sm" })}
+            >
+              Get my quote
+            </Link>
+          </div>
+
+          <MobileMenuClient serviceLinks={serviceLinks} />
+        </div>
       </div>
     </HeaderFrame>
   );

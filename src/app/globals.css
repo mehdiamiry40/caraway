@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
-/* Caraway design system: navy, sand and coral. Marcellus display over Lato body,
-   pill actions, square cards, coral rules. */
+/* Caraway utility design system: clear, civic, practical, Queensland-focused. */
 
 @theme inline {
-  --font-sans: var(--font-lato), "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-display: var(--font-marcellus), "Optima", "Candara", "Palatino Linotype", Georgia, serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
@@ -59,9 +58,9 @@
   --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: 0;
-  --tracking-tight: 0;
-  --tracking-snug: 0.005em;
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.015em;
+  --tracking-snug: -0.005em;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
   --tracking-wider: 0.06em;
@@ -71,41 +70,38 @@
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
   --radius-xs: 0.125rem;
-  /* Near-square corners: cards, panels and fields read as crisp blocks;
-     buttons and chips stay fully rounded pills via rounded-full. */
-  --radius-sm: 0.125rem;
-  --radius-md: 0.1875rem;
-  --radius-lg: 0.25rem;
-  --radius-xl: 0.25rem;
-  --radius-2xl: 0.3125rem;
-  --radius-3xl: 0.375rem;
-  --radius-4xl: 0.5rem;
+  --radius-sm: 0.3125rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
   --radius-full: 9999px;
 }
 
 :root {
   --background: 0 0% 100%;
-  --foreground: 220 39% 19%;           /* #1E2B45 */
+  --foreground: 0 0% 19%;
   --card: 0 0% 100%;
-  --card-foreground: 220 39% 19%;
+  --card-foreground: 0 0% 19%;
 
-  --primary: 218 89% 14%;              /* #041C44 navy */
+  --primary: 216 55% 38%;              /* #2C5697 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 33 22% 90%;             /* #EBE6E0 sand */
-  --secondary-foreground: 218 89% 14%;
+  --secondary: 198 57% 95%;            /* #EAF5FA */
+  --secondary-foreground: 216 48% 29%;
 
-  --muted: 34 26% 95%;                 /* #F5F2EE */
-  --muted-foreground: 222 13% 41%;     /* #5A6275 */
+  --muted: 200 17% 97%;
+  --muted-foreground: 210 11% 39%;
 
-  /* Decorative coral: starburst, rules, highlights. Navy text on it is AA. */
-  --accent: 9 67% 59%;                 /* #DD6650 */
-  --accent-foreground: 218 89% 14%;
+  --accent: 187 54% 38%;               /* #2D8795 */
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 72% 51%;            /* #DC2626 */
   --destructive-foreground: 0 0% 100%;
 
-  /* Status green for success toasts/banners — distinct from the coral CTA. */
+  /* Status green for success toasts/banners — distinct from --cta action green. */
   --success: 142 76% 36%;              /* #16A34A — emerald */
   --success-foreground: 0 0% 100%;
 
@@ -115,43 +111,44 @@
   --info: 200 98% 39%;                 /* #0284C7 */
   --info-foreground: 0 0% 100%;
 
-  --border: 33 19% 82%;                /* #D9D1C7 */
+  --border: 210 12% 85%;
   /* Form-control borders need >= 3:1 against white (WCAG 1.4.11 non-text
-     contrast); decorative --border stays lighter. 30 9% 52% = 3.4:1. */
-  --input: 30 9% 52%;
-  --ring: 218 89% 14%;
+     contrast); decorative --border stays lighter. 207 14% 58% = 3.08:1. */
+  --input: 207 14% 58%;
+  --ring: 216 55% 38%;
 
-  --shadow-color: 218 60% 16%;
+  --shadow-color: 216 35% 22%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
-  /* Single source of truth for the fixed-header height. Mobile is a single
-     logo row; from sm up the header stacks a centred logo over the nav row.
-     Consumed by the mt-header-safe / scroll-mt-header / heading scroll-margin
-     utilities so the three can never drift apart. */
+  /* Single source of truth for the fixed-header height (utility strip + nav).
+     The utility strip is hidden on mobile. Consumed by the
+     mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
+     three can never drift apart. */
   --header-h: 4.25rem;
 
-  --ink: 218 89% 14%;                  /* #041C44 */
-  --ink-deep: 217 92% 10%;             /* #02132F */
-  --ink-raised: 215 54% 22%;           /* #1A3357 */
-  --on-dark: 216 24% 90%;
+  --ink: 216 55% 38%;
+  --ink-deep: 214 55% 25%;
+  --ink-raised: 212 42% 46%;
+  --on-dark: 205 35% 91%;
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 9 54% 49%;
-  --plate-foreground: 0 0% 100%;
-  /* Coral pill action. White on #C24E3A is 4.7:1 (AA). */
-  --cta: 9 54% 49%;                    /* #C24E3A */
-  --cta-foreground: 0 0% 100%;
+  --plate: 72 59% 54%;
+  --plate-foreground: 216 48% 23%;
+  --cta: 72 59% 54%;                   /* #B5D145 */
+  --cta-foreground: 216 48% 23%;
 
-  /* Accessible TEXT variants of the coral. --cta-ink/--accent-ink are for
-     labels and links on light surfaces; the bright ones for dark bands. */
-  --cta-ink: 9 58% 39%;                /* #9C3B2A */
-  --accent-ink: 9 58% 39%;
-  --cta-bright: 10 72% 69%;            /* #E98A76, 6.7:1 on navy */
-  --accent-on-dark: 12 65% 87%;
+  /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
+     pass AA only as backgrounds (paired with plum -foreground); as text on
+     white they're ~2.4–2.8:1. These darker variants are for labels/links/text
+     on light surfaces, and the brighter ones for emphasis on dark bands. */
+  --cta-ink: 72 66% 27%;
+  --accent-ink: 187 62% 28%;
+  --cta-bright: 72 72% 70%;
+  --accent-on-dark: 187 65% 82%;
 
-  --footer-wash: hsl(var(--ink-raised));
+  --footer-wash: hsl(var(--ink));
   --hero-wash: hsl(var(--primary));
   --hero-mesh: transparent;
 }
@@ -159,6 +156,7 @@
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
+    --header-h: 7.25rem;
   }
 }
 
@@ -186,17 +184,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    font-weight: 400;
+    @apply font-semibold;
     letter-spacing: var(--tracking-tight);
     text-wrap: balance;
     color: hsl(var(--primary));
-  }
-
-  /* Marcellus ships a single weight. Never let the browser fake a bold:
-     "font-bold" on a display heading renders the true regular cut. */
-  .font-display,
-  h1, h2, h3, h4, h5, h6 {
-    font-synthesis-weight: none;
   }
 
   h1 { letter-spacing: var(--tracking-display); }
@@ -817,18 +808,4 @@
     height: 4px;
     background: hsl(var(--primary));
   }
-}
-
-/* ─── Photo hero drift ─────────────────────────────────────────────────────── */
-/* A slow push-in on the hero photo, standing in for background video. */
-@keyframes hero-drift {
-  from { transform: scale(1) translateX(0); }
-  to   { transform: scale(1.08) translateX(-1.5%); }
-}
-@utility hero-drift {
-  animation: hero-drift 24s ease-in-out infinite alternate;
-  transform-origin: 60% 50%;
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-drift { animation: none !important; }
 }

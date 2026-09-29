@@ -11,11 +11,10 @@ export default function HomeBelowFold() {
     <>
       {/* The hero form is the home page's only quote surface: it is
           server-rendered with the page, so the primary conversion path and
-          the #quote-form deep link still work for crawlers and JS-off users.
-          The sand story and navy promise panel open the page below it. */}
-      <WhyUs />
+          the #quote-form deep link still work for crawlers and JS-off users. */}
       <TrustBadges />
       <HowItWorks />
+      <WhyUs />
       <ServiceAreas />
       <FAQ />
       <SellingSafelySection />

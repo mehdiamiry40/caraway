@@ -11,7 +11,7 @@ interface Props {
 export function ServicesDropdownClient({ serviceLinks }: Props) {
   return (
     <DisclosureAutoClose className="group relative h-full">
-      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-sm px-3 py-2 text-sm font-normal text-on-dark-hi/85 transition-colors duration-200 hover:text-on-dark-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70 [&::-webkit-details-marker]:hidden">
+      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-sm px-3 py-3 text-sm font-semibold text-primary/85 transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
         Services
         <ChevronDown
           aria-hidden="true"
@@ -19,7 +19,7 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         />
       </summary>
 
-      <ul className="absolute left-0 top-full z-50 mt-3 w-64 max-w-[calc(100vw-2rem)] list-none border-t-2 border-accent bg-card py-1.5 text-left shadow-lg">
+      <ul className="absolute left-0 top-full z-50 w-64 max-w-[calc(100vw-2rem)] list-none rounded-sm border border-border bg-card py-1.5 shadow-lg">
         {serviceLinks.map((item) => (
           <li key={item.href}>
             <Link
