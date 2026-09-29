@@ -151,7 +151,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
     <div className="flex items-center gap-1 lg:hidden">
       <a
         href={BUSINESS.phoneTel}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-on-dark-hi hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label={`Call ${BUSINESS.phoneDisplay}`}
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
@@ -161,7 +161,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         ref={triggerRef}
         type="button"
         onClick={openMenu}
-        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-on-dark-hi transition-colors duration-200 hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-dark-hi/70"
+        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label="Menu"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
@@ -245,7 +245,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             <a
               href={BUSINESS.phoneTel}
               onClick={closeMenu}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border-[1.5px] border-primary text-base font-bold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg border-[1.5px] border-primary text-base text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -257,7 +257,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               onClick={closeMenu}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-14 w-full text-base sm:text-lg",
+                "h-14 w-full rounded-lg text-base sm:text-lg",
               )}
             >
               Get my quote

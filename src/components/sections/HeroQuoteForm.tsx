@@ -127,8 +127,8 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
   return (
     // The card sits on the dark hero band, which sets white text: without an
     // explicit card foreground, inputs and selects render white on white.
-    <div className="relative w-full max-w-md overflow-hidden bg-card p-5 text-left text-card-foreground shadow-[0_32px_64px_-28px_hsl(var(--shadow-color)/0.9)] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-accent sm:p-6">
-      <h2 className="font-display text-xl leading-tight text-primary">
+    <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card p-4 text-left text-card-foreground shadow-[0_32px_64px_-28px_hsl(var(--shadow-color)/0.9)] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary sm:p-5">
+      <h2 className="font-display text-lg font-bold leading-tight text-primary">
         Get a free quote
       </h2>
 

@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Lato, Marcellus } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -9,20 +8,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const marcellus = Marcellus({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-marcellus",
-});
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-  variable: "--font-lato",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -96,7 +81,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#041C44",
+  themeColor: "#2C5697",
 };
 
 export default function RootLayout({
@@ -105,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${marcellus.variable} ${lato.variable}`}>
+    <html lang="en-AU">
       <body className="min-h-screen">
         <a
           href="#main-content"

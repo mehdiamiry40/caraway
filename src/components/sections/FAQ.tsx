@@ -7,14 +7,14 @@ export function FAQ() {
   return (
     <section
       id="faq"
-      className="section-y scroll-mt-header bg-secondary"
+      className="section-y scroll-mt-header bg-muted border-t border-b border-border"
       aria-label="Frequently asked questions"
     >
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
             <p className="eyebrow mb-5">FAQ</p>
-            <h2 className="font-display text-[clamp(2rem,3.4vw,2.9rem)] leading-[1.15] text-primary text-balance">
+            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
               Cash for cars,
               <br />
               without the surprises.
