@@ -1,3 +1,4 @@
+import { post as postTransmission } from "./sell-car-transmission-problems-brisbane";
 import { post as postBlownHeadGasket } from "./blown-head-gasket-brisbane";
 import { post as postMouldInCar } from "./mould-in-car-brisbane";
 import { post as postFixDents } from "./fix-dents-before-selling-car-brisbane";
@@ -79,6 +80,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postTransmission,
   postBlownHeadGasket,
   postMouldInCar,
   postFixDents,
