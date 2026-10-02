@@ -1,3 +1,4 @@
+import { post as postCheckEngineLight } from "./check-engine-light-brisbane";
 import { post as postCarAircon } from "./car-aircon-not-working-brisbane";
 import { post as postTransmission } from "./sell-car-transmission-problems-brisbane";
 import { post as postBlownHeadGasket } from "./blown-head-gasket-brisbane";
@@ -81,6 +82,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postCheckEngineLight,
   postCarAircon,
   postTransmission,
   postBlownHeadGasket,
