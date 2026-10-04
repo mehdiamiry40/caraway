@@ -90,7 +90,7 @@ export function CarawayChatLauncher({
         aria-expanded="false"
         aria-controls="caraway-chat-panel"
         aria-label={label}
-        className="inline-flex h-12 min-w-12 items-center justify-center gap-2 rounded-full border border-primary/20 bg-primary p-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-80 motion-reduce:transform-none sm:h-auto sm:min-h-12 sm:px-4"
+        className="inline-flex h-12 min-w-12 items-center justify-center gap-2 rounded-none border border-primary/20 bg-primary p-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_hsl(var(--shadow-color)/0.28)] transition-[background-color,transform] hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-80 motion-reduce:transform-none sm:h-auto sm:min-h-12 sm:px-4"
       >
         <MessageCircle className="h-5 w-5" aria-hidden="true" />
         <span className="hidden sm:inline">

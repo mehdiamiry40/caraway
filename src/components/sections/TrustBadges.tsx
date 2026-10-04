@@ -68,7 +68,7 @@ export function TrustBadges() {
           </div>
           <Link
             href="/locations"
-            className="mt-5 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-2.5 font-display text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:mt-0"
+            className="mt-5 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-none bg-primary px-6 py-2.5 font-display text-sm font-semibold text-primary-foreground transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:mt-0"
           >
             Check your area
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

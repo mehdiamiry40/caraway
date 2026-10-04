@@ -105,7 +105,7 @@ export function Hero() {
                   or call {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
 
-                <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-2 rounded-full border border-on-dark-hi/20 bg-on-dark-hi/8 px-3.5 py-1.5">
+                <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-2 rounded-none border border-on-dark-hi/20 bg-on-dark-hi/8 px-3.5 py-1.5">
                   <MapPin className="h-4 w-4 text-cta-bright" aria-hidden="true" />
                   <span className="text-sm font-medium text-on-dark-hi">
                     Brisbane-based · ABN {BUSINESS.abn}

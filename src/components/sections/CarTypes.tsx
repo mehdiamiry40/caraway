@@ -70,7 +70,7 @@ export function CarTypes() {
             {alsoAccepted.map((type) => (
               <span
                 key={type}
-                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-primary-foreground/25 text-xs sm:text-sm text-primary-foreground/90 font-medium"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-none border border-primary-foreground/25 text-xs sm:text-sm text-primary-foreground/90 font-medium"
               >
                 {type}
               </span>

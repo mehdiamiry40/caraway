@@ -34,7 +34,7 @@ export function BlogPostCard({
         className="group flex h-full flex-col overflow-hidden border border-border bg-card hover:border-primary/50 card-lift"
       >
         <div className={`flex flex-1 flex-col ${isCompact ? "p-5" : "p-5 sm:p-6"}`}>
-          <span className="mb-4 inline-flex items-center self-start rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
+          <span className="mb-4 inline-flex items-center self-start rounded-none bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink">
             {post.category}
           </span>
           <Heading
@@ -88,11 +88,11 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
       >
         <div className="p-6 sm:p-8 lg:p-10">
           <div className="flex flex-wrap items-center gap-2 mb-5">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
+            <span className="inline-flex items-center gap-1.5 rounded-none bg-primary px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-primary-foreground">
               <Sparkles className="h-3 w-3" strokeWidth={2} aria-hidden />
               Featured
             </span>
-            <span className="inline-flex items-center rounded-full border border-border/80 bg-card px-3 py-1 text-[11px] font-medium text-muted-foreground">
+            <span className="inline-flex items-center rounded-none border border-border/80 bg-card px-3 py-1 text-[11px] font-medium text-muted-foreground">
               {post.category}
             </span>
           </div>
