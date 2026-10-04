@@ -44,7 +44,7 @@ export default function FAQPage() {
                   <li key={category.category} className="shrink-0">
                     <a
                       href={`#${topicId(category.category)}`}
-                      className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary lg:w-full lg:rounded-lg lg:border-transparent lg:bg-transparent lg:px-3 lg:hover:bg-secondary"
+                      className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary lg:w-full lg:rounded-lg lg:border-transparent lg:bg-transparent lg:px-3 lg:hover:bg-secondary"
                     >
                       <span className="tabular-nums text-xs font-semibold text-muted-foreground group-hover:text-primary">
                         {String(idx + 1).padStart(2, "0")}

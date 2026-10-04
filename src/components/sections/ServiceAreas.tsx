@@ -114,7 +114,7 @@ export function ServiceAreas() {
                         <li key={hub.slug}>
                           <Link
                             href={`/locations/${hub.slug}`}
-                            className="inline-flex min-h-11 items-center gap-1 rounded-full border border-border bg-background px-3 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+                            className="inline-flex min-h-11 items-center gap-1 rounded-none border border-border bg-background px-3 py-1 text-xs text-foreground/85 transition-colors hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
                           >
                             {hub.h1.replace("Cash for Cars ", "")}
                           </Link>

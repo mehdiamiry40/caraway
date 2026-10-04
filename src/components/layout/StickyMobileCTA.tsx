@@ -52,11 +52,11 @@ export function StickyMobileCTA() {
       aria-hidden={suppressed || undefined}
     >
       <div className="mx-auto max-w-md px-3 pb-3">
-        <div className="flex items-center gap-2 rounded-full border border-border bg-card/95 p-1.5 shadow-[0_8px_24px_hsl(var(--shadow-color)/0.18)] backdrop-blur">
+        <div className="flex items-center gap-2 rounded-none border border-border bg-card/95 p-1.5 shadow-[0_8px_24px_hsl(var(--shadow-color)/0.18)] backdrop-blur">
           <TrackedPhoneLink
             href={BUSINESS.phoneTel}
             location="sticky_mobile"
-            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
             ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             tabIndex={suppressed ? -1 : undefined}
           >
@@ -68,7 +68,7 @@ export function StickyMobileCTA() {
               trackEvent("scroll_to_quote_click", { source: "sticky_mobile" });
               scrollToQuote();
             }}
-            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-cta px-4 text-sm font-semibold text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5)] transition-[background-color,transform] duration-200 hover:bg-cta/95 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
+            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-none bg-cta px-4 text-sm font-semibold text-cta-foreground shadow-[0_4px_0_0_hsl(var(--cta)/0.5)] transition-[background-color,transform] duration-200 hover:bg-cta/95 active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card"
             tabIndex={suppressed ? -1 : undefined}
           >
             Get my quote

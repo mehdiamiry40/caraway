@@ -111,7 +111,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                     <h3 className="text-sm font-display text-foreground mb-3">Nearby suburbs covered</h3>
                     <ul className="flex flex-wrap gap-2">
                       {nearbyAreaNames.map((name) => (
-                        <li key={name} className="rounded-full border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
+                        <li key={name} className="rounded-none border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
                           {name}
                         </li>
                       ))}

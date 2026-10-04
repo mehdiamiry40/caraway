@@ -103,7 +103,7 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
           {["No bait-and-switch", "No tow deductions", "Confirmed in writing"].map((tag) => (
             <li
               key={tag}
-              className="inline-flex items-center rounded-full border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
+              className="inline-flex items-center rounded-none border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
             >
               {tag}
             </li>

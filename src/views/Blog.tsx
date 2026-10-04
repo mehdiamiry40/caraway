@@ -24,7 +24,7 @@ function Pagination({ current, total }: { current: number; total: number }) {
       {current > 1 ? (
         <Link
           href={blogPageHref(current - 1)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Newer
@@ -36,7 +36,7 @@ function Pagination({ current, total }: { current: number; total: number }) {
           href={blogPageHref(page)}
           aria-current={page === current ? "page" : undefined}
           className={cn(
-            "inline-flex h-11 w-11 items-center justify-center rounded-full border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "inline-flex h-11 w-11 items-center justify-center rounded-none border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             page === current
               ? "border-primary bg-primary text-primary-foreground"
               : "border-border bg-card text-foreground hover:border-primary/40 hover:text-primary",
@@ -48,7 +48,7 @@ function Pagination({ current, total }: { current: number; total: number }) {
       {current < total ? (
         <Link
           href={blogPageHref(current + 1)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Older
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -84,7 +84,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
               <Link
                 key={slug}
                 href={`/blog/category/${slug}`}
-                className="inline-flex items-center rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
+                className="inline-flex items-center rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
               >
                 {label}
               </Link>

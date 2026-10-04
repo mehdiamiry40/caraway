@@ -177,7 +177,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 </span>
                 <Link
                   href={`/blog/category/${categorySlug(post.category)}`}
-                  className="ml-auto inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink hover:bg-accent/15 transition-colors"
+                  className="ml-auto inline-flex items-center rounded-none bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink hover:bg-accent/15 transition-colors"
                 >
                   {post.category}
                 </Link>
@@ -365,7 +365,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={xShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on X"
                   >
                     <TwitterIcon className="h-3.5 w-3.5" aria-hidden />
@@ -375,7 +375,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={fbShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on Facebook"
                   >
                     <FacebookIcon className="h-3.5 w-3.5" aria-hidden />
@@ -385,7 +385,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     href={liShare}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors"
                     aria-label="Share on LinkedIn"
                   >
                     <LinkedinIcon className="h-3.5 w-3.5" aria-hidden />

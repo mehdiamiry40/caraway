@@ -368,7 +368,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
               <button
                 type="button"
                 onClick={resetChat}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+                className="flex h-10 w-10 items-center justify-center rounded-none text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
                 aria-label="Start a new chat"
               >
                 <RotateCcw className="h-4 w-4" aria-hidden="true" />
@@ -377,7 +377,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             <button
               type="button"
               onClick={closeChat}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-none text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
               aria-label="Close chat"
             >
               <X className="h-5 w-5" aria-hidden="true" />
@@ -409,7 +409,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                     key={action.label}
                     type="button"
                     onClick={() => void send(action.message)}
-                    className="rounded-full border border-primary/35 bg-card px-3 py-2 text-left text-xs font-medium text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="rounded-none border border-primary/35 bg-card px-3 py-2 text-left text-xs font-medium text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     {action.label}
                   </button>
