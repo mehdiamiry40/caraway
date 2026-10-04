@@ -1,3 +1,4 @@
+import { post as postTimingBelt } from "./timing-belt-replacement-brisbane";
 import { post as postCarLeakingOil } from "./car-leaking-oil-brisbane";
 import { post as postCheckEngineLight } from "./check-engine-light-brisbane";
 import { post as postCarAircon } from "./car-aircon-not-working-brisbane";
@@ -83,6 +84,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postTimingBelt,
   postCarLeakingOil,
   postCheckEngineLight,
   postCarAircon,
