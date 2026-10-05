@@ -150,7 +150,7 @@ export function ContactForm() {
           />
           {errors.name && (
             <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
               {errors.name.message}
             </p>
           )}
@@ -177,7 +177,7 @@ export function ContactForm() {
             />
             {errors.email && (
               <p id={`${fieldIds.email}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                 {errors.email.message}
               </p>
             )}
@@ -200,7 +200,7 @@ export function ContactForm() {
             />
             {errors.phone && (
               <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                 {errors.phone.message}
               </p>
             )}
@@ -238,7 +238,7 @@ export function ContactForm() {
           />
           {errors.message && (
             <p id={`${fieldIds.message}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
               {errors.message.message}
             </p>
           )}
@@ -289,7 +289,7 @@ export function ContactForm() {
             aria-live="assertive"
             aria-atomic="true"
           >
-            <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+            <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
             <div className="flex-1">
               <span>{errorMessage}</span>
               <button

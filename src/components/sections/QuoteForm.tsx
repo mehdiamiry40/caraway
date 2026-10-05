@@ -186,7 +186,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.make && (
                         <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.make.message}
                         </p>
                       )}
@@ -208,7 +208,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.model && (
                         <p id={`${fieldIds.model}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.model.message}
                         </p>
                       )}
@@ -232,7 +232,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.year && (
                         <p id={`${fieldIds.year}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.year.message}
                         </p>
                       )}
@@ -259,7 +259,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.condition && (
                         <p id={`${fieldIds.condition}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.condition.message}
                         </p>
                       )}
@@ -300,7 +300,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </p>
                     {errors.expectedPrice && (
                       <p id={`${fieldIds.expectedPrice}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                         {errors.expectedPrice.message}
                       </p>
                     )}
@@ -326,7 +326,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.name && (
                         <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.name.message}
                         </p>
                       )}
@@ -356,7 +356,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       </p>
                       {errors.phone && (
                         <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                           {errors.phone.message}
                         </p>
                       )}
@@ -387,7 +387,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </p>
                     {errors.suburb && (
                       <p id={`${fieldIds.suburb}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                         {errors.suburb.message}
                       </p>
                     )}
@@ -414,7 +414,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </p>
                     {errors.details ? (
                       <p id={`${fieldIds.details}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                         {errors.details.message}
                       </p>
                     ) : null}
@@ -446,7 +446,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       aria-live="assertive"
                       aria-atomic="true"
                     >
-                      <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
+                      <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
                       <div className="flex-1">
                         <span>{errorMessage}</span>
                         <button
