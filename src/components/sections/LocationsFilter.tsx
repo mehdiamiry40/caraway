@@ -52,7 +52,7 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
 
       {filtered.length === 0 ? (
         <div className="text-center py-20">
-          <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center mx-auto mb-5">
+          <div className="w-16 h-16 rounded-none bg-muted/60 flex items-center justify-center mx-auto mb-5">
             <Search className="h-6 w-6 text-muted-foreground/60" aria-hidden="true" />
           </div>
           <p className="text-muted-foreground text-lg mb-2">

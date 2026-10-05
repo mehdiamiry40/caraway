@@ -474,7 +474,7 @@ export function QldVehicleSaleRecordBuilder() {
               <li key={step.id} className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-primary text-xs font-semibold text-primary-foreground"
                 >
                   {index + 1}
                 </span>

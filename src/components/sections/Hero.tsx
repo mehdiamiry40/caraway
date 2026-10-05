@@ -86,7 +86,7 @@ export function Hero() {
                     key={promise}
                     className="flex items-start gap-2 text-sm font-semibold leading-5 text-on-dark-hi/90"
                   >
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cta text-cta-foreground">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-none bg-cta text-cta-foreground">
                       <Check size={12} strokeWidth={3} aria-hidden="true" />
                     </span>
                     {promise}

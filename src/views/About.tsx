@@ -51,7 +51,7 @@ export default function About() {
                 Meet the founder
               </h2>
               <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-display text-xl" aria-hidden="true">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-none bg-primary/10 text-primary font-display text-xl" aria-hidden="true">
                   ME
                 </div>
                 <div className="flex-1">

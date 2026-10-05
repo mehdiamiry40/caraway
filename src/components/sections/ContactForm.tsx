@@ -98,7 +98,7 @@ export function ContactForm() {
       <div className="bg-card rounded-2xl p-5 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cta via-accent to-primary" aria-hidden />
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-full flex items-center justify-center mb-5 sm:mb-6">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-none flex items-center justify-center mb-5 sm:mb-6">
             <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
           </div>
           <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message received — thanks!</h2>
