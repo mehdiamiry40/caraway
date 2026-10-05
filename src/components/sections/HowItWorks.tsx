@@ -1,31 +1,17 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BanknoteArrowDown,
+  ClipboardList,
+  FileSignature,
+  Truck,
+} from "lucide-react";
 
 const steps = [
-  {
-    number: "01",
-    title: "Tell us about your car",
-    description: "Make, model, year. Photos help if you have them.",
-    timing: "A few key details",
-  },
-  {
-    number: "02",
-    title: "Get a confirmed offer",
-    description: "In writing, before any pickup is booked.",
-    timing: "After assessment",
-  },
-  {
-    number: "03",
-    title: "We come to you",
-    description: "Pickup is included when we buy and the supplied access details match.",
-    timing: "Window confirmed",
-  },
-  {
-    number: "04",
-    title: "Complete payment and records",
-    description: "Use the agreed payment arrangement and retain the buyer and receipt details.",
-    timing: "Terms agreed first",
-  },
+  { icon: ClipboardList, title: "Tell us about your car", description: "Make, model, year and photos." },
+  { icon: FileSignature, title: "Get a confirmed offer", description: "In writing, before pickup." },
+  { icon: Truck, title: "We come to you", description: "Pickup included when we buy." },
+  { icon: BanknoteArrowDown, title: "Get paid", description: "As agreed, with a receipt." },
 ] as const;
 
 interface HowItWorksProps {
@@ -43,46 +29,43 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   return (
     <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
       <div className="site-container">
-        {/* No sub-paragraph under the heading: the four steps below already say
-            it, and the "we'll tell you if we're not a fit" line is WhyUs's. */}
         {showHeader && (
-          <div className="mb-10 max-w-2xl md:mb-14">
-            <p className="eyebrow mb-5">How it works</p>
+          <div className="mb-10 text-center md:mb-14">
+            <p className="eyebrow mb-4">How it works</p>
             <h2 className="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-bold leading-[1.1] text-primary text-balance">
-              From quote to collection in four clear steps.
+              Four simple steps.
             </h2>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {steps.map((step) => (
-            <li
-              key={step.number}
-              className="group relative flex flex-col overflow-hidden border border-border bg-card hover:border-primary/60 card-lift"
-            >
-              <div
-                className="h-1 bg-gradient-to-r from-cta via-accent to-primary"
-                aria-hidden="true"
-              />
-              <div className="grid flex-1 grid-cols-[3.25rem_1fr] gap-x-4 p-5 sm:flex sm:flex-col sm:p-6">
-                <span className="row-span-3 font-display text-3xl font-bold leading-none text-primary/75 sm:text-4xl">
-                  {step.number}
+        <div className="relative">
+          {/* Connector line behind the icons on desktop. */}
+          <span
+            aria-hidden="true"
+            className="absolute left-[12.5%] right-[12.5%] top-10 hidden h-px bg-border lg:block"
+          />
+          <ol className="relative grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4">
+            {steps.map(({ icon: Icon, title, description }, index) => (
+              <li key={title} className="relative flex flex-col items-center text-center">
+                <span className="relative flex h-20 w-20 items-center justify-center border border-border bg-secondary text-primary">
+                  <Icon className="h-9 w-9" strokeWidth={1.75} aria-hidden="true" />
+                  <span
+                    aria-hidden="true"
+                    className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center bg-cta font-display text-xs font-bold text-cta-foreground"
+                  >
+                    {index + 1}
+                  </span>
                 </span>
-                <StepHeading className="font-display text-lg font-semibold leading-snug text-primary sm:mt-6">
-                  {step.title}
+                <StepHeading className="mt-5 font-display text-base font-semibold leading-snug text-primary sm:text-lg">
+                  {title}
                 </StepHeading>
-                <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
-                  {step.description}
-                </p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-[0.1em] text-accent-ink sm:mt-auto sm:pt-5">
-                  {step.timing}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+                <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {showHeader && (
             <Link
               href="/how-it-works"

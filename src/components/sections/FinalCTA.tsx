@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -18,43 +19,47 @@ export function FinalCTA() {
             className="h-1 bg-gradient-to-r from-cta via-accent to-white"
             aria-hidden="true"
           />
-          <div className="relative z-10 grid grid-cols-1 items-center gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
-            <div className="lg:col-span-8">
-              <p className="eyebrow-on-dark mb-5">Ready when you are</p>
-              <h2 className="font-display text-[clamp(2.1rem,5vw,3.5rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
-                Find out what your car could be worth today.
+          <div className="grid grid-cols-1 items-center lg:grid-cols-2">
+            <div className="px-6 py-10 sm:px-10 sm:py-12 lg:px-14">
+              <h2 className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.06] tracking-display text-on-dark-hi text-balance">
+                What's your car worth?
               </h2>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-on-dark-hi/85 sm:text-lg">
-                One form. A confirmed offer in writing. Pickup included when we buy.
+              <p className="mt-4 text-base text-on-dark-hi/85 sm:text-lg">
+                One form. A written offer.
               </p>
-            </div>
 
-            <div className="lg:col-span-4 lg:text-right">
-              <Link
-                href="/#quote-form"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "group w-full px-8 sm:w-auto",
-                )}
-              >
-                Get my quote
-                <ArrowRight
-                  className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </Link>
-              <div className="mt-5 text-sm text-on-dark-hi/75">
-                or{" "}
+              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <Link
+                  href="/#quote-form"
+                  className={cn(buttonVariants({ size: "lg" }), "group px-8")}
+                >
+                  Get my quote
+                  <ArrowRight
+                    className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </Link>
                 <TrackedPhoneLink
                   href={BUSINESS.phoneTel}
                   location="final_cta"
-                  className="inline-flex items-center gap-1.5 font-medium text-on-dark-hi underline decoration-cta underline-offset-4 hover:text-cta-bright"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-on-dark-hi underline decoration-cta underline-offset-4 hover:text-cta-bright"
                   ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                 >
                   <Phone aria-hidden="true" className="h-4 w-4" />
-                  call {BUSINESS.phoneDisplay}
+                  {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
               </div>
+            </div>
+
+            <div className="relative h-56 sm:h-72 lg:h-full lg:min-h-[22rem]">
+              <Image
+                src="/images/car-removal-brisbane-access-readiness-v1.jpg"
+                alt="Tilt-tray truck arriving to collect a car from a Brisbane driveway"
+                fill
+                sizes="(max-width: 1023px) calc(100vw - 2rem), 640px"
+                loading="lazy"
+                className="object-cover"
+              />
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import { BadgeCheck, BanknoteArrowDown, Wrench } from "lucide-react";
 
@@ -7,27 +8,20 @@ interface Reason {
   icon: LucideIcon;
 }
 
-const featureReason: Reason = {
-  title: "One quoted price, locked in writing",
-  description:
-    "Confirmed before the truck is booked. If the vehicle matches the details you gave, nothing is deducted on the day.",
-  icon: BadgeCheck,
-};
-
-/* Two supporting cards, not three: "Pickup details confirmed" repeated the
-   Stats card almost word for word, and dropping it also squares the grid —
-   the feature card spans two rows, so a third card left a half-empty one. */
-const supportingReasons: Reason[] = [
+const reasons: Reason[] = [
+  {
+    title: "One price, in writing",
+    description: "Confirmed before the truck is booked.",
+    icon: BadgeCheck,
+  },
   {
     title: "Paid when we pick up",
-    description:
-      "We don't drive away with your keys until you've been paid the agreed amount.",
+    description: "Your keys stay with you until you're paid.",
     icon: BanknoteArrowDown,
   },
   {
     title: "Rough to written off",
-    description:
-      "Old daily drivers, damaged, unregistered, scrap, fleet. If it's not a fit, we'll say so upfront.",
+    description: "Damaged, unregistered, scrap or fleet.",
     icon: Wrench,
   },
 ];
@@ -39,9 +33,9 @@ export function WhyUs() {
       className="section-y scroll-mt-header bg-secondary border-t border-b border-border"
       aria-labelledby="why-us-heading"
     >
-      <div className="site-container">
-        <div className="mb-12 max-w-2xl md:mb-16">
-          <p className="eyebrow mb-5">Why Caraway</p>
+      <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="eyebrow mb-4">Why Caraway</p>
           <h2
             id="why-us-heading"
             className="font-display text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]"
@@ -50,87 +44,36 @@ export function WhyUs() {
             <br />
             One pickup. Done.
           </h2>
-          <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-xl">
-            Private buyers flake. Dealers lowball. We&apos;re a buyer, not an auction.
-          </p>
+
+          <ul className="mt-8 space-y-5">
+            {reasons.map(({ icon: Icon, title, description }) => (
+              <li key={title} className="flex items-center gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-primary text-primary-foreground">
+                  <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="font-display text-lg font-semibold leading-snug text-foreground">
+                    {title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{description}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
-            {/* Featured card spans the full row on mobile, half on desktop */}
-            <div className="lg:col-span-6 lg:row-span-2">
-              <FeatureReasonCard reason={featureReason} />
-            </div>
-
-            {supportingReasons.map((reason) => (
-              <div key={reason.title} className="lg:col-span-6">
-                <SupportingReasonCard reason={reason} />
-              </div>
-            ))}
-          </div>
+        <div className="relative overflow-hidden border border-border bg-card">
+          <Image
+            src="/images/tow-truck-hero.webp"
+            alt="Tilt-tray truck carrying a silver sedan"
+            width={800}
+            height={800}
+            sizes="(max-width: 1023px) calc(100vw - 2rem), 600px"
+            loading="lazy"
+            className="aspect-[4/3] h-auto w-full object-cover"
+          />
         </div>
       </div>
     </section>
-  );
-}
-
-function FeatureReasonCard({ reason }: { reason: Reason }) {
-  const Icon = reason.icon;
-  return (
-    <article className="relative h-full overflow-hidden border border-primary bg-primary p-7 text-on-dark-hi sm:p-9">
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[hsl(var(--accent)/0.32)] blur-3xl"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-[hsl(var(--cta)/0.28)] blur-3xl"
-      />
-      <div className="relative flex h-full flex-col">
-        <span className="flex h-12 w-12 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.14)] text-on-dark-hi ring-1 ring-[hsl(var(--on-dark-hi)/0.18)]">
-          <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
-        </span>
-        <p className="mt-6 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
-          The Caraway promise
-        </p>
-        <h3 className="mt-2 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi text-balance">
-          {reason.title}
-        </h3>
-        <p className="mt-4 max-w-md text-[0.9375rem] sm:text-base leading-relaxed text-on-dark-hi/85">
-          {reason.description}
-        </p>
-        <ul className="mt-auto pt-8 flex flex-wrap gap-2">
-          {["No bait-and-switch", "No tow deductions", "Confirmed in writing"].map((tag) => (
-            <li
-              key={tag}
-              className="inline-flex items-center rounded-none border border-[hsl(var(--on-dark-hi)/0.22)] bg-[hsl(var(--on-dark-hi)/0.08)] px-3 py-1 text-xs font-medium text-on-dark-hi"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  );
-}
-
-function SupportingReasonCard({ reason }: { reason: Reason }) {
-  const Icon = reason.icon;
-  return (
-    <article className="group relative h-full overflow-hidden border border-border bg-card p-6 hover:border-primary/60 sm:p-7 card-lift">
-      <div className="flex items-start gap-4 sm:gap-5">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary transition-colors duration-300 group-hover:bg-primary/15 sm:h-12 sm:w-12">
-          <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={2} aria-hidden="true" />
-        </span>
-        <div className="min-w-0">
-          <h3 className="font-display text-lg sm:text-xl text-foreground leading-snug">
-            {reason.title}
-          </h3>
-          <p className="mt-2 text-[0.9375rem] leading-relaxed text-foreground/75">
-            {reason.description}
-          </p>
-        </div>
-      </div>
-    </article>
   );
 }
