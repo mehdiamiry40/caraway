@@ -363,7 +363,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                 aria-atomic="true"
               >
                 <span
-                  className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-destructive"
+                  className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-none bg-destructive"
                   aria-hidden
                 />
                 <div className="flex-1">
