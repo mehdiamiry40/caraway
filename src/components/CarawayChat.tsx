@@ -5,7 +5,6 @@ import {
   ArrowUp,
   Bot,
   ExternalLink,
-  Loader2,
   Phone,
   RotateCcw,
   Square,
@@ -468,7 +467,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                   <Bot className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-3.5 py-2.5 shadow-sm">
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  <span className="h-4 w-4 animate-spin motion-reduce:animate-none rounded-none border-2 border-current border-t-transparent" aria-hidden="true" />
                   {status === "submitted" ? "Thinking…" : "Replying…"}
                 </span>
               </div>
