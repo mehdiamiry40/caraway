@@ -139,7 +139,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
           aria-atomic="true"
           className="mt-3 flex flex-col items-center gap-2.5 py-5 text-center"
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10">
+          <span className="flex h-11 w-11 items-center justify-center rounded-none bg-accent/10">
             <CheckCircle2 className="h-5 w-5 text-accent" aria-hidden />
           </span>
           <h3 className="font-display text-base text-primary">

@@ -149,7 +149,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-xs font-semibold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground font-display text-xs font-semibold"
                   >
                     {authorInitials}
                   </span>
@@ -327,7 +327,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 <div className="flex items-start gap-5 sm:gap-6">
                   <div
                     aria-hidden
-                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
+                    className="h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-none bg-primary flex items-center justify-center text-primary-foreground font-display text-lg sm:text-xl font-semibold"
                   >
                     {authorInitials}
                   </div>

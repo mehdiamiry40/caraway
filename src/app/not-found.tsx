@@ -24,7 +24,7 @@ export default function NotFound() {
         className="flex-1 mt-header-safe w-full flex items-center justify-center bg-muted px-4 sm:px-6"
       >
         <div className="w-full max-w-lg text-center py-16 sm:py-20">
-          <div className="w-20 h-20 rounded-full bg-primary/[0.06] flex items-center justify-center mx-auto mb-8">
+          <div className="w-20 h-20 rounded-none bg-primary/[0.06] flex items-center justify-center mx-auto mb-8">
             <span className="text-4xl font-display text-primary/40">404</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-display text-foreground mb-4">
