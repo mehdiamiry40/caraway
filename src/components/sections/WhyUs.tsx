@@ -80,11 +80,11 @@ function FeatureReasonCard({ reason }: { reason: Reason }) {
     <article className="relative h-full overflow-hidden border border-primary bg-primary p-7 text-on-dark-hi sm:p-9">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-full bg-[hsl(var(--accent)/0.32)] blur-3xl"
+        className="pointer-events-none absolute -right-12 -top-12 h-56 w-56 rounded-none bg-[hsl(var(--accent)/0.32)] blur-3xl"
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-full bg-[hsl(var(--cta)/0.28)] blur-3xl"
+        className="pointer-events-none absolute -left-10 -bottom-10 h-44 w-44 rounded-none bg-[hsl(var(--cta)/0.28)] blur-3xl"
       />
       <div className="relative flex h-full flex-col">
         <span className="flex h-12 w-12 items-center justify-center bg-[hsl(var(--on-dark-hi)/0.14)] text-on-dark-hi ring-1 ring-[hsl(var(--on-dark-hi)/0.18)]">
