@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MessageCircleQuestion } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { homepageFaqs } from "@/data/home-faqs";
 
@@ -13,16 +13,14 @@ export function FAQ() {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))]">
-            <p className="eyebrow mb-5">FAQ</p>
+            <span className="mb-5 flex h-14 w-14 items-center justify-center bg-primary text-primary-foreground">
+              <MessageCircleQuestion className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <p className="eyebrow mb-4">FAQ</p>
             <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display font-bold text-primary leading-[1.1] text-balance">
-              Cash for cars,
-              <br />
-              without the surprises.
+              Questions? Answered.
             </h2>
-            <p className="mt-5 text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
-              Towing, rego, pricing — the stuff people actually ask before they book a pickup.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
               <Link
                 href="/faq"
                 className="inline-flex min-h-11 items-center gap-1 text-primary link-underline"
