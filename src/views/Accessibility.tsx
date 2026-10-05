@@ -1,4 +1,5 @@
 import { PageShell } from "@/components/layout/PageShell";
+import { Accessibility as AccessibilityIcon } from "lucide-react";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -8,6 +9,7 @@ const breadcrumbs = [
 export default function Accessibility() {
   return (
     <PageShell
+      icon={AccessibilityIcon}
       breadcrumbs={breadcrumbs}
       title="Accessibility at Caraway"
       subtitle={<p>We&apos;re committed to making our website usable by everyone, including people with disabilities.</p>}

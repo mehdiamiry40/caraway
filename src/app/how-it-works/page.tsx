@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Banknote,
+  BookOpen,
+  ClipboardCheck,
+  ClipboardList,
+  FileCheck2,
+  FileSignature,
+  FileText,
+  IdCard,
+  KeyRound,
+  ListChecks,
+  MessageCircleQuestion,
+  PackageOpen,
+  Truck,
+} from "lucide-react";
+import { IconHeading } from "@/components/templates/PagePieces";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -81,11 +97,11 @@ const processFaqs = [
 ];
 
 const pickupChecklist = [
-  "Current photo ID, such as a Queensland driver licence",
-  "Registration papers or ownership records, if you have them",
-  "All keys you hold, including spares",
-  "Finance, insurer, or estate documents where they apply to the sale",
-  "Personal belongings cleared out, and any e-tag or toll account noted so you can close it off",
+  { icon: IdCard, text: "Current photo ID, such as a Queensland driver licence" },
+  { icon: FileText, text: "Registration papers or ownership records, if you have them" },
+  { icon: KeyRound, text: "All keys you hold, including spares" },
+  { icon: FileCheck2, text: "Finance, insurer, or estate documents where they apply to the sale" },
+  { icon: PackageOpen, text: "Personal belongings cleared out, and any e-tag or toll account noted so you can close it off" },
 ];
 
 const paperworkGuides = [
@@ -107,12 +123,9 @@ const paperworkGuides = [
   },
 ];
 
-const h2Classes =
-  "text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]";
+const h3Classes = "flex items-center gap-2.5 font-display text-lg font-semibold text-primary mb-2";
 
-const h3Classes = "font-display text-lg font-semibold text-primary mb-2";
-
-const proseClasses = "text-muted-foreground leading-relaxed text-base sm:text-lg";
+const proseClasses = "text-foreground/75 leading-relaxed text-base";
 
 export default function HowItWorksPage() {
   return (
@@ -137,6 +150,7 @@ export default function HowItWorksPage() {
         ]}
       />
       <PageShell
+        icon={ListChecks}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "How it works" },
@@ -144,10 +158,7 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title="Sell your car in four clear steps."
         subtitle={
-          <p>
-            Share the details, review an individual offer, confirm the collection
-            and payment terms, and retain the sale records.
-          </p>
+          <p>Details, offer, pickup, payment.</p>
         }
       >
         <HowItWorks showHeader={false} />
@@ -158,17 +169,15 @@ export default function HowItWorksPage() {
         >
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20 space-y-12 sm:space-y-14">
             <div>
-              <h2 id="process-detail-heading" className={h2Classes}>
+              <IconHeading id="process-detail-heading" icon={ListChecks} tone="solid">
                 What actually happens at each step
-              </h2>
-              <p className={proseClasses}>
-                The four cards above are the short version. Here is what each
-                stage involves in practice, so there are no surprises between
-                your first message and the truck pulling away.
-              </p>
+              </IconHeading>
 
-              <div className="mt-8">
-                <h3 className={h3Classes}>1. Tell us about the car</h3>
+              <div className="mt-8 border-l-2 border-border pl-5">
+                <h3 className={h3Classes}>
+                  <ClipboardList className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
+                  1. Tell us about the car
+                </h3>
                 <p className={proseClasses}>
                   The assessment starts with the vehicle, condition, contact,
                   and pickup details requested in the quote tool below, or you
@@ -181,8 +190,11 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8">
-                <h3 className={h3Classes}>2. Review an individual offer</h3>
+              <div className="mt-8 border-l-2 border-border pl-5">
+                <h3 className={h3Classes}>
+                  <FileSignature className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
+                  2. Review an individual offer
+                </h3>
                 <p className={proseClasses}>
                   We weigh the details against current parts, resale, and scrap
                   demand, ownership, location, and access, then decide whether to
@@ -192,8 +204,11 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8">
-                <h3 className={h3Classes}>3. Confirm the collection plan</h3>
+              <div className="mt-8 border-l-2 border-border pl-5">
+                <h3 className={h3Classes}>
+                  <Truck className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
+                  3. Confirm the collection plan
+                </h3>
                 <p className={proseClasses}>
                   Once you accept, Caraway confirms a collection window based on
                   the vehicle, location, access, seller availability, and assigned
@@ -206,8 +221,11 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8">
-                <h3 className={h3Classes}>4. Payment, receipt, and the car leaves</h3>
+              <div className="mt-8 border-l-2 border-border pl-5">
+                <h3 className={h3Classes}>
+                  <Banknote className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
+                  4. Payment, receipt, and the car leaves
+                </h3>
                 <p className={proseClasses}>
                   On the day, the assigned operator checks the vehicle against the
                   description. The parties follow the payment method and timing
@@ -220,15 +238,12 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <h2 className={h2Classes}>What to have ready on pickup day</h2>
-              <ul className="mt-2 space-y-3">
-                {pickupChecklist.map((item) => (
-                  <li key={item} className="flex gap-3 text-base text-foreground/80 sm:text-lg">
-                    <CheckCircle2
-                      className="mt-1 h-5 w-5 shrink-0 text-primary"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
+              <IconHeading icon={ClipboardCheck}>What to have ready on pickup day</IconHeading>
+              <ul className="mt-2 grid gap-2.5 sm:grid-cols-2">
+                {pickupChecklist.map(({ icon: Icon, text }) => (
+                  <li key={text} className="flex items-start gap-3 border border-border bg-card p-3.5 text-sm text-foreground/80 leading-relaxed">
+                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
+                    <span>{text}</span>
                   </li>
                 ))}
               </ul>
@@ -250,7 +265,7 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <h2 className={h2Classes}>After the sale: the Queensland paperwork</h2>
+              <IconHeading icon={FileCheck2}>After the sale: the Queensland paperwork</IconHeading>
               <p className={proseClasses}>
                 You leave the pickup with a signed receipt and the buyer&apos;s
                 details — the records the seller-side steps with the Department
@@ -264,14 +279,16 @@ export default function HowItWorksPage() {
                 tolls and insurance tied to the car the same day. These guides
                 walk through each situation:
               </p>
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
                 {paperworkGuides.map((guide) => (
                   <li key={guide.href}>
                     <Link
                       href={guide.href}
-                      className="inline-flex min-h-11 items-center text-base font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+                      className="group flex h-full min-h-11 items-center gap-3 border border-border bg-card p-3.5 text-sm font-medium text-primary transition-colors hover:border-primary/50"
                     >
-                      {guide.label}
+                      <BookOpen className="h-5 w-5 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
+                      <span className="flex-1">{guide.label}</span>
+                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                     </Link>
                   </li>
                 ))}
@@ -279,7 +296,7 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <h2 className={h2Classes}>Common questions about the process</h2>
+              <IconHeading icon={MessageCircleQuestion} tone="solid">Common questions about the process</IconHeading>
               <Accordion items={processFaqs} />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Scale } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { BUSINESS, LEGAL_DATES } from "@/lib/site";
 
@@ -10,6 +11,7 @@ const breadcrumbs = [
 export default function Terms() {
   return (
     <PageShell
+      icon={Scale}
       breadcrumbs={breadcrumbs}
       title="Terms of Service"
       subtitle={

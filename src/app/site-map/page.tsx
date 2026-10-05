@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Map } from "lucide-react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { services } from "@/data/services";
@@ -87,6 +88,7 @@ export default function SiteMapPage() {
         ]}
       />
       <PageShell
+        icon={Map}
         breadcrumbs={breadcrumbs}
         title="Sitemap"
         subtitle={<p>Browse public pages on caraway.au and jump to the section you need.</p>}

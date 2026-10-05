@@ -14,100 +14,37 @@ import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { getPostsForService } from "@/data/blog-posts";
 import { Accordion } from "@/components/ui/accordion";
-import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
-  BadgeDollarSign,
-  Banknote,
   BookOpen,
   Building2,
-  CalendarClock,
   CheckCircle2,
-  ChevronRight,
   Info,
   Mail,
   MapPin,
   MessageCircleQuestion,
-  Receipt,
-  SearchCheck,
   Star,
-  Truck,
 } from "lucide-react";
-import { BUSINESS, PROMISE_POINTS } from "@/lib/site";
+import { BUSINESS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
 import { canonicalServiceSlug } from "@/lib/service-consolidation";
 import { sectionIcon, serviceIcon } from "@/lib/service-icons";
-
-const HERO_POINTS = [
-  { icon: BadgeDollarSign, label: PROMISE_POINTS[0] },
-  { icon: CalendarClock, label: PROMISE_POINTS[1] },
-  { icon: Truck, label: PROMISE_POINTS[2] },
-] as const;
-
-const CONFIRM_ICONS: LucideIcon[] = [
-  BadgeDollarSign,
-  CalendarClock,
-  Truck,
-  SearchCheck,
-  Banknote,
-  Receipt,
-];
-
-const CONFIRM_POINTS = PROMISE_POINTS.map((label, index) => ({
-  label,
-  icon: CONFIRM_ICONS[index] ?? CheckCircle2,
-}));
+import {
+  HeroPoints,
+  IconHeading,
+  PromiseTiles,
+  SidebarLinks,
+} from "@/components/templates/PagePieces";
 
 const sideLinkClass =
   "inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-primary underline-offset-4 hover:underline";
 
-function SidebarLinks({
-  label,
-  items,
-}: {
-  label: string;
-  items: { href: string; label: string; icon: LucideIcon }[];
-}) {
-  return (
-    <nav aria-label={label} className="border border-border bg-card p-5 sm:p-6">
-      <h3 className="font-display text-base mb-3 text-foreground">{label}</h3>
-      <ul className="divide-y divide-border/60 border-t border-border/60">
-        {items.map(({ href, label: itemLabel, icon: Icon }) => (
-          <li key={href}>
-            <Link
-              href={href}
-              className="group flex min-h-[44px] items-center gap-3 py-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-              <span className="flex-1">{itemLabel}</span>
-              <ChevronRight
-                className="h-4 w-4 shrink-0 text-border transition-colors group-hover:text-primary"
-                aria-hidden="true"
-              />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-}
 
 export function ServiceSectionContent({ section }: { section: ServiceSection }) {
   return (
     <div>
-      <div className="mb-4 flex items-center gap-4">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-secondary text-primary">
-          {createElement(sectionIcon(section.heading), {
-            className: "h-6 w-6",
-            strokeWidth: 1.75,
-            "aria-hidden": true,
-          })}
-        </span>
-        <h2 className="text-2xl sm:text-3xl font-display text-foreground leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-          {section.heading}
-        </h2>
-      </div>
+      <IconHeading icon={sectionIcon(section.heading)}>{section.heading}</IconHeading>
       <p className="text-foreground/75 leading-relaxed text-base">
         {section.content}
       </p>
@@ -214,17 +151,7 @@ export default function ServicePageTemplate({
               <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-6">
                 {heroIntro}
               </p>
-              <ul className="mb-7 flex flex-wrap gap-2">
-                {HERO_POINTS.map(({ icon: Icon, label }) => (
-                  <li
-                    key={label}
-                    className="inline-flex items-center gap-2 border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground/85"
-                  >
-                    <Icon className="h-4 w-4 text-accent-ink" aria-hidden="true" />
-                    {label}
-                  </li>
-                ))}
-              </ul>
+              <HeroPoints className="mb-7" />
               <ScrollToQuoteCTA source={service.slug} />
               {service.reviewedAt && (
                 <p className="mt-4 text-xs text-foreground/65">
@@ -274,14 +201,9 @@ export default function ServicePageTemplate({
 
               {service.faqs.length > 0 && (
                 <div className="pt-6 border-t border-border/60">
-                  <div className="mb-2 flex items-center gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-primary text-primary-foreground">
-                      <MessageCircleQuestion className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    <h2 className="text-2xl sm:text-3xl font-display text-foreground leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-                      Frequently asked questions
-                    </h2>
-                  </div>
+                  <IconHeading icon={MessageCircleQuestion} tone="solid" className="mb-2">
+                    Frequently asked questions
+                  </IconHeading>
                   <Accordion items={service.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
                 </div>
               )}
@@ -294,20 +216,7 @@ export default function ServicePageTemplate({
               <h2 id="service-sidebar-heading" className="sr-only">
                 Service details and related resources
               </h2>
-              <div className="border border-border bg-card p-5 sm:p-6">
-                <h3 className="font-display text-base text-foreground mb-4">What Caraway confirms</h3>
-                <ul className="grid grid-cols-2 gap-2.5">
-                  {CONFIRM_POINTS.map(({ icon: Icon, label }) => (
-                    <li
-                      key={label}
-                      className="flex flex-col items-center gap-2 bg-secondary px-2 py-3.5 text-center text-xs font-medium leading-snug text-foreground/85"
-                    >
-                      <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" />
-                      {label}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <PromiseTiles title="What Caraway confirms" />
 
               <div className="border border-border bg-card p-5 sm:p-6">
                 <h3 className="font-display text-base text-foreground mb-1">Registered Brisbane business</h3>

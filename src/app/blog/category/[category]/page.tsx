@@ -17,7 +17,7 @@ import {
   OPEN_GRAPH_DEFAULTS,
   SITE_URL,
 } from "@/lib/site";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Newspaper } from "lucide-react";
 
 export const dynamicParams = false;
 
@@ -167,6 +167,7 @@ export default async function BlogCategoryPage({ params }: Props) {
         ]}
       />
       <PageShell
+        icon={Newspaper}
         breadcrumbs={breadcrumbs}
         eyebrow="Blog category"
         title={seo.heading}

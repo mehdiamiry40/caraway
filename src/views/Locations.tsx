@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Mountain, Phone, Sailboat, Sunrise, Sunset } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { LocationsFilter } from "@/components/sections/LocationsFilter";
 import { suburbs } from "@/data/suburbs";
@@ -15,8 +15,8 @@ const breadcrumbs = [
 const coverageRegions = [
   {
     title: "Inner west and western Brisbane",
-    description:
-      "Use the Toowong guide for Auchenflower, Taringa, St Lucia, Indooroopilly, and Paddington. Use Kenmore for Chapel Hill, Fig Tree Pocket, Brookfield, Bellbowrie, and The Gap. Ipswich-corridor enquiries are checked against availability for the exact address.",
+    icon: Mountain,
+    areas: ["Auchenflower", "Taringa", "St Lucia", "Indooroopilly", "Paddington", "Chapel Hill", "Fig Tree Pocket", "Brookfield", "Bellbowrie", "The Gap"],
     links: [
       { label: "Toowong and inner west", href: "/locations/toowong" },
       { label: "Kenmore and western Brisbane", href: "/locations/kenmore" },
@@ -24,16 +24,16 @@ const coverageRegions = [
   },
   {
     title: "South Brisbane and south-west",
-    description:
-      "The Moorooka guide covers southside enquiries from Annerley and Rocklea through Sunnybank and Mount Gravatt, including workshop, industrial, residential, and flood-affected vehicle access questions.",
+    icon: Sunset,
+    areas: ["Annerley", "Rocklea", "Sunnybank", "Mount Gravatt"],
     links: [
       { label: "Moorooka and South Brisbane", href: "/locations/moorooka" },
     ],
   },
   {
     title: "Logan corridor",
-    description:
-      "Use the Logan, Springwood, and Beenleigh guides for central, north-east, and southern Logan enquiries, including larger blocks and workshop sites.",
+    icon: MapPin,
+    areas: ["Central Logan", "North-east Logan", "Southern Logan"],
     links: [
       { label: "Logan", href: "/locations/logan" },
       { label: "Springwood", href: "/locations/springwood" },
@@ -42,16 +42,16 @@ const coverageRegions = [
   },
   {
     title: "North Brisbane and Moreton Bay",
-    description:
-      "North Brisbane enquiries include Chermside, Nundah, Stafford, Everton Park, Ascot, Clayfield, New Farm, and Newstead. The Redcliffe guide also covers peninsula and wider Moreton Bay addresses such as North Lakes and Caboolture.",
+    icon: Sunrise,
+    areas: ["Chermside", "Nundah", "Stafford", "Everton Park", "Ascot", "Clayfield", "New Farm", "Newstead", "North Lakes", "Caboolture"],
     links: [
       { label: "Redcliffe and Moreton Bay", href: "/locations/redcliffe" },
     ],
   },
   {
     title: "East Brisbane, Redlands, and bayside",
-    description:
-      "The Capalaba guide covers eastern and bayside enquiries including Alexandra Hills, Birkdale, Wynnum, Manly, Carindale, Bulimba, and Hawthorne. Exact-address availability and access are confirmed before booking.",
+    icon: Sailboat,
+    areas: ["Alexandra Hills", "Birkdale", "Wynnum", "Manly", "Carindale", "Bulimba", "Hawthorne"],
     links: [
       { label: "Capalaba and Brisbane bayside", href: "/locations/capalaba" },
     ],
@@ -62,22 +62,20 @@ export default function Locations() {
   const locationItems = suburbs.map((suburb) => ({
     slug: suburb.slug,
     h1: suburb.h1,
-    summary: suburb.metaDescription,
     nearbyAreaNames: suburb.nearbyAreaNames,
   }));
 
   return (
     <PageShell
+      icon={MapPin}
       breadcrumbs={breadcrumbs}
       eyebrow="Locations"
       title="Vehicle pickup areas across Greater Brisbane."
       subtitle={
         <p>
-          Browse the retained local guides below or use the regional coverage
-          summary for a suburb that is not listed. Pickup is included when
-          Caraway buys; the exact address, access, vehicle details, payment
-          method, and available window are confirmed first. You can also{" "}
+          Find your area, or{" "}
           <Link href="/#quote-form" className="text-primary font-medium link-underline">request a quote</Link>.
+          Pickup is included when Caraway buys.
         </p>
       }
     >
@@ -85,31 +83,35 @@ export default function Locations() {
         <LocationsFilter items={locationItems} />
 
         <section className="mt-16 sm:mt-20" aria-labelledby="regional-coverage-heading">
-          <p className="eyebrow mb-3">Regional coverage</p>
           <h2
             id="regional-coverage-heading"
-            className="text-2xl sm:text-3xl font-display text-foreground mb-4"
+            className="text-2xl sm:text-3xl font-display text-foreground mb-8"
             style={{ letterSpacing: "var(--tracking-tight)" }}
           >
-            If your suburb does not have a separate page.
+            Suburb not listed? Check your region.
           </h2>
-          <p className="max-w-3xl text-muted-foreground leading-relaxed mb-8">
-            Use these regional guides to check likely coverage and the access
-            details Caraway needs. Availability and collection timing are
-            confirmed for the exact vehicle and address before booking.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {coverageRegions.map((region) => (
-              <article key={region.title} className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
-                <h3 className="font-display text-lg text-foreground mb-3">{region.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                  {region.description}
-                </p>
-                <ul className="flex flex-wrap gap-x-5 gap-y-2">
-                  {region.links.map((link) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {coverageRegions.map(({ title, icon: Icon, areas, links }) => (
+              <article key={title} className="border border-border bg-card p-5 sm:p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary">
+                    <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <h3 className="font-display text-lg text-foreground">{title}</h3>
+                </div>
+                <ul className="mb-4 flex flex-wrap gap-1.5" aria-label={`Areas in ${title}`}>
+                  {areas.map((area) => (
+                    <li key={area} className="bg-secondary px-2.5 py-1 text-xs text-foreground/80">
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+                <ul className="flex flex-wrap gap-x-5 gap-y-1">
+                  {links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className="text-sm font-medium text-primary link-underline">
+                      <Link href={link.href} className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary link-underline">
                         {link.label}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </Link>
                     </li>
                   ))}
@@ -119,13 +121,13 @@ export default function Locations() {
           </div>
         </section>
 
-        <div className="mt-16 rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10 text-center max-w-2xl mx-auto">
-          <p className="eyebrow mb-3">Not sure?</p>
-          <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Your suburb not listed?</h2>
-          <p className="text-muted-foreground mb-7 max-w-md mx-auto">
-            Send the exact address and access details even if your suburb is not
-            shown above. Caraway will confirm whether purchase and pickup are
-            available for that vehicle and location. You can also call {BUSINESS.phoneDisplay}.
+        <div className="mt-16 mx-auto flex max-w-2xl flex-col items-center border border-border bg-secondary p-6 text-center sm:p-10">
+          <span className="flex h-14 w-14 items-center justify-center bg-primary text-primary-foreground">
+            <Phone className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
+          </span>
+          <h2 className="mt-4 text-xl sm:text-2xl font-display text-foreground mb-2" style={{ letterSpacing: "var(--tracking-tight)" }}>Still not sure?</h2>
+          <p className="text-muted-foreground mb-7">
+            Send the exact address. We'll confirm coverage.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link

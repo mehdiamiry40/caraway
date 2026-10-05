@@ -1,15 +1,37 @@
+import { createElement } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { Accordion } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, MessageCircle, Phone } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Banknote,
+  CarFront,
+  MapPin,
+  MessageCircle,
+  MessageCircleQuestion,
+  Phone,
+  Truck,
+} from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { faqCategories } from "@/lib/faq-data";
 
 /** Stable in-page anchor for a category, e.g. "Pricing & Payment" -> "pricing-payment". */
 function topicId(category: string) {
   return category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+const TOPIC_ICONS: Record<string, LucideIcon> = {
+  "Pricing & Payment": Banknote,
+  "Vehicle Requirements": CarFront,
+  "Process & Logistics": Truck,
+  "Service Area & Availability": MapPin,
+};
+
+function topicIcon(category: string): LucideIcon {
+  return TOPIC_ICONS[category] ?? MessageCircleQuestion;
 }
 
 const breadcrumbs = [
@@ -20,12 +42,13 @@ const breadcrumbs = [
 export default function FAQPage() {
   return (
     <PageShell
+      icon={MessageCircleQuestion}
       breadcrumbs={breadcrumbs}
       eyebrow="FAQ"
       title="Vehicle selling questions, answered."
       subtitle={
         <p>
-          Everything you need to know about selling your car for cash in Brisbane. Can&apos;t find your answer? <Link href="/contact" className="text-primary font-medium link-underline">Contact us</Link>.
+          Can&apos;t find your answer? <Link href="/contact" className="text-primary font-medium link-underline">Contact us</Link>.
         </p>
       }
     >
@@ -40,15 +63,13 @@ export default function FAQPage() {
             >
               <p className="eyebrow mb-4 text-sm">Topics</p>
               <ol className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 lg:flex-col lg:gap-1">
-                {faqCategories.map((category, idx) => (
+                {faqCategories.map((category) => (
                   <li key={category.category} className="shrink-0">
                     <a
                       href={`#${topicId(category.category)}`}
                       className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary lg:w-full lg:rounded-lg lg:border-transparent lg:bg-transparent lg:px-3 lg:hover:bg-secondary"
                     >
-                      <span className="tabular-nums text-xs font-semibold text-muted-foreground group-hover:text-primary">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>
+                      <TopicIcon category={category.category} className="h-4 w-4 text-accent-ink" />
                       {category.category}
                     </a>
                   </li>
@@ -64,7 +85,7 @@ export default function FAQPage() {
           </aside>
 
           <div className="space-y-14 sm:space-y-16 lg:col-span-9 lg:max-w-3xl">
-            {faqCategories.map((category, idx) => (
+            {faqCategories.map((category) => (
               <section
                 key={category.category}
                 id={topicId(category.category)}
@@ -72,8 +93,8 @@ export default function FAQPage() {
                 className="scroll-mt-header"
               >
                 <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-sm font-semibold tabular-nums text-primary">
-                    {String(idx + 1).padStart(2, "0")}
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-secondary text-primary">
+                    <TopicIcon category={category.category} className="h-6 w-6" />
                   </span>
                   <h2
                     id={`${topicId(category.category)}-heading`}
@@ -89,11 +110,11 @@ export default function FAQPage() {
               </section>
             ))}
 
-            <div className="rounded-2xl border border-border/60 bg-secondary/60 p-6 sm:p-10 text-center">
-              <h2 className="text-xl sm:text-2xl font-display text-foreground mb-3" style={{ letterSpacing: "var(--tracking-tight)" }}>Still have questions?</h2>
-              <p className="text-muted-foreground mb-7 max-w-md mx-auto">
-                Our Brisbane team is happy to help. No obligation — just a quick chat.
-              </p>
+            <div className="flex flex-col items-center border border-border bg-secondary p-6 sm:p-10 text-center">
+              <span className="mb-4 flex h-14 w-14 items-center justify-center bg-primary text-primary-foreground">
+                <MessageCircle className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <h2 className="text-xl sm:text-2xl font-display text-foreground mb-6" style={{ letterSpacing: "var(--tracking-tight)" }}>Still have questions?</h2>
               <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
                 <Link
                   href="/#quote-form"
@@ -123,4 +144,12 @@ export default function FAQPage() {
       </div>
     </PageShell>
   );
+}
+
+function TopicIcon({ category, className }: { category: string; className?: string }) {
+  return createElement(topicIcon(category), {
+    className,
+    strokeWidth: 1.75,
+    "aria-hidden": true,
+  });
 }
