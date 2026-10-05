@@ -57,7 +57,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <span className="mr-2 h-5 w-5 animate-spin motion-reduce:animate-none rounded-full border-[2.5px] border-current border-t-transparent" aria-hidden="true" />
+          <span className="mr-2 h-5 w-5 animate-spin motion-reduce:animate-none rounded-none border-[2.5px] border-current border-t-transparent" aria-hidden="true" />
         ) : null}
         {children}
       </button>
