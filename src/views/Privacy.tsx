@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Lock } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { BUSINESS, LEGAL_DATES } from "@/lib/site";
 
@@ -10,6 +11,7 @@ const breadcrumbs = [
 export default function Privacy() {
   return (
     <PageShell
+      icon={Lock}
       breadcrumbs={breadcrumbs}
       title="Privacy Policy"
       subtitle={

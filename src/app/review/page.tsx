@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ExternalLink, MessageSquareText, ShieldCheck } from "lucide-react";
+import { ExternalLink, MessageSquareText, ShieldCheck, Star } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 import { buttonVariants } from "@/components/ui/button";
@@ -43,6 +43,7 @@ const breadcrumbs = [
 export default function ReviewPage() {
   return (
     <PageShell
+      icon={Star}
       breadcrumbs={breadcrumbs}
       eyebrow="Customer feedback"
       title="Share honest feedback about Caraway"

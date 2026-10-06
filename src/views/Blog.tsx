@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Newspaper } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { BlogPostCard, FeaturedBlogPostCard } from "@/components/blog/BlogPostCard";
@@ -67,13 +67,12 @@ export default function Blog({ page = 1 }: { page?: number }) {
 
   return (
     <PageShell
+      icon={Newspaper}
       breadcrumbs={breadcrumbs}
       eyebrow="The Caraway Journal"
       title="Selling a car in Brisbane, clearly explained."
       subtitle={
-        <p>
-          Practical guides to comparing selling options, documenting vehicle condition, checking collection terms, and completing Queensland paperwork.
-        </p>
+        <p>Practical guides for Brisbane sellers.</p>
       }
     >
       <div className="site-container py-14 sm:py-20 lg:py-24">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -86,6 +86,7 @@ export default function ServicesPage() {
         ]}
       />
       <PageShell
+        icon={LayoutGrid}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services" },

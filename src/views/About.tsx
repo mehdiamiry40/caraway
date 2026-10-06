@@ -2,7 +2,22 @@ import { PageShell } from "@/components/layout/PageShell";
 import { TrustBadges } from "@/components/sections/TrustBadges";
 import { BUSINESS } from "@/lib/site";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, MapPin, Star } from "lucide-react";
+import Image from "next/image";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Banknote,
+  CalendarClock,
+  CarFront,
+  HeartHandshake,
+  MapPin,
+  Receipt,
+  Star,
+  Truck,
+  UserRound,
+  Users,
+} from "lucide-react";
+import { IconHeading } from "@/components/templates/PagePieces";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
@@ -13,55 +28,59 @@ const breadcrumbs = [
 ];
 
 const features = [
-  { title: "Pickup included when we buy", desc: "The agreed offer includes collection when the vehicle, location, and access match the supplied details." },
-  { title: "Collection window confirmed", desc: "Timing depends on the vehicle, location, access, and operator availability and is agreed before dispatch." },
-  { title: "Vehicles assessed individually", desc: "Running, non-running, damaged, scrap, and unregistered vehicles can be assessed, but not every vehicle will receive an offer." },
-  { title: "Payment terms confirmed", desc: "The payment method and timing are agreed before collection, and you keep a record of the transaction." },
-  { title: "Buyer details and receipt", desc: "The collection plan includes the assigned operator, buyer details, and the records to retain." },
-  { title: "No pressure", desc: "Quotes are free and zero-obligation. If our offer doesn't work for you, no hard feelings." },
+  { icon: Truck, title: "Pickup included when we buy", desc: "When the vehicle and access match the details supplied." },
+  { icon: CalendarClock, title: "Collection window confirmed", desc: "Agreed before dispatch." },
+  { icon: CarFront, title: "Vehicles assessed individually", desc: "Running, damaged, scrap or unregistered. Not every car gets an offer." },
+  { icon: Banknote, title: "Payment terms confirmed", desc: "Method and timing agreed before collection." },
+  { icon: Receipt, title: "Buyer details and receipt", desc: "Records to keep for your sale." },
+  { icon: HeartHandshake, title: "No pressure", desc: "Free, no-obligation quotes." },
 ];
 
 export default function About() {
   return (
     <PageShell
+      icon={Users}
       breadcrumbs={breadcrumbs}
       eyebrow="About"
       title="A Brisbane buyer — not a broker."
       subtitle={
-        <p>
-          We&apos;re a locally owned Brisbane vehicle buyer. Request an individual offer, check the written pickup and payment terms, and decide whether the direct-buyer option suits you.
-        </p>
+        <p>A locally owned Brisbane vehicle buyer.</p>
       }
     >
       <div className="site-container py-14 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-3xl space-y-14 sm:space-y-16">
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-              Who we are
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+            <IconHeading icon={Users}>Who we are</IconHeading>
+            <p className="text-foreground/75 leading-relaxed text-base">
               Caraway is a Brisbane-based direct buyer operated by {BUSINESS.legalName}. We assess each vehicle from the supplied details and, when we make an offer, confirm the collection, payment, and record-keeping terms before dispatch.
             </p>
+            <div className="mt-6 overflow-hidden border border-border">
+              <Image
+                src="/images/tow-truck-hero.webp"
+                alt="Tilt-tray truck carrying a silver sedan"
+                width={800}
+                height={800}
+                sizes="(max-width: 767px) calc(100vw - 2rem), 768px"
+                loading="lazy"
+                className="aspect-[16/9] h-auto w-full object-cover"
+              />
+            </div>
           </div>
 
           <div>
-            <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-8 shadow-card">
-              <p className="eyebrow mb-3">Founder</p>
-              <h2 className="text-2xl sm:text-3xl font-display text-foreground mb-5 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+            <div className="border border-border bg-card p-6 sm:p-8">
+              <IconHeading icon={UserRound} tone="solid" className="mb-5">
                 Meet the founder
-              </h2>
+              </IconHeading>
               <div className="flex flex-col sm:flex-row gap-5 sm:gap-6">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-none bg-primary/10 text-primary font-display text-xl" aria-hidden="true">
-                  ME
-                </div>
                 <div className="flex-1">
-                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-4">
+                  <p className="text-foreground/75 leading-relaxed text-base mb-4">
                     I&apos;m <strong className="text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary font-medium link-underline">{BUSINESS.email}</a>.
                   </p>
-                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                  <p className="text-foreground/75 leading-relaxed text-base">
                     Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, payment arrangement, buyer details, and receipt requirements.
                   </p>
-                  <p className="mt-4 text-base sm:text-lg">
+                  <p className="mt-4 text-base">
                     <TrackedOutboundLink
                       href={BUSINESS.googleBusinessUrl}
                       label="Google reviews"
@@ -78,43 +97,24 @@ export default function About() {
           </div>
 
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-              How we work
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              Vehicle markets and collection requirements change. We assess the individual vehicle, document the offer assumptions, confirm the collection and payment arrangements, and provide the buyer details you need for your sale record.
-            </p>
+            <IconHeading icon={BadgeCheck} className="mb-6">What sets us apart</IconHeading>
+            <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {features.map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="flex flex-col items-center border border-border bg-card px-3 py-5 text-center">
+                  <span className="flex h-12 w-12 items-center justify-center bg-secondary text-primary">
+                    <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <dt className="mt-3 font-display text-sm font-semibold leading-snug text-foreground">{title}</dt>
+                  <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{desc}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
 
           <div>
-            <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-6 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-                What sets us apart
-              </h2>
-            </div>
-            <div>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
-                {features.map(item => (
-                  <div key={item.title} className="group relative border border-border/60 bg-card p-4 pl-14 sm:p-6 sm:pl-16 hover:border-primary/40 card-lift">
-                    <dt className="font-display text-base font-semibold text-foreground">
-                      <span className="absolute left-4 top-4.5 sm:left-6 sm:top-6.5 flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                        <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      {item.title}
-                    </dt>
-                    <dd className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-display text-foreground mb-4 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
-              Our service area
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-              We assess Brisbane-area enquiries and confirm coverage for the exact address before a collection is booked. Share the suburb and access details with your quote request so availability can be checked.
+            <IconHeading icon={MapPin}>Our service area</IconHeading>
+            <p className="text-foreground/75 leading-relaxed text-base">
+              Greater Brisbane. Coverage is confirmed for your exact address before booking.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href="/#quote-form" className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}>

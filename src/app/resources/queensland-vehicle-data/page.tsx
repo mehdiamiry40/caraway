@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, ExternalLink, FileJson } from "lucide-react";
+import { ChartColumn, Download, ExternalLink, FileJson } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
@@ -333,6 +333,7 @@ export default function QueenslandVehicleDataPage() {
     <>
       <JsonLd data={vehicleDataStructuredData} />
       <PageShell
+        icon={ChartColumn}
         breadcrumbs={breadcrumbs}
         eyebrow="Open data resource"
         title={RESOURCE_HEADING}

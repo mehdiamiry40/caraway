@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
 import type { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,6 +14,8 @@ interface PageShellProps {
   title: string;
   subtitle?: ReactNode;
   eyebrow?: string;
+  /** Optional icon shown above the title in place of extra intro copy. */
+  icon?: LucideIcon;
   children: ReactNode;
   /** Render the hero on the aurora surface (default) or a plain background. */
   heroVariant?: "aurora" | "plain";
@@ -23,6 +26,7 @@ export function PageShell({
   title,
   subtitle,
   eyebrow,
+  icon: Icon,
   children,
   heroVariant = "aurora",
 }: PageShellProps) {
@@ -40,7 +44,12 @@ export function PageShell({
         >
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
-            {eyebrow && <p className="eyebrow mt-6 mb-4">{eyebrow}</p>}
+            {Icon && (
+              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground">
+                <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+            )}
+            {eyebrow && <p className={`eyebrow mb-4 ${Icon ? "mt-4" : "mt-6"}`}>{eyebrow}</p>}
             <h1
               className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.08] text-primary text-balance max-w-4xl mt-4 mb-5"
               style={{ letterSpacing: "var(--tracking-display)" }}
@@ -48,7 +57,7 @@ export function PageShell({
               {title}
             </h1>
             {subtitle && (
-              <div className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-2xl">
+              <div className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl">
                 {subtitle}
               </div>
             )}
