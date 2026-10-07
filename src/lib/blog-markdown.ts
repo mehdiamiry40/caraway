@@ -1,4 +1,5 @@
 import { createElement, type ReactNode } from "react";
+import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 // Blog posts intentionally carry no artwork. Leftover markdown image syntax is
@@ -138,15 +139,26 @@ export function renderBlogContent(
             key,
             className:
               listType === "ol"
-                ? "list-decimal pl-5 sm:pl-6 space-y-3 text-base sm:text-lg text-foreground/85 leading-[1.75] mb-7"
-                : "list-disc pl-5 sm:pl-6 space-y-3 text-base sm:text-lg text-foreground/85 leading-[1.75] mb-7",
+                ? "list-decimal pl-5 sm:pl-6 space-y-3 text-base sm:text-[1.0625rem] text-foreground/85 leading-[1.75] mb-7 marker:font-semibold marker:text-primary"
+                : "space-y-2.5 text-base sm:text-[1.0625rem] text-foreground/85 leading-[1.7] mb-7",
           },
           ...items.map((item, itemIndex) =>
-            createElement(
-              "li",
-              { key: `${key}-li-${itemIndex}`, className: "pl-1" },
-              ...parseInline(item, `${key}-li-${itemIndex}`),
-            ),
+            listType === "ol"
+              ? createElement(
+                  "li",
+                  { key: `${key}-li-${itemIndex}`, className: "pl-1" },
+                  ...parseInline(item, `${key}-li-${itemIndex}`),
+                )
+              : createElement(
+                  "li",
+                  { key: `${key}-li-${itemIndex}`, className: "flex items-start gap-3" },
+                  createElement(CheckCircle2, {
+                    className: "mt-1 h-5 w-5 shrink-0 text-accent-ink",
+                    strokeWidth: 2,
+                    "aria-hidden": true,
+                  }),
+                  createElement("span", null, ...parseInline(item, `${key}-li-${itemIndex}`)),
+                ),
           ),
         ),
       );
@@ -172,7 +184,7 @@ export function renderBlogContent(
           {
             key,
             className:
-              "my-8 overflow-x-auto rounded-xl border border-border/60 bg-card",
+              "my-8 overflow-x-auto border border-border bg-card",
           },
           createElement(
             "table",
@@ -250,7 +262,7 @@ export function renderBlogContent(
           key,
           id: slugify(heading),
           className:
-            "font-display text-2xl sm:text-3xl text-primary mt-12 mb-5 scroll-mt-24",
+            "font-display text-2xl sm:text-3xl text-primary mt-12 mb-5 scroll-mt-24 border-l-4 border-cta pl-4 leading-tight",
         },
         ...parseInline(heading, key),
       ));
@@ -260,7 +272,7 @@ export function renderBlogContent(
     const isFirstPara = i === 0;
     const paraClass = isFirstPara && dropCap
       ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-semibold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-normal mb-8"
-      : "text-base sm:text-lg text-foreground/85 leading-[1.85] mb-7";
+      : "text-base sm:text-[1.0625rem] text-foreground/85 leading-[1.75] mb-6";
     nodes.push(createElement("p", { key, className: paraClass }, ...parseInline(text, key)));
   }
 
