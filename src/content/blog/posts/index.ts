@@ -1,12 +1,4 @@
-import { post as postCarLeakingOil } from "./car-leaking-oil-brisbane";
-import { post as postCheckEngineLight } from "./check-engine-light-brisbane";
-import { post as postCarAircon } from "./car-aircon-not-working-brisbane";
-import { post as postTransmission } from "./sell-car-transmission-problems-brisbane";
-import { post as postBlownHeadGasket } from "./blown-head-gasket-brisbane";
-import { post as postMouldInCar } from "./mould-in-car-brisbane";
-import { post as postFixDents } from "./fix-dents-before-selling-car-brisbane";
 import { post as postOpenRecall } from "./sell-car-open-recall-qld";
-import { post as postServiceHistory } from "./sell-car-without-service-history-brisbane";
 import { post as postClassicCar } from "./sell-classic-car-brisbane";
 import { post as postTrailer } from "./sell-trailer-brisbane";
 import { post as postProjectCar } from "./sell-project-car-brisbane";
@@ -83,15 +75,7 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
-  postCarLeakingOil,
-  postCheckEngineLight,
-  postCarAircon,
-  postTransmission,
-  postBlownHeadGasket,
-  postMouldInCar,
-  postFixDents,
   postOpenRecall,
-  postServiceHistory,
   postClassicCar,
   postTrailer,
   postProjectCar,
