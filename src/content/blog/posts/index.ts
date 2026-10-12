@@ -1,8 +1,5 @@
+import { post as postSpecialtyVehicle } from "./sell-specialty-vehicle-brisbane";
 import { post as postOpenRecall } from "./sell-car-open-recall-qld";
-import { post as postClassicCar } from "./sell-classic-car-brisbane";
-import { post as postTrailer } from "./sell-trailer-brisbane";
-import { post as postProjectCar } from "./sell-project-car-brisbane";
-import { post as postRideshare } from "./sell-rideshare-car-brisbane";
 import { post as postNovatedLease } from "./sell-car-novated-lease-qld";
 import { post as postTwoNames } from "./car-registered-two-names-qld";
 import { post as postRustyCar } from "./rusty-car-brisbane";
@@ -75,11 +72,8 @@ import { post as post23 } from "./preparing-your-car-for-pickup";
 // check-content-integrity.mjs blocks republishing or linking to them.
 
 export const rawBlogPosts = [
+  postSpecialtyVehicle,
   postOpenRecall,
-  postClassicCar,
-  postTrailer,
-  postProjectCar,
-  postRideshare,
   postNovatedLease,
   postTwoNames,
   postRustyCar,
