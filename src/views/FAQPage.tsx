@@ -48,7 +48,9 @@ export default function FAQPage() {
       title="Vehicle selling questions, answered."
       subtitle={
         <p>
-          Can&apos;t find your answer? <Link href="/contact" className="text-primary font-medium link-underline">Contact us</Link>.
+          Straight answers about selling your car for cash in Brisbane — quotes, pickup, payment and Queensland paperwork. New here? Start with{" "}
+          <Link href="/" className="text-primary font-medium link-underline">how cash for cars works in Brisbane</Link>, or{" "}
+          <Link href="/contact" className="text-primary font-medium link-underline">contact us</Link>.
         </p>
       }
     >

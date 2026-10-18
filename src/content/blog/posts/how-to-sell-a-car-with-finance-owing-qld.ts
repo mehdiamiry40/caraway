@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "## Selling a financed car to a cash-for-cars buyer",
 
-    `A [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) may consider a financed vehicle if the lender, payout amount, and permitted settlement process can be verified. Confirm in writing who pays the lender, how any balance or shortfall is handled, when the vehicle may be released, and what proves the security interest has been discharged. The same checks apply whether you're [selling your car](/sell-my-car-brisbane) in [Logan](/locations/logan), the inner south, or Ipswich.`,
+    `A [cash-for-cars buyer in Brisbane](/) may consider a financed vehicle if the lender, payout amount, and permitted settlement process can be verified. Confirm in writing who pays the lender, how any balance or shortfall is handled, when the vehicle may be released, and what proves the security interest has been discharged. The same checks apply whether you're [selling your car](/sell-my-car-brisbane) in [Logan](/locations/logan), the inner south, or Ipswich.`,
 
     "## Get a quote on your financed car",
 
@@ -78,6 +78,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["sell-my-car-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],
 };

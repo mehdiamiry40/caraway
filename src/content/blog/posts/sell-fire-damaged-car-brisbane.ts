@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Then keep the record. A signed receipt carrying the VIN, vehicle details, date, price and both parties' details, filed with the insurer correspondence and any TMR confirmation, is what closes the file on a fire-damaged car.",
 
-    `To have a burnt or fire-damaged vehicle assessed individually, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote through the [damaged-vehicle quote form](/damaged-cars-brisbane). [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job.`,
+    `To have a burnt or fire-damaged vehicle assessed individually, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote through the [damaged-vehicle quote form](/damaged-cars-brisbane). [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
@@ -96,7 +96,6 @@ export const post: RawBlogPostEntry = {
   relatedServices: [
     "damaged-cars-brisbane",
     "car-removal-brisbane",
-    "cash-for-cars-brisbane",
   ],
   relatedSuburbs: ["moorooka", "toowong", "beenleigh", "springwood"],
 };

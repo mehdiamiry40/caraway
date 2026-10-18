@@ -2,9 +2,10 @@ import { expect, test } from "@playwright/test";
 
 const targets = [
   {
-    path: "/cash-for-cars-brisbane",
-    heading: /Cash for Cars Brisbane/,
-    imagePath: "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
+    path: "/sell-my-car-brisbane",
+    heading: /Sell My Car Brisbane/,
+    imagePath: "/images/cash-for-cars-quote-readiness-v1.jpg",
+    reviewedDate: null,
     imageAlt:
       "Vehicle quote-readiness diagram showing front, rear and side photos, the interior and odometer, visible damage, and driveway access",
   },
@@ -12,6 +13,7 @@ const targets = [
     path: "/car-removal-brisbane",
     heading: /Car Removal Brisbane/,
     imagePath: "/images/car-removal-brisbane-access-readiness-v1.jpg",
+    reviewedDate: { iso: "2026-08-07", label: "7 August 2026" },
     imageAlt:
       "Vehicle pickup-access diagram showing wheel and steering checks, gate width, height clearance, driveway slope and surface, turns, and obstacles",
   },
@@ -55,9 +57,11 @@ for (const target of targets) {
     await expect(
       breadcrumbs.getByRole("link", { name: "Services" }),
     ).toHaveAttribute("href", "/services");
-    await expect(page.locator('time[datetime="2026-08-07"]')).toHaveText(
-      "7 August 2026",
-    );
+    if (target.reviewedDate) {
+      await expect(
+        page.locator(`time[datetime="${target.reviewedDate.iso}"]`),
+      ).toHaveText(target.reviewedDate.label);
+    }
 
     const preferredImage = page.getByRole("img", { name: target.imageAlt });
     await expect(preferredImage).toHaveCount(1);

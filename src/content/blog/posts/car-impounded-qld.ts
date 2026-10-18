@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Selling a car impounded in QLD comes after release, not instead of it. The vehicle has to be out of the yard with the fees settled, and you have to be the person entitled to deal with it — any serious buyer will ask for identification and, where the registered operator is someone else, evidence of authority. Keep the release paperwork with the sale record, because [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies here exactly as it does to an ordinary sale.",
 
-    `If the release bill has settled the question and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job.`,
+    `If the release bill has settled the question and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -82,9 +82,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["logan", "beenleigh", "springwood", "moorooka"],

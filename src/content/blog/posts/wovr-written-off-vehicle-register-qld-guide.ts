@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
       "Finally, confirm how the registration and plates will be handled. Standard plates generally remain with a vehicle during a normal registered transfer, but they are usually surrendered when registration is cancelled. Personalised and customised plates have separate rules. Check the transaction type with TMR before pickup.",
 
-      "The short version: the WOVR is not the end of the road for a written-off car. Whether the vehicle is a statutory write-off destined for parts and scrap or a repairable write-off with rebuild value, a [cash-for-cars buyer](/damaged-cars-brisbane) can assess it and arrange towing. Confirm payment, sale records, and the applicable TMR steps before it leaves.",
+      "The short version: the WOVR is not the end of the road for a written-off car. Whether the vehicle is a statutory write-off destined for parts and scrap or a repairable write-off with rebuild value, a [cash-for-cars buyer](/damaged-cars-brisbane) can assess it and arrange towing. Confirm payment, sale records, and the applicable TMR steps before it leaves. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.",
     ],
     date: "2026-04-09",
     updatedAt: "2026-06-08",
@@ -56,6 +56,6 @@ export const post: RawBlogPostEntry = {
       },
     ],
     category: "Guides",
-    relatedServices: ["damaged-cars-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
+    relatedServices: ["damaged-cars-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
   };

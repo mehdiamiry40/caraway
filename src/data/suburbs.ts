@@ -34,7 +34,7 @@ export interface SuburbPage {
 export const suburbs: SuburbPage[] = [
   {
     slug: "toowong",
-    updatedAt: "2026-08-10",
+    updatedAt: "2026-10-18",
     title: "Car Removal Toowong | Cash for Cars & Pickup",
     metaDescription:
       "Car removal Toowong for unregistered, damaged, or non-running cars. Request a quote; pickup is included when Caraway buys, subject to access and availability.",
@@ -45,7 +45,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Inner-west pickups can involve apartment basements, shared driveways, steep streets, and limited loading space. Those details affect which collection method is suitable, so include the exact parking position, clearance height, ramp access, and whether the vehicle starts, steers, and rolls. For a car on a busy road or in restricted parking, Caraway will confirm whether there is a safe loading position or whether the vehicle needs to be moved first.",
     serviceDetails:
-      "Caraway considers registered and unregistered cars in a range of conditions, including vehicles with mechanical faults, accident damage, flat tyres, missing keys, or expired registration. The quote depends on the year, make, model, condition, completeness, location, ownership information, and pickup access. Photos of the vehicle and parking area help avoid surprises before a collection is booked.",
+      "Caraway considers registered and unregistered cars in a range of conditions, including vehicles with mechanical faults, accident damage, flat tyres, missing keys, or expired registration. The quote depends on the year, make, model, condition, completeness, location, ownership information, and pickup access. Photos of the vehicle and parking area help avoid surprises before a collection is booked. Enquiries from Toowong and Brisbane's inner west follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "You receive the proposed offer and collection requirements before accepting. If a purchase goes ahead, Caraway confirms the pickup window and agreed payment method, checks the seller's authority to sell, and provides buyer details and a receipt for your records. Pickup availability remains subject to the vehicle details, safe access, and the collection schedule.",
     nearbyAreaNames: [
@@ -83,7 +83,10 @@ export const suburbs: SuburbPage[] = [
           "It may be available, but it is not guaranteed. Timing depends on the vehicle, safe access, your availability, and the collection schedule. Caraway confirms the window before pickup.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the vehicle details and a clear description of the Toowong pickup location. Caraway will confirm the offer, access requirements, and available collection window before you decide.",
     nearbySuburbs: ["kenmore"],
@@ -91,6 +94,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "logan",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Logan | Vehicle Pickup Options",
     metaDescription:
       "Request a quote for a car in Logan. Caraway confirms the offer, access, payment method, and available pickup window before collection.",
@@ -101,7 +105,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Logan enquiries cover dense residential streets, workshop yards, larger suburban blocks, and semi-rural properties. Before quoting on collection, Caraway needs to know whether the car is on concrete, gravel, soft ground, or inside a shed; whether gates and driveways allow suitable access; and whether the wheels turn and the vehicle can roll. For outer Logan addresses, the exact suburb and pickup position help determine scheduling before an offer is accepted.",
     serviceDetails:
-      "Cars with expired registration, mechanical faults, body damage, high kilometres, missing keys, or non-running engines can be assessed. Provide the year, make, model, condition, ownership information, registration status, and clear photos. If the vehicle has seized wheels, major structural damage, or difficult yard access, disclose that before booking so suitable collection arrangements can be considered.",
+      "Cars with expired registration, mechanical faults, body damage, high kilometres, missing keys, or non-running engines can be assessed. Provide the year, make, model, condition, ownership information, registration status, and clear photos. If the vehicle has seized wheels, major structural damage, or difficult yard access, disclose that before booking so suitable collection arrangements can be considered. Enquiries from Logan City follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "Caraway sets out the proposed offer and any pickup conditions before the seller commits. When a purchase is agreed, the collection window and payment method are confirmed, and payment is handled according to that agreement before the vehicle leaves. The seller receives a receipt and buyer details to retain with their Queensland disposal records.",
     nearbyAreaNames: [
@@ -139,7 +143,10 @@ export const suburbs: SuburbPage[] = [
           "Same- or next-day pickup may be available, but timing depends on the suburb, vehicle, access, seller availability, and collection schedule. The window is confirmed before booking.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Tell Caraway the Logan suburb, vehicle condition, and exact access setup. You will receive the proposed offer and available pickup arrangements before deciding whether to proceed.",
     nearbySuburbs: ["springwood", "beenleigh"],
@@ -147,7 +154,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "kenmore",
-    updatedAt: "2026-08-09",
+    updatedAt: "2026-10-18",
     title: "Car Buyers Kenmore | Cash for Cars & Pickup",
     metaDescription:
       "Looking for car buyers in Kenmore? Request a vehicle-specific quote from Caraway. Pickup is included when Caraway buys, subject to access and availability.",
@@ -158,7 +165,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Western-suburb properties can have sloping driveways, narrow approaches, low carports, or vehicles stored away from the street. Explain the access from the road to the car rather than supplying only the suburb. Photos showing the driveway, gates, overhead clearance, turning room, and any slope help Caraway assess whether collection is practical and what information is still needed.",
     serviceDetails:
-      "Caraway can assess older, damaged, unregistered, high-kilometre, and non-running vehicles. The offer is based on the vehicle and market information available at the time, including condition, completeness, location, and access. If the car has flat tyres, no keys, locked steering, seized brakes, or cannot be reached from a firm driveway, include that in the first enquiry.",
+      "Caraway can assess older, damaged, unregistered, high-kilometre, and non-running vehicles. The offer is based on the vehicle and market information available at the time, including condition, completeness, location, and access. If the car has flat tyres, no keys, locked steering, seized brakes, or cannot be reached from a firm driveway, include that in the first enquiry. Enquiries from Kenmore and western Brisbane follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "When comparing car buyers for a Kenmore vehicle, check the written net offer, pickup conditions, payment timing, revision conditions, and buyer identity. Caraway confirms the vehicle being purchased, its offer and conditions, the payment arrangement, and the collection window before pickup. If the purchase proceeds, the seller receives a receipt and buyer details for their records.",
     nearbyAreaNames: [
@@ -196,14 +203,18 @@ export const suburbs: SuburbPage[] = [
           "Provide the year, make, model, kilometres, registration status, condition, ownership information, photos, and a clear description of where the car is parked and whether it starts and rolls.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Include photos of the vehicle and its access route with your Kenmore enquiry. Caraway will confirm what it can offer and whether pickup is available for that location.",
     nearbySuburbs: ["toowong"],
-    relatedServices: ["cash-for-cars-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   },
   {
     slug: "springwood",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Springwood | Quote and Pickup Options",
     metaDescription:
       "Request a vehicle quote in Springwood, Daisy Hill, Underwood, or Rochedale South. Pickup is included when Caraway buys, subject to availability.",
@@ -214,7 +225,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "A Springwood pickup may be at a house, unit complex, workshop, commercial property, or roadside location. Provide the exact position and explain whether there is room for safe loading away from moving traffic. For gated complexes or business sites, include access hours and the contact who can authorise entry and release the vehicle.",
     serviceDetails:
-      "Caraway considers cars with mechanical faults, accident damage, expired registration, high kilometres, or no current roadworthy. The year, make, model, condition, completeness, ownership information, and access all affect the quote and pickup plan. A non-running vehicle should be described accurately, including whether it steers, rolls, has keys, and has usable tyres.",
+      "Caraway considers cars with mechanical faults, accident damage, expired registration, high kilometres, or no current roadworthy. The year, make, model, condition, completeness, ownership information, and access all affect the quote and pickup plan. A non-running vehicle should be described accurately, including whether it steers, rolls, has keys, and has usable tyres. Enquiries from Springwood and north-east Logan follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "Caraway confirms the commercial and practical details in advance instead of treating the suburb name as enough information. When a purchase is agreed, the seller knows the offer, collection window, payment method, and documents to retain. Pickup is included only when Caraway buys the vehicle and can confirm safe access.",
     nearbyAreaNames: [
@@ -252,14 +263,18 @@ export const suburbs: SuburbPage[] = [
           "Pickup is included when Caraway agrees to buy the vehicle and confirms suitable access. The collection window and any conditions are set out before you accept.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the Springwood address, vehicle details, and access information. Caraway will confirm the proposed offer and collection options before you commit.",
     nearbySuburbs: ["logan", "beenleigh"],
-    relatedServices: ["cash-for-cars-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   },
   {
     slug: "redcliffe",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Redcliffe & Moreton Bay",
     metaDescription:
       "Request a vehicle quote in Redcliffe or the Moreton Bay area. Pickup is included when Caraway buys, subject to location, access, and availability.",
@@ -270,7 +285,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "The Redcliffe Peninsula and wider Moreton Bay area include apartment parking, residential driveways, workshop sites, and addresses farther from central Brisbane. For an accurate collection assessment, provide the suburb, exact parking position, street or driveway access, and whether the vehicle starts and rolls. Coastal exposure, visible rust, flood or salt-water contact, and long-term storage should be disclosed because they can affect both the offer and safe loading.",
     serviceDetails:
-      "Caraway can assess registered or unregistered vehicles in varied condition, including cars with mechanical faults, corrosion, accident damage, flat tyres, or missing keys. The quote depends on the vehicle, completeness, location, access, ownership information, and current market factors. Moreton Bay scheduling is confirmed for the exact address; it is not assumed from the suburb name alone.",
+      "Caraway can assess registered or unregistered vehicles in varied condition, including cars with mechanical faults, corrosion, accident damage, flat tyres, or missing keys. The quote depends on the vehicle, completeness, location, access, ownership information, and current market factors. Moreton Bay scheduling is confirmed for the exact address; it is not assumed from the suburb name alone. Enquiries from Redcliffe and Moreton Bay follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "Before a purchase is agreed, Caraway records the vehicle details, proposed offer, collection requirements, payment method, and available window. If the sale proceeds, the seller receives a receipt and buyer details and can keep those with their Queensland disposal records. Pickup is included when Caraway buys and confirms access.",
     nearbyAreaNames: [
@@ -308,7 +323,10 @@ export const suburbs: SuburbPage[] = [
           "Same- or next-day pickup may be available, but it is conditional on the exact location, access, vehicle details, seller availability, and collection schedule.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the Redcliffe or Moreton Bay address, vehicle condition, and access photos. Caraway will confirm the offer and available pickup arrangements before you decide.",
     nearbySuburbs: [],
@@ -316,7 +334,7 @@ export const suburbs: SuburbPage[] = [
   },
   {
     slug: "capalaba",
-    updatedAt: "2026-08-10",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Redland City | Capalaba & Bayside",
     metaDescription:
       "Request a vehicle quote in Redland City or Capalaba. Pickup is included when Caraway buys, subject to the exact address, access, and availability.",
@@ -327,7 +345,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Eastern and bayside enquiries can involve suburban driveways, unit parking, commercial sites, workshop yards, and streets with limited loading room. Include the exact parking position and any gates, slopes, height limits, soft ground, or traffic constraints. If the vehicle has coastal corrosion, flood exposure, seized brakes, or has been stored for a long period, disclose that at the quote stage.",
     serviceDetails:
-      "Caraway considers older, damaged, unregistered, high-kilometre, and non-running cars. The proposed offer reflects the make, model, year, condition, completeness, ownership information, location, and collection access. Photos should show all sides of the vehicle, the interior, visible damage, and the route from the car to the street.",
+      "Caraway considers older, damaged, unregistered, high-kilometre, and non-running cars. The proposed offer reflects the make, model, year, condition, completeness, ownership information, location, and collection access. Photos should show all sides of the vehicle, the interior, visible damage, and the route from the car to the street. Enquiries from Capalaba, Redlands, and Brisbane's bayside follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "When comparing cash-for-cars options for a Redland City vehicle, check the written net offer, pickup conditions, payment timing, revision conditions, and buyer identity. Caraway confirms the vehicle, offer and conditions, payment arrangement, and collection window before pickup. If the purchase proceeds, the seller receives a receipt and buyer details for their records.",
     nearbyAreaNames: [
@@ -365,14 +383,18 @@ export const suburbs: SuburbPage[] = [
           "Yes. Explain whether it steers and rolls, the tyre and brake condition, visible rust or flood exposure, and the exact access route. Caraway will confirm whether purchase and collection are available.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the eastern or bayside address, vehicle details, and access photos. Caraway will confirm whether it can buy the vehicle and the collection arrangements available.",
     nearbySuburbs: [],
-    relatedServices: ["cash-for-cars-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   },
   {
     slug: "beenleigh",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Beenleigh | Quote and Pickup Options",
     metaDescription:
       "Request a vehicle quote in Beenleigh, Eagleby, Holmview, or nearby Logan suburbs. Pickup is included when Caraway buys, subject to availability.",
@@ -383,7 +405,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Beenleigh-area pickups may involve residential driveways, townhouse complexes, workshops, industrial sites, or larger blocks toward the edge of Logan. State where the vehicle is parked, what surface it is on, whether a gate or building limits access, and whether the car starts, steers, and rolls. For a business or workshop site, include access hours and the person authorised to release the vehicle.",
     serviceDetails:
-      "Caraway assesses registered and unregistered cars in varied condition, including vehicles with mechanical failure, body damage, missing keys, flat tyres, or expired registration. The quote depends on the vehicle, condition, completeness, ownership information, location, and collection access. Disclose finance, storage fees, or third-party possession before accepting an offer.",
+      "Caraway assesses registered and unregistered cars in varied condition, including vehicles with mechanical failure, body damage, missing keys, flat tyres, or expired registration. The quote depends on the vehicle, condition, completeness, ownership information, location, and collection access. Disclose finance, storage fees, or third-party possession before accepting an offer. Enquiries from Beenleigh and southern Logan follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "Caraway confirms the proposed terms before collection instead of relying on a generic suburb promise. If a purchase is agreed, the seller receives the offer, available pickup window, payment method, and any access conditions in advance, followed by a receipt and buyer details for their records.",
     nearbyAreaNames: [
@@ -421,14 +443,18 @@ export const suburbs: SuburbPage[] = [
           "Pickup is included when Caraway agrees to buy the vehicle and confirms safe access. The offer and collection conditions are set out before you accept.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the Beenleigh-area location, vehicle condition, and access details. Caraway will confirm the proposed offer and collection options before you commit.",
     nearbySuburbs: ["logan", "springwood"],
-    relatedServices: ["cash-for-cars-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   },
   {
     slug: "moorooka",
+    updatedAt: "2026-10-18",
     title: "Cash for Cars Moorooka & South Brisbane",
     metaDescription:
       "Request a vehicle quote in Moorooka or Brisbane's southside. Pickup is included when Caraway buys, subject to vehicle details, access, and availability.",
@@ -439,7 +465,7 @@ export const suburbs: SuburbPage[] = [
     localContent:
       "Southside collection locations range from residential streets and under-house parking to workshop yards and industrial properties. Tell Caraway whether the car is behind a gate, on a slope, inside a low garage, blocked by another vehicle, or held by a mechanic. For Rocklea or another flood-prone address, disclose any known water exposure, contamination, seized brakes, or electrical damage rather than assuming a standard pickup.",
     serviceDetails:
-      "Older, damaged, unregistered, scrap, workshop-held, flood-affected, and non-running vehicles can be assessed. The quote depends on the vehicle, completeness, condition, ownership information, location, and access. Cars with severe damage, water exposure, no keys, locked steering, or seized wheels need clear photos and an accurate description before collection can be considered.",
+      "Older, damaged, unregistered, scrap, workshop-held, flood-affected, and non-running vehicles can be assessed. The quote depends on the vehicle, completeness, condition, ownership information, location, and access. Cars with severe damage, water exposure, no keys, locked steering, or seized wheels need clear photos and an accurate description before collection can be considered. Enquiries from Moorooka and South Brisbane follow the same cash for cars Brisbane process as the rest of our service area: details first, a written offer, then a confirmed collection.",
     whyUs:
       "Caraway confirms the vehicle details, offer, payment method, collection requirements, and available window before a purchase is agreed. Pickup is included when Caraway buys and suitable access is confirmed. The seller receives buyer details and a receipt to retain with their Queensland disposal records.",
     nearbyAreaNames: [
@@ -477,11 +503,14 @@ export const suburbs: SuburbPage[] = [
           "Yes. Provide photos and disclose the water level, contamination, electrical condition, brakes, wheels, keys, and access. Caraway will confirm whether it can buy and safely collect the vehicle.",
       },
     ],
-    internalLinks: [{ label: "View all service areas", href: "/locations" }],
+    internalLinks: [
+      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "View all service areas", href: "/locations" },
+    ],
     finalCtaText:
       "Send the southside address, vehicle details, and access photos. Caraway will confirm the proposed offer and whether collection is available before you decide.",
     nearbySuburbs: [],
-    relatedServices: ["cash-for-cars-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   },
 ];
 

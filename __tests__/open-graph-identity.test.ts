@@ -53,7 +53,7 @@ describe("Open Graph identity", () => {
       categoryMetadata({ params: Promise.resolve({ category: "guides" }) }),
       pagedMetadata({ params: Promise.resolve({ page: "2" }) }),
       serviceMetadata({
-        params: Promise.resolve({ slug: "cash-for-cars-brisbane" }),
+        params: Promise.resolve({ slug: "car-removal-brisbane" }),
       }),
       locationMetadata({ params: Promise.resolve({ slug: "toowong" }) }),
     ]);

@@ -27,49 +27,49 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   const StepHeading = showHeader ? "h3" : "h2";
 
   return (
-    <section id="how-it-works" className="section-y-tight scroll-mt-header relative bg-background">
+    <section id="how-it-works" className="section-y scroll-mt-header relative bg-background">
       <div className="site-container">
         {showHeader && (
-          <div className="mb-10 text-center md:mb-14">
-            <p className="eyebrow mb-4">How it works</p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-[2.5rem] font-bold leading-[1.1] text-primary text-balance">
+          <div className="mb-10 max-w-3xl md:mb-14">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              How it works
+            </p>
+            <h2 className="font-display text-[2rem] font-medium leading-[1.15] text-foreground sm:text-5xl sm:leading-[3.5rem]">
               Four simple steps.
             </h2>
           </div>
         )}
 
-        <div className="relative">
-          {/* Connector line behind the icons on desktop. */}
-          <span
-            aria-hidden="true"
-            className="absolute left-[12.5%] right-[12.5%] top-10 hidden h-px bg-border lg:block"
-          />
-          <ol className="relative grid grid-cols-2 gap-x-4 gap-y-10 lg:grid-cols-4">
-            {steps.map(({ icon: Icon, title, description }, index) => (
-              <li key={title} className="relative flex flex-col items-center text-center">
-                <span className="relative flex h-20 w-20 items-center justify-center border border-border bg-secondary text-primary">
-                  <Icon className="h-9 w-9" strokeWidth={1.75} aria-hidden="true" />
-                  <span
-                    aria-hidden="true"
-                    className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center bg-cta font-display text-xs font-bold text-cta-foreground"
-                  >
-                    {index + 1}
-                  </span>
+        <ol className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          {steps.map(({ icon: Icon, title, description }, index) => (
+            <li
+              key={title}
+              className="group relative flex aspect-auto flex-col justify-between bg-secondary/60 p-6 transition-colors duration-300 hover:bg-secondary sm:aspect-square sm:p-8"
+            >
+              <div className="flex items-start justify-between">
+                <span
+                  aria-hidden="true"
+                  className="font-display text-6xl font-medium leading-none text-foreground/15 sm:text-7xl"
+                >
+                  {index + 1}
                 </span>
-                <StepHeading className="mt-5 font-display text-base font-semibold leading-snug text-primary sm:text-lg">
+                <Icon className="h-7 w-7 text-foreground" strokeWidth={1.5} aria-hidden="true" />
+              </div>
+              <div className="mt-8">
+                <StepHeading className="font-display text-xl font-medium leading-snug text-foreground sm:text-2xl">
                   {title}
                 </StepHeading>
-                <p className="mt-1 text-sm text-muted-foreground">{description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
+                <p className="mt-1.5 text-[0.9375rem] text-muted-foreground">{description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2">
           {showHeader && (
             <Link
               href="/how-it-works"
-              className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
+              className="inline-flex min-h-11 items-center gap-1.5 text-base font-semibold text-accent-ink link-underline"
             >
               Read the full quote, pickup and payment process
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -77,7 +77,7 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
           )}
           <Link
             href="/#quote-form"
-            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-accent-ink"
+            className="inline-flex min-h-11 items-center gap-1.5 text-base font-semibold text-accent-ink link-underline"
           >
             Start your quote
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

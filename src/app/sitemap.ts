@@ -173,7 +173,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
    * 2. Service pages — money pages get the highest non-homepage priority
    * ---------------------------------------------------------------------*/
   const PRIMARY_SERVICE_SLUGS = new Set([
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
     "sell-my-car-brisbane",
   ]);

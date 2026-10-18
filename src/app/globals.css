@@ -3,8 +3,8 @@
 /* Caraway utility design system: clear, civic, practical, Queensland-focused. */
 
 @theme inline {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-schibsted), var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
@@ -51,6 +51,15 @@
   --color-cta-bright: hsl(var(--cta-bright));
   --color-accent-on-dark: hsl(var(--accent-on-dark));
 
+  --color-navy: hsl(var(--navy));
+  --color-navy-foreground: hsl(var(--navy-foreground));
+  --color-rust: hsl(var(--rust));
+  --color-sun: hsl(var(--sun));
+  --color-orange: hsl(var(--orange));
+  --color-peach: hsl(var(--peach));
+  --color-chocolate: hsl(var(--chocolate));
+  --color-sky: hsl(var(--sky));
+
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
   --shadow-md: 0 2px 8px hsl(var(--shadow-color) / 0.08);
   --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.10);
@@ -58,7 +67,7 @@
   --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: -0.03em;
+  --tracking-display: -0.02em;
   --tracking-tight: -0.015em;
   --tracking-snug: -0.005em;
   --tracking-normal: 0;
@@ -81,89 +90,97 @@
 }
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 0 0% 19%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 19%;
+  /* Exygy-inspired palette: warm paper canvas, near-black ink, earthy brown
+     actions, civic blue links, and a set of flat geometric shape colours. */
+  --background: 43 22% 94%;            /* #F2F0EB paper */
+  --foreground: 0 0% 7%;               /* #131313 */
+  --card: 45 29% 97%;                  /* #FAF9F6 */
+  --card-foreground: 0 0% 7%;
 
-  --primary: 216 55% 38%;              /* #2C5697 */
+  --primary: 0 0% 7%;                  /* #131313 ink — headings, dark bands */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 198 57% 95%;            /* #EAF5FA */
-  --secondary-foreground: 216 48% 29%;
+  --secondary: 40 14% 89%;             /* #E7E4DD */
+  --secondary-foreground: 0 0% 7%;
 
-  --muted: 200 17% 97%;
-  --muted-foreground: 210 11% 39%;
+  --muted: 40 16% 91%;                 /* #ECE9E3 */
+  --muted-foreground: 0 0% 36%;        /* #5C5C5C */
 
-  --accent: 187 54% 38%;               /* #2D8795 */
+  --accent: 204 65% 38%;               /* #226C9E civic blue */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 51%;            /* #DC2626 */
+  --destructive: 0 72% 45%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Status green for success toasts/banners — distinct from --cta action green. */
-  --success: 142 76% 36%;              /* #16A34A — emerald */
+  --success: 142 70% 30%;
   --success-foreground: 0 0% 100%;
 
-  --warning: 38 92% 50%;               /* #F59E0B */
-  --warning-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 7%;
 
-  --info: 200 98% 39%;                 /* #0284C7 */
+  --info: 204 65% 38%;
   --info-foreground: 0 0% 100%;
 
-  --border: 210 12% 85%;
-  /* Form-control borders need >= 3:1 against white (WCAG 1.4.11 non-text
-     contrast); decorative --border stays lighter. 207 14% 58% = 3.08:1. */
-  --input: 207 14% 58%;
-  --ring: 216 55% 38%;
+  --border: 43 10% 84%;                /* #DCD9D2 grid line */
+  /* Form-control borders need >= 3:1 against the card (WCAG 1.4.11). */
+  --input: 40 5% 52%;
+  --ring: 204 65% 38%;
 
-  --shadow-color: 216 35% 22%;
+  --shadow-color: 25 20% 15%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
-  /* Single source of truth for the fixed-header height (utility strip + nav).
-     The utility strip is hidden on mobile. Consumed by the
+  /* Single source of truth for the fixed-header height. Consumed by the
      mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
      three can never drift apart. */
-  --header-h: 4.25rem;
+  --header-h: 4.5rem;
 
-  --ink: 216 55% 38%;
-  --ink-deep: 214 55% 25%;
-  --ink-raised: 212 42% 46%;
-  --on-dark: 205 35% 91%;
+  --ink: 0 0% 9%;                      /* #171717 dark band */
+  --ink-deep: 0 0% 5%;
+  --ink-raised: 0 0% 16%;
+  --on-dark: 40 12% 84%;
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 72 59% 54%;
-  --plate-foreground: 216 48% 23%;
-  --cta: 72 59% 54%;                   /* #B5D145 */
-  --cta-foreground: 216 48% 23%;
+  --plate: 43 84% 61%;                 /* #EFC04A sun */
+  --plate-foreground: 0 0% 7%;
+  --cta: 25 74% 23%;                   /* #65330F brown */
+  --cta-foreground: 0 0% 100%;
 
-  /* Accessible TEXT variants of the two bright hues. The bright --cta/--accent
-     pass AA only as backgrounds (paired with plum -foreground); as text on
-     white they're ~2.4–2.8:1. These darker variants are for labels/links/text
-     on light surfaces, and the brighter ones for emphasis on dark bands. */
-  --cta-ink: 72 66% 27%;
-  --accent-ink: 187 62% 28%;
-  --cta-bright: 72 72% 70%;
-  --accent-on-dark: 187 65% 82%;
+  /* Accessible TEXT variants: --cta-ink / --accent-ink for text on paper,
+     --cta-bright / --accent-on-dark for emphasis on dark bands. */
+  --cta-ink: 25 74% 23%;
+  --accent-ink: 204 70% 31%;
+  --cta-bright: 24 83% 65%;            /* #F0965A peach */
+  --accent-on-dark: 219 44% 71%;       /* #95ACD6 sky */
 
-  --footer-wash: hsl(var(--ink));
-  --hero-wash: hsl(var(--primary));
+  /* Flat geometric shape palette (decorative only). */
+  --navy: 214 63% 32%;                 /* #1E4A85 feature band */
+  --navy-foreground: 0 0% 100%;
+  --rust: 25 74% 34%;                  /* #974C17 */
+  --sun: 43 84% 61%;
+  --orange: 22 70% 51%;                /* #D9692C */
+  --peach: 24 83% 65%;
+  --chocolate: 25 63% 22%;             /* #5A3214 */
+  --sky: 219 44% 71%;
+  --grid-line: 43 10% 84%;
+
+  --footer-wash: hsl(var(--background));
+  --hero-wash: hsl(var(--background));
   --hero-mesh: transparent;
 }
 
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 7.25rem;
+    --header-h: 5.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    --header-h: 7.25rem;
+    --header-h: 5.5rem;
   }
 }
 
@@ -184,10 +201,10 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-semibold;
+    @apply font-medium;
     letter-spacing: var(--tracking-tight);
     text-wrap: balance;
-    color: hsl(var(--primary));
+    color: hsl(var(--foreground));
   }
 
   h1 { letter-spacing: var(--tracking-display); }
@@ -324,9 +341,9 @@
 
   .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-semibold text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
-  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-semibold text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
-  .prose-body h4 { @apply text-lg sm:text-xl font-display font-semibold text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-medium text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
+  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-medium text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
+  .prose-body h4 { @apply text-lg sm:text-xl font-display font-medium text-primary mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
@@ -617,6 +634,33 @@
   margin: 3mm;
 }
 
+/* ─── Exygy-style surfaces ─────────────────────────────────────────────────── */
+/* Square architectural grid on the paper canvas (belief band + footer). */
+@utility grid-paper {
+  background-color: hsl(var(--background));
+  background-image:
+    linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
+  background-size: 51px 51px;
+  background-position: -1px -1px;
+}
+
+/* Flat decorative shapes. Positioned by the caller; never interactive. */
+@utility shape {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+@utility shape-kite {
+  clip-path: polygon(14% 0, 100% 34%, 100% 100%, 0 100%);
+}
+@utility shape-triangle-right {
+  clip-path: polygon(0 0, 100% 52%, 0 100%);
+}
+@utility shape-arch {
+  border-radius: 9999px 9999px 0 0;
+}
+
 @utility pt-safe { padding-top: env(safe-area-inset-top, 0px); }
 @utility pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
 @utility pl-safe { padding-left: env(safe-area-inset-left, 0px); }
@@ -680,18 +724,6 @@
   border-bottom: 1px solid hsl(var(--border));
   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 4px;
-    background: linear-gradient(
-      90deg,
-      hsl(var(--cta)),
-      hsl(var(--accent)),
-      hsl(var(--primary))
-    );
-  }
 }
 
 @utility aurora-full {

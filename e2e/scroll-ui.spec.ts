@@ -12,7 +12,7 @@ test.use({
 
 const STICKY_BAR = '[data-testid="sticky-mobile-cta"]';
 const TARGET_SERVICE_PATHS = [
-  "/cash-for-cars-brisbane",
+  "/sell-my-car-brisbane",
   "/car-removal-brisbane",
 ] as const;
 

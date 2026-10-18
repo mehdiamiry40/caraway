@@ -38,7 +38,7 @@ describe("HowItWorks internal links", () => {
     ).not.toBeInTheDocument();
   });
 
-  it.each(["cash-for-cars-brisbane", "car-removal-brisbane"])(
+  it.each(["car-removal-brisbane"])(
     "links the %s service body to the full process guide",
     (slug) => {
       const service = services.find((candidate) => candidate.slug === slug);

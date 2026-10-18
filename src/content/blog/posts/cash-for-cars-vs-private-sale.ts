@@ -13,7 +13,7 @@ export const post: RawBlogPostEntry = {
 
     "## Quick answer",
 
-    "Private sale may get a higher price for a clean, registered, roadworthy vehicle with strong buyer demand. [Cash for cars in Brisbane](/cash-for-cars-brisbane) may be better when you want a faster, simpler sale, especially for damaged, unwanted, scrap, unregistered, or non-running vehicles where towing and paperwork support matter.",
+    "Private sale may get a higher price for a clean, registered, roadworthy vehicle with strong buyer demand. [Cash for cars in Brisbane](/) may be better when you want a faster, simpler sale, especially for damaged, unwanted, scrap, unregistered, or non-running vehicles where towing and paperwork support matter.",
 
     "## When private sale may be better",
 
@@ -89,6 +89,6 @@ export const post: RawBlogPostEntry = {
   ],
   date: "2026-04-26",
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["south-brisbane", "logan", "north-brisbane"],
 };

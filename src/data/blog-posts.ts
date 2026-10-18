@@ -50,7 +50,7 @@ export const blogPosts: BlogPost[] = rawBlogPosts
 const serviceCornerstoneSlugs: Readonly<
   Partial<Record<string, readonly string[]>>
 > = {
-  "cash-for-cars-brisbane": [
+  "sell-my-car-brisbane": [
     "how-to-sell-your-car-for-cash-brisbane",
     "how-to-get-the-best-cash-for-cars-price-brisbane",
     "how-much-is-my-car-worth-brisbane",

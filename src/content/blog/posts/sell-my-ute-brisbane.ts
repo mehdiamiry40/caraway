@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "## Compare the selling routes",
 
-    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) or another direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
+    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A [cash-for-cars buyer in Brisbane](/) or another direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
 
     "## Check the Queensland seller steps",
 
@@ -72,6 +72,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
 };

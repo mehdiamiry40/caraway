@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Whatever route you take, don't let the car become a dumping problem — [scrapping a car legally in Brisbane](/blog/how-to-scrap-a-car-legally-brisbane) covers the records and notifications that matter once it leaves your driveway, which outlast the physical removal by a long way.`,
 
-    `Caraway assesses unwanted, non-running, and scrap vehicles within its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. Call **${BUSINESS.phoneDisplay}** or request an online quote before arranging a separate tow.`,
+    `Caraway assesses unwanted, non-running, and scrap vehicles within its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. Call **${BUSINESS.phoneDisplay}** or request an online quote before arranging a separate tow. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -88,7 +88,6 @@ export const post: RawBlogPostEntry = {
   relatedServices: [
     "scrap-car-removal-brisbane",
     "car-removal-brisbane",
-    "cash-for-cars-brisbane",
   ],
   relatedSuburbs: ["carindale", "nundah", "everton-park", "sunnybank"],
 };

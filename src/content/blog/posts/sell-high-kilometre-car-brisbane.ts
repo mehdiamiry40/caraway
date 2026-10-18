@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "Kilometres do not change the seller steps. Registration status and sale type do. Check current Queensland guidance for a registered transfer, cancellation, or unregistered sale, and retain a signed receipt plus confirmation of the steps you complete.",
 
-    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band.`,
+    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
@@ -60,9 +60,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["toowong", "logan", "redcliffe"],

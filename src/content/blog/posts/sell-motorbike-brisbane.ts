@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     `If it's staying off the road, you can't legally ride an unregistered bike across town to a buyer — a borrowed ute and two tie-downs is one option. A buyer may instead agree to collect it, so ask about [car removal in Brisbane](/car-removal-brisbane) and [unregistered vehicle buyers](/unregistered-cars-brisbane) before moving the bike under its own power.`,
 
-    `Caraway can assess a motorcycle from its make, model, condition, location, and access details. Call **${BUSINESS.phoneDisplay}** or send through those details for a free, no-obligation quote. If Caraway buys it, pickup is included when the supplied bike and access details match; collection timing and payment are confirmed for that job before you decide whether to sell or spend another season getting it started.`,
+    `Caraway can assess a motorcycle from its make, model, condition, location, and access details. Call **${BUSINESS.phoneDisplay}** or send through those details for a free, no-obligation quote. If Caraway buys it, pickup is included when the supplied bike and access details match; collection timing and payment are confirmed for that job before you decide whether to sell or spend another season getting it started. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {

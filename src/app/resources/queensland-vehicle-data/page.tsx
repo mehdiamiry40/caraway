@@ -929,7 +929,7 @@ export default function QueenslandVehicleDataPage() {
               This resource does not estimate an individual vehicle. For commercial
               service information, see Caraway&apos;s{" "}
               <Link
-                href="/cash-for-cars-brisbane"
+                href="/"
                 className="font-semibold text-cta-bright underline underline-offset-4 hover:text-on-dark-hi"
               >
                 Brisbane vehicle-buyer quote service

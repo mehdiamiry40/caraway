@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     "One local wrinkle worth naming: autogas is harder to buy around Brisbane than it was, and a fair number of these cars have been running on petrol alone for years with the gas side untouched. That does not remove the requirement. The fittings are still on the vehicle, and it is the installation being inspected rather than the fuel currently going through it.",
 
-    `If you want the car assessed on gas as it stands, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. Have the tank date handy if you can find it — it usually decides the answer.`,
+    `If you want the car assessed on gas as it stands, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. Have the tank date handy if you can find it — it usually decides the answer. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {
@@ -78,9 +78,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["springwood", "logan", "moorooka", "capalaba"],

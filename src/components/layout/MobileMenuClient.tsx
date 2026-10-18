@@ -178,7 +178,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         onClose={handleDialogClose}
         onKeyDown={handleDialogKeyDown}
         onClick={handleBackdropClick}
-        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t border-border bg-card p-0 text-foreground shadow-lg backdrop:bg-ink-deep/45 lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t border-border bg-background p-0 text-foreground shadow-lg backdrop:bg-ink-deep/45 lg:hidden"
       >
         <div className="min-h-full px-5 py-5 sm:px-6">
           <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border/30 pb-2">
@@ -198,7 +198,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
 
           <nav className="flex flex-col gap-0.5" aria-label="Mobile primary navigation">
             <details className="group/services">
-              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between rounded-lg border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
+              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between  border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
                 <span>Services</span>
                 <ChevronDown
                   aria-hidden="true"
@@ -211,7 +211,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                     <Link
                       href={service.href}
                       onClick={closeMenu}
-                      className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                      className="-mx-2 flex min-h-11 items-center  px-2 py-2.5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                     >
                       {service.label}
                     </Link>
@@ -221,7 +221,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                   <Link
                     href="/services"
                     onClick={closeMenu}
-                    className="-mx-2 flex min-h-11 items-center rounded-lg px-2 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
+                    className="-mx-2 flex min-h-11 items-center  px-2 py-2.5 text-sm font-semibold text-primary transition-colors duration-200 hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-base"
                   >
                     All services
                   </Link>
@@ -234,7 +234,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
-                className="-mx-2 flex min-h-[52px] items-center rounded-lg border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+                className="-mx-2 flex min-h-[52px] items-center  border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               >
                 {link.label}
               </Link>
@@ -245,7 +245,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
             <a
               href={BUSINESS.phoneTel}
               onClick={closeMenu}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg border-[1.5px] border-primary text-base text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+              className="inline-flex h-14 w-full items-center justify-center gap-2 border border-foreground text-base font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -257,7 +257,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               onClick={closeMenu}
               className={cn(
                 buttonVariants({ size: "lg" }),
-                "h-14 w-full rounded-lg text-base sm:text-lg",
+                "h-14 w-full text-base sm:text-lg",
               )}
             >
               Get my quote

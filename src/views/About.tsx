@@ -44,7 +44,7 @@ export default function About() {
       eyebrow="About"
       title="A Brisbane buyer — not a broker."
       subtitle={
-        <p>A locally owned Brisbane vehicle buyer.</p>
+        <p>A locally owned Brisbane car buyer, paying cash for cars across Greater Brisbane.</p>
       }
     >
       <div className="site-container py-14 sm:py-16 lg:py-20">
@@ -53,6 +53,16 @@ export default function About() {
             <IconHeading icon={Users}>Who we are</IconHeading>
             <p className="text-foreground/75 leading-relaxed text-base">
               Caraway is a Brisbane-based direct buyer operated by {BUSINESS.legalName}. We assess each vehicle from the supplied details and, when we make an offer, confirm the collection, payment, and record-keeping terms before dispatch.
+            </p>
+            <p className="mt-4 text-foreground/75 leading-relaxed text-base">
+              We started Caraway to make{" "}
+              <Link href="/" className="text-accent-ink font-medium link-underline">
+                cash for cars in Brisbane
+              </Link>{" "}
+              simpler and more honest: no instant online figure that changes on the day, no
+              surprise towing fees, and no pressure to accept. A person reviews every car, the
+              offer is in writing, and pickup is included when we buy — whether the car runs
+              perfectly or hasn&apos;t moved in years.
             </p>
             <div className="mt-6 overflow-hidden border border-border">
               <Image

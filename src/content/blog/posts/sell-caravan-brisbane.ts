@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "There is a point where the two certificates cost more than the van will ever return, and reaching it is not a failure. It is the arithmetic of a twenty-five-year-old pop-top with a soft rear wall. The question then changes from what the van is worth to how it leaves, and the registration side still needs finishing properly: [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a trailer transfer much as it does to a car.",
 
-    `A caravan is not interchangeable with a car for a buyer — the value sits somewhere different, and so does the tow — so the last step when you sell a caravan in Brisbane is to ask rather than assume. Call **${BUSINESS.phoneDisplay}** or send the ATM, the registration status, the build year and a photo of the access with a free, no-obligation quote request. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `A caravan is not interchangeable with a car for a buyer — the value sits somewhere different, and so does the tow — so the last step when you sell a caravan in Brisbane is to ask rather than assume. Call **${BUSINESS.phoneDisplay}** or send the ATM, the registration status, the build year and a photo of the access with a free, no-obligation quote request. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -92,9 +92,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "sell-my-car-brisbane",
   ],
   relatedSuburbs: ["redcliffe", "capalaba", "beenleigh", "logan"],

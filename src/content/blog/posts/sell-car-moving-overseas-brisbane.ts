@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "## Match the sale route to the time you have left",
 
-    "A private sale wants the most calendar: photos, a listing, a safety certificate, test drives, and a buyer who takes a fortnight to decide. It suits a tidy registered car and a seller with two or three months. With a fortnight left, or with an older, damaged, unregistered or non-running car, a direct offer from a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane) removes the listing period. Compare written offers built on identical vehicle details rather than the first number quoted over the phone.",
+    "A private sale wants the most calendar: photos, a listing, a safety certificate, test drives, and a buyer who takes a fortnight to decide. It suits a tidy registered car and a seller with two or three months. With a fortnight left, or with an older, damaged, unregistered or non-running car, a direct offer from a [cash-for-cars buyer in Brisbane](/) removes the listing period. Compare written offers built on identical vehicle details rather than the first number quoted over the phone.",
 
     "Whichever route you take, have the paperwork together before the final week: photo identification, the registration details, finance payout confirmation where it applies, and the signed sale record both parties keep. The [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates what changes between a registered transfer, an unregistered sale and a cancellation.",
 
@@ -64,9 +64,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["toowong", "moorooka", "logan"],

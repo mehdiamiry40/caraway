@@ -23,7 +23,7 @@ test("submits the homepage hero quote form", async ({ page }) => {
 // The full quote form is no longer on the home page; a service page is the
 // remaining surface that carries the free-text vehicle notes.
 test("submits the full quote form on a service page", async ({ page }) => {
-  await page.goto("/cash-for-cars-brisbane");
+  await page.goto("/sell-my-car-brisbane");
 
   await page.locator("#quote-form").scrollIntoViewIfNeeded();
 

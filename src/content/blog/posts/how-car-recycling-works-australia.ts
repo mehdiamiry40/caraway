@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     "Ask the buyer which entity is purchasing the vehicle, whether collection is included, what facts the assessment assumes, and what receipt and downstream information are available. A recycling pathway does not create a fixed vehicle price: make, model, condition, completeness, location, access, and current component or material demand can all affect an individual assessment.",
 
-    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads steps and keep confirmation. For a cancellation, follow the current registration and plate process. For an unregistered sale, both parties should keep a signed record identifying the vehicle and sale. The [Queensland car-sale paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates those pathways.",
+    "Queensland paperwork depends on the transaction. For a registered sale, complete the seller-side Transport and Main Roads steps and keep confirmation. For a cancellation, follow the current registration and plate process. For an unregistered sale, both parties should keep a signed record identifying the vehicle and sale. The [Queensland car-sale paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates those pathways. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.",
   ],
   date: "2026-04-27",
   updatedAt: "2026-08-07",
@@ -60,6 +60,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane", "cash-for-cars-brisbane"],
+  relatedServices: ["scrap-car-removal-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],
 };

@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 const SERVICE_ICONS: Record<string, LucideIcon> = {
-  "cash-for-cars-brisbane": Banknote,
   "car-removal-brisbane": Truck,
   "sell-my-car-brisbane": CarFront,
   "scrap-car-removal-brisbane": Recycle,

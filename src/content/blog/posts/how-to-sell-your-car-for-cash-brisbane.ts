@@ -21,7 +21,7 @@ export const post: RawBlogPostEntry = {
 
     "**Auto wreckers** may assess an end-of-life vehicle for reusable components and recoverable materials. Collection, deductions, and downstream handling vary by operator, so compare the complete written transaction using our [buyer-versus-wrecker checklist](/blog/cash-for-cars-vs-wreckers-brisbane).",
 
-    "**A cash-for-cars buyer** like [Caraway](/cash-for-cars-brisbane) provides a direct-buyer option. The quote is based on the details supplied, pickup is included when Caraway buys and the vehicle and access match those details, and the payment arrangement is confirmed before collection. Compare that offer with the likely net return and effort of your other options.",
+    "**A cash-for-cars buyer** like [Caraway](/) provides a direct-buyer option. The quote is based on the details supplied, pickup is included when Caraway buys and the vehicle and access match those details, and the payment arrangement is confirmed before collection. Compare that offer with the likely net return and effort of your other options.",
 
     "## Step 1: Work out what your car is realistically worth",
 
@@ -124,6 +124,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
 };

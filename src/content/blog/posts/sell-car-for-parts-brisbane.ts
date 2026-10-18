@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     `Queensland Government says a vehicle sold for parts must be deregistered before it is sold. If the vehicle is currently registered, ensure the [registration cancellation](/blog/how-to-cancel-car-rego-qld) and applicable plate-surrender, retention, or declaration step are complete before completing the sale or handing over the vehicle. Then both parties should sign and retain an unregistered-sale record containing both signatures, the VIN, chassis, or engine number, the make and model, and the sale date. Moving the deregistered shell on a road is a separate question; it needs a lawful permit and CTP where eligible, or towing if it is unsafe to drive.`,
 
-    `Caraway can assess complete and partly dismantled vehicles within its confirmed Greater Brisbane service area. State every missing component and show the vehicle's position and access. Call **${BUSINESS.phoneDisplay}** or send the details for an individual quote before removing more parts.`,
+    `Caraway can assess complete and partly dismantled vehicles within its confirmed Greater Brisbane service area. State every missing component and show the vehicle's position and access. Call **${BUSINESS.phoneDisplay}** or send the details for an individual quote before removing more parts. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {

@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "If the answer is to sell, an unregistered car sells on ordinary terms. Confirm you are entitled to deal with it, keep a signed record of the sale with the vehicle identifiers on it, and follow the correct pathway for a vehicle that is already unregistered rather than the transfer process for a registered one. The [paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) separates those paths, and [what happens to number plates](/blog/number-plates-when-selling-car-qld) is worth reading before anything is unbolted.",
 
-    `If the sums have settled it and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job.`,
+    `If the sums have settled it and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {
@@ -95,7 +95,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "unregistered-cars-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["capalaba", "logan", "moorooka", "redcliffe"],

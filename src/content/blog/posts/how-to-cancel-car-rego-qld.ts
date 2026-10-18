@@ -30,7 +30,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling vs cancelling: cash for cars and interstate moves",
 
-      "A few scenarios are worth calling out. If you're selling to a [cash-for-cars buyer](/cash-for-cars-brisbane), decide before pickup whether the transaction will be a registered transfer, an unregistered sale, or a cancellation. Complete the TMR seller steps that apply and keep confirmation. If you're moving interstate, coordinate the Queensland cancellation with registration in the new state so you do not drive an unregistered vehicle.",
+      "A few scenarios are worth calling out. If you're selling to a [cash-for-cars buyer](/), decide before pickup whether the transaction will be a registered transfer, an unregistered sale, or a cancellation. Complete the TMR seller steps that apply and keep confirmation. If you're moving interstate, coordinate the Queensland cancellation with registration in the new state so you do not drive an unregistered vehicle.",
 
       "Avoid these common mistakes. Do not cancel rego and then drive the car unless the journey is lawful under the current permit and insurance rules. Remove the vehicle from toll accounts, follow TMR instructions for surrendering or retaining plates, and notify your insurer separately about any optional policy.",
 
@@ -50,6 +50,6 @@ export const post: RawBlogPostEntry = {
       },
     ],
     category: "Guides",
-    relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
   };

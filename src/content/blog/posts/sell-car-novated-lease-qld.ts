@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Now it is an ordinary Queensland sale. A registered car going to a private buyer needs a current safety certificate — valid for a private seller for two months or 2,000 kilometres from issue, whichever runs out first — and the registration transfer runs on the Vehicle Registration Transfer Application (F3520) within fourteen days of the car changing hands, with the buyer covering the transfer fee and duty. [The paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) covers the registered and unregistered paths side by side, and [Queensland safety certificates](/blog/how-to-get-a-roadworthy-certificate-brisbane) covers what an inspector is working to. Keep the payout letter, the discharge confirmation, the PPSR search certificate and the sale record together — being able to produce that trail is what keeps a settled deal settled.",
 
-    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Send the make, model, kilometres, registration status and the current finance or lease position with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Send the make, model, kilometres, registration status and the current finance or lease position with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -92,7 +92,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["springwood", "moorooka", "toowong", "logan"],

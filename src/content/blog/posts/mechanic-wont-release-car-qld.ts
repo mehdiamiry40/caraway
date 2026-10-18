@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
 
     "While a mechanic won't release your car, nobody else can collect it either, a buyer included, so the release has to come first and it has to be clear. After that, access is usually the easy part. A workshop yard with a roller door and a straight run to the street beats the shared driveway or low carport that [tow truck access in Brisbane](/blog/tow-truck-access-brisbane) is mostly about. Confirm who will be on site, and whether the car rolls and steers — a seized car and one sitting on four flat tyres are different jobs.",
 
-    `Then finish the registration side properly, because [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) does not change just because the car spent six months behind a workshop. If the repair quote has already answered the question for you, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote with the workshop's address and an honest description of the car's condition. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `Then finish the registration side properly, because [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) does not change just because the car spent six months behind a workshop. If the repair quote has already answered the question for you, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote with the workshop's address and an honest description of the car's condition. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {
@@ -79,9 +79,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "sell-my-car-brisbane",
   ],
   relatedSuburbs: ["moorooka", "logan", "springwood", "capalaba"],

@@ -42,129 +42,25 @@ export interface ServicePage {
 
 export const services: ServicePage[] = [
   {
-    slug: "cash-for-cars-brisbane",
-    serviceType: "Vehicle buying service",
-    updatedAt: "2026-08-09",
-    reviewedAt: "2026-08-07",
-    title: "Cash for Cars Brisbane | Vehicle Quote & Pickup",
-    metaDescription: `Cash for cars Brisbane: request an offer based on your vehicle details, with pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
-    h1: "Cash for Cars Brisbane — Vehicle Quotes & Pickup",
-    intro:
-      "Caraway is a Brisbane vehicle buyer for owners who want a direct quote and collection option. Share accurate details about the car and its location, and we will assess whether we can make an offer. Pickup is included when Caraway buys the vehicle, and the payment method and timing are confirmed before collection.",
-    sections: [
-      {
-        heading: "How to Request a Cash-for-Cars Quote",
-        content:
-          "Provide the make, model, year, kilometres, suburb, overall condition, and whether the car starts, rolls, steers, and has all of its wheels. Photos help us assess visible damage and completeness. We review those details before confirming a no-obligation offer; a web page cannot determine the final value of an individual vehicle.",
-        checklistItems: [
-          "Make, model, variant, year, approximate kilometres, and registration status.",
-          "Whether it starts, rolls, steers, brakes, and has all wheels and keys.",
-          "Known faults, warning lights, body damage, missing components, and modifications.",
-          "Finance, insurer, estate, or other ownership-authority details relevant to the sale.",
-          "Exact suburb plus driveway, garage, clearance, slope, surface, gate, or obstacle details.",
-          "Current photos of every side, the interior, odometer, damage, missing parts, and collection access.",
-        ],
-        image: {
-          src: "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
-          alt: "Vehicle quote-readiness diagram showing front, rear and side photos, the interior and odometer, visible damage, and driveway access",
-          caption:
-            "A complete set of current vehicle and access photos helps a buyer assess what is visible before confirming an individual quote.",
-          width: 1200,
-          height: 630,
-        },
-        supportLink: {
-          href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#give-buyers-the-full-picture",
-          label: "See the full vehicle-detail and photo checklist",
-        },
-      },
-      {
-        heading: "What Affects a Vehicle Offer",
-        content:
-          "The quote depends on the vehicle's identity, age, kilometres, mechanical and body condition, completeness, location, access, and current resale, parts, or material demand. Tell us about warning lights, missing components, accident or storm damage, finance, insurer involvement, and access constraints. The agreed offer may be revised only if the vehicle materially differs from the supplied description.",
-        supportLink: {
-          href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#compare-three-vehicle-buyer-quotes",
-          label: "Compare three written vehicle-buyer quotes",
-        },
-      },
-      {
-        heading: "Vehicles and Conditions We Can Assess",
-        content:
-          "We assess many sedans, hatchbacks, wagons, utes, SUVs, four-wheel drives, vans, and light commercial vehicles. Running, non-running, registered, unregistered, damaged, unwanted, and end-of-life cars can be considered. An assessment is not a promise to buy every vehicle; identification, ownership authority, condition, location, and safe access all matter.",
-      },
-      {
-        heading: "Pickup Across Greater Brisbane",
-        content:
-          "We quote for collections across Brisbane and surrounding parts of Logan, Ipswich, Redlands, and Moreton Bay. If Caraway buys the vehicle, pickup is included when the car and access match the information provided. Availability depends on the exact suburb, vehicle condition, access, traffic, and operator schedule, so we confirm a collection window before dispatch.",
-      },
-      {
-        heading: "Payment and the Collection Check",
-        content:
-          "Before loading, the assigned pickup operator checks that the vehicle matches the description. Caraway confirms the agreed payment method and timing with you before collection. You receive a signed receipt and buyer details for your records. Never hand over a vehicle until the agreed payment arrangement and purchaser details are clear.",
-        supportLink: {
-          href: "/how-it-works",
-          label: "See how Caraway confirms an offer, pickup, payment, and records",
-        },
-      },
-      {
-        heading: "Documents to Have Ready",
-        content:
-          "Have current photo identification, every key you hold, and relevant registration, finance, insurer, estate, or ownership records. Remove personal belongings and deal with any toll account linked to the registration. You remain responsible for completing and retaining confirmation of the Queensland seller steps that apply to the sale.",
-        supportLink: {
-          href: "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist",
-          label: "Open the Queensland seller paperwork checklist",
-        },
-      },
-    ],
-    faqs: [
-      {
-        question: "How much cash will I get for my car in Brisbane?",
-        answer:
-          "There is no reliable fixed price without the vehicle details. Make, model, year, kilometres, condition, completeness, location, access, and current demand all affect the quote.",
-      },
-      {
-        question: "Is pickup included in the offer?",
-        answer:
-          "Pickup is included when Caraway buys the vehicle and the car and access match the details supplied. We confirm the collection plan before dispatch.",
-      },
-      {
-        question: "Do you buy non-running or unregistered cars?",
-        answer:
-          "We can assess non-running and unregistered vehicles. Tell us how the car moves, whether it is complete, and what ownership records you have so we can confirm the quote and recovery plan.",
-      },
-      {
-        question: "When will the car be collected?",
-        answer:
-          "Timing depends on location, vehicle condition, access, traffic, and operator availability. We provide a collection window after those details are confirmed.",
-      },
-      {
-        question: "Who pays the most for cars in Brisbane?",
-        answer:
-          "No buyer pays the most for every vehicle. Give each buyer the same vehicle, condition, location, and access details, then compare the written net amount after deductions, pickup terms, payment timing, revision conditions, and buyer identity.",
-      },
-      {
-        question: "Where should I sell my car in Brisbane?",
-        answer:
-          "Compare a private listing, dealer trade-in, and direct vehicle buyer by likely net proceeds, preparation, fees, time, appointments, and certainty. A clean registered car may suit a private sale, while a direct buyer may suit an owner who prefers one quote and an agreed collection plan.",
-      },
-    ],
-    relatedServices: [
-      "car-removal-brisbane",
-      "sell-my-car-brisbane",
-      "scrap-car-removal-brisbane",
-    ],
-    relatedSuburbs: ["toowong", "logan", "redcliffe", "capalaba"],
-  },
-  {
     slug: "car-removal-brisbane",
     serviceType: "Vehicle purchase and collection service",
-    updatedAt: "2026-08-11",
+    updatedAt: "2026-10-18",
     reviewedAt: "2026-08-07",
     title: "Car Removal Brisbane | Pickup Included When We Buy",
-    metaDescription: `Car removal Brisbane for unwanted, damaged, and non-running vehicles. Pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Car removal Brisbane for unwanted, damaged and non-running cars. Get a written offer first; pickup is included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Car Removal Brisbane — Pickup Included When We Buy",
     intro:
-      "Caraway assesses unwanted, damaged, non-running, and end-of-life vehicles across Greater Brisbane for purchase and collection. Pickup is included when Caraway buys the vehicle. Availability and equipment depend on the car's condition, exact location, and safe access.",
+      "Need an unwanted, damaged or non-running car gone? Caraway buys and removes vehicles across Greater Brisbane, and pickup is included whenever we buy. Send the car's details and location, get a written offer, and we confirm the right truck and a collection window before anyone is dispatched.",
     sections: [
+      {
+        heading: "Car Removal That Pays You",
+        content:
+          "Car removal is how most of our cash for cars jobs in Brisbane end: we assess the vehicle, agree a price, then collect it. You aren't paying a tow operator to take the car away \u2014 when Caraway buys, the removal is part of the deal and the payment arrangement is confirmed before the truck arrives.",
+        supportLink: {
+          href: "/",
+          label: "How Caraway's cash for cars Brisbane service works",
+        },
+      },
       {
         heading: "How Brisbane Car Removal Works",
         content:
@@ -263,7 +159,6 @@ export const services: ServicePage[] = [
       },
     ],
     relatedServices: [
-      "cash-for-cars-brisbane",
       "scrap-car-removal-brisbane",
       "damaged-cars-brisbane",
     ],
@@ -272,13 +167,22 @@ export const services: ServicePage[] = [
   {
     slug: "sell-my-car-brisbane",
     serviceType: "Vehicle buying service",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-10-18",
     title: "Sell My Car Brisbane | Direct Vehicle-Buyer Quote",
-    metaDescription: `Sell your car in Brisbane with a direct vehicle-buyer quote and pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
+    metaDescription: `Sell your car in Brisbane to a direct buyer: one written offer, no listings or test drives, and pickup included when Caraway buys. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Sell My Car Brisbane — A Direct Buyer Option",
     intro:
-      "If you are deciding how to sell a car in Brisbane, Caraway provides a direct vehicle-buyer option. Request a quote from the details you supply, compare it with your other selling options, and accept only if it suits you. Pickup is included when Caraway buys the vehicle.",
+      "Selling your car in Brisbane doesn't have to mean weeks of listings, test drives and no-shows. Caraway is a direct buyer: send the details, get one written offer, compare it with your other options, and accept only if it suits you. Pickup is included when we buy.",
     sections: [
+      {
+        heading: "Selling for Cash Instead of Trading In",
+        content:
+          "A dealer trade-in ties your car's price to buying another one from the same yard, which makes it hard to see what the old car was really worth. Selling to Caraway separates the two: you get a written figure for your car on its own, paid as agreed at pickup, and you're free to buy your next car anywhere. It's the same process behind our cash for cars Brisbane service.",
+        supportLink: {
+          href: "/",
+          label: "See how cash for cars works in Brisbane",
+        },
+      },
       {
         heading: "Direct Sale or Private Listing?",
         content:
@@ -288,6 +192,14 @@ export const services: ServicePage[] = [
         heading: "Details That Make a Quote More Accurate",
         content:
           "Share the exact variant where known, year, kilometres, registration status, service history, mechanical condition, body damage, warning lights, modifications, missing components, and suburb. Recent photos of every side, the interior, odometer, and damaged areas reduce uncertainty. Disclose finance or insurer involvement before accepting an offer.",
+        image: {
+          src: "/images/cash-for-cars-quote-readiness-v1.jpg",
+          alt: "Vehicle quote-readiness diagram showing front, rear and side photos, the interior and odometer, visible damage, and driveway access",
+          caption:
+            "A complete set of current vehicle and access photos helps a buyer assess what is visible before confirming an individual quote.",
+          width: 1200,
+          height: 630,
+        },
       },
       {
         heading: "Used Cars We Can Assess",
@@ -328,7 +240,6 @@ export const services: ServicePage[] = [
       },
     ],
     relatedServices: [
-      "cash-for-cars-brisbane",
       "car-removal-brisbane",
       "damaged-cars-brisbane",
     ],
@@ -337,14 +248,23 @@ export const services: ServicePage[] = [
   {
     slug: "scrap-car-removal-brisbane",
     serviceType: "End-of-life vehicle assessment and buying service",
-    updatedAt: "2026-08-11",
+    updatedAt: "2026-10-18",
     title: "Scrap Car Removal in Brisbane | Old & Junk Cars",
     metaDescription:
       "Scrap car removal in Brisbane for old, junk, incomplete, and end-of-life vehicles. Request a vehicle-specific quote; pickup is included when Caraway buys.",
     h1: "Scrap Car Removal in Brisbane — Old & Junk Cars",
     intro:
-      "Caraway assesses old, junk, incomplete, and end-of-life vehicles for purchase and collection across Greater Brisbane. The quote depends on the identifiable vehicle, remaining components, condition, location, and access. Pickup is included when Caraway buys.",
+      "Old, junk or end-of-life car taking up the driveway? Caraway buys scrap cars across Greater Brisbane and collects them, with pickup included when we buy. The offer depends on the identifiable vehicle, what parts remain, its condition, location and access.",
     sections: [
+      {
+        heading: "Scrap Cars Still Have Value",
+        content:
+          "A car that will never drive again can still be worth something for its parts and metal. Scrap pricing is the low end of cash for cars in Brisbane, but it is rarely zero: a complete car with its catalytic converter, wheels and battery is worth more than a stripped shell. Tell us exactly what's left on it so the offer holds when the truck arrives.",
+        supportLink: {
+          href: "/",
+          label: "Compare scrap offers with Caraway's cash for cars Brisbane service",
+        },
+      },
       {
         heading: "When a Vehicle May Be at the End of Its Useful Life",
         content:
@@ -404,7 +324,6 @@ export const services: ServicePage[] = [
     ],
     relatedServices: [
       "car-removal-brisbane",
-      "cash-for-cars-brisbane",
       "damaged-cars-brisbane",
     ],
     relatedSuburbs: ["logan", "beenleigh", "capalaba", "redcliffe"],
@@ -419,8 +338,17 @@ export const services: ServicePage[] = [
       "Cash for flooded cars in Brisbane, plus accident, fire and write-off vehicles. Request a quote after checking ownership, insurance and written-off status.",
     h1: "Sell a Damaged Car in Brisbane",
     intro:
-      "Caraway assesses accident-damaged, storm-affected, flood-damaged, fire-damaged, mechanically failed, and written-off vehicles in Brisbane. The quote and collection plan depend on the damage, vehicle identity, ownership authority, insurer or finance status, and safe access.",
+      "Accident, storm, flood or fire damage \u2014 or a mechanical failure that isn't worth fixing \u2014 doesn't stop a car from being sold. Caraway assesses damaged and written-off vehicles across Brisbane. The offer and collection plan depend on the damage, the vehicle's identity, your authority to sell, any insurer or finance interest, and safe access.",
     sections: [
+      {
+        heading: "Damaged Doesn't Mean Worthless",
+        content:
+          "Damaged vehicles are a large share of the cash for cars market in Brisbane because repair quotes often outrun the car's value. We price what the car is now \u2014 repairable, parts or scrap \u2014 rather than what it was before the damage. Clear photos of every damaged area, and a straight answer on whether it starts, rolls and steers, give you the most reliable offer.",
+        supportLink: {
+          href: "/",
+          label: "How Caraway prices cars for cash in Brisbane",
+        },
+      },
       {
         heading: "Damage Details to Share for a Quote",
         content:
@@ -495,8 +423,17 @@ export const services: ServicePage[] = [
       "Unregistered car removal in Brisbane with a vehicle-specific quote, ownership document check and pickup assessment. Pickup is included when Caraway buys.",
     h1: "Unregistered Car Removal in Brisbane",
     intro:
-      "An expired or cancelled registration does not by itself determine whether Caraway can buy a vehicle. We assess the car, your authority to sell it, its location, and the collection requirements. Pickup is included when Caraway buys and the details are confirmed.",
+      "Expired or cancelled registration doesn't decide whether a car can be sold. Caraway assesses unregistered vehicles across Brisbane on the car itself, your authority to sell it, where it sits and how it can be collected \u2014 and pickup is included when we buy, so it never needs to be driven on the road.",
     sections: [
+      {
+        heading: "No Rego, No Problem for the Offer",
+        content:
+          "An unregistered car can't legally be driven to a buyer, which is why collection matters so much. When Caraway buys, the vehicle is loaded where it sits. Registration status is one input into the offer alongside condition and completeness \u2014 it's the same assessment we use for every cash for cars job in Brisbane.",
+        supportLink: {
+          href: "/",
+          label: "Read how Caraway's cash for cars Brisbane service works",
+        },
+      },
       {
         heading: "Unregistered Vehicles We Can Assess",
         content:
@@ -550,7 +487,6 @@ export const services: ServicePage[] = [
       },
     ],
     relatedServices: [
-      "cash-for-cars-brisbane",
       "car-removal-brisbane",
       "sell-my-car-brisbane",
     ],
@@ -559,13 +495,22 @@ export const services: ServicePage[] = [
   {
     slug: "hail-damaged-cars-brisbane",
     serviceType: "Hail-damaged vehicle buying service",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-10-18",
     title: "Hail Damaged Cars Brisbane | Vehicle Quote & Pickup",
     metaDescription: `Sell a hail-damaged car in Brisbane after confirming insurer and ownership status. Request an individual quote from Caraway. Call ${BUSINESS.phoneDisplay}.`,
     h1: "Sell a Hail-Damaged Car in Brisbane",
     intro:
-      "Caraway assesses hail-damaged cars in Brisbane after the owner has clarified any insurer, finance, and salvage position. The quote depends on the vehicle, extent of damage, mechanical condition, written-off status, completeness, location, and access.",
+      "Brisbane storms leave plenty of cars with dented roofs, bonnets and panels. Caraway assesses hail-damaged cars once the owner has settled any insurer, finance or salvage position. The offer depends on the vehicle, the extent of the damage, how it drives, written-off status, completeness, location and access.",
     sections: [
+      {
+        heading: "When Repairing Hail Damage Doesn't Add Up",
+        content:
+          "Paintless dent repair is excellent on lighter hail, but heavy damage across the roof and pillars can cost more than an older car is worth. If you've kept the payout or the insurer has released the car, selling it as-is to a cash for cars buyer in Brisbane is often simpler than repairing it. Photograph every panel in good light so the dents show clearly.",
+        supportLink: {
+          href: "/",
+          label: "Get a cash for cars Brisbane offer, running or not",
+        },
+      },
       {
         heading: "Document the Hail Damage Safely",
         content:
@@ -616,7 +561,6 @@ export const services: ServicePage[] = [
     ],
     relatedServices: [
       "damaged-cars-brisbane",
-      "cash-for-cars-brisbane",
       "car-removal-brisbane",
     ],
     relatedSuburbs: ["redcliffe", "capalaba", "springwood", "logan"],
@@ -624,13 +568,22 @@ export const services: ServicePage[] = [
   {
     slug: "sell-toyota-hilux-brisbane",
     serviceType: "Toyota HiLux buying service",
-    updatedAt: "2026-08-07",
+    updatedAt: "2026-10-18",
     title: "Sell a Toyota HiLux Brisbane | Vehicle Quote",
     metaDescription: `Sell a Toyota HiLux in Brisbane with an individual quote based on model, condition, kilometres, and access. Call Caraway on ${BUSINESS.phoneDisplay}.`,
     h1: "Sell a Toyota HiLux in Brisbane",
     intro:
-      "Caraway assesses Toyota HiLux utes in Brisbane across different years, body styles, drivetrains, and conditions. An individual quote is based on the exact vehicle, kilometres, condition, completeness, modifications, ownership status, location, and collection access.",
+      "HiLuxes hold their value in Queensland \u2014 even high-kilometre, worked-hard ones. Caraway assesses Toyota HiLux utes in Brisbane across every generation, cab and tray style, 2WD and 4x4. Your offer is based on the exact vehicle, kilometres, condition, modifications, ownership status, location and access.",
     sections: [
+      {
+        heading: "Why a HiLux Is Worth Describing Properly",
+        content:
+          "Accessories, service history and how the ute was used all move a HiLux offer. A canopy, bar work, a lift kit or a tray swap can help or hurt depending on the buyer, so list every modification honestly. We price utes the same way as any cash for cars job in Brisbane: from accurate details and current photos.",
+        supportLink: {
+          href: "/",
+          label: "Sell any car for cash in Brisbane with Caraway",
+        },
+      },
       {
         heading: "HiLux Details to Include in Your Quote",
         content:
@@ -680,7 +633,6 @@ export const services: ServicePage[] = [
       },
     ],
     relatedServices: [
-      "cash-for-cars-brisbane",
       "sell-my-car-brisbane",
       "damaged-cars-brisbane",
     ],

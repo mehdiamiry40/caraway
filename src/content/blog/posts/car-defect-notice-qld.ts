@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Selling may be an option if you do not want to repair the vehicle, but do not misrepresent its condition. Tell the buyer about the defect notice and listed problems, confirm any restrictions on moving the vehicle, and agree on the correct registration path before handover. If the vehicle will be sold for parts, Queensland says it must be deregistered before sale; our [rego cancellation guide](/blog/how-to-cancel-car-rego-qld) explains that pathway. An individual offer still depends on the vehicle, damage, completeness, authority to sell, location, and access.`,
 
-    `Caraway can assess a defected, unregistered, or non-running car from the details you supply. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job.`,
+    `Caraway can assess a defected, unregistered, or non-running car from the details you supply. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -89,7 +89,6 @@ export const post: RawBlogPostEntry = {
   relatedServices: [
     "unregistered-cars-brisbane",
     "car-removal-brisbane",
-    "cash-for-cars-brisbane",
   ],
   relatedSuburbs: ["chermside", "rocklea", "ipswich", "logan"],
 };

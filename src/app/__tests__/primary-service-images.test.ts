@@ -14,7 +14,7 @@ import {
 import { SITE_URL } from "@/lib/site";
 
 const targetSlugs = [
-  "cash-for-cars-brisbane",
+  "sell-my-car-brisbane",
   "car-removal-brisbane",
 ] as const;
 

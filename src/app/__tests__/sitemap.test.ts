@@ -225,7 +225,7 @@ describe("sitemap.ts — page coverage", () => {
 
   it("publishes each primary target's visible preferred image", () => {
     for (const slug of [
-      "cash-for-cars-brisbane",
+      "sell-my-car-brisbane",
       "car-removal-brisbane",
     ]) {
       const service = services.find((item) => item.slug === slug);
@@ -248,9 +248,9 @@ describe("sitemap.ts — page coverage", () => {
 
   it("uses page-specific lastModified dates for rewritten suburb pages", () => {
     const rewrittenSuburbDates = {
-      kenmore: "2026-08-09",
-      capalaba: "2026-08-10",
-      toowong: "2026-08-10",
+      kenmore: "2026-10-18",
+      capalaba: "2026-10-18",
+      toowong: "2026-10-18",
     } as const;
 
     for (const [slug, updatedAt] of Object.entries(rewrittenSuburbDates)) {
@@ -278,7 +278,7 @@ describe("sitemap.ts — page coverage", () => {
 
   it("uses the declared material-update date for the About page", () => {
     const staticEntry = entries.find((e) => e.url === `${SITE_URL}/about`);
-    expect(ABOUT_CONTENT_UPDATED).toBe("2026-08-30");
+    expect(ABOUT_CONTENT_UPDATED).toBe("2026-10-18");
     expect(staticEntry).toBeDefined();
     expect(staticEntry?.lastModified).toBe(ABOUT_CONTENT_UPDATED);
   });
