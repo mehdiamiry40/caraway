@@ -63,9 +63,10 @@ export function Hero() {
   });
 
   return (
-    <>
+    // The hero and the quote band share one suppress region, so the sticky
+    // mobile CTA and chat launcher stay hidden until the form is off screen.
+    <div data-chat-launcher-suppress="true" data-sticky-cta-suppress="true">
       <section
-        data-chat-launcher-suppress="true"
         className="relative w-full overflow-hidden bg-background text-foreground"
         aria-labelledby="hero-heading"
       >
@@ -120,7 +121,6 @@ export function Hero() {
           server-rendered with the page, so the primary conversion path and
           the #quote-form deep link still work for crawlers and JS-off users. */}
       <section
-        data-sticky-cta-suppress="true"
         aria-label="Request a vehicle assessment"
         className="grid-paper relative overflow-hidden py-16 sm:py-24 lg:py-28"
       >
@@ -152,6 +152,6 @@ export function Hero() {
           </p>
         </div>
       </section>
-    </>
+    </div>
   );
 }
