@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Not every import is worth reviving. Certificate work, a parts wait measured in months and corrosion in the wrong places can arrive together, and at that point the car is assessed the way any end-of-life vehicle is: identity, completeness, weight and where it is sitting. Selling it [for parts or dismantling](/blog/sell-car-for-parts-brisbane) is one route, and it still needs the same ownership evidence as a running sale — an unusual identifier makes that more important, not less.",
 
-    `For an individual assessment of an imported vehicle, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Describe the import pathway, the identifier stamped on the car and its current registration status, because all three change what can be offered and how the vehicle can be collected.`,
+    `For an individual assessment of an imported vehicle, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Describe the import pathway, the identifier stamped on the car and its current registration status, because all three change what can be offered and how the vehicle can be collected. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
@@ -97,9 +97,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["moorooka", "logan", "capalaba"],

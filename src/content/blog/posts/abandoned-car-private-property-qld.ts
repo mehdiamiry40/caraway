@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "The far more common version of this call is the one where the answer is easy: the ute behind the shed since 2019, the second car that quietly stopped being registered, the wagon a family member left behind years ago and has since signed over. There is no ownership riddle there, and the whole thing collapses into an ordinary sale. Check what registration status the vehicle is in, gather what you have — records, keys, anything with the VIN on it — and work through [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld).",
 
-    `If it is your vehicle and you want it assessed, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. If the ownership question is still open, sort that out first — the quote will keep.`,
+    `If it is your vehicle and you want it assessed, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. If the ownership question is still open, sort that out first — the quote will keep. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {

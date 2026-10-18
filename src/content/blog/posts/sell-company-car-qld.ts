@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "## When the vehicle is worth less than the admin around it",
 
-    `A company car with a failed engine, a lapsed safety certificate and a deregistered ACN behind it is not a difficult sale so much as a well-documented one. Send the registration details, the entity's current ASIC status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `A company car with a failed engine, a lapsed safety certificate and a deregistered ACN behind it is not a difficult sale so much as a well-documented one. Send the registration details, the entity's current ASIC status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
@@ -102,7 +102,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["moorooka", "springwood", "logan", "capalaba"],

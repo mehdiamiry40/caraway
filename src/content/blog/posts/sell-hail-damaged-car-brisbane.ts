@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     "Protect broken openings from further weather only when it is safe to do so, and do not handle loose glass without suitable precautions. Do not drive a damaged or written-off vehicle unless you have confirmed it is mechanically safe, registered, and insured as required for that journey. When comparing offers, give each buyer the same facts and compare written conditions as well as the number.",
 
-    "A [cash-for-cars buyer](/cash-for-cars-brisbane) is one option after the insurer, finance, and ownership position is settled. Compare it with repair, private sale where lawful, trade-in, and the insurer's written options before deciding.",
+    "A [cash-for-cars buyer](/) is one option after the insurer, finance, and ownership position is settled. Compare it with repair, private sale where lawful, trade-in, and the insurer's written options before deciding.",
   ],
   date: "2026-04-29",
   updatedAt: "2026-08-07",
@@ -48,6 +48,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["hail-damaged-cars-brisbane", "cash-for-cars-brisbane", "damaged-cars-brisbane"],
+  relatedServices: ["hail-damaged-cars-brisbane", "damaged-cars-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "north-brisbane"],
 };

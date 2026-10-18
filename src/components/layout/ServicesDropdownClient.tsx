@@ -11,7 +11,7 @@ interface Props {
 export function ServicesDropdownClient({ serviceLinks }: Props) {
   return (
     <DisclosureAutoClose className="group relative h-full">
-      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-sm px-3 py-3 text-sm font-semibold text-primary/85 transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-sm h-10 px-2 text-base text-muted-foreground transition-colors duration-200 hover:text-foreground group-open:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
         Services
         <ChevronDown
           aria-hidden="true"
@@ -19,12 +19,12 @@ export function ServicesDropdownClient({ serviceLinks }: Props) {
         />
       </summary>
 
-      <ul className="absolute left-0 top-full z-50 w-64 max-w-[calc(100vw-2rem)] list-none rounded-sm border border-border bg-card py-1.5 shadow-lg">
+      <ul className="absolute left-0 top-full z-50 w-64 max-w-[calc(100vw-2rem)] list-none border border-border bg-background py-1.5 shadow-lg">
         {serviceLinks.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className="block border-l-2 border-transparent px-5 py-3 text-sm font-medium text-muted-foreground transition-all duration-150 hover:bg-secondary/70 hover:text-primary focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="block border-l-2 border-transparent px-5 py-3 text-[0.9375rem] text-muted-foreground transition-all duration-150 hover:bg-secondary/70 hover:text-foreground focus-visible:bg-secondary/70 focus-visible:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {item.label}
             </Link>

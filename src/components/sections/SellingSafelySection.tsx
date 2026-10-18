@@ -15,15 +15,13 @@ const trustPoints = [
 
 export function SellingSafelySection() {
   return (
-    <section className="section-y-tight bg-background border-t border-border/70" aria-labelledby="selling-safely-heading">
+    <section className="section-y-tight bg-background border-t border-border" aria-labelledby="selling-safely-heading">
       <div className="site-container">
         <div className="flex flex-col items-center text-center">
-          <span className="flex h-14 w-14 items-center justify-center bg-cta/15 text-cta-ink">
-            <ShieldCheck className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-          </span>
+          <ShieldCheck className="h-10 w-10 text-foreground" strokeWidth={1.25} aria-hidden="true" />
           <h2
             id="selling-safely-heading"
-            className="mt-4 font-display text-3xl sm:text-4xl leading-[1.08] text-foreground"
+            className="mt-4 font-display text-[2rem] font-medium leading-[1.15] text-foreground sm:text-[2.5rem]"
             style={{ letterSpacing: "var(--tracking-tight)" }}
           >
             Selling safely with Caraway
@@ -34,12 +32,10 @@ export function SellingSafelySection() {
           {trustPoints.map(({ icon: Icon, title }) => (
             <li
               key={title}
-              className="flex items-center gap-3 border border-border bg-card p-4 sm:flex-col sm:gap-3 sm:p-6 sm:text-center"
+              className="flex items-center gap-3 bg-secondary/60 p-4 sm:flex-col sm:gap-3 sm:p-6 sm:text-center"
             >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary sm:h-12 sm:w-12">
-                <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
-              </span>
-              <h3 className="font-display text-base leading-snug text-primary">{title}</h3>
+              <Icon className="h-7 w-7 shrink-0 text-foreground" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="font-display text-lg font-medium leading-snug text-foreground">{title}</h3>
             </li>
           ))}
         </ul>
@@ -60,7 +56,7 @@ export function SellingSafelySection() {
               href={QLD_SELLING_GUIDANCE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-primary underline underline-offset-4"
+              className="font-medium text-accent-ink underline underline-offset-4"
             >
               Queensland vehicle-selling guidance
             </a>

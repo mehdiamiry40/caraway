@@ -9,7 +9,7 @@ import { CarawayChatLauncher } from "@/components/CarawayChatLauncher";
 import { MobileMenuClient } from "@/components/layout/MobileMenuClient";
 
 const serviceLinks = [
-  { label: "Cash for Cars", href: "/cash-for-cars-brisbane" },
+  { label: "Sell My Car", href: "/sell-my-car-brisbane" },
   { label: "Car Removal", href: "/car-removal-brisbane" },
 ];
 

@@ -2,9 +2,9 @@ import { expect, test } from "@playwright/test";
 
 const targets = [
   {
-    path: "/cash-for-cars-brisbane",
-    heading: /Cash for Cars Brisbane/,
-    imagePath: "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
+    path: "/sell-my-car-brisbane",
+    heading: /Sell My Car Brisbane/,
+    imagePath: "/images/cash-for-cars-quote-readiness-v1.jpg",
     imageAlt:
       "Vehicle quote-readiness diagram showing front, rear and side photos, the interior and odometer, visible damage, and driveway access",
   },

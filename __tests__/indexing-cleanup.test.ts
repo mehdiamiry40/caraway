@@ -115,9 +115,9 @@ describe("Search Console indexing cleanup", () => {
       ["/blog/cash-for-cars-redcliffe-brisbane", "/locations/redcliffe"],
       ["/blog/cash-for-cars-ipswich-brisbane", "/locations"],
       ["/blog/cash-for-cars-logan-brisbane", "/locations/logan"],
-      ["/blog/cash-for-cars-sunshine-coast", "/cash-for-cars-brisbane"],
-      ["/blog/cash-for-cars-toowoomba", "/cash-for-cars-brisbane"],
-      ["/blog/cash-for-cars-gold-coast", "/cash-for-cars-brisbane"],
+      ["/blog/cash-for-cars-sunshine-coast", "/"],
+      ["/blog/cash-for-cars-toowoomba", "/"],
+      ["/blog/cash-for-cars-gold-coast", "/"],
     ]);
 
     for (const [source, destination] of expected) {
@@ -250,7 +250,7 @@ describe("Search Console indexing cleanup", () => {
     }
   });
 
-  it("consolidates low-value service pages into eight distinct live intents", async () => {
+  it("consolidates low-value service pages into seven distinct live intents", async () => {
     const redirects = await getRedirectRules();
     const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
     const staticSlugs = new Set(
@@ -259,11 +259,10 @@ describe("Search Console indexing cleanup", () => {
     const liveServiceSlugs = new Set(services.map((service) => service.slug));
     const redirectSources = new Set(redirects.map((redirect) => redirect.source));
 
-    expect(services).toHaveLength(8);
+    expect(services).toHaveLength(7);
     expect(liveServiceSlugs.size).toBe(services.length);
     expect([...liveServiceSlugs].sort()).toEqual([
       "car-removal-brisbane",
-      "cash-for-cars-brisbane",
       "damaged-cars-brisbane",
       "hail-damaged-cars-brisbane",
       "scrap-car-removal-brisbane",
@@ -271,7 +270,7 @@ describe("Search Console indexing cleanup", () => {
       "sell-toyota-hilux-brisbane",
       "unregistered-cars-brisbane",
     ]);
-    expect(retiredServiceRedirects).toHaveLength(11);
+    expect(retiredServiceRedirects).toHaveLength(12);
 
     for (const [slug, destination] of Object.entries(
       RETIRED_SERVICE_DESTINATIONS,

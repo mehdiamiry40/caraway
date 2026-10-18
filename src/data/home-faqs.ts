@@ -7,6 +7,16 @@ export const faqs = [
       "Request a free, no-obligation quote, then agree on the collection terms, payment method, and pickup time before completing the sale paperwork that applies to your vehicle. When Caraway buys and the supplied vehicle and access details match, pickup is included. Timing and payment are confirmed for each accepted job.",
   },
   {
+    question: "How much cash will I get for my car in Brisbane?",
+    answer:
+      "There is no reliable fixed price without the vehicle details. Make, model, year, kilometres, condition, completeness, location, access, and current resale, parts and metal demand all affect a cash for cars offer in Brisbane. Caraway reviews those details and gives you a written figure before anything is booked.",
+  },
+  {
+    question: "Who pays the most for cars in Brisbane?",
+    answer:
+      "No single buyer pays the most for every vehicle. Give each buyer the same vehicle, condition, location, and access details, then compare the written net amount after any deductions, plus pickup terms, payment timing, revision conditions, and the buyer's identity.",
+  },
+  {
     question: "What affects the amount I may be offered?",
     answer:
       "There is no fixed amount for every vehicle. A quote depends on the vehicle's make, model, year, condition, completeness, location, access, and current market demand. Supply accurate details so the buyer can explain the assessment before you decide.",
@@ -88,4 +98,4 @@ export const faqs = [
   },
 ];
 
-export const homepageFaqs = faqs.slice(0, 6);
+export const homepageFaqs = faqs.slice(0, 8);

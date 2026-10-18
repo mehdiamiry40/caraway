@@ -6,7 +6,11 @@ for (const [slug, destination] of Object.entries(retiredBlogDestinations)) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
     throw new Error(`Invalid retired blog slug: ${slug}`);
   }
-  if (!destination.startsWith("/") || destination.endsWith("/")) {
+  // The homepage ("/") is the only destination allowed to end in a slash.
+  if (
+    !destination.startsWith("/") ||
+    (destination !== "/" && destination.endsWith("/"))
+  ) {
     throw new Error(`Invalid retired blog destination for ${slug}: ${destination}`);
   }
 }

@@ -27,7 +27,7 @@ describe("location query support", () => {
       expect(value).not.toMatch(BROAD_CASH_QUERY);
     }
 
-    expect(kenmore?.relatedServices).toContain("cash-for-cars-brisbane");
+    expect(kenmore?.relatedServices).toContain("sell-my-car-brisbane");
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/locations/kenmore",
     );
@@ -92,7 +92,7 @@ describe("location query support", () => {
       expect(value).not.toMatch(BROAD_CASH_QUERY);
     }
 
-    expect(capalaba?.relatedServices).toContain("cash-for-cars-brisbane");
+    expect(capalaba?.relatedServices).toContain("sell-my-car-brisbane");
     expect(metadata.alternates?.canonical).toBe(
       "https://caraway.au/locations/capalaba",
     );

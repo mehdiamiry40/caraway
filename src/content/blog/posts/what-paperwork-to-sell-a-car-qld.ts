@@ -89,7 +89,7 @@ export const post: RawBlogPostEntry = {
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      `When you sell to a [cash-for-cars buyer in Brisbane](/cash-for-cars-brisbane), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+      `When you sell to a [cash-for-cars buyer in Brisbane](/), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
 
       "Use the private Queensland seller builder below to turn the facts of a proposed transaction into a conservative checklist and a printable two-copy handover record. It does not send or save the details you enter, and it does not replace the official transfer, cancellation, licence, certificate, ownership, or legal checks that apply.",
     ],
@@ -152,6 +152,6 @@ export const post: RawBlogPostEntry = {
       },
     ],
     category: "Guides",
-    relatedServices: ["sell-my-car-brisbane", "cash-for-cars-brisbane", "car-removal-brisbane"],
+    relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
     relatedSuburbs: ["south-brisbane", "north-brisbane", "logan"],
   };

@@ -52,7 +52,7 @@ export const post: RawBlogPostEntry = {
 
     "Give every buyer the same description so the offers are comparable, and ask what would change the number once someone is standing in the driveway. Anyone quoting on a car without keys is assessing the access as well as the vehicle, so a quote missing that detail may be revised on the day.",
 
-    `If you want Caraway to assess a car without keys, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle details, authority to sell, access, collection window and payment arrangement are confirmed for that job before anyone is dispatched.`,
+    `If you want Caraway to assess a car without keys, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle details, authority to sell, access, collection window and payment arrangement are confirmed for that job before anyone is dispatched. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
   ],
   faqs: [
     {

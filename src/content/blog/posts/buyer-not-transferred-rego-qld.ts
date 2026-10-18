@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
 
     "The version that goes worst is the handshake sale of a cheap car: no forms, a first name, an envelope of cash, and a vehicle that keeps generating notices for months. A buyer who hasn't transferred the rego after a sale like that is not an unrecoverable problem, but the repair work costs you statutory declarations and hours you would rather spend elsewhere. Ten minutes of paperwork at the kerb is the cheaper version of the same protection.",
 
-    `If the car is still in the driveway and you would rather not run that risk a second time, Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area, and confirms the buyer details and receipt for your own records before collection. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `If the car is still in the driveway and you would rather not run that risk a second time, Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area, and confirms the buyer details and receipt for your own records before collection. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -83,9 +83,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "sell-my-car-brisbane",
   ],
   relatedSuburbs: ["logan", "springwood", "capalaba", "moorooka"],

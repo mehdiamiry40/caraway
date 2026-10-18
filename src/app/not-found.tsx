@@ -46,7 +46,7 @@ export default function NotFound() {
               Back to home
             </Link>
             <Link
-              href="/cash-for-cars-brisbane"
+              href="/"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",

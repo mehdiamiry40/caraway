@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Write the sale down either way. Date, odometer reading, VIN, price, and both parties' details on a receipt, plus a copy of the disposal notice you lodged with the origin state. With two states' systems involved, that paper trail is doing more work than usual.`,
 
-    `If the car isn't worth another round of inspections and fees, Caraway can assess it from the registration, condition, location, and access details you supply. If Caraway buys the vehicle and those details match, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job.`,
+    `If the car isn't worth another round of inspections and fees, Caraway can assess it from the registration, condition, location, and access details you supply. If Caraway buys the vehicle and those details match, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
@@ -87,7 +87,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "unregistered-cars-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
     "sell-my-car-brisbane",
   ],

@@ -13,15 +13,23 @@ export const RETIRED_SERVICE_DESTINATIONS = {
   "junk-cars-brisbane": "/scrap-car-removal-brisbane",
   "accident-cars-brisbane": "/damaged-cars-brisbane",
   "insurance-write-off-cars-brisbane": "/damaged-cars-brisbane",
-  "sell-toyota-corolla-brisbane": "/cash-for-cars-brisbane",
-  "sell-holden-commodore-brisbane": "/cash-for-cars-brisbane",
-  "sell-ford-falcon-brisbane": "/cash-for-cars-brisbane",
-  "sell-ford-ranger-brisbane": "/cash-for-cars-brisbane",
-  "sell-toyota-landcruiser-brisbane": "/cash-for-cars-brisbane",
+  "sell-toyota-corolla-brisbane": "/",
+  "sell-holden-commodore-brisbane": "/",
+  "sell-ford-falcon-brisbane": "/",
+  "sell-ford-ranger-brisbane": "/",
+  "sell-toyota-landcruiser-brisbane": "/",
+  // October 2026: the homepage took ownership of "cash for cars Brisbane",
+  // so the former exact-match service page folds into it.
+  "cash-for-cars-brisbane": "/",
 } as const;
 
 export type RetiredServiceSlug = keyof typeof RETIRED_SERVICE_DESTINATIONS;
 
+/**
+ * Live service slug for a (possibly retired) slug. A service folded into the
+ * homepage has no service slug, so it resolves to an empty string that never
+ * matches a live service.
+ */
 export function canonicalServiceSlug(slug: string): string {
   const destination =
     RETIRED_SERVICE_DESTINATIONS[slug as RetiredServiceSlug];

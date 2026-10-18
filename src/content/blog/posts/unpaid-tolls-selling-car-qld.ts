@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     `Do not infer the registration path from labels such as wrecker or cash-for-cars buyer. If the vehicle is being sold for parts, Queensland says it must be deregistered before sale regardless of the buyer's label. If it is not a for-parts sale, confirm whether it is already unregistered or whether a registered transfer or direct licensed-dealer acquisition applies. Complete the applicable step and remove the sold vehicle from Linkt so later plate-based trips are not charged to your account.`,
 
-    `If the car is unregistered, unwanted, or simply not worth another year of rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form.`,
+    `If the car is unregistered, unwanted, or simply not worth another year of rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
@@ -87,9 +87,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan", "ipswich"],

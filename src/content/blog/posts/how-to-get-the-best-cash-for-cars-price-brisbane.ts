@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
     "## The bottom line",
     "Comparing a cash-for-cars price in Brisbane is less about hard haggling than consistent information. A few written quotes, an honest description, and a clear view of pickup, deductions, payment, and revision conditions help you avoid comparing unlike offers.",
 
-    "Use the three-quote worksheet below to record the buyer identity, licence details, headline amount, deductions, assumptions, pickup terms, payment arrangement, and receipt commitment without sending those entries anywhere.",
+    "Use the three-quote worksheet below to record the buyer identity, licence details, headline amount, deductions, assumptions, pickup terms, payment arrangement, and receipt commitment without sending those entries anywhere. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.",
   ],
   interactiveTool: "quote-comparison-worksheet",
   faqs: [
@@ -71,6 +71,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich", "kenmore"],
 };

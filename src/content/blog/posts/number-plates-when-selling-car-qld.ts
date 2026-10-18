@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     "## Keeping records",
 
-    "Keep a sale receipt, transfer records, cancellation receipts, plate surrender receipts, and any documents related to personalised or customised plates. If the vehicle is being collected by a [cash for cars Brisbane](/cash-for-cars-brisbane) buyer, ask what paperwork they provide at pickup and keep a copy.",
+    "Keep a sale receipt, transfer records, cancellation receipts, plate surrender receipts, and any documents related to personalised or customised plates. If the vehicle is being collected by a [cash for cars Brisbane](/) buyer, ask what paperwork they provide at pickup and keep a copy.",
 
     "## Want the car gone without driving it?",
 
@@ -92,6 +92,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
+  relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["north-brisbane", "logan", "ipswich"],
 };

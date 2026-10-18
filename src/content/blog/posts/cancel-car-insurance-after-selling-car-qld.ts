@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     `One thing you don't lose: your claims history follows you rather than the car. Insurers rate the driver, so the record you built up over years on the vehicle you've just sold carries into whatever you insure next.`,
 
-    `If the car is unregistered, unwanted, or simply not worth another year of premiums and rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form.`,
+    `If the car is unregistered, unwanted, or simply not worth another year of premiums and rego, request a free, no-obligation quote from Caraway. If Caraway buys the vehicle and the supplied vehicle and access details match, [car removal in Brisbane](/car-removal-brisbane) is included. Collection timing and payment are confirmed for each accepted job. Call **${BUSINESS.phoneDisplay}** or use the online quote form. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {
@@ -79,9 +79,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "kenmore", "carindale"],

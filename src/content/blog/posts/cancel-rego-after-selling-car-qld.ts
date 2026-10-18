@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "If the vehicle is already unregistered, there is no active registration to cancel, but both parties should keep the signed unregistered-sale record. Queensland says a vehicle sold for parts must be deregistered before sale. If it is currently registered and the transaction is a for-parts sale, ensure the registration is cancelled and complete the applicable plate-surrender, retention, or declaration step before completing the sale or handing over the vehicle.",
 
-    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. If you are using [cash for cars in Brisbane](/cash-for-cars-brisbane), confirm the buyer identity and transaction path before pickup and keep your own receipt and official confirmation.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. If you are using [cash for cars in Brisbane](/), confirm the buyer identity and transaction path before pickup and keep your own receipt and official confirmation.",
 
     "## What to do with number plates",
 
@@ -102,6 +102,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "car-removal-brisbane", "sell-my-car-brisbane"],
+  relatedServices: ["car-removal-brisbane", "sell-my-car-brisbane"],
   relatedSuburbs: ["logan", "ipswich", "bayside-brisbane"],
 };

@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "There comes a point where the inspection, the repairs and the wait cost more than the truck will return whole, and the value sits in the driveline, the body and the metal instead. [Weighing repair against sale](/blog/repair-or-sell-your-car-brisbane) works the same way here as it does on a car, with one difference: a truck's repair quotes are larger, and so is the gap between what it would fetch running and what it fetches as it stands.",
 
-    `The registration side still has to be finished properly either way, and [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a rigid truck much as it does to a hatchback. Have the GVM, the registration status and a photo of the access ready before you ring around, because those three answer most of what any quote to sell a truck in Brisbane depends on. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `The registration side still has to be finished properly either way, and [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a rigid truck much as it does to a hatchback. Have the GVM, the registration status and a photo of the access ready before you ring around, because those three answer most of what any quote to sell a truck in Brisbane depends on. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -92,9 +92,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["logan", "beenleigh", "springwood", "moorooka"],

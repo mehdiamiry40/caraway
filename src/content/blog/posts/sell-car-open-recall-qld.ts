@@ -38,7 +38,7 @@ export const post: RawBlogPostEntry = {
 
     "A recall that has been completed does not lower a car's value, and many buyers treat the paperwork as a small tick in the car's favour. An open recall on a car that otherwise needs little work is simply a job the buyer has to arrange, and they will price the inconvenience.",
 
-    `Caraway assesses unwanted, damaged, scrap and non-running vehicles within its confirmed Greater Brisbane service area, and an open recall does not stop a quote. Send the make, model, year, kilometres, the recall details and any known faults through our [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. If the car is damaged as well, our [damaged car page](/damaged-cars-brisbane) explains how those vehicles are assessed.`,
+    `Caraway assesses unwanted, damaged, scrap and non-running vehicles within its confirmed Greater Brisbane service area, and an open recall does not stop a quote. Send the make, model, year, kilometres, the recall details and any known faults through our [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. If the car is damaged as well, our [damaged car page](/damaged-cars-brisbane) explains how those vehicles are assessed. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
   ],
   faqs: [
     {
@@ -72,7 +72,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "damaged-cars-brisbane",
   ],
   relatedSuburbs: ["springwood", "moorooka", "redcliffe"],

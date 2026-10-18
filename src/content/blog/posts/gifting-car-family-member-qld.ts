@@ -34,7 +34,7 @@ export const post: RawBlogPostEntry = {
 
     "Keep a record of the handover either way. Both sides should hold the transfer paperwork, the odometer reading and the date the vehicle changed hands. [The paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a gift much as it does to a sale, because the registration record is what decides who answers for tolls and infringements once the car is on someone else's driveway.",
 
-    `If the inspection quote has settled the question and the car is going nowhere, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job.`,
+    `If the inspection quote has settled the question and the car is going nowhere, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
   ],
   faqs: [
     {
@@ -79,9 +79,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["springwood", "capalaba", "beenleigh", "logan"],

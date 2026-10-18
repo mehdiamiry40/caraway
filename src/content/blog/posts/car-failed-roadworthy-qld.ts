@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "## When a second inspection is not worth booking",
 
-    `An inspection report full of structural findings on a twenty-year-old car is information, not a setback: it tells you the cheapest remaining move is to sell the car as it stands. Send the report itself, the registration status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and read the list out. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `An inspection report full of structural findings on a twenty-year-old car is information, not a setback: it tells you the cheapest remaining move is to sell the car as it stands. Send the report itself, the registration status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and read the list out. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
@@ -88,9 +88,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "sell-my-car-brisbane",
+  relatedServices: ["sell-my-car-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["capalaba", "springwood", "redcliffe", "moorooka"],

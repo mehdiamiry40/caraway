@@ -49,7 +49,7 @@ export const post: RawBlogPostEntry = {
 
     `Before accepting a quote, confirm the buyer's legal name or business name, ABN, contact details, payment method, towing terms, and the receipt they will provide. Check any licence they claim through the relevant Queensland register. Regardless of what assistance a buyer offers, complete and verify your own seller-side TMR steps.`,
 
-    `Ready to request an individual scrap-car assessment in Brisbane? Call **${BUSINESS.phoneDisplay}** or use the online form. When Caraway makes an offer and it is accepted, the included-towing conditions, payment arrangement, receipt, and buyer details are confirmed before collection.`,
+    `Ready to request an individual scrap-car assessment in Brisbane? Call **${BUSINESS.phoneDisplay}** or use the online form. When Caraway makes an offer and it is accepted, the included-towing conditions, payment arrangement, receipt, and buyer details are confirmed before collection. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   date: "2026-04-25",
   updatedAt: "2026-08-07",
@@ -77,9 +77,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "scrap-car-removal-brisbane",
   ],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "ipswich", "logan"],

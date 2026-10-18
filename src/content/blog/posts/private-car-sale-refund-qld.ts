@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Private car sale refund demands cluster around one kind of transaction: an ageing car with real faults, sold privately to someone who hoped it would be fine. A twelve-year-old hatch at Zillmere with a slipping automatic and a leak somewhere has an argument built into it before the money moves. Selling the same car to a [direct vehicle buyer](/sell-my-car-brisbane) who assesses it as it stands, states what it is buying it for, and collects it does not generate a message on day four, because nothing was represented in the first place.",
 
-    `If that is the car sitting in your driveway, send the registration number or VIN, the vehicle's condition and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. Caraway confirms whether it can buy the vehicle before anything is arranged, and [pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `If that is the car sitting in your driveway, send the registration number or VIN, the vehicle's condition and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. Caraway confirms whether it can buy the vehicle before anything is arranged, and [pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
@@ -94,7 +94,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["capalaba", "moorooka", "springwood", "redcliffe"],

@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Nothing is settled when you get back, either. A private sale carries no cooling-off period in either direction, so the kerbside handshake is not a contract and a deposit taken on the spot creates its own argument — [where you stand if a buyer wants their money back](/blog/private-car-sale-refund-qld) is worth reading before you are the one being messaged. Weigh the whole exercise against the car, too: for a tidy vehicle with years left in it the risk is worth managing, and [comparing a private sale against a cash offer](/blog/cash-for-cars-vs-private-sale) settles that quickly for anything older.",
 
-    `If the car is at the end of its life and the test drives are not worth the trouble, Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `If the car is at the end of its life and the test drives are not worth the trouble, Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -91,7 +91,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["toowong", "springwood", "capalaba", "moorooka"],

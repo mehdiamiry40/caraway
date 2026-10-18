@@ -4,9 +4,9 @@ import { blogPosts, getPostsForService } from "@/data/blog-posts";
 import { RETIRED_BLOG_SLUGS } from "@/lib/blog-consolidation";
 
 describe("getPostsForService", () => {
-  it("returns the cash-for-cars cornerstone guides in their curated order", () => {
+  it("returns the sell-my-car cornerstone guides in their curated order", () => {
     expect(
-      getPostsForService("cash-for-cars-brisbane").map((post) => post.slug),
+      getPostsForService("sell-my-car-brisbane").map((post) => post.slug),
     ).toEqual([
       "how-to-sell-your-car-for-cash-brisbane",
       "how-to-get-the-best-cash-for-cars-price-brisbane",
@@ -25,7 +25,7 @@ describe("getPostsForService", () => {
   });
 
   it("keeps recency ordering as the fallback for other services", () => {
-    const serviceSlug = "sell-my-car-brisbane";
+    const serviceSlug = "scrap-car-removal-brisbane";
     const expectedSlugs = blogPosts
       .filter((post) => post.relatedServices.includes(serviceSlug))
       .slice(0, 3)
@@ -46,7 +46,6 @@ describe("getPostsForService", () => {
 
   it("does not return retired blog slugs from curated or fallback results", () => {
     for (const serviceSlug of [
-      "cash-for-cars-brisbane",
       "car-removal-brisbane",
       "sell-my-car-brisbane",
     ]) {

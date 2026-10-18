@@ -41,7 +41,7 @@ export const post: RawBlogPostEntry = {
 
     "For a sale, confirm authority to sell and use the correct registered transfer, cancellation or already-unregistered pathway. Queensland says both parties to an unregistered sale should sign and keep a record containing the VIN, chassis or engine identifier, make and model, and sale date. The [Queensland seller-paperwork guide and record builder](/blog/what-paperwork-to-sell-a-car-qld#qld-vehicle-sale-record-builder) separates those paths without sending or saving the entries.",
 
-    `If you want Caraway to assess an unregistered or non-running vehicle, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle, authority, access, lawful transport method, collection window, payment arrangement and receipt details are confirmed before dispatch.`,
+    `If you want Caraway to assess an unregistered or non-running vehicle, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle, authority, access, lawful transport method, collection window, payment arrangement and receipt details are confirmed before dispatch. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
@@ -101,7 +101,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "unregistered-cars-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan", "ipswich"],

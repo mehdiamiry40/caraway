@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "Describe the car as it is now, not as the family remembers it. A vehicle that has sat since someone surrendered their licence tends to have a flat battery, perished tyres and surface rust on the discs, and a year in a humid Brisbane carport does the interior no favours. That condition is what an offer is built on — our guide to [what a car is worth in Brisbane](/blog/how-much-is-my-car-worth-brisbane) sets out the details worth gathering. If you hold no formal authority at all, [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) covers what a buyer will want to see.",
 
-    `When the authority question is settled and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job.`,
+    `When the authority question is settled and the car is not going back on the road, Caraway quotes on Brisbane vehicles as they stand — call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -93,9 +93,7 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: [
-    "cash-for-cars-brisbane",
-    "car-removal-brisbane",
+  relatedServices: ["car-removal-brisbane",
     "sell-my-car-brisbane",
   ],
   relatedSuburbs: ["redcliffe", "capalaba", "springwood", "logan"],

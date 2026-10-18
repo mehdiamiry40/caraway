@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
 
     "Selling it unregistered is a different transaction: no registration transfer, and no safety certificate changing hands. What it does not do is dissolve the other person's interest in the car. A buyer taking an unregistered vehicle will still want the people entitled to sell it to be agreed on the sale, and [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) sets the registered and unregistered paths out side by side.",
 
-    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Send the make, model, kilometres, registration status and who is named on the registration with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area. Send the make, model, kilometres, registration status and who is named on the registration with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -96,7 +96,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "sell-my-car-brisbane",
-    "cash-for-cars-brisbane",
     "car-removal-brisbane",
   ],
   relatedSuburbs: ["moorooka", "redcliffe", "springwood", "logan"],

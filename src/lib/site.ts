@@ -123,19 +123,19 @@ export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
 /** Homepage metadata, H1, and entity focus were retargeted to a brand hub so
  *  the dedicated service pages can own the two primary commercial queries. */
-export const HOME_CONTENT_UPDATED = "2026-08-09";
+export const HOME_CONTENT_UPDATED = "2026-10-18";
 
 /** About-page identity copy, metadata, and primary-image schema last reviewed. */
-export const ABOUT_CONTENT_UPDATED = "2026-08-30";
+export const ABOUT_CONTENT_UPDATED = "2026-10-18";
 
 /** FAQ metadata, primary heading, and collection/payment wording last reviewed. */
-export const FAQ_CONTENT_UPDATED = "2026-08-30";
+export const FAQ_CONTENT_UPDATED = "2026-10-18";
 
 /** /how-it-works was rewritten with page-unique content in July 2026 after
  *  GSC clustered it as a duplicate of the homepage ("Google chose different
  *  canonical than user"). Shared by the sitemap entry and the page's
  *  WebPage.dateModified so the recrawl signal is honest and consistent. */
-export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-08-30";
+export const HOW_IT_WORKS_CONTENT_UPDATED = "2026-10-18";
 
 /** Blog category metadata, summaries, and structured-data template last updated. */
 export const BLOG_CATEGORY_CONTENT_UPDATED = "2026-08-30";

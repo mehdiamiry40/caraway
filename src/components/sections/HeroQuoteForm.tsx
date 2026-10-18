@@ -125,10 +125,10 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
   };
 
   return (
-    // The card sits on the dark hero band, which sets white text: without an
-    // explicit card foreground, inputs and selects render white on white.
-    <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-border bg-card p-4 text-left text-card-foreground shadow-[0_32px_64px_-28px_hsl(var(--shadow-color)/0.9)] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary sm:p-5">
-      <h2 className="font-display text-lg font-bold leading-tight text-primary">
+    // Sits inside the paper card of the home quote band; the card itself owns
+    // the surface, so the form keeps an explicit foreground for its controls.
+    <div className="relative w-full text-left text-card-foreground">
+      <h2 className="text-center font-display text-[2rem] font-medium leading-[1.15] tracking-tight text-foreground sm:text-[2.5rem]">
         Get a free quote
       </h2>
 
@@ -137,7 +137,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="mt-3 flex flex-col items-center gap-2.5 py-5 text-center"
+          className="mt-5 flex flex-col items-center gap-2.5 py-5 text-center"
         >
           <span className="flex h-11 w-11 items-center justify-center rounded-none bg-accent/10">
             <CheckCircle2 className="h-5 w-5 text-accent" aria-hidden />
@@ -161,7 +161,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
         </div>
       ) : (
         <>
-          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-3 space-y-2">
+          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-6 space-y-2.5">
             <div hidden aria-hidden="true">
               <label htmlFor="hero-quote-website">Website</label>
               <input
@@ -349,7 +349,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <Button type="submit" className="h-12 w-full text-base shadow-sm" isLoading={isSubmitting}>
+            <Button type="submit" className="h-12 w-full text-base" isLoading={isSubmitting}>
               {isSubmitting ? "Sending..." : "Submit"}
             </Button>
 
@@ -357,7 +357,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               <div
                 ref={errorAlertRef}
                 tabIndex={-1}
-                className="flex items-start gap-2 rounded-md border border-destructive/20 bg-destructive/5 px-3 py-2 text-xs font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+                className="flex items-start gap-2 border border-destructive/20 bg-destructive/5 px-3 py-2 text-xs font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
                 role="alert"
                 aria-live="assertive"
                 aria-atomic="true"

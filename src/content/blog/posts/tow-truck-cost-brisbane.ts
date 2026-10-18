@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `After a crash, the tow and the car's future are separate decisions, and they don't have to be made at the same time. Your insurer may cover the tow under the policy — that doesn't commit you to the repair path or to the salvage offer that follows it. The [damaged-car options page](/damaged-cars-brisbane) explains the details Caraway uses to assess a vehicle if you decide to compare an as-is sale.`,
 
-    `Caraway assesses unwanted, non-running, and damaged vehicles across its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the details supplied. Call **${BUSINESS.phoneDisplay}** or request an online quote before paying to move the car elsewhere.`,
+    `Caraway assesses unwanted, non-running, and damaged vehicles across its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the details supplied. Call **${BUSINESS.phoneDisplay}** or request an online quote before paying to move the car elsewhere. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {

@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     "## When a cash sale is the smarter move",
 
-    "For an older or damaged vehicle, compare the likely inspection and repair cost with an as-is offer. A [cash-for-cars buyer](/cash-for-cars-brisbane) can assess the vehicle without requiring a certificate merely to provide a quote, but the final sale must still follow the Queensland rules for its registration status and buyer type.",
+    "For an older or damaged vehicle, compare the likely inspection and repair cost with an as-is offer. A [cash-for-cars buyer](/) can assess the vehicle without requiring a certificate merely to provide a quote, but the final sale must still follow the Queensland rules for its registration status and buyer type.",
 
     "## The bottom line",
 
@@ -56,6 +56,6 @@ export const post: RawBlogPostEntry = {
     },
   ],
   category: "Guides",
-  relatedServices: ["cash-for-cars-brisbane", "sell-my-car-brisbane", "car-removal-brisbane"],
+  relatedServices: ["sell-my-car-brisbane", "car-removal-brisbane"],
   relatedSuburbs: ["north-brisbane", "south-brisbane", "logan"],
 };

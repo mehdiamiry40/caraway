@@ -158,7 +158,13 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title="Sell your car in four clear steps."
         subtitle={
-          <p>Details, offer, pickup, payment.</p>
+          <p>
+            Details, offer, pickup, payment — the four steps behind every{" "}
+            <Link href="/" className="font-medium link-underline">
+              cash for cars Brisbane
+            </Link>{" "}
+            sale with Caraway.
+          </p>
         }
       >
         <HowItWorks showHeader={false} />

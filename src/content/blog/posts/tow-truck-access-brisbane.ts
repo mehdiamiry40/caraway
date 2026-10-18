@@ -50,7 +50,7 @@ export const post: RawBlogPostEntry = {
 
     "Access also feeds into what a job costs when you are paying for a tow rather than selling the car, since equipment and time are what a towing quote is built from. [What a tow truck costs in Brisbane](/blog/tow-truck-cost-brisbane) covers that side, and the [pickup preparation checklist](/blog/preparing-your-car-for-pickup) covers belongings and records before the truck arrives.",
 
-    `If you want Caraway to assess a vehicle and its access, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the equipment, collection window and payment arrangement are confirmed for that job before anyone is dispatched.`,
+    `If you want Caraway to assess a vehicle and its access, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the equipment, collection window and payment arrangement are confirmed for that job before anyone is dispatched. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -78,7 +78,6 @@ export const post: RawBlogPostEntry = {
   category: "Guides",
   relatedServices: [
     "car-removal-brisbane",
-    "cash-for-cars-brisbane",
     "unregistered-cars-brisbane",
   ],
   relatedSuburbs: ["toowong", "moorooka", "capalaba"],

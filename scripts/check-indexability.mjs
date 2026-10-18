@@ -5,11 +5,11 @@ import { request } from "node:http";
 import { createServer } from "node:net";
 import { join } from "node:path";
 
-const routes = ["cash-for-cars-brisbane", "car-removal-brisbane"];
+const routes = ["sell-my-car-brisbane", "car-removal-brisbane"];
 const preferredImages = new Map([
   [
-    "cash-for-cars-brisbane",
-    "/images/cash-for-cars-brisbane-quote-readiness-v1.jpg",
+    "sell-my-car-brisbane",
+    "/images/cash-for-cars-quote-readiness-v1.jpg",
   ],
   [
     "car-removal-brisbane",
@@ -269,7 +269,7 @@ async function verifyRuntimeHostPolicy() {
         const response = await fetchHeaders(
           port,
           "preview.example.vercel.app",
-          "/cash-for-cars-brisbane",
+          "/car-removal-brisbane",
         );
         if (response.status === 200) {
           ready = true;

@@ -14,9 +14,9 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Caraway | Brisbane Vehicle Buyer & Pickup",
+    absolute: "Cash for Cars Brisbane | Written Offer & Pickup | Caraway",
   },
-  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Request a human-reviewed assessment, receive a confirmed offer, and arrange pickup when we buy. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Cash for cars Brisbane from a local buyer: get a human-reviewed written offer for your car, running or not, with pickup included when we buy. Call ${BUSINESS.phoneDisplay}.`,
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: "website",
-    title: "Caraway | Brisbane Vehicle Buyer & Pickup",
+    title: "Cash for Cars Brisbane | Written Offer & Pickup | Caraway",
     description:
-      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
+      "Cash for cars Brisbane: a human-reviewed written offer for your car, running or not, with pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -46,9 +46,9 @@ export const homeStructuredData = [
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       url: `${SITE_URL}/`,
-      name: "Caraway | Brisbane Vehicle Buyer",
+      name: "Cash for Cars Brisbane | Caraway",
       description:
-        "Caraway is a Brisbane-based vehicle buyer reviewing vehicle enquiries, confirming offers, and arranging pickup across Greater Brisbane.",
+        "Cash for cars Brisbane from Caraway, a Brisbane-based car buyer that reviews each vehicle, confirms a written offer, and includes pickup when it buys across Greater Brisbane.",
       dateModified: HOME_CONTENT_UPDATED,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#vehicle-buying-service` },
@@ -67,10 +67,10 @@ export const homeStructuredData = [
     serviceSchema({
       id: `${SITE_URL}/#vehicle-buying-service`,
       url: `${SITE_URL}/`,
-      name: "Caraway vehicle buying and pickup",
+      name: "Cash for cars Brisbane",
       description:
-        "Human-reviewed vehicle assessments, confirmed offers, and pickup when Caraway buys across Greater Brisbane.",
-      serviceType: "Vehicle buying and pickup",
+        "Human-reviewed cash for cars assessments, written offers, and pickup included when Caraway buys vehicles across Greater Brisbane.",
+      serviceType: "Cash for cars",
     }),
 ];
 

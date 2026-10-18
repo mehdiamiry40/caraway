@@ -40,7 +40,7 @@ export const legacyIndexingRedirects = [
   },
   {
     source: "/vehicles-we-buy/utes-vans",
-    destination: "/cash-for-cars-brisbane",
+    destination: "/",
   },
   // July 2026 consolidation: the "Car Selling Guides" blog category duplicated
   // the "Guides" category; its posts now live under /blog/category/guides.

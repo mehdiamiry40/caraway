@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "A rusty car still has value — it just gets priced differently. Buyers at this end look at what survives independently of the shell: the engine and gearbox, wheels and tyres, glass, straight panels, and the weight of the body once it is stripped. [What affects a scrap car quote](/blog/how-much-is-scrap-car-worth-brisbane) explains where that value comes from. Describe the corrosion honestly when you ask for a number — where it is, how far it has gone, whether the car still drives and steers, and whether it can be rolled or winched all matter more than the badge, and a quote built on a vague description gets revised on arrival.",
 
-    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area, including [rusted and structurally tired cars](/damaged-cars-brisbane). Send the make, model, kilometres, registration status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `Caraway assesses unwanted, damaged, scrap, and non-running vehicles within its confirmed Greater Brisbane service area, including [rusted and structurally tired cars](/damaged-cars-brisbane). Send the make, model, kilometres, registration status and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {

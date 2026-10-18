@@ -42,7 +42,7 @@ export const post: RawBlogPostEntry = {
 
     "If registration is still current but the car will never be driven again, check what [cancelling registration in QLD](/blog/how-to-cancel-car-rego-qld) requires, including the plate step, before the vehicle leaves your property. And whatever the paperwork position, both parties should sign and keep a record of the sale showing the date, the price, the make and model, the VIN or engine number, and both signatures.",
 
-    `A car with thin paperwork is not a difficult sale so much as a slower conversation. Send the registration number or VIN, the registration status, and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details.`,
+    `A car with thin paperwork is not a difficult sale so much as a slower conversation. Send the registration number or VIN, the registration status, and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
