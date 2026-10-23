@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { escapeJsonForScript, findSuspiciousMarkup } from "@/lib/json-ld";
 
 type JsonRecord = Record<string, unknown>;
@@ -20,11 +21,13 @@ function normalizeSchema(data: JsonRecord): JsonRecord {
  * string value looks like markup — a hint that user input may have leaked
  * into a build-time schema.
  */
-export function JsonLd({
+export async function JsonLd({
   data,
 }: {
   data: JsonRecord | JsonRecord[];
 }) {
+  const headerNonce = (await headers()).get("x-nonce");
+  const nonce = headerNonce?.trim() ? headerNonce : undefined;
   const items = Array.isArray(data) ? data : [data];
   if (process.env.NODE_ENV !== "production") {
     items.forEach((item, i) => {
@@ -46,6 +49,7 @@ export function JsonLd({
         return (
           <script
             key={key}
+            nonce={nonce}
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: escapeJsonForScript(JSON.stringify(normalizeSchema(item))) }}
           />

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { RETIRED_BLOG_DESTINATIONS } from "./src/lib/blog-consolidation";
+import {
+  buildContentSecurityPolicy,
+  NON_DOCUMENT_CSP_SOURCES,
+} from "./src/lib/content-security-policy";
 import { RETIRED_LOCATION_DESTINATIONS } from "./src/lib/location-consolidation";
 import { RETIRED_SERVICE_DESTINATIONS } from "./src/lib/service-consolidation";
 
@@ -219,36 +223,9 @@ const nextConfig: NextConfig = {
     {
       source: "/(.*)",
       headers: [
-        {
-          key: "Content-Security-Policy",
-          // NOTE: script-src intentionally keeps 'unsafe-inline' because
-          // Next.js App Router hydration injects inline bootstrap scripts
-          // and we do not currently emit per-request nonces. Revisit once
-          // we adopt nonce-based CSP (requires a custom proxy/layout
-          // integration). object-src 'none' is added as defence in depth
-          // so plugins/applets cannot be embedded even if an injection
-          // were to occur.
-          // In development, 'unsafe-eval' is needed for Next.js source maps,
-          // Vercel Analytics and Speed Insights load their documented debug
-          // scripts from va.vercel-scripts.com, and frame-ancestors is relaxed
-          // for preview panes. Production telemetry is served from same-origin
-          // /_vercel paths and does not need the external script host.
-          value: [
-            "default-src 'self'",
-            isDev
-              ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com"
-              : "script-src 'self' 'unsafe-inline'",
-            "style-src 'self' 'unsafe-inline'",
-            "font-src 'self'",
-            "img-src 'self' data: blob:",
-            "connect-src 'self'",
-            "object-src 'none'",
-            isDev ? "frame-ancestors *" : "frame-ancestors 'none'",
-            "base-uri 'self'",
-            "form-action 'self'",
-            ...(isDev ? [] : ["upgrade-insecure-requests"]),
-          ].join("; "),
-        },
+        // Document CSP is set per request in src/proxy.ts so script-src can
+        // use a nonce. A second policy here would be enforced as well, and a
+        // static policy cannot carry that nonce.
         ...(isDev ? [] : [{ key: "X-Frame-Options", value: "DENY" }]),
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -261,6 +238,17 @@ const nextConfig: NextConfig = {
         ]),
       ],
     },
+    // Paths the document proxy skips still get a strict policy. These responses
+    // are not HTML documents, so they do not need a per-request nonce.
+    ...NON_DOCUMENT_CSP_SOURCES.map((source) => ({
+      source,
+      headers: [
+        {
+          key: "Content-Security-Policy",
+          value: buildContentSecurityPolicy(),
+        },
+      ],
+    })),
     // Image assets are versioned through deploys. Use long browser caching for
     // PageSpeed and change filenames when replacing visual assets.
     {

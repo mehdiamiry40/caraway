@@ -61,6 +61,15 @@ describe("proxy", () => {
           url: "https://caraway.au/cash-for-cars-brisbane",
         }),
       ).toBe(true);
+
+      expect(
+        unstable_doesMiddlewareMatch({
+          config,
+          nextConfig: {},
+          url: "https://caraway.au/contact",
+          headers: { "next-router-prefetch": "1" },
+        }),
+      ).toBe(false);
     });
   });
 
@@ -72,6 +81,46 @@ describe("proxy", () => {
       // NextResponse.next() returns a 200 Response
       expect(res.status).toBe(200);
       expect(res.headers.get("x-robots-tag")).toBe("noindex, nofollow");
+      const csp = res.headers.get("content-security-policy") ?? "";
+      const scriptSrc = csp.split(";").map((part) => part.trim()).find((part) => part.startsWith("script-src "));
+      expect(scriptSrc).toContain("'strict-dynamic'");
+      expect(scriptSrc).toContain("'nonce-");
+      expect(scriptSrc).not.toContain("'unsafe-inline'");
+      // Vitest runs outside production, so the dev overlay exceptions stay on.
+      expect(scriptSrc).toContain("'unsafe-eval'");
+      expect(scriptSrc).toContain("https://va.vercel-scripts.com");
+    });
+
+    it("omits development script exceptions from the production document policy", async () => {
+      vi.stubEnv("NODE_ENV", "production");
+      const middleware = await loadProxy();
+      const first = await middleware(makeRequest("GET", { host: "caraway.au" }));
+      const second = await middleware(makeRequest("GET", { host: "caraway.au" }));
+      const policies = [first, second].map(
+        (response) => response.headers.get("content-security-policy") ?? "",
+      );
+
+      for (const csp of policies) {
+        const scriptSrc = csp
+          .split(";")
+          .map((part) => part.trim())
+          .find((part) => part.startsWith("script-src "));
+        expect(scriptSrc).toContain("'strict-dynamic'");
+        expect(scriptSrc).not.toContain("'unsafe-inline'");
+        expect(scriptSrc).not.toContain("'unsafe-eval'");
+        expect(scriptSrc).not.toContain("va.vercel-scripts.com");
+        expect(csp).toContain("object-src 'none'");
+        expect(csp).toContain("base-uri 'self'");
+        expect(csp).toContain("form-action 'self'");
+        expect(csp).toContain("frame-ancestors 'none'");
+        expect(csp).toContain("frame-src 'none'");
+        expect(csp).toContain("upgrade-insecure-requests");
+      }
+
+      const nonceOf = (policy: string) =>
+        policy.match(/'nonce-([^']+)'/)?.[1];
+      expect(nonceOf(policies[0])).toBeTruthy();
+      expect(nonceOf(policies[0])).not.toBe(nonceOf(policies[1]));
     });
 
     it("keeps the canonical apex host indexable", async () => {
