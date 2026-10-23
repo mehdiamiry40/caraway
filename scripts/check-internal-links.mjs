@@ -6,12 +6,14 @@
  * to, or that is only linked from deep pagination, gets crawled late or not at
  * all — regardless of how good the sitemap is.
  *
- * Reads the built HTML so it measures the links a crawler actually receives,
- * including nav and footer, rather than what the source appears to render.
+ * Reads the HTML the production server returns so it measures the links a
+ * crawler actually receives, including nav and footer, rather than what the
+ * source appears to render. Pages are requested rather than read from
+ * prerendered files because the document CSP nonce makes every page dynamic.
  * Run after `npm run build`.
  *
  * Two kinds of page are exempt from needing inbound links, both detected from
- * the build output rather than a list maintained by hand:
+ * the rendered response rather than a list maintained by hand:
  *
  *   - Pages that declare their own noindex (the review handoff pages) — being
  *     unlisted is the point.
@@ -19,25 +21,18 @@
  *     links and forward them. Linking to one from the site would be a
  *     deliberate extra hop.
  */
-import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join, relative, sep } from "node:path";
+import { sep } from "node:path";
+import {
+  documentPaths,
+  fetchLocal,
+  pooled,
+  withProductionServer,
+} from "./production-documents.mjs";
 
 const SITE_URL = "https://caraway.au";
-const APP_DIR = join(process.cwd(), ".next", "server", "app");
-
-/** Next's internal error pages are not part of the site graph. */
-const NON_ROUTE_FILES = new Set(["_not-found.html", "_global-error.html"]);
 
 /** Deep pagination is crawled rarely, so it is a weak discovery path. */
 const PAGINATION = /^\/blog\/page\/\d+$/;
-
-function htmlFiles(directory) {
-  return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    const absolute = join(directory, entry.name);
-    if (entry.isDirectory()) return htmlFiles(absolute);
-    return entry.isFile() && entry.name.endsWith(".html") ? [absolute] : [];
-  });
-}
 
 /** `.next/server/app/blog/category/guides.html` -> `/blog/category/guides` */
 export function routeForFile(relativePath) {
@@ -128,38 +123,51 @@ export function analyze(pages) {
   return { orphans, paginationOnly };
 }
 
-function main() {
-  let files;
+async function main() {
+  let paths;
   try {
-    files = htmlFiles(APP_DIR);
+    paths = documentPaths();
   } catch (error) {
     console.error(
-      `Internal-link audit could not read ${APP_DIR} (${error instanceof Error ? error.message : String(error)}). Run npm run build first.`,
+      `Internal-link audit could not list documents (${error instanceof Error ? error.message : String(error)}). Run npm run build first.`,
     );
     process.exit(1);
   }
 
   const pages = new Map();
   const redirects = [];
-  for (const file of files) {
-    const relativePath = relative(APP_DIR, file);
-    if (NON_ROUTE_FILES.has(relativePath)) continue;
-
-    const metaFile = `${file.slice(0, -".html".length)}.meta`;
-    const redirectStatus = redirectStatusFromMeta(
-      existsSync(metaFile) ? readFileSync(metaFile, "utf8") : null,
-    );
-    // A redirect never serves its HTML, so its links are not real edges either.
-    if (redirectStatus !== null) {
-      redirects.push(routeForFile(relativePath));
-      continue;
-    }
-
-    const html = readFileSync(file, "utf8");
-    pages.set(routeForFile(relativePath), {
-      links: new Set(extractLinks(html)),
-      noindex: isNoindex(html),
+  const failures = [];
+  try {
+    await withProductionServer(async (port) => {
+      await pooled(paths, 6, async (path) => {
+        const response = await fetchLocal(port, path);
+        if (response.status >= 300 && response.status < 400) {
+          redirects.push(path);
+          return;
+        }
+        if (response.status !== 200 || response.truncated) {
+          failures.push(
+            `${path}: rendered document returned HTTP ${response.status}${response.truncated ? " truncated" : ""}`,
+          );
+          return;
+        }
+        pages.set(path, {
+          links: new Set(extractLinks(response.body)),
+          noindex: isNoindex(response.body),
+        });
+      });
     });
+  } catch (error) {
+    console.error(
+      `Internal-link audit could not render documents (${error instanceof Error ? error.message : String(error)}).`,
+    );
+    process.exit(1);
+  }
+
+  if (failures.length > 0) {
+    console.error("Internal-link audit could not read every document:");
+    for (const failure of failures) console.error(`  - ${failure}`);
+    process.exit(1);
   }
 
   if (pages.size === 0) {
@@ -197,5 +205,5 @@ function main() {
 }
 
 if (process.argv[1] && process.argv[1].endsWith("check-internal-links.mjs")) {
-  main();
+  await main();
 }
