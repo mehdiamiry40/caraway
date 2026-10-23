@@ -173,6 +173,12 @@ const nextConfig: NextConfig = {
   // their final destination in one hop instead of normalizing first.
   skipTrailingSlashRedirect: true,
   outputFileTracingRoot: path.join(__dirname),
+  // On Vercel, hash the prerendered inline scripts and install that CSP
+  // before the platform adapter freezes headers into the deployment output.
+  // Local builds do the same install in scripts/apply-csp-hashes.mjs.
+  ...(process.env.NEXT_ADAPTER_PATH
+    ? { adapterPath: path.join(__dirname, "scripts/csp-hash-adapter.mjs") }
+    : {}),
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200],
@@ -223,9 +229,9 @@ const nextConfig: NextConfig = {
     {
       source: "/(.*)",
       headers: [
-        // Document CSP is set per request in src/proxy.ts so script-src can
-        // use a nonce. A second policy here would be enforced as well, and a
-        // static policy cannot carry that nonce.
+        // Document CSP is a per-page hash policy written after prerender.
+        // A catch-all policy here would be enforced as well and would block
+        // any inline script this header did not hash.
         ...(isDev ? [] : [{ key: "X-Frame-Options", value: "DENY" }]),
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

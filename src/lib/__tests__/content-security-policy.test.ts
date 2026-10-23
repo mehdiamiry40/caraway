@@ -3,6 +3,10 @@ import {
   buildContentSecurityPolicy,
   createCspNonce,
 } from "@/lib/content-security-policy";
+import {
+  CSP_SCRIPT_HASH_PLACEHOLDER,
+  hashInlineScript,
+} from "@/lib/csp-inline-scripts";
 
 const DISALLOWED_HOSTS = [
   "https://www.googletagmanager.com",
@@ -39,14 +43,20 @@ function nonceFromPolicy(policy: string): string | undefined {
 }
 
 describe("content security policy", () => {
-  it("builds a production document policy around a nonce and strict-dynamic", () => {
-    const nonce = createCspNonce();
-    const policy = buildContentSecurityPolicy({ nonce, mode: "production" });
+  it("builds a production document policy from inline script hashes", () => {
+    const first = hashInlineScript("first-inline-script");
+    const second = hashInlineScript("second-inline-script");
+    const policy = buildContentSecurityPolicy({
+      mode: "production",
+      scriptHashes: [second, first, first],
+    });
+    const expected = [first, second].sort();
 
-    expect(nonceFromPolicy(policy)).toBe(nonce);
+    expect(nonceFromPolicy(policy)).toBeUndefined();
     expect(directive(policy, "script-src")).toBe(
-      `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+      `script-src 'self' '${expected[0]}' '${expected[1]}'`,
     );
+    expect(directive(policy, "script-src")).not.toContain("'strict-dynamic'");
     expect(directive(policy, "script-src")).not.toContain("'unsafe-inline'");
     expect(directive(policy, "script-src")).not.toContain("'unsafe-eval'");
     expect(directive(policy, "script-src-attr")).toBe("script-src-attr 'none'");
@@ -92,6 +102,31 @@ describe("content security policy", () => {
   it("rejects a nonce Next.js would fail to parse", () => {
     expect(() =>
       buildContentSecurityPolicy({ nonce: "bad nonce", mode: "production" }),
+    ).toThrow(/nonce/i);
+  });
+
+  it("rejects a placeholder or malformed script hash", () => {
+    expect(() =>
+      buildContentSecurityPolicy({
+        mode: "production",
+        scriptHashes: [CSP_SCRIPT_HASH_PLACEHOLDER],
+      }),
+    ).toThrow(/placeholder/i);
+    expect(() =>
+      buildContentSecurityPolicy({
+        mode: "production",
+        scriptHashes: ["sha256-not-a-real-hash"],
+      }),
+    ).toThrow(/sha256/i);
+  });
+
+  it("rejects combining a nonce with script hashes", () => {
+    expect(() =>
+      buildContentSecurityPolicy({
+        nonce: "testnonce",
+        scriptHashes: [hashInlineScript("inline")],
+        mode: "production",
+      }),
     ).toThrow(/nonce/i);
   });
 });

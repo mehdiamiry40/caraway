@@ -5,7 +5,7 @@
   "packageManager": "npm@11.6.2",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "export NODE_OPTIONS=\"--disable-warning=MODULE_TYPELESS_PACKAGE_JSON${NODE_OPTIONS:+ $NODE_OPTIONS}\" && next build && node scripts/apply-csp-hashes.mjs",
     "turbo:check": "turbo run lint typecheck test:coverage",
     "turbo:build": "turbo run build",
     "turbo:verify": "turbo run check:indexability check:bundle check:headings check:links check:crawl",

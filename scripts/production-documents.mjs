@@ -1,9 +1,8 @@
 /**
  * Load the HTML a crawler receives from the production server.
  *
- * Document CSP nonces are per request, so app pages are rendered dynamically
- * and Next does not write prerendered `.html` files for them. These checks
- * still inspect that HTML; they do not change the policy.
+ * These checks request the production server so they see the HTML a crawler
+ * receives, including nav, footer, and host-based indexing headers.
  */
 import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";

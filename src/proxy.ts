@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {
   buildContentSecurityPolicy,
+  contentSecurityPolicyMode,
   createCspNonce,
 } from "@/lib/content-security-policy";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
@@ -54,15 +55,22 @@ function finishWithDocumentCsp(
   response: NextResponse,
   request: NextRequest,
 ): NextResponse {
+  // Rejection bodies are plain text, so they do not need inline-script hashes.
   return withDocumentCsp(
     response,
     request,
-    documentContentSecurityPolicy().policy,
+    buildContentSecurityPolicy({ mode: contentSecurityPolicyMode() }),
   );
 }
 
 export async function proxy(request: NextRequest) {
   if (request.method !== "POST") {
+    // Production documents get their script hashes from the build headers.
+    // A second per-request policy would be enforced as well and would block
+    // the prerendered inline scripts.
+    if (process.env.NODE_ENV === "production") {
+      return withHostRobotsPolicy(NextResponse.next(), request);
+    }
     return nextWithDocumentCsp(request);
   }
 
@@ -172,8 +180,8 @@ export const config = {
     {
       source:
         "/((?!_next/static|_next/image|_next/data|_vercel/insights/|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
-      // Prefetches must not receive their own nonce. The document that
-      // started the navigation already has the CSP the browser enforces.
+      // Development prefetches must not receive their own nonce. Production
+      // CSP is a static hash policy on the route, shared with the document.
       missing: [
         { type: "header", key: "next-router-prefetch" },
         { type: "header", key: "purpose", value: "prefetch" },

@@ -91,36 +91,39 @@ describe("proxy", () => {
       expect(scriptSrc).toContain("https://va.vercel-scripts.com");
     });
 
-    it("omits development script exceptions from the production document policy", async () => {
+    it("leaves production documents to the static hash policy", async () => {
       vi.stubEnv("NODE_ENV", "production");
       const middleware = await loadProxy();
       const first = await middleware(makeRequest("GET", { host: "caraway.au" }));
       const second = await middleware(makeRequest("GET", { host: "caraway.au" }));
-      const policies = [first, second].map(
-        (response) => response.headers.get("content-security-policy") ?? "",
+
+      expect(first.headers.get("content-security-policy")).toBeNull();
+      expect(second.headers.get("content-security-policy")).toBeNull();
+
+      const rejected = await middleware(
+        makeRequest("POST", {
+          host: "caraway.au",
+          origin: "https://caraway.au",
+          "x-forwarded-for": "203.0.113.8",
+        }),
       );
-
-      for (const csp of policies) {
-        const scriptSrc = csp
-          .split(";")
-          .map((part) => part.trim())
-          .find((part) => part.startsWith("script-src "));
-        expect(scriptSrc).toContain("'strict-dynamic'");
-        expect(scriptSrc).not.toContain("'unsafe-inline'");
-        expect(scriptSrc).not.toContain("'unsafe-eval'");
-        expect(scriptSrc).not.toContain("va.vercel-scripts.com");
-        expect(csp).toContain("object-src 'none'");
-        expect(csp).toContain("base-uri 'self'");
-        expect(csp).toContain("form-action 'self'");
-        expect(csp).toContain("frame-ancestors 'none'");
-        expect(csp).toContain("frame-src 'none'");
-        expect(csp).toContain("upgrade-insecure-requests");
-      }
-
-      const nonceOf = (policy: string) =>
-        policy.match(/'nonce-([^']+)'/)?.[1];
-      expect(nonceOf(policies[0])).toBeTruthy();
-      expect(nonceOf(policies[0])).not.toBe(nonceOf(policies[1]));
+      expect(rejected.status).toBe(503);
+      const csp = rejected.headers.get("content-security-policy") ?? "";
+      const scriptSrc = csp
+        .split(";")
+        .map((part) => part.trim())
+        .find((part) => part.startsWith("script-src "));
+      expect(scriptSrc).toBe("script-src 'self'");
+      expect(scriptSrc).not.toContain("'unsafe-inline'");
+      expect(scriptSrc).not.toContain("'unsafe-eval'");
+      expect(scriptSrc).not.toContain("'nonce-");
+      expect(scriptSrc).not.toContain("'strict-dynamic'");
+      expect(csp).toContain("object-src 'none'");
+      expect(csp).toContain("base-uri 'self'");
+      expect(csp).toContain("form-action 'self'");
+      expect(csp).toContain("frame-ancestors 'none'");
+      expect(csp).toContain("frame-src 'none'");
+      expect(csp).toContain("upgrade-insecure-requests");
     });
 
     it("keeps the canonical apex host indexable", async () => {

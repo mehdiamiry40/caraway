@@ -8,9 +8,7 @@
  *
  * Reads the HTML the production server returns so it measures the links a
  * crawler actually receives, including nav and footer, rather than what the
- * source appears to render. Pages are requested rather than read from
- * prerendered files because the document CSP nonce makes every page dynamic.
- * Run after `npm run build`.
+ * source appears to render. Run after `npm run build`.
  *
  * Two kinds of page are exempt from needing inbound links, both detected from
  * the rendered response rather than a list maintained by hand:

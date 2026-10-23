@@ -8,8 +8,7 @@
  * /accessibility page commits to, and they are only observable in the built
  * markup rather than in any single component's unit test.
  *
- * Pages are requested rather than read from prerendered files because the
- * document CSP nonce makes every page dynamic. Skipped heading ranks (for
+ * Pages are requested from the production server. Skipped heading ranks (for
  * example, h1 → h3) fail the build. Shared card grids and navigation labels
  * are structured so every public page can maintain a continuous outline
  * without changing its visual hierarchy.

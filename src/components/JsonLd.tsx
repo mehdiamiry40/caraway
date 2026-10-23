@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import { escapeJsonForScript, findSuspiciousMarkup } from "@/lib/json-ld";
 
 type JsonRecord = Record<string, unknown>;
@@ -21,13 +20,22 @@ function normalizeSchema(data: JsonRecord): JsonRecord {
  * string value looks like markup — a hint that user input may have leaked
  * into a build-time schema.
  */
+async function developmentNonce(): Promise<string | undefined> {
+  // Production pages are prerendered and allow inline scripts by hash.
+  // Calling headers() here would opt every page out of that static render.
+  if (process.env.NODE_ENV === "production") return undefined;
+  const { headers } = await import("next/headers");
+  const headerNonce = (await headers()).get("x-nonce");
+  const nonce = headerNonce?.trim();
+  return nonce ? nonce : undefined;
+}
+
 export async function JsonLd({
   data,
 }: {
   data: JsonRecord | JsonRecord[];
 }) {
-  const headerNonce = (await headers()).get("x-nonce");
-  const nonce = headerNonce?.trim() ? headerNonce : undefined;
+  const nonce = await developmentNonce();
   const items = Array.isArray(data) ? data : [data];
   if (process.env.NODE_ENV !== "production") {
     items.forEach((item, i) => {
