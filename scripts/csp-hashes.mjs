@@ -252,24 +252,33 @@ function setCsp(headers, policy) {
 }
 
 function verifyVercelOutput(projectDir, documents) {
-  const configPath = join(projectDir, ".vercel", "output", "config.json");
-  if (!existsSync(configPath)) {
-    if (process.env.VERCEL) {
+  // The Next adapter writes `.next/output` during `next build`. Vercel copies
+  // that directory to `.vercel/output` only after the build command exits, so
+  // a check for `.vercel/output` inside the build script always fails.
+  const candidates = [
+    join(projectDir, ".next", "output", "config.json"),
+    join(projectDir, ".vercel", "output", "config.json"),
+  ];
+  const present = candidates.filter((file) => existsSync(file));
+  if (present.length === 0) {
+    if (process.env.VERCEL || process.env.NEXT_ADAPTER_PATH) {
       throw new Error(
-        "Vercel did not produce .vercel/output/config.json, so the CSP hashes were not captured into the deployment headers.",
+        "The Vercel adapter did not write .next/output/config.json, so the CSP hashes were not captured into the deployment headers.",
       );
     }
     return;
   }
-  const raw = readFileSync(configPath, "utf8");
-  if (raw.includes(PLACEHOLDER)) {
-    throw new Error(
-      "Vercel output config.json still contains a placeholder CSP script hash. The deployment would block every inline script.",
-    );
+  for (const configPath of present) {
+    const raw = readFileSync(configPath, "utf8");
+    if (raw.includes(PLACEHOLDER)) {
+      throw new Error(
+        `${configPath} still contains a placeholder CSP script hash. The deployment would block every inline script.`,
+      );
+    }
+    const config = JSON.parse(raw);
+    assertDocumentsCovered(documents, (path) => policiesFromVercelConfig(config, path));
+    assertTreeHasNoPlaceholder(join(configPath, ".."));
   }
-  const config = JSON.parse(raw);
-  assertDocumentsCovered(documents, (path) => policiesFromVercelConfig(config, path));
-  assertTreeHasNoPlaceholder(join(projectDir, ".vercel", "output"));
 }
 
 function policiesFromVercelConfig(config, pathname) {

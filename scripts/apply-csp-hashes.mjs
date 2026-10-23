@@ -5,7 +5,8 @@
  * Local and CI builds have no platform adapter, so this process writes the
  * per-page policies into the routes manifest Next serves. Vercel builds run
  * the hash adapter during `next build`; this process then refuses to succeed
- * unless those hashes are what `.vercel/output` will serve.
+ * unless those hashes are in `.next/output/config.json`, which Vercel publishes
+ * as `.vercel/output` after this command exits.
  */
 import { join } from "node:path";
 import { installDocumentCsp, verifyCapturedCsp } from "./csp-hashes.mjs";
