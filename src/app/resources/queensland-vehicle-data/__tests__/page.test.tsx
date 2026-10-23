@@ -1,5 +1,5 @@
-import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it, vi } from "vitest";
+import { renderToReadableStream } from "react-dom/server";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import QueenslandVehicleDataPage, {
   RESOURCE_HEADING,
   metadata,
@@ -26,7 +26,23 @@ vi.mock("next/navigation", () => ({
   usePathname: () => "/resources/queensland-vehicle-data",
 }));
 
-const markup = renderToStaticMarkup(<QueenslandVehicleDataPage />);
+// JsonLd reads the per-request CSP nonce, so the page suspends until that
+// promise resolves. renderToStaticMarkup cannot wait for it.
+vi.mock("next/headers", () => ({
+  headers: async () => ({
+    get: (name: string) => (name.toLowerCase() === "x-nonce" ? "test-nonce" : null),
+  }),
+}));
+
+let markup = "";
+
+beforeAll(async () => {
+  const stream = await renderToReadableStream(<QueenslandVehicleDataPage />);
+  await stream.allReady;
+  // Streaming SSR inserts <!-- --> between adjacent text nodes so the HTML
+  // parser does not merge them. The assertions compare the visible text.
+  markup = (await new Response(stream).text()).replaceAll("<!-- -->", "");
+});
 
 describe("Queensland vehicle-data resource page", () => {
   it("is self-canonical, indexable, and socially described as a data resource", () => {
