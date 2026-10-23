@@ -25,7 +25,7 @@ type AllowedValue = string | number | boolean | null;
  * stable for existing dashboards; no submission ID or form values are sent.
  * Custom-event bridge to Vercel Web Analytics. The beacon posts to
  * `/_vercel/insights/*` on our own origin, so the strict
- * `connect-src 'self'` CSP in next.config.ts needs no carve-out.
+ * `connect-src 'self'` document CSP needs no carve-out.
  * `track` is a safe no-op outside the Vercel runtime (e.g. local dev).
  */
 export function trackEvent(name: EventName, props?: Record<string, AllowedValue>) {

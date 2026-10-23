@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import {
+  buildContentSecurityPolicy,
+  createCspNonce,
+} from "@/lib/content-security-policy";
 import { getClientIp, rateLimit } from "@/lib/rate-limit";
 import {
   getRequestHostname,
@@ -20,16 +24,53 @@ function withHostRobotsPolicy(
   return response;
 }
 
+function documentContentSecurityPolicy(): { nonce: string; policy: string } {
+  const nonce = createCspNonce();
+  return { nonce, policy: buildContentSecurityPolicy({ nonce }) };
+}
+
+function withDocumentCsp(
+  response: NextResponse,
+  request: NextRequest,
+  policy: string,
+): NextResponse {
+  response.headers.set("Content-Security-Policy", policy);
+  return withHostRobotsPolicy(response, request);
+}
+
+function nextWithDocumentCsp(request: NextRequest): NextResponse {
+  const { nonce, policy } = documentContentSecurityPolicy();
+  const requestHeaders = new Headers(request.headers);
+  // Overwrite any client-supplied values so the rendered nonce matches this response.
+  requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", policy);
+  const response = NextResponse.next({
+    request: { headers: requestHeaders },
+  });
+  return withDocumentCsp(response, request, policy);
+}
+
+function finishWithDocumentCsp(
+  response: NextResponse,
+  request: NextRequest,
+): NextResponse {
+  return withDocumentCsp(
+    response,
+    request,
+    documentContentSecurityPolicy().policy,
+  );
+}
+
 export async function proxy(request: NextRequest) {
   if (request.method !== "POST") {
-    return withHostRobotsPolicy(NextResponse.next(), request);
+    return nextWithDocumentCsp(request);
   }
 
   // --- Rate limiting ---
   const rateLimitResult = await rateLimit("forms", getClientIp(request));
   if (!rateLimitResult.success) {
     const unavailable = rateLimitResult.mode === "unavailable";
-    return withHostRobotsPolicy(
+    return finishWithDocumentCsp(
       new NextResponse(
         unavailable ? "Service unavailable" : "Too many requests",
         {
@@ -70,13 +111,13 @@ export async function proxy(request: NextRequest) {
         ok = true;
       }
       if (!ok) {
-        return withHostRobotsPolicy(
+        return finishWithDocumentCsp(
           new NextResponse("Forbidden", { status: 403 }),
           request,
         );
       }
     } catch {
-      return withHostRobotsPolicy(
+      return finishWithDocumentCsp(
         new NextResponse("Forbidden", { status: 403 }),
         request,
       );
@@ -100,27 +141,27 @@ export async function proxy(request: NextRequest) {
           ok = true;
         }
         if (!ok) {
-          return withHostRobotsPolicy(
+          return finishWithDocumentCsp(
             new NextResponse("Forbidden", { status: 403 }),
             request,
           );
         }
       } catch {
-        return withHostRobotsPolicy(
+        return finishWithDocumentCsp(
           new NextResponse("Forbidden", { status: 403 }),
           request,
         );
       }
     } else {
       // Neither Origin nor Referer present on a POST — reject.
-      return withHostRobotsPolicy(
+      return finishWithDocumentCsp(
         new NextResponse("Forbidden", { status: 403 }),
         request,
       );
     }
   }
 
-  return withHostRobotsPolicy(NextResponse.next(), request);
+  return nextWithDocumentCsp(request);
 }
 
 // Exclude static assets, API routes, and Vercel's first-party analytics intake.
@@ -128,6 +169,15 @@ export async function proxy(request: NextRequest) {
 // rate limit and origin check apply only to requests owned by the application.
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|_next/data|_vercel/insights/|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
+    {
+      source:
+        "/((?!_next/static|_next/image|_next/data|_vercel/insights/|favicon\\.svg|favicon\\.ico|images/|fonts/|api/).*)",
+      // Prefetches must not receive their own nonce. The document that
+      // started the navigation already has the CSP the browser enforces.
+      missing: [
+        { type: "header", key: "next-router-prefetch" },
+        { type: "header", key: "purpose", value: "prefetch" },
+      ],
+    },
   ],
 };

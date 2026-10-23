@@ -1,5 +1,6 @@
 "use client";
 
+import "@/lib/configure-zod-for-csp";
 import { useChat } from "@ai-sdk/react";
 import {
   ArrowUp,

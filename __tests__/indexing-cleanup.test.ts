@@ -7,6 +7,7 @@ import nextConfig, {
   retiredLocationRedirects,
   retiredServiceRedirects,
 } from "../next.config";
+import { buildContentSecurityPolicy } from "@/lib/content-security-policy";
 import sitemap from "@/app/sitemap";
 import { generateStaticParams as generateServiceStaticParams } from "@/app/[slug]/page";
 import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
@@ -358,14 +359,17 @@ describe("Search Console indexing cleanup", () => {
     }
   });
 
-  it("keeps Google Ads conversion endpoints out of the production CSP", async () => {
+  it("keeps Google Ads conversion endpoints out of every CSP", async () => {
     const headers = await getHeaderRules();
-    const csp = headers
-      .find((entry) => entry.source === "/(.*)")
-      ?.headers.find((header) => header.key === "Content-Security-Policy")
-      ?.value;
-
-    expect(csp).toBeDefined();
+    const policies = [
+      buildContentSecurityPolicy({ nonce: "testnonce", mode: "production" }),
+      buildContentSecurityPolicy({ nonce: "testnonce", mode: "development" }),
+      ...headers.flatMap((entry) =>
+        entry.headers
+          .filter((header) => header.key === "Content-Security-Policy")
+          .map((header) => header.value),
+      ),
+    ];
     const disallowedHosts = [
       "https://www.googletagmanager.com",
       "https://www.googleadservices.com",
@@ -373,17 +377,29 @@ describe("Search Console indexing cleanup", () => {
       "https://ad.doubleclick.net",
     ];
 
-    for (const host of disallowedHosts) {
-      expect(cspDirective(csp!, "script-src")).not.toContain(host);
-      expect(cspDirective(csp!, "connect-src")).not.toContain(host);
-      expect(cspDirective(csp!, "img-src")).not.toContain(host);
+    expect(policies.length).toBeGreaterThan(1);
+    for (const csp of policies) {
+      for (const host of disallowedHosts) {
+        expect(cspDirective(csp, "script-src"), host).not.toContain(host);
+        expect(cspDirective(csp, "connect-src"), host).not.toContain(host);
+        expect(cspDirective(csp, "img-src"), host).not.toContain(host);
+      }
     }
   });
 
-  it("allows the Vercel Analytics debug script in non-production previews", async () => {
+  it("does not attach a second document CSP beside the proxy nonce policy", async () => {
+    const headers = await getHeaderRules();
+    const documentCsp = headers
+      .find((entry) => entry.source === "/(.*)")
+      ?.headers.find((header) => header.key === "Content-Security-Policy");
+
+    expect(documentCsp).toBeUndefined();
+  });
+
+  it("allows the Vercel Analytics debug script on non-production asset responses", async () => {
     const headers = await getHeaderRules();
     const csp = headers
-      .find((entry) => entry.source === "/(.*)")
+      .find((entry) => entry.source === "/_next/static/(.*)")
       ?.headers.find((header) => header.key === "Content-Security-Policy")
       ?.value;
 

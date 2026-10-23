@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-import { spawn } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { request } from "node:http";
-import { createServer } from "node:net";
 import { join } from "node:path";
+import { fetchLocal, withProductionServer } from "./production-documents.mjs";
 
 const routes = ["sell-my-car-brisbane", "car-removal-brisbane"];
 const preferredImages = new Map([
@@ -18,24 +16,7 @@ const preferredImages = new Map([
 ]);
 const failures = [];
 
-for (const route of routes) {
-  const artifactPath = join(
-    process.cwd(),
-    ".next",
-    "server",
-    "app",
-    `${route}.html`,
-  );
-  let html;
-  try {
-    html = readFileSync(artifactPath, "utf8");
-  } catch (error) {
-    failures.push(
-      `${route}: could not read built HTML (${error instanceof Error ? error.message : String(error)})`,
-    );
-    continue;
-  }
-
+function auditServicePage(route, html) {
   const canonical = `https://caraway.au/${route}`;
   const preferredImage = preferredImages.get(route);
   const absoluteImage = preferredImage
@@ -55,7 +36,7 @@ for (const route of routes) {
   }
   if (!preferredImage || !absoluteImage) {
     failures.push(`${route}: preferred-image policy is not configured`);
-    continue;
+    return;
   }
   if (!html.includes(preferredImage)) {
     failures.push(`${route}: visible or metadata image is missing from built HTML`);
@@ -69,7 +50,11 @@ for (const route of routes) {
   if (html.includes("qld-vehicle-sale-record-builder")) {
     failures.push(`${route}: paperwork builder leaked onto a money page`);
   }
+}
 
+for (const route of routes) {
+  const preferredImage = preferredImages.get(route);
+  if (!preferredImage) continue;
   try {
     const asset = readFileSync(
       join(process.cwd(), "public", preferredImage.replace(/^\//, "")),
@@ -84,29 +69,6 @@ for (const route of routes) {
       `${route}: preferred image asset is unreadable (${error instanceof Error ? error.message : String(error)})`,
     );
   }
-}
-
-try {
-  const homeHtml = readFileSync(
-    join(process.cwd(), ".next", "server", "app", "index.html"),
-    "utf8",
-  );
-  const canonicalMatches = homeHtml.match(
-    /<link rel="canonical" href="https:\/\/caraway\.au\/"/g,
-  );
-  const openGraphUrlMatches = homeHtml.match(
-    /<meta property="og:url" content="https:\/\/caraway\.au\/"/g,
-  );
-  if (canonicalMatches?.length !== 1) {
-    failures.push("homepage: slash-bearing canonical must appear exactly once");
-  }
-  if (openGraphUrlMatches?.length !== 1) {
-    failures.push("homepage: slash-bearing Open Graph URL must appear exactly once");
-  }
-} catch (error) {
-  failures.push(
-    `homepage: could not read built HTML (${error instanceof Error ? error.message : String(error)})`,
-  );
 }
 
 try {
@@ -141,161 +103,64 @@ try {
 }
 
 try {
-  const paperworkHtml = readFileSync(
-    join(
-      process.cwd(),
-      ".next",
-      "server",
-      "app",
-      "blog",
-      "what-paperwork-to-sell-a-car-qld.html",
-    ),
-    "utf8",
-  );
-  if (!paperworkHtml.includes('id="qld-vehicle-sale-record-builder"')) {
-    failures.push("paperwork guide: builder anchor is missing from built HTML");
-  }
-  if (!paperworkHtml.includes('"@type":"BlogPosting"')) {
-    failures.push("paperwork guide: BlogPosting structured data is missing");
-  }
-  if (/"@type":"(?:Calculator|FAQPage|Product)"/.test(paperworkHtml)) {
-    failures.push("paperwork guide: unsupported tool rich-result type is present");
-  }
-} catch (error) {
-  failures.push(
-    `paperwork guide: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
-  );
-}
-
-try {
-  const unrelatedHtml = readFileSync(
-    join(
-      process.cwd(),
-      ".next",
-      "server",
-      "app",
-      "blog",
-      "tow-truck-cost-brisbane.html",
-    ),
-    "utf8",
-  );
-  if (unrelatedHtml.includes("qld-vehicle-sale-record-builder")) {
-    failures.push("unrelated guide: paperwork builder leaked into built HTML");
-  }
-} catch (error) {
-  failures.push(
-    `unrelated guide: could not read built artifact (${error instanceof Error ? error.message : String(error)})`,
-  );
-}
-
-function delay(milliseconds) {
-  return new Promise((resolve) => setTimeout(resolve, milliseconds));
-}
-
-function availablePort() {
-  return new Promise((resolve, reject) => {
-    const server = createServer();
-    server.once("error", reject);
-    server.listen(0, "127.0.0.1", () => {
-      const address = server.address();
-      const port = typeof address === "object" && address ? address.port : null;
-      server.close((error) => {
-        if (error) reject(error);
-        else if (port) resolve(port);
-        else reject(new Error("Could not reserve a local port"));
-      });
-    });
-  });
-}
-
-function fetchHeaders(port, host, path) {
-  return new Promise((resolve, reject) => {
-    const req = request(
-      {
-        hostname: "127.0.0.1",
-        port,
-        path,
-        method: "GET",
-        headers: {
-          Host: host,
-          "X-Forwarded-Host": host,
-        },
-      },
-      (response) => {
-        response.resume();
-        response.once("end", () =>
-          resolve({ status: response.statusCode, headers: response.headers }),
-        );
-      },
-    );
-    req.setTimeout(5_000, () => req.destroy(new Error("Request timed out")));
-    req.once("error", reject);
-    req.end();
-  });
-}
-
-async function verifyRuntimeHostPolicy() {
-  const port = await availablePort();
-  const nextBinary = join(
-    process.cwd(),
-    "node_modules",
-    "next",
-    "dist",
-    "bin",
-    "next",
-  );
-  const server = spawn(
-    process.execPath,
-    [nextBinary, "start", "--hostname", "127.0.0.1", "--port", String(port)],
-    {
-      cwd: process.cwd(),
-      env: { ...process.env, NODE_ENV: "production" },
-      stdio: ["ignore", "pipe", "pipe"],
-    },
-  );
-  let serverOutput = "";
-  server.stdout.on("data", (chunk) => {
-    serverOutput += chunk.toString();
-  });
-  server.stderr.on("data", (chunk) => {
-    serverOutput += chunk.toString();
-  });
-
-  try {
-    let ready = false;
-    for (let attempt = 0; attempt < 50; attempt += 1) {
-      if (server.exitCode !== null) break;
-      try {
-        const response = await fetchHeaders(
-          port,
-          "preview.example.vercel.app",
-          "/car-removal-brisbane",
-        );
-        if (response.status === 200) {
-          ready = true;
-          break;
-        }
-      } catch {
-        // The production server is still starting.
+  await withProductionServer(async (port) => {
+    for (const route of routes) {
+      const response = await fetchLocal(port, `/${route}`);
+      if (response.status !== 200) {
+        failures.push(`${route}: rendered document returned HTTP ${response.status}`);
+      } else {
+        auditServicePage(route, response.body);
       }
-      await delay(100);
     }
 
-    if (!ready) {
-      failures.push(
-        `runtime host-policy server did not start successfully: ${serverOutput.trim()}`,
+    const home = await fetchLocal(port, "/");
+    if (home.status !== 200) {
+      failures.push(`homepage: rendered document returned HTTP ${home.status}`);
+    } else {
+      const canonicalMatches = home.body.match(
+        /<link rel="canonical" href="https:\/\/caraway\.au\/"/g,
       );
-      return;
+      const openGraphUrlMatches = home.body.match(
+        /<meta property="og:url" content="https:\/\/caraway\.au\/"/g,
+      );
+      if (canonicalMatches?.length !== 1) {
+        failures.push("homepage: slash-bearing canonical must appear exactly once");
+      }
+      if (openGraphUrlMatches?.length !== 1) {
+        failures.push("homepage: slash-bearing Open Graph URL must appear exactly once");
+      }
+    }
+
+    const paperwork = await fetchLocal(port, "/blog/what-paperwork-to-sell-a-car-qld");
+    if (paperwork.status !== 200) {
+      failures.push(
+        `paperwork guide: rendered document returned HTTP ${paperwork.status}`,
+      );
+    } else {
+      if (!paperwork.body.includes('id="qld-vehicle-sale-record-builder"')) {
+        failures.push("paperwork guide: builder anchor is missing from built HTML");
+      }
+      if (!paperwork.body.includes('"@type":"BlogPosting"')) {
+        failures.push("paperwork guide: BlogPosting structured data is missing");
+      }
+      if (/"@type":"(?:Calculator|FAQPage|Product)"/.test(paperwork.body)) {
+        failures.push("paperwork guide: unsupported tool rich-result type is present");
+      }
+    }
+
+    const unrelated = await fetchLocal(port, "/blog/tow-truck-cost-brisbane");
+    if (unrelated.status !== 200) {
+      failures.push(
+        `unrelated guide: rendered document returned HTTP ${unrelated.status}`,
+      );
+    } else if (unrelated.body.includes("qld-vehicle-sale-record-builder")) {
+      failures.push("unrelated guide: paperwork builder leaked into built HTML");
     }
 
     for (const route of routes) {
       const path = `/${route}`;
-      const preview = await fetchHeaders(
-        port,
-        "preview.example.vercel.app",
-        path,
-      );
-      const production = await fetchHeaders(port, "caraway.au", path);
+      const preview = await fetchLocal(port, path, "preview.example.vercel.app");
+      const production = await fetchLocal(port, path);
 
       if (preview.status !== 200) {
         failures.push(`${route}: preview host returned HTTP ${preview.status}`);
@@ -310,19 +175,7 @@ async function verifyRuntimeHostPolicy() {
         failures.push(`${route}: canonical host received an unexpected noindex header`);
       }
     }
-  } finally {
-    if (server.exitCode === null) {
-      server.kill("SIGTERM");
-      for (let attempt = 0; attempt < 20 && server.exitCode === null; attempt += 1) {
-        await delay(50);
-      }
-      if (server.exitCode === null) server.kill("SIGKILL");
-    }
-  }
-}
-
-try {
-  await verifyRuntimeHostPolicy();
+  });
 } catch (error) {
   failures.push(
     `runtime host-policy check failed (${error instanceof Error ? error.message : String(error)})`,
