@@ -1,4 +1,11 @@
 import type { NextConfig } from "next";
+
+// Preview builds otherwise inject https://vercel.live. The document policy
+// does not allow that host, so leave the toolbar off unless it is set
+// explicitly.
+if (process.env.VERCEL_PREVIEW_FEEDBACK_ENABLED == null) {
+  process.env.VERCEL_PREVIEW_FEEDBACK_ENABLED = "0";
+}
 import path from "node:path";
 import { RETIRED_BLOG_DESTINATIONS } from "./src/lib/blog-consolidation";
 import {
