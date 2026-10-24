@@ -34,6 +34,7 @@ export function installDocumentCsp({
   routing,
   outputs,
 }) {
+  stripVercelToolbar(distDir);
   const documents = discoverDocuments({ distDir, outputs });
   assertRepresentativeDocuments(documents);
   const entries = documents.map((document) => ({
@@ -96,7 +97,49 @@ export function verifyCapturedCsp({ distDir, projectDir }) {
   );
   assertIsrRestored(readPrerenderRoutes(distDir));
   assertNoUnlistedHtml(distDir, documents);
+  assertToolbarRemoved(distDir);
   verifyVercelOutput(projectDir, documents);
+}
+
+const TOOLBAR_INJECTOR =
+  /var (\w+)=document\.createElement\("script"\);\1\.src="https:\/\/vercel\.live\/_next-live\/feedback\/feedback\.js"[\s\S]*?appendChild\(\1\)/g;
+
+function stripVercelToolbar(distDir) {
+  const staticDir = join(distDir, "static");
+  if (!existsSync(staticDir)) return;
+  let stripped = 0;
+  for (const file of walkFiles(staticDir)) {
+    if (!file.endsWith(".js")) continue;
+    const source = readFileSync(file, "utf8");
+    if (!source.includes("vercel.live/_next-live/feedback/feedback.js")) continue;
+    const injector = new RegExp(TOOLBAR_INJECTOR.source, "g");
+    const next = source.replace(injector, "void 0");
+    if (next === source) {
+      throw new Error(
+        `Could not remove the Vercel preview toolbar injector in ${relative(distDir, file)}. It would violate the document script policy.`,
+      );
+    }
+    writeFileSync(file, next);
+    stripped += 1;
+  }
+  if (stripped > 0) {
+    console.log(`Removed the Vercel preview toolbar injector from ${stripped} bundle(s).`);
+  }
+}
+
+function assertToolbarRemoved(distDir) {
+  for (const directory of [join(distDir, "static"), join(distDir, "output")]) {
+    if (!existsSync(directory)) continue;
+    for (const file of walkFiles(directory)) {
+      if (!file.endsWith(".js") && !file.endsWith(".html")) continue;
+      const source = readFileSync(file, "utf8");
+      if (source.includes("vercel.live/_next-live/feedback/feedback.js")) {
+        throw new Error(
+          `${relative(distDir, file)} still injects https://vercel.live, which the document CSP does not allow.`,
+        );
+      }
+    }
+  }
 }
 
 function discoverDocuments({ distDir, outputs }) {
