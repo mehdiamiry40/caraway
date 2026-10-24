@@ -13,7 +13,7 @@ import { join, relative, sep } from "node:path";
 import { inlineScriptHashes } from "../src/lib/csp-inline-scripts.ts";
 import {
   assertDocumentsCovered,
-  assertIsrRestored,
+  assertPagesAreStatic,
   cspValuesForPath,
   documentScriptPolicy,
   upsertPathCsp,
@@ -34,7 +34,7 @@ export function installDocumentCsp({
   routing,
   outputs,
 }) {
-  stripVercelToolbar(distDir);
+  stripVercelToolbar(join(distDir, "static"));
   const documents = discoverDocuments({ distDir, outputs });
   assertRepresentativeDocuments(documents);
   const entries = documents.map((document) => ({
@@ -63,7 +63,7 @@ export function installDocumentCsp({
   assertDocumentsCovered(entries, (path) =>
     cspValuesForPath(routesManifest.headers, path, sourceMatchesPath),
   );
-  assertIsrRestored(readPrerenderRoutes(distDir));
+  assertPagesAreStatic(readPrerenderRoutes(distDir));
   assertNoUnlistedHtml(distDir, documents);
 
   const largest = entries.reduce((max, entry) => Math.max(max, entry.policy.length), 0);
@@ -95,49 +95,87 @@ export function verifyCapturedCsp({ distDir, projectDir }) {
   assertDocumentsCovered(documents, (path) =>
     cspValuesForPath(routesManifest.headers ?? [], path, sourceMatchesPath),
   );
-  assertIsrRestored(readPrerenderRoutes(distDir));
+  assertPagesAreStatic(readPrerenderRoutes(distDir));
   assertNoUnlistedHtml(distDir, documents);
   assertToolbarRemoved(distDir);
   verifyVercelOutput(projectDir, documents);
 }
 
-const TOOLBAR_INJECTOR =
-  /var (\w+)=document\.createElement\("script"\);\1\.src="https:\/\/vercel\.live\/_next-live\/feedback\/feedback\.js"[\s\S]*?appendChild\(\1\)/g;
+const PREVIEW_TOOLBAR_URL = "https://vercel.live/_next-live/feedback/feedback.js";
 
-function stripVercelToolbar(distDir) {
-  const staticDir = join(distDir, "static");
-  if (!existsSync(staticDir)) return;
-  let stripped = 0;
-  for (const file of walkFiles(staticDir)) {
-    if (!file.endsWith(".js")) continue;
-    const source = readFileSync(file, "utf8");
-    if (!source.includes("vercel.live/_next-live/feedback/feedback.js")) continue;
-    const injector = new RegExp(TOOLBAR_INJECTOR.source, "g");
-    const next = source.replace(injector, "void 0");
-    if (next === source) {
-      throw new Error(
-        `Could not remove the Vercel preview toolbar injector in ${relative(distDir, file)}. It would violate the document script policy.`,
-      );
+// Unconditional preview injection. The cookie-gated `__vercel_toolbar=1` opt-in
+// is left in the bundle; public responses never set that cookie.
+const TOOLBAR_INJECTOR =
+  /var \w+=document\.createElement\(["']script["']\);?\w+\.src=["']https:\/\/vercel\.live\/_next-live\/feedback\/feedback\.js["'][\s\S]*?appendChild\(\w+\)/g;
+
+function cookieGatedToolbarOnly(source) {
+  let from = 0;
+  while (from < source.length) {
+    const index = source.indexOf(PREVIEW_TOOLBAR_URL, from);
+    if (index === -1) return true;
+    const before = source.slice(Math.max(0, index - 900), index);
+    const after = source.slice(index, index + 500);
+    const gated =
+      before.includes("__vercel_toolbar=1") &&
+      before.includes("document.cookie") &&
+      after.includes("data-cookie-opt-in") &&
+      after.includes("appendChild(");
+    if (!gated) return false;
+    from = index + PREVIEW_TOOLBAR_URL.length;
+  }
+  return true;
+}
+
+function stripPreviewToolbarSource(source) {
+  TOOLBAR_INJECTOR.lastIndex = 0;
+  const code = source.replace(TOOLBAR_INJECTOR, (match, offset) => {
+    const before = source.slice(Math.max(0, offset - 900), offset);
+    if (before.includes("__vercel_toolbar=1") && before.includes("document.cookie")) {
+      return match;
     }
+    return "void 0";
+  });
+  if (!code.includes(PREVIEW_TOOLBAR_URL) || cookieGatedToolbarOnly(code)) return code;
+  throw new Error(
+    "Unrecognized Vercel preview toolbar injection still references https://vercel.live. The document CSP does not allow that host.",
+  );
+}
+
+export function stripVercelToolbar(directory) {
+  if (!directory || !existsSync(directory)) return 0;
+  let stripped = 0;
+  for (const file of walkFiles(directory)) {
+    if (!file.endsWith(".js") && !file.endsWith(".html")) continue;
+    const source = readFileSync(file, "utf8");
+    if (!source.includes(PREVIEW_TOOLBAR_URL)) continue;
+    const next = stripPreviewToolbarSource(source);
+    if (next === source) continue;
     writeFileSync(file, next);
     stripped += 1;
   }
   if (stripped > 0) {
-    console.log(`Removed the Vercel preview toolbar injector from ${stripped} bundle(s).`);
+    console.log(
+      `Removed the unconditional Vercel preview toolbar injection from ${stripped} file(s).`,
+    );
   }
+  return stripped;
 }
 
 function assertToolbarRemoved(distDir) {
-  for (const directory of [join(distDir, "static"), join(distDir, "output")]) {
+  const directories = [
+    join(distDir, "static"),
+    join(distDir, "output"),
+  ];
+  for (const directory of directories) {
     if (!existsSync(directory)) continue;
     for (const file of walkFiles(directory)) {
       if (!file.endsWith(".js") && !file.endsWith(".html")) continue;
       const source = readFileSync(file, "utf8");
-      if (source.includes("vercel.live/_next-live/feedback/feedback.js")) {
-        throw new Error(
-          `${relative(distDir, file)} still injects https://vercel.live, which the document CSP does not allow.`,
-        );
-      }
+      if (!source.includes(PREVIEW_TOOLBAR_URL)) continue;
+      if (cookieGatedToolbarOnly(source)) continue;
+      throw new Error(
+        `${relative(distDir, file)} still injects https://vercel.live, which the document CSP does not allow.`,
+      );
     }
   }
 }

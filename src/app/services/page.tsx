@@ -15,8 +15,6 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Vehicle Buying Services in Brisbane",
   description: `Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles. Call ${BUSINESS.phoneDisplay}.`,

@@ -32,8 +32,6 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "How Our Vehicle Buying Process Works",
   description: `See how Caraway assesses a Brisbane vehicle, documents an offer, confirms conditional pickup and payment terms, and records the sale. Call ${BUSINESS.phoneDisplay}.`,

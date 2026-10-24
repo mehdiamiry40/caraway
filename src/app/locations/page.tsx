@@ -10,8 +10,6 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-export const revalidate = 3600;
-
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Locations" },

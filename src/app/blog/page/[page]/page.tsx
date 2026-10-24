@@ -6,8 +6,6 @@ import Blog from "@/views/Blog";
 import { blogPageCount } from "@/lib/blog-pagination";
 import { OPEN_GRAPH_DEFAULTS, SITE_URL } from "@/lib/site";
 
-export const revalidate = 3600;
-
 interface Props {
   params: Promise<{ page: string }>;
 }

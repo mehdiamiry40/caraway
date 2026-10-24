@@ -7,7 +7,6 @@ import { buildBlogPostSeoProps } from "./metadata";
 
 export { generateMetadata, generateStaticParams } from "./metadata";
 
-export const revalidate = 86400;
 export const dynamicParams = false;
 
 type Props = { params: Promise<{ slug: string }> };
