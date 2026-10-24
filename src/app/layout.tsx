@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, Schibsted_Grotesk } from "next/font/google";
-import { connection } from "next/server";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -98,14 +97,11 @@ export const viewport: Viewport = {
   themeColor: "#F2F0EB",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Nonces are unique per request. Waiting for the request opts every page
-  // out of static rendering so Next can stamp the proxy's nonce onto scripts.
-  await connection();
   return (
     <html lang="en-AU" className={`${inter.variable} ${schibsted.variable}`}>
       <body className="min-h-screen">

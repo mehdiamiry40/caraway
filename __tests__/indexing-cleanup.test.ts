@@ -8,6 +8,7 @@ import nextConfig, {
   retiredServiceRedirects,
 } from "../next.config";
 import { buildContentSecurityPolicy } from "@/lib/content-security-policy";
+import { hashInlineScript } from "@/lib/csp-inline-scripts";
 import sitemap from "@/app/sitemap";
 import { generateStaticParams as generateServiceStaticParams } from "@/app/[slug]/page";
 import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
@@ -362,7 +363,10 @@ describe("Search Console indexing cleanup", () => {
   it("keeps Google Ads conversion endpoints out of every CSP", async () => {
     const headers = await getHeaderRules();
     const policies = [
-      buildContentSecurityPolicy({ nonce: "testnonce", mode: "production" }),
+      buildContentSecurityPolicy({
+        scriptHashes: [hashInlineScript("caraway")],
+        mode: "production",
+      }),
       buildContentSecurityPolicy({ nonce: "testnonce", mode: "development" }),
       ...headers.flatMap((entry) =>
         entry.headers
@@ -387,7 +391,7 @@ describe("Search Console indexing cleanup", () => {
     }
   });
 
-  it("does not attach a second document CSP beside the proxy nonce policy", async () => {
+  it("does not attach a catch-all document CSP beside the per-page hash policies", async () => {
     const headers = await getHeaderRules();
     const documentCsp = headers
       .find((entry) => entry.source === "/(.*)")
