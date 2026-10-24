@@ -6,7 +6,8 @@
  */
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
-import { installDocumentCsp } from "./csp-hashes.mjs";
+import { installDocumentCsp, stripVercelToolbar } from "./csp-hashes.mjs";
+import { join } from "node:path";
 
 const require = createRequire(import.meta.url);
 const SELF = require.resolve("./csp-hash-adapter.mjs");
@@ -47,7 +48,15 @@ const adapter = {
   async modifyConfig(config, ctx) {
     const upstream = await loadUpstream();
     const next = upstream.modifyConfig ? await upstream.modifyConfig(config, ctx) : config;
-    return { ...next, adapterPath: SELF };
+    const adapted = { ...next, adapterPath: SELF };
+    // Immutable chunk URLs are shared across deployments. A preview toolbar
+    // stripped only on disk would still be served from the first upload.
+    // Deployment-scoped assets (?dpl=) upload this build's stripped file.
+    if (process.env.VERCEL_ENV === "preview") {
+      adapted.supportsImmutableAssets = false;
+      adapted.experimental = { ...adapted.experimental, supportsImmutableAssets: false };
+    }
+    return adapted;
   },
 
   async onBuildComplete(ctx) {
@@ -59,6 +68,8 @@ const adapter = {
     });
     const upstream = await loadUpstream();
     await upstream.onBuildComplete(ctx);
+    stripVercelToolbar(join(ctx.distDir, "output"));
+    stripVercelToolbar(join(ctx.projectDir, ".vercel", "output"));
   },
 };
 

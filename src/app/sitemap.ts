@@ -27,8 +27,6 @@ import {
 } from "@/data/queensland-vehicle-data";
 import { blogPageCount } from "@/lib/blog-pagination";
 
-export const revalidate = 3600;
-
 /* ---------------------------------------------------------------------------
  * Image constant — only the hero image is relevant for Google Image search.
  * The logo is decorative and adds no crawl value.

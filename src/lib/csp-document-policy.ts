@@ -11,14 +11,15 @@ export type PrerenderRouteMeta = {
   initialRevalidateSeconds?: number | false;
 };
 
-const ISR_SECONDS = {
-  "/": 3600,
-  "/about": 3600,
-  "/blog": 3600,
-  "/how-it-works": 3600,
-  "/locations": 3600,
-  "/services": 3600,
-} as const;
+const REQUIRED_STATIC_PATHS = [
+  "/",
+  "/about",
+  "/blog",
+  "/contact",
+  "/how-it-works",
+  "/locations",
+  "/services",
+] as const;
 
 const SERVICE_PATHS = [
   "/car-removal-brisbane",
@@ -166,75 +167,56 @@ export function assertDocumentsCovered(
 
 const CSP_PLACEHOLDER_BODY = "sha256-" + "A".repeat(43);
 
-export function assertIsrRestored(
+/**
+ * Public HTML must stay fully static. A timed revalidate renders new flight
+ * script bytes while the CDN keeps the build-time CSP hashes, and the browser
+ * then blocks that script. `false` means the prerendered file is what is served
+ * until the next deploy.
+ */
+export function assertPagesAreStatic(
   routes: Readonly<Record<string, PrerenderRouteMeta>>,
 ): void {
   const problems: string[] = [];
-  for (const [path, seconds] of Object.entries(ISR_SECONDS)) {
-    const route = routes[path];
-    if (!route) {
-      problems.push(`${path} was not prerendered`);
-      continue;
-    }
-    if (route.initialRevalidateSeconds !== seconds) {
-      problems.push(
-        `${path} revalidate is ${String(route.initialRevalidateSeconds)}, expected ${seconds}`,
-      );
-    }
+  for (const path of REQUIRED_STATIC_PATHS) {
+    if (!routes[path]) problems.push(`${path} was not prerendered`);
   }
-
-  if (!routes["/contact"]) problems.push("/contact was not prerendered");
 
   const blogPosts = Object.keys(routes).filter((path) => /^\/blog\/[^/]+$/.test(path));
   if (blogPosts.length < 10) {
     problems.push(`expected prerendered blog posts, found ${blogPosts.length}`);
-  }
-  for (const path of blogPosts) {
-    if (routes[path]?.initialRevalidateSeconds !== 86400) {
-      problems.push(
-        `${path} revalidate is ${String(routes[path]?.initialRevalidateSeconds)}, expected 86400`,
-      );
-    }
   }
 
   const locations = Object.keys(routes).filter((path) =>
     /^\/locations\/[^/]+$/.test(path),
   );
   if (locations.length < 1) problems.push("no prerendered location pages");
-  for (const path of locations) {
-    if (routes[path]?.initialRevalidateSeconds !== 86400) {
-      problems.push(
-        `${path} revalidate is ${String(routes[path]?.initialRevalidateSeconds)}, expected 86400`,
-      );
-    }
-  }
 
   for (const path of SERVICE_PATHS) {
-    const route = routes[path];
-    if (!route) {
-      problems.push(`${path} was not prerendered`);
-      continue;
-    }
-    if (route.initialRevalidateSeconds !== 86400) {
-      problems.push(
-        `${path} revalidate is ${String(route.initialRevalidateSeconds)}, expected 86400`,
-      );
-    }
+    if (!routes[path]) problems.push(`${path} was not prerendered`);
   }
 
-  for (const path of Object.keys(routes).filter((route) => /^\/blog\/page\/\d+$/.test(route))) {
-    if (routes[path]?.initialRevalidateSeconds !== 3600) {
+  for (const [path, route] of Object.entries(routes)) {
+    if (!isStaticDocumentPath(path)) continue;
+    if (route.initialRevalidateSeconds !== false) {
       problems.push(
-        `${path} revalidate is ${String(routes[path]?.initialRevalidateSeconds)}, expected 3600`,
+        `${path} revalidate is ${String(route.initialRevalidateSeconds)}, expected a fully static page`,
       );
     }
   }
 
   if (problems.length > 0) {
     throw new Error(
-      `ISR was not restored:\n${problems.map((problem) => `  - ${problem}`).join("\n")}`,
+      `Public pages must stay static so CSP script hashes match the HTML:\n${problems
+        .map((problem) => `  - ${problem}`)
+        .join("\n")}`,
     );
   }
+}
+
+function isStaticDocumentPath(pathname: string): boolean {
+  if (!pathname.startsWith("/") || pathname.includes(".")) return false;
+  if (pathname.startsWith("/_") || pathname.startsWith("/api")) return false;
+  return true;
 }
 
 function directive(policy: string, name: string): string {

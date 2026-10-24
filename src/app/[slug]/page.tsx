@@ -11,7 +11,6 @@ import {
 } from "@/data/services";
 import { SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 
-export const revalidate = 86400;
 export const dynamicParams = false;
 
 type Props = { params: Promise<{ slug: string }> };

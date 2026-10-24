@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   assertDocumentsCovered,
-  assertIsrRestored,
+  assertPagesAreStatic,
   cspValuesForPath,
   documentScriptPolicy,
   upsertPathCsp,
@@ -53,37 +53,35 @@ describe("document CSP policies", () => {
     expect(() => assertDocumentsCovered([], () => [])).toThrow(/no prerendered HTML/i);
   });
 
-  it("requires the restored ISR windows", () => {
+  it("requires public documents to stay fully static", () => {
+    const staticRoute = { initialRevalidateSeconds: false as const };
     const routes = {
-      "/": { initialRevalidateSeconds: 3600 },
-      "/about": { initialRevalidateSeconds: 3600 },
-      "/blog": { initialRevalidateSeconds: 3600 },
-      "/how-it-works": { initialRevalidateSeconds: 3600 },
-      "/locations": { initialRevalidateSeconds: 3600 },
-      "/services": { initialRevalidateSeconds: 3600 },
-      "/contact": { initialRevalidateSeconds: false as const },
+      "/": staticRoute,
+      "/about": staticRoute,
+      "/blog": staticRoute,
+      "/how-it-works": staticRoute,
+      "/locations": staticRoute,
+      "/services": staticRoute,
+      "/contact": staticRoute,
       ...Object.fromEntries(
-        Array.from({ length: 10 }, (_, index) => [
-          `/blog/post-${index}`,
-          { initialRevalidateSeconds: 86400 },
-        ]),
+        Array.from({ length: 10 }, (_, index) => [`/blog/post-${index}`, staticRoute]),
       ),
-      "/blog/page/2": { initialRevalidateSeconds: 3600 },
-      "/locations/logan": { initialRevalidateSeconds: 86400 },
-      "/car-removal-brisbane": { initialRevalidateSeconds: 86400 },
-      "/sell-my-car-brisbane": { initialRevalidateSeconds: 86400 },
-      "/scrap-car-removal-brisbane": { initialRevalidateSeconds: 86400 },
-      "/damaged-cars-brisbane": { initialRevalidateSeconds: 86400 },
-      "/unregistered-cars-brisbane": { initialRevalidateSeconds: 86400 },
-      "/hail-damaged-cars-brisbane": { initialRevalidateSeconds: 86400 },
-      "/sell-toyota-hilux-brisbane": { initialRevalidateSeconds: 86400 },
+      "/blog/page/2": staticRoute,
+      "/locations/logan": staticRoute,
+      "/car-removal-brisbane": staticRoute,
+      "/sell-my-car-brisbane": staticRoute,
+      "/scrap-car-removal-brisbane": staticRoute,
+      "/damaged-cars-brisbane": staticRoute,
+      "/unregistered-cars-brisbane": staticRoute,
+      "/hail-damaged-cars-brisbane": staticRoute,
+      "/sell-toyota-hilux-brisbane": staticRoute,
     };
-    expect(() => assertIsrRestored(routes)).not.toThrow();
+    expect(() => assertPagesAreStatic(routes)).not.toThrow();
     expect(() =>
-      assertIsrRestored({
+      assertPagesAreStatic({
         ...routes,
-        "/": { initialRevalidateSeconds: false },
+        "/": { initialRevalidateSeconds: 3600 },
       }),
-    ).toThrow(/homepage|\/ revalidate/i);
+    ).toThrow(/\/ revalidate/);
   });
 });

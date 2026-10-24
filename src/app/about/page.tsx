@@ -10,8 +10,6 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: { absolute: "About Caraway — Brisbane Vehicle Buyer" },
   description: `Caraway is the registered Brisbane vehicle-buying business operated by ${BUSINESS.legalName}. Review its identity, quote, collection, payment, and receipt process.`,

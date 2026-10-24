@@ -5,8 +5,6 @@ import Blog from "@/views/Blog";
 import { blogPosts } from "@/data/blog-posts";
 import { OPEN_GRAPH_DEFAULTS, SITE_URL } from "@/lib/site";
 
-export const revalidate = 3600;
-
 export const metadata: Metadata = {
   title: "Brisbane Car Selling Guides",
   description:
