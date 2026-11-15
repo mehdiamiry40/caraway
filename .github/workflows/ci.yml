@@ -11,7 +11,10 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # Pinned: `ubuntu-latest` moved to Ubuntu 26.04, which the installed
+    # Playwright cannot install Chromium on. Move this when Playwright is
+    # upgraded to a release that supports the newer image.
+    runs-on: ubuntu-24.04
     # Nothing here legitimately runs this long. Without it a hung step burns
     # the default 6h job limit before anyone notices.
     timeout-minutes: 20
@@ -73,6 +76,13 @@ jobs:
           QUOTE_ENDPOINT: ${{ secrets.QUOTE_ENDPOINT }}
           CONTACT_ENDPOINT: ${{ secrets.CONTACT_ENDPOINT }}
           SITE_URL: https://caraway.au
+      # Lead forms render disabled and are enabled by hydration, which depends
+      # on the hashed Content-Security-Policy that only a production build
+      # carries. The dev-server suite above cannot see that break. This reuses
+      # the build the verify step produced, serves it with every integration
+      # setting blanked, and never submits a form.
+      - name: Check lead forms on the production build
+        run: npm run test:e2e:production
       # Cited government sources move without notice, and unit tests only pin
       # the strings. Non-blocking so third-party outages cannot redden a PR.
       - run: npm run check:sources -- --report
