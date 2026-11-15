@@ -1,5 +1,6 @@
+import { headers } from "next/headers";
 import { after } from "next/server";
-import { rateLimit } from "@/lib/rate-limit";
+import { getClientIp, rateLimit } from "@/lib/rate-limit";
 import { getLeadConfiguration, type LeadKind } from "@/lib/lead-config";
 import { channelConfigurationHash, processLead } from "@/lib/lead-processor";
 import {
@@ -16,6 +17,8 @@ export type LeadDeliveryResult =
   { success: true } | { success: false; message: string };
 const FAILURE_MESSAGE =
   "We couldn't save your request. Please try again or call Caraway on 0481 438 444.";
+const TOO_MANY_MESSAGE =
+  "Too many requests from this connection. Please wait a minute and try again, or call Caraway on 0481 438 444.";
 
 export function isHoneypotHit(error: {
   issues: Array<{ path: Array<PropertyKey> }>;
@@ -52,6 +55,20 @@ export async function deliverLead(
   const id = submissionId as string;
   const contentFingerprint = fingerprint({ kind, payload });
   try {
+    // The request proxy also limits form posts per visitor, but its matcher
+    // skips every request that carries a prefetch header, so that limit alone
+    // can be avoided by sending one. This check runs inside the action and
+    // comes first, so one sender cannot use up the shared allowance below.
+    const visitor = await rateLimit(
+      "forms",
+      `lead:${getClientIp({ headers: await headers() })}`,
+    );
+    if (!visitor.success)
+      return {
+        success: false,
+        message:
+          visitor.mode === "unavailable" ? FAILURE_MESSAGE : TOO_MANY_MESSAGE,
+      };
     const admission = await rateLimit("forms-global", "global");
     if (!admission.success) return { success: false, message: FAILURE_MESSAGE };
     const store = getLeadStore();

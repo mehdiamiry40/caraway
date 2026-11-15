@@ -58,12 +58,13 @@ receive telephone/email alternatives. See [lead delivery operations](docs/lead-d
 | `ALLOWED_ENDPOINT_HOSTS`   | recommended for webhooks | Optional comma-separated exact hostname allowlist. HTTPS, port and private-host checks still apply when it is absent. |
 | `RESEND_API_KEY`           | email channels  | Resend API key. Required to enable either the quote or contact email channel. |
 | `QUOTE_NOTIFICATION_FROM`  | quote channel B | Sender address used by the quote notification email. Must be on a Resend-verified domain, e.g. `Caraway Quotes <quotes@caraway.au>`. |
-| `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`.       |
+| `QUOTE_NOTIFICATION_TO`    | quote channel B | Recipient for quote notification emails, typically `info@caraway.au`. One mailbox, or up to five plain addresses separated by commas. |
 | `CONTACT_NOTIFICATION_FROM`| contact channel B | Sender address used by the contact notification email. Must be on a Resend-verified domain, e.g. `Caraway Contact <contact@caraway.au>`. |
-| `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`.     |
+| `CONTACT_NOTIFICATION_TO`  | contact channel B | Recipient for contact notification emails, typically `info@caraway.au`. One mailbox, or up to five plain addresses separated by commas. |
 | `KV_REST_API_URL` / `KV_REST_API_TOKEN` | yes (deployed) | Complete pair supplied by Vercel's Upstash integration for limits and saved lead delivery. Used when no complete direct UPSTASH pair is configured. |
 | `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | alternative | A complete direct pair takes precedence over KV. A malformed selected pair fails closed; it does not silently switch databases. |
 | `CRON_SECRET` | production recovery | Authenticates the delivery worker and synthetic monitor. The worker uses the same secret as the existing monitor. |
+| `LEAD_WORKER_HEARTBEAT_URL` | recommended (prod) | Check-in URL of a dead-man's-switch monitor. The worker posts to it after each clean run and to `<URL>/fail` when a delivery failed, an enquiry has waited 15 minutes, or one needs a person. Without it a failed delivery alerts nobody. See [lead delivery operations](docs/lead-delivery.md#monitoring-and-reconciliation). |
 
 `/api/health` reports required configuration and delivery redundancy. It
 returns HTTP 503 with `"error"` if either form has zero delivery channels or a
@@ -265,12 +266,12 @@ preview hosts receive `noindex`, and the canonical host does not.
 `GET /api/health` is a configuration check. It does not contact Redis, Resend,
 or a webhook. The authenticated synthetic lead-delivery monitor verifies the
 real path, but it is no longer scheduled — call it by hand when you need that
-proof. Production returns:
+proof. The response has this shape:
 
 ```json
 {
   "status": "ok",
-  "fullyRedundant": true,
+  "fullyRedundant": false,
   "checkType": "configuration",
   "distributedRateLimitConfigured": true,
   "leadCaptureConfigured": true,
@@ -278,13 +279,16 @@ proof. Production returns:
 }
 ```
 
-`leadMonitorEnabled` is `false` because `LEAD_MONITOR_ENABLED` is off in
-production: the synthetic enquiries it generated are no longer wanted. Set it
-back to `1` and redeploy if you reinstate the check.
+`fullyRedundant` is `true` only when both forms have a webhook and an email
+channel. Production delivers by email alone, so it reports `false`.
+`leadMonitorEnabled` reflects `LEAD_MONITOR_ENABLED`, which is meant to be off
+in production: the synthetic enquiries it generated are no longer wanted. Set
+it to `1` and redeploy only if you reinstate the check.
 
-Wire this to an uptime monitor as a configuration signal, and alert separately
-on runtime dependency errors. The synthetic route no longer runs on a schedule,
-so it raises nothing on its own.
+Wire this to an uptime monitor as a configuration signal. Runtime delivery
+failures are reported separately by the worker heartbeat
+(`LEAD_WORKER_HEARTBEAT_URL`). The synthetic route no longer runs on a
+schedule, so it raises nothing on its own.
 
 ## Contributing
 

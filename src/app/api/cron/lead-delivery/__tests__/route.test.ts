@@ -1,7 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const mocks = vi.hoisted(() => ({ processPendingLeads: vi.fn() }));
+const mocks = vi.hoisted(() => ({ processPendingLeads: vi.fn(), reportWorkerRun: vi.fn() }));
 vi.mock("@/lib/lead-processor", () => ({ processPendingLeads: mocks.processPendingLeads }));
+vi.mock("@/lib/lead-heartbeat", () => ({ reportWorkerRun: mocks.reportWorkerRun }));
 import { GET } from "@/app/api/cron/lead-delivery/route";
 
 function request(authorization?: string) {
@@ -11,7 +12,8 @@ function request(authorization?: string) {
 }
 beforeEach(() => {
   vi.stubEnv("CRON_SECRET", "test-cron-secret");
-  mocks.processPendingLeads.mockReset().mockResolvedValue({ processed: 2, failures: 0, pending: 0, attention: 0 });
+  mocks.processPendingLeads.mockReset().mockResolvedValue({ processed: 2, failures: 0, pending: 0, attention: 0, overdue: 0 });
+  mocks.reportWorkerRun.mockReset().mockResolvedValue("sent");
 });
 afterEach(() => vi.unstubAllEnvs());
 
@@ -22,6 +24,7 @@ describe("lead recovery cron", () => {
       expect(response.status).toBe(401);
       expect(await response.json()).toEqual({ status: "unauthorized" });
       expect(mocks.processPendingLeads).not.toHaveBeenCalled();
+      expect(mocks.reportWorkerRun).not.toHaveBeenCalled();
     },
   );
 
@@ -34,18 +37,28 @@ describe("lead recovery cron", () => {
   it("reports recovered delivery counts without caching or indexing the response", async () => {
     const response = await GET(request("Bearer test-cron-secret"));
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ status: "ok", processed: 2, failures: 0, pending: 0, attention: 0 });
+    expect(await response.json()).toEqual({ status: "ok", processed: 2, failures: 0, pending: 0, attention: 0, overdue: 0 });
     expect(response.headers.get("Cache-Control")).toBe("no-store");
     expect(response.headers.get("X-Robots-Tag")).toBe("noindex");
     expect(mocks.processPendingLeads).toHaveBeenCalledTimes(1);
+    expect(mocks.reportWorkerRun).toHaveBeenCalledExactlyOnceWith(
+      true, { processed: 2, failures: 0, pending: 0, attention: 0, overdue: 0 },
+    );
   });
 
-  it.each([{ failures: 1, attention: 0 }, { failures: 0, attention: 1 }])(
-    "signals recovery errors or required reconciliation: %j", async (problem) => {
+  it.each([
+    { failures: 1, attention: 0, overdue: 0 },
+    { failures: 0, attention: 1, overdue: 0 },
+    { failures: 0, attention: 0, overdue: 1 },
+  ])(
+    "signals recovery errors, required reconciliation or overdue delivery: %j", async (problem) => {
       mocks.processPendingLeads.mockResolvedValue({ processed: 2, pending: 1, ...problem });
       const response = await GET(request("Bearer test-cron-secret"));
       expect(response.status).toBe(503);
       expect(await response.json()).toMatchObject({ status: "attention", ...problem });
+      expect(mocks.reportWorkerRun).toHaveBeenCalledExactlyOnceWith(
+        false, { processed: 2, pending: 1, ...problem },
+      );
     },
   );
 
@@ -55,5 +68,6 @@ describe("lead recovery cron", () => {
     expect(response.status).toBe(503);
     expect(await response.json()).toEqual({ status: "unavailable" });
     expect(response.headers.get("Cache-Control")).toBe("no-store");
+    expect(mocks.reportWorkerRun).toHaveBeenCalledExactlyOnceWith(false);
   });
 });

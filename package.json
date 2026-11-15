@@ -20,6 +20,7 @@
     "check:links": "node scripts/check-internal-links.mjs",
     "check:sources": "node scripts/check-source-links.mjs",
     "seo:indexnow": "node scripts/indexnow-submit.mjs",
+    "leads:attention": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lead-attention.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
@@ -46,7 +47,7 @@
     "react-hook-form": "7.72.1",
     "resend": "^6.12.4",
     "tailwind-merge": "3.5.0",
-    "zod": "4.4.3"
+    "zod": "4.6.7"
   },
   "browserslist": [
     "last 2 Chrome versions",

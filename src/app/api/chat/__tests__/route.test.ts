@@ -254,6 +254,70 @@ describe("chat API route", () => {
     expect(rateLimit.mock.calls).toEqual([["chat", "203.0.113.10"]]);
   });
 
+  it.each([
+    {
+      shape: "one message holding thousands of empty parts",
+      messages: [{ id: "1", role: "user", parts: Array.from({ length: 7_947 }, () => ({})) }],
+      body: { error: "invalid messages" },
+    },
+    {
+      shape: "one part more than a message may carry",
+      messages: [{ id: "1", role: "user", parts: Array.from({ length: 17 }, () => ({ type: "text", text: "a" })) }],
+      body: { error: "invalid messages" },
+    },
+    {
+      shape: "hundreds of malformed messages",
+      messages: Array.from({ length: 600 }, () => ({ parts: [{}] })),
+      body: { error: "conversation limit reached", code: "conversation_limit_reached" },
+    },
+  ])("refuses $shape without running schema validation", async ({ messages, body }) => {
+    const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
+    const safeValidateUIMessages = vi.fn();
+    vi.doMock("@/lib/rate-limit", () => ({
+      getClientIp: () => "203.0.113.10",
+      rateLimit,
+    }));
+    vi.doMock("ai", async (importOriginal) => ({
+      ...(await importOriginal<typeof import("ai")>()),
+      safeValidateUIMessages,
+    }));
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(chatRequest({ messages }));
+
+    expect(response.status).toBe(400);
+    await expect(response.json()).resolves.toEqual(body);
+    expect(safeValidateUIMessages).not.toHaveBeenCalled();
+    expect(rateLimit.mock.calls).toEqual([["chat", "203.0.113.10"]]);
+  });
+
+  it("still validates a reply replayed with the most parts a message may carry", async () => {
+    vi.stubEnv("AI_GATEWAY_API_KEY", "test-key");
+    const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
+    const streamText = vi.fn(() => ({ stream: new ReadableStream() }));
+    vi.doMock("@/lib/rate-limit", () => ({
+      getClientIp: () => "203.0.113.10",
+      rateLimit,
+    }));
+    vi.doMock("ai", async (importOriginal) => ({
+      ...(await importOriginal<typeof import("ai")>()),
+      streamText,
+    }));
+    const { POST } = await import("@/app/api/chat/route");
+    const response = await POST(chatRequest({
+      messages: [
+        { id: "question", role: "user", parts: [{ type: "text", text: "Do you buy unregistered cars?" }] },
+        {
+          id: "reply", role: "assistant",
+          parts: [{ type: "step-start" }, ...Array.from({ length: 15 }, () => ({ type: "text", text: "Yes." }))],
+        },
+        { id: "follow-up", role: "user", parts: [{ type: "text", text: "How fast is pickup?" }] },
+      ],
+    }));
+
+    expect(response.status).toBe(200);
+    expect(streamText).toHaveBeenCalledOnce();
+  });
+
   it("uses a reset response for an oversized Unicode history without a content-length header", async () => {
     const rateLimit = vi.fn().mockResolvedValue(allowedLimit());
     vi.doMock("@/lib/rate-limit", () => ({

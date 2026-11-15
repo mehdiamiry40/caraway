@@ -5,6 +5,7 @@ import {
   claimDelivery,
   finishDelivery,
   redisLeadStore,
+  resolveDelivery,
   LEAD_RETENTION_MS,
   type LeadRecord,
 } from "../lead-store";
@@ -114,6 +115,30 @@ describe.skipIf(!enabled)("Redis lead store atomicity", () => {
     await redis.set(`${brokenPrefix}:pending`, "wrong type");
     await expect(broken.create(row)).rejects.toThrow();
     expect(await broken.read("quote", row.id)).toBeNull();
+  });
+  it("lists a parked enquiry for the operator and stops counting it once resolved", async () => {
+    const row = record();
+    await store.create(row);
+    const claim = (await claimDelivery(store, "quote", row.id, "email", "fixed"))!;
+    await finishDelivery(store, "quote", row.id, "email", claim.token, {
+      accepted: false,
+      retryable: false,
+      reason: "synthetic_failure",
+    });
+    expect((await store.attention(100)).map((lead) => lead.id)).toContain(row.id);
+    expect((await store.health()).attention).toBeGreaterThanOrEqual(1);
+    const resolved = await resolveDelivery(store, "quote", row.id);
+    expect(resolved?.channels.email).toMatchObject({
+      state: "resolved",
+      reason: "synthetic_failure",
+    });
+    expect((await store.attention(100)).map((lead) => lead.id)).not.toContain(row.id);
+    expect(
+      await redis.zscore(`${prefix}:attention`, `quote:${row.id}`),
+    ).toBeNull();
+    const ttl = await redis.ttl(`${prefix}:quote:${row.id}`);
+    expect(ttl).toBeGreaterThan(604_700);
+    expect(ttl).toBeLessThanOrEqual(604_800);
   });
   it("removes expired record references from the pending queue", async () => {
     const row = record();

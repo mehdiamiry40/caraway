@@ -175,6 +175,12 @@ export async function proxy(request: NextRequest) {
 // Exclude static assets, API routes, and Vercel's first-party analytics intake.
 // Server action POSTs to page routes (including "/") still match, so the form
 // rate limit and origin check apply only to requests owned by the application.
+//
+// The `missing` conditions below cannot be limited to GET, so a POST that
+// carries a prefetch header skips this proxy as well. Treat the checks here as
+// a first filter only: the per-visitor lead limit is enforced again inside the
+// server action (src/actions/lead-delivery.ts), and Next.js applies its own
+// Origin check to every server action.
 export const config = {
   matcher: [
     {

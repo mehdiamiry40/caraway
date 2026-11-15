@@ -15,6 +15,17 @@ This is a recovery window, not a permanent CRM or a promise of final inbox recei
   has email and no webhook; `fullyRedundant:false` truthfully describes outbound
   channel configuration. Saved recovery is additional protection, not a second
   outbound provider. Never invent a webhook or change recipients to make health green.
+- `QUOTE_NOTIFICATION_TO` and `CONTACT_NOTIFICATION_TO` take one mailbox or a
+  comma-separated list of up to five plain addresses. Listing a second inbox at a
+  different mail provider means one provider's spam filter, outage or full
+  mailbox no longer hides an enquiry. It is still one email through one sending
+  provider, so it does not make `fullyRedundant` true. Changing the list parks
+  enquiries that are waiting to retry, as any destination change does.
+- Set `LEAD_WORKER_HEARTBEAT_URL` in Production to the check-in address of a
+  dead-man's-switch monitor (Healthchecks.io, Better Stack, Cronitor). See
+  [Monitoring and reconciliation](#monitoring-and-reconciliation). Without it a
+  failed delivery raises no alert. If `ALLOWED_ENDPOINT_HOSTS` is set, add the
+  monitor's hostname to it.
 - Keep `CRON_SECRET` configured. `/api/cron/lead-delivery` runs every five minutes;
   this schedule needs Vercel Pro (the current team plan was checked as Pro).
 - The synthetic monitor is not scheduled: recipients asked to stop the daily
@@ -53,17 +64,26 @@ provider requests have eight-second abort signals and a nine-second outer bound.
 |---|---|---|
 | pending | Saved, no request started | Worker may claim. |
 | sending | Claimed, provider outcome not yet committed | Wait for lease; treat a lost response as unknown. |
-| retry | Email not confirmed, still within safe retry window | Same email request/key, up to four total attempts. |
+| retry | Email not confirmed, still within safe retry window | Same email request/key, retried until 22 hours after the first attempt. |
 | accepted | Provider acknowledged request | Never automatically resend. Resend ID retained where available. |
-| manual | Unknown webhook outcome, exhausted/expired email retries, or changed configuration | Reconcile with the provider before any new delivery. |
+| manual | Unknown webhook outcome, email still unconfirmed after 22 hours, or changed destination | Contact the customer, then clear it with `npm run leads:attention`. |
+| resolved | An operator handled a `manual` enquiry outside the website | None. The saved copy still expires on its original date. |
 | disabled | Channel was not usable when captured | No automatic delivery to a newly configured destination. |
 
-Resend keys remain valid for 24 hours; the application stops retrying at 22 hours
-from the first claim and after four attempts. [Provider contract](https://resend.com/docs/dashboard/emails/idempotency-keys).
+Resend keys remain valid for 24 hours, so the application retries a failed email
+with the same key until 22 hours after the first claim. Retries back off from
+one minute to a 15-minute ceiling; with the five-minute worker that is roughly
+four attempts an hour. There is no attempt limit: an earlier limit of four
+ended retries about 15 minutes into an outage.
+[Provider contract](https://resend.com/docs/dashboard/emails/idempotency-keys).
 Unknown webhook outcomes are never automatically replayed, even when an
 Idempotency-Key header was sent: receiver support has not been assumed.
-Configuration fingerprints include recipients, endpoint and email credential
-identity. Changes pause pending work rather than sending it somewhere new.
+Destination fingerprints cover the email sender and recipients, and the webhook
+endpoint. Changes pause pending work rather than sending it somewhere new. The
+email API key is not part of the fingerprint: rotating it keeps the destination,
+so queued email continues with the new key. If an attempt made with the old key
+was accepted without confirmation, the worst case is one duplicate notification
+to the same recipients.
 
 ## Monitoring and reconciliation
 
@@ -72,20 +92,52 @@ Resend or a webhook. `leadCaptureConfigured` and distributed-limit readiness mea
 settings are present/valid, not that writes or notifications currently work.
 
 The worker requires `Authorization: Bearer <CRON_SECRET>`. Its uncached response
-reports processed, pending, attention and failure counts, and uses HTTP 503 for
-storage/processing errors or records requiring attention. The on-demand monitor
+reports processed, pending, attention, overdue and failure counts, and uses HTTP
+503 for storage/processing errors, records requiring attention, or overdue
+delivery. An enquiry is overdue when it was captured more than 15 minutes ago
+and no channel has delivered it yet, so a long provider outage is reported after
+15 minutes instead of when the 22-hour retry window closes. The on-demand monitor
 also requires the secret and reports HTTP 503 when capture or configured-channel
 acceptance cannot be verified. Neither proves final inbox receipt.
+
+Nothing reads the worker's HTTP response, so the worker also reports every run
+to the monitor in `LEAD_WORKER_HEARTBEAT_URL`. A clean run posts to that address.
+A run with a processing failure, a parked (`manual`) enquiry, an overdue
+enquiry or unreachable storage posts to the same address with `/fail` appended.
+Only the five counts are sent, never enquiry details. Create the check with a
+five-minute period and a grace time of about ten minutes: the monitor then
+alerts on a reported failure and on missing runs, which is what a wrong
+`CRON_SECRET` or a stopped schedule looks like. The check recovers on its own
+when an overdue enquiry is delivered, and stays failed while any enquiry is
+parked.
+
+To see who is waiting and clear the alert, pull the production environment and
+run the attention tool on a trusted machine:
+
+```bash
+vercel env pull .env.production.local --environment=production
+npm run leads:attention -- --env-file=.env.production.local --environment=production
+npm run leads:attention -- --env-file=.env.production.local --environment=production resolve quote <id>
+rm .env.production.local
+```
+
+The listing shows overdue enquiries that are still retrying and parked
+enquiries that will not be retried, each with the customer's details and why
+delivery has not happened. Contact the customer directly, then `resolve` a
+parked enquiry. An overdue one needs no clearing: it leaves the list when it is
+delivered. The tool never sends or re-sends anything.
 
 With the monitor unscheduled, nothing now exercises capture and delivery
 end to end on its own. The five-minute worker still surfaces failures for real
 enquiries, but a broken provider is only detected once a customer submits a
 form. Run the monitor by hand, or restore its schedule, when that gap matters.
 
-Configure an external uptime/log alert for failures **and missing runs**, with a
-named owner. A scheduled request alone does not establish that an alert exists.
-Review a rising backlog before the seven-day recovery window ends. Expired
-pending-index entries are removed as the worker reads them.
+Give the heartbeat monitor a named owner and an alert channel that person
+actually sees. A scheduled request alone does not establish that an alert exists.
+Handle parked enquiries before the seven-day recovery window ends: the saved
+copy, and with it the customer's details, is deleted at that point whether or
+not anyone was told. Expired pending-index entries are removed as the worker
+reads them.
 
 For `manual` records, use the saved provider ID, channel state and submission ID
 to check the actual provider/CRM. Confirm whether the original request was

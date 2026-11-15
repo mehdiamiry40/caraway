@@ -5,9 +5,14 @@ import type { QuoteFormValues } from "@/lib/quote-schema";
 
 const mocks = vi.hoisted(() => ({
   after: vi.fn<(callback: () => Promise<void>) => void>(), rateLimit: vi.fn(), processLead: vi.fn(),
+  headers: vi.fn(),
 }));
 vi.mock("next/server", () => ({ after: mocks.after }));
-vi.mock("@/lib/rate-limit", () => ({ rateLimit: mocks.rateLimit }));
+vi.mock("next/headers", () => ({ headers: mocks.headers }));
+vi.mock("@/lib/rate-limit", async (importOriginal) => ({
+  getClientIp: (await importOriginal<typeof import("@/lib/rate-limit")>()).getClientIp,
+  rateLimit: mocks.rateLimit,
+}));
 vi.mock("@/lib/lead-processor", async (importOriginal) => ({
   ...await importOriginal<typeof import("@/lib/lead-processor")>(), processLead: mocks.processLead,
 }));
@@ -38,6 +43,7 @@ beforeEach(async () => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
   mocks.after.mockReset();
   mocks.rateLimit.mockReset().mockResolvedValue({ success: true });
+  mocks.headers.mockReset().mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.7, 10.0.0.1" }));
   mocks.processLead.mockReset().mockResolvedValue(undefined);
   storage = await import("@/lib/lead-store");
   store = storage.getLeadStore();
@@ -120,6 +126,48 @@ describe("durable lead capture", () => {
   it.each(["rejected", "unavailable"])("does not capture when admission is %s", async (mode) => {
     mocks.rateLimit.mockResolvedValue({ success: false, mode });
     expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toMatchObject({ success: false });
+    expect(await store.health()).toEqual({ pending: 0, attention: 0 });
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("checks the sender's own allowance before spending the shared one", async () => {
+    expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toEqual({ success: true });
+    expect(mocks.rateLimit.mock.calls).toEqual([
+      ["forms", "lead:203.0.113.7"],
+      ["forms-global", "global"],
+    ]);
+    mocks.rateLimit.mockClear();
+    mocks.headers.mockResolvedValue(new Headers({ "x-forwarded-for": "198.51.100.20" }));
+    await delivery.deliverLead("quote", quote, createSubmissionId());
+    expect(mocks.rateLimit.mock.calls[0]).toEqual(["forms", "lead:198.51.100.20"]);
+  });
+
+  it("refuses a sender over their own allowance even when the request carries a prefetch header", async () => {
+    mocks.headers.mockResolvedValue(new Headers({
+      "x-forwarded-for": "203.0.113.7", purpose: "prefetch", "next-router-prefetch": "1",
+    }));
+    mocks.rateLimit.mockImplementation(async (scope: string) =>
+      scope === "forms" ? { success: false, mode: "distributed" } : { success: true });
+    const id = createSubmissionId();
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({
+      success: false, message: expect.stringMatching(/^Too many requests/),
+    });
+    expect(mocks.rateLimit.mock.calls).toEqual([["forms", "lead:203.0.113.7"]]);
+    expect(await store.read("quote", id)).toBeNull();
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("fails closed without capture when the sender's allowance cannot be checked", async () => {
+    mocks.rateLimit.mockImplementation(async (scope: string) =>
+      scope === "forms" ? { success: false, mode: "unavailable" } : { success: true });
+    expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toEqual({
+      success: false, message: expect.stringMatching(/couldn't save/),
+    });
+    expect(mocks.rateLimit).toHaveBeenCalledTimes(1);
+    mocks.rateLimit.mockReset().mockResolvedValue({ success: true });
+    mocks.headers.mockRejectedValue(new Error("headers was called outside a request scope"));
+    expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toMatchObject({ success: false });
+    expect(mocks.rateLimit).not.toHaveBeenCalled();
     expect(await store.health()).toEqual({ pending: 0, attention: 0 });
     expect(mocks.after).not.toHaveBeenCalled();
   });
