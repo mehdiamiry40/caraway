@@ -11,7 +11,10 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    # Pinned: `ubuntu-latest` moved to Ubuntu 26.04, which the installed
+    # Playwright cannot install Chromium on. Move this when Playwright is
+    # upgraded to a release that supports the newer image.
+    runs-on: ubuntu-24.04
     # Nothing here legitimately runs this long. Without it a hung step burns
     # the default 6h job limit before anyone notices.
     timeout-minutes: 20
