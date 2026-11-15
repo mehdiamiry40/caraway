@@ -13,18 +13,41 @@ import {
   finishDelivery,
   fingerprint,
   getLeadStore,
+  overdueDeliveries,
   type LeadChannel,
   type LeadStore,
 } from "./lead-store";
 
+function emailBaseUrl() {
+  return process.env.RESEND_BASE_URL ?? "https://api.resend.com";
+}
+
+/**
+ * Identifies where a channel delivers. Queued work is parked for an operator
+ * when this changes, so an enquiry is never sent to a new destination unasked.
+ * The email credential is deliberately left out: rotating the API key keeps
+ * the sender and recipients, and must not park enquiries that are waiting to
+ * retry. The worst case after a rotation is one duplicate notification to the
+ * same recipients.
+ */
 export function channelConfigurationHash(kind: LeadKind, channel: LeadChannel) {
-  const configuration = getLeadConfiguration(kind)[channel];
+  const configuration = getLeadConfiguration(kind);
+  if (channel === "webhook")
+    return fingerprint({ configuration: configuration.webhook, baseUrl: "" });
+  const { status, from, to } = configuration.email;
   return fingerprint({
-    configuration,
-    baseUrl:
-      channel === "email"
-        ? (process.env.RESEND_BASE_URL ?? "https://api.resend.com")
-        : "",
+    configuration: { status, from, to },
+    baseUrl: emailBaseUrl(),
+  });
+}
+
+// Records captured before the credential was dropped from the email
+// fingerprint carry this form. They expire within LEAD_RETENTION_MS of that
+// release, after which this function and its use below can be deleted.
+function legacyEmailConfigurationHash(kind: LeadKind) {
+  return fingerprint({
+    configuration: getLeadConfiguration(kind).email,
+    baseUrl: emailBaseUrl(),
   });
 }
 
@@ -58,6 +81,7 @@ export async function processLead(
         id,
         channel,
         channelConfigurationHash(kind, channel),
+        channel === "email" ? [legacyEmailConfigurationHash(kind)] : [],
       );
       if (!claim) return;
       const { record, token } = claim;
@@ -133,5 +157,10 @@ export async function processPendingLeads(store: LeadStore = getLeadStore()) {
       }
     }),
   );
-  return { processed: due.length, failures, ...(await store.health()) };
+  return {
+    processed: due.length,
+    failures,
+    ...(await store.health()),
+    overdue: (await overdueDeliveries(store)).length,
+  };
 }

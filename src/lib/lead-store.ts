@@ -6,7 +6,13 @@ import type { QuoteFormValues, ContactFormValues } from "./quote-schema";
 
 export type LeadChannel = "email" | "webhook";
 export type ChannelState =
-  "pending" | "sending" | "retry" | "accepted" | "manual" | "disabled";
+  | "pending"
+  | "sending"
+  | "retry"
+  | "accepted"
+  | "manual"
+  | "resolved"
+  | "disabled";
 export interface ChannelDelivery {
   state: ChannelState;
   configurationHash: string;
@@ -31,9 +37,16 @@ export interface LeadRecord {
 
 export const LEAD_RETENTION_MS = 7 * 24 * 60 * 60 * 1_000;
 export const MAX_NEW_SUBMISSION_AGE_MS = 24 * 60 * 60 * 1_000;
+// Email retries are bounded by time, not by count: every attempt reuses one
+// provider idempotency key, which the provider honours for 24 hours. A count
+// limit ended retries after about 15 minutes of a provider outage.
 export const EMAIL_RETRY_WINDOW_MS = 22 * 60 * 60 * 1_000;
+export const EMAIL_RETRY_MAX_DELAY_MS = 15 * 60 * 1_000;
 export const DELIVERY_LEASE_MS = 30_000;
-const MAX_ATTEMPTS = 4;
+// Retrying for hours must not mean staying quiet for hours. An enquiry that is
+// still undelivered this long after capture is reported while retries continue.
+export const DELIVERY_ALERT_AFTER_MS = 15 * 60 * 1_000;
+const OVERDUE_SCAN_LIMIT = 50;
 
 export function fingerprint(value: unknown): string {
   return createHash("sha256").update(JSON.stringify(value)).digest("hex");
@@ -90,6 +103,10 @@ export interface LeadStore {
   create(record: LeadRecord): Promise<boolean>;
   replace(previous: LeadRecord, next: LeadRecord): Promise<boolean>;
   due(limit: number): Promise<Array<{ kind: LeadKind; id: string }>>;
+  /** Saved enquiries with a channel parked for an operator, soonest expiry first. */
+  attention(limit: number): Promise<LeadRecord[]>;
+  /** Saved enquiries with a channel still to be delivered, next attempt first. */
+  waiting(limit: number): Promise<LeadRecord[]>;
   health(): Promise<{ pending: number; attention: number }>;
 }
 
@@ -116,6 +133,18 @@ export function redisLeadStore(redis: Redis, prefix = namespace()): LeadStore {
         ],
       )) === 1
     );
+  };
+  const indexed = async (index: string, limit: number) => {
+    const members = await redis.zrange<string[]>(index, 0, limit - 1);
+    const keys = members.flatMap((member) => {
+      const [kind, id] = member.split(":");
+      return (kind === "quote" || kind === "contact") && id
+        ? [key(kind, id)]
+        : [];
+    });
+    if (!keys.length) return [];
+    const records = await redis.mget<Array<LeadRecord | null>>(...keys);
+    return records.filter((record) => record !== null);
   };
   return {
     read: (kind, id) => redis.get<LeadRecord>(key(kind, id)),
@@ -154,6 +183,8 @@ export function redisLeadStore(redis: Redis, prefix = namespace()): LeadStore {
       if (missing.length) await redis.zrem(pending, ...missing);
       return result;
     },
+    attention: (limit) => indexed(attention, limit),
+    waiting: (limit) => indexed(pending, limit),
     async health() {
       await redis.zremrangebyscore(attention, 0, Date.now());
       const [pendingCount, attentionCount] = await Promise.all([
@@ -203,6 +234,20 @@ function memoryLeadStore(): LeadStore {
         .sort((a, b) => queueState(a).due - queueState(b).due)
         .slice(0, limit)
         .map(({ kind, id }) => ({ kind, id }));
+    },
+    async attention(limit) {
+      return [...rows.values()]
+        .filter((r) => r.expiresAt > Date.now() && queueState(r).attention)
+        .sort((a, b) => a.expiresAt - b.expiresAt)
+        .slice(0, limit)
+        .map((r) => structuredClone(r));
+    },
+    async waiting(limit) {
+      return [...rows.values()]
+        .filter((r) => r.expiresAt > Date.now() && queueState(r).due >= 0)
+        .sort((a, b) => queueState(a).due - queueState(b).due)
+        .slice(0, limit)
+        .map((r) => structuredClone(r));
     },
     async health() {
       const live = [...rows.values()].filter((r) => r.expiresAt > Date.now());
@@ -259,6 +304,9 @@ export async function claimDelivery(
   id: string,
   channel: LeadChannel,
   configurationHash: string,
+  // Fingerprints of the same destination under an earlier format, so a record
+  // captured before a format change is not parked by the deploy that made it.
+  equivalentHashes: readonly string[] = [],
 ) {
   const token = randomUUID();
   const now = Date.now();
@@ -267,16 +315,19 @@ export async function claimDelivery(
     if (
       state.state === "accepted" ||
       state.state === "disabled" ||
-      state.state === "manual"
+      state.state === "manual" ||
+      state.state === "resolved"
     )
       return false;
     if (state.state === "sending" && (state.leaseUntil ?? 0) > now)
       return false;
     if (state.nextAttemptAt > now) return false;
     const oldAttempt = state.firstAttemptAt !== undefined;
+    const sameDestination =
+      state.configurationHash === configurationHash ||
+      equivalentHashes.includes(state.configurationHash);
     if (
-      state.configurationHash !== configurationHash ||
-      state.attempts >= MAX_ATTEMPTS ||
+      !sameDestination ||
       (oldAttempt &&
         (channel === "webhook" ||
           now - state.firstAttemptAt! >= EMAIL_RETRY_WINDOW_MS))
@@ -324,13 +375,49 @@ export async function finishDelivery(
       const canRetry =
         channel === "email" &&
         outcome.retryable &&
-        state.attempts < MAX_ATTEMPTS &&
         Date.now() - state.firstAttemptAt! < EMAIL_RETRY_WINDOW_MS;
       state.state = canRetry ? "retry" : "manual";
       state.reason = outcome.reason ?? "provider_unavailable";
       state.nextAttemptAt =
-        Date.now() + Math.min(60_000 * 2 ** (state.attempts - 1), 15 * 60_000);
+        Date.now() +
+        Math.min(60_000 * 2 ** (state.attempts - 1), EMAIL_RETRY_MAX_DELAY_MS);
     }
     return true;
+  });
+}
+
+/**
+ * Enquiries captured more than DELIVERY_ALERT_AFTER_MS ago that no channel has
+ * delivered yet. They keep retrying; this is what makes the delay visible. An
+ * enquiry that one channel delivered is not overdue while another retries.
+ */
+export async function overdueDeliveries(store: LeadStore) {
+  const cutoff = Date.now() - DELIVERY_ALERT_AFTER_MS;
+  return (await store.waiting(OVERDUE_SCAN_LIMIT)).filter(
+    (record) =>
+      record.createdAt <= cutoff &&
+      !Object.values(record.channels).some(
+        (channel) => channel.state === "accepted",
+      ),
+  );
+}
+
+/**
+ * Records that an operator has dealt with a parked enquiry outside the
+ * website, for example by phoning the customer. Nothing is sent and the saved
+ * copy still expires on its original date; the record only stops counting
+ * towards the worker's attention total.
+ */
+export async function resolveDelivery(
+  store: LeadStore,
+  kind: LeadKind,
+  id: string,
+) {
+  return update(store, kind, id, (row) => {
+    const parked = Object.values(row.channels).filter(
+      (channel) => channel.state === "manual",
+    );
+    for (const channel of parked) channel.state = "resolved";
+    return parked.length > 0;
   });
 }

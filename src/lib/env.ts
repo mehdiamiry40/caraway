@@ -15,10 +15,12 @@ const envSchema = z.object({
   // succeeding is enough for the user to see a success response — this
   // is what keeps the forms working when a webhook is misconfigured.
   RESEND_API_KEY: z.optional(z.string().check(z.minLength(1))),
+  // Mailbox syntax, including a comma-separated recipient list, is validated
+  // in lead-config.ts where delivery reads these values.
   QUOTE_NOTIFICATION_FROM: z.optional(z.string().check(z.minLength(1))),
-  QUOTE_NOTIFICATION_TO: z.optional(z.email()),
+  QUOTE_NOTIFICATION_TO: z.optional(z.string().check(z.minLength(1))),
   CONTACT_NOTIFICATION_FROM: z.optional(z.string().check(z.minLength(1))),
-  CONTACT_NOTIFICATION_TO: z.optional(z.email()),
+  CONTACT_NOTIFICATION_TO: z.optional(z.string().check(z.minLength(1))),
   // Vercel AI Gateway uses this key in local development. Production and
   // preview Functions receive short-lived OIDC credentials in request context;
   // VERCEL_OIDC_TOKEN is also available during builds and `vercel env pull`.

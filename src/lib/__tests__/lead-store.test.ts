@@ -227,35 +227,53 @@ describe("local lead storage", () => {
     expect(await store.health()).toEqual({ pending: 0, attention: 1 });
   });
 
-  it("backs off retryable email failures and never exceeds four attempts", async () => {
+  it("backs off retryable email failures up to a 15-minute ceiling and keeps retrying past four attempts", async () => {
     const lead = await create();
-    for (let attempt = 1; attempt <= 4; attempt++) {
+    const MINUTE = 60_000;
+    const expectedDelays = [1, 2, 4, 8, 15, 15, 15].map((minutes) => minutes * MINUTE);
+    for (const [index, delay] of expectedDelays.entries()) {
       const claim = await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION);
       expect(claim).not.toBeNull();
-      expect(claim!.record.channels.email.attempts).toBe(attempt);
+      expect(claim!.record.channels.email.attempts).toBe(index + 1);
       await storage.finishDelivery(store, lead.kind, lead.id, "email", claim!.token, {
         accepted: false, retryable: true, reason: "provider_temporarily_unavailable",
       });
       const current = (await read(lead)).channels.email;
-      if (attempt < 4) {
-        expect(current.state).toBe("retry");
-        expect(current.nextAttemptAt - Date.now()).toBe([60_000, 120_000, 240_000][attempt - 1]);
-        vi.setSystemTime(current.nextAttemptAt - 1);
-        expect(await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION)).toBeNull();
-        expect(await store.due(10)).toEqual([]);
-        vi.setSystemTime(current.nextAttemptAt);
-      } else {
-        expect(current.state).toBe("manual");
-      }
+      expect(current.state).toBe("retry");
+      expect(current.nextAttemptAt - Date.now()).toBe(delay);
+      vi.setSystemTime(current.nextAttemptAt - 1);
+      expect(await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION)).toBeNull();
+      expect(await store.due(10)).toEqual([]);
+      vi.setSystemTime(current.nextAttemptAt);
+    }
+    expect(await store.health()).toEqual({ pending: 1, attention: 0 });
+  });
+
+  it("retries a failing email for the whole 22-hour window, then parks it for an operator", async () => {
+    const lead = await create();
+    let attempts = 0;
+    for (;;) {
+      const claim = await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION);
+      if (!claim) break;
+      attempts++;
+      await storage.finishDelivery(store, lead.kind, lead.id, "email", claim.token, {
+        accepted: false, retryable: true,
+      });
+      const current = (await read(lead)).channels.email;
+      if (current.state !== "retry") break;
+      vi.setSystemTime(current.nextAttemptAt);
     }
 
-    vi.setSystemTime(START + HOUR);
-    expect(await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION)).toBeNull();
-    expect((await read(lead)).channels.email.attempts).toBe(4);
+    const parked = (await read(lead)).channels.email;
+    expect(parked.state).toBe("manual");
+    expect(parked.attempts).toBe(attempts);
+    expect(attempts).toBeGreaterThan(80);
+    expect(Date.now() - parked.firstAttemptAt!).toBeGreaterThanOrEqual(22 * HOUR - storage.EMAIL_RETRY_MAX_DELAY_MS);
+    expect(Date.now() - parked.firstAttemptAt!).toBeLessThanOrEqual(22 * HOUR);
     expect(await store.health()).toEqual({ pending: 0, attention: 1 });
   });
 
-  it("does not reclaim an email lease after the fourth send attempt", async () => {
+  it("reclaims an expired email lease on a later attempt while inside the retry window", async () => {
     const lead = record();
     lead.channels.email = {
       ...lead.channels.email,
@@ -265,10 +283,13 @@ describe("local lead storage", () => {
     await store.create(lead);
     vi.setSystemTime(START + 30_000);
 
-    expect(await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION)).toBeNull();
-    expect((await read(lead)).channels.email).toMatchObject({
-      state: "manual", attempts: 4, reason: "delivery_requires_reconciliation",
-    });
+    const claim = await storage.claimDelivery(store, lead.kind, lead.id, "email", EMAIL_CONFIGURATION);
+
+    expect(claim).not.toBeNull();
+    expect((await read(lead)).channels.email).toMatchObject({ state: "sending", attempts: 5 });
+    expect(await storage.finishDelivery(store, lead.kind, lead.id, "email", "fourth-worker", {
+      accepted: true,
+    })).toBeNull();
   });
 
   it("sends a permanent email failure to manual review without retrying", async () => {
@@ -339,7 +360,41 @@ describe("local lead storage", () => {
     expect(await store.health()).toEqual({ pending: 0, attention: 1 });
   });
 
-  it.each(["accepted", "disabled", "manual"] as const)("does not claim a channel in terminal state %s", async (state) => {
+  it("claims a record whose fingerprint is an accepted earlier form of the same destination", async () => {
+    const lead = await create();
+
+    expect(await storage.claimDelivery(
+      store, lead.kind, lead.id, "email", "current-format", ["unrelated", EMAIL_CONFIGURATION],
+    )).not.toBeNull();
+    expect((await read(lead)).channels.email).toMatchObject({ state: "sending", attempts: 1 });
+  });
+
+  it("lists parked enquiries soonest-expiry first and clears them once an operator resolves them", async () => {
+    const later = record();
+    later.channels.email.state = "manual";
+    later.channels.email.reason = "provider_not_confirmed";
+    const sooner = record("webhook");
+    sooner.channels.webhook.state = "manual";
+    sooner.expiresAt = later.expiresAt - HOUR;
+    const healthy = record();
+    for (const lead of [later, sooner, healthy]) await store.create(lead);
+
+    expect((await store.attention(10)).map((lead) => lead.id)).toEqual([sooner.id, later.id]);
+    expect((await store.attention(1)).map((lead) => lead.id)).toEqual([sooner.id]);
+
+    const resolved = await storage.resolveDelivery(store, later.kind, later.id);
+
+    expect(resolved?.channels.email).toMatchObject({ state: "resolved", reason: "provider_not_confirmed" });
+    expect(resolved?.expiresAt).toBe(later.expiresAt);
+    expect((await store.attention(10)).map((lead) => lead.id)).toEqual([sooner.id]);
+    expect(await store.health()).toEqual({ pending: 1, attention: 1 });
+    expect(await storage.claimDelivery(store, later.kind, later.id, "email", EMAIL_CONFIGURATION)).toBeNull();
+    expect(await storage.resolveDelivery(store, later.kind, later.id)).toBeNull();
+    expect(await storage.resolveDelivery(store, healthy.kind, healthy.id)).toBeNull();
+    expect((await read(healthy)).version).toBe(1);
+  });
+
+  it.each(["accepted", "disabled", "manual", "resolved"] as const)("does not claim a channel in terminal state %s", async (state) => {
     const lead = record();
     lead.channels.email.state = state;
     await store.create(lead);

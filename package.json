@@ -20,6 +20,7 @@
     "check:links": "node scripts/check-internal-links.mjs",
     "check:sources": "node scripts/check-source-links.mjs",
     "seo:indexnow": "node scripts/indexnow-submit.mjs",
+    "leads:attention": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lead-attention.mjs",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",

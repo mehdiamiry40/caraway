@@ -12,7 +12,7 @@ export type LeadWebhookConfiguration =
   | { status: "invalid"; endpoint?: never };
 
 export type LeadEmailConfiguration =
-  | { status: "ready"; apiKey: string; from: string; to: string }
+  | { status: "ready"; apiKey: string; from: string; to: string | string[] }
   | { status: "disabled"; apiKey?: never; from?: never; to?: never }
   | { status: "invalid"; apiKey?: never; from?: never; to?: never };
 
@@ -23,14 +23,35 @@ export interface LeadConfiguration {
 
 const emailAddressSchema = z.email();
 
-// Accept one plain address or the usual Display Name <address> form. Mailbox
-// lists, control characters, and unbalanced brackets are configuration errors.
+// Accept one plain address or the usual Display Name <address> form. Control
+// characters and unbalanced brackets are configuration errors. A sender is
+// always one mailbox; recipient lists are handled by parseRecipients.
 function isMailbox(value: string): boolean {
   if (/[\r\n\x00-\x1f\x7f]/.test(value)) return false;
   const trimmed = value.trim();
   if (emailAddressSchema.safeParse(trimmed).success) return true;
   const named = /^(?:"(?:[^"\\]|\\.)+"|[^<>@,;"\\]+)\s*<([^<>]+)>$/.exec(trimmed);
   return Boolean(named && emailAddressSchema.safeParse(named[1]).success);
+}
+
+export const MAX_NOTIFICATION_RECIPIENTS = 5;
+
+/**
+ * One mailbox, or a comma-separated list of plain addresses so a notification
+ * can reach inboxes at more than one mail provider. A single mailbox stays a
+ * string so the provider request is unchanged for existing deployments.
+ */
+function parseRecipients(value: string): string | string[] | null {
+  if (isMailbox(value)) return value.trim();
+  if (/[\r\n\x00-\x1f\x7f]/.test(value)) return null;
+  const addresses = value.split(",").map((address) => address.trim());
+  const distinct = new Set(addresses.map((address) => address.toLowerCase()));
+  return addresses.length >= 2 &&
+    addresses.length <= MAX_NOTIFICATION_RECIPIENTS &&
+    distinct.size === addresses.length &&
+    addresses.every((address) => emailAddressSchema.safeParse(address).success)
+    ? addresses
+    : null;
 }
 
 export function getLeadConfiguration(kind: LeadKind): LeadConfiguration {
@@ -43,18 +64,18 @@ export function getLeadConfiguration(kind: LeadKind): LeadConfiguration {
       : { status: "invalid" };
 
   const from = readOptionalEnv(`${prefix}_NOTIFICATION_FROM`);
-  const to = readOptionalEnv(`${prefix}_NOTIFICATION_TO`);
+  const configuredTo = readOptionalEnv(`${prefix}_NOTIFICATION_TO`);
+  const to = parseRecipients(process.env[`${prefix}_NOTIFICATION_TO`] ?? "");
   const apiKey = readOptionalEnv("RESEND_API_KEY");
   let email: LeadEmailConfiguration;
-  if (!from && !to) {
+  if (!from && !configuredTo) {
     email = { status: "disabled" };
   } else if (
     !apiKey ||
     /[\s\x00-\x1f\x7f]/.test(apiKey) ||
     !from ||
     !to ||
-    !isMailbox(process.env[`${prefix}_NOTIFICATION_FROM`] ?? "") ||
-    !isMailbox(process.env[`${prefix}_NOTIFICATION_TO`] ?? "")
+    !isMailbox(process.env[`${prefix}_NOTIFICATION_FROM`] ?? "")
   ) {
     email = { status: "invalid" };
   } else {

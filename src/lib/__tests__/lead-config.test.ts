@@ -73,7 +73,7 @@ describe("independent lead delivery configuration", () => {
   });
 
   it.each([
-    "not-an-address", "Caraway <invalid>", "quote@example.com, other@example.com",
+    "not-an-address", "Caraway <invalid>",
     "Caraway <quote@example.com> trailing", "quote@example.com\r\nBcc: other@example.com",
     "quote@example.com\n", "<quote@example.com>",
   ])("rejects malformed or injected mailboxes: %j", (mailbox) => {
@@ -82,6 +82,42 @@ describe("independent lead delivery configuration", () => {
     expect(getLeadConfiguration("quote").email).toEqual({ status: "invalid" });
     configureQuoteEmail();
     vi.stubEnv("QUOTE_NOTIFICATION_TO", mailbox);
+    expect(getLeadConfiguration("quote").email).toEqual({ status: "invalid" });
+  });
+
+  it("never accepts more than one sender", () => {
+    configureQuoteEmail();
+    vi.stubEnv("QUOTE_NOTIFICATION_FROM", "quote@example.com, other@example.com");
+    expect(getLeadConfiguration("quote").email).toEqual({ status: "invalid" });
+  });
+
+  it.each([
+    ["inbox@example.com, backup@example.org", ["inbox@example.com", "backup@example.org"]],
+    [" inbox@example.com,backup@example.org ,third@example.net ", ["inbox@example.com", "backup@example.org", "third@example.net"]],
+  ])("sends to every address in a recipient list: %j", (list, expected) => {
+    configureQuoteEmail();
+    vi.stubEnv("QUOTE_NOTIFICATION_TO", list);
+    expect(getLeadConfiguration("quote").email).toMatchObject({ status: "ready", to: expected });
+  });
+
+  it("keeps a single recipient as the same plain string the provider already receives", () => {
+    configureQuoteEmail();
+    expect(getLeadConfiguration("quote").email).toMatchObject({ status: "ready", to: "inbox@example.com" });
+  });
+
+  it.each([
+    "inbox@example.com,",
+    ",inbox@example.com",
+    "inbox@example.com,,backup@example.org",
+    "inbox@example.com, not-an-address",
+    "inbox@example.com, INBOX@example.com",
+    "Caraway <inbox@example.com>, backup@example.org",
+    "inbox@example.com; backup@example.org",
+    "inbox@example.com, backup@example.org\r\nBcc: other@example.com",
+    "a@example.com, b@example.com, c@example.com, d@example.com, e@example.com, f@example.com",
+  ])("rejects a malformed, duplicated or oversized recipient list: %j", (list) => {
+    configureQuoteEmail();
+    vi.stubEnv("QUOTE_NOTIFICATION_TO", list);
     expect(getLeadConfiguration("quote").email).toEqual({ status: "invalid" });
   });
 
