@@ -23,6 +23,9 @@ export const maxDuration = 30;
 
 const MAX_BODY_BYTES = 24_000;
 const MAX_MESSAGES = 16;
+// A reply replayed by the browser carries a step marker and its text. Sixteen
+// leaves room for multi-part replies without admitting thousands of parts.
+const MAX_PARTS_PER_MESSAGE = 16;
 const MAX_TEXT_CHARACTERS = 8_000;
 const MAX_USER_MESSAGE_CHARACTERS = 1_000;
 
@@ -55,6 +58,25 @@ function isFirstPartyRequest(request: Request): boolean {
   } catch {
     return false;
   }
+}
+
+/**
+ * Cheap shape limits applied before schema validation. Validation cost grows
+ * with every array element it has to reject: one 24 KB body holding thousands
+ * of empty parts used about 1 GB of memory before these limits existed.
+ * Anything that is not an oversized array is left for validation to judge.
+ */
+function structuralLimitExceeded(messages: unknown): "messages" | "parts" | null {
+  if (!Array.isArray(messages)) return null;
+  if (messages.length > MAX_MESSAGES) return "messages";
+  const oversized = messages.some((message: unknown) => {
+    const parts =
+      message && typeof message === "object" && "parts" in message
+        ? message.parts
+        : undefined;
+    return Array.isArray(parts) && parts.length > MAX_PARTS_PER_MESSAGE;
+  });
+  return oversized ? "parts" : null;
 }
 
 function countTextCharacters(messages: CarawayChatMessage[]): number {
@@ -110,6 +132,18 @@ export async function POST(request: Request) {
     payload && typeof payload === "object" && "messages" in payload
       ? (payload as { messages: unknown }).messages
       : undefined;
+  const exceeded = structuralLimitExceeded(messages);
+  if (exceeded === "messages") {
+    return jsonError(
+      "conversation limit reached",
+      400,
+      {},
+      "conversation_limit_reached",
+    );
+  }
+  if (exceeded === "parts") {
+    return jsonError("invalid messages", 400);
+  }
   const validated = await safeValidateUIMessages<CarawayChatMessage>({
     messages,
   });

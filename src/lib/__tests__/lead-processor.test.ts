@@ -106,20 +106,21 @@ describe("lead processor delivery guarantees", () => {
     expect(mocks.quoteEmail.mock.calls[1][1]).toEqual(mocks.quoteEmail.mock.calls[0][1]);
   });
 
-  it("stops failed email after four attempts without changing its provider key", async () => {
+  it("keeps retrying failed email with one provider key well past four attempts", async () => {
     const id = await capture("quote", ["email"]);
     mocks.quoteEmail.mockRejectedValue(new Error("unavailable"));
-    for (let attempt = 1; attempt <= 4; attempt++) {
+    for (let attempt = 1; attempt <= 8; attempt++) {
       await processor.processLead("quote", id, store);
       const channel = (await store.read("quote", id))!.channels.email;
-      expect(channel.attempts).toBe(attempt);
-      expect(channel.state).toBe(attempt === 4 ? "manual" : "retry");
+      expect(channel).toMatchObject({ attempts: attempt, state: "retry" });
       vi.setSystemTime(channel.nextAttemptAt);
     }
+    mocks.quoteEmail.mockResolvedValue({ sent: true, providerId: "quote-provider-123" });
     await processor.processLead("quote", id, store);
-    expect(mocks.quoteEmail).toHaveBeenCalledTimes(4);
+    expect(mocks.quoteEmail).toHaveBeenCalledTimes(9);
     expect(new Set(mocks.quoteEmail.mock.calls.map((call) => call[1].idempotencyKey)).size).toBe(1);
-    expect(await store.health()).toEqual({ pending: 0, attention: 1 });
+    expect((await store.read("quote", id))!.channels.email).toMatchObject({ state: "accepted", attempts: 9 });
+    expect(await store.health()).toEqual({ pending: 0, attention: 0 });
   });
 
   it("moves retries outside the provider safety window to manual reconciliation", async () => {
@@ -164,7 +165,7 @@ describe("lead processor delivery guarantees", () => {
 
   it.each([
     ["QUOTE_NOTIFICATION_TO", "new-inbox@example.com", "email"],
-    ["RESEND_API_KEY", "re_rotated_key", "email"],
+    ["QUOTE_NOTIFICATION_FROM", "Caraway <other@example.com>", "email"],
     ["QUOTE_ENDPOINT", "https://other.example.com/lead", "webhook"],
   ] as const)("requires reconciliation when %s changes after capture", async (name, value, channel) => {
     const id = await capture();
@@ -173,6 +174,37 @@ describe("lead processor delivery guarantees", () => {
     expect((await store.read("quote", id))?.channels[channel]).toMatchObject({ state: "manual", attempts: 0 });
     if (channel === "email") expect(mocks.quoteEmail).not.toHaveBeenCalled();
     else expect(mocks.webhook).not.toHaveBeenCalled();
+  });
+
+  it("keeps delivering queued email after the API key is rotated", async () => {
+    const id = await capture("quote", ["email"]);
+    mocks.quoteEmail.mockRejectedValueOnce(new Error("invalid key"));
+    await processor.processLead("quote", id, store);
+    const waiting = (await store.read("quote", id))!.channels.email;
+    expect(waiting.state).toBe("retry");
+    vi.stubEnv("RESEND_API_KEY", "re_rotated_key");
+    vi.setSystemTime(waiting.nextAttemptAt);
+    await processor.processLead("quote", id, store);
+    expect((await store.read("quote", id))?.channels.email).toMatchObject({ state: "accepted", attempts: 2 });
+    expect(await store.health()).toEqual({ pending: 0, attention: 0 });
+  });
+
+  it("still delivers a record captured with the earlier email fingerprint, which included the API key", async () => {
+    const id = await capture("quote", ["email"]);
+    const saved = (await store.read("quote", id))!;
+    const earlier = structuredClone(saved);
+    earlier.version = saved.version + 1;
+    earlier.channels.email.configurationHash = storage.fingerprint({
+      configuration: {
+        status: "ready", apiKey: "re_test_key",
+        from: "Caraway <leads@example.com>", to: "inbox@example.com",
+      },
+      baseUrl: "https://api.resend.com",
+    });
+    expect(earlier.channels.email.configurationHash).not.toBe(saved.channels.email.configurationHash);
+    expect(await store.replace(saved, earlier)).toBe(true);
+    await processor.processLead("quote", id, store);
+    expect((await store.read("quote", id))?.channels.email).toMatchObject({ state: "accepted", attempts: 1 });
   });
 
   it("keeps a claimed record recoverable when saving the provider outcome fails", async () => {
@@ -194,8 +226,39 @@ describe("lead processor delivery guarantees", () => {
 
   it("drains a bounded batch and leaves additional saved leads queued", async () => {
     for (let index = 0; index < 15; index++) await capture("quote", ["email"]);
-    expect(await processor.processPendingLeads(store)).toEqual({ processed: 12, failures: 0, pending: 3, attention: 0 });
+    expect(await processor.processPendingLeads(store)).toEqual({ processed: 12, failures: 0, pending: 3, attention: 0, overdue: 0 });
     expect(mocks.quoteEmail).toHaveBeenCalledTimes(12);
-    expect(await processor.processPendingLeads(store)).toEqual({ processed: 3, failures: 0, pending: 0, attention: 0 });
+    expect(await processor.processPendingLeads(store)).toEqual({ processed: 3, failures: 0, pending: 0, attention: 0, overdue: 0 });
+  });
+
+  it("does not call an enquiry overdue when the other channel already delivered it", async () => {
+    await capture();
+    const capturedAt = Date.now();
+    mocks.quoteEmail.mockRejectedValue(new Error("provider outage"));
+    await processor.processPendingLeads(store);
+    vi.setSystemTime(capturedAt + 20 * 60_000);
+    expect(await processor.processPendingLeads(store)).toMatchObject({ pending: 1, attention: 0, overdue: 0 });
+  });
+
+  it("reports an enquiry as overdue after 15 undelivered minutes, on every run, until it is delivered", async () => {
+    const id = await capture("quote", ["email"]);
+    const capturedAt = Date.now();
+    mocks.quoteEmail.mockRejectedValue(new Error("provider outage"));
+    const runAt = async (minutes: number) => {
+      vi.setSystemTime(capturedAt + minutes * 60_000);
+      return processor.processPendingLeads(store);
+    };
+
+    expect(await runAt(0)).toMatchObject({ processed: 1, pending: 1, attention: 0, overdue: 0 });
+    expect(await runAt(5)).toMatchObject({ processed: 1, pending: 1, overdue: 0 });
+    expect(await runAt(10)).toMatchObject({ processed: 1, pending: 1, overdue: 0 });
+    expect(await runAt(15)).toMatchObject({ processed: 1, pending: 1, attention: 0, overdue: 1 });
+    // Not due again until minute 23, yet still reported: the alert must not flap.
+    expect(await runAt(20)).toMatchObject({ processed: 0, pending: 1, attention: 0, overdue: 1 });
+    expect((await store.read("quote", id))!.channels.email.state).toBe("retry");
+
+    mocks.quoteEmail.mockResolvedValue({ sent: true, providerId: "quote-provider-123" });
+    expect(await runAt(25)).toEqual({ processed: 1, failures: 0, pending: 0, attention: 0, overdue: 0 });
+    expect((await store.read("quote", id))!.channels.email.state).toBe("accepted");
   });
 });
