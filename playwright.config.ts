@@ -8,7 +8,7 @@ const testBaseURL = `http://127.0.0.1:${testPort}`;
 
 // Playwright merges webServer.env over process.env. Blank inherited values
 // first, retaining only the host settings required to run Node and Next.js.
-const serverEnv: Record<string, string> = Object.fromEntries(
+export const serverEnv: Record<string, string> = Object.fromEntries(
   Object.keys(process.env).map((key) => [key, ""]),
 );
 for (const key of ["PATH", "HOME", "TMPDIR", "TMP", "TEMP", "SystemRoot", "ComSpec", "PATHEXT", "WINDIR", "CI"]) {
