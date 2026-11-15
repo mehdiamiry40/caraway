@@ -110,6 +110,8 @@ promote; older preview artifacts may still contain a baked-in `noindex` tag.
 | `npm run check:links` | Fail on indexable pages with no inbound internal link (run after build) |
 | `npm run seo:indexnow` | Submit recently-changed sitemap URLs to IndexNow (run after build) |
 | `npm test`          | Run the Vitest suite once                       |
+| `npm run test:e2e`  | Playwright suite against the dev server         |
+| `npm run test:e2e:production` | Check that lead forms become usable, with no blocked scripts, on the production build (run after build) |
 | `npm run test:watch`| Vitest in watch mode                            |
 | `npm run audit:swarm`| Run the internal swarm audit tooling            |
 
@@ -139,6 +141,27 @@ the request proxy, and quote validation. Run it with:
 
 ```bash
 npm test
+```
+
+Lead forms render disabled and are enabled by client-side hydration, which
+depends on the hashed Content-Security-Policy written at build time. The
+dev-server Playwright suite cannot see that break, so a second, read-only suite
+loads each page that carries a form from the production build and fails if a
+form stays disabled or the browser blocks a script:
+
+```bash
+npm run build && npm run test:e2e:production
+```
+
+`.github/workflows/live-form-check.yml` runs the same suite against
+<https://caraway.au> after each successful Production deployment and once an
+hour. It never types into or submits a form. A failed run means visitors may be
+unable to send an enquiry: GitHub emails the failure, and the run's log names
+the page and what was blocked. To run it by hand, use the workflow's **Run
+workflow** button, or locally:
+
+```bash
+FORM_CHECK_BASE_URL=https://caraway.au npm run test:e2e:production
 ```
 
 ## Search engine discovery
@@ -273,7 +296,7 @@ schedule, so it raises nothing on its own.
 2. Make your changes and keep commits focused.
 3. Ensure the full CI gate passes locally:
    ```bash
-   npm run turbo:check && npm run test:e2e && npm run turbo:verify
+   npm run turbo:check && npm run test:e2e && npm run turbo:verify && npm run test:e2e:production
    ```
 4. Open a pull request. CI (see `.github/workflows/ci.yml`) must be green
    before merge. Dependabot handles routine dependency PRs weekly.

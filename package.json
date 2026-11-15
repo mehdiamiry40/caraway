@@ -24,6 +24,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
+    "test:e2e:production": "playwright test --config playwright.production.config.ts",
     "test:watch": "vitest",
     "audit:swarm": "node scripts/swarm-audit.mjs",
     "data:vehicle": "node scripts/build-queensland-vehicle-data.mjs",
