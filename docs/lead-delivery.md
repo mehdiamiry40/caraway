@@ -96,6 +96,18 @@ it with the business record. Customer details remain available in the saved
 payload until expiry. Access/deletion requests must account for provider copies
 as well as the temporary website record.
 
+## Failure reasons
+
+Each attempt that is not accepted is logged as
+`[lead-delivery] <kind>/<id>/<channel> provider_not_confirmed <code> attempt=<n>`,
+and the same code is saved on the record as `provider_not_confirmed:<code>`.
+The code is the email provider's own error name and HTTP status (for example
+`validation_error_422` or `rate_limit_exceeded_429`), a webhook HTTP status
+(`http_502`), or a fixed word: `timeout`, `deadline`, `request_failed`,
+`no_delivery_id`, `configuration_invalid`. Provider message text is never
+logged or stored, because it can contain mailbox addresses, endpoint URLs or
+enquiry details.
+
 ## Verification
 
 Run `npm ci`, `npm run turbo:check`, `npm run test:e2e`, and `npm run turbo:verify`.

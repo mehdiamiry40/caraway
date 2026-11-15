@@ -8,6 +8,7 @@
 
 import type { ZodMiniType } from "zod/mini";
 import { FORM_FETCH_TIMEOUT_MS, FORM_MOCK_DELAY_MS } from "@/data/constants";
+import { DeliveryFailure, failureCode } from "@/lib/delivery-failure";
 import { getLeadConfiguration } from "@/lib/lead-config";
 
 const ALLOWED_ENDPOINTS = ["QUOTE_ENDPOINT", "CONTACT_ENDPOINT"] as const;
@@ -36,6 +37,8 @@ export interface SubmitFormOptions {
  * - `ambiguous: true` means a request was attempted without a confirmed
  *   acceptance. Retry with the same idempotency key; a receiver may have
  *   processed the payload even when its response failed.
+ * - `code` says why, in a form that is safe to log: an HTTP status such as
+ *   `http_502`, or a fixed word such as `timeout`.
  */
 export async function submitForm({
   schema,
@@ -46,7 +49,7 @@ export async function submitForm({
 }: SubmitFormOptions): Promise<
   | { success: true }
   | { success: false; skipped: true; ambiguous: false }
-  | { success: false; message: string; ambiguous: boolean }
+  | { success: false; message: string; ambiguous: boolean; code?: string }
 > {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
@@ -93,6 +96,7 @@ export async function submitForm({
       success: false,
       message: "We couldn't send your request. Please try again or use the form below.",
       ambiguous: false,
+      code: "endpoint_invalid",
     };
   }
 
@@ -109,18 +113,26 @@ export async function submitForm({
     });
 
     if (!response.ok) {
-      throw new Error(`${label} failed with status ${response.status}`);
+      throw new DeliveryFailure(
+        `${label} failed with status ${response.status}`,
+        `http_${response.status}`,
+      );
     }
 
     return { success: true };
-  } catch {
+  } catch (error) {
     // Upstream exception text can contain URLs or submitted data. The caller
-    // receives the delivery state; logs retain only the channel label.
-    console.error(`[submit-form] ${label} failed after a delivery attempt`);
+    // receives the delivery state; logs retain only the channel label and a
+    // fixed-vocabulary reason.
+    const code = failureCode(error);
+    console.error(
+      `[submit-form] ${label} failed after a delivery attempt (${code})`,
+    );
     return {
       success: false,
       message: `We couldn't send your request. Please try again or use the form below.`,
       ambiguous: true,
+      code,
     };
   }
 }

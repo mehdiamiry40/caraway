@@ -1,4 +1,5 @@
 import { Resend, type CreateEmailRequestOptions } from "resend";
+import { DeliveryFailure, providerFailureCode } from "./delivery-failure";
 import { getLeadConfiguration } from "./lead-config";
 import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import type { ContactFormValues } from "./quote-schema";
@@ -92,7 +93,10 @@ export async function sendContactNotificationEmail(
     return { sent: false };
   }
   if (email.status === "invalid") {
-    throw new Error("Contact email configuration is invalid");
+    throw new DeliveryFailure(
+      "Contact email configuration is invalid",
+      "configuration_invalid",
+    );
   }
   const { apiKey, from, to } = email;
 
@@ -115,12 +119,18 @@ export async function sendContactNotificationEmail(
   }, requestOptions);
 
   if (result.error) {
-    throw new Error("Contact email provider did not confirm acceptance");
+    throw new DeliveryFailure(
+      "Contact email provider did not confirm acceptance",
+      providerFailureCode(result.error),
+    );
   }
 
   const providerId = result.data?.id;
   if (typeof providerId !== "string" || !providerId.trim()) {
-    throw new Error("Contact email provider did not return a delivery ID");
+    throw new DeliveryFailure(
+      "Contact email provider did not return a delivery ID",
+      "no_delivery_id",
+    );
   }
   return { sent: true, providerId };
 }

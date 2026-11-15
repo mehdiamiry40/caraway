@@ -1,4 +1,5 @@
 import { Resend, type CreateEmailRequestOptions } from "resend";
+import { DeliveryFailure, providerFailureCode } from "./delivery-failure";
 import { getLeadConfiguration } from "./lead-config";
 import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import { CONDITION_LABELS, type QuoteFormValues } from "./quote-schema";
@@ -107,7 +108,10 @@ export async function sendQuoteNotificationEmail(
     return { sent: false };
   }
   if (email.status === "invalid") {
-    throw new Error("Quote email configuration is invalid");
+    throw new DeliveryFailure(
+      "Quote email configuration is invalid",
+      "configuration_invalid",
+    );
   }
   const { apiKey, from, to } = email;
 
@@ -129,12 +133,18 @@ export async function sendQuoteNotificationEmail(
   }, requestOptions);
 
   if (result.error) {
-    throw new Error("Quote email provider did not confirm acceptance");
+    throw new DeliveryFailure(
+      "Quote email provider did not confirm acceptance",
+      providerFailureCode(result.error),
+    );
   }
 
   const providerId = result.data?.id;
   if (typeof providerId !== "string" || !providerId.trim()) {
-    throw new Error("Quote email provider did not return a delivery ID");
+    throw new DeliveryFailure(
+      "Quote email provider did not return a delivery ID",
+      "no_delivery_id",
+    );
   }
   return { sent: true, providerId };
 }
