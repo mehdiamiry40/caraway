@@ -16,17 +16,26 @@ export interface RateLimitResult {
 }
 
 const WINDOW_MS = 60_000;
-const POLICIES: Record<RateLimitScope, { limit: number; prefix: string }> = {
-  forms: { limit: 10, prefix: "caraway:ratelimit:forms" },
+const POLICIES: Record<RateLimitScope, { limit: number }> = {
+  forms: { limit: 10 },
   // Deployment-wide ceiling for schema-valid lead attempts. This is consumed
   // once immediately before email/webhook work, not by malformed requests.
-  "forms-global": { limit: 100, prefix: "caraway:ratelimit:forms-global" },
+  "forms-global": { limit: 100 },
   // AI requests have a real per-call cost. Keep the visitor limit generous
   // enough for a useful conversation, while the global circuit breaker caps
   // spend even when an attacker rotates IP addresses.
-  chat: { limit: 12, prefix: "caraway:ratelimit:chat" },
-  "chat-global": { limit: 120, prefix: "caraway:ratelimit:chat-global" },
+  chat: { limit: 12 },
+  "chat-global": { limit: 120 },
 };
+
+// Counters are kept per environment. Preview and production can share one
+// database, and traffic to a preview must not draw down production's
+// allowances, least of all the deployment-wide ones.
+function counterPrefix(scope: RateLimitScope): string {
+  const environment =
+    process.env.VERCEL_ENV?.trim() || process.env.NODE_ENV || "development";
+  return `caraway:ratelimit:${environment.replace(/[^a-z0-9-]/gi, "_")}:${scope}`;
+}
 
 const localBuckets = new Map<
   string,
@@ -94,7 +103,7 @@ function getDistributedLimiters(): Record<RateLimitScope, Ratelimit> | null {
         redis,
         limiter: Ratelimit.slidingWindow(POLICIES[scope].limit, "1 m"),
         analytics: false,
-        prefix: POLICIES[scope].prefix,
+        prefix: counterPrefix(scope),
         timeout: 1_500,
       }),
     ]),
