@@ -3,9 +3,13 @@ import { createSubmissionId } from "@/lib/submission-id";
 import type { LeadStore } from "@/lib/lead-store";
 import type { QuoteFormInput } from "@/lib/quote-schema";
 
-const mocks = vi.hoisted(() => ({ after: vi.fn(), rateLimit: vi.fn() }));
+const mocks = vi.hoisted(() => ({ after: vi.fn(), rateLimit: vi.fn(), headers: vi.fn() }));
 vi.mock("next/server", () => ({ after: mocks.after }));
-vi.mock("@/lib/rate-limit", () => ({ rateLimit: mocks.rateLimit }));
+vi.mock("next/headers", () => ({ headers: mocks.headers }));
+vi.mock("@/lib/rate-limit", async (importOriginal) => ({
+  getClientIp: (await importOriginal<typeof import("@/lib/rate-limit")>()).getClientIp,
+  rateLimit: mocks.rateLimit,
+}));
 const quote: QuoteFormInput = {
   name: "Jane Doe", phone: "0412345678", make: "Toyota", model: "Hilux", year: 2015,
   condition: "running", suburb: "Brisbane", honeypot: "",
@@ -20,6 +24,7 @@ beforeEach(async () => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
   vi.spyOn(console, "error").mockImplementation(() => {});
   mocks.after.mockReset(); mocks.rateLimit.mockReset().mockResolvedValue({ success: true });
+  mocks.headers.mockReset().mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.7" }));
   store = (await import("@/lib/lead-store")).getLeadStore();
   ({ submitQuote } = await import("@/actions/quote"));
 });
