@@ -2,6 +2,7 @@ import { submitForm } from "@/actions/submit-form";
 import { sendQuoteNotificationEmail } from "./quote-email";
 import { sendContactNotificationEmail } from "./contact-email";
 import { getLeadConfiguration, type LeadKind } from "./lead-config";
+import { DeliveryFailure, failureCode } from "./delivery-failure";
 import {
   contactFormSchema,
   quoteFormSchema,
@@ -58,7 +59,8 @@ async function deadline<T>(operation: Promise<T>): Promise<T> {
       operation,
       new Promise<never>((_, reject) => {
         timer = setTimeout(
-          () => reject(new Error("Provider deadline reached")),
+          () =>
+            reject(new DeliveryFailure("Provider deadline reached", "deadline")),
           9_000,
         );
       }),
@@ -94,6 +96,8 @@ export async function processLead(
       const idempotencyKey = `caraway/${fingerprint({ environment, branch }).slice(0, 16)}/${kind}/${id}/${channel}`;
       let accepted = false;
       let providerId: string | undefined;
+      // Why the attempt was not accepted, as a code that is safe to log.
+      let failure = "not_confirmed";
       try {
         if (channel === "email") {
           const result = await deadline(
@@ -108,6 +112,7 @@ export async function processLead(
           );
           accepted = result.sent;
           providerId = result.sent ? result.providerId : undefined;
+          if (!result.sent) failure = "channel_disabled";
         } else {
           const result = await deadline(
             submitForm({
@@ -120,20 +125,26 @@ export async function processLead(
             }),
           );
           accepted = result.success;
+          if (!result.success)
+            failure =
+              "skipped" in result
+                ? "channel_skipped"
+                : (result.code ?? "not_confirmed");
         }
-      } catch {
+      } catch (error) {
         // Provider requests can have succeeded before a timeout. Email retries
         // retain the same provider key; a webhook is never blindly replayed.
+        failure = failureCode(error);
       }
       await finishDelivery(store, kind, id, channel, token, {
         accepted,
         providerId,
         retryable: channel === "email",
-        reason: "provider_not_confirmed",
+        reason: `provider_not_confirmed:${failure}`,
       });
       if (!accepted)
         console.error(
-          `[lead-delivery] ${kind}/${id}/${channel} provider_not_confirmed`,
+          `[lead-delivery] ${kind}/${id}/${channel} provider_not_confirmed ${failure} attempt=${record.channels[channel].attempts}`,
         );
     }),
   );

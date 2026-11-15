@@ -4,6 +4,7 @@ const mocks = vi.hoisted(() => ({
   limit: vi.fn(),
   redisConfig: undefined as unknown,
   redisConstructorError: false,
+  limiterPrefixes: [] as string[],
 }));
 
 vi.mock("@upstash/redis", () => ({
@@ -23,7 +24,9 @@ vi.mock("@upstash/ratelimit", () => ({
 
     limit = mocks.limit;
 
-    constructor(_config: unknown) {}
+    constructor(config: { prefix: string }) {
+      mocks.limiterPrefixes.push(config.prefix);
+    }
   },
 }));
 
@@ -32,6 +35,7 @@ beforeEach(() => {
   mocks.limit.mockReset();
   mocks.redisConfig = undefined;
   mocks.redisConstructorError = false;
+  mocks.limiterPrefixes.length = 0;
   vi.stubEnv("UPSTASH_REDIS_REST_URL", "https://redis.example.com");
   vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "test-token");
   vi.stubEnv("KV_REST_API_URL", undefined);
@@ -44,6 +48,37 @@ afterEach(() => {
 });
 
 describe("rateLimit", () => {
+  it.each([
+    ["production", "production"],
+    ["preview", "preview"],
+    [" production ", "production"],
+    ["weird env/name", "weird_env_name"],
+  ])("keeps counters for VERCEL_ENV=%j under their own prefix", async (vercelEnv, segment) => {
+    vi.stubEnv("VERCEL_ENV", vercelEnv);
+    mocks.limit.mockResolvedValue({ success: true, limit: 10, remaining: 9, reset: 1, pending: Promise.resolve() });
+    const { rateLimit } = await import("@/lib/rate-limit");
+
+    await rateLimit("forms-global", "global");
+
+    expect([...mocks.limiterPrefixes].sort()).toEqual([
+      `caraway:ratelimit:${segment}:chat`,
+      `caraway:ratelimit:${segment}:chat-global`,
+      `caraway:ratelimit:${segment}:forms`,
+      `caraway:ratelimit:${segment}:forms-global`,
+    ]);
+  });
+
+  it("falls back to NODE_ENV for the counter prefix outside Vercel", async () => {
+    vi.stubEnv("VERCEL_ENV", "");
+    vi.stubEnv("NODE_ENV", "test");
+    mocks.limit.mockResolvedValue({ success: true, limit: 10, remaining: 9, reset: 1, pending: Promise.resolve() });
+    const { rateLimit } = await import("@/lib/rate-limit");
+
+    await rateLimit("chat", "203.0.113.1");
+
+    expect(mocks.limiterPrefixes).toContain("caraway:ratelimit:test:chat");
+  });
+
   it("uses the distributed result when Redis responds", async () => {
     mocks.limit.mockResolvedValue({
       success: true,
