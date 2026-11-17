@@ -3,6 +3,10 @@ import { DeliveryFailure, providerFailureCode } from "./delivery-failure";
 import { getLeadConfiguration } from "./lead-config";
 import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import type { ContactFormValues } from "./quote-schema";
+import {
+  POSSIBLE_SPAM_NOTE,
+  POSSIBLE_SPAM_SUBJECT_PREFIX,
+} from "./possible-spam";
 
 /**
  * Outcome of an email notification attempt.
@@ -30,9 +34,14 @@ interface ContactEmailContent {
  * Pure, side-effect-free builder for the contact notification email body.
  * Extracted so we can unit-test the formatting without mocking Resend.
  */
-export function buildContactEmailContent(data: ContactFormValues): ContactEmailContent {
+export function buildContactEmailContent(
+  data: ContactFormValues,
+  options: { possibleSpam?: boolean } = {},
+): ContactEmailContent {
   const safeHeader = (s: string) => s.replace(/[\r\n]+/g, " ");
-  const subject = safeHeader(`New contact message — ${data.name}`);
+  const subject = safeHeader(
+    `${options.possibleSpam ? POSSIBLE_SPAM_SUBJECT_PREFIX : ""}New contact message — ${data.name}`,
+  );
 
   const rows: Array<[string, string]> = [
     ["Name", data.name],
@@ -44,6 +53,7 @@ export function buildContactEmailContent(data: ContactFormValues): ContactEmailC
   const text = [
     "New contact message from caraway.au",
     "",
+    ...(options.possibleSpam ? [POSSIBLE_SPAM_NOTE, ""] : []),
     ...rows.map(([k, v]) => `${k.padEnd(18)}${v}`),
     "",
     "Message:",
@@ -66,6 +76,9 @@ export function buildContactEmailContent(data: ContactFormValues): ContactEmailC
     `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#303030;margin:0;padding:24px;background:#FFFFFF">` +
     `<h2 style="margin:0 0 12px;font-size:18px;color:#2C5696">New contact message</h2>` +
     `<p style="margin:0 0 16px;color:#59636E">Submitted via the caraway.au contact form.</p>` +
+    (options.possibleSpam
+      ? `<p style="margin:0 0 16px;border:1px solid #D4D9DD;padding:8px 12px">${escapeHtml(POSSIBLE_SPAM_NOTE)}</p>`
+      : "") +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px;margin-bottom:16px">` +
     htmlRows +
     `</table>` +
@@ -86,7 +99,7 @@ export function buildContactEmailContent(data: ContactFormValues): ContactEmailC
  */
 export async function sendContactNotificationEmail(
   data: ContactFormValues,
-  options: { idempotencyKey?: string } = {},
+  options: { idempotencyKey?: string; possibleSpam?: boolean } = {},
 ): Promise<ContactEmailResult> {
   const { email } = getLeadConfiguration("contact");
   if (email.status === "disabled") {
@@ -100,7 +113,9 @@ export async function sendContactNotificationEmail(
   }
   const { apiKey, from, to } = email;
 
-  const { subject, text, html } = buildContactEmailContent(data);
+  const { subject, text, html } = buildContactEmailContent(data, {
+    possibleSpam: options.possibleSpam,
+  });
 
   const resend = new Resend(apiKey);
   // The installed SDK forwards request options to fetch, although its public

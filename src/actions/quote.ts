@@ -1,21 +1,15 @@
 "use server";
 
 import { type QuoteFormInput, quoteFormSchema } from "@/lib/quote-schema";
-import { deliverLead, rejectInvalidLead } from "./lead-delivery";
+import { submitLead } from "./lead-delivery";
 
 /**
- * Submit a quote request through two parallel delivery channels:
- *   1) the external webhook (QUOTE_ENDPOINT) — feeds CRM / automation
- *   2) direct email to the business inbox via Resend
+ * Save a quote request, then deliver it through the configured channels: the
+ * external webhook (QUOTE_ENDPOINT) and email to the business inbox.
  *
- * Either channel succeeding is enough to show the user a success state —
- * see deliverLead in ./lead-delivery for the shared redundancy semantics.
+ * The visitor sees success once the request is saved; delivery and its
+ * retries happen afterwards. See ./lead-delivery for the shared rules.
  */
 export async function submitQuote(data: QuoteFormInput, submissionId?: string) {
-  const parsed = quoteFormSchema.safeParse(data);
-  if (!parsed.success) {
-    return rejectInvalidLead("quote", parsed.error);
-  }
-
-  return deliverLead("quote", parsed.data, submissionId);
+  return submitLead("quote", quoteFormSchema, data, submissionId);
 }

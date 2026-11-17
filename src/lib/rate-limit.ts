@@ -12,7 +12,7 @@ export interface RateLimitResult {
   limit: number;
   remaining: number;
   reset: number;
-  mode: "distributed" | "local" | "unavailable";
+  mode: "distributed" | "local" | "outage" | "unavailable";
 }
 
 const WINDOW_MS = 60_000;
@@ -36,6 +36,17 @@ function counterPrefix(scope: RateLimitScope): string {
     process.env.VERCEL_ENV?.trim() || process.env.NODE_ENV || "development";
   return `caraway:ratelimit:${environment.replace(/[^a-z0-9-]/gi, "_")}:${scope}`;
 }
+
+// Used only while the shared counters cannot be reached (see leadRateLimit).
+// These are counted inside one server instance and several instances can be
+// running, each with its own count, so they are set well below POLICIES. The
+// shared figure also bounds how many enquiries one instance will email
+// directly in a minute; genuine traffic is a few enquiries a day.
+type LeadScope = "forms" | "forms-global";
+const OUTAGE_POLICIES: Record<LeadScope, { limit: number }> = {
+  forms: { limit: 4 },
+  "forms-global": { limit: 10 },
+};
 
 const localBuckets = new Map<
   string,
@@ -112,26 +123,22 @@ function getDistributedLimiters(): Record<RateLimitScope, Ratelimit> | null {
   return distributedLimiters;
 }
 
-function localLimit(scope: RateLimitScope, identifier: string): RateLimitResult {
-  const policy = POLICIES[scope];
-  const key = `${scope}:${identifier}`;
+function countInThisInstance(
+  key: string,
+  limit: number,
+  mode: "local" | "outage",
+): RateLimitResult {
   const now = Date.now();
   const bucket = localBuckets.get(key);
 
   if (!bucket || bucket.reset <= now) {
     const reset = now + WINDOW_MS;
     localBuckets.set(key, { count: 1, reset });
-    return {
-      success: true,
-      limit: policy.limit,
-      remaining: policy.limit - 1,
-      reset,
-      mode: "local",
-    };
+    return { success: true, limit, remaining: limit - 1, reset, mode };
   }
 
   bucket.count += 1;
-  const success = bucket.count <= policy.limit;
+  const success = bucket.count <= limit;
 
   if (localBuckets.size > 5_000) {
     for (const [bucketKey, value] of localBuckets.entries()) {
@@ -141,11 +148,19 @@ function localLimit(scope: RateLimitScope, identifier: string): RateLimitResult 
 
   return {
     success,
-    limit: policy.limit,
-    remaining: Math.max(0, policy.limit - bucket.count),
+    limit,
+    remaining: Math.max(0, limit - bucket.count),
     reset: bucket.reset,
-    mode: "local",
+    mode,
   };
+}
+
+function localLimit(scope: RateLimitScope, identifier: string): RateLimitResult {
+  return countInThisInstance(
+    `${scope}:${identifier}`,
+    POLICIES[scope].limit,
+    "local",
+  );
 }
 
 export function isLocalRateLimitFallbackAllowed(): boolean {
@@ -198,6 +213,41 @@ export async function rateLimit(
     );
     return fallbackOrUnavailable(scope, identifier);
   }
+}
+
+/** Counts against the outage allowance without trying the shared counters. */
+export function outageRateLimit(
+  scope: LeadScope,
+  identifier: string,
+): RateLimitResult {
+  return countInThisInstance(
+    `outage:${scope}:${identifier}`,
+    OUTAGE_POLICIES[scope].limit,
+    "outage",
+  );
+}
+
+/**
+ * The limit for the public enquiry path: the request proxy, the submission ID
+ * route and the form action.
+ *
+ * Everywhere else an unreachable counter store refuses the request. Here that
+ * would turn every enquiry form into "please call us" for as long as the store
+ * is down, so a sender who cannot be counted centrally is counted in this
+ * server instance instead, against the smaller OUTAGE_POLICIES allowance. The
+ * result says so with `mode: "outage"`.
+ *
+ * A deployment with no counter store configured at all is a setup mistake, not
+ * an outage, and is still refused.
+ */
+export async function leadRateLimit(
+  scope: LeadScope,
+  identifier: string,
+): Promise<RateLimitResult> {
+  const result = await rateLimit(scope, identifier);
+  return result.mode === "unavailable" && isDistributedRateLimitConfigured()
+    ? outageRateLimit(scope, identifier)
+    : result;
 }
 
 export function getClientIp(request: Pick<Request, "headers">): string {

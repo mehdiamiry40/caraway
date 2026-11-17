@@ -70,6 +70,60 @@ async function deadline<T>(operation: Promise<T>): Promise<T> {
   }
 }
 
+/** One key per enquiry and channel, so a repeated send is not a second message. */
+export function deliveryIdempotencyKey(
+  kind: LeadKind,
+  id: string,
+  channel: LeadChannel,
+) {
+  const environment =
+    process.env.VERCEL_ENV?.trim() || process.env.NODE_ENV || "development";
+  const branch =
+    environment === "preview"
+      ? (process.env.VERCEL_GIT_COMMIT_REF ?? "preview")
+      : "";
+  return `caraway/${fingerprint({ environment, branch }).slice(0, 16)}/${kind}/${id}/${channel}`;
+}
+
+export type LeadEmailOutcome =
+  | { accepted: true; providerId: string }
+  | { accepted: false; failure: string };
+
+/**
+ * Sends the notification email for one enquiry. Every call for the same
+ * enquiry carries the same provider key, so the worker's retries and the
+ * direct send used while storage is unreachable cannot add up to two emails.
+ * Never throws: a failure comes back as a code that is safe to log.
+ */
+export async function sendLeadEmail(
+  kind: LeadKind,
+  id: string,
+  payload: QuoteFormValues | ContactFormValues,
+  options: { possibleSpam?: boolean } = {},
+): Promise<LeadEmailOutcome> {
+  const emailOptions = {
+    idempotencyKey: deliveryIdempotencyKey(kind, id, "email"),
+    ...(options.possibleSpam ? { possibleSpam: true } : {}),
+  };
+  try {
+    const result = await deadline(
+      kind === "quote"
+        ? sendQuoteNotificationEmail(payload as QuoteFormValues, emailOptions)
+        : sendContactNotificationEmail(
+            payload as ContactFormValues,
+            emailOptions,
+          ),
+    );
+    return result.sent
+      ? { accepted: true, providerId: result.providerId }
+      : { accepted: false, failure: "channel_disabled" };
+  } catch (error) {
+    // The request can have reached the provider before a timeout. The key
+    // above is what makes sending again safe.
+    return { accepted: false, failure: failureCode(error) };
+  }
+}
+
 export async function processLead(
   kind: LeadKind,
   id: string,
@@ -87,33 +141,19 @@ export async function processLead(
       );
       if (!claim) return;
       const { record, token } = claim;
-      const environment =
-        process.env.VERCEL_ENV?.trim() || process.env.NODE_ENV || "development";
-      const branch =
-        environment === "preview"
-          ? (process.env.VERCEL_GIT_COMMIT_REF ?? "preview")
-          : "";
-      const idempotencyKey = `caraway/${fingerprint({ environment, branch }).slice(0, 16)}/${kind}/${id}/${channel}`;
       let accepted = false;
       let providerId: string | undefined;
       // Why the attempt was not accepted, as a code that is safe to log.
       let failure = "not_confirmed";
-      try {
-        if (channel === "email") {
-          const result = await deadline(
-            kind === "quote"
-              ? sendQuoteNotificationEmail(record.payload as QuoteFormValues, {
-                  idempotencyKey,
-                })
-              : sendContactNotificationEmail(
-                  record.payload as ContactFormValues,
-                  { idempotencyKey },
-                ),
-          );
-          accepted = result.sent;
-          providerId = result.sent ? result.providerId : undefined;
-          if (!result.sent) failure = "channel_disabled";
-        } else {
+      if (channel === "email") {
+        const outcome = await sendLeadEmail(kind, id, record.payload, {
+          possibleSpam: record.possibleSpam,
+        });
+        accepted = outcome.accepted;
+        if (outcome.accepted) providerId = outcome.providerId;
+        else failure = outcome.failure;
+      } else {
+        try {
           const result = await deadline(
             submitForm({
               schema: kind === "quote" ? quoteFormSchema : contactFormSchema,
@@ -121,7 +161,8 @@ export async function processLead(
               endpointEnvVar:
                 kind === "quote" ? "QUOTE_ENDPOINT" : "CONTACT_ENDPOINT",
               label: `${kind} delivery`,
-              idempotencyKey,
+              idempotencyKey: deliveryIdempotencyKey(kind, id, channel),
+              possibleSpam: record.possibleSpam,
             }),
           );
           accepted = result.success;
@@ -130,11 +171,11 @@ export async function processLead(
               "skipped" in result
                 ? "channel_skipped"
                 : (result.code ?? "not_confirmed");
+        } catch (error) {
+          // The request can have succeeded before a timeout, and a webhook is
+          // never blindly replayed.
+          failure = failureCode(error);
         }
-      } catch (error) {
-        // Provider requests can have succeeded before a timeout. Email retries
-        // retain the same provider key; a webhook is never blindly replayed.
-        failure = failureCode(error);
       }
       await finishDelivery(store, kind, id, channel, token, {
         accepted,

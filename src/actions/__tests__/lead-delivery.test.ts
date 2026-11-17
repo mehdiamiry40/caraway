@@ -5,16 +5,18 @@ import type { QuoteFormValues } from "@/lib/quote-schema";
 
 const mocks = vi.hoisted(() => ({
   after: vi.fn<(callback: () => Promise<void>) => void>(), rateLimit: vi.fn(), processLead: vi.fn(),
-  headers: vi.fn(),
+  headers: vi.fn(), outageRateLimit: vi.fn(), sendLeadEmail: vi.fn(),
 }));
 vi.mock("next/server", () => ({ after: mocks.after }));
 vi.mock("next/headers", () => ({ headers: mocks.headers }));
 vi.mock("@/lib/rate-limit", async (importOriginal) => ({
   getClientIp: (await importOriginal<typeof import("@/lib/rate-limit")>()).getClientIp,
-  rateLimit: mocks.rateLimit,
+  leadRateLimit: mocks.rateLimit,
+  outageRateLimit: mocks.outageRateLimit,
 }));
 vi.mock("@/lib/lead-processor", async (importOriginal) => ({
   ...await importOriginal<typeof import("@/lib/lead-processor")>(), processLead: mocks.processLead,
+  sendLeadEmail: mocks.sendLeadEmail,
 }));
 
 const quote: QuoteFormValues = {
@@ -45,6 +47,8 @@ beforeEach(async () => {
   mocks.rateLimit.mockReset().mockResolvedValue({ success: true });
   mocks.headers.mockReset().mockResolvedValue(new Headers({ "x-forwarded-for": "203.0.113.7, 10.0.0.1" }));
   mocks.processLead.mockReset().mockResolvedValue(undefined);
+  mocks.outageRateLimit.mockReset().mockReturnValue({ success: true, mode: "outage" });
+  mocks.sendLeadEmail.mockReset().mockResolvedValue({ accepted: false, failure: "request_failed" });
   storage = await import("@/lib/lead-store");
   store = storage.getLeadStore();
   delivery = await import("@/actions/lead-delivery");
@@ -86,8 +90,8 @@ describe("durable lead capture", () => {
     expect(results).toEqual(Array.from({ length: 6 }, () => ({ success: true })));
     expect(await store.health()).toEqual({ pending: 1, attention: 0 });
     const scheduled = mocks.after.mock.calls.length;
-    expect(await delivery.deliverLead("quote", { ...quote, model: "Corolla" }, id)).toMatchObject({
-      success: false, message: expect.stringMatching(/different details/),
+    expect(await delivery.deliverLead("quote", { ...quote, model: "Corolla" }, id)).toEqual({
+      success: false, message: expect.stringMatching(/different details/), restart: true,
     });
     expect(await store.read("quote", id)).toMatchObject({ version: 1, payload: quote });
     expect(mocks.after).toHaveBeenCalledTimes(scheduled);
@@ -95,7 +99,7 @@ describe("durable lead capture", () => {
 
   it.each([undefined, "", "not-an-id", "550e8400-e29b-41d4-a716-446655440000"])(
     "rejects missing or invalid IDs before admission: %j", async (id) => {
-      expect(await delivery.deliverLead("quote", quote, id)).toMatchObject({ success: false });
+      expect(await delivery.deliverLead("quote", quote, id)).toMatchObject({ success: false, restart: true });
       expect(mocks.rateLimit).not.toHaveBeenCalled();
       expect(await store.health()).toEqual({ pending: 0, attention: 0 });
       expect(mocks.after).not.toHaveBeenCalled();
@@ -116,10 +120,10 @@ describe("durable lead capture", () => {
     const saved = createSubmissionId();
     await delivery.deliverLead("quote", quote, saved);
     vi.setSystemTime(Date.now() + storage.MAX_NEW_SUBMISSION_AGE_MS + 1);
-    expect(await delivery.deliverLead("quote", quote, old)).toMatchObject({ success: false, message: expect.stringMatching(/call Caraway/) });
+    expect(await delivery.deliverLead("quote", quote, old)).toEqual({ success: false, message: expect.stringMatching(/call Caraway/), restart: true });
     expect(await delivery.deliverLead("quote", quote, saved)).toEqual({ success: true });
     vi.setSystemTime(Date.now() + storage.LEAD_RETENTION_MS);
-    expect(await delivery.deliverLead("quote", quote, saved)).toMatchObject({ success: false, message: expect.stringMatching(/call Caraway/) });
+    expect(await delivery.deliverLead("quote", quote, saved)).toEqual({ success: false, message: expect.stringMatching(/call Caraway/), restart: true });
     expect(await store.read("quote", saved)).toBeNull();
   });
 
@@ -157,7 +161,7 @@ describe("durable lead capture", () => {
     expect(mocks.after).not.toHaveBeenCalled();
   });
 
-  it("fails closed without capture when the sender's allowance cannot be checked", async () => {
+  it("refuses without capture when no counter store is configured or the request has no headers", async () => {
     mocks.rateLimit.mockImplementation(async (scope: string) =>
       scope === "forms" ? { success: false, mode: "unavailable" } : { success: true });
     expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toEqual({
@@ -170,15 +174,102 @@ describe("durable lead capture", () => {
     expect(mocks.rateLimit).not.toHaveBeenCalled();
     expect(await store.health()).toEqual({ pending: 0, attention: 0 });
     expect(mocks.after).not.toHaveBeenCalled();
+    expect(mocks.sendLeadEmail).not.toHaveBeenCalled();
   });
 
   it("does not report success after a failed storage write or disclose its error", async () => {
     const id = createSubmissionId();
-    vi.spyOn(store, "create").mockRejectedValue(new Error("redis-secret-and-personal-data"));
-    expect(await delivery.deliverLead("quote", quote, id)).toMatchObject({ success: false, message: expect.stringMatching(/couldn't save/) });
+    const create = vi.spyOn(store, "create").mockRejectedValue(new Error("redis-secret-and-personal-data"));
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({ success: false, message: expect.stringMatching(/couldn't save/) });
+    expect(create).toHaveBeenCalledTimes(2);
     expect(await store.read("quote", id)).toBeNull();
     expect(mocks.after).not.toHaveBeenCalled();
-    expect(JSON.stringify(vi.mocked(console.error).mock.calls)).not.toContain("redis-secret-and-personal-data");
+    const logged = JSON.stringify(vi.mocked(console.error).mock.calls);
+    expect(logged).not.toContain("redis-secret-and-personal-data");
+    expect(logged).toContain(`quote/${id} storage_unavailable email_not_confirmed request_failed`);
+  });
+
+  it("repeats a dropped storage request once and still saves the enquiry", async () => {
+    const id = createSubmissionId();
+    const read = store.read.bind(store);
+    const create = store.create.bind(store);
+    vi.spyOn(store, "read").mockRejectedValueOnce(new Error("dropped")).mockImplementation(read);
+    // The first write lands but its answer is lost, so the repeat finds it there.
+    vi.spyOn(store, "create").mockImplementationOnce(async (record) => { await create(record); throw new Error("dropped"); })
+      .mockImplementation(create);
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({ success: true });
+    expect(await read("quote", id)).toMatchObject({ id, version: 1, payload: quote });
+    expect(mocks.after).toHaveBeenCalledTimes(1);
+    expect(mocks.sendLeadEmail).not.toHaveBeenCalled();
+  });
+
+  it("emails the enquiry directly when storage keeps failing, and succeeds only if the provider accepts", async () => {
+    const id = createSubmissionId();
+    const read = vi.spyOn(store, "read").mockRejectedValue(new Error("redis-secret-and-personal-data"));
+    mocks.sendLeadEmail.mockResolvedValueOnce({ accepted: true, providerId: "provider-1" });
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({ success: true });
+    expect(read).toHaveBeenCalledTimes(2);
+    expect(mocks.sendLeadEmail).toHaveBeenCalledExactlyOnceWith("quote", id, quote, { possibleSpam: false });
+    expect(mocks.after).not.toHaveBeenCalled();
+    const logged = JSON.stringify(vi.mocked(console.error).mock.calls);
+    expect(logged).toContain(`quote/${id} storage_unavailable emailed_without_saving`);
+    expect(logged).not.toMatch(/redis-secret|Jane Doe|0412345678/);
+
+    mocks.sendLeadEmail.mockResolvedValueOnce({ accepted: false, failure: "rate_limit_exceeded_429" });
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({ success: false, message: expect.stringMatching(/couldn't save/) });
+    expect(JSON.stringify(vi.mocked(console.error).mock.calls)).toContain("email_not_confirmed rate_limit_exceeded_429");
+  });
+
+  it.each([
+    ["the sender's own counter", { forms: "outage", "forms-global": "distributed" }, 1],
+    ["only the shared counter", { forms: "distributed", "forms-global": "outage" }, 2],
+  ] as const)("skips storage and emails directly when %s is counted locally", async (_label, modes, sharedCalls) => {
+    mocks.rateLimit.mockImplementation(async (scope: "forms" | "forms-global") => ({ success: true, mode: modes[scope] }));
+    const read = vi.spyOn(store, "read");
+    mocks.sendLeadEmail.mockResolvedValue({ accepted: true, providerId: "provider-1" });
+    const id = createSubmissionId();
+    expect(await delivery.deliverLead("quote", quote, id)).toEqual({ success: true });
+    // The shared counters are not asked a second time once they have failed.
+    expect(mocks.rateLimit).toHaveBeenCalledTimes(sharedCalls);
+    expect(mocks.outageRateLimit.mock.calls).toEqual(sharedCalls === 1 ? [["forms-global", "global"]] : []);
+    expect(read).not.toHaveBeenCalled();
+    expect(mocks.sendLeadEmail).toHaveBeenCalledExactlyOnceWith("quote", id, quote, { possibleSpam: false });
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("still refuses during an outage once the local allowances are used up", async () => {
+    mocks.rateLimit.mockResolvedValue({ success: false, mode: "outage" });
+    expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toEqual({
+      success: false, message: expect.stringMatching(/^Too many requests/),
+    });
+    mocks.rateLimit.mockResolvedValue({ success: true, mode: "outage" });
+    mocks.outageRateLimit.mockReturnValue({ success: false, mode: "outage" });
+    expect(await delivery.deliverLead("quote", quote, createSubmissionId())).toEqual({
+      success: false, message: expect.stringMatching(/couldn't save/),
+    });
+    expect(mocks.sendLeadEmail).not.toHaveBeenCalled();
+  });
+
+  it("asks for a new ID instead of emailing an expired one that storage cannot vouch for", async () => {
+    const id = createSubmissionId();
+    vi.setSystemTime(Date.now() + storage.MAX_NEW_SUBMISSION_AGE_MS + 1);
+    mocks.rateLimit.mockResolvedValue({ success: true, mode: "outage" });
+    expect(await delivery.deliverLead("quote", quote, id)).toMatchObject({ success: false, restart: true });
+    expect(mocks.sendLeadEmail).not.toHaveBeenCalled();
+  });
+
+  it("keeps the possible-spam label on the saved enquiry and on a direct email", async () => {
+    const plain = createSubmissionId();
+    const flagged = createSubmissionId();
+    await delivery.deliverLead("quote", quote, plain);
+    await delivery.deliverLead("quote", quote, flagged, { possibleSpam: true });
+    expect(await store.read("quote", plain)).not.toHaveProperty("possibleSpam");
+    expect(await store.read("quote", flagged)).toMatchObject({ possibleSpam: true, payload: quote });
+
+    mocks.rateLimit.mockResolvedValue({ success: true, mode: "outage" });
+    const direct = createSubmissionId();
+    await delivery.deliverLead("quote", quote, direct, { possibleSpam: true });
+    expect(mocks.sendLeadEmail).toHaveBeenCalledExactlyOnceWith("quote", direct, quote, { possibleSpam: true });
   });
 
   it("captures through healthy email configuration when the webhook is malformed", async () => {
@@ -205,11 +296,40 @@ describe("durable lead capture", () => {
   });
 });
 
-describe("invalid lead rejection", () => {
-  it("silently discards honeypots and reports ordinary validation failures", () => {
-    expect(delivery.rejectInvalidLead("quote", { issues: [{ path: ["honeypot"] }] })).toEqual({ success: true });
-    expect(console.warn).toHaveBeenCalledWith("[honeypot] quote spam detected", { ts: expect.any(String) });
-    expect(delivery.rejectInvalidLead("contact", { issues: [{ path: ["phone"] }] })).toEqual({ success: false, message: "Invalid form data" });
+describe("spam trap and validation", () => {
+  it("accepts ordinary valid details without a label or a log line", async () => {
+    const { quoteFormSchema } = await import("@/lib/quote-schema");
+    expect(delivery.parseLead("quote", quoteFormSchema, { ...quote, phone: "0412 345 678" })).toEqual({
+      valid: true, payload: quote, possibleSpam: false,
+    });
+    expect(console.warn).not.toHaveBeenCalled();
+  });
+
+  it("labels a filled trap with valid details as possible spam and drops the trap's contents", async () => {
+    const { quoteFormSchema } = await import("@/lib/quote-schema");
+    expect(delivery.parseLead("quote", quoteFormSchema, { ...quote, honeypot: " https://autofilled.example " })).toEqual({
+      valid: true, payload: quote, possibleSpam: true,
+    });
+    expect(console.warn).toHaveBeenCalledExactlyOnceWith("[honeypot] quote trap filled, details valid: delivering as possible spam");
+  });
+
+  it("refuses a filled trap with invalid details, and never reports a false success", async () => {
+    const { contactFormSchema } = await import("@/lib/quote-schema");
+    const contact = { name: "Bot", email: "not-an-email", message: "Buy cheap things here today.", honeypot: "spam" };
+    expect(delivery.parseLead("contact", contactFormSchema, contact)).toEqual({ valid: false });
+    expect(console.warn).toHaveBeenCalledExactlyOnceWith("[honeypot] contact trap filled, details invalid: refused");
+    expect(await delivery.submitLead("contact", contactFormSchema, contact, createSubmissionId())).toEqual({
+      success: false, message: "Invalid form data",
+    });
+    expect(mocks.rateLimit).not.toHaveBeenCalled();
+  });
+
+  it.each([null, undefined, "text", 42, []])("refuses a submission that is not a form object: %j", async (data) => {
+    const { quoteFormSchema } = await import("@/lib/quote-schema");
+    expect(delivery.parseLead("quote", quoteFormSchema, data)).toEqual({ valid: false });
+  });
+
+  it("recognises the trap among other validation issues", () => {
     expect(delivery.isHoneypotHit({ issues: [{ path: ["name"] }, { path: ["honeypot"] }] })).toBe(true);
     expect(delivery.isHoneypotHit({ issues: [{ path: ["name"] }] })).toBe(false);
   });

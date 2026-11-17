@@ -67,7 +67,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["invalid optional phone", { ...baseValid, phone: "5551234567" }],
   ["message too short", { ...baseValid, message: "four" }],
   ["message too long", { ...baseValid, message: "x".repeat(5001) }],
-  ["filled honeypot", { ...baseValid, honeypot: "bot" }],
   ["invalid consent type", { ...baseValid, marketingConsent: "yes" }],
 ];
 
@@ -87,6 +86,18 @@ describe("contact client validation parity", () => {
       expect(clientMessages(input)).toEqual(firstServerMessages(input));
     },
   );
+
+  // The one deliberate difference from the server schema. An error on a field
+  // the visitor cannot see left them with a button that did nothing.
+  it("passes a filled hidden trap field through for the server to judge", () => {
+    const input = { ...baseValid, honeypot: "  https://autofilled.example  " };
+
+    expect(contactFormSchema.safeParse(input).success).toBe(false);
+    expect(validateContactFormForClient(input as ContactFormInput)).toEqual({
+      success: true,
+      data: expect.objectContaining({ honeypot: "https://autofilled.example" }),
+    });
+  });
 
   it("adapts normalized data and failures to React Hook Form", async () => {
     const valid = await contactFormResolver(

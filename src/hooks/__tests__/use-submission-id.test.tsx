@@ -206,4 +206,60 @@ describe("useSubmissionId", () => {
     expect(JSON.parse(sessionStorage.getItem(QUOTE_KEY)!)).toEqual({ id: FIRST_ID });
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
+
+  it("sends under the retained ID and passes back an ordinary answer without restarting", async () => {
+    fetchMock.mockResolvedValueOnce(Response.json({ id: FIRST_ID }));
+    const { result } = renderHook(() => useSubmissionId("quote"));
+    const send = vi.fn()
+      .mockResolvedValueOnce({ success: false, message: "Try again" })
+      .mockResolvedValueOnce({ success: true });
+
+    await expect(result.current.submit(send)).resolves.toEqual({ success: false, message: "Try again" });
+    await expect(result.current.submit(send)).resolves.toEqual({ success: true });
+
+    // A plain failure keeps the ID, so the retry is recognised as the same enquiry.
+    expect(send.mock.calls).toEqual([[FIRST_ID], [FIRST_ID]]);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("drops an ID the server can never accept and sends once more under a new one", async () => {
+    fetchMock
+      .mockResolvedValueOnce(Response.json({ id: FIRST_ID }))
+      .mockResolvedValueOnce(Response.json({ id: SECOND_ID }));
+    const { result } = renderHook(() => useSubmissionId("quote"));
+    const send = vi.fn()
+      .mockResolvedValueOnce({ success: false, message: "Please call", restart: true })
+      .mockResolvedValueOnce({ success: true });
+
+    await expect(result.current.submit(send)).resolves.toEqual({ success: true });
+
+    expect(send.mock.calls).toEqual([[FIRST_ID], [SECOND_ID]]);
+    expect(JSON.parse(sessionStorage.getItem(QUOTE_KEY)!)).toEqual({ id: SECOND_ID });
+  });
+
+  it("restarts once only, so a server that keeps refusing cannot loop the form", async () => {
+    fetchMock
+      .mockResolvedValueOnce(Response.json({ id: FIRST_ID }))
+      .mockResolvedValueOnce(Response.json({ id: SECOND_ID }));
+    const { result } = renderHook(() => useSubmissionId("quote"));
+    const send = vi.fn().mockResolvedValue({ success: false, message: "Please call", restart: true });
+
+    await expect(result.current.submit(send)).resolves.toEqual({ success: false, message: "Please call", restart: true });
+
+    expect(send).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("unsticks a tab that reloaded with a dead ID in session storage", async () => {
+    sessionStorage.setItem(QUOTE_KEY, JSON.stringify({ id: FIRST_ID }));
+    fetchMock.mockResolvedValueOnce(Response.json({ id: SECOND_ID }));
+    const { result } = renderHook(() => useSubmissionId("quote"));
+    const send = vi.fn(async (id: string) =>
+      id === FIRST_ID ? { success: false as const, message: "Please call", restart: true } : { success: true as const });
+
+    await expect(result.current.submit(send)).resolves.toEqual({ success: true });
+
+    expect(send.mock.calls).toEqual([[FIRST_ID], [SECOND_ID]]);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
 });

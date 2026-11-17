@@ -20,6 +20,8 @@ export interface SubmitFormOptions {
   endpointEnvVar: AllowedEndpoint;
   label: string;
   idempotencyKey?: string;
+  /** Adds `possibleSpam: true` to the posted body. See src/lib/possible-spam.ts. */
+  possibleSpam?: boolean;
 }
 
 /**
@@ -46,6 +48,7 @@ export async function submitForm({
   endpointEnvVar,
   label,
   idempotencyKey,
+  possibleSpam,
 }: SubmitFormOptions): Promise<
   | { success: true }
   | { success: false; skipped: true; ambiguous: false }
@@ -107,7 +110,11 @@ export async function submitForm({
         "Content-Type": "application/json",
         ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
       },
-      body: JSON.stringify(parsed.data),
+      body: JSON.stringify(
+        possibleSpam
+          ? { ...(parsed.data as object), possibleSpam: true }
+          : parsed.data,
+      ),
       signal: AbortSignal.timeout(FORM_FETCH_TIMEOUT_MS),
       redirect: "error",
     });

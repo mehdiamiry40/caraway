@@ -8,7 +8,8 @@ vi.mock("next/server", () => ({ after: mocks.after }));
 vi.mock("next/headers", () => ({ headers: mocks.headers }));
 vi.mock("@/lib/rate-limit", async (importOriginal) => ({
   getClientIp: (await importOriginal<typeof import("@/lib/rate-limit")>()).getClientIp,
-  rateLimit: mocks.rateLimit,
+  leadRateLimit: mocks.rateLimit,
+  outageRateLimit: vi.fn(),
 }));
 const contact: ContactFormInput = {
   name: "Jane Doe", email: "jane@example.com", phone: "0412345678",
@@ -60,11 +61,17 @@ describe("submitContact capture boundary", () => {
     expect(await store.read("contact", id)).toBeNull();
     expect(mocks.after).not.toHaveBeenCalled(); expect(mocks.rateLimit).not.toHaveBeenCalled();
   });
-  it("discards honeypot messages before admission or storage", async () => {
+  it("saves a valid message whose hidden trap field was filled, labelled as possible spam", async () => {
     const id = createSubmissionId();
-    expect(await submitContact({ ...contact, honeypot: "spam" }, id)).toEqual({ success: true });
+    expect(await submitContact({ ...contact, honeypot: "https://autofilled.example" }, id)).toEqual({ success: true });
+    expect(await store.read("contact", id)).toMatchObject({ possibleSpam: true, payload: contact });
+    expect(mocks.after).toHaveBeenCalledTimes(1);
+    expect(console.warn).toHaveBeenCalled();
+  });
+  it("refuses an invalid message with a filled trap instead of pretending it worked", async () => {
+    const id = createSubmissionId();
+    expect(await submitContact({ ...contact, email: "not-an-email", honeypot: "spam" }, id)).toEqual({ success: false, message: "Invalid form data" });
     expect(await store.read("contact", id)).toBeNull();
     expect(mocks.after).not.toHaveBeenCalled(); expect(mocks.rateLimit).not.toHaveBeenCalled();
-    expect(console.warn).toHaveBeenCalled();
   });
 });

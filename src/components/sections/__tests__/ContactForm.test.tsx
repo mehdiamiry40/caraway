@@ -98,27 +98,58 @@ describe("ContactForm", () => {
     expect(alerts.length).toBeGreaterThan(0);
   });
 
-  it("blocks submission when the honeypot field is filled (bot trap)", async () => {
+  it("sends a filled hidden trap field to the server and shows its real answer", async () => {
+    submitContactMock.mockResolvedValue({ success: true });
+    const user = userEvent.setup();
+    render(<ContactForm />);
+
+    await user.type(screen.getByLabelText(/your name/i), "Jane Smith");
+    await user.type(screen.getByLabelText(/^email/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/^message/i), "Please call me about my car.");
+
+    // The trap is hidden from visitors but a browser autofill tool can fill
+    // it. The form passes it on; the server decides what it means.
+    const honeypot = document.getElementById("contact-website") as HTMLInputElement;
+    await user.type(honeypot, "http://autofilled.example");
+
+    await user.click(screen.getByRole("button", { name: /send message/i }));
+
+    await waitFor(() => expect(submitContactMock).toHaveBeenCalledTimes(1));
+    expect(submitContactMock.mock.calls[0][0]).toMatchObject({ honeypot: "http://autofilled.example" });
+    expect(await screen.findByText(/message received/i)).toBeInTheDocument();
+  });
+
+  it("never shows success for a filled trap that the server refuses", async () => {
+    submitContactMock.mockResolvedValue({ success: false, message: "Invalid form data" });
     const user = userEvent.setup();
     render(<ContactForm />);
 
     await user.type(screen.getByLabelText(/your name/i), "Bot");
     await user.type(screen.getByLabelText(/^email/i), "bot@example.com");
     await user.type(screen.getByLabelText(/^message/i), "spam spam spam spam spam");
-
-    // Honeypot is visually hidden but reachable via its DOM id. Client
-    // validation rejects any non-empty value, so the action is never invoked.
-    const honeypot = document.getElementById("contact-website") as HTMLInputElement;
-    await user.type(honeypot, "http://evil.example");
-
+    await user.type(document.getElementById("contact-website") as HTMLInputElement, "http://evil.example");
     await user.click(screen.getByRole("button", { name: /send message/i }));
 
-    // Give the form a tick to settle.
-    await waitFor(() => {
-      expect(submitContactMock).not.toHaveBeenCalled();
-    });
+    expect(await screen.findByText(/invalid form data/i)).toBeInTheDocument();
+    expect(screen.queryByText(/message received/i)).not.toBeInTheDocument();
     expect(trackEventMock).not.toHaveBeenCalled();
-    expect(issuerFetchMock).not.toHaveBeenCalled();
+  });
+
+  it("restarts under a fresh ID when the server says the old one cannot be used", async () => {
+    submitContactMock
+      .mockResolvedValueOnce({ success: false, message: "This enquiry already contains different details.", restart: true })
+      .mockResolvedValueOnce({ success: true });
+    const user = userEvent.setup();
+    render(<ContactForm />);
+
+    await user.type(screen.getByLabelText(/your name/i), "Jane Smith");
+    await user.type(screen.getByLabelText(/^email/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/^message/i), "Please call me about my car.");
+    await user.click(screen.getByRole("button", { name: /send message/i }));
+
+    expect(await screen.findByText(/message received/i)).toBeInTheDocument();
+    expect(submitContactMock).toHaveBeenCalledTimes(2);
+    expect(issuerFetchMock).toHaveBeenCalledTimes(2);
   });
 
   it("renders the error banner with the server message when the server action returns success: false", async () => {

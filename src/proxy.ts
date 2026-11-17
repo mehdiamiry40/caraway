@@ -5,7 +5,7 @@ import {
   contentSecurityPolicyMode,
   createCspNonce,
 } from "@/lib/content-security-policy";
-import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { getClientIp, leadRateLimit } from "@/lib/rate-limit";
 import {
   getRequestHostname,
   shouldNoindexHostname,
@@ -75,7 +75,9 @@ export async function proxy(request: NextRequest) {
   }
 
   // --- Rate limiting ---
-  const rateLimitResult = await rateLimit("forms", getClientIp(request));
+  // Every POST that reaches here is an enquiry form action, so this uses the
+  // enquiry limit, which keeps counting locally when the counter store is down.
+  const rateLimitResult = await leadRateLimit("forms", getClientIp(request));
   if (!rateLimitResult.success) {
     const unavailable = rateLimitResult.mode === "unavailable";
     return finishWithDocumentCsp(

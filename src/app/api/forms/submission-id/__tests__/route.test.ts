@@ -6,7 +6,7 @@ import { POST } from "../route";
 
 const mocks = vi.hoisted(() => ({
   getClientIp: vi.fn(),
-  rateLimit: vi.fn(),
+  leadRateLimit: vi.fn(),
 }));
 
 vi.mock("@/lib/rate-limit", () => mocks);
@@ -46,7 +46,7 @@ beforeEach(() => {
   vi.stubGlobal("fetch", fetchMock);
   fetchMock.mockClear();
   mocks.getClientIp.mockReset().mockReturnValue(CLIENT_IP);
-  mocks.rateLimit.mockReset().mockResolvedValue(admission);
+  mocks.leadRateLimit.mockReset().mockResolvedValue(admission);
   // Observe issuance without replacing the real clock-and-UUID implementation.
   issueSpy = vi.spyOn(submissionIds, "createSubmissionId");
 });
@@ -65,10 +65,12 @@ describe("POST /api/forms/submission-id", () => {
   it.each([
     ["https://caraway.au", "distributed"],
     ["http://localhost:3000", "local"],
+    // The counter store is down and the sender is within the local allowance.
+    ["https://caraway.au", "outage"],
   ] as const)(
     "issues a server-timed ID anonymously for same-origin %s",
     async (origin, mode) => {
-      mocks.rateLimit.mockResolvedValue({ ...admission, mode });
+      mocks.leadRateLimit.mockResolvedValue({ ...admission, mode });
       const incoming = request(origin, origin);
 
       expect(incoming.headers.has("authorization")).toBe(false);
@@ -88,7 +90,7 @@ describe("POST /api/forms/submission-id", () => {
         SERVER_TIME.getTime(),
       );
       expect(mocks.getClientIp).toHaveBeenCalledExactlyOnceWith(incoming);
-      expect(mocks.rateLimit).toHaveBeenCalledExactlyOnceWith(
+      expect(mocks.leadRateLimit).toHaveBeenCalledExactlyOnceWith(
         "forms",
         `submission-id:${CLIENT_IP}`,
       );
@@ -142,12 +144,12 @@ describe("POST /api/forms/submission-id", () => {
       }),
     );
     expect(response.status).toBe(403);
-    expect(mocks.rateLimit).not.toHaveBeenCalled();
+    expect(mocks.leadRateLimit).not.toHaveBeenCalled();
   });
 
   it("waits for rate-limit admission before issuing an ID", async () => {
     let allowRequest!: (result: RateLimitResult) => void;
-    mocks.rateLimit.mockReturnValue(
+    mocks.leadRateLimit.mockReturnValue(
       new Promise<RateLimitResult>((resolve) => {
         allowRequest = resolve;
       }),
@@ -155,7 +157,7 @@ describe("POST /api/forms/submission-id", () => {
 
     const pending = POST(request());
 
-    expect(mocks.rateLimit).toHaveBeenCalledTimes(1);
+    expect(mocks.leadRateLimit).toHaveBeenCalledTimes(1);
     expect(issueSpy).not.toHaveBeenCalled();
     allowRequest(admission);
     const response = await pending;
@@ -183,7 +185,7 @@ describe("POST /api/forms/submission-id", () => {
       expectPrivacyHeaders(response);
       await expect(response.json()).resolves.toEqual({ error: "forbidden" });
       expect(mocks.getClientIp).not.toHaveBeenCalled();
-      expect(mocks.rateLimit).not.toHaveBeenCalled();
+      expect(mocks.leadRateLimit).not.toHaveBeenCalled();
       expect(issueSpy).not.toHaveBeenCalled();
     },
   );
@@ -191,11 +193,12 @@ describe("POST /api/forms/submission-id", () => {
   it.each([
     ["distributed", 429],
     ["local", 429],
+    ["outage", 429],
     ["unavailable", 503],
   ] as const)(
     "returns the %s limiter rejection as %i without issuing an ID",
     async (mode, status) => {
-      mocks.rateLimit.mockResolvedValue({
+      mocks.leadRateLimit.mockResolvedValue({
         ...admission,
         success: false,
         remaining: 0,
@@ -209,7 +212,7 @@ describe("POST /api/forms/submission-id", () => {
       await expect(response.json()).resolves.toEqual({
         error: "temporarily unavailable",
       });
-      expect(mocks.rateLimit).toHaveBeenCalledExactlyOnceWith(
+      expect(mocks.leadRateLimit).toHaveBeenCalledExactlyOnceWith(
         "forms",
         `submission-id:${CLIENT_IP}`,
       );

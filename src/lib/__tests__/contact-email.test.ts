@@ -73,3 +73,22 @@ describe("buildContactEmailContent — header injection protection", () => {
     expect(subject).toContain("Bcc: attacker@x"); // sanitized to a single line
   });
 });
+
+describe("buildContactEmailContent — possible spam label", () => {
+  it("leaves an ordinary message exactly as it was", () => {
+    expect(buildContactEmailContent(baseValid, { possibleSpam: false })).toEqual(
+      buildContactEmailContent(baseValid),
+    );
+    expect(JSON.stringify(buildContactEmailContent(baseValid))).not.toMatch(/possible spam/i);
+  });
+
+  it("labels the subject and explains the label in both bodies, keeping the message", () => {
+    const plain = buildContactEmailContent(baseValid);
+    const labelled = buildContactEmailContent(baseValid, { possibleSpam: true });
+
+    expect(labelled.subject).toBe(`[Possible spam] ${plain.subject}`);
+    expect(labelled.text).toContain("Possible spam: a hidden field");
+    expect(labelled.html).toContain("Possible spam: a hidden field");
+    expect(labelled.text).toContain(baseValid.message);
+  });
+});
