@@ -116,7 +116,8 @@ describe("HeroQuoteForm", () => {
     expect(screen.getByLabelText(/your name/i)).toHaveValue("Jane Smith");
   });
 
-  it("blocks a honeypot submission from reaching delivery", async () => {
+  it("sends a filled hidden trap field to the server instead of swallowing the click", async () => {
+    submitQuoteMock.mockResolvedValue({ success: false, message: "Invalid form data" });
     const user = userEvent.setup();
 
     render(<HeroQuoteForm />);
@@ -126,8 +127,26 @@ describe("HeroQuoteForm", () => {
     await user.type(honeypot as HTMLInputElement, "https://spam.example");
     await user.click(screen.getByRole("button", { name: /^submit$/i }));
 
-    await waitFor(() => expect(submitQuoteMock).not.toHaveBeenCalled());
+    await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
+    expect(submitQuoteMock.mock.calls[0][0]).toMatchObject({ honeypot: "https://spam.example" });
+    // The outcome on screen is the server's, never an invented success.
+    expect(await screen.findByRole("alert")).toHaveTextContent(/invalid form data/i);
+    expect(screen.queryByText(/thanks — we've got your details/i)).not.toBeInTheDocument();
     expect(trackEventMock).not.toHaveBeenCalled();
-    expect(issuerFetchMock).not.toHaveBeenCalled();
+  });
+
+  it("restarts under a fresh ID when the server says the old one cannot be used", async () => {
+    submitQuoteMock
+      .mockResolvedValueOnce({ success: false, message: "This enquiry can no longer be retried online.", restart: true })
+      .mockResolvedValueOnce({ success: true });
+    const user = userEvent.setup();
+
+    render(<HeroQuoteForm />);
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /^submit$/i }));
+
+    expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
+    expect(submitQuoteMock).toHaveBeenCalledTimes(2);
+    expect(issuerFetchMock).toHaveBeenCalledTimes(2);
   });
 });

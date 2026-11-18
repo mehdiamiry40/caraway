@@ -63,12 +63,8 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
 
   const onSubmit = async (data: QuoteFormInput) => {
     setErrorMessage(null);
-    if (data.honeypot) {
-      setIsSuccess(true);
-      return;
-    }
     try {
-      const result = await submitQuote(data, await submission.getId());
+      const result = await submission.submit((id) => submitQuote(data, id));
       if (result.success) {
         trackEvent("quote_form_submitted", { source });
         trackEvent("lead_submitted", { source });

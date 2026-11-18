@@ -5,6 +5,10 @@ outage can delay notification without discarding the saved enquiry. Records,
 payload fingerprints and channel outcomes expire seven days after capture.
 This is a recovery window, not a permanent CRM or a promise of final inbox receipt.
 
+The one exception is an outage of Upstash itself, where an enquiry is emailed
+directly instead of being saved. See
+[When storage is unreachable](#when-storage-is-unreachable).
+
 ## Configuration and release checks
 
 - Use the existing complete `KV_REST_API_URL`/`KV_REST_API_TOKEN` pair, or a complete
@@ -50,10 +54,18 @@ access; never add public record lookup endpoints.
 
 The submission ID contains server time and a random UUID. It is minted when a
 visitor first submits and retained in tab storage until acknowledgement. An
-unchanged retry finds the same record. Changed details with the same unresolved
-ID are rejected rather than producing a second delivery. Missing IDs are rejected.
-New capture refuses IDs older than 24 hours, so expiry of the seven-day server
-record cannot silently reopen an old operation.
+unchanged retry finds the same record. Changed details never overwrite a saved
+record, and new capture refuses IDs older than 24 hours, so expiry of the
+seven-day server record cannot silently reopen an old operation. Missing IDs
+are refused.
+
+None of those refusals is a dead end for the visitor. Each carries
+`restart: true`, and the form answers by dropping the ID, fetching a new one and
+sending the same details once more as a new enquiry. A visitor who corrects a
+typo after an unclear outcome therefore produces a second enquiry holding the
+corrected details, where they used to be told to phone on every attempt. The
+"please call" wording is shown only if that second attempt fails as well, or to
+a browser still running a page loaded before this behaviour shipped.
 
 Capture and queue indexing happen in one Lua operation. Channel claims use
 version compare-and-set; only the acknowledged winner sends. A 30-second lease
@@ -84,6 +96,59 @@ email API key is not part of the fingerprint: rotating it keeps the destination,
 so queued email continues with the new key. If an attempt made with the old key
 was accepted without confirmation, the worst case is one duplicate notification
 to the same recipients.
+
+## When storage is unreachable
+
+Rate-limit counters and saved enquiries live in the same Upstash database. An
+outage there used to stop every enquiry three times over: the request proxy
+answered 503, the submission ID route answered 503, and the form action
+reported a failure. Visitors saw "try again or call" for as long as it lasted.
+
+The enquiry path now keeps working, with less protection and no saved copy:
+
+- **Limits.** `leadRateLimit` in `src/lib/rate-limit.ts` counts a sender inside
+  the server instance when the shared counter fails, against a smaller
+  allowance: 4 a minute per sender and 10 a minute for all senders. Several
+  instances can be running, each with its own count, which is why the numbers
+  are lower than the normal 10 and 100. Only the enquiry path does this. The
+  chat assistant and the synthetic monitor still refuse.
+- **Delivery.** The form action emails the enquiry directly and reports success
+  only if Resend accepts it. The same happens when the counters work but a
+  storage read or write fails twice in a row (each is tried twice).
+- **No duplicate.** The direct email carries the provider key the queue would
+  have used. If a write did land despite the error, the worker's later send of
+  that record is recognised by Resend as the same message.
+
+What is lost in this mode: the enquiry is not saved, so there is no retry if the
+mailbox later rejects it, no webhook delivery, and nothing for
+`npm run leads:attention` to list. If the email is not accepted the visitor is
+told it failed. A deployment with no Upstash settings at all is a setup mistake,
+not an outage, and still refuses.
+
+Each enquiry handled this way logs one error line,
+`[lead-capture] <quote|contact>/<id> storage_unavailable emailed_without_saving`
+or `... email_not_confirmed <code>` (codes as in
+[Failure reasons](#failure-reasons)). The worker also fails while storage is
+down, so the heartbeat monitor reports the outage itself.
+
+## The hidden spam-trap field
+
+Each form has a "Website" field that visitors cannot see. Automated senders fill
+it in. So can a browser autofill tool acting for a real customer, and the form
+used to ignore that customer's click without any message.
+
+The browser now passes the field to the server, which looks at the rest of the
+submission:
+
+- Every real field valid: the enquiry is saved and delivered with
+  `[Possible spam]` at the start of the email subject, a one-line explanation
+  in the body, `possibleSpam: true` on the saved record and in the webhook
+  body. The trap's contents are discarded.
+- Any real field invalid: refused as "Invalid form data", like any other
+  invalid submission. No false success is shown.
+
+Both cases log a `[honeypot]` warning naming the form and the outcome, with no
+submitted values. Labelled enquiries pass the same rate limits as any other.
 
 ## Monitoring and reconciliation
 

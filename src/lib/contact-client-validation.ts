@@ -117,11 +117,11 @@ export function validateContactFormForClient(
   } else if (typeof raw.honeypot !== "string") {
     setError(errors, "honeypot", QUOTE_VALIDATION_MESSAGES.invalidInput);
   } else {
-    const honeypot = raw.honeypot.trim();
-    if (honeypot !== "") {
-      setError(errors, "honeypot", QUOTE_VALIDATION_MESSAGES.honeypotInvalid);
-    }
-    normalized.honeypot = honeypot;
+    // The hidden spam-trap field is never an error here. An error on a field
+    // the visitor cannot see leaves them with a button that does nothing, and
+    // a browser autofill tool can fill it. The server decides what a filled
+    // trap means (see parseLead in src/actions/lead-delivery.ts).
+    normalized.honeypot = raw.honeypot.trim();
   }
 
   if (raw.marketingConsent === undefined) {

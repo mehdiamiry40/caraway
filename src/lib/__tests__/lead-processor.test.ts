@@ -262,3 +262,59 @@ describe("lead processor delivery guarantees", () => {
     expect((await store.read("quote", id))!.channels.email.state).toBe("accepted");
   });
 });
+
+describe("the shared email send", () => {
+  it("uses the same provider key as the worker, so a direct send and a queued one cannot both arrive", async () => {
+    const id = await capture("quote", ["email"]);
+    await expect(processor.sendLeadEmail("quote", id, quote)).resolves.toEqual({
+      accepted: true, providerId: "quote-provider-123",
+    });
+    await processor.processLead("quote", id, store);
+
+    expect(mocks.quoteEmail).toHaveBeenCalledTimes(2);
+    const keys = mocks.quoteEmail.mock.calls.map((call) => call[1].idempotencyKey);
+    expect(keys[0]).toBe(processor.deliveryIdempotencyKey("quote", id, "email"));
+    expect(keys[1]).toBe(keys[0]);
+    expect(mocks.quoteEmail.mock.calls[0]).toEqual(mocks.quoteEmail.mock.calls[1]);
+  });
+
+  it("gives each enquiry, channel and form its own key", () => {
+    const id = createSubmissionId();
+    const keys = new Set([
+      processor.deliveryIdempotencyKey("quote", id, "email"),
+      processor.deliveryIdempotencyKey("quote", id, "webhook"),
+      processor.deliveryIdempotencyKey("contact", id, "email"),
+      processor.deliveryIdempotencyKey("quote", createSubmissionId(), "email"),
+    ]);
+    expect(keys.size).toBe(4);
+  });
+
+  it("reports why an email was not accepted as a code and never throws", async () => {
+    const id = createSubmissionId();
+    mocks.contactEmail.mockResolvedValueOnce({ sent: false });
+    await expect(processor.sendLeadEmail("contact", id, contact)).resolves.toEqual({
+      accepted: false, failure: "channel_disabled",
+    });
+    mocks.contactEmail.mockRejectedValueOnce(new Error("inbox@example.com rejected Jane Doe"));
+    await expect(processor.sendLeadEmail("contact", id, contact)).resolves.toEqual({
+      accepted: false, failure: "request_failed",
+    });
+  });
+
+  it("carries the possible-spam label to the email and the webhook, and omits it otherwise", async () => {
+    const plain = await capture();
+    await processor.processLead("quote", plain, store);
+    expect(mocks.quoteEmail.mock.calls[0][1]).not.toHaveProperty("possibleSpam");
+    expect(mocks.webhook.mock.calls[0][0].possibleSpam).toBeUndefined();
+
+    const flagged = await capture();
+    const saved = (await store.read("quote", flagged))!;
+    expect(await store.replace(saved, { ...saved, possibleSpam: true, version: saved.version + 1 })).toBe(true);
+    await processor.processLead("quote", flagged, store);
+    expect(mocks.quoteEmail.mock.calls[1][1]).toMatchObject({ possibleSpam: true });
+    expect(mocks.webhook.mock.calls[1][0]).toMatchObject({ possibleSpam: true, data: quote });
+    expect((await store.read("quote", flagged))?.channels).toMatchObject({
+      webhook: { state: "accepted" }, email: { state: "accepted" },
+    });
+  });
+});

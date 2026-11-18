@@ -79,7 +79,6 @@ const parityCases: Array<[string, Record<string, unknown>]> = [
   ["suburb too short", { ...baseValid, suburb: "a" }],
   ["suburb too long", { ...baseValid, suburb: "x".repeat(101) }],
   ["details too long", { ...baseValid, details: "x".repeat(2001) }],
-  ["filled honeypot", { ...baseValid, honeypot: "bot" }],
   ["blank expected price", { ...baseValid, expectedPrice: "" }],
   ["whitespace expected price", { ...baseValid, expectedPrice: "   " }],
   ["expected price supplied", { ...baseValid, expectedPrice: "3500" }],
@@ -105,6 +104,18 @@ describe("quote client validation parity", () => {
     }
 
     expect(clientMessages(input)).toEqual(firstServerMessages(input));
+  });
+
+  // The one deliberate difference from the server schema. An error on a field
+  // the visitor cannot see left them with a button that did nothing.
+  it("passes a filled hidden trap field through for the server to judge", () => {
+    const input = { ...baseValid, honeypot: "  https://autofilled.example  " };
+
+    expect(quoteFormSchema.safeParse(input).success).toBe(false);
+    expect(validateQuoteFormForClient(input as QuoteFormInput)).toEqual({
+      success: true,
+      data: expect.objectContaining({ honeypot: "https://autofilled.example" }),
+    });
   });
 
   it("adapts successful normalized data and failures to React Hook Form", async () => {

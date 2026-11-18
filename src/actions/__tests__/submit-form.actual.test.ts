@@ -210,6 +210,23 @@ describe("submitForm — endpoint failures", () => {
     });
   });
 
+  it("adds the possible-spam label to the posted body only when asked to", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("QUOTE_ENDPOINT", "https://hooks.example.com/webhook");
+    vi.stubEnv("ALLOWED_ENDPOINT_HOSTS", "");
+    vi.resetModules();
+    const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => new Response("ok", { status: 200 }));
+    vi.stubGlobal("fetch", fetchMock);
+    const { submitForm: submitFormFresh } = await import("@/actions/submit-form");
+    const options = { schema: quoteFormSchema, data: baseValid, endpointEnvVar: "QUOTE_ENDPOINT" as const, label: "Quote submission" };
+
+    await submitFormFresh({ ...options, possibleSpam: true });
+    await submitFormFresh({ ...options, possibleSpam: false });
+
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body as string)).toEqual({ ...baseValid, possibleSpam: true });
+    expect(fetchMock.mock.calls[1][1].body).toBe(JSON.stringify(baseValid));
+  });
+
   it("fails gracefully when the fetch aborts via AbortSignal timeout", async () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("QUOTE_ENDPOINT", "https://hooks.example.com/webhook");

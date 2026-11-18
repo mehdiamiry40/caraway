@@ -61,12 +61,8 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormInput) => {
     setErrorMessage(null);
-    if (data.honeypot) {
-      setIsSuccess(true); // Fake success for bots
-      return;
-    }
     try {
-      const result = await submitContact(data, await submission.getId());
+      const result = await submission.submit((id) => submitContact(data, id));
       if (result.success) {
         trackEvent("contact_form_submitted");
         trackEvent("lead_submitted", { source: "contact" });

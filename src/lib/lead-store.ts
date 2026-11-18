@@ -32,6 +32,12 @@ export interface LeadRecord {
   createdAt: number;
   expiresAt: number;
   payload: QuoteFormValues | ContactFormValues;
+  /**
+   * The hidden spam-trap field arrived filled in but every real field was
+   * valid. Delivered anyway, labelled, because a browser autofill tool can
+   * fill that field for a genuine visitor.
+   */
+  possibleSpam?: true;
   channels: Record<LeadChannel, ChannelDelivery>;
 }
 

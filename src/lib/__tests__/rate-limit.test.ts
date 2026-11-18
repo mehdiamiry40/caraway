@@ -243,3 +243,81 @@ describe("rateLimit", () => {
     });
   });
 });
+
+describe("leadRateLimit", () => {
+  const healthy = { success: true, limit: 10, remaining: 9, reset: 123, pending: Promise.resolve() };
+
+  it("returns the shared counter's answer untouched while it is reachable", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    mocks.limit.mockResolvedValueOnce(healthy).mockResolvedValueOnce({ ...healthy, success: false, remaining: 0 });
+    const { leadRateLimit } = await import("@/lib/rate-limit");
+
+    await expect(leadRateLimit("forms", "203.0.113.1")).resolves.toMatchObject({ success: true, mode: "distributed" });
+    await expect(leadRateLimit("forms", "203.0.113.1")).resolves.toMatchObject({ success: false, mode: "distributed" });
+  });
+
+  it.each([
+    ["throws", () => mocks.limit.mockRejectedValue(new Error("redis unavailable"))],
+    ["times out", () => mocks.limit.mockResolvedValue({ ...healthy, reason: "timeout" })],
+  ])("counts in this instance against a smaller allowance when the shared counter %s in production", async (_label, fail) => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    fail();
+    const { leadRateLimit, rateLimit } = await import("@/lib/rate-limit");
+
+    for (let attempt = 1; attempt <= 4; attempt++) {
+      await expect(leadRateLimit("forms", "203.0.113.1")).resolves.toMatchObject({
+        success: true, limit: 4, remaining: 4 - attempt, mode: "outage",
+      });
+    }
+    const refused = await leadRateLimit("forms", "203.0.113.1");
+    expect(refused).toMatchObject({ success: false, remaining: 0, mode: "outage" });
+    expect(refused.reset).toBeGreaterThan(Date.now());
+    // Another sender has their own count, and nothing else stops failing closed.
+    await expect(leadRateLimit("forms", "203.0.113.2")).resolves.toMatchObject({ success: true, mode: "outage" });
+    await expect(rateLimit("forms", "203.0.113.2")).resolves.toMatchObject({ success: false, mode: "unavailable" });
+    await expect(rateLimit("chat", "203.0.113.2")).resolves.toMatchObject({ success: false, mode: "unavailable" });
+  });
+
+  it("caps all senders together at ten a minute per instance during an outage", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    mocks.limit.mockRejectedValue(new Error("redis unavailable"));
+    const { leadRateLimit, outageRateLimit } = await import("@/lib/rate-limit");
+
+    for (let attempt = 1; attempt <= 10; attempt++) {
+      expect((await leadRateLimit("forms-global", "global")).success).toBe(true);
+    }
+    await expect(leadRateLimit("forms-global", "global")).resolves.toMatchObject({ success: false, limit: 10, mode: "outage" });
+    // The direct form shares that count and never calls the shared counter.
+    const calls = mocks.limit.mock.calls.length;
+    expect(outageRateLimit("forms-global", "global")).toMatchObject({ success: false, mode: "outage" });
+    expect(mocks.limit).toHaveBeenCalledTimes(calls);
+  });
+
+  it("starts a fresh outage allowance once the minute has passed", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    vi.useFakeTimers();
+    try {
+      mocks.limit.mockRejectedValue(new Error("redis unavailable"));
+      const { leadRateLimit } = await import("@/lib/rate-limit");
+      for (let attempt = 0; attempt < 5; attempt++) await leadRateLimit("forms", "203.0.113.1");
+      expect((await leadRateLimit("forms", "203.0.113.1")).success).toBe(false);
+      vi.advanceTimersByTime(60_001);
+      await expect(leadRateLimit("forms", "203.0.113.1")).resolves.toMatchObject({ success: true, remaining: 3 });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("still refuses when no counter store is configured at all", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("UPSTASH_REDIS_REST_URL", undefined);
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", undefined);
+    const { leadRateLimit } = await import("@/lib/rate-limit");
+
+    await expect(leadRateLimit("forms", "203.0.113.1")).resolves.toMatchObject({ success: false, mode: "unavailable" });
+    await expect(leadRateLimit("forms-global", "global")).resolves.toMatchObject({ success: false, mode: "unavailable" });
+  });
+});

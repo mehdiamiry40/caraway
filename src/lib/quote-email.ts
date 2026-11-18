@@ -3,6 +3,10 @@ import { DeliveryFailure, providerFailureCode } from "./delivery-failure";
 import { getLeadConfiguration } from "./lead-config";
 import { FORM_FETCH_TIMEOUT_MS } from "@/data/constants";
 import { CONDITION_LABELS, type QuoteFormValues } from "./quote-schema";
+import {
+  POSSIBLE_SPAM_NOTE,
+  POSSIBLE_SPAM_SUBJECT_PREFIX,
+} from "./possible-spam";
 
 /** Expected price is captured in whole dollars, so no cents are rendered. */
 const AUD_FORMATTER = new Intl.NumberFormat("en-AU", {
@@ -38,10 +42,13 @@ interface QuoteEmailContent {
  * Pure, side-effect-free builder for the quote notification email body.
  * Extracted so we can unit-test the formatting without mocking Resend.
  */
-export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent {
+export function buildQuoteEmailContent(
+  data: QuoteFormValues,
+  options: { possibleSpam?: boolean } = {},
+): QuoteEmailContent {
   const safeHeader = (s: string) => s.replace(/[\r\n]+/g, " ");
   const subject = safeHeader(
-    `New quote request — ${data.make} ${data.model} (${data.year})`,
+    `${options.possibleSpam ? POSSIBLE_SPAM_SUBJECT_PREFIX : ""}New quote request — ${data.make} ${data.model} (${data.year})`,
   );
 
   const conditionLabel = CONDITION_LABELS[data.condition] ?? data.condition;
@@ -68,6 +75,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
   const text = [
     "New quote request from caraway.au",
     "",
+    ...(options.possibleSpam ? [POSSIBLE_SPAM_NOTE, ""] : []),
     ...rows.map(([key, value]) => `${key}: ${value}`),
   ].join("\n");
 
@@ -85,6 +93,9 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
     `<!doctype html><html><body style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#303030;margin:0;padding:24px;background:#FFFFFF">` +
     `<h2 style="margin:0 0 12px;font-size:18px;color:#2C5696">New quote request</h2>` +
     `<p style="margin:0 0 16px;color:#59636E">Submitted via the caraway.au quote form.</p>` +
+    (options.possibleSpam
+      ? `<p style="margin:0 0 16px;border:1px solid #D4D9DD;padding:8px 12px">${escapeHtml(POSSIBLE_SPAM_NOTE)}</p>`
+      : "") +
     `<table cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px">` +
     htmlRows +
     `</table>` +
@@ -101,7 +112,7 @@ export function buildQuoteEmailContent(data: QuoteFormValues): QuoteEmailContent
  */
 export async function sendQuoteNotificationEmail(
   data: QuoteFormValues,
-  options: { idempotencyKey?: string } = {},
+  options: { idempotencyKey?: string; possibleSpam?: boolean } = {},
 ): Promise<QuoteEmailResult> {
   const { email } = getLeadConfiguration("quote");
   if (email.status === "disabled") {
@@ -115,7 +126,9 @@ export async function sendQuoteNotificationEmail(
   }
   const { apiKey, from, to } = email;
 
-  const { subject, text, html } = buildQuoteEmailContent(data);
+  const { subject, text, html } = buildQuoteEmailContent(data, {
+    possibleSpam: options.possibleSpam,
+  });
 
   const resend = new Resend(apiKey);
   // The installed SDK forwards request options to fetch, although its public

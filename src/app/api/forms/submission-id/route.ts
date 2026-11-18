@@ -1,4 +1,4 @@
-import { getClientIp, rateLimit } from "@/lib/rate-limit";
+import { getClientIp, leadRateLimit } from "@/lib/rate-limit";
 import { createSubmissionId } from "@/lib/submission-id";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   if (!sameOrigin) {
     return Response.json({ error: "forbidden" }, { status: 403, headers });
   }
-  const admission = await rateLimit(
+  const admission = await leadRateLimit(
     "forms",
     `submission-id:${getClientIp(request)}`,
   );

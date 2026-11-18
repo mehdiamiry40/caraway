@@ -46,7 +46,7 @@ different states: the saved Resend ID identifies provider acceptance.
 
 The browser keeps a server-issued submission ID across retries and reloads,
 including edits after an unknown outcome. Changed details cannot overwrite an
-existing submission; the customer is directed to contact the team. Native forms
+existing submission; the form sends them as a new enquiry under a new ID. Native forms
 use a safe POST fallback and remain disabled until hydration. No-JavaScript users
 receive telephone/email alternatives. See [lead delivery operations](docs/lead-delivery.md).
 
@@ -71,8 +71,10 @@ returns HTTP 503 with `"error"` if either form has zero delivery channels or a
 deployed runtime lacks valid distributed rate-limit settings. It does not make
 network calls, so
 `distributedRateLimitConfigured` means the HTTPS URL/token are present, not
-that Redis is currently reachable. Runtime failures fail closed and are verified
-by the separately protected synthetic delivery check. `leadCaptureConfigured`
+that Redis is currently reachable. Runtime failures fail closed, except on the
+enquiry path, which falls back to per-instance limits and a direct email (see
+[lead delivery operations](docs/lead-delivery.md#when-storage-is-unreachable)).
+They are verified by the separately protected synthetic delivery check. `leadCaptureConfigured`
 uses the same Redis configuration decision. Neither flag is a network probe.
 
 Saved leads use environment-specific namespaces, with preview branches isolated.

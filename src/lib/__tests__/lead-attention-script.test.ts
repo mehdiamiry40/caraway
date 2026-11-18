@@ -59,6 +59,13 @@ describe("lead attention tool", () => {
     expect(text).not.toContain("honeypot");
   });
 
+  it("says when an enquiry was labelled possible spam, and only then", () => {
+    expect(describeRecord(parked())).not.toMatch(/spam/i);
+    expect(describeRecord({ ...parked(), possibleSpam: true })).toContain(
+      "Labelled possible spam: the form's hidden field was filled in",
+    );
+  });
+
   it("strips terminal control sequences from customer-supplied text", () => {
     const record = parked();
     record.payload = { ...record.payload, name: "Jane\u001b[2J\u001b]0;owned\u0007 Doe\r\nphone: 000" };

@@ -66,6 +66,8 @@ export function describeRecord(record) {
     `${record.kind} ${record.id}`,
     `  Captured ${when(record.createdAt)}; website copy expires ${when(record.expiresAt)} (Brisbane time)`,
   ];
+  if (record.possibleSpam)
+    lines.push("  Labelled possible spam: the form's hidden field was filled in");
   for (const [channel, state] of Object.entries(record.channels)) {
     if (state.state === "disabled") continue;
     const reason = state.reason ? `, ${printable(state.reason)}` : "";

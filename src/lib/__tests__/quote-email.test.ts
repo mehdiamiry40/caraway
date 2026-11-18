@@ -111,3 +111,23 @@ describe("buildQuoteEmailContent — expected price", () => {
     expect(text).toMatch(/Expected price: \$0$/m);
   });
 });
+
+describe("buildQuoteEmailContent — possible spam label", () => {
+  it("leaves an ordinary enquiry exactly as it was", () => {
+    expect(buildQuoteEmailContent(baseValid, { possibleSpam: false })).toEqual(
+      buildQuoteEmailContent(baseValid),
+    );
+    expect(JSON.stringify(buildQuoteEmailContent(baseValid))).not.toMatch(/spam/i);
+  });
+
+  it("labels the subject and explains the label in both bodies, keeping every detail", () => {
+    const plain = buildQuoteEmailContent(baseValid);
+    const labelled = buildQuoteEmailContent(baseValid, { possibleSpam: true });
+
+    expect(labelled.subject).toBe(`[Possible spam] ${plain.subject}`);
+    expect(labelled.text).toMatch(/^New quote request from caraway\.au\n\nPossible spam: a hidden field/);
+    expect(labelled.text).toContain("a real customer");
+    expect(labelled.html).toContain("Possible spam: a hidden field");
+    for (const line of plain.text.split("\n")) expect(labelled.text).toContain(line);
+  });
+});

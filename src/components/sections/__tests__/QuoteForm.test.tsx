@@ -125,20 +125,68 @@ describe("QuoteForm", () => {
     expect(alerts.length).toBeGreaterThan(0);
   });
 
-  it("blocks submission when the honeypot field is filled (bot trap)", async () => {
+  // A browser autofill tool can fill the hidden trap field for a real visitor.
+  // The form must not swallow the click or invent an outcome: the server
+  // decides what a filled trap means and the form shows that answer.
+  it("sends a filled hidden trap field to the server and shows its real answer", async () => {
+    submitQuoteMock.mockResolvedValue({ success: true });
     const user = userEvent.setup();
     render(<QuoteForm />);
     await fillRequiredFields(user);
 
     const honeypot = document.getElementById("quote-website") as HTMLInputElement;
-    await user.type(honeypot, "http://evil.example");
+    await user.type(honeypot, "http://autofilled.example");
     await user.click(screen.getByRole("button", { name: /get my quote/i }));
 
-    await waitFor(() => {
-      expect(submitQuoteMock).not.toHaveBeenCalled();
-    });
+    await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
+    expect(submitQuoteMock.mock.calls[0][0]).toMatchObject({ honeypot: "http://autofilled.example" });
+    expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
+  });
+
+  it("never shows success for a filled trap that the server refuses", async () => {
+    submitQuoteMock.mockResolvedValue({ success: false, message: "Invalid form data" });
+    const user = userEvent.setup();
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+
+    await user.type(document.getElementById("quote-website") as HTMLInputElement, "http://evil.example");
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    expect(await screen.findByText(/invalid form data/i)).toBeInTheDocument();
+    expect(screen.queryByText(/thanks — we've got your details/i)).not.toBeInTheDocument();
     expect(trackEventMock).not.toHaveBeenCalled();
-    expect(issuerFetchMock).not.toHaveBeenCalled();
+  });
+
+  it("starts a new enquiry under a fresh ID when the server says the old ID cannot be used", async () => {
+    const secondId = "1788566400000-9b56a626-0668-43f2-9d6f-922f25a9f954";
+    issuerFetchMock.mockReset()
+      .mockImplementationOnce(async () => Response.json({ id: issuedId }))
+      .mockImplementationOnce(async () => Response.json({ id: secondId }));
+    submitQuoteMock
+      .mockResolvedValueOnce({ success: false, message: "This enquiry already contains different details.", restart: true })
+      .mockResolvedValueOnce({ success: true });
+    const user = userEvent.setup();
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
+    expect(submitQuoteMock.mock.calls.map((call) => call[1])).toEqual([issuedId, secondId]);
+    expect(submitQuoteMock.mock.calls[1][0]).toEqual(submitQuoteMock.mock.calls[0][0]);
+    expect(screen.queryByText(/different details/i)).not.toBeInTheDocument();
+    expect(sessionStorage.getItem("caraway:submission:quote")).toBeNull();
+  });
+
+  it("shows the second answer when the restarted attempt fails too, without a third try", async () => {
+    submitQuoteMock.mockResolvedValue({ success: false, message: "This enquiry can no longer be retried online.", restart: true });
+    const user = userEvent.setup();
+    render(<QuoteForm />);
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /get my quote/i }));
+
+    expect(await screen.findByText(/can no longer be retried online/i)).toBeInTheDocument();
+    expect(submitQuoteMock).toHaveBeenCalledTimes(2);
+    expect(issuerFetchMock).toHaveBeenCalledTimes(2);
   });
 
   it("shows the server message when the server action returns success: false", async () => {
