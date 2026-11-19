@@ -19,7 +19,7 @@ export const post: RawBlogPostEntry = {
 
     "For a standard registered sale, the plates are often part of the vehicle registration record and the transfer process deals with the registered vehicle. The seller should still keep proof of sale and make sure the transfer or disposal is recorded correctly. See our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld) for the broader steps.",
 
-    "If the car has personalised or customised plates, do not assume they transfer automatically in the same way as ordinary plates. Queensland Transport's online seller transfer service also lists some plate situations that cannot be handled online.",
+    "If the car has personalised or customised plates, do not assume they transfer automatically in the same way as ordinary plates. Queensland Transport's seller transfer page sets out a form for each choice. To sell personalised plates with the vehicle, the seller completes Part A of the Personalised Number Plate Transfer Application (F2963), and both the seller and the buyer sign Part A and Part B. To keep the plates, the seller completes and signs the Remove and/or Attach Personalised/Customised Number Plate Application (F2964). To cancel them, the seller completes and signs the Cancel Personalised/Customised Number Plate Application (F5339). When plates are kept or cancelled, standard number plates must be attached before the registration transfer can be processed.",
 
     "## Selling an unregistered car",
 
@@ -35,7 +35,7 @@ export const post: RawBlogPostEntry = {
 
     "## Personalised and customised plates",
 
-    "Personalised and customised plates can have separate rules. Queensland Government guidance says customised plates can be kept when you transfer your vehicle, but you may need to replace them with standard plates before transfer. Personalised plates can involve transfer forms and identity checks when sold or transferred.",
+    "Personalised and customised plates have separate rules. Queensland Government guidance says customised plates can be kept when you transfer your vehicle, but you will need to replace them with standard plates before transferring. Customised plates left on the vehicle become standard plates when it is transferred, and a customised plate cannot be sold because its ownership is not transferable. Personalised plates can be transferred to another person or an organisation, with the vehicle or separately. That transfer uses the F2963 application signed by every seller and buyer, and can involve evidence of identity and a number plate transfer fee unless an exemption applies.",
 
     "If you value the plate combination, sort this out before the buyer collects the car. Once the vehicle is gone, fixing plate paperwork can be more difficult.",
 
@@ -79,16 +79,29 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-04-26",
-  updatedAt: "2026-08-07",
-  reviewedAt: "2026-08-07",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
-      title: "Queensland Government — vehicle registration number plates",
-      url: "https://www.qld.gov.au/transport/registration/numberplate",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+    },
+    {
+      title: "Queensland Government — about customised number plates",
+      url: "https://www.qld.gov.au/transport/registration/numberplate/customised-plates/about",
+    },
+    {
+      title:
+        "Queensland Government — buying, selling and transferring personalised number plates",
+      url: "https://www.qld.gov.au/transport/registration/numberplate/personalised-plates/buying",
     },
     {
       title: "Queensland Government — cancel vehicle registration",
       url: "https://www.qld.gov.au/transport/registration/cancel",
+    },
+    {
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
     },
   ],
   category: "Guides",
