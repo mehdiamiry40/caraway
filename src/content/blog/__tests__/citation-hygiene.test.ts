@@ -182,23 +182,28 @@ describe("citation hygiene", () => {
     expect(missing).toEqual([]);
   });
 
-  it("cites the page that carries the transfer detail, not the hub above it", () => {
-    // Transport and Main Roads' registration transfer page is now only a list
-    // of links with one-line summaries. The detail sits on the pages below it:
-    // transfer as a seller, transfer as a buyer, deceased estates, interstate
-    // moves. The hub answers 200, so `check:sources` reports it live while it
-    // backs none of the statements it is listed for.
-    const hub = "https://www.qld.gov.au/transport/registration/transfer";
+  it("cites the page that carries the detail, not the hub above it", () => {
+    // These Transport and Main Roads pages are only lists of links with
+    // one-line summaries. The detail sits on the pages below them: transfer as
+    // a seller or a buyer, deceased estates and interstate moves under the
+    // first; customised and personalised plates and plate replacement under
+    // the second. A hub answers 200, so `check:sources` reports it live while
+    // it backs none of the statements it is listed for.
+    const hubs = [
+      "https://www.qld.gov.au/transport/registration/transfer",
+      "https://www.qld.gov.au/transport/registration/numberplate",
+    ];
 
-    const offenders = blogPosts
-      .filter((post) => (post.sources ?? []).some((source) => source.url === hub))
-      .map((post) => post.slug);
+    const offenders = blogPosts.flatMap((post) =>
+      (post.sources ?? [])
+        .filter((source) => hubs.includes(source.url))
+        .map((source) => `${post.slug}: ${source.url}`),
+    );
 
     expect(
       offenders,
-      "The registration transfer hub is a list of links. Cite the page under " +
-        "it that carries the statement, and reread the statement against " +
-        "that page.",
+      "This page is a list of links. Cite the page under it that carries the " +
+        "statement, and reread the statement against that page.",
     ).toEqual([]);
   });
 });

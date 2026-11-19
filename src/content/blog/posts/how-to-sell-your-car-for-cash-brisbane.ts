@@ -76,7 +76,7 @@ export const post: RawBlogPostEntry = {
 
     "**Does the car need to run or be registered?** Not necessarily. Caraway can assess running, non-running, registered, unregistered, and damaged vehicles, subject to identity, condition, ownership authority, location, and safe access. Pickup is included when Caraway buys and the vehicle and access match the supplied details.",
 
-    "**Do I need a roadworthy certificate?** Requirements depend on registration status, sale type, and how the vehicle is offered. Check the current Queensland safety-certificate rules before committing; Caraway can assess the vehicle as-is but does not replace your seller obligations.",
+    "**Do I need a roadworthy certificate?** It depends on the registration status and who the buyer is. Queensland no longer requires a safety certificate before a registered vehicle is offered for sale, but the seller must obtain one before disposing of a registered vehicle other than to a licensed motor dealer, and must give it to the new owner. An unregistered vehicle can be sold without one. Check the current Queensland safety-certificate rules and exemptions before committing; Caraway can assess the vehicle as-is but does not replace your seller obligations.",
 
     "**How fast does it happen?** Quote response and collection timing depend on the vehicle information, location, access, and operator availability. Confirm the collection window before dispatch.",
 
@@ -93,7 +93,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Do I need a roadworthy certificate to sell my car in Brisbane?",
       answer:
-        "Requirements depend on registration status, sale type, and how the vehicle is offered. Check the current Queensland safety-certificate rules before committing; a buyer does not replace your seller obligations.",
+        "It depends on the registration status and who the buyer is. Queensland no longer requires a safety certificate before a registered vehicle is offered for sale, but the seller must obtain one before disposing of a registered vehicle other than to a licensed motor dealer, and must give it to the new owner. An unregistered vehicle can be sold without one. Check the current Queensland safety-certificate rules and exemptions before committing; a buyer does not replace your seller obligations.",
     },
     {
       question: "How fast can I sell my car for cash in Brisbane?",
@@ -107,8 +107,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2025-03-15",
-  updatedAt: "2026-08-07",
-  reviewedAt: "2026-08-07",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
       title: "Queensland Government — transfer registration as a seller",
@@ -121,6 +121,10 @@ export const post: RawBlogPostEntry = {
     {
       title: "Queensland Government — selling and moving unregistered vehicles",
       url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Queensland Government — safety certificates",
+      url: "https://www.qld.gov.au/transport/registration/roadworthy",
     },
   ],
   category: "Guides",

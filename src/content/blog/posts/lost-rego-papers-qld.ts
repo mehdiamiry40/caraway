@@ -14,9 +14,9 @@ export const post: RawBlogPostEntry = {
 
     "## Get a replacement certificate before you do anything else",
 
-    "TMR runs an online service for exactly this. It lets the registered operator apply for a free replacement registration certificate, then print it or have it emailed. You need the vehicle details and your customer reference number, which sits near the top right corner of a registration notice, below the make and model. If every piece of paper is gone, that number can also come from a TMR account, or from a transport and motoring customer service centre, a QGAP office or a Magistrates Court counter in person.",
+    "TMR runs an online service for exactly this. It lets the registered operator apply for a free replacement registration certificate, then print it or have it emailed. For a vehicle registered to an individual, you need the registration number and the registered operator's Queensland driver licence number or customer reference number, name and date of birth. The customer reference number sits near the top right corner of a standard registration renewal notice, below the make and model, and it is also the licence number on the front of a Queensland driver licence. If the online service will not work for you, TMR can issue the certificate by message, by phone on 13 74 68, or in person at a transport service centre, a participating QGAP office or, in rural and remote areas, a police station.",
 
-    "Extra account security changes this slightly. Where additional security has been applied to a customer record, the service asks for further details before it will release the certificate, so allow a little more time than the two minutes the process otherwise takes.",
+    "Extra account security changes this slightly. Where additional security has been applied to a customer record, the service asks for further details before it will release the certificate, so allow a little more time than the two to five minutes TMR says the service otherwise takes.",
 
     "## What the certificate proves, and what it does not",
 
@@ -26,15 +26,15 @@ export const post: RawBlogPostEntry = {
 
     "## Selling with lost rego papers in QLD: the form that matters",
 
-    "For a registered vehicle, the transfer runs on the Vehicle Registration Transfer Application (F3520), not on the certificate. TMR recommends that every seller complete Part B and have the buyer sign it on the day of sale, even when the buyer intends to do the transfer online. For an in-person transfer, both parties sign the form, the buyer lodges Part A, and the seller keeps Part B. Our [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) and the detailed [transfer of ownership walkthrough](/blog/how-to-transfer-car-ownership-qld) both set out the sequence.",
+    "For a registered vehicle, the transfer is done online or, in person, on the Vehicle Registration Transfer Application (F3520), not on the certificate. TMR recommends that every seller complete Part B and have the buyer sign it on the day of sale, even when the transfer is going to be done online. For an in-person transfer, both parties sign the form, the buyer lodges Part A, and the seller keeps Part B. Our [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) and the detailed [transfer of ownership walkthrough](/blog/how-to-transfer-car-ownership-qld) both set out the sequence.",
 
     "So the honest order of operations is: sort the transfer form, sort the safety certificate question, then replace the registration certificate because it is free and it makes the handover cleaner. A buyer who insists the sale cannot proceed without the original certificate is telling you something about the buyer.",
 
     "## When the number plates have gone missing as well",
 
-    "Missing plates are a deadline, not just an inconvenience. Where a vehicle's plates are lost, damaged, destroyed or stolen, the registered operator must tell TMR within 14 days of discovering it. Theft should also be reported to the Queensland Police Service, through Policelink or online, and the report reference is what a customer service centre asks for when issuing replacements.",
+    "Missing plates are a deadline, not just an inconvenience. Where a vehicle's plates are lost, damaged, destroyed or stolen, the registered operator must tell TMR within 14 days of discovering it, and a theft should also be reported to the Queensland Police Service. TMR warns that you can be fined for using the vehicle while a plate is missing, even where it was lost or stolen.",
 
-    "Replacement is usually done in person at a transport and motoring customer service centre. Where a standard plate was stolen, or lost, damaged or destroyed because of a crime committed by someone else, there is no fee to replace it — though a free replacement for personalised or customised plates comes back as standard plates rather than the originals. What happens to plates at the point of sale is a separate question again, and [plate handling when selling in QLD](/blog/number-plates-when-selling-car-qld) depends on whether the car goes registered, unregistered or off the register entirely.",
+    "Replacement is usually done in person at a transport and motoring customer service centre. You fill in the replacement application, bring evidence of your identity, hand over the old plates if you still have them, and explain on the form what happened to any you cannot hand over. Where a standard plate was stolen, or lost, damaged or destroyed because of a crime committed by someone else, there is no fee to replace it — though a free replacement for personalised or customised plates comes back as standard plates rather than the originals. What happens to plates at the point of sale is a separate question again, and [plate handling when selling in QLD](/blog/number-plates-when-selling-car-qld) depends on whether the car goes registered, unregistered or off the register entirely.",
 
     "## The car with no paperwork at all",
 
@@ -48,17 +48,17 @@ export const post: RawBlogPostEntry = {
     {
       question: "How do I get a replacement registration certificate in Queensland?",
       answer:
-        "Transport and Main Roads runs an online service that lets the registered operator apply for a free replacement registration certificate and print or email it. You need the vehicle details and your customer reference number, which appears near the top right corner of a registration notice, below the make and model. Where extra security has been applied to the customer record, further details are required before the certificate is released.",
+        "Transport and Main Roads runs an online service that lets the registered operator apply for a free replacement registration certificate and print or email it. For a vehicle registered to an individual, you need the registration number and the registered operator's Queensland driver licence number or customer reference number, name and date of birth. The customer reference number appears near the top right corner of a standard registration renewal notice, below the make and model. Where extra security has been applied to the customer record, further details are required before the certificate is released.",
     },
     {
       question: "Can I sell my car in QLD without the registration certificate?",
       answer:
-        "For a registered vehicle, the transfer runs on the Vehicle Registration Transfer Application (F3520) rather than the certificate. TMR recommends every seller complete Part B and have the buyer sign it on the day of sale, even where the buyer plans to transfer online. Replacing the certificate is still worth doing, because it is free and it makes the handover cleaner.",
+        "For a registered vehicle, the transfer is done online or, in person, on the Vehicle Registration Transfer Application (F3520) rather than on the certificate. TMR recommends every seller complete Part B and have the buyer sign it on the day of sale, even where the transfer is going to be done online. Replacing the certificate is still worth doing, because it is free and it makes the handover cleaner.",
     },
     {
       question: "What do I do if my number plates are lost or stolen in Queensland?",
       answer:
-        "Tell TMR within 14 days of discovering that plates have been lost, damaged, destroyed or stolen, and report a theft to the Queensland Police Service. Replacement standard plates are issued at a transport and motoring customer service centre, and the police report reference is what staff ask for. There is no fee where a standard plate was stolen, or lost, damaged or destroyed because of a crime committed by someone else.",
+        "Tell TMR within 14 days of discovering that plates have been lost, damaged, destroyed or stolen, and report a theft to the Queensland Police Service. Replacement standard plates are issued at a transport and motoring customer service centre, where you fill in the replacement application, bring evidence of your identity and explain on the form what happened to any plate you cannot hand over. There is no fee where a standard plate was stolen, or lost, damaged or destroyed because of a crime committed by someone else.",
     },
     {
       question: "The car is registered to someone else and the papers are gone. Can I still sell it?",
@@ -67,11 +67,16 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-24",
-  reviewedAt: "2026-08-24",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
       title: "Queensland Government — get registration certificate",
       url: "https://www.service.transport.qld.gov.au/getregistrationcertificate/",
+    },
+    {
+      title: "Queensland Government — registration certificates",
+      url: "https://www.qld.gov.au/transport/registration/certificate",
     },
     {
       title: "Queensland Government — where to find your customer reference number",
@@ -90,8 +95,12 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
-      title: "Queensland Government — vehicle registration number plates",
-      url: "https://www.qld.gov.au/transport/registration/numberplate",
+      title: "Queensland Government — selling and moving unregistered vehicles",
+      url: "https://www.qld.gov.au/transport/buying/unregistered/selling",
+    },
+    {
+      title: "Queensland Government — how to replace number plates",
+      url: "https://www.qld.gov.au/transport/registration/numberplate/how-to-replace",
     },
     {
       title: "Queensland Government — when to replace number plates",
