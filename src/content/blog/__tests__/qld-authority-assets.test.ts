@@ -101,6 +101,70 @@ describe("Queensland authority assets", () => {
     );
   });
 
+  it("keeps the late-transfer guide to what TMR's seller and fine pages say", () => {
+    const late = blogPosts.find(
+      (post) => post.slug === "buyer-not-transferred-rego-qld",
+    );
+    const text = [
+      ...(late?.content ?? []),
+      ...(late?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // Corrected and re-reviewed in the same pass.
+    expect(late?.reviewedAt).toBe(late?.updatedAt);
+    expect(text).toContain(
+      "TMR says the seller should lodge Part B in person or transfer the registration online",
+    );
+    // The seller page no longer offers email or post for Part B, and sends
+    // sellers to My registrations or 13 74 68 to check the record.
+    expect(text).not.toMatch(/by email|by post|email, post/i);
+    expect(text).not.toContain("13 23 80");
+    expect(text).toContain("13 74 68");
+    // The fine page is about a sale before the offence, inside 28 days.
+    expect(text).toContain("sold or disposed of before the offence");
+    expect(text).not.toMatch(/before the fine was issued/i);
+    expect(text).toContain("State Penalties Enforcement Registry");
+    expect(late?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
+        "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/sl-2021-0113",
+      ]),
+    );
+  });
+
+  it("does not state a joint-signature rule TMR's transfer pages do not contain", () => {
+    const joint = blogPosts.find(
+      (post) => post.slug === "car-registered-two-names-qld",
+    );
+    const text = [
+      joint?.metaDescription ?? "",
+      joint?.excerpt ?? "",
+      ...(joint?.content ?? []),
+      ...(joint?.faqs ?? []).flatMap((faq) => [faq.question, faq.answer]),
+    ].join(" ");
+
+    expect(joint?.reviewedAt).toBe(joint?.updatedAt);
+    // Neither the seller page nor the buyer page says how many registered
+    // operators sign, so the guide sends the reader to the form and to TMR
+    // instead of asserting a rule in either direction.
+    expect(text).not.toMatch(
+      /two (?:disposer )?signatures|disposer or disposers|needs both of them on the form|every registered operator on the transfer/i,
+    );
+    expect(text).toContain("how a jointly registered vehicle is signed for");
+    expect(text).toContain(
+      "transferred free of charge into the name of the surviving registered operator",
+    );
+    expect(joint?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
+        "https://www.qld.gov.au/transport/registration/certificate",
+        "https://www.qld.gov.au/transport/registration/transfer/deceased-estate",
+      ]),
+    );
+  });
+
   it("source-reviews the unregistered-street-parking guidance", () => {
     const parking = blogPosts.find(
       (post) => post.slug === "park-unregistered-car-street-qld",

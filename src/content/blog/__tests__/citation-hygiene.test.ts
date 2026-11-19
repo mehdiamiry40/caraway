@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { blogPosts } from "@/data/blog-posts";
+import { QLD_SALE_SOURCE_URLS } from "@/lib/qld-vehicle-sale-pathway";
 
 /**
  * Citation hygiene for the primary sources behind regulated claims.
@@ -34,6 +35,25 @@ const KNOWN_OPAQUE_SOURCE_URLS = [
   // /searching/do-used-car-or-vehicle-search. Confirm they are the same page,
   // then repoint these two posts and delete this entry.
   "https://www.ppsr.gov.au/node/76",
+] as const;
+
+/**
+ * Addresses the publisher has retired by redirecting them to a hub page.
+ *
+ * These are worse than a dead link for this repo's gates: the address still
+ * answers 200 after the redirect, so `check:sources` reports it live, while the
+ * page it lands on no longer carries the detail the citation was for.
+ *
+ * Add an address here once every use of it has been repointed to the page that
+ * now holds the content, with the claims reread against that page.
+ */
+const RETIRED_SOURCE_URLS = [
+  // Transport and Main Roads replaced its "transfer online" and "transfer in
+  // person" pages with a seller page and a buyer page
+  // (/transfer/seller-transfer and /transfer/buyer-transfer). Both old
+  // addresses now redirect to the /transport/registration/transfer hub.
+  "https://www.qld.gov.au/transport/registration/transfer/online",
+  "https://www.qld.gov.au/transport/registration/transfer/rego",
 ] as const;
 
 /** An id-shaped path segment carries no meaning if the CMS renumbers it. */
@@ -100,6 +120,34 @@ describe("citation hygiene", () => {
       "One label points at more than one URL, so a reader cannot tell which " +
         "page backs the claim. Either they are the same page (cite it once) or " +
         "they are different pages (name them differently).",
+    ).toEqual([]);
+  });
+
+  it("does not cite an address the publisher has retired to a hub page", () => {
+    const retired = (text: string) =>
+      RETIRED_SOURCE_URLS.filter((url) => text.includes(url));
+
+    const offenders = [
+      // Source lists, inline links in the body, and FAQ answers.
+      ...blogPosts.flatMap((post) =>
+        retired(
+          [
+            ...post.content,
+            ...(post.faqs ?? []).map((faq) => faq.answer),
+            ...(post.sources ?? []).map((source) => source.url),
+          ].join("\n"),
+        ).map((url) => `${post.slug}: ${url}`),
+      ),
+      // The seller checklist tool links its steps to the same pages.
+      ...retired(Object.values(QLD_SALE_SOURCE_URLS).join("\n")).map(
+        (url) => `qld-vehicle-sale-pathway: ${url}`,
+      ),
+    ];
+
+    expect(
+      offenders,
+      "This address now redirects to a hub page without the cited detail. " +
+        "Cite the page that carries it, and reread the claim against that page.",
     ).toEqual([]);
   });
 
