@@ -308,4 +308,71 @@ describe("Queensland authority assets", () => {
       ]),
     );
   });
+
+  it("keeps the sale-options guide to the current safety certificate rule", () => {
+    const options = blogPosts.find(
+      (post) => post.slug === "how-to-sell-your-car-for-cash-brisbane",
+    );
+    const text = [
+      ...(options?.content ?? []),
+      ...(options?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // Corrected and re-reviewed in the same pass.
+    expect(options?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(options?.reviewedAt).toBe(options?.updatedAt);
+    // A certificate is no longer needed to offer a registered vehicle for
+    // sale, so how the vehicle is offered does not decide the answer. It is
+    // needed before disposing of one, other than to a dealer.
+    expect(text).not.toMatch(/how the vehicle is offered/i);
+    expect(text).toContain(
+      "no longer requires a safety certificate before a registered vehicle is offered for sale",
+    );
+    expect(text).toContain(
+      "before disposing of a registered vehicle other than to a licensed motor dealer",
+    );
+    expect(options?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/roadworthy",
+      ]),
+    );
+  });
+
+  it("keeps the lost-papers guide to what TMR's certificate and plate pages say", () => {
+    const lost = blogPosts.find((post) => post.slug === "lost-rego-papers-qld");
+    const text = [
+      ...(lost?.content ?? []),
+      ...(lost?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // Corrected and re-reviewed in the same pass.
+    expect(lost?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(lost?.reviewedAt).toBe(lost?.updatedAt);
+    // The plate pages ask for the replacement application, evidence of
+    // identity and an explanation on the form. They ask for a police reference
+    // only where plates were copied, not where they were lost or stolen.
+    expect(text).not.toMatch(/report reference|Policelink/i);
+    expect(text).toContain(
+      "explain on the form what happened to any you cannot hand over",
+    );
+    // The certificate service asks for the registration number and the
+    // operator's licence number or customer reference number, and says it
+    // takes two to five minutes.
+    expect(text).toContain(
+      "Queensland driver licence number or customer reference number, name and date of birth",
+    );
+    expect(text).not.toMatch(/the two minutes/i);
+    // The form is required in person and only recommended for an online
+    // transfer, so the transfer does not simply "run on" it.
+    expect(text).not.toMatch(/the transfer runs on/i);
+    expect(lost?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/certificate",
+        "https://www.qld.gov.au/transport/registration/numberplate/how-to-replace",
+        "https://www.qld.gov.au/transport/registration/numberplate/when-to-replace",
+        "https://www.qld.gov.au/transport/registration/numberplate/free-replacement",
+      ]),
+    );
+  });
 });
