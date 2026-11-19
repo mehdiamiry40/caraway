@@ -1,10 +1,10 @@
 export const QLD_SALE_SOURCE_URLS = {
   selling:
     "https://www.qld.gov.au/transport/buying/rules/selling",
-  transferOnline:
-    "https://www.qld.gov.au/transport/registration/transfer/online",
-  transferInPerson:
-    "https://www.qld.gov.au/transport/registration/transfer/rego",
+  transferSeller:
+    "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+  transferBuyer:
+    "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
   cancel:
     "https://www.qld.gov.au/transport/registration/cancel",
   safetyCertificate:
@@ -29,8 +29,8 @@ export type QldSaleSourceKey = keyof typeof QLD_SALE_SOURCE_URLS;
 
 export const QLD_SALE_SOURCE_LABELS: Record<QldSaleSourceKey, string> = {
   selling: "Selling a used vehicle — Queensland Government",
-  transferOnline: "Transfer registration online — Queensland Government",
-  transferInPerson: "Transfer registration in person — Queensland Government",
+  transferSeller: "Transfer registration as a seller — Queensland Government",
+  transferBuyer: "Transfer registration as a buyer — Queensland Government",
   cancel: "Cancel registration — Queensland Government",
   safetyCertificate: "Safety certificates — Queensland Government",
   unregisteredSale:
@@ -146,7 +146,7 @@ export function buildQldVehicleSalePathway(
       heading: "Prepare a factual handover record",
       detail:
         "Record the vehicle, parties, date, agreed amount, payment confirmation, registration status, items handed over and any official reference numbers. Use the printable record below only as a recordkeeping aid.",
-      sources: ["unregisteredSale", "transferInPerson"],
+      sources: ["unregisteredSale", "transferSeller"],
     });
     cautions.push(
       "Do not use the Queensland transfer, cancellation or certificate result until the registration status and issuing jurisdiction are confirmed.",
@@ -227,8 +227,8 @@ export function buildQldVehicleSalePathway(
           id: "gas-certificate",
           heading: "Check every fitted gas system",
           detail:
-            "A registered vehicle with a gas system generally needs an inspection by an authorised gas installer and a vehicle inspection certificate that is no more than three months old when registration transfers. Gas-equipped registrations cannot use every online-transfer pathway.",
-          sources: ["gasCertificate", "transferOnline"],
+            "A registered vehicle with a gas system generally needs an inspection by an authorised gas installer and a gas inspection certificate that is less than three months old when the registration is transferred. TMR lists that certificate among its in-person transfer steps, so confirm which pathway the vehicle can use.",
+          sources: ["gasCertificate", "transferSeller"],
         });
       }
 
@@ -237,8 +237,8 @@ export function buildQldVehicleSalePathway(
           id: "personalised-plates",
           heading: "Confirm the personalised or customised plate path",
           detail:
-            "Queensland's online seller transfer is not available while personalised or customised plates are attached. Check the current plate and in-person transfer instructions before handover.",
-          sources: ["transferOnline", "transferInPerson"],
+            "Personalised and customised plates have their own forms. TMR's seller guidance covers selling personalised plates with the vehicle, keeping the plates and cancelling them; where the seller keeps or cancels them, standard number plates must be attached before the registration transfer can be processed. Check the current plate instructions before handover.",
+          sources: ["transferSeller"],
         });
       }
 
@@ -247,8 +247,8 @@ export function buildQldVehicleSalePathway(
           id: "registered-transfer",
           heading: "Complete the seller-side registration transfer",
           detail:
-            "Use the eligible online service or the current in-person process. TMR recommends completing the F3520 Seller's Copy (Part B) and having the buyer sign it on the day of sale, even when an online transfer is intended. The registration transfer must be completed within 14 days.",
-          sources: ["transferOnline", "transferInPerson"],
+            "Use the eligible online service or the current in-person process. TMR recommends completing Part B of the Vehicle Registration Transfer Application (F3520) and having the buyer sign it on the day of sale, even when an online transfer is intended. The buyer must transfer the registration into their name within 14 days.",
+          sources: ["transferSeller", "transferBuyer"],
         });
       }
 
@@ -256,8 +256,8 @@ export function buildQldVehicleSalePathway(
         id: "registered-record",
         heading: "Keep the receipt and official confirmation",
         detail:
-          "Keep a signed handover record, the transfer confirmation or completed seller copy, and the certificate details that apply. Check that the registration no longer appears in your name, remove the vehicle from registration direct debit and update the toll account.",
-        sources: ["transferOnline", "transferInPerson", "selling"],
+          "Keep a signed handover record, the transfer confirmation or completed Part B, and the certificate details that apply. Check that the registration no longer appears in your name. TMR's seller steps also cover taking the registration off direct debit before the transfer, removing any toll tag and updating your details with the toll company.",
+        sources: ["transferSeller", "selling"],
       });
     } else if (inputs.outcome === "cancel-for-parts") {
       addStep({
@@ -287,7 +287,7 @@ export function buildQldVehicleSalePathway(
         heading: "Choose transfer or cancellation before handover",
         detail:
           "A registered transfer and cancellation before an unregistered or for-parts sale are different processes. Confirm the intended outcome with TMR and the buyer before certificates, plates, movement or collection are arranged.",
-        sources: ["selling", "transferOnline", "cancel"],
+        sources: ["selling", "transferSeller", "cancel"],
       });
       cautions.push(
         "Do not hand over a currently registered vehicle for parts until the required deregistration and plate steps are confirmed and completed.",

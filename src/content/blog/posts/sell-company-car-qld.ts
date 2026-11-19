@@ -14,9 +14,9 @@ export const post: RawBlogPostEntry = {
 
     "## Who is allowed to sign for the entity",
 
-    "Transport and Main Roads deals with the registered operator, and when the registered operator is a company, the signature has to come from someone the company has authorised. A transfer done in person runs on the Vehicle Registration Transfer Application (F3520), signed by both parties. TMR requires an original signature from the applicant or an authorised representative, and where someone is signing for the operator, the authorisation question on the form is completed by that person. TMR also applies evidence-of-identity requirements to organisations, which come into play when it cannot verify the organisation's status as registered with ASIC.",
+    "Transport and Main Roads deals with the registered operator, and when the registered operator is a company, someone has to act for it. A transfer done in person runs on the Vehicle Registration Transfer Application (F3520), completed and signed by both the seller and the buyer. TMR's proof-of-identity page for organisations says a person acting on an organisation's behalf shows either a completed original Authority to Represent Registered Operator Vehicle Registration (form F5225) or an original letter of authority from the organisation. The organisation itself has to be shown to exist, which for an Australian company means a 'registered' status on the ASIC website.",
 
-    "In practice that means arriving with more than the registration certificate. Take the ACN, and if the person signing is not an obvious officeholder — a bookkeeper, an adult child winding up a parent's business, a partner who was never on the ASIC record — take the written authority as well. Everything else about the sale is ordinary; our guide to [Queensland seller paperwork](/blog/what-paperwork-to-sell-a-car-qld) covers the steps that do not change just because the operator is a business.",
+    "In practice that means arriving with more than the registration certificate. Take the ACN and the authority document. That matters most when the person signing is not an obvious officeholder — a bookkeeper, an adult child winding up a parent's business, a partner who was never on the ASIC record. Everything else about the sale is ordinary; our guide to [Queensland seller paperwork](/blog/what-paperwork-to-sell-a-car-qld) covers the steps that do not change just because the operator is a business.",
 
     "## GST applies to the sale price, not the profit",
 
@@ -48,7 +48,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Who can sign the transfer for a car registered to a company in Queensland?",
       answer:
-        "Someone the company has authorised. TMR requires an original signature from the applicant or an authorised representative on the Vehicle Registration Transfer Application (F3520), and the authorisation question on the form is completed by the person signing for the registered operator. Evidence-of-identity requirements apply to organisations where TMR cannot verify the organisation's ASIC status.",
+        "Someone the company has authorised. TMR's proof-of-identity page for organisations says a person acting on an organisation's behalf shows a completed original Authority to Represent Registered Operator Vehicle Registration (form F5225) or an original letter of authority from the organisation. An Australian company also has to show a 'registered' status on the ASIC website.",
     },
     {
       question: "Do I have to pay GST when my business sells a work vehicle?",
@@ -70,8 +70,13 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-23",
   sources: [
     {
-      title: "Queensland Government — transfer registration in person",
-      url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+    },
+    {
+      title:
+        "Queensland Government — proof of identity for organisations for vehicle registration",
+      url: "https://www.qld.gov.au/transport/licensing/proof-of-identity-transport-services/organisations",
     },
     {
       title: "Queensland Government — selling a used vehicle",

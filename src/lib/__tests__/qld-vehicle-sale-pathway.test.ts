@@ -58,7 +58,9 @@ describe("buildQldVehicleSalePathway", () => {
     );
     expect(
       result.steps.find((step) => step.id === "registered-transfer")?.detail,
-    ).toMatch(/F3520 Seller's Copy \(Part B\).*14 days/i);
+    ).toMatch(
+      /Part B of the Vehicle Registration Transfer Application \(F3520\).*14 days/i,
+    );
   });
 
   it("uses the dealer certificate exception only for a verified licensed dealer", () => {

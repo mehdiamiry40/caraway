@@ -72,8 +72,8 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
-      title: "Queensland Government — transfer registration online",
-      url: "https://www.qld.gov.au/transport/registration/transfer/online",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
     },
   ],
   category: "Guides",

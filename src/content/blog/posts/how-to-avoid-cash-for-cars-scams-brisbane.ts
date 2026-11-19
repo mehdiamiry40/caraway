@@ -61,12 +61,8 @@ export const post: RawBlogPostEntry = {
   reviewedAt: "2026-08-07",
   sources: [
     {
-      title: "Queensland Government — transfer registration online",
-      url: "https://www.qld.gov.au/transport/registration/transfer/online",
-    },
-    {
-      title: "Queensland Government — transfer registration in person",
-      url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
     },
     {
       title: "Queensland Government — check a motor licence",
