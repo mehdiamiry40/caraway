@@ -14,7 +14,7 @@ export const post: RawBlogPostEntry = {
 
     "## No cooling-off period, no statutory warranty",
 
-    "Two of the protections buyers assume they have sit entirely on the dealer side of the market. A used vehicle bought from a licensed motor dealer or chattel auctioneer carries a cooling-off period of one business day, ending at 5pm on the next business day, and a statutory warranty at no extra cost. That warranty runs three months or 5,000km for a vehicle under 160,000km and built within the previous ten years, and one month or 1,000km for anything older or higher. Buy the same car from a stranger on Marketplace and neither one exists.",
+    "Two of the protections buyers assume they have sit entirely on the dealer side of the market. A used vehicle bought from a licensed motor dealer carries a cooling-off period of one business day, ending at 5pm on the next business day, and a statutory warranty at no extra cost. A car bought at auction or on consignment gets no cooling-off period, although an auctioned vehicle still carries the statutory warranty unless it is one of the exempt types. That warranty runs three months or 5,000km for a vehicle under 160,000km and built within the previous ten years, and one month or 1,000km for anything older or higher. Buy the same car from a stranger on Marketplace and neither one exists.",
 
     "That is not a loophole anyone is exploiting. It is the line the Queensland scheme deliberately draws between a business that sells cars and a person who is selling one. The price gap between the two usually reflects exactly that difference.",
 
@@ -46,7 +46,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Is there a cooling-off period on a private car sale in Queensland?",
       answer:
-        "No. The one-business-day cooling-off period applies to a used vehicle bought from a licensed motor dealer or chattel auctioneer, ending at 5pm on the next business day. A sale between two private parties carries no cooling-off period, and no statutory warranty either.",
+        "No. The one-business-day cooling-off period applies to a used vehicle bought from a licensed motor dealer, other than at auction or on consignment, and ends at 5pm on the next business day. A sale between two private parties carries no cooling-off period, and no statutory warranty either.",
     },
     {
       question: "Do I have to refund a buyer who finds a fault after a private sale?",
@@ -65,7 +65,8 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-28",
-  reviewedAt: "2026-08-28",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
       title:
@@ -85,6 +86,10 @@ export const post: RawBlogPostEntry = {
       title:
         "Queensland Civil and Administrative Tribunal — motor vehicle disputes",
       url: "https://www.qcat.qld.gov.au/case-types/consumers-traders-and-businesses/motor-vehicle-dispute-process/motor-vehicle-disputes",
+    },
+    {
+      title: "Queensland Courts — about money disputes",
+      url: "https://www.courts.qld.gov.au/types-of-cases/money-disputes/about-money-disputes",
     },
     {
       title: "Queensland Government — selling a used vehicle",
