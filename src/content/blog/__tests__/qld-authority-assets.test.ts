@@ -164,4 +164,84 @@ describe("Queensland authority assets", () => {
       "A stolen car recovered in poor shape starts costing money the day",
     );
   });
+
+  it("keeps the number-plate guide to the plate forms TMR's seller page lists", () => {
+    const plates = blogPosts.find(
+      (post) => post.slug === "number-plates-when-selling-car-qld",
+    );
+    const text = [
+      ...(plates?.content ?? []),
+      ...(plates?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+    const sourceUrls = plates?.sources?.map((source) => source.url) ?? [];
+
+    // Corrected and re-reviewed in the same pass.
+    expect(plates?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(plates?.reviewedAt).toBe(plates?.updatedAt);
+    // The seller page no longer lists plate situations the online service
+    // cannot handle. It names a form for each choice instead.
+    expect(text).not.toMatch(/cannot be handled online/i);
+    expect(text).toContain("Personalised Number Plate Transfer Application (F2963)");
+    expect(text).toContain(
+      "Remove and/or Attach Personalised/Customised Number Plate Application (F2964)",
+    );
+    expect(text).toContain(
+      "Cancel Personalised/Customised Number Plate Application (F5339)",
+    );
+    expect(text).toContain(
+      "standard number plates must be attached before the registration transfer can be processed",
+    );
+    // Customised plates cannot be sold; left on the vehicle they become
+    // standard plates when it is transferred.
+    expect(text).toContain(
+      "Customised plates left on the vehicle become standard plates when it is transferred",
+    );
+    expect(sourceUrls).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/numberplate/customised-plates/about",
+        "https://www.qld.gov.au/transport/registration/numberplate/personalised-plates/buying",
+        "https://www.qld.gov.au/transport/registration/cancel",
+      ]),
+    );
+    // The number plate page above those two is a list of links, so it backs
+    // none of the statements in the guide.
+    expect(sourceUrls).not.toContain(
+      "https://www.qld.gov.au/transport/registration/numberplate",
+    );
+  });
+
+  it("keeps the unpaid-tolls guide in step with TMR's seller transfer steps", () => {
+    const tolls = blogPosts.find(
+      (post) => post.slug === "unpaid-tolls-selling-car-qld",
+    );
+    const text = [
+      ...(tolls?.content ?? []),
+      ...(tolls?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // The seller transfers the registration out of their own name. The record
+    // does not have to wait for the buyer to finish.
+    expect(text).not.toContain(
+      "until they do, the vehicle is still recorded against you",
+    );
+    expect(text).toContain(
+      "Transport and Main Roads recommends that the seller help by transferring it out of their own name",
+    );
+    expect(text).toContain("Until the registration has left your name");
+    // TMR's first seller step is taking the registration off direct debit,
+    // before the transfer is started.
+    const directDebit = text.indexOf("Take the registration off direct debit");
+    const transfer = text.indexOf("Complete your side of the TMR transfer");
+    expect(directDebit).toBeGreaterThan(-1);
+    expect(transfer).toBeGreaterThan(directDebit);
+    expect(text).toContain("before you start the transfer");
+    expect(tolls?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/buying/rules/selling",
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
+      ]),
+    );
+  });
 });

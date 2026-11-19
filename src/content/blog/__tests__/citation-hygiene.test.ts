@@ -133,4 +133,35 @@ describe("citation hygiene", () => {
 
     expect(missing).toEqual([]);
   });
+
+  it("cites the page that carries the transfer detail, not the hub above it", () => {
+    // Transport and Main Roads' registration transfer page is now only a list
+    // of links with one-line summaries. The detail sits on the pages below it:
+    // transfer as a seller, transfer as a buyer, deceased estates, interstate
+    // moves. The hub answers 200, so `check:sources` reports it live while it
+    // backs none of the statements it is listed for.
+    const hub = "https://www.qld.gov.au/transport/registration/transfer";
+
+    // A post that still cites one of the two addresses TMR retired has not been
+    // moved to the seller and buyer pages yet. That move rereads its transfer
+    // statements and drops the hub in the same pass, so the post is not
+    // reported a second time here. Once no post cites a retired address, this
+    // matches nothing and can be deleted.
+    const awaitsSellerAndBuyerPages = (urls: string[]) =>
+      urls.some((url) => /\/registration\/transfer\/(?:online|rego)$/.test(url));
+
+    const offenders = blogPosts
+      .filter((post) => {
+        const urls = (post.sources ?? []).map((source) => source.url);
+        return urls.includes(hub) && !awaitsSellerAndBuyerPages(urls);
+      })
+      .map((post) => post.slug);
+
+    expect(
+      offenders,
+      "The registration transfer hub is a list of links. Cite the page under " +
+        "it that carries the statement, and reread the statement against " +
+        "that page.",
+    ).toEqual([]);
+  });
 });
