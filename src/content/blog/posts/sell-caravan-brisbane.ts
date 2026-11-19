@@ -22,7 +22,7 @@ export const post: RawBlogPostEntry = {
 
     "The number that sets your paperwork when you sell a caravan in Brisbane is the aggregate trailer mass stamped on the compliance plate. Under 750 kilograms ATM — most box trailers and some small camper trailers — a registration transfer does not call for one. Between 750 kilograms and 4.5 tonnes, which covers essentially every caravan and pop-top sitting on a suburban block, a safety certificate is required. Above 4.5 tonnes it becomes a certificate of inspection instead.",
 
-    "The rest of the rule matches the one for cars, wrinkle included: Queensland does not require a certificate before you advertise, but one is generally needed before a registered van is disposed of to anyone other than a licensed motor dealer. Our guide to [Queensland safety certificates](/blog/how-to-get-a-roadworthy-certificate-brisbane) sets out the recognised exceptions and how to find an approved station. Not every station is approved to inspect trailers, so confirm the category when you book rather than at the gate.",
+    "The rest of the rule matches the one for cars, wrinkle included: Queensland does not require a certificate before you advertise, but one is generally needed before a registered van is disposed of to anyone other than a licensed motor dealer. Our guide to [Queensland safety certificates](/blog/how-to-get-a-roadworthy-certificate-brisbane) sets out the recognised exceptions and how to find an approved station. Confirm that the station inspects trailers when you book rather than at the gate.",
 
     "## What Actually Kills a Caravan's Value Here",
 
@@ -30,7 +30,7 @@ export const post: RawBlogPostEntry = {
 
     "Buyers check for it first, and they check with their hands. Press the walls low down, sight along the outside skin for a ripple that catches the light, open every locker and put your nose in it. A van kept under a carport in Kenmore reads very differently from one that stood uncovered at Redcliffe with the salt air working on the chassis, the coupling and the brake drums.",
 
-    "Age brings a second problem. Vans built before the late 1980s can contain asbestos materials in wall sheeting, flues and brake linings, and Brisbane City Council does not accept asbestos, or any load containing it, at its resource recovery centres. That closes the obvious disposal route for exactly the vans most likely to need one — [taking a vehicle to the tip in Brisbane](/blog/take-car-to-tip-brisbane) covers what the centres will and will not take.",
+    "Age brings a second problem: asbestos. If an old van has asbestos in it, the council tip is not an option. Brisbane City Council says it is illegal to dispose of asbestos in a household bin or at its resource recovery centres, and points to the Queensland Government's asbestos website for more information. That closes the obvious disposal route for exactly the vans most likely to need one — [taking a vehicle to the tip in Brisbane](/blog/take-car-to-tip-brisbane) covers what the centres will and will not take.",
 
     "## Access Before You Sell a Caravan in Brisbane",
 
@@ -58,16 +58,17 @@ export const post: RawBlogPostEntry = {
     {
       question: "Is a caravan safety certificate the same as a car one?",
       answer:
-        "The regime is the same but the inspection and the approval are not. An approved inspection station must be approved for the trailer category to issue one, so check that when booking rather than assuming any station that does cars can do a caravan.",
+        "The regime is the same, but a trailer inspection is charged at its own fee and only approved inspection stations can issue the certificate. Check when booking that the station inspects trailers rather than assuming any station that does cars can do a caravan.",
     },
     {
       question: "What makes an old caravan worth almost nothing?",
       answer:
-        "Water damage, usually. Once moisture has been through the roof joins or window frames long enough for the walls to soften or delaminate, the repair is structural. Age matters too: vans built before the late 1980s can contain asbestos materials, which narrows the disposal options considerably.",
+        "Water damage, usually. Once moisture has been through the roof joins or window frames long enough for the walls to soften or delaminate, the repair is structural. Age matters too: asbestos cannot be disposed of at Brisbane City Council's resource recovery centres, which narrows the disposal options for an old van that contains it.",
     },
   ],
   date: "2026-08-21",
-  reviewedAt: "2026-08-21",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
       title: "Queensland Government — register your trailer or caravan",
@@ -82,13 +83,17 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+    },
+    {
       title:
         "Business Queensland — gas systems in caravans and recreational vehicles",
       url: "https://www.business.qld.gov.au/industries/mining-energy-water/resources/safety-health/petroleum-gas/gas-work-devices/guidelines/caravans-recreational-vehicles",
     },
     {
-      title: "Brisbane City Council — asbestos",
-      url: "https://www.brisbane.qld.gov.au/clean-and-green/rubbish-tips-and-bins/household-hazardous-waste/asbestos",
+      title: "Brisbane City Council — hazardous waste disposal",
+      url: "https://www.brisbane.qld.gov.au/bins-waste-and-recycling/reducing-waste-at-home/hazardous-waste-disposal",
     },
   ],
   category: "Guides",

@@ -67,7 +67,7 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Queensland Government — get your car repaired",
-      url: "https://www.qld.gov.au/law/your-rights/consumer-rights-complaints-and-scams/buying-products-and-services/buying-services/vehicle-services/get-your-car-repaired",
+      url: "https://www.qld.gov.au/community/fair-trading/consumer-rights-complaints-and-scams/buying-products-and-services/buying-services/vehicle-services/get-your-car-repaired",
     },
     {
       title: "Queensland legislation — Storage Liens Act 1973",

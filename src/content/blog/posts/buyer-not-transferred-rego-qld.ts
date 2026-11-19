@@ -88,7 +88,7 @@ export const post: RawBlogPostEntry = {
     },
     {
       title: "Queensland Government — how to transfer a fine",
-      url: "https://www.qld.gov.au/transport/safety/fines/how-to-transfer-a-fine",
+      url: "https://www.qld.gov.au/transport/safety/fines/transfer-fine",
     },
     {
       title: "Queensland Government — paying tolls",

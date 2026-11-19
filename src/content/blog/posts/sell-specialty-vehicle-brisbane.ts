@@ -50,7 +50,7 @@ export const post: RawBlogPostEntry = {
 
     "A booked hire service licence is attached to the vehicle, not the driver. Surrender it before you sell, using TMR's online booked hire licence service or the surrender form (F5289). A voluntary surrender reads differently on the record from a licence suspended because registration or an inspection lapsed, so wind it down deliberately.",
 
-    "Surrendering does not reset the registration. A booked hire car sits on the BKHR purpose of use with a booked hire CTP class (class 26), both priced above private use, and you may need to update the purpose of use afterwards. Confirm the right class with TMR on 13 23 80. Your own comprehensive policy is a separate step, which [cancelling car insurance after selling](/blog/cancel-car-insurance-after-selling-car-qld) covers.",
+    "Surrendering does not reset the registration. A booked hire car sits on the BKHR purpose of use with a booked hire CTP class (class 26). CTP is priced by vehicle class and how the vehicle is used, so you may need to update the purpose of use afterwards. Confirm the right class with TMR on 13 23 80. Your own comprehensive policy is a separate step, which [cancelling car insurance after selling](/blog/cancel-car-insurance-after-selling-car-qld) covers.",
 
     "The annual certificate of inspection that kept the car working is not the certificate a seller needs. Selling a registered car to anyone other than a dealer generally needs a safety certificate, valid for two months or 2,000 kilometres for a private seller. Kilometres drive the price, and [selling a high-kilometre car](/blog/sell-high-kilometre-car-brisbane) explains how buyers weigh them. The logbook servicing a rideshare car usually has is your best counterweight, so bring the records.",
 
@@ -87,15 +87,15 @@ export const post: RawBlogPostEntry = {
   sources: [
     {
       title: "Queensland Government — eligible special interest vehicles",
-      url: "https://www.qld.gov.au/transport/registration/fees/concession/special-interest/eligible",
+      url: "https://www.qld.gov.au/transport/registration/costs/concession/special-interest/eligible",
     },
     {
       title: "Queensland Government — conditions of use for special interest vehicles",
-      url: "https://www.qld.gov.au/transport/registration/fees/concession/special-interest/restrictions",
+      url: "https://www.qld.gov.au/transport/registration/costs/concession/special-interest/restrictions",
     },
     {
       title: "Queensland Government — removing a special interest vehicle concession",
-      url: "https://www.qld.gov.au/transport/registration/fees/concession/special-interest/removing-concession",
+      url: "https://www.qld.gov.au/transport/registration/costs/concession/special-interest/removing-concession",
     },
     {
       title: "Queensland Government — register your trailer or caravan",
@@ -114,8 +114,8 @@ export const post: RawBlogPostEntry = {
       url: "https://www.tmr.qld.gov.au/business-industry/taxi-and-limousine/industry-information/booked-hire/booked-hire-service-licence",
     },
     {
-      title: "Motor Accident Insurance Commission — personalised transport classes",
-      url: "https://maic.qld.gov.au/for-drivers/purchasing-ctp-insurance/personalised-transport-classes/",
+      title: "Motor Accident Insurance Commission — vehicle classes",
+      url: "https://maic.qld.gov.au/about-ctp-insurance/vehicle-classes/",
     },
   ],
   category: "Guides",

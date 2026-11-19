@@ -133,6 +133,30 @@ function classify(status) {
   return "live";
 }
 
+/**
+ * Whether the server sent the citation somewhere else.
+ *
+ * Two differences between the cited and the final address are not a move:
+ *
+ *  - a fragment (`#sec.23`). It is never sent to the server, so the final
+ *    address never carries it, and the citation is to that part of the page.
+ *  - a query string the server adds to the same path, such as the session
+ *    parameter Transport and Main Roads' online services append on arrival.
+ */
+function movedTo(citedUrl, finalUrl) {
+  const page = (value) => {
+    const url = new URL(value);
+    return `${url.origin}${url.pathname.replace(/\/$/, "")}`;
+  };
+  try {
+    if (page(citedUrl) !== page(finalUrl)) return true;
+    const citedQuery = new URL(citedUrl).search;
+    return citedQuery !== "" && citedQuery !== new URL(finalUrl).search;
+  } catch {
+    return citedUrl.replace(/\/$/, "") !== finalUrl.replace(/\/$/, "");
+  }
+}
+
 const buckets = { live: [], dead: [], blocked: [], transient: [], unreachable: [] };
 const redirected = [];
 
@@ -143,9 +167,9 @@ for (const result of results) {
 
   const label = result.status === 0 ? "---" : String(result.status);
   if (kind === "live") {
-    const from = result.url.replace(/\/$/, "");
-    const to = (result.finalUrl ?? result.url).replace(/\/$/, "");
-    if (to !== from) redirected.push({ ...result, citedBy });
+    if (movedTo(result.url, result.finalUrl ?? result.url)) {
+      redirected.push({ ...result, citedBy });
+    }
     console.log(`  ${label} ${result.url}`);
   } else {
     console.log(`  ${label} ${result.url}\n      [${kind}] cited by ${citedBy}`);

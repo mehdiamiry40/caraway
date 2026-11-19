@@ -14,13 +14,13 @@ export const post: RawBlogPostEntry = {
 
     "## Gifting a Car to a Family Member: Who Actually Qualifies",
 
-    "For vehicle registration duty, Queensland counts your parents, grandparents, children, grandchildren and spouse as family. Spouse includes a de facto partner and a registered partner under the Civil Partnerships Act 2011. The list stops there. Transfers between siblings do not qualify, and neither do transfers between people related by marriage other than spouses, or between an aunt or uncle and a niece or nephew. A mother signing a Corolla over to her son sits inside the exemption. The same car moving between two brothers does not.",
+    "For vehicle registration duty, Queensland's list of relatives covers your spouse, your parents and grandparents, and your children, stepchildren and grandchildren, along with certain spouses of those relatives. Spouse includes a de facto partner and a registered partner under the Civil Partnerships Act 2011. The gift exemption is narrower than that list. Transfers between siblings do not qualify, and neither do transfers between people related by marriage other than spouses, or between an aunt or uncle and a niece or nephew. A mother signing a Corolla over to her son sits inside the exemption. The same car moving between two brothers does not.",
 
     "The second test is money. A gift means the vehicle is not sold for any amount, so a token dollar on the receipt turns the transaction back into a sale. Understating the price does not help either — where what is paid falls short of what the vehicle is worth, duty is assessed on the value of the vehicle rather than the figure written on the paperwork.",
 
     "## Claiming the Exemption at Transfer Time",
 
-    "The exemption for gifting a car to a family member is claimed as part of the transfer rather than afterwards, online or in person, and it is supported by a statutory declaration covering the gift. Duty is payable by the person taking on the registration, so the exemption matters most to whoever is receiving the car. Where duty has already been paid on a transfer that should have been exempt, a written request for a reassessment with the completed declaration is the route to a refund. The rest of it is an ordinary change of registered operator — our [guide to transferring car ownership in Queensland](/blog/how-to-transfer-car-ownership-qld) sets out the forms, the fees and the order they happen in.",
+    "The exemption for gifting a car to a family member is claimed as part of the transfer rather than afterwards, online or in person. Duty is payable by the person taking on the registration, so the exemption matters most to whoever is receiving the car. Where duty has already been paid on a transfer that should have been exempt, a written request for a reassessment with a completed transfer of vehicle registration statutory declaration is the route to a refund. The rest of it is an ordinary change of registered operator — our [guide to transferring car ownership in Queensland](/blog/how-to-transfer-car-ownership-qld) sets out the forms, the fees and the order they happen in.",
 
     "## The Safety Certificate Still Applies to Most Family Transfers",
 
@@ -40,7 +40,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Do you pay duty when a car is gifted in Queensland?",
       answer:
-        "A genuine gift to a parent, grandparent, child, grandchild or spouse can be exempt from vehicle registration duty, claimed at the time of transfer and supported by a statutory declaration. The exemption does not cover siblings, aunts or uncles, or people related by marriage other than spouses.",
+        "A genuine gift to a parent, grandparent, child, grandchild or spouse can be exempt from vehicle registration duty, claimed when the registration is transferred, online or in person. The exemption does not cover siblings, aunts or uncles, or people related by marriage other than spouses.",
     },
     {
       question: "Does a car gifted to my son or daughter need a safety certificate?",
@@ -59,15 +59,16 @@ export const post: RawBlogPostEntry = {
     },
   ],
   date: "2026-08-16",
-  reviewedAt: "2026-08-16",
+  updatedAt: "2026-11-19",
+  reviewedAt: "2026-11-19",
   sources: [
     {
       title: "Queensland Government — vehicle registration duty exemptions",
-      url: "https://www.qld.gov.au/transport/registration/fees/duty/rebates",
+      url: "https://www.qld.gov.au/transport/registration/costs/duty/rebates",
     },
     {
       title: "Queensland Government — about vehicle registration duty",
-      url: "https://www.qld.gov.au/transport/registration/fees/duty/about",
+      url: "https://www.qld.gov.au/transport/registration/costs/duty/about",
     },
     {
       title: "Queensland Government — safety certificates",
