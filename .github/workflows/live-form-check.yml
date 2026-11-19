@@ -49,9 +49,37 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.pw-version.outputs.version }}-chromium
       - if: steps.pw-cache.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
         timeout-minutes: 5
-      - if: steps.pw-cache.outputs.cache-hit == 'true'
+      # The runner image already carries every library Chromium needs. On it
+      # `playwright install-deps` only adds fonts that this check does not
+      # depend on, and that download from the runner's Ubuntu mirror has
+      # repeatedly run past its time limit, so a slow mirror was reported as
+      # a failed form check. The packages are installed only when the browser
+      # cannot start, for example after a runner image drops a library.
+      # Keep in step with ci.yml.
+      - id: chromium
+        name: Check whether Chromium starts with the packages on the runner
+        run: |
+          if node -e "
+            const { chromium } = require('@playwright/test');
+            (async () => {
+              const browser = await chromium.launch({ timeout: 30000 });
+              const page = await browser.newPage();
+              await page.setContent('<p>ok</p>', { timeout: 30000 });
+              await browser.close();
+            })().catch((error) => {
+              console.error(error.message);
+              process.exit(1);
+            });
+          "; then
+            echo "starts=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "starts=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Chromium did not start with the packages on the runner. Installing its system packages."
+          fi
+        timeout-minutes: 2
+      - if: steps.chromium.outputs.starts != 'true'
         run: npx playwright install-deps chromium
         timeout-minutes: 5
 

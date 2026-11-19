@@ -81,8 +81,12 @@ export const post: RawBlogPostEntry = {
       url: "https://www.ppsr.gov.au/searching/do-used-car-or-vehicle-search",
     },
     {
-      title: "Queensland Government — registration transfer",
-      url: "https://www.qld.gov.au/transport/registration/transfer",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+    },
+    {
+      title: "Queensland Government — transfer registration as a buyer",
+      url: "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
     },
     {
       title: "Queensland Government — safety certificates",

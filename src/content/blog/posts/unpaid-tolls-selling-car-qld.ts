@@ -17,7 +17,7 @@ export const post: RawBlogPostEntry = {
 
     `If there's no tag and no account covering the plate, Linkt issues a toll invoice to the registered operator. Left alone, it escalates in steps: an unpaid toll notice, then an infringement notice, then referral to the State Penalties Enforcement Registry if that infringement goes unanswered for 28 days. SPER adds a registration fee and has its own enforcement options. A couple of dollars for a run through the tunnel can end up costing many times the original toll, in a name that may no longer have anything to do with the car.`,
 
-    `Most unpaid tolls when selling a car land in the gap between handover and transfer. In Queensland the buyer has 14 days to lodge the transfer with Transport and Main Roads, and until they do, the vehicle is still recorded against you. Some buyers take the full fortnight. Some never lodge it at all. Every tolled trip in that window is billed to the old registration, which is why completing the seller's side of the [transfer of ownership](/blog/how-to-transfer-car-ownership-qld) on the day — and keeping the confirmation — matters more than any other step in this article.`,
+    `Most unpaid tolls when selling a car land in the gap between handover and transfer. In Queensland the buyer has 14 days to transfer the registration into their name, and Transport and Main Roads recommends that the seller help by transferring it out of their own name. Until the registration has left your name, the vehicle is still recorded against you. Some buyers take the full fortnight. Some never lodge it at all. Every tolled trip in that window is billed to the old registration, which is why completing the seller's side of the [transfer of ownership](/blog/how-to-transfer-car-ownership-qld) on the day — and keeping the confirmation — matters more than any other step in this article.`,
 
     `## Take the Tag Off the Account, Not Just the Windscreen`,
 
@@ -33,7 +33,7 @@ export const post: RawBlogPostEntry = {
 
     `## What to Do on Handover Day`,
 
-    `Four things stop unpaid tolls when selling a car from following you home, and they go in this order. Complete your side of the TMR transfer and save the confirmation. Remove the vehicle from your Linkt account. Cancel the registration direct debit. Then write yourself a receipt with the date, the odometer reading, the VIN, the price, and both parties' details — that document is what settles any argument about which trips happened on whose watch. Our guide to [the paperwork for selling a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers the rest of the file.`,
+    `Four things stop unpaid tolls when selling a car from following you home, and they go in this order. Take the registration off direct debit if it is paid that way, which Transport and Main Roads says to do before you start the transfer. Complete your side of the TMR transfer and save the confirmation. Remove the vehicle from your Linkt account. Then write yourself a receipt with the date, the odometer reading, the VIN, the price, and both parties' details — that document is what settles any argument about which trips happened on whose watch. Our guide to [the paperwork for selling a car in QLD](/blog/what-paperwork-to-sell-a-car-qld) covers the rest of the file.`,
 
     `Do not infer the registration path from labels such as wrecker or cash-for-cars buyer. If the vehicle is being sold for parts, Queensland says it must be deregistered before sale regardless of the buyer's label. If it is not a for-parts sale, confirm whether it is already unregistered or whether a registered transfer or direct licensed-dealer acquisition applies. Complete the applicable step and remove the sold vehicle from Linkt so later plate-based trips are not charged to your account.`,
 
@@ -70,8 +70,12 @@ export const post: RawBlogPostEntry = {
       url: "https://www.qld.gov.au/transport/buying/rules/selling",
     },
     {
-      title: "Queensland Government — registration transfer",
-      url: "https://www.qld.gov.au/transport/registration/transfer",
+      title: "Queensland Government — transfer registration as a seller",
+      url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+    },
+    {
+      title: "Queensland Government — transfer registration as a buyer",
+      url: "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
     },
     {
       title: "Queensland Government — safety certificates",
