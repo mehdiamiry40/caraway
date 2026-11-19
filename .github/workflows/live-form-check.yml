@@ -16,8 +16,25 @@ on:
 permissions:
   contents: read
 
+# One check runs at a time and at most one more waits; a newer event replaces
+# the one that is waiting. That is fine between real checks, which all load
+# the same live site. But every preview deployment raises an event here too,
+# from the copy of this file on its own branch, and the job below skips it.
+# If such an event shared the queue it could replace the waiting check for a
+# new Production deployment, and that check would never run. So events the job
+# would skip get a group of their own.
+# - The condition must stay the same as the job's `if`.
+# - Do not rename the shared group back to `live-form-check`: branches cut
+#   before this change still put their preview events in a group of that name.
 concurrency:
-  group: live-form-check
+  group: >-
+    ${{
+    (github.event_name != 'deployment_status' ||
+    (github.event.deployment_status.state == 'success' &&
+    github.event.deployment.environment == 'Production'))
+    && 'live-site-form-check'
+    || format('live-form-check-skipped-{0}', github.run_id)
+    }}
   cancel-in-progress: false
 
 jobs:

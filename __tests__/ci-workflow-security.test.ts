@@ -101,6 +101,30 @@ describe("live form check workflow", () => {
     expect(liveFormCheck).toMatch(/uses: actions\/checkout@[0-9a-f]{40}[^\n]*\n\s+with:\n(?:\s+#[^\n]*\n)*\s+ref: main\n/);
   });
 
+  it("keeps events the job skips out of the queue that real checks wait in", () => {
+    const oneLine = (text: string | undefined) =>
+      (text ?? "").replace(/\s+/g, " ").trim();
+    const runsTheJob =
+      "github.event_name != 'deployment_status' || " +
+      "(github.event.deployment_status.state == 'success' && " +
+      "github.event.deployment.environment == 'Production')";
+
+    const jobIf = liveFormCheck.match(/\n    if: >-\n((?: {6}.*\n)+)/);
+    expect(oneLine(jobIf?.[1])).toBe(runsTheJob);
+
+    // A preview deployment's event must not be able to replace the waiting
+    // check for a Production deployment, so it gets a group no other run has.
+    const group = liveFormCheck.match(
+      /\nconcurrency:\n  group: >-\n((?: {4}.*\n)+)  cancel-in-progress: false\n/,
+    );
+    expect(oneLine(group?.[1])).toBe(
+      `\${{ (${runsTheJob}) && 'live-site-form-check' || ` +
+        "format('live-form-check-skipped-{0}', github.run_id) }}",
+    );
+    // Branches cut before this rule existed still use the old shared name.
+    expect(liveFormCheck).not.toMatch(/group: live-form-check\s/);
+  });
+
   it("points the suite at the canonical site and nowhere else", () => {
     expect(liveFormCheck).toContain("run: npm run test:e2e:production");
     expect([...liveFormCheck.matchAll(/FORM_CHECK_BASE_URL: (\S+)/g)].map((match) => match[1]))
