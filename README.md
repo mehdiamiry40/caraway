@@ -238,7 +238,7 @@ the place to record any change of policy.
   - `layout.tsx` / `page.tsx` — root shell, homepage
   - `[slug]/` — dynamic marketing pages
   - `locations/`, `blog/`, `faq/`, `about/`, `contact/`, `privacy/`, `terms/`, `accessibility/`
-  - `api/health/route.ts` — liveness/version endpoint for uptime checks
+  - `api/health/route.ts` — configuration check for uptime monitors (see [Health check](#health-check))
   - `robots.ts`, `sitemap.ts` — SEO metadata
 - **`src/lib/`** — shared modules (schemas, analytics, JSON-LD, email builders).
 - **Server actions** — validate and save quote/contact submissions before acknowledgement.
@@ -272,24 +272,30 @@ preview hosts receive `noindex`, and the canonical host does not.
 `GET /api/health` is a configuration check. It does not contact Redis, Resend,
 or a webhook. The authenticated synthetic lead-delivery monitor verifies the
 real path, but it is no longer scheduled — call it by hand when you need that
-proof. The response has this shape:
+proof. This is what production returned on 19 November 2026:
 
 ```json
 {
   "status": "ok",
-  "fullyRedundant": false,
   "checkType": "configuration",
+  "fullyRedundant": false,
   "distributedRateLimitConfigured": true,
   "leadCaptureConfigured": true,
-  "leadMonitorEnabled": false
+  "leadMonitorEnabled": true
 }
 ```
 
+The values follow the Vercel project settings, which can change without a
+commit. Read the live ones with `curl https://caraway.au/api/health` before
+relying on this page.
+
 `fullyRedundant` is `true` only when both forms have a webhook and an email
 channel. Production delivers by email alone, so it reports `false`.
-`leadMonitorEnabled` reflects `LEAD_MONITOR_ENABLED`, which is meant to be off
-in production: the synthetic enquiries it generated are no longer wanted. Set
-it to `1` and redeploy only if you reinstate the check.
+`leadMonitorEnabled` is `true` when `LEAD_MONITOR_ENABLED` is `1` and
+`CRON_SECRET` is set. It means only that the synthetic monitor route will send
+its two labeled enquiries when someone calls it with the secret. Nothing calls
+that route on a schedule, so the setting sends nothing by itself. With any
+other value the route answers `skipped`.
 
 Wire this to an uptime monitor as a configuration signal. Runtime delivery
 failures are reported separately by the worker heartbeat
