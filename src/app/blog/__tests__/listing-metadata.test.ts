@@ -86,10 +86,9 @@ describe("blog listing metadata", () => {
       1 + BLOG_ARCHIVE_PAGE_LIMIT * BLOG_PAGE_SIZE,
     );
     expect(staticParams).toEqual([{ page: "2" }, { page: "3" }]);
-    expect(sitemapPaths).toEqual([
-      `${SITE_URL}/blog/page/2`,
-      `${SITE_URL}/blog/page/3`,
-    ]);
+    // Archive pages stay live and self-canonical but are not submitted in the
+    // sitemap, which lists the posts themselves rather than their listings.
+    expect(sitemapPaths).toEqual([]);
     expect(livePaths.filter((path) => redirectSources.has(path))).toEqual([]);
 
     for (const { page } of staticParams) {

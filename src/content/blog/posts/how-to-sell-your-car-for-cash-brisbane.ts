@@ -9,7 +9,7 @@ export const post: RawBlogPostEntry = {
   excerpt:
     "Compare Brisbane car-sale options by likely net return, preparation, collection, payment terms, and the Queensland seller steps that apply.",
   content: [
-    "Selling a car in Brisbane involves trade-offs between the likely net return, time, preparation, appointments, and certainty. A clean, registered vehicle may suit a private listing, while a direct buyer may suit an owner who wants one quote and an agreed collection plan. This guide explains how to compare the channels, describe the vehicle accurately, assess written terms, and complete the Queensland seller steps that apply.",
+    "Selling a car in Brisbane involves trade-offs between the likely net return, time, preparation, appointments, and certainty. A clean, registered vehicle may suit a private listing, while a [direct buyer for your car in Brisbane](/sell-my-car-brisbane) may suit an owner who wants one quote and an agreed collection plan. This guide explains how to compare the channels, describe the vehicle accurately, assess written terms, and complete the Queensland seller steps that apply.",
 
     "## Compare the main sale options",
 

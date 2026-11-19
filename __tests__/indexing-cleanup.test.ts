@@ -12,7 +12,7 @@ import { hashInlineScript } from "@/lib/csp-inline-scripts";
 import sitemap from "@/app/sitemap";
 import { generateStaticParams as generateServiceStaticParams } from "@/app/[slug]/page";
 import { generateStaticParams as generateBlogStaticParams } from "@/app/blog/[slug]/metadata";
-import { blogPosts } from "@/data/blog-posts";
+import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
 import { RETIRED_BLOG_DESTINATIONS } from "@/lib/blog-consolidation";
@@ -94,6 +94,11 @@ describe("Search Console indexing cleanup", () => {
   it("keeps the known stale URLs on permanent redirects to live canonical targets", async () => {
     const redirects = await getRedirectRules();
     const sitemapUrls = new Set(sitemap().map((entry) => entry.url));
+    // Category listings are live pages that the sitemap leaves out on purpose,
+    // so a redirect into one is checked against the live categories instead.
+    const liveCategoryPaths = new Set(
+      Object.keys(categoryMap).map((slug) => `/blog/category/${slug}`),
+    );
 
     for (const legacy of legacyIndexingRedirects) {
       const redirect = findPathRedirect(redirects, legacy.source);
@@ -102,8 +107,12 @@ describe("Search Console indexing cleanup", () => {
         permanent: true,
       });
 
+      const target = liveTargetPath(legacy.destination);
       expect(sitemapUrls.has(`${SITE_URL}${legacy.source}`)).toBe(false);
-      expect(sitemapUrls.has(`${SITE_URL}${liveTargetPath(legacy.destination)}`)).toBe(true);
+      expect(
+        sitemapUrls.has(`${SITE_URL}${target}`) || liveCategoryPaths.has(target),
+        legacy.source,
+      ).toBe(true);
     }
   });
 

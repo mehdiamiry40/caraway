@@ -18,9 +18,9 @@ import {
   BLOG_FAQ_ROLLOUT_DATE,
   getRenderableBlogFaqs,
 } from "@/lib/blog-faqs";
+import { blogPageCount } from "@/lib/blog-pagination";
 import {
   ABOUT_CONTENT_UPDATED,
-  BLOG_CATEGORY_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   LEGAL_DATE_ISO,
@@ -112,42 +112,38 @@ describe("sitemap.ts — blog post inclusion", () => {
     expect(
       entries.find((entry) => entry.url === paperworkPost?.canonicalUrl)
         ?.lastModified,
-    ).toBe("2026-08-11");
+    ).toBe(paperworkPost?.updatedAt);
   });
 });
 
 /* -----------------------------------------------------------------------
- * Category page accuracy
+ * Listing pages — live and crawlable, but not submitted
  * ---------------------------------------------------------------------*/
-describe("sitemap.ts — category pages", () => {
-  it("has a category entry for every category with indexable posts", () => {
+describe("sitemap.ts — blog listing pages", () => {
+  it("leaves category pages out while they stay live", () => {
     const categorySlugs = Object.keys(categoryMap);
     expect(categorySlugs.length).toBeGreaterThan(0);
     for (const slug of categorySlugs) {
-      expect(urls.has(`${SITE_URL}/blog/category/${slug}`)).toBe(true);
+      expect(urls.has(`${SITE_URL}/blog/category/${slug}`)).toBe(false);
     }
+    expect(
+      [...urls].filter((url) => url.includes("/blog/category/")),
+    ).toEqual([]);
   });
 
-  it("uses the latest of each category's posts and its shared template", () => {
-    const categorySlugs = Object.keys(categoryMap);
-    for (const slug of categorySlugs) {
-      const postsInCat = getPostsByCategory(slug);
-      const expectedDate = postsInCat.reduce(
-        (latest, p) => {
-          const stamp = p.updatedAt || p.date;
-          return stamp > latest ? stamp : latest;
-        },
-        "2025-01-01",
-      );
-      const entry = entries.find(
-        (e) => e.url === `${SITE_URL}/blog/category/${slug}`,
-      );
-      expect(entry).toBeDefined();
-      expect(entry?.lastModified).toBe(
-        expectedDate > BLOG_CATEGORY_CONTENT_UPDATED
-          ? expectedDate
-          : BLOG_CATEGORY_CONTENT_UPDATED,
-      );
+  it("leaves paginated archive pages out while they stay live", () => {
+    expect(blogPageCount()).toBeGreaterThan(1);
+    expect(
+      [...urls].filter((url) => /\/blog\/page\/\d+$/.test(url)),
+    ).toEqual([]);
+  });
+
+  it("still submits the blog index and every post the listings link to", () => {
+    expect(urls.has(`${SITE_URL}/blog`)).toBe(true);
+    for (const slug of Object.keys(categoryMap)) {
+      for (const post of getPostsByCategory(slug)) {
+        expect(urls.has(post.canonicalUrl), post.slug).toBe(true);
+      }
     }
   });
 });

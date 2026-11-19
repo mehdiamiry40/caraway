@@ -180,10 +180,10 @@ describe("primary SEO query ownership", () => {
     const { articleSchema } = buildBlogPostSeoProps(post);
 
     expect(post.title).toBe(
-      "Selling a Car in QLD: Paperwork & Seller Steps",
+      "Selling a Car in QLD: Paperwork & Documents Checklist",
     );
     expect(post.metaDescription).toBe(
-      "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
+      "Selling a car in QLD? Paperwork to gather before and on sale day: authority to sell, safety and gas certificates, finance payout and a signed sale record.",
     );
     expect(post.content[0]).toMatch(/^Selling a car in Queensland/);
     expect(post.title).not.toMatch(CASH_QUERY);
@@ -198,7 +198,7 @@ describe("primary SEO query ownership", () => {
         url: post.canonicalUrl,
         title: post.title,
         description: post.metaDescription,
-        modifiedTime: "2026-08-11",
+        modifiedTime: post.updatedAt,
       },
       twitter: {
         title: post.title,
@@ -208,10 +208,10 @@ describe("primary SEO query ownership", () => {
     expect(articleSchema).toMatchObject({
       headline: post.title,
       description: post.metaDescription,
-      dateModified: "2026-08-11",
+      dateModified: post.updatedAt,
       citation: expect.arrayContaining([
         "https://www.qld.gov.au/transport/buying/rules/selling",
-        "https://www.qld.gov.au/transport/registration/transfer/rego",
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
       ]),
     });
     expectHonestOwnershipDates(post);
