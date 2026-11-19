@@ -375,4 +375,27 @@ describe("Queensland authority assets", () => {
       ]),
     );
   });
+
+  it("does not say the transfer runs on the F3520 in the novated lease guide", () => {
+    const lease = blogPosts.find(
+      (post) => post.slug === "sell-car-novated-lease-qld",
+    );
+    const text = [
+      ...(lease?.content ?? []),
+      ...(lease?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // TMR requires the form for an in-person transfer and only recommends
+    // Part B for an online one.
+    expect(text).not.toMatch(/transfer runs on/i);
+    expect(text).toContain(
+      "the registration transfer is done online or, in person, on the Vehicle Registration Transfer Application (F3520)",
+    );
+    expect(lease?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
+      ]),
+    );
+  });
 });
