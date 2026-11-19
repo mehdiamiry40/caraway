@@ -171,6 +171,10 @@ FORM_CHECK_BASE_URL=https://caraway.au npm run test:e2e:production
 **Sitemap and Search Console** remain the discovery path for Google. `src/app/sitemap.ts`
 emits honest per-page `lastModified` dates; do not widen them to "today" on
 deploy, since accurate dates are what make the recrawl signal worth anything.
+The sitemap lists pages meant to rank. Blog category pages (`/blog/category/*`)
+and paginated archive pages (`/blog/page/N`) are left out on purpose: they stay
+live, crawlable and self-canonical, and are reached through `/blog` and the
+links on each post.
 
 **IndexNow** (`npm run seo:indexnow`) pushes changed URLs to Bing, Yandex,
 Seznam and Naver. **Google does not consume IndexNow** — it supplements Google

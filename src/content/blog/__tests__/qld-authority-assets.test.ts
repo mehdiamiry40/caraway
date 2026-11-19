@@ -27,12 +27,14 @@ describe("Queensland authority assets", () => {
       "not a complete vehicle-history or ownership check",
     );
     expect(paperwork).toMatchObject({
-      title: "Selling a Car in QLD: Paperwork & Seller Steps",
+      title: "Selling a Car in QLD: Paperwork & Documents Checklist",
       metaDescription:
-        "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
-      updatedAt: "2026-08-11",
-      reviewedAt: "2026-08-11",
+        "Selling a car in QLD? Paperwork to gather before and on sale day: authority to sell, safety and gas certificates, finance payout and a signed sale record.",
     });
+    // A rewrite must be reviewed in the same pass: the review date covers the
+    // modification date rather than trailing it.
+    expect(paperwork?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(paperwork?.reviewedAt).toBe(paperwork?.updatedAt);
     expect(paperwork?.content[0]).toMatch(/^Selling a car in Queensland/);
     expect(paperwork?.content.join(" ")).toContain(
       "For a registered transfer, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520)",
@@ -47,7 +49,7 @@ describe("Queensland authority assets", () => {
     expect(paperwork?.sources?.map((source) => source.url)).toEqual(
       expect.arrayContaining([
         "https://www.qld.gov.au/transport/buying/rules/selling",
-        "https://www.qld.gov.au/transport/registration/transfer/rego",
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
         "https://www.qld.gov.au/transport/buying/unregistered/uvp",
       ]),
     );
@@ -80,10 +82,8 @@ describe("Queensland authority assets", () => {
     );
     const content = transfer?.content.join(" ") ?? "";
 
-    expect(transfer).toMatchObject({
-      updatedAt: "2026-08-11",
-      reviewedAt: "2026-08-11",
-    });
+    expect(transfer?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(transfer?.reviewedAt).toBe(transfer?.updatedAt);
     expect(content).toContain(
       "Even if the seller intends to transfer the registration online, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520)",
     );
@@ -91,8 +91,13 @@ describe("Queensland authority assets", () => {
     expect(content).toContain(
       "For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B",
     );
-    expect(transfer?.sources?.map((source) => source.url)).toContain(
-      "https://www.qld.gov.au/transport/registration/transfer/rego",
+    // TMR split its transfer guidance into a seller page and a buyer page;
+    // the guide cites both rather than the hub the old URLs now redirect to.
+    expect(transfer?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
+        "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
+      ]),
     );
   });
 

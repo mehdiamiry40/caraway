@@ -24,7 +24,7 @@ export const post: RawBlogPostEntry = {
 
     "## What inspectors check",
 
-    "An approved examiner assesses the vehicle against the applicable Queensland inspection standard. The check covers safety-related items rather than providing a mechanical warranty, valuation, or complete vehicle-history report. Ask the station what vehicle category it is authorised to inspect and use any inspection report to identify work required before a certificate can be issued.",
+    "An approved examiner assesses the vehicle against the applicable Queensland inspection standard. The check covers safety-related items rather than providing a mechanical warranty, valuation, or complete vehicle-history report. Ask the station what vehicle category it is authorised to inspect and use any inspection report to identify work required before a certificate can be issued. A Safety Certificate inspection is also separate from clearing a roadside defect notice, which follows the instructions on the notice itself; see [what to do with a car defect notice in QLD](/blog/car-defect-notice-qld).",
 
     "## The official inspection fee",
 

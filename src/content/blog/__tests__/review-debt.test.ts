@@ -19,7 +19,6 @@ import { blogPosts } from "@/data/blog-posts";
  */
 const KNOWN_REVIEW_DEBT = [
   "cancel-car-insurance-after-selling-car-qld",
-  "car-defect-notice-qld",
   "cash-for-cars-vs-wreckers-brisbane",
   "delete-personal-data-from-car-before-selling",
   "how-much-is-my-car-worth-brisbane",

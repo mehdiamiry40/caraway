@@ -3,33 +3,33 @@ import { BUSINESS } from "@/lib/site";
 
 export const post: RawBlogPostEntry = {
     slug: "what-paperwork-to-sell-a-car-qld",
-    title: "Selling a Car in QLD: Paperwork & Seller Steps",
+    title: "Selling a Car in QLD: Paperwork & Documents Checklist",
     metaDescription:
-      "How to sell a car in QLD: compare registered transfers, cancellations and unregistered sales, then check certificates, TMR steps and seller records.",
+      "Selling a car in QLD? Paperwork to gather before and on sale day: authority to sell, safety and gas certificates, finance payout and a signed sale record.",
     excerpt:
-      "Choose the right Queensland transaction path, then prepare the authority, certificates, TMR confirmation and signed sale record that apply.",
+      "The documents a Queensland seller needs before and on the day of sale: proof of authority to sell, the certificates that apply, a finance payout, and the signed record both parties keep.",
     content: [
-      "Selling a car in Queensland starts with choosing the transaction path that applies: a registered transfer, a sale after registration cancellation, an already-unregistered sale, or a direct sale to a verified licensed motor dealer. Certificates, TMR steps, authority checks, and seller records differ by path. Use this checklist for your situation, then confirm the current requirements with Transport and Main Roads (TMR) before handover.",
+      "Selling a car in Queensland goes more smoothly when the paperwork is ready before a buyer arrives. Which documents you need depends on how the vehicle is being sold: registered with the registration passing to the buyer, after cancelling the registration, already unregistered, or directly to a verified licensed motor dealer. This checklist covers what to gather before the sale and what to sign and keep on the day. The lodgement that follows has its own [step-by-step guide to transferring registration](/blog/how-to-transfer-car-ownership-qld). Confirm the current requirements with Transport and Main Roads (TMR) before handover.",
 
       "## At-a-glance Queensland seller paperwork checklist",
 
       "Use only the items that match your transaction. Start with the vehicle's registration status at handover, the intended registration outcome, the buyer type, and any finance, insurer, estate, company, gas-system, or written-off-vehicle complication.",
 
-      "- **Choose the transaction path.** Separate a [registered transfer](/blog/how-to-transfer-car-ownership-qld), [registration cancellation before sale](/blog/how-to-cancel-car-rego-qld), and an already-unregistered sale. A direct acquisition by a verified licensed motor dealer follows different certificate and notification rules from a private transfer or a buyer merely acting as an agent.",
+      "- **Choose the transaction path.** Separate a registered sale, [registration cancellation before sale](/blog/how-to-cancel-car-rego-qld), and an already-unregistered sale. A direct acquisition by a verified licensed motor dealer follows different certificate and notification rules from a private transfer or a buyer merely acting as an agent.",
 
       "- **Confirm authority to sell.** Registration and PPSR records do not prove ownership. Resolve joint, company, finance, insurer, [estate](/blog/sell-deceased-estate-car-qld), representative, or [not-in-my-name](/blog/sell-car-not-in-my-name-qld) situations before handover.",
 
       "- **Check the safety-certificate rule.** A registered vehicle generally needs a current safety certificate before disposal unless an exemption applies. An unregistered vehicle can be sold without one; direct disposal to a verified licensed motor dealer is another exception. Do not assume every cash-for-cars or wrecking business qualifies.",
 
-      "- **Check gas equipment separately.** A registered vehicle with a gas system can require a current gas inspection certificate, and not every gas-equipped transfer is eligible for the online pathway.",
+      "- **Check gas equipment separately.** A registered vehicle with a gas system can require a current gas inspection certificate. TMR lists that certificate among its in-person transfer steps, so confirm which pathway the vehicle can use.",
 
       "- **Resolve finance or security interests.** Obtain a current lender payout and an agreed discharge process. A PPSR search can report registered security interests and usually stolen or written-off status, but it does not identify the owner or prove authority to sell.",
 
-      "- **Gather the transfer details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, dutiable value, and odometer reading. For a registered transfer, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520) and have the buyer sign it on the day of sale, even if they intend to transfer the registration online. For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B.",
+      "- **Prepare the registration form details.** The eligible online seller service asks for buyer details and, for a vehicle, the sale date, vehicle value, and odometer reading. For a registered transfer, TMR recommends that every seller complete Part B of the Vehicle Registration Transfer Application (F3520) and have the buyer sign it on the day of sale, even if they intend to transfer the registration online. For an in-person transfer, both parties sign F3520, the buyer lodges Part A, and the seller keeps Part B.",
 
       "- **Create the handover record.** Record the identifiable vehicle, date, parties, agreed amount and payment, registration status, keys or items handed over, and relevant condition disclosures. Both parties should sign and retain the record.",
 
-      "- **Finish the applicable seller step.** Submit the eligible online transfer or retain and, where necessary, lodge the signed seller copy; complete registration cancellation and the applicable plate-surrender, retention, or declaration step before a for-parts sale; or retain the signed unregistered-sale record. Save the TMR confirmation and check that the registration record is no longer in your name.",
+      "- **Keep the record that closes your path.** For a registered sale that is the TMR confirmation and your signed seller copy; for a for-parts sale, the registration cancellation and the applicable plate-surrender, retention, or declaration record; for an already-unregistered sale, the signed sale record. The lodgement itself is covered in the [registration transfer steps](/blog/how-to-transfer-car-ownership-qld).",
 
       "## Certificate of registration",
 
@@ -45,15 +45,11 @@ export const post: RawBlogPostEntry = {
 
       "## LPG and other gas systems",
 
-      "A registered vehicle, trailer, or boat with a gas system generally needs an inspection by an authorised gas installer and a vehicle or vessel gas inspection certificate for the registration transfer. The certificate is valid for three months. Remote-area and individual exemptions exist, and gas-equipped registrations cannot use every online-transfer pathway, so check the [Queensland gas-system guidance](https://www.qld.gov.au/emergency/safety/home/gas/gas-fuelled-engines) before arranging the sale.",
+      "A registered vehicle, trailer, or boat with a gas system generally needs an inspection by an authorised gas installer and a vehicle or vessel gas inspection certificate for the registration transfer. The certificate is valid for three months. Remote-area and individual exemptions exist, so check the [Queensland gas-system guidance](https://www.qld.gov.au/emergency/safety/home/gas/gas-fuelled-engines) before arranging the sale.",
 
       "## PPSR check and encumbrance",
 
       "A PPSR (Personal Property Securities Register) search can reveal a registered security interest, write-off record, or stolen-vehicle record. If finance is owing, obtain a current payout figure and agree on a settlement process that ensures the security interest is discharged. Buyers should run their own search using the official PPSR service.",
-
-      "## Transfer of registration",
-
-      "The registration transfer moves the vehicle record to the buyer. Queensland offers online and paper pathways, depending on eligibility. The seller should complete the seller-side steps promptly, provide the buyer with the required transaction details, and keep a signed receipt and TMR confirmation.",
 
       "## Selling an unregistered vehicle",
 
@@ -77,7 +73,7 @@ export const post: RawBlogPostEntry = {
 
       "## Seller-side transfer notification — a step many sellers miss",
 
-      "The seller-side TMR notification is one of the most important steps in a registered sale. Complete it through the eligible online or paper process, keep confirmation, and check that the vehicle is no longer recorded in your name. A buyer can provide transaction details or help prepare forms, but the seller should not delegate verification of this step.",
+      "The documents above feed one lodgement step in a registered sale: transferring the registration out of your name. Complete it through the eligible online or paper process, keep the confirmation, and check that the vehicle is no longer recorded in your name. A buyer can provide transaction details or help prepare forms, but the seller should not delegate verification of this step. Our guide to [how to transfer car ownership in QLD](/blog/how-to-transfer-car-ownership-qld) sets out who lodges what, the 14-day deadline, and what to do if the buyer does not finish.",
 
       "## WOVR and disclosure obligations",
 
@@ -89,26 +85,26 @@ export const post: RawBlogPostEntry = {
 
       "## Selling to a cash-for-cars buyer in Brisbane",
 
-      `When you sell to a [cash-for-cars buyer in Brisbane](/), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
+      `When you sell to a [cash-for-cars buyer in Brisbane](/), bring the identity, registration, finance, insurer, estate, or ownership documents that apply. That holds for a running, registered car too: [selling your car in Brisbane to a direct buyer](/sell-my-car-brisbane) skips the private listing, not the paperwork. Ask for a signed receipt and the buyer details needed for TMR, then retain confirmation of your seller-side transfer, cancellation, or unregistered-sale steps. If Caraway makes an offer and you accept it, the [included-pickup terms](/car-removal-brisbane), collection window, payment arrangement, and access requirements are confirmed before dispatch. Call **${BUSINESS.phoneDisplay}** or request a quote online.`,
 
       "Use the private Queensland seller builder below to turn the facts of a proposed transaction into a conservative checklist and a printable two-copy handover record. It does not send or save the details you enter, and it does not replace the official transfer, cancellation, licence, certificate, ownership, or legal checks that apply.",
     ],
     interactiveTool: "qld-vehicle-sale-record-builder",
     date: "2026-04-16",
-    updatedAt: "2026-08-11",
-    reviewedAt: "2026-08-11",
+    updatedAt: "2026-11-19",
+    reviewedAt: "2026-11-19",
     sources: [
       {
         title: "Queensland Government — selling a used vehicle",
         url: "https://www.qld.gov.au/transport/buying/rules/selling",
       },
       {
-        title: "Queensland Government — transfer registration online",
-        url: "https://www.qld.gov.au/transport/registration/transfer/online",
+        title: "Queensland Government — transfer registration as a seller",
+        url: "https://www.qld.gov.au/transport/registration/transfer/seller-transfer",
       },
       {
-        title: "Queensland Government — transfer registration in person",
-        url: "https://www.qld.gov.au/transport/registration/transfer/rego",
+        title: "Queensland Government — transfer registration as a buyer",
+        url: "https://www.qld.gov.au/transport/registration/transfer/buyer-transfer",
       },
       {
         title: "Queensland Government — check vehicle registration",

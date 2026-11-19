@@ -25,7 +25,7 @@ export const post: RawBlogPostEntry = {
 
     "Queensland Transport says a safety certificate is no longer required before advertising a registered vehicle, but the owner generally must have a current certificate and give it to the buyer before disposing of the vehicle unless an exemption applies. Unregistered vehicles and vehicles disposed of directly to a licensed motor dealer are stated exceptions. A dealer merely acting for the owner is not the same as the dealer acquiring the vehicle directly.",
 
-    "That means the safest approach is to check the current Queensland Transport page before selling, especially if the car is registered, defective, written off, or being sold in an unusual arrangement. If you are also unsure about the transfer step, read our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld).",
+    "That means the safest approach is to check the current Queensland Transport page before selling, especially if the car is registered, defective, written off, or being sold in an unusual arrangement. A car that is already under a roadside defect notice has its own deadline and options, set out in our guide to [clearing a car defect notice in QLD](/blog/car-defect-notice-qld). If you are also unsure about the transfer step, read our guide to [transferring car ownership in QLD](/blog/how-to-transfer-car-ownership-qld).",
 
     "## Selling an unwanted, damaged, scrap, or unregistered car",
 

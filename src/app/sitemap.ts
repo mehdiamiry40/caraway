@@ -1,17 +1,12 @@
 import type { MetadataRoute } from "next";
 import { getServicePreferredImage, services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import {
-  blogPosts,
-  categoryMap,
-  getPostsByCategory,
-} from "@/data/blog-posts";
+import { blogPosts } from "@/data/blog-posts";
 import {
   SITE_URL,
   LEGAL_DATE_ISO,
   CONTENT_DEPLOY_DATE,
   ABOUT_CONTENT_UPDATED,
-  BLOG_CATEGORY_CONTENT_UPDATED,
   FAQ_CONTENT_UPDATED,
   HOME_CONTENT_UPDATED,
   HOW_IT_WORKS_CONTENT_UPDATED,
@@ -25,7 +20,6 @@ import {
   VEHICLE_DATA_ROUTE,
   VEHICLE_DATA_SOCIAL_IMAGE,
 } from "@/data/queensland-vehicle-data";
-import { blogPageCount } from "@/lib/blog-pagination";
 
 /* ---------------------------------------------------------------------------
  * Image constant — only the hero image is relevant for Google Image search.
@@ -223,42 +217,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   /* -----------------------------------------------------------------------
-   * 5. Blog category pages — per-category lastModified date
+   * Blog category pages (/blog/category/*) and paginated archive pages
+   * (/blog/page/N) are deliberately not submitted. They are listings of the
+   * posts above rather than pages meant to rank, so the sitemap carries only
+   * the posts themselves. The listing pages stay live, crawlable and
+   * self-canonical, and are still linked from /blog and from every post.
    * ---------------------------------------------------------------------*/
-  const categoryPages: MetadataRoute.Sitemap = Object.keys(categoryMap).map(
-    (slug) => {
-      const postsInCategory = getPostsByCategory(slug);
-      const latestInCategory = newestDate(postsInCategory, (p) => p.updatedAt || p.date);
-      const lastModified =
-        latestInCategory > BLOG_CATEGORY_CONTENT_UPDATED
-          ? latestInCategory
-          : BLOG_CATEGORY_CONTENT_UPDATED;
-      return {
-        url: `${SITE_URL}/blog/category/${slug}`,
-        lastModified,
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-      };
-    },
-  );
-
-  const paginationPages: MetadataRoute.Sitemap = Array.from(
-    { length: Math.max(0, blogPageCount() - 1) },
-    (_, index) => ({
-      url: `${SITE_URL}/blog/page/${index + 2}`,
-      lastModified: latestBlogDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
-    }),
-  );
 
   const entries = [
     ...staticPages,
     ...servicePages,
     ...suburbPages,
     ...blogPages,
-    ...categoryPages,
-    ...paginationPages,
   ];
 
   return Array.from(new Map(entries.filter((entry) => entry.url.startsWith(SITE_URL)).map((entry) => [entry.url, entry])).values());
