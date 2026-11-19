@@ -443,4 +443,32 @@ describe("Queensland authority assets", () => {
     expect(specialty).not.toMatch(/priced above private use/i);
     expect(specialty).toContain("booked hire CTP class (class 26)");
   });
+
+  it("does not give auction sales a cooling-off period in the refund guide", () => {
+    const refund = blogPosts.find(
+      (post) => post.slug === "private-car-sale-refund-qld",
+    );
+    const text = [
+      ...(refund?.content ?? []),
+      ...(refund?.faqs ?? []).map((faq) => faq.answer),
+    ].join(" ");
+
+    // Corrected and re-reviewed in the same pass.
+    expect(refund?.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(refund?.reviewedAt).toBe(refund?.updatedAt);
+    // Fair Trading exempts a sale by auction or on consignment from the
+    // cooling-off period. The statutory warranty still applies at auction.
+    expect(text).not.toMatch(/dealer or chattel auctioneer/i);
+    expect(text).toContain(
+      "A car bought at auction or on consignment gets no cooling-off period",
+    );
+    expect(text).toContain("other than at auction or on consignment");
+    // The court limit is on the Queensland Courts page, not the tribunal's.
+    expect(refund?.sources?.map((source) => source.url)).toEqual(
+      expect.arrayContaining([
+        "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/legal-requirements-motor-transaction/cooling-off-period-for-selling-a-car",
+        "https://www.courts.qld.gov.au/types-of-cases/money-disputes/about-money-disputes",
+      ]),
+    );
+  });
 });
