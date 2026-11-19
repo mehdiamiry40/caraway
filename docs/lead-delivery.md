@@ -34,8 +34,13 @@ directly instead of being saved. See
   this schedule needs Vercel Pro (the current team plan was checked as Pro).
 - The synthetic monitor is not scheduled: recipients asked to stop the daily
   labeled enquiries, so `/api/health/lead-delivery` runs only when called by
-  hand with the cron secret. Keep `LEAD_MONITOR_ENABLED=1` only when recipients
-  expect those messages. The monitor calls the same capture/processor path and
+  hand with the cron secret. `LEAD_MONITOR_ENABLED=1` makes such a call send one
+  labeled quote and one labeled contact enquiry; with any other value the route
+  answers `skipped`. The setting sends nothing by itself. Production had it on
+  when checked on 19 November 2026 (`leadMonitorEnabled:true` at `/api/health`),
+  so tell recipients before calling the route. A second call on the same day
+  finds the same two records and sends nothing new. The monitor calls the same
+  capture/processor path and
   verifies every configured channel reached provider acceptance. Its IDs are
   stable per day and derived with the cron secret, so public callers cannot
   predict/reserve them.

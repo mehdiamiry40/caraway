@@ -20,8 +20,11 @@ export const dynamic = "force-dynamic";
  * check with HTTP 503. Optional failover coverage is reported separately
  * through `fullyRedundant`; lacking a backup channel does not make an
  * otherwise operational service unhealthy. Deployed runtimes also require the
- * distributed limiter because accepted leads and paid upstream calls fail
- * closed when shared enforcement is unavailable.
+ * distributed limiter settings: the same database saves enquiries, and a
+ * deployment without it refuses both enquiries and paid upstream calls. (An
+ * outage of a configured database is a different case, which this check
+ * cannot see: enquiries then fall back to per-instance limits and a direct
+ * email.)
  *
  * Intentionally does not make outbound network requests — configuration
  * validation only — to avoid cost and DoS abuse vectors against /api/health.
