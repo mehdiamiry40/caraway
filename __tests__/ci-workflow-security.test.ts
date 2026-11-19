@@ -56,6 +56,36 @@ describe("CI secret isolation", () => {
   });
 });
 
+describe("browser setup", () => {
+  // From the start check to the blank line that ends the browser setup.
+  function browserSetup(source: string): string {
+    const start = source.indexOf("      - id: chromium\n");
+    const end = source.indexOf("\n\n", start);
+    if (start === -1 || end === -1)
+      throw new Error("Missing the Chromium start check");
+    return source.slice(start, end);
+  }
+
+  it("installs system packages only when Chromium cannot start", () => {
+    for (const source of [workflow, liveFormCheck]) {
+      // An unconditional package download fails the job whenever the runner's
+      // package mirror is slow, before any check has run.
+      expect(source).not.toContain("--with-deps");
+      expect(source.match(/install-deps/g)).toHaveLength(2); // one comment, one step
+      const setup = browserSetup(source);
+      expect(setup).toContain("chromium.launch(");
+      expect(setup).toContain('echo "starts=true" >> "$GITHUB_OUTPUT"');
+      expect(setup).toContain(
+        "      - if: steps.chromium.outputs.starts != 'true'\n        run: npx playwright install-deps chromium\n",
+      );
+    }
+  });
+
+  it("uses the same start check in CI and in the live form check", () => {
+    expect(browserSetup(workflow)).toBe(browserSetup(liveFormCheck));
+  });
+});
+
 describe("live form check workflow", () => {
   it("is read-only, holds no secrets and pins every action to a commit", () => {
     expect(liveFormCheck).toMatch(/^permissions:\n  contents: read$/m);
