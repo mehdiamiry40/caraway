@@ -190,19 +190,8 @@ describe("citation hygiene", () => {
     // backs none of the statements it is listed for.
     const hub = "https://www.qld.gov.au/transport/registration/transfer";
 
-    // A post that still cites one of the two addresses TMR retired has not been
-    // moved to the seller and buyer pages yet. That move rereads its transfer
-    // statements and drops the hub in the same pass, so the post is not
-    // reported a second time here. Once no post cites a retired address, this
-    // matches nothing and can be deleted.
-    const awaitsSellerAndBuyerPages = (urls: string[]) =>
-      urls.some((url) => /\/registration\/transfer\/(?:online|rego)$/.test(url));
-
     const offenders = blogPosts
-      .filter((post) => {
-        const urls = (post.sources ?? []).map((source) => source.url);
-        return urls.includes(hub) && !awaitsSellerAndBuyerPages(urls);
-      })
+      .filter((post) => (post.sources ?? []).some((source) => source.url === hub))
       .map((post) => post.slug);
 
     expect(
