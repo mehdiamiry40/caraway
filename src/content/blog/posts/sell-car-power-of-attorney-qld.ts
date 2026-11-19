@@ -76,7 +76,7 @@ export const post: RawBlogPostEntry = {
     {
       title:
         "Office of the Public Guardian — your role and responsibilities as an attorney",
-      url: "https://www.publicguardian.qld.gov.au/making-decisions/future-planning/your-role-and-responsibilities-as-an-attorney",
+      url: "https://www.publicguardian.qld.gov.au/making-decisions/future-planning/attorney-responsibilities",
     },
     {
       title: "QCAT — administrators for financial decisions",

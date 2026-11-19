@@ -56,6 +56,30 @@ const RETIRED_SOURCE_URLS = [
   "https://www.qld.gov.au/transport/registration/transfer/rego",
 ] as const;
 
+/**
+ * Addresses, or the start of them, that the publisher has moved. Each one
+ * still answers 200 by redirecting, so nothing else in the repo's gates fails
+ * when a post cites the old address again.
+ *
+ * Add an entry once every use has been repointed to the address it redirects
+ * to, with the claims reread against the page it lands on.
+ */
+const MOVED_SOURCE_URLS = [
+  // Registration fees, duty and concessions now sit under /registration/costs/.
+  "https://www.qld.gov.au/transport/registration/fees/",
+  // Fair trading and crime pages left /law/ for /community/fair-trading/ and
+  // /justice/.
+  "https://www.qld.gov.au/law/",
+  // Now /transport/safety/fines/transfer-fine.
+  "https://www.qld.gov.au/transport/safety/fines/how-to-transfer-a-fine",
+  // Now /making-decisions/future-planning/attorney-responsibilities.
+  "https://www.publicguardian.qld.gov.au/making-decisions/future-planning/your-role-and-responsibilities-as-an-attorney",
+  // Folded into /about-ctp-insurance/vehicle-classes/, which lists every class.
+  "https://maic.qld.gov.au/for-drivers/purchasing-ctp-insurance/personalised-transport-classes/",
+  // Folded into the council's general hazardous waste disposal page.
+  "https://www.brisbane.qld.gov.au/clean-and-green/rubbish-tips-and-bins/household-hazardous-waste/asbestos",
+] as const;
+
 /** An id-shaped path segment carries no meaning if the CMS renumbers it. */
 const OPAQUE_URL = /\/(?:node|page|content)\/\d+\/?$|[?&](?:p|page_id|id)=\d+/i;
 
@@ -148,6 +172,18 @@ describe("citation hygiene", () => {
       offenders,
       "This address now redirects to a hub page without the cited detail. " +
         "Cite the page that carries it, and reread the claim against that page.",
+    ).toEqual([]);
+  });
+
+  it("cites a moved page at the address it moved to", () => {
+    const offenders = allCitations()
+      .filter(({ url }) => MOVED_SOURCE_URLS.some((moved) => url.startsWith(moved)))
+      .map(({ slug, url }) => `${slug}: ${url}`);
+
+    expect(
+      offenders,
+      "This address redirects. Cite the address it lands on, after rereading " +
+        "the claim against that page.",
     ).toEqual([]);
   });
 

@@ -91,7 +91,7 @@ export const post: RawBlogPostEntry = {
     },
     {
       title: "Queensland Government — vehicle registration duty exemptions",
-      url: "https://www.qld.gov.au/transport/registration/fees/duty/rebates",
+      url: "https://www.qld.gov.au/transport/registration/costs/duty/rebates",
     },
     {
       title: "Queensland Revenue Office — matrimonial transfer duty exemptions",

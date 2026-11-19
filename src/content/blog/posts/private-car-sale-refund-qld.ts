@@ -70,11 +70,11 @@ export const post: RawBlogPostEntry = {
     {
       title:
         "Queensland Government — guarantees and warranties for second-hand vehicles",
-      url: "https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/regulated-industries-and-licensing/regulated-industries-licensing-and-legislation/motor-industry-regulation/legal-requirements-motor-transaction/guarantees-and-warranties-for-second-hand-vehicles",
+      url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/legal-requirements-motor-transaction/guarantees-and-warranties-for-second-hand-vehicles",
     },
     {
       title: "Queensland Government — cooling-off period for selling a car",
-      url: "https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/regulated-industries-and-licensing/regulated-industries-licensing-and-legislation/motor-industry-regulation/legal-requirements-motor-transaction/cooling-off-period-for-selling-a-car",
+      url: "https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/legal-requirements-motor-transaction/cooling-off-period-for-selling-a-car",
     },
     {
       title:

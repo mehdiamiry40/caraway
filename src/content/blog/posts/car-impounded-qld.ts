@@ -78,7 +78,7 @@ export const post: RawBlogPostEntry = {
     },
     {
       title: "Queensland Government — hooning",
-      url: "https://www.qld.gov.au/law/crime-and-police/types-of-crime/hooning",
+      url: "https://www.qld.gov.au/justice/crime-and-criminal-history/crime/hooning",
     },
   ],
   category: "Guides",

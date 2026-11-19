@@ -398,4 +398,49 @@ describe("Queensland authority assets", () => {
       ]),
     );
   });
+
+  it("keeps three guides to what the pages their sources moved to still say", () => {
+    const textOf = (slug: string) => {
+      const post = blogPosts.find((candidate) => candidate.slug === slug);
+      return [
+        ...(post?.content ?? []),
+        ...(post?.faqs ?? []).map((faq) => faq.answer),
+      ].join(" ");
+    };
+    const datesOf = (slug: string) => {
+      const post = blogPosts.find((candidate) => candidate.slug === slug);
+      return { updatedAt: post?.updatedAt, reviewedAt: post?.reviewedAt };
+    };
+
+    // The duty exemptions page gives the statutory declaration as the route to
+    // a refund, not as part of claiming the gift exemption at transfer, and
+    // its list of relatives is longer than the gift exemption.
+    const gifting = textOf("gifting-car-family-member-qld");
+    expect(gifting).not.toMatch(/supported by a statutory declaration/i);
+    expect(gifting).not.toContain("The list stops there");
+    expect(gifting).toContain(
+      "a completed transfer of vehicle registration statutory declaration is the route to a refund",
+    );
+    expect(datesOf("gifting-car-family-member-qld").reviewedAt).toBe(
+      datesOf("gifting-car-family-member-qld").updatedAt,
+    );
+
+    // The council's asbestos page was folded into its hazardous waste page,
+    // which says where asbestos cannot be disposed of and nothing about which
+    // vans contain it.
+    const caravan = textOf("sell-caravan-brisbane");
+    expect(caravan).not.toMatch(/before the late 1980s|wall sheeting/i);
+    expect(caravan).toContain(
+      "illegal to dispose of asbestos in a household bin or at its resource recovery centres",
+    );
+    expect(datesOf("sell-caravan-brisbane").reviewedAt).toBe(
+      datesOf("sell-caravan-brisbane").updatedAt,
+    );
+
+    // The insurer's vehicle classes page lists class 26 and says cost depends
+    // on class and use. It does not compare class 26 with private use.
+    const specialty = textOf("sell-specialty-vehicle-brisbane");
+    expect(specialty).not.toMatch(/priced above private use/i);
+    expect(specialty).toContain("booked hire CTP class (class 26)");
+  });
 });
