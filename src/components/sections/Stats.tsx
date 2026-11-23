@@ -84,7 +84,7 @@ function SupportStatItem({ stat }: { stat: StatDef }) {
       <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>
-      <p className="font-display text-base leading-tight text-primary sm:mt-4 sm:text-lg">
+      <p className="font-display text-xl font-bold leading-tight text-primary sm:mt-4 sm:text-2xl">
         {stat.value}
       </p>
       <p className="mt-1 text-xs sm:mt-1.5 sm:text-sm text-foreground/75 leading-snug font-medium">

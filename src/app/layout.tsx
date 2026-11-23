@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Inter, Schibsted_Grotesk } from "next/font/google";
+import { Barlow_Condensed, Inter } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -16,10 +16,13 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const schibsted = Schibsted_Grotesk({
+// Heavy condensed signage face for headings and buttons. It is not a variable
+// font, so every weight the styles use is listed here.
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-schibsted",
+  variable: "--font-barlow-condensed",
 });
 
 export const metadata: Metadata = {
@@ -94,7 +97,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#F2F0EB",
+  themeColor: "#141924",
 };
 
 export default function RootLayout({
@@ -103,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${inter.variable} ${schibsted.variable}`}>
+    <html lang="en-AU" className={`${inter.variable} ${barlowCondensed.variable}`}>
       <body className="min-h-screen">
         <a
           href="#main-content"

@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
-/* Caraway utility design system: clear, civic, practical, Queensland-focused. */
+/* Caraway design system: asphalt ink, hi-vis yellow actions and cash-green
+   confirmations on a clean white page. Square corners, heavy condensed
+   signage type. Built to read as a Brisbane cash-for-cars buyer at a glance. */
 
 @theme inline {
   --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-schibsted), var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
@@ -37,39 +39,32 @@
   --color-on-dark: hsl(var(--on-dark));
   --color-on-dark-hi: hsl(var(--on-dark-hi));
 
-  /* Plate yellow and CTA green are surfaced as tokens so components can use them. */
+  /* Hi-vis yellow: the primary action colour and the number-plate accent. */
   --color-plate: hsl(var(--plate));
   --color-plate-foreground: hsl(var(--plate-foreground));
   --color-cta: hsl(var(--cta));
+  --color-cta-hover: hsl(var(--cta-hover));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  /* Accessible "ink" variants of the action/accent hues, for use as TEXT on
-     light surfaces. The bright --cta/--accent are AA only as *surfaces* (with
-     their plum foreground); as text on white they fall to ~2.4–2.8:1. */
+  /* Accessible TEXT variants. Yellow and mid green are AA only as surfaces;
+     --cta-ink / --accent-ink are the versions that pass as text on white, and
+     --cta-bright / --accent-on-dark are the versions for dark bands. */
   --color-cta-ink: hsl(var(--cta-ink));
   --color-accent-ink: hsl(var(--accent-ink));
   --color-cta-bright: hsl(var(--cta-bright));
   --color-accent-on-dark: hsl(var(--accent-on-dark));
 
-  --color-navy: hsl(var(--navy));
-  --color-navy-foreground: hsl(var(--navy-foreground));
-  --color-rust: hsl(var(--rust));
-  --color-sun: hsl(var(--sun));
-  --color-orange: hsl(var(--orange));
-  --color-peach: hsl(var(--peach));
-  --color-chocolate: hsl(var(--chocolate));
-  --color-sky: hsl(var(--sky));
-
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
   --shadow-md: 0 2px 8px hsl(var(--shadow-color) / 0.08);
   --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.10);
   --shadow-xl: 0 14px 36px hsl(var(--shadow-color) / 0.12);
-  --shadow-glow: 0 10px 24px hsl(var(--primary) / 0.18);
+  --shadow-glow: 0 10px 24px hsl(var(--cta) / 0.28);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: -0.02em;
-  --tracking-tight: -0.015em;
-  --tracking-snug: -0.005em;
+  /* Condensed bold type is already tight; it wants no negative tracking. */
+  --tracking-display: 0;
+  --tracking-tight: 0;
+  --tracking-snug: 0;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
   --tracking-wider: 0.06em;
@@ -78,6 +73,8 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
+  /* Square corners throughout, like signage and number plates. Only
+     rounded-full (dots, pills) keeps a radius. */
   --radius-xs: 0;
   --radius-sm: 0;
   --radius-md: 0;
@@ -90,97 +87,81 @@
 }
 
 :root {
-  /* Exygy-inspired palette: warm paper canvas, near-black ink, earthy brown
-     actions, civic blue links, and a set of flat geometric shape colours. */
-  --background: 43 22% 94%;            /* #F2F0EB paper */
-  --foreground: 0 0% 7%;               /* #131313 */
-  --card: 45 29% 97%;                  /* #FAF9F6 */
-  --card-foreground: 0 0% 7%;
+  --background: 0 0% 100%;             /* #FFFFFF page */
+  --foreground: 222 28% 11%;           /* #141924 asphalt ink */
+  --card: 0 0% 100%;
+  --card-foreground: 222 28% 11%;
 
-  --primary: 0 0% 7%;                  /* #131313 ink — headings, dark bands */
+  --primary: 222 28% 11%;              /* #141924 ink — headings, dark bands */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 40 14% 89%;             /* #E7E4DD */
-  --secondary-foreground: 0 0% 7%;
+  --secondary: 220 16% 96%;            /* #F3F4F6 light concrete */
+  --secondary-foreground: 222 28% 11%;
 
-  --muted: 40 16% 91%;                 /* #ECE9E3 */
-  --muted-foreground: 0 0% 36%;        /* #5C5C5C */
+  --muted: 220 14% 93%;                /* #EBECF0 */
+  --muted-foreground: 220 9% 36%;      /* #545964 */
 
-  --accent: 204 65% 38%;               /* #226C9E civic blue */
+  --accent: 152 64% 27%;               /* #197148 cash green */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 72% 45%;
   --destructive-foreground: 0 0% 100%;
 
-  --success: 142 70% 30%;
+  --success: 152 64% 27%;
   --success-foreground: 0 0% 100%;
 
   --warning: 38 92% 50%;
-  --warning-foreground: 0 0% 7%;
+  --warning-foreground: 222 28% 11%;
 
-  --info: 204 65% 38%;
+  --info: 214 80% 40%;
   --info-foreground: 0 0% 100%;
 
-  --border: 43 10% 84%;                /* #DCD9D2 grid line */
+  --border: 220 13% 87%;               /* #DADCE2 */
   /* Form-control borders need >= 3:1 against the card (WCAG 1.4.11). */
-  --input: 40 5% 52%;
-  --ring: 204 65% 38%;
+  --input: 220 9% 50%;                 /* #747C8B */
+  --ring: 221 83% 53%;                 /* #2463EB — visible on white and on ink */
 
-  --shadow-color: 25 20% 15%;
+  --shadow-color: 222 30% 12%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
   /* Single source of truth for the fixed-header height. Consumed by the
      mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
-     three can never drift apart. */
-  --header-h: 4.5rem;
+     three can never drift apart. From lg up it includes the utility strip. */
+  --header-h: 4.25rem;
+  --header-strip-h: 2.25rem;
 
-  --ink: 0 0% 9%;                      /* #171717 dark band */
-  --ink-deep: 0 0% 5%;
-  --ink-raised: 0 0% 16%;
-  --on-dark: 40 12% 84%;
+  --ink: 222 28% 11%;                  /* #141924 dark band */
+  --ink-deep: 222 32% 7%;              /* #0C1018 */
+  --ink-raised: 221 22% 18%;           /* #242A38 */
+  --on-dark: 220 14% 78%;              /* #BFC4CF */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 43 84% 61%;                 /* #EFC04A sun */
-  --plate-foreground: 0 0% 7%;
-  --cta: 25 74% 23%;                   /* #65330F brown */
-  --cta-foreground: 0 0% 100%;
+  --plate: 46 100% 50%;                /* #FFC300 hi-vis yellow */
+  --plate-foreground: 222 32% 7%;
+  --cta: 46 100% 50%;                  /* #FFC300 */
+  --cta-hover: 41 100% 46%;            /* #EBA000 */
+  --cta-foreground: 222 32% 7%;
 
-  /* Accessible TEXT variants: --cta-ink / --accent-ink for text on paper,
-     --cta-bright / --accent-on-dark for emphasis on dark bands. */
-  --cta-ink: 25 74% 23%;
-  --accent-ink: 204 70% 31%;
-  --cta-bright: 24 83% 65%;            /* #F0965A peach */
-  --accent-on-dark: 219 44% 71%;       /* #95ACD6 sky */
-
-  /* Flat geometric shape palette (decorative only). */
-  --navy: 214 63% 32%;                 /* #1E4A85 feature band */
-  --navy-foreground: 0 0% 100%;
-  --rust: 25 74% 34%;                  /* #974C17 */
-  --sun: 43 84% 61%;
-  --orange: 22 70% 51%;                /* #D9692C */
-  --peach: 24 83% 65%;
-  --chocolate: 25 63% 22%;             /* #5A3214 */
-  --sky: 219 44% 71%;
-  --grid-line: 43 10% 84%;
-
-  --footer-wash: hsl(var(--background));
-  --hero-wash: hsl(var(--background));
-  --hero-mesh: transparent;
+  --cta-ink: 36 95% 26%;               /* #814F03 amber text on white */
+  --accent-ink: 152 68% 22%;           /* #125E3B green text on white */
+  --cta-bright: 47 100% 56%;           /* #FFCE1F yellow text on ink */
+  --accent-on-dark: 150 55% 62%;       /* #69D39E green text on ink */
 }
 
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 5.5rem;
+    --header-h: 4.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    --header-h: 5.5rem;
+    /* utility strip (2.25rem) + main bar (4.75rem) */
+    --header-h: 7rem;
   }
 }
 
@@ -201,15 +182,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-medium;
-    letter-spacing: var(--tracking-tight);
+    @apply font-bold;
+    letter-spacing: 0;
     text-wrap: balance;
     color: hsl(var(--foreground));
   }
-
-  h1 { letter-spacing: var(--tracking-display); }
-  h2 { letter-spacing: var(--tracking-tight); }
-  h3, h4 { letter-spacing: var(--tracking-snug); }
 
   p { text-wrap: pretty; }
 
@@ -269,28 +246,57 @@
     text-wrap: balance;
   }
 
-  /* Eyebrow — small accent label above a headline. Uses the accessible
-     --accent-ink on light (the bright --accent is ~2.5:1 as small text). */
-  .eyebrow {
-    display: inline-block;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: hsl(var(--accent-ink));
-  }
+  /* Eyebrow — small uppercase label above a headline, led by a yellow
+     reflector square. Text stays ink/white; the square carries the brand. */
+  .eyebrow,
   .eyebrow-on-dark {
-    display: inline-block;
-    font-size: 0.9375rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: hsl(var(--cta-bright));
+    color: hsl(var(--foreground));
+  }
+  .eyebrow::before,
+  .eyebrow-on-dark::before {
+    content: "";
+    width: 0.625rem;
+    height: 0.625rem;
+    flex: none;
+    background: hsl(var(--cta));
+  }
+  .eyebrow-on-dark { color: hsl(var(--on-dark-hi)); }
+
+  /* Poster headline: heavy, uppercase, tight. Hero and section titles. */
+  .display-impact {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    line-height: 0.95;
   }
 
-  .hl-orange { color: hsl(var(--accent-ink)); }
-  .hl-green { color: hsl(var(--cta-bright)); }
-  .hl-lilac { color: hsl(var(--secondary)); }
+  /* Tow-truck hazard stripe. Decorative only; used as a thin rule. */
+  .hazard-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      hsl(var(--cta)) 0 10px,
+      hsl(var(--ink-deep)) 10px 20px
+    );
+  }
+
+  /* Yellow underline bar that sits under a section heading. */
+  .title-bar::after {
+    content: "";
+    display: block;
+    width: 3.5rem;
+    height: 0.3125rem;
+    margin-top: 1rem;
+    background: hsl(var(--cta));
+  }
 
   .link-underline {
     text-decoration: underline;
@@ -322,16 +328,6 @@
     border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
   }
 
-  .hero-edge {
-    clip-path: polygon(72% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .wave-divider-bottom {
-    position: relative;
-  }
-  .wave-divider-bottom::after {
-    content: none;
-  }
 }
 
 @layer components {
@@ -341,16 +337,16 @@
 
   .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-2xl sm:text-3xl font-display font-medium text-primary mt-12 mb-4 leading-tight; letter-spacing: var(--tracking-tight); }
-  .prose-body h3 { @apply text-xl sm:text-2xl font-display font-medium text-primary mt-8 mb-3 leading-snug; letter-spacing: var(--tracking-snug); }
-  .prose-body h4 { @apply text-lg sm:text-xl font-display font-medium text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-[1.75rem] sm:text-4xl font-display font-bold text-primary mt-12 mb-4 leading-[1.1]; }
+  .prose-body h3 { @apply text-2xl sm:text-[1.75rem] font-display font-bold text-primary mt-8 mb-3 leading-[1.15]; }
+  .prose-body h4 { @apply text-xl sm:text-2xl font-display font-bold text-primary mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
-  .prose-body a { @apply underline underline-offset-4 hover:text-accent transition-colors text-primary; }
+  .prose-body a { @apply underline underline-offset-4 decoration-2 decoration-cta hover:text-accent-ink transition-colors text-primary font-medium; }
   .prose-body strong { @apply font-semibold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-2 border-primary pl-4 text-foreground; font-style: normal; }
+  .prose-body blockquote { @apply border-l-4 border-cta pl-4 text-foreground; font-style: normal; }
 
   .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
   .list-styled li { @apply leading-relaxed; }
@@ -634,33 +630,6 @@
   margin: 3mm;
 }
 
-/* ─── Exygy-style surfaces ─────────────────────────────────────────────────── */
-/* Square architectural grid on the paper canvas (belief band + footer). */
-@utility grid-paper {
-  background-color: hsl(var(--background));
-  background-image:
-    linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
-  background-size: 51px 51px;
-  background-position: -1px -1px;
-}
-
-/* Flat decorative shapes. Positioned by the caller; never interactive. */
-@utility shape {
-  position: absolute;
-  display: block;
-  pointer-events: none;
-}
-@utility shape-kite {
-  clip-path: polygon(14% 0, 100% 34%, 100% 100%, 0 100%);
-}
-@utility shape-triangle-right {
-  clip-path: polygon(0 0, 100% 52%, 0 100%);
-}
-@utility shape-arch {
-  border-radius: 9999px 9999px 0 0;
-}
-
 @utility pt-safe { padding-top: env(safe-area-inset-top, 0px); }
 @utility pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
 @utility pl-safe { padding-left: env(safe-area-inset-left, 0px); }
@@ -668,11 +637,6 @@
 
 @utility bottom-safe {
   bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
-}
-
-@utility min-h-hero {
-  min-height: min(100vh, 620px);
-  min-height: min(100dvh, 620px);
 }
 
 @utility focus-ring {
@@ -717,127 +681,12 @@
   min-height: 100dvh;
 }
 
+/* Inner-page hero band: light concrete with a yellow rule along the top. */
 @utility aurora-surface {
   position: relative;
   isolation: isolate;
   background-color: hsl(var(--secondary));
+  border-top: 4px solid hsl(var(--cta));
   border-bottom: 1px solid hsl(var(--border));
   overflow: hidden;
-
-}
-
-@utility aurora-full {
-  background-color: hsl(var(--secondary));
-}
-
-@utility aurora-surface-dark {
-  position: relative;
-  isolation: isolate;
-  background-color: hsl(var(--primary));
-  color: hsl(var(--on-dark-hi));
-  overflow: hidden;
-}
-
-/* ─── Hero atmosphere ──────────────────────────────────────────────────────── */
-/* Soft animated gradient orbs that sit behind hero / final-CTA copy. They
-   render as ::before / ::after on a positioned parent so they never affect
-   layout and respect prefers-reduced-motion via the universal block below. */
-@keyframes orb-drift-a {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(3%, -2%, 0) scale(1.04); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-@keyframes orb-drift-b {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  50%  { transform: translate3d(-3%, 2%, 0) scale(1.03); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
-}
-
-@utility hero-atmosphere {
-  position: relative;
-  isolation: isolate;
-}
-.hero-atmosphere::before,
-.hero-atmosphere::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  border-radius: 9999px;
-  filter: blur(80px);
-  will-change: transform;
-}
-.hero-atmosphere::before {
-  top: -10%;
-  left: -8%;
-  width: 50%;
-  height: 70%;
-  background: radial-gradient(closest-side, hsl(var(--accent) / 0.32), transparent 70%);
-  animation: orb-drift-a 18s ease-in-out infinite;
-}
-.hero-atmosphere::after {
-  bottom: -15%;
-  right: -10%;
-  width: 55%;
-  height: 75%;
-  background: radial-gradient(closest-side, hsl(var(--cta) / 0.28), transparent 70%);
-  animation: orb-drift-b 22s ease-in-out infinite;
-}
-
-/* Pulsing dot — used in the "Brisbane's friendly car buyers" pill / live tag. */
-@keyframes live-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--cta) / 0.55); }
-  60%      { box-shadow: 0 0 0 8px hsl(var(--cta) / 0); }
-}
-@utility live-dot {
-  animation: live-pulse 2.4s ease-out infinite;
-}
-
-/* Subtle vertical float — for hero floating tags. */
-@keyframes float-y {
-  0%, 100% { transform: translateY(0) rotate(var(--float-rot, 0deg)); }
-  50%      { transform: translateY(-6px) rotate(var(--float-rot, 0deg)); }
-}
-@utility float-soft {
-  animation: float-y 6s ease-in-out infinite;
-}
-
-/* Subtle dotted timeline used to connect HowItWorks steps on desktop. */
-@utility step-timeline {
-  background-image: radial-gradient(circle, hsl(var(--primary) / 0.35) 1.5px, transparent 1.5px);
-  background-size: 16px 100%;
-  background-repeat: repeat-x;
-  background-position: 0 50%;
-}
-
-/* Header scroll-shadow — paired with HeaderFrame's data-scrolled attribute.
-   Adds a soft drop shadow under the main nav once the user starts scrolling
-   so it lifts away from the page content cleanly. */
-[data-scrolled="true"] {
-  box-shadow: 0 8px 24px -16px hsl(var(--shadow-color) / 0.25);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-atmosphere::before,
-  .hero-atmosphere::after,
-  .live-dot,
-  .float-soft { animation: none !important; }
-}
-
-@utility quote-card {
-  background: hsl(var(--ink));
-  color: hsl(var(--on-dark-hi));
-  border: 1px solid hsl(var(--on-dark-hi) / 0.08);
-  border-radius: var(--radius-xl);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.08), 0 16px 40px hsl(var(--primary) / 0.15);
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 4px;
-    background: hsl(var(--primary));
-  }
 }

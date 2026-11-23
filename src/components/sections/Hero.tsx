@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { preload } from "react-dom";
-import { Check, Phone } from "lucide-react";
+import { ArrowRight, Check, Phone } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
 import { buttonVariants } from "@/components/ui/button";
@@ -14,31 +13,24 @@ const promises = [
 ];
 
 /**
- * Flat geometric collage: a sun, an orange kite and a chocolate arch frame a
- * grayscale street strip and the colour tow-truck photo. Purely decorative —
- * the copy beside it carries the meaning.
+ * Flatbed photo behind the whole hero, darkened so the copy and the quote card
+ * stay readable. Purely decorative — the copy carries the meaning. Small
+ * screens get the square crop, wide screens the landscape one.
  */
-function HeroCollage() {
+function HeroBackdrop() {
   return (
-    <div
-      aria-hidden="true"
-      className="relative mx-auto h-[22rem] w-full max-w-[40rem] sm:h-[30rem] xl:absolute xl:bottom-0 xl:right-0 xl:mx-0 xl:h-[35rem] xl:w-[40rem]"
-    >
-      <span className="shape right-[8%] top-0 h-28 w-28 rounded-full bg-sun sm:h-40 sm:w-40 xl:-top-14 xl:right-[76px] xl:h-44 xl:w-44" />
-      <span className="shape shape-kite left-0 top-[34%] h-36 w-52 bg-orange sm:h-48 sm:w-72 xl:left-10 xl:top-40 xl:h-[13rem] xl:w-[19rem]" />
-      <span className="shape left-[34%] top-[56%] h-44 w-44 rounded-full bg-chocolate sm:h-60 sm:w-60 xl:left-[13.75rem] xl:top-80 xl:h-64 xl:w-64" />
+    <div aria-hidden="true" className="absolute inset-0 -z-10">
       <picture>
-        <img
-          src="/images/og-card.jpg"
-          alt=""
-          width={1200}
-          height={630}
-          loading="lazy"
-          decoding="async"
-          className="absolute bottom-0 left-0 hidden h-[42%] w-[92%] object-cover grayscale sm:block [clip-path:polygon(0_18%,58%_18%,58%_0,100%_6%,100%_100%,0_100%)]"
+        <source
+          media="(min-width: 1024px)"
+          srcSet="/images/hero-flatbed-wide.avif"
+          type="image/avif"
         />
-      </picture>
-      <picture>
+        <source
+          media="(min-width: 1024px)"
+          srcSet="/images/hero-flatbed-wide.webp"
+          type="image/webp"
+        />
         <source srcSet="/images/tow-truck-hero.avif" type="image/avif" />
         <source srcSet="/images/tow-truck-hero.webp" type="image/webp" />
         <img
@@ -48,108 +40,124 @@ function HeroCollage() {
           height={800}
           fetchPriority="high"
           decoding="async"
-          className="shape-arch absolute bottom-0 right-[6%] h-[70%] w-[62%] object-cover sm:right-0 sm:h-[68%] sm:w-[54%] xl:h-[23.75rem] xl:w-[23.75rem]"
+          className="h-full w-full object-cover object-[35%_40%] lg:-scale-x-100 lg:object-[0%_60%]"
         />
       </picture>
+      <div className="absolute inset-0 bg-ink/85 lg:bg-transparent lg:bg-gradient-to-r lg:from-ink lg:from-30% lg:via-ink/75 lg:via-60% lg:to-ink/35" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-ink to-transparent" />
     </div>
   );
 }
 
 export function Hero() {
-  preload("/images/tow-truck-hero.avif", {
-    as: "image",
-    fetchPriority: "high",
-    type: "image/avif",
-  });
-
   return (
-    // The hero and the quote band share one suppress region, so the sticky
-    // mobile CTA and chat launcher stay hidden until the form is off screen.
+    // The hero carries the quote form, so the whole block is one suppress
+    // region: the sticky mobile CTA and chat launcher stay hidden until the
+    // form is off screen.
     <div data-chat-launcher-suppress="true" data-sticky-cta-suppress="true">
       <section
-        className="relative w-full overflow-hidden bg-background text-foreground"
+        className="relative isolate w-full overflow-hidden bg-ink text-on-dark-hi"
         aria-labelledby="hero-heading"
       >
-        <div className="mt-header-safe site-container relative pb-0 pt-10 sm:pt-16 lg:pt-20 xl:min-h-[52rem] xl:pt-24">
-          <div className="relative z-10 max-w-[50rem] xl:pl-20">
+        <HeroBackdrop />
+
+        <div className="mt-header-safe site-container grid grid-cols-1 items-center gap-10 pb-12 pt-9 sm:pb-16 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:pb-20 lg:pt-16">
+          <div className="lg:col-span-7">
+            <p className="eyebrow-on-dark">Brisbane-based car buyer</p>
+
+            {/* "Cash for Cars Brisbane" stays one unbroken run of text for
+                search. The width cap makes it wrap after "Cars", and the first
+                line takes the yellow. */}
             <h1
               id="hero-heading"
-              className="font-display text-[clamp(2.75rem,6.4vw,5rem)] font-medium leading-[1.05] tracking-[-0.02em] text-foreground text-pretty"
+              className="display-impact mt-5 text-[clamp(2.75rem,13vw,4.75rem)] text-on-dark-hi sm:text-[5.5rem] xl:text-[6.5rem]"
             >
-              Cash for Cars Brisbane, without the runaround.
+              <span className="block max-w-[8em] first-line:text-cta-bright">
+                Cash for Cars Brisbane,
+              </span>{" "}
+              <span className="mt-3 block text-[0.4em] font-bold normal-case leading-[1.1] tracking-normal text-on-dark-hi">
+                without the runaround.
+              </span>
             </h1>
 
-            <p className="mt-8 max-w-[37.5rem] xl:max-w-[30rem] font-display text-xl leading-8 tracking-[-0.01em] text-foreground sm:mt-16 sm:text-2xl lg:mt-24">
+            <p className="mt-6 max-w-[36rem] text-base leading-7 text-on-dark sm:text-lg sm:leading-8">
               Request an assessment in minutes. Caraway is a Brisbane-based car
               buyer: you get a written offer before anything is booked, pickup
               is included when we buy, and payment is confirmed at collection.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-2.5 sm:mt-10">
+            <ul className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-x-6">
+              {promises.map((promise) => (
+                <li
+                  key={promise}
+                  className="flex items-center gap-2.5 text-[0.9375rem] font-medium leading-5 text-on-dark-hi"
+                >
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-cta text-cta-foreground">
+                    <Check size={13} strokeWidth={3.5} aria-hidden="true" />
+                  </span>
+                  {promise}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+              {/* On wide screens the form sits beside this copy, so the jump
+                  link is only needed where the form is further down. */}
               <Link
                 href="#quote-form"
-                className={cn(buttonVariants({ size: "lg" }), "px-10")}
+                className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-auto lg:hidden")}
               >
                 Get my quote
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>
+
+              <TrackedPhoneLink
+                href={BUSINESS.phoneTel}
+                location="hero"
+                className="group inline-flex min-h-12 items-center gap-3 text-on-dark-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                ariaLabel={`or call ${BUSINESS.phoneDisplay}`}
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-cta text-cta-bright transition-colors group-hover:bg-cta group-hover:text-cta-foreground">
+                  <Phone aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <span className="flex flex-col leading-none">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-on-dark">
+                    or call
+                  </span>
+                  <span className="mt-1 font-display text-[2rem] font-extrabold leading-none tracking-[0.02em]">
+                    {BUSINESS.phoneDisplay}
+                  </span>
+                </span>
+              </TrackedPhoneLink>
+
               <Link
                 href="/how-it-works"
-                className={cn(buttonVariants({ variant: "grey", size: "lg" }), "px-10")}
+                className="inline-flex min-h-11 items-center gap-1.5 text-base font-semibold text-on-dark-hi underline decoration-cta decoration-2 underline-offset-[6px] transition-colors hover:text-cta-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               >
                 How it works
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
+          </div>
 
-            <TrackedPhoneLink
-              href={BUSINESS.phoneTel}
-              location="hero"
-              className="mt-5 inline-flex min-h-11 items-center gap-2 text-base text-muted-foreground underline decoration-foreground/30 underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground"
-              ariaLabel={`or call ${BUSINESS.phoneDisplay}`}
+          {/* The quote card is the home page's only quote surface: it is
+              server-rendered with the page, so the primary conversion path and
+              the #quote-form deep link still work for crawlers and JS-off
+              users. */}
+          <div className="lg:col-span-5">
+            <div
+              id="quote-form"
+              className="relative mx-auto w-full max-w-[32rem] scroll-mt-header bg-card text-card-foreground shadow-[0_30px_70px_-20px_hsl(var(--ink-deep)/0.85)] lg:ml-auto lg:mr-0"
             >
-              <Phone aria-hidden="true" className="h-4 w-4" />
-              or call {BUSINESS.phoneDisplay}
-            </TrackedPhoneLink>
+              <div aria-hidden="true" className="hazard-stripe h-2" />
+              <div className="px-5 pb-6 pt-6 sm:px-8 sm:pb-8 sm:pt-7">
+                <HeroQuoteForm />
+                <p className="mt-4 border-t border-border pt-4 text-center text-xs text-muted-foreground">
+                  Brisbane-based · ABN {BUSINESS.abn}
+                </p>
+              </div>
+            </div>
           </div>
-
-          <div className="mt-12 xl:mt-0">
-            <HeroCollage />
-          </div>
-        </div>
-      </section>
-
-      {/* The quote band is the home page's only quote surface: it is
-          server-rendered with the page, so the primary conversion path and
-          the #quote-form deep link still work for crawlers and JS-off users. */}
-      <section
-        aria-label="Request a vehicle assessment"
-        className="grid-paper relative overflow-hidden py-16 sm:py-24 lg:py-28"
-      >
-        <span aria-hidden="true" className="shape left-6 top-8 h-24 w-24 rounded-full bg-peach sm:left-[8.5rem] sm:top-16 sm:h-36 sm:w-36" />
-        <span aria-hidden="true" className="shape shape-triangle-right bottom-0 left-0 h-44 w-36 bg-chocolate sm:bottom-10 sm:h-80 sm:w-64" />
-        <span aria-hidden="true" className="shape -right-16 top-16 h-16 w-52 rotate-[24deg] bg-sky sm:-right-14 sm:top-48 sm:h-28 sm:w-96" />
-
-        <div
-          id="quote-form"
-          className="relative z-10 mx-4 scroll-mt-header bg-background px-5 py-10 sm:mx-auto sm:max-w-[40rem] sm:px-12 sm:py-14"
-        >
-          <HeroQuoteForm />
-
-          <ul className="mt-8 flex flex-col gap-2.5 border-t border-border pt-6 sm:items-center">
-            {promises.map((promise) => (
-              <li
-                key={promise}
-                className="flex items-center gap-2.5 text-[0.9375rem] leading-5 text-foreground"
-              >
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-accent text-accent-foreground">
-                  <Check size={12} strokeWidth={3} aria-hidden="true" />
-                </span>
-                {promise}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-4 text-sm text-muted-foreground sm:text-center">
-            Brisbane-based · ABN {BUSINESS.abn}
-          </p>
         </div>
       </section>
     </div>

@@ -121,7 +121,7 @@ const paperworkGuides = [
   },
 ];
 
-const h3Classes = "flex items-center gap-2.5 font-display text-lg font-semibold text-primary mb-2";
+const h3Classes = "flex items-center gap-2.5 font-display text-2xl font-bold leading-[1.15] text-primary mb-2";
 
 const proseClasses = "text-foreground/75 leading-relaxed text-base";
 

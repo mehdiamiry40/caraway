@@ -12,4 +12,4 @@ function font(name: string) {
 }
 
 export const Inter = font("inter");
-export const Schibsted_Grotesk = font("schibsted-grotesk");
+export const Barlow_Condensed = font("barlow-condensed");

@@ -97,7 +97,7 @@ export default function Locations() {
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-secondary text-primary">
                     <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
                   </span>
-                  <h3 className="font-display text-lg text-foreground">{title}</h3>
+                  <h3 className="font-display text-2xl font-bold leading-[1.15] text-foreground">{title}</h3>
                 </div>
                 <ul className="mb-4 flex flex-wrap gap-1.5" aria-label={`Areas in ${title}`}>
                   {areas.map((area) => (

@@ -21,29 +21,31 @@ const quickLinks = [
 ] as const;
 
 const linkClass =
-  "inline-flex min-h-11 items-center gap-2 font-semibold text-accent-ink link-underline";
+  "inline-flex min-h-11 items-center gap-2 font-semibold text-foreground underline decoration-cta decoration-2 underline-offset-[5px] transition-colors hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export function TrustBadges() {
   return (
     <section
-      className="relative bg-background"
+      className="relative border-b border-border bg-secondary"
       aria-label="Trust and credentials"
     >
-      <div className="site-container py-16 sm:py-20">
-        <ul className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
+      <div className="site-container py-8 sm:py-10">
+        <ul className="grid grid-cols-2 gap-px border border-border bg-border lg:grid-cols-4">
           {quickLinks.map(({ icon: Icon, label, href }) => (
-            <li key={label}>
+            <li key={label} className="bg-card">
               <Link
                 href={href}
                 prefetch={href === "/#quote-form" ? false : undefined}
-                className="group flex h-full flex-col items-center justify-center gap-4 px-3 py-8 text-center opacity-85 grayscale transition-opacity duration-200 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:py-12"
+                className="group flex h-full flex-col items-start gap-3 p-4 transition-colors duration-200 hover:bg-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring sm:flex-row sm:items-center sm:gap-4 sm:p-6"
               >
-                <Icon className="h-14 w-14 text-foreground sm:h-16 sm:w-16" strokeWidth={1.25} aria-hidden="true" />
-                <span className="font-display text-lg font-medium leading-snug text-foreground sm:text-xl">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-cta text-cta-foreground">
+                  <Icon className="h-6 w-6" strokeWidth={2} aria-hidden="true" />
+                </span>
+                <span className="font-display text-xl font-bold leading-[1.1] text-foreground transition-colors group-hover:text-on-dark-hi sm:text-[1.375rem]">
                   {label}
                 </span>
                 <ArrowRight
-                  className="h-4 w-4 text-foreground/60 transition-transform group-hover:translate-x-1"
+                  className="ml-auto hidden h-5 w-5 shrink-0 text-foreground/40 transition-[transform,color] group-hover:translate-x-1 group-hover:text-cta-bright sm:block"
                   aria-hidden="true"
                 />
               </Link>
@@ -51,9 +53,9 @@ export function TrustBadges() {
           ))}
         </ul>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-1 border-t border-border pt-6 text-[0.9375rem]">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-1 text-[0.9375rem]">
           <Link href="/locations" className={linkClass}>
-            <MapPin className="h-4 w-4" aria-hidden="true" />
+            <MapPin className="h-4 w-4 text-accent-ink" aria-hidden="true" />
             Check your area
           </Link>
           <TrackedOutboundLink
@@ -62,7 +64,7 @@ export function TrustBadges() {
             location="homepage_trust"
             className={linkClass}
           >
-            <Star className="h-4 w-4" aria-hidden="true" />
+            <Star className="h-4 w-4 text-accent-ink" aria-hidden="true" />
             View Caraway on Google
           </TrackedOutboundLink>
           <TrackedOutboundLink
@@ -71,7 +73,7 @@ export function TrustBadges() {
             location="homepage_trust"
             className={linkClass}
           >
-            <Building2 className="h-4 w-4" aria-hidden="true" />
+            <Building2 className="h-4 w-4 text-accent-ink" aria-hidden="true" />
             ABN {BUSINESS.abn}
           </TrackedOutboundLink>
         </div>

@@ -148,20 +148,23 @@ export function MobileMenuClient({ serviceLinks }: Props) {
   }
 
   return (
-    <div className="flex items-center gap-1 lg:hidden">
+    <div className="flex items-center gap-2 lg:hidden">
       <a
         href={BUSINESS.phoneTel}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="inline-flex h-11 min-w-11 items-center justify-center gap-2 bg-cta px-3 font-display text-lg font-bold uppercase tracking-[0.04em] text-cta-foreground transition-colors hover:bg-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
         aria-label={`Call ${BUSINESS.phoneDisplay}`}
       >
         <Phone className="h-5 w-5" aria-hidden="true" />
+        <span className="hidden min-[400px]:inline" aria-hidden="true">
+          Call
+        </span>
       </a>
 
       <button
         ref={triggerRef}
         type="button"
         onClick={openMenu}
-        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-primary transition-colors duration-200 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="-mr-1 inline-flex min-h-11 min-w-11 items-center justify-center text-on-dark-hi transition-colors duration-200 hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
         aria-label="Menu"
         aria-haspopup="dialog"
         aria-expanded={isOpen}
@@ -178,11 +181,11 @@ export function MobileMenuClient({ serviceLinks }: Props) {
         onClose={handleDialogClose}
         onKeyDown={handleDialogKeyDown}
         onClick={handleBackdropClick}
-        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t border-border bg-background p-0 text-foreground shadow-lg backdrop:bg-ink-deep/45 lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-[var(--header-h)] z-[250] m-0 h-[calc(100dvh-var(--header-h))] max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 border-t-4 border-cta bg-background p-0 text-foreground shadow-lg backdrop:bg-ink-deep/60 lg:hidden"
       >
         <div className="min-h-full px-5 py-5 sm:px-6">
-          <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border/30 pb-2">
-            <p id="mobile-navigation-title" className="font-display text-lg text-foreground">
+          <div className="mb-2 flex min-h-11 items-center justify-between border-b border-border pb-2">
+            <p id="mobile-navigation-title" className="font-display text-2xl font-extrabold uppercase tracking-[0.03em] text-foreground">
               Menu
             </p>
             <button
@@ -198,7 +201,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
 
           <nav className="flex flex-col gap-0.5" aria-label="Mobile primary navigation">
             <details className="group/services">
-              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between  border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg [&::-webkit-details-marker]:hidden">
+              <summary className="-mx-2 flex min-h-[52px] cursor-pointer list-none items-center justify-between  border-b border-border px-2 py-3.5 font-display text-xl font-bold uppercase tracking-[0.03em] text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-2xl [&::-webkit-details-marker]:hidden">
                 <span>Services</span>
                 <ChevronDown
                   aria-hidden="true"
@@ -234,18 +237,21 @@ export function MobileMenuClient({ serviceLinks }: Props) {
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
-                className="-mx-2 flex min-h-[52px] items-center  border-b border-border/30 px-2 py-3.5 font-display text-base text-foreground transition-colors duration-200 hover:bg-secondary/70 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+                className="-mx-2 flex min-h-[52px] items-center  border-b border-border px-2 py-3.5 font-display text-xl font-bold uppercase tracking-[0.03em] text-foreground transition-colors duration-200 hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-2xl"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-8 flex flex-col gap-3 border-t border-border/30 pt-6">
+          <div className="mt-8 flex flex-col gap-3 pt-2">
             <a
               href={BUSINESS.phoneTel}
               onClick={closeMenu}
-              className="inline-flex h-14 w-full items-center justify-center gap-2 border border-foreground text-base font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:text-lg"
+              className={cn(
+                buttonVariants({ variant: "primary", size: "lg" }),
+                "h-14 w-full",
+              )}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-5 w-5" aria-hidden="true" />
@@ -255,10 +261,7 @@ export function MobileMenuClient({ serviceLinks }: Props) {
               href="/#quote-form"
               prefetch={false}
               onClick={closeMenu}
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "h-14 w-full text-base sm:text-lg",
-              )}
+              className={cn(buttonVariants({ size: "lg" }), "h-14 w-full")}
             >
               Get my quote
             </Link>

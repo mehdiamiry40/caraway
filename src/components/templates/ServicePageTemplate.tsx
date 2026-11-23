@@ -138,14 +138,14 @@ export default function ServicePageTemplate({
           <div className="site-container relative grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <Breadcrumbs items={breadcrumbs} />
-              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground">
+              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-cta text-cta-foreground">
                 {createElement(serviceIcon(service.slug), {
                   className: "h-6 w-6",
                   strokeWidth: 1.75,
                   "aria-hidden": true,
                 })}
               </span>
-              <h1 className="mt-4 font-display font-bold text-[clamp(2rem,5vw,3.25rem)] leading-[1.06] text-primary text-balance mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
+              <h1 className="mt-4 font-display font-extrabold text-[clamp(2.5rem,6vw,4.25rem)] leading-[0.98] text-primary text-balance mb-4">
                 {service.h1}
               </h1>
               <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-6">
@@ -167,7 +167,7 @@ export default function ServicePageTemplate({
                 </p>
               )}
             </div>
-            <div className="relative hidden overflow-hidden border border-border lg:col-span-5 lg:block">
+            <div className="relative hidden overflow-hidden border-[10px] border-ink bg-ink lg:col-span-5 lg:block">
               <Image
                 src="/images/tow-truck-hero.webp"
                 alt="Tilt-tray truck carrying a silver sedan"
@@ -187,7 +187,7 @@ export default function ServicePageTemplate({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
               {introRest && (
-                <div className="flex gap-4 border-l-4 border-accent bg-secondary px-5 py-5 sm:px-6">
+                <div className="flex gap-4 border-l-4 border-cta bg-secondary px-5 py-5 sm:px-6">
                   <Info className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
                   <p className="text-foreground/80 leading-relaxed text-base">
                     {introRest}
@@ -219,7 +219,7 @@ export default function ServicePageTemplate({
               <PromiseTiles title="What Caraway confirms" />
 
               <div className="border border-border bg-card p-5 sm:p-6">
-                <h3 className="font-display text-base text-foreground mb-1">Registered Brisbane business</h3>
+                <h3 className="font-display text-xl font-bold text-foreground mb-1">Registered Brisbane business</h3>
                 <p className="text-xs text-muted-foreground">
                   {BUSINESS.legalName}, sole trader, Brisbane QLD
                 </p>

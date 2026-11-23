@@ -76,7 +76,7 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
               <span className="flex h-14 w-14 items-center justify-center bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                 <MapPin className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
               </span>
-              <h2 className="mt-4 text-base font-display font-semibold text-foreground group-hover:text-primary transition-colors">
+              <h2 className="mt-4 text-xl font-display font-bold leading-[1.15] text-foreground group-hover:text-primary transition-colors">
                 {suburb.h1}
               </h2>
               {suburb.nearbyAreaNames.length > 0 && (

@@ -93,10 +93,10 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
           <div className="site-container relative grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <Breadcrumbs items={breadcrumbs} />
-              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground">
+              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-cta text-cta-foreground">
                 <MapPin className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
               </span>
-              <h1 className="mt-4 font-display font-bold text-[clamp(2rem,5vw,3.25rem)] leading-[1.06] text-primary text-balance mb-4" style={{ letterSpacing: "var(--tracking-display)" }}>
+              <h1 className="mt-4 font-display font-extrabold text-[clamp(2.5rem,6vw,4.25rem)] leading-[0.98] text-primary text-balance mb-4">
                 {suburb.h1}
               </h1>
               <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-6">
@@ -109,14 +109,14 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   href={BUSINESS.phoneTel}
                   location={`location_hero_${suburb.slug}`}
                   ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                  className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                  className={cn(buttonVariants({ size: "lg", variant: "primary" }), "w-full sm:w-auto")}
                 >
                   <Phone className="h-5 w-5" aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
               </div>
             </div>
-            <div className="relative hidden overflow-hidden border border-border lg:col-span-5 lg:block">
+            <div className="relative hidden overflow-hidden border-[10px] border-ink bg-ink lg:col-span-5 lg:block">
               <Image
                 src="/images/tow-truck-hero.webp"
                 alt="Tilt-tray truck carrying a silver sedan"
@@ -147,7 +147,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 </p>
                 {nearbyAreaNames.length > 0 && (
                   <div className="mt-6">
-                    <h3 className="text-sm font-display text-foreground mb-3">Nearby suburbs covered</h3>
+                    <h3 className="text-xl font-display font-bold text-foreground mb-3">Nearby suburbs covered</h3>
                     <ul className="flex flex-wrap gap-2">
                       {nearbyAreaNames.map((name) => (
                         <li key={name} className="inline-flex items-center gap-1.5 border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
@@ -234,7 +234,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                       href={BUSINESS.phoneTel}
                       location={`location_final_${suburb.slug}`}
                       ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                      className={cn(buttonVariants({ size: "lg", variant: "secondary" }), "w-full sm:w-auto")}
+                      className={cn(buttonVariants({ size: "lg", variant: "primary" }), "w-full sm:w-auto")}
                     >
                       <Phone className="h-5 w-5" aria-hidden="true" />
                       Call {BUSINESS.phoneDisplay}
