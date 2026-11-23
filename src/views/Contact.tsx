@@ -67,7 +67,7 @@ export default function Contact() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm text-muted-foreground">Call us</span>
-                  <span className="block font-display text-lg font-semibold text-primary">{BUSINESS.phoneDisplay}</span>
+                  <span className="block font-display text-2xl font-bold leading-tight tracking-[0.02em] text-primary">{BUSINESS.phoneDisplay}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
               </TrackedPhoneLink>
@@ -81,7 +81,7 @@ export default function Contact() {
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm text-muted-foreground">Email us</span>
-                  <span className="block truncate font-display text-lg font-semibold text-primary">{BUSINESS.email}</span>
+                  <span className="block truncate text-lg font-semibold text-primary">{BUSINESS.email}</span>
                 </span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
               </a>
@@ -132,7 +132,7 @@ export default function Contact() {
 
           <div className="self-start lg:col-span-7 lg:col-start-6 lg:row-start-3">
             <div className="border border-border bg-card p-6 sm:p-7">
-              <h2 className="text-lg font-display text-foreground mb-5">Before you call</h2>
+              <h2 className="text-2xl font-display font-bold text-foreground mb-5">Before you call</h2>
               <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 text-sm">
                 {[
                   { icon: ClipboardList, q: "Have ready", a: "Make, model, year, kilometres and condition." },

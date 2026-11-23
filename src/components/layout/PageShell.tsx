@@ -38,21 +38,20 @@ export function PageShell({
         <section
           className={
             isAurora
-              ? "relative overflow-hidden bg-secondary py-10 sm:py-14 lg:py-16 border-b border-border before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-cta before:via-accent before:to-primary"
+              ? "aurora-surface py-10 sm:py-14 lg:py-16"
               : "bg-background py-8 sm:py-12 lg:py-14"
           }
         >
           <div className="site-container relative">
             <Breadcrumbs items={breadcrumbs} />
             {Icon && (
-              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground">
+              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-cta text-cta-foreground">
                 <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
               </span>
             )}
             {eyebrow && <p className={`eyebrow mb-4 ${Icon ? "mt-4" : "mt-6"}`}>{eyebrow}</p>}
             <h1
-              className="font-display font-bold text-[clamp(2.25rem,5.5vw,3.75rem)] leading-[1.08] text-primary text-balance max-w-4xl mt-4 mb-5"
-              style={{ letterSpacing: "var(--tracking-display)" }}
+              className="font-display font-extrabold text-[clamp(2.75rem,7vw,4.75rem)] leading-[0.98] text-primary text-balance max-w-4xl mt-4 mb-5"
             >
               {title}
             </h1>

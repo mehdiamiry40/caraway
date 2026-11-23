@@ -106,24 +106,24 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:pt-4">
-            <p className="eyebrow mb-5">
+            <p className="eyebrow">
               Your quote
             </p>
-            <h2 className="text-3xl sm:text-4xl md:text-[2.5rem] font-display text-foreground leading-[1.1] text-balance mb-5">
+            <h2 className="display-impact mt-4 text-[2.5rem] text-foreground text-balance mb-5 sm:text-[3.5rem]">
               Tell us about the car.
             </h2>
             <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
               We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
-            <div className="mt-6 rounded-xl border border-border/70 bg-muted/60 p-4 max-w-md">
-              <h3 className="text-sm font-display text-foreground mb-2">How we calculate your car offer</h3>
+            <div className="mt-6 max-w-md border-l-4 border-cta bg-secondary p-5">
+              <h3 className="text-xl font-display font-bold text-foreground mb-2">How we calculate your car offer</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-7 rounded-md border border-border bg-card p-6 sm:p-8 shadow-[0_20px_44px_-28px_hsl(var(--shadow-color)/0.5)]">
+          <div className="lg:col-span-7 border border-border border-t-[6px] border-t-cta bg-card p-6 sm:p-8 shadow-[0_24px_50px_-28px_hsl(var(--shadow-color)/0.55)]">
 
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">

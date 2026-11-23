@@ -15,27 +15,28 @@ const trustPoints = [
 
 export function SellingSafelySection() {
   return (
-    <section className="section-y-tight bg-background border-t border-border" aria-labelledby="selling-safely-heading">
+    <section className="section-y-tight border-t border-border bg-secondary" aria-labelledby="selling-safely-heading">
       <div className="site-container">
         <div className="flex flex-col items-center text-center">
-          <ShieldCheck className="h-10 w-10 text-foreground" strokeWidth={1.25} aria-hidden="true" />
+          <span className="flex h-14 w-14 items-center justify-center bg-ink text-cta-bright">
+            <ShieldCheck className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
+          </span>
           <h2
             id="selling-safely-heading"
-            className="mt-4 font-display text-[2rem] font-medium leading-[1.15] text-foreground sm:text-[2.5rem]"
-            style={{ letterSpacing: "var(--tracking-tight)" }}
+            className="display-impact mt-5 text-[2.25rem] text-foreground sm:text-[3rem]"
           >
             Selling safely with Caraway
           </h2>
         </div>
 
-        <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+        <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-px border border-border bg-border sm:grid-cols-3">
           {trustPoints.map(({ icon: Icon, title }) => (
             <li
               key={title}
-              className="flex items-center gap-3 bg-secondary/60 p-4 sm:flex-col sm:gap-3 sm:p-6 sm:text-center"
+              className="flex items-center gap-3 bg-card p-4 sm:flex-col sm:gap-3 sm:p-6 sm:text-center"
             >
-              <Icon className="h-7 w-7 shrink-0 text-foreground" strokeWidth={1.5} aria-hidden="true" />
-              <h3 className="font-display text-lg font-medium leading-snug text-foreground">{title}</h3>
+              <Icon className="h-8 w-8 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
+              <h3 className="font-display text-xl font-bold leading-[1.15] text-foreground sm:text-[1.375rem]">{title}</h3>
             </li>
           ))}
         </ul>
@@ -47,10 +48,10 @@ export function SellingSafelySection() {
             className={cn(buttonVariants({ variant: "primary" }))}
             ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
           >
-            <Phone className="h-4 w-4" aria-hidden="true" />
+            <Phone className="h-5 w-5 text-cta-bright" aria-hidden="true" />
             Call {BUSINESS.phoneDisplay}
           </TrackedPhoneLink>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-sm text-muted-foreground">
             Keep your own records and follow the{" "}
             <a
               href={QLD_SELLING_GUIDANCE_URL}

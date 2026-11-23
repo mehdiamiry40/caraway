@@ -13,7 +13,7 @@ test("submits the homepage hero quote form", async ({ page }) => {
   await page.locator("#hero-quote-phone").fill("0400000000");
   await page.locator("#hero-quote-suburb").fill("Brisbane");
   await page.locator("#hero-quote-expected-price").fill("3500");
-  await page.getByRole("button", { name: "Submit" }).click();
+  await page.getByRole("button", { name: "Get my free quote" }).click();
 
   await expect(
     page.getByRole("heading", { name: "Thanks — we've got your details" }),

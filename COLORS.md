@@ -13,57 +13,84 @@ emails, browser chrome, and app icons.
 
 ## Current palette
 
-Clean white canvas, utility blue brand surfaces, teal emphasis, pale blue
-supporting washes, and lime-green primary actions. Light mode only.
+Asphalt ink, hi-vis yellow actions and cash-green confirmations on a clean
+white page. Corners are square throughout (every radius token except
+`rounded-full` is `0`). Light mode only.
 
-| Token                      | Hex      | HSL              | Role                                           |
-| -------------------------- | -------- | ---------------- | ---------------------------------------------- |
+| Token                      | Hex       | HSL             | Role                                           |
+| -------------------------- | --------- | --------------- | ---------------------------------------------- |
 | `--background`             | `#FFFFFF` | `0 0% 100%`     | Page canvas                                    |
-| `--foreground`             | `#303030` | `0 0% 19%`      | Default body text                              |
+| `--foreground`             | `#141924` | `222 28% 11%`   | Default body text                              |
 | `--card`                   | `#FFFFFF` | `0 0% 100%`     | Elevated surface (cards, popovers, inputs)     |
-| `--card-foreground`        | `#303030` | `0 0% 19%`      | Text on cards                                  |
-| `--primary`                | `#2C5696` | `216 55% 38%`   | Brand blue / dominant brand surfaces           |
+| `--card-foreground`        | `#141924` | `222 28% 11%`   | Text on cards                                  |
+| `--primary`                | `#141924` | `222 28% 11%`   | Ink — headings, dark buttons, dark bands       |
 | `--primary-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--primary`                            |
-| `--secondary`              | `#EBF5FA` | `198 57% 95%`   | Low-emphasis pale blue surface                 |
-| `--secondary-foreground`   | `#26436D` | `216 48% 29%`   | Text on `--secondary`                          |
-| `--muted`                  | `#F6F8F9` | `200 17% 97%`   | Subtle backgrounds (code, fills)               |
-| `--muted-foreground`       | `#59636E` | `210 11% 39%`   | Secondary / helper text                        |
-| `--accent`                 | `#2D8995` | `187 54% 38%`   | Teal emphasis / supporting action surfaces     |
+| `--secondary`              | `#F3F4F6` | `220 16% 96%`   | Light concrete band / low-emphasis surface     |
+| `--secondary-foreground`   | `#141924` | `222 28% 11%`   | Text on `--secondary`                          |
+| `--muted`                  | `#EBECF0` | `220 14% 93%`   | Subtle backgrounds (code, fills)               |
+| `--muted-foreground`       | `#545964` | `220 9% 36%`    | Secondary / helper text                        |
+| `--accent`                 | `#197148` | `152 64% 27%`   | Cash green — ticks and confirmations           |
 | `--accent-foreground`      | `#FFFFFF` | `0 0% 100%`     | Text on `--accent`                             |
-| `--cta`                    | `#B3CF44` | `72 59% 54%`    | Lime primary CTA buttons and action accents    |
-| `--cta-foreground`         | `#1E3557` | `216 48% 23%`   | Text on `--cta`                                |
-| `--plate`                  | `#B3CF44` | `72 59% 54%`    | Vehicle plate / estimate accent                |
-| `--plate-foreground`       | `#1E3557` | `216 48% 23%`   | Text on `--plate`                              |
-| `--destructive`            | `#DC2626` | `0 72% 51%`     | Errors, destructive actions                    |
+| `--cta`                    | `#FFC300` | `46 100% 50%`   | Hi-vis yellow primary action and brand accent  |
+| `--cta-hover`              | `#EBA000` | `41 100% 46%`   | Hover state of `--cta`                         |
+| `--cta-foreground`         | `#0C1018` | `222 32% 7%`    | Text on `--cta`                                |
+| `--plate`                  | `#FFC300` | `46 100% 50%`   | Plate / estimate accent (same hue as `--cta`)  |
+| `--plate-foreground`       | `#0C1018` | `222 32% 7%`    | Text on `--plate`                              |
+| `--destructive`            | `#C52020` | `0 72% 45%`     | Errors, destructive actions                    |
 | `--destructive-foreground` | `#FFFFFF` | `0 0% 100%`     | Text on `--destructive`                        |
-| `--success`                | `#16A34A` | `142 76% 36%`   | Success signal (distinct from CTA green)       |
+| `--success`                | `#197148` | `152 64% 27%`   | Success signal                                 |
 | `--success-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--success`                            |
-| `--warning`                | `#F59E0B` | `38 92% 50%`    | Warning signal                                 |
-| `--warning-foreground`     | `#FFFFFF` | `0 0% 100%`     | Text on `--warning`                            |
-| `--info`                   | `#0284C7` | `200 98% 39%`   | Neutral notices                                |
+| `--warning`                | `#F59F0A` | `38 92% 50%`    | Warning signal                                 |
+| `--warning-foreground`     | `#141924` | `222 28% 11%`   | Text on `--warning`                            |
+| `--info`                   | `#145BB8` | `214 80% 40%`   | Neutral notices                                |
 | `--info-foreground`        | `#FFFFFF` | `0 0% 100%`     | Text on `--info`                               |
-| `--border`                 | `#D4D9DD` | `210 12% 85%`   | Default border / divider                       |
-| `--input`                  | `#BEC8CF` | `207 15% 78%`   | Form field border                              |
-| `--ring`                   | `#2C5696` | `216 55% 38%`   | Focus ring                                     |
+| `--border`                 | `#DADCE2` | `220 13% 87%`   | Default border / divider                       |
+| `--input`                  | `#747C8B` | `220 9% 50%`    | Form field border (3:1 against the card)       |
+| `--ring`                   | `#2463EB` | `221 83% 53%`   | Focus ring (visible on white and on ink)       |
+
+### Text variants of the action colours
+
+Yellow and mid green only pass contrast as *surfaces*. Use these when the hue
+has to be text.
+
+| Token              | Hex       | HSL             | Role                                  |
+| ------------------ | --------- | --------------- | ------------------------------------- |
+| `--cta-ink`        | `#814F03` | `36 95% 26%`    | Amber text on white                   |
+| `--accent-ink`     | `#125E3B` | `152 68% 22%`   | Green text and links on white         |
+| `--cta-bright`     | `#FFCE1F` | `47 100% 56%`   | Yellow text and icons on ink          |
+| `--accent-on-dark` | `#69D39E` | `150 55% 62%`   | Green text on ink                     |
 
 ### Dark Band Tokens
 
-These tokens support blue hero/footer bands and dark quote-result surfaces.
+These tokens support the header, hero, footer and other ink bands.
 
-| Token                 | Hex      | HSL              | Role                             |
-| --------------------- | -------- | ---------------- | -------------------------------- |
-| `--ink`               | `#2C5696` | `216 55% 38%`   | Primary blue dark surface        |
-| `--ink-deep`          | `#1D3B63` | `214 55% 25%`   | Deeper blue shadow / dark depth  |
-| `--ink-raised`        | `#4472A7` | `212 42% 46%`   | Raised dark surface              |
-| `--on-dark`           | `#E0E9F0` | `205 35% 91%`   | Secondary text on dark surfaces  |
-| `--on-dark-hi`        | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
-| `--shadow-color`      | `#24344C` | `216 35% 22%`   | Blue-tinted shadows              |
+| Token            | Hex       | HSL             | Role                             |
+| ---------------- | --------- | --------------- | -------------------------------- |
+| `--ink`          | `#141924` | `222 28% 11%`   | Dark band surface                |
+| `--ink-deep`     | `#0C1018` | `222 32% 7%`    | Utility strip, legal bar, depth  |
+| `--ink-raised`   | `#242A38` | `221 22% 18%`   | Raised surface on a dark band    |
+| `--on-dark`      | `#BFC4CF` | `220 14% 78%`   | Secondary text on dark surfaces  |
+| `--on-dark-hi`   | `#FFFFFF` | `0 0% 100%`     | Primary text on dark surfaces    |
+| `--shadow-color` | `#151B28` | `222 30% 12%`   | Shadows                          |
+
+### Type
+
+Headings and buttons use Barlow Condensed (`font-display`); body text uses
+Inter (`font-sans`). `.display-impact` is the uppercase poster style for the
+hero and section titles. Keep `font-display` at `text-xl` or larger — the
+condensed face is hard to read below that.
+
+### Brand motifs
+
+- `.eyebrow` / `.eyebrow-on-dark` — uppercase label led by a yellow square.
+- `.hazard-stripe` — the yellow and black tow-truck stripe, used as a thin
+  rule (quote card, footer). Decorative only.
 
 ### WCAG contrast
 
 Core text and UI should remain AA+. Large text and UI components follow WCAG
 large-text thresholds. Do not rely on colour alone; status colours should have
-supporting icons or text.
+supporting icons or text. Never use `--cta` yellow as text on white.
 
 ---
 
@@ -72,7 +99,8 @@ supporting icons or text.
 ### Do
 - Use semantic tokens in JSX: `className="bg-primary text-primary-foreground"`.
 - Pair every coloured surface with its matching `-foreground` token.
-- Use `bg-cta text-cta-foreground` for the primary action button style.
+- Use `bg-cta text-cta-foreground` for the primary action button style
+  (`hover:bg-cta-hover`).
 - Add opacity with slash syntax on semantic tokens: `bg-primary/10`,
   `text-muted-foreground/60`.
 

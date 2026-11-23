@@ -114,7 +114,7 @@ export default function About() {
                   <span className="flex h-12 w-12 items-center justify-center bg-secondary text-primary">
                     <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
                   </span>
-                  <dt className="mt-3 font-display text-sm font-semibold leading-snug text-foreground">{title}</dt>
+                  <dt className="mt-3 font-display text-xl font-bold leading-[1.15] text-foreground">{title}</dt>
                   <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{desc}</dd>
                 </div>
               ))}

@@ -57,14 +57,14 @@ export function IconHeading({
       <span
         className={cn(
           "flex h-12 w-12 shrink-0 items-center justify-center",
-          tone === "solid" ? "bg-primary text-primary-foreground" : "bg-secondary text-primary",
+          tone === "solid" ? "bg-cta text-cta-foreground" : "bg-ink text-cta-bright",
         )}
       >
         <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
       </span>
       <Tag
         id={id}
-        className="text-2xl sm:text-3xl font-display text-foreground leading-[1.15]"
+        className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.08]"
         style={{ letterSpacing: "var(--tracking-tight)" }}
       >
         {children}
@@ -92,7 +92,7 @@ export function HeroPoints({ className }: { className?: string }) {
 export function PromiseTiles({ title }: { title: string }) {
   return (
     <div className="border border-border bg-card p-5 sm:p-6">
-      <h3 className="font-display text-base text-foreground mb-4">{title}</h3>
+      <h3 className="font-display text-xl font-bold text-foreground mb-4">{title}</h3>
       <ul className="grid grid-cols-2 gap-2.5">
         {PROMISE_TILES.map(({ icon: Icon, label }) => (
           <li
@@ -117,7 +117,7 @@ export function SidebarLinks({
 }) {
   return (
     <nav aria-label={label} className="border border-border bg-card p-5 sm:p-6">
-      <h3 className="font-display text-base mb-3 text-foreground">{label}</h3>
+      <h3 className="font-display text-xl font-bold mb-3 text-foreground">{label}</h3>
       <ul className="divide-y divide-border/60 border-t border-border/60">
         {items.map(({ href, label: itemLabel, icon: Icon }) => (
           <li key={href}>
@@ -125,7 +125,7 @@ export function SidebarLinks({
               href={href}
               className="group flex min-h-[44px] items-center gap-3 py-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              <Icon className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+              <Icon className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
               <span className="flex-1">{itemLabel}</span>
               <ChevronRight
                 className="h-4 w-4 shrink-0 text-border transition-colors group-hover:text-primary"
@@ -151,16 +151,16 @@ export function IconSteps({
     <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3">
       {steps.map(({ icon: Icon, title, description }, index) => (
         <li key={title} className="flex flex-col items-center text-center">
-          <span className="relative flex h-16 w-16 items-center justify-center border border-border bg-secondary text-primary">
+          <span className="relative flex h-16 w-16 items-center justify-center bg-ink text-cta-bright">
             <Icon className="h-8 w-8" strokeWidth={1.75} aria-hidden="true" />
             <span
               aria-hidden="true"
-              className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center bg-cta font-display text-xs font-bold text-cta-foreground"
+              className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center bg-cta font-display text-lg font-extrabold leading-none text-cta-foreground"
             >
               {index + 1}
             </span>
           </span>
-          <StepHeading className="mt-4 font-display text-base font-semibold text-foreground">{title}</StepHeading>
+          <StepHeading className="mt-4 font-display text-xl font-bold leading-[1.15] text-foreground">{title}</StepHeading>
           <p className="mt-1 text-sm text-muted-foreground">{description}</p>
         </li>
       ))}

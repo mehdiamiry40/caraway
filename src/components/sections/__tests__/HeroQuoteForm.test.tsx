@@ -56,7 +56,7 @@ describe("HeroQuoteForm", () => {
     expect(screen.getByLabelText(/^condition/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^suburb/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/expected price/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /^submit$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^get my free quote$/i })).toBeInTheDocument();
     // The free-text vehicle notes stay on the full form below the fold.
     expect(
       screen.queryByLabelText(/vehicle and access details/i),
@@ -69,7 +69,7 @@ describe("HeroQuoteForm", () => {
 
     render(<HeroQuoteForm />);
     await fillRequiredFields(user);
-    await user.click(screen.getByRole("button", { name: /^submit$/i }));
+    await user.click(screen.getByRole("button", { name: /^get my free quote$/i }));
 
     await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
     expect(submitQuoteMock).toHaveBeenCalledWith(
@@ -109,7 +109,7 @@ describe("HeroQuoteForm", () => {
 
     render(<HeroQuoteForm />);
     await fillRequiredFields(user);
-    await user.click(screen.getByRole("button", { name: /^submit$/i }));
+    await user.click(screen.getByRole("button", { name: /^get my free quote$/i }));
 
     await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
     expect(await screen.findByRole("alert")).toHaveTextContent(/couldn't send/i);
@@ -125,7 +125,7 @@ describe("HeroQuoteForm", () => {
     const honeypot = document.getElementById("hero-quote-website");
     expect(honeypot).not.toBeNull();
     await user.type(honeypot as HTMLInputElement, "https://spam.example");
-    await user.click(screen.getByRole("button", { name: /^submit$/i }));
+    await user.click(screen.getByRole("button", { name: /^get my free quote$/i }));
 
     await waitFor(() => expect(submitQuoteMock).toHaveBeenCalledTimes(1));
     expect(submitQuoteMock.mock.calls[0][0]).toMatchObject({ honeypot: "https://spam.example" });
@@ -143,7 +143,7 @@ describe("HeroQuoteForm", () => {
 
     render(<HeroQuoteForm />);
     await fillRequiredFields(user);
-    await user.click(screen.getByRole("button", { name: /^submit$/i }));
+    await user.click(screen.getByRole("button", { name: /^get my free quote$/i }));
 
     expect(await screen.findByText(/thanks — we've got your details/i)).toBeInTheDocument();
     expect(submitQuoteMock).toHaveBeenCalledTimes(2);

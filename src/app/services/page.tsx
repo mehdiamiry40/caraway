@@ -109,7 +109,7 @@ export default function ServicesPage() {
                       <span className="flex h-16 w-16 items-center justify-center bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground sm:h-20 sm:w-20">
                         <Icon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
                       </span>
-                      <h2 className="font-display text-sm font-semibold leading-snug text-primary text-balance sm:text-base">
+                      <h2 className="font-display text-lg font-bold leading-[1.15] text-primary text-balance sm:text-xl">
                         {service.h1.split(" — ")[0]}
                       </h2>
                       <ArrowRight

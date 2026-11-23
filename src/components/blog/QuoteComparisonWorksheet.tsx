@@ -254,7 +254,7 @@ export function QuoteComparisonWorksheet() {
               key={label}
               className="min-w-0 rounded-lg border border-border/80 bg-background p-4"
             >
-              <legend className="px-2 font-display text-lg text-foreground">
+              <legend className="px-2 font-display text-xl font-bold text-foreground">
                 {label}
               </legend>
 
@@ -462,7 +462,7 @@ export function QuoteComparisonWorksheet() {
 
       <div className="mt-6 overflow-x-auto rounded-lg border border-border/70">
         <table className="min-w-[42rem] w-full text-left text-sm">
-          <caption className="bg-secondary/70 px-4 py-3 text-left font-display text-base text-foreground">
+          <caption className="bg-secondary/70 px-4 py-3 text-left font-display text-xl font-bold text-foreground">
             Comparison summary
           </caption>
           <thead className="border-t border-border/70 bg-secondary/40 text-foreground">

@@ -25,21 +25,21 @@ export function Accordion({
   const HeadingTag = `h${headingLevel}` as "h2" | "h3" | "h4";
 
   return (
-    <div className={cn("w-full border-t border-border", className)}>
+    <div className={cn("w-full border-t-2 border-foreground", className)}>
       {items.map((item, index) => {
         return (
           <details
             key={`${index}-${item.question}`}
-            className="group border-b border-border transition-colors duration-200 open:border-primary/40"
+            className="group border-b border-border transition-colors duration-200"
           >
             <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 py-5 text-left touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-4 sm:py-6 [&::-webkit-details-marker]:hidden">
               <HeadingTag className="m-0 contents">
-                <span className="font-display text-base text-foreground break-words transition-colors duration-200 [overflow-wrap:anywhere] group-hover:text-primary sm:text-lg">
+                <span className="font-display text-xl font-bold leading-[1.15] text-foreground break-words [overflow-wrap:anywhere] sm:text-[1.375rem]">
                   {item.question}
                 </span>
               </HeadingTag>
-              <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-none border border-border bg-secondary text-foreground/80 transition-[transform,background-color,color,border-color] duration-300 ease-[var(--ease-out-quint)] group-open:rotate-45 group-open:border-primary/50 group-open:bg-primary/15 group-open:text-primary motion-reduce:transition-none motion-reduce:duration-0">
-                <Plus className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center bg-secondary text-foreground transition-[transform,background-color,color] duration-300 ease-[var(--ease-out-quint)] group-hover:bg-cta group-hover:text-cta-foreground group-open:rotate-45 group-open:bg-cta group-open:text-cta-foreground motion-reduce:transition-none motion-reduce:duration-0">
+                <Plus className="h-5 w-5" strokeWidth={2.5} aria-hidden="true" />
               </span>
             </summary>
             <div className="pb-6 pt-0 pr-10 text-[0.9375rem] leading-relaxed text-foreground/80 break-words [overflow-wrap:anywhere] sm:text-base">

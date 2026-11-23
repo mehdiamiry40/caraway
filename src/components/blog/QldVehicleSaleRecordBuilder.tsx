@@ -349,7 +349,7 @@ export function QldVehicleSaleRecordBuilder() {
         </div>
 
         <fieldset className="mt-7 rounded-lg border border-border/80 bg-background p-4 sm:p-5">
-          <legend className="px-2 font-display text-lg text-foreground">
+          <legend className="px-2 font-display text-xl font-bold text-foreground">
             1. Choose the likely transaction path
           </legend>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -517,7 +517,7 @@ export function QldVehicleSaleRecordBuilder() {
         </section>
 
         <fieldset className="mt-7 rounded-lg border border-border/80 bg-background p-4 sm:p-5">
-          <legend className="px-2 font-display text-lg text-foreground">
+          <legend className="px-2 font-display text-xl font-bold text-foreground">
             2. Prepare the optional handover record
           </legend>
           <p className="mb-5 text-sm leading-relaxed text-muted-foreground">

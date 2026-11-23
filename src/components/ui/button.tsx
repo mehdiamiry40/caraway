@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-none",
-    "font-sans font-semibold",
+    "font-display font-bold uppercase tracking-[0.04em] leading-none",
     "ring-offset-background transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
@@ -13,29 +13,28 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        // Hi-vis yellow with a pressed lower edge: the one primary action.
         default:
-          "bg-cta text-cta-foreground hover:bg-rust active:translate-y-px",
+          "bg-cta text-cta-foreground shadow-[inset_0_-3px_0_hsl(var(--ink-deep)/0.2)] hover:bg-cta-hover active:translate-y-px active:shadow-none",
         primary:
           "bg-primary text-primary-foreground hover:bg-ink-raised active:translate-y-px",
         secondary:
           "bg-accent text-accent-foreground hover:bg-accent-ink active:translate-y-px",
         grey:
-          "bg-foreground/20 text-foreground hover:bg-foreground/28 active:translate-y-px",
+          "bg-foreground/10 text-foreground hover:bg-foreground/16 active:translate-y-px",
         white:
           "bg-on-dark-hi text-foreground hover:bg-on-dark active:translate-y-px",
-        rust:
-          "bg-rust text-on-dark-hi hover:bg-cta active:translate-y-px",
         outline:
-          "border border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background active:translate-y-px",
+          "border-2 border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background active:translate-y-px",
         ghost:
           "bg-transparent text-primary hover:bg-primary/8",
         inkOutline:
-          "border border-on-dark-hi bg-transparent text-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
+          "border-2 border-on-dark-hi/70 bg-transparent text-on-dark-hi hover:border-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
       },
       size: {
-        default: "h-11 px-6 text-base",
-        sm: "h-9 px-4 text-sm",
-        lg: "h-12 px-8 sm:px-10 text-base sm:text-lg",
+        default: "h-12 px-6 text-lg",
+        sm: "h-10 px-4 text-base",
+        lg: "h-14 px-8 text-xl sm:px-10",
         icon: "h-12 w-12",
       },
     },

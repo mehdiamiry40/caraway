@@ -167,7 +167,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                 >
                   <span
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground font-display text-xs font-semibold"
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground font-display text-base font-bold"
                   >
                     {authorInitials}
                   </span>
@@ -228,7 +228,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
             {post.sources && post.sources.length > 0 && (
               <aside className="mt-12 border border-border bg-muted/50 p-5 sm:p-6">
-                <p className="mb-3 flex items-center gap-2 font-display text-base font-semibold text-foreground">
+                <p className="mb-3 flex items-center gap-2 font-display text-xl font-bold text-foreground">
                   <BookCheck className="h-5 w-5 text-accent-ink" aria-hidden="true" />
                   Sources and review
                 </p>
@@ -285,12 +285,12 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               <div className="flex items-start gap-4 border border-border bg-card p-5 sm:p-6">
                 <div
                   aria-hidden
-                  className="flex h-12 w-12 shrink-0 items-center justify-center bg-primary font-display text-base font-semibold text-primary-foreground"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center bg-primary font-display text-xl font-bold text-primary-foreground"
                 >
                   {authorInitials}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="font-display text-base font-semibold text-foreground">
+                  <p className="font-display text-xl font-bold leading-tight text-foreground">
                     <Link href={authorHref} className="hover:text-primary transition-colors">
                       {authorName}
                     </Link>
@@ -380,7 +380,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           {relatedPosts.length > 0 && (
             <section className="mt-20 sm:mt-24">
               <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-                <p className="flex items-center gap-2 font-display text-lg font-semibold text-foreground">
+                <p className="flex items-center gap-2 font-display text-2xl font-bold text-foreground">
                   <BookOpen className="h-5 w-5 text-accent-ink" aria-hidden="true" />
                   Keep reading
                 </p>
