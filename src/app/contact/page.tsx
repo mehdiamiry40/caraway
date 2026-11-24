@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   title: {
     absolute: "Contact Caraway | Phone, Email and Quote Enquiries",
   },
-  description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
+  description: `Contact Caraway by phone, email or online form about a quote or pickup for your car. Call ${BUSINESS.phoneDisplay} or send the details online.`,
   alternates: { canonical: "/contact" },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: "website",
     url: "/contact",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
-    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
+    description: `Contact Caraway by phone, email or online form about a quote or pickup for your car. Call ${BUSINESS.phoneDisplay} or send the details online.`,
     images: [
       {
         url: "/images/og-card.jpg",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact Caraway | Phone, Email and Quote Enquiries",
-    description: `Contact Caraway by phone, email or online form for vehicle quote and pickup enquiries. Call ${BUSINESS.phoneDisplay} or send the vehicle and collection details online.`,
+    description: `Contact Caraway by phone, email or online form about a quote or pickup for your car. Call ${BUSINESS.phoneDisplay} or send the details online.`,
     images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
@@ -54,7 +54,7 @@ export default function ContactPage() {
             "@type": "ContactPage",
             url: canonical,
             name: "Contact Caraway",
-            description: `Contact Caraway about a vehicle quote or pickup enquiry. Call ${BUSINESS.phoneDisplay} or fill out the online form.`,
+            description: `Contact Caraway about a quote or pickup for your car. Call ${BUSINESS.phoneDisplay} or fill in the online form.`,
             mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",

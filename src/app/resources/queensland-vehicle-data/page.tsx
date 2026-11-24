@@ -33,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "Queensland Vehicle Data | Fuel Trends & Brisbane Snapshot",
   description:
-    "Explore Queensland car fuel records from 2006–2024 and a clearly dated 2022 snapshot of registered vehicles across 186 Brisbane City suburbs.",
+    "Explore Queensland car fuel records from 2006–2024 and a 2022 snapshot of registered vehicles across 186 Brisbane City suburbs.",
   alternates: { canonical: VEHICLE_DATA_ROUTE },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -136,7 +136,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
     url: canonical,
     name: RESOURCE_HEADING,
     description:
-      "A methodology-first collection of two separate derived datasets: Queensland registered cars by fuel type from 2006 to 2024, and a historical 2022 registration snapshot across 186 unambiguous Brisbane City suburb rows.",
+      "Two separate derived datasets with their methods: Queensland registered cars by fuel type from 2006 to 2024, and a historical 2022 registration snapshot across 186 unambiguous Brisbane City suburb rows.",
     inLanguage: "en-AU",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -338,9 +338,9 @@ export default function QueenslandVehicleDataPage() {
         title={RESOURCE_HEADING}
         subtitle={
           <p>
-            Two independent views built from official Queensland and Brisbane
+            Two separate views built from official Queensland and Brisbane
             datasets. Their dates, geography, and vehicle definitions differ, so
-            the panels should not be combined into one series.
+            do not combine the panels into one series.
           </p>
         }
       >
@@ -355,7 +355,7 @@ export default function QueenslandVehicleDataPage() {
                 Cars by fuel type, 2006–2024
               </span>
               <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
-                A 19-year official aggregate suitable for statewide trend analysis.
+                19 years of official statewide totals, suited to trend analysis.
               </span>
             </a>
             <a
@@ -387,7 +387,7 @@ export default function QueenslandVehicleDataPage() {
             <p className="mt-5 max-w-3xl text-lg leading-relaxed text-muted-foreground">
               This panel filters the Queensland State of the Environment table to
               <strong className="font-semibold text-foreground"> Cars</strong> and
-              preserves all 11 fuel categories. These are registration records,
+              keeps all 11 fuel categories. These are registration records,
               not sales, removals, scrappage, prices, or demand.
             </p>
 
@@ -425,8 +425,8 @@ export default function QueenslandVehicleDataPage() {
                 Change in the published records, {previousFuelRow.year}–{latestFuelRow.year}
               </h3>
               <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">
-                This compares the final two annual columns in the source. The fuel
-                labels remain separate and literal. Differences can reflect both
+                This compares the last two annual columns in the source. The fuel
+                labels stay separate and literal. Differences can reflect both
                 registration activity and source cleansing; they are not sales,
                 market share, demand, removals, or BEV/PHEV classifications.
               </p>
@@ -645,8 +645,8 @@ export default function QueenslandVehicleDataPage() {
               Editorial preview images
             </h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              These Caraway-created PNG summaries are available for editorial or
-              research reference alongside this resource. They summarize separate
+              Caraway made these PNG summaries for editorial or research
+              reference alongside this resource. They summarise separate
               datasets; the Brisbane graphic is a historical 10 October 2022
               snapshot, not a current fleet estimate.
             </p>
@@ -922,23 +922,23 @@ export default function QueenslandVehicleDataPage() {
               id="related-services-heading"
               className="text-[1.5rem] font-semibold text-on-dark-hi sm:text-[1.75rem]"
             >
-              Vehicle-selling information
+              Selling a car
             </h2>
             <p className="mt-3 max-w-3xl leading-relaxed text-on-dark-hi/85">
-              This resource does not estimate an individual vehicle. For commercial
-              service information, see Caraway&apos;s{" "}
+              This resource does not value an individual vehicle. To sell a car,
+              see Caraway&apos;s{" "}
               <Link
                 href="/"
                 className="font-semibold text-cta-bright underline underline-offset-4 hover:text-on-dark-hi"
               >
-                Brisbane vehicle-buyer quote service
+                Brisbane car quotes
               </Link>{" "}
               and{" "}
               <Link
                 href="/car-removal-brisbane"
                 className="font-semibold text-cta-bright underline underline-offset-4 hover:text-on-dark-hi"
               >
-                vehicle purchase and collection information
+                car purchase and pickup information
               </Link>.
             </p>
           </section>

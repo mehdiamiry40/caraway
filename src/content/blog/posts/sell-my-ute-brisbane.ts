@@ -7,25 +7,25 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Looking for cash for an old ute in Brisbane? Compare written offers, condition, paperwork, pickup access and sale routes before accepting an offer.",
   excerpt:
-    "Compare written offers for an old ute using its exact condition, ownership, modifications, and pickup access—not a generic price promise.",
+    "Compare written offers for an old ute based on its exact condition, ownership, modifications, and pickup access, not a generic price promise.",
   content: [
-    "If you are looking for cash for an old ute in Brisbane, start by identifying the exact vehicle, its condition, and the outcome you want. A private listing, dealer trade-in, and direct-buyer quote involve different preparation, timing, and conditions. Compare the likely net proceeds and work involved rather than assuming one route is best for every ute.",
+    "If you are looking for cash for an old ute in Brisbane, start with the exact ute, its condition, and what you want from the sale. A private listing, a dealer trade-in, and a direct-buyer quote each involve different preparation, timing, and conditions. Compare what you are likely to end up with and the work involved. Do not assume one route is best for every ute.",
 
     "## Record the exact ute and its condition",
 
-    "Provide the make, model, variant, year, cab and body style, engine, transmission, drivetrain, kilometres, registration status, and service history. Photograph the exterior, cabin, odometer, engine bay, tyres, tray or tub, and any damage. State whether the ute starts, rolls, steers, and brakes, and disclose warning lights, leaks, rust, accident history, flood exposure, or a written-off classification.",
+    "Give the make, model, variant, year, cab and body style, engine, transmission, drivetrain, kilometres, registration status, and service history. Photograph the exterior, cabin, odometer, engine bay, tyres, tray or tub, and any damage. Say whether the ute starts, rolls, steers, and brakes, and disclose warning lights, leaks, rust, accident history, flood exposure, or a written-off classification.",
 
-    "Canopies, bull bars, tow bars, toolboxes, drawer systems, aftermarket trays, suspension changes, and other modifications should be listed accurately. They may affect an individual buyer's assessment, but an accessory does not have a universal resale value. Include compliance or installation records where they are relevant.",
+    "List canopies, bull bars, tow bars, toolboxes, drawer systems, aftermarket trays, suspension changes, and other modifications accurately. They may affect what a buyer offers, but an accessory does not have a fixed resale value. Include compliance or installation records where they are relevant.",
 
     "## Confirm ownership, finance, and authority",
 
-    "Before agreeing to a sale, resolve any finance or registered security interest and confirm that the seller has authority to dispose of the ute. For a business vehicle, identify the legal entity that owns it and the person authorised to sign for that entity; an ABN by itself is not proof of ownership or signing authority. Keep relevant company, finance, insurer, estate, or fleet records with the sale file.",
+    "Before you agree to a sale, resolve any finance or registered security interest and confirm that the seller has authority to dispose of the ute. For a business vehicle, identify the legal entity that owns it and the person authorised to sign for that entity. An ABN by itself is not proof of ownership or signing authority. Keep the relevant company, finance, insurer, estate, or fleet records with the sale file.",
 
-    "A buyer can run an official Personal Property Securities Register search using the VIN. If finance is owing, obtain a current payout figure and agree on a settlement process that results in the security interest being discharged.",
+    "A buyer can run an official Personal Property Securities Register search using the VIN. If finance is owing, get a current payout figure and agree on a settlement process that ends with the security interest being discharged.",
 
     "## Compare the selling routes",
 
-    "A private sale may suit a registered ute that can be safely demonstrated and supported by condition and service records. A trade-in may suit an owner buying another vehicle from the same dealer, but the comparison should use the full changeover cost. A [cash-for-cars buyer in Brisbane](/) or another direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or difficult-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
+    "A private sale may suit a registered ute that can be safely demonstrated and has condition and service records to back it up. A trade-in may suit an owner buying another vehicle from the same dealer, but compare it using the full changeover cost. A [cash-for-cars buyer in Brisbane](/) or another direct buyer may suit a damaged, non-running, unregistered, high-kilometre, or hard-to-move ute. Compare written offers, preparation costs, fees, inspections, pickup conditions, payment timing, and certainty.",
 
     "## Check the Queensland seller steps",
 
@@ -33,25 +33,25 @@ export const post: RawBlogPostEntry = {
 
     "## Quote and pickup details",
 
-    "Give every buyer the same accurate description and photos so the offers are comparable. Ask what could change the offer, whether pickup is included, which access assumptions apply, when payment is confirmed, and what receipt and buyer details will be supplied. Disclose gates, slopes, height limits, soft ground, seized wheels, missing keys, storage fees, or worksite restrictions before collection is scheduled.",
+    "Give every buyer the same accurate description and photos so you can compare the offers. Ask what could change the offer, whether pickup is included, what access the buyer is assuming, when payment is confirmed, and what receipt and buyer details you will get. Tell the buyer about gates, slopes, height limits, soft ground, seized wheels, missing keys, storage fees, or worksite restrictions before pickup is booked.",
 
-    `To request an individual ute assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The available window, payment method and timing, and sale records are confirmed before dispatch.`,
+    `To get a free quote for your ute, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Towing is included when Caraway buys your ute. We confirm the pickup time, payment method and timing, and sale records before pickup.`,
   ],
   faqs: [
     {
       question: "Can Caraway assess a non-running or damaged ute?",
       answer:
-        "Yes, subject to the ute's identity, condition, completeness, ownership status, location, and access. Describe whether it starts, rolls, steers, and brakes so the quote and collection requirements can be assessed.",
+        "Yes, depending on the ute's identity, condition, completeness, ownership status, location, and access. Tell us whether it starts, rolls, steers, and brakes so we can work out the quote and the pickup.",
     },
     {
       question: "What paperwork should I prepare for a Queensland ute sale?",
       answer:
-        "Prepare photo ID and the registration, ownership, finance, insurer, estate, or business-authority records that apply. Follow the current TMR steps for a registered transfer, cancellation, or unregistered sale and keep the resulting confirmation and receipt.",
+        "Have photo ID ready, plus the registration, ownership, finance, insurer, estate, or business-authority records that apply. Follow the current TMR steps for a registered transfer, cancellation, or unregistered sale, and keep the confirmation and receipt.",
     },
     {
       question: "Do canopies, tow bars, and trays increase the offer?",
       answer:
-        "They may affect an individual assessment depending on their type, condition, installation, and buyer demand. List and photograph each accessory rather than assuming a fixed addition to the ute's value.",
+        "They may, depending on their type, condition, installation, and buyer demand. List and photograph each accessory. Do not assume it adds a fixed amount to the ute's value.",
     },
   ],
   date: "2026-06-07",

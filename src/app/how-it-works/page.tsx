@@ -18,8 +18,8 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "How Our Vehicle Buying Process Works",
-  description: `See how Caraway assesses a Brisbane vehicle, documents an offer, confirms conditional pickup and payment terms, and records the sale. Call ${BUSINESS.phoneDisplay}.`,
+  title: "How It Works: Sell Your Car in Four Steps",
+  description: `How selling your car to Caraway works in Brisbane: send the details, get a written offer, free towing when we buy, and get paid. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/how-it-works" },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "/how-it-works",
     title: "How Selling to Caraway Works | Brisbane",
     description:
-      "Four clear steps covering vehicle details, individual assessment, conditional collection, payment, and sale records.",
+      "Four clear steps: your car's details, a written offer, pickup and payment.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How Selling to Caraway Works | Brisbane",
     description:
-      "Four clear steps covering vehicle details, individual assessment, conditional collection, payment, and sale records.",
+      "Four clear steps: your car's details, a written offer, pickup and payment.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -60,31 +60,31 @@ const processFaqs = [
   {
     question: "Can the offer change when the driver arrives?",
     answer:
-      "The written offer states the vehicle and access details it assumes. When those details match, Caraway honours the agreed figure and included-pickup terms. A material difference is discussed before loading, and the seller can decline a revised offer.",
+      "The written offer lists the car and access details it is based on. If they match, we honour the agreed figure and the free towing. If something is materially different, we talk to you before loading, and you can say no to a new offer.",
   },
   {
-    question: "How long does my quote stay valid?",
+    question: "How long is my quote valid?",
     answer:
-      "The written offer should state its validity period. If it expires or the vehicle, location, or access changes, Caraway rechecks the details and confirms the current terms before dispatch.",
+      "The written offer should say how long it is valid. If it expires, or the car, location or access changes, we recheck the details and confirm the current terms before the truck is sent.",
   },
   {
     question: "Can someone else hand the car over for me?",
     answer:
-      "It may be possible by prior arrangement. Tell Caraway who will be present so the identity, authority, vehicle records, and site-access requirements can be confirmed before collection.",
+      "It may be possible if we arrange it first. Tell us who will be there so we can confirm their ID, their authority, the car's records and the site access before pickup.",
   },
   {
     question: "What if the car can't roll or is in an awkward spot?",
     answer:
-      "Flag a basement car park, locked gate, steep driveway, seized brakes, missing wheels, soft ground, or other constraint before the quote is confirmed. Access can affect feasibility, equipment, timing, and the offer.",
+      "Tell us about a basement car park, locked gate, steep driveway, seized brakes, missing wheels, soft ground or anything else in the way before the quote is confirmed. Access can affect whether we can pick up, the truck, the timing and the offer.",
   },
 ];
 
 const pickupChecklist = [
   { text: "Current photo ID, such as a Queensland driver licence" },
-  { text: "Registration papers or ownership records, if you have them" },
-  { text: "All keys you hold, including spares" },
-  { text: "Finance, insurer, or estate documents where they apply to the sale" },
-  { text: "Personal belongings cleared out, and any e-tag or toll account noted so you can close it off" },
+  { text: "Rego papers or ownership records, if you have them" },
+  { text: "All your keys, including spares" },
+  { text: "Finance, insurance or estate documents, if they apply" },
+  { text: "Your belongings cleared out, and any e-tag or toll account noted so you can close it" },
 ];
 
 const paperworkGuides = [
@@ -126,7 +126,7 @@ export default function HowItWorksPage() {
             url: canonical,
             name: "How Caraway Works",
             description:
-              "How Caraway assesses a Brisbane vehicle and confirms an offer, collection plan, payment arrangement, and sale records.",
+              "How Caraway checks a Brisbane car and confirms the offer, pickup, payment and sale records.",
             isPartOf: { "@id": `${SITE_URL}/#website` },
             dateModified: HOW_IT_WORKS_CONTENT_UPDATED,
           },
@@ -157,7 +157,7 @@ export default function HowItWorksPage() {
           <div className="mx-auto max-w-4xl space-y-12 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <div>
               <SectionHeading id="process-detail-heading">
-                What actually happens at each step
+                What happens at each step
               </SectionHeading>
 
               <div className="mt-7 border-t border-border pt-6">
@@ -165,43 +165,43 @@ export default function HowItWorksPage() {
                   1. Tell us about the car
                 </h3>
                 <p className={proseClasses}>
-                  The assessment starts with the vehicle, condition, contact,
-                  and pickup details requested in the quote tool below, or you
-                  can call {BUSINESS.phoneDisplay}. Mention anything that affects
-                  loading — a flat battery, missing wheels, a car that won&apos;t
-                  roll, or parking in a basement or behind a gate. Clear photos
-                  of the exterior, interior, access, and any damage help the
-                  assessment. Accurate details reduce the chance that the offer
-                  or collection plan needs to change later.
+                  Fill in the quote form below with the car, its condition,
+                  your contact details and where it is, or call{" "}
+                  {BUSINESS.phoneDisplay}. Tell us about anything that affects
+                  loading, like a flat battery, missing wheels, a car that
+                  won&apos;t roll, or parking in a basement or behind a gate.
+                  Clear photos of the outside, the inside, the access and any
+                  damage help. Accurate details make it less likely the offer
+                  or pickup plan has to change later.
                 </p>
               </div>
 
               <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  2. Review an individual offer
+                  2. Get a written offer
                 </h3>
                 <p className={proseClasses}>
-                  We weigh the details against current parts, resale, and scrap
-                  demand, ownership, location, and access, then decide whether to
-                  make an offer. The written terms record the assumptions,
-                  validity period, included pickup, and circumstances in which
-                  the figure could change. You can accept or decline it.
+                  We check the details against current demand for parts,
+                  resale and scrap, plus ownership, location and access, then
+                  decide whether to make an offer. The written offer lists what
+                  it is based on, how long it is valid, the free towing, and
+                  what could change the figure. You can accept it or say no.
                 </p>
               </div>
 
               <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  3. Confirm the collection plan
+                  3. Book the pickup
                 </h3>
                 <p className={proseClasses}>
-                  Once you accept, Caraway confirms a collection window based on
-                  the vehicle, location, access, seller availability, and assigned
-                  operator. Pickup is included when Caraway buys and those details
-                  match the agreed terms. A non-running vehicle, height limit,
-                  narrow driveway, gate, slope, soft ground, or missing wheel must
-                  be disclosed so feasibility and equipment can be confirmed.
-                  Do not move or deliver the vehicle to an address unless that
-                  location is part of the agreed collection plan.
+                  Once you accept, we confirm a pickup time based on the car,
+                  location, access, when you are free and the operator assigned.
+                  Towing is free when we buy and those details match what was
+                  agreed. Tell us about a car that doesn&apos;t run, a height
+                  limit, narrow driveway, gate, slope, soft ground or missing
+                  wheel, so we can confirm the pickup is possible and book the
+                  right truck. Don&apos;t move or deliver the car to an address
+                  unless that is part of the agreed pickup plan.
                 </p>
               </div>
 
@@ -210,12 +210,12 @@ export default function HowItWorksPage() {
                   4. Payment, receipt, and the car leaves
                 </h3>
                 <p className={proseClasses}>
-                  On the day, the assigned operator checks the vehicle against the
-                  description. The parties follow the payment method and timing
-                  agreed before dispatch, and the seller confirms the agreed funds
-                  before handover. Retain a receipt recording the vehicle, date,
-                  amount, and buyer details, plus evidence of the Queensland
-                  seller steps that apply to the transaction.
+                  On the day, the operator checks the car against the
+                  description. You are paid by the method and at the time agreed
+                  before the truck was sent, and you confirm the money before you
+                  hand over the car. Keep a receipt showing the car, date, amount
+                  and buyer details, plus proof of the Queensland seller steps
+                  that apply to your sale.
                 </p>
               </div>
             </div>
@@ -230,12 +230,11 @@ export default function HowItWorksPage() {
                 ))}
               </ul>
               <p className={`${proseClasses} mt-5`}>
-                An assessment can usually start from the vehicle details, VIN,
-                photos, and current identification. Completing a sale requires
-                the ownership authority and registration, finance, insurer,
-                estate, company, or other transaction records that apply; a VIN
-                lookup does not prove ownership or authority to sell. For a
-                fuller rundown, see our guide to{" "}
+                We can usually start with the car&apos;s details, the VIN,
+                photos and current ID. To complete a sale you need the right to
+                sell and the registration, finance, insurance, estate, company or
+                other records that apply. A VIN lookup does not prove ownership
+                or the right to sell. For more, see our guide to{" "}
                 <Link
                   href="/blog/preparing-your-car-for-pickup"
                   className="font-medium text-primary link-underline"
@@ -250,16 +249,16 @@ export default function HowItWorksPage() {
               <SectionHeading>After the sale: the Queensland paperwork</SectionHeading>
               <p className={proseClasses}>
                 You leave the pickup with a signed receipt and the buyer&apos;s
-                details — the records the seller-side steps with the Department
-                of Transport and Main Roads (TMR) ask for. For a registered
-                vehicle that usually means completing the transfer or
-                cancelling the registration; unregistered sales rely on the
+                details. These are the records the seller-side steps with the
+                Department of Transport and Main Roads (TMR) ask for. For a
+                registered vehicle that usually means completing the transfer
+                or cancelling the registration. Unregistered sales rely on the
                 receipt itself. Rules for number plates differ between
-                transfers, cancellations, and personalised plates, so check the
+                transfers, cancellations and personalised plates, so check the
                 current TMR guidance for your situation and keep confirmation
                 of whichever step you complete. It&apos;s also worth closing off
                 tolls and insurance tied to the car the same day. These guides
-                walk through each situation:
+                cover each situation:
               </p>
               <ul className="mt-6 border-t-2 border-primary">
                 {paperworkGuides.map((guide) => (

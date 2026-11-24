@@ -67,8 +67,8 @@ export default function Locations() {
       subtitle={
         <p>
           Find your area, or{" "}
-          <Link href="/#quote-form">request a quote</Link>.
-          Pickup is included when Caraway buys.
+          <Link href="/#quote-form">get a free quote</Link>.
+          Towing is free when we buy your car.
         </p>
       }
     >

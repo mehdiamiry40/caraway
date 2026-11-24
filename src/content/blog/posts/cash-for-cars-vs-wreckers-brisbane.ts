@@ -7,21 +7,21 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Comparing a cash-for-cars buyer and auto wrecker in Brisbane? Check the written net offer, fees, pickup terms, payment, identity, and paperwork.",
   excerpt:
-    "Business labels do not determine the best outcome. Compare the complete written transaction, including collection and paperwork, before choosing a buyer.",
+    "The business label does not decide which offer is better. Compare the full written deal, including pickup and paperwork, before you choose a buyer.",
   content: [
-    "A cash-for-cars buyer and an auto wrecker are not always two different kinds of business. A vehicle buyer may resell complete vehicles, supply a dismantler, recycle materials, or combine several of those activities. The label alone does not show which offer is better, whether collection is included, or how the transaction will be documented.",
+    "A cash-for-cars buyer and an auto wrecker are not always two different kinds of business. A buyer may resell whole cars, supply a dismantler, recycle materials, or do several of those things. The label alone does not tell you which offer is better, whether pickup is included, or how the sale will be recorded.",
 
     "## Compare the net written offer",
 
-    "Ask each buyer for the vehicle being assessed, the offer amount, payment method and timing, quote assumptions, and any fees or deductions in writing. Compare the amount you expect to receive after towing, storage, administration, or other disclosed charges. A higher headline number is not better if important costs or conditions are left unresolved.",
+    "Ask each buyer to put in writing the vehicle being assessed, the offer amount, the payment method and timing, what the quote assumes, and any fees or deductions. Compare what you expect to receive after towing, storage, administration, or other disclosed charges. A higher headline number is not better if important costs or conditions are left open.",
 
-    "Give each buyer the same make, model, variant, year, kilometres, registration status, condition, completeness, location, and access information. Include clear photos and state whether the vehicle starts, rolls, steers, and brakes. Comparable inputs make it easier to understand why offers differ and reduce the chance of a revised assessment at pickup.",
+    "Give each buyer the same make, model, variant, year, kilometres, registration status, condition, completeness, location, and access details. Include clear photos and say whether the car starts, rolls, steers, and brakes. Matching details make it easier to see why offers differ and reduce the chance of a changed offer at pickup.",
 
     "## Confirm pickup and access terms",
 
-    "Do not assume that either type of buyer always includes towing. Ask whether [pickup is included](/car-removal-brisbane) in the accepted offer, which suburbs are covered, what equipment is proposed, and which access conditions could change the arrangement. Disclose height limits, steep driveways, soft ground, locked wheels, missing keys, storage yards, and release requirements before dispatch.",
+    "Do not assume either type of buyer always includes towing. Ask whether [pickup is included](/car-removal-brisbane) in the accepted offer, which suburbs are covered, what equipment will be used, and which access conditions could change the job. Tell the buyer about height limits, steep driveways, soft ground, locked wheels, missing keys, storage yards, and release requirements before the truck is sent.",
 
-    "Confirm when payment is considered complete and do not release the vehicle until the agreed payment condition is satisfied. Ask who will attend, what authority they have to collect for the buyer, and what signed receipt and buyer details will be provided.",
+    "Confirm when payment counts as complete, and do not release the car until the agreed payment condition is met. Ask who will attend, what authority they have to collect for the buyer, and what signed receipt and buyer details you will get.",
 
     "## Check the buyer and transaction",
 
@@ -31,25 +31,25 @@ export const post: RawBlogPostEntry = {
 
     "## Which option should you choose?",
 
-    "There is no universal winner. Choose the transaction with acceptable net proceeds, clear conditions, a buyer you can identify, workable collection arrangements, confirmed payment, and complete sale records. Private sale, trade-in, repair, or keeping the vehicle may also be worth comparing when the car is registered, safe to demonstrate, or economically repairable.",
+    "There is no universal winner. Choose the deal with an acceptable net amount, clear conditions, a buyer you can identify, workable pickup arrangements, confirmed payment, and complete sale records. A private sale, trade-in, repair, or keeping the car may also be worth comparing when the car is registered, safe to demonstrate, or worth repairing.",
 
-    `Caraway can provide an individual [cash-for-cars Brisbane](/) quote for comparison. Call **${BUSINESS.phoneDisplay}** or use the online quote form with accurate vehicle and access details. If Caraway makes an offer and you accept it, the pickup terms, payment arrangement, receipt, and buyer details are confirmed before collection.`,
+    `Caraway can give you a [cash-for-cars Brisbane](/) quote on your car to compare. Call **${BUSINESS.phoneDisplay}** or use the online quote form with accurate car and access details. If we make an offer and you accept it, we confirm the pickup terms, payment, receipt, and buyer details before pickup.`,
   ],
   faqs: [
     {
       question: "Does an auto wrecker or cash-for-cars buyer pay more?",
       answer:
-        "Neither label guarantees a higher offer. Compare the written net amount after any pickup or other charges, along with the conditions that could change the assessment.",
+        "Neither label guarantees a higher offer. Compare the written net amount after any pickup or other charges, along with the conditions that could change the offer.",
     },
     {
       question: "Is towing always included?",
       answer:
-        "No. Pickup terms vary by buyer, vehicle, location, access, and schedule. Ask whether collection is included in the accepted offer and have any possible charges or exclusions confirmed before dispatch.",
+        "No. Pickup terms vary by buyer, vehicle, location, access, and schedule. Ask whether pickup is included in the accepted offer, and have any possible charges or exclusions confirmed before the truck is sent.",
     },
     {
       question: "What records should I receive?",
       answer:
-        "Keep a signed receipt identifying the vehicle, price, date, and buyer and seller, plus the buyer details needed for the applicable TMR transfer or cancellation process. Retain confirmation of the seller-side steps you complete.",
+        "Keep a signed receipt identifying the vehicle, price, date, and buyer and seller, plus the buyer details needed for the applicable TMR transfer or cancellation process. Keep confirmation of the seller-side steps you complete.",
     },
   ],
   date: "2026-06-08",

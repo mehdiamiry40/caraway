@@ -4,7 +4,7 @@ export const post: RawBlogPostEntry = {
   slug: "how-to-get-a-roadworthy-certificate-brisbane",
   title: "Queensland Safety Certificates: A Brisbane Seller Guide",
   metaDescription:
-    "Queensland Safety Certificate guide: when a certificate is required, recognised exemptions, what inspectors check, and how to find an approved inspection station.",
+    "Queensland Safety Certificate guide: when you need one, recognised exemptions, what inspectors check, and how to find an approved inspection station.",
   excerpt:
     "Queensland calls the roadworthy document a Safety Certificate. Check when it is required, the official fee, recognised exceptions, and how to find an approved station.",
   content: [
@@ -36,7 +36,7 @@ export const post: RawBlogPostEntry = {
 
     "## When a cash sale is the smarter move",
 
-    "For an older or damaged vehicle, compare the likely inspection and repair cost with an as-is offer. A [cash-for-cars buyer](/) can assess the vehicle without requiring a certificate merely to provide a quote, but the final sale must still follow the Queensland rules for its registration status and buyer type.",
+    "For an older or damaged car, compare the likely inspection and repair cost with an as-is offer. A [cash-for-cars buyer](/) can give you a quote without a certificate, but the final sale must still follow the Queensland rules for its registration status and buyer type.",
 
     "## The bottom line",
 

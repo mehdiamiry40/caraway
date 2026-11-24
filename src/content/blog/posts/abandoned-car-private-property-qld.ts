@@ -5,42 +5,42 @@ export const post: RawBlogPostEntry = {
   slug: "abandoned-car-private-property-qld",
   title: "Abandoned Car on Private Property in QLD: What to Do",
   metaDescription:
-    "Council parking enforcement stops at your boundary. What to do about an abandoned car on private property in QLD, and why ownership decides the next step.",
+    "An abandoned car on private property in QLD is not a council parking matter. Here is what to do, and why finding the owner comes first.",
   excerpt:
-    "A vehicle dumped inside your gate is not a council matter, and no buyer can take it from you until the ownership question is answered. Here is the order to work through it.",
+    "A car dumped inside your gate is not a council matter. No buyer can take it until you know who owns it. Here are the steps, in order.",
   author: "Caraway",
   content: [
-    "A car that is not yours, sitting on land that is, is one of the few vehicle problems Brisbane City Council will not solve for you. An abandoned car on private property falls outside the council process most people reach for first, and outside what any removal operator can lawfully act on. The useful first move has nothing to do with towing. It is working out who owns the thing, and who has the authority to hand it over.",
+    "Brisbane City Council will not deal with a car that is not yours when it sits on land that is. An abandoned car on private property falls outside the council process most people try first. A removal operator cannot lawfully act on it either. The first step is not towing. It is working out who owns the car and who has the authority to hand it over.",
 
     "## Why Council Will Not Remove an Abandoned Car on Private Property",
 
     "Brisbane City Council investigates unmanaged vehicles left on roads and road-related areas — the kerb, the footpath, a dividing strip, a bike path — and vehicles left on council land. A car sitting entirely inside your boundary is neither. Council's stated position is that a vehicle parked completely within private property is a matter for the property owner rather than council parking enforcement. Our guide to [unregistered cars parked on QLD streets](/blog/park-unregistered-car-street-qld) covers where that line sits and what council does on its own side of it.",
 
-    "This catches out people who have already rung council twice. It is not indifference. Council's power to seize a vehicle comes from local laws written for public places, and once the car is past your gate those powers stop. What is left are civil questions, and civil questions run through ownership rather than enforcement.",
+    "This catches out people who have already rung council twice. Council is not ignoring you. Its power to seize a vehicle comes from local laws written for public places, and once the car is past your gate those powers stop. What is left are civil questions, and they turn on who owns the car, not on enforcement.",
 
     "## Find Out Whose Car It Is Before Anything Moves",
 
-    "Start with the plate if there is one, and with the VIN stamped on the windscreen scuttle or the driver's door jamb. Photograph both, along with the car in position, the date, and anything sitting on the dash. If the vehicle looks stolen or dumped rather than merely forgotten, report it to police before you touch it — a recovered stolen car has a process of its own, and [what happens after a stolen car is recovered in QLD](/blog/stolen-car-recovered-qld) explains why being the person who scrapped it is a poor outcome.",
+    "Start with the plate if there is one, and the VIN stamped on the windscreen scuttle or the driver's door jamb. Photograph both, plus the car where it sits and anything on the dash, and note the date. If the car looks stolen or dumped, not just forgotten, report it to police before you touch it. A recovered stolen car has its own process. [What happens after a stolen car is recovered in QLD](/blog/stolen-car-recovered-qld) explains why you do not want to be the person who scrapped it.",
 
-    "Where the car belongs to a former tenant, a housemate who moved out, or a customer who never came back for their repair, you are dealing with someone else's goods left on your land. That is a legal question rather than a towing one. For a rental property the Residential Tenancies Authority is the place to start; otherwise a solicitor or community legal service. Get that answer before you sign anything over, because doing these steps in the wrong order turns a nuisance into a claim against you.",
+    "The car may belong to a former tenant, a housemate who moved out, or a customer who never came back for their repair. If so, you are dealing with someone else's goods left on your land. That is a legal question, not a towing one. For a rental property, start with the Residential Tenancies Authority. Otherwise, ask a solicitor or community legal service. Get that answer before you sign anything over. Doing these steps in the wrong order turns a nuisance into a claim against you.",
 
     "## No One Can Buy a Car You Do Not Own",
 
-    "This is where most abandoned-vehicle enquiries end, and it is worth understanding rather than resenting. A buyer who takes a vehicle from someone with no entitlement to sell it has bought a problem, not a car, and the paperwork that follows a sale is built around the seller being able to show where that entitlement comes from. Frustration at a car you did not ask for does not create a right to dispose of it. [Selling a car that is not in your name in QLD](/blog/sell-car-not-in-my-name-qld) sets out what authority to sell actually looks like and how it is evidenced.",
+    "This is where most abandoned-vehicle enquiries end. A buyer who takes a vehicle from someone with no right to sell it has bought a problem, not a car. The paperwork after a sale relies on the seller showing where their right to sell comes from. Being fed up with a car you did not ask for does not give you a right to dispose of it. [Selling a car that is not in your name in QLD](/blog/sell-car-not-in-my-name-qld) sets out what authority to sell looks like and how to prove it.",
 
-    "So the sequence matters. Identify the owner, take the legal advice that fits your situation, obtain whatever authority that process produces, and only then start talking to removal operators. Ring around for quotes at step one and you will spend a week collecting offers nobody can act on.",
+    "So the order matters. Identify the owner. Get the legal advice that fits your situation. Get whatever authority that process gives you. Only then talk to removal operators. Ring around for quotes at step one and you will spend a week collecting offers nobody can act on.",
 
     "## The Brisbane Version of This Problem",
 
-    "An abandoned car on private property follows quiet frontage. Acreage blocks at Karana Downs, Pullenvale and Samford collect cars left inside an unlatched gate, sometimes a paddock's distance from anywhere a truck can reach. Industrial back lots around Rocklea, Archerfield and Wacol get them over a weekend, pushed against a fence line. Unit blocks in Annerley, Woolloongabba and Coorparoo get them in visitor bays, where the first call is to the body corporate or building manager, because the parking is common property and the rules are the scheme's own.",
+    "An abandoned car on private property turns up where the street frontage is quiet. Acreage blocks at Karana Downs, Pullenvale and Samford get cars left inside an unlatched gate, sometimes a paddock away from anywhere a truck can reach. Industrial back lots around Rocklea, Archerfield and Wacol get them over a weekend, pushed against a fence line. Unit blocks in Annerley, Woolloongabba and Coorparoo get them in visitor bays. There, call the body corporate or building manager first, because the parking is common property and the scheme sets its own rules.",
 
-    "Two things get worse the longer it sits. Fluids leak onto whatever surface it is parked on, and a wet summer turns a cracked sump and a gravel yard into a real mess. Access narrows too — grass grows through the wheels, the ground softens, and a spot a tilt tray could have reached in June is a bogging risk by February. Collecting it sooner is cheaper than collecting it later.",
+    "Two things get worse the longer it sits. Fluids leak onto the ground under it, and a wet summer turns a cracked sump and a gravel yard into a real mess. Access gets harder too. Grass grows through the wheels and the ground softens. A spot a tilt tray could have reached in June is a bogging risk by February. Picking it up sooner is cheaper than picking it up later.",
 
     "## When the Car Turns Out to Be Yours",
 
-    "The far more common version of this call is the one where the answer is easy: the ute behind the shed since 2019, the second car that quietly stopped being registered, the wagon a family member left behind years ago and has since signed over. There is no ownership riddle there, and the whole thing collapses into an ordinary sale. Check what registration status the vehicle is in, gather what you have — records, keys, anything with the VIN on it — and work through [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld).",
+    "More often the answer is easy. It is the ute behind the shed since 2019, the second car that quietly stopped being registered, or the wagon a family member left behind years ago and has since signed over. There is no ownership question there, so it is an ordinary sale. Check the car's registration status. Gather what you have: records, keys, anything with the VIN on it. Then work through [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld).",
 
-    `If it is your vehicle and you want it assessed, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. If the ownership question is still open, sort that out first — the quote will keep. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
+    `If the car is yours, call **${BUSINESS.phoneDisplay}** or get a free, no-obligation quote. [Towing is free](/car-removal-brisbane) when we buy your car. Before pickup, we confirm the time and how you get paid. If you still do not know who owns the car, sort that out first. The quote can wait. To see how Caraway prices and picks up cars, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -51,17 +51,17 @@ export const post: RawBlogPostEntry = {
     {
       question: "Can I sell or scrap a car that was dumped on my land?",
       answer:
-        "Not on the basis that it is inconvenient. A seller needs to be able to show an entitlement to sell, and a buyer who takes a vehicle without that has bought a problem. Identify the owner and get advice that fits your situation before arranging any disposal.",
+        "Not just because it is in your way. A seller must be able to show a right to sell, and a buyer who takes a vehicle without that has bought a problem. Identify the owner and get advice that fits your situation before you arrange any disposal.",
     },
     {
       question: "A former tenant left a car behind. What do I do?",
       answer:
-        "Treat it as goods left on your land rather than as a towing job. The Residential Tenancies Authority is the starting point for a rental property, and a solicitor or community legal service for anything outside a tenancy. Do that before committing the vehicle to anyone.",
+        "Treat it as goods left on your land, not as a towing job. For a rental property, start with the Residential Tenancies Authority. For anything outside a tenancy, ask a solicitor or community legal service. Do that before you promise the car to anyone.",
     },
     {
       question: "Should I report an abandoned car to police?",
       answer:
-        "Report it if you think the vehicle is stolen or was deliberately dumped. A recovered stolen car has its own process, and moving or disposing of one before that runs its course creates problems you do not want to own.",
+        "Report it if you think the vehicle is stolen or was deliberately dumped. A recovered stolen car has its own process. Moving or disposing of one before that process is finished creates problems for you.",
     },
   ],
   date: "2026-08-14",

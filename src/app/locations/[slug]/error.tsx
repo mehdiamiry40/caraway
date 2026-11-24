@@ -34,7 +34,7 @@ export default function Error({
             We couldn&apos;t load this location
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
-            We couldn&apos;t load this location. Please try again.
+            Please try again.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <button

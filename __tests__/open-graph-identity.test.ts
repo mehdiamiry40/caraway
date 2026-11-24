@@ -69,7 +69,7 @@ describe("Open Graph identity", () => {
       absolute: "Contact Caraway | Phone, Email and Quote Enquiries",
     });
     expect(howItWorksMetadata.title).toBe(
-      "How Our Vehicle Buying Process Works",
+      "How It Works: Sell Your Car in Four Steps",
     );
   });
 });

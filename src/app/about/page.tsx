@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   title: { absolute: "About Caraway — Brisbane Vehicle Buyer" },
-  description: `Caraway is the registered Brisbane vehicle-buying business operated by ${BUSINESS.legalName}. Review its identity, quote, collection, payment, and receipt process.`,
+  description: `Caraway is the registered Brisbane vehicle-buying business operated by ${BUSINESS.legalName}. See who runs it and how quotes, pickup, payment and receipts work.`,
   alternates: { canonical: "/about" },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "/about",
     title: "About Caraway — Brisbane Vehicle Buyer",
     description:
-      "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
+      "Who runs Caraway, and how its quotes, pickup, payment and receipts work.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Caraway — Brisbane Vehicle Buyer",
     description:
-      "Review Caraway's registered business identity and its vehicle quote, conditional collection, payment, and receipt process.",
+      "Who runs Caraway, and how its quotes, pickup, payment and receipts work.",
     images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };
@@ -55,7 +55,7 @@ export default function AboutPage() {
             url: canonical,
             name: "About Caraway",
             description:
-              "Caraway's registered business identity and vehicle quote, conditional collection, payment, and receipt process.",
+              "Who runs Caraway, and how its quotes, pickup, payment and receipts work.",
             mainEntity: { "@id": `${SITE_URL}/#organization` },
             isPartOf: { "@id": `${SITE_URL}/#website` },
             inLanguage: "en-AU",

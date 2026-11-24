@@ -34,7 +34,7 @@ export default function Error({
             We couldn&apos;t load this category
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
-            We couldn&apos;t load this category. Please try again, or{" "}
+            Please try again, or{" "}
             <Link href="/blog" className="font-medium text-primary underline underline-offset-2">
               browse all posts
             </Link>.

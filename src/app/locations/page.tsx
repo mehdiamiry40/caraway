@@ -18,7 +18,7 @@ const breadcrumbs = [
 export const metadata: Metadata = {
   title: "Greater Brisbane Vehicle Pickup Areas",
   description:
-    "Explore Caraway's Greater Brisbane vehicle pickup areas. Coverage, access, and timing are confirmed for your exact address before collection.",
+    "See Caraway's Greater Brisbane vehicle pickup areas. We confirm coverage, access, and timing for your exact address before pickup.",
   alternates: { canonical: `${SITE_URL}/locations` },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/locations`,
     title: "Greater Brisbane Vehicle Pickup Areas | Caraway",
     description:
-      "Explore Caraway's Greater Brisbane vehicle pickup areas and the details needed to confirm collection for your address.",
+      "See Caraway's Greater Brisbane vehicle pickup areas and the details we need to confirm pickup at your address.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Greater Brisbane Vehicle Pickup Areas | Caraway",
     description:
-      "Explore Caraway's Greater Brisbane vehicle pickup areas and confirm coverage for your exact address.",
+      "See Caraway's Greater Brisbane vehicle pickup areas and check coverage for your exact address.",
     images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };

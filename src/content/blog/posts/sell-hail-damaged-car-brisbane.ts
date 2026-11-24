@@ -6,27 +6,27 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Selling a hail-damaged car in Brisbane: document the damage, confirm insurer and ownership status, compare options, and prepare for pickup.",
   excerpt:
-    "A practical guide to documenting hail damage, clarifying the insurance position, comparing quotes, and arranging collection safely.",
+    "How to record hail damage, confirm where you stand with your insurer, compare quotes, and arrange pickup safely.",
   content: [
-    "Hail can leave cosmetic dents, broken glass, water entry, and damage that is unsafe to inspect without care. If you are comparing repair, an insurer settlement, salvage retention, or a direct sale, start by documenting the vehicle and clarifying who owns it. The correct next step depends on the individual damage, policy, finance position, and written-off status.",
+    "Hail can leave cosmetic dents, broken glass, water inside the car, and damage that is unsafe to inspect without care. If you are weighing up repair, an insurer settlement, keeping the salvage, or a direct sale, start by recording the damage and confirming who owns the car. The right next step depends on the damage, your policy, any finance, and the written-off status.",
 
     "## How hail damage affects your car's value",
 
-    "Photograph the roof, bonnet, boot, pillars, glass, each side, interior, odometer, and any water entry. Note warning lights, damaged lights, exposed edges, loose glass, and whether the car starts, rolls, steers, and brakes. An insurer's total-loss decision and any Written-Off Vehicle Register classification are separate determinations; do not infer either from dent severity alone.",
+    "Photograph the roof, bonnet, boot, pillars, glass, each side, interior, odometer, and any water entry. Note warning lights, damaged lights, exposed edges, loose glass, and whether the car starts, rolls, steers, and brakes. An insurer's total-loss decision and any Written-Off Vehicle Register classification are separate decisions. Do not work out either one from how bad the dents look.",
 
     "## Insurance write-off: take the payout or retain salvage?",
 
-    "Read the policy and settlement documents before choosing between repair, settlement, and retaining salvage. Ask the insurer to confirm in writing who will own the vehicle, any reduced settlement, excess, registration consequences, and whether finance must be cleared. Do not assume that retaining and reselling salvage produces a better financial result.",
+    "Read the policy and settlement documents before you choose between repair, settlement, and retaining salvage. Ask the insurer to confirm in writing who will own the vehicle, any reduced settlement, excess, registration consequences, and whether finance must be cleared. Do not assume that retaining and reselling salvage leaves you better off.",
 
     "## What affects a hail-damaged vehicle quote",
 
-    "The quote depends on the exact make, model, variant, year, kilometres, pre-storm condition, extent of panel and glass damage, water entry, mechanical state, completeness, written-off status, location, access, and current demand. Generic web price bands omit too many of those inputs to be dependable.",
+    "The quote depends on the exact make, model, variant, year, kilometres, condition before the storm, extent of panel and glass damage, water entry, mechanical state, completeness, written-off status, location, access, and current demand. Generic online price bands leave out too many of those details to rely on.",
 
-    "If the vehicle has a written-off classification, share the insurer correspondence and confirm that you retained ownership and have authority to sell. Classification affects what can lawfully happen next and should be assessed from official records, not a buyer's assumption.",
+    "If the vehicle has a written-off classification, share the insurer correspondence and confirm that you retained ownership and have authority to sell. Classification affects what can lawfully happen next. Check it against official records, not a buyer's assumption.",
 
     "## Requesting a quote after hail damage",
 
-    "Request an individual assessment through Caraway's [hail-damaged car service](/hail-damaged-cars-brisbane) after insurer, finance, and ownership status are clear. Provide the vehicle details, photos, broken-glass or water-entry information, mechanical state, suburb, and access. If Caraway makes an offer and you accept it, the collection window, payment arrangement, equipment, and included-pickup terms are confirmed before dispatch.",
+    "Once the insurer, finance, and ownership status are clear, get a free quote through Caraway's [hail-damaged car service](/hail-damaged-cars-brisbane). Send the car's details, photos, any broken glass or water entry, its mechanical state, your suburb, and the access. Towing is included when we buy your car. If you accept our offer, we confirm the pickup time, payment, and equipment before pickup.",
 
     "## Paperwork and plates in QLD",
 
@@ -34,9 +34,9 @@ export const post: RawBlogPostEntry = {
 
     "## Three mistakes to avoid",
 
-    "Protect broken openings from further weather only when it is safe to do so, and do not handle loose glass without suitable precautions. Do not drive a damaged or written-off vehicle unless you have confirmed it is mechanically safe, registered, and insured as required for that journey. When comparing offers, give each buyer the same facts and compare written conditions as well as the number.",
+    "Cover broken openings against more weather only when it is safe to do so, and do not handle loose glass without proper protection. Do not drive a damaged or written-off vehicle unless you have confirmed it is mechanically safe, registered, and insured as required for that journey. When you compare offers, give each buyer the same facts and compare the written conditions as well as the number.",
 
-    "A [cash-for-cars buyer](/) is one option after the insurer, finance, and ownership position is settled. Compare it with repair, private sale where lawful, trade-in, and the insurer's written options before deciding.",
+    "A [cash-for-cars buyer](/) is one option once the insurer, finance, and ownership position is settled. Compare it with repair, private sale where lawful, trade-in, and the insurer's written options before you decide.",
   ],
   date: "2026-04-29",
   updatedAt: "2026-08-07",

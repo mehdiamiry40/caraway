@@ -5,12 +5,12 @@ export const post: RawBlogPostEntry = {
   slug: "lost-rego-papers-qld",
   title: "Lost Rego Papers in QLD: How to Sell Your Car (2026)",
   metaDescription:
-    "Lost rego papers in QLD? Transport and Main Roads replaces the certificate free online, and the sale itself turns on a different form entirely.",
+    "Lost rego papers in QLD? Transport and Main Roads replaces the certificate free online, and the sale itself relies on a different form.",
   excerpt:
-    "A missing registration certificate stops far fewer Queensland car sales than people expect. Here is how to get a replacement, what a buyer actually needs to see, and what changes when the plates have gone missing too.",
+    "A missing registration certificate stops far fewer Queensland car sales than people expect. Here is how to get a replacement, what a buyer needs to see, and what changes if the plates are missing too.",
   author: "Caraway",
   content: [
-    "The glovebox folder is empty, the last renewal notice went out with the recycling, and the car is due to be sold on Saturday. Lost rego papers in QLD are close to the least serious document problem you can have: Transport and Main Roads will issue a replacement registration certificate free of charge, and the certificate is not the document the sale actually turns on.",
+    "The glovebox folder is empty, the last renewal notice went out with the recycling, and the car is due to be sold on Saturday. Lost rego papers in QLD are one of the easiest document problems to fix. Transport and Main Roads will issue a replacement registration certificate free of charge, and the certificate is not the document the sale depends on.",
 
     "## Get a replacement certificate before you do anything else",
 
@@ -20,15 +20,15 @@ export const post: RawBlogPostEntry = {
 
     "## What the certificate proves, and what it does not",
 
-    "A registration certificate names the registered operator and describes the vehicle. That is a different thing from proving who owns it. Plenty of Queensland cars are registered to one household member and paid for by another, and the certificate cannot tell those apart. A buyer who asks for photo identification matching the registration record is not being difficult — they are doing the only check available to them.",
+    "A registration certificate names the registered operator and describes the vehicle. That is not the same as proving who owns it. Plenty of Queensland cars are registered to one household member and paid for by another, and the certificate cannot tell those apart. A buyer who asks for photo ID matching the registration record is not being difficult. It is the only check they have.",
 
-    "This also means lost rego papers are rarely what is really blocking a sale. If the name on the record is not yours, the problem is authority rather than paperwork, and our guide to [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) covers what that takes.",
+    "It also means lost rego papers are rarely what is blocking a sale. If the name on the record is not yours, the problem is authority, not paperwork. Our guide to [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) covers what that takes.",
 
     "## Selling with lost rego papers in QLD: the form that matters",
 
     "For a registered vehicle, the transfer is done online or, in person, on the Vehicle Registration Transfer Application (F3520), not on the certificate. TMR recommends that every seller complete Part B and have the buyer sign it on the day of sale, even when the transfer is going to be done online. For an in-person transfer, both parties sign the form, the buyer lodges Part A, and the seller keeps Part B. Our [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) and the detailed [transfer of ownership walkthrough](/blog/how-to-transfer-car-ownership-qld) both set out the sequence.",
 
-    "So the honest order of operations is: sort the transfer form, sort the safety certificate question, then replace the registration certificate because it is free and it makes the handover cleaner. A buyer who insists the sale cannot proceed without the original certificate is telling you something about the buyer.",
+    "So the order is: sort the transfer form, sort the safety certificate question, then replace the registration certificate, because it is free and it makes the handover cleaner. A buyer who insists the sale cannot go ahead without the original certificate is telling you something about the buyer.",
 
     "## When the number plates have gone missing as well",
 
@@ -38,11 +38,11 @@ export const post: RawBlogPostEntry = {
 
     "## The car with no paperwork at all",
 
-    "The harder version is the vehicle that has sat under a carport at Acacia Ridge or in a Wynnum backyard for six years. Registration lapsed long ago, the certificate is unrecoverable, and the record still shows a previous owner or a business that has since closed. Here there is no registration to transfer, so the certificate is irrelevant — what a buyer needs is evidence of how the vehicle came to be yours. Purchase receipts, a finance payout letter, insurance in your own name, or written authority from the registered operator all do more work than any TMR document.",
+    "The harder case is the vehicle that has sat under a carport at Acacia Ridge or in a Wynnum backyard for six years. The registration lapsed long ago, the certificate cannot be recovered, and the record still shows a previous owner or a business that has since closed. There is no registration to transfer, so the certificate does not matter. What a buyer needs is evidence of how the vehicle came to be yours. Purchase receipts, a finance payout letter, insurance in your own name, or written authority from the registered operator all carry more weight than any TMR document.",
 
     "If registration is still current but the car will never be driven again, check what [cancelling registration in QLD](/blog/how-to-cancel-car-rego-qld) requires, including the plate step, before the vehicle leaves your property. And whatever the paperwork position, both parties should sign and keep a record of the sale showing the date, the price, the make and model, the VIN or engine number, and both signatures.",
 
-    `A car with thin paperwork is not a difficult sale so much as a slower conversation. Send the registration number or VIN, the registration status, and honest access details with a free, no-obligation quote request, or call **${BUSINESS.phoneDisplay}** and talk it through. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
+    `A car with thin paperwork is not a hard sale. It just takes a longer conversation. Get a free quote with no obligation: send the registration number or VIN, the registration status, and honest access details, or call **${BUSINESS.phoneDisplay}** and talk it through. [Towing is free](/car-removal-brisbane) when we buy your car. You can read how Caraway handles [cash for cars across Brisbane](/) before you send anything.`,
   ],
   faqs: [
     {
@@ -63,7 +63,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "The car is registered to someone else and the papers are gone. Can I still sell it?",
       answer:
-        "The missing paperwork is not the obstacle in that situation — authority is. A buyer needs to be satisfied that the person arranging the sale is entitled to sell the vehicle, which usually means written authority from the registered operator, estate documents, or evidence of how you came to hold the car. Sort that before agreeing on a price.",
+        "The missing paperwork is not the obstacle in that situation. Authority is. A buyer needs to be satisfied that the person arranging the sale is entitled to sell the vehicle. That usually means written authority from the registered operator, estate documents, or evidence of how you came to hold the car. Sort that out before you agree on a price.",
     },
   ],
   date: "2026-08-24",

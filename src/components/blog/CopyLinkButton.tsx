@@ -31,7 +31,7 @@ async function copyToClipboard(value: string): Promise<void> {
 
 export function CopyLinkButton({ url }: CopyLinkButtonProps) {
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
-  const label = status === "copied" ? "Copied!" : "Copy link";
+  const label = status === "copied" ? "Copied" : "Copy link";
   const announcement =
     status === "copied"
       ? "Article link copied to clipboard."

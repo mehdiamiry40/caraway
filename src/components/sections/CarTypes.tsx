@@ -3,12 +3,12 @@ import type { LucideIcon } from "lucide-react";
 import { Car, CloudHail, FileX2, Recycle, Truck, Wrench } from "lucide-react";
 
 const carTypes: { label: string; href: string; desc: string; icon: LucideIcon }[] = [
-  { label: "Used Cars", href: "/sell-my-car-brisbane", desc: "Direct-buyer quote option", icon: Car },
+  { label: "Used Cars", href: "/sell-my-car-brisbane", desc: "Sell straight to us", icon: Car },
   { label: "Damaged Cars", href: "/damaged-cars-brisbane", desc: "Accident, flood or fire damage", icon: Wrench },
-  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", desc: "End-of-life vehicle assessment", icon: Recycle },
-  { label: "Unwanted Cars", href: "/car-removal-brisbane", desc: "Pickup included when we buy", icon: Truck },
-  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", desc: "After insurer status is clear", icon: CloudHail },
-  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", desc: "Identity and document check", icon: FileX2 },
+  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", desc: "Cars at the end of their life", icon: Recycle },
+  { label: "Unwanted Cars", href: "/car-removal-brisbane", desc: "Free towing included", icon: Truck },
+  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", desc: "Once the insurer's position is clear", icon: CloudHail },
+  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", desc: "We check ID and documents", icon: FileX2 },
 ];
 
 /* Mirrors the "Cars we buy" paragraph in src/data/home-content.ts. */
@@ -38,13 +38,13 @@ export function CarTypes() {
               What cars we buy in Brisbane
             </h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-foreground">
-              We assess many vehicle types and conditions across Greater Brisbane. The quote depends on the individual car, ownership, location, and access.
+              We look at many types of cars, in many conditions, across Greater Brisbane. Your quote depends on the car, its ownership, where it is and the access.
             </p>
           </div>
 
           <div className="mx-auto max-w-5xl">
             <p className="eyebrow mb-5 text-center">
-              We also assess
+              We also look at
             </p>
             <ul className="list-ticks grid grid-cols-1 gap-x-8 gap-y-4 !space-y-0 text-[1.0625rem] font-medium text-foreground min-[420px]:grid-cols-2 lg:grid-cols-4">
               {alsoAssessed.map((type) => (

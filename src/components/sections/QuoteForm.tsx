@@ -100,7 +100,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
     <section
       id="quote-form"
       className="section-y scroll-mt-header bg-background"
-      aria-label="Request a quote"
+      aria-label="Get a quote"
       data-chat-launcher-suppress="true"
     >
       <div className="site-container">
@@ -110,12 +110,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
               Tell us about the car.
             </h2>
             <p className="mt-4 max-w-md text-[1.0625rem] leading-relaxed text-foreground">
-              We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
+              We use your details to see if we can make an offer, then call or text you about next steps. There is no obligation.
             </p>
             <div className="mt-6 max-w-md border-l-4 border-accent bg-secondary px-4 py-4">
-              <h3 className="text-lg font-bold text-accent-ink">How we calculate your car offer</h3>
+              <h3 className="text-lg font-bold text-accent-ink">How we work out your offer</h3>
               <p className="mt-1.5 text-base leading-relaxed text-foreground">
-                Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
+                Your offer depends on the make, model, year, condition, location, whether the car is complete, whether it rolls, and current demand for parts or resale.
               </p>
             </div>
           </div>
@@ -127,10 +127,10 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
                   <h3 className="mt-4 text-xl font-bold text-primary sm:text-2xl">Thanks — we&apos;ve got your details</h3>
                   <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
-                    Our team will review the supplied details and contact you by phone during business hours.
+                    We&apos;ll review your details and call you during business hours.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
-                    Submit another vehicle
+                    Quote another car
                   </Button>
                 </div>
               ) : (
@@ -149,7 +149,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   <div className="flex items-center gap-3 text-[0.9375rem] font-bold text-accent-ink lg:hidden">
                     <span>No obligation</span>
                     <span className="text-border" aria-hidden="true">|</span>
-                    <span>Business-hours review</span>
+                    <span>Reviewed in business hours</span>
                   </div>
 
                   <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
@@ -281,7 +281,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                     </div>
                     <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-expected-price-help">
-                      Whole Australian dollars. Tell us what you hope to get and we&apos;ll say whether it is realistic — leave it blank if you&apos;d rather we suggest a figure.
+                      Whole Australian dollars. Tell us what you hope to get and we&apos;ll say if it&apos;s realistic. Leave it blank if you&apos;d rather we suggest a figure.
                     </p>
                     {errors.expectedPrice && (
                       <p id={`${fieldIds.expectedPrice}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
@@ -368,7 +368,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       id={fieldIds.suburb}
                     />
                     <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-suburb-help">
-                      Where the car is right now. Availability is confirmed from the suburb, vehicle, and access details; we take the exact address once an offer is agreed.
+                      Where the car is now. We check if we can pick up from the suburb, car and access details. We ask for the exact address once an offer is agreed.
                     </p>
                     {errors.suburb && (
                       <p id={`${fieldIds.suburb}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
@@ -380,7 +380,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
 
                   <div>
                     <label htmlFor={fieldIds.details} className="mb-1.5 block text-sm font-semibold text-foreground">
-                      Vehicle and access details <span className="font-normal text-muted-foreground">(optional)</span>
+                      Car and access details <span className="font-normal text-muted-foreground">(optional)</span>
                     </label>
                     <textarea
                       id={fieldIds.details}
@@ -395,7 +395,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       className="w-full resize-y rounded-md border border-input bg-card px-3.5 py-3 text-base leading-relaxed text-foreground outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-muted-foreground hover:border-foreground/70 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 aria-[invalid=true]:border-destructive"
                     />
                     <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-details-help">
-                      These details help us assess the vehicle and suitable collection access before follow-up.
+                      This helps us assess the car and the pickup access before we call.
                     </p>
                     {errors.details ? (
                       <p id={`${fieldIds.details}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">

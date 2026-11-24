@@ -5,44 +5,44 @@ export const post: RawBlogPostEntry = {
   slug: "sell-high-kilometre-car-brisbane",
   title: "Sell a High-Kilometre Car in Brisbane",
   metaDescription:
-    "Selling a high-kilometre car in Brisbane? Document its service history and condition, compare sale options, check pickup terms, and complete the QLD paperwork.",
+    "Selling a high-kilometre car in Brisbane? Record its service history and condition, compare ways to sell, check pickup terms and do the QLD paperwork.",
   excerpt:
-    "Kilometres are only one input. Service history, faults, completeness, registration, demand, and access all shape the best selling route.",
+    "Kilometres are only one factor. Service history, faults, completeness, registration, demand and access all shape the best way to sell.",
   content: [
-    "A high odometer reading does not determine a vehicle's condition or value by itself. A regularly serviced car with documented maintenance differs from one with warning lights, leaks, accident history, or years of storage. Prepare the evidence before deciding between repair, private sale, trade-in, and a direct-buyer quote.",
+    "A high odometer reading does not decide a car's condition or value on its own. A regularly serviced car with maintenance records is different from one with warning lights, leaks, accident history or years in storage. Get the records together before you choose between repair, private sale, trade-in and a direct-buyer quote.",
 
     "## Record condition as well as kilometres",
 
-    "Provide the exact make, model, variant, year, kilometres, service records, registration status, warning lights, known faults, tyre and battery condition, and body damage. State whether the car starts, rolls, steers, and brakes. Clear photos of the exterior, interior, odometer, engine bay, and damaged areas help a buyer assess the actual vehicle instead of relying on an age or mileage assumption.",
+    "Give the exact make, model, variant, year, kilometres, service records, registration status, warning lights, known faults, tyre and battery condition, and body damage. Say whether the car starts, rolls, steers and brakes. Clear photos of the exterior, interior, odometer, engine bay and damaged areas help a buyer assess your actual car, not guess from its age or kilometres.",
 
     "## Compare the available selling routes",
 
-    "A private listing may suit a registered vehicle that can be safely demonstrated and supported by service records. A trade-in may suit an owner buying another vehicle from the same dealer. A direct buyer may suit a car with faults, difficult access, or an owner who prefers one quote and a collection plan. Compare net proceeds, preparation, appointments, documents, timing, and certainty rather than assuming one route always wins.",
+    "A private listing may suit a registered car that can be safely test driven and has service records. A trade-in may suit an owner buying another car from the same dealer. A direct buyer may suit a car with faults or difficult access, or an owner who prefers one quote and a pickup plan. Compare what you end up with, the preparation, appointments, documents, timing and certainty. Do not assume one route always wins.",
 
     "## Repair only after an individual assessment",
 
-    "There is no universal kilometre threshold at which repair stops making sense. Obtain a written diagnosis and estimate, consider the rest of the vehicle's condition and intended use, and compare the likely post-repair net value with an as-is offer. Include towing, diagnostics, registration, safety-certificate requirements, time, and the risk of additional faults.",
+    "There is no set number of kilometres at which repair stops making sense. Get a written diagnosis and estimate, consider the rest of the car's condition and how you will use it, then compare what you are likely to net after the repair with an as-is offer. Include towing, diagnostics, registration, safety-certificate requirements, time and the risk of more faults.",
 
     "## Quote and pickup details",
 
-    "If requesting a quote, disclose all known faults and access constraints. When Caraway buys, pickup is included if the vehicle and access match the supplied details. The collection window, loading requirements, payment method and timing, and receipt details are confirmed before dispatch; a material difference at pickup may lead to a revised offer that you can decline.",
+    "When you ask for a quote, tell us every known fault and any access limits. Towing is included when we buy your car. Before the truck is sent, we confirm the pickup time, loading needs, how and when you get paid, and the receipt details. A material difference at pickup may lead to a revised offer, which you can decline.",
 
     "## Queensland paperwork",
 
-    "Kilometres do not change the seller steps. Registration status and sale type do. Check current Queensland guidance for a registered transfer, cancellation, or unregistered sale, and retain a signed receipt plus confirmation of the steps you complete.",
+    "Kilometres do not change the seller steps. Registration status and sale type do. Check current Queensland guidance for a registered transfer, cancellation, or unregistered sale, and keep a signed receipt plus confirmation of the steps you complete.",
 
-    `To request an individual assessment, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Caraway assesses the vehicle details rather than applying a fixed high-kilometre price band. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
+    `Call **${BUSINESS.phoneDisplay}** or [get a free quote](/#quote-form). Caraway checks your car's details rather than using a fixed price range for high-kilometre cars. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {
       question: "Can Caraway assess a car with very high kilometres?",
       answer:
-        "Yes, subject to the vehicle's identity, condition, completeness, ownership status, location, and access. Kilometres are considered with the other details rather than used as an automatic exclusion.",
+        "Yes, depending on the car, its condition, completeness, ownership status, location and access. We look at kilometres with the other details. They do not rule a car out automatically.",
     },
     {
       question: "Should I repair a high-kilometre car before selling?",
       answer:
-        "Obtain a written diagnosis and compare total repair cost and likely post-repair net value with an as-is quote. The answer depends on the individual vehicle and fault, not a universal odometer threshold.",
+        "Get a written diagnosis, then compare the total repair cost and what you are likely to net afterwards with an as-is quote. The answer depends on the car and the fault, not a set odometer reading.",
     },
     {
       question: "Does high mileage change the paperwork?",

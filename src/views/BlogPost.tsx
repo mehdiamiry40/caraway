@@ -66,7 +66,7 @@ const AUTHOR = {
   name: BUSINESS.name,
   role: "Editorial",
   href: "/about",
-  bio: `${BUSINESS.name} publishes practical Brisbane car-selling guides and reviews regulatory guidance against current official Queensland sources.`,
+  bio: `${BUSINESS.name} writes practical Brisbane car-selling guides and checks regulatory information against current official Queensland sources.`,
 };
 
 function formatDate(iso: string): string {
@@ -119,7 +119,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const authorRole = isDefaultAuthor ? AUTHOR.role : "Team";
   const authorBio = isDefaultAuthor
     ? AUTHOR.bio
-    : `${BUSINESS.name} writes practical Brisbane car selling guides based on quoting, pickup, paperwork, and vehicle removal questions from local sellers.`;
+    : `${BUSINESS.name} writes practical Brisbane car selling guides based on local sellers' questions about quotes, pickup, paperwork and car removal.`;
   const authorAffiliation =
     authorName === BUSINESS.name ? authorRole : `${authorRole}, ${BUSINESS.name}`;
 
@@ -306,7 +306,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     Ready to sell your car for cash?
                   </p>
                   <p className="mb-6 mt-2 text-[1.0625rem] leading-relaxed text-on-dark-hi sm:text-lg">
-                    One form. A written offer. Pickup included when we buy.
+                    One form. A written offer. Free towing when we buy.
                   </p>
                   <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                     <Link

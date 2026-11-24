@@ -12,8 +12,10 @@ describe("Hero assessment copy", () => {
   it("describes a requested human review rather than an instant estimate", () => {
     const markup = renderToStaticMarkup(<Hero />);
 
-    expect(markup).toContain("Request an assessment in minutes");
-    expect(markup).toContain("Human-reviewed vehicle assessment");
+    expect(markup).toContain("Tell us about your car. It takes a few minutes.");
+    expect(markup).toContain("A person reviews your car");
+    expect(markup).toContain("Free towing included");
+    expect(markup).toContain("Towing is free when we\n              buy".replace(/\s+/g, " "));
     expect(markup).not.toContain("Estimate from four details");
     expect(markup).not.toContain("Get an estimate in minutes");
   });

@@ -7,42 +7,42 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Queensland certifies a caravan's gas system before re-sale, and the ATM sets the safety certificate. Sort both before you sell a caravan in Brisbane.",
   excerpt:
-    "Two certificates and one weight figure decide how much work an old van is before anyone talks money. Here is the order to check them in, and the point where a Brisbane caravan stops being worth selling.",
+    "Two certificates and one weight figure decide how much work an old van needs before you can sell it. Here is the order to check them in, and when a Brisbane caravan stops being worth selling.",
   author: "Caraway",
   content: [
-    "Two certificates decide how much work it takes to sell a caravan in Brisbane, and neither is the one people expect. Queensland treats a caravan as a trailer for registration, which drags a weight threshold into it, and it treats the gas system inside as a separately regulated installation with its own inspector. Work out where your van sits against both before you photograph it for a listing or ring a buyer.",
+    "Two certificates decide how much work it takes to sell a caravan in Brisbane, and neither is the one people expect. Queensland treats a caravan as a trailer for registration, which brings in a weight threshold. It treats the gas system inside as a separately regulated installation with its own inspector. Work out where your van sits on both before you photograph it for a listing or ring a buyer.",
 
     "## The Gas Certificate Queensland Wants Before Re-Sale",
 
     "Queensland is unusual here. Section 113 of the Petroleum and Gas Regulation requires the gas system in a recreational vehicle to be inspected and certified before the van is re-sold, and the certificate goes to the new owner. That covers the fixed installation — the cylinder fittings, the regulator, the copper, the cooktop, the fridge, the hot water service — rather than the loose bottle you swap at the servo.",
 
-    "The person who does it is a licensed gas fitter, not the mechanic handling your safety certificate, so expect two bookings in two parts of town. Ask the fitter how current the certificate has to be for your sale and what happens if the van fails. A corroded flue, a perished hose or an appliance no longer approved for supply all turn a certificate into a repair quote, and on a van worth little to begin with, that quote is usually where the sale changes shape.",
+    "A licensed gas fitter does it, not the mechanic handling your safety certificate, so expect two bookings in two parts of town. Ask the fitter how current the certificate has to be for your sale and what happens if the van fails. A corroded flue, a perished hose or an appliance no longer approved for supply all turn a certificate into a repair quote. On a van worth little to begin with, that quote is usually what changes the sale.",
 
     "## Your ATM Decides the Safety Certificate",
 
     "The number that sets your paperwork when you sell a caravan in Brisbane is the aggregate trailer mass stamped on the compliance plate. Under 750 kilograms ATM — most box trailers and some small camper trailers — a registration transfer does not call for one. Between 750 kilograms and 4.5 tonnes, which covers essentially every caravan and pop-top sitting on a suburban block, a safety certificate is required. Above 4.5 tonnes it becomes a certificate of inspection instead.",
 
-    "The rest of the rule matches the one for cars, wrinkle included: Queensland does not require a certificate before you advertise, but one is generally needed before a registered van is disposed of to anyone other than a licensed motor dealer. Our guide to [Queensland safety certificates](/blog/how-to-get-a-roadworthy-certificate-brisbane) sets out the recognised exceptions and how to find an approved station. Confirm that the station inspects trailers when you book rather than at the gate.",
+    "The rest of the rule matches the one for cars, wrinkle included: Queensland does not require a certificate before you advertise, but one is generally needed before a registered van is disposed of to anyone other than a licensed motor dealer. Our guide to [Queensland safety certificates](/blog/how-to-get-a-roadworthy-certificate-brisbane) sets out the recognised exceptions and how to find an approved station. Confirm that the station inspects trailers when you book, not when you arrive.",
 
     "## What Actually Kills a Caravan's Value Here",
 
-    "Water. A Brisbane summer does two things to a van parked beside the house: the humidity keeps everything damp, and the storms find the seams. Roof joins, window frames, hatch surrounds and the front and rear mouldings are where it starts, and by the time a wall feels soft near the floor or the vinyl has lifted off the ply, the problem is structural rather than cosmetic.",
+    "Water. A Brisbane summer does two things to a van parked beside the house: the humidity keeps everything damp, and the storms find the seams. It starts at roof joins, window frames, hatch surrounds and the front and rear mouldings. By the time a wall feels soft near the floor or the vinyl has lifted off the ply, the problem is structural, not cosmetic.",
 
-    "Buyers check for it first, and they check with their hands. Press the walls low down, sight along the outside skin for a ripple that catches the light, open every locker and put your nose in it. A van kept under a carport in Kenmore reads very differently from one that stood uncovered at Redcliffe with the salt air working on the chassis, the coupling and the brake drums.",
+    "Buyers check for it first, and they check with their hands. Press the walls low down, look along the outside skin for a ripple that catches the light, and open every locker and smell it. A van kept under a carport in Kenmore is in very different shape from one that stood uncovered at Redcliffe with the salt air working on the chassis, the coupling and the brake drums.",
 
-    "Age brings a second problem: asbestos. If an old van has asbestos in it, the council tip is not an option. Brisbane City Council says it is illegal to dispose of asbestos in a household bin or at its resource recovery centres, and points to the Queensland Government's asbestos website for more information. That closes the obvious disposal route for exactly the vans most likely to need one — [taking a vehicle to the tip in Brisbane](/blog/take-car-to-tip-brisbane) covers what the centres will and will not take.",
+    "Age brings a second problem: asbestos. If an old van has asbestos in it, the council tip is not an option. Brisbane City Council says it is illegal to dispose of asbestos in a household bin or at its resource recovery centres, and points to the Queensland Government's asbestos website for more information. That closes the obvious disposal route for the vans most likely to need one. [Taking a vehicle to the tip in Brisbane](/blog/take-car-to-tip-brisbane) covers what the centres will and will not take.",
 
     "## Access Before You Sell a Caravan in Brisbane",
 
-    "A van is only worth what someone can get out of your yard. Older suburbs make that harder than it sounds: a Queenslander on stumps with a narrow side gate, a shared driveway in Toowong, a battle-axe block at Capalaba with one turning circle and a jacaranda planted in the middle of it. If the van has not moved in years, assume flat tyres, a seized jockey wheel and a drawbar that has settled into a garden bed.",
+    "A van is only worth something if someone can get it out of your yard. Older suburbs make that harder than it sounds: a Queenslander on stumps with a narrow side gate, a shared driveway in Toowong, a battle-axe block at Capalaba with one turning circle and a jacaranda planted in the middle of it. If the van has not moved in years, assume flat tyres, a seized jockey wheel and a drawbar that has settled into a garden bed.",
 
-    "Measure the gate, note the slope, and say what sits between the van and the street when you ask for a quote. [Tow truck access in Brisbane](/blog/tow-truck-access-brisbane) covers the clearances that decide whether a collection is a fifteen-minute hook-up or a winch through a gap. Someone who discovers the obstacle on arrival is someone who reschedules, and rescheduling is what turns a cheap collection into an expensive one.",
+    "When you ask for a quote, measure the gate, note the slope, and say what sits between the van and the street. [Tow truck access in Brisbane](/blog/tow-truck-access-brisbane) covers the clearances that decide whether a pickup is a fifteen-minute hook-up or a winch through a gap. An operator who finds the obstacle on arrival will reschedule, and rescheduling is what turns a cheap pickup into an expensive one.",
 
     "## When the Van Is Past Selling",
 
-    "There is a point where the two certificates cost more than the van will ever return, and reaching it is not a failure. It is the arithmetic of a twenty-five-year-old pop-top with a soft rear wall. The question then changes from what the van is worth to how it leaves, and the registration side still needs finishing properly: [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a trailer transfer much as it does to a car.",
+    "At some point the two certificates cost more than the van will ever return, and reaching that point is not a failure. It is just the sums on a twenty-five-year-old pop-top with a soft rear wall. The question then changes from what the van is worth to how it leaves. The registration side still needs finishing properly: [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) applies to a trailer transfer much as it does to a car.",
 
-    `A caravan is not interchangeable with a car for a buyer — the value sits somewhere different, and so does the tow — so the last step when you sell a caravan in Brisbane is to ask rather than assume. Call **${BUSINESS.phoneDisplay}** or send the ATM, the registration status, the build year and a photo of the access with a free, no-obligation quote request. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
+    `A buyer does not treat a caravan like a car. The value is in different places, and so is the tow. So the last step when you sell a caravan in Brisbane is to ask, not assume. Call **${BUSINESS.phoneDisplay}**, or send the ATM, the registration status, the build year and a photo of the access with a free, no-obligation quote request. [Towing is free](/car-removal-brisbane) when we buy your van. To see how Caraway prices and picks up vehicles, read [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
@@ -58,7 +58,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Is a caravan safety certificate the same as a car one?",
       answer:
-        "The regime is the same, but a trailer inspection is charged at its own fee and only approved inspection stations can issue the certificate. Check when booking that the station inspects trailers rather than assuming any station that does cars can do a caravan.",
+        "The rules are the same, but a trailer inspection has its own fee and only approved inspection stations can issue the certificate. When you book, check that the station inspects trailers. Do not assume a station that does cars can do a caravan.",
     },
     {
       question: "What makes an old caravan worth almost nothing?",

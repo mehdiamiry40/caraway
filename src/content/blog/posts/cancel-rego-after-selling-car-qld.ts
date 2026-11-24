@@ -4,12 +4,12 @@ export const post: RawBlogPostEntry = {
   slug: "cancel-rego-after-selling-car-qld",
   title: "Do I Need to Cancel My Rego After Selling My Car in QLD?",
   metaDescription:
-    "Sold your car in Queensland? Learn what to consider about registration, transfer records, number plates, and checking current QLD Transport guidance.",
+    "Sold your car in Queensland? See when you need to cancel rego, what happens to number plates, and which transfer and sale records to keep.",
   excerpt:
-    "After a Queensland vehicle sale, registration, transfer records, number plates, and proof of sale all matter. The right step depends on whether the car was registered, unregistered, transferred, or scrapped.",
+    "After you sell a car in Queensland, rego, transfer records, number plates, and proof of sale all matter. The right step depends on whether the car was registered, unregistered, transferred, or scrapped.",
   author: "Caraway",
   content: [
-    "You may not always need to cancel registration after selling a car in Queensland, but you do need to make sure the sale or disposal is recorded properly. The correct step depends on whether the vehicle was sold registered, sold unregistered, scrapped, or removed from the road. Check current [QLD Transport guidance](https://www.qld.gov.au/transport/registration/cancel) for your situation.",
+    "You do not always need to cancel registration after selling a car in Queensland, but you do need to make sure the sale or disposal is recorded properly. The correct step depends on whether the vehicle was sold registered, sold unregistered, scrapped, or removed from the road. Check current [QLD Transport guidance](https://www.qld.gov.au/transport/registration/cancel) for your situation.",
 
     "## Quick answer",
 
@@ -31,7 +31,7 @@ export const post: RawBlogPostEntry = {
 
     "If the vehicle is already unregistered, there is no active registration to cancel, but both parties should keep the signed unregistered-sale record. Queensland says a vehicle sold for parts must be deregistered before sale. If it is currently registered and the transaction is a for-parts sale, ensure the registration is cancelled and complete the applicable plate-surrender, retention, or declaration step before completing the sale or handing over the vehicle.",
 
-    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. If you are using [cash for cars in Brisbane](/), confirm the buyer identity and transaction path before pickup and keep your own receipt and official confirmation.",
+    "If you use [cash for cars in Brisbane](/), confirm who the buyer is and which sale process applies before pickup. Keep your own receipt and official confirmation.",
 
     "## What to do with number plates",
 
@@ -43,11 +43,11 @@ export const post: RawBlogPostEntry = {
 
     "Keep a receipt or written sale record showing the date and time of sale, vehicle details, VIN, registration if any, odometer reading if available, buyer and seller details, agreed price, and payment method. Keep copies of texts, emails, quote confirmations, pickup photos, and any transfer documents.",
 
-    "For vehicles collected by tow truck, it can help to keep a photo of the car being loaded and a copy of the buyer's business details.",
+    "If a tow truck collects the car, keep a photo of it being loaded and a copy of the buyer's business details.",
 
     "## Want help selling a car that is ready to go?",
 
-    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running vehicles within its confirmed Brisbane service area. Use the [free quote form](/#quote-form), [contact us](/contact), or call 0481 438 444. If Caraway makes an offer and you accept it, the collection window, payment arrangement, paperwork, and included-pickup conditions are confirmed before dispatch.",
+    "Caraway can assess unwanted, damaged, scrap, unregistered, and non-running cars in its Brisbane service area. Use the [free quote form](/#quote-form), [contact us](/contact), or call 0481 438 444. Towing is free when we buy your car. We confirm the pickup time, payment, paperwork, and access details before pickup.",
 
     "## FAQ",
 

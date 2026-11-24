@@ -7,7 +7,7 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Selling or transferring a deceased estate car in Queensland? Check who can act, the F5296 documents, registration, duty, and sale records.",
   excerpt:
-    "Queensland's requirements depend on whether there is a grant, a valid will, or a next-of-kin application. Confirm the authority and registration path before agreeing to a sale.",
+    "What Queensland requires depends on whether there is a grant, a valid will, or a next-of-kin application. Confirm who can act and the registration path before you agree to a sale.",
   content: [
     "A vehicle registered to someone who has died cannot be handled as an ordinary sale until the person acting for the estate has confirmed their authority and the Department of Transport and Main Roads (TMR) requirements. The correct documents depend on whether probate or letters of administration have been granted, whether there is a valid will, and whether a next-of-kin pathway applies.",
 
@@ -15,13 +15,13 @@ export const post: RawBlogPostEntry = {
 
     "Use TMR's current deceased-estate questionnaire before arranging a transfer or cancellation. TMR may already have placed a restriction on the deceased person's registration products and may require an original or certified copy of the death certificate or coroner's report. Keep any Registration Notice Individual Restriction letter, because it changes some of the evidence that must be produced.",
 
-    "The central form is the Application to Transact with Registration Products on behalf of a Deceased Person (F5296). It is used by an executor, administrator, or eligible next of kin to deal with vehicle registrations and number plates recorded in the deceased person's name. The form and supporting evidence should be checked against the current TMR instructions rather than an informal document list.",
+    "The main form is the Application to Transact with Registration Products on behalf of a Deceased Person (F5296). An executor, administrator, or eligible next of kin uses it to deal with vehicle registrations and number plates recorded in the deceased person's name. Check the form and supporting evidence against the current TMR instructions, not an informal document list.",
 
     "## Who can complete the process",
 
     "If probate or letters of administration have been granted, the executor or administrator provides the original or certified grant and completes F5296. If an application for a grant has been made but is still pending, TMR says the deceased person's registration products cannot be finalised until the grant is issued.",
 
-    "Where there is no grant but there is a valid will, an executor named in the will may be able to proceed by providing the original or a certified copy of the will and completing F5296, including its statutory declaration. Where there is no will, grant, or letters of administration, an eligible next of kin may be able to use the F5296 next-of-kin pathway and statutory declaration. Disputed estates or uncertainty about who may act should be resolved with TMR and appropriate estate advice before the vehicle is sold.",
+    "Where there is no grant but there is a valid will, an executor named in the will may be able to proceed by providing the original or a certified copy of the will and completing F5296, including its statutory declaration. Where there is no will, grant, or letters of administration, an eligible next of kin may be able to use the F5296 next-of-kin pathway and statutory declaration. If the estate is disputed or it is unclear who may act, resolve that with TMR and appropriate estate advice before the vehicle is sold.",
 
     "## Decide whether to transfer or cancel the registration",
 
@@ -31,13 +31,13 @@ export const post: RawBlogPostEntry = {
 
     "## Prepare the vehicle and sale records",
 
-    "Before requesting quotes, record the make, model, year, VIN, registration status, kilometres, condition, keys, location, and access. Confirm whether finance, an insurer settlement, a written-off classification, personalised plates, or another ownership issue affects the estate's authority to sell. Do not hand over the vehicle until the authorised person is satisfied with the documents, payment arrangement, and buyer details.",
+    "Before you ask for quotes, record the make, model, year, VIN, registration status, kilometres, condition, keys, location, and access. Check whether finance, an insurer settlement, a written-off classification, personalised plates, or another ownership issue affects the estate's authority to sell. Do not hand over the vehicle until the authorised person is satisfied with the documents, payment arrangement, and buyer details.",
 
     "For a registered disposal, check whether a safety certificate is required for the particular buyer and transfer. An unregistered vehicle can be sold without a safety certificate, but the seller and buyer should sign and retain a receipt that identifies the vehicle and transaction. Transporting an unregistered or unsafe vehicle is a separate issue and may require a tow or the applicable permit and CTP cover.",
 
     "## Requesting a direct-buyer quote",
 
-    `Once the estate authority, registration status, finance, and insurer position are clear, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) for an individual assessment. If Caraway makes an offer and the authorised person accepts it, the payment arrangement, available collection window, access requirements, included-pickup terms, receipt, and buyer details are confirmed before dispatch. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
+    `Once the estate authority, registration status, finance, and insurer position are clear, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) to get a free quote. Towing is included when Caraway buys the car. If the authorised person accepts our offer, we confirm the payment, pickup time, access needs, receipt, and buyer details before pickup. It works the same way as Caraway's [cash for cars Brisbane](/) service: a written offer first, then a confirmed pickup.`,
   ],
   faqs: [
     {

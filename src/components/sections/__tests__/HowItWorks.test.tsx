@@ -13,7 +13,7 @@ describe("HowItWorks internal links", () => {
 
     expect(
       screen.getByRole("link", {
-        name: /read the full quote, pickup and payment process/i,
+        name: /see the full process/i,
       }),
     ).toHaveAttribute("href", "/how-it-works");
   });
@@ -23,10 +23,10 @@ describe("HowItWorks internal links", () => {
 
     expect(
       screen.queryByRole("link", {
-        name: /read the full quote, pickup and payment process/i,
+        name: /see the full process/i,
       }),
     ).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /start your quote/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /get my quote/i })).toHaveAttribute(
       "href",
       "/#quote-form",
     );

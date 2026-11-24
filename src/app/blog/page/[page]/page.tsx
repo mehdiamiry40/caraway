@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = `${SITE_URL}/blog/page/${page}`;
   const title = `Brisbane Car Selling Guides — Page ${page}`;
-  const description = `Page ${page} of Caraway's practical Brisbane guides to vehicle valuation, selling options, collection planning, and Queensland paperwork.`;
+  const description = `Page ${page} of Caraway's practical Brisbane guides to car value, selling options, pickup planning and Queensland paperwork.`;
 
   return {
     title,

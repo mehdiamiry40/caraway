@@ -17,7 +17,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Vehicle Buying Services in Brisbane",
-  description: `Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Selling a used, unwanted, damaged, scrap, hail-damaged or unregistered car in Brisbane? Pick the Caraway service that fits. Call ${BUSINESS.phoneDisplay}.`,
   alternates: { canonical: "/services" },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: "/services",
     title: "Vehicle Buying Services in Brisbane | Caraway",
     description:
-      "Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles.",
+      "Selling a used, unwanted, damaged, scrap, hail-damaged or unregistered car in Brisbane? Pick the Caraway service that fits.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vehicle Buying Services in Brisbane | Caraway",
     description:
-      "Browse Caraway's Brisbane vehicle-buying options for used, unwanted, damaged, scrap, hail-damaged, and unregistered vehicles.",
+      "Selling a used, unwanted, damaged, scrap, hail-damaged or unregistered car in Brisbane? Pick the Caraway service that fits.",
     images: [
       {
         url: "/images/tow-truck-hero.webp",
@@ -78,7 +78,7 @@ export default function ServicesPage() {
             url: canonical,
             name: "Caraway vehicle buying services",
             description:
-              "Browse Caraway's vehicle-buying and collection options across Greater Brisbane.",
+              "Caraway's car-buying and pickup services across Greater Brisbane.",
             isPartOf: { "@id": `${SITE_URL}/#website` },
             dateModified: SERVICES_CONTENT_UPDATED,
             mainEntity: {
@@ -100,7 +100,7 @@ export default function ServicesPage() {
         ]}
         title={SERVICE_HUB_HEADING}
         subtitle={
-          <p>Pick the option that fits your vehicle.</p>
+          <p>Pick the option that fits your car.</p>
         }
       >
         <section className="bg-background py-10 sm:py-12 lg:py-16">

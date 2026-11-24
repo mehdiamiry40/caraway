@@ -5,51 +5,51 @@ export const post: RawBlogPostEntry = {
   slug: "how-to-scrap-a-car-legally-brisbane",
   title: "How to Scrap a Car Legally in Brisbane",
   metaDescription:
-    "A Queensland-focused checklist for selling a scrap car in Brisbane, covering authority to sell, written terms, registration, plates, towing, and records.",
+    "How to scrap a car legally in Brisbane: check you can sell it, get written terms, and sort the Queensland registration, plates, towing and records.",
   excerpt:
-    "Before a scrap-car collection, confirm authority to sell, written buyer terms, the correct TMR pathway, plate requirements, and the sale record.",
+    "Before a scrap car is picked up, confirm your authority to sell, the buyer's written terms, the correct TMR pathway, plate requirements, and the sale record.",
   content: [
-    `"Scrapping" a car usually means selling it for dismantling, parts recovery, or material processing rather than continued road use. The transaction still requires authority to sell, clear buyer and payment terms, the correct Queensland registration pathway, and a record retained by both parties.`,
+    `"Scrapping" a car usually means selling it to be dismantled, used for parts, or recycled instead of driven again. You still need authority to sell, clear buyer and payment terms, the correct Queensland registration pathway, and a record that both parties keep.`,
 
     `## What does "scrapping a car" actually mean?`,
 
-    `Scrapping usually means selling a vehicle for parts recovery, dismantling, or material recycling rather than continued road use. The car may be unregistered or non-driveable, but the seller still needs authority to sell it, a clear receipt, and the correct Queensland registration records for the transaction.`,
+    `Scrapping usually means selling a vehicle for parts, dismantling, or recycling instead of more road use. The car may be unregistered or undriveable. The seller still needs authority to sell it, a clear receipt, and the correct Queensland registration records for the sale.`,
 
     `## Step 1: Check who owns the car`,
 
-    `Before you do anything else, confirm that you are authorised to sell the vehicle. A registration certificate and a PPSR result do not prove ownership. A PPSR search can show registered security interests and usually stolen or written-off status. If finance is owing, obtain a current payout figure and agree on a settlement process that ensures the security interest is discharged.`,
+    `First, confirm that you are authorised to sell the vehicle. A registration certificate and a PPSR result do not prove ownership. A PPSR search can show registered security interests and usually stolen or written-off status. If finance is owing, get a current payout figure and agree on a settlement process that ensures the security interest is discharged.`,
 
-    `For a deceased-estate vehicle, the executor or administrator should provide the documents that establish authority to sell. The exact evidence depends on the estate and vehicle records, so resolve that authority before booking collection.`,
+    `For a deceased-estate vehicle, the executor or administrator should provide the documents that establish authority to sell. The exact evidence depends on the estate and vehicle records, so sort out that authority before you book a pickup.`,
 
-    `## Step 2: Request a written assessment`,
+    `## Step 2: Get a written quote`,
 
-    `A vehicle assessment can consider make, model, variant, condition, completeness, registration or written-off status, location, access, and current demand for reusable components or recoverable material. There is no reliable model-wide scrap price. Give each buyer the same details and photos, then compare the written net amount, collection terms, payment arrangement, and facts that could justify a revision.`,
+    `A quote can take into account make, model, variant, condition, completeness, registration or written-off status, location, access, and current demand for reusable parts or recoverable material. There is no reliable scrap price for a whole model. Give each buyer the same details and photos. Then compare the written net amount, pickup terms, payment arrangement, and the facts that could change the offer.`,
 
     `## Step 3: Confirm the registration and plate pathway`,
 
     "Bring photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the sale. Ask for a signed receipt and the buyer details needed for TMR, then complete and verify the seller-side transfer or cancellation steps that apply.",
 
-    `Don't forget to check the car for anything else you want to keep: the spare tyre if it's in good condition, roof racks, aftermarket accessories, a dashcam, or a quality sound system you installed yourself. Once the car goes to the dismantler, retrieving anything becomes complicated.`,
+    `Check the car for anything else you want to keep: the spare tyre if it's in good condition, roof racks, aftermarket accessories, a dashcam, or a sound system you fitted yourself. Once the car goes to the dismantler, getting anything back is hard.`,
 
     `## Step 4: Complete the Applicable TMR Registration Step`,
 
     `Queensland Government says a vehicle sold for parts must be deregistered before sale. If the vehicle is currently registered, ensure the [registration cancellation](https://www.qld.gov.au/transport/registration/cancel) and applicable plate-surrender, retention, or declaration step are complete before completing the for-parts sale or handing over the vehicle. Once it is unregistered, both parties should sign and retain a record containing both signatures, the VIN, chassis, or engine number, the make and model, and the sale date. Do not replace this pathway with a generic "disposal notice" or assume the collecting business will complete every seller step.`,
 
-    `If you cancel the registration before collection, you may be eligible for a refund of part of the unused registration and CTP, less applicable fees. Check the current [TMR cancellation guidance](https://www.qld.gov.au/transport/registration/cancel) for eligibility, plate surrender, and processing options.`,
+    `If you cancel the registration before pickup, you may be eligible for a refund of part of the unused registration and CTP, less applicable fees. Check the current [TMR cancellation guidance](https://www.qld.gov.au/transport/registration/cancel) for eligibility, plate surrender, and processing options.`,
 
     `## Step 5: Sort your CTP refund`,
 
     `Compulsory Third Party insurance is connected to registration, but refund handling can involve the nominated CTP insurer. Keep the cancellation confirmation and contact TMR or the insurer if the expected refund is not processed within the stated timeframe.`,
 
-    `## What to bring on collection day`,
+    `## What to bring on pickup day`,
 
-    `At collection, have photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the vehicle. Confirm the agreed payment method, read the receipt before signing, and retain a copy containing the VIN or chassis number, vehicle details, date, price, and both parties' details.`,
+    `At pickup, have photo ID and any registration, finance, insurer, estate, or ownership documents relevant to the vehicle. Confirm the agreed payment method and read the receipt before you sign. Keep a copy showing the VIN or chassis number, vehicle details, date, price, and both parties' details.`,
 
     `## Choosing a reputable operator`,
 
-    `Before accepting a quote, confirm the buyer's legal name or business name, ABN, contact details, payment method, towing terms, and the receipt they will provide. Check any licence they claim through the relevant Queensland register. Regardless of what assistance a buyer offers, complete and verify your own seller-side TMR steps.`,
+    `Before you accept a quote, confirm the buyer's legal name or business name, ABN, contact details, payment method, towing terms, and the receipt they will give you. Check any licence they claim on the relevant Queensland register. Whatever help a buyer offers, complete and verify your own seller-side TMR steps.`,
 
-    `Ready to request an individual scrap-car assessment in Brisbane? Call **${BUSINESS.phoneDisplay}** or use the online form. When Caraway makes an offer and it is accepted, the included-towing conditions, payment arrangement, receipt, and buyer details are confirmed before collection. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
+    `Ready to get a free scrap-car quote in Brisbane? Call **${BUSINESS.phoneDisplay}** or use the online form. Towing is free when we buy your car. If you accept our offer, we confirm the towing details, payment, receipt, and buyer details before pickup. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, pickup, and payment confirmed.`,
   ],
   date: "2026-04-25",
   updatedAt: "2026-08-07",

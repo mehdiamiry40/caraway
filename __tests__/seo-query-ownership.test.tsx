@@ -220,7 +220,7 @@ describe("primary SEO query ownership", () => {
       "[cash-for-cars buyer in Brisbane](/)",
     );
     expect(post.content.join(" ")).toContain(
-      "[included-pickup terms](/car-removal-brisbane)",
+      "[Towing is included](/car-removal-brisbane) when we buy your car.",
     );
     expect(post.relatedServices).toEqual(
       expect.arrayContaining([
@@ -286,7 +286,7 @@ describe("primary SEO query ownership", () => {
       params: Promise.resolve({ slug: "unregistered-cars-brisbane" }),
     });
     const movementSection = service?.sections.find(
-      ({ heading }) => heading === "Collection From Private Property",
+      ({ heading }) => heading === "Pickup From Private Property",
     );
     const removalService = getServiceBySlug("car-removal-brisbane");
     const contextualInboundLink = removalService?.sections.find(
@@ -329,7 +329,7 @@ describe("primary SEO query ownership", () => {
       label: "Check Queensland movement rules for an unregistered vehicle",
     });
     expect(contextualInboundLink?.supportLink?.label).toBe(
-      "Review unregistered-vehicle quote, document, and pickup requirements",
+      "What you need to sell an unregistered car",
     );
     expect(
       renderToStaticMarkup(
@@ -345,7 +345,7 @@ describe("primary SEO query ownership", () => {
       params: Promise.resolve({ slug: "scrap-car-removal-brisbane" }),
     });
     const collectionSection = service?.sections.find(
-      ({ heading }) => heading === "Purchase and Collection Are Separate Checks",
+      ({ heading }) => heading === "We Check the Sale and the Pickup Separately",
     );
 
     expect(service).toBeDefined();
@@ -382,7 +382,7 @@ describe("primary SEO query ownership", () => {
     );
     expect(collectionSection?.supportLink).toEqual({
       href: "/car-removal-brisbane",
-      label: "See Brisbane collection and access details",
+      label: "See Brisbane pickup and access details",
     });
     expect(service?.relatedServices).toContain("car-removal-brisbane");
     expectHonestOwnershipDates(service!);

@@ -20,16 +20,20 @@ describe("web manifest claims", () => {
       short_name: "Caraway",
       start_url: "/",
     });
-    expect(manifest.description).toContain("vehicle-specific quotes");
-    expect(manifest.description).toContain(
-      "Pickup is included when Caraway buys",
+    expect(manifest.description).toContain("free quote for your car");
+    expect(manifest.description).toContain("Free towing when Caraway buys");
+    expect(manifest.description).toMatch(
+      /access and availability can affect pickup/i,
     );
-    expect(manifest.description).toMatch(/subject to .*access.*availability/i);
   });
 
   it("does not publish unsupported global promises", () => {
     expect(`${manifest.name} ${manifest.description}`).not.toMatch(
       /fair quotes|free removal|payment on (?:pickup|collection)/i,
+    );
+    // "Free towing" must always carry the purchase condition.
+    expect(manifest.description).not.toMatch(
+      /free towing(?! when Caraway buys)/i,
     );
   });
 });

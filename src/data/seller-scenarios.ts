@@ -11,7 +11,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "non-running-car",
     title: "Non-running car in a carport",
     description:
-      "Share whether the vehicle rolls, steers, has keys, and can be reached by a flatbed. Those details help confirm the right loading equipment before dispatch.",
+      "Tell us if the car rolls, steers, has keys, and can be reached by a flatbed. That helps us book the right truck.",
     location: "Chermside",
     vehicle: "Older family sedan",
   },
@@ -19,7 +19,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "insurance-write-off",
     title: "Insurance write-off retained by the owner",
     description:
-      "Provide the VIN, WOVR classification, insurer settlement status, and an accurate damage summary. Confirm authority to sell before arranging collection.",
+      "Give us the VIN, the WOVR classification, where the insurance settlement is up to, and an accurate summary of the damage. Confirm you have the right to sell before you book a pickup.",
     location: "Ipswich",
     vehicle: "Collision-damaged vehicle",
   },
@@ -27,7 +27,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "apartment-pickup",
     title: "Vehicle in apartment parking",
     description:
-      "Confirm height clearance, loading-bay access, body-corporate requirements, and whether the car can roll. Tight access may change the equipment or pickup window.",
+      "Check the height clearance, loading-bay access, body-corporate rules, and whether the car rolls. Tight access may change the truck or the pickup time.",
     location: "Toowong",
     vehicle: "Compact hatchback",
   },
@@ -35,7 +35,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "deceased-estate",
     title: "Vehicle from a deceased estate",
     description:
-      "The executor or administrator should have identity and estate documents that establish authority to sell, plus any registration and finance records available.",
+      "The executor or administrator needs ID and estate documents that show they can sell, plus any rego and finance records.",
     location: "Indooroopilly",
     vehicle: "Estate vehicle",
   },
@@ -43,7 +43,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "unregistered-project",
     title: "Long-unregistered project car",
     description:
-      "Keep a signed receipt with the VIN or chassis number, sale date, price, vehicle details, and both parties' details. Arrange towing rather than driving it.",
+      "Keep a signed receipt with the VIN or chassis number, sale date, price, car details, and both parties' details. Have it towed. Don't drive it.",
     location: "Logan",
     vehicle: "Unfinished project car",
   },
@@ -51,7 +51,7 @@ export const sellerScenarios: SellerScenario[] = [
     id: "multiple-vehicles",
     title: "Several vehicles on one property",
     description:
-      "List each VIN, condition, completeness, access point, and ownership record separately. This lets the buyer plan truck capacity and issue clear sale records.",
+      "List each car's VIN, condition, missing parts, access point and ownership record. The buyer can then plan the trucks and give you clear sale records.",
     location: "Caboolture",
     vehicle: "Two or more vehicles",
   },

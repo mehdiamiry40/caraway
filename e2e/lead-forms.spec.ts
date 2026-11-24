@@ -13,7 +13,12 @@ test("submits the homepage hero quote form", async ({ page }) => {
   await page.locator("#hero-quote-phone").fill("0400000000");
   await page.locator("#hero-quote-suburb").fill("Brisbane");
   await page.locator("#hero-quote-expected-price").fill("3500");
-  await page.getByRole("button", { name: "Get my free quote" }).click();
+  // The header link and the sticky mobile bar share the "Get my quote"
+  // label, so scope the submit to the hero quote card.
+  await page
+    .locator("#quote-form")
+    .getByRole("button", { name: "Get my quote" })
+    .click();
 
   await expect(
     page.getByRole("heading", { name: "Thanks — we've got your details" }),
@@ -38,7 +43,7 @@ test("submits the full quote form on a service page", async ({ page }) => {
   // The service hero has its own "Get my quote" button, so scope the submit
   // to the quote form section.
   await page
-    .getByLabel("Request a quote")
+    .getByLabel("Get a quote")
     .getByRole("button", { name: "Get my quote" })
     .click();
 

@@ -8,7 +8,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: { absolute: "Page not found — Caraway" },
   description:
-    "The page you requested could not be found. Return to Caraway's home page to request a cash offer.",
+    "We couldn't find that page. Go to Caraway's home page to get a quote.",
   // Explicitly override the root index directive; Next also injects a noindex
   // tag for 404 responses, and both signals must agree.
   robots: { index: false, follow: true },
@@ -78,7 +78,7 @@ export default function NotFound() {
                 href="/#quote-form"
                 className="font-bold text-on-dark-hi underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
               >
-                Request a quote
+                Get my quote
               </Link>
             </p>
           </div>

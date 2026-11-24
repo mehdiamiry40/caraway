@@ -159,10 +159,10 @@ export const VEHICLE_DATA_DATASET_UPDATED = "2026-08-13";
 export const SITE_MAP_CONTENT_UPDATED = "2026-08-10";
 
 export const PROMISE_POINTS = [
-  "Offer based on supplied details",
-  "Collection window confirmed",
-  "Pickup included when we buy",
-  "Vehicle checked before loading",
-  "Payment arrangement confirmed",
+  "Offer based on your details",
+  "Pickup time confirmed",
+  "Free towing when we buy",
+  "Car checked before loading",
+  "Payment confirmed",
   "Receipt and buyer details",
 ] as const;
