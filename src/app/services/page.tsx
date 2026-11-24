@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, LayoutGrid } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
-import { serviceIcon } from "@/lib/service-icons";
 import { services } from "@/data/services";
 import {
   BUSINESS,
@@ -84,42 +83,36 @@ export default function ServicesPage() {
         ]}
       />
       <PageShell
-        icon={LayoutGrid}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services" },
         ]}
-        eyebrow="Services"
         title={SERVICE_HUB_HEADING}
         subtitle={
           <p>Pick the option that fits your vehicle.</p>
         }
       >
-        <section className="bg-background py-12 sm:py-16 lg:py-20">
+        <section className="bg-background py-10 sm:py-14 lg:py-20">
           <div className="site-container">
-            <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-              {services.map((service) => {
-                const Icon = serviceIcon(service.slug);
-                return (
-                  <li key={service.slug}>
-                    <Link
-                      href={`/${service.slug}`}
-                      className="group flex h-full flex-col items-center gap-4 border border-border bg-card px-3 py-7 text-center card-lift hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-5 sm:py-9"
-                    >
-                      <span className="flex h-16 w-16 items-center justify-center bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground sm:h-20 sm:w-20">
-                        <Icon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
-                      </span>
-                      <h2 className="font-display text-lg font-bold leading-[1.15] text-primary text-balance sm:text-xl">
-                        {service.h1.split(" — ")[0]}
-                      </h2>
-                      <ArrowRight
-                        className="mt-auto h-4 w-4 text-accent-ink transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
-                    </Link>
-                  </li>
-                );
-              })}
+            {/* A numbered index rather than a wall of tiles: each service is
+                one line, and the whole line is the link. */}
+            <ul className="grid grid-cols-1 border-t-2 border-primary [counter-reset:service] lg:grid-cols-2 lg:gap-x-16">
+              {services.map((service) => (
+                <li key={service.slug} className="border-b border-border [counter-increment:service]">
+                  <Link
+                    href={`/${service.slug}`}
+                    className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-3 py-5 before:font-display before:text-xl before:font-semibold before:tabular-nums before:text-accent before:content-[counter(service)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:grid-cols-[3rem_1fr_auto] sm:py-6 sm:before:text-[1.375rem]"
+                  >
+                    <h2 className="font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.02em] text-primary decoration-cta decoration-2 underline-offset-[6px] group-hover:underline sm:text-[1.5rem]">
+                      {service.h1.split(" — ")[0]}
+                    </h2>
+                    <ArrowRight
+                      className="h-5 w-5 self-center text-primary/45 transition-[transform,color] group-hover:translate-x-1 group-hover:text-primary"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </section>

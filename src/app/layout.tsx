@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Barlow_Condensed, Inter } from "next/font/google";
+import { Besley, Public_Sans } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -10,19 +10,20 @@ import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
+// Two families, both variable, so each ships as a single latin-subset file.
+// Public Sans carries body copy, labels, buttons and minor headings.
+const publicSans = Public_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-public-sans",
 });
 
-// Heavy condensed signage face for headings and buttons. It is not a variable
-// font, so every weight the styles use is listed here.
-const barlowCondensed = Barlow_Condensed({
+// Besley is a Clarendon: the sturdy print face of trade signage and dockets.
+// It is used for page titles and section headings only, in sentence case.
+const besley = Besley({
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
   display: "swap",
-  variable: "--font-barlow-condensed",
+  variable: "--font-besley",
 });
 
 export const metadata: Metadata = {
@@ -97,7 +98,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#141924",
+  themeColor: "#123A2C",
 };
 
 export default function RootLayout({
@@ -106,11 +107,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${inter.variable} ${barlowCondensed.variable}`}>
+    <html lang="en-AU" className={`${publicSans.variable} ${besley.variable}`}>
       <body className="min-h-screen">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:z-[300] focus:top-3 focus:left-3 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:rounded-md focus:shadow-[0_8px_24px_hsl(var(--shadow-color)/0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="sr-only focus:not-sr-only focus:fixed focus:z-[300] focus:top-3 focus:left-3 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:rounded-md focus:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Skip to main content
         </a>

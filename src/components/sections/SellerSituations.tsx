@@ -6,7 +6,7 @@ import {
 
 function ScenarioCard({ scenario }: { scenario: SellerScenario }) {
   return (
-    <article className="flex h-full flex-col border border-border bg-card p-5 shadow-sm hover:border-primary/60 sm:p-7 card-lift">
+    <article className="flex h-full flex-col border border-border bg-card p-5 shadow-sm hover:border-primary/60 sm:p-7">
       <span className="flex h-11 w-11 items-center justify-center bg-secondary text-primary">
         <ClipboardCheck className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>

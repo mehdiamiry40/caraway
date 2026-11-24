@@ -52,15 +52,15 @@ export function StickyMobileCTA() {
       aria-hidden={suppressed || undefined}
     >
       <div className="mx-auto max-w-md px-3 pb-3">
-        <div className="flex items-stretch gap-1.5 bg-ink p-1.5 shadow-[0_10px_30px_hsl(var(--shadow-color)/0.4)]">
+        <div className="flex items-stretch gap-2 rounded-lg border border-border bg-card p-2 shadow-xl">
           <TrackedPhoneLink
             href={BUSINESS.phoneTel}
             location="sticky_mobile"
-            className="flex h-12 shrink-0 items-center justify-center gap-2 border border-on-dark-hi/25 px-4 font-display text-lg font-bold uppercase tracking-[0.04em] text-on-dark-hi transition-colors hover:bg-on-dark-hi/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="flex h-12 shrink-0 items-center justify-center gap-2 rounded-md border-[1.5px] border-primary px-4 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             tabIndex={suppressed ? -1 : undefined}
           >
-            <Phone className="h-5 w-5 text-cta-bright" aria-hidden="true" />
+            <Phone className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
             <span aria-hidden="true">Call</span>
           </TrackedPhoneLink>
           <button
@@ -69,7 +69,7 @@ export function StickyMobileCTA() {
               trackEvent("scroll_to_quote_click", { source: "sticky_mobile" });
               scrollToQuote();
             }}
-            className="group flex h-12 flex-1 items-center justify-center gap-2 bg-cta px-4 font-display text-lg font-bold uppercase tracking-[0.04em] text-cta-foreground transition-[background-color,transform] duration-200 hover:bg-cta-hover active:translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-md border border-cta-hover bg-cta px-4 text-base font-semibold text-cta-foreground transition-colors duration-150 hover:bg-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             tabIndex={suppressed ? -1 : undefined}
           >
             Get my quote

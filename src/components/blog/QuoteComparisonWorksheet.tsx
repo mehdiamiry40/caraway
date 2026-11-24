@@ -212,13 +212,13 @@ export function QuoteComparisonWorksheet() {
       <section
         id="compare-three-vehicle-buyer-quotes"
         aria-labelledby="quote-comparison-heading"
-        className="quote-comparison-worksheet scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 shadow-sm sm:p-7"
+        className="quote-comparison-worksheet scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 sm:p-7"
       >
       <div className="border-b border-border/70 pb-6">
         <p className="eyebrow mb-3">Local-only worksheet</p>
         <h2
           id="quote-comparison-heading"
-          className="font-display text-2xl text-primary sm:text-3xl"
+          className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
         >
           Compare three vehicle-buyer quotes
         </h2>
@@ -254,7 +254,7 @@ export function QuoteComparisonWorksheet() {
               key={label}
               className="min-w-0 rounded-lg border border-border/80 bg-background p-4"
             >
-              <legend className="px-2 font-display text-xl font-bold text-foreground">
+              <legend className="px-2 font-sans text-lg font-bold text-foreground">
                 {label}
               </legend>
 
@@ -274,7 +274,7 @@ export function QuoteComparisonWorksheet() {
                     }
                     maxLength={160}
                     autoComplete="off"
-                    className="min-h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="min-h-11 w-full rounded-md border border-input bg-card px-3 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -294,7 +294,7 @@ export function QuoteComparisonWorksheet() {
                     maxLength={80}
                     autoComplete="off"
                     placeholder="Record it, then check the register"
-                    className="min-h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="min-h-11 w-full rounded-md border border-input bg-card px-3 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -323,7 +323,7 @@ export function QuoteComparisonWorksheet() {
                         onChange={(event) =>
                           updateText(index, "headlineOffer", event.target.value)
                         }
-                        className="min-h-11 w-full rounded-md border border-input bg-background pl-7 pr-3 text-sm tabular-nums text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="min-h-11 w-full rounded-md border border-input bg-card pl-7 pr-3 text-base tabular-nums text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       />
                     </div>
                   </div>
@@ -351,7 +351,7 @@ export function QuoteComparisonWorksheet() {
                         onChange={(event) =>
                           updateText(index, "deductions", event.target.value)
                         }
-                        className="min-h-11 w-full rounded-md border border-input bg-background pl-7 pr-3 text-sm tabular-nums text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="min-h-11 w-full rounded-md border border-input bg-card pl-7 pr-3 text-base tabular-nums text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       />
                     </div>
                   </div>
@@ -382,7 +382,7 @@ export function QuoteComparisonWorksheet() {
                     maxLength={120}
                     autoComplete="off"
                     placeholder="For example: valid until Friday"
-                    className="min-h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="min-h-11 w-full rounded-md border border-input bg-card px-3 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -401,7 +401,7 @@ export function QuoteComparisonWorksheet() {
                     }
                     maxLength={600}
                     rows={3}
-                    className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="w-full resize-y rounded-md border border-input bg-card px-3 py-2.5 text-base leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -420,7 +420,7 @@ export function QuoteComparisonWorksheet() {
                     }
                     maxLength={600}
                     rows={3}
-                    className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="w-full resize-y rounded-md border border-input bg-card px-3 py-2.5 text-base leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -439,7 +439,7 @@ export function QuoteComparisonWorksheet() {
                     }
                     maxLength={400}
                     rows={2}
-                    className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="w-full resize-y rounded-md border border-input bg-card px-3 py-2.5 text-base leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   />
                 </div>
 
@@ -462,7 +462,7 @@ export function QuoteComparisonWorksheet() {
 
       <div className="mt-6 overflow-x-auto rounded-lg border border-border/70">
         <table className="min-w-[42rem] w-full text-left text-sm">
-          <caption className="bg-secondary/70 px-4 py-3 text-left font-display text-xl font-bold text-foreground">
+          <caption className="bg-secondary/70 px-4 py-3 text-left font-sans text-lg font-bold text-foreground">
             Comparison summary
           </caption>
           <thead className="border-t border-border/70 bg-secondary/40 text-foreground">
@@ -517,14 +517,14 @@ export function QuoteComparisonWorksheet() {
           type="button"
           onClick={() => setIsPrinting(true)}
           disabled={isPrinting}
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center justify-center rounded-md border-[1.5px] border-primary px-5 text-[0.9375rem] font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Print or save as PDF
         </button>
         <button
           type="button"
           onClick={() => setQuotes(emptyWorksheet())}
-          className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-background px-5 text-sm font-medium text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center justify-center rounded-md px-3 text-[0.9375rem] font-semibold text-primary underline decoration-1 underline-offset-4 hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Clear worksheet
         </button>

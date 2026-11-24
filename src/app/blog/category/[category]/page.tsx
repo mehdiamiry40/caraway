@@ -17,7 +17,7 @@ import {
   OPEN_GRAPH_DEFAULTS,
   SITE_URL,
 } from "@/lib/site";
-import { ArrowLeft, Newspaper } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export const dynamicParams = false;
 
@@ -167,7 +167,6 @@ export default async function BlogCategoryPage({ params }: Props) {
         ]}
       />
       <PageShell
-        icon={Newspaper}
         breadcrumbs={breadcrumbs}
         eyebrow="Blog category"
         title={seo.heading}
@@ -175,29 +174,28 @@ export default async function BlogCategoryPage({ params }: Props) {
           <p>{seo.description}</p>
         }
       >
-        <div className="site-container py-14 sm:py-20 lg:py-24">
-          <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-            <p className="eyebrow">In this category</p>
-            <p className="text-xs font-medium text-muted-foreground">
+        <div className="site-container py-10 sm:py-14 lg:py-16">
+          <div className="mb-6 flex items-baseline justify-between sm:mb-8">
+            <p className="text-[0.9375rem] font-semibold text-foreground">In this category</p>
+            <p className="text-sm text-muted-foreground">
               {posts.length} {posts.length === 1 ? "article" : "articles"}
             </p>
           </div>
 
           {posts.length === 0 ? (
-            <div className="rounded-2xl border border-border/60 bg-secondary/60 py-14 px-8 text-center">
+            <div className="border-y-2 border-primary py-10">
               <p className="text-base text-muted-foreground">
                 No posts in this category yet — check back soon.
               </p>
-              <Link
-                href="/blog"
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2 transition-all"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-                Browse all posts
-              </Link>
+              <p className="mt-4">
+                <Link href="/blog" className="link-arrow link-back text-base">
+                  <ArrowLeft aria-hidden />
+                  Browse all posts
+                </Link>
+              </p>
             </div>
           ) : (
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            <ul className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (
                 <li key={post.slug}>
                   <BlogPostCard post={post} headingLevel="h2" />
@@ -207,14 +205,14 @@ export default async function BlogCategoryPage({ params }: Props) {
           )}
 
           {otherCategories.length > 0 && (
-            <section className="mt-16 sm:mt-20">
-              <p className="eyebrow mb-4">Other topics</p>
-              <div className="flex flex-wrap gap-2">
+            <section className="mt-14 flex flex-wrap items-baseline gap-x-6 gap-y-1 border-t border-border pt-6">
+              <p className="text-[0.9375rem] font-semibold text-foreground">Other topics</p>
+              <div className="flex flex-wrap gap-x-6">
                 {otherCategories.map(([slug, otherLabel]) => (
                   <Link
                     key={slug}
                     href={`/blog/category/${slug}`}
-                    className="inline-flex items-center rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
+                    className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
                   >
                     {otherLabel}
                   </Link>
@@ -223,16 +221,9 @@ export default async function BlogCategoryPage({ params }: Props) {
             </section>
           )}
 
-          <div className="mt-14">
-            <Link
-              href="/blog"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              <ArrowLeft
-                className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
-                strokeWidth={1.75}
-                aria-hidden
-              />
+          <div className="mt-8">
+            <Link href="/blog" className="link-arrow link-back text-base">
+              <ArrowLeft aria-hidden />
               Back to all posts
             </Link>
           </div>

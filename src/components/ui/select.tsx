@@ -18,11 +18,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className="group relative">
         <select
           className={cn(
-            "flex h-12 sm:h-14 w-full appearance-none rounded-md border border-input bg-card pl-4 pr-12 py-3 text-base leading-snug ring-offset-background transition-all duration-200 motion-reduce:transition-none",
-            "hover:border-primary/40",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:ring-offset-2 focus-visible:border-primary focus-visible:shadow-[0_0_0_4px_hsl(var(--accent)/0.12)]",
-            "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-input",
-            "aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/[0.04] aria-[invalid=true]:focus-visible:ring-destructive/30 aria-[invalid=true]:focus-visible:border-destructive",
+            "flex h-12 w-full appearance-none rounded-md border border-input bg-card py-0 pl-3.5 pr-10 text-base leading-snug text-foreground ring-offset-background transition-[border-color,box-shadow] duration-150 motion-reduce:transition-none",
+            "hover:border-foreground/70",
+            "focus-visible:outline-none focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+            "disabled:cursor-not-allowed disabled:bg-secondary disabled:opacity-60 disabled:hover:border-input",
+            "aria-[invalid=true]:border-destructive aria-[invalid=true]:bg-destructive/[0.04] aria-[invalid=true]:focus-visible:ring-destructive",
             className
           )}
           ref={ref}
@@ -41,7 +41,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             </option>
           ))}
         </select>
-        <ChevronDown aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-200 pointer-events-none" />
+        <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/70" />
       </div>
     );
   }

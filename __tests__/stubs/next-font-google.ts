@@ -11,5 +11,5 @@ function font(name: string) {
   });
 }
 
-export const Inter = font("inter");
-export const Barlow_Condensed = font("barlow-condensed");
+export const Public_Sans = font("public-sans");
+export const Besley = font("besley");

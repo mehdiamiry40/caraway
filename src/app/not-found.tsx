@@ -3,7 +3,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Home, MapPin, Calculator, Car, Mail } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -21,69 +20,64 @@ export default function NotFound() {
       <Header />
       <main
         id="main-content"
-        className="flex-1 mt-header-safe w-full flex items-center justify-center bg-muted px-4 sm:px-6"
+        className="flex-1 mt-header-safe w-full bg-secondary"
       >
-        <div className="w-full max-w-lg text-center py-16 sm:py-20">
-          <div className="w-20 h-20 rounded-none bg-primary/[0.06] flex items-center justify-center mx-auto mb-8">
-            <span className="text-4xl font-display text-primary/40">404</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-display text-foreground mb-4">
-            Page not found
-          </h1>
-          <p className="text-muted-foreground leading-relaxed mb-10 max-w-sm mx-auto">
-            That address doesn&apos;t match anything on our site. Try the
-            home page or browse our services to find cash for cars in your area.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
-              )}
-            >
-              <Home className="h-4 w-4" />
-              Back to home
-            </Link>
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
-              )}
-            >
-              <Car className="h-4 w-4" />
-              Our services
-            </Link>
-            <Link
-              href="/locations"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
-              )}
-            >
-              <MapPin className="h-4 w-4" />
-              Find your suburb
-            </Link>
-            <Link
-              href="/contact"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "inline-flex items-center gap-2 justify-center min-h-[44px] touch-manipulation",
-              )}
-            >
-              <Mail className="h-4 w-4" />
-              Contact us
-            </Link>
-          </div>
-          <div className="mt-10 pt-8 border-t border-border/30">
-            <p className="text-sm text-muted-foreground">
+        <div className="site-container py-16 sm:py-24">
+          <div className="max-w-xl">
+            <p className="eyebrow">
+              <span>404</span>
+            </p>
+            <h1 className="type-h1 mt-3 text-primary">
+              Page not found
+            </h1>
+            <p className="type-lead mt-5 max-w-md text-foreground/80">
+              That address doesn&apos;t match anything on our site. Try the
+              home page or browse our services to find cash for cars in your area.
+            </p>
+            <div className="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row">
+              <Link
+                href="/"
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "ring-offset-secondary touch-manipulation",
+                )}
+              >
+                Back to home
+              </Link>
+              <Link
+                href="/"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "ring-offset-secondary touch-manipulation",
+                )}
+              >
+                Our services
+              </Link>
+              <Link
+                href="/locations"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "ring-offset-secondary touch-manipulation",
+                )}
+              >
+                Find your suburb
+              </Link>
+              <Link
+                href="/contact"
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "ring-offset-secondary touch-manipulation",
+                )}
+              >
+                Contact us
+              </Link>
+            </div>
+            <p className="mt-8 border-t border-border pt-5 text-[0.9375rem] text-muted-foreground">
               Need help?{" "}
               <Link
                 href="/#quote-form"
-                className="text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
+                className="font-medium text-accent-ink underline underline-offset-4"
               >
-                <Calculator className="h-3.5 w-3.5" />
                 Request a quote
               </Link>
             </p>

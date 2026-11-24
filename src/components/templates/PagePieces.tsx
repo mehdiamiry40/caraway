@@ -1,167 +1,145 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
-import {
-  BadgeDollarSign,
-  Banknote,
-  CalendarClock,
-  CheckCircle2,
-  ChevronRight,
-  Receipt,
-  SearchCheck,
-  Truck,
-} from "lucide-react";
 import { PROMISE_POINTS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/* Shared building blocks for the service, suburb and content pages: an icon
-   beside each heading, icon chips in the hero, and icon-led sidebar cards. */
+/* Shared building blocks for the service, suburb and content pages. They are
+   deliberately plain: a heading, a ticked list, a ruled list of links, a
+   numbered run of steps. No icon tiles. */
 
-export const HERO_POINTS = [
-  { icon: BadgeDollarSign, label: PROMISE_POINTS[0] },
-  { icon: CalendarClock, label: PROMISE_POINTS[1] },
-  { icon: Truck, label: PROMISE_POINTS[2] },
-] as const;
+export const HERO_POINTS = PROMISE_POINTS.slice(0, 3);
 
-const PROMISE_ICONS: LucideIcon[] = [
-  BadgeDollarSign,
-  CalendarClock,
-  Truck,
-  SearchCheck,
-  Banknote,
-  Receipt,
-];
-
-const PROMISE_TILES = PROMISE_POINTS.map((label, index) => ({
-  label,
-  icon: PROMISE_ICONS[index] ?? CheckCircle2,
-}));
-
-export function IconHeading({
-  icon: Icon,
+/** In-body section heading. Sits one step below the page title. */
+export function SectionHeading({
   children,
   as: Tag = "h2",
   id,
-  tone = "light",
   className,
 }: {
-  icon: LucideIcon;
   children: ReactNode;
   as?: "h2" | "h3";
   id?: string;
-  tone?: "light" | "solid";
   className?: string;
 }) {
   return (
-    <div className={cn("mb-4 flex items-center gap-4", className)}>
-      <span
-        className={cn(
-          "flex h-12 w-12 shrink-0 items-center justify-center",
-          tone === "solid" ? "bg-cta text-cta-foreground" : "bg-ink text-cta-bright",
-        )}
-      >
-        <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-      </span>
-      <Tag
-        id={id}
-        className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.08]"
-        style={{ letterSpacing: "var(--tracking-tight)" }}
-      >
-        {children}
-      </Tag>
-    </div>
+    <Tag
+      id={id}
+      className={cn(
+        "mb-4 font-display text-[1.5rem] font-semibold leading-[1.18] tracking-[-0.02em] text-primary sm:text-[1.75rem]",
+        className,
+      )}
+    >
+      {children}
+    </Tag>
   );
 }
 
 export function HeroPoints({ className }: { className?: string }) {
   return (
-    <ul className={cn("flex flex-wrap gap-2", className)}>
-      {HERO_POINTS.map(({ icon: Icon, label }) => (
-        <li
-          key={label}
-          className="inline-flex items-center gap-2 border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground/85"
-        >
-          <Icon className="h-4 w-4 text-accent-ink" aria-hidden="true" />
-          {label}
-        </li>
+    <ul
+      className={cn(
+        "list-ticks flex flex-col gap-x-8 gap-y-2 !space-y-0 text-base font-medium text-foreground sm:flex-row sm:flex-wrap",
+        className,
+      )}
+    >
+      {HERO_POINTS.map((label) => (
+        <li key={label}>{label}</li>
       ))}
     </ul>
   );
 }
 
-export function PromiseTiles({ title }: { title: string }) {
+/** Sidebar block: a rule, a small heading, then whatever it holds. */
+function SidebarBlock({
+  title,
+  children,
+  as: Tag = "div",
+  ariaLabel,
+}: {
+  title: string;
+  children: ReactNode;
+  as?: "div" | "nav";
+  ariaLabel?: string;
+}) {
   return (
-    <div className="border border-border bg-card p-5 sm:p-6">
-      <h3 className="font-display text-xl font-bold text-foreground mb-4">{title}</h3>
-      <ul className="grid grid-cols-2 gap-2.5">
-        {PROMISE_TILES.map(({ icon: Icon, label }) => (
-          <li
-            key={label}
-            className="flex flex-col items-center gap-2 bg-secondary px-2 py-3.5 text-center text-xs font-medium leading-snug text-foreground/85"
-          >
-            <Icon className="h-5 w-5 text-primary" strokeWidth={1.75} aria-hidden="true" />
-            {label}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Tag
+      aria-label={ariaLabel}
+      className="border-t border-foreground/25 pt-5"
+    >
+      <h3 className="text-[1.0625rem] font-bold leading-snug text-foreground">{title}</h3>
+      {children}
+    </Tag>
   );
 }
+
+export function PromiseList({ title }: { title: string }) {
+  return (
+    <SidebarBlock title={title}>
+      <ul className="list-ticks mt-3 text-[0.9375rem] text-foreground/85">
+        {PROMISE_POINTS.map((label) => (
+          <li key={label}>{label}</li>
+        ))}
+      </ul>
+    </SidebarBlock>
+  );
+}
+
+export function SidebarPanel({ title, children }: { title: string; children: ReactNode }) {
+  return <SidebarBlock title={title}>{children}</SidebarBlock>;
+}
+
+export const sidebarLinkClass =
+  "inline-flex min-h-11 items-center rounded-sm py-1.5 text-[0.9375rem] leading-snug text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export function SidebarLinks({
   label,
   items,
 }: {
   label: string;
-  items: { href: string; label: string; icon: LucideIcon }[];
+  items: { href: string; label: string }[];
 }) {
   return (
-    <nav aria-label={label} className="border border-border bg-card p-5 sm:p-6">
-      <h3 className="font-display text-xl font-bold mb-3 text-foreground">{label}</h3>
-      <ul className="divide-y divide-border/60 border-t border-border/60">
-        {items.map(({ href, label: itemLabel, icon: Icon }) => (
+    <SidebarBlock as="nav" ariaLabel={label} title={label}>
+      <ul className="mt-1.5 flex flex-col items-start">
+        {items.map(({ href, label: itemLabel }) => (
           <li key={href}>
-            <Link
-              href={href}
-              className="group flex min-h-[44px] items-center gap-3 py-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <Icon className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
-              <span className="flex-1">{itemLabel}</span>
-              <ChevronRight
-                className="h-4 w-4 shrink-0 text-border transition-colors group-hover:text-primary"
-                aria-hidden="true"
-              />
+            <Link href={href} className={sidebarLinkClass}>
+              {itemLabel}
             </Link>
           </li>
         ))}
       </ul>
-    </nav>
+    </SidebarBlock>
   );
 }
 
-/* Icon steps used wherever a page summarises the quote → pickup flow. */
-export function IconSteps({
+/* Numbered steps used wherever a page summarises the quote → pickup flow. */
+export function NumberedSteps({
   steps,
   headingLevel: StepHeading = "h3",
 }: {
-  steps: readonly { icon: LucideIcon; title: string; description: string }[];
+  steps: readonly { title: string; description: string }[];
   headingLevel?: "h2" | "h3";
 }) {
   return (
-    <ol className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-      {steps.map(({ icon: Icon, title, description }, index) => (
-        <li key={title} className="flex flex-col items-center text-center">
-          <span className="relative flex h-16 w-16 items-center justify-center bg-ink text-cta-bright">
-            <Icon className="h-8 w-8" strokeWidth={1.75} aria-hidden="true" />
-            <span
-              aria-hidden="true"
-              className="absolute -right-2.5 -top-2.5 flex h-7 w-7 items-center justify-center bg-cta font-display text-lg font-extrabold leading-none text-cta-foreground"
-            >
-              {index + 1}
-            </span>
+    <ol className="grid grid-cols-1 border-t-2 border-primary sm:grid-cols-3">
+      {steps.map(({ title, description }, index) => (
+        <li
+          key={title}
+          className="grid grid-cols-[2.75rem_1fr] items-baseline gap-x-2 border-b border-border py-5 sm:block sm:border-b-0 sm:border-l sm:py-6 sm:pl-5 sm:pr-5 sm:first:border-l-0 sm:first:pl-0"
+        >
+          <span
+            aria-hidden="true"
+            className="font-display text-[2.25rem] font-semibold leading-none text-accent sm:block sm:text-[2.75rem]"
+          >
+            {index + 1}
           </span>
-          <StepHeading className="mt-4 font-display text-xl font-bold leading-[1.15] text-foreground">{title}</StepHeading>
-          <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+          <div className="sm:mt-4">
+            <StepHeading className="font-sans text-lg font-bold leading-snug tracking-[-0.006em] text-foreground">
+              {title}
+            </StepHeading>
+            <p className="mt-1 text-[0.9375rem] leading-relaxed text-muted-foreground">{description}</p>
+          </div>
         </li>
       ))}
     </ol>

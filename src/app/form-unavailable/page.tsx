@@ -16,18 +16,18 @@ export default function FormUnavailable() {
         { label: "Form unavailable" },
       ]}
     >
-      <div className="site-container py-16">
-        <p className="mb-6 max-w-xl">
+      <div className="site-container py-12 sm:py-16">
+        <p className="mb-6 max-w-xl text-[1.0625rem] leading-relaxed">
           Your enquiry was not submitted. The online form needs JavaScript to
           finish loading. You can call or email our team instead.
         </p>
         <p>
-          <a className="text-primary underline" href={BUSINESS.phoneTel}>
+          <a className="link-arrow text-base" href={BUSINESS.phoneTel}>
             Call {BUSINESS.phoneDisplay}
           </a>
         </p>
         <p className="mt-4">
-          <a className="text-primary underline" href={BUSINESS.emailHref}>
+          <a className="link-arrow text-base" href={BUSINESS.emailHref}>
             Email {BUSINESS.email}
           </a>
         </p>

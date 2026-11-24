@@ -67,9 +67,9 @@ function recorded(value: string): string {
 }
 
 const controlClassName =
-  "min-h-11 w-full rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  "min-h-11 w-full rounded-md border border-input bg-card px-3 text-base text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring";
 const textareaClassName =
-  "w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring";
+  "w-full resize-y rounded-md border border-input bg-card px-3 py-2.5 text-base leading-relaxed text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
 function PathwaySelect({
   id,
@@ -324,13 +324,13 @@ export function QldVehicleSaleRecordBuilder() {
       <section
         id="qld-vehicle-sale-record-builder"
         aria-labelledby="qld-sale-record-heading"
-        className="scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 shadow-sm sm:p-7"
+        className="scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 sm:p-7"
       >
         <div className="border-b border-border/70 pb-6">
           <p className="eyebrow mb-3">Private, local-only tool</p>
           <h2
             id="qld-sale-record-heading"
-            className="font-display text-2xl text-primary sm:text-3xl"
+            className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
           >
             Build a Queensland seller checklist and handover record
           </h2>
@@ -349,7 +349,7 @@ export function QldVehicleSaleRecordBuilder() {
         </div>
 
         <fieldset className="mt-7 rounded-lg border border-border/80 bg-background p-4 sm:p-5">
-          <legend className="px-2 font-display text-xl font-bold text-foreground">
+          <legend className="px-2 font-sans text-lg font-bold text-foreground">
             1. Choose the likely transaction path
           </legend>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -462,7 +462,7 @@ export function QldVehicleSaleRecordBuilder() {
         >
           <h3
             id="qld-sale-pathway-result-heading"
-            className="font-display text-xl text-foreground"
+            className="font-sans text-lg font-bold text-foreground"
           >
             {result.heading}
           </h3>
@@ -474,7 +474,7 @@ export function QldVehicleSaleRecordBuilder() {
               <li key={step.id} className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-primary text-xs font-semibold text-primary-foreground"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-primary text-xs font-semibold text-primary-foreground"
                 >
                   {index + 1}
                 </span>
@@ -517,7 +517,7 @@ export function QldVehicleSaleRecordBuilder() {
         </section>
 
         <fieldset className="mt-7 rounded-lg border border-border/80 bg-background p-4 sm:p-5">
-          <legend className="px-2 font-display text-xl font-bold text-foreground">
+          <legend className="px-2 font-sans text-lg font-bold text-foreground">
             2. Prepare the optional handover record
           </legend>
           <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
@@ -566,14 +566,14 @@ export function QldVehicleSaleRecordBuilder() {
             type="button"
             onClick={() => setIsPrinting(true)}
             disabled={isPrinting}
-            className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60"
+            className="inline-flex min-h-11 items-center justify-center rounded-md border-[1.5px] border-primary px-5 text-[0.9375rem] font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60"
           >
             Print two copies or save as PDF
           </button>
           <button
             type="button"
             onClick={clearBuilder}
-            className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-background px-5 text-sm font-medium text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex min-h-11 items-center justify-center rounded-md px-3 text-[0.9375rem] font-semibold text-primary underline decoration-1 underline-offset-4 hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             Clear builder
           </button>

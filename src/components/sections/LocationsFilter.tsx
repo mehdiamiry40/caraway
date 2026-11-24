@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { MapPin, ArrowRight, Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 
 export interface LocationFilterItem {
   slug: string;
@@ -32,14 +32,14 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
 
   return (
     <>
-      <div className="relative max-w-full sm:max-w-lg mb-10 sm:mb-12">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-[18px] w-[18px] text-muted-foreground/60 pointer-events-none" aria-hidden="true" />
+      <div className="relative mb-8 max-w-full sm:max-w-lg">
+        <Search className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
         <input
           type="search"
           placeholder="Search your suburb..."
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="w-full h-12 sm:h-13 rounded-lg border border-border bg-card pl-12 pr-5 text-base ring-offset-background transition-all placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:border-primary hover:border-primary/40 touch-manipulation"
+          className="h-12 w-full rounded-md border border-input bg-card pl-11 pr-4 text-base text-foreground ring-offset-background transition-[border-color,box-shadow] duration-150 placeholder:text-muted-foreground hover:border-foreground/70 focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 touch-manipulation"
           aria-label="Search suburbs"
         />
       </div>
@@ -50,41 +50,35 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
       </p>
 
       {filtered.length === 0 ? (
-        <div className="text-center py-20">
-          <div className="w-16 h-16 rounded-none bg-muted/60 flex items-center justify-center mx-auto mb-5">
-            <Search className="h-6 w-6 text-muted-foreground/60" aria-hidden="true" />
-          </div>
-          <p className="text-muted-foreground text-lg mb-2">
+        <div className="border-t-2 border-primary py-12">
+          <p className="mb-2 text-lg font-semibold text-foreground">
             No suburbs match &ldquo;{query}&rdquo;
           </p>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-base text-muted-foreground">
             Send your suburb and vehicle details —{" "}
-            <Link href="/contact" className="text-primary underline underline-offset-2">
+            <Link href="/contact" className="font-medium text-accent-ink underline underline-offset-2">
               contact us
             </Link>{" "}
             to check availability.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 gap-x-10 border-t-2 border-primary sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((suburb) => (
             <Link
               key={suburb.slug}
               href={`/locations/${suburb.slug}`}
-              className="group flex flex-col items-center border border-border bg-card px-4 py-7 text-center hover:border-primary/50 card-lift"
+              className="group grid grid-cols-[1fr_auto] items-center gap-x-4 border-b border-border py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <span className="flex h-14 w-14 items-center justify-center bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <MapPin className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-              </span>
-              <h2 className="mt-4 text-xl font-display font-bold leading-[1.15] text-foreground group-hover:text-primary transition-colors">
+              <h2 className="font-sans text-lg font-bold leading-snug tracking-[-0.006em] text-primary decoration-cta decoration-2 underline-offset-[5px] group-hover:underline">
                 {suburb.h1}
               </h2>
               {suburb.nearbyAreaNames.length > 0 && (
-                <p className="mt-2 text-xs text-muted-foreground line-clamp-1">
+                <p className="col-start-1 row-start-2 mt-0.5 line-clamp-1 text-sm text-muted-foreground">
                   {suburb.nearbyAreaNames.slice(0, 3).join(" · ")}
                 </p>
               )}
-              <ArrowRight className="mt-4 h-4 w-4 text-accent-ink transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <ArrowRight className="col-start-2 row-span-2 row-start-1 h-5 w-5 text-primary/45 transition-[transform,color] group-hover:translate-x-1 group-hover:text-primary" aria-hidden="true" />
             </Link>
           ))}
         </div>

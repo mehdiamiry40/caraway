@@ -23,8 +23,8 @@ import { BUSINESS } from "@/lib/site";
  * expected price — the free-text vehicle notes stay on the full form used by
  * the service and suburb pages — so the card fits beside the hero copy.
  *
- * Labels are visually hidden and the placeholder names the field: at this size
- * a label row per field doubles the card's height.
+ * Every field has a visible label above it; the "(required)" suffix is kept
+ * for screen readers only, and the one optional field says so.
  */
 const fieldIds = {
   name: "hero-quote-name",
@@ -45,17 +45,23 @@ const CONDITION_OPTIONS = [
   { value: "scrap", label: "Scrap / junk" },
 ];
 
-/** 16px text keeps iOS from zooming on focus; only the box shrinks. */
-const controlClass = "h-12 px-3.5 sm:h-12";
-/** Same box as controlClass, with room for the leading "$" prefix. */
-const pricePrefixClass = "h-12 pl-7 pr-3.5 sm:h-12";
-// py-0: the shared select sets py-3, which clips its text at this height.
-const selectClass = "h-12 py-0 pl-3.5 pr-9 sm:h-12";
+const labelClass = "mb-1.5 block text-[0.8125rem] font-semibold leading-tight text-foreground";
+
+/** The visible label stays short: sighted users get the asterisk the other
+ * forms use, screen readers get the word. */
+function Required() {
+  return (
+    <>
+      <span className="sr-only"> (required)</span>
+      <span aria-hidden="true" className="ml-0.5 text-destructive">*</span>
+    </>
+  );
+}
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) return null;
   return (
-    <p id={id} role="alert" className="mt-1 text-xs font-medium text-destructive">
+    <p id={id} role="alert" className="mt-1.5 text-[0.8125rem] font-medium leading-snug text-destructive">
       {message}
     </p>
   );
@@ -124,15 +130,15 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
     // Sits inside the white quote card in the home hero; the card itself owns
     // the surface, so the form keeps an explicit foreground for its controls.
     <div className="relative w-full text-left text-card-foreground">
-      <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
-        <h2 className="display-impact text-[2.25rem] text-foreground sm:text-[2.5rem]">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 className="font-display text-[1.625rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
           Get a free quote
         </h2>
-        <p className="bg-cta px-2 py-1 text-[0.6875rem] font-bold uppercase leading-none tracking-[0.14em] text-cta-foreground">
+        <p className="text-sm font-semibold text-accent-ink">
           No obligation
         </p>
       </div>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
         Tell us about the car. A person reviews every request.
       </p>
 
@@ -141,15 +147,13 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="mt-5 flex flex-col items-center gap-2.5 py-8 text-center"
+          className="mt-6 flex flex-col items-start gap-2 border-t border-border py-8"
         >
-          <span className="flex h-14 w-14 items-center justify-center bg-accent text-accent-foreground">
-            <CheckCircle2 className="h-7 w-7" aria-hidden />
-          </span>
-          <h3 className="mt-1 font-display text-2xl font-bold text-primary">
+          <CheckCircle2 className="h-8 w-8 text-accent" strokeWidth={1.75} aria-hidden />
+          <h3 className="mt-1 text-xl font-bold text-foreground">
             Thanks — we&apos;ve got your details
           </h3>
-          <p className="mb-2 text-sm leading-relaxed text-foreground/80">
+          <p className="mb-3 text-base leading-relaxed text-foreground/80">
             We&apos;ll call you during business hours.
           </p>
           <Button
@@ -165,7 +169,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
         </div>
       ) : (
         <>
-          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-5 space-y-2.5">
+          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-5 space-y-3.5">
             <div hidden aria-hidden="true">
               <label htmlFor="hero-quote-website">Website</label>
               <input
@@ -177,18 +181,16 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               />
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 sm:grid-cols-2">
               <div>
-                <label htmlFor={fieldIds.name} className="sr-only">
-                  Your name (required)
+                <label htmlFor={fieldIds.name} className={labelClass}>
+                  Your name<Required />
                 </label>
                 <Input
                   autoComplete="name"
                   inputMode="text"
                   enterKeyHint="next"
                   maxLength={200}
-                  placeholder="Name*"
-                  className={controlClass}
                   aria-required="true"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? `${fieldIds.name}-error` : undefined}
@@ -198,8 +200,8 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                 <FieldError id={`${fieldIds.name}-error`} message={errors.name?.message} />
               </div>
               <div>
-                <label htmlFor={fieldIds.phone} className="sr-only">
-                  Phone (required)
+                <label htmlFor={fieldIds.phone} className={labelClass}>
+                  Phone<Required />
                 </label>
                 <Input
                   type="tel"
@@ -207,8 +209,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                   autoComplete="tel"
                   enterKeyHint="next"
                   maxLength={20}
-                  placeholder="Phone*"
-                  className={controlClass}
+                  placeholder="04xx xxx xxx"
                   aria-required="true"
                   aria-invalid={!!errors.phone}
                   aria-describedby={errors.phone ? `${fieldIds.phone}-error` : undefined}
@@ -219,15 +220,14 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[360px]:grid-cols-2">
               <div>
-                <label htmlFor={fieldIds.make} className="sr-only">
-                  Car make (required)
+                <label htmlFor={fieldIds.make} className={labelClass}>
+                  Car make<Required />
                 </label>
                 <Select
-                  placeholder="Make*"
+                  placeholder="Select"
                   options={MAKE_OPTIONS}
-                  className={selectClass}
                   aria-required="true"
                   aria-invalid={!!errors.make}
                   aria-describedby={errors.make ? `${fieldIds.make}-error` : undefined}
@@ -237,18 +237,17 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                 <FieldError id={`${fieldIds.make}-error`} message={errors.make?.message} />
               </div>
               <div>
-                <label htmlFor={fieldIds.model} className="sr-only">
-                  Car model (required)
+                <label htmlFor={fieldIds.model} className={labelClass}>
+                  Car model<Required />
                 </label>
                 <Select
-                  placeholder="Model*"
+                  placeholder="Select"
                   options={
                     selectedMake && selectedMake !== "Other"
                       ? getModelOptions(selectedMake)
                       : [{ value: "Other", label: "Other" }]
                   }
                   disabled={!selectedMake}
-                  className={selectClass}
                   aria-required="true"
                   aria-invalid={!!errors.model}
                   aria-describedby={errors.model ? `${fieldIds.model}-error` : undefined}
@@ -259,15 +258,14 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[360px]:grid-cols-2">
               <div>
-                <label htmlFor={fieldIds.year} className="sr-only">
-                  Year (required)
+                <label htmlFor={fieldIds.year} className={labelClass}>
+                  Year<Required />
                 </label>
                 <Select
-                  placeholder="Year*"
+                  placeholder="Select"
                   options={YEAR_OPTIONS}
-                  className={selectClass}
                   aria-required="true"
                   aria-invalid={!!errors.year}
                   aria-describedby={errors.year ? `${fieldIds.year}-error` : undefined}
@@ -277,13 +275,12 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                 <FieldError id={`${fieldIds.year}-error`} message={errors.year?.message} />
               </div>
               <div>
-                <label htmlFor={fieldIds.condition} className="sr-only">
-                  Condition (required)
+                <label htmlFor={fieldIds.condition} className={labelClass}>
+                  Condition<Required />
                 </label>
                 <Select
-                  placeholder="Condition*"
+                  placeholder="Select"
                   options={CONDITION_OPTIONS}
-                  className={selectClass}
                   aria-required="true"
                   aria-invalid={!!errors.condition}
                   aria-describedby={
@@ -299,18 +296,16 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[420px]:grid-cols-2">
               <div>
-                <label htmlFor={fieldIds.suburb} className="sr-only">
-                  Suburb (required)
+                <label htmlFor={fieldIds.suburb} className={labelClass}>
+                  Suburb<Required />
                 </label>
                 <Input
                   autoComplete="address-level2"
                   inputMode="text"
                   enterKeyHint="next"
                   maxLength={100}
-                  placeholder="Suburb*"
-                  className={controlClass}
                   aria-required="true"
                   aria-invalid={!!errors.suburb}
                   aria-describedby={errors.suburb ? `${fieldIds.suburb}-error` : undefined}
@@ -320,12 +315,13 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                 <FieldError id={`${fieldIds.suburb}-error`} message={errors.suburb?.message} />
               </div>
               <div>
-                <label htmlFor={fieldIds.expectedPrice} className="sr-only">
-                  Expected price in Australian dollars (optional)
+                <label htmlFor={fieldIds.expectedPrice} className={labelClass}>
+                  Expected price<span className="sr-only"> in Australian dollars</span>{" "}
+                  <span className="font-normal text-muted-foreground">(optional)</span>
                 </label>
                 <div className="relative">
                   <span
-                    className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-muted-foreground"
+                    className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-base text-muted-foreground"
                     aria-hidden
                   >
                     $
@@ -336,8 +332,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
                     autoComplete="off"
                     enterKeyHint="go"
                     maxLength={12}
-                    placeholder="Your price"
-                    className={pricePrefixClass}
+                    className="pl-7"
                     aria-invalid={!!errors.expectedPrice}
                     aria-describedby={
                       errors.expectedPrice ? `${fieldIds.expectedPrice}-error` : undefined
@@ -353,7 +348,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <Button type="submit" size="lg" className="w-full" isLoading={isSubmitting}>
+            <Button type="submit" size="lg" className="!mt-5 w-full" isLoading={isSubmitting}>
               {isSubmitting ? "Sending..." : "Get my free quote"}
             </Button>
 
@@ -361,21 +356,17 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               <div
                 ref={errorAlertRef}
                 tabIndex={-1}
-                className="flex items-start gap-2 border border-destructive/20 bg-destructive/5 px-3 py-2 text-xs font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+                className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/5 px-3 py-2.5 text-sm font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
                 role="alert"
                 aria-live="assertive"
                 aria-atomic="true"
               >
-                <span
-                  className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-none bg-destructive"
-                  aria-hidden
-                />
                 <div className="flex-1">
                   <span>{errorMessage}</span>
                   <button
                     type="button"
                     onClick={() => setErrorMessage(null)}
-                    className="ml-2 rounded-sm underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50"
+                    className="ml-2 rounded-sm underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive"
                   >
                     Dismiss
                   </button>
@@ -383,11 +374,11 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             )}
 
-            <p className="text-center text-xs leading-snug text-muted-foreground">
+            <p className="text-center text-[0.8125rem] leading-snug text-muted-foreground">
               No obligation to proceed ·{" "}
               <Link
                 href="/privacy"
-                className="font-medium text-primary underline underline-offset-2"
+                className="font-medium text-accent-ink underline underline-offset-2"
               >
                 Privacy Policy
               </Link>

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Lock } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { BUSINESS, LEGAL_DATES } from "@/lib/site";
 
@@ -11,7 +10,6 @@ const breadcrumbs = [
 export default function Privacy() {
   return (
     <PageShell
-      icon={Lock}
       breadcrumbs={breadcrumbs}
       title="Privacy Policy"
       subtitle={
@@ -20,15 +18,15 @@ export default function Privacy() {
         </p>
       }
     >
-      <div className="site-container py-14 sm:py-20 lg:py-28">
-        <div className="prose-body max-w-3xl">
+      <div className="site-container py-10 sm:py-14 lg:py-16">
+        <div className="prose-body max-w-[68ch] [&>h2:first-child]:mt-0 [&>section:first-child>h2]:mt-0">
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Who we are</h2>
+            <h2>Who we are</h2>
             <p>
               Caraway is a registered business name operated by {BUSINESS.legalName} as a sole trader, ABN {BUSINESS.abn} (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;), providing vehicle buying and removal services in Queensland. We use the Australian Privacy Principles as our privacy standard and comply with the{" "}
               <a
                 href="https://www.oaic.gov.au/privacy/the-privacy-act/"
-                className="text-primary underline underline-offset-2"
+               
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -39,7 +37,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Personal information we collect</h2>
+            <h2>Personal information we collect</h2>
             <p>The types of personal information we collect include:</p>
             <ul className="list-styled mt-4">
               <li><strong>Name</strong> — to address you personally and to complete ownership transfer paperwork.</li>
@@ -53,14 +51,14 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How we collect it</h2>
+            <h2>How we collect it</h2>
             <p>
               We collect personal information directly from you through our website quote forms and AI chat, by phone, by SMS, and by email. We may also collect information from our tow operators at the time of pickup (for example, photos of the vehicle and a signed receipt).
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Why we collect it and how we use it</h2>
+            <h2>Why we collect it and how we use it</h2>
             <p>We use personal information for the following purposes:</p>
             <ul className="list-styled mt-4">
               <li><strong>Quote delivery</strong> — to prepare and send you a valuation based on the details you provide.</li>
@@ -74,7 +72,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">AI chat processing</h2>
+            <h2>AI chat processing</h2>
             <p>
               Caraway&apos;s optional chat is an automated AI service for general questions. When you use it, the conversation messages needed to generate a reply are sent through Vercel AI Gateway to OpenAI. We also create a pseudonymous, 32-character identifier by applying a one-way SHA-256 hash to the combination of your IP address and browser user-agent string. That identifier is sent as a service-usage and safety identifier; your raw IP address and user-agent string are not included in the model message.
             </p>
@@ -87,7 +85,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">How long we keep it</h2>
+            <h2>How long we keep it</h2>
             <ul className="list-styled mt-4">
               <li><strong>Website delivery records</strong>: a copy of each quote or contact enquiry, its submission identifier and delivery status is stored in Upstash for recovery and duplicate prevention. This website copy expires automatically seven days after capture. Copies received by our team or delivery providers follow the enquiry and business-record retention described below.</li>
               <li><strong>Quote enquiries</strong> where no sale takes place: kept only while reasonably needed for follow-up, fraud prevention, or dispute handling, then deleted or de-identified.</li>
@@ -98,7 +96,7 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Who we disclose information to</h2>
+            <h2>Who we disclose information to</h2>
             <p>We may disclose your personal information to:</p>
             <ul className="list-styled mt-4">
               <li><strong>Tow operators and drivers</strong> who carry out the pickup — they receive your name, phone number and pickup address.</li>
@@ -109,20 +107,20 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Overseas disclosure</h2>
+            <h2>Overseas disclosure</h2>
             <p>
               Some service providers operate global infrastructure and may process or store information outside Australia, including in the United States. This may include Vercel, Upstash, OpenAI, Resend, Google, and providers configured for form delivery. Provider locations and subprocessors can change, so refer to their current privacy and subprocessor information. Where required, we take reasonable steps to ensure overseas recipients handle information consistently with applicable Australian privacy requirements.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Service providers we use</h2>
+            <h2>Service providers we use</h2>
             <ul className="list-styled mt-4">
               <li>
                 <strong>Vercel</strong> — website hosting, delivery infrastructure, Web Analytics, Speed Insights, and AI Gateway. Web Analytics measures aggregated page views and limited interaction events. Speed Insights measures page-performance signals including Core Web Vitals. Our custom analytics events and performance measurements do not include submitted names, phone numbers, email addresses, pickup addresses, vehicle details, or chat messages. AI Gateway routes chat messages and the pseudonymous usage and safety identifier described above to OpenAI. Learn more in Vercel&apos;s{" "}
                 <a
                   href="https://vercel.com/docs/analytics/privacy-policy"
-                  className="text-primary underline underline-offset-2"
+                 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -134,7 +132,7 @@ export default function Privacy() {
                 <strong>OpenAI</strong> — provides the AI model used to answer general chat questions. OpenAI receives chat messages and the pseudonymous usage and safety identifier described above. We send <code>store: false</code>, subject to the limitations described in the AI chat section. Privacy policy:{" "}
                 <a
                   href="https://openai.com/policies/privacy-policy/"
-                  className="text-primary underline underline-offset-2"
+                 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -148,7 +146,7 @@ export default function Privacy() {
                 <strong>Resend</strong> — transactional email delivery to the Caraway team when a quote or contact form is submitted. Resend may receive your name, phone, vehicle details, and pickup address for this purpose. Privacy policy:{" "}
                 <a
                   href="https://resend.com/legal/privacy-policy"
-                  className="text-primary underline underline-offset-2"
+                 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -162,42 +160,42 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Cookies and browser storage</h2>
+            <h2>Cookies and browser storage</h2>
             <p>
               We keep an opaque enquiry identifier in per-tab session storage while a form outcome is unresolved, so a retry can be matched to the same enquiry. Form values are not kept in that browser storage, and the identifier is cleared when we confirm receipt. We do not load advertising tags. Vercel Web Analytics measures aggregated usage without third-party cookies; it receives the limited technical and interaction data described above.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Security</h2>
+            <h2>Security</h2>
             <p>
               We take reasonable steps to protect personal information from misuse, interference, loss, and unauthorised access, modification or disclosure. These steps include <strong>encryption in transit (HTTPS/TLS)</strong>, <strong>access controls</strong> so only authorised staff can view customer records, and regular review of our third-party providers. No system is completely secure, and we encourage you to tell us promptly if you suspect any misuse of your information.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Accessing and correcting your information</h2>
+            <h2>Accessing and correcting your information</h2>
             <p>
               Under APPs 12 and 13 you have the right to request access to the personal information we hold about you and to ask us to correct it if it is inaccurate, out of date, incomplete, irrelevant or misleading. To make a request, email{" "}
-              <a href="mailto:privacy@caraway.au" className="text-primary underline underline-offset-2">privacy@caraway.au</a>
+              <a href="mailto:privacy@caraway.au">privacy@caraway.au</a>
               . We will respond within a reasonable time and, in most cases, at no cost.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Complaints</h2>
+            <h2>Complaints</h2>
             <p>If you believe we have breached the APPs or mishandled your personal information, please follow these steps:</p>
             <ol className="list-decimal pl-5 mt-2 space-y-1">
               <li>
                 Contact us first at{" "}
-                <a href="mailto:privacy@caraway.au" className="text-primary underline underline-offset-2">privacy@caraway.au</a>{" "}
+                <a href="mailto:privacy@caraway.au">privacy@caraway.au</a>{" "}
                 with details of your concern. We will acknowledge your complaint and aim to respond within 30 days.
               </li>
               <li>
                 If you are not satisfied with our response, you may escalate the matter to the{" "}
                 <a
                   href="https://www.oaic.gov.au/"
-                  className="text-primary underline underline-offset-2"
+                 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -209,10 +207,10 @@ export default function Privacy() {
           </section>
 
           <section>
-            <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Updates to this policy</h2>
+            <h2>Updates to this policy</h2>
             <p>
               We may update this policy from time to time. The revised version will be posted on this page with an updated date. For general questions, see our{" "}
-              <Link href="/contact" className="text-primary underline underline-offset-2">
+              <Link href="/contact">
                 contact page
               </Link>
               .

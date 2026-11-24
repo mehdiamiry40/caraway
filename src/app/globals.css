@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
-/* Caraway design system: asphalt ink, hi-vis yellow actions and cash-green
-   confirmations on a clean white page. Square corners, heavy condensed
-   signage type. Built to read as a Brisbane cash-for-cars buyer at a glance. */
+/* Caraway design system: a printed-docket identity. Warm paper, deep green
+   ink and one gold spot colour kept for the primary action. Clarendon titles
+   in sentence case over a plain gothic for everything else. Hierarchy comes
+   from type size, rules and white space rather than boxes and icons.
+   See COLORS.md for the palette, type scale and spacing rhythm. */
 
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-barlow-condensed), "Arial Narrow", var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-public-sans), "Libre Franklin", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-display: var(--font-besley), "Clarendon", "Century Schoolbook", Georgia, "Times New Roman", serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
@@ -39,89 +41,88 @@
   --color-on-dark: hsl(var(--on-dark));
   --color-on-dark-hi: hsl(var(--on-dark-hi));
 
-  /* Hi-vis yellow: the primary action colour and the number-plate accent. */
+  /* Gold: the one action colour. Buttons, the logo plate and a few marks. */
   --color-plate: hsl(var(--plate));
   --color-plate-foreground: hsl(var(--plate-foreground));
   --color-cta: hsl(var(--cta));
   --color-cta-hover: hsl(var(--cta-hover));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  /* Accessible TEXT variants. Yellow and mid green are AA only as surfaces;
-     --cta-ink / --accent-ink are the versions that pass as text on white, and
-     --cta-bright / --accent-on-dark are the versions for dark bands. */
+  /* Accessible TEXT variants. Gold and mid green are AA only as surfaces;
+     --cta-ink / --accent-ink are the versions that pass as text on paper, and
+     --cta-bright / --accent-on-dark are the versions for green bands. */
   --color-cta-ink: hsl(var(--cta-ink));
   --color-accent-ink: hsl(var(--accent-ink));
   --color-cta-bright: hsl(var(--cta-bright));
   --color-accent-on-dark: hsl(var(--accent-on-dark));
 
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
-  --shadow-md: 0 2px 8px hsl(var(--shadow-color) / 0.08);
-  --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.10);
-  --shadow-xl: 0 14px 36px hsl(var(--shadow-color) / 0.12);
-  --shadow-glow: 0 10px 24px hsl(var(--cta) / 0.28);
+  --shadow-md: 0 2px 6px hsl(var(--shadow-color) / 0.07);
+  --shadow-lg: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 10px 24px -10px hsl(var(--shadow-color) / 0.16);
+  --shadow-xl: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 18px 40px -16px hsl(var(--shadow-color) / 0.22);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  /* Condensed bold type is already tight; it wants no negative tracking. */
-  --tracking-display: 0;
-  --tracking-tight: 0;
-  --tracking-snug: 0;
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.022em;
+  --tracking-snug: -0.006em;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
-  --tracking-wider: 0.06em;
+  --tracking-wider: 0.07em;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* Square corners throughout, like signage and number plates. Only
-     rounded-full (dots, pills) keeps a radius. */
-  --radius-xs: 0;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
-  --radius-3xl: 0;
-  --radius-4xl: 0;
+  /* Corners are barely eased, like a trimmed card. Nothing is pill-shaped
+     except rounded-full dots. */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 6px;
+  --radius-3xl: 8px;
+  --radius-4xl: 8px;
   --radius-full: 9999px;
 }
 
 :root {
-  --background: 0 0% 100%;             /* #FFFFFF page */
-  --foreground: 222 28% 11%;           /* #141924 asphalt ink */
-  --card: 0 0% 100%;
-  --card-foreground: 222 28% 11%;
+  --background: 43 41% 97%;            /* #FAF9F4 paper */
+  --foreground: 150 14% 11%;           /* #18201C ink */
+  --card: 0 0% 100%;                   /* #FFFFFF form and panel surface */
+  --card-foreground: 150 14% 11%;
 
-  --primary: 222 28% 11%;              /* #141924 ink — headings, dark bands */
+  --primary: 158 52% 15%;              /* #123A2C Caraway green: titles, green bands */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 220 16% 96%;            /* #F3F4F6 light concrete */
-  --secondary-foreground: 222 28% 11%;
+  --secondary: 46 32% 92%;             /* #F1EEE4 stone band */
+  --secondary-foreground: 150 14% 11%;
 
-  --muted: 220 14% 93%;                /* #EBECF0 */
-  --muted-foreground: 220 9% 36%;      /* #545964 */
+  --muted: 45 26% 88%;                 /* #E8E4D8 */
+  --muted-foreground: 132 5% 36%;      /* #576059 */
 
-  --accent: 152 64% 27%;               /* #197148 cash green */
+  --accent: 153 56% 28%;               /* #1F6F4B confirmation green */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 45%;
+  --destructive: 3 71% 41%;            /* #B3261E */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 152 64% 27%;
+  --success: 153 56% 28%;
   --success-foreground: 0 0% 100%;
 
-  --warning: 38 92% 50%;
-  --warning-foreground: 222 28% 11%;
+  --warning: 41 90% 48%;
+  --warning-foreground: 150 14% 11%;
 
-  --info: 214 80% 40%;
+  --info: 212 74% 39%;
   --info-foreground: 0 0% 100%;
 
-  --border: 220 13% 87%;               /* #DADCE2 */
+  --border: 44 20% 82%;                /* #DAD5C8 rule */
   /* Form-control borders need >= 3:1 against the card (WCAG 1.4.11). */
-  --input: 220 9% 50%;                 /* #747C8B */
-  --ring: 221 83% 53%;                 /* #2463EB — visible on white and on ink */
+  --input: 111 3% 49%;                 /* #7A8179 */
+  /* Focus ring: blue on paper and stone; gold inside green bands (.on-green). */
+  --ring: 218 76% 47%;                 /* #1D60D3 */
 
-  --shadow-color: 222 30% 12%;
+  --shadow-color: 150 20% 10%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
@@ -132,22 +133,27 @@
   --header-h: 4.25rem;
   --header-strip-h: 2.25rem;
 
-  --ink: 222 28% 11%;                  /* #141924 dark band */
-  --ink-deep: 222 32% 7%;              /* #0C1018 */
-  --ink-raised: 221 22% 18%;           /* #242A38 */
-  --on-dark: 220 14% 78%;              /* #BFC4CF */
+  --ink: 158 52% 15%;                  /* #123A2C green band */
+  --ink-deep: 158 56% 11%;             /* #0C2C20 */
+  --ink-raised: 158 47% 20%;           /* #1B4B39 */
+  --on-dark: 145 12% 80%;              /* #C6D2CB */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 46 100% 50%;                /* #FFC300 hi-vis yellow */
-  --plate-foreground: 222 32% 7%;
-  --cta: 46 100% 50%;                  /* #FFC300 */
-  --cta-hover: 41 100% 46%;            /* #EBA000 */
-  --cta-foreground: 222 32% 7%;
+  --plate: 45 96% 48%;                 /* #F0B505 gold */
+  --plate-foreground: 50 27% 9%;
+  --cta: 45 96% 48%;                   /* #F0B505 */
+  --cta-hover: 44 100% 43%;            /* #DBA100 */
+  --cta-foreground: 50 27% 9%;         /* #1D1B11 */
 
-  --cta-ink: 36 95% 26%;               /* #814F03 amber text on white */
-  --accent-ink: 152 68% 22%;           /* #125E3B green text on white */
-  --cta-bright: 47 100% 56%;           /* #FFCE1F yellow text on ink */
-  --accent-on-dark: 150 55% 62%;       /* #69D39E green text on ink */
+  --cta-ink: 38 100% 24%;              /* #7A4E00 amber text on paper */
+  --accent-ink: 153 59% 22%;           /* #17593B green text and links on paper */
+  --cta-bright: 44 92% 60%;            /* #F7C53B gold text on green */
+  --accent-on-dark: 148 50% 66%;       /* #7DD4A5 green text on green */
+}
+
+/* Inside a green band the focus ring switches to gold so it keeps 3:1. */
+.on-green {
+  --ring: 44 100% 68%;                 /* #FFD35C */
 }
 
 @media (min-width: 640px) {
@@ -174,16 +180,31 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-primary/20 selection:text-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-cta/40 selection:text-foreground;
     overscroll-behavior-y: none;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-kerning: normal;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Two voices. Page titles and section headings are set in the Clarendon;
+     everything below them is the gothic, so a sub-heading never competes
+     with the heading it sits under. */
+  h1, h2 {
     font-family: var(--font-display);
-    @apply font-bold;
-    letter-spacing: 0;
+    font-weight: 600;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.12;
+    text-wrap: balance;
+    color: hsl(var(--primary));
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: var(--tracking-snug);
+    line-height: 1.3;
     text-wrap: balance;
     color: hsl(var(--foreground));
   }
@@ -219,17 +240,18 @@
 }
 
 @layer utilities {
+  /* Section rhythm. Three steps so bands do not all breathe the same. */
   .section-y {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-16 sm:py-20 lg:py-28;
   }
 
   .section-y-tight {
-    @apply py-12 sm:py-16;
+    @apply py-12 sm:py-14 lg:py-16;
   }
 
-  /* Quieter rhythm for inner-page hero bands (service/suburb templates). */
+  /* Quieter rhythm for inner-page title bands. */
   .section-y-hero {
-    @apply py-10 sm:py-14 lg:py-16;
+    @apply pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16;
   }
 
   .site-container {
@@ -246,63 +268,25 @@
     text-wrap: balance;
   }
 
-  /* Eyebrow — small uppercase label above a headline, led by a yellow
-     reflector square. Text stays ink/white; the square carries the brand. */
+  /* Small label above a title. Plain text, no marker; use it sparingly. */
   .eyebrow,
   .eyebrow-on-dark {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
+    display: block;
     font-family: var(--font-sans);
     font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
-    color: hsl(var(--foreground));
+    color: hsl(var(--muted-foreground));
   }
-  .eyebrow::before,
-  .eyebrow-on-dark::before {
-    content: "";
-    width: 0.625rem;
-    height: 0.625rem;
-    flex: none;
-    background: hsl(var(--cta));
-  }
-  .eyebrow-on-dark { color: hsl(var(--on-dark-hi)); }
-
-  /* Poster headline: heavy, uppercase, tight. Hero and section titles. */
-  .display-impact {
-    font-family: var(--font-display);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
-    line-height: 0.95;
-  }
-
-  /* Tow-truck hazard stripe. Decorative only; used as a thin rule. */
-  .hazard-stripe {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      hsl(var(--cta)) 0 10px,
-      hsl(var(--ink-deep)) 10px 20px
-    );
-  }
-
-  /* Yellow underline bar that sits under a section heading. */
-  .title-bar::after {
-    content: "";
-    display: block;
-    width: 3.5rem;
-    height: 0.3125rem;
-    margin-top: 1rem;
-    background: hsl(var(--cta));
-  }
+  .eyebrow-on-dark { color: hsl(var(--on-dark)); }
 
   .link-underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
-    text-underline-offset: 4px;
+    text-underline-offset: 0.22em;
     transition: color 160ms var(--ease-out-quint), text-decoration-color 160ms var(--ease-out-quint);
   }
   .link-underline:hover,
@@ -311,23 +295,12 @@
     text-decoration-thickness: 2px;
   }
 
-  /* Shared interactive card: rounded surface, gentle lift on hover. */
-  .card-lift {
-    border-radius: var(--radius-xl);
-    transition: transform 300ms var(--ease-out-quint), box-shadow 300ms var(--ease-out-quint), border-color 300ms var(--ease-out-quint);
-  }
-  .card-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 12px 28px -8px hsl(var(--shadow-color) / 0.16);
-  }
-
   .hairline {
     border-top: 1px solid hsl(var(--border));
   }
   .hairline-on-dark {
     border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
   }
-
 }
 
 @layer components {
@@ -335,18 +308,63 @@
     display: none;
   }
 
-  .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
+  /* Text link with a trailing arrow: the one "go here next" pattern. It is an
+     inline element so the arrow stays with the last word when the label
+     wraps; the vertical padding keeps a 44px tap target. */
+  .link-arrow {
+    @apply inline rounded-sm py-2.5 font-semibold text-accent-ink underline decoration-1 underline-offset-[0.22em] transition-colors hover:text-primary hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    line-height: 1.5;
+  }
+  .link-arrow svg {
+    @apply ml-1.5 inline h-4 w-4 shrink-0 align-[-0.15em] transition-transform duration-200;
+  }
+  .link-arrow:hover svg {
+    transform: translateX(2px);
+  }
+  /* "Back" links put the arrow first, so it sits and leans the other way. */
+  .link-arrow.link-back svg {
+    @apply ml-0 mr-1.5;
+  }
+  .link-arrow.link-back:hover svg {
+    transform: translateX(-2px);
+  }
+
+  /* Ticked list: a small green tick, no box. */
+  .list-ticks { @apply space-y-2.5; }
+  .list-ticks > li { @apply relative pl-7 leading-relaxed; }
+  .list-ticks > li::before {
+    content: "";
+    position: absolute;
+    left: 0.125rem;
+    top: 0.42em;
+    width: 0.95rem;
+    height: 0.5rem;
+    border-left: 2px solid hsl(var(--accent));
+    border-bottom: 2px solid hsl(var(--accent));
+    transform: rotate(-45deg);
+  }
+  .on-green .list-ticks > li::before {
+    border-color: hsl(var(--cta-bright));
+  }
+
+  /* Comma-run list: reads as a sentence instead of a row of chips. */
+  .list-inline > li { display: inline; }
+  .list-inline > li:not(:last-child)::after {
+    content: ", ";
+  }
+
+  .prose-body { @apply text-[1.0625rem] sm:text-lg leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-[1.75rem] sm:text-4xl font-display font-bold text-primary mt-12 mb-4 leading-[1.1]; }
-  .prose-body h3 { @apply text-2xl sm:text-[1.75rem] font-display font-bold text-primary mt-8 mb-3 leading-[1.15]; }
-  .prose-body h4 { @apply text-xl sm:text-2xl font-display font-bold text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-[1.625rem] sm:text-[1.875rem] font-display font-semibold text-primary mt-12 mb-4 leading-[1.18]; }
+  .prose-body h3 { @apply text-xl sm:text-[1.375rem] font-sans font-bold text-foreground mt-9 mb-3 leading-[1.3]; }
+  .prose-body h4 { @apply text-lg font-sans font-bold text-foreground mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
-  .prose-body a { @apply underline underline-offset-4 decoration-2 decoration-cta hover:text-accent-ink transition-colors text-primary font-medium; }
+  .prose-body a { @apply underline underline-offset-[0.2em] decoration-1 decoration-accent-ink/60 hover:decoration-2 hover:decoration-accent-ink transition-colors text-accent-ink font-medium; }
   .prose-body strong { @apply font-semibold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-4 border-cta pl-4 text-foreground; font-style: normal; }
+  .prose-body blockquote { @apply border-l-2 border-primary pl-4 text-foreground; font-style: normal; }
 
   .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
   .list-styled li { @apply leading-relaxed; }
@@ -681,12 +699,51 @@
   min-height: 100dvh;
 }
 
-/* Inner-page hero band: light concrete with a yellow rule along the top. */
-@utility aurora-surface {
-  position: relative;
-  isolation: isolate;
+/* Inner-page title band: stone, closed by a single rule. */
+@utility page-band {
   background-color: hsl(var(--secondary));
-  border-top: 4px solid hsl(var(--cta));
   border-bottom: 1px solid hsl(var(--border));
-  overflow: hidden;
+}
+
+/* Type scale. Display sizes are fluid between a 390px phone and a 1440px
+   desktop; everything from the lead down is fixed. */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.375rem, 1.55rem + 3.4vw, 4.125rem);
+  line-height: 1.03;
+  letter-spacing: var(--tracking-display);
+}
+@utility type-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.5rem + 2.1vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: var(--tracking-display);
+}
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.625rem, 1.33rem + 1.25vw, 2.375rem);
+  line-height: 1.14;
+  letter-spacing: var(--tracking-tight);
+}
+@utility type-h3 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-snug);
+}
+@utility type-lead {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.6;
+}
+@utility type-label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
 }

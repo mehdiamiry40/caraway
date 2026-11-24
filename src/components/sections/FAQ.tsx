@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Accordion } from "@/components/ui/accordion";
 import { homepageFaqs } from "@/data/home-faqs";
 
@@ -11,31 +11,24 @@ export function FAQ() {
       aria-label="Frequently asked questions"
     >
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-5 lg:sticky lg:top-[calc(var(--header-h)+2rem+env(safe-area-inset-top))]">
-            <p className="eyebrow">FAQ</p>
-            <h2 className="display-impact mt-4 text-[2.5rem] text-foreground sm:text-[3.5rem]">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+2.5rem+env(safe-area-inset-top))]">
+            <h2 className="type-h2">
               Questions? Answered.
             </h2>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-base">
-              <Link
-                href="/faq"
-                className="inline-flex min-h-11 items-center gap-1 font-semibold text-accent-ink link-underline"
-              >
+            <div className="mt-4 flex flex-wrap gap-x-7 gap-y-1 text-base lg:flex-col">
+              <Link href="/faq" className="link-arrow">
                 View all questions
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
+                <ArrowRight aria-hidden />
               </Link>
-              <Link
-                href="/contact"
-                className="inline-flex min-h-11 items-center gap-1 font-semibold text-foreground link-underline"
-              >
+              <Link href="/contact" className="link-arrow">
                 Contact us
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
+                <ArrowRight aria-hidden />
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <Accordion items={homepageFaqs} />
           </div>
         </div>

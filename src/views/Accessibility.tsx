@@ -1,5 +1,4 @@
 import { PageShell } from "@/components/layout/PageShell";
-import { Accessibility as AccessibilityIcon } from "lucide-react";
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -9,14 +8,13 @@ const breadcrumbs = [
 export default function Accessibility() {
   return (
     <PageShell
-      icon={AccessibilityIcon}
       breadcrumbs={breadcrumbs}
       title="Accessibility at Caraway"
       subtitle={<p>We&apos;re committed to making our website usable by everyone, including people with disabilities.</p>}
     >
-      <div className="site-container py-14 sm:py-20 lg:py-28">
-        <div className="prose-body max-w-3xl">
-          <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Our commitment</h2>
+      <div className="site-container py-10 sm:py-14 lg:py-16">
+        <div className="prose-body max-w-[68ch] [&>h2:first-child]:mt-0 [&>section:first-child>h2]:mt-0">
+          <h2>Our commitment</h2>
           <p>
             We aim to conform to <strong>Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</strong>.
             Where we fall short, we&apos;re working to improve.
@@ -28,7 +26,7 @@ export default function Accessibility() {
             and at least every six months.
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">What we&apos;ve done</h2>
+          <h2>What we&apos;ve done</h2>
           <ul className="list-styled mt-4">
             <li>Semantic HTML with proper heading hierarchy</li>
             <li>Keyboard navigation and visible focus indicators</li>
@@ -40,25 +38,25 @@ export default function Accessibility() {
             <li>Text resize support up to 200% without loss of content</li>
           </ul>
 
-          <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Known limitations</h2>
+          <h2>Known limitations</h2>
           <ul className="list-styled mt-4">
             <li>Our quote tool requires JavaScript. If you can&apos;t run JavaScript, please email us at info@caraway.au.</li>
             <li>Some testimonial videos (when added) may lack captions — we&apos;ll add them as we can.</li>
           </ul>
 
-          <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Need help?</h2>
+          <h2>Need help?</h2>
           <p>
             If you have trouble using our site, please email{" "}
-            <a href="mailto:info@caraway.au" className="text-primary underline font-medium">info@caraway.au</a>{" "}
+            <a href="mailto:info@caraway.au">info@caraway.au</a>{" "}
             and we&apos;ll help you personally. We aim to respond within one business day.
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-display text-foreground mt-10 mb-4 tracking-tight">Your rights</h2>
+          <h2>Your rights</h2>
           <p>
             The <strong>Disability Discrimination Act 1992 (Cth)</strong> makes it unlawful to discriminate against
             a person because of their disability. If you believe we have failed to meet these standards, please contact us
             first. You can also make a complaint to the Australian Human Rights Commission at{" "}
-            <a href="https://humanrights.gov.au" rel="noopener noreferrer" className="text-primary underline">humanrights.gov.au</a>.
+            <a href="https://humanrights.gov.au" rel="noopener noreferrer">humanrights.gov.au</a>.
           </p>
         </div>
       </div>

@@ -344,10 +344,10 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           aria-modal="true"
           aria-labelledby="caraway-chat-title"
           aria-describedby="caraway-chat-description"
-          className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(42rem,calc(100dvh-7rem))] flex-col overflow-hidden rounded-md border border-border bg-card shadow-[0_20px_60px_hsl(var(--shadow-color)/0.28)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[25rem]"
+          className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(42rem,calc(100dvh-7rem))] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[25rem]"
         >
-          <header className="flex items-center gap-3 border-b border-primary/25 bg-primary px-4 py-3 text-primary-foreground">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-primary-foreground/12">
+          <header className="on-green flex items-center gap-3 border-b border-primary/25 bg-primary px-4 py-3 text-primary-foreground">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary-foreground/12">
               <Bot className="h-5 w-5" aria-hidden="true" />
             </span>
             <div className="min-w-0 flex-1">
@@ -368,7 +368,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
               <button
                 type="button"
                 onClick={resetChat}
-                className="flex h-10 w-10 items-center justify-center rounded-none text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+                className="flex h-10 w-10 items-center justify-center rounded-sm text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
                 aria-label="Start a new chat"
               >
                 <RotateCcw className="h-4 w-4" aria-hidden="true" />
@@ -377,7 +377,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             <button
               type="button"
               onClick={closeChat}
-              className="flex h-10 w-10 items-center justify-center rounded-none text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-sm text-primary-foreground/85 transition-colors hover:bg-primary-foreground/12 hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground"
               aria-label="Close chat"
             >
               <X className="h-5 w-5" aria-hidden="true" />
@@ -392,7 +392,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
             aria-busy={isBusy}
           >
             <div className="flex items-start gap-2.5">
-              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground">
+              <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-primary text-primary-foreground">
                 <Bot className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="max-w-[85%] rounded-sm rounded-tl-none border border-border bg-card px-3.5 py-3 text-sm leading-relaxed text-foreground shadow-sm">
@@ -409,7 +409,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                     key={action.label}
                     type="button"
                     onClick={() => void send(action.message)}
-                    className="rounded-none border border-primary/35 bg-card px-3 py-2 text-left text-xs font-medium text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="rounded-sm border border-primary/35 bg-card px-3 py-2 text-left text-xs font-medium text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     {action.label}
                   </button>
@@ -430,7 +430,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                   className={`flex items-start gap-2.5 ${isUser ? "justify-end" : ""}`}
                 >
                   {!isUser && (
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-primary text-primary-foreground">
                       <Bot className="h-4 w-4" aria-hidden="true" />
                     </span>
                   )}
@@ -464,11 +464,11 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
 
             {isBusy && (
               <div className="flex items-center gap-2.5 text-sm text-muted-foreground" role="status">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-primary text-primary-foreground">
                   <Bot className="h-4 w-4" aria-hidden="true" />
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-sm border border-border bg-card px-3.5 py-2.5 shadow-sm">
-                  <span className="h-4 w-4 animate-spin motion-reduce:animate-none rounded-none border-2 border-current border-t-transparent" aria-hidden="true" />
+                  <span className="h-4 w-4 animate-spin motion-reduce:animate-none rounded-sm border-2 border-current border-t-transparent" aria-hidden="true" />
                   {status === "submitted" ? "Thinking…" : "Replying…"}
                 </span>
               </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   HOME_CASH_INTRO,
   homeCashSections,
@@ -7,9 +7,9 @@ import {
 } from "@/data/home-content";
 
 /**
- * The homepage's long-form "cash for cars Brisbane" explainer. Two columns: a
- * sticky heading on the left, readable sections on the right, with the
- * specialist service pages linked beside the intro.
+ * The homepage's long-form "cash for cars Brisbane" explainer, set like a
+ * printed guide: the title and the specialist pages stay beside the reader on
+ * the left while the numbered sections run down the right.
  */
 export function HomeCashForCars() {
   return (
@@ -18,26 +18,23 @@ export function HomeCashForCars() {
       className="section-y scroll-mt-header bg-background"
       aria-labelledby="cash-for-cars-heading"
     >
-      <div className="site-container grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
-          <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
+      <div className="site-container grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-[calc(var(--header-h)+2.5rem)]">
             <p className="eyebrow">Cash for cars Brisbane</p>
-            <h2
-              id="cash-for-cars-heading"
-              className="display-impact mt-4 text-[2.5rem] text-foreground sm:text-[3.25rem]"
-            >
+            <h2 id="cash-for-cars-heading" className="type-h2 mt-3">
               Selling your car for cash in Brisbane, explained.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-foreground/85">{HOME_CASH_INTRO}</p>
+            <p className="mt-5 text-base leading-7 text-foreground/80">{HOME_CASH_INTRO}</p>
 
-            <div className="mt-8 border-l-4 border-cta bg-secondary p-5">
-              <p className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-foreground">Specialist pages</p>
-              <ul className="flex flex-wrap gap-2">
+            <div className="mt-8 border-t border-foreground/25 pt-4">
+              <p className="text-sm font-semibold text-foreground">Specialist pages</p>
+              <ul className="mt-1 grid grid-cols-2 gap-x-6 lg:grid-cols-1 xl:grid-cols-2">
                 {homeVehicleLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="inline-flex min-h-11 items-center border border-border bg-card px-3.5 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       {link.label}
                     </Link>
@@ -48,48 +45,42 @@ export function HomeCashForCars() {
           </div>
         </div>
 
-        <div className="divide-y divide-border border-y border-border lg:col-span-7">
+        <div className="lg:col-span-8 lg:border-l lg:border-border lg:pl-16">
           {homeCashSections.map((section, index) => (
-            <article key={section.heading} className="py-8">
-              <div className="flex items-start gap-4">
-                <span
-                  aria-hidden="true"
-                  className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center bg-ink font-display text-xl font-extrabold leading-none text-cta-bright"
-                >
-                  {index + 1}
+            <article
+              key={section.heading}
+              className="max-w-[44rem] border-t border-border py-9 first:border-t-0 first:pt-0 last:pb-0"
+            >
+              <div className="flex items-baseline gap-3 font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.02em] sm:text-[1.625rem]">
+                <span aria-hidden="true" className="shrink-0 tabular-nums text-accent">
+                  {index + 1}.
                 </span>
-                <h3 className="font-display text-[1.75rem] font-bold leading-[1.1] text-foreground sm:text-[2rem]">
+                <h3 className="font-display text-[1em] font-semibold leading-tight tracking-[-0.02em] text-primary">
                   {section.heading}
                 </h3>
               </div>
               {section.paragraphs.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 32)}
-                  className="mt-4 text-base leading-7 text-foreground/85 sm:text-[1.0625rem]"
+                  className="mt-4 text-base leading-7 text-foreground/85 sm:text-[1.0625rem] sm:leading-[1.7]"
                 >
                   {paragraph}
                 </p>
               ))}
               {section.checklistItems && (
-                <ul className="mt-5 space-y-2.5">
+                <ul className="list-ticks mt-5 text-base text-foreground/85">
                   {section.checklistItems.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-[0.9375rem] leading-6">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-accent text-accent-foreground">
-                        <Check size={12} strokeWidth={3} aria-hidden="true" />
-                      </span>
-                      {item}
-                    </li>
+                    <li key={item}>{item}</li>
                   ))}
                 </ul>
               )}
               {section.supportLink && (
-                <Link
-                  href={section.supportLink.href}
-                  className="mt-5 inline-flex min-h-11 items-center gap-1.5 text-base font-semibold text-accent-ink link-underline"
-                >
-                  {section.supportLink.label}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
+                <p className="mt-5">
+                  <Link href={section.supportLink.href} className="link-arrow text-base">
+                    {section.supportLink.label}
+                    <ArrowRight aria-hidden="true" />
+                  </Link>
+                </p>
               )}
             </article>
           ))}
