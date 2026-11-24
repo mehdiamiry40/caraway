@@ -22,7 +22,7 @@ green ticks, and full-width blue and green bands between white sections.
 - **Green is for the navigation bar and for "yes".** The nav bar, every tick,
   the line under a section heading, the services band and the copyright bar.
 - **Yellow is the action.** The primary button ("Get my quote", the phone
-  button in a call-to-action band), the logo plate and a few small marks.
+  button in a call-to-action band), the logo's plate bar and a few small marks.
 - **White between bands.** Two coloured bands never touch; a white or tint
   section always sits between them. Where a band would sit directly above the
   blue footer, use its green variant.
@@ -48,10 +48,10 @@ Light mode only.
 | `--accent`                | `#1B833A` | `138 66% 31%`      | Green: navigation bar, ticks, alternate bands, copyright bar |
 | `--accent-hover`          | `#147130` | `138 70% 26%`      | Hover state of `--accent` |
 | `--accent-foreground`     | `#FFFFFF` | `0 0% 100%`        | Text on `--accent` |
-| `--cta`                   | `#FFC105` | `45 100% 51%`      | Yellow: the primary action button and the logo plate |
+| `--cta`                   | `#FFC105` | `45 100% 51%`      | Yellow: the primary action button and the logo's plate bar |
 | `--cta-hover`             | `#F0A400` | `41 100% 47%`      | Hover state of `--cta` |
 | `--cta-foreground`        | `#151D28` | `216 30% 12%`      | Text on `--cta` |
-| `--plate`                 | `#FFC105` | `45 100% 51%`      | Same yellow, kept for the plate mark |
+| `--plate`                 | `#FFC105` | `45 100% 51%`      | Same yellow, kept for the logo's plate bar |
 | `--plate-foreground`      | `#151D28` | `216 30% 12%`      | Text on `--plate` |
 | `--secondary`             | `#F3F7FC` | `214 60% 97%`      | Tint band and note panels |
 | `--secondary-foreground`  | `#1C2430` | `216 26% 15%`      | Text on `--secondary` |
@@ -253,9 +253,11 @@ When the palette changes, update all seven files above in lockstep.
 ## Raster assets
 
 These have baked-in colours and should be regenerated whenever the palette or
-the logo lettering changes. The icons come from `public/favicon.svg`; the logo
-image is the footer logo (plate mark, "Caraway" and "Cash for Cars" in Asap,
-white on the blue) at 512 × 279.
+the logo lettering changes. The icons come from `public/favicon.svg` (a white
+Asap C over the yellow bar, on a blue plate); the logo image is the footer logo
+(white "Caraway" on the yellow "CASH FOR CARS" bar, on the blue) at 512 × 279.
+The lettering in both is Asap converted to outlines; the logo's outlines are in
+`src/components/layout/logo-paths.ts`.
 
 - `public/icon-192.png`
 - `public/icon-512.png`
