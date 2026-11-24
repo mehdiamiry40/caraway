@@ -6,6 +6,7 @@ import { Asap } from "next/font/google";
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
 import { JsonLd } from "@/components/JsonLd";
+import { LogoArtwork } from "@/components/layout/LogoArtwork";
 import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -108,6 +109,8 @@ export default function RootLayout({
           Skip to main content
         </a>
         <div aria-hidden="true" className="site-frame" />
+        {/* Drawn once, before the page, so every <Logo> has it to point at. */}
+        <LogoArtwork />
         {children}
         <CarawayChatLoader />
         <JsonLd data={[organizationSchema, websiteSchema]} />
