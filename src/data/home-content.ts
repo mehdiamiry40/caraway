@@ -16,32 +16,32 @@ export interface HomeContentSection {
 }
 
 export const HOME_CASH_INTRO =
-  "Caraway is a Brisbane-based car buyer. Tell us about your car and a person reviews the details and tells you if we can make an offer. If we buy, you get the offer in writing before the truck is booked, towing is free wherever we collect in Greater Brisbane, and we agree how and when you're paid before your car leaves.";
+  "Caraway is a Brisbane-based car buyer. Tell us about your vehicle, and a person — not an algorithm — reviews the details and confirms whether we can make an offer. If we buy, the offer is in writing before the truck is booked, pickup is included anywhere we collect across Greater Brisbane, and the payment method and timing are agreed before your car leaves.";
 
 export const homeCashSections: HomeContentSection[] = [
   {
     heading: "How to get a cash for cars quote in Brisbane",
     paragraphs: [
-      "Send us the make, model, year, rough kilometres, suburb and condition through the quote form, or call us. Tell us if the car starts, rolls, steers and brakes, and if it has all its wheels and keys. Photos of each side, the interior, the odometer and any damage help us check the car before we confirm an offer. There is no obligation.",
-      "A web page can't price your car on its own, so we don't show an instant figure. A person reviews your details. It takes a few minutes of your time and gives you a number you can rely on.",
+      "Send the make, model, year, approximate kilometres, suburb and overall condition through the quote form, or call us. Tell us whether the car starts, rolls, steers and brakes, and whether it has all its wheels and keys. Photos of each side, the interior, the odometer and any damage let us assess what is visible before we confirm a no-obligation offer.",
+      "No web page can price an individual car on its own, so we never show an instant figure. A human-reviewed assessment takes a few minutes of your time and gives you a number you can actually rely on.",
     ],
     checklistItems: [
-      "Make, model, variant, year, kilometres and rego status",
-      "If it starts, rolls, steers and brakes, and has all wheels and keys",
+      "Make, model, variant, year, kilometres and registration status",
+      "Whether it starts, rolls, steers and brakes, and has all wheels and keys",
       "Known faults, warning lights, body damage, missing parts and modifications",
-      "Any finance, insurance, estate or ownership details that affect the sale",
-      "Your suburb, plus any driveway, garage, gate, slope or clearance limits",
+      "Finance, insurer, estate or other ownership details that affect the sale",
+      "Your suburb plus driveway, garage, gate, slope or clearance details",
     ],
     supportLink: {
       href: "/blog/how-to-get-the-best-cash-for-cars-price-brisbane#give-buyers-the-full-picture",
-      label: "See the full details and photo checklist",
+      label: "See the full vehicle-detail and photo checklist",
     },
   },
   {
     heading: "What affects how much cash you get for your car",
     paragraphs: [
-      "Your offer depends on what the car is, its age, kilometres, mechanical and body condition, whether it is complete, where it is and the access. Current demand in Brisbane for resale, parts and metal matters too. A complete, repairable or in-demand car is usually worth more than a stripped or burnt-out shell.",
-      "Tell us about warning lights, missing parts, accident, hail or flood damage, finance and any insurance claim. The agreed offer only changes if the car is materially different from what you described, so accurate details protect your price.",
+      "An offer reflects the vehicle's identity, age, kilometres, mechanical and body condition, completeness, location and access, plus current resale, parts and metal demand in Brisbane. A complete, repairable or in-demand vehicle is usually worth more than a stripped or burnt-out shell.",
+      "Be upfront about warning lights, missing components, accident, hail or flood damage, finance and insurer involvement. The agreed offer only changes if the car materially differs from what you described — so accurate details are what protect your price.",
     ],
     supportLink: {
       href: "/blog/how-much-is-my-car-worth-brisbane",
@@ -51,15 +51,15 @@ export const homeCashSections: HomeContentSection[] = [
   {
     heading: "Cars we buy for cash in Brisbane",
     paragraphs: [
-      "We look at sedans, hatchbacks, wagons, utes, SUVs, four-wheel drives, vans and light commercials. Running or not, registered or not, damaged, old, unwanted or at the end of its life. Fleet, estate and multi-car clearances are welcome too.",
-      "We can't buy every car. ID, the right to sell, condition, location and safe access all matter, and we tell you straight away if we can't help.",
+      "We assess sedans, hatchbacks, wagons, utes, SUVs, four-wheel drives, vans and light commercial vehicles — running or not, registered or unregistered, damaged, old, unwanted or at the end of its life. Fleet, estate and multi-vehicle clearances are welcome too.",
+      "An assessment isn't a promise to buy every vehicle: identification, ownership authority, condition, location and safe access all matter, and we tell you straight away if we can't help.",
     ],
   },
   {
     heading: "Car pickup across Greater Brisbane",
     paragraphs: [
-      "We quote for pickups in Brisbane and nearby parts of Logan, Ipswich, Redlands and Moreton Bay. Towing is free when we buy your car, as long as the car and the access match what you told us.",
-      "Timing depends on your suburb, the car's condition, access, traffic and the truck schedule. We confirm a pickup time with you before anyone is sent.",
+      "We quote for collections across Brisbane and surrounding parts of Logan, Ipswich, Redlands and Moreton Bay. When Caraway buys your car, pickup is included as long as the vehicle and access match the details you gave us.",
+      "Timing depends on the suburb, the vehicle's condition, access, traffic and the operator schedule, so we confirm a collection window with you before anyone is dispatched.",
     ],
     supportLink: {
       href: "/locations",
@@ -67,10 +67,10 @@ export const homeCashSections: HomeContentSection[] = [
     },
   },
   {
-    heading: "Getting paid, and the pickup check",
+    heading: "Getting paid, and the collection check",
     paragraphs: [
-      "Before loading, the operator checks the car matches its description. We confirm how and when you're paid before pickup, and you get a signed receipt and our details for your records.",
-      "Our rule for any cash for cars sale in Brisbane, with us or anyone else: don't hand over the car until the payment and the buyer's details are clear.",
+      "Before loading, the pickup operator checks the car matches its description. The agreed payment method and timing are confirmed with you before collection, and you receive a signed receipt and buyer details for your records.",
+      "Our rule for any cash for cars sale in Brisbane, with us or anyone else: never hand over a vehicle until the agreed payment arrangement and the buyer's details are clear.",
     ],
     supportLink: {
       href: "/how-it-works",
@@ -80,7 +80,7 @@ export const homeCashSections: HomeContentSection[] = [
   {
     heading: "Paperwork to have ready",
     paragraphs: [
-      "Have current photo ID, every key you hold, and any rego, finance, insurance, estate or ownership records. Take out your belongings and take the car off any toll account. You are still responsible for the Queensland seller steps that apply to your sale. Complete them and keep the confirmation.",
+      "Have current photo ID, every key you hold, and any registration, finance, insurer, estate or ownership records. Remove personal belongings and take the car off any toll account. You stay responsible for completing — and keeping confirmation of — the Queensland seller steps that apply to your sale.",
     ],
     supportLink: {
       href: "/blog/what-paperwork-to-sell-a-car-qld#at-a-glance-queensland-seller-paperwork-checklist",

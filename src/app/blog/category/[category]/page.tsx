@@ -31,19 +31,19 @@ const CATEGORY_SEO: Record<
     title: "Caraway Blog: Guides",
     heading: "Guides articles",
     description:
-      "Browse guides on Queensland paperwork, ownership, registration, car condition, safety and Brisbane pickup planning.",
+      "Browse the Guides archive for articles on Queensland paperwork, ownership, registration, condition, safety, and Brisbane collection planning.",
   },
   insights: {
     title: "Caraway Blog: Insights",
     heading: "Insights articles",
     description:
-      "Browse insights that compare buyer types, selling whole or for parts, fees, pickup terms and the work each way of selling takes.",
+      "Browse the Insights archive to compare buyer types, whole-car versus parts decisions, fees, pickup terms, and the work behind each sale path.",
   },
   tips: {
     title: "Caraway Blog: Tips",
     heading: "Tips articles",
     description:
-      "Browse practical tips on seller safety and privacy, from checking payment terms to clearing personal data before handover.",
+      "Browse the Tips archive for practical seller safety and privacy articles, from checking payment terms to clearing personal data before handover.",
   },
 };
 
@@ -52,7 +52,7 @@ function categorySeo(category: string, label: string) {
     CATEGORY_SEO[category] ?? {
       title: `Caraway Blog: ${label}`,
       heading: `${label} articles`,
-      description: `Browse Caraway's ${label.toLowerCase()} about selling a car in Queensland and planning a Brisbane pickup.`,
+      description: `Browse Caraway's ${label.toLowerCase()} about Queensland vehicle selling and Brisbane collection planning.`,
     }
   );
 }

@@ -34,10 +34,10 @@ export const QUOTE_VALIDATION_MESSAGES = {
   modelRequired: "Car model is required",
   modelTooLong: "Car model is too long",
   yearInvalid: "Invalid year",
-  conditionRequired: "Select a condition",
-  suburbRequired: "Enter your suburb",
+  conditionRequired: "Please select a condition",
+  suburbRequired: "Please enter your suburb",
   suburbTooLong: "Suburb is too long",
-  detailsTooLong: "Car and access details are too long",
+  detailsTooLong: "Vehicle and access details are too long",
   expectedPriceInvalid: "Enter a whole dollar amount, e.g. 3500",
   expectedPriceTooHigh: "Enter an amount up to $1,000,000",
   honeypotInvalid: "Invalid form submission",
@@ -51,7 +51,7 @@ export const CONTACT_VALIDATION_LIMITS = {
 export const CONTACT_VALIDATION_MESSAGES = {
   emailInvalid: "Enter a valid email address",
   emailTooLong: "Email is too long",
-  messageTooShort: "Add a short note (at least 5 characters)",
+  messageTooShort: "Please add a short note (at least 5 characters)",
   messageTooLong: "Message is too long",
 } as const;
 

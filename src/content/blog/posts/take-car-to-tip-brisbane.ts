@@ -7,45 +7,45 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Before you book a tow: what happens when you take a car to the tip in Brisbane, what council centres will accept, and who pays you for the rest.",
   excerpt:
-    "Council waste vouchers cover 1,000 kilograms of disposal, and most cars weigh more than that. Here's what Brisbane's resource recovery centres can and can't do for a dead car.",
+    "Council waste vouchers cover 1,000 kilograms of disposal, and most cars weigh more than that. Here's where Brisbane's resource recovery centres fit into getting rid of a dead vehicle, and where they don't.",
   content: [
-    `A dead car in the driveway feels like a tip run waiting to happen. It usually is not. Taking a car to the tip in Brisbane is not like towing a trailer of household waste. A whole unregistered vehicle needs advance confirmation from the facility and a lawful way to get it there. Before you pay for a tow, compare that with a quote from a buyer who purchases the whole car and picks it up.`,
+    `A dead car in the driveway feels like a tip run waiting to happen. It usually is not. Taking a car to the tip in Brisbane differs from towing a trailer of household waste, and a whole unregistered vehicle requires advance confirmation from the facility and a lawful transport plan. Before paying for a tow, compare that route with an individual whole-vehicle purchase-and-pickup quote.`,
 
     `## What Brisbane's Resource Recovery Centres Actually Handle`,
 
     `Brisbane City Council runs four resource recovery centres — Willawong, Chandler, Ferny Grove and Nudgee — and they are what most people mean by "the tip". Residents get waste vouchers for domestic loads, with a maximum of ten vouchers covering up to 1,000 kilograms of disposal. Vehicles with a combined gross vehicle mass over 4.5 tonnes are limited to Nudgee and Willawong and cannot use vouchers at all.`,
 
-    `A car does not fit within that 1,000 kilogram allowance. A small hatchback weighs well over a tonne, and a Falcon, LandCruiser or dual-cab weighs far more. Before you organise a tow, ring the centre and ask what they do with whole vehicles. The answer is not the same as for a trailer of household junk, and paying a tow truck to find out at the gate is an expensive way to learn.`,
+    `Put a car against that 1,000 kilogram allowance and the arithmetic stops working. A small hatchback kerbs at well over a tonne, and a Falcon, LandCruiser or dual-cab is far past it. Before you organise a tow, ring the centre and ask what they do with whole vehicles — the answer is not the same as it is for a trailer of household junk, and paying a tow truck to find out at the gate is an expensive way to learn.`,
 
-    `Getting it there is another hurdle. Queensland allows an eligible, safe unregistered vehicle to be moved on the road under an unregistered vehicle permit with journey-specific CTP insurance; if the vehicle is not safe to drive, it needs a tow truck. Whether the facility accepts it is a separate question, so confirm both the destination and a lawful way to move the car before you pay for either. Our guide to [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) covers what happens if it sits on the kerb while you work out the plan.`,
+    `Getting it there is its own hurdle. Queensland allows an eligible, safe unregistered vehicle to be moved on the road under an unregistered vehicle permit with journey-specific CTP insurance; if the vehicle is not safe to drive, it needs a tow truck. Facility acceptance is a separate question, so confirm both the destination and lawful transport plan before paying for either option. Our guide to [parking an unregistered car in QLD](/blog/park-unregistered-car-street-qld) covers what happens if it sits on the kerb while you work out the plan.`,
 
     `## Why Taking a Car to the Tip Costs You Money`,
 
-    `A car contains steel, aluminium, wiring, a battery, tyres, fluids, and parts that need proper handling. A buyer may count some of that value, and the work to recover it, in an offer. [What affects a scrap-car quote in Brisbane](/blog/how-much-is-scrap-car-worth-brisbane) explains why two similar-looking wrecks can get different quotes.`,
+    `A vehicle contains steel, aluminium, wiring, a battery, tyres, fluids, and components that require appropriate handling. A buyer may account for some of that value and the recovery requirements in an individual offer. [What affects a scrap-car quote in Brisbane](/blog/how-much-is-scrap-car-worth-brisbane) explains why two similar-looking wrecks can receive different assessments.`,
 
-    `After the car is taken away, its fluids, battery, tyres, parts, and materials may need specialist processing, depending on the car and the facility. [How car recycling works in Australia](/blog/how-car-recycling-works-australia) explains the general steps, but confirm who takes the car and what they do with it. Not every car follows the same path.`,
+    `Downstream handling may include specialist fluid, battery, tyre, component, and material processing depending on the vehicle and facility. [How car recycling works in Australia](/blog/how-car-recycling-works-australia) explains the general sequence, but confirm the actual recipient and process rather than assuming every vehicle follows the same path.`,
 
     `## What the Tip Will Take Off Your Car`,
 
-    `Loose parts are different, and this is where a resource recovery centre is useful. Lead-acid car batteries are accepted. So is engine oil, up to 100 litres per customer per visit, which covers the drain containers stacked in the shed from the last few services.`,
+    `The loose components are a different story, and this is where a resource recovery centre genuinely earns its keep. Lead-acid car batteries are accepted. So is engine oil, up to 100 litres per customer per visit, which covers anyone who has been stacking drain containers in the shed since the last few services.`,
 
-    `Tyres are harder. They can't go out with kerbside collection, and council's advice is to speak to a tyre retailer, mechanic or garage instead. Most charge a modest per-tyre fee. Fuel, coolant and brake fluid count as hazardous waste with their own drop-off arrangements, so check the current rules before you load anything into a boot.`,
+    `Tyres are the awkward one. They can't go out with kerbside collection, and council's advice is to speak to a tyre retailer, mechanic or garage instead. Most charge a modest per-tyre fee, which is the going price for keeping them out of a gully. Fuel, coolant and brake fluid fall under hazardous waste with their own drop-off arrangements, so check the current rules before loading anything into a boot.`,
 
     `## Outside Brisbane City Council`,
 
-    `Logan, Ipswich, Moreton Bay and Redland City each run their own waste facilities, with their own voucher schemes, opening hours and accepted-item lists. A rule you read on the Brisbane City Council site may not apply across the boundary at Underwood or Bald Hills. Check the council that collects your bins, not the nearest gate.`,
+    `Logan, Ipswich, Moreton Bay and Redland City each run their own waste facilities, with their own voucher schemes, opening hours and accepted-item lists. A rule you read on the Brisbane City Council site doesn't necessarily carry across the boundary at Underwood or Bald Hills. Check the council that collects your bins, not the nearest gate.`,
 
-    `Either way, leave the fluids in the car. Draining fuel or oil into containers at home gives you a storage problem and a disposal problem, and a recycler deals with both when it takes the car. Take out your personal belongings, not the mechanical parts.`,
+    `One practical note either way: leave the fluids in the car. Draining fuel or oil into containers at home creates a storage problem and a disposal problem in one go, and a recycler deals with both as part of taking the vehicle. Strip the personal gear out of it, not the mechanicals.`,
 
-    `Whatever route you take, don't let the car become a dumping problem. [Scrapping a car legally in Brisbane](/blog/how-to-scrap-a-car-legally-brisbane) covers the records and notifications that still matter long after the car has left your driveway.`,
+    `Whatever route you take, don't let the car become a dumping problem — [scrapping a car legally in Brisbane](/blog/how-to-scrap-a-car-legally-brisbane) covers the records and notifications that matter once it leaves your driveway, which outlast the physical removal by a long way.`,
 
-    `Caraway may be able to buy unwanted, non-running, and scrap cars within its Greater Brisbane service area. [Towing is free](/car-removal-brisbane) when we buy your car. Tell us where the car is and how a truck can reach it, because access can change the job. Call **${BUSINESS.phoneDisplay}** or get a free online quote before you arrange a separate tow. To see how Caraway prices and picks up cars, read [cash for cars Brisbane](/).`,
+    `Caraway assesses unwanted, non-running, and scrap vehicles within its confirmed Greater Brisbane service area. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. Call **${BUSINESS.phoneDisplay}** or request an online quote before arranging a separate tow. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   faqs: [
     {
       question: "Can you take a car to the tip in Brisbane?",
       answer:
-        "Council resource recovery centres are set up mainly for the waste they accept, under published load conditions. A whole vehicle needs advance confirmation, and an unregistered vehicle needs lawful transport. Call the facility before you book a tow, then compare its requirements with a written quote from a buyer who purchases the car and picks it up.",
+        "Council resource recovery centres are set up primarily for accepted waste streams and published load conditions. A whole vehicle needs advance confirmation, and an unregistered vehicle needs lawful transport. Call the facility before booking a tow, then compare its requirements with a written purchase-and-pickup quote.",
     },
     {
       question: "Does Brisbane City Council accept car batteries and engine oil?",

@@ -5,7 +5,7 @@
 
 export const FOOTER_INTERNAL_RESOURCES = [
   { label: "Cash for cars Brisbane", href: "/" },
-  { label: "Car removal, free towing included", href: "/car-removal-brisbane" },
+  { label: "Car removal when we buy", href: "/car-removal-brisbane" },
   { label: "Scrap & unwanted cars", href: "/scrap-car-removal-brisbane" },
   { label: "Damaged & written-off cars", href: "/damaged-cars-brisbane" },
   { label: "Blog & selling guides", href: "/blog" },

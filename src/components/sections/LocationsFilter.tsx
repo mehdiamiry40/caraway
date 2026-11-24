@@ -55,11 +55,11 @@ export function LocationsFilter({ items }: { items: LocationFilterItem[] }) {
             No suburbs match &ldquo;{query}&rdquo;
           </p>
           <p className="text-base text-muted-foreground">
-            To check availability,{" "}
+            Send your suburb and vehicle details —{" "}
             <Link href="/contact" className="font-medium text-primary underline underline-offset-2">
               contact us
             </Link>{" "}
-            with your suburb and car details.
+            to check availability.
           </p>
         </div>
       ) : (

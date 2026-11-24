@@ -28,7 +28,7 @@ import {
 
 const STEPS = [
   { title: "Get your quote", description: "Send your car details." },
-  { title: "Agree on the price", description: "Firm price, pickup time booked." },
+  { title: "Lock the number", description: "Firm price, pickup window booked." },
   { title: "Payment and pickup", description: "Payment confirmed before the car leaves." },
 ] as const;
 
@@ -196,7 +196,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
 
               <div>
                 <SectionHeading className="mb-6">
-                  Three steps to sell your car.
+                  Three steps to cash in hand.
                 </SectionHeading>
                 <NumberedSteps steps={STEPS} />
               </div>

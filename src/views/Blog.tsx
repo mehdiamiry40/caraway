@@ -68,7 +68,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
   return (
     <PageShell
       breadcrumbs={breadcrumbs}
-      eyebrow="Caraway blog"
+      eyebrow="The Caraway Journal"
       title="Selling a car in Brisbane, clearly explained."
       subtitle={
         <p>Practical guides for Brisbane sellers.</p>

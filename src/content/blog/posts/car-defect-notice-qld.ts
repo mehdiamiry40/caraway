@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     `Any conditions about how, where and when the vehicle may be driven before the notice is cleared are written on the notice, and they are not advisory. The Queensland Government's own example is a vehicle with defective windscreen wipers being restricted from driving in wet weather.`,
 
-    `Where a defect is considered dangerous, the officer may also attach a defect label in a prominent position to tell other enforcement officers that the vehicle is not allowed on the road. Removing the label without authorisation is an offence in its own right and can attract an on-the-spot fine, so leave it where it is, even while the car sits in a Chermside driveway.`,
+    `Where a defect is considered dangerous, the officer may also attach a defect label in a prominent position to tell other enforcement officers that the vehicle is not allowed on the road. Removing the label without authorisation is an offence in its own right and can attract an on-the-spot fine, so it stays where it is — even while the car sits in a Chermside driveway looking like a public shaming.`,
 
     `## How Long Do You Have to Fix a Defect Notice in QLD?`,
 
@@ -81,7 +81,7 @@ export const post: RawBlogPostEntry = {
 
     `Some defect notices are a Saturday morning and a set of tyres. Others aren't. A notice on a 2004 Commodore with 320,000 kilometres often lists items that each look minor and together exceed what the car is worth. Structural rust is the classic — cutting and welding a chassis rail or sill properly is panel-shop money, and it rarely turns up alone. It arrives with tired bushes, a windscreen, and brake work the inspector noticed on the way past.`,
 
-    `Use the test in our [repair or sell](/blog/repair-or-sell-your-car-brisbane) guide: compare the full quoted repair bill against what the car would fetch once it's running, compliant and defect-free. If the repair costs more than that gap, you're spending money to stand still, on a car that has just shown its age.`,
+    `The test is the one in our [repair or sell](/blog/repair-or-sell-your-car-brisbane) guide, with a harder edge: compare the full quoted repair bill against what the car would fetch once it's running, compliant and defect-free. If the repair costs more than that gap, you're spending money to stand still — and you're spending it on a car that just demonstrated where it is in its life.`,
 
     `Meanwhile the vehicle has to sit somewhere. A defected car that can't legally be driven isn't welcome on a public road, and it's exactly the sort of thing a neighbour reports to council. Our guide to [parking an unregistered car on the street in QLD](/blog/park-unregistered-car-street-qld) covers where a car in that position can and can't legally be kept.`,
 
@@ -91,9 +91,9 @@ export const post: RawBlogPostEntry = {
 
     `Each route has a condition attached. A cash-for-cars or wrecking business is not automatically a licensed motor dealer, so check any claimed licence on the [Queensland motor-licence register](https://www.qld.gov.au/community/fair-trading/regulated-industries-licensing-and-legislation/motor-industry-regulation/check-a-motor-licence) before relying on that pathway. Cancelling the registration means TMR's cancellation form and the number-plate step that applies to your vehicle, which our [rego cancellation guide](/blog/how-to-cancel-car-rego-qld) explains; a vehicle sold for parts must be deregistered before sale. An unregistered vehicle can be sold without a safety certificate, but it cannot simply be driven to the buyer: a permit to move it requires the vehicle to be in a safe condition to drive, and one that is not safe to drive has to go by tow truck.`,
 
-    `Before relying on a sale or a cancellation to deal with the notice, confirm with the officer or inspector who issued it what they need from you and by when. Whichever route you take, tell the buyer about the defect notice and the listed problems, and do not misrepresent the vehicle's condition. Any offer still depends on the vehicle, damage, completeness, authority to sell, location, and access.`,
+    `Before relying on a sale or a cancellation to deal with the notice, confirm with the officer or inspector who issued it what they need from you and by when. Whichever route you take, tell the buyer about the defect notice and the listed problems, and do not misrepresent the vehicle's condition. An individual offer still depends on the vehicle, damage, completeness, authority to sell, location, and access.`,
 
-    `Caraway can assess a defected, unregistered, or non-running car from the details you give us, including the defects listed on the notice. Towing is free when we buy your car. See [car removal in Brisbane](/car-removal-brisbane) for how pickup works. Call **${BUSINESS.phoneDisplay}** or get a free, no-obligation online quote. We confirm the pickup time and payment before pickup. If the car is otherwise sound and you would rather not manage the repairs and a private listing, see [how a direct sale of your car in Brisbane works](/sell-my-car-brisbane), including the registration and safety-certificate questions to settle first. It's part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered cars.`,
+    `Caraway can assess a defected, unregistered, or non-running car from the details you supply, including the defects listed on the notice. If Caraway buys the vehicle and its condition and access match those details, [car removal in Brisbane](/car-removal-brisbane) is included. Call **${BUSINESS.phoneDisplay}** or request a free, no-obligation online quote; collection timing and payment are confirmed for each accepted job. If the car is otherwise sound and you would rather not manage the repairs and a private listing, see [how a direct sale of your car in Brisbane works](/sell-my-car-brisbane), including the registration and safety-certificate questions to settle first. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {
@@ -134,7 +134,7 @@ export const post: RawBlogPostEntry = {
     {
       question: "Can I sell a car that has a defect notice on it?",
       answer:
-        "Queensland's defect-notice guidance lists selling the vehicle to a licensed motor dealer, or cancelling its registration, as alternatives where the repairs will not be completed. Describe the defect notice and the vehicle's condition accurately, follow any restriction on moving it, and confirm the registration pathway. A vehicle sold for parts must be deregistered before sale, and any offer depends on the vehicle and the pickup details.",
+        "Queensland's defect-notice guidance lists selling the vehicle to a licensed motor dealer, or cancelling its registration, as alternatives where the repairs will not be completed. Describe the defect notice and the vehicle's condition accurately, follow any restriction on moving it, and confirm the registration pathway. A vehicle sold for parts must be deregistered before sale, and any offer depends on the individual vehicle and collection circumstances.",
     },
   ],
   date: "2026-07-29",

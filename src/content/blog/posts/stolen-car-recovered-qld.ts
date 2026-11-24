@@ -9,19 +9,19 @@ export const post: RawBlogPostEntry = {
   excerpt:
     "A recovered vehicle may be damaged, held for investigation, or need towing. Check police release instructions, insurance, storage, and the repair-or-sell decision.",
   content: [
-    "When a stolen car is recovered in Queensland, you have a new set of decisions to make. Police may still need the vehicle for an investigation, it may be damaged or not drivable, and the collection or storage arrangements can vary. Start by following the Queensland Police Service (QPS) release instructions. If the vehicle is insured, contact your insurer before you collect it. Confirm who holds the vehicle and when it can be collected.",
+    "Being told that a stolen car has been recovered in Queensland creates a second set of decisions. Police may still need the vehicle for an investigation, it may be damaged or not drivable, and the collection or storage arrangements can vary. Start by following the Queensland Police Service (QPS) release instructions, contacting your insurer before collection if the vehicle is insured, and confirming who holds the vehicle and when it can be collected.",
 
     "## Report It First, and Keep the Report Active",
 
     "Keep the reference number from your stolen-vehicle report available when speaking with police, an insurer, or a storage provider. It also matters for the QPS Towing of Motor Vehicles Scheme: the reimbursement form requires the report to remain active, meaning it has not been withdrawn.",
 
-    "Police commonly notify you at the time the vehicle is seized. If you miss the call, QPS may leave a voicemail or send a text message explaining the next step, so it is worth returning a call from an unknown number in the middle of a workday.",
+    "Notification commonly comes from police at the time the vehicle is seized. If nobody is there to take the call, QPS may leave a voicemail or send a text message explaining the next step, so an unknown number in the middle of a workday is worth returning.",
 
     "## Where a Stolen Car Recovered by Police Ends Up",
 
     "If QPS has the recovered vehicle towed, its published FAQ says seized vehicles are stored at a secure QPS facility or an approved storage provider and that police will provide the location. While the vehicle is held, access is generally not permitted unless police authorise it. You can contact QPS to arrange retrieval of personal belongings with an officer present if necessary.",
 
-    "QPS holds the vehicle until the investigation or forensic examination is complete and will notify you when it is eligible for release. If it is not drivable, get any second-tow quote from the actual holding location to where the car is going. [What a tow costs in Brisbane](/blog/tow-truck-cost-brisbane) explains the details operators use to quote a job.",
+    "QPS holds the vehicle until the investigation or forensic examination is complete and will notify you when it is eligible for release. If it is not drivable, obtain any second-tow quote from the actual holding location to the intended destination; [what a tow costs in Brisbane](/blog/tow-truck-cost-brisbane) explains the details operators use to quote a job.",
 
     "## The Towing Bill You May Not Have to Pay",
 
@@ -39,7 +39,7 @@ export const post: RawBlogPostEntry = {
 
     "Because another person may have had access to the vehicle, check whether documents, keys, a garage remote, paired phones, or saved navigation addresses need to be removed, replaced, or reset. Work through [clearing personal data before handover](/blog/delete-personal-data-from-car-before-selling), and if you decide to move the vehicle on, the [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) covers the transfer, cancellation, and unregistered-sale paths.",
 
-    `If the car has come back in a state you don't want to repair, describe the theft damage, whether you have the keys and where the vehicle is being held when you ask for a quote. Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). Towing is free when we buy your car. If you accept our offer, we confirm the pickup time, payment method and timing, and sale records before pickup. To see how Caraway prices and picks up cars, read [cash for cars Brisbane](/).`,
+    `If the car has come back in a state you don't want to repair, describe the theft damage, the keys situation and where the vehicle is being held when you ask for a figure. Call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form). If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment method and timing, and sale records are confirmed before dispatch. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).`,
   ],
   date: "2026-08-13",
   reviewedAt: "2026-08-13",

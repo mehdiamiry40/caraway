@@ -6,8 +6,8 @@ import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
 
 /* One short label each; the linked pages hold the detail. */
 const quickLinks: { icon: LucideIcon; label: string; href: string }[] = [
-  { icon: SquarePen, label: "Get my quote", href: "/#quote-form" },
-  { icon: Truck, label: "Free towing when we buy", href: "/car-removal-brisbane" },
+  { icon: SquarePen, label: "Get an assessment", href: "/#quote-form" },
+  { icon: Truck, label: "Pickup when we buy", href: "/car-removal-brisbane" },
   { icon: FileText, label: "Simple paperwork", href: "/faq" },
   { icon: CarFront, label: "Any condition", href: "/damaged-cars-brisbane" },
 ];

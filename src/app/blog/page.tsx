@@ -8,7 +8,7 @@ import { OPEN_GRAPH_DEFAULTS, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Brisbane Car Selling Guides",
   description:
-    "Practical Brisbane guides to car value, selling options, pickup planning and Queensland paperwork.",
+    "Practical Brisbane guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/blog`,
     title: "Brisbane Car Selling Guides | Caraway",
     description:
-      "Practical guides to car value, selling options, pickup planning and Queensland paperwork.",
+      "Practical guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
     // No images: the blog shares as a text-only preview. Declaring openGraph
     // here also stops the root layout's card being inherited — Next replaces
     // the parent object rather than merging it.
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Brisbane Car Selling Guides | Caraway",
     description:
-      "Practical guides to car value, selling options, pickup planning and Queensland paperwork.",
+      "Practical guides to vehicle valuation inputs, selling options, collection planning, and Queensland paperwork.",
   },
 };
 

@@ -396,9 +396,9 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                 <Bot className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="max-w-[85%] rounded-sm rounded-tl-none border border-border bg-card px-3.5 py-3 text-sm leading-relaxed text-foreground shadow-sm">
-                Hi, I’m Caraway’s AI assistant. I can explain what affects an
-                offer and answer questions about selling your car and pickup in
-                Greater Brisbane. A Caraway buyer reviews every offer.
+                Hi — I’m Caraway’s AI assistant. I can explain what affects an
+                offer and answer questions about selling and pickup across
+                Greater Brisbane. Every offer is reviewed by a Caraway buyer.
               </div>
             </div>
 
@@ -558,7 +558,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
                   prefetch={false}
                   className="font-medium text-primary hover:underline"
                 >
-                  Get my quote <ExternalLink className="inline h-3 w-3" aria-hidden="true" />
+                  Full quote <ExternalLink className="inline h-3 w-3" aria-hidden="true" />
                 </Link>
                 <a href={BUSINESS.phoneTel} className="font-medium text-primary hover:underline">
                   <Phone className="mr-0.5 inline h-3 w-3" aria-hidden="true" />

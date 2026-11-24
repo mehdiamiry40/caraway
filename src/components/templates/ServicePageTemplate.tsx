@@ -121,9 +121,7 @@ export default function ServicePageTemplate({
             <div className="lg:col-span-7">
               <Breadcrumbs items={breadcrumbs} light />
               <h1 className="type-h1 mt-5 text-on-dark-hi">
-                {/* Keep the dash with the words before it, so a wrapped
-                    line never starts with "—". */}
-                {service.h1.replace(" — ", "\u00a0— ")}
+                {service.h1}
               </h1>
               <p className="type-lead mt-4 max-w-2xl text-on-dark-hi">
                 {heroIntro}

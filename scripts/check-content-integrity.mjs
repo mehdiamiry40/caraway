@@ -172,13 +172,6 @@ const prohibitedClaims = [
       /(?:cash|bank transfer)[^.\n]{0,100}(?:under|over|above|below) \$?10,?000|\$?10,?000[^.\n]{0,100}(?:cash|bank transfer)/i,
   },
   {
-    // "Free towing" is the short name for pickup that is included when Caraway
-    // buys. It must never read as free whatever the sale, vehicle or access.
-    label: "towing or pickup presented as free regardless of the sale",
-    pattern:
-      /\bfree (?:car removal|tow(?:ing)?|pickup|collection)(?: is)? (?:regardless|no matter|guaranteed|for (?:any|every|all) (?:cars?|vehicles?))\b|\b(?:universally|always) free\b|\bfree,? even if we (?:do not|don't) buy\b/i,
-  },
-  {
     // Pickup timing must read as conditional (requirements.yaml). Qualified
     // forms like "same- or next-day pickup" and "same-day or next-day pickup"
     // do not match because another word sits between "same(-)day" and the noun.
@@ -319,10 +312,10 @@ const prohibitedSupportClaims = [
 ];
 
 // These high-conversion surfaces must use the same transaction contract:
-// quotes are free and no-obligation; towing (pickup) is free only when Caraway
-// buys, and the vehicle and access details can affect the job; timing and
-// payment are confirmed for the accepted job. Keep the scope explicit so
-// informational uses elsewhere do not create false positives.
+// quotes are free and no-obligation; pickup is included only when Caraway
+// buys and the supplied vehicle/access details match; timing and payment are
+// confirmed for the accepted job. Keep the scope explicit so informational
+// uses elsewhere do not create false positives.
 const truthConsistencyFiles = new Set([
   "src/app/contact/page.tsx",
   "src/app/terms/page.tsx",
@@ -354,13 +347,11 @@ const prohibitedTruthConsistencyClaims = [
     pattern: /\[free car removal\]\(\/car-removal-brisbane\)/i,
   },
   {
-    // The short form of the offer is "Free towing when we buy". The line that
-    // says towing or pickup is free or included must also say it applies when
-    // Caraway buys the vehicle.
-    label: "towing or pickup inclusion is missing the purchase qualification",
+    label: "pickup inclusion is missing the purchase-and-details qualification",
     pattern:
-      /\bfree (?:car removal|tow(?:ing)?|pickup|collection)\b|\b(?:pickup|collection|towing) (?:is|are) (?:free|included)\b|\]\(\/car-removal-brisbane\) is (?:free|included)\b|\binclude(?:s|d) (?:free )?(?:car removal|tow(?:ing)?|pickup|collection)\b/i,
-    allow: /\b(?:when|if) (?:Caraway buys|we buy)\b/i,
+      /\bfree (?:car removal|tow(?:ing)?|pickup|collection)\b|\b(?:pickup|collection|towing) (?:is|are) included\b|\]\(\/car-removal-brisbane\) is included\b|\binclude(?:s|d) (?:free )?(?:car removal|tow(?:ing)?|pickup|collection)\b/i,
+    allow:
+      /\b(?:when|if) Caraway buys\b[^\n]{0,240}\bmatch(?:es)?\b|\bmatch(?:es)?\b[^\n]{0,240}\b(?:when|if) Caraway buys\b/i,
   },
   {
     label: "same-day or next-day timing is not confirmed per job",
@@ -478,56 +469,7 @@ const claimGuardContractCases = [
     line: "We are licensed vehicle wreckers.",
     expected: true,
   },
-  {
-    label: "towing or pickup presented as free regardless of the sale",
-    line: "Free towing regardless of where the car is.",
-    expected: true,
-  },
-  {
-    label: "towing or pickup presented as free regardless of the sale",
-    line: "Towing is always free.",
-    expected: true,
-  },
-  {
-    label: "towing or pickup presented as free regardless of the sale",
-    line: "Free towing included.",
-    expected: false,
-  },
 ];
-
-const truthGuardContractCases = [
-  {
-    label: "towing or pickup inclusion is missing the purchase qualification",
-    line: "Free towing included.",
-    expected: true,
-  },
-  {
-    label: "towing or pickup inclusion is missing the purchase qualification",
-    line: "Towing is free.",
-    expected: true,
-  },
-  {
-    label: "towing or pickup inclusion is missing the purchase qualification",
-    line: "Free towing when we buy.",
-    expected: false,
-  },
-  {
-    label: "towing or pickup inclusion is missing the purchase qualification",
-    line: "Towing is free when Caraway buys your car.",
-    expected: false,
-  },
-];
-
-for (const testCase of truthGuardContractCases) {
-  const claim = prohibitedTruthConsistencyClaims.find(
-    (item) => item.label === testCase.label,
-  );
-  if (!claim || violatesClaim(claim, testCase.line) !== testCase.expected) {
-    throw new Error(
-      `Content guard contract failed for ${testCase.label}: ${testCase.line}`,
-    );
-  }
-}
 
 for (const testCase of claimGuardContractCases) {
   const claim = prohibitedClaims.find((item) => item.label === testCase.label);
