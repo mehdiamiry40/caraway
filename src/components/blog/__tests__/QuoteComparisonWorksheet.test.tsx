@@ -98,7 +98,7 @@ describe("QuoteComparisonWorksheet", () => {
     const quoteA = within(screen.getByRole("group", { name: "Quote A" }));
     const longAssumptions = `START OF NOTES ${"x".repeat(540)} END OF NOTES`;
 
-    fireEvent.change(quoteA.getByLabelText(/assumptions and what could change the offer/i), {
+    fireEvent.change(quoteA.getByLabelText(/assumptions and revision triggers/i), {
       target: { value: longAssumptions },
     });
 

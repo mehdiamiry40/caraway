@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const steps = [
   { title: "Tell us about your car", description: "Make, model, year and photos." },
   { title: "Get a confirmed offer", description: "In writing, before pickup." },
-  { title: "We come to you", description: "Free towing included." },
+  { title: "We come to you", description: "Pickup included when we buy." },
   { title: "Get paid", description: "As agreed, with a receipt." },
 ] as const;
 
@@ -62,12 +62,12 @@ export function HowItWorks({ showHeader = true }: HowItWorksProps) {
             href="/#quote-form"
             className={cn(buttonVariants(), "group")}
           >
-            Get my quote
+            Start your quote
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
           {showHeader && (
             <Link href="/how-it-works" className="link-arrow text-center text-[1.0625rem]">
-              See the full process
+              Read the full quote, pickup and payment process
               <ArrowRight aria-hidden="true" />
             </Link>
           )}

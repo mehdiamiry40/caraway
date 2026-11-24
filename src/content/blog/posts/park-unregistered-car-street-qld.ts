@@ -7,7 +7,7 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Can you park an unregistered car on a QLD street? Check Brisbane's local rule, council enforcement, private storage and current TMR movement options.",
   excerpt:
-    "A public road is not storage for an unregistered vehicle. Check Brisbane enforcement, private-property limits and the TMR rules for your exact journey before you act.",
+    "A public road is not storage for an unregistered vehicle. Check Brisbane enforcement, private-property limits and the exact TMR movement path before acting.",
   content: [
     "Once registration expires, leaving the vehicle on a Brisbane road or road-related area can trigger local enforcement even if it is outside your home and is not being driven. Confirm the live registration status, move it only through a lawful pathway, and keep the records that apply.",
 
@@ -37,11 +37,11 @@ export const post: RawBlogPostEntry = {
 
     "## Decide between storage, re-registration and sale",
 
-    "Before you choose, confirm the live registration record, vehicle safety, property permission, proposed destination, journey purpose, CTP requirement, permit eligibility, plate status and transport method. If you are considering re-registration, get the inspections and repair information that apply instead of assuming the car will be eligible to travel or pass.",
+    "Before choosing, confirm the live registration record, vehicle safety, property permission, proposed destination, journey purpose, CTP requirement, permit eligibility, plate status and transport method. If re-registration is being considered, obtain the inspections and repair information that apply rather than assuming the car will be eligible to travel or pass.",
 
     "For a sale, confirm authority to sell and use the correct registered transfer, cancellation or already-unregistered pathway. Queensland says both parties to an unregistered sale should sign and keep a record containing the VIN, chassis or engine identifier, make and model, and sale date. The [Queensland seller-paperwork guide and record builder](/blog/what-paperwork-to-sell-a-car-qld#qld-vehicle-sale-record-builder) separates those paths without sending or saving the entries.",
 
-    `If you want Caraway to check an unregistered or non-running vehicle, call **${BUSINESS.phoneDisplay}** or get a free quote. There is no obligation. If you accept our offer, we confirm the vehicle, your authority to sell, access, the lawful transport method, pickup time, payment and receipt details before pickup. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
+    `If you want Caraway to assess an unregistered or non-running vehicle, call **${BUSINESS.phoneDisplay}** or request a no-obligation quote. If an offer is made and accepted, the vehicle, authority, access, lawful transport method, collection window, payment arrangement and receipt details are confirmed before dispatch. New to selling this way? Here's how [cash for cars in Brisbane](/) works with Caraway, from quote to pickup.`,
   ],
   faqs: [
     {

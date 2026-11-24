@@ -20,12 +20,12 @@ const reasons = [
 
 const routes = [
   {
-    blurb: "Sell your car straight to a Brisbane buyer",
+    blurb: "A simpler way to sell your car to a direct Brisbane buyer",
     label: "Sell My Car",
     href: "/sell-my-car-brisbane",
   },
   {
-    blurb: "Have your car picked up, running or not",
+    blurb: "A simpler way to have your car collected, running or not",
     label: "Car Removal",
     href: "/car-removal-brisbane",
   },

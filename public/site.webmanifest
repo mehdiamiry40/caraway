@@ -1,7 +1,7 @@
 {
   "name": "Caraway — Brisbane Vehicle Buyer",
   "short_name": "Caraway",
-  "description": "Brisbane vehicle buyer. Get a free quote for your car. Free towing when Caraway buys. Car details, access and availability can affect pickup.",
+  "description": "Brisbane vehicle buyer offering vehicle-specific quotes. Pickup is included when Caraway buys, subject to vehicle details, access, and availability.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",

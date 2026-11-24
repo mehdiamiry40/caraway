@@ -15,12 +15,12 @@ const breadcrumbs = [
 ];
 
 const features = [
-  { title: "Free towing included", desc: "When we buy your car and the access matches what you told us." },
-  { title: "Pickup time confirmed", desc: "Agreed before the truck is sent." },
-  { title: "Each car looked at on its own", desc: "Running, damaged, scrap or unregistered. Not every car gets an offer." },
-  { title: "Payment confirmed", desc: "How and when you're paid is agreed before pickup." },
+  { title: "Pickup included when we buy", desc: "When the vehicle and access match the details supplied." },
+  { title: "Collection window confirmed", desc: "Agreed before dispatch." },
+  { title: "Vehicles assessed individually", desc: "Running, damaged, scrap or unregistered. Not every car gets an offer." },
+  { title: "Payment terms confirmed", desc: "Method and timing agreed before collection." },
   { title: "Buyer details and receipt", desc: "Records to keep for your sale." },
-  { title: "No pressure", desc: "Free quotes with no obligation." },
+  { title: "No pressure", desc: "Free, no-obligation quotes." },
 ];
 
 const proseClass = "text-[1.0625rem] leading-[1.7] text-foreground";
@@ -42,7 +42,7 @@ export default function About() {
             <div>
               <SectionHeading>Who we are</SectionHeading>
               <p className={proseClass}>
-                Caraway is a Brisbane-based direct buyer operated by {BUSINESS.legalName}. We assess each car from the details you give us. When we make an offer, we confirm the pickup, payment and records before the truck is sent.
+                Caraway is a Brisbane-based direct buyer operated by {BUSINESS.legalName}. We assess each vehicle from the supplied details and, when we make an offer, confirm the collection, payment, and record-keeping terms before dispatch.
               </p>
               <p className={cn(proseClass, "mt-4")}>
                 We started Caraway to make{" "}
@@ -51,7 +51,7 @@ export default function About() {
                 </Link>{" "}
                 simpler and more honest: no instant online figure that changes on the day, no
                 surprise towing fees, and no pressure to accept. A person reviews every car, the
-                offer is in writing, and towing is free when we buy, whether the car runs
+                offer is in writing, and pickup is included when we buy — whether the car runs
                 perfectly or hasn&apos;t moved in years.
               </p>
               <Image
@@ -73,7 +73,7 @@ export default function About() {
                 I&apos;m <strong className="font-semibold text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary font-medium link-underline">{BUSINESS.email}</a>.
               </p>
               <p className={cn(proseClass, "mt-4")}>
-                Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before pickup, we confirm the operator, access plan, timing, payment, buyer details and receipt.
+                Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, payment arrangement, buyer details, and receipt requirements.
               </p>
               <p className="mt-3 text-base">
                 <TrackedOutboundLink
@@ -104,7 +104,7 @@ export default function About() {
             <div>
               <SectionHeading>Our service area</SectionHeading>
               <p className={proseClass}>
-                Greater Brisbane. We confirm we can pick up from your exact address before booking.
+                Greater Brisbane. Coverage is confirmed for your exact address before booking.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <Link href="/#quote-form" className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}>

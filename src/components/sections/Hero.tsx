@@ -5,8 +5,8 @@ import { HeroQuoteForm } from "@/components/sections/HeroQuoteForm";
 import { BUSINESS } from "@/lib/site";
 
 const promises = [
-  "A person reviews your car",
-  "Free towing included",
+  "Human-reviewed vehicle assessment",
+  "Pickup included when we buy",
   "Payment confirmed at pickup",
 ];
 
@@ -80,9 +80,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-[36rem] text-[1.0625rem] leading-relaxed text-on-dark-hi sm:text-lg">
-              Tell us about your car. It takes a few minutes. You get a
-              written offer before anything is booked. Towing is free when we
-              buy, and payment is confirmed at pickup.
+              Request an assessment in minutes. Caraway is a Brisbane-based car
+              buyer: you get a written offer before anything is booked, pickup
+              is included when we buy, and payment is confirmed at collection.
             </p>
 
             <ul className="list-ticks mt-6 space-y-4 text-xl font-semibold text-on-dark-hi sm:text-[1.375rem]">

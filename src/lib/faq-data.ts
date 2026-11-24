@@ -3,24 +3,24 @@ export const faqCategories = [
     category: "Pricing & Payment",
     faqs: [
       {
-        question: "What affects how much I'm offered?",
+        question: "What affects the amount I may be offered?",
         answer:
-          "There is no set amount for every car. A quote depends on the make, model, year, condition, whether the car is complete, its ownership, location, access, and current demand for resale, parts or materials.",
+          "There is no fixed amount for every vehicle. A quote depends on the make, model, year, condition, completeness, ownership position, location, access, and current resale, component, or material demand.",
       },
       {
-        question: "How do you assess my car?",
+        question: "How do you assess my vehicle?",
         answer:
-          "We review the details and photos you send, including whether the car starts, rolls, steers and brakes, and whether the major parts are there. Before you accept an offer, ask what could change it.",
+          "Caraway reviews the details and photos you supply, including whether the vehicle starts, rolls, steers, and brakes and whether major components are present. Ask which assumptions could change the assessment before accepting an offer.",
       },
       {
         question: "When and how do I get paid?",
         answer:
-          "We confirm how and when you're paid before pickup, for each job we accept. Don't hand over the car until the agreed payment condition is met.",
+          "The payment method and timing are confirmed for each accepted job before collection. Do not release the vehicle until the agreed payment condition has been satisfied.",
       },
       {
         question: "Can I compare another buyer's quote?",
         answer:
-          "Yes. Give each buyer the same details about the car, its condition, location and access. Then compare the written net amount, pickup terms, payment, deductions, and what could change the offer.",
+          "Yes. Give each buyer the same vehicle, condition, location, and access details, then compare the written net amount, collection terms, payment arrangement, deductions, and revision conditions.",
       },
     ],
   },
@@ -30,27 +30,27 @@ export const faqCategories = [
       {
         question: "What types of vehicles do you assess?",
         answer:
-          "We look at many old, damaged, scrap, unregistered and non-running cars, plus selected utes, 4WDs, SUVs, vans, trucks and fleet vehicles. Whether we can buy one depends on the vehicle, location, access and current demand.",
+          "Caraway assesses many old, damaged, scrap, unregistered, and non-running cars, as well as selected utes, 4WDs, SUVs, vans, trucks, and fleet vehicles. Eligibility depends on the individual vehicle, location, access, and current demand.",
       },
       {
         question: "Do I need a Roadworthy Certificate (RWC)?",
         answer:
-          "We can assess a vehicle as it is, without a Safety Certificate. Queensland sale requirements depend on registration status, buyer type and any recognised exemption, so check current TMR guidance before you dispose of the vehicle.",
+          "Caraway can assess a vehicle as-is without a Safety Certificate. Queensland sale requirements depend on registration status, buyer type, and any recognised exemption, so check current TMR guidance before disposal.",
       },
       {
-        question: "Can you assess an unregistered car?",
+        question: "Can an unregistered vehicle be assessed?",
         answer:
-          "Yes. You must have the right to sell it and keep the required sale record. Have it moved lawfully. Don't drive it unregistered without the permit, insurance and conditions that may apply.",
+          "Yes, an unregistered vehicle can be assessed. You must be entitled to sell it, keep the required sale record, and arrange lawful movement rather than driving it unregistered without the permit, insurance, and conditions that may apply.",
       },
       {
-        question: "Can you assess a car that doesn't run?",
+        question: "Can you assess a car that does not run?",
         answer:
-          "Yes, depending on the car and the access. Tell us if it rolls, steers and brakes, has all wheels and keys, and can be reached safely by a suitable truck.",
+          "Yes, subject to the particular vehicle and access. State whether it rolls, steers, brakes, has all wheels and keys, and can be reached safely by suitable collection equipment.",
       },
       {
         question: "Can I sell a car with finance owing?",
         answer:
-          "It may be possible, but you must follow the lender's current payout and settlement instructions. Tell us about any registered security interest, agree how the payment will flow, and check the finance is discharged before you hand over the car.",
+          "It may be possible, but the lender's current payout and settlement instructions must be followed. Disclose any registered security interest, agree on the payment flow, and verify discharge before releasing the vehicle.",
       },
     ],
   },
@@ -60,27 +60,27 @@ export const faqCategories = [
       {
         question: "How does the selling process work?",
         answer:
-          "Give us accurate details about the car and the access to get a free quote with no obligation. If we make an offer and you accept, confirm the pickup time, payment, pickup terms, receipt and seller-side paperwork before the truck is sent.",
+          "Supply accurate vehicle and access details for a free, no-obligation quote. If an offer is made and accepted, confirm the collection window, payment arrangement, pickup terms, receipt, and seller-side paperwork before dispatch.",
       },
       {
         question: "How fast can you pick up my car?",
         answer:
-          "It depends on the car, the suburb, access, the truck needed and availability. We confirm the pickup time for each job we accept. There is no single timeframe for every car.",
+          "Collection timing depends on the vehicle, suburb, access, equipment, and availability. Caraway confirms the pickup window for each accepted job rather than promising a universal timeframe.",
       },
       {
-        question: "Is towing free?",
+        question: "Is pickup included?",
         answer:
-          "Yes, towing is free when we buy your car and the car, location and access match what you told us. Check the written pickup terms before you accept the quote.",
+          "Pickup is included when Caraway buys the vehicle and the supplied vehicle, location, and access details match. Confirm the written collection terms before accepting the quote.",
       },
       {
         question: "What paperwork do I need?",
         answer:
-          "Bring current photo ID and the rego, finance, insurance, estate or ownership records that apply. Keep a signed receipt and confirmation of the seller-side TMR steps you complete.",
+          "Bring current photo ID and the registration, finance, insurer, estate, or ownership records that apply. Keep a signed receipt and confirmation of the seller-side TMR steps you complete.",
       },
       {
-        question: "Do I need to be there for pickup?",
+        question: "Do I need to attend collection?",
         answer:
-          "Ask when you book who needs to be there and what ID is needed. If someone else will act for the owner, sort out their authority and documents before the truck is sent. Don't assume the car can be handed over with nobody there.",
+          "Confirm attendance and identity requirements when booking. If someone else may act for the owner, establish their authority and the documents required before dispatch rather than assuming an unattended handover is acceptable.",
       },
     ],
   },
@@ -90,27 +90,27 @@ export const faqCategories = [
       {
         question: "Can I visit your office or drop my car off?",
         answer:
-          "Please don't visit or bring a car to an address unless we have confirmed the appointment and location first. The car's location and pickup access are agreed as part of each job we accept.",
+          "Do not visit or deliver a vehicle to an address unless Caraway has confirmed the appointment and location in advance. Vehicle location and collection access are agreed as part of an accepted job.",
       },
       {
         question: "Which Brisbane areas do you service?",
         answer:
-          "We take enquiries from Greater Brisbane, including Logan, Ipswich, Moreton Bay and Redlands. Whether we can pick up depends on the exact suburb, the car, access and the schedule, so tell us the location when you ask for a quote.",
+          "Caraway handles enquiries from Greater Brisbane, including Logan, Ipswich, Moreton Bay, and Redlands. Availability depends on the exact suburb, vehicle, access, and schedule, so confirm the location when requesting a quote.",
       },
       {
-        question: "Can location or access change the pickup?",
+        question: "Can location or access affect pickup terms?",
         answer:
-          "Yes. Distance, clearance, slope, surface, obstacles, locked wheels, missing keys and storage-yard rules can affect whether we can pick up and which truck is needed. Tell us before you accept an offer.",
+          "Yes. Distance, clearance, slope, surface, obstacles, locked wheels, missing keys, and storage-yard requirements can affect feasibility or equipment. Disclose those details before accepting an offer.",
       },
       {
-        question: "Do you pick up on weekends?",
+        question: "Are weekend collections available?",
         answer:
-          "Weekend pickup may be available. The date and time depend on the location, access, truck and schedule, and are confirmed for each job we accept.",
+          "Weekend collection may be available. The date and time depend on the location, access, equipment, and schedule and are confirmed for each accepted job.",
       },
       {
         question: "What happens to my car after Caraway buys it?",
         answer:
-          "It depends on the car and who receives it. It may be resold, used for parts, or sent for specialist dismantling and recycling. It is not the same for every car.",
+          "Depending on the vehicle and the receiving operator, it may be resold, used for suitable components, or sent for specialist dismantling and material recovery. Do not assume one downstream path applies to every vehicle.",
       },
     ],
   },

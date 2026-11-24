@@ -240,7 +240,7 @@ function SaleRecordCopy({
       <footer className="qld-sale-record-print-footer">
         This is a factual recordkeeping aid. It does not prove ownership,
         verify identity or licence status, replace an official form or notice,
-        provide legal advice, or waive any right. Both parties should keep a
+        provide legal advice, or waive any right. Both parties should retain a
         completed copy and the official confirmations that apply.
       </footer>
     </section>
@@ -335,15 +335,16 @@ export function QldVehicleSaleRecordBuilder() {
             Build a Queensland seller checklist and handover record
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground sm:text-base">
-            Choose the options that match the vehicle and the sale you plan.
-            The builder separates a registered transfer, cancellation before a
+            Choose the facts that describe the vehicle and proposed sale. The
+            builder separates a registered transfer, cancellation before a
             for-parts sale, an already-unregistered sale, and an uncertain or
             interstate registration.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            What you enter stays on this page. It is not submitted to Caraway,
-            saved to an account, put in browser storage, or used to prefill a
-            quote. Refreshing or closing the page clears it.
+            Entries are kept only in this component&apos;s memory. They are not
+            submitted to Caraway, saved to an account, put in browser storage,
+            or used to prefill a quote. Refreshing or closing the page clears
+            them.
           </p>
         </div>
 
@@ -520,9 +521,9 @@ export function QldVehicleSaleRecordBuilder() {
             2. Prepare the optional handover record
           </legend>
           <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
-            Enter only what both parties need for their record. Do not keep a
-            photo or scan of another person&apos;s identity document unless you
-            need it. Leave a field blank if it does not apply.
+            Enter only what both parties need for their factual record. Do not
+            store an unnecessary photo or scan of another person&apos;s identity
+            document. Leave any field blank if it does not apply.
           </p>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -556,8 +557,8 @@ export function QldVehicleSaleRecordBuilder() {
           This builder does not establish ownership, determine whether a sale
           is lawful, verify a person or business, replace forms F3520 or F3517,
           provide legal advice, or remove any statutory or contractual right.
-          Both parties should check the current official process and keep the
-          official confirmations that apply to them.
+          Both parties should check the current official process and retain
+          their applicable official confirmations.
         </p>
 
         <div className="qld-sale-record-no-print mt-5 flex flex-col gap-3 sm:flex-row">

@@ -13,15 +13,15 @@ interface StatDef {
 const featureStat: StatDef = {
   value: PRICE_RANGE_LABEL,
   label:
-    "Your quote depends on the car's condition, whether it is complete, where it is, access, demand and market value.",
+    "The assessment depends on condition, completeness, location, access, demand, and current market value.",
   icon: Banknote,
   feature: true,
 };
 
 const supportingStats: StatDef[] = [
-  { value: "Local team", label: "Call a Brisbane buyer directly", icon: Users },
-  { value: "Pickup details", label: "Operator, time, access and any cover confirmed before pickup", icon: ShieldCheck },
-  { value: "Pickup time", label: "Confirmed before the truck is sent", icon: Truck },
+  { value: "Local team", label: "Reach a Brisbane buyer by phone — not a call centre", icon: Users },
+  { value: "Pickup details", label: "Operator, timing, access, and applicable cover confirmed before collection", icon: ShieldCheck },
+  { value: "Job-specific timing", label: "The collection window is confirmed before dispatch", icon: Truck },
 ];
 
 export function Stats() {
@@ -39,7 +39,7 @@ export function Stats() {
         {/* The offer-varies detail is already on the feature card above; this
             strip is just the identity line. */}
         <div className="mt-7 sm:mt-9 pt-5 border-t border-border text-center text-xs sm:text-sm text-foreground/75 text-balance">
-          <p>{BUSINESS.name} · ABN {BUSINESS.abn} · Brisbane-based car buyer</p>
+          <p>{BUSINESS.name} · ABN {BUSINESS.abn} · Brisbane-based vehicle buyer</p>
         </div>
       </div>
     </section>
@@ -60,7 +60,7 @@ function FeatureStatCard({ stat }: { stat: StatDef }) {
             <Icon className="h-5 w-5" strokeWidth={2.25} aria-hidden="true" />
           </span>
           <p className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-on-dark-hi/80">
-            Your quote
+            Quote assessment
           </p>
         </div>
         <p className="mt-5 text-2xl sm:text-3xl leading-tight text-on-dark-hi">

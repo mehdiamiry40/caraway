@@ -18,8 +18,8 @@ export default function FormUnavailable() {
     >
       <div className="site-container py-12 sm:py-16">
         <p className="mb-6 max-w-xl text-[1.0625rem] leading-relaxed">
-          Your enquiry was not sent. The online form needs JavaScript to load.
-          Call or email us instead.
+          Your enquiry was not submitted. The online form needs JavaScript to
+          finish loading. You can call or email our team instead.
         </p>
         <p>
           <a className="link-arrow text-base" href={BUSINESS.phoneTel}>

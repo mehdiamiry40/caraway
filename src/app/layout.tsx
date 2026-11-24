@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: "Caraway | Brisbane Vehicle Buyer",
     template: "%s | Caraway",
   },
-  description: `Sell your car to Caraway, a Brisbane-based buyer. Get a free quote and a written offer, with free towing when we buy. Call ${BUSINESS.phoneDisplay}.`,
+  description: `Sell your vehicle to Caraway, a Brisbane-based buyer. Request a human-reviewed assessment, receive a confirmed offer, and arrange pickup when we buy. Call ${BUSINESS.phoneDisplay}.`,
   manifest: "/site.webmanifest",
   icons: [
     { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Caraway",
     title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Get a free quote and a written offer for your car, with free towing when Caraway buys in Greater Brisbane.",
+      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Caraway | Brisbane Vehicle Buyer",
     description:
-      "Get a free quote and a written offer for your car, with free towing when Caraway buys in Greater Brisbane.",
+      "Request a human-reviewed vehicle assessment, receive a confirmed offer, and arrange pickup when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",

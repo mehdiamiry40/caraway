@@ -7,10 +7,10 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Queensland wants a gas certificate under three months old before the rego transfers. What to sort out first when you sell an LPG car in Brisbane.",
   excerpt:
-    "In Queensland a gas system has its own inspection, its own inspector and its own three-month limit. Here is what that means for a seller, and when the tank date stops the sale.",
+    "A gas system is its own inspection item in Queensland, with its own inspector and its own three-month clock. Here is what that changes for a seller, and the point where the tank date ends the conversation.",
   author: "Caraway",
   content: [
-    "Queensland treats a gas system as a separate inspection item, with its own inspector and its own expiry clock. That rule shapes most of what happens when you sell an LPG car in Brisbane: a vehicle fitted with gas needs a gas inspection certificate issued by an authorised gas installer, and that certificate has to be less than three months old when the registration is transferred. The tank date, the buyer's questions, and whether the certificate is worth getting all follow from it.",
+    "Queensland treats a gas system as a separate inspection item, with its own inspector and its own expiry clock. That single rule shapes most of what happens when you sell an LPG car in Brisbane: a vehicle fitted with gas needs a gas inspection certificate issued by an authorised gas installer, and that certificate has to be less than three months old when the registration is transferred. The tank date, the buyer's questions, and whether the certificate is worth chasing at all all follow from it.",
 
     "## The Gas Certificate Is Not the Safety Certificate",
 
@@ -22,21 +22,21 @@ export const post: RawBlogPostEntry = {
 
     "Automotive LPG tanks are not lifetime components. The Australian standards behind gas installations require fuel containers to be tested at intervals of no more than ten years, and an installer checks the date on the tank as a matter of course. Out of date, and no certificate is issued until that tank is re-tested or replaced.",
 
-    "This is where many Brisbane LPG cars stop being worth the effort. The dual-fuel Falcons and Commodores that filled driveways from Springwood to Zillmere are well past their first decade, and a replacement tank plus fitting on a car of that age can cost more than the car will sell for afterwards. Use the sums in our [repair or sell decision guide](/blog/repair-or-sell-your-car-brisbane): compare the cost with what the car is worth once the work is done, not what it would be worth if it were ten years younger.",
+    "This is where a lot of Brisbane LPG cars stop being worth the effort. The dual-fuel Falcons and Commodores that filled driveways from Springwood to Zillmere are well past their first decade, and a replacement tank plus fitting on a car of that age can cost more than the car will return afterwards. The arithmetic is the one in our [repair or sell decision guide](/blog/repair-or-sell-your-car-brisbane): weigh the spend against what the vehicle is worth once the work is done, not against what it would be worth if it were ten years younger.",
 
     "## Selling an LPG Car in Brisbane That Is Already Unregistered",
 
     "The gas certificate attaches to transferring a registered vehicle. Where a car has been off the road for years and nobody is re-registering it — it is going to a buyer who will dismantle or recycle it — there is no registration transfer for that certificate to sit against. Confirm it with the specific buyer rather than assuming, because what a buyer needs and what TMR needs are two different lists, and only one of them is published.",
 
-    "Either way, tell the buyer the car runs on gas in the first conversation, not the last. A tank changes how the car is handled after pickup and narrows who can take it, so a buyer who finds out when the truck arrives will reschedule. Say whether the system is dual-fuel or dedicated gas, whether it still starts on petrol, and the tank date if you can read the stamp.",
+    "Either way, say the car runs on gas in the first conversation, not the last. A tank changes how the vehicle is handled at the far end and it narrows who can take it, so a buyer who discovers it when the truck arrives is a buyer who reschedules. Mention whether the system is dual-fuel or dedicated gas, whether it still starts on petrol, and the tank date if you can read the stamp.",
 
     "## What to Have Ready Before You Ask for a Quote",
 
-    "Registration status, the VIN, whether it drives, and the gas details above. That is enough for an accurate quote on almost any Brisbane vehicle. If the car is registered and the sale is an ordinary transfer, the usual Queensland steps still apply alongside the gas certificate. [The paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) and the [transfer of ownership process](/blog/how-to-transfer-car-ownership-qld) do not change because there is a tank in the boot.",
+    "Registration status, the VIN, whether it drives, and the gas details above. That is enough for an accurate quote on almost any Brisbane vehicle. If the car is registered and the sale is an ordinary transfer, the usual Queensland steps still run alongside the gas certificate — [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) and the [transfer of ownership process](/blog/how-to-transfer-car-ownership-qld) do not change because there is a tank in the boot.",
 
-    "One local point: autogas is harder to buy around Brisbane than it was, and quite a few of these cars have run on petrol alone for years with the gas side untouched. That does not remove the requirement. The fittings are still on the vehicle, and it is the installation being inspected rather than the fuel currently going through it.",
+    "One local wrinkle worth naming: autogas is harder to buy around Brisbane than it was, and a fair number of these cars have been running on petrol alone for years with the gas side untouched. That does not remove the requirement. The fittings are still on the vehicle, and it is the installation being inspected rather than the fuel currently going through it.",
 
-    `If you want the car assessed on gas as it stands, call **${BUSINESS.phoneDisplay}** or get a free, no-obligation quote. [Towing is free](/car-removal-brisbane) when we buy your car. Tell us where the car is and how the truck can reach it, because access can change the job. We confirm the pickup time and payment before pickup. Have the tank date handy if you can find it — it usually decides the answer. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, pickup, and payment confirmed.`,
+    `If you want the car assessed on gas as it stands, call **${BUSINESS.phoneDisplay}** or request a free, no-obligation quote. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details, and the collection window and payment arrangement are confirmed for that job. Have the tank date handy if you can find it — it usually decides the answer. Every enquiry follows Caraway's [cash for cars Brisbane](/) process: details, a written offer, collection, and payment confirmed.`,
   ],
   faqs: [
     {

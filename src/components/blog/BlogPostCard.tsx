@@ -95,7 +95,7 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
           </time>
           <span>{post.readTime}</span>
           <span className="inline-flex items-center gap-1.5 text-base font-semibold text-primary sm:ml-auto">
-            Read the article
+            Read the feature
             <ArrowRight
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               aria-hidden

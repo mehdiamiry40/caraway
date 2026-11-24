@@ -24,21 +24,21 @@ export const post: RawBlogPostEntry = {
 
     "For most sellers the repair is worth doing first. It costs nothing, the dealer invoice or recall completion record is proof you can hand straight to the buyer, and it removes an easy reason to discount. Keep that paperwork in the same folder as the rest of your [QLD sale documents](/blog/what-paperwork-to-sell-a-car-qld).",
 
-    "Selling as is makes more sense when the car will not be going to a dealer: a non-running car, a car headed for wrecking, or one where the wait for parts is longer than you can hold on. Tell the buyer the recall is open and give them the recall number so they can book the work themselves.",
+    "Selling as is makes more sense when the car is going nowhere near a dealer: a non-running car, a vehicle headed for wrecking, or one where the parts wait is longer than you can hold on. Tell the buyer the recall is open and give them the recall number so they can book the work themselves.",
 
     "## Takata Airbags Are a Queensland Registration Issue",
 
     "Most recalls sit in the background. The compulsory Takata airbag recall does not. Queensland was treated as a high-risk area because heat and humidity degrade the inflator propellant over time, and the Department of Transport and Main Roads has moved to cancel the registration of vehicles whose defective airbags were never replaced. If you received a TMR letter about your airbag, deal with it before you try to sell, because a buyer cannot register a car whose registration has been cancelled without further steps.",
 
-    "Our guide to [parking an unregistered car on the street](/blog/park-unregistered-car-street-qld) explains why a car that loses its rego also becomes harder to store while you wait for parts. If the Takata replacement has been done, the dealer's record of it is the most useful document you can show a Brisbane buyer who remembers the news coverage.",
+    "Our guide to [parking an unregistered car on the street](/blog/park-unregistered-car-street-qld) explains why a car that loses its rego also becomes harder to store while you wait for parts. If the Takata replacement has been done, the dealer's record of it is the single most useful document you can show a Brisbane buyer who remembers the news coverage.",
 
     "## What to Tell Buyers About an Open Recall",
 
     "Be specific. \"Recall for the fuel pump, booked at the dealer for the 14th\" or \"recall open, parts on back-order, completion record to follow\" is far better than silence the buyer discovers with a free VIN search the same evening. Overstating a car's condition is how after-sale disputes start, and [private car sale refunds in QLD](/blog/private-car-sale-refund-qld) covers where a seller stands if a buyer comes back.",
 
-    "A recall that has been completed does not lower a car's value, and many buyers treat the paperwork as a small tick in the car's favour. An open recall on a car that otherwise needs little work is simply a job the buyer has to arrange, and their offer will allow for it.",
+    "A recall that has been completed does not lower a car's value, and many buyers treat the paperwork as a small tick in the car's favour. An open recall on a car that otherwise needs little work is simply a job the buyer has to arrange, and they will price the inconvenience.",
 
-    `Caraway assesses unwanted, damaged, scrap and non-running cars in its Greater Brisbane service area, and an open recall does not stop a quote. Send the make, model, year, kilometres, the recall details and any known faults through our [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. If the car is damaged as well, our [damaged car page](/damaged-cars-brisbane) explains how we assess those cars. Caraway's [cash for cars Brisbane](/) service works the same way: a written offer first, then a confirmed pickup.`,
+    `Caraway assesses unwanted, damaged, scrap and non-running vehicles within its confirmed Greater Brisbane service area, and an open recall does not stop a quote. Send the make, model, year, kilometres, the recall details and any known faults through our [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. If the car is damaged as well, our [damaged car page](/damaged-cars-brisbane) explains how those vehicles are assessed. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
   ],
   faqs: [
     {

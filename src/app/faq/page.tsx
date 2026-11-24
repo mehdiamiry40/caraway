@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Vehicle Selling FAQs for Brisbane",
-  description: `Plain answers about car quotes, pickup, payment and Queensland seller paperwork. Call ${BUSINESS.phoneDisplay} for help.`,
+  description: `Find practical answers about vehicle quotes, collection terms, payment records, and Queensland seller paperwork. Call ${BUSINESS.phoneDisplay} for help.`,
   alternates: { canonical: "/faq" },
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "/faq",
     title: "Vehicle Selling FAQs for Brisbane | Caraway",
     description:
-      "Plain answers about car quotes, pickup, payment and Queensland seller paperwork.",
+      "Practical answers about vehicle quotes, collection terms, payment records, and Queensland seller paperwork.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vehicle Selling FAQs for Brisbane | Caraway",
     description:
-      "Plain answers about car quotes, pickup, payment and Queensland seller paperwork.",
+      "Practical answers about vehicle quotes, collection terms, payment records, and Queensland seller paperwork.",
     images: [{ url: "/images/og-card.jpg", alt: SHARED_PICKUP_IMAGE_ALT }],
   },
 };

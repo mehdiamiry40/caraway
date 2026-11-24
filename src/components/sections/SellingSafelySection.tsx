@@ -8,9 +8,9 @@ import { QLD_SELLING_GUIDANCE_URL } from "@/data/resource-links";
 /* Only what this section uniquely owns: paperwork and records. Pricing and
    payment promises belong to WhyUs. */
 const trustPoints = [
-  { title: "Help with QLD paperwork" },
-  { title: "Our details for your records" },
-  { title: "Free towing included" },
+  { title: "QLD paperwork help" },
+  { title: "Buyer details for your records" },
+  { title: "Pickup included when we buy" },
 ] as const;
 
 /** Green band: the three safety points, the call button, the guidance link. */
