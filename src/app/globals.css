@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
-/* Caraway design system: a printed-docket identity. Warm paper, deep green
-   ink and one gold spot colour kept for the primary action. Clarendon titles
-   in sentence case over a plain gothic for everything else. Hierarchy comes
-   from type size, rules and white space rather than boxes and icons.
-   See COLORS.md for the palette, type scale and spacing rhythm. */
+/* Caraway design system: a bright, plain-spoken local trade look. White
+   pages, a blue for headings and bands, a green for the navigation bar, ticks
+   and alternate bands, and yellow kept for the primary button. One typeface.
+   See COLORS.md for the palette, measured contrast, type scale and patterns. */
 
 @theme inline {
-  --font-sans: var(--font-public-sans), "Libre Franklin", "Helvetica Neue", Arial, system-ui, sans-serif;
-  --font-display: var(--font-besley), "Clarendon", "Century Schoolbook", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-asap), "Trebuchet MS", "Segoe UI", Arial, system-ui, sans-serif;
+  /* One family: display is the same face, used bold. */
+  --font-display: var(--font-asap), "Trebuchet MS", "Segoe UI", Arial, system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* "Bold" is 740 rather than 700. Asap is unhinted, and FreeType's
+     auto-hinter (Linux, ChromeOS) closes the gap under the dot of i and j at
+     weight 700 on a few common sizes (26, 27, 31 and 32 device pixels). 740
+     renders cleanly from 14 pixels up. Keep text below 14px at semibold. */
+  --font-weight-bold: 740;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
   --color-primary: hsl(var(--primary));
+  --color-primary-hover: hsl(var(--primary-hover));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
+  --color-accent-hover: hsl(var(--accent-hover));
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
@@ -41,133 +49,142 @@
   --color-on-dark: hsl(var(--on-dark));
   --color-on-dark-hi: hsl(var(--on-dark-hi));
 
-  /* Gold: the one action colour. Buttons, the logo plate and a few marks. */
+  /* Yellow: the primary action button and the logo plate. */
   --color-plate: hsl(var(--plate));
   --color-plate-foreground: hsl(var(--plate-foreground));
   --color-cta: hsl(var(--cta));
   --color-cta-hover: hsl(var(--cta-hover));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  /* Accessible TEXT variants. Gold and mid green are AA only as surfaces;
-     --cta-ink / --accent-ink are the versions that pass as text on paper, and
-     --cta-bright / --accent-on-dark are the versions for green bands. */
+  /* Accessible TEXT variants. --accent-ink is the green that passes as text
+     on white and on the tint band; --cta-ink is amber text on white;
+     --cta-bright is yellow for marks on coloured bands (never body text). */
   --color-cta-ink: hsl(var(--cta-ink));
   --color-accent-ink: hsl(var(--accent-ink));
   --color-cta-bright: hsl(var(--cta-bright));
   --color-accent-on-dark: hsl(var(--accent-on-dark));
 
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
-  --shadow-md: 0 2px 6px hsl(var(--shadow-color) / 0.07);
-  --shadow-lg: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 10px 24px -10px hsl(var(--shadow-color) / 0.16);
-  --shadow-xl: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 18px 40px -16px hsl(var(--shadow-color) / 0.22);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
+  --shadow-md: 0 2px 6px hsl(var(--shadow-color) / 0.1);
+  --shadow-lg: 0 2px 4px hsl(var(--shadow-color) / 0.08), 0 10px 24px -8px hsl(var(--shadow-color) / 0.22);
+  --shadow-xl: 0 2px 4px hsl(var(--shadow-color) / 0.1), 0 20px 44px -14px hsl(var(--shadow-color) / 0.38);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  --tracking-display: -0.03em;
-  --tracking-tight: -0.022em;
-  --tracking-snug: -0.006em;
+  --tracking-display: -0.01em;
+  --tracking-tight: -0.005em;
+  --tracking-snug: 0;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
-  --tracking-wider: 0.07em;
+  --tracking-wider: 0.06em;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* Corners are barely eased, like a trimmed card. Nothing is pill-shaped
-     except rounded-full dots. */
+  /* Corners are nearly square, like a printed sign. */
   --radius-xs: 2px;
   --radius-sm: 2px;
   --radius-md: 3px;
   --radius-lg: 4px;
   --radius-xl: 6px;
-  --radius-2xl: 6px;
+  --radius-2xl: 8px;
   --radius-3xl: 8px;
   --radius-4xl: 8px;
   --radius-full: 9999px;
 }
 
 :root {
-  --background: 43 41% 97%;            /* #FAF9F4 paper */
-  --foreground: 150 14% 11%;           /* #18201C ink */
+  --background: 0 0% 100%;             /* #FFFFFF page */
+  --foreground: 216 26% 15%;           /* #1C2430 body text */
   --card: 0 0% 100%;                   /* #FFFFFF form and panel surface */
-  --card-foreground: 150 14% 11%;
+  --card-foreground: 216 26% 15%;
 
-  --primary: 158 52% 15%;              /* #123A2C Caraway green: titles, green bands */
+  --primary: 216 84% 50%;              /* #146AEB blue: headings, bands, footer */
+  --primary-hover: 216 86% 43%;        /* #0F5BCC */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 46 32% 92%;             /* #F1EEE4 stone band */
-  --secondary-foreground: 150 14% 11%;
+  --secondary: 214 60% 97%;            /* #F3F7FC tint band */
+  --secondary-foreground: 216 26% 15%;
 
-  --muted: 45 26% 88%;                 /* #E8E4D8 */
-  --muted-foreground: 132 5% 36%;      /* #576059 */
+  --muted: 214 32% 93%;                /* #E7ECF3 */
+  --muted-foreground: 215 13% 39%;     /* #576170 */
 
-  --accent: 153 56% 28%;               /* #1F6F4B confirmation green */
+  --accent: 138 66% 31%;               /* #1B833A green: nav bar, ticks, bands */
+  --accent-hover: 138 70% 26%;         /* #147130 */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 3 71% 41%;            /* #B3261E */
+  --destructive: 4 74% 42%;            /* #BA261C */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 153 56% 28%;
+  --success: 138 66% 31%;
   --success-foreground: 0 0% 100%;
 
-  --warning: 41 90% 48%;
-  --warning-foreground: 150 14% 11%;
+  --warning: 38 100% 50%;
+  --warning-foreground: 216 26% 15%;
 
-  --info: 212 74% 39%;
+  --info: 216 84% 50%;
   --info-foreground: 0 0% 100%;
 
-  --border: 44 20% 82%;                /* #DAD5C8 rule */
+  --border: 214 26% 87%;               /* #D5DDE6 rule */
   /* Form-control borders need >= 3:1 against the card (WCAG 1.4.11). */
-  --input: 111 3% 49%;                 /* #7A8179 */
-  /* Focus ring: blue on paper and stone; gold inside green bands (.on-green). */
-  --ring: 218 76% 47%;                 /* #1D60D3 */
+  --input: 214 12% 49%;                /* #6E7B8C */
+  /* Focus ring: navy on white and tint; yellow inside coloured bands (.on-band). */
+  --ring: 218 86% 23%;                 /* #082D6D */
 
-  --shadow-color: 150 20% 10%;
+  --shadow-color: 210 50% 12%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
-  /* Single source of truth for the fixed-header height. Consumed by the
-     mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
-     three can never drift apart. From lg up it includes the utility strip. */
-  --header-h: 4.25rem;
-  --header-strip-h: 2.25rem;
+  /* The header sits in the page flow. On phones it scrolls away, so nothing
+     stays stuck and --header-h is 0. From lg up the white bar scrolls away and
+     the green navigation bar sticks, so --header-h is the bar's height. The
+     scroll-mt-header utility, heading scroll margins and sticky sidebars all
+     read this one value. */
+  --header-h: 0rem;
+  --header-top-h: 5.75rem;
 
-  --ink: 158 52% 15%;                  /* #123A2C green band */
-  --ink-deep: 158 56% 11%;             /* #0C2C20 */
-  --ink-raised: 158 47% 20%;           /* #1B4B39 */
-  --on-dark: 145 12% 80%;              /* #C6D2CB */
+  --ink: 205 61% 11%;                  /* #0B1F2D dark photo band */
+  --ink-deep: 205 65% 8%;              /* #071722 */
+  --ink-raised: 205 45% 18%;           /* #193143 */
+  --on-dark: 0 0% 100%;                /* text on blue, green and dark bands */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 45 96% 48%;                 /* #F0B505 gold */
-  --plate-foreground: 50 27% 9%;
-  --cta: 45 96% 48%;                   /* #F0B505 */
-  --cta-hover: 44 100% 43%;            /* #DBA100 */
-  --cta-foreground: 50 27% 9%;         /* #1D1B11 */
+  --plate: 45 100% 51%;                /* #FFC105 yellow */
+  --plate-foreground: 216 30% 12%;
+  --cta: 45 100% 51%;                  /* #FFC105 */
+  --cta-hover: 41 100% 47%;            /* #F0A400 */
+  --cta-foreground: 216 30% 12%;       /* #151D28 */
 
-  --cta-ink: 38 100% 24%;              /* #7A4E00 amber text on paper */
-  --accent-ink: 153 59% 22%;           /* #17593B green text and links on paper */
-  --cta-bright: 44 92% 60%;            /* #F7C53B gold text on green */
-  --accent-on-dark: 148 50% 66%;       /* #7DD4A5 green text on green */
+  --cta-ink: 32 100% 27%;              /* #8A4900 amber text on white */
+  --accent-ink: 138 68% 29%;           /* #187C36 green text on white and tint */
+  --cta-bright: 46 100% 62%;           /* #FFD23D yellow marks on bands */
+  --accent-on-dark: 0 0% 100%;
 }
 
-/* Inside a green band the focus ring switches to gold so it keeps 3:1. */
-.on-green {
-  --ring: 44 100% 68%;                 /* #FFD35C */
+/* Inside a blue, green or dark band the focus ring switches to yellow so it
+   keeps 3:1 against the band. */
+.on-band {
+  --ring: 48 100% 65%;                 /* #FFDB4D */
+}
+
+/* A white card sitting inside a band (the hero quote form) goes back to the
+   navy ring. */
+.on-light {
+  --ring: 218 86% 23%;                 /* #082D6D */
 }
 
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 4.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    /* utility strip (2.25rem) + main bar (4.75rem) */
-    --header-h: 7rem;
+    /* the green navigation bar that stays stuck */
+    --header-h: 3rem;
   }
 }
 
@@ -180,7 +197,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-cta/40 selection:text-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-cta/50 selection:text-foreground;
     overscroll-behavior-y: none;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -188,25 +205,28 @@
     font-kerning: normal;
   }
 
-  /* Two voices. Page titles and section headings are set in the Clarendon;
-     everything below them is the gothic, so a sub-heading never competes
-     with the heading it sits under. */
-  h1, h2 {
-    font-family: var(--font-display);
-    font-weight: 600;
+  /* Headings are bold and blue. Page titles and section headings are shown
+     with each word capitalised; the text itself is written in sentence case,
+     so this is presentation only. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
     letter-spacing: var(--tracking-tight);
-    line-height: 1.12;
+    line-height: 1.2;
     text-wrap: balance;
     color: hsl(var(--primary));
   }
 
-  h3, h4, h5, h6 {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    letter-spacing: var(--tracking-snug);
-    line-height: 1.3;
-    text-wrap: balance;
+  h1, h2 {
+    text-transform: capitalize;
+  }
+
+  h4, h5, h6 {
     color: hsl(var(--foreground));
+  }
+
+  strong, b {
+    font-weight: var(--font-weight-bold);
   }
 
   p { text-wrap: pretty; }
@@ -234,24 +254,24 @@
   h3[tabindex="-1"],
   h2[tabindex="-1"],
   h1[tabindex="-1"] {
-    /* header height + 1rem breathing gap (matches scroll-mt-header) */
+    /* stuck header height + 1rem breathing gap (matches scroll-mt-header) */
     scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
   }
 }
 
 @layer utilities {
-  /* Section rhythm. Three steps so bands do not all breathe the same. */
+  /* Section rhythm. */
   .section-y {
-    @apply py-16 sm:py-20 lg:py-28;
-  }
-
-  .section-y-tight {
     @apply py-12 sm:py-14 lg:py-16;
   }
 
-  /* Quieter rhythm for inner-page title bands. */
+  .section-y-tight {
+    @apply py-10 sm:py-12;
+  }
+
+  /* Rhythm for inner-page title bands. */
   .section-y-hero {
-    @apply pt-8 pb-10 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16;
+    @apply pt-6 pb-9 sm:pt-8 sm:pb-12 lg:pt-9 lg:pb-14;
   }
 
   .site-container {
@@ -268,30 +288,27 @@
     text-wrap: balance;
   }
 
-  /* Small label above a title. Plain text, no marker; use it sparingly. */
+  /* The green line that sits with a section heading. */
   .eyebrow,
   .eyebrow-on-dark {
     display: block;
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: hsl(var(--muted-foreground));
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.35;
+    color: hsl(var(--accent-ink));
   }
-  .eyebrow-on-dark { color: hsl(var(--on-dark)); }
+  .eyebrow-on-dark { color: hsl(var(--on-dark-hi)); }
 
   .link-underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
-    text-underline-offset: 0.22em;
+    text-underline-offset: 0.2em;
     transition: color 160ms var(--ease-out-quint), text-decoration-color 160ms var(--ease-out-quint);
   }
   .link-underline:hover,
   .link-underline:focus-visible {
-    color: hsl(var(--accent-ink));
     text-decoration-thickness: 2px;
   }
 
@@ -299,7 +316,7 @@
     border-top: 1px solid hsl(var(--border));
   }
   .hairline-on-dark {
-    border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
+    border-top: 1px solid hsl(var(--on-dark-hi) / 0.3);
   }
 }
 
@@ -308,11 +325,16 @@
     display: none;
   }
 
+  /* Centred section heading block: blue heading, optional green line. */
+  .section-head {
+    @apply mx-auto mb-8 max-w-4xl text-center sm:mb-10;
+  }
+
   /* Text link with a trailing arrow: the one "go here next" pattern. It is an
      inline element so the arrow stays with the last word when the label
      wraps; the vertical padding keeps a 44px tap target. */
   .link-arrow {
-    @apply inline rounded-sm py-2.5 font-semibold text-accent-ink underline decoration-1 underline-offset-[0.22em] transition-colors hover:text-primary hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply inline rounded-sm py-2.5 font-bold text-primary underline decoration-1 underline-offset-[0.2em] transition-colors hover:text-primary-hover hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
     line-height: 1.5;
   }
   .link-arrow svg {
@@ -328,47 +350,62 @@
   .link-arrow.link-back:hover svg {
     transform: translateX(-2px);
   }
+  .on-band .link-arrow {
+    @apply text-on-dark-hi hover:text-on-dark-hi;
+  }
 
-  /* Ticked list: a small green tick, no box. */
-  .list-ticks { @apply space-y-2.5; }
-  .list-ticks > li { @apply relative pl-7 leading-relaxed; }
-  .list-ticks > li::before {
+  /* Links written into a blue title band's intro stay white and underlined. */
+  .page-band-lead a {
+    @apply font-semibold text-on-dark-hi underline decoration-1 underline-offset-[0.2em] hover:decoration-2;
+  }
+
+  /* Ticked list: a white tick in a green rounded square. */
+  .list-ticks { @apply space-y-3; }
+  /* Direct children, so the same ticks work on a <dl> of <div> rows. */
+  .list-ticks > * { @apply relative pl-9 leading-snug; }
+  .list-ticks > *::before {
     content: "";
     position: absolute;
-    left: 0.125rem;
-    top: 0.42em;
-    width: 0.95rem;
-    height: 0.5rem;
-    border-left: 2px solid hsl(var(--accent));
-    border-bottom: 2px solid hsl(var(--accent));
-    transform: rotate(-45deg);
+    left: 0;
+    top: 0.05em;
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 0.3125rem;
+    background-color: hsl(var(--accent));
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012.5l4.5%204.5L19%207.5%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 78%;
   }
-  .on-green .list-ticks > li::before {
-    border-color: hsl(var(--cta-bright));
+  /* On a coloured band the square turns white and the tick green. */
+  .on-band-green .list-ticks > *::before,
+  .list-ticks.ticks-inverse > *::before {
+    background-color: hsl(var(--on-dark-hi));
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231B833A%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012.5l4.5%204.5L19%207.5%22%2F%3E%3C%2Fsvg%3E");
   }
 
-  /* Comma-run list: reads as a sentence instead of a row of chips. */
+  /* Comma-run list: reads as a sentence. */
   .list-inline > li { display: inline; }
   .list-inline > li:not(:last-child)::after {
     content: ", ";
   }
 
-  .prose-body { @apply text-[1.0625rem] sm:text-lg leading-[1.7] text-foreground; }
+  .prose-body { @apply text-[1.0625rem] leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-[1.625rem] sm:text-[1.875rem] font-display font-semibold text-primary mt-12 mb-4 leading-[1.18]; }
-  .prose-body h3 { @apply text-xl sm:text-[1.375rem] font-sans font-bold text-foreground mt-9 mb-3 leading-[1.3]; }
-  .prose-body h4 { @apply text-lg font-sans font-bold text-foreground mt-6 mb-2; }
+  .prose-body h2 { @apply text-[1.625rem] sm:text-[1.875rem] font-bold text-primary mt-11 mb-3 leading-[1.2]; }
+  .prose-body h3 { @apply text-xl sm:text-[1.375rem] font-bold text-primary mt-8 mb-2 leading-[1.3]; }
+  .prose-body h4 { @apply text-lg font-bold text-foreground mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
-  .prose-body a { @apply underline underline-offset-[0.2em] decoration-1 decoration-accent-ink/60 hover:decoration-2 hover:decoration-accent-ink transition-colors text-accent-ink font-medium; }
-  .prose-body strong { @apply font-semibold text-foreground; }
+  .prose-body a { @apply underline underline-offset-[0.2em] decoration-1 hover:decoration-2 transition-colors text-primary font-semibold; }
+  .prose-body strong { @apply font-bold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-2 border-primary pl-4 text-foreground; font-style: normal; }
+  .prose-body blockquote { @apply border-l-4 border-accent pl-4 text-foreground; font-style: normal; }
 
-  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
+  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground marker:text-accent; }
   .list-styled li { @apply leading-relaxed; }
-  .list-styled strong { @apply text-foreground font-semibold; }
+  .list-styled strong { @apply text-foreground font-bold; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -683,14 +720,9 @@
   box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.04), 0 8px 16px hsl(var(--shadow-color) / 0.06), 0 32px 64px -12px hsl(var(--shadow-color) / 0.1);
 }
 
-@utility mt-header-safe {
-  /* Offsets the fixed-header height (single source: --header-h). */
-  margin-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
-}
-
 @utility scroll-mt-header {
-  /* Header height + 1rem breathing gap so anchored sections land just below
-     the fixed header rather than flush against it. */
+  /* Stuck header height + 1rem breathing gap so anchored sections land just
+     below the navigation bar rather than flush against it. */
   scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
 }
 
@@ -699,41 +731,40 @@
   min-height: 100dvh;
 }
 
-/* Inner-page title band: stone, closed by a single rule. */
+/* Inner-page title band: blue, white type. Pair it with .on-band. */
 @utility page-band {
-  background-color: hsl(var(--secondary));
-  border-bottom: 1px solid hsl(var(--border));
+  background-color: hsl(var(--primary));
+  color: hsl(var(--on-dark-hi));
 }
 
 /* Type scale. Display sizes are fluid between a 390px phone and a 1440px
    desktop; everything from the lead down is fixed. */
 @utility type-display {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.375rem, 1.55rem + 3.4vw, 4.125rem);
-  line-height: 1.03;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(2rem, 1.45rem + 2.3vw, 2.875rem);
+  line-height: 1.12;
   letter-spacing: var(--tracking-display);
 }
 @utility type-h1 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2rem, 1.5rem + 2.1vw, 3.25rem);
-  line-height: 1.08;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.625rem);
+  line-height: 1.15;
   letter-spacing: var(--tracking-display);
 }
 @utility type-h2 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.625rem, 1.33rem + 1.25vw, 2.375rem);
-  line-height: 1.14;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.625rem, 1.35rem + 1.15vw, 2.125rem);
+  line-height: 1.2;
   letter-spacing: var(--tracking-tight);
 }
 @utility type-h3 {
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 1.1875rem;
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25rem;
   line-height: 1.3;
-  letter-spacing: var(--tracking-snug);
 }
 @utility type-lead {
   font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);

@@ -109,12 +109,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
             <h2 className="type-h2 text-balance">
               Tell us about the car.
             </h2>
-            <p className="type-lead mt-5 max-w-md text-foreground/80">
+            <p className="mt-4 max-w-md text-[1.0625rem] leading-relaxed text-foreground">
               We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
-            <div className="mt-8 max-w-md border-t border-foreground/25 pt-5">
-              <h3 className="text-[1.0625rem] font-bold text-foreground">How we calculate your car offer</h3>
-              <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+            <div className="mt-6 max-w-md border-l-4 border-accent bg-secondary px-4 py-4">
+              <h3 className="text-lg font-bold text-accent-ink">How we calculate your car offer</h3>
+              <p className="mt-1.5 text-base leading-relaxed text-foreground">
                 Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
               </p>
             </div>
@@ -125,8 +125,8 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
               {isSuccess ? (
                 <div role="status" aria-live="polite" aria-atomic="true" className="flex h-full flex-col items-start py-6 sm:py-8">
                   <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
-                  <h3 className="mt-4 text-xl font-bold text-foreground sm:text-2xl">Thanks — we&apos;ve got your details</h3>
-                  <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground/80">
+                  <h3 className="mt-4 text-xl font-bold text-primary sm:text-2xl">Thanks — we&apos;ve got your details</h3>
+                  <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
                     Our team will review the supplied details and contact you by phone during business hours.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
@@ -146,7 +146,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     />
                   </div>
 
-                  <div className="flex items-center gap-3 text-sm font-medium text-accent-ink lg:hidden">
+                  <div className="flex items-center gap-3 text-[0.9375rem] font-bold text-accent-ink lg:hidden">
                     <span>No obligation</span>
                     <span className="text-border" aria-hidden="true">|</span>
                     <span>Business-hours review</span>
@@ -414,7 +414,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
                     <span>
                       Free quote. Your details are used to respond to this enquiry. See our{" "}
-                      <Link href="/privacy" className="font-medium text-accent-ink underline underline-offset-2">
+                      <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
                         Privacy Policy
                       </Link>
                       .
@@ -445,7 +445,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   )}
                   <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
                     By submitting, you agree we may contact you about this enquiry. You can opt out anytime. See our{" "}
-                    <Link href="/privacy" className="font-medium text-accent-ink underline underline-offset-2 hover:no-underline">
+                    <Link href="/privacy" className="font-medium text-primary underline underline-offset-2 hover:no-underline">
                       Privacy Policy
                     </Link>
                     .

@@ -212,7 +212,7 @@ export default async function BlogCategoryPage({ params }: Props) {
                   <Link
                     key={slug}
                     href={`/blog/category/${slug}`}
-                    className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                    className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
                   >
                     {otherLabel}
                   </Link>

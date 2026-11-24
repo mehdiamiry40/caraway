@@ -106,9 +106,9 @@ const paperworkGuides = [
   },
 ];
 
-const h3Classes = "mb-2 text-xl font-bold leading-snug text-foreground";
+const h3Classes = "mb-2 text-xl font-bold leading-snug text-primary";
 
-const proseClasses = "text-[1.0625rem] leading-[1.7] text-foreground/85";
+const proseClasses = "text-[1.0625rem] leading-[1.7] text-foreground";
 
 export default function HowItWorksPage() {
   return (
@@ -141,7 +141,7 @@ export default function HowItWorksPage() {
         subtitle={
           <p>
             Details, offer, pickup, payment — the four steps behind every{" "}
-            <Link href="/" className="font-medium text-accent-ink link-underline">
+            <Link href="/">
               cash for cars Brisbane
             </Link>{" "}
             sale with Caraway.
@@ -154,7 +154,7 @@ export default function HowItWorksPage() {
           aria-labelledby="process-detail-heading"
           className="bg-background"
         >
-          <div className="mx-auto max-w-3xl space-y-14 px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-4xl space-y-12 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <div>
               <SectionHeading id="process-detail-heading">
                 What actually happens at each step
@@ -222,7 +222,7 @@ export default function HowItWorksPage() {
 
             <div>
               <SectionHeading>What to have ready on pickup day</SectionHeading>
-              <ul className="list-ticks text-[1.0625rem] text-foreground/85">
+              <ul className="list-ticks space-y-4 text-[1.0625rem] text-foreground">
                 {pickupChecklist.map(({ text }) => (
                   <li key={text}>
                     <span>{text}</span>
@@ -238,7 +238,7 @@ export default function HowItWorksPage() {
                 fuller rundown, see our guide to{" "}
                 <Link
                   href="/blog/preparing-your-car-for-pickup"
-                  className="font-medium text-accent-ink link-underline"
+                  className="font-medium text-primary link-underline"
                 >
                   preparing your car for pickup
                 </Link>
@@ -261,7 +261,7 @@ export default function HowItWorksPage() {
                 tolls and insurance tied to the car the same day. These guides
                 walk through each situation:
               </p>
-              <ul className="mt-6 border-t border-foreground/25">
+              <ul className="mt-6 border-t-2 border-primary">
                 {paperworkGuides.map((guide) => (
                   <li key={guide.href} className="border-b border-border">
                     <Link
@@ -284,7 +284,7 @@ export default function HowItWorksPage() {
         </section>
 
         <QuoteForm source="how-it-works" />
-        <FinalCTA />
+        <FinalCTA tone="green" />
       </PageShell>
     </>
   );

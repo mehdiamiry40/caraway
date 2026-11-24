@@ -2,13 +2,13 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/* Two button styles carry the whole site: the gold primary action and an
-   outlined secondary. `outlineOnDark` is the secondary on a green band, and
-   `ghost` is the quiet tertiary used in button rows. */
+/* Two button styles carry the whole site: the yellow primary action and an
+   outlined secondary. `outlineOnDark` is the secondary on a blue, green or
+   photo band, and `ghost` is the quiet tertiary used in button rows. */
 const buttonVariants = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md",
-    "font-sans font-semibold leading-none tracking-normal",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm",
+    "font-sans font-bold leading-none tracking-normal",
     "ring-offset-background transition-[background-color,color,border-color,box-shadow] duration-150 ease-[var(--ease-out-quint)]",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-60 touch-manipulation",
@@ -17,18 +17,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "border border-cta-hover bg-cta text-cta-foreground shadow-sm hover:bg-cta-hover active:shadow-none",
+          "border border-cta-hover bg-cta text-cta-foreground hover:bg-cta-hover",
         outline:
-          "border-[1.5px] border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
+          "border-2 border-primary bg-card text-primary hover:bg-primary hover:text-primary-foreground",
         outlineOnDark:
-          "border-[1.5px] border-on-dark-hi/70 bg-transparent text-on-dark-hi ring-offset-ink hover:border-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
+          "border-2 border-on-dark-hi bg-transparent text-on-dark-hi hover:bg-on-dark-hi hover:text-primary",
         ghost:
           "bg-transparent text-primary underline decoration-1 underline-offset-4 hover:decoration-2",
       },
       size: {
-        default: "h-12 px-5 text-base",
-        sm: "h-11 px-4 text-[0.9375rem]",
-        lg: "h-[3.25rem] px-6 text-[1.0625rem] sm:px-7",
+        default: "h-12 px-5 text-[1.0625rem]",
+        sm: "h-11 px-4 text-base",
+        lg: "h-[3.25rem] px-6 text-lg sm:px-7",
         icon: "h-12 w-12",
       },
     },

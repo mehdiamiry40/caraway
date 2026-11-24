@@ -56,7 +56,7 @@ export function ContactForm() {
     messageLength >= CONTACT_MESSAGE_MAX
       ? "text-destructive"
       : messageLength > CONTACT_MESSAGE_WARN
-      ? "text-accent-ink"
+      ? "text-primary"
       : "text-muted-foreground";
 
   const onSubmit = async (data: ContactFormInput) => {
@@ -94,8 +94,8 @@ export function ContactForm() {
       <div className="rounded-xl border border-border border-t-4 border-t-primary bg-card p-5 shadow-lg sm:p-8">
         <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-start py-6 sm:py-8">
           <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
-          <h2 className="mt-4 font-display text-[1.5rem] font-semibold leading-tight text-primary">Message received — thanks!</h2>
-          <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground/80">
+          <h2 className="mt-4 text-[1.5rem] font-semibold leading-tight text-primary">Message received — thanks!</h2>
+          <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
             We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
           <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto">
@@ -108,7 +108,7 @@ export function ContactForm() {
 
   return (
     <div className="rounded-xl border border-border border-t-4 border-t-primary bg-card p-5 shadow-lg sm:p-8">
-      <h2 className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.625rem]">Send us a message</h2>
+      <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.625rem]">Send us a message</h2>
       <p className="mb-6 mt-1.5 text-[0.9375rem] text-muted-foreground">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
@@ -261,7 +261,7 @@ export function ContactForm() {
         <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
           <span>
             Your details are used to respond to this enquiry. See our{" "}
-            <Link href="/privacy" className="font-medium text-accent-ink underline underline-offset-2">
+            <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
               Privacy Policy
             </Link>
             .

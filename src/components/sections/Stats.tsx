@@ -63,7 +63,7 @@ function FeatureStatCard({ stat }: { stat: StatDef }) {
             Quote assessment
           </p>
         </div>
-        <p className="mt-5 font-display text-2xl sm:text-3xl leading-tight text-on-dark-hi">
+        <p className="mt-5 text-2xl sm:text-3xl leading-tight text-on-dark-hi">
           {stat.value}
         </p>
         <p className="mt-3 max-w-md text-sm sm:text-[0.9375rem] leading-relaxed text-on-dark-hi/85">
@@ -84,7 +84,7 @@ function SupportStatItem({ stat }: { stat: StatDef }) {
       <span className="row-span-2 flex h-10 w-10 items-center justify-center bg-cta/15 text-cta-ink transition-colors duration-300 group-hover:bg-cta/25">
         <Icon className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
       </span>
-      <p className="font-display text-xl font-bold leading-tight text-primary sm:mt-4 sm:text-2xl">
+      <p className="text-xl font-bold leading-tight text-primary sm:mt-4 sm:text-2xl">
         {stat.value}
       </p>
       <p className="mt-1 text-xs sm:mt-1.5 sm:text-sm text-foreground/75 leading-snug font-medium">

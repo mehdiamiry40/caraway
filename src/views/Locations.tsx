@@ -67,63 +67,63 @@ export default function Locations() {
       subtitle={
         <p>
           Find your area, or{" "}
-          <Link href="/#quote-form" className="text-accent-ink font-medium link-underline">request a quote</Link>.
+          <Link href="/#quote-form">request a quote</Link>.
           Pickup is included when Caraway buys.
         </p>
       }
     >
-      <div className="site-container py-12 sm:py-16 lg:py-20">
+      <div className="site-container py-10 sm:py-12 lg:py-16">
         <LocationsFilter items={locationItems} />
 
-        <section className="mt-16 sm:mt-20" aria-labelledby="regional-coverage-heading">
-          <h2 id="regional-coverage-heading" className="type-h2">
-            Suburb not listed? Check your region.
-          </h2>
-          <div className="mt-8 border-t-2 border-primary">
+        <section className="mt-14" aria-labelledby="regional-coverage-heading">
+          <div className="section-head">
+            <h2 id="regional-coverage-heading" className="type-h2">
+              Suburb not listed? Check your region.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {coverageRegions.map(({ title, areas, links }) => (
               <article
                 key={title}
-                className="grid grid-cols-1 gap-x-10 gap-y-2 border-b border-border py-6 lg:grid-cols-12"
+                className="rounded-md border border-border border-t-4 border-t-accent px-5 pb-3 pt-4"
               >
-                <h3 className="text-lg font-bold leading-snug text-foreground lg:col-span-4">{title}</h3>
-                <div className="lg:col-span-8">
-                  <ul className="list-inline text-base leading-7 text-foreground/80" aria-label={`Areas in ${title}`}>
-                    {areas.map((area) => (
-                      <li key={area}>{area}</li>
-                    ))}
-                  </ul>
-                  <ul className="mt-1 flex flex-wrap gap-x-7">
-                    {links.map((link) => (
-                      <li key={link.href}>
-                        <Link href={link.href} className="link-arrow text-[0.9375rem]">
-                          {link.label}
-                          <ArrowRight aria-hidden="true" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <h3 className="text-xl font-bold leading-snug text-primary">{title}</h3>
+                <ul className="list-ticks mt-3 grid grid-cols-2 gap-x-6 gap-y-2.5 !space-y-0 text-base text-foreground sm:grid-cols-3" aria-label={`Areas in ${title}`}>
+                  {areas.map((area) => (
+                    <li key={area}>{area}</li>
+                  ))}
+                </ul>
+                <ul className="mt-3 flex flex-wrap gap-x-7 border-t border-border pt-1">
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link href={link.href} className="link-arrow text-base">
+                        {link.label}
+                        <ArrowRight aria-hidden="true" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <div className="mt-14 max-w-2xl">
-          <h2 className="type-h2">Still not sure?</h2>
-          <p className="mt-3 text-[1.0625rem] text-foreground/80">
+        <div className="on-band mt-12 rounded-md bg-primary px-6 py-8 text-center text-on-dark-hi sm:px-8">
+          <h2 className="type-h2 text-on-dark-hi">Still not sure?</h2>
+          <p className="mt-2 text-lg text-on-dark-hi">
             Send the exact address. We'll confirm coverage.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/#quote-form"
-              className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+              className={cn(buttonVariants({ variant: "outlineOnDark" }), "w-full ring-offset-primary sm:w-auto")}
             >
               Get my quote
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <a
               href={BUSINESS.phoneTel}
-              className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
+              className={cn(buttonVariants({ variant: "default" }), "w-full ring-offset-primary sm:w-auto")}
               aria-label={`Call ${BUSINESS.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" aria-hidden />

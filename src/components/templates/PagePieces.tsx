@@ -3,9 +3,9 @@ import Link from "next/link";
 import { PROMISE_POINTS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/* Shared building blocks for the service, suburb and content pages. They are
-   deliberately plain: a heading, a ticked list, a ruled list of links, a
-   numbered run of steps. No icon tiles. */
+/* Shared building blocks for the service, suburb and content pages: a blue
+   heading, a green-tick list, a boxed list of links, a numbered run of
+   steps. */
 
 export const HERO_POINTS = PROMISE_POINTS.slice(0, 3);
 
@@ -25,7 +25,7 @@ export function SectionHeading({
     <Tag
       id={id}
       className={cn(
-        "mb-4 font-display text-[1.5rem] font-semibold leading-[1.18] tracking-[-0.02em] text-primary sm:text-[1.75rem]",
+        "mb-3 text-[1.625rem] font-bold leading-[1.2] text-primary sm:text-[1.875rem]",
         className,
       )}
     >
@@ -34,11 +34,12 @@ export function SectionHeading({
   );
 }
 
+/** The three lead promises, for a blue title band: white squares, green ticks. */
 export function HeroPoints({ className }: { className?: string }) {
   return (
     <ul
       className={cn(
-        "list-ticks flex flex-col gap-x-8 gap-y-2 !space-y-0 text-base font-medium text-foreground sm:flex-row sm:flex-wrap",
+        "list-ticks ticks-inverse flex flex-col gap-x-8 gap-y-3 !space-y-0 text-lg font-semibold text-on-dark-hi sm:flex-row sm:flex-wrap",
         className,
       )}
     >
@@ -49,7 +50,7 @@ export function HeroPoints({ className }: { className?: string }) {
   );
 }
 
-/** Sidebar block: a rule, a small heading, then whatever it holds. */
+/** Sidebar box: a blue top edge, a heading, then whatever it holds. */
 function SidebarBlock({
   title,
   children,
@@ -64,9 +65,9 @@ function SidebarBlock({
   return (
     <Tag
       aria-label={ariaLabel}
-      className="border-t border-foreground/25 pt-5"
+      className="rounded-md border border-border border-t-4 border-t-primary bg-card px-5 pb-4 pt-4"
     >
-      <h3 className="text-[1.0625rem] font-bold leading-snug text-foreground">{title}</h3>
+      <h3 className="text-xl font-bold leading-snug text-primary">{title}</h3>
       {children}
     </Tag>
   );
@@ -75,7 +76,7 @@ function SidebarBlock({
 export function PromiseList({ title }: { title: string }) {
   return (
     <SidebarBlock title={title}>
-      <ul className="list-ticks mt-3 text-[0.9375rem] text-foreground/85">
+      <ul className="list-ticks mt-3 pb-1 text-base text-foreground">
         {PROMISE_POINTS.map((label) => (
           <li key={label}>{label}</li>
         ))}
@@ -89,7 +90,7 @@ export function SidebarPanel({ title, children }: { title: string; children: Rea
 }
 
 export const sidebarLinkClass =
-  "inline-flex min-h-11 items-center rounded-sm py-1.5 text-[0.9375rem] leading-snug text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-11 items-center rounded-sm py-1.5 text-base font-semibold leading-snug text-primary underline decoration-primary/40 decoration-1 underline-offset-4 transition-colors hover:decoration-primary hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export function SidebarLinks({
   label,
@@ -100,7 +101,7 @@ export function SidebarLinks({
 }) {
   return (
     <SidebarBlock as="nav" ariaLabel={label} title={label}>
-      <ul className="mt-1.5 flex flex-col items-start">
+      <ul className="mt-1 flex flex-col items-start">
         {items.map(({ href, label: itemLabel }) => (
           <li key={href}>
             <Link href={href} className={sidebarLinkClass}>
@@ -122,23 +123,23 @@ export function NumberedSteps({
   headingLevel?: "h2" | "h3";
 }) {
   return (
-    <ol className="grid grid-cols-1 border-t-2 border-primary sm:grid-cols-3">
+    <ol className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-3">
       {steps.map(({ title, description }, index) => (
         <li
           key={title}
-          className="grid grid-cols-[2.75rem_1fr] items-baseline gap-x-2 border-b border-border py-5 sm:block sm:border-b-0 sm:border-l sm:py-6 sm:pl-5 sm:pr-5 sm:first:border-l-0 sm:first:pl-0"
+          className="grid grid-cols-[3rem_1fr] items-start gap-x-4 sm:block"
         >
           <span
             aria-hidden="true"
-            className="font-display text-[2.25rem] font-semibold leading-none text-accent sm:block sm:text-[2.75rem]"
+            className="flex h-12 w-12 items-center justify-center rounded-md bg-accent text-2xl font-bold leading-none text-accent-foreground"
           >
             {index + 1}
           </span>
-          <div className="sm:mt-4">
-            <StepHeading className="font-sans text-lg font-bold leading-snug tracking-[-0.006em] text-foreground">
+          <div className="sm:mt-3">
+            <StepHeading className="text-lg font-bold normal-case leading-snug text-primary">
               {title}
             </StepHeading>
-            <p className="mt-1 text-[0.9375rem] leading-relaxed text-muted-foreground">{description}</p>
+            <p className="mt-1 text-base leading-relaxed text-foreground">{description}</p>
           </div>
         </li>
       ))}

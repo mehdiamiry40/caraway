@@ -34,13 +34,13 @@ export function BlogPostCard({
     <article className="h-full">
       <Link
         href={`/blog/${post.slug}`}
-        className="group flex h-full flex-col border-t border-foreground/25 pb-2 pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
+        className="group flex h-full flex-col border-t-2 border-primary pb-2 pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4"
       >
         <span className="type-label text-[0.75rem] text-muted-foreground">
           {post.category}
         </span>
         <Heading
-          className={`mt-2 font-display font-semibold leading-[1.22] tracking-[-0.018em] text-primary text-balance decoration-cta decoration-2 underline-offset-[5px] group-hover:underline ${isCompact ? "text-[1.1875rem]" : "text-[1.25rem] sm:text-[1.375rem]"}`}
+          className={`mt-2 font-bold normal-case leading-[1.25] text-primary text-balance decoration-cta decoration-2 underline-offset-[5px] group-hover:underline ${isCompact ? "text-[1.1875rem]" : "text-[1.25rem] sm:text-[1.375rem]"}`}
         >
           {post.title}
         </Heading>
@@ -54,7 +54,7 @@ export function BlogPostCard({
             </>
           )}
           <span>{post.readTime}</span>
-          <span className="ml-auto inline-flex items-center gap-1 font-semibold text-accent-ink">
+          <span className="ml-auto inline-flex items-center gap-1 font-semibold text-primary">
             Read
             <ArrowRight
               className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
@@ -83,10 +83,10 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
             {post.category}
           </span>
         </div>
-        <h2 className="type-h1 mt-3 max-w-[24ch] text-primary text-balance decoration-cta decoration-[3px] underline-offset-[7px] group-hover:underline">
+        <h2 className="type-h1 mt-2 max-w-[26ch] normal-case text-primary text-balance decoration-cta decoration-[3px] underline-offset-[7px] group-hover:underline">
           {post.title}
         </h2>
-        <p className="type-lead mt-4 max-w-[62ch] text-foreground/80 line-clamp-2">
+        <p className="type-lead mt-4 max-w-[62ch] text-foreground line-clamp-2">
           {post.excerpt}
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
@@ -94,7 +94,7 @@ export function FeaturedBlogPostCard({ post }: { post: BlogPost }) {
             {formatDate(post.date)}
           </time>
           <span>{post.readTime}</span>
-          <span className="inline-flex items-center gap-1.5 text-base font-semibold text-accent-ink sm:ml-auto">
+          <span className="inline-flex items-center gap-1.5 text-base font-semibold text-primary sm:ml-auto">
             Read the feature
             <ArrowRight
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"

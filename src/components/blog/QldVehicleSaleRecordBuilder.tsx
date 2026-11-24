@@ -330,11 +330,11 @@ export function QldVehicleSaleRecordBuilder() {
           <p className="eyebrow mb-3">Private, local-only tool</p>
           <h2
             id="qld-sale-record-heading"
-            className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
+            className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
           >
             Build a Queensland seller checklist and handover record
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/80 sm:text-base">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground sm:text-base">
             Choose the facts that describe the vehicle and proposed sale. The
             builder separates a registered transfer, cancellation before a
             for-parts sale, an already-unregistered sale, and an uncertain or
@@ -466,7 +466,7 @@ export function QldVehicleSaleRecordBuilder() {
           >
             {result.heading}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+          <p className="mt-2 text-sm leading-relaxed text-foreground">
             {result.summary}
           </p>
           <ol className="mt-5 space-y-4">
@@ -506,7 +506,7 @@ export function QldVehicleSaleRecordBuilder() {
                     href={QLD_SALE_SOURCE_URLS[key]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+                    className="font-medium text-primary underline underline-offset-4 hover:text-primary"
                   >
                     {QLD_SALE_SOURCE_LABELS[key]}
                   </a>

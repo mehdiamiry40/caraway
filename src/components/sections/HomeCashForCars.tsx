@@ -7,9 +7,9 @@ import {
 } from "@/data/home-content";
 
 /**
- * The homepage's long-form "cash for cars Brisbane" explainer, set like a
- * printed guide: the title and the specialist pages stay beside the reader on
- * the left while the numbered sections run down the right.
+ * The homepage's long-form "cash for cars Brisbane" explainer: left-aligned
+ * text with blue headings and green-tick lists, and the specialist service
+ * pages in a box beside it.
  */
 export function HomeCashForCars() {
   return (
@@ -18,57 +18,57 @@ export function HomeCashForCars() {
       className="section-y scroll-mt-header bg-background"
       aria-labelledby="cash-for-cars-heading"
     >
-      <div className="site-container grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-4">
-          <div className="lg:sticky lg:top-[calc(var(--header-h)+2.5rem)]">
-            <p className="eyebrow">Cash for cars Brisbane</p>
-            <h2 id="cash-for-cars-heading" className="type-h2 mt-3">
-              Selling your car for cash in Brisbane, explained.
-            </h2>
-            <p className="mt-5 text-base leading-7 text-foreground/80">{HOME_CASH_INTRO}</p>
+      <div className="site-container grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-12">
+        <div className="lg:col-span-8">
+          <h2 id="cash-for-cars-heading" className="type-h2">
+            Selling your car for cash in Brisbane, explained.
+          </h2>
+          <p className="eyebrow mt-1">Cash for cars Brisbane</p>
+          <p className="mt-4 text-[1.0625rem] leading-[1.7] text-foreground">{HOME_CASH_INTRO}</p>
+        </div>
 
-            <div className="mt-8 border-t border-foreground/25 pt-4">
-              <p className="text-sm font-semibold text-foreground">Specialist pages</p>
-              <ul className="mt-1 grid grid-cols-2 gap-x-6 lg:grid-cols-1 xl:grid-cols-2">
-                {homeVehicleLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="lg:col-span-4 lg:row-span-2">
+          <div className="rounded-md border-2 border-primary px-5 pb-4 pt-5 lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
+            <p className="text-xl font-bold text-primary">Specialist pages</p>
+            <ul className="list-ticks mt-3 grid grid-cols-1 gap-x-6 !space-y-0 min-[420px]:grid-cols-2 lg:grid-cols-1">
+              {homeVehicleLinks.map((link) => (
+                <li key={link.href} className="before:!top-[0.6rem]">
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center rounded-sm text-[1.0625rem] font-semibold text-primary underline decoration-primary/40 decoration-1 underline-offset-4 transition-colors hover:decoration-primary hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="lg:col-span-8 lg:border-l lg:border-border lg:pl-16">
+        <div className="lg:col-span-8">
           {homeCashSections.map((section, index) => (
             <article
               key={section.heading}
-              className="max-w-[44rem] border-t border-border py-9 first:border-t-0 first:pt-0 last:pb-0"
+              className="border-t border-border py-8 first:border-t-0 first:pt-0 last:pb-0"
             >
-              <div className="flex items-baseline gap-3 font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.02em] sm:text-[1.625rem]">
-                <span aria-hidden="true" className="shrink-0 tabular-nums text-accent">
+              <div className="flex items-baseline gap-2.5 text-[1.375rem] font-bold leading-tight text-primary sm:text-[1.625rem]">
+                <span aria-hidden="true" className="shrink-0 tabular-nums text-accent-ink">
                   {index + 1}.
                 </span>
-                <h3 className="font-display text-[1em] font-semibold leading-tight tracking-[-0.02em] text-primary">
+                <h3 className="text-[1em] font-bold leading-tight text-primary">
                   {section.heading}
                 </h3>
               </div>
               {section.paragraphs.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 32)}
-                  className="mt-4 text-base leading-7 text-foreground/85 sm:text-[1.0625rem] sm:leading-[1.7]"
+                  className="mt-4 text-[1.0625rem] leading-[1.7] text-foreground"
                 >
                   {paragraph}
                 </p>
               ))}
               {section.checklistItems && (
-                <ul className="list-ticks mt-5 text-base text-foreground/85">
+                <ul className="list-ticks mt-5 text-[1.0625rem] text-foreground">
                   {section.checklistItems.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
@@ -76,7 +76,7 @@ export function HomeCashForCars() {
               )}
               {section.supportLink && (
                 <p className="mt-5">
-                  <Link href={section.supportLink.href} className="link-arrow text-base">
+                  <Link href={section.supportLink.href} className="link-arrow text-[1.0625rem]">
                     {section.supportLink.label}
                     <ArrowRight aria-hidden="true" />
                   </Link>

@@ -52,11 +52,11 @@ export function StickyMobileCTA() {
       aria-hidden={suppressed || undefined}
     >
       <div className="mx-auto max-w-md px-3 pb-3">
-        <div className="flex items-stretch gap-2 rounded-lg border border-border bg-card p-2 shadow-xl">
+        <div className="flex items-stretch gap-2 rounded-md border border-border bg-card p-2 shadow-xl">
           <TrackedPhoneLink
             href={BUSINESS.phoneTel}
             location="sticky_mobile"
-            className="flex h-12 shrink-0 items-center justify-center gap-2 rounded-md border-[1.5px] border-primary px-4 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="flex h-12 shrink-0 items-center justify-center gap-2 rounded-sm bg-primary px-4 text-[1.0625rem] font-bold text-primary-foreground transition-colors hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             tabIndex={suppressed ? -1 : undefined}
           >
@@ -69,7 +69,7 @@ export function StickyMobileCTA() {
               trackEvent("scroll_to_quote_click", { source: "sticky_mobile" });
               scrollToQuote();
             }}
-            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-md border border-cta-hover bg-cta px-4 text-base font-semibold text-cta-foreground transition-colors duration-150 hover:bg-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="group flex h-12 flex-1 items-center justify-center gap-2 rounded-sm border border-cta-hover bg-cta px-4 text-[1.0625rem] font-bold text-cta-foreground transition-colors duration-150 hover:bg-cta-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             tabIndex={suppressed ? -1 : undefined}
           >
             Get my quote

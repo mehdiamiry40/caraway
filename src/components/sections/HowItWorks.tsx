@@ -12,61 +12,61 @@ const steps = [
 
 interface HowItWorksProps {
   /**
-   * Hide the section's own kicker/heading block when the page already
-   * introduces the process (e.g. /how-it-works renders it under a PageShell
-   * hero that carries the H1).
+   * Hide the section's own heading block when the page already introduces
+   * the process (e.g. /how-it-works renders it under a PageShell hero that
+   * carries the H1).
    */
   showHeader?: boolean;
 }
 
-/** The four steps as a numbered run under one rule: the numeral does the work. */
+/** The four steps as a centred row of numbered points. */
 export function HowItWorks({ showHeader = true }: HowItWorksProps) {
   const StepHeading = showHeader ? "h3" : "h2";
 
   return (
-    <section id="how-it-works" className="section-y scroll-mt-header relative border-y border-border bg-secondary">
+    <section id="how-it-works" className="section-y scroll-mt-header relative bg-background">
       <div className="site-container">
         {showHeader && (
-          <div className="mb-10 md:mb-12">
-            <p className="eyebrow">How it works</p>
-            <h2 className="type-h2 mt-3">
+          <div className="section-head">
+            <h2 className="type-h2">
               Four simple steps.
             </h2>
+            <p className="eyebrow mt-1">How it works</p>
           </div>
         )}
 
-        <ol className="grid grid-cols-1 border-t-2 border-primary sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mx-auto grid max-w-6xl grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(({ title, description }, index) => (
             <li
               key={title}
-              className="grid grid-cols-[3.25rem_1fr] items-baseline gap-x-2 border-b border-border py-5 sm:block sm:border-b-0 sm:py-7 sm:pr-8 lg:border-l lg:border-border lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
+              className="grid grid-cols-[3.25rem_1fr] items-start gap-x-4 lg:block lg:text-center"
             >
               <span
                 aria-hidden="true"
-                className="font-display text-[2.5rem] font-semibold leading-none text-accent sm:block sm:text-[3.25rem]"
+                className="flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-md bg-accent text-[1.75rem] font-bold leading-none text-accent-foreground lg:mx-auto"
               >
                 {index + 1}
               </span>
-              <div className="sm:mt-5">
-                <StepHeading className="font-sans text-xl font-bold leading-snug tracking-[-0.006em] text-foreground">
+              <div className="lg:mt-4">
+                <StepHeading className="text-xl font-bold normal-case leading-snug text-primary">
                   {title}
                 </StepHeading>
-                <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">{description}</p>
+                <p className="mt-1 text-[1.0625rem] leading-relaxed text-foreground">{description}</p>
               </div>
             </li>
           ))}
         </ol>
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 sm:mt-10">
+        <div className="mt-9 flex flex-col items-center gap-x-8 gap-y-3 sm:flex-row sm:justify-center">
           <Link
             href="/#quote-form"
-            className={cn(buttonVariants(), "group ring-offset-secondary")}
+            className={cn(buttonVariants(), "group")}
           >
             Start your quote
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
           {showHeader && (
-            <Link href="/how-it-works" className="link-arrow text-base ring-offset-secondary">
+            <Link href="/how-it-works" className="link-arrow text-center text-[1.0625rem]">
               Read the full quote, pickup and payment process
               <ArrowRight aria-hidden="true" />
             </Link>

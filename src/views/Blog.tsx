@@ -82,7 +82,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
               <Link
                 key={slug}
                 href={`/blog/category/${slug}`}
-                className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
+                className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
               >
                 {label}
               </Link>
@@ -99,7 +99,7 @@ export default function Blog({ page = 1 }: { page?: number }) {
         {pagePosts.length > 0 && (
           <section>
             <div className="mb-6 flex items-baseline justify-between sm:mb-8">
-              <h2 className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">All articles</h2>
+              <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">All articles</h2>
               <p className="text-sm text-muted-foreground">
                 {totalPages > 1
                   ? `Page ${currentPage} of ${totalPages} · ${rest.length} articles`

@@ -56,16 +56,16 @@ export default function Contact() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-x-16 lg:gap-y-8">
           <div className="self-start lg:col-span-5 lg:row-start-1">
             <SectionHeading className="mb-2">Get in touch</SectionHeading>
-            <p className="text-[1.0625rem] leading-relaxed text-foreground/85">
+            <p className="text-[1.0625rem] leading-relaxed text-foreground">
               Fastest:{" "}
-              <Link href="/#quote-form" className="font-medium text-accent-ink link-underline">
+              <Link href="/#quote-form" className="font-medium text-primary link-underline">
                 the online quote form
               </Link>
               .
             </p>
 
             {/* The two direct channels are whole-row links. */}
-            <div className="mt-6 border-t border-foreground/25">
+            <div className="mt-6 border-t-2 border-primary">
               <TrackedPhoneLink
                 href={BUSINESS.phoneTel}
                 location="contact_page"
@@ -74,7 +74,7 @@ export default function Contact() {
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm text-muted-foreground">Call us</span>
-                  <span className="mt-0.5 block text-[1.75rem] font-bold leading-tight tabular-nums tracking-[-0.01em] text-primary">{BUSINESS.phoneDisplay}</span>
+                  <span className="mt-0.5 block text-[1.75rem] font-bold leading-tight tabular-nums text-primary">{BUSINESS.phoneDisplay}</span>
                 </span>
                 <ArrowRight className="h-5 w-5 shrink-0 text-primary/45 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
               </TrackedPhoneLink>
@@ -94,7 +94,7 @@ export default function Contact() {
           </div>
 
           <div className="self-start lg:col-span-5 lg:row-start-2">
-            <dl className="border-t border-foreground/25">
+            <dl className="border-t-2 border-primary">
               {details.map((item) => (
                 <div key={item.title} className="grid grid-cols-1 gap-x-6 gap-y-0.5 border-b border-border py-4 sm:grid-cols-[11rem_1fr]">
                   <dt className="text-sm text-muted-foreground sm:pt-0.5">{item.title}</dt>
@@ -108,8 +108,8 @@ export default function Contact() {
           </div>
 
           <div className="self-start lg:col-span-7 lg:col-start-6 lg:row-start-3">
-            <h2 className="font-display text-[1.5rem] font-semibold leading-tight text-primary">Before you call</h2>
-            <dl className="mt-4 grid grid-cols-1 gap-x-10 border-t border-foreground/25 sm:grid-cols-2">
+            <h2 className="text-[1.5rem] font-semibold leading-tight text-primary">Before you call</h2>
+            <dl className="mt-4 grid grid-cols-1 gap-x-10 border-t-2 border-primary sm:grid-cols-2">
               {beforeYouCall.map(({ q, a }) => (
                 <div key={q} className="border-b border-border py-4">
                   <dt className="font-semibold text-foreground">{q}</dt>

@@ -218,11 +218,11 @@ export function QuoteComparisonWorksheet() {
         <p className="eyebrow mb-3">Local-only worksheet</p>
         <h2
           id="quote-comparison-heading"
-          className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
+          className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
         >
           Compare three vehicle-buyer quotes
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/80 sm:text-base">
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground sm:text-base">
           Record the written terms for the same vehicle and access details.
           The effective net amount subtracts only the deductions you enter, so
           compare the assumptions, revision triggers, pickup, payment, licence
@@ -234,7 +234,7 @@ export function QuoteComparisonWorksheet() {
             href={LICENCE_REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
+            className="font-medium text-primary underline underline-offset-4 hover:text-primary"
           >
             Check Queensland&apos;s public motor-licence register
           </a>
@@ -485,19 +485,19 @@ export function QuoteComparisonWorksheet() {
                   <th scope="row" className="px-4 py-3 font-medium text-foreground">
                     {QUOTE_LABELS[index]}
                   </th>
-                  <td className="px-4 py-3 text-foreground/80">
+                  <td className="px-4 py-3 text-foreground">
                     {quote.buyer || "—"}
                   </td>
-                  <td className="px-4 py-3 tabular-nums text-foreground/80">
+                  <td className="px-4 py-3 tabular-nums text-foreground">
                     {offer === null ? "—" : AUD_FORMATTER.format(offer)}
                   </td>
-                  <td className="px-4 py-3 tabular-nums text-foreground/80">
+                  <td className="px-4 py-3 tabular-nums text-foreground">
                     {deductions === null ? "—" : AUD_FORMATTER.format(deductions)}
                   </td>
                   <td className="px-4 py-3 tabular-nums font-medium text-foreground">
                     {net === null ? "—" : AUD_FORMATTER.format(net)}
                   </td>
-                  <td className="px-4 py-3 text-foreground/80">
+                  <td className="px-4 py-3 text-foreground">
                     {quote.receiptProvided ? "Recorded" : "Not recorded"}
                   </td>
                 </tr>

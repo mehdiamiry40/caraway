@@ -23,7 +23,7 @@ const features = [
   { title: "No pressure", desc: "Free, no-obligation quotes." },
 ];
 
-const proseClass = "text-[1.0625rem] leading-[1.7] text-foreground/85";
+const proseClass = "text-[1.0625rem] leading-[1.7] text-foreground";
 
 export default function About() {
   return (
@@ -34,11 +34,11 @@ export default function About() {
         <p>A locally owned Brisbane car buyer, paying cash for cars across Greater Brisbane.</p>
       }
     >
-      <div className="site-container py-12 sm:py-16 lg:py-20">
+      <div className="site-container py-10 sm:py-12 lg:py-16">
         {/* Story on the left, the plain facts on the right. Source order is
             unchanged, so on a phone it simply reads top to bottom. */}
-        <div className="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-12">
-          <div className="space-y-12 lg:col-span-7">
+        <div className="grid grid-cols-1 gap-x-12 gap-y-12 lg:grid-cols-12">
+          <div className="space-y-10 lg:col-span-7">
             <div>
               <SectionHeading>Who we are</SectionHeading>
               <p className={proseClass}>
@@ -46,7 +46,7 @@ export default function About() {
               </p>
               <p className={cn(proseClass, "mt-4")}>
                 We started Caraway to make{" "}
-                <Link href="/" className="text-accent-ink font-medium link-underline">
+                <Link href="/" className="text-primary font-medium link-underline">
                   cash for cars in Brisbane
                 </Link>{" "}
                 simpler and more honest: no instant online figure that changes on the day, no
@@ -61,16 +61,16 @@ export default function About() {
                 height={800}
                 sizes="(max-width: 767px) calc(100vw - 2rem), 768px"
                 loading="lazy"
-                className="mt-8 aspect-[16/9] h-auto w-full rounded-lg object-cover object-[30%_62%]"
+                className="mt-7 aspect-[16/9] h-auto w-full rounded-md object-cover object-[30%_62%]"
               />
             </div>
 
-            <div className="border-l-2 border-primary pl-5 sm:pl-8">
+            <div className="border-l-4 border-accent bg-secondary px-5 py-5 sm:px-7">
               <SectionHeading>
                 Meet the founder
               </SectionHeading>
               <p className={proseClass}>
-                I&apos;m <strong className="font-semibold text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-accent-ink font-medium link-underline">{BUSINESS.email}</a>.
+                I&apos;m <strong className="font-semibold text-foreground">{BUSINESS.founder}</strong>, and I run Caraway out of Brisbane. I started this business because I was tired of watching mates get lowballed by dealers and ghosted by Gumtree buyers. If something goes sideways on your pickup, you email me directly at <a href={BUSINESS.emailHref} className="text-primary font-medium link-underline">{BUSINESS.email}</a>.
               </p>
               <p className={cn(proseClass, "mt-4")}>
                 Caraway is a registered Australian business name operated by {BUSINESS.legalName} as a {BUSINESS.businessStructure.toLowerCase()} (ABN {BUSINESS.abn}). Before collection, we confirm the assigned pickup operator, access plan, timing, payment arrangement, buyer details, and receipt requirements.
@@ -91,11 +91,11 @@ export default function About() {
           <div className="space-y-12 lg:col-span-5">
             <div>
               <SectionHeading>What sets us apart</SectionHeading>
-              <dl className="border-t border-foreground/25">
+              <dl className="list-ticks space-y-5">
                 {features.map(({ title, desc }) => (
-                  <div key={title} className="border-b border-border py-4">
-                    <dt className="font-semibold text-foreground">{title}</dt>
-                    <dd className="mt-1 text-[0.9375rem] leading-relaxed text-muted-foreground">{desc}</dd>
+                  <div key={title}>
+                    <dt className="text-lg font-bold leading-snug text-foreground">{title}</dt>
+                    <dd className="mt-0.5 text-base leading-relaxed text-foreground">{desc}</dd>
                   </div>
                 ))}
               </dl>
@@ -120,7 +120,7 @@ export default function About() {
         </div>
       </div>
 
-      <TrustBadges />
+      <TrustBadges tone="green" />
     </PageShell>
   );
 }

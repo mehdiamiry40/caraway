@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Car, CarFront, CloudHail, FileX2, Recycle, Truck, Wrench } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -49,6 +50,16 @@ export const metadata: Metadata = {
 };
 
 const canonical = `${SITE_URL}/services`;
+
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  "car-removal-brisbane": Truck,
+  "sell-my-car-brisbane": CarFront,
+  "scrap-car-removal-brisbane": Recycle,
+  "damaged-cars-brisbane": Wrench,
+  "unregistered-cars-brisbane": FileX2,
+  "hail-damaged-cars-brisbane": CloudHail,
+  "sell-toyota-hilux-brisbane": Car,
+};
 export const SERVICE_HUB_HEADING = "Vehicle buying options across Brisbane.";
 
 export default function ServicesPage() {
@@ -92,31 +103,31 @@ export default function ServicesPage() {
           <p>Pick the option that fits your vehicle.</p>
         }
       >
-        <section className="bg-background py-10 sm:py-14 lg:py-20">
+        <section className="bg-background py-10 sm:py-12 lg:py-16">
           <div className="site-container">
-            {/* A numbered index rather than a wall of tiles: each service is
-                one line, and the whole line is the link. */}
-            <ul className="grid grid-cols-1 border-t-2 border-primary [counter-reset:service] lg:grid-cols-2 lg:gap-x-16">
-              {services.map((service) => (
-                <li key={service.slug} className="border-b border-border [counter-increment:service]">
-                  <Link
-                    href={`/${service.slug}`}
-                    className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-3 py-5 before:font-display before:text-xl before:font-semibold before:tabular-nums before:text-accent before:content-[counter(service)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:grid-cols-[3rem_1fr_auto] sm:py-6 sm:before:text-[1.375rem]"
-                  >
-                    <h2 className="font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.02em] text-primary decoration-cta decoration-2 underline-offset-[6px] group-hover:underline sm:text-[1.5rem]">
-                      {service.h1.split(" — ")[0]}
-                    </h2>
-                    <ArrowRight
-                      className="h-5 w-5 self-center text-primary/45 transition-[transform,color] group-hover:translate-x-1 group-hover:text-primary"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </li>
-              ))}
+            {/* One outlined box per service, each with a line icon; the whole
+                box is the link. */}
+            <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+              {services.map((service) => {
+                const Icon = SERVICE_ICONS[service.slug] ?? CarFront;
+                return (
+                  <li key={service.slug}>
+                    <Link
+                      href={`/${service.slug}`}
+                      className="group flex h-full flex-col items-center gap-3 rounded-sm border-2 border-accent px-3 py-7 text-center transition-colors duration-150 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-5"
+                    >
+                      <Icon className="h-12 w-12 text-accent group-hover:text-accent-foreground sm:h-14 sm:w-14" strokeWidth={1.5} aria-hidden="true" />
+                      <h2 className="text-lg font-bold leading-snug text-primary text-balance group-hover:text-accent-foreground sm:text-xl">
+                        {service.h1.split(" — ")[0]}
+                      </h2>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </section>
-        <FinalCTA />
+        <FinalCTA tone="green" />
       </PageShell>
     </>
   );

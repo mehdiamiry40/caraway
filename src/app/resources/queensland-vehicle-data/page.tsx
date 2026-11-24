@@ -274,7 +274,7 @@ function SourceLink({
       href={href}
       label={label}
       location={location}
-      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-accent-ink underline decoration-accent-ink/40 underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span>{label}</span>
       <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -547,7 +547,7 @@ export default function QueenslandVehicleDataPage() {
                   href={BRISBANE_OPEN_DATA_SHOWCASE_URL}
                   label="Brisbane City Council Open Data showcase"
                   location="vehicle_data_council_showcase"
-                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   Brisbane City Council’s Open Data showcase
                   <ExternalLink
@@ -608,7 +608,7 @@ export default function QueenslandVehicleDataPage() {
               </div>
             </div>
 
-            <details className="mt-8 rounded-md border border-border bg-muted p-4 sm:p-6">
+            <details className="mt-8 rounded-md border border-border bg-secondary p-4 sm:p-6">
               <summary className="cursor-pointer rounded-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 View all 186 unambiguous suburb rows
               </summary>
@@ -916,11 +916,11 @@ export default function QueenslandVehicleDataPage() {
 
           <section
             aria-labelledby="related-services-heading"
-            className="on-green mt-20 rounded-xl bg-ink px-6 py-8 text-on-dark sm:px-9 sm:py-10"
+            className="on-band mt-20 rounded-xl bg-ink px-6 py-8 text-on-dark sm:px-9 sm:py-10"
           >
             <h2
               id="related-services-heading"
-              className="font-display text-[1.5rem] font-semibold text-on-dark-hi sm:text-[1.75rem]"
+              className="text-[1.5rem] font-semibold text-on-dark-hi sm:text-[1.75rem]"
             >
               Vehicle-selling information
             </h2>

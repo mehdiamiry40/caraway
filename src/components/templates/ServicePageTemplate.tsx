@@ -27,7 +27,7 @@ import {
   sidebarLinkClass,
 } from "@/components/templates/PagePieces";
 
-export const bodyTextClass = "max-w-[68ch] text-[1.0625rem] leading-[1.7] text-foreground/85";
+const bodyTextClass = "max-w-[72ch] text-[1.0625rem] leading-[1.7] text-foreground";
 
 export function ServiceSectionContent({ section }: { section: ServiceSection }) {
   return (
@@ -45,7 +45,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
             height={section.image.height}
             sizes="(max-width: 1023px) calc(100vw - 2rem), 760px"
             loading="lazy"
-            className="h-auto w-full rounded-lg border border-border"
+            className="h-auto w-full rounded-md border border-border"
           />
           <figcaption className="mt-2.5 max-w-[68ch] text-sm leading-relaxed text-muted-foreground">
             {section.image.caption}
@@ -55,7 +55,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       {section.checklistItems && section.checklistItems.length > 0 && (
         <ul
           aria-label={`${section.heading} checklist`}
-          className="list-ticks mt-6 grid gap-x-10 gap-y-3 !space-y-0 text-base text-foreground/85 sm:grid-cols-2"
+          className="list-ticks mt-6 grid gap-x-10 gap-y-4 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-2"
         >
           {section.checklistItems.map((item) => (
             <li key={item}>
@@ -66,7 +66,7 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       )}
       {section.supportLink && (
         <p className="mt-5">
-          <Link href={section.supportLink.href} className="link-arrow text-base">
+          <Link href={section.supportLink.href} className="link-arrow text-[1.0625rem]">
             {section.supportLink.label}
             <ArrowRight aria-hidden="true" />
           </Link>
@@ -115,23 +115,23 @@ export default function ServicePageTemplate({
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="page-band section-y-hero">
-          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <main id="main-content" tabIndex={-1} className="flex-1 pb-[5.5rem] focus-visible:outline-none lg:pb-0">
+        <section className="on-band page-band section-y-hero" data-sticky-cta-suppress="true">
+          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <Breadcrumbs items={breadcrumbs} />
-              <h1 className="type-h1 mt-6 text-primary">
+              <Breadcrumbs items={breadcrumbs} light />
+              <h1 className="type-h1 mt-5 text-on-dark-hi">
                 {service.h1}
               </h1>
-              <p className="type-lead mt-5 max-w-2xl text-foreground/80">
+              <p className="type-lead mt-4 max-w-2xl text-on-dark-hi">
                 {heroIntro}
               </p>
               <HeroPoints className="mt-6" />
-              <div className="mt-8">
+              <div className="mt-7">
                 <ScrollToQuoteCTA source={service.slug} />
               </div>
               {service.reviewedAt && (
-                <p className="mt-5 text-sm text-muted-foreground">
+                <p className="mt-4 text-[0.9375rem] text-on-dark-hi">
                   Content reviewed{" "}
                   <time dateTime={service.reviewedAt}>
                     {new Intl.DateTimeFormat("en-AU", {
@@ -152,7 +152,7 @@ export default function ServicePageTemplate({
                 height={800}
                 sizes="(min-width: 1280px) 500px, 40vw"
                 loading="eager"
-                className="aspect-[4/3] h-auto w-full rounded-lg object-cover object-[30%_60%]"
+                className="aspect-[4/3] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_60%]"
               />
             </div>
           </div>
@@ -161,11 +161,11 @@ export default function ServicePageTemplate({
         <QuoteForm source={service.slug} />
 
         <div className="border-t border-border">
-        <div className="site-container py-14 lg:py-20">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
-            <div className="space-y-12 lg:col-span-8">
+        <div className="site-container py-12 lg:py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-10 lg:col-span-8">
               {introRest && (
-                <p className="max-w-[60ch] font-display text-[1.25rem] font-medium leading-[1.5] tracking-[-0.01em] text-foreground sm:text-[1.375rem]">
+                <p className="max-w-[66ch] border-l-4 border-accent pl-4 text-lg font-semibold leading-[1.55] text-foreground sm:text-xl">
                   {introRest}
                 </p>
               )}
@@ -186,7 +186,7 @@ export default function ServicePageTemplate({
 
             <aside
               aria-labelledby="service-sidebar-heading"
-              className="space-y-8 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+2rem+env(safe-area-inset-top))] lg:self-start"
+              className="space-y-5 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+1.5rem+env(safe-area-inset-top))] lg:self-start"
             >
               <h2 id="service-sidebar-heading" className="sr-only">
                 Service details and related resources
@@ -194,7 +194,7 @@ export default function ServicePageTemplate({
               <PromiseList title="What Caraway confirms" />
 
               <SidebarPanel title="Registered Brisbane business">
-                <p className="mt-1.5 text-sm text-muted-foreground">
+                <p className="mt-1.5 text-[0.9375rem] text-muted-foreground">
                   {BUSINESS.legalName}, sole trader, Brisbane QLD
                 </p>
                 <ul className="mt-1.5 flex flex-wrap gap-x-6">
@@ -255,8 +255,9 @@ export default function ServicePageTemplate({
         </div>
         </div>
 
-        <SellingSafelySection />
+        {/* Blue band, then green, so neither runs into the blue footer. */}
         <TrustBadges />
+        <SellingSafelySection />
       </main>
 
       <Footer />

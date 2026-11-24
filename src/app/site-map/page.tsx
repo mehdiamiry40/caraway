@@ -61,7 +61,7 @@ const companyLinks = [
   { label: "Accessibility", href: "/accessibility" },
 ];
 
-const linkCls = "inline-flex min-h-[44px] items-center rounded-sm py-1.5 text-[0.9375rem] text-accent-ink underline decoration-accent-ink/30 decoration-1 underline-offset-4 transition-colors duration-150 hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+const linkCls = "inline-flex min-h-[44px] items-center rounded-sm py-1.5 text-[0.9375rem] text-primary underline decoration-primary/30 decoration-1 underline-offset-4 transition-colors duration-150 hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 const canonical = `${SITE_URL}/site-map`;
 
@@ -93,7 +93,7 @@ export default function SiteMapPage() {
       >
       <div className="site-container space-y-12 py-10 sm:py-14 lg:py-16">
         <section>
-          <h2 className="mb-3 border-b border-foreground/25 pb-3 font-display text-[1.5rem] font-semibold leading-tight text-primary">Services</h2>
+          <h2 className="mb-3 border-b-2 border-primary pb-3 text-[1.5rem] font-semibold leading-tight text-primary">Services</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {services.map((s) => (
               <li key={s.slug}>
@@ -106,7 +106,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 border-b border-foreground/25 pb-3 font-display text-[1.5rem] font-semibold leading-tight text-primary">Locations</h2>
+          <h2 className="mb-3 border-b-2 border-primary pb-3 text-[1.5rem] font-semibold leading-tight text-primary">Locations</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1">
             {suburbs.map((s) => (
               <li key={s.slug}>
@@ -119,7 +119,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 border-b border-foreground/25 pb-3 font-display text-[1.5rem] font-semibold leading-tight text-primary">Resources</h2>
+          <h2 className="mb-3 border-b-2 border-primary pb-3 text-[1.5rem] font-semibold leading-tight text-primary">Resources</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             <li>
               <Link href={VEHICLE_DATA_ROUTE} className={linkCls}>
@@ -130,7 +130,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 border-b border-foreground/25 pb-3 font-display text-[1.5rem] font-semibold leading-tight text-primary">Blog &amp; Guides</h2>
+          <h2 className="mb-3 border-b-2 border-primary pb-3 text-[1.5rem] font-semibold leading-tight text-primary">Blog &amp; Guides</h2>
           <ul className="mb-5 flex flex-wrap gap-x-6 gap-y-1">
             {Object.entries(categoryMap).map(([slug, label]) => (
               <li key={slug}>
@@ -155,7 +155,7 @@ export default function SiteMapPage() {
         </section>
 
         <section>
-          <h2 className="mb-3 border-b border-foreground/25 pb-3 font-display text-[1.5rem] font-semibold leading-tight text-primary">Company</h2>
+          <h2 className="mb-3 border-b-2 border-primary pb-3 text-[1.5rem] font-semibold leading-tight text-primary">Company</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
             {companyLinks.map((link) => (
               <li key={link.href}>

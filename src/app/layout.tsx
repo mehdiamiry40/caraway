@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Besley, Public_Sans } from "next/font/google";
+import { Asap } from "next/font/google";
 
 import { AnalyticsListener } from "@/components/AnalyticsListener";
 import { CarawayChatLoader } from "@/components/CarawayChatLoader";
@@ -10,20 +10,12 @@ import { organizationSchema, websiteSchema } from "@/lib/json-ld-schemas";
 import { BUSINESS, SHARED_PICKUP_IMAGE_ALT, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-// Two families, both variable, so each ships as a single latin-subset file.
-// Public Sans carries body copy, labels, buttons and minor headings.
-const publicSans = Public_Sans({
+// One family for everything. Asap is a friendly humanist sans with sturdy
+// bold weights; it is a variable font, so it ships as a single latin file.
+const asap = Asap({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-public-sans",
-});
-
-// Besley is a Clarendon: the sturdy print face of trade signage and dockets.
-// It is used for page titles and section headings only, in sentence case.
-const besley = Besley({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-besley",
+  variable: "--font-asap",
 });
 
 export const metadata: Metadata = {
@@ -98,7 +90,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   viewportFit: "cover",
-  themeColor: "#123A2C",
+  themeColor: "#146AEB",
 };
 
 export default function RootLayout({
@@ -107,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${publicSans.variable} ${besley.variable}`}>
+    <html lang="en-AU" className={asap.variable}>
       <body className="min-h-screen">
         <a
           href="#main-content"

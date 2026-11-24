@@ -32,7 +32,7 @@ const STEPS = [
   { title: "Payment and pickup", description: "Payment confirmed before the car leaves." },
 ] as const;
 
-const bodyTextClass = "max-w-[68ch] text-[1.0625rem] leading-[1.7] text-foreground/85";
+const bodyTextClass = "max-w-[72ch] text-[1.0625rem] leading-[1.7] text-foreground";
 
 export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const relatedServiceData = suburb.relatedServices
@@ -77,27 +77,27 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <LocationViewTracker suburb={suburb.slug} />
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="page-band section-y-hero">
-          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <main id="main-content" tabIndex={-1} className="flex-1 pb-[5.5rem] focus-visible:outline-none lg:pb-0">
+        <section className="on-band page-band section-y-hero" data-sticky-cta-suppress="true">
+          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <Breadcrumbs items={breadcrumbs} />
-              <h1 className="type-h1 mt-6 text-primary">
+              <Breadcrumbs items={breadcrumbs} light />
+              <h1 className="type-h1 mt-5 text-on-dark-hi">
                 {suburb.h1}
               </h1>
-              <p className="type-lead mt-5 max-w-2xl text-foreground/80">
+              <p className="type-lead mt-4 max-w-2xl text-on-dark-hi">
                 {heroIntro}
               </p>
               <HeroPoints className="mt-6" />
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ScrollToQuoteCTA source={`location_hero_${suburb.slug}`} />
                 <TrackedPhoneLink
                   href={BUSINESS.phoneTel}
                   location={`location_hero_${suburb.slug}`}
                   ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                  className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full ring-offset-secondary sm:w-auto")}
+                  className={cn(buttonVariants({ size: "lg", variant: "outlineOnDark" }), "w-full ring-offset-primary sm:w-auto")}
                 >
-                  <Phone className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+                  <Phone className="h-5 w-5" aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
               </div>
@@ -110,15 +110,15 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 height={800}
                 sizes="(min-width: 1280px) 500px, 40vw"
                 loading="eager"
-                className="aspect-[4/3] h-auto w-full rounded-lg object-cover object-[30%_60%]"
+                className="aspect-[4/3] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_60%]"
               />
             </div>
           </div>
         </section>
 
-        <div className="site-container py-14 lg:py-20">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
-            <div className="space-y-12 lg:col-span-8">
+        <div className="site-container py-12 lg:py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-10 lg:col-span-8">
               <div>
                 <SectionHeading>
                   Car removal in {areaName} and nearby suburbs
@@ -132,9 +132,9 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   {suburb.localContent}
                 </p>
                 {nearbyAreaNames.length > 0 && (
-                  <div className="mt-7 max-w-[68ch] border-t border-border pt-5">
-                    <h3 className="text-[1.0625rem] font-bold text-foreground">Nearby suburbs covered</h3>
-                    <ul className="list-inline mt-1.5 text-base leading-7 text-foreground/85">
+                  <div className="mt-7">
+                    <h3 className="text-xl font-bold text-accent-ink">Nearby suburbs covered</h3>
+                    <ul className="list-ticks mt-3 grid grid-cols-2 gap-x-8 gap-y-3 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-3">
                       {nearbyAreaNames.map((name) => (
                         <li key={name}>{name}</li>
                       ))}
@@ -142,7 +142,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   </div>
                 )}
                 {localSellingPoints.length > 0 && (
-                  <ul className="list-ticks mt-6 grid grid-cols-1 gap-x-10 gap-y-3 !space-y-0 text-base text-foreground/85 sm:grid-cols-2">
+                  <ul className="list-ticks mt-7 grid grid-cols-1 gap-x-10 gap-y-4 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-2">
                     {localSellingPoints.map((point) => (
                       <li key={point}>
                         <span>{point}</span>
@@ -157,7 +157,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   <SectionHeading>
                     Pickup access in {areaName}
                   </SectionHeading>
-                  <ul className="list-ticks max-w-[68ch] text-base text-foreground/85">
+                  <ul className="list-ticks max-w-[72ch] space-y-4 text-[1.0625rem] text-foreground">
                     {suburb.pickupAccessNotes.map((note) => (
                       <li key={note}>
                         <span>{note}</span>
@@ -217,7 +217,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                       ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
                       className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full sm:w-auto")}
                     >
-                      <Phone className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+                      <Phone className="h-5 w-5" aria-hidden="true" />
                       Call {BUSINESS.phoneDisplay}
                     </TrackedPhoneLink>
                   </div>
@@ -225,7 +225,7 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
             </div>
 
-            <aside className="space-y-8 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+2rem+env(safe-area-inset-top))] lg:self-start">
+            <aside className="space-y-5 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+1.5rem+env(safe-area-inset-top))] lg:self-start">
               <PromiseList title="Our promise" />
 
               {relatedServiceData.length > 0 && (

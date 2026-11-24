@@ -55,21 +55,21 @@ export default function ReviewPage() {
       <section className="site-container py-10 sm:py-14 lg:py-16">
         <div className="max-w-3xl space-y-10">
           <div>
-            <h2 className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
+            <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
               Your experience, in your own words
             </h2>
-            <p className="mt-3 text-[1.0625rem] leading-[1.7] text-foreground/85">
+            <p className="mt-3 text-[1.0625rem] leading-[1.7] text-foreground">
               There is no obligation to post. Positive, neutral, and
               critical feedback are all welcome. Caraway does not offer an
               incentive or ask for a particular rating, phrase, or keyword.
             </p>
           </div>
 
-          <div className="border-t border-foreground/25 pt-8">
-            <h2 className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
+          <div className="border-t-2 border-primary pt-8">
+            <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
               Review Caraway on Google
             </h2>
-            <ol className="mt-4 list-decimal space-y-2.5 pl-5 text-[1.0625rem] leading-relaxed text-foreground/85 marker:font-semibold marker:text-primary">
+            <ol className="mt-4 list-decimal space-y-2.5 pl-5 text-[1.0625rem] leading-relaxed text-foreground marker:font-semibold marker:text-primary">
               <li>Open Google&apos;s review form for Caraway.</li>
               <li>Sign in to your Google Account if asked.</li>
               <li>Describe only your own genuine experience.</li>

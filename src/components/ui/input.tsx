@@ -7,7 +7,7 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
       <input
         type={type}
         className={cn(
-          "flex h-12 w-full rounded-md border border-input bg-card px-3.5 text-base leading-snug text-foreground ring-offset-background transition-[border-color,box-shadow] duration-150 motion-reduce:transition-none",
+          "flex h-12 w-full rounded-sm border border-input bg-card px-3.5 text-base leading-snug text-foreground ring-offset-background transition-[border-color,box-shadow] duration-150 motion-reduce:transition-none",
           "file:border-0 file:bg-transparent file:text-sm file:font-medium",
           "placeholder:text-muted-foreground",
           "hover:border-foreground/70",

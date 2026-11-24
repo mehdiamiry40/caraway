@@ -13,16 +13,19 @@ export default function HomeBelowFold() {
     <>
       {/* The hero quote card is the home page's only quote surface: it is
           server-rendered with the page, so the primary conversion path and
-          the #quote-form deep link still work for crawlers and JS-off users. */}
-      <TrustBadges />
+          the #quote-form deep link still work for crawlers and JS-off users.
+
+          The bands below alternate so no two coloured bands touch: white,
+          green, white, blue, white, blue, white, tint, white, green. */}
       <CarTypes />
       <HowItWorks />
+      <FinalCTA />
       <WhyUs />
+      <TrustBadges />
       <HomeCashForCars />
       <ServiceAreas />
       <FAQ />
       <SellingSafelySection />
-      <FinalCTA />
     </>
   );
 }

@@ -11,5 +11,4 @@ function font(name: string) {
   });
 }
 
-export const Public_Sans = font("public-sans");
-export const Besley = font("besley");
+export const Asap = font("asap");

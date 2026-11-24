@@ -31,7 +31,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                     aria-hidden="true"
                     className={cn(
                       "text-xs select-none shrink-0",
-                      light ? "text-primary-foreground/80" : "text-foreground/40"
+                      light ? "text-primary-foreground" : "text-foreground/40"
                     )}
                   >
                     /
@@ -44,7 +44,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                     className={cn(
                       "transition-colors duration-150 rounded-sm px-1.5 py-1 -mx-1.5 -my-1 min-h-11 inline-flex items-center underline-offset-4 hover:underline touch-manipulation focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none",
                       light
-                        ? "text-primary-foreground/85 hover:text-primary-foreground"
+                        ? "text-primary-foreground underline decoration-primary-foreground/50 decoration-1"
                         : "text-muted-foreground hover:text-foreground"
                     )}
                   >
@@ -56,7 +56,7 @@ export function Breadcrumbs({ items, light }: BreadcrumbsProps) {
                     className={cn(
                       "px-1.5 py-1 -mx-1.5 -my-1 rounded-sm",
                       isLast && "block max-w-[16rem] sm:max-w-[28rem] md:max-w-none truncate",
-                      light ? "text-primary-foreground" : "text-foreground"
+                      light ? "font-semibold text-primary-foreground" : "text-foreground"
                     )}
                   >
                     {item.label}

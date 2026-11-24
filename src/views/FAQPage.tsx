@@ -26,43 +26,43 @@ export default function FAQPage() {
       subtitle={
         <p>
           Straight answers about selling your car for cash in Brisbane — quotes, pickup, payment and Queensland paperwork. New here? Start with{" "}
-          <Link href="/" className="text-accent-ink font-medium link-underline">how cash for cars works in Brisbane</Link>, or{" "}
-          <Link href="/contact" className="text-accent-ink font-medium link-underline">contact us</Link>.
+          <Link href="/">how cash for cars works in Brisbane</Link>, or{" "}
+          <Link href="/contact">contact us</Link>.
         </p>
       }
     >
-      <div className="site-container py-10 sm:py-14 lg:py-20">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-16">
-          {/* Topic jump links: a swipeable row on phones, a sticky list on
+      <div className="site-container py-10 sm:py-12 lg:py-16">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12">
+          {/* Topic jump links: a swipeable row on phones, a sticky box on
               desktop so the questions stay navigable. */}
-          <aside className="mb-10 lg:col-span-3 lg:mb-0">
+          <aside className="mb-9 lg:col-span-3 lg:mb-0">
             <nav
               aria-label="FAQ topics"
-              className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]"
+              className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:rounded-md lg:border lg:border-border lg:border-t-4 lg:border-t-primary lg:px-5 lg:pb-4 lg:pt-4"
             >
-              <p className="eyebrow mb-3">Topics</p>
-              <ol className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 lg:flex-col lg:gap-0 lg:border-t lg:border-foreground/25">
+              <p className="mb-2 text-xl font-bold text-primary">Topics</p>
+              <ol className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 lg:flex-col lg:gap-0">
                 {faqCategories.map((category) => (
-                  <li key={category.category} className="shrink-0 lg:border-b lg:border-border">
+                  <li key={category.category} className="shrink-0">
                     <a
                       href={`#${topicId(category.category)}`}
-                      className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-md border border-input bg-card px-3.5 text-[0.9375rem] font-medium text-foreground transition-colors hover:border-primary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:w-full lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-3 lg:hover:underline lg:hover:underline-offset-4"
+                      className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-sm border-2 border-primary bg-card px-3.5 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:w-full lg:whitespace-normal lg:border-0 lg:bg-transparent lg:px-0 lg:underline lg:decoration-primary/40 lg:decoration-1 lg:underline-offset-4 lg:hover:bg-transparent lg:hover:text-primary lg:hover:decoration-2"
                     >
                       {category.category}
                     </a>
                   </li>
                 ))}
               </ol>
-              <p className="mt-6 hidden text-[0.9375rem] leading-relaxed text-muted-foreground lg:block">
+              <p className="mt-4 hidden text-base leading-relaxed text-foreground lg:block">
                 Can&apos;t find your answer?{" "}
-                <a href={BUSINESS.phoneTel} className="font-medium text-accent-ink link-underline">
+                <a href={BUSINESS.phoneTel} className="font-bold text-primary link-underline">
                   Call {BUSINESS.phoneDisplay}
                 </a>
               </p>
             </nav>
           </aside>
 
-          <div className="space-y-14 lg:col-span-9 lg:max-w-3xl">
+          <div className="space-y-12 lg:col-span-9">
             {faqCategories.map((category) => (
               <section
                 key={category.category}
@@ -79,26 +79,26 @@ export default function FAQPage() {
               </section>
             ))}
 
-            <div className="border-t-2 border-primary pt-7">
-              <SectionHeading className="mb-5">Still have questions?</SectionHeading>
-              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="on-band rounded-md bg-primary px-6 py-8 text-center text-on-dark-hi sm:px-8">
+              <h2 className="type-h2 text-on-dark-hi">Still have questions?</h2>
+              <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/#quote-form"
-                  className={cn(buttonVariants({ variant: "default" }))}
+                  className={cn(buttonVariants({ variant: "outlineOnDark" }), "ring-offset-primary")}
                 >
                   Get my quote
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <a
                   href={BUSINESS.phoneTel}
-                  className={cn(buttonVariants({ variant: "outline" }))}
+                  className={cn(buttonVariants({ variant: "default" }), "ring-offset-primary")}
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </a>
                 <Link
                   href="/contact"
-                  className={cn(buttonVariants({ variant: "ghost" }))}
+                  className="inline-flex min-h-12 items-center rounded-sm px-2 text-[1.0625rem] font-bold text-on-dark-hi underline decoration-1 underline-offset-4 hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 >
                   Contact us
                 </Link>

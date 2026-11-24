@@ -155,7 +155,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   >
                     <span
                       aria-hidden
-                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-primary font-display text-[0.9375rem] font-semibold text-primary-foreground"
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-primary text-[0.9375rem] font-semibold text-primary-foreground"
                     >
                       {authorInitials}
                     </span>
@@ -182,14 +182,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </span>
                   <Link
                     href={`/blog/category/${categorySlug(post.category)}`}
-                    className="inline-flex min-h-11 items-center rounded-sm font-medium text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 hover:decoration-accent-ink sm:ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center rounded-sm font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 hover:decoration-primary sm:ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     {post.category}
                   </Link>
                 </div>
               </header>
 
-              <div className="prose-body max-w-[66ch] break-words [overflow-wrap:anywhere]">
+              <div className="prose-body max-w-[70ch] break-words [overflow-wrap:anywhere]">
                 {renderBlogContent(post.content)}
               </div>
 
@@ -215,7 +215,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
 
               {post.sources && post.sources.length > 0 && (
                 <aside className="mt-14 border-t-2 border-primary pt-5">
-                  <p className="text-lg font-bold text-foreground">
+                  <p className="text-xl font-bold text-primary">
                     Sources and review
                   </p>
                   {post.reviewedAt && (
@@ -224,14 +224,14 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                       <time dateTime={post.reviewedAt}>{formatDate(post.reviewedAt)}</time>.
                     </p>
                   )}
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-[0.9375rem] marker:text-accent">
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base marker:text-accent">
                     {post.sources.map((source) => (
                       <li key={source.url} className="pl-1">
                         <a
                           href={source.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex min-h-8 items-center font-medium text-accent-ink underline decoration-accent-ink/40 decoration-1 underline-offset-4 hover:decoration-accent-ink"
+                          className="inline-flex min-h-8 items-center font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 hover:decoration-primary"
                         >
                           {source.title}
                         </a>
@@ -242,10 +242,10 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
               )}
 
               <footer className="mt-14 space-y-9">
-                <div className="flex items-start gap-4 border-t border-foreground/25 pt-5">
+                <div className="flex items-start gap-4 border-t-2 border-primary pt-5">
                   <div
                     aria-hidden
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary font-display text-lg font-semibold text-primary-foreground"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary text-lg font-semibold text-primary-foreground"
                   >
                     {authorInitials}
                   </div>
@@ -301,17 +301,17 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                   </div>
                 </div>
 
-                <div className="on-green rounded-xl bg-primary px-6 py-8 text-primary-foreground sm:px-9 sm:py-10">
-                  <p className="max-w-xl font-display text-[1.625rem] font-semibold leading-[1.15] tracking-[-0.02em] text-balance sm:text-[2rem]">
+                <div className="on-band rounded-md bg-primary px-6 py-8 text-center text-on-dark-hi sm:px-9 sm:py-9">
+                  <p className="text-[1.625rem] font-bold capitalize leading-[1.2] text-balance sm:text-[2rem]">
                     Ready to sell your car for cash?
                   </p>
-                  <p className="mb-6 mt-3 max-w-xl text-base leading-relaxed text-on-dark sm:text-[1.0625rem]">
+                  <p className="mb-6 mt-2 text-[1.0625rem] leading-relaxed text-on-dark-hi sm:text-lg">
                     One form. A written offer. Pickup included when we buy.
                   </p>
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                     <Link
                       href="/#quote-form"
-                      className={cn(buttonVariants({ variant: "default" }), "w-full ring-offset-ink sm:w-auto")}
+                      className={cn(buttonVariants({ variant: "outlineOnDark" }), "w-full ring-offset-primary sm:w-auto")}
                     >
                       Get my quote
                       <ArrowRight className="h-4 w-4" aria-hidden />
@@ -319,7 +319,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
                     <TrackedPhoneLink
                       href={BUSINESS.phoneTel}
                       location="blog_post_footer"
-                      className={cn(buttonVariants({ variant: "outlineOnDark" }), "w-full sm:w-auto")}
+                      className={cn(buttonVariants({ variant: "default" }), "w-full ring-offset-primary sm:w-auto")}
                       ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
                     >
                       <Phone className="h-4 w-4" aria-hidden />
@@ -359,7 +359,7 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           {relatedPosts.length > 0 && (
             <section className="mt-16 sm:mt-20">
               <div className="mb-6 flex items-baseline justify-between sm:mb-8">
-                <p className="font-display text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
+                <p className="text-[1.625rem] font-bold leading-tight text-primary sm:text-[1.875rem]">
                   Keep reading
                 </p>
                 <p className="text-sm text-muted-foreground">

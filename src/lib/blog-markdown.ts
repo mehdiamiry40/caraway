@@ -20,9 +20,9 @@ export function slugify(input: string): string {
 }
 
 const LINK_CLASS =
-  "font-medium text-accent-ink underline decoration-accent-ink/50 decoration-1 underline-offset-[0.2em] transition-colors hover:decoration-accent-ink hover:decoration-2";
+  "font-semibold text-primary underline decoration-primary/50 decoration-1 underline-offset-[0.2em] transition-colors hover:decoration-primary hover:decoration-2";
 
-const BODY_TEXT = "text-[1.0625rem] sm:text-lg text-foreground/90 leading-[1.7]";
+const BODY_TEXT = "text-[1.0625rem] text-foreground leading-[1.7]";
 
 function parseInline(text: string, keyPrefix: string): ReactNode[] {
   const nodes: ReactNode[] = [];
@@ -141,12 +141,12 @@ export function renderBlogContent(
             className:
               listType === "ol"
                 ? `list-decimal pl-6 space-y-3 ${BODY_TEXT} mb-7 marker:font-semibold marker:text-primary`
-                : `list-disc pl-6 space-y-2.5 ${BODY_TEXT} mb-7 marker:text-accent`,
+                : `list-ticks !pl-0 !space-y-3.5 ${BODY_TEXT} mb-7`,
           },
           ...items.map((item, itemIndex) =>
             createElement(
               "li",
-              { key: `${key}-li-${itemIndex}`, className: "pl-1.5" },
+              { key: `${key}-li-${itemIndex}`, className: listType === "ol" ? "pl-1.5" : undefined },
               ...parseInline(item, `${key}-li-${itemIndex}`),
             ),
           ),
@@ -215,7 +215,7 @@ export function renderBlogContent(
                       {
                         key: `${key}-td-${rowIndex}-${cellIndex}`,
                         className:
-                          "align-top px-4 py-3 text-foreground/85 leading-relaxed",
+                          "align-top px-4 py-3 text-foreground leading-relaxed",
                       },
                       ...parseInline(cell, `${key}-td-${rowIndex}-${cellIndex}`),
                     ),
@@ -237,7 +237,7 @@ export function renderBlogContent(
           key,
           id: slugify(heading),
           className:
-            "font-sans text-xl sm:text-[1.375rem] font-bold leading-snug text-foreground mt-10 mb-3 scroll-mt-24",
+            "text-xl sm:text-[1.375rem] font-bold leading-snug text-primary mt-9 mb-2 scroll-mt-24",
         },
         ...parseInline(heading, key),
       ));
@@ -252,7 +252,7 @@ export function renderBlogContent(
           key,
           id: slugify(heading),
           className:
-            "font-display text-[1.625rem] sm:text-[1.875rem] font-semibold leading-[1.18] tracking-[-0.02em] text-primary mt-14 mb-4 scroll-mt-24",
+            "text-[1.625rem] sm:text-[1.875rem] font-bold leading-[1.2] text-primary mt-12 mb-3 scroll-mt-24",
         },
         ...parseInline(heading, key),
       ));
@@ -261,7 +261,7 @@ export function renderBlogContent(
 
     const isFirstPara = i === 0;
     const paraClass = isFirstPara && dropCap
-      ? "first-letter:font-display first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-semibold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-normal mb-8"
+      ? "first-letter:text-5xl sm:first-letter:text-6xl first-letter:font-semibold first-letter:text-primary first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-[0.85] text-lg sm:text-xl text-foreground leading-[1.75] font-normal mb-8"
       : `${BODY_TEXT} mb-6`;
     nodes.push(createElement("p", { key, className: paraClass }, ...parseInline(text, key)));
   }

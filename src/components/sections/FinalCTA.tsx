@@ -1,47 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
-/** Closing band: the question, the one gold button, the phone number. */
-export function FinalCTA() {
+/**
+ * Call-to-action band: the question in white, an outlined quote button and
+ * the yellow phone button, with Caraway's photo framed beside it. Blue by
+ * default; pass `tone="green"` where the band sits directly above the blue
+ * footer so the two do not run together.
+ */
+export function FinalCTA({ tone = "blue" }: { tone?: "blue" | "green" }) {
+  const green = tone === "green";
   return (
     <section
-      className="relative border-t border-border bg-secondary py-14 sm:py-20"
+      className={cn(
+        "on-band relative py-10 text-on-dark-hi sm:py-12",
+        green ? "bg-accent" : "bg-primary",
+      )}
       aria-label="Get your quote"
       data-sticky-cta-suppress="true"
     >
-      <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-7">
-          <h2 className="type-display max-w-[15ch] text-primary">
+      <div className="site-container grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-12">
+        <div className="text-center lg:col-span-7 lg:text-left">
+          <h2 className="type-display text-on-dark-hi">
             What&apos;s your car worth? One form. A written offer.
           </h2>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <Link
               href="/#quote-form"
-              className={cn(buttonVariants({ size: "lg" }), "group ring-offset-secondary")}
+              className={cn(buttonVariants({ variant: "outlineOnDark", size: "lg" }), green ? "ring-offset-accent hover:text-accent-ink" : "ring-offset-primary")}
             >
               Get my quote
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+              <ChevronRight className="h-5 w-5" strokeWidth={3} aria-hidden="true" />
             </Link>
             <TrackedPhoneLink
               href={BUSINESS.phoneTel}
               location="final_cta"
-              className="group inline-flex min-h-12 items-center rounded-sm text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-secondary"
+              className={cn(buttonVariants({ size: "lg" }), green ? "ring-offset-accent" : "ring-offset-primary")}
               ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
-              <span className="text-[1.625rem] font-bold leading-none tabular-nums tracking-[-0.01em] underline decoration-primary/30 decoration-2 underline-offset-[6px] group-hover:decoration-primary">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              <span className="tabular-nums">
                 {BUSINESS.phoneDisplay}
               </span>
             </TrackedPhoneLink>
           </div>
         </div>
 
-        <div className="lg:col-span-5">
+        <div className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
           <Image
             src="/images/tow-truck-hero.webp"
             alt="Tilt-tray truck carrying a silver sedan"
@@ -49,7 +59,7 @@ export function FinalCTA() {
             height={800}
             sizes="(max-width: 1023px) calc(100vw - 2rem), 480px"
             loading="lazy"
-            className="aspect-[3/2] h-auto w-full rounded-lg object-cover object-[30%_62%]"
+            className="aspect-[16/9] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_62%]"
           />
         </div>
       </div>

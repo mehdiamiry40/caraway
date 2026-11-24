@@ -45,7 +45,7 @@ const CONDITION_OPTIONS = [
   { value: "scrap", label: "Scrap / junk" },
 ];
 
-const labelClass = "mb-1.5 block text-[0.8125rem] font-semibold leading-tight text-foreground";
+const labelClass = "mb-1 block text-sm font-semibold leading-tight text-foreground";
 
 /** The visible label stays short: sighted users get the asterisk the other
  * forms use, screen readers get the word. */
@@ -130,15 +130,15 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
     // Sits inside the white quote card in the home hero; the card itself owns
     // the surface, so the form keeps an explicit foreground for its controls.
     <div className="relative w-full text-left text-card-foreground">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h2 className="font-display text-[1.625rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
+        <h2 className="text-[2rem] font-bold leading-tight text-primary sm:text-[2.25rem]">
           Get a free quote
         </h2>
-        <p className="text-sm font-semibold text-accent-ink">
+        <p className="text-base font-bold text-accent-ink">
           No obligation
         </p>
       </div>
-      <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+      <p className="mt-1 text-[0.9375rem] leading-relaxed text-muted-foreground">
         Tell us about the car. A person reviews every request.
       </p>
 
@@ -150,10 +150,10 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
           className="mt-6 flex flex-col items-start gap-2 border-t border-border py-8"
         >
           <CheckCircle2 className="h-8 w-8 text-accent" strokeWidth={1.75} aria-hidden />
-          <h3 className="mt-1 text-xl font-bold text-foreground">
+          <h3 className="mt-1 text-xl font-bold text-primary">
             Thanks — we&apos;ve got your details
           </h3>
-          <p className="mb-3 text-base leading-relaxed text-foreground/80">
+          <p className="mb-3 text-base leading-relaxed text-foreground">
             We&apos;ll call you during business hours.
           </p>
           <Button
@@ -169,7 +169,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
         </div>
       ) : (
         <>
-          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-5 space-y-3.5">
+          <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="mt-4 space-y-3">
             <div hidden aria-hidden="true">
               <label htmlFor="hero-quote-website">Website</label>
               <input
@@ -181,7 +181,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               />
             </div>
 
-            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 sm:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.name} className={labelClass}>
                   Your name<Required />
@@ -220,7 +220,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[360px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 min-[360px]:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.make} className={labelClass}>
                   Car make<Required />
@@ -258,7 +258,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[360px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 min-[360px]:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.year} className={labelClass}>
                   Year<Required />
@@ -296,7 +296,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-x-3 gap-y-3.5 min-[420px]:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-3 gap-y-3 min-[420px]:grid-cols-2">
               <div>
                 <label htmlFor={fieldIds.suburb} className={labelClass}>
                   Suburb<Required />
@@ -378,7 +378,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
               No obligation to proceed ·{" "}
               <Link
                 href="/privacy"
-                className="font-medium text-accent-ink underline underline-offset-2"
+                className="font-semibold text-primary underline underline-offset-2"
               >
                 Privacy Policy
               </Link>

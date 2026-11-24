@@ -28,14 +28,14 @@ export default function Error({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe flex items-center justify-center px-4">
+      <main id="main-content" tabIndex={-1} className="flex-1 flex items-center justify-center px-4">
         <div className="text-center max-w-md py-20">
           <h1 className="type-h2 mb-3 text-primary">
             We couldn&apos;t load this post
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
             We couldn&apos;t load this post. Please try again, or{" "}
-            <Link href="/blog" className="font-medium text-accent-ink underline underline-offset-2">
+            <Link href="/blog" className="font-medium text-primary underline underline-offset-2">
               browse all posts
             </Link>.
           </p>

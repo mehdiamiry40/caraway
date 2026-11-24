@@ -346,7 +346,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           aria-describedby="caraway-chat-description"
           className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] z-[200] flex max-h-[min(42rem,calc(100dvh-7rem))] flex-col overflow-hidden rounded-xl border border-border bg-card shadow-xl sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[25rem]"
         >
-          <header className="on-green flex items-center gap-3 border-b border-primary/25 bg-primary px-4 py-3 text-primary-foreground">
+          <header className="on-band flex items-center gap-3 border-b border-primary/25 bg-primary px-4 py-3 text-primary-foreground">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary-foreground/12">
               <Bot className="h-5 w-5" aria-hidden="true" />
             </span>
@@ -385,7 +385,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           </header>
 
           <div
-            className="flex-1 space-y-4 overflow-y-auto bg-muted/50 px-4 py-4 overscroll-contain"
+            className="flex-1 space-y-4 overflow-y-auto bg-secondary px-4 py-4 overscroll-contain"
             role="log"
             aria-live="polite"
             aria-relevant="additions text"
@@ -502,7 +502,7 @@ export function CarawayChat({ initiallyOpen = false }: { initiallyOpen?: boolean
           <footer className="border-t border-border bg-card p-3">
             <p
               id="caraway-chat-privacy-note"
-              className="mb-2 rounded-sm border border-border/70 bg-muted/60 px-2.5 py-2 text-[0.6875rem] leading-relaxed text-muted-foreground"
+              className="mb-2 rounded-sm border border-border/70 bg-secondary px-2.5 py-2 text-[0.6875rem] leading-relaxed text-muted-foreground"
             >
               AI chat is for general questions only. Do not enter names, phone
               numbers, addresses, registration numbers, VINs or ID details. See

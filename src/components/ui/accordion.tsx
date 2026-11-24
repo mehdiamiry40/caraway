@@ -25,7 +25,7 @@ export function Accordion({
   const HeadingTag = `h${headingLevel}` as "h2" | "h3" | "h4";
 
   return (
-    <div className={cn("w-full border-t border-foreground/25", className)}>
+    <div className={cn("w-full border-t-2 border-primary", className)}>
       {items.map((item, index) => {
         return (
           <details
@@ -34,17 +34,17 @@ export function Accordion({
           >
             <summary className="flex min-h-12 cursor-pointer list-none items-start justify-between gap-4 py-4 text-left touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:py-5 [&::-webkit-details-marker]:hidden">
               <HeadingTag className="m-0 contents">
-                <span className="font-sans text-[1.0625rem] font-semibold leading-snug tracking-normal text-foreground break-words [overflow-wrap:anywhere] group-hover:text-primary sm:text-lg">
+                <span className="font-sans text-[1.0625rem] font-bold normal-case leading-snug tracking-normal text-foreground break-words [overflow-wrap:anywhere] group-hover:text-primary sm:text-lg">
                   {item.question}
                 </span>
               </HeadingTag>
               <Plus
-                className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary transition-transform duration-200 ease-[var(--ease-out-quint)] group-open:rotate-45 motion-reduce:transition-none"
-                strokeWidth={2}
+                className="mt-0.5 h-5 w-5 flex-shrink-0 text-accent transition-transform duration-200 ease-[var(--ease-out-quint)] group-open:rotate-45 motion-reduce:transition-none"
+                strokeWidth={3}
                 aria-hidden="true"
               />
             </summary>
-            <div className="max-w-[68ch] pb-6 pr-8 text-base leading-relaxed text-foreground/85 break-words [overflow-wrap:anywhere]">
+            <div className="max-w-[68ch] pb-6 pr-8 text-base leading-relaxed text-foreground break-words [overflow-wrap:anywhere]">
               {item.answer}
             </div>
           </details>
