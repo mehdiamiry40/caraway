@@ -7,15 +7,15 @@ export const post: RawBlogPostEntry = {
   metaDescription:
     "Sell your car before moving overseas without leaving loose ends in Brisbane: the rego, CTP, toll and TMR steps that have to happen before you fly.",
   excerpt:
-    "A departure date turns a car sale into a sequencing problem. Here is the order Queensland sellers should work through, and what happens if the car is still here when you are not.",
+    "With a departure date, the steps of a car sale have to happen in the right order. Here is that order for Queensland sellers, and what happens if the car is still here after you leave.",
   content: [
-    "A departure date is the one deadline in a car sale you cannot push back. Sell your car before moving overseas and the sale runs on your timetable; leave it to the last fortnight and you are answering buyer messages between farewell dinners and an airport run. The Queensland steps themselves are not difficult. They just have to happen while you are still in the country to sign, hand things over, and watch the money land.",
+    "A departure date is the one deadline in a car sale you cannot push back. Sell your car before moving overseas and the sale runs on your timetable. Leave it to the last fortnight and you are answering buyer messages between farewell dinners and an airport run. The Queensland steps are not difficult. They just have to happen while you are still in the country to sign, hand things over, and see the money arrive.",
 
     "## Work backwards from the flight date",
 
     "Put the fixed points on the calendar first. Anything owing on the car has to be paid out and the security interest discharged. A registered sale generally needs a current safety certificate. The transfer or cancellation has to be lodged with Transport and Main Roads. Toll and insurance accounts need closing. And the funds have to clear into an account you can still reach from the other side of the world.",
 
-    "That last one catches people. Sellers close their Australian bank account in the final week, then find a transfer still in flight or a refund weeks away from being paid. Keep one account open until every payment lands, and give TMR and your insurer contact details you will still be using after you go.",
+    "That last one catches people out. Sellers close their Australian bank account in the final week, then find a transfer still on its way or a refund weeks from being paid. Keep one account open until every payment arrives, and give TMR and your insurer contact details you will still use after you go.",
 
     "## Registration, CTP and plates",
 
@@ -27,21 +27,21 @@ export const post: RawBlogPostEntry = {
 
     "## Close the accounts that keep billing the plate",
 
-    "Toll notices follow the registration, not the driver. If the car has run the Gateway, the Clem7, Legacy Way or AirportlinkM7, take the vehicle off the toll account rather than just pulling the tag off the windscreen — [who wears unpaid tolls after a Queensland sale](/blog/unpaid-tolls-selling-car-qld) shows how fast a few dollars compounds once an invoice escalates. Do the same for a council parking permit, a workplace car park pass or an auto-renewing roadside membership, then clear the car itself: paired phones, saved addresses and garage remotes leave with the vehicle unless you [wipe the stored data first](/blog/delete-personal-data-from-car-before-selling).",
+    "Toll notices follow the registration, not the driver. If the car has used the Gateway, the Clem7, Legacy Way or AirportlinkM7, take the vehicle off the toll account rather than just pulling the tag off the windscreen. Our guide to [who wears unpaid tolls after a Queensland sale](/blog/unpaid-tolls-selling-car-qld) shows how fast a few dollars grows once an invoice escalates. Do the same for a council parking permit, a workplace car park pass or an auto-renewing roadside membership. Then clear the car itself: paired phones, saved addresses and garage remotes leave with the car unless you [wipe the stored data first](/blog/delete-personal-data-from-car-before-selling).",
 
     "## Selling your car before moving overseas, or leaving it with family",
 
-    "If you cannot sell your car before moving overseas, handing the keys to a sibling in Chermside is less tidy than it sounds. The registration stays in your name, so tolls, fines and any incident still point at you until a transfer is lodged. Whoever sells it needs documented authority, and a careful buyer will ask to see it before paying — [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) covers the evidence that gets requested.",
+    "If you cannot sell your car before moving overseas, handing the keys to a sibling in Chermside is less simple than it sounds. The registration stays in your name, so tolls, fines and any incident still point at you until a transfer is lodged. Whoever sells it needs documented authority, and a careful buyer will ask to see it before paying. Our guide to [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) covers the evidence buyers ask for.",
 
     "A car left on the street while its owner is overseas is worse again. Brisbane City Council says its local law makes it an offence to park an unregistered vehicle on a road, and it can investigate and remove an unmanaged one, with the paperwork aimed at the last registered owner. If it has to sit somewhere, that means entirely inside private property, with the owner's agreement and someone here holding a key. Read the detail on [vehicles left on Brisbane streets](/blog/park-unregistered-car-street-qld) before relying on a kerb.",
 
     "## Match the sale route to the time you have left",
 
-    "A private sale wants the most calendar: photos, a listing, a safety certificate, test drives, and a buyer who takes a fortnight to decide. It suits a tidy registered car and a seller with two or three months. With a fortnight left, or with an older, damaged, unregistered or non-running car, a direct offer from a [cash-for-cars buyer in Brisbane](/) removes the listing period. Compare written offers built on identical vehicle details rather than the first number quoted over the phone.",
+    "A private sale takes the most time: photos, a listing, a safety certificate, test drives, and a buyer who takes a fortnight to decide. It suits a tidy registered car and a seller with two or three months. With a fortnight left, or with an older, damaged, unregistered or non-running car, a direct offer from a [cash-for-cars buyer in Brisbane](/) removes the listing period. Compare written offers based on the same car details, not the first number quoted over the phone.",
 
-    "Whichever route you take, have the paperwork together before the final week: photo identification, the registration details, finance payout confirmation where it applies, and the signed sale record both parties keep. The [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) separates what changes between a registered transfer, an unregistered sale and a cancellation.",
+    "Whichever route you take, have the paperwork together before the final week: photo identification, the registration details, finance payout confirmation where it applies, and the signed sale record both parties keep. The [Queensland seller paperwork guide](/blog/what-paperwork-to-sell-a-car-qld) explains what changes between a registered transfer, an unregistered sale and a cancellation.",
 
-    `If you are selling your car before moving overseas, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) with the vehicle details, condition and pickup address. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details, and the collection window, payment arrangement and sale record are confirmed before dispatch.`,
+    `If you are selling your car before moving overseas, call **${BUSINESS.phoneDisplay}** or use the [online quote form](/#quote-form) with the car details, condition and pickup address. Towing is free when we buy your car. Tell us how the truck can reach it, because access can change the job. We confirm the pickup time, payment and sale record before pickup.`,
   ],
   date: "2026-08-12",
   reviewedAt: "2026-08-12",

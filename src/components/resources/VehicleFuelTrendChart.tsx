@@ -149,7 +149,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
       </div>
       <figcaption className="mt-3 text-sm leading-relaxed text-muted-foreground">
         Registered-car records in the Queensland State of the Environment table.
-        The exact annual values are provided below the chart.
+        The exact annual values are in the table below the chart.
       </figcaption>
     </figure>
   );

@@ -4,97 +4,97 @@ export const faqs = [
   {
     question: "How does cash for cars work in Brisbane?",
     answer:
-      "Request a free, no-obligation quote, then agree on the collection terms, payment method, and pickup time before completing the sale paperwork that applies to your vehicle. When Caraway buys and the supplied vehicle and access details match, pickup is included. Timing and payment are confirmed for each accepted job.",
+      "Get a free quote with no obligation. Then agree the pickup terms, the pickup time and how you're paid, and complete the sale paperwork that applies to your car. Towing is free when we buy your car and the car and access match what you told us. Timing and payment are confirmed for each job we accept.",
   },
   {
     question: "How much cash will I get for my car in Brisbane?",
     answer:
-      "There is no reliable fixed price without the vehicle details. Make, model, year, kilometres, condition, completeness, location, access, and current resale, parts and metal demand all affect a cash for cars offer in Brisbane. Caraway reviews those details and gives you a written figure before anything is booked.",
+      "It depends on the car, so there is no fixed price without the details. Make, model, year, kilometres, condition, whether it is complete, location, access, and current demand for resale, parts and metal all affect a cash for cars offer in Brisbane. We review those details and give you a written figure before anything is booked.",
   },
   {
     question: "Who pays the most for cars in Brisbane?",
     answer:
-      "No single buyer pays the most for every vehicle. Give each buyer the same vehicle, condition, location, and access details, then compare the written net amount after any deductions, plus pickup terms, payment timing, revision conditions, and the buyer's identity.",
+      "No one buyer pays the most for every car. Give each buyer the same details about the car, its condition, location and access. Then compare the written amount after any deductions, the pickup terms, when you're paid, what could change the offer, and who the buyer is.",
   },
   {
-    question: "What affects the amount I may be offered?",
+    question: "What affects how much I'm offered?",
     answer:
-      "There is no fixed amount for every vehicle. A quote depends on the vehicle's make, model, year, condition, completeness, location, access, and current market demand. Supply accurate details so the buyer can explain the assessment before you decide.",
+      "There is no set amount for every car. A quote depends on the make, model, year, condition, whether the car is complete, location, access and current demand. Give accurate details so the buyer can explain the offer before you decide.",
   },
   {
-    question: "How do you calculate my car offer?",
+    question: "How do you work out my offer?",
     answer:
-      "Your offer depends on the vehicle's make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand. Scrap vehicles usually receive lower offers, while newer, complete, repairable, or high-demand vehicles may receive higher offers.",
+      "Your offer depends on the make, model, year, condition, location, whether the car is complete, whether it rolls, and current demand for parts or resale. Scrap cars usually get lower offers. Newer, complete, repairable or in-demand cars may get higher offers.",
   },
   {
-    question: "How are pickup costs handled?",
+    question: "Is towing free?",
     answer:
-      "Pickup is included when Caraway buys the vehicle and the supplied vehicle, location, and access details match. Confirm the collection terms before accepting the quote; changed or undisclosed details may require a revised arrangement.",
+      "Yes, towing is free when we buy your car and the car, location and access match what you told us. Check the pickup terms before you accept the quote. If details change or were left out, the arrangement may need to change.",
   },
   {
     question: "How fast do I get paid for my car?",
     answer:
-      "The payment method and timing are confirmed for each accepted job before collection. Do not release a vehicle until the agreed payment has been confirmed using the method set out for your sale.",
+      "We confirm how and when you're paid before pickup, for each job we accept. Don't hand over the car until the agreed payment has been confirmed in the way set out for your sale.",
   },
   {
     question: "What types of cars do you buy in Brisbane?",
     answer:
-      "Caraway assesses many old, damaged, scrap, unregistered, and non-running cars, as well as selected utes, 4WDs, SUVs, vans, trucks, and fleet vehicles. Whether Caraway can buy a particular vehicle depends on its details, location, access, and current demand.",
+      "We look at many old, damaged, scrap, unregistered and non-running cars, plus selected utes, 4WDs, SUVs, vans, trucks and fleet vehicles. Whether we can buy yours depends on its details, location, access and current demand.",
   },
   {
     question: "Do I need a Roadworthy Certificate (RWC) to sell?",
     answer:
-      "We can assess your car as-is without a safety certificate. Queensland requirements depend on the vehicle's registration status and the type of sale, so we confirm the relevant paperwork before pickup and recommend checking current TMR guidance.",
+      "We can look at your car as it is, without a safety certificate. Queensland requirements depend on the car's rego status and the type of sale, so we confirm the paperwork before pickup. Check current TMR guidance too.",
   },
   {
     question: "What paperwork do I need to sell my car?",
     answer:
-      "Bring current photo ID and any registration, finance, insurer, or ownership documents you have. We provide a receipt and buyer details, while you complete and retain confirmation of the seller-side TMR steps that apply.",
+      "Bring current photo ID and any rego, finance, insurance or ownership documents you have. We give you a receipt and our details. You complete the seller-side TMR steps that apply and keep the confirmation.",
   },
   {
     question: "Which Brisbane areas do you service?",
     answer:
-      "Caraway handles enquiries from Greater Brisbane, including the inner city, north, south, east, and west. Availability depends on the suburb, vehicle, site access, and truck scheduling, so confirm your location when requesting a quote.",
+      "We take enquiries from Greater Brisbane, including the inner city, north, south, east and west. Whether we can pick up depends on the suburb, the car, access and the truck schedule, so tell us your location when you ask for a quote.",
   },
   {
     question: "Can I sell a car that isn't registered or has no plates?",
     answer:
-      "A vehicle does not need current registration to be assessed for purchase, but you must be entitled to sell it and complete the paperwork that applies. Caraway confirms eligibility from the vehicle, ownership, location, and access details you provide.",
+      "A car doesn't need current rego for us to assess it. You must have the right to sell it and complete the paperwork that applies. We confirm whether we can buy it from the car, ownership, location and access details you give us.",
   },
   {
-    question: "Is there any obligation when I request a quote?",
+    question: "Do I have to accept the quote?",
     answer:
-      "No. Requesting a quote is free and does not oblige you to accept it. Review the proposed price, pickup terms, timing, and payment method before deciding whether to proceed.",
+      "No. A quote is free and you don't have to accept it. Check the price, pickup terms, timing and payment method before you decide.",
   },
   {
     question: "What happens to my car after you buy it?",
     answer:
-      "Depending on the vehicle's condition, it may be resold, used for parts, or sent to an appropriate specialist for dismantling and material recovery.",
+      "It depends on the car's condition. It may be resold, used for parts, or sent to a suitable specialist for dismantling and recycling.",
   },
   {
     question: "How will you pay me?",
     answer:
-      "We agree the payment method before pickup. Depending on the sale and operational arrangements, payment may be made in cash or by cleared bank transfer, and it is confirmed before the vehicle leaves your property.",
+      "We agree how you're paid before pickup. Depending on the sale, payment may be cash or a cleared bank transfer, and it is confirmed before the car leaves your property.",
   },
   {
     question: "Do I need to pay tax on the sale?",
     answer:
-      "Tax treatment depends on how you owned and used the vehicle and whether the sale is private or connected with a business. Keep the sale receipt and ask a registered tax adviser or check current ATO guidance for advice that fits your circumstances.",
+      "Tax depends on how you owned and used the car, and whether the sale is private or connected with a business. Keep the sale receipt and ask a registered tax adviser, or check current ATO guidance, for advice that fits your situation.",
   },
   {
     question: "Can you pick up on weekends?",
     answer:
-      "Weekend collection may be available. The pickup day and time depend on the location, access, and truck schedule and are confirmed for each accepted job.",
+      "Weekend pickup may be available. The day and time depend on your location, access and the truck schedule, and are confirmed for each job we accept.",
   },
   {
     question: "Can I change my mind after getting a quote?",
     answer:
-      "A quote is free and no-obligation, so you do not have to accept it. If you accept and book a collection, tell Caraway promptly if your plans change and refer to the terms confirmed for that job.",
+      "Yes. A quote is free with no obligation, so you don't have to accept it. If you accept and book a pickup, tell us quickly if your plans change, and check the terms confirmed for that job.",
   },
   {
     question: "Do you buy multiple cars at once?",
     answer:
-      "Caraway can assess multi-vehicle enquiries such as estate, yard, or fleet clearances. Provide details and access information for every vehicle so eligibility, pricing, pickup terms, timing, and payment can be confirmed for the job.",
+      "We can assess several vehicles in one enquiry, such as estate, yard or fleet clearances. Give us the details and access for every vehicle so we can confirm what we can buy, the price, pickup terms, timing and payment for the job.",
   },
 ];
 

@@ -4,11 +4,11 @@ export const post: RawBlogPostEntry = {
     slug: "wovr-written-off-vehicle-register-qld-guide",
     title: "WOVR Written-Off Vehicle Register QLD Guide (2026)",
     metaDescription:
-      "Everything Queensland drivers need to know about the Written-Off Vehicle Register (WOVR): statutory vs repairable write-offs, PPSR checks, and how to sell a WOVR car in Brisbane.",
+      "The Written-Off Vehicle Register (WOVR) in QLD explained: statutory vs repairable write-offs, PPSR checks, and how to sell a WOVR car in Brisbane.",
     excerpt:
-      "The Written-Off Vehicle Register trips up thousands of QLD drivers. Here's what WOVR means, how it affects your sale price, and the easiest way to sell a written-off car in Brisbane.",
+      "What the Written-Off Vehicle Register (WOVR) means in QLD, how it affects what your car is worth, and how to sell a written-off car in Brisbane.",
     content: [
-      "If your car has been in a serious prang, caught in a flood, or written off by the insurer, you've probably been told it's now on the WOVR — the Written-Off Vehicle Register. For most Brisbane drivers that's the first time they've heard the term, and it usually comes with more questions than answers. What does WOVR actually mean? Can you still sell the car? Is it worth anything? And what paperwork is involved? Here's the full picture for 2026, written for Queensland sellers rather than insurance lawyers.",
+      "If your car has been in a serious prang, caught in a flood, or written off by the insurer, you've probably been told it's now on the WOVR, the Written-Off Vehicle Register. Most Brisbane drivers have not heard the term before. What does WOVR mean? Can you still sell the car? Is it worth anything? What paperwork is involved? Here are the answers for 2026, written for Queensland sellers.",
 
       "## What the WOVR is and how it works in QLD",
 
@@ -18,7 +18,7 @@ export const post: RawBlogPostEntry = {
 
       "The important split is between statutory and repairable written-off vehicles. A statutory written-off vehicle cannot be re-registered in Australia and restrictions apply to some parts. A repairable written-off vehicle may be re-registered only after the required safety certificate inspection and written-off vehicle inspection. TMR applies detailed assessment criteria, so do not infer the category from a simple description of the damage.",
 
-      "The WOVR classification has a massive impact on what the car is worth at resale. A statutory write-off is worth what its parts and scrap metal weigh. A repairable write-off, on the other hand, retains significant value as a rebuild project or as a donor vehicle for other cars of the same make and model — and that value can be surprisingly good for popular models like Hilux, Ranger, Commodore, Camry, and Corolla where parts demand across Queensland never drops.",
+      "The WOVR classification makes a big difference to what the car is worth. A statutory write-off is worth its parts and scrap metal. A repairable write-off keeps more value as a rebuild project or as a donor vehicle for other cars of the same make and model. That value can be higher for popular models like Hilux, Ranger, Commodore, Camry and Corolla, where parts are in steady demand across Queensland.",
 
       "### Running a PPSR check before you buy",
 
@@ -26,21 +26,21 @@ export const post: RawBlogPostEntry = {
 
       "## Selling a written-off car for cash in Brisbane",
 
-      "For sellers, the key question is whether you can still sell the car once it has been written off. The process depends on the classification. A statutory write-off cannot be re-registered and is generally sold for parts or scrap. A repairable write-off may be sold to a buyer who understands the inspection and re-registration requirements, a rebuilder or mechanic, or a [damaged-car buyer](/damaged-cars-brisbane).",
+      "For sellers, the main question is whether you can still sell the car once it has been written off. That depends on the classification. A statutory write-off cannot be re-registered and is generally sold for parts or scrap. A repairable write-off may be sold to a buyer who understands the inspection and re-registration requirements, a rebuilder or mechanic, or a [damaged-car buyer](/damaged-cars-brisbane).",
 
-      "Before accepting an insurer settlement or retaining salvage, read the policy and settlement documents carefully. Excesses, ownership of the salvage, registration consequences, and any reduced settlement are policy-specific. Ask the insurer to confirm the options in writing and compare them with a documented salvage offer before deciding.",
+      "Before you accept an insurer settlement or keep the salvage, read the policy and settlement documents carefully. Excesses, ownership of the salvage, registration consequences, and any reduced settlement depend on your policy. Ask the insurer to confirm the options in writing and compare them with a written salvage offer before you decide.",
 
       "## Paperwork, pickup, and what to expect on the day",
 
-      "For a WOVR vehicle, bring current photo ID, any registration document, and insurer correspondence confirming the classification and salvage status. The buyer may need the VIN and evidence that you are authorised to sell. Complete the seller-side TMR transfer or cancellation steps that apply, keep confirmation, and retain a signed receipt with both parties' details.",
+      "For a WOVR vehicle, bring current photo ID, any registration document, and insurer correspondence confirming the classification and salvage status. The buyer may need the VIN and evidence that you are authorised to sell. Complete the seller-side TMR transfer or cancellation steps that apply. Keep the confirmation and a signed receipt with both parties' details.",
 
-      "For a WOVR quote, share the make, model, year, kilometres, write-off classification, and an accurate description of the damage. If you accept the offer, agree on the pickup window and payment method before the truck is dispatched. Payment may be cash or cleared bank transfer depending on the transaction, and it should be confirmed before the vehicle leaves.",
+      "For a WOVR quote, give the make, model, year, kilometres, write-off classification and an accurate description of the damage. If you accept the offer, agree on the pickup time and payment method before the truck is sent. Payment may be cash or cleared bank transfer depending on the transaction. Confirm it before the car leaves.",
 
       "Do not drive a written-off or damaged car on public roads unless it is roadworthy, registered, and insured as required for that journey. Confirm the status rather than assuming an insurer's decision left registration or cover unchanged. Towing avoids the need to drive a vehicle whose legal or mechanical status is uncertain.",
 
       "Finally, confirm how the registration and plates will be handled. Standard plates generally remain with a vehicle during a normal registered transfer, but they are usually surrendered when registration is cancelled. Personalised and customised plates have separate rules. Check the transaction type with TMR before pickup.",
 
-      "The short version: the WOVR is not the end of the road for a written-off car. Whether the vehicle is a statutory write-off destined for parts and scrap or a repairable write-off with rebuild value, a [cash-for-cars buyer](/damaged-cars-brisbane) can assess it and arrange towing. Confirm payment, sale records, and the applicable TMR steps before it leaves. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.",
+      "In short, being on the WOVR does not mean a written-off car cannot be sold. Whether it is a statutory write-off headed for parts and scrap or a repairable write-off with rebuild value, a [cash-for-cars buyer](/damaged-cars-brisbane) can assess it and arrange towing. Confirm payment, sale records and the TMR steps that apply before it leaves. This is the same process behind Caraway's [cash for cars Brisbane](/) service: a written offer first, then a confirmed pickup.",
     ],
     date: "2026-04-09",
     updatedAt: "2026-06-08",

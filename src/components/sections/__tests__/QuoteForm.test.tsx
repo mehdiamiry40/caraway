@@ -52,7 +52,7 @@ describe("QuoteForm", () => {
     expect(screen.getByLabelText(/your name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^phone/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/^suburb/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/vehicle and access details/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/car and access details/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/expected price/i)).toBeInTheDocument();
     expect(screen.queryByText(/Brisbane pickup suburbs only/i)).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: /get my quote/i })).toBeInTheDocument();
@@ -65,7 +65,7 @@ describe("QuoteForm", () => {
     render(<QuoteForm />);
     await fillRequiredFields(user);
     await user.type(
-      screen.getByLabelText(/vehicle and access details/i),
+      screen.getByLabelText(/car and access details/i),
       "180,000 km; rolls and steers; narrow driveway.",
     );
     await user.click(screen.getByRole("button", { name: /get my quote/i }));
@@ -84,7 +84,7 @@ describe("QuoteForm", () => {
     const successHeading = await screen.findByText(/thanks — we've got your details/i);
     expect(successHeading).toBeInTheDocument();
     const successStatus = successHeading.closest('[role="status"]');
-    expect(successStatus).toHaveTextContent(/contact you by phone during business hours/i);
+    expect(successStatus).toHaveTextContent(/call you during business hours/i);
     expect(successStatus).not.toHaveTextContent(/spam|email/i);
     expect(issuerFetchMock).toHaveBeenCalledWith("/api/forms/submission-id", {
       method: "POST", cache: "no-store", signal: expect.any(AbortSignal),
@@ -210,7 +210,7 @@ describe("QuoteForm", () => {
     await user.click(screen.getByRole("button", { name: /get my quote/i }));
     expect(await screen.findByText(/couldn't send your quote/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/your name/i)).toHaveValue("Jane Smith");
-    await user.type(screen.getByLabelText(/vehicle and access details/i), "Narrow driveway");
+    await user.type(screen.getByLabelText(/car and access details/i), "Narrow driveway");
     await user.click(screen.getByRole("button", { name: /get my quote/i }));
     expect(await screen.findByText(/already contains different details/i)).toBeInTheDocument();
     expect(submitQuoteMock).toHaveBeenCalledTimes(2);

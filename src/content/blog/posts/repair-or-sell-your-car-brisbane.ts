@@ -6,11 +6,11 @@ import { BUSINESS } from "@/lib/site";
    service history). Their URLs redirect here via retired-blog-destinations. */
 export const post: RawBlogPostEntry = {
   slug: "repair-or-sell-your-car-brisbane",
-  title: "Repair or Sell a Faulty Car in Brisbane? A Fault-by-Fault Guide",
+  title: "Repair or Sell a Faulty Car in Brisbane? Fault by Fault",
   metaDescription:
-    "Oil leak, warning light, dead aircon, slipping gearbox or blown head gasket? How to diagnose the fault, weigh the quote and decide whether to repair or sell.",
+    "Oil leak, warning light, dead aircon, slipping gearbox or blown head gasket? Confirm the fault, weigh the quote, then decide whether to repair or sell.",
   excerpt:
-    "Most repair-or-sell decisions come down to the same three steps: confirm the fault in writing, set the full quote against what the car is worth repaired, and disclose what you know. Here is how that plays out for the faults Brisbane sellers ask about most.",
+    "Most repair-or-sell decisions take the same three steps: get the fault confirmed in writing, compare the full quote with what the car is worth repaired, and disclose what you know. Here is how that works for the faults Brisbane sellers ask about most.",
   author: "Caraway",
   content: [
     "A fault makes the repair-or-sell decision feel urgent, but the method is the same whatever has gone wrong. Get the fault confirmed in writing, put the full repair quote next to what the car would realistically be worth once fixed, and be exact about the fault if you sell. This guide applies that method to the faults Brisbane sellers ask about most, so you can jump to yours.",
@@ -86,11 +86,11 @@ export const post: RawBlogPostEntry = {
 
     "## Selling the Car As It Stands",
 
-    "Hand over the diagnosis and describe the fault plainly. State whether the car starts, drives, steers and brakes, whether it has all its wheels and keys, and whether any warning lights are on. If the car overheats, will not hold a gear, or you would not trust it through a busy intersection, do not drive it to the buyer; arrange a tow. [Selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) covers access, keys and collection.",
+    "Hand over the diagnosis and describe the fault plainly. State whether the car starts, drives, steers and brakes, whether it has all its wheels and keys, and whether any warning lights are on. If the car overheats, will not hold a gear, or you would not trust it through a busy intersection, do not drive it to the buyer; arrange a tow. [Selling a non-running car in Brisbane](/blog/sell-non-running-car-brisbane) covers access, keys and pickup.",
 
     "Check the Queensland sale pathway before you advertise. A registered light vehicle generally needs a current safety certificate when it is sold, unless an exemption applies, while an unregistered vehicle sold privately does not need an inspection but needs a permit to be driven on the road. [Selling without a roadworthy in QLD](/blog/sell-car-without-roadworthy-qld) and [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) set out the routes. Keep a signed receipt and evidence of the transfer or cancellation steps you complete.",
 
-    `Caraway assesses cars with mechanical faults, warning lights, water damage and cosmetic damage within its confirmed Greater Brisbane service area. Send the make, model, year, kilometres and the workshop's findings through the [damaged cars Brisbane](/damaged-cars-brisbane) page or a [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. An as-is quote is a comparison point, not a promise that selling will beat repairing. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
+    `Caraway may be able to buy cars with mechanical faults, warning lights, water damage and cosmetic damage within its Greater Brisbane service area. Send the make, model, year, kilometres and the workshop's findings through the [damaged cars Brisbane](/damaged-cars-brisbane) page or a [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. [Towing is included](/car-removal-brisbane) when we buy your car. Tell us where the car is and how a truck can reach it, because access can change the job. An as-is quote is a comparison point, not a promise that selling will beat repairing. It's one part of Caraway's [Brisbane cash for cars](/) service, which covers running, damaged and unregistered vehicles.`,
   ],
   faqs: [
     {

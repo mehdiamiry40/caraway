@@ -86,8 +86,8 @@ function QuotePrintSnapshot({
         <h1>Compare three vehicle-buyer quotes</h1>
         <p>
           Compare the written terms for the same vehicle and access details.
-          This worksheet records what you entered; it does not validate a
-          buyer, licence, or offer.
+          This worksheet records what you entered. It does not verify a
+          buyer, licence or offer.
         </p>
       </div>
 
@@ -107,7 +107,7 @@ function QuotePrintSnapshot({
           ],
           ["Quote validity or expiry", recordedValue(quote.validity)],
           [
-            "Assumptions and revision triggers",
+            "Assumptions and what could change the offer",
             recordedValue(quote.assumptions),
           ],
           [
@@ -138,8 +138,8 @@ function QuotePrintSnapshot({
 
       <div className="worksheet-print-footer">
         <p>
-          Check Queensland&apos;s public motor-licence register and the complete
-          written transaction before deciding:
+          Check Queensland&apos;s public motor-licence register and the full
+          written terms before you decide:
         </p>
         <a href={LICENCE_REGISTER_URL}>{LICENCE_REGISTER_URL}</a>
       </div>
@@ -215,7 +215,7 @@ export function QuoteComparisonWorksheet() {
         className="quote-comparison-worksheet scroll-mt-24 mt-12 rounded-xl border border-border bg-card p-5 sm:p-7"
       >
       <div className="border-b border-border/70 pb-6">
-        <p className="eyebrow mb-3">Local-only worksheet</p>
+        <p className="eyebrow mb-3">Private worksheet</p>
         <h2
           id="quote-comparison-heading"
           className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]"
@@ -224,9 +224,10 @@ export function QuoteComparisonWorksheet() {
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground sm:text-base">
           Record the written terms for the same vehicle and access details.
-          The effective net amount subtracts only the deductions you enter, so
-          compare the assumptions, revision triggers, pickup, payment, licence
-          and receipt details as well as the headline figure.
+          The effective net amount subtracts only the deductions you enter.
+          Compare the assumptions, what could change the offer, pickup,
+          payment, licence and receipt details too, not just the headline
+          offer.
         </p>
         <p className="mt-3 text-sm text-muted-foreground">
           Entries stay in this browser tab and are not submitted to Caraway.{" "}
@@ -391,7 +392,7 @@ export function QuoteComparisonWorksheet() {
                     htmlFor={`${idPrefix}-assumptions`}
                     className="mb-1.5 block text-sm font-medium text-foreground"
                   >
-                    Assumptions and revision triggers
+                    Assumptions and what could change the offer
                   </label>
                   <textarea
                     id={`${idPrefix}-assumptions`}
@@ -508,8 +509,8 @@ export function QuoteComparisonWorksheet() {
       </div>
 
       <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-        This worksheet does not validate a buyer, licence or offer. Check the
-        public register and the complete written transaction before deciding.
+        This worksheet does not verify a buyer, licence or offer. Check the
+        public register and the full written terms before you decide.
       </p>
 
       <div className="worksheet-no-print mt-5 flex flex-col gap-3 sm:flex-row">

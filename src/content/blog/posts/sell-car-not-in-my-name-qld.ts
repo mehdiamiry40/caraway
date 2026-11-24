@@ -9,15 +9,15 @@ export const post: RawBlogPostEntry = {
     "Selling a car for someone else is possible only when you have proper authority. In Queensland, buyers may ask for documents before paying or collecting the vehicle.",
   author: "Caraway",
   content: [
-    "Selling a car that is not in your name can be complicated. The short answer is that you should not try to sell a vehicle unless you own it or have clear authority from the person or organisation that does. Caraway may need to confirm that the person arranging the sale has the authority to sell the vehicle.",
+    "Selling a car that is not in your name can be complicated. In short, do not try to sell a vehicle unless you own it or have clear authority from the person or organisation that does. Caraway may need to confirm that the person arranging the sale has the authority to sell the vehicle.",
 
     "## Quick answer",
 
-    "If the car is registered to someone else, prepare before requesting a quote. You may need written permission, proof of identity, company authority, estate documents, or other evidence that you are allowed to arrange the sale. If you cannot show authority, many buyers will refuse to proceed.",
+    "If the car is registered to someone else, prepare before you ask for a quote. You may need written permission, proof of identity, company authority, estate documents, or other evidence that you are allowed to arrange the sale. If you cannot show authority, many buyers will not go ahead.",
 
     "## Why ownership and authority matters",
 
-    "A vehicle sale transfers valuable property. Buyers need confidence that the person being paid has the right to sell the car and that no one else will later dispute the sale. This matters for private sales, dealer transactions, and [cash for cars Brisbane](/) pickups.",
+    "A vehicle sale transfers valuable property. Buyers need to know that the person being paid has the right to sell the car and that no one else will later dispute the sale. This matters for private sales, dealer transactions, and [cash for cars Brisbane](/) pickups.",
 
     "Authority also protects you. If you sell a car without permission, you may create a dispute with the registered operator, finance holder, family member, company, estate, or buyer. If there is any doubt, pause and get proper documents first.",
 
@@ -37,7 +37,7 @@ export const post: RawBlogPostEntry = {
 
     "### Borrowed vehicle",
 
-    "If you borrowed the car or it is parked at your property but belongs to someone else, you should not sell it without the owner's clear permission. Ask the owner to arrange the sale directly or provide documents that a buyer can verify.",
+    "If you borrowed the car or it is parked at your property but belongs to someone else, do not sell it without the owner's clear permission. Ask the owner to arrange the sale directly or provide documents that a buyer can verify.",
 
     "## What documents or permission may be needed",
 
@@ -54,9 +54,9 @@ export const post: RawBlogPostEntry = {
 
     "## Why buyers may refuse without proper authority",
 
-    "A buyer may refuse because they cannot verify the sale, cannot complete transfer paperwork, or cannot be confident the vehicle is being sold lawfully. This is not just red tape; it helps avoid stolen vehicle disputes, family disputes, estate disputes, and payment disputes.",
+    "A buyer may refuse because they cannot verify the sale, cannot complete transfer paperwork, or cannot be sure the vehicle is being sold lawfully. This is not just red tape. It helps avoid stolen vehicle disputes, family disputes, estate disputes, and payment disputes.",
 
-    "If you are arranging [car removal in Brisbane](/car-removal-brisbane) for a vehicle on behalf of someone else, tell the buyer early. It is easier to sort documents before the tow truck arrives.",
+    "If you are arranging [car removal in Brisbane](/car-removal-brisbane) for someone else's vehicle, tell the buyer early. It is easier to sort out documents before the tow truck arrives.",
 
     "## How to prepare before requesting a quote",
 
@@ -64,7 +64,7 @@ export const post: RawBlogPostEntry = {
 
     "## Want to check whether Caraway can quote it?",
 
-    "Use the [free quote form](/#quote-form), [contact Caraway](/contact), or call 0481 438 444. Tell us who owns the vehicle, who will be present at pickup, and what authority documents are available so we can advise what may be needed before collection.",
+    "Use the [free quote form](/#quote-form), [contact Caraway](/contact), or call 0481 438 444. Tell us who owns the vehicle, who will be there at pickup, and what authority documents you have, so we can tell you what may be needed before pickup.",
 
     "## FAQ",
 

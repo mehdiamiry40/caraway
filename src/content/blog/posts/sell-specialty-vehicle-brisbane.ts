@@ -6,11 +6,11 @@ import { BUSINESS } from "@/lib/site";
    retired-blog-destinations. */
 export const post: RawBlogPostEntry = {
   slug: "sell-specialty-vehicle-brisbane",
-  title: "Sell a Classic, Project Car, Trailer or Rideshare Car in Brisbane",
+  title: "Sell a Classic, Project, Rideshare Car or Trailer: Brisbane",
   metaDescription:
     "Club rego, a missing VIN, a trailer's ATM or a booked hire licence decides how these vehicles sell in Queensland. What to settle first for each, and why.",
   excerpt:
-    "Classic cars, unfinished projects, trailers and ex-rideshare cars each come with one rule that shapes the sale more than their condition does. Settle that first and the rest is an ordinary Queensland sale.",
+    "Classic cars, unfinished projects, trailers and ex-rideshare cars each have one rule that matters more to the sale than their condition. Settle that first and the rest is an ordinary Queensland sale.",
   author: "Caraway",
   content: [
     "Some vehicles carry one rule that decides the sale before condition does. A classic on club rego has conditions on how it can be driven. A project car has to prove what it is. A trailer's paperwork depends on a single weight figure. An ex-rideshare car is still registered as a work vehicle until you change it. Find yours below, settle that first, and the rest is an ordinary Queensland sale.",
@@ -32,7 +32,7 @@ export const post: RawBlogPostEntry = {
 
     "## Unfinished Project Car",
 
-    "Buyers price what is attached to the vehicle today, not the money already spent. A car with its drivetrain, loom, glass, seats and wheels in place is valued as a car. The same car with the engine out and the interior stacked in a spare room is valued closer to a body. Labelled, complete boxes of parts matter to an enthusiast buying the whole project, and much less to a whole-vehicle buyer who has to sort and onsell them. Stored cars in Queensland also collect mould and rust in the floor pans and sills, which [what affects a scrap-car quote](/blog/how-much-is-scrap-car-worth-brisbane) shows feeding into the number.",
+    "Buyers price what is attached to the vehicle today, not the money already spent. A car with its drivetrain, loom, glass, seats and wheels in place is valued as a car. The same car with the engine out and the interior stacked in a spare room is valued closer to a body. Labelled, complete boxes of parts matter to an enthusiast buying the whole project, and much less to a whole-vehicle buyer who has to sort and onsell them. Stored cars in Queensland also collect mould and rust in the floor pans and sills, and [what affects a scrap-car quote](/blog/how-much-is-scrap-car-worth-brisbane) shows how that affects the price.",
 
     "Ownership is where project sales stall. These cars move informally, and the paperwork thins out with every owner. Find the VIN, chassis and engine numbers and check them against whatever documents you hold. If the papers are gone, [lost rego papers in QLD](/blog/lost-rego-papers-qld) sets out what can be reconstructed. If the car is still recorded in someone else's name, read [selling a car that is not in your name](/blog/sell-car-not-in-my-name-qld) first. A car bought cheap as a project may also be a past insurance write-off, which [the written-off vehicle register guide](/blog/wovr-written-off-vehicle-register-qld-guide) explains.",
 
@@ -58,7 +58,7 @@ export const post: RawBlogPostEntry = {
 
     "Many of these vehicles do not roll, are not registered, or sit behind the house. An unregistered vehicle needs a permit to be moved on a road, so most leave on a truck. A shell on stands needs a tilt tray and a straight winch path. A trailer wedged beside a fence needs room to manoeuvre. Measure the path from the vehicle to the street and photograph it before anyone books a pickup. [Tow truck access in Brisbane](/blog/tow-truck-access-brisbane) covers gates, slopes and clearances, and [the paperwork a Queensland seller needs](/blog/what-paperwork-to-sell-a-car-qld) sets out the registered and unregistered sale routes.",
 
-    `Caraway assesses unwanted, damaged, scrap and non-running vehicles within its confirmed Greater Brisbane service area, and not every specialty vehicle will receive an offer. Send the vehicle type, registration status, any concession or licence still attached, whether it rolls, and a photo of the route to the street through a [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. [Pickup is included](/car-removal-brisbane) when Caraway buys and the vehicle and access match the supplied details. This is the same assessment behind Caraway's [cash for cars Brisbane](/) service — a written offer first, then a confirmed collection.`,
+    `Caraway assesses unwanted, damaged, scrap and non-running vehicles within its confirmed Greater Brisbane service area. Not every specialty vehicle will get an offer. Send the vehicle type, registration status, any concession or licence still attached, whether it rolls, and a photo of the route to the street through a [sell my car Brisbane](/sell-my-car-brisbane) quote request, or call **${BUSINESS.phoneDisplay}**. [Towing is free](/car-removal-brisbane) when we buy your vehicle. It works the same way as our [cash for cars Brisbane](/) service: a written offer first, then a confirmed pickup.`,
   ],
   faqs: [
     {

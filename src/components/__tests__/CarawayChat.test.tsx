@@ -196,7 +196,7 @@ describe("CarawayChat", () => {
 
     expect(screen.getByText(/A Caraway buyer reviews every vehicle/)).not.toBeNull();
     expect(
-      screen.getByRole("link", { name: /Full quote/ }).getAttribute("href"),
+      screen.getByRole("link", { name: /Get my quote/ }).getAttribute("href"),
     ).toBe("/#quote-form");
   });
 

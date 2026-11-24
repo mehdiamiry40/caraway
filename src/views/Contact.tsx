@@ -15,25 +15,25 @@ const details = [
   {
     title: "Based in",
     main: BUSINESS.addressFormatted,
-    sub: "Collection plan confirmed before any visit.",
+    sub: "We confirm the pickup plan before any visit.",
   },
   {
     title: "Service area",
     main: `Greater ${BUSINESS.location}`,
-    sub: "Coverage confirmed for your address.",
+    sub: "We confirm we can pick up from your address.",
   },
   {
-    title: "Response and collection",
+    title: "Replies and pickup",
     main: "Replies within one business day",
-    sub: "Collection timing agreed per job.",
+    sub: "Pickup time agreed for each job.",
   },
 ];
 
 const beforeYouCall = [
   { q: "Have ready", a: "Make, model, year, kilometres and condition." },
-  { q: "At pickup", a: "Photo ID and the ownership, registration or finance records for your sale." },
-  { q: "Payment", a: "Method and timing confirmed for each accepted job before collection." },
-  { q: "Pickup cost", a: "Included when Caraway buys and the supplied vehicle and access details match." },
+  { q: "At pickup", a: "Photo ID and the ownership, rego or finance records for your sale." },
+  { q: "Payment", a: "How and when you're paid is confirmed before pickup, for each job we accept." },
+  { q: "Towing", a: "Free when we buy your car and the car and access match what you told us." },
 ];
 
 const channelClass =
@@ -46,7 +46,7 @@ export default function Contact() {
       title="Talk to a real Brisbane buyer."
       subtitle={
         <p>
-          Request a free, no-obligation assessment for your vehicle.
+          Get a free quote for your car. No obligation.
         </p>
       }
     >

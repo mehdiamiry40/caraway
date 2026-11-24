@@ -43,7 +43,7 @@ export function SellerSituations() {
             id="seller-situations-heading"
             className="text-3xl font-bold leading-[1.1] text-primary text-balance sm:text-4xl md:text-[2.5rem]"
           >
-            What to prepare for common vehicle sales.
+            What to have ready for common car sales.
           </h2>
           {/* The "not customer reviews" disclaimer stays — it's the one thing
               here a reader can't infer from the cards. */}

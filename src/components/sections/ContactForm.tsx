@@ -96,7 +96,7 @@ export function ContactForm() {
           <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
           <h2 className="mt-4 text-[1.5rem] font-semibold leading-tight text-primary">Message received — thanks!</h2>
           <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
-            We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
+            We aim to reply within one business day. If you don&apos;t hear back, check your spam folder or call us.
           </p>
           <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto">
             Send another message

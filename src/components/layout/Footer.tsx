@@ -29,7 +29,7 @@ const companyLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
   { label: "Vehicle data", href: "/resources/queensland-vehicle-data" },
-  { label: "Get a quote", href: "/#quote-form" },
+  { label: "Get my quote", href: "/#quote-form" },
 ];
 
 const legalLinks = [
@@ -61,7 +61,7 @@ export function Footer() {
           <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
             <Logo tone="dark" />
             <p className="mt-4 max-w-sm text-base leading-relaxed text-on-dark-hi">
-              Brisbane cash for cars and pickup. We quote before we load — running, damaged, or unregistered.
+              Brisbane cash for cars with free towing when we buy. We quote before we load — running, damaged or unregistered.
             </p>
 
             <TrackedPhoneLink
@@ -91,7 +91,7 @@ export function Footer() {
                 {BUSINESS.addressFormatted}
               </address>
               <p className="max-w-xs text-[0.9375rem] leading-relaxed text-on-dark-hi">
-                Collection timing is confirmed for each accepted job.
+                We confirm the pickup time for each job.
               </p>
             </div>
           </div>

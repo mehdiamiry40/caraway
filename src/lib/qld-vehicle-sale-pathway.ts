@@ -129,7 +129,7 @@ export function buildQldVehicleSalePathway(
     id: "authority",
     heading: "Confirm authority and identify the transaction",
     detail:
-      "Confirm who is entitled to sell the vehicle, identify the buyer, match the vehicle identifiers, and agree on the registration outcome, amount, payment, collection and receipt terms before handover.",
+      "Confirm who is entitled to sell the vehicle, identify the buyer, match the vehicle identifiers, and agree on the registration outcome, amount, payment, pickup and receipt terms before handover.",
     sources: ["selling", "checkRegistration"],
   });
 
@@ -157,7 +157,7 @@ export function buildQldVehicleSalePathway(
         id: "finance",
         heading: "Resolve finance or a registered security interest",
         detail:
-          "Obtain a current lender payout and agreed discharge process where finance may remain. A PPSR search can show a registered security interest and usually recorded stolen or written-off information, but not the owner or the amount owing.",
+          "Get a current lender payout and agreed discharge process if finance may remain. A PPSR search can show a registered security interest and usually recorded stolen or written-off information, but not the owner or the amount owing.",
         sources: ["ppsr"],
       });
     }
@@ -165,7 +165,7 @@ export function buildQldVehicleSalePathway(
     return {
       heading: "Confirm the vehicle's status before choosing a pathway",
       summary:
-        "The answers do not yet establish which Queensland seller process applies. Check the live registration record and issuing jurisdiction first.",
+        "Your answers do not yet show which Queensland seller process applies. Check the live registration record and issuing jurisdiction first.",
       steps,
       cautions,
       sourceKeys: uniqueSourceKeys(steps),
@@ -177,7 +177,7 @@ export function buildQldVehicleSalePathway(
       id: "finance",
       heading: "Resolve finance or a registered security interest",
       detail:
-        "Obtain a current lender payout and agreed discharge process where finance may remain. A PPSR search can show a registered security interest and usually recorded stolen or written-off information, but not the owner or the amount owing.",
+        "Get a current lender payout and agreed discharge process if finance may remain. A PPSR search can show a registered security interest and usually recorded stolen or written-off information, but not the owner or the amount owing.",
       sources: ["ppsr"],
     });
   }
@@ -187,7 +187,7 @@ export function buildQldVehicleSalePathway(
       id: "special-authority",
       heading: "Resolve any special authority before handover",
       detail:
-        "Pause where an insurer, deceased estate, company, joint registration, representative or written-off-vehicle issue may affect who can act or what must happen next. Obtain the applicable documents and confirm the official pathway.",
+        "Pause if an insurer, deceased estate, company, joint registration, representative or written-off-vehicle issue may affect who can act or what must happen next. Get the documents that apply and confirm the official pathway.",
       sources: ["selling", "cancel"],
     });
   }
@@ -197,7 +197,7 @@ export function buildQldVehicleSalePathway(
       id: "buyer-licence",
       heading: "Verify any claimed motor-dealer licence",
       detail:
-        "Search Queensland's public motor-licence register using the supplied holder or business details. A business description, ABN, website or cash-for-cars wording does not by itself establish that the buyer is a licensed motor dealer.",
+        "Search Queensland's public motor-licence register using the holder or business details the buyer gave you. A business description, ABN, website or cash-for-cars wording does not by itself show that the buyer is a licensed motor dealer.",
       sources: ["licenceRegister"],
     });
   }
@@ -286,7 +286,7 @@ export function buildQldVehicleSalePathway(
         id: "choose-outcome",
         heading: "Choose transfer or cancellation before handover",
         detail:
-          "A registered transfer and cancellation before an unregistered or for-parts sale are different processes. Confirm the intended outcome with TMR and the buyer before certificates, plates, movement or collection are arranged.",
+          "A registered transfer and cancellation before an unregistered or for-parts sale are different processes. Confirm the intended outcome with TMR and the buyer before certificates, plates, movement or pickup are arranged.",
         sources: ["selling", "transferSeller", "cancel"],
       });
       cautions.push(
@@ -327,7 +327,7 @@ export function buildQldVehicleSalePathway(
     } else if (inputs.movementPlan === "professional-transport") {
       addStep({
         id: "professional-transport",
-        heading: "Confirm the transport method before collection",
+        heading: "Confirm the transport method before pickup",
         detail:
           "Tell the transport provider that the vehicle is unregistered and disclose whether it is safe, rolls, steers and brakes. Confirm the lawful loading and transport method; a sale record does not authorise road use.",
         sources: ["unregisteredMovement"],
@@ -360,7 +360,7 @@ export function buildQldVehicleSalePathway(
     inputs.registrationStatus === "already-unregistered"
       ? "Prepare the signed unregistered-sale record and confirm any road movement separately."
       : inputs.outcome === "cancel-for-parts"
-        ? "Complete deregistration and the applicable plate step before the for-parts sale, then retain the signed record."
+        ? "Complete deregistration and the applicable plate step before the for-parts sale, then keep the signed record."
         : inputs.outcome === "transfer-registration"
           ? "Prepare the certificates, buyer details, seller-side transfer and retained records that apply to this registered sale."
           : "Decide whether registration will transfer or be cancelled before the vehicle is handed over.";

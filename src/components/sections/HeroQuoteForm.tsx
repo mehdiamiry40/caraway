@@ -164,7 +164,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
             variant="outline"
             size="sm"
           >
-            Submit another vehicle
+            Quote another car
           </Button>
         </div>
       ) : (
@@ -349,7 +349,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
             </div>
 
             <Button type="submit" size="lg" className="!mt-5 w-full" isLoading={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Get my free quote"}
+              {isSubmitting ? "Sending..." : "Get my quote"}
             </Button>
 
             {errorMessage && (
@@ -375,7 +375,7 @@ export function HeroQuoteForm({ source = "hero_quote_form" }: { source?: string 
             )}
 
             <p className="text-center text-[0.8125rem] leading-snug text-muted-foreground">
-              No obligation to proceed ·{" "}
+              No obligation ·{" "}
               <Link
                 href="/privacy"
                 className="font-semibold text-primary underline underline-offset-2"
