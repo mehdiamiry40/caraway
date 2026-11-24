@@ -30,12 +30,12 @@ export default function GlobalError({
   return (
     <html lang="en-AU">
       <body>
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#18201C", background: "#FAF9F4" }}>
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", fontFamily: "system-ui, sans-serif", color: "#1C2430", background: "#FFFFFF" }}>
           <div style={{ maxWidth: "28rem", textAlign: "center" }}>
-            <h1 style={{ fontSize: "1.875rem", fontWeight: 700, marginBottom: "0.75rem", color: "#123A2C" }}>
+            <h1 style={{ fontSize: "1.875rem", fontWeight: 700, marginBottom: "0.75rem", color: "#146AEB" }}>
               Something went wrong
             </h1>
-            <p style={{ color: "#576059", marginBottom: "1.5rem", lineHeight: 1.5 }}>
+            <p style={{ color: "#576170", marginBottom: "1.5rem", lineHeight: 1.5 }}>
               We hit an unexpected error loading the page. Please try again.
             </p>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem" }}>
@@ -44,8 +44,8 @@ export default function GlobalError({
                 onClick={reset}
                 style={{
                   padding: "0.75rem 2rem",
-                  background: "#F0B505",
-                  color: "#1D1B11",
+                  background: "#FFC105",
+                  color: "#151D28",
                   border: "none",
                   borderRadius: 3,
                   fontSize: "0.875rem",
@@ -61,8 +61,8 @@ export default function GlobalError({
                 style={{
                   padding: "0.75rem 2rem",
                   background: "transparent",
-                  color: "#123A2C",
-                  border: "2px solid #123A2C",
+                  color: "#146AEB",
+                  border: "2px solid #146AEB",
                   borderRadius: 3,
                   fontSize: "0.875rem",
                   fontWeight: 700,
