@@ -4,8 +4,8 @@
   "description": "Brisbane vehicle buyer offering vehicle-specific quotes. Pickup is included when Caraway buys, subject to vehicle details, access, and availability.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#141924",
+  "background_color": "#FAF9F4",
+  "theme_color": "#123A2C",
   "icons": [
     {
       "src": "/favicon.svg",
