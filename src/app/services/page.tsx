@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, LayoutGrid } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Car, CarFront, CloudHail, FileX2, Recycle, Truck, Wrench } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { breadcrumbListSchema } from "@/lib/json-ld-schemas";
-import { serviceIcon } from "@/lib/service-icons";
 import { services } from "@/data/services";
 import {
   BUSINESS,
@@ -50,6 +50,16 @@ export const metadata: Metadata = {
 };
 
 const canonical = `${SITE_URL}/services`;
+
+const SERVICE_ICONS: Record<string, LucideIcon> = {
+  "car-removal-brisbane": Truck,
+  "sell-my-car-brisbane": CarFront,
+  "scrap-car-removal-brisbane": Recycle,
+  "damaged-cars-brisbane": Wrench,
+  "unregistered-cars-brisbane": FileX2,
+  "hail-damaged-cars-brisbane": CloudHail,
+  "sell-toyota-hilux-brisbane": Car,
+};
 export const SERVICE_HUB_HEADING = "Vehicle buying options across Brisbane.";
 
 export default function ServicesPage() {
@@ -84,38 +94,32 @@ export default function ServicesPage() {
         ]}
       />
       <PageShell
-        icon={LayoutGrid}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services" },
         ]}
-        eyebrow="Services"
         title={SERVICE_HUB_HEADING}
         subtitle={
           <p>Pick the option that fits your vehicle.</p>
         }
       >
-        <section className="bg-background py-12 sm:py-16 lg:py-20">
+        <section className="bg-background py-10 sm:py-12 lg:py-16">
           <div className="site-container">
-            <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {/* One outlined box per service, each with a line icon; the whole
+                box is the link. */}
+            <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
               {services.map((service) => {
-                const Icon = serviceIcon(service.slug);
+                const Icon = SERVICE_ICONS[service.slug] ?? CarFront;
                 return (
                   <li key={service.slug}>
                     <Link
                       href={`/${service.slug}`}
-                      className="group flex h-full flex-col items-center gap-4 border border-border bg-card px-3 py-7 text-center card-lift hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-5 sm:py-9"
+                      className="group flex h-full flex-col items-center gap-3 rounded-sm border-2 border-accent px-3 py-7 text-center transition-colors duration-150 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:px-5"
                     >
-                      <span className="flex h-16 w-16 items-center justify-center bg-secondary text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground sm:h-20 sm:w-20">
-                        <Icon className="h-8 w-8 sm:h-10 sm:w-10" strokeWidth={1.5} aria-hidden="true" />
-                      </span>
-                      <h2 className="font-display text-lg font-bold leading-[1.15] text-primary text-balance sm:text-xl">
+                      <Icon className="h-12 w-12 text-accent group-hover:text-accent-foreground sm:h-14 sm:w-14" strokeWidth={1.5} aria-hidden="true" />
+                      <h2 className="text-lg font-bold leading-snug text-primary text-balance group-hover:text-accent-foreground sm:text-xl">
                         {service.h1.split(" — ")[0]}
                       </h2>
-                      <ArrowRight
-                        className="mt-auto h-4 w-4 text-accent-ink transition-transform group-hover:translate-x-1"
-                        aria-hidden="true"
-                      />
                     </Link>
                   </li>
                 );
@@ -123,7 +127,7 @@ export default function ServicesPage() {
             </ul>
           </div>
         </section>
-        <FinalCTA />
+        <FinalCTA tone="green" />
       </PageShell>
     </>
   );

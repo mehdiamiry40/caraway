@@ -11,5 +11,4 @@ function font(name: string) {
   });
 }
 
-export const Inter = font("inter");
-export const Barlow_Condensed = font("barlow-condensed");
+export const Asap = font("asap");

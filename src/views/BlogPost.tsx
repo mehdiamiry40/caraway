@@ -10,22 +10,8 @@ import { getSmartRelatedPosts } from "@/lib/related-posts";
 import { renderBlogContent } from "@/lib/blog-markdown";
 import { services } from "@/data/services";
 import { suburbs } from "@/data/suburbs";
-import {
-  ArrowLeft,
-  ArrowRight,
-  BookCheck,
-  BookOpen,
-  CarFront,
-  Clock,
-  ExternalLink,
-  MapPin,
-  MessageCircleQuestion,
-  Phone,
-  Share2,
-} from "lucide-react";
-import { IconHeading, SidebarLinks } from "@/components/templates/PagePieces";
-import { blogIcon } from "@/lib/blog-icons";
-import { serviceIcon } from "@/lib/service-icons";
+import { ArrowLeft, ArrowRight, Phone } from "lucide-react";
+import { SectionHeading, SidebarLinks } from "@/components/templates/PagePieces";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
@@ -137,19 +123,20 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
   const authorAffiliation =
     authorName === BUSINESS.name ? authorRole : `${authorRole}, ${BUSINESS.name}`;
 
-  const postIcon = blogIcon(post.title);
-
   const authorInitials = authorName
     .split(" ")
     .map((part) => part[0])
     .join("")
     .slice(0, 2);
 
+  const shareLinkClass =
+    "inline-flex h-11 w-11 items-center justify-center rounded-md border border-input bg-card text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  const hasRelatedLinks = relatedServiceData.length > 0 || relatedSuburbData.length > 0;
+
   return (
     <>
       <ReadingProgress />
       <PageShell
-        icon={postIcon}
         breadcrumbs={breadcrumbs}
         eyebrow={post.category}
         title={post.title}
@@ -157,238 +144,229 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
           <p className="max-w-[60ch]">{post.excerpt}</p>
         }
       >
-        <div className="site-container py-14 sm:py-20 lg:py-24">
-          <article className="mx-auto max-w-3xl">
-            <header className="mb-12 pb-8 border-b border-border/60">
-              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground">
-                <Link
-                  href={authorHref}
-                  className="inline-flex items-center gap-2.5 text-foreground hover:text-primary transition-colors"
+        <div className="site-container py-10 sm:py-14 lg:py-16">
+          <div className="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-12">
+            <article className="min-w-0 lg:col-span-8">
+              <header className="mb-9 border-b border-border pb-5">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[0.9375rem] text-muted-foreground">
+                  <Link
+                    href={authorHref}
+                    className="inline-flex min-h-11 items-center gap-2.5 rounded-sm text-foreground hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <span
+                      aria-hidden
+                      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm bg-primary text-[0.9375rem] font-semibold text-primary-foreground"
+                    >
+                      {authorInitials}
+                    </span>
+                    <span className="font-semibold">{authorName}</span>
+                  </Link>
+                  <span aria-hidden className="hidden text-foreground/30 sm:inline">·</span>
+                  <div className="inline-flex flex-wrap items-center gap-x-1.5">
+                    <time dateTime={post.date} className="tabular-nums">
+                      {formatDate(post.date)}
+                    </time>
+                    {showUpdated && (
+                      <span>
+                        (updated{" "}
+                        <time dateTime={post.updatedAt} className="tabular-nums">
+                          {formatDate(post.updatedAt)}
+                        </time>
+                        )
+                      </span>
+                    )}
+                  </div>
+                  <span aria-hidden className="hidden text-foreground/30 sm:inline">·</span>
+                  <span>
+                    {post.readTime}
+                  </span>
+                  <Link
+                    href={`/blog/category/${categorySlug(post.category)}`}
+                    className="inline-flex min-h-11 items-center rounded-sm font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 hover:decoration-primary sm:ml-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {post.category}
+                  </Link>
+                </div>
+              </header>
+
+              <div className="prose-body max-w-[70ch] break-words [overflow-wrap:anywhere]">
+                {renderBlogContent(post.content)}
+              </div>
+
+              {post.interactiveTool === "quote-comparison-worksheet" ? (
+                <QuoteComparisonWorksheetLoader />
+              ) : null}
+
+              {post.interactiveTool === "qld-vehicle-sale-record-builder" ? (
+                <QldVehicleSaleRecordBuilderLoader />
+              ) : null}
+
+              {renderableFaqs.length > 0 && (
+                <section
+                  aria-labelledby="blog-post-faq-heading"
+                  className="mt-14"
                 >
-                  <span
+                  <SectionHeading id="blog-post-faq-heading">
+                    Frequently asked questions
+                  </SectionHeading>
+                  <Accordion items={renderableFaqs} />
+                </section>
+              )}
+
+              {post.sources && post.sources.length > 0 && (
+                <aside className="mt-14 border-t-2 border-primary pt-5">
+                  <p className="text-xl font-bold text-primary">
+                    Sources and review
+                  </p>
+                  {post.reviewedAt && (
+                    <p className="mt-1 text-[0.9375rem] text-muted-foreground">
+                      Regulatory information reviewed{" "}
+                      <time dateTime={post.reviewedAt}>{formatDate(post.reviewedAt)}</time>.
+                    </p>
+                  )}
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-base marker:text-accent">
+                    {post.sources.map((source) => (
+                      <li key={source.url} className="pl-1">
+                        <a
+                          href={source.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-8 items-center font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 hover:decoration-primary"
+                        >
+                          {source.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              )}
+
+              <footer className="mt-14 space-y-9">
+                <div className="flex items-start gap-4 border-t-2 border-primary pt-5">
+                  <div
                     aria-hidden
-                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-none bg-primary text-primary-foreground font-display text-base font-bold"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm bg-primary text-lg font-semibold text-primary-foreground"
                   >
                     {authorInitials}
-                  </span>
-                  <span className="font-medium">{authorName}</span>
-                </Link>
-                <span aria-hidden className="text-muted-foreground/50">·</span>
-                <div className="inline-flex items-center gap-1.5">
-                  <time dateTime={post.date} className="tabular-nums">
-                    {formatDate(post.date)}
-                  </time>
-                  {showUpdated && (
-                    <span className="text-muted-foreground/80">
-                      (updated{" "}
-                      <time dateTime={post.updatedAt} className="tabular-nums">
-                        {formatDate(post.updatedAt)}
-                      </time>
-                      )
-                    </span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-lg font-bold leading-tight text-foreground">
+                      <Link href={authorHref} className="underline-offset-4 hover:text-primary hover:underline">
+                        {authorName}
+                      </Link>
+                      <span className="font-normal text-muted-foreground">
+                        {" "}
+                        &middot; {authorAffiliation}
+                      </span>
+                    </p>
+                    <p className="mt-1.5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted-foreground">
+                      {authorBio}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <p className="text-[0.9375rem] font-semibold text-foreground">
+                    Share
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a
+                      href={xShare}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={shareLinkClass}
+                      aria-label="Share on X"
+                    >
+                      <TwitterIcon className="h-4 w-4" aria-hidden />
+                    </a>
+                    <a
+                      href={fbShare}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={shareLinkClass}
+                      aria-label="Share on Facebook"
+                    >
+                      <FacebookIcon className="h-4 w-4" aria-hidden />
+                    </a>
+                    <a
+                      href={liShare}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={shareLinkClass}
+                      aria-label="Share on LinkedIn"
+                    >
+                      <LinkedinIcon className="h-4 w-4" aria-hidden />
+                    </a>
+                    <CopyLinkButton url={canonical} />
+                  </div>
+                </div>
+
+                <div className="on-band rounded-md bg-primary px-6 py-8 text-center text-on-dark-hi sm:px-9 sm:py-9">
+                  <p className="text-[1.625rem] font-bold capitalize leading-[1.2] text-balance sm:text-[2rem]">
+                    Ready to sell your car for cash?
+                  </p>
+                  <p className="mb-6 mt-2 text-[1.0625rem] leading-relaxed text-on-dark-hi sm:text-lg">
+                    One form. A written offer. Pickup included when we buy.
+                  </p>
+                  <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <Link
+                      href="/#quote-form"
+                      className={cn(buttonVariants({ variant: "outlineOnDark" }), "w-full ring-offset-primary sm:w-auto")}
+                    >
+                      Get my quote
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </Link>
+                    <TrackedPhoneLink
+                      href={BUSINESS.phoneTel}
+                      location="blog_post_footer"
+                      className={cn(buttonVariants({ variant: "default" }), "w-full ring-offset-primary sm:w-auto")}
+                      ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
+                    >
+                      <Phone className="h-4 w-4" aria-hidden />
+                      Call {BUSINESS.phoneDisplay}
+                    </TrackedPhoneLink>
+                  </div>
+                </div>
+              </footer>
+            </article>
+
+            {hasRelatedLinks && (
+              <div className="lg:col-span-4">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:sticky lg:top-[calc(var(--header-h)+2rem)] lg:grid-cols-1">
+                  {relatedServiceData.length > 0 && (
+                    <SidebarLinks
+                      label="Related services"
+                      items={relatedServiceData.map((service) => ({
+                        href: `/${service.slug}`,
+                        label: service.h1,
+                      }))}
+                    />
+                  )}
+                  {relatedSuburbData.length > 0 && (
+                    <SidebarLinks
+                      label="Areas we service"
+                      items={relatedSuburbData.map((suburb) => ({
+                        href: `/locations/${suburb.slug}`,
+                        label: suburb.h1,
+                      }))}
+                    />
                   )}
                 </div>
-                <span aria-hidden className="text-muted-foreground/50">·</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
-                  {post.readTime}
-                </span>
-                <Link
-                  href={`/blog/category/${categorySlug(post.category)}`}
-                  className="ml-auto inline-flex items-center rounded-none bg-accent/10 px-3 py-1 text-[11px] font-medium text-accent-ink hover:bg-accent/15 transition-colors"
-                >
-                  {post.category}
-                </Link>
-              </div>
-            </header>
-
-            <div className="prose-body max-w-[65ch] mx-auto break-words [overflow-wrap:anywhere]">
-              {renderBlogContent(post.content)}
-            </div>
-
-            {post.interactiveTool === "quote-comparison-worksheet" ? (
-              <QuoteComparisonWorksheetLoader />
-            ) : null}
-
-            {post.interactiveTool === "qld-vehicle-sale-record-builder" ? (
-              <QldVehicleSaleRecordBuilderLoader />
-            ) : null}
-
-            {renderableFaqs.length > 0 && (
-              <section
-                aria-labelledby="blog-post-faq-heading"
-                className="mt-12 border-t border-border/60 pt-10"
-              >
-                <IconHeading id="blog-post-faq-heading" icon={MessageCircleQuestion} tone="solid" className="mb-2">
-                  Frequently asked questions
-                </IconHeading>
-                <Accordion items={renderableFaqs} />
-              </section>
-            )}
-
-            {post.sources && post.sources.length > 0 && (
-              <aside className="mt-12 border border-border bg-muted/50 p-5 sm:p-6">
-                <p className="mb-3 flex items-center gap-2 font-display text-xl font-bold text-foreground">
-                  <BookCheck className="h-5 w-5 text-accent-ink" aria-hidden="true" />
-                  Sources and review
-                </p>
-                {post.reviewedAt && (
-                  <p className="mb-3 text-sm text-muted-foreground">
-                    Regulatory information reviewed{" "}
-                    <time dateTime={post.reviewedAt}>{formatDate(post.reviewedAt)}</time>.
-                  </p>
-                )}
-                <ul className="space-y-2 text-sm">
-                  {post.sources.map((source) => (
-                    <li key={source.url} className="flex items-start gap-2">
-                      <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-                      <a
-                        href={source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-                      >
-                        {source.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </aside>
-            )}
-
-            {(relatedServiceData.length > 0 || relatedSuburbData.length > 0) && (
-              <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {relatedServiceData.length > 0 && (
-                  <SidebarLinks
-                    label="Related services"
-                    items={relatedServiceData.map((service) => ({
-                      href: `/${service.slug}`,
-                      label: service.h1,
-                      icon: serviceIcon(service.slug),
-                    }))}
-                  />
-                )}
-                {relatedSuburbData.length > 0 && (
-                  <SidebarLinks
-                    label="Areas we service"
-                    items={relatedSuburbData.map((suburb) => ({
-                      href: `/locations/${suburb.slug}`,
-                      label: suburb.h1,
-                      icon: MapPin,
-                    }))}
-                  />
-                )}
               </div>
             )}
-
-            <footer className="mt-16 space-y-10">
-              <div className="flex items-start gap-4 border border-border bg-card p-5 sm:p-6">
-                <div
-                  aria-hidden
-                  className="flex h-12 w-12 shrink-0 items-center justify-center bg-primary font-display text-xl font-bold text-primary-foreground"
-                >
-                  {authorInitials}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="font-display text-xl font-bold leading-tight text-foreground">
-                    <Link href={authorHref} className="hover:text-primary transition-colors">
-                      {authorName}
-                    </Link>
-                    <span className="font-normal text-muted-foreground">
-                      {" "}
-                      &middot; {authorAffiliation}
-                    </span>
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                    {authorBio}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <p className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                  <Share2 className="h-4 w-4" aria-hidden="true" />
-                  Share
-                </p>
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={xShare}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-10 w-10 items-center justify-center border border-border/80 bg-card text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    aria-label="Share on X"
-                  >
-                    <TwitterIcon className="h-4 w-4" aria-hidden />
-                  </a>
-                  <a
-                    href={fbShare}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-10 w-10 items-center justify-center border border-border/80 bg-card text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    aria-label="Share on Facebook"
-                  >
-                    <FacebookIcon className="h-4 w-4" aria-hidden />
-                  </a>
-                  <a
-                    href={liShare}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex h-10 w-10 items-center justify-center border border-border/80 bg-card text-foreground hover:border-primary/40 hover:text-primary transition-colors"
-                    aria-label="Share on LinkedIn"
-                  >
-                    <LinkedinIcon className="h-4 w-4" aria-hidden />
-                  </a>
-                  <CopyLinkButton url={canonical} />
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center bg-primary text-primary-foreground px-6 py-10 sm:px-10 sm:py-12 text-center">
-                <span className="mb-4 flex h-14 w-14 items-center justify-center bg-cta text-cta-foreground">
-                  <CarFront className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-                </span>
-                <p
-                  className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold leading-[1.1] max-w-xl mx-auto text-balance"
-                  style={{ letterSpacing: "var(--tracking-tight)" }}
-                >
-                  Ready to sell your car for cash?
-                </p>
-                <p className="text-primary-foreground/80 text-sm sm:text-base mt-3 mb-7 max-w-xl mx-auto leading-relaxed">
-                  One form. A written offer. Pickup included when we buy.
-                </p>
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                  <Link
-                    href="/#quote-form"
-                    className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
-                  >
-                    Get my quote
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </Link>
-                  <TrackedPhoneLink
-                    href={BUSINESS.phoneTel}
-                    location="blog_post_footer"
-                    className={cn(buttonVariants({ variant: "inkOutline" }), "w-full sm:w-auto")}
-                    ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
-                  >
-                    <Phone className="h-4 w-4" aria-hidden />
-                    Call {BUSINESS.phoneDisplay}
-                  </TrackedPhoneLink>
-                </div>
-              </div>
-            </footer>
-          </article>
+          </div>
 
           {relatedPosts.length > 0 && (
-            <section className="mt-20 sm:mt-24">
-              <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-                <p className="flex items-center gap-2 font-display text-2xl font-bold text-foreground">
-                  <BookOpen className="h-5 w-5 text-accent-ink" aria-hidden="true" />
+            <section className="mt-16 sm:mt-20">
+              <div className="mb-6 flex items-baseline justify-between sm:mb-8">
+                <p className="text-[1.625rem] font-bold leading-tight text-primary sm:text-[1.875rem]">
                   Keep reading
                 </p>
-                <p className="text-xs font-medium text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {relatedPosts.length} related
                 </p>
               </div>
-              <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+              <ul className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
                 {relatedPosts.map((related) => (
                   <li key={related.slug}>
                     <BlogPostCard post={related} variant="compact" showDate={false} />
@@ -398,16 +376,9 @@ export default function BlogPost({ post }: { post: BlogPostType }) {
             </section>
           )}
 
-          <div className="mt-14">
-            <Link
-              href="/blog"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              <ArrowLeft
-                className="h-4 w-4 transition-transform group-hover:-translate-x-0.5"
-                strokeWidth={1.75}
-                aria-hidden
-              />
+          <div className="mt-10">
+            <Link href="/blog" className="link-arrow link-back text-base">
+              <ArrowLeft aria-hidden />
               Back to all posts
             </Link>
           </div>

@@ -57,7 +57,7 @@ export default function ReviewCardPage() {
         <div className="mt-6 mb-3">
           <p className="eyebrow">Review operations</p>
         </div>
-        <h1 className="font-display text-3xl leading-tight text-foreground">
+        <h1 className="text-3xl leading-tight text-foreground">
           Printable customer feedback card
         </h1>
         <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -91,7 +91,7 @@ export default function ReviewCardPage() {
           </p>
           <h2
             id="review-card-heading"
-            className="review-card-title mt-8 font-display text-4xl font-bold leading-tight text-slate-950 sm:text-5xl"
+            className="review-card-title mt-8 text-4xl font-bold leading-tight text-slate-950 sm:text-5xl"
           >
             Share honest feedback
           </h2>
@@ -126,7 +126,7 @@ export default function ReviewCardPage() {
             Positive, neutral and critical feedback are welcome. There is no
             obligation, no incentive, and no requested rating or wording.
           </p>
-          <p className="review-card-later font-display text-2xl font-semibold text-[#2C5697]">
+          <p className="review-card-later text-2xl font-semibold text-[#2C5697]">
             Review later, in your own time.
           </p>
           <p className="review-card-privacy border-t border-slate-200 pt-5 text-xs leading-relaxed text-slate-500">

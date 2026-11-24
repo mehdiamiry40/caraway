@@ -55,10 +55,10 @@ export function CopyLinkButton({ url }: CopyLinkButtonProps) {
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex items-center gap-2 rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
+        className="inline-flex h-11 cursor-pointer items-center gap-2 rounded-md border border-input bg-card px-4 text-[0.9375rem] font-semibold text-primary transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         aria-label="Copy link to article"
       >
-        <Link2 className="h-3.5 w-3.5" aria-hidden />
+        <Link2 className="h-4 w-4" aria-hidden />
         <span>{label}</span>
       </button>
       <span className="sr-only" aria-live="polite">

@@ -1,25 +1,35 @@
 @import "tailwindcss";
 
-/* Caraway design system: asphalt ink, hi-vis yellow actions and cash-green
-   confirmations on a clean white page. Square corners, heavy condensed
-   signage type. Built to read as a Brisbane cash-for-cars buyer at a glance. */
+/* Caraway design system: a bright, plain-spoken local trade look. White
+   pages, a blue for headings and bands, a green for the navigation bar, ticks
+   and alternate bands, and yellow kept for the primary button. One typeface.
+   See COLORS.md for the palette, measured contrast, type scale and patterns. */
 
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-barlow-condensed), "Arial Narrow", var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-asap), "Trebuchet MS", "Segoe UI", Arial, system-ui, sans-serif;
+  /* One family: display is the same face, used bold. */
+  --font-display: var(--font-asap), "Trebuchet MS", "Segoe UI", Arial, system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* "Bold" is 740 rather than 700. Asap is unhinted, and FreeType's
+     auto-hinter (Linux, ChromeOS) closes the gap under the dot of i and j at
+     weight 700 on a few common sizes (26, 27, 31 and 32 device pixels). 740
+     renders cleanly from 14 pixels up. Keep text below 14px at semibold. */
+  --font-weight-bold: 740;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
   --color-primary: hsl(var(--primary));
+  --color-primary-hover: hsl(var(--primary-hover));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
+  --color-accent-hover: hsl(var(--accent-hover));
   --color-accent-foreground: hsl(var(--accent-foreground));
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
@@ -39,31 +49,29 @@
   --color-on-dark: hsl(var(--on-dark));
   --color-on-dark-hi: hsl(var(--on-dark-hi));
 
-  /* Hi-vis yellow: the primary action colour and the number-plate accent. */
+  /* Yellow: the primary action button and the logo plate. */
   --color-plate: hsl(var(--plate));
   --color-plate-foreground: hsl(var(--plate-foreground));
   --color-cta: hsl(var(--cta));
   --color-cta-hover: hsl(var(--cta-hover));
   --color-cta-foreground: hsl(var(--cta-foreground));
 
-  /* Accessible TEXT variants. Yellow and mid green are AA only as surfaces;
-     --cta-ink / --accent-ink are the versions that pass as text on white, and
-     --cta-bright / --accent-on-dark are the versions for dark bands. */
+  /* Accessible TEXT variants. --accent-ink is the green that passes as text
+     on white and on the tint band; --cta-ink is amber text on white;
+     --cta-bright is yellow for marks on coloured bands (never body text). */
   --color-cta-ink: hsl(var(--cta-ink));
   --color-accent-ink: hsl(var(--accent-ink));
   --color-cta-bright: hsl(var(--cta-bright));
   --color-accent-on-dark: hsl(var(--accent-on-dark));
 
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
-  --shadow-md: 0 2px 8px hsl(var(--shadow-color) / 0.08);
-  --shadow-lg: 0 8px 24px hsl(var(--shadow-color) / 0.10);
-  --shadow-xl: 0 14px 36px hsl(var(--shadow-color) / 0.12);
-  --shadow-glow: 0 10px 24px hsl(var(--cta) / 0.28);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
+  --shadow-md: 0 2px 6px hsl(var(--shadow-color) / 0.1);
+  --shadow-lg: 0 2px 4px hsl(var(--shadow-color) / 0.08), 0 10px 24px -8px hsl(var(--shadow-color) / 0.22);
+  --shadow-xl: 0 2px 4px hsl(var(--shadow-color) / 0.1), 0 20px 44px -14px hsl(var(--shadow-color) / 0.38);
   --shadow-focus: 0 0 0 3px hsl(var(--background)), 0 0 0 5px hsl(var(--ring) / 0.6);
 
-  /* Condensed bold type is already tight; it wants no negative tracking. */
-  --tracking-display: 0;
-  --tracking-tight: 0;
+  --tracking-display: -0.01em;
+  --tracking-tight: -0.005em;
   --tracking-snug: 0;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
@@ -73,95 +81,110 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* Square corners throughout, like signage and number plates. Only
-     rounded-full (dots, pills) keeps a radius. */
-  --radius-xs: 0;
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-2xl: 0;
-  --radius-3xl: 0;
-  --radius-4xl: 0;
+  /* Corners are nearly square, like a printed sign. */
+  --radius-xs: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-3xl: 8px;
+  --radius-4xl: 8px;
   --radius-full: 9999px;
 }
 
 :root {
   --background: 0 0% 100%;             /* #FFFFFF page */
-  --foreground: 222 28% 11%;           /* #141924 asphalt ink */
-  --card: 0 0% 100%;
-  --card-foreground: 222 28% 11%;
+  --foreground: 216 26% 15%;           /* #1C2430 body text */
+  --card: 0 0% 100%;                   /* #FFFFFF form and panel surface */
+  --card-foreground: 216 26% 15%;
 
-  --primary: 222 28% 11%;              /* #141924 ink — headings, dark bands */
+  --primary: 216 84% 50%;              /* #146AEB blue: headings, bands, footer */
+  --primary-hover: 216 86% 43%;        /* #0F5BCC */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 220 16% 96%;            /* #F3F4F6 light concrete */
-  --secondary-foreground: 222 28% 11%;
+  --secondary: 214 60% 97%;            /* #F3F7FC tint band */
+  --secondary-foreground: 216 26% 15%;
 
-  --muted: 220 14% 93%;                /* #EBECF0 */
-  --muted-foreground: 220 9% 36%;      /* #545964 */
+  --muted: 214 32% 93%;                /* #E7ECF3 */
+  --muted-foreground: 215 13% 39%;     /* #576170 */
 
-  --accent: 152 64% 27%;               /* #197148 cash green */
+  --accent: 138 66% 31%;               /* #1B833A green: nav bar, ticks, bands */
+  --accent-hover: 138 70% 26%;         /* #147130 */
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 72% 45%;
+  --destructive: 4 74% 42%;            /* #BA261C */
   --destructive-foreground: 0 0% 100%;
 
-  --success: 152 64% 27%;
+  --success: 138 66% 31%;
   --success-foreground: 0 0% 100%;
 
-  --warning: 38 92% 50%;
-  --warning-foreground: 222 28% 11%;
+  --warning: 38 100% 50%;
+  --warning-foreground: 216 26% 15%;
 
-  --info: 214 80% 40%;
+  --info: 216 84% 50%;
   --info-foreground: 0 0% 100%;
 
-  --border: 220 13% 87%;               /* #DADCE2 */
+  --border: 214 26% 87%;               /* #D5DDE6 rule */
   /* Form-control borders need >= 3:1 against the card (WCAG 1.4.11). */
-  --input: 220 9% 50%;                 /* #747C8B */
-  --ring: 221 83% 53%;                 /* #2463EB — visible on white and on ink */
+  --input: 214 12% 49%;                /* #6E7B8C */
+  /* Focus ring: navy on white and tint; yellow inside coloured bands (.on-band). */
+  --ring: 218 86% 23%;                 /* #082D6D */
 
-  --shadow-color: 222 30% 12%;
+  --shadow-color: 210 50% 12%;
   --site-frame-max-width: 80rem;
   --site-frame-gutter: 1rem;
   --site-frame-stroke: hsl(var(--border));
 
-  /* Single source of truth for the fixed-header height. Consumed by the
-     mt-header-safe / scroll-mt-header / heading scroll-margin utilities so the
-     three can never drift apart. From lg up it includes the utility strip. */
-  --header-h: 4.25rem;
-  --header-strip-h: 2.25rem;
+  /* The header sits in the page flow. On phones it scrolls away, so nothing
+     stays stuck and --header-h is 0. From lg up the white bar scrolls away and
+     the green navigation bar sticks, so --header-h is the bar's height. The
+     scroll-mt-header utility, heading scroll margins and sticky sidebars all
+     read this one value. */
+  --header-h: 0rem;
+  --header-top-h: 5.75rem;
 
-  --ink: 222 28% 11%;                  /* #141924 dark band */
-  --ink-deep: 222 32% 7%;              /* #0C1018 */
-  --ink-raised: 221 22% 18%;           /* #242A38 */
-  --on-dark: 220 14% 78%;              /* #BFC4CF */
+  --ink: 205 61% 11%;                  /* #0B1F2D dark photo band */
+  --ink-deep: 205 65% 8%;              /* #071722 */
+  --ink-raised: 205 45% 18%;           /* #193143 */
+  --on-dark: 0 0% 100%;                /* text on blue, green and dark bands */
   --on-dark-hi: 0 0% 100%;
 
-  --plate: 46 100% 50%;                /* #FFC300 hi-vis yellow */
-  --plate-foreground: 222 32% 7%;
-  --cta: 46 100% 50%;                  /* #FFC300 */
-  --cta-hover: 41 100% 46%;            /* #EBA000 */
-  --cta-foreground: 222 32% 7%;
+  --plate: 45 100% 51%;                /* #FFC105 yellow */
+  --plate-foreground: 216 30% 12%;
+  --cta: 45 100% 51%;                  /* #FFC105 */
+  --cta-hover: 41 100% 47%;            /* #F0A400 */
+  --cta-foreground: 216 30% 12%;       /* #151D28 */
 
-  --cta-ink: 36 95% 26%;               /* #814F03 amber text on white */
-  --accent-ink: 152 68% 22%;           /* #125E3B green text on white */
-  --cta-bright: 47 100% 56%;           /* #FFCE1F yellow text on ink */
-  --accent-on-dark: 150 55% 62%;       /* #69D39E green text on ink */
+  --cta-ink: 32 100% 27%;              /* #8A4900 amber text on white */
+  --accent-ink: 138 68% 29%;           /* #187C36 green text on white and tint */
+  --cta-bright: 46 100% 62%;           /* #FFD23D yellow marks on bands */
+  --accent-on-dark: 0 0% 100%;
+}
+
+/* Inside a blue, green or dark band the focus ring switches to yellow so it
+   keeps 3:1 against the band. */
+.on-band {
+  --ring: 48 100% 65%;                 /* #FFDB4D */
+}
+
+/* A white card sitting inside a band (the hero quote form) goes back to the
+   navy ring. */
+.on-light {
+  --ring: 218 86% 23%;                 /* #082D6D */
 }
 
 @media (min-width: 640px) {
   :root {
     --site-frame-gutter: 1.5rem;
-    --header-h: 4.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --site-frame-gutter: 2rem;
-    /* utility strip (2.25rem) + main bar (4.75rem) */
-    --header-h: 7rem;
+    /* the green navigation bar that stays stuck */
+    --header-h: 3rem;
   }
 }
 
@@ -174,18 +197,36 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-primary/20 selection:text-foreground;
+    @apply bg-background text-foreground antialiased font-sans overflow-x-clip selection:bg-cta/50 selection:text-foreground;
     overscroll-behavior-y: none;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-kerning: normal;
   }
 
+  /* Headings are bold and blue. Page titles and section headings are shown
+     with each word capitalised; the text itself is written in sentence case,
+     so this is presentation only. */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    @apply font-bold;
-    letter-spacing: 0;
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.2;
     text-wrap: balance;
+    color: hsl(var(--primary));
+  }
+
+  h1, h2 {
+    text-transform: capitalize;
+  }
+
+  h4, h5, h6 {
     color: hsl(var(--foreground));
+  }
+
+  strong, b {
+    font-weight: var(--font-weight-bold);
   }
 
   p { text-wrap: pretty; }
@@ -213,23 +254,24 @@
   h3[tabindex="-1"],
   h2[tabindex="-1"],
   h1[tabindex="-1"] {
-    /* header height + 1rem breathing gap (matches scroll-mt-header) */
+    /* stuck header height + 1rem breathing gap (matches scroll-mt-header) */
     scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
   }
 }
 
 @layer utilities {
+  /* Section rhythm. */
   .section-y {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-12 sm:py-14 lg:py-16;
   }
 
   .section-y-tight {
-    @apply py-12 sm:py-16;
+    @apply py-10 sm:py-12;
   }
 
-  /* Quieter rhythm for inner-page hero bands (service/suburb templates). */
+  /* Rhythm for inner-page title bands. */
   .section-y-hero {
-    @apply py-10 sm:py-14 lg:py-16;
+    @apply pt-6 pb-9 sm:pt-8 sm:pb-12 lg:pt-9 lg:pb-14;
   }
 
   .site-container {
@@ -246,88 +288,36 @@
     text-wrap: balance;
   }
 
-  /* Eyebrow — small uppercase label above a headline, led by a yellow
-     reflector square. Text stays ink/white; the square carries the brand. */
+  /* The green line that sits with a section heading. */
   .eyebrow,
   .eyebrow-on-dark {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
+    display: block;
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: hsl(var(--foreground));
-  }
-  .eyebrow::before,
-  .eyebrow-on-dark::before {
-    content: "";
-    width: 0.625rem;
-    height: 0.625rem;
-    flex: none;
-    background: hsl(var(--cta));
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.35;
+    color: hsl(var(--accent-ink));
   }
   .eyebrow-on-dark { color: hsl(var(--on-dark-hi)); }
-
-  /* Poster headline: heavy, uppercase, tight. Hero and section titles. */
-  .display-impact {
-    font-family: var(--font-display);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
-    line-height: 0.95;
-  }
-
-  /* Tow-truck hazard stripe. Decorative only; used as a thin rule. */
-  .hazard-stripe {
-    background-image: repeating-linear-gradient(
-      -45deg,
-      hsl(var(--cta)) 0 10px,
-      hsl(var(--ink-deep)) 10px 20px
-    );
-  }
-
-  /* Yellow underline bar that sits under a section heading. */
-  .title-bar::after {
-    content: "";
-    display: block;
-    width: 3.5rem;
-    height: 0.3125rem;
-    margin-top: 1rem;
-    background: hsl(var(--cta));
-  }
 
   .link-underline {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-decoration-color: currentColor;
-    text-underline-offset: 4px;
+    text-underline-offset: 0.2em;
     transition: color 160ms var(--ease-out-quint), text-decoration-color 160ms var(--ease-out-quint);
   }
   .link-underline:hover,
   .link-underline:focus-visible {
-    color: hsl(var(--accent-ink));
     text-decoration-thickness: 2px;
-  }
-
-  /* Shared interactive card: rounded surface, gentle lift on hover. */
-  .card-lift {
-    border-radius: var(--radius-xl);
-    transition: transform 300ms var(--ease-out-quint), box-shadow 300ms var(--ease-out-quint), border-color 300ms var(--ease-out-quint);
-  }
-  .card-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 12px 28px -8px hsl(var(--shadow-color) / 0.16);
   }
 
   .hairline {
     border-top: 1px solid hsl(var(--border));
   }
   .hairline-on-dark {
-    border-top: 1px solid hsl(var(--on-dark-hi) / 0.18);
+    border-top: 1px solid hsl(var(--on-dark-hi) / 0.3);
   }
-
 }
 
 @layer components {
@@ -335,22 +325,87 @@
     display: none;
   }
 
-  .prose-body { @apply text-base sm:text-lg leading-[1.7] text-foreground; }
+  /* Centred section heading block: blue heading, optional green line. */
+  .section-head {
+    @apply mx-auto mb-8 max-w-4xl text-center sm:mb-10;
+  }
+
+  /* Text link with a trailing arrow: the one "go here next" pattern. It is an
+     inline element so the arrow stays with the last word when the label
+     wraps; the vertical padding keeps a 44px tap target. */
+  .link-arrow {
+    @apply inline rounded-sm py-2.5 font-bold text-primary underline decoration-1 underline-offset-[0.2em] transition-colors hover:text-primary-hover hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    line-height: 1.5;
+  }
+  .link-arrow svg {
+    @apply ml-1.5 inline h-4 w-4 shrink-0 align-[-0.15em] transition-transform duration-200;
+  }
+  .link-arrow:hover svg {
+    transform: translateX(2px);
+  }
+  /* "Back" links put the arrow first, so it sits and leans the other way. */
+  .link-arrow.link-back svg {
+    @apply ml-0 mr-1.5;
+  }
+  .link-arrow.link-back:hover svg {
+    transform: translateX(-2px);
+  }
+  .on-band .link-arrow {
+    @apply text-on-dark-hi hover:text-on-dark-hi;
+  }
+
+  /* Links written into a blue title band's intro stay white and underlined. */
+  .page-band-lead a {
+    @apply font-semibold text-on-dark-hi underline decoration-1 underline-offset-[0.2em] hover:decoration-2;
+  }
+
+  /* Ticked list: a white tick in a green rounded square. */
+  .list-ticks { @apply space-y-3; }
+  /* Direct children, so the same ticks work on a <dl> of <div> rows. */
+  .list-ticks > * { @apply relative pl-9 leading-snug; }
+  .list-ticks > *::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 0.3125rem;
+    background-color: hsl(var(--accent));
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012.5l4.5%204.5L19%207.5%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 78%;
+  }
+  /* On a coloured band the square turns white and the tick green. */
+  .on-band-green .list-ticks > *::before,
+  .list-ticks.ticks-inverse > *::before {
+    background-color: hsl(var(--on-dark-hi));
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231B833A%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012.5l4.5%204.5L19%207.5%22%2F%3E%3C%2Fsvg%3E");
+  }
+
+  /* Comma-run list: reads as a sentence. */
+  .list-inline > li { display: inline; }
+  .list-inline > li:not(:last-child)::after {
+    content: ", ";
+  }
+
+  .prose-body { @apply text-[1.0625rem] leading-[1.7] text-foreground; }
   .prose-body > * + * { @apply mt-5; }
-  .prose-body h2 { @apply text-[1.75rem] sm:text-4xl font-display font-bold text-primary mt-12 mb-4 leading-[1.1]; }
-  .prose-body h3 { @apply text-2xl sm:text-[1.75rem] font-display font-bold text-primary mt-8 mb-3 leading-[1.15]; }
-  .prose-body h4 { @apply text-xl sm:text-2xl font-display font-bold text-primary mt-6 mb-2; }
+  .prose-body h2 { @apply text-[1.625rem] sm:text-[1.875rem] font-bold text-primary mt-11 mb-3 leading-[1.2]; }
+  .prose-body h3 { @apply text-xl sm:text-[1.375rem] font-bold text-primary mt-8 mb-2 leading-[1.3]; }
+  .prose-body h4 { @apply text-lg font-bold text-foreground mt-6 mb-2; }
   .prose-body p { @apply mb-0; }
   .prose-body ul, .prose-body ol { @apply pl-5 sm:pl-6 space-y-2; }
   .prose-body li { @apply leading-relaxed; }
-  .prose-body a { @apply underline underline-offset-4 decoration-2 decoration-cta hover:text-accent-ink transition-colors text-primary font-medium; }
-  .prose-body strong { @apply font-semibold text-foreground; }
+  .prose-body a { @apply underline underline-offset-[0.2em] decoration-1 hover:decoration-2 transition-colors text-primary font-semibold; }
+  .prose-body strong { @apply font-bold text-foreground; }
   .prose-body code { @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono; }
-  .prose-body blockquote { @apply border-l-4 border-cta pl-4 text-foreground; font-style: normal; }
+  .prose-body blockquote { @apply border-l-4 border-accent pl-4 text-foreground; font-style: normal; }
 
-  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground; }
+  .list-styled { @apply list-disc pl-5 sm:pl-6 space-y-2 text-foreground marker:text-accent; }
   .list-styled li { @apply leading-relaxed; }
-  .list-styled strong { @apply text-foreground font-semibold; }
+  .list-styled strong { @apply text-foreground font-bold; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -665,14 +720,9 @@
   box-shadow: 0 1px 2px hsl(var(--shadow-color) / 0.04), 0 8px 16px hsl(var(--shadow-color) / 0.06), 0 32px 64px -12px hsl(var(--shadow-color) / 0.1);
 }
 
-@utility mt-header-safe {
-  /* Offsets the fixed-header height (single source: --header-h). */
-  margin-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
-}
-
 @utility scroll-mt-header {
-  /* Header height + 1rem breathing gap so anchored sections land just below
-     the fixed header rather than flush against it. */
+  /* Stuck header height + 1rem breathing gap so anchored sections land just
+     below the navigation bar rather than flush against it. */
   scroll-margin-top: calc(var(--header-h) + 1rem + env(safe-area-inset-top, 0px));
 }
 
@@ -681,12 +731,50 @@
   min-height: 100dvh;
 }
 
-/* Inner-page hero band: light concrete with a yellow rule along the top. */
-@utility aurora-surface {
-  position: relative;
-  isolation: isolate;
-  background-color: hsl(var(--secondary));
-  border-top: 4px solid hsl(var(--cta));
-  border-bottom: 1px solid hsl(var(--border));
-  overflow: hidden;
+/* Inner-page title band: blue, white type. Pair it with .on-band. */
+@utility page-band {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--on-dark-hi));
+}
+
+/* Type scale. Display sizes are fluid between a 390px phone and a 1440px
+   desktop; everything from the lead down is fixed. */
+@utility type-display {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(2rem, 1.45rem + 2.3vw, 2.875rem);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-display);
+}
+@utility type-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.875rem, 1.4rem + 1.9vw, 2.625rem);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+}
+@utility type-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.625rem, 1.35rem + 1.15vw, 2.125rem);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-tight);
+}
+@utility type-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+@utility type-lead {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.6;
+}
+@utility type-label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
 }

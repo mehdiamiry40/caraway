@@ -13,7 +13,7 @@ import { trackEvent } from "@/lib/analytics";
 import { CONTACT_MESSAGE_MAX, CONTACT_MESSAGE_WARN } from "@/data/constants";
 import { BUSINESS } from "@/lib/site";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CheckCircle2, Send, Shield } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
 import { LeadForm } from "./LeadForm";
 import { useSubmissionId } from "@/hooks/use-submission-id";
@@ -56,7 +56,7 @@ export function ContactForm() {
     messageLength >= CONTACT_MESSAGE_MAX
       ? "text-destructive"
       : messageLength > CONTACT_MESSAGE_WARN
-      ? "text-accent-ink"
+      ? "text-primary"
       : "text-muted-foreground";
 
   const onSubmit = async (data: ContactFormInput) => {
@@ -91,17 +91,14 @@ export function ContactForm() {
 
   if (isSuccess) {
     return (
-      <div className="bg-card rounded-2xl p-5 sm:p-8 border border-border shadow-[0_20px_40px_-28px_hsl(var(--shadow-color)/0.5)] relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-cta" aria-hidden />
-        <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-center justify-center text-center py-8 sm:py-10 px-2">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-none flex items-center justify-center mb-5 sm:mb-6">
-            <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
-          </div>
-          <h2 className="text-xl sm:text-2xl font-display text-primary mb-3">Message received — thanks!</h2>
-          <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
+      <div className="rounded-xl border border-border border-t-4 border-t-primary bg-card p-5 shadow-lg sm:p-8">
+        <div role="status" aria-live="polite" aria-atomic="true" className="flex flex-col items-start py-6 sm:py-8">
+          <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
+          <h2 className="mt-4 text-[1.5rem] font-semibold leading-tight text-primary">Message received — thanks!</h2>
+          <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
             We aim to reply within one business day. If you don&apos;t see a response, please check your spam folder or call us directly.
           </p>
-          <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto transition-all duration-200">
+          <Button onClick={() => setIsSuccess(false)} variant="outline" className="w-full sm:w-auto">
             Send another message
           </Button>
         </div>
@@ -110,13 +107,12 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card rounded-2xl p-5 sm:p-8 border border-border/70 shadow-[0_28px_56px_-30px_hsl(var(--shadow-color)/0.6)] relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-cta" aria-hidden />
-      <h2 className="text-xl sm:text-2xl font-display text-primary mb-1 pt-1">Send us a message</h2>
-      <p className="text-sm text-foreground/80 mb-5 sm:mb-6">
+    <div className="rounded-xl border border-border border-t-4 border-t-primary bg-card p-5 shadow-lg sm:p-8">
+      <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.625rem]">Send us a message</h2>
+      <p className="mb-6 mt-1.5 text-[0.9375rem] text-muted-foreground">
         Have a question? Fill out the form and we&apos;ll get back to you.
       </p>
-      <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
+      <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5">
         {/* Honeypot — hidden from real users, traps bots */}
         <div hidden aria-hidden="true">
           <label htmlFor="contact-website">Website</label>
@@ -129,7 +125,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
+          <label htmlFor={fieldIds.name} className="mb-1.5 block text-sm font-semibold text-foreground">
             Your name
             <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
           </label>
@@ -146,15 +142,15 @@ export function ContactForm() {
           />
           {errors.name && (
             <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.name.message}
             </p>
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
           <div>
-            <label htmlFor={fieldIds.email} className="block text-sm text-foreground mb-2.5">
+            <label htmlFor={fieldIds.email} className="mb-1.5 block text-sm font-semibold text-foreground">
               Email
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
@@ -173,14 +169,14 @@ export function ContactForm() {
             />
             {errors.email && (
               <p id={`${fieldIds.email}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.email.message}
               </p>
             )}
           </div>
           <div>
-            <label htmlFor={fieldIds.phone} className="block text-sm text-foreground mb-2.5">
-              Phone <span className="text-xs font-normal text-muted-foreground ml-2">(optional)</span>
+            <label htmlFor={fieldIds.phone} className="mb-1.5 block text-sm font-semibold text-foreground">
+              Phone <span className="ml-1 font-normal text-muted-foreground">(optional)</span>
             </label>
             <Input
               type="tel"
@@ -196,7 +192,7 @@ export function ContactForm() {
             />
             {errors.phone && (
               <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                 {errors.phone.message}
               </p>
             )}
@@ -204,8 +200,8 @@ export function ContactForm() {
         </div>
 
         <div>
-          <div className="flex items-center justify-between mb-2.5">
-            <label htmlFor={fieldIds.message} className="block text-sm text-foreground">
+          <div className="mb-1.5 flex items-center justify-between">
+            <label htmlFor={fieldIds.message} className="block text-sm font-semibold text-foreground">
               Message
               <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
             </label>
@@ -234,7 +230,7 @@ export function ContactForm() {
           />
           {errors.message && (
             <p id={`${fieldIds.message}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+              <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
               {errors.message.message}
             </p>
           )}
@@ -246,7 +242,7 @@ export function ContactForm() {
             className="mt-0.5"
             {...register("marketingConsent")}
           />
-          <label htmlFor="contact-marketing-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+          <label htmlFor="contact-marketing-consent" className="cursor-pointer text-sm leading-relaxed text-muted-foreground">
             I consent to receive occasional promotional emails from Caraway (offers, tips, updates). I can unsubscribe anytime via the link in any email.
           </label>
         </div>
@@ -256,17 +252,13 @@ export function ContactForm() {
             {isSubmitting ? (
               "Sending..."
             ) : (
-              <>
-                <Send className="h-4 w-4 mr-2" aria-hidden />
-                Send message
-              </>
+              "Send message"
             )}
           </Button>
         </div>
 
-        {/* Trust line below CTA */}
-        <div className="flex flex-wrap items-center justify-center gap-2 text-center text-xs text-muted-foreground">
-          <Shield className="w-3.5 h-3.5 text-primary/70 shrink-0" aria-hidden />
+        {/* Privacy line below the button */}
+        <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
           <span>
             Your details are used to respond to this enquiry. See our{" "}
             <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
@@ -274,24 +266,24 @@ export function ContactForm() {
             </Link>
             .
           </span>
-        </div>
+        </p>
 
         {errorMessage && (
           <div
             ref={errorAlertRef}
             tabIndex={-1}
-            className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+            className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/5 px-3 py-3 text-sm font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive sm:px-4"
             role="alert"
             aria-live="assertive"
             aria-atomic="true"
           >
-            <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+            <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
             <div className="flex-1">
               <span>{errorMessage}</span>
               <button
                 type="button"
                 onClick={() => setErrorMessage(null)}
-                className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50 rounded-sm"
+                className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive rounded-sm"
               >
                 Dismiss
               </button>

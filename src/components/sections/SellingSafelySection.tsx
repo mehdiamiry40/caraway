@@ -1,4 +1,4 @@
-import { ClipboardCheck, FileCheck2, Phone, ShieldCheck, Truck } from "lucide-react";
+import { Phone } from "lucide-react";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { BUSINESS } from "@/lib/site";
 import { buttonVariants } from "@/components/ui/button";
@@ -8,35 +8,27 @@ import { QLD_SELLING_GUIDANCE_URL } from "@/data/resource-links";
 /* Only what this section uniquely owns: paperwork and records. Pricing and
    payment promises belong to WhyUs. */
 const trustPoints = [
-  { icon: FileCheck2, title: "QLD paperwork help" },
-  { icon: ClipboardCheck, title: "Buyer details for your records" },
-  { icon: Truck, title: "Pickup included when we buy" },
+  { title: "QLD paperwork help" },
+  { title: "Buyer details for your records" },
+  { title: "Pickup included when we buy" },
 ] as const;
 
+/** Green band: the three safety points, the call button, the guidance link. */
 export function SellingSafelySection() {
   return (
-    <section className="section-y-tight border-t border-border bg-secondary" aria-labelledby="selling-safely-heading">
-      <div className="site-container">
-        <div className="flex flex-col items-center text-center">
-          <span className="flex h-14 w-14 items-center justify-center bg-ink text-cta-bright">
-            <ShieldCheck className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-          </span>
-          <h2
-            id="selling-safely-heading"
-            className="display-impact mt-5 text-[2.25rem] text-foreground sm:text-[3rem]"
-          >
-            Selling safely with Caraway
-          </h2>
-        </div>
+    <section
+      className="on-band on-band-green section-y-tight bg-accent text-on-dark-hi"
+      aria-labelledby="selling-safely-heading"
+    >
+      <div className="site-container text-center">
+        <h2 id="selling-safely-heading" className="type-h2 text-on-dark-hi">
+          Selling safely with Caraway
+        </h2>
 
-        <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-px border border-border bg-border sm:grid-cols-3">
-          {trustPoints.map(({ icon: Icon, title }) => (
-            <li
-              key={title}
-              className="flex items-center gap-3 bg-card p-4 sm:flex-col sm:gap-3 sm:p-6 sm:text-center"
-            >
-              <Icon className="h-8 w-8 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
-              <h3 className="font-display text-xl font-bold leading-[1.15] text-foreground sm:text-[1.375rem]">{title}</h3>
+        <ul className="list-ticks mx-auto mt-7 grid max-w-4xl grid-cols-1 justify-items-start gap-x-8 gap-y-4 !space-y-0 text-left sm:grid-cols-3 sm:justify-items-center">
+          {trustPoints.map(({ title }) => (
+            <li key={title}>
+              <h3 className="text-xl font-bold leading-snug text-on-dark-hi">{title}</h3>
             </li>
           ))}
         </ul>
@@ -45,19 +37,19 @@ export function SellingSafelySection() {
           <TrackedPhoneLink
             href={BUSINESS.phoneTel}
             location="selling_safely"
-            className={cn(buttonVariants({ variant: "primary" }))}
+            className={cn(buttonVariants({ size: "lg" }), "ring-offset-accent")}
             ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
           >
-            <Phone className="h-5 w-5 text-cta-bright" aria-hidden="true" />
+            <Phone className="h-5 w-5" aria-hidden="true" />
             Call {BUSINESS.phoneDisplay}
           </TrackedPhoneLink>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-[1.0625rem] leading-relaxed text-on-dark-hi">
             Keep your own records and follow the{" "}
             <a
               href={QLD_SELLING_GUIDANCE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-accent-ink underline underline-offset-4"
+              className="font-bold text-on-dark-hi underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
             >
               Queensland vehicle-selling guidance
             </a>

@@ -1,4 +1,3 @@
-import { createElement } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/components/layout/Header";
@@ -14,42 +13,31 @@ import { services } from "@/data/services";
 import { suburbs, type SuburbPage } from "@/data/suburbs";
 import { getPostsForService } from "@/data/blog-posts";
 import { Accordion } from "@/components/ui/accordion";
-import {
-  ArrowRight,
-  BookOpen,
-  Building2,
-  CheckCircle2,
-  Info,
-  Mail,
-  MapPin,
-  MessageCircleQuestion,
-  Star,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
 import { canonicalLocationSlug } from "@/lib/location-consolidation";
 import { canonicalServiceSlug } from "@/lib/service-consolidation";
-import { sectionIcon, serviceIcon } from "@/lib/service-icons";
 import {
   HeroPoints,
-  IconHeading,
-  PromiseTiles,
+  PromiseList,
+  SectionHeading,
   SidebarLinks,
+  SidebarPanel,
+  sidebarLinkClass,
 } from "@/components/templates/PagePieces";
 
-const sideLinkClass =
-  "inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-primary underline-offset-4 hover:underline";
-
+const bodyTextClass = "max-w-[72ch] text-[1.0625rem] leading-[1.7] text-foreground";
 
 export function ServiceSectionContent({ section }: { section: ServiceSection }) {
   return (
     <div>
-      <IconHeading icon={sectionIcon(section.heading)}>{section.heading}</IconHeading>
-      <p className="text-foreground/75 leading-relaxed text-base">
+      <SectionHeading>{section.heading}</SectionHeading>
+      <p className={bodyTextClass}>
         {section.content}
       </p>
       {section.image && (
-        <figure className="mt-6 overflow-hidden border border-border bg-muted">
+        <figure className="mt-7">
           <Image
             src={section.image.src}
             alt={section.image.alt}
@@ -57,9 +45,9 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
             height={section.image.height}
             sizes="(max-width: 1023px) calc(100vw - 2rem), 760px"
             loading="lazy"
-            className="h-auto w-full"
+            className="h-auto w-full rounded-md border border-border"
           />
-          <figcaption className="border-t border-border bg-card px-4 py-2.5 text-xs leading-relaxed text-muted-foreground sm:px-5">
+          <figcaption className="mt-2.5 max-w-[68ch] text-sm leading-relaxed text-muted-foreground">
             {section.image.caption}
           </figcaption>
         </figure>
@@ -67,28 +55,22 @@ export function ServiceSectionContent({ section }: { section: ServiceSection }) 
       {section.checklistItems && section.checklistItems.length > 0 && (
         <ul
           aria-label={`${section.heading} checklist`}
-          className="mt-5 grid gap-2.5 text-sm text-foreground/80 sm:grid-cols-2"
+          className="list-ticks mt-6 grid gap-x-10 gap-y-4 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-2"
         >
           {section.checklistItems.map((item) => (
-            <li key={item} className="flex items-start gap-3 border border-border bg-card p-3.5 leading-relaxed">
-              <CheckCircle2
-                className="mt-0.5 h-4 w-4 shrink-0 text-accent-ink"
-                strokeWidth={2.25}
-                aria-hidden="true"
-              />
+            <li key={item}>
               <span>{item}</span>
             </li>
           ))}
         </ul>
       )}
       {section.supportLink && (
-        <Link
-          href={section.supportLink.href}
-          className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-primary underline underline-offset-4 hover:text-accent-ink"
-        >
-          {section.supportLink.label}
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+        <p className="mt-5">
+          <Link href={section.supportLink.href} className="link-arrow text-[1.0625rem]">
+            {section.supportLink.label}
+            <ArrowRight aria-hidden="true" />
+          </Link>
+        </p>
       )}
     </div>
   );
@@ -133,28 +115,23 @@ export default function ServicePageTemplate({
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
-          <div className="site-container relative grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+      <main id="main-content" tabIndex={-1} className="flex-1 pb-[5.5rem] focus-visible:outline-none lg:pb-0">
+        <section className="on-band page-band section-y-hero" data-sticky-cta-suppress="true">
+          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <Breadcrumbs items={breadcrumbs} />
-              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-cta text-cta-foreground">
-                {createElement(serviceIcon(service.slug), {
-                  className: "h-6 w-6",
-                  strokeWidth: 1.75,
-                  "aria-hidden": true,
-                })}
-              </span>
-              <h1 className="mt-4 font-display font-extrabold text-[clamp(2.5rem,6vw,4.25rem)] leading-[0.98] text-primary text-balance mb-4">
+              <Breadcrumbs items={breadcrumbs} light />
+              <h1 className="type-h1 mt-5 text-on-dark-hi">
                 {service.h1}
               </h1>
-              <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-6">
+              <p className="type-lead mt-4 max-w-2xl text-on-dark-hi">
                 {heroIntro}
               </p>
-              <HeroPoints className="mb-7" />
-              <ScrollToQuoteCTA source={service.slug} />
+              <HeroPoints className="mt-6" />
+              <div className="mt-7">
+                <ScrollToQuoteCTA source={service.slug} />
+              </div>
               {service.reviewedAt && (
-                <p className="mt-4 text-xs text-foreground/65">
+                <p className="mt-4 text-[0.9375rem] text-on-dark-hi">
                   Content reviewed{" "}
                   <time dateTime={service.reviewedAt}>
                     {new Intl.DateTimeFormat("en-AU", {
@@ -167,7 +144,7 @@ export default function ServicePageTemplate({
                 </p>
               )}
             </div>
-            <div className="relative hidden overflow-hidden border-[10px] border-ink bg-ink lg:col-span-5 lg:block">
+            <div className="hidden lg:col-span-5 lg:block">
               <Image
                 src="/images/tow-truck-hero.webp"
                 alt="Tilt-tray truck carrying a silver sedan"
@@ -175,7 +152,7 @@ export default function ServicePageTemplate({
                 height={800}
                 sizes="(min-width: 1280px) 500px, 40vw"
                 loading="eager"
-                className="aspect-square h-auto w-full object-cover"
+                className="aspect-[4/3] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_60%]"
               />
             </div>
           </div>
@@ -183,16 +160,14 @@ export default function ServicePageTemplate({
 
         <QuoteForm source={service.slug} />
 
-        <div className="site-container py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
+        <div className="border-t border-border">
+        <div className="site-container py-12 lg:py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-10 lg:col-span-8">
               {introRest && (
-                <div className="flex gap-4 border-l-4 border-cta bg-secondary px-5 py-5 sm:px-6">
-                  <Info className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
-                  <p className="text-foreground/80 leading-relaxed text-base">
-                    {introRest}
-                  </p>
-                </div>
+                <p className="max-w-[66ch] border-l-4 border-accent pl-4 text-lg font-semibold leading-[1.55] text-foreground sm:text-xl">
+                  {introRest}
+                </p>
               )}
 
               {service.sections.map((section) => (
@@ -200,10 +175,10 @@ export default function ServicePageTemplate({
               ))}
 
               {service.faqs.length > 0 && (
-                <div className="pt-6 border-t border-border/60">
-                  <IconHeading icon={MessageCircleQuestion} tone="solid" className="mb-2">
+                <div>
+                  <SectionHeading>
                     Frequently asked questions
-                  </IconHeading>
+                  </SectionHeading>
                   <Accordion items={service.faqs.map(f => ({ question: f.question, answer: f.answer }))} />
                 </div>
               )}
@@ -211,45 +186,40 @@ export default function ServicePageTemplate({
 
             <aside
               aria-labelledby="service-sidebar-heading"
-              className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start"
+              className="space-y-5 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+1.5rem+env(safe-area-inset-top))] lg:self-start"
             >
               <h2 id="service-sidebar-heading" className="sr-only">
                 Service details and related resources
               </h2>
-              <PromiseTiles title="What Caraway confirms" />
+              <PromiseList title="What Caraway confirms" />
 
-              <div className="border border-border bg-card p-5 sm:p-6">
-                <h3 className="font-display text-xl font-bold text-foreground mb-1">Registered Brisbane business</h3>
-                <p className="text-xs text-muted-foreground">
+              <SidebarPanel title="Registered Brisbane business">
+                <p className="mt-1.5 text-[0.9375rem] text-muted-foreground">
                   {BUSINESS.legalName}, sole trader, Brisbane QLD
                 </p>
-                <ul className="mt-3 flex flex-wrap gap-x-5 text-sm">
+                <ul className="mt-1.5 flex flex-wrap gap-x-6">
                   <li>
-                    <a href={BUSINESS.abrUrl} target="_blank" rel="noopener noreferrer" className={sideLinkClass}>
-                      <Building2 className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <a href={BUSINESS.abrUrl} target="_blank" rel="noopener noreferrer" className={sidebarLinkClass}>
                       ABN {BUSINESS.abn}
                     </a>
                   </li>
                   <li>
-                    <a href={BUSINESS.googleBusinessUrl} target="_blank" rel="noopener noreferrer" className={sideLinkClass}>
-                      <Star className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <a href={BUSINESS.googleBusinessUrl} target="_blank" rel="noopener noreferrer" className={sidebarLinkClass}>
                       View Caraway on Google
                     </a>
                   </li>
                   <li>
-                    <Link href="/about" className={sideLinkClass}>
-                      <Info className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <Link href="/about" className={sidebarLinkClass}>
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" className={sideLinkClass}>
-                      <Mail className="h-4 w-4 shrink-0 text-accent-ink" aria-hidden="true" />
+                    <Link href="/contact" className={sidebarLinkClass}>
                       Contact
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </SidebarPanel>
 
               {relatedServiceData.length > 0 && (
                 <SidebarLinks
@@ -257,7 +227,6 @@ export default function ServicePageTemplate({
                   items={relatedServiceData.map((s) => ({
                     href: `/${s.slug}`,
                     label: s.h1,
-                    icon: serviceIcon(s.slug),
                   }))}
                 />
               )}
@@ -268,7 +237,6 @@ export default function ServicePageTemplate({
                   items={relatedSuburbData.map((s) => ({
                     href: `/locations/${s.slug}`,
                     label: s.h1,
-                    icon: MapPin,
                   }))}
                 />
               )}
@@ -279,16 +247,17 @@ export default function ServicePageTemplate({
                   items={relatedPosts.map((p) => ({
                     href: `/blog/${p.slug}`,
                     label: p.title,
-                    icon: BookOpen,
                   }))}
                 />
               )}
             </aside>
           </div>
         </div>
+        </div>
 
-        <SellingSafelySection />
+        {/* Blue band, then green, so neither runs into the blue footer. */}
         <TrustBadges />
+        <SellingSafelySection />
       </main>
 
       <Footer />

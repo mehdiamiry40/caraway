@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Newspaper } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { PageShell } from "@/components/layout/PageShell";
 import { blogPosts, categoryMap } from "@/data/blog-posts";
 import { BlogPostCard, FeaturedBlogPostCard } from "@/components/blog/BlogPostCard";
@@ -24,7 +24,7 @@ function Pagination({ current, total }: { current: number; total: number }) {
       {current > 1 ? (
         <Link
           href={blogPageHref(current - 1)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-input bg-card px-4 text-[0.9375rem] font-semibold text-primary transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Newer
@@ -36,10 +36,10 @@ function Pagination({ current, total }: { current: number; total: number }) {
           href={blogPageHref(page)}
           aria-current={page === current ? "page" : undefined}
           className={cn(
-            "inline-flex h-11 w-11 items-center justify-center rounded-none border text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            "inline-flex h-11 w-11 items-center justify-center rounded-md border text-[0.9375rem] font-semibold tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
             page === current
               ? "border-primary bg-primary text-primary-foreground"
-              : "border-border bg-card text-foreground hover:border-primary/40 hover:text-primary",
+              : "border-input bg-card text-primary hover:border-primary",
           )}
         >
           {page}
@@ -48,7 +48,7 @@ function Pagination({ current, total }: { current: number; total: number }) {
       {current < total ? (
         <Link
           href={blogPageHref(current + 1)}
-          className="inline-flex min-h-11 items-center gap-1.5 rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className="inline-flex min-h-11 items-center gap-1.5 rounded-md border border-input bg-card px-4 text-[0.9375rem] font-semibold text-primary transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           Older
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -67,7 +67,6 @@ export default function Blog({ page = 1 }: { page?: number }) {
 
   return (
     <PageShell
-      icon={Newspaper}
       breadcrumbs={breadcrumbs}
       eyebrow="The Caraway Journal"
       title="Selling a car in Brisbane, clearly explained."
@@ -75,15 +74,15 @@ export default function Blog({ page = 1 }: { page?: number }) {
         <p>Practical guides for Brisbane sellers.</p>
       }
     >
-      <div className="site-container py-14 sm:py-20 lg:py-24">
-        <nav aria-label="Blog categories" className="mb-12 sm:mb-14">
-          <p className="eyebrow mb-4">Browse by topic</p>
-          <div className="flex flex-wrap gap-2">
+      <div className="site-container py-10 sm:py-14 lg:py-16">
+        <nav aria-label="Blog categories" className="mb-10 flex flex-wrap items-baseline gap-x-6 gap-y-1 sm:mb-12">
+          <p className="text-[0.9375rem] font-semibold text-foreground">Browse by topic</p>
+          <div className="flex flex-wrap gap-x-6">
             {Object.entries(categoryMap).map(([slug, label]) => (
               <Link
                 key={slug}
                 href={`/blog/category/${slug}`}
-                className="inline-flex items-center rounded-none border border-border/80 bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary/40 hover:text-primary min-h-[36px] touch-manipulation"
+                className="inline-flex min-h-11 items-center rounded-sm text-[0.9375rem] font-medium text-primary underline decoration-primary/40 decoration-1 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 touch-manipulation"
               >
                 {label}
               </Link>
@@ -99,16 +98,16 @@ export default function Blog({ page = 1 }: { page?: number }) {
 
         {pagePosts.length > 0 && (
           <section>
-            <div className="flex items-baseline justify-between mb-6 sm:mb-8">
-              <h2 className="eyebrow">All articles</h2>
-              <p className="text-xs font-medium text-muted-foreground">
+            <div className="mb-6 flex items-baseline justify-between sm:mb-8">
+              <h2 className="text-[1.5rem] font-semibold leading-tight text-primary sm:text-[1.75rem]">All articles</h2>
+              <p className="text-sm text-muted-foreground">
                 {totalPages > 1
                   ? `Page ${currentPage} of ${totalPages} · ${rest.length} articles`
                   : `${rest.length} ${rest.length === 1 ? "article" : "articles"}`}
               </p>
             </div>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            <ul className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
               {pagePosts.map((post) => (
                 <li key={post.slug}>
                   <BlogPostCard post={post} />

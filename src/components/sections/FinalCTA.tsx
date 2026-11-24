@@ -1,59 +1,66 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ChevronRight, Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { BUSINESS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 
-export function FinalCTA() {
+/**
+ * Call-to-action band: the question in white, an outlined quote button and
+ * the yellow phone button, with Caraway's photo framed beside it. Blue by
+ * default; pass `tone="green"` where the band sits directly above the blue
+ * footer so the two do not run together.
+ */
+export function FinalCTA({ tone = "blue" }: { tone?: "blue" | "green" }) {
+  const green = tone === "green";
   return (
     <section
-      className="relative overflow-hidden bg-cta py-14 text-cta-foreground sm:py-20 lg:py-24"
+      className={cn(
+        "on-band relative py-10 text-on-dark-hi sm:py-12",
+        green ? "bg-accent" : "bg-primary",
+      )}
       aria-label="Get your quote"
       data-sticky-cta-suppress="true"
     >
-      <div className="site-container flex flex-col items-start gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-        <div className="max-w-[44rem]">
-          <h2 className="display-impact text-[2.75rem] text-cta-foreground sm:text-[4rem] lg:text-[4.5rem]">
+      <div className="site-container grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-12">
+        <div className="text-center lg:col-span-7 lg:text-left">
+          <h2 className="type-display text-on-dark-hi">
             What&apos;s your car worth? One form. A written offer.
           </h2>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
             <Link
               href="/#quote-form"
-              className={cn(buttonVariants({ variant: "primary", size: "lg" }), "group")}
+              className={cn(buttonVariants({ variant: "outlineOnDark", size: "lg" }), green ? "ring-offset-accent hover:text-accent-ink" : "ring-offset-primary")}
             >
               Get my quote
-              <ArrowRight className="h-5 w-5 text-cta-bright transition-transform group-hover:translate-x-1" aria-hidden="true" />
+              <ChevronRight className="h-5 w-5" strokeWidth={3} aria-hidden="true" />
             </Link>
             <TrackedPhoneLink
               href={BUSINESS.phoneTel}
               location="final_cta"
-              className="group inline-flex min-h-12 items-center gap-3 text-cta-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-cta"
+              className={cn(buttonVariants({ size: "lg" }), green ? "ring-offset-accent" : "ring-offset-primary")}
               ariaLabel={`Call ${BUSINESS.phoneDisplay}`}
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center border-2 border-cta-foreground transition-colors group-hover:bg-cta-foreground group-hover:text-cta-bright">
-                <Phone aria-hidden="true" className="h-5 w-5" />
-              </span>
-              <span className="font-display text-[2rem] font-extrabold leading-none tracking-[0.02em]">
+              <Phone className="h-5 w-5" aria-hidden="true" />
+              <span className="tabular-nums">
                 {BUSINESS.phoneDisplay}
               </span>
             </TrackedPhoneLink>
           </div>
         </div>
 
-        <div className="relative w-full max-w-[26rem] shrink-0 self-center border-[10px] border-ink bg-ink shadow-[0_30px_60px_-24px_hsl(var(--shadow-color)/0.6)] transition-transform duration-500 ease-[var(--ease-out-quint)] hover:-rotate-1 motion-reduce:transition-none lg:self-auto">
+        <div className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
           <Image
             src="/images/tow-truck-hero.webp"
             alt="Tilt-tray truck carrying a silver sedan"
             width={800}
             height={800}
-            sizes="(max-width: 1023px) calc(100vw - 2rem), 416px"
+            sizes="(max-width: 1023px) calc(100vw - 2rem), 480px"
             loading="lazy"
-            className="aspect-[4/3] h-auto w-full object-cover object-[30%_62%]"
+            className="aspect-[16/9] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_62%]"
           />
-          <div aria-hidden="true" className="hazard-stripe h-3" />
         </div>
       </div>
     </section>

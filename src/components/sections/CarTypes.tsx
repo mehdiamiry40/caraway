@@ -1,13 +1,14 @@
 import Link from "next/link";
-import { ArrowRight, Car, Wrench, Recycle, ShieldOff, AlertTriangle, Ban } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Car, CloudHail, FileX2, Recycle, Truck, Wrench } from "lucide-react";
 
-const carTypes = [
-  { label: "Used Cars", href: "/sell-my-car-brisbane", icon: Car, desc: "Direct-buyer quote option" },
-  { label: "Damaged Cars", href: "/damaged-cars-brisbane", icon: Wrench, desc: "Accident, flood or fire damage" },
-  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", icon: Recycle, desc: "End-of-life vehicle assessment" },
-  { label: "Unwanted Cars", href: "/car-removal-brisbane", icon: Ban, desc: "Pickup included when we buy" },
-  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", icon: AlertTriangle, desc: "After insurer status is clear" },
-  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", icon: ShieldOff, desc: "Identity and document check" },
+const carTypes: { label: string; href: string; desc: string; icon: LucideIcon }[] = [
+  { label: "Used Cars", href: "/sell-my-car-brisbane", desc: "Direct-buyer quote option", icon: Car },
+  { label: "Damaged Cars", href: "/damaged-cars-brisbane", desc: "Accident, flood or fire damage", icon: Wrench },
+  { label: "Scrap, Old & Junk Cars", href: "/scrap-car-removal-brisbane", desc: "End-of-life vehicle assessment", icon: Recycle },
+  { label: "Unwanted Cars", href: "/car-removal-brisbane", desc: "Pickup included when we buy", icon: Truck },
+  { label: "Hail-Damaged Cars", href: "/hail-damaged-cars-brisbane", desc: "After insurer status is clear", icon: CloudHail },
+  { label: "Unregistered Cars", href: "/unregistered-cars-brisbane", desc: "Identity and document check", icon: FileX2 },
 ];
 
 /* Mirrors the "Cars we buy" paragraph in src/data/home-content.ts. */
@@ -22,74 +23,57 @@ const alsoAssessed = [
   "Fleet & estate clearances",
 ];
 
+/**
+ * What we buy. A centred heading and intro, the vehicle types as a grid of
+ * green ticks, then a green band of outlined boxes linking to the service
+ * page for each kind of car.
+ */
 export function CarTypes() {
   return (
-    <section
-      className="section-y bg-background"
-      aria-labelledby="car-types-heading"
-    >
-      <div className="site-container">
-        <div className="grid grid-cols-1 items-end gap-6 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
-            <p className="eyebrow">What we buy</p>
-            <h2
-              id="car-types-heading"
-              className="display-impact mt-4 text-[2.5rem] text-foreground sm:text-[3.5rem]"
-            >
+    <section aria-labelledby="car-types-heading">
+      <div className="section-y bg-background">
+        <div className="site-container">
+          <div className="section-head">
+            <h2 id="car-types-heading" className="type-h2">
               What cars we buy in Brisbane
             </h2>
+            <p className="mt-4 text-[1.0625rem] leading-relaxed text-foreground">
+              We assess many vehicle types and conditions across Greater Brisbane. The quote depends on the individual car, ownership, location, and access.
+            </p>
           </div>
-          <p className="text-base leading-7 text-muted-foreground lg:col-span-5 lg:pb-1.5">
-            We assess many vehicle types and conditions across Greater Brisbane. The quote depends on the individual car, ownership, location, and access.
-          </p>
-        </div>
 
-        <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {carTypes.map(({ label, href, icon: Icon, desc }) => (
+          <div className="mx-auto max-w-5xl">
+            <p className="eyebrow mb-5 text-center">
+              We also assess
+            </p>
+            <ul className="list-ticks grid grid-cols-1 gap-x-8 gap-y-4 !space-y-0 text-[1.0625rem] font-medium text-foreground min-[420px]:grid-cols-2 lg:grid-cols-4">
+              {alsoAssessed.map((type) => (
+                <li key={type}>{type}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="on-band bg-accent py-10 text-on-dark-hi sm:py-12">
+        <ul className="site-container grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
+          {carTypes.map(({ label, href, desc, icon: Icon }) => (
             <li key={label}>
               <Link
                 href={href}
-                className="group relative flex h-full items-center gap-4 border border-border bg-card p-5 transition-[border-color,box-shadow] duration-200 hover:border-foreground hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:p-6"
+                className="group flex h-full flex-col items-center gap-2 rounded-sm border-2 border-on-dark-hi px-3 py-6 text-center text-on-dark-hi transition-colors duration-150 hover:bg-on-dark-hi hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center bg-ink text-cta-bright transition-colors duration-200 group-hover:bg-cta group-hover:text-cta-foreground">
-                  <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
+                <Icon className="mb-1 h-12 w-12" strokeWidth={1.5} aria-hidden="true" />
+                <span className="block text-lg font-bold leading-snug">
+                  {label}
                 </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-display text-2xl font-bold leading-[1.1] text-foreground">
-                    {label}
-                  </span>
-                  <span className="mt-1 block text-sm leading-snug text-muted-foreground">
-                    {desc}
-                  </span>
+                <span className="block text-[0.9375rem] leading-snug">
+                  {desc}
                 </span>
-                <ArrowRight
-                  className="h-5 w-5 shrink-0 text-foreground/35 transition-[transform,color] duration-200 group-hover:translate-x-1 group-hover:text-foreground"
-                  aria-hidden="true"
-                />
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-cta transition-transform duration-300 ease-[var(--ease-out-quint)] group-hover:scale-x-100 motion-reduce:transition-none"
-                />
               </Link>
             </li>
           ))}
         </ul>
-
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-          <p className="shrink-0 text-sm font-bold uppercase tracking-[0.12em] text-foreground">
-            We also assess
-          </p>
-          <ul className="flex flex-wrap gap-2">
-            {alsoAssessed.map((type) => (
-              <li
-                key={type}
-                className="inline-flex items-center border border-border bg-secondary px-3 py-1.5 text-sm font-medium text-foreground"
-              >
-                {type}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );

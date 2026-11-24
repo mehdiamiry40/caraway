@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Banknote,
-  BookOpen,
-  ClipboardCheck,
-  ClipboardList,
-  FileCheck2,
-  FileSignature,
-  FileText,
-  IdCard,
-  KeyRound,
-  ListChecks,
-  MessageCircleQuestion,
-  PackageOpen,
-  Truck,
-} from "lucide-react";
-import { IconHeading } from "@/components/templates/PagePieces";
+import { ArrowRight } from "lucide-react";
+import { SectionHeading } from "@/components/templates/PagePieces";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -95,11 +80,11 @@ const processFaqs = [
 ];
 
 const pickupChecklist = [
-  { icon: IdCard, text: "Current photo ID, such as a Queensland driver licence" },
-  { icon: FileText, text: "Registration papers or ownership records, if you have them" },
-  { icon: KeyRound, text: "All keys you hold, including spares" },
-  { icon: FileCheck2, text: "Finance, insurer, or estate documents where they apply to the sale" },
-  { icon: PackageOpen, text: "Personal belongings cleared out, and any e-tag or toll account noted so you can close it off" },
+  { text: "Current photo ID, such as a Queensland driver licence" },
+  { text: "Registration papers or ownership records, if you have them" },
+  { text: "All keys you hold, including spares" },
+  { text: "Finance, insurer, or estate documents where they apply to the sale" },
+  { text: "Personal belongings cleared out, and any e-tag or toll account noted so you can close it off" },
 ];
 
 const paperworkGuides = [
@@ -121,9 +106,9 @@ const paperworkGuides = [
   },
 ];
 
-const h3Classes = "flex items-center gap-2.5 font-display text-2xl font-bold leading-[1.15] text-primary mb-2";
+const h3Classes = "mb-2 text-xl font-bold leading-snug text-primary";
 
-const proseClasses = "text-foreground/75 leading-relaxed text-base";
+const proseClasses = "text-[1.0625rem] leading-[1.7] text-foreground";
 
 export default function HowItWorksPage() {
   return (
@@ -148,17 +133,15 @@ export default function HowItWorksPage() {
         ]}
       />
       <PageShell
-        icon={ListChecks}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "How it works" },
         ]}
-        eyebrow="How it works"
         title="Sell your car in four clear steps."
         subtitle={
           <p>
             Details, offer, pickup, payment — the four steps behind every{" "}
-            <Link href="/" className="font-medium link-underline">
+            <Link href="/">
               cash for cars Brisbane
             </Link>{" "}
             sale with Caraway.
@@ -171,15 +154,14 @@ export default function HowItWorksPage() {
           aria-labelledby="process-detail-heading"
           className="bg-background"
         >
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20 space-y-12 sm:space-y-14">
+          <div className="mx-auto max-w-4xl space-y-12 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <div>
-              <IconHeading id="process-detail-heading" icon={ListChecks} tone="solid">
+              <SectionHeading id="process-detail-heading">
                 What actually happens at each step
-              </IconHeading>
+              </SectionHeading>
 
-              <div className="mt-8 border-l-2 border-border pl-5">
+              <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  <ClipboardList className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
                   1. Tell us about the car
                 </h3>
                 <p className={proseClasses}>
@@ -194,9 +176,8 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8 border-l-2 border-border pl-5">
+              <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  <FileSignature className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
                   2. Review an individual offer
                 </h3>
                 <p className={proseClasses}>
@@ -208,9 +189,8 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8 border-l-2 border-border pl-5">
+              <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  <Truck className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
                   3. Confirm the collection plan
                 </h3>
                 <p className={proseClasses}>
@@ -225,9 +205,8 @@ export default function HowItWorksPage() {
                 </p>
               </div>
 
-              <div className="mt-8 border-l-2 border-border pl-5">
+              <div className="mt-7 border-t border-border pt-6">
                 <h3 className={h3Classes}>
-                  <Banknote className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden="true" />
                   4. Payment, receipt, and the car leaves
                 </h3>
                 <p className={proseClasses}>
@@ -242,11 +221,10 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <IconHeading icon={ClipboardCheck}>What to have ready on pickup day</IconHeading>
-              <ul className="mt-2 grid gap-2.5 sm:grid-cols-2">
-                {pickupChecklist.map(({ icon: Icon, text }) => (
-                  <li key={text} className="flex items-start gap-3 border border-border bg-card p-3.5 text-sm text-foreground/80 leading-relaxed">
-                    <Icon className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
+              <SectionHeading>What to have ready on pickup day</SectionHeading>
+              <ul className="list-ticks space-y-4 text-[1.0625rem] text-foreground">
+                {pickupChecklist.map(({ text }) => (
+                  <li key={text}>
                     <span>{text}</span>
                   </li>
                 ))}
@@ -260,7 +238,7 @@ export default function HowItWorksPage() {
                 fuller rundown, see our guide to{" "}
                 <Link
                   href="/blog/preparing-your-car-for-pickup"
-                  className="text-primary underline underline-offset-4 hover:text-accent-ink"
+                  className="font-medium text-primary link-underline"
                 >
                   preparing your car for pickup
                 </Link>
@@ -269,7 +247,7 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <IconHeading icon={FileCheck2}>After the sale: the Queensland paperwork</IconHeading>
+              <SectionHeading>After the sale: the Queensland paperwork</SectionHeading>
               <p className={proseClasses}>
                 You leave the pickup with a signed receipt and the buyer&apos;s
                 details — the records the seller-side steps with the Department
@@ -283,16 +261,15 @@ export default function HowItWorksPage() {
                 tolls and insurance tied to the car the same day. These guides
                 walk through each situation:
               </p>
-              <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+              <ul className="mt-6 border-t-2 border-primary">
                 {paperworkGuides.map((guide) => (
-                  <li key={guide.href}>
+                  <li key={guide.href} className="border-b border-border">
                     <Link
                       href={guide.href}
-                      className="group flex h-full min-h-11 items-center gap-3 border border-border bg-card p-3.5 text-sm font-medium text-primary transition-colors hover:border-primary/50"
+                      className="group flex min-h-12 items-center justify-between gap-4 py-3 text-base font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
-                      <BookOpen className="h-5 w-5 shrink-0 text-accent-ink" strokeWidth={1.75} aria-hidden="true" />
-                      <span className="flex-1">{guide.label}</span>
-                      <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                      <span className="flex-1 decoration-cta decoration-2 underline-offset-[5px] group-hover:underline">{guide.label}</span>
+                      <ArrowRight className="h-4 w-4 shrink-0 text-primary/45 transition-[transform,color] group-hover:translate-x-0.5 group-hover:text-primary" aria-hidden="true" />
                     </Link>
                   </li>
                 ))}
@@ -300,14 +277,14 @@ export default function HowItWorksPage() {
             </div>
 
             <div>
-              <IconHeading icon={MessageCircleQuestion} tone="solid">Common questions about the process</IconHeading>
+              <SectionHeading>Common questions about the process</SectionHeading>
               <Accordion items={processFaqs} />
             </div>
           </div>
         </section>
 
         <QuoteForm source="how-it-works" />
-        <FinalCTA />
+        <FinalCTA tone="green" />
       </PageShell>
     </>
   );

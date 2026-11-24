@@ -13,37 +13,26 @@ import type { SuburbPage } from "@/data/suburbs";
 import { suburbs } from "@/data/suburbs";
 import { services, type ServicePage } from "@/data/services";
 import { getPostsForSuburb } from "@/data/blog-posts";
-import {
-  ArrowRight,
-  BadgeCheck,
-  BookOpen,
-  CarFront,
-  CheckCircle2,
-  ClipboardList,
-  FileSignature,
-  MapPin,
-  MessageCircleQuestion,
-  Phone,
-  Truck,
-} from "lucide-react";
+import { Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { TrackedPhoneLink } from "@/components/layout/TrackedPhoneLink";
 import { cn } from "@/lib/utils";
 import { getBodyAfterLead, getLeadSentence } from "@/lib/content-summary";
-import { serviceIcon } from "@/lib/service-icons";
 import {
   HeroPoints,
-  IconHeading,
-  IconSteps,
-  PromiseTiles,
+  NumberedSteps,
+  PromiseList,
+  SectionHeading,
   SidebarLinks,
 } from "@/components/templates/PagePieces";
 
 const STEPS = [
-  { icon: ClipboardList, title: "Get your quote", description: "Send your car details." },
-  { icon: FileSignature, title: "Lock the number", description: "Firm price, pickup window booked." },
-  { icon: Truck, title: "Payment and pickup", description: "Payment confirmed before the car leaves." },
+  { title: "Get your quote", description: "Send your car details." },
+  { title: "Lock the number", description: "Firm price, pickup window booked." },
+  { title: "Payment and pickup", description: "Payment confirmed before the car leaves." },
 ] as const;
+
+const bodyTextClass = "max-w-[72ch] text-[1.0625rem] leading-[1.7] text-foreground";
 
 export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
   const relatedServiceData = suburb.relatedServices
@@ -88,35 +77,32 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
       <LocationViewTracker suburb={suburb.slug} />
       <Header />
 
-      <main id="main-content" tabIndex={-1} className="flex-1 mt-header-safe pb-[5.5rem] focus-visible:outline-none lg:pb-0">
-        <section className="aurora-surface py-8 sm:py-11 lg:py-14">
-          <div className="site-container relative grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+      <main id="main-content" tabIndex={-1} className="flex-1 pb-[5.5rem] focus-visible:outline-none lg:pb-0">
+        <section className="on-band page-band section-y-hero" data-sticky-cta-suppress="true">
+          <div className="site-container grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7">
-              <Breadcrumbs items={breadcrumbs} />
-              <span className="mt-6 flex h-12 w-12 items-center justify-center bg-cta text-cta-foreground">
-                <MapPin className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
-              </span>
-              <h1 className="mt-4 font-display font-extrabold text-[clamp(2.5rem,6vw,4.25rem)] leading-[0.98] text-primary text-balance mb-4">
+              <Breadcrumbs items={breadcrumbs} light />
+              <h1 className="type-h1 mt-5 text-on-dark-hi">
                 {suburb.h1}
               </h1>
-              <p className="text-foreground/75 text-base sm:text-lg leading-relaxed max-w-2xl mb-6">
+              <p className="type-lead mt-4 max-w-2xl text-on-dark-hi">
                 {heroIntro}
               </p>
-              <HeroPoints className="mb-7" />
-              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
+              <HeroPoints className="mt-6" />
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <ScrollToQuoteCTA source={`location_hero_${suburb.slug}`} />
                 <TrackedPhoneLink
                   href={BUSINESS.phoneTel}
                   location={`location_hero_${suburb.slug}`}
                   ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                  className={cn(buttonVariants({ size: "lg", variant: "primary" }), "w-full sm:w-auto")}
+                  className={cn(buttonVariants({ size: "lg", variant: "outlineOnDark" }), "w-full ring-offset-primary sm:w-auto")}
                 >
                   <Phone className="h-5 w-5" aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </TrackedPhoneLink>
               </div>
             </div>
-            <div className="relative hidden overflow-hidden border-[10px] border-ink bg-ink lg:col-span-5 lg:block">
+            <div className="hidden lg:col-span-5 lg:block">
               <Image
                 src="/images/tow-truck-hero.webp"
                 alt="Tilt-tray truck carrying a silver sedan"
@@ -124,45 +110,41 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                 height={800}
                 sizes="(min-width: 1280px) 500px, 40vw"
                 loading="eager"
-                className="aspect-square h-auto w-full object-cover"
+                className="aspect-[4/3] h-auto w-full rounded-md border-4 border-on-dark-hi object-cover object-[30%_60%]"
               />
             </div>
           </div>
         </section>
 
-        <div className="site-container py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-            <div className="lg:col-span-2 space-y-12 sm:space-y-14 max-w-none lg:max-w-4xl">
+        <div className="site-container py-12 lg:py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-10 lg:col-span-8">
               <div>
-                <IconHeading icon={MapPin}>
+                <SectionHeading>
                   Car removal in {areaName} and nearby suburbs
-                </IconHeading>
+                </SectionHeading>
                 {introRest && (
-                  <p className="text-foreground/75 leading-relaxed text-base">
+                  <p className={bodyTextClass}>
                     {introRest}
                   </p>
                 )}
-                <p className="mt-4 text-foreground/75 leading-relaxed text-base">
+                <p className={cn(bodyTextClass, "mt-4")}>
                   {suburb.localContent}
                 </p>
                 {nearbyAreaNames.length > 0 && (
-                  <div className="mt-6">
-                    <h3 className="text-xl font-display font-bold text-foreground mb-3">Nearby suburbs covered</h3>
-                    <ul className="flex flex-wrap gap-2">
+                  <div className="mt-7">
+                    <h3 className="text-xl font-bold text-accent-ink">Nearby suburbs covered</h3>
+                    <ul className="list-ticks mt-3 grid grid-cols-2 gap-x-8 gap-y-3 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-3">
                       {nearbyAreaNames.map((name) => (
-                        <li key={name} className="inline-flex items-center gap-1.5 border border-border bg-secondary px-3 py-1.5 text-sm text-foreground/80">
-                          <MapPin className="h-3.5 w-3.5 text-accent-ink" aria-hidden="true" />
-                          {name}
-                        </li>
+                        <li key={name}>{name}</li>
                       ))}
                     </ul>
                   </div>
                 )}
                 {localSellingPoints.length > 0 && (
-                  <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <ul className="list-ticks mt-7 grid grid-cols-1 gap-x-10 gap-y-4 !space-y-0 text-[1.0625rem] text-foreground sm:grid-cols-2">
                     {localSellingPoints.map((point) => (
-                      <li key={point} className="flex gap-3 text-sm text-foreground/80">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                      <li key={point}>
                         <span>{point}</span>
                       </li>
                     ))}
@@ -172,13 +154,12 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
 
               {suburb.pickupAccessNotes && suburb.pickupAccessNotes.length > 0 && (
                 <div>
-                  <IconHeading icon={Truck}>
+                  <SectionHeading>
                     Pickup access in {areaName}
-                  </IconHeading>
-                  <ul className="grid gap-2.5 sm:grid-cols-2">
+                  </SectionHeading>
+                  <ul className="list-ticks max-w-[72ch] space-y-4 text-[1.0625rem] text-foreground">
                     {suburb.pickupAccessNotes.map((note) => (
-                      <li key={note} className="flex items-start gap-3 border border-border bg-card p-3.5 text-sm text-foreground/80 leading-relaxed">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-ink" strokeWidth={2.25} aria-hidden="true" />
+                      <li key={note}>
                         <span>{note}</span>
                       </li>
                     ))}
@@ -187,54 +168,54 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
 
               <div>
-                <IconHeading icon={CarFront}>
+                <SectionHeading>
                   What we buy in {suburb.h1.replace("Cash for Cars ", "")}
-                </IconHeading>
-                <p className="text-foreground/75 leading-relaxed text-base">
+                </SectionHeading>
+                <p className={bodyTextClass}>
                   {suburb.serviceDetails}
                 </p>
               </div>
 
               <div>
-                <IconHeading icon={BadgeCheck}>
+                <SectionHeading>
                   Why choose Caraway in {suburb.h1.replace("Cash for Cars ", "")}?
-                </IconHeading>
-                <p className="text-foreground/75 leading-relaxed text-base">
+                </SectionHeading>
+                <p className={bodyTextClass}>
                   {suburb.whyUs}
                 </p>
               </div>
 
               {suburb.localFaqs && suburb.localFaqs.length > 0 && (
                 <div>
-                  <IconHeading icon={MessageCircleQuestion} tone="solid">
+                  <SectionHeading>
                     {areaName} car removal FAQs
-                  </IconHeading>
+                  </SectionHeading>
                   <Accordion items={suburb.localFaqs} headingLevel={3} />
                 </div>
               )}
 
-              <div className="border border-border bg-card p-6 sm:p-8 lg:p-10">
-                <h2 className="text-center text-2xl sm:text-3xl font-display text-foreground mb-8 leading-[1.15]" style={{ letterSpacing: "var(--tracking-tight)" }}>
+              <div>
+                <SectionHeading className="mb-6">
                   Three steps to cash in hand.
-                </h2>
-                <IconSteps steps={STEPS} />
+                </SectionHeading>
+                <NumberedSteps steps={STEPS} />
               </div>
 
               {suburb.finalCtaText && (
                 <div>
-                  <IconHeading icon={Phone} tone="solid">
+                  <SectionHeading>
                     Get a local pickup quote
-                  </IconHeading>
-                  <p className="text-foreground/75 leading-relaxed text-base mb-6">
+                  </SectionHeading>
+                  <p className={bodyTextClass}>
                     {suburb.finalCtaText}
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <ScrollToQuoteCTA source={`location_final_${suburb.slug}`} />
                     <TrackedPhoneLink
                       href={BUSINESS.phoneTel}
                       location={`location_final_${suburb.slug}`}
                       ariaLabel={`Call Caraway on ${BUSINESS.phoneDisplay}`}
-                      className={cn(buttonVariants({ size: "lg", variant: "primary" }), "w-full sm:w-auto")}
+                      className={cn(buttonVariants({ size: "lg", variant: "outline" }), "w-full sm:w-auto")}
                     >
                       <Phone className="h-5 w-5" aria-hidden="true" />
                       Call {BUSINESS.phoneDisplay}
@@ -244,8 +225,8 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
               )}
             </div>
 
-            <aside className="space-y-5 lg:sticky lg:top-[calc(8rem+env(safe-area-inset-top))] lg:self-start">
-              <PromiseTiles title="Our promise" />
+            <aside className="space-y-5 lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)+1.5rem+env(safe-area-inset-top))] lg:self-start">
+              <PromiseList title="Our promise" />
 
               {relatedServiceData.length > 0 && (
                 <SidebarLinks
@@ -253,7 +234,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   items={relatedServiceData.map((s) => ({
                     href: `/${s.slug}`,
                     label: s.h1,
-                    icon: serviceIcon(s.slug),
                   }))}
                 />
               )}
@@ -264,7 +244,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   items={nearbySuburbData.map((s) => ({
                     href: `/locations/${s.slug}`,
                     label: s.h1,
-                    icon: MapPin,
                   }))}
                 />
               )}
@@ -275,7 +254,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   items={extraLinks.map((link) => ({
                     href: link.href,
                     label: link.label,
-                    icon: ArrowRight,
                   }))}
                 />
               )}
@@ -286,7 +264,6 @@ export default function SuburbPageTemplate({ suburb }: { suburb: SuburbPage }) {
                   items={relatedPosts.map((p) => ({
                     href: `/blog/${p.slug}`,
                     label: p.title,
-                    icon: BookOpen,
                   }))}
                 />
               )}

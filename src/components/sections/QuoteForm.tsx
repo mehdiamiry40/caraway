@@ -12,7 +12,7 @@ import { MAKE_OPTIONS, YEAR_OPTIONS, getModelOptions } from "@/data/car-models";
 import { submitQuote } from "@/actions/quote";
 import { trackEvent } from "@/lib/analytics";
 import { BUSINESS } from "@/lib/site";
-import { CheckCircle2, Shield, Clock, BadgeCheck } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import type { FieldErrors } from "react-hook-form";
 import { LeadForm } from "./LeadForm";
 import { useSubmissionId } from "@/hooks/use-submission-id";
@@ -104,34 +104,29 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
       data-chat-launcher-suppress="true"
     >
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          <div className="lg:col-span-5 lg:pt-4">
-            <p className="eyebrow">
-              Your quote
-            </p>
-            <h2 className="display-impact mt-4 text-[2.5rem] text-foreground text-balance mb-5 sm:text-[3.5rem]">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <h2 className="type-h2 text-balance">
               Tell us about the car.
             </h2>
-            <p className="text-foreground/80 leading-relaxed text-base sm:text-lg max-w-md">
+            <p className="mt-4 max-w-md text-[1.0625rem] leading-relaxed text-foreground">
               We&apos;ll use the supplied details to assess whether we can make an offer, then call or text about the next steps. There is no obligation to proceed.
             </p>
-            <div className="mt-6 max-w-md border-l-4 border-cta bg-secondary p-5">
-              <h3 className="text-xl font-display font-bold text-foreground mb-2">How we calculate your car offer</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+            <div className="mt-6 max-w-md border-l-4 border-accent bg-secondary px-4 py-4">
+              <h3 className="text-lg font-bold text-accent-ink">How we calculate your car offer</h3>
+              <p className="mt-1.5 text-base leading-relaxed text-foreground">
                 Your offer depends on the vehicle&apos;s make, model, year, condition, location, whether it is complete, whether it can roll, and current parts or resale demand.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-7 border border-border border-t-[6px] border-t-cta bg-card p-6 sm:p-8 shadow-[0_24px_50px_-28px_hsl(var(--shadow-color)/0.55)]">
+          <div className="rounded-xl border border-border border-t-4 border-t-primary bg-card p-5 shadow-lg sm:p-8 lg:col-span-7">
 
               {isSuccess ? (
-                <div role="status" aria-live="polite" aria-atomic="true" className="h-full flex flex-col items-center justify-center text-center py-8 sm:py-12 px-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-none flex items-center justify-center mb-5 sm:mb-6">
-                    <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-accent" aria-hidden />
-                  </div>
-                  <h3 className="text-xl sm:text-3xl font-display text-primary mb-3">Thanks — we&apos;ve got your details</h3>
-                  <p className="text-foreground/80 mb-8 max-w-sm leading-relaxed text-sm sm:text-base">
+                <div role="status" aria-live="polite" aria-atomic="true" className="flex h-full flex-col items-start py-6 sm:py-8">
+                  <CheckCircle2 className="h-9 w-9 text-accent" strokeWidth={1.75} aria-hidden />
+                  <h3 className="mt-4 text-xl font-bold text-primary sm:text-2xl">Thanks — we&apos;ve got your details</h3>
+                  <p className="mb-7 mt-2 max-w-sm text-base leading-relaxed text-foreground">
                     Our team will review the supplied details and contact you by phone during business hours.
                   </p>
                   <Button onClick={() => resetMutation()} variant="outline" className="w-full sm:w-auto">
@@ -139,7 +134,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </Button>
                 </div>
               ) : (
-                <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5 sm:space-y-6">
+                <LeadForm onSubmit={handleSubmit(onSubmit, onError)} className="space-y-5">
                   <div hidden aria-hidden="true">
                     <label htmlFor="quote-website">Website</label>
                     <input
@@ -151,21 +146,15 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     />
                   </div>
 
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground pb-1 lg:hidden">
-                    <div className="flex items-center gap-1.5">
-                      <Shield className="w-4 h-4 text-primary" aria-hidden />
-                      <span>No obligation</span>
-                    </div>
-                    <span className="text-border">|</span>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4 text-primary" aria-hidden />
-                      <span>Business-hours review</span>
-                    </div>
+                  <div className="flex items-center gap-3 text-[0.9375rem] font-bold text-accent-ink lg:hidden">
+                    <span>No obligation</span>
+                    <span className="text-border" aria-hidden="true">|</span>
+                    <span>Business-hours review</span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor={fieldIds.make} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.make} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Make
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -182,13 +171,13 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.make && (
                         <p id={`${fieldIds.make}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.make.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.model} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.model} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Model
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -204,16 +193,16 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.model && (
                         <p id={`${fieldIds.model}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.model.message}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor={fieldIds.year} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.year} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Year
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -228,13 +217,13 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.year && (
                         <p id={`${fieldIds.year}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.year.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.condition} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.condition} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Condition
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -255,7 +244,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.condition && (
                         <p id={`${fieldIds.condition}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.condition.message}
                         </p>
                       )}
@@ -263,12 +252,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.expectedPrice} className="block text-sm text-foreground mb-2.5">
-                      Expected price <span className="text-muted-foreground">(optional)</span>
+                    <label htmlFor={fieldIds.expectedPrice} className="mb-1.5 block text-sm font-semibold text-foreground">
+                      Expected price <span className="font-normal text-muted-foreground">(optional)</span>
                     </label>
                     <div className="relative">
                       <span
-                        className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-base text-muted-foreground"
+                        className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-base text-muted-foreground"
                         aria-hidden
                       >
                         $
@@ -280,7 +269,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         enterKeyHint="next"
                         maxLength={12}
                         placeholder="3500"
-                        className="pl-8"
+                        className="pl-7"
                         aria-invalid={!!errors.expectedPrice}
                         aria-describedby={
                           errors.expectedPrice
@@ -291,20 +280,20 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         id={fieldIds.expectedPrice}
                       />
                     </div>
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-expected-price-help">
+                    <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-expected-price-help">
                       Whole Australian dollars. Tell us what you hope to get and we&apos;ll say whether it is realistic — leave it blank if you&apos;d rather we suggest a figure.
                     </p>
                     {errors.expectedPrice && (
                       <p id={`${fieldIds.expectedPrice}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {errors.expectedPrice.message}
                       </p>
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="grid grid-cols-1 gap-x-4 gap-y-5 sm:grid-cols-2">
                     <div>
-                      <label htmlFor={fieldIds.name} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.name} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Your name
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -322,13 +311,13 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       />
                       {errors.name && (
                         <p id={`${fieldIds.name}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.name.message}
                         </p>
                       )}
                     </div>
                     <div>
-                      <label htmlFor={fieldIds.phone} className="block text-sm text-foreground mb-2.5">
+                      <label htmlFor={fieldIds.phone} className="mb-1.5 block text-sm font-semibold text-foreground">
                         Phone
                         <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                       </label>
@@ -347,12 +336,12 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         {...register("phone")}
                         id={fieldIds.phone}
                       />
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-phone-help">
+                      <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-phone-help">
                         Australian numbers only, e.g. 0412 345 678
                       </p>
                       {errors.phone && (
                         <p id={`${fieldIds.phone}-error`} className="flex items-start gap-1.5 text-destructive text-sm mt-2 font-medium" role="alert">
-                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                          <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                           {errors.phone.message}
                         </p>
                       )}
@@ -360,7 +349,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.suburb} className="block text-sm text-foreground mb-2.5 cursor-pointer">
+                    <label htmlFor={fieldIds.suburb} className="mb-1.5 block text-sm font-semibold text-foreground">
                       Suburb
                       <span aria-hidden="true" className="text-destructive ml-0.5">*</span>
                     </label>
@@ -378,20 +367,20 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       {...register("suburb")}
                       id={fieldIds.suburb}
                     />
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-suburb-help">
+                    <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-suburb-help">
                       Where the car is right now. Availability is confirmed from the suburb, vehicle, and access details; we take the exact address once an offer is agreed.
                     </p>
                     {errors.suburb && (
                       <p id={`${fieldIds.suburb}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {errors.suburb.message}
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor={fieldIds.details} className="block text-sm text-foreground mb-2.5">
-                      Vehicle and access details <span className="text-muted-foreground">(optional)</span>
+                    <label htmlFor={fieldIds.details} className="mb-1.5 block text-sm font-semibold text-foreground">
+                      Vehicle and access details <span className="font-normal text-muted-foreground">(optional)</span>
                     </label>
                     <textarea
                       id={fieldIds.details}
@@ -403,14 +392,14 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                         errors.details ? `${fieldIds.details}-error quote-details-help` : "quote-details-help"
                       }
                       {...register("details")}
-                      className="w-full resize-y rounded-md border border-input bg-background px-3 py-2.5 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="w-full resize-y rounded-md border border-input bg-card px-3.5 py-3 text-base leading-relaxed text-foreground outline-none transition-[border-color,box-shadow] duration-150 placeholder:text-muted-foreground hover:border-foreground/70 focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 aria-[invalid=true]:border-destructive"
                     />
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-snug" id="quote-details-help">
+                    <p className="mt-1.5 text-[0.8125rem] leading-snug text-muted-foreground sm:text-sm" id="quote-details-help">
                       These details help us assess the vehicle and suitable collection access before follow-up.
                     </p>
                     {errors.details ? (
                       <p id={`${fieldIds.details}-error`} className="flex items-start gap-1.5 text-destructive text-xs sm:text-sm mt-1.5 sm:mt-2 font-medium" role="alert">
-                        <span className="inline-block w-1 h-1 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                        <span className="inline-block w-1 h-1 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                         {errors.details.message}
                       </p>
                     ) : null}
@@ -422,8 +411,7 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                     </Button>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-center gap-2 text-center text-xs text-muted-foreground pt-0.5">
-                    <BadgeCheck className="w-4 h-4 text-primary/70 shrink-0" aria-hidden />
+                  <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
                     <span>
                       Free quote. Your details are used to respond to this enquiry. See our{" "}
                       <Link href="/privacy" className="font-medium text-primary underline underline-offset-2">
@@ -431,33 +419,33 @@ export function QuoteForm({ source = "quote_form" }: { source?: string }) {
                       </Link>
                       .
                     </span>
-                  </div>
+                  </p>
 
                   {errorMessage && (
                     <div
                       ref={errorAlertRef}
                       tabIndex={-1}
-                      className="flex items-start gap-2 bg-destructive/5 border border-destructive/20 rounded-lg px-3 sm:px-4 py-3 text-xs sm:text-sm text-destructive font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/30"
+                      className="flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive/5 px-3 py-3 text-sm font-medium text-destructive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive sm:px-4"
                       role="alert"
                       aria-live="assertive"
                       aria-atomic="true"
                     >
-                      <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-none bg-destructive shrink-0" aria-hidden />
+                      <span className="inline-block w-1.5 h-1.5 mt-1.5 rounded-full bg-destructive shrink-0" aria-hidden />
                       <div className="flex-1">
                         <span>{errorMessage}</span>
                         <button
                           type="button"
                           onClick={() => setErrorMessage(null)}
-                          className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive/50 rounded-sm"
+                          className="ml-2 underline underline-offset-2 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-destructive rounded-sm"
                         >
                           Dismiss
                         </button>
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-center text-muted-foreground leading-relaxed">
+                  <p className="text-center text-[0.8125rem] leading-relaxed text-muted-foreground">
                     By submitting, you agree we may contact you about this enquiry. You can opt out anytime. See our{" "}
-                    <Link href="/privacy" className="text-primary underline underline-offset-2 hover:no-underline">
+                    <Link href="/privacy" className="font-medium text-primary underline underline-offset-2 hover:no-underline">
                       Privacy Policy
                     </Link>
                     .

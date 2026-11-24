@@ -40,7 +40,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
 
   return (
     <figure>
-      <div className="rounded-md border border-border bg-card p-3 sm:p-5 shadow-sm">
+      <div className="rounded-lg border border-border bg-card p-3 sm:p-5">
         <svg
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
           role="img"
@@ -129,7 +129,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
               axisMaximum,
             )}
             fill="none"
-            className="stroke-accent-ink"
+            className="stroke-cta-ink"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -142,7 +142,7 @@ export function VehicleFuelTrendChart({ rows }: { rows: FuelTrendRow[] }) {
             Electric
           </span>
           <span className="inline-flex items-center gap-2">
-            <span className="h-1 w-6 rounded-full bg-accent-ink" aria-hidden="true" />
+            <span className="h-1 w-6 rounded-full bg-cta-ink" aria-hidden="true" />
             Petrol/Electric
           </span>
         </div>

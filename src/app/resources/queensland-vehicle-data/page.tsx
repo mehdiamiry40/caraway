@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ChartColumn, Download, ExternalLink, FileJson } from "lucide-react";
+import { Download, ExternalLink, FileJson } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/layout/PageShell";
 import { TrackedOutboundLink } from "@/components/layout/TrackedOutboundLink";
@@ -258,7 +258,7 @@ export const vehicleDataStructuredData: Record<string, unknown>[] = [
 ];
 
 const downloadClasses =
-  "inline-flex min-h-11 items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-ink-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-11 items-center gap-2 rounded-md border-[1.5px] border-primary px-4 py-2.5 text-[0.9375rem] font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 function SourceLink({
   href,
@@ -274,7 +274,7 @@ function SourceLink({
       href={href}
       label={label}
       location={location}
-      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-primary underline decoration-primary/30 underline-offset-4 hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="inline-flex min-h-11 items-center gap-1.5 rounded-sm py-2 font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <span>{label}</span>
       <ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -291,7 +291,7 @@ function DataTable({
   caption: string;
 }) {
   return (
-    <div className="overflow-x-auto rounded-md border border-border bg-card shadow-sm">
+    <div className="overflow-x-auto rounded-md border border-border bg-card">
       <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
         <caption className="sr-only">{caption}</caption>
         <thead className="bg-secondary text-primary">
@@ -333,7 +333,6 @@ export default function QueenslandVehicleDataPage() {
     <>
       <JsonLd data={vehicleDataStructuredData} />
       <PageShell
-        icon={ChartColumn}
         breadcrumbs={breadcrumbs}
         eyebrow="Open data resource"
         title={RESOURCE_HEADING}
@@ -349,9 +348,9 @@ export default function QueenslandVehicleDataPage() {
           <nav aria-label="On this page" className="grid gap-4 md:grid-cols-2">
             <a
               href="#queensland-fuel-trends"
-              className="rounded-md border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <span className="eyebrow">Panel 1 · Queensland</span>
+              <span className="eyebrow text-[0.75rem]">Panel 1 · Queensland</span>
               <span className="mt-2 block text-lg font-semibold text-primary">
                 Cars by fuel type, 2006–2024
               </span>
@@ -361,9 +360,9 @@ export default function QueenslandVehicleDataPage() {
             </a>
             <a
               href="#brisbane-suburb-snapshot"
-              className="rounded-md border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <span className="eyebrow">Panel 2 · Brisbane City</span>
+              <span className="eyebrow text-[0.75rem]">Panel 2 · Brisbane City</span>
               <span className="mt-2 block text-lg font-semibold text-primary">
                 Registered vehicles by suburb, 10 October 2022
               </span>
@@ -381,7 +380,7 @@ export default function QueenslandVehicleDataPage() {
             <p className="eyebrow">Panel 1 · Statewide annual data</p>
             <h2
               id="queensland-fuel-heading"
-              className="mt-3 text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="type-h2 mt-3 text-primary"
             >
               Queensland cars by fuel type, 2006–2024
             </h2>
@@ -421,7 +420,7 @@ export default function QueenslandVehicleDataPage() {
               </div>
             </dl>
 
-            <div className="mt-10 rounded-md border border-border bg-card p-6 shadow-sm">
+            <div className="mt-10 rounded-md border border-border bg-card p-6">
               <h3 className="text-2xl font-semibold text-primary">
                 Change in the published records, {previousFuelRow.year}–{latestFuelRow.year}
               </h3>
@@ -461,7 +460,7 @@ export default function QueenslandVehicleDataPage() {
               <VehicleFuelTrendChart rows={fuelTrendRows} />
             </div>
 
-            <div className="mt-8 overflow-x-auto rounded-md border border-border bg-card shadow-sm">
+            <div className="mt-8 overflow-x-auto rounded-md border border-border bg-card">
               <table className="w-full min-w-[38rem] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   Annual Queensland registered electric and petrol-electric cars,
@@ -523,7 +522,7 @@ export default function QueenslandVehicleDataPage() {
             <p className="eyebrow">Panel 2 · Historical local snapshot</p>
             <h2
               id="brisbane-snapshot-heading"
-              className="mt-3 text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="type-h2 mt-3 text-primary"
             >
               Registered vehicles across 186 Brisbane City suburbs
             </h2>
@@ -539,7 +538,7 @@ export default function QueenslandVehicleDataPage() {
 
             <aside
               aria-label="Brisbane City Council showcase recognition"
-              className="mt-8 rounded-md border border-primary/25 bg-secondary p-5 shadow-sm sm:p-6"
+              className="mt-8 rounded-md border border-primary/25 bg-secondary p-5 sm:p-6"
             >
               <p className="eyebrow">Brisbane Open Data</p>
               <p className="mt-2 text-lg font-semibold text-primary sm:text-xl">
@@ -548,7 +547,7 @@ export default function QueenslandVehicleDataPage() {
                   href={BRISBANE_OPEN_DATA_SHOWCASE_URL}
                   label="Brisbane City Council Open Data showcase"
                   location="vehicle_data_council_showcase"
-                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-accent-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="rounded-sm underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   Brisbane City Council’s Open Data showcase
                   <ExternalLink
@@ -609,7 +608,7 @@ export default function QueenslandVehicleDataPage() {
               </div>
             </div>
 
-            <details className="mt-8 rounded-md border border-border bg-muted p-4 sm:p-6">
+            <details className="mt-8 rounded-md border border-border bg-secondary p-4 sm:p-6">
               <summary className="cursor-pointer rounded-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 View all 186 unambiguous suburb rows
               </summary>
@@ -641,7 +640,7 @@ export default function QueenslandVehicleDataPage() {
           >
             <h2
               id="editorial-images-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="type-h2 text-primary"
             >
               Editorial preview images
             </h2>
@@ -652,7 +651,7 @@ export default function QueenslandVehicleDataPage() {
               snapshot, not a current fleet estimate.
             </p>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
-              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+              <figure className="rounded-md border border-border bg-card p-4">
                 <Image
                   src={VEHICLE_DATA_SOCIAL_IMAGE.src}
                   alt={VEHICLE_DATA_SOCIAL_IMAGE.alt}
@@ -666,7 +665,7 @@ export default function QueenslandVehicleDataPage() {
                   historical Brisbane suburb snapshot.
                 </figcaption>
               </figure>
-              <figure className="rounded-md border border-border bg-card p-4 shadow-sm">
+              <figure className="rounded-md border border-border bg-card p-4">
                 <Image
                   src={BRISBANE_REUSE_THUMBNAIL.src}
                   alt={BRISBANE_REUSE_THUMBNAIL.alt}
@@ -730,12 +729,12 @@ export default function QueenslandVehicleDataPage() {
           >
             <h2
               id="methodology-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="type-h2 text-primary"
             >
               Methodology, exclusions, and build checks
             </h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-md border border-border bg-card p-6 shadow-sm">
+              <div className="rounded-md border border-border bg-card p-6">
                 <h3 className="text-xl font-semibold text-primary">
                   Queensland fuel panel
                 </h3>
@@ -746,7 +745,7 @@ export default function QueenslandVehicleDataPage() {
                   <li>Convert the wide official table to a downloadable long-form CSV.</li>
                 </ol>
               </div>
-              <div className="rounded-md border border-border bg-card p-6 shadow-sm">
+              <div className="rounded-md border border-border bg-card p-6">
                 <h3 className="text-xl font-semibold text-primary">
                   Brisbane suburb panel
                 </h3>
@@ -842,7 +841,7 @@ export default function QueenslandVehicleDataPage() {
           <section aria-labelledby="sources-heading" className="pt-20">
             <h2
               id="sources-heading"
-              className="text-3xl font-display font-bold text-primary sm:text-4xl"
+              className="type-h2 text-primary"
             >
               Official sources and attribution
             </h2>
@@ -890,7 +889,7 @@ export default function QueenslandVehicleDataPage() {
               </li>
             </ul>
 
-            <div className="mt-8 space-y-4 rounded-md border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground shadow-sm">
+            <div className="mt-8 space-y-4 rounded-md border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground">
               <p>
                 Source vehicle data © The State of Queensland (Department of
                 Transport and Main Roads), used under CC BY 4.0. Caraway filtered,
@@ -917,11 +916,11 @@ export default function QueenslandVehicleDataPage() {
 
           <section
             aria-labelledby="related-services-heading"
-            className="mt-20 rounded-md bg-ink px-6 py-8 text-on-dark sm:px-8"
+            className="on-band mt-20 rounded-xl bg-ink px-6 py-8 text-on-dark sm:px-9 sm:py-10"
           >
             <h2
               id="related-services-heading"
-              className="text-2xl font-semibold text-on-dark-hi"
+              className="text-[1.5rem] font-semibold text-on-dark-hi sm:text-[1.75rem]"
             >
               Vehicle-selling information
             </h2>

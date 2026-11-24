@@ -1,37 +1,16 @@
-import { createElement } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
 import { Accordion } from "@/components/ui/accordion";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { LucideIcon } from "lucide-react";
-import {
-  ArrowRight,
-  Banknote,
-  CarFront,
-  MapPin,
-  MessageCircle,
-  MessageCircleQuestion,
-  Phone,
-  Truck,
-} from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { BUSINESS } from "@/lib/site";
 import { faqCategories } from "@/lib/faq-data";
+import { SectionHeading } from "@/components/templates/PagePieces";
 
 /** Stable in-page anchor for a category, e.g. "Pricing & Payment" -> "pricing-payment". */
 function topicId(category: string) {
   return category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-}
-
-const TOPIC_ICONS: Record<string, LucideIcon> = {
-  "Pricing & Payment": Banknote,
-  "Vehicle Requirements": CarFront,
-  "Process & Logistics": Truck,
-  "Service Area & Availability": MapPin,
-};
-
-function topicIcon(category: string): LucideIcon {
-  return TOPIC_ICONS[category] ?? MessageCircleQuestion;
 }
 
 const breadcrumbs = [
@@ -42,51 +21,48 @@ const breadcrumbs = [
 export default function FAQPage() {
   return (
     <PageShell
-      icon={MessageCircleQuestion}
       breadcrumbs={breadcrumbs}
-      eyebrow="FAQ"
       title="Vehicle selling questions, answered."
       subtitle={
         <p>
           Straight answers about selling your car for cash in Brisbane — quotes, pickup, payment and Queensland paperwork. New here? Start with{" "}
-          <Link href="/" className="text-primary font-medium link-underline">how cash for cars works in Brisbane</Link>, or{" "}
-          <Link href="/contact" className="text-primary font-medium link-underline">contact us</Link>.
+          <Link href="/">how cash for cars works in Brisbane</Link>, or{" "}
+          <Link href="/contact">contact us</Link>.
         </p>
       }
     >
-      <div className="site-container py-12 sm:py-16 lg:py-20">
+      <div className="site-container py-10 sm:py-12 lg:py-16">
         <div className="lg:grid lg:grid-cols-12 lg:gap-12">
-          {/* Topic jump links: a swipeable chip row on phones, a sticky
-              sidebar on desktop so the 18 questions stay navigable. */}
-          <aside className="mb-10 lg:col-span-3 lg:mb-0">
+          {/* Topic jump links: a swipeable row on phones, a sticky box on
+              desktop so the questions stay navigable. */}
+          <aside className="mb-9 lg:col-span-3 lg:mb-0">
             <nav
               aria-label="FAQ topics"
-              className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]"
+              className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)] lg:rounded-md lg:border lg:border-border lg:border-t-4 lg:border-t-primary lg:px-5 lg:pb-4 lg:pt-4"
             >
-              <p className="eyebrow mb-4 text-sm">Topics</p>
-              <ol className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 lg:flex-col lg:gap-1">
+              <p className="mb-2 text-xl font-bold text-primary">Topics</p>
+              <ol className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 lg:flex-col lg:gap-0">
                 {faqCategories.map((category) => (
                   <li key={category.category} className="shrink-0">
                     <a
                       href={`#${topicId(category.category)}`}
-                      className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 whitespace-nowrap rounded-none border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary lg:w-full lg:rounded-lg lg:border-transparent lg:bg-transparent lg:px-3 lg:hover:bg-secondary"
+                      className="inline-flex min-h-11 shrink-0 items-center whitespace-nowrap rounded-sm border-2 border-primary bg-card px-3.5 text-base font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:w-full lg:whitespace-normal lg:border-0 lg:bg-transparent lg:px-0 lg:underline lg:decoration-primary/40 lg:decoration-1 lg:underline-offset-4 lg:hover:bg-transparent lg:hover:text-primary lg:hover:decoration-2"
                     >
-                      <TopicIcon category={category.category} className="h-4 w-4 text-accent-ink" />
                       {category.category}
                     </a>
                   </li>
                 ))}
               </ol>
-              <p className="mt-6 hidden text-sm leading-relaxed text-muted-foreground lg:block">
+              <p className="mt-4 hidden text-base leading-relaxed text-foreground lg:block">
                 Can&apos;t find your answer?{" "}
-                <a href={BUSINESS.phoneTel} className="font-medium text-primary link-underline">
+                <a href={BUSINESS.phoneTel} className="font-bold text-primary link-underline">
                   Call {BUSINESS.phoneDisplay}
                 </a>
               </p>
             </nav>
           </aside>
 
-          <div className="space-y-14 sm:space-y-16 lg:col-span-9 lg:max-w-3xl">
+          <div className="space-y-12 lg:col-span-9">
             {faqCategories.map((category) => (
               <section
                 key={category.category}
@@ -94,49 +70,36 @@ export default function FAQPage() {
                 aria-labelledby={`${topicId(category.category)}-heading`}
                 className="scroll-mt-header"
               >
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-secondary text-primary">
-                    <TopicIcon category={category.category} className="h-6 w-6" />
-                  </span>
-                  <h2
-                    id={`${topicId(category.category)}-heading`}
-                    className="text-2xl sm:text-3xl font-display text-foreground leading-[1.15]"
-                    style={{ letterSpacing: "var(--tracking-tight)" }}
-                  >
-                    {category.category}
-                  </h2>
-                </div>
+                <SectionHeading id={`${topicId(category.category)}-heading`}>
+                  {category.category}
+                </SectionHeading>
                 <Accordion
                   items={category.faqs.map(f => ({ question: f.question, answer: f.answer }))}
                 />
               </section>
             ))}
 
-            <div className="flex flex-col items-center border border-border bg-secondary p-6 sm:p-10 text-center">
-              <span className="mb-4 flex h-14 w-14 items-center justify-center bg-primary text-primary-foreground">
-                <MessageCircle className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
-              </span>
-              <h2 className="text-xl sm:text-2xl font-display text-foreground mb-6" style={{ letterSpacing: "var(--tracking-tight)" }}>Still have questions?</h2>
-              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 justify-center">
+            <div className="on-band rounded-md bg-primary px-6 py-8 text-center text-on-dark-hi sm:px-8">
+              <h2 className="type-h2 text-on-dark-hi">Still have questions?</h2>
+              <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/#quote-form"
-                  className={cn(buttonVariants({ variant: "default", size: "sm" }))}
+                  className={cn(buttonVariants({ variant: "outlineOnDark" }), "ring-offset-primary")}
                 >
                   Get my quote
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
                 <a
                   href={BUSINESS.phoneTel}
-                  className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
+                  className={cn(buttonVariants({ variant: "default" }), "ring-offset-primary")}
                 >
-                  <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+                  <Phone className="h-4 w-4" aria-hidden="true" />
                   Call {BUSINESS.phoneDisplay}
                 </a>
                 <Link
                   href="/contact"
-                  className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+                  className="inline-flex min-h-12 items-center rounded-sm px-2 text-[1.0625rem] font-bold text-on-dark-hi underline decoration-1 underline-offset-4 hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
                 >
-                  <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
                   Contact us
                 </Link>
               </div>
@@ -146,12 +109,4 @@ export default function FAQPage() {
       </div>
     </PageShell>
   );
-}
-
-function TopicIcon({ category, className }: { category: string; className?: string }) {
-  return createElement(topicIcon(category), {
-    className,
-    strokeWidth: 1.75,
-    "aria-hidden": true,
-  });
 }
