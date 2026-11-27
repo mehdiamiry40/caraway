@@ -33,7 +33,7 @@ export const post: RawBlogPostEntry = {
 
     "There is no universal winner. Choose the transaction with acceptable net proceeds, clear conditions, a buyer you can identify, workable collection arrangements, confirmed payment, and complete sale records. Private sale, trade-in, repair, or keeping the vehicle may also be worth comparing when the car is registered, safe to demonstrate, or economically repairable.",
 
-    `Caraway can provide an individual [cash-for-cars Brisbane](/) quote for comparison. Call **${BUSINESS.phoneDisplay}** or use the online quote form with accurate vehicle and access details. If Caraway makes an offer and you accept it, the pickup terms, payment arrangement, receipt, and buyer details are confirmed before collection.`,
+    `Caraway can provide an individual [written offer in Brisbane](/) for comparison. Call **${BUSINESS.phoneDisplay}** or use the online quote form with accurate vehicle and access details. If Caraway makes an offer and you accept it, the pickup terms, payment arrangement, receipt, and buyer details are confirmed before collection.`,
   ],
   faqs: [
     {

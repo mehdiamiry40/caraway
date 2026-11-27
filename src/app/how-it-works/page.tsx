@@ -140,11 +140,11 @@ export default function HowItWorksPage() {
         title="Sell your car in four clear steps."
         subtitle={
           <p>
-            Details, offer, pickup, payment — the four steps behind every{" "}
-            <Link href="/">
-              cash for cars Brisbane
+            Details, offer, pickup, payment — the four steps to{" "}
+            <Link href="/sell-my-car-brisbane">
+              sell your car in Brisbane
             </Link>{" "}
-            sale with Caraway.
+            with Caraway.
           </p>
         }
       >

@@ -10,11 +10,19 @@ import {
 } from "@/lib/site";
 import Home from "@/views/Home";
 
+/**
+ * The homepage supports the "sell my car Brisbane" owner page
+ * (/sell-my-car-brisbane) with Caraway's written-offer differentiator. It does
+ * not lead with an exact-match head term of its own.
+ */
+const HOME_TITLE =
+  "Written Offer to Sell Your Car in Brisbane | Pickup Included | Caraway";
+
 export const metadata: Metadata = {
   title: {
-    absolute: "Cash for Cars Brisbane | Written Offer & Pickup | Caraway",
+    absolute: HOME_TITLE,
   },
-  description: `Cash for cars Brisbane from a local buyer: get a human-reviewed written offer for your car, running or not, with pickup included when we buy. Call ${BUSINESS.phoneDisplay}.`,
+  description: `A human-reviewed written offer to sell your car in Brisbane, running or not, from a local buyer. Pickup is included when we buy. Call ${BUSINESS.phoneDisplay}.`,
   // Canonical is rendered manually in the JSX below. Next.js's metadata
   // resolver strips the trailing slash from root-path canonicals when
   // `trailingSlash: false` (see resolve-url.js: `pathname === '/' ? origin : href`),
@@ -24,9 +32,9 @@ export const metadata: Metadata = {
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: "website",
-    title: "Cash for Cars Brisbane | Written Offer & Pickup | Caraway",
+    title: HOME_TITLE,
     description:
-      "Cash for cars Brisbane: a human-reviewed written offer for your car, running or not, with pickup included when Caraway buys across Greater Brisbane.",
+      "A human-reviewed written offer for your car, running or not, with pickup included when Caraway buys across Greater Brisbane.",
     images: [
       {
         url: "/images/og-card.jpg",
@@ -36,7 +44,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", title: HOME_TITLE },
 };
 
 export const homeStructuredData = [
@@ -44,9 +52,9 @@ export const homeStructuredData = [
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       url: `${SITE_URL}/`,
-      name: "Cash for Cars Brisbane | Caraway",
+      name: "Written Offer to Sell Your Car in Brisbane | Caraway",
       description:
-        "Cash for cars Brisbane from Caraway, a Brisbane-based car buyer that reviews each vehicle, confirms a written offer, and includes pickup when it buys across Greater Brisbane.",
+        "Caraway is a Brisbane-based car buyer that reviews each vehicle, confirms a written offer, and includes pickup when it buys across Greater Brisbane.",
       dateModified: HOME_CONTENT_UPDATED,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#vehicle-buying-service` },
@@ -65,7 +73,7 @@ export const homeStructuredData = [
     serviceSchema({
       id: `${SITE_URL}/#vehicle-buying-service`,
       url: `${SITE_URL}/`,
-      name: "Cash for cars Brisbane",
+      name: "Car buying with a written offer in Brisbane",
       description:
         "Human-reviewed cash for cars assessments, written offers, and pickup included when Caraway buys vehicles across Greater Brisbane.",
       serviceType: "Cash for cars",

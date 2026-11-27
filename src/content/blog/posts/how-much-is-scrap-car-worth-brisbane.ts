@@ -14,7 +14,7 @@ export const post: RawBlogPostEntry = {
 
     "## Quick answer",
 
-    "The assessment depends on the make, model, age, condition, completeness, location, towing access, and current demand for reusable components or recoverable material. A non-running small car, a damaged ute, and a stripped shell do not present the same inputs. Request a written vehicle-specific quote from a Brisbane buyer such as [Caraway cash for cars Brisbane](/), and check its assumptions before accepting it.",
+    "The assessment depends on the make, model, age, condition, completeness, location, towing access, and current demand for reusable components or recoverable material. A non-running small car, a damaged ute, and a stripped shell do not present the same inputs. Request a written vehicle-specific quote from a Brisbane buyer such as [Caraway](/), and check its assumptions before accepting it.",
 
     "## Main factors that affect scrap car value",
 

@@ -29,7 +29,7 @@ export const post: RawBlogPostEntry = {
 
     "## Pickup and records",
 
-    "Tell the buyer whether the vehicle starts, rolls, steers, brakes, leaks, has loose components, or is in restricted or soft-ground access. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The collection window, equipment, payment arrangement, and receipt details are confirmed before dispatch. For the full picture of how Caraway prices and collects vehicles, see [cash for cars Brisbane](/).",
+    "Tell the buyer whether the vehicle starts, rolls, steers, brakes, leaks, has loose components, or is in restricted or soft-ground access. If Caraway makes an offer and you accept it, pickup is included when the vehicle and access match the supplied details. The collection window, equipment, payment arrangement, and receipt details are confirmed before dispatch. For the full picture of how Caraway prices and collects vehicles, see [Caraway's written offer and pickup in Brisbane](/).",
 
     "Check the current Queensland steps for a registered transfer, registration cancellation, or unregistered sale. Keep photo ID, keys, ownership records, insurer correspondence, finance information, a signed receipt, and confirmation of the seller steps you complete.",
 

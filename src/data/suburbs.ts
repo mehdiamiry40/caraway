@@ -84,7 +84,8 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
+      { label: "Sell my car Brisbane", href: "/sell-my-car-brisbane" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -144,7 +145,8 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
+      { label: "Sell my car Brisbane", href: "/sell-my-car-brisbane" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -204,7 +206,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -264,7 +266,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -324,7 +326,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -384,7 +386,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -444,7 +446,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:
@@ -504,7 +506,7 @@ export const suburbs: SuburbPage[] = [
       },
     ],
     internalLinks: [
-      { label: "Cash for cars Brisbane", href: "/" },
+      { label: "Written offer and pickup in Brisbane", href: "/" },
       { label: "View all service areas", href: "/locations" },
     ],
     finalCtaText:

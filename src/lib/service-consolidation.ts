@@ -18,8 +18,10 @@ export const RETIRED_SERVICE_DESTINATIONS = {
   "sell-ford-falcon-brisbane": "/",
   "sell-ford-ranger-brisbane": "/",
   "sell-toyota-landcruiser-brisbane": "/",
-  // October 2026: the homepage took ownership of "cash for cars Brisbane",
-  // so the former exact-match service page folds into it.
+  // October 2026: the former exact-match service page folded into the
+  // homepage. Since November 2026 the homepage no longer leads with that
+  // phrase (it supports /sell-my-car-brisbane with the written-offer angle),
+  // but the retired URL still resolves here in one hop.
   "cash-for-cars-brisbane": "/",
 } as const;
 

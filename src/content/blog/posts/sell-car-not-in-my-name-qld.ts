@@ -17,7 +17,7 @@ export const post: RawBlogPostEntry = {
 
     "## Why ownership and authority matters",
 
-    "A vehicle sale transfers valuable property. Buyers need confidence that the person being paid has the right to sell the car and that no one else will later dispute the sale. This matters for private sales, dealer transactions, and [cash for cars Brisbane](/) pickups.",
+    "A vehicle sale transfers valuable property. Buyers need confidence that the person being paid has the right to sell the car and that no one else will later dispute the sale. This matters for private sales, dealer transactions, and [Brisbane car-buyer](/) pickups.",
 
     "Authority also protects you. If you sell a car without permission, you may create a dispute with the registered operator, finance holder, family member, company, estate, or buyer. If there is any doubt, pause and get proper documents first.",
 
