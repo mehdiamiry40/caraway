@@ -23,7 +23,9 @@ import {
   metadata as servicesMetadata,
   SERVICE_HUB_HEADING,
 } from "@/app/services/page";
+import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
+import { HomeCashForCars } from "@/components/sections/HomeCashForCars";
 import { ServiceSectionContent } from "@/components/templates/ServicePageTemplate";
 import { blogPosts } from "@/data/blog-posts";
 import {
@@ -31,11 +33,20 @@ import {
   getServicePreferredImage,
   services,
 } from "@/data/services";
-import { homeCashSections } from "@/data/home-content";
+import { homeCashSections, homeVehicleLinks } from "@/data/home-content";
+import { FOOTER_INTERNAL_RESOURCES } from "@/data/resource-links";
+import { suburbs } from "@/data/suburbs";
 import { RETIRED_SERVICE_DESTINATIONS } from "@/lib/service-consolidation";
-import { SITE_URL } from "@/lib/site";
+import { BUSINESS, HOME_CONTENT_UPDATED, SITE_URL } from "@/lib/site";
 
-const CASH_QUERY = /cash for cars brisbane/i;
+// Head-term ownership map, locked 28 November 2026. "cash for cars Brisbane"
+// belongs to another site in the portfolio, so no Caraway page may lead with
+// it. Caraway's own head term is "sell my car Brisbane", owned by
+// /sell-my-car-brisbane; the homepage supports it with the written-offer
+// differentiator.
+const CASH_QUERY = /cash[- ]for[- ]cars brisbane/i;
+const SELL_MY_CAR_QUERY = /sell my car brisbane/i;
+const SELL_MY_CAR_OWNER = "/sell-my-car-brisbane";
 const REMOVAL_QUERY = /car removal brisbane/i;
 const OLD_UTE_QUERY = /cash for old utes/i;
 const FLOODED_CAR_QUERY = /cash for (?:flooded|flood[- ]damaged) cars?/i;
@@ -52,6 +63,69 @@ function serviceOwnersOf(query: RegExp): string[] {
       ),
     )
     .map((service) => service.slug);
+}
+
+interface InternalLink {
+  source: string;
+  label: string;
+  href: string;
+}
+
+function textOf(markup: string): string {
+  return markup
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Internal anchors in server-rendered markup, as visible label and href. */
+function anchorsIn(markup: string, source: string): InternalLink[] {
+  return [...markup.matchAll(/<a\b[^>]*\bhref="(\/[^"]*)"[^>]*>([\s\S]*?)<\/a>/g)].map(
+    (match) => ({ source, href: match[1]!, label: textOf(match[2]!) }),
+  );
+}
+
+/** Markdown links to internal paths anywhere in a content record. */
+function markdownLinksIn(record: unknown, source: string): InternalLink[] {
+  return [
+    ...JSON.stringify(record).matchAll(/\[([^\]]+)\]\((\/[^)\s]*)\)/g),
+  ].map((match) => ({ source, label: match[1]!, href: match[2]! }));
+}
+
+/**
+ * Every internal link whose anchor text is authored in content data or in the
+ * shared homepage and footer components. Anchor text is an ownership signal,
+ * so both head-term rules are checked against this one list.
+ */
+function authoredInternalLinks(): InternalLink[] {
+  return [
+    ...anchorsIn(renderToStaticMarkup(<Hero />), "home hero"),
+    ...anchorsIn(renderToStaticMarkup(<HomeCashForCars />), "home explainer"),
+    ...anchorsIn(renderToStaticMarkup(<Footer />), "footer"),
+    ...homeVehicleLinks.map((link) => ({ source: "home specialist pages", ...link })),
+    ...FOOTER_INTERNAL_RESOURCES.map((link) => ({
+      source: "internal resources",
+      ...link,
+    })),
+    ...services.flatMap((service) => [
+      ...service.sections.flatMap((section) =>
+        section.supportLink
+          ? [{ source: `service/${service.slug}`, ...section.supportLink }]
+          : [],
+      ),
+      ...markdownLinksIn(service, `service/${service.slug}`),
+    ]),
+    ...suburbs.flatMap((suburb) => [
+      ...(suburb.internalLinks ?? []).map((link) => ({
+        source: `location/${suburb.slug}`,
+        ...link,
+      })),
+      ...markdownLinksIn(suburb, `location/${suburb.slug}`),
+    ]),
+    ...blogPosts.flatMap((post) => markdownLinksIn(post, `blog/${post.slug}`)),
+  ];
 }
 
 /**
@@ -75,25 +149,162 @@ function expectHonestOwnershipDates(entity: {
 }
 
 describe("primary SEO query ownership", () => {
-  it("makes the homepage the single owner of cash for cars Brisbane", () => {
+  it("leads the homepage with the written-offer differentiator, not cash for cars Brisbane", () => {
     const title = (homeMetadata.title as { absolute: string }).absolute;
     const openGraphTitle = String(homeMetadata.openGraph?.title ?? "");
+    const twitterTitle = String(homeMetadata.twitter?.title ?? "");
+    const description = String(homeMetadata.description ?? "");
     const hero = renderToStaticMarkup(<Hero />);
-    const h1 = hero.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "";
-    const webPageName = String(homeStructuredData[0]?.name ?? "");
+    const h1 = textOf(hero.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? "");
+    const [webPage, service] = homeStructuredData;
+    const webPageName = String(webPage?.name ?? "");
 
-    expect(title).toMatch(CASH_QUERY);
-    expect(openGraphTitle).toMatch(CASH_QUERY);
-    expect(h1).toMatch(CASH_QUERY);
-    expect(webPageName).toMatch(CASH_QUERY);
-    expect(String(homeMetadata.description ?? "")).toMatch(CASH_QUERY);
+    expect(title).toBe(
+      "Written Offer to Sell Your Car in Brisbane | Pickup Included | Caraway",
+    );
+    expect(openGraphTitle).toBe(title);
+    expect(twitterTitle).toBe(title);
+    expect(h1).toBe(
+      "A Written Offer to Sell Your Car in Brisbane, without the runaround.",
+    );
+    expect(webPageName).toBe(
+      "Written Offer to Sell Your Car in Brisbane | Caraway",
+    );
+
+    // The title, H1, and schema name all lead with the differentiator and
+    // stay clear of both exact head terms: the one Caraway does not own, and
+    // the one its own service page owns.
+    for (const value of [title, h1, webPageName]) {
+      expect(value).toMatch(/^(?:A )?Written Offer to Sell Your Car in Brisbane/);
+      expect(value).not.toMatch(CASH_QUERY);
+      expect(value).not.toMatch(SELL_MY_CAR_QUERY);
+    }
+
+    // Nothing the homepage publishes about itself claims the exact query.
+    for (const value of [
+      description,
+      String(homeMetadata.openGraph?.description ?? ""),
+      String(webPage?.description ?? ""),
+      String(service?.name ?? ""),
+    ]) {
+      expect(value).not.toBe("");
+      expect(value).not.toMatch(CASH_QUERY);
+    }
+
+    // The description carries the remaining on-site differentiators.
+    expect(description).toMatch(/human-reviewed written offer/i);
+    expect(description).toMatch(/running or not/i);
+    expect(description).toMatch(/pickup is included when we buy/i);
+    expect(description).toContain(BUSINESS.phoneDisplay);
+    expect(description.length).toBeLessThanOrEqual(160);
     expect(homeMetadata.keywords).toBeUndefined();
+    // Ownership is expressed through titles and links only. The homepage's
+    // self-canonical is rendered in the page JSX (see src/app/page.tsx), so
+    // its metadata must not introduce a canonical pointing anywhere else.
+    expect(homeMetadata.alternates).toBeUndefined();
 
-    // No service page competes for the exact query, and the retired
-    // exact-match service URL folds into the homepage in one hop.
+    // The retitle is a real modification, recorded on the page and no
+    // earlier than the day the ownership map was locked.
+    expect(HOME_CONTENT_UPDATED).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(HOME_CONTENT_UPDATED >= "2026-11-28").toBe(true);
+    expect(webPage?.dateModified).toBe(HOME_CONTENT_UPDATED);
+
+    // No service page competes for the exact cash query either, and the
+    // retired exact-match service URL still folds into the homepage in one hop.
     expect(serviceOwnersOf(CASH_QUERY)).toEqual([]);
     expect(getServiceBySlug("cash-for-cars-brisbane")).toBeUndefined();
     expect(RETIRED_SERVICE_DESTINATIONS["cash-for-cars-brisbane"]).toBe("/");
+  });
+
+  it("keeps /sell-my-car-brisbane as the single owner of sell my car Brisbane", async () => {
+    const service = getServiceBySlug("sell-my-car-brisbane");
+    const metadata = await generateServiceMetadata({
+      params: Promise.resolve({ slug: "sell-my-car-brisbane" }),
+    });
+    const homeTitle = (homeMetadata.title as { absolute: string }).absolute;
+
+    expect(service).toBeDefined();
+    // The root layout's title template appends " | Caraway".
+    expect(service?.title).toBe(
+      "Sell My Car Brisbane | Direct Vehicle-Buyer Quote",
+    );
+    expect(service?.h1).toMatch(/^Sell My Car Brisbane\b/);
+    expect(metadata.title).toBe(service?.title);
+    expect(String(metadata.openGraph?.title ?? "")).toBe(service?.title);
+    expect(String(metadata.twitter?.title ?? "")).toBe(service?.title);
+    expect(metadata.alternates?.canonical).toBe(
+      `${SITE_URL}${SELL_MY_CAR_OWNER}`,
+    );
+
+    expect(serviceOwnersOf(SELL_MY_CAR_QUERY)).toEqual([
+      "sell-my-car-brisbane",
+    ]);
+    expect(homeTitle).not.toContain(service!.title);
+
+    for (const suburb of suburbs) {
+      for (const value of [suburb.title, suburb.h1, suburb.metaDescription]) {
+        expect(value, suburb.slug).not.toMatch(SELL_MY_CAR_QUERY);
+      }
+    }
+    for (const post of blogPosts) {
+      expect(post.title, post.slug).not.toMatch(SELL_MY_CAR_QUERY);
+    }
+  });
+
+  it("does not present any page as the owner of cash for cars Brisbane in link text", () => {
+    const links = authoredInternalLinks();
+
+    // Guard the collector itself: an empty list would pass vacuously.
+    expect(links.length).toBeGreaterThan(100);
+    expect(links.some(({ source }) => source === "footer")).toBe(true);
+    expect(links.some(({ source }) => source.startsWith("blog/"))).toBe(true);
+
+    expect(
+      links.filter(({ label }) => CASH_QUERY.test(label)),
+    ).toEqual([]);
+
+    // The explainer's label under its heading is not a link, but it is the
+    // most prominent homepage text after the H1.
+    expect(textOf(renderToStaticMarkup(<HomeCashForCars />))).not.toMatch(
+      CASH_QUERY,
+    );
+  });
+
+  it("points sell my car Brisbane link text at its owner page", () => {
+    const links = authoredInternalLinks();
+    const sellMyCarLinks = links.filter(({ label }) =>
+      SELL_MY_CAR_QUERY.test(label),
+    );
+
+    expect(
+      sellMyCarLinks.filter(({ href }) => href !== SELL_MY_CAR_OWNER),
+    ).toEqual([]);
+
+    // The homepage, the footer on every page, and the supporting service,
+    // location, and blog pages all send the exact anchor to the owner.
+    const sources = new Set(sellMyCarLinks.map(({ source }) => source));
+    for (const source of [
+      "home specialist pages",
+      "footer",
+      "service/sell-toyota-hilux-brisbane",
+      "location/toowong",
+      "location/logan",
+    ]) {
+      expect(sources, source).toContain(source);
+    }
+    expect([...sources].some((source) => source.startsWith("blog/"))).toBe(
+      true,
+    );
+
+    // Every location page reaches the owner, through its related services or
+    // through an explicit link where it has no such related service.
+    for (const suburb of suburbs) {
+      const hrefs = [
+        ...suburb.relatedServices.map((slug) => `/${slug}`),
+        ...(suburb.internalLinks ?? []).map(({ href }) => href),
+      ];
+      expect(hrefs, suburb.slug).toContain(SELL_MY_CAR_OWNER);
+    }
   });
 
   it("keeps the location hub from competing with the primary cash query", () => {

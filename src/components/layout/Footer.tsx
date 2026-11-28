@@ -7,7 +7,7 @@ import { Logo } from "@/components/layout/Logo";
 
 const serviceLinks = [
   { label: "All Services", href: "/services" },
-  { label: "Cash for Cars Brisbane", href: "/" },
+  { label: "Written Offer & Pickup", href: "/" },
   { label: "Car Removal Brisbane", href: "/car-removal-brisbane" },
   { label: "Sell My Car Brisbane", href: "/sell-my-car-brisbane" },
   { label: "Scrap Car Removal", href: "/scrap-car-removal-brisbane" },

@@ -7,7 +7,7 @@ import {
 } from "@/data/home-content";
 
 /**
- * The homepage's long-form "cash for cars Brisbane" explainer: left-aligned
+ * The homepage's long-form written-offer and pickup explainer: left-aligned
  * text with blue headings and green-tick lists, and the specialist service
  * pages in a box beside it.
  */
@@ -23,7 +23,7 @@ export function HomeCashForCars() {
           <h2 id="cash-for-cars-heading" className="type-h2">
             Selling your car for cash in Brisbane, explained.
           </h2>
-          <p className="eyebrow mt-1">Cash for cars Brisbane</p>
+          <p className="eyebrow mt-1">Written offer and pickup in Brisbane</p>
           <p className="mt-4 text-[1.0625rem] leading-[1.7] text-foreground">{HOME_CASH_INTRO}</p>
         </div>
 

@@ -102,3 +102,64 @@ for (const target of targets) {
     expect(structuredData).not.toContain('"@type":"FAQPage"');
   });
 }
+
+test("the homepage leads with the written offer and sends sell-my-car intent to its owner page", async ({
+  page,
+}) => {
+  const title =
+    "Written Offer to Sell Your Car in Brisbane | Pickup Included | Caraway";
+  const response = await page.goto("/");
+
+  expect(response?.status()).toBe(200);
+  await expect(page).toHaveTitle(title);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    title,
+  );
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
+    "content",
+    title,
+  );
+  // Self-referential only: head-term ownership never uses a canonical that
+  // points at another page or another site.
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://caraway.au/",
+  );
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("h1")).toHaveText(
+    "A Written Offer to Sell Your Car in Brisbane, without the runaround.",
+  );
+
+  const structuredData = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  ).join("\n");
+  expect(structuredData).toContain(
+    '"name":"Written Offer to Sell Your Car in Brisbane | Caraway"',
+  );
+
+  // Neither exact head term leads the homepage: one belongs to another site,
+  // the other to /sell-my-car-brisbane.
+  for (const value of [
+    await page.title(),
+    await page.locator("h1").innerText(),
+    structuredData,
+  ]) {
+    expect(value).not.toMatch(/cash[- ]for[- ]cars brisbane/i);
+    expect(value).not.toMatch(/sell my car brisbane/i);
+  }
+
+  const ownerLinks = page
+    .locator("main")
+    .getByRole("link", { name: "Sell my car Brisbane", exact: true });
+  await expect(ownerLinks).toHaveCount(1);
+  await expect(ownerLinks).toHaveAttribute("href", "/sell-my-car-brisbane");
+  await expect(
+    page
+      .getByRole("contentinfo")
+      .getByRole("link", { name: "Sell My Car Brisbane", exact: true }),
+  ).toHaveAttribute("href", "/sell-my-car-brisbane");
+  await expect(
+    page.getByRole("link", { name: /cash[- ]for[- ]cars brisbane/i }),
+  ).toHaveCount(0);
+});

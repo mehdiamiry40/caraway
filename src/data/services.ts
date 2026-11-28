@@ -58,7 +58,7 @@ export const services: ServicePage[] = [
           "Car removal is how most of our cash for cars jobs in Brisbane end: we assess the vehicle, agree a price, then collect it. You aren't paying a tow operator to take the car away \u2014 when Caraway buys, the removal is part of the deal and the payment arrangement is confirmed before the truck arrives.",
         supportLink: {
           href: "/",
-          label: "How Caraway's cash for cars Brisbane service works",
+          label: "How Caraway's written offer and pickup work in Brisbane",
         },
       },
       {
@@ -262,7 +262,7 @@ export const services: ServicePage[] = [
           "A car that will never drive again can still be worth something for its parts and metal. Scrap pricing is the low end of cash for cars in Brisbane, but it is rarely zero: a complete car with its catalytic converter, wheels and battery is worth more than a stripped shell. Tell us exactly what's left on it so the offer holds when the truck arrives.",
         supportLink: {
           href: "/",
-          label: "Compare scrap offers with Caraway's cash for cars Brisbane service",
+          label: "Compare scrap offers with a written offer from Caraway",
         },
       },
       {
@@ -431,7 +431,7 @@ export const services: ServicePage[] = [
           "An unregistered car can't legally be driven to a buyer, which is why collection matters so much. When Caraway buys, the vehicle is loaded where it sits. Registration status is one input into the offer alongside condition and completeness \u2014 it's the same assessment we use for every cash for cars job in Brisbane.",
         supportLink: {
           href: "/",
-          label: "Read how Caraway's cash for cars Brisbane service works",
+          label: "Read how Caraway's written offer and pickup work in Brisbane",
         },
       },
       {
@@ -508,7 +508,7 @@ export const services: ServicePage[] = [
           "Paintless dent repair is excellent on lighter hail, but heavy damage across the roof and pillars can cost more than an older car is worth. If you've kept the payout or the insurer has released the car, selling it as-is to a cash for cars buyer in Brisbane is often simpler than repairing it. Photograph every panel in good light so the dents show clearly.",
         supportLink: {
           href: "/",
-          label: "Get a cash for cars Brisbane offer, running or not",
+          label: "Get a written offer for your car, running or not",
         },
       },
       {
@@ -580,8 +580,8 @@ export const services: ServicePage[] = [
         content:
           "Accessories, service history and how the ute was used all move a HiLux offer. A canopy, bar work, a lift kit or a tray swap can help or hurt depending on the buyer, so list every modification honestly. We price utes the same way as any cash for cars job in Brisbane: from accurate details and current photos.",
         supportLink: {
-          href: "/",
-          label: "Sell any car for cash in Brisbane with Caraway",
+          href: "/sell-my-car-brisbane",
+          label: "Sell my car Brisbane: Caraway's direct buyer option",
         },
       },
       {

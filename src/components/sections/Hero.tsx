@@ -69,13 +69,13 @@ export function Hero() {
           <div className="lg:col-span-7 lg:pt-4">
             <p className="text-base font-bold text-on-dark-hi sm:text-lg">Brisbane-based car buyer</p>
 
-            {/* "Cash for Cars Brisbane" stays one unbroken run of text for
+            {/* The written-offer phrase stays one unbroken run of text for
                 search. */}
             <h1
               id="hero-heading"
               className="type-display mt-2 max-w-[20ch] text-on-dark-hi after:mt-4 after:block after:h-1.5 after:w-40 after:rounded-full after:bg-primary after:content-['']"
             >
-              <span>Cash for Cars Brisbane,</span>{" "}
+              <span>A Written Offer to Sell Your Car in Brisbane,</span>{" "}
               <span>without the runaround.</span>
             </h1>
 

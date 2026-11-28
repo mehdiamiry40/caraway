@@ -1,11 +1,13 @@
 /**
- * Long-form homepage copy for the primary "cash for cars Brisbane" query.
+ * Long-form homepage copy on how Caraway's written offer and pickup work.
  *
- * The homepage owns that query (the former exact-match service page now
- * redirects here), so this is where the service detail lives: how a
- * quote is requested, what moves an offer, what we buy, pickup, payment and
- * paperwork. Claims stay within what Caraway can back — no fixed prices, no
- * promised pickup timing, and payment terms confirmed per job.
+ * The homepage no longer targets an exact-match head term: "sell my car
+ * Brisbane" belongs to /sell-my-car-brisbane, and the homepage supports it
+ * with the written-offer detail (the retired exact-match service page still
+ * redirects here). This is where that detail lives: how a quote is requested,
+ * what moves an offer, what we buy, pickup, payment and paperwork. Claims stay
+ * within what Caraway can back — no fixed prices, no promised pickup timing,
+ * and payment terms confirmed per job.
  */
 
 export interface HomeContentSection {
@@ -92,7 +94,7 @@ export const homeCashSections: HomeContentSection[] = [
 /** Specialist pages linked from the homepage's "cars we buy" block. */
 export const homeVehicleLinks = [
   { label: "Car removal", href: "/car-removal-brisbane" },
-  { label: "Sell my car", href: "/sell-my-car-brisbane" },
+  { label: "Sell my car Brisbane", href: "/sell-my-car-brisbane" },
   { label: "Scrap cars", href: "/scrap-car-removal-brisbane" },
   { label: "Damaged & flooded cars", href: "/damaged-cars-brisbane" },
   { label: "Hail-damaged cars", href: "/hail-damaged-cars-brisbane" },

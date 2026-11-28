@@ -121,9 +121,10 @@ export const LEGAL_DATES = {
  *  builds instead of drifting to "today" on every deploy. */
 export const CONTENT_DEPLOY_DATE = "2026-04-15";
 
-/** Homepage metadata, H1, and entity focus were retargeted to a brand hub so
- *  the dedicated service pages can own the two primary commercial queries. */
-export const HOME_CONTENT_UPDATED = "2026-10-18";
+/** Homepage title, H1, and schema names last retargeted in November 2026:
+ *  they lead with the written-offer differentiator, and /sell-my-car-brisbane
+ *  stays the owner of "sell my car Brisbane". */
+export const HOME_CONTENT_UPDATED = "2026-11-28";
 
 /** About-page identity copy, metadata, and primary-image schema last reviewed. */
 export const ABOUT_CONTENT_UPDATED = "2026-10-18";
